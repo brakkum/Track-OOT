@@ -92,16 +92,16 @@ function loadState() {
     }
 }
 
-function deleteState() {
+async function deleteState() {
     if (stateChoice.value != ""
-    && confirm("Do you really want to delete state \""+stateChoice.value+"\"?")) {
+    && await dialogue_confirm("Do you really want to delete state \""+stateChoice.value+"\"?")) {
         localStorage.removeItem(stateChoice.value);
         prepairSavegameChoice();
     }
 }
 
-function newState() {
-    var name = prompt("Please enter the name of the safestate!");
+async function newState() {
+    var name = await dialogue_prompt("Please enter the name of the safestate!");
     if (name == "") {
         alert("The name can not be empty");
         newState();
@@ -111,5 +111,54 @@ function newState() {
         localStorage.setItem(name, JSON.stringify(savestate));
         prepairSavegameChoice();
         stateChoice.value = name;
+        document.getElementById("save-savegame").disabled = false;
+        document.getElementById("load-savegame").disabled = false;
+        document.getElementById("delete-savegame").disabled = false;
     }
+}
+
+var dlg         = document.getElementById("dialogue");
+var dlg_txt     = document.getElementById("dialogue_text");
+var dlg_ok      = document.getElementById("dialogue_submit");
+var dlg_abort   = document.getElementById("dialogue_abort");
+var dlg_input   = document.getElementById("dialogue_input");
+function dialogue_alert(msg) {
+    return new Promise(function(resolve) {
+        dlg.className = "alert";
+        dlg_txt.innerHTML = msg;
+        dlg_ok.onclick = function() {
+            resolve(true);
+            dlg.className = "";
+        };
+    });
+}
+function dialogue_confirm(msg) {
+    return new Promise(function(resolve) {
+        dlg.className = "confirm";
+        dlg_txt.innerHTML = msg;
+        dlg_ok.onclick = function() {
+            resolve(true);
+            dlg.className = "";
+        };
+        dlg_abort.onclick = function() {
+            resolve(false);
+            dlg.className = "";
+        };
+    });
+}
+function dialogue_prompt(msg) {
+    return new Promise(function(resolve, reject) {
+        dlg.className = "prompt";
+        dlg_txt.innerHTML = msg;
+        dlg_ok.onclick = function() {
+            resolve(dlg_input.value);
+            dlg.className = "";
+            dlg_input.value = "";
+        };
+        dlg_abort.onclick = function() {
+            resolve(null);
+            dlg.className = "";
+            dlg_input.value = "";
+        };
+    });
 }

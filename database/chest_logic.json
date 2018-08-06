@@ -27,7 +27,7 @@
         ["bombs", "scale:2"]
     ],
     "talon_chicken": [],
-    "song_epona": [],
+    "maron_song": [],
     "lonlon_hp": [],
     "bottle_zora": [
         ["scale"]
@@ -73,7 +73,7 @@
         ["hookshot:2", "magic_power", "magic_din"],
         ["hookshot:2", "magic_power", "bow", "arrow_fire"]
     ],
-    "warp_spirit": [
+    "desert_warp_spirit": [
         ["warp_spirit"],
         ["song_epona", "hoverboots", "magic_power", "lens"],
         ["hookshot:2", "magic_power", "lens"]
@@ -732,7 +732,7 @@
     "castle_town_bowling_2":[
         ["bombs"]
     ],
-    "castle_town__chest_game":[
+    "castle_town_chest_game":[
         ["lens","magic_power"]
     ],
     "castle_town_dog":[],
@@ -786,8 +786,8 @@
         ["song_saria"]
     ],
     "woods_deku_salesman":[],
-    "woods_Ocarina Memory Game":[],
-    "woods_Target in Woods":[
+    "woods_memory_game":[],
+    "woods_shooting":[
         ["slingshot"]
     ],
     "woods_bomb_grotto":[
@@ -806,9 +806,7 @@
         ["hammer","song_saria"],
         ["hammer","warp_forest"]
     ],
-    "woods_saria": [
-        ["song_zelda"]
-    ],
+    "woods_saria": [],
     "woods_warp":[
         ["song_saria"],
         ["warp_forest"]
@@ -890,7 +888,7 @@
         ["bow"]
     ],
     "kakariko_song_storm": [],
-    "kakariko_Windmill Heart Piece": [
+    "kakariko_windmill_hp": [
         ["song_time"],
         ["boomerang"]
     ],
@@ -917,19 +915,19 @@
         ["medallion_forest", "medallion_fire", "medallion_water"]
     ],
     "kakariko_skulltula_10": [
-        ["skultulla:1"]
+        ["skulltula:1"]
     ],
     "kakariko_skulltula_20": [
-        ["skultulla:2"]
+        ["skulltula:2"]
     ],
     "kakariko_skulltula_30": [
-        ["skultulla:3"]
+        ["skulltula:3"]
     ],
     "kakariko_skulltula_40": [
-        ["skultulla:4"]
+        ["skulltula:4"]
     ],
     "kakariko_skulltula_50": [
-        ["skultulla:5"]
+        ["skulltula:5"]
     ],
     "castle_ganon_forest_trial": [
         ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light"]

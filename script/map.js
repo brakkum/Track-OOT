@@ -187,7 +187,9 @@ function checkLogic(logic) {
 function updateMap() {
     for (var i = 0; i < poi.chests.length; ++i) {
         var x = poi.chests[i];
-        if(!savestate.chests[x.id]) {
+        if(savestate.chests[x.id]) {
+            x.className = "poi chest opened";
+        } else {
             x.className = "poi chest " + checkChestAvailable(x.id);
         }
     }
