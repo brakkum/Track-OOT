@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Tracker for OOT-Randomizer</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css" type="text/css">
+    
+        <script src="script/loader.js"></script>
+        <script src="script/items.js"></script>
+        <script src="script/map.js"></script>
+        <script src="script/main.js" defer></script>
+    </head>
+    <body>
+        <nav id="options">
+            <ul>
+                <li>
+                    <select id="select-savegame">
+                    </select>
+                    <button class="save-button" id="save-savegame" disabled>SAVE</button>
+                    <button class="save-button" id="load-savegame" disabled>LOAD</button>
+                    <button class="save-button" id="new-savegame">NEW</button>
+                    <button class="save-button" id="delete-savegame" disabled>DELETE</button>
+                </li>
+            </ul>
+        </nav>
+        <div id='layout-container'>
+            <div id="map-container">
+                <div id='item-container'>
+                </div>
+                <div id='map'>
+                </div>
+                <div id='dungeon-container'>
+                    <div class='header'><span id='dungeon-name'>Hyrule</span></div>
+                    <hr class="spacer-line">
+                    <ul onselectstart="return false" id='dungeon-list'>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

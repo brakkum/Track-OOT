@@ -1,0 +1,263 @@
+
+* {
+    position: relative;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+body {
+    background-color: rgb(0,0,0);
+    margin: 0px;
+    color: white;
+}
+
+.spacer-line {
+    margin: 4px 0;
+}
+
+.header {
+    text-align: center;
+}
+
+
+/*********************************************
+        navigation
+*********************************************/
+#options {
+    background-color: gold;
+    height: 26px;
+    padding: 2px 10px;
+}
+
+#options > ul {
+    -webkit-padding-start: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    list-style: none;
+}
+
+#options > ul > li {
+    height: 100%;
+}
+
+#options > ul > li > * {
+    height: 100%;
+    top: 0;
+}
+
+#select-savegame {
+    width: 500px;
+}
+
+.save-button {
+    width: 100px;
+    background-color: gold;
+    color: black;
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+}
+
+.save-button:hover {
+    box-shadow: inset 0px 0px 2px 1px;
+}
+
+.save-button:active {
+    box-shadow: inset 0px 0px 4px 3px;
+}
+
+.save-button:disabled {
+    opacity: 0.3;
+}
+
+
+/*********************************************
+        item-container
+*********************************************/
+#item-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    padding: 8px;
+}
+
+#item-container .item {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url('images/unknown.png');
+}
+
+#item-container .filler {
+    display: block;
+    flex: 100% 0 1;
+}
+
+
+/*********************************************
+        marker-colors
+*********************************************/
+.unavailable{
+    background-color: rgb(255,0,0);
+}
+
+.available{
+    background-color: rgb(0,255,0);
+}
+
+.possible{
+    background-color: rgb(210,190,30);
+}
+
+.opened{
+    background-color: rgb(127,127,127);
+}
+
+.DCunavailable{
+    color: rgb(255,0,0);
+}
+
+.DCavailable{
+    color: rgb(0,255,0);
+}
+
+.DCpossible{
+    color: rgb(210,190,30);
+}
+
+.DCopened{
+    color: rgb(127,127,127);
+}
+
+
+/*********************************************
+        map-container
+*********************************************/
+#map-container {
+    display: flex;
+    height: calc(466px * 0.8);
+}
+
+#map-container #map {
+    background-image: url("images/map.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    width: calc(825px * 0.8);
+    height: calc(466px * 0.8);
+    left: 0px;
+}
+
+#map-container #dungeon-container {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    width: 250px;
+    font-size: 1.2em;
+}
+
+#map-container #dungeon-container #dungeon-name {
+    font-size: 1.5em;
+}
+
+#map-container #dungeon-container #dungeon-list {
+    -webkit-padding-start: 0;
+    list-style: none;
+    margin: 4px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#map-container #dungeon-container #dungeon-list .dungeon-chest:hover {
+    background-color: #282828;
+}
+
+
+/*********************************************
+        POI
+*********************************************/
+.poi {
+    position: absolute;
+    cursor: pointer;
+    background-size: 100%;
+}
+
+.poi.chest {
+    width: 16;
+    height: 16;
+    margin-left: -8px;
+    margin-top: -8px;
+}
+
+.poi.dungeon {
+    width: 24;
+    height: 24;
+    margin-left: -12px;
+    margin-top: -12px;
+}
+
+.poi .tooltipgray {
+    visibility: hidden;
+    width: 120px;
+    background-color: gray;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 120%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.poi .tooltipgray:hover {
+    display: none;
+}
+
+.poi:hover .tooltipgray {
+    visibility: visible;
+}
+
+.poi .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 170%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.poi .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.poi .tooltip:hover {
+    display: none;
+}
+
+.poi:hover .tooltip {
+    visibility: visible;
+}
+
+.poi:hover {
+    outline: solid 2px cyan;
+    z-index: 10000;
+}

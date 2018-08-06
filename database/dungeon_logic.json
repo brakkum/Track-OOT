@@ -1,0 +1,59 @@
+{
+    "deku": [
+        ["slingshot"]
+    ],
+    "dodongo": [
+        ["slingshot", "bombs"],
+        ["bow", "bombs"],
+        ["boots_hover", "bombs"]
+    ],
+    "jabujabu": [
+        ["bombs", "song_zelda", "zora_letter", "bottle", "boomerang"],
+        ["scale", "zora_letter", "bottle", "boomerang"]
+    ],
+    "temple_forest": [
+        ["song_saria", "hookshot", "bow"],
+        ["warp_forest", "hookshot", "bow"]
+    ],
+    "temple_fire": [
+        ["tunic_goron", "hammer", "boots_hover"],
+        ["tunic_goron", "hammer", "warp_fire", "glove", "bombs"],
+        ["tunic_goron", "hammer", "warp_fire", "glove", "bow", "song_time"],
+        ["tunic_goron", "hammer", "hookshot", "glove", "song_time"],
+        ["tunic_goron", "hammer", "hookshot", "glove", "bombs"]
+    ],
+    "temple_water": [
+        ["tunic_water", "boots_iron", "hookshot:2"]
+    ],
+    "temple_shadow": [
+        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover", "bombs", "hookshot", "glove", "song_zelda", "bow"]
+    ],
+    "temple_spirit": [
+        ["song_epona", "hoverboots", "magic_power:1", "lens", "glove:2", "shield_mirror", "bombs", "hookshot"],
+        ["hookshot:2", "magic_power:1", "lens", "glove:2", "shield_mirror", "bombs", "hookshot"],
+        ["warp_spirit", "glove:2", "shield_mirror", "bombs", "hookshot"]
+    ],
+    "castle_ganon": [
+        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light",
+            "power_magic", "bow", "arrow_light", "tunic_goron", "glove:3", "hookshot:2", "hammer", "bottle", "shield_mirror",
+            "bombs", "arrow_fire", "boots_hover"],
+        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light",
+            "power_magic", "bow", "arrow_light", "tunic_goron", "glove:3", "hookshot:2", "hammer", "bottle", "shield_mirror",
+            "bombs", "arrow_fire", "lens"],
+        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light",
+            "power_magic", "bow", "arrow_light", "tunic_goron", "glove:3", "hookshot:2", "hammer", "bottle", "shield_mirror",
+            "bombs", "magic_din", "boots_hover"],
+        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light",
+            "power_magic", "bow", "arrow_light", "tunic_goron", "glove:3", "hookshot:2", "hammer", "bottle", "shield_mirror",
+            "bombs", "magic_din", "lens"]
+    ],
+    "castle_town": [],
+    "kakariko": [],
+    "goron": [],
+    "mountain": [],
+    "woods": [],
+    "zoras": [],
+    "gerudo_training": [],
+    "well": [],
+    "ice_cavern": []
+}
