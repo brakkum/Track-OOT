@@ -14,7 +14,6 @@ function populateChests(map_element) {
     for(k=0; k<data.chests.length; k++){
         var id = data.chests[k].name;
         var s = document.createElement('span');
-        s.style.backgroundImage = 'url(images/poi.png)';
         s.style.color = 'black';
         s.id = id;
         s.onclick = new Function('toggleChest('+id+')');
@@ -49,7 +48,6 @@ function populateDungeons(map_element) {
     for(k=0; k<data.dungeons.length; k++){
         var id = data.dungeons[k].name;
         s = document.createElement('span');
-        s.style.backgroundImage = 'url(images/poi.png)';
         s.id = id;
 
         s.onclick = new Function('clickDungeon('+id+')');

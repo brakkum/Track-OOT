@@ -103,15 +103,15 @@ body {
         marker-colors
 *********************************************/
 .unavailable{
-    background-color: rgb(255,0,0);
+    background-color: rgb(255, 0, 0);
 }
 
 .available{
-    background-color: rgb(0,255,0);
+    background-color: rgb(0, 255, 0);
 }
 
 .possible{
-    background-color: rgb(210,190,30);
+    background-color: rgb(255, 255, 0);
 }
 
 .opened{
@@ -185,6 +185,12 @@ body {
     position: absolute;
     cursor: pointer;
     background-size: 100%;
+    border: solid 2px black;
+}
+
+.poi:hover {
+    outline: solid 2px cyan;
+    z-index: 10000;
 }
 
 .poi.chest {
@@ -256,11 +262,6 @@ body {
 
 .poi:hover .tooltip {
     visibility: visible;
-}
-
-.poi:hover {
-    outline: solid 2px cyan;
-    z-index: 10000;
 }
 
 
