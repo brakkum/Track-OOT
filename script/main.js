@@ -97,6 +97,15 @@ async function loadState() {
             var item = localStorage.getItem(stateChoice.value);
             if (item != "" && item != "null") {
                 savestate = JSON.parse(item);
+                /*compatibility-codes*/
+                if (savestate.hasOwnProperty("tunic_goron")) {
+                    savestate.tunic_fire = savestate.tunic_goron;
+                    delete savestate.tunic_goron;
+                }
+                if (savestate.hasOwnProperty("tunic_zora")) {
+                    savestate.tunic_water = savestate.tunic_zora;
+                    delete savestate.tunic_zora;
+                }
             }
             document.getElementById("save-savegame").disabled = false;
             activestate = stateChoice.value;
