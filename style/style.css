@@ -274,23 +274,30 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    margin: auto;
-    padding: 20px;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#dialogue #dialogue-window {
+    display: block;
+    padding: 50px;
     background-color: white;
 }
 
-#dialogue #dialogue_text {
+#dialogue #dialogue-window #dialogue_text {
     color: black;
 }
 
 #dialogue.alert,
 #dialogue.confirm,
 #dialogue.prompt {
-    display: block;
+    display: flex;
 }
 
-#dialogue.alert #dialogue_abort,
-#dialogue.alert #dialogue_input,
-#dialogue.confirm #dialogue_input {
+#dialogue.alert #dialogue-window #dialogue_abort,
+#dialogue.alert #dialogue-window #dialogue_input,
+#dialogue.confirm #dialogue-window #dialogue_input {
     display: none;
 }

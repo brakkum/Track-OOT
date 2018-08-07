@@ -4,6 +4,7 @@ var savestate = {
     items: {},
     chests: {}
 };
+var activestate = "";
 
 var stateChoice = document.getElementById("select-savegame");
 var stateSave = document.getElementById("save-savegame");
@@ -12,7 +13,11 @@ var stateNew = document.getElementById("new-savegame");
 var stateDel = document.getElementById("delete-savegame");
 
 stateChoice.addEventListener("change", function() {
-    document.getElementById("save-savegame").disabled = false;
+    if (activestate == stateChoice.value) {
+        document.getElementById("save-savegame").disabled = false;
+    } else {
+        document.getElementById("save-savegame").disabled = true;
+    }
     document.getElementById("load-savegame").disabled = false;
     document.getElementById("delete-savegame").disabled = false;
 });
@@ -75,35 +80,55 @@ function reset() {
 // TODO: implement deleting saves
 // remind: after creating or deleting saves do prepairSavegameChoice()
 
-function saveState() {
+async function saveState() {
     if (stateChoice.value != "") {
         localStorage.setItem(stateChoice.value, JSON.stringify(savestate));
+        await dialogue_alert("Saved successfully.");
     }
 }
 
-function loadState() {
+async function loadState() {
     if (stateChoice.value != "") {
-        var item = localStorage.getItem(stateChoice.value);
-        if (item != "" && item != "null") {
-            savestate = JSON.parse(item);
+        var confirm = true;
+        if (activestate != "") {
+            confirm = await dialogue_confirm("Do you really want to load? Unsaved changes will be lost.");
         }
-        updateItems();
-        updateMap();
+        if (!!confirm) {
+            var item = localStorage.getItem(stateChoice.value);
+            if (item != "" && item != "null") {
+                savestate = JSON.parse(item);
+            }
+            document.getElementById("save-savegame").disabled = false;
+            activestate = stateChoice.value;
+            updateItems();
+            updateMap();
+        }
     }
 }
 
 async function deleteState() {
     if (stateChoice.value != ""
-    && await dialogue_confirm("Do you really want to delete state \""+stateChoice.value+"\"?")) {
+    && await dialogue_confirm("Do you really want to delete \""+stateChoice.value+"\"?")) {
         localStorage.removeItem(stateChoice.value);
         prepairSavegameChoice();
+        if (stateChoice.value != activestate) {
+            stateChoice.value = activestate;
+            updateItems();
+            updateMap();
+        } else {
+            activestate == "";
+        }
     }
 }
 
 async function newState() {
-    var name = await dialogue_prompt("Please enter the name of the safestate!");
+    var name = await dialogue_prompt("Please enter a new name! (Unsafed changes will be lost.)");
     if (name == "") {
-        alert("The name can not be empty");
+        alert("The name can not be empty.");
+        newState();
+    }
+    if (localStorage.hasOwnProperty(name)) {
+        alert("The name already exists.");
         newState();
     }
     if (!!name) {
