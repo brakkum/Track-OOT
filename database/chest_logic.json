@@ -116,37 +116,37 @@
         ["slingshot"]
     ],
     "temple_water_map": [
-        ["tunic_zora", "boots_iron", "hookshot"]
+        ["tunic_water", "boots_iron", "hookshot"]
     ],
     "temple_water_compass": [
-        ["tunic_zora", "boots_iron", "hookshot"]
+        ["tunic_water", "boots_iron", "hookshot"]
     ],
     "temple_water_torches": [
-        ["tunic_zora", "boots_iron", "hookshot", "song_zelda", "bow"],
-        ["tunic_zora", "boots_iron", "hookshot", "song_zelda", "magic_power", "magic_din"]
+        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "bow"],
+        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "magic_power", "magic_din"]
     ],
     "temple_water_chest_dragon": [
-        ["tunic_zora", "boots_iron", "hookshot", "song_zelda", "bow", "song_time"]
+        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "bow", "song_time"]
     ],
     "temple_water_central_bow": [
-        ["tunic_zora", "boots_iron", "hookshot", "song_zelda", "bow", "glove", "boots_hover"],
-        ["tunic_zora", "boots_iron", "hookshot", "song_zelda", "bow", "glove", "hookshot:2"]
+        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "bow", "glove", "boots_hover"],
+        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "bow", "glove", "hookshot:2"]
     ],
     "temple_water_boss_key": [
-        ["tunic_zora", "boots_iron", "hookshot", "song_zelda", "hookshot:2", "boots_hover"],
-        ["tunic_zora", "boots_iron", "hookshot", "song_zelda", "hookshot:2", "bombs", "glove"]
+        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "hookshot:2", "boots_hover"],
+        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "hookshot:2", "bombs", "glove"]
     ],
     "temple_water_center_pillar": [
-        ["tunic_zora", "boots_iron", "hookshot", "song_zelda"]
+        ["tunic_water", "boots_iron", "hookshot", "song_zelda"]
     ],
     "temple_water_cracked_wall": [
-        ["tunic_zora", "boots_iron", "hookshot", "song_zelda", "bombs"]
+        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "bombs"]
     ],
     "temple_water_dark_link": [
-        ["tunic_zora", "boots_iron", "hookshot", "song_zelda"]
+        ["tunic_water", "boots_iron", "hookshot", "song_zelda"]
     ],
     "temple_water_river": [
-        ["tunic_zora", "boots_iron", "hookshot", "song_zelda", "bow", "song_time"]
+        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "bow", "song_time"]
     ],
     "temple_water_morpha": [
         ["tunic_water", "boots_iron", "hookshot:2"]
@@ -164,7 +164,9 @@
     ],
     "mountain_warp": [
         ["warp_fire"],
-        ["glove", "hookshot"],
+        ["hookshot", "bombs"],
+        ["hookshot", "hammer"],
+        ["hookshot", "glove"],
         ["boots_hover", "bombs"],
         ["boots_hover", "hammer"],
         ["boots_hover", "glove"]
@@ -368,8 +370,12 @@
     ],
     "temple_fire_near_boss": [
         ["warp_fire", "tunic_fire"],
-        ["hookshot", "tunic_fire"],
-        ["boots_hover", "tunic_fire"]
+        ["hookshot", "bombs", "tunic_fire"],
+        ["hookshot", "hammer", "tunic_fire"],
+        ["hookshot", "glove", "tunic_fire"],
+        ["boots_hover", "bombs", "tunic_fire"],
+        ["boots_hover", "hammer", "tunic_fire"],
+        ["boots_hover", "glove", "tunic_fire"]
     ],
     "temple_fire_dancer": [
         ["warp_fire", "tunic_fire", "hammer"],
@@ -388,29 +394,27 @@
     ],
     "temple_fire_big_lava_open": [
         ["warp_fire", "tunic_fire"],
-        ["hookshot", "tunic_fire"],
-        ["boots_hover", "tunic_fire"]
+        ["hookshot", "bombs", "tunic_fire"],
+        ["hookshot", "hammer", "tunic_fire"],
+        ["hookshot", "glove", "tunic_fire"],
+        ["boots_hover", "bombs", "tunic_fire"],
+        ["boots_hover", "hammer", "tunic_fire"],
+        ["boots_hover", "glove", "tunic_fire"]
     ],
     "temple_fire_boulder_maze_lower": [
         ["hookshot", "tunic_fire", "glove"],
-        ["warp_fire", "tunic_fire", "bombs", "glove"],
-        ["boots_hover", "tunic_fire", "bombs", "glove"],
-        ["warp_fire", "tunic_fire", "bow", "glove"],
-        ["boots_hover", "tunic_fire", "bow", "glove"]
+        ["warp_fire", "tunic_fire", "glove"],
+        ["boots_hover", "tunic_fire", "glove"]
     ],
     "temple_fire_boulder_maze_upper": [
         ["hookshot", "tunic_fire", "glove"],
-        ["warp_fire", "tunic_fire", "bombs", "glove"],
-        ["boots_hover", "tunic_fire", "bombs", "glove"],
-        ["warp_fire", "tunic_fire", "bow", "glove"],
-        ["boots_hover", "tunic_fire", "bow", "glove"]
+        ["warp_fire", "tunic_fire", "glove"],
+        ["boots_hover", "tunic_fire", "glove"]
     ],
     "temple_fire_boulder_maze_side": [
         ["hookshot", "tunic_fire", "glove"],
-        ["warp_fire", "tunic_fire", "bombs", "glove"],
-        ["boots_hover", "tunic_fire", "bombs", "glove"],
-        ["warp_fire", "tunic_fire", "bow", "glove"],
-        ["boots_hover", "tunic_fire", "bow", "glove"]
+        ["warp_fire", "tunic_fire", "glove"],
+        ["boots_hover", "tunic_fire", "glove"]
     ],
     "temple_fire_boulder_maze_bomb": [
         ["warp_fire", "tunic_fire", "bombs", "glove"],
@@ -422,43 +426,31 @@
     ],
     "temple_fire_map": [
         ["hookshot", "tunic_fire", "glove"],
-        ["warp_fire", "tunic_fire", "bombs", "glove"],
-        ["boots_hover", "tunic_fire", "bombs", "glove"],
-        ["warp_fire", "tunic_fire", "bow", "glove"],
-        ["boots_hover", "tunic_fire", "bow", "glove"]
+        ["warp_fire", "tunic_fire", "glove"],
+        ["boots_hover", "tunic_fire", "glove"]
     ],
     "temple_fire_compass": [
         ["hookshot", "tunic_fire", "glove"],
-        ["warp_fire", "tunic_fire", "bombs", "glove"],
-        ["boots_hover", "tunic_fire", "bombs", "glove"],
-        ["warp_fire", "tunic_fire", "bow", "glove"],
-        ["boots_hover", "tunic_fire", "bow", "glove"]
+        ["warp_fire", "tunic_fire", "glove"],
+        ["boots_hover", "tunic_fire", "glove"]
     ],
     "temple_fire_highest_goron": [
         ["hookshot", "tunic_fire", "glove", "song_time", "hammer"],
-        ["warp_fire", "tunic_fire", "bombs", "glove", "song_time", "hammer"],
-        ["boots_hover", "tunic_fire", "bombs", "glove", "song_time", "hammer"],
-        ["warp_fire", "tunic_fire", "bow", "glove", "song_time", "hammer"],
-        ["boots_hover", "tunic_fire", "bow", "glove", "song_time", "hammer"]
+        ["warp_fire", "tunic_fire", "glove", "song_time", "hammer"],
+        ["boots_hover", "tunic_fire", "glove", "song_time", "hammer"]
     ],
     "temple_fire_hammer": [
         ["warp_fire", "tunic_fire", "bombs", "glove"],
         ["hookshot", "tunic_fire", "bombs", "glove"],
-        ["boots_hover", "tunic_fire", "bombs", "glove"]
+        ["boots_hover", "tunic_fire", "bombs", "glove"],
+        ["warp_fire", "tunic_fire", "hammer", "glove"],
+        ["hookshot", "tunic_fire", "hammer", "glove"],
+        ["boots_hover", "tunic_fire", "hammer", "glove"]
     ],
     "temple_fire_volvagia": [
-        ["hookshot", "tunic_fire", "hammer", "hoverboots"],
-        ["warp_fire", "tunic_fire", "hammer", "hoverboots"],
-        ["boots_hover", "tunic_fire", "hammer", "hoverboots"],
-        ["hookshot", "tunic_fire", "hammer", "glove", "bombs"],
-        ["warp_fire", "tunic_fire", "hammer", "glove", "bombs"],
-        ["boots_hover", "tunic_fire", "hammer", "glove", "bombs"],
-        ["hookshot", "tunic_fire", "hammer", "glove", "bow", "song_time"],
-        ["warp_fire", "tunic_fire", "hammer", "glove", "bow", "song_time"],
-        ["boots_hover", "tunic_fire", "hammer", "glove", "bow", "song_time"],
-        ["hookshot", "tunic_fire", "hammer", "glove", "hookshot", "song_time"],
-        ["warp_fire", "tunic_fire", "hammer", "glove", "hookshot", "song_time"],
-        ["boots_hover", "tunic_fire", "hammer", "glove", "hookshot", "song_time"]
+        ["boots_hover", "tunic_fire", "hammer"],
+        ["hookshot", "tunic_fire", "glove", "hammer"],
+        ["warp_fire", "tunic_fire", "glove", "hammer"]
     ],
     "temple_shadow_map": [
         ["warp_shadow", "magic_power", "magic_din", "lens", "hookshot"],

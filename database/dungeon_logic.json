@@ -16,11 +16,11 @@
         ["warp_forest", "hookshot", "bow"]
     ],
     "temple_fire": [
-        ["tunic_goron", "hammer", "boots_hover"],
-        ["tunic_goron", "hammer", "warp_fire", "glove", "bombs"],
-        ["tunic_goron", "hammer", "warp_fire", "glove", "bow", "song_time"],
-        ["tunic_goron", "hammer", "hookshot", "glove", "song_time"],
-        ["tunic_goron", "hammer", "hookshot", "glove", "bombs"]
+        ["tunic_fire", "hammer", "boots_hover"],
+        ["tunic_fire", "hammer", "warp_fire", "glove", "bombs"],
+        ["tunic_fire", "hammer", "warp_fire", "glove", "bow", "song_time"],
+        ["tunic_fire", "hammer", "hookshot", "glove", "song_time"],
+        ["tunic_fire", "hammer", "hookshot", "glove", "bombs"]
     ],
     "temple_water": [
         ["tunic_water", "boots_iron", "hookshot:2"]
@@ -35,16 +35,16 @@
     ],
     "castle_ganon": [
         ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light",
-            "power_magic", "bow", "arrow_light", "tunic_goron", "glove:3", "hookshot:2", "hammer", "bottle", "shield_mirror",
+            "power_magic", "bow", "arrow_light", "tunic_fire", "glove:3", "hookshot:2", "hammer", "bottle", "shield_mirror",
             "bombs", "arrow_fire", "boots_hover"],
         ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light",
-            "power_magic", "bow", "arrow_light", "tunic_goron", "glove:3", "hookshot:2", "hammer", "bottle", "shield_mirror",
+            "power_magic", "bow", "arrow_light", "tunic_fire", "glove:3", "hookshot:2", "hammer", "bottle", "shield_mirror",
             "bombs", "arrow_fire", "lens"],
         ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light",
-            "power_magic", "bow", "arrow_light", "tunic_goron", "glove:3", "hookshot:2", "hammer", "bottle", "shield_mirror",
+            "power_magic", "bow", "arrow_light", "tunic_fire", "glove:3", "hookshot:2", "hammer", "bottle", "shield_mirror",
             "bombs", "magic_din", "boots_hover"],
         ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light",
-            "power_magic", "bow", "arrow_light", "tunic_goron", "glove:3", "hookshot:2", "hammer", "bottle", "shield_mirror",
+            "power_magic", "bow", "arrow_light", "tunic_fire", "glove:3", "hookshot:2", "hammer", "bottle", "shield_mirror",
             "bombs", "magic_din", "lens"]
     ],
     "castle_town": [],
