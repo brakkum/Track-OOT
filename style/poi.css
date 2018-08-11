@@ -1,0 +1,82 @@
+.poi {
+    position: absolute;
+    cursor: pointer;
+    background-size: 100%;
+    border: solid 2px black;
+}
+
+.poi:hover {
+    outline: solid 2px cyan;
+    z-index: 10000;
+}
+
+.poi.chest {
+    width: 16;
+    height: 16;
+    margin-left: -8px;
+    margin-top: -8px;
+}
+
+.poi.dungeon {
+    width: 24;
+    height: 24;
+    margin-left: -12px;
+    margin-top: -12px;
+}
+
+.poi .tooltipgray {
+    visibility: hidden;
+    width: 120px;
+    background-color: gray;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 120%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.poi .tooltipgray:hover {
+    display: none;
+}
+
+.poi:hover .tooltipgray {
+    visibility: visible;
+}
+
+.poi .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 170%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.poi .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.poi .tooltip:hover {
+    display: none;
+}
+
+.poi:hover .tooltip {
+    visibility: visible;
+}

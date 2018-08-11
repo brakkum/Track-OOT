@@ -2,6 +2,7 @@
     <head>
         <title>Tracker for OOT-Randomizer</title>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style/style.css" type="text/css">
         <script src="script/loader.js"></script>
         <script src="script/items.js"></script>
@@ -9,32 +10,54 @@
         <script src="script/main.js" defer></script>
     </head>
     <body>
-        <nav id="options">
+        <nav class="header">
             <ul>
-                <li>
+                <li class="select-savegame">
                     <select id="select-savegame">
                     </select>
+                </li>
+                <li>
                     <button class="save-button" id="save-savegame" disabled>SAVE</button>
+                </li>
+                <li>
                     <button class="save-button" id="load-savegame" disabled>LOAD</button>
+                </li>
+                <li>
                     <button class="save-button" id="new-savegame">NEW</button>
+                </li>
+                <li>
                     <button class="save-button" id="delete-savegame" disabled>DELETE</button>
                 </li>
             </ul>
         </nav>
-        <div id='layout-container'>
-            <div id="map-container">
-                <div id='item-container'>
-                </div>
+        <div class="content">
+            <div class='layout-container'>
+                <div id='item-container'></div>
                 <div id='map'>
+                    <div class="slidecontainer">
+                        <span class="slidetext">+ / -</span>
+                        <div class="slidetrack">
+                            <input type="range" min="50" max="180" value="90" class="slider" id="map-scale-slider">
+                        </div>
+                    </div>
                 </div>
                 <div id='dungeon-container'>
-                    <div class='header'><span id='dungeon-name'>Hyrule</span></div>
+                    <div class='dungeon-header'><span id='dungeon-name'>Hyrule</span></div>
                     <hr class="spacer-line">
                     <ul onselectstart="return false" id='dungeon-list'>
                     </ul>
                 </div>
             </div>
         </div>
+        <footer class="footer">
+            <span class="status-field">
+                Chests Available / Missing: <span id="status-chests-available">#</span> / <span id="status-chests-missing">#</span>
+            </span>
+            <span class="status-spacer"> | </span>
+            <span class="status-field">
+                Skulltulas Available / Missing: <span id="status-skulltulas-available">#</span> / <span id="status-skulltulas-missing">#</span>
+            </span>
+        </footer>
         <div id="dialogue">
             <div id="dialogue-window">
                 <p id="dialogue_text"></p>

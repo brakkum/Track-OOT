@@ -1,0 +1,87 @@
+
+.header {
+    top: 0;
+    width: 100%;
+    padding: 2px 10px;
+    background-color: gold;
+    color: black;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.header > ul {
+    -webkit-padding-start: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    list-style: none;
+}
+
+.header > ul > li {
+    display: inline-block;
+    width: 100px;
+    height: 26px;
+}
+
+.header > ul > li > * {
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.header > ul > li.select-savegame {
+    width: 500px;
+}
+
+@media (max-width: 551px) {
+
+    .header > ul > li.select-savegame {
+        width: 100%;
+    }
+
+}
+
+.save-button {
+    width: 100px;
+    background-color: gold;
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+}
+
+.save-button:hover {
+    box-shadow: inset 0px 0px 2px 1px;
+}
+
+.save-button:active {
+    box-shadow: inset 0px 0px 4px 3px;
+}
+
+.save-button:disabled {
+    opacity: 0.3;
+}
+
+/**********************************
+    footer
+**********************************/
+
+.footer {
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    width: 100%;
+    padding: 2px 10px;
+    background-color: gold;
+    color: black;
+    font-size: 0.8em;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.footer .footer-field,
+.footer .footer-spacer {
+    height: 14px;
+}
+
+.footer .footer-spacer {
+    margin: 0 15px;
+}

@@ -26,6 +26,10 @@ stateLoad.addEventListener("click", loadState);
 stateNew.addEventListener("click", newState);
 stateDel.addEventListener("click", deleteState);
 
+document.getElementById("map-scale-slider").addEventListener("change", function(event) {
+    document.getElementById('map').style.setProperty("--map-scale", parseInt(event.target.value) / 100);
+});
+
 async function main() {
 
     data = await loadAll();
@@ -48,6 +52,10 @@ function translate(index) {
         return data.lang[index];
     }
     return index;
+}
+
+function setStatus(name, value) {
+    document.getElementById("status-" + name).innerHTML = value;
 }
 
 function prepairSavegameChoice() {
@@ -73,12 +81,6 @@ function reset() {
     updateItems();
     updateMap();
 }
-
-// TODO: implement saving
-// TODO: implement loading saves
-// TODO: implement creating saves
-// TODO: implement deleting saves
-// remind: after creating or deleting saves do prepairSavegameChoice()
 
 async function saveState() {
     if (stateChoice.value != "") {

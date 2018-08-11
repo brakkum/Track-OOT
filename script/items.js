@@ -3,11 +3,8 @@ var itemGridEls = [];
 function createItemTracker() {
     var container = document.getElementById("item-container");
     for (let i = 0; i < data.item_grid.length; ++i) {
-        if (i > 0) {
-            var el = document.createElement('DIV');
-            el.classList.add("filler");
-            container.appendChild(el);
-        }
+        var cont = document.createElement('DIV');
+        cont.classList.add("item-row");
         var sub = data.item_grid[i];
         for (let j = 0; j < sub.length; ++j) {
             var name = sub[j];
@@ -17,8 +14,9 @@ function createItemTracker() {
             setImage(el);
             el.addEventListener("click", addItemWrapper(el, name));
             itemGridEls.push(el);
-            container.appendChild(el);
+            cont.appendChild(el);
         }
+        container.appendChild(cont);
     }
 }
 
@@ -40,9 +38,9 @@ function setImage(el) {
         el.style.backgroundImage = "url('images/"+el.id+".png')";
     }
     if ((savestate.items[el.id]||0) == 0) {
-        el.style.opacity = 0.5;
+        el.classList.add("item-inactive");
     } else {
-        el.style.opacity = 1;
+        el.classList.remove("item-inactive");
     }
 }
 

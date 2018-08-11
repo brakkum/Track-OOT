@@ -1,0 +1,33 @@
+#dialogue {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#dialogue #dialogue-window {
+    display: block;
+    padding: 50px;
+    background-color: white;
+}
+
+#dialogue #dialogue-window #dialogue_text {
+    color: black;
+}
+
+#dialogue.alert,
+#dialogue.confirm,
+#dialogue.prompt {
+    display: flex;
+}
+
+#dialogue.alert #dialogue-window #dialogue_abort,
+#dialogue.alert #dialogue-window #dialogue_input,
+#dialogue.confirm #dialogue-window #dialogue_input {
+    display: none;
+}

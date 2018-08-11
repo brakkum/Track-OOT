@@ -1,0 +1,28 @@
+#item-container {
+    display: inline-block;
+    padding: 8px;
+    grid-area: items;
+    overflow: auto;
+}
+
+#item-container .item-row .item {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url('../images/unknown.png');
+    background-origin: content-box;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+#item-container .item-row .item.item-inactive {
+    opacity: 0.3;
+}
+
+#item-container .item-row .item:hover {
+    border: solid 2px gold;
+}

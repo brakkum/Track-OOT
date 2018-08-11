@@ -183,12 +183,23 @@ function checkLogic(logic) {
 }
 
 function updateMap() {
+    var chests_available = 0;
+    var chests_missing = 0;
+    var skulltulas_available = 0;
+    var skulltulas_missing = 0;
+
+    for (let ch in savestate.chests) {
+        if (!savestate.chests[ch]) chests_missing++;
+    }
+
     for (var i = 0; i < poi.chests.length; ++i) {
         var x = poi.chests[i];
         if(savestate.chests[x.id]) {
             x.className = "poi chest opened";
         } else {
-            x.className = "poi chest " + checkChestAvailable(x.id);
+            var avail = checkChestAvailable(x.id);
+            if (avail == "available") chests_available++;
+            x.className = "poi chest " + avail;
         }
     }
     for (var i = 0; i < poi.dungeons.length; ++i) {
@@ -201,6 +212,7 @@ function updateMap() {
             if (!savestate.chests[key] && checkLogic(data.chest_logic[key]))
                 DCcount++;
         }
+        chests_available+=DCcount;
 
         var ss = x.children[0];
         if (DCcount == 0)
@@ -213,10 +225,16 @@ function updateMap() {
         var x = poi.dungeon_chests[i];
         if (savestate.chests[x.id])
             x.className = "dungeon-chest DCopened";               
-        else if (checkLogic(data.chest_logic[x.id]))
-            x.className = "dungeon-chest DCavailable";               
-        else
-            x.className = "dungeon-chest DCunavailable"; 
-
+        else {
+            if (checkLogic(data.chest_logic[x.id])) {
+                x.className = "dungeon-chest DCavailable";
+            } else {
+                x.className = "dungeon-chest DCunavailable"; 
+            }
+        }
     }
+    setStatus("chests-available", chests_available);
+    setStatus("chests-missing", chests_missing);
+    setStatus("skulltulas-available", skulltulas_available);
+    setStatus("skulltulas-missing", skulltulas_missing);
 }
