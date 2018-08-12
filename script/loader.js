@@ -35,6 +35,6 @@ async function loadAll() {
     data.skulltula_logic = await loadJSON("database/skulltula_logic.json");
     // misc
     data.lang = await loadJSON("database/lang_en.json");
-    data.version = await loadText("version");
+    data.version = await loadText("version.txt");
     return data;
 }
