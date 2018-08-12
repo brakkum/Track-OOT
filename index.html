@@ -7,6 +7,7 @@
         <script src="script/loader.js"></script>
         <script src="script/items.js"></script>
         <script src="script/map.js"></script>
+        <script src="script/savestate.js"></script>
         <script src="script/main.js" defer></script>
     </head>
     <body>
@@ -32,7 +33,7 @@
         </nav>
         <div class="content">
             <div class='layout-container'>
-                <div id='item-container'></div>
+                <div id='item-container' data-inactive="0"></div>
                 <div id='map'>
                     <div class="slidecontainer">
                         <span class="slidetext">+ / -</span>
@@ -50,11 +51,15 @@
             </div>
         </div>
         <footer class="footer">
-            <span class="status-field">
+            <span class="footer-field">
+                Version: <span id="status-version">#</span>
+            </span>
+            <span class="footer-spacer">|</span>
+            <span class="footer-field">
                 Chests Available / Missing: <span id="status-chests-available">#</span> / <span id="status-chests-missing">#</span>
             </span>
-            <span class="status-spacer"> | </span>
-            <span class="status-field">
+            <span class="footer-spacer">|</span>
+            <span class="footer-field">
                 Skulltulas Available / Missing: <span id="status-skulltulas-available">#</span> / <span id="status-skulltulas-missing">#</span>
             </span>
         </footer>

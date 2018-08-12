@@ -2,108 +2,108 @@
     "kokiri_sword": [],
     "midos_house": [],
     "kokiri_storm_grotto": [
-        ["song_storm"]
+        ["items.song_storm"]
     ],
     "song_of_time": [
-        ["stone_forest","stone_fire","stone_water"]
+        ["items.stone_forest","stone_fire","stone_water"]
     ],
     "hyrule_north_grotto": [
-        ["hammer"],
-        ["bombs"]
+        ["items.hammer"],
+        ["items.bombs"]
     ],
     "hyrule_forest_grotto": [
-        ["hammer"],
-        ["bombs"]
+        ["items.hammer"],
+        ["items.bombs"]
     ],
     "hyrule_south_grotto": [],
     "hyrule_deku_salesman_grotto": [
-        ["hammer"],
-        ["bombs"]
+        ["items.hammer"],
+        ["items.bombs"]
     ],
     "diving_heart_piece_grotto": [
-        ["hammer", "boots_iron"],
-        ["hammer", "scale:2"],
-        ["bombs", "boots_iron"],
-        ["bombs", "scale:2"]
+        ["items.hammer", "items.boots_iron"],
+        ["items.hammer", "items.scale:2"],
+        ["items.bombs", "items.boots_iron"],
+        ["items.bombs", "items.scale:2"]
     ],
     "talon_chicken": [],
     "maron_song": [],
     "lonlon_hp": [],
     "bottle_zora": [
-        ["scale"]
+        ["items.scale"]
     ],
     "lake_sun": [
-        ["bow","hookshot:2"]
+        ["items.bow","hookshot:2"]
     ],
     "lab_dive": [
-        ["scale:2"]
+        ["items.scale:2"]
     ],
     "lab_roof": [
-        ["scale"],
-        ["bombs"],
-        ["hookshot"]
+        ["items.scale"],
+        ["items.bombs"],
+        ["items.hookshot"]
     ],
     "fishing_child": [
-        ["sword_kokiri"]
+        ["items.sword_kokiri"]
     ],
     "fishing_adult": [
-        ["scale"],
-        ["bombs"],
-        ["hookshot"]
+        ["items.scale"],
+        ["items.bombs"],
+        ["items.hookshot"]
     ],
     "gerudo_hammer_rock": [
-        ["song_epona", "hammer"],
-        ["hookshot:2", "hammer"]
+        ["items.song_epona", "items.hammer"],
+        ["items.hookshot:2", "items.hammer"]
     ],
     "gerudo_crate": [],
     "gerudo_waterfall": [],
     "gerudo_rooftop": [
-        ["song_epona", "hoverboots"],
-        ["hookshot:2"]
+        ["items.song_epona", "items.hoverboots"],
+        ["items.hookshot:2"]
     ],
     "gerudo_archer_1": [
-        ["song_epona", "bow"]
+        ["items.song_epona", "items.bow"]
     ],
     "gerudo_archer_2": [
-        ["song_epona", "bow"]
+        ["items.song_epona", "items.bow"]
     ],
     "desert_chest": [
-        ["song_epona", "hoverboots", "magic_power", "magic_din"],
-        ["song_epona", "hoverboots", "magic_power", "bow", "arrow_fire"],
-        ["hookshot:2", "magic_power", "magic_din"],
-        ["hookshot:2", "magic_power", "bow", "arrow_fire"]
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.magic_din"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.bow", "items.arrow_fire"],
+        ["items.hookshot:2", "items.magic_power", "items.magic_din"],
+        ["items.hookshot:2", "items.magic_power", "items.bow", "items.arrow_fire"]
     ],
     "desert_warp_spirit": [
-        ["warp_spirit"],
-        ["song_epona", "hoverboots", "magic_power", "lens"],
-        ["hookshot:2", "magic_power", "lens"]
+        ["items.warp_spirit"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens"],
+        ["items.hookshot:2", "items.magic_power", "items.lens"]
     ],
     "desert_colossus_hp": [
-        ["warp_spirit", "bombs"],
-        ["warp_spirit", "scale"]
+        ["items.warp_spirit", "items.bombs"],
+        ["items.warp_spirit", "items.scale"]
     ],
     "desert_colossus_fairy": [
-        ["song_epona", "hoverboots", "magic_power", "lens", "bombs", "song_zelda"],
-        ["hookshot:2", "magic_power", "lens", "bombs", "song_zelda"],
-        ["warp_spirit", "bombs", "song_zelda"]
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.bombs", "items.song_zelda"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.bombs", "items.song_zelda"],
+        ["items.warp_spirit", "items.bombs", "items.song_zelda"]
     ],
     "frog_rain": [
-        ["bombs", "song_storm"],
-        ["scale", "song_storm"]
+        ["items.bombs", "items.song_storm"],
+        ["items.scale", "items.song_storm"]
     ],
     "frog_game": [
-        ["bombs", "song_zelda", "song_saria", "song_epona", "song_sun", "song_storm", "song_time"],
-        ["scale", "song_zelda", "song_saria", "song_epona", "song_sun", "song_storm", "song_time"]
+        ["items.bombs", "items.song_zelda", "items.song_saria", "items.song_epona", "items.song_sun", "items.song_storm", "items.song_time"],
+        ["items.scale", "items.song_zelda", "items.song_saria", "items.song_epona", "items.song_sun", "items.song_storm", "items.song_time"]
     ],
     "zora_hp_1": [
-        ["bombs"],
-        ["scale"],
-        ["boots_hover"]
+        ["items.bombs"],
+        ["items.scale"],
+        ["items.boots_hover"]
     ],
     "zora_hp_2": [
-        ["bombs"],
-        ["scale"],
-        ["boots_hover"]
+        ["items.bombs"],
+        ["items.scale"],
+        ["items.boots_hover"]
     ],
     "zora_river_grotto": [],
     "deku_lobby": [],
@@ -113,863 +113,863 @@
     "deku_slingshot": [],
     "deku_slingshot_side": [],
     "deku_gohma": [
-        ["slingshot"]
+        ["items.slingshot"]
     ],
     "temple_water_map": [
-        ["tunic_water", "boots_iron", "hookshot"]
+        ["items.tunic_water", "items.boots_iron", "items.hookshot"]
     ],
     "temple_water_compass": [
-        ["tunic_water", "boots_iron", "hookshot"]
+        ["items.tunic_water", "items.boots_iron", "items.hookshot"]
     ],
     "temple_water_torches": [
-        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "bow"],
-        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "magic_power", "magic_din"]
+        ["items.tunic_water", "items.boots_iron", "items.hookshot", "items.song_zelda", "items.bow"],
+        ["items.tunic_water", "items.boots_iron", "items.hookshot", "items.song_zelda", "items.magic_power", "items.magic_din"]
     ],
     "temple_water_chest_dragon": [
-        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "bow", "song_time"]
+        ["items.tunic_water", "items.boots_iron", "items.hookshot", "items.song_zelda", "items.bow", "items.song_time"]
     ],
     "temple_water_central_bow": [
-        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "bow", "glove", "boots_hover"],
-        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "bow", "glove", "hookshot:2"]
+        ["items.tunic_water", "items.boots_iron", "items.hookshot", "items.song_zelda", "items.bow", "items.glove", "items.boots_hover"],
+        ["items.tunic_water", "items.boots_iron", "items.hookshot", "items.song_zelda", "items.bow", "items.glove", "items.hookshot:2"]
     ],
     "temple_water_boss_key": [
-        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "hookshot:2", "boots_hover"],
-        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "hookshot:2", "bombs", "glove"]
+        ["items.tunic_water", "items.boots_iron", "items.hookshot", "items.song_zelda", "items.hookshot:2", "items.boots_hover"],
+        ["items.tunic_water", "items.boots_iron", "items.hookshot", "items.song_zelda", "items.hookshot:2", "items.bombs", "items.glove"]
     ],
     "temple_water_center_pillar": [
-        ["tunic_water", "boots_iron", "hookshot", "song_zelda"]
+        ["items.tunic_water", "items.boots_iron", "items.hookshot", "items.song_zelda"]
     ],
     "temple_water_cracked_wall": [
-        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "bombs"]
+        ["items.tunic_water", "items.boots_iron", "items.hookshot", "items.song_zelda", "items.bombs"]
     ],
     "temple_water_dark_link": [
-        ["tunic_water", "boots_iron", "hookshot", "song_zelda"]
+        ["items.tunic_water", "items.boots_iron", "items.hookshot", "items.song_zelda"]
     ],
     "temple_water_river": [
-        ["tunic_water", "boots_iron", "hookshot", "song_zelda", "bow", "song_time"]
+        ["items.tunic_water", "items.boots_iron", "items.hookshot", "items.song_zelda", "items.bow", "items.song_time"]
     ],
     "temple_water_morpha": [
-        ["tunic_water", "boots_iron", "hookshot:2"]
+        ["items.tunic_water", "items.boots_iron", "items.hookshot:2"]
     ],
     "mountain_above_dodongo": [
-        ["bombs"],
-        ["glove", "scale"]
+        ["items.bombs"],
+        ["items.glove", "items.scale"]
     ],
     "mountain_outside_goron_chest": [
-        ["bombs"],
-        ["hammer"]
+        ["items.bombs"],
+        ["items.hammer"]
     ],
     "mountain_outside_goron_grotto": [
-        ["song_storm"]
+        ["items.song_storm"]
     ],
     "mountain_warp": [
-        ["warp_fire"],
-        ["hookshot", "bow"],
-        ["hookshot", "bombs"],
-        ["hookshot", "hammer"],
-        ["hookshot", "glove"],
-        ["boots_hover", "bow"],
-        ["boots_hover", "bombs"],
-        ["boots_hover", "hammer"],
-        ["boots_hover", "glove"]
+        ["items.warp_fire"],
+        ["items.hookshot", "items.bow"],
+        ["items.hookshot", "items.bombs"],
+        ["items.hookshot", "items.hammer"],
+        ["items.hookshot", "items.glove"],
+        ["items.boots_hover", "items.bow"],
+        ["items.boots_hover", "items.bombs"],
+        ["items.boots_hover", "items.hammer"],
+        ["items.boots_hover", "items.glove"]
     ],
     "mountain_crater_wall": [
-        ["bow"],
-        ["bombs"],
-        ["hammer"],
-        ["glove"],
-        ["warp_fire", "boots_hover"],
-        ["warp_fire", "hookshot"]
+        ["items.bow"],
+        ["items.bombs"],
+        ["items.hammer"],
+        ["items.glove"],
+        ["items.warp_fire", "items.boots_hover"],
+        ["items.warp_fire", "items.hookshot"]
     ],
     "mountain_magic_bean": [
-        ["bombs", "warp_fire"],
-        ["scale", "warp_fire"]
+        ["items.bombs", "items.warp_fire"],
+        ["items.scale", "items.warp_fire"]
     ],
     "mountain_crater_grotto": [
-        ["bombs"],
-        ["hammer"]
+        ["items.bombs"],
+        ["items.hammer"]
     ],
     "mountain_crater_fairy": [
-        ["hammer", "song_zelda", "glove"],
-        ["hammer", "song_zelda", "boots_hover"],
-        ["hammer", "song_zelda", "warp_fire", "hookshot"]
+        ["items.hammer", "items.song_zelda", "items.glove"],
+        ["items.hammer", "items.song_zelda", "items.boots_hover"],
+        ["items.hammer", "items.song_zelda", "items.warp_fire", "items.hookshot"]
     ],
     "mountain_summit_fairy": [
-        ["bombs", "song_zelda"],
-        ["hammer", "song_zelda"]
+        ["items.bombs", "items.song_zelda"],
+        ["items.hammer", "items.song_zelda"]
     ],
     "mountain_biggoron": [
-        ["bombs"],
-        ["hammer"],
-        ["glove"],
-        ["warp_fire", "boots_hover"],
-        ["warp_fire", "hookshot"]
+        ["items.bombs"],
+        ["items.hammer"],
+        ["items.glove"],
+        ["items.warp_fire", "items.boots_hover"],
+        ["items.warp_fire", "items.hookshot"]
     ],
     "gerudo_training_lobby_left": [
-        ["song_epona", "bow"],
-        ["hookshot:2", "bow"]
+        ["items.song_epona", "items.bow"],
+        ["items.hookshot:2", "items.bow"]
     ],
     "gerudo_training_lobby_right": [
-        ["song_epona", "bow"],
-        ["hookshot:2", "bow"]
+        ["items.song_epona", "items.bow"],
+        ["items.hookshot:2", "items.bow"]
     ],
     "gerudo_training_stalfos": [
-        ["song_epona", "hookshot"],
-        ["song_epona", "bow"],
-        ["song_epona", "boots_hover"],
-        ["hookshot:2", "bow"],
-        ["hookshot:2", "boots_hover"]
+        ["items.song_epona", "items.hookshot"],
+        ["items.song_epona", "items.bow"],
+        ["items.song_epona", "items.boots_hover"],
+        ["items.hookshot:2", "items.bow"],
+        ["items.hookshot:2", "items.boots_hover"]
     ],
     "gerudo_training_beamos": [
-        ["song_epona", "hookshot", "bombs"],
-        ["song_epona", "bow", "bombs"],
-        ["song_epona", "boots_hover", "bombs"],
-        ["hookshot:2", "bow", "bombs"],
-        ["hookshot:2", "boots_hover", "bombs"]
+        ["items.song_epona", "items.hookshot", "items.bombs"],
+        ["items.song_epona", "items.bow", "items.bombs"],
+        ["items.song_epona", "items.boots_hover", "items.bombs"],
+        ["items.hookshot:2", "items.bow", "items.bombs"],
+        ["items.hookshot:2", "items.boots_hover", "items.bombs"]
     ],
     "gerudo_training_hidden_ceiling": [
-        ["song_epona", "lens", "magic_power", "bow"],
-        ["hookshot:2", "lens", "magic_power", "bow"],
-        ["song_epona", "lens", "magic_power", "hookshot"]
+        ["items.song_epona", "items.lens", "items.magic_power", "items.bow"],
+        ["items.hookshot:2", "items.lens", "items.magic_power", "items.bow"],
+        ["items.song_epona", "items.lens", "items.magic_power", "items.hookshot"]
     ],
     "gerudo_training_maze_1": [
-        ["song_epona", "hookshot", "glove:2", "lens", "magic_power", "song_time", "bow"],
-        ["hookshot:2", "glove:2", "lens", "magic_power", "song_time", "bow"]
+        ["items.song_epona", "items.hookshot", "items.glove:2", "items.lens", "items.magic_power", "items.song_time", "items.bow"],
+        ["items.hookshot:2", "items.glove:2", "items.lens", "items.magic_power", "items.song_time", "items.bow"]
     ],
     "gerudo_training_maze_2": [
-        ["song_epona", "hookshot", "glove:2", "lens", "magic_power", "song_time", "bow"],
-        ["hookshot:2", "glove:2", "lens", "magic_power", "song_time", "bow"]
+        ["items.song_epona", "items.hookshot", "items.glove:2", "items.lens", "items.magic_power", "items.song_time", "items.bow"],
+        ["items.hookshot:2", "items.glove:2", "items.lens", "items.magic_power", "items.song_time", "items.bow"]
     ],
     "gerudo_training_maze_3": [
-        ["song_epona", "hookshot", "glove:2", "lens", "magic_power", "song_time", "bow"],
-        ["hookshot:2", "glove:2", "lens", "magic_power", "song_time", "bow"]
+        ["items.song_epona", "items.hookshot", "items.glove:2", "items.lens", "items.magic_power", "items.song_time", "items.bow"],
+        ["items.hookshot:2", "items.glove:2", "items.lens", "items.magic_power", "items.song_time", "items.bow"]
     ],
     "gerudo_training_maze_final": [
-        ["song_epona", "hookshot", "glove:2", "lens", "magic_power", "song_time", "bow"],
-        ["hookshot:2", "glove:2", "lens", "magic_power", "song_time", "bow"]
+        ["items.song_epona", "items.hookshot", "items.glove:2", "items.lens", "items.magic_power", "items.song_time", "items.bow"],
+        ["items.hookshot:2", "items.glove:2", "items.lens", "items.magic_power", "items.song_time", "items.bow"]
     ],
     "gerudo_training_maze_right_central": [
-        ["song_epona", "hookshot", "glove:2", "lens", "magic_power", "song_time", "bow"],
-        ["hookshot:2", "glove:2", "lens", "magic_power", "song_time", "bow"]
+        ["items.song_epona", "items.hookshot", "items.glove:2", "items.lens", "items.magic_power", "items.song_time", "items.bow"],
+        ["items.hookshot:2", "items.glove:2", "items.lens", "items.magic_power", "items.song_time", "items.bow"]
     ],
     "gerudo_training_maze_right": [
-        ["song_epona", "hookshot", "glove:2", "lens", "magic_power", "song_time", "bow"],
-        ["hookshot:2", "glove:2", "lens", "magic_power", "song_time", "bow"]
+        ["items.song_epona", "items.hookshot", "items.glove:2", "items.lens", "items.magic_power", "items.song_time", "items.bow"],
+        ["items.hookshot:2", "items.glove:2", "items.lens", "items.magic_power", "items.song_time", "items.bow"]
     ],
     "gerudo_training_maze_right_key": [
-        ["song_epona", "hookshot", "glove:2", "lens", "magic_power", "song_time", "bow"],
-        ["hookshot:2", "glove:2", "lens", "magic_power", "song_time", "bow"]
+        ["items.song_epona", "items.hookshot", "items.glove:2", "items.lens", "items.magic_power", "items.song_time", "items.bow"],
+        ["items.hookshot:2", "items.glove:2", "items.lens", "items.magic_power", "items.song_time", "items.bow"]
     ],
     "gerudo_training_underwater_silver": [
-        ["song_epona", "hookshot", "song_time", "boots_iron"],
-        ["hookshot:2", "song_time", "boots_iron"]
+        ["items.song_epona", "items.hookshot", "items.song_time", "items.boots_iron"],
+        ["items.hookshot:2", "items.song_time", "items.boots_iron"]
     ],
     "gerudo_training_hammer_room_clear": [
-        ["song_epona", "hookshot", "boots_hover"],
-        ["song_epona", "hookshot", "song_time"],
-        ["song_epona", "hookshot", "lens", "magic_power"],
-        ["hookshot:2"]
+        ["items.song_epona", "items.hookshot", "items.boots_hover"],
+        ["items.song_epona", "items.hookshot", "items.song_time"],
+        ["items.song_epona", "items.hookshot", "items.lens", "items.magic_power"],
+        ["items.hookshot:2"]
     ],
     "gerudo_training_hammer_room_switch": [
-        ["song_epona", "hookshot", "hammer", "boots_hover"],
-        ["song_epona", "hookshot", "hammer", "song_time"],
-        ["song_epona", "hookshot", "hammer", "lens", "magic_power"],
-        ["hookshot:2", "hammer"]
+        ["items.song_epona", "items.hookshot", "items.hammer", "items.boots_hover"],
+        ["items.song_epona", "items.hookshot", "items.hammer", "items.song_time"],
+        ["items.song_epona", "items.hookshot", "items.hammer", "items.lens", "items.magic_power"],
+        ["items.hookshot:2", "items.hammer"]
     ],
     "gerudo_training_eye_statue": [
-        ["song_epona", "hookshot", "bow", "boots_hover"],
-        ["song_epona", "hookshot", "bow", "song_time"],
-        ["song_epona", "hookshot", "bow", "lens", "magic_power"],
-        ["hookshot:2", "bow"]
+        ["items.song_epona", "items.hookshot", "items.bow", "items.boots_hover"],
+        ["items.song_epona", "items.hookshot", "items.bow", "items.song_time"],
+        ["items.song_epona", "items.hookshot", "items.bow", "items.lens", "items.magic_power"],
+        ["items.hookshot:2", "items.bow"]
     ],
     "gerudo_training_scarecrow": [
-        ["song_epona", "hookshot", "lens", "magic_power"],
-        ["hookshot:2", "lens", "magic_power"]
+        ["items.song_epona", "items.hookshot", "items.lens", "items.magic_power"],
+        ["items.hookshot:2", "items.lens", "items.magic_power"]
     ],
     "gerudo_training_heavy_block_before": [
-        ["song_epona", "hookshot"],
-        ["hookshot:2"]
+        ["items.song_epona", "items.hookshot"],
+        ["items.hookshot:2"]
     ],
     "gerudo_training_heavy_block_1": [
-        ["song_epona", "hookshot", "glove:2", "lens", "magic_power"],
-        ["hookshot:2", "glove:2", "lens", "magic_power"]
+        ["items.song_epona", "items.hookshot", "items.glove:2", "items.lens", "items.magic_power"],
+        ["items.hookshot:2", "items.glove:2", "items.lens", "items.magic_power"]
     ],
     "gerudo_training_heavy_block_2": [
-        ["song_epona", "hookshot", "glove:2", "lens", "magic_power"],
-        ["hookshot:2", "glove:2", "lens", "magic_power"]
+        ["items.song_epona", "items.hookshot", "items.glove:2", "items.lens", "items.magic_power"],
+        ["items.hookshot:2", "items.glove:2", "items.lens", "items.magic_power"]
     ],
     "gerudo_training_heavy_block_3": [
-        ["song_epona", "hookshot", "glove:2", "lens", "magic_power"],
-        ["hookshot:2", "glove:2", "lens", "magic_power"]
+        ["items.song_epona", "items.hookshot", "items.glove:2", "items.lens", "items.magic_power"],
+        ["items.hookshot:2", "items.glove:2", "items.lens", "items.magic_power"]
     ],
     "gerudo_training_heavy_block_4": [
-        ["song_epona", "hookshot", "glove:2", "lens", "magic_power"],
-        ["hookshot:2", "glove:2", "lens", "magic_power"]
+        ["items.song_epona", "items.hookshot", "items.glove:2", "items.lens", "items.magic_power"],
+        ["items.hookshot:2", "items.glove:2", "items.lens", "items.magic_power"]
     ],
     "zoras_diving": [
-        ["bombs", "song_zelda"],
-        ["scale"]
+        ["items.bombs", "items.song_zelda"],
+        ["items.scale"]
     ],
     "zoras_torch": [
-        ["bombs", "song_zelda"],
-        ["scale"]
+        ["items.bombs", "items.song_zelda"],
+        ["items.scale"]
     ],
     "zoras_fairy": [
-        ["bombs", "song_zelda", "zora_letter"]
+        ["items.bombs", "items.song_zelda", "items.zora_letter"]
     ],
     "zoras_ice": [
-        ["bombs", "song_zelda", "zora_letter"],
-        ["scale", "song_zelda", "zora_letter"]
+        ["items.bombs", "items.song_zelda", "items.zora_letter"],
+        ["items.scale", "items.song_zelda", "items.zora_letter"]
     ],
     "zoras_underwater": [
-        ["bombs", "song_zelda", "zora_letter", "boots_iron"],
-        ["scale", "song_zelda", "zora_letter", "boots_iron"]
+        ["items.bombs", "items.song_zelda", "items.zora_letter", "items.boots_iron"],
+        ["items.scale", "items.song_zelda", "items.zora_letter", "items.boots_iron"]
     ],
     "zoras_king_zora": [
-        ["bombs", "song_zelda", "zora_letter", "bottle"],
-        ["scale", "song_zelda", "zora_letter", "bottle"],
-        ["zora_letter", "bottle", "medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light"],
-        ["zora_letter", "bottle", "wallet:2"]
+        ["items.bombs", "items.song_zelda", "items.zora_letter", "items.bottle"],
+        ["items.scale", "items.song_zelda", "items.zora_letter", "items.bottle"],
+        ["items.zora_letter", "items.bottle", "items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light"],
+        ["items.zora_letter", "items.bottle", "items.wallet:2"]
     ],
     "jabujabu_boomerang": [
-        ["bombs", "song_zelda", "zora_letter", "bottle", "slingshot"],
-        ["scale", "zora_letter", "bottle", "slingshot"],
-        ["bombs", "song_zelda", "zora_letter", "bottle", "bombs"],
-        ["scale", "zora_letter", "bottle", "bombs"],
-        ["bombs", "song_zelda", "zora_letter", "bottle", "boomerang"],
-        ["scale", "zora_letter", "bottle", "boomerang"]
+        ["items.bombs", "items.song_zelda", "items.zora_letter", "items.bottle", "items.slingshot"],
+        ["items.scale", "items.zora_letter", "items.bottle", "items.slingshot"],
+        ["items.bombs", "items.song_zelda", "items.zora_letter", "items.bottle", "items.bombs"],
+        ["items.scale", "items.zora_letter", "items.bottle", "items.bombs"],
+        ["items.bombs", "items.song_zelda", "items.zora_letter", "items.bottle", "items.boomerang"],
+        ["items.scale", "items.zora_letter", "items.bottle", "items.boomerang"]
     ],
     "jabujabu_map": [
-        ["bombs", "song_zelda", "zora_letter", "bottle", "boomerang"],
-        ["scale", "zora_letter", "bottle", "boomerang"]
+        ["items.bombs", "items.song_zelda", "items.zora_letter", "items.bottle", "items.boomerang"],
+        ["items.scale", "items.zora_letter", "items.bottle", "items.boomerang"]
     ],
     "jabujabu_compass": [
-        ["bombs", "song_zelda", "zora_letter", "bottle", "boomerang"],
-        ["scale", "zora_letter", "bottle", "boomerang"]
+        ["items.bombs", "items.song_zelda", "items.zora_letter", "items.bottle", "items.boomerang"],
+        ["items.scale", "items.zora_letter", "items.bottle", "items.boomerang"]
     ],
     "jabujabu_barinade": [
-        ["bombs", "song_zelda", "zora_letter", "bottle", "boomerang"],
-        ["scale", "zora_letter", "bottle", "boomerang"]
+        ["items.bombs", "items.song_zelda", "items.zora_letter", "items.bottle", "items.boomerang"],
+        ["items.scale", "items.zora_letter", "items.bottle", "items.boomerang"]
     ],   
     "ice_cavern_map": [
-        ["bombs", "song_zelda", "zora_letter", "bottle"],
-        ["scale", "song_zelda", "zora_letter", "bottle"]
+        ["items.bombs", "items.song_zelda", "items.zora_letter", "items.bottle"],
+        ["items.scale", "items.song_zelda", "items.zora_letter", "items.bottle"]
     ],
     "ice_cavern_compass": [
-        ["bombs", "song_zelda", "zora_letter", "bottle"],
-        ["scale", "song_zelda", "zora_letter", "bottle"]
+        ["items.bombs", "items.song_zelda", "items.zora_letter", "items.bottle"],
+        ["items.scale", "items.song_zelda", "items.zora_letter", "items.bottle"]
     ],
     "ice_cavern_hp": [
-        ["bombs", "song_zelda", "zora_letter", "bottle"],
-        ["scale", "song_zelda", "zora_letter", "bottle"]
+        ["items.bombs", "items.song_zelda", "items.zora_letter", "items.bottle"],
+        ["items.scale", "items.song_zelda", "items.zora_letter", "items.bottle"]
     ],
     "ice_cavern_boots": [
-        ["bombs", "song_zelda", "zora_letter", "bottle"],
-        ["scale", "song_zelda", "zora_letter", "bottle"]
+        ["items.bombs", "items.song_zelda", "items.zora_letter", "items.bottle"],
+        ["items.scale", "items.song_zelda", "items.zora_letter", "items.bottle"]
     ],
     "ice_cavern_sheik": [
-        ["bombs", "song_zelda", "zora_letter", "bottle"],
-        ["scale", "song_zelda", "zora_letter", "bottle"]
+        ["items.bombs", "items.song_zelda", "items.zora_letter", "items.bottle"],
+        ["items.scale", "items.song_zelda", "items.zora_letter", "items.bottle"]
     ],
     "temple_fire_near_boss": [
-        ["warp_fire", "tunic_fire"],
-        ["hookshot", "bombs", "tunic_fire"],
-        ["hookshot", "hammer", "tunic_fire"],
-        ["hookshot", "glove", "tunic_fire"],
-        ["boots_hover", "bombs", "tunic_fire"],
-        ["boots_hover", "hammer", "tunic_fire"],
-        ["boots_hover", "glove", "tunic_fire"]
+        ["items.warp_fire", "items.tunic_fire"],
+        ["items.hookshot", "items.bombs", "items.tunic_fire"],
+        ["items.hookshot", "items.hammer", "items.tunic_fire"],
+        ["items.hookshot", "items.glove", "items.tunic_fire"],
+        ["items.boots_hover", "items.bombs", "items.tunic_fire"],
+        ["items.boots_hover", "items.hammer", "items.tunic_fire"],
+        ["items.boots_hover", "items.glove", "items.tunic_fire"]
     ],
     "temple_fire_dancer": [
-        ["warp_fire", "tunic_fire", "hammer"],
-        ["hookshot", "tunic_fire", "hammer"],
-        ["boots_hover", "tunic_fire", "hammer"]
+        ["items.warp_fire", "items.tunic_fire", "items.hammer"],
+        ["items.hookshot", "items.tunic_fire", "items.hammer"],
+        ["items.boots_hover", "items.tunic_fire", "items.hammer"]
     ],
     "temple_fire_boss_key": [
-        ["warp_fire", "tunic_fire", "hammer"],
-        ["hookshot", "tunic_fire", "hammer"],
-        ["boots_hover", "tunic_fire", "hammer"]
+        ["items.warp_fire", "items.tunic_fire", "items.hammer"],
+        ["items.hookshot", "items.tunic_fire", "items.hammer"],
+        ["items.boots_hover", "items.tunic_fire", "items.hammer"]
     ],
     "temple_fire_big_lava_bomb": [
-        ["warp_fire", "tunic_fire", "bombs", "song_zelda"],
-        ["hookshot", "tunic_fire", "bombs", "song_zelda"],
-        ["boots_hover", "tunic_fire", "bombs", "song_zelda"]
+        ["items.warp_fire", "items.tunic_fire", "items.bombs", "items.song_zelda"],
+        ["items.hookshot", "items.tunic_fire", "items.bombs", "items.song_zelda"],
+        ["items.boots_hover", "items.tunic_fire", "items.bombs", "items.song_zelda"]
     ],
     "temple_fire_big_lava_open": [
-        ["warp_fire", "tunic_fire"],
-        ["hookshot", "bombs", "tunic_fire"],
-        ["hookshot", "hammer", "tunic_fire"],
-        ["hookshot", "glove", "tunic_fire"],
-        ["boots_hover", "bombs", "tunic_fire"],
-        ["boots_hover", "hammer", "tunic_fire"],
-        ["boots_hover", "glove", "tunic_fire"]
+        ["items.warp_fire", "items.tunic_fire"],
+        ["items.hookshot", "items.bombs", "items.tunic_fire"],
+        ["items.hookshot", "items.hammer", "items.tunic_fire"],
+        ["items.hookshot", "items.glove", "items.tunic_fire"],
+        ["items.boots_hover", "items.bombs", "items.tunic_fire"],
+        ["items.boots_hover", "items.hammer", "items.tunic_fire"],
+        ["items.boots_hover", "items.glove", "items.tunic_fire"]
     ],
     "temple_fire_boulder_maze_lower": [
-        ["hookshot", "tunic_fire", "glove"],
-        ["warp_fire", "tunic_fire", "glove"],
-        ["boots_hover", "tunic_fire", "glove"]
+        ["items.hookshot", "items.tunic_fire", "items.glove"],
+        ["items.warp_fire", "items.tunic_fire", "items.glove"],
+        ["items.boots_hover", "items.tunic_fire", "items.glove"]
     ],
     "temple_fire_boulder_maze_upper": [
-        ["hookshot", "tunic_fire", "glove"],
-        ["warp_fire", "tunic_fire", "glove"],
-        ["boots_hover", "tunic_fire", "glove"]
+        ["items.hookshot", "items.tunic_fire", "items.glove"],
+        ["items.warp_fire", "items.tunic_fire", "items.glove"],
+        ["items.boots_hover", "items.tunic_fire", "items.glove"]
     ],
     "temple_fire_boulder_maze_side": [
-        ["hookshot", "tunic_fire", "glove"],
-        ["warp_fire", "tunic_fire", "glove"],
-        ["boots_hover", "tunic_fire", "glove"]
+        ["items.hookshot", "items.tunic_fire", "items.glove"],
+        ["items.warp_fire", "items.tunic_fire", "items.glove"],
+        ["items.boots_hover", "items.tunic_fire", "items.glove"]
     ],
     "temple_fire_boulder_maze_bomb": [
-        ["warp_fire", "tunic_fire", "bombs", "glove"],
-        ["hookshot", "tunic_fire", "bombs", "glove"],
-        ["boots_hover", "tunic_fire", "bombs", "glove"]
+        ["items.warp_fire", "items.tunic_fire", "items.bombs", "items.glove"],
+        ["items.hookshot", "items.tunic_fire", "items.bombs", "items.glove"],
+        ["items.boots_hover", "items.tunic_fire", "items.bombs", "items.glove"]
     ],
     "temple_fire_scarecrow": [
-        ["hookshot", "tunic_fire", "glove"]
+        ["items.hookshot", "items.tunic_fire", "items.glove"]
     ],
     "temple_fire_map": [
-        ["hookshot", "tunic_fire", "glove"],
-        ["warp_fire", "tunic_fire", "glove"],
-        ["boots_hover", "tunic_fire", "glove"]
+        ["items.hookshot", "items.tunic_fire", "items.glove"],
+        ["items.warp_fire", "items.tunic_fire", "items.glove"],
+        ["items.boots_hover", "items.tunic_fire", "items.glove"]
     ],
     "temple_fire_compass": [
-        ["hookshot", "tunic_fire", "glove"],
-        ["warp_fire", "tunic_fire", "glove"],
-        ["boots_hover", "tunic_fire", "glove"]
+        ["items.hookshot", "items.tunic_fire", "items.glove"],
+        ["items.warp_fire", "items.tunic_fire", "items.glove"],
+        ["items.boots_hover", "items.tunic_fire", "items.glove"]
     ],
     "temple_fire_highest_goron": [
-        ["hookshot", "tunic_fire", "glove", "song_time", "hammer"],
-        ["warp_fire", "tunic_fire", "glove", "song_time", "hammer"],
-        ["boots_hover", "tunic_fire", "glove", "song_time", "hammer"]
+        ["items.hookshot", "items.tunic_fire", "items.glove", "items.song_time", "items.hammer"],
+        ["items.warp_fire", "items.tunic_fire", "items.glove", "items.song_time", "items.hammer"],
+        ["items.boots_hover", "items.tunic_fire", "items.glove", "items.song_time", "items.hammer"]
     ],
     "temple_fire_hammer": [
-        ["warp_fire", "tunic_fire", "bombs", "glove"],
-        ["hookshot", "tunic_fire", "bombs", "glove"],
-        ["boots_hover", "tunic_fire", "bombs", "glove"],
-        ["warp_fire", "tunic_fire", "hammer", "glove"],
-        ["hookshot", "tunic_fire", "hammer", "glove"],
-        ["boots_hover", "tunic_fire", "hammer", "glove"]
+        ["items.warp_fire", "items.tunic_fire", "items.bombs", "items.glove"],
+        ["items.hookshot", "items.tunic_fire", "items.bombs", "items.glove"],
+        ["items.boots_hover", "items.tunic_fire", "items.bombs", "items.glove"],
+        ["items.warp_fire", "items.tunic_fire", "items.hammer", "items.glove"],
+        ["items.hookshot", "items.tunic_fire", "items.hammer", "items.glove"],
+        ["items.boots_hover", "items.tunic_fire", "items.hammer", "items.glove"]
     ],
     "temple_fire_volvagia": [
-        ["boots_hover", "tunic_fire", "hammer"],
-        ["hookshot", "tunic_fire", "glove", "hammer"],
-        ["warp_fire", "tunic_fire", "glove", "hammer"]
+        ["items.boots_hover", "items.tunic_fire", "items.hammer"],
+        ["items.hookshot", "items.tunic_fire", "items.glove", "items.hammer"],
+        ["items.warp_fire", "items.tunic_fire", "items.glove", "items.hammer"]
     ],
     "temple_shadow_map": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "hookshot"],
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.hookshot"],
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover"]
     ],
     "temple_shadow_boots": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "hookshot"],
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.hookshot"],
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover"]
     ],
     "temple_shadow_compass": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover"]
     ],
     "temple_shadow_early_silver": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover"]
     ],
     "temple_shadow_invisible_blades_visible": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover", "bombs"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover", "items.bombs"]
     ],
     "temple_shadow_invisible_blades_invisible": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover", "bombs"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover", "items.bombs"]
     ],
     "temple_shadow_falling_spikes_lower": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover", "bombs"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover", "items.bombs"]
     ],
     "temple_shadow_falling_spikes_upper": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover", "bombs", "glove"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover", "items.bombs", "items.glove"]
     ],
     "temple_shadow_falling_spikes_switch": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover", "bombs", "glove"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover", "items.bombs", "items.glove"]
     ],
     "temple_shadow_invisible_spikes": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover", "bombs"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover", "items.bombs"]
     ],
     "temple_shadow_giant_pot": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover", "bombs", "hookshot"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover", "items.bombs", "items.hookshot"]
     ],
     "temple_shadow_wind_hint": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover", "bombs", "hookshot"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover", "items.bombs", "items.hookshot"]
     ],
     "temple_shadow_after_wind_enemy": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover", "bombs", "hookshot"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover", "items.bombs", "items.hookshot"]
     ],
     "temple_shadow_after_wind_hidden": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover", "bombs", "hookshot"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover", "items.bombs", "items.hookshot"]
     ],
     "temple_shadow_spike_walls": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover", "bombs", "hookshot", "glove", "song_zelda"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover", "items.bombs", "items.hookshot", "items.glove", "items.song_zelda"]
     ],
     "temple_shadow_boss_key": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover", "bombs", "hookshot", "glove", "song_zelda"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover", "items.bombs", "items.hookshot", "items.glove", "items.song_zelda"]
     ],
     "temple_shadow_hidden_floormaster": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover", "bombs", "hookshot", "glove", "song_zelda"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover", "items.bombs", "items.hookshot", "items.glove", "items.song_zelda"]
     ],
     "temple_shadow_bongobongo": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover", "bombs", "hookshot", "glove", "song_zelda", "bow"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover", "items.bombs", "items.hookshot", "items.glove", "items.song_zelda", "items.bow"]
     ],
     "temple_spirit_child_left": [
-        ["warp_spirit", "boomerang"],
-        ["warp_spirit", "slingshot"]
+        ["items.warp_spirit", "items.boomerang"],
+        ["items.warp_spirit", "items.slingshot"]
     ],
     "temple_spirit_child_right": [
-        ["warp_spirit", "boomerang"],
-        ["warp_spirit", "slingshot"]
+        ["items.warp_spirit", "items.boomerang"],
+        ["items.warp_spirit", "items.slingshot"]
     ],
     "temple_spirit_compass": [
-        ["warp_spirit", "glove:2", "hookshot", "song_zelda"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2", "hookshot", "song_zelda"],
-        ["hookshot:2", "magic_power", "lens", "glove:2", "song_zelda"]
+        ["items.warp_spirit", "items.glove:2", "items.hookshot", "items.song_zelda"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2", "items.hookshot", "items.song_zelda"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2", "items.song_zelda"]
     ],
     "temple_spirit_early_adult_right": [
-        ["hookshot:2", "magic_power", "lens", "glove:2"],
-        ["warp_spirit", "glove:2", "bow"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2", "bow"],
-        ["warp_spirit", "glove:2", "bombs"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2", "bombs"]
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2"],
+        ["items.warp_spirit", "items.glove:2", "items.bow"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2", "items.bow"],
+        ["items.warp_spirit", "items.glove:2", "items.bombs"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2", "items.bombs"]
     ],
     "temple_spirit_first_mirror_right": [
-        ["warp_spirit", "glove:2"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2"],
-        ["hookshot:2", "magic_power", "lens", "glove:2"]
+        ["items.warp_spirit", "items.glove:2"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2"]
     ],
     "temple_spirit_first_mirror_left": [
-        ["warp_spirit", "glove:2"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2"],
-        ["hookshot:2", "magic_power", "lens", "glove:2"]
+        ["items.warp_spirit", "items.glove:2"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2"]
     ],
     "temple_spirit_map": [
-        ["warp_spirit", "bombs", "magic_power", "magic_din"],
-        ["warp_spirit", "glove:2", "magic_power", "magic_din"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2", "magic_din"],
-        ["hookshot:2", "magic_power", "lens", "glove:2", "magic_din"],
-        ["warp_spirit", "bombs", "magic_power", "arrow_fire", "bow"],
-        ["warp_spirit", "glove:2", "magic_power", "arrow_fire", "bow"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2", "arrow_fire", "bow"],
-        ["hookshot:2", "magic_power", "lens", "glove:2", "arrow_fire", "bow"]
+        ["items.warp_spirit", "items.bombs", "items.magic_power", "items.magic_din"],
+        ["items.warp_spirit", "items.glove:2", "items.magic_power", "items.magic_din"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2", "items.magic_din"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2", "items.magic_din"],
+        ["items.warp_spirit", "items.bombs", "items.magic_power", "items.arrow_fire", "items.bow"],
+        ["items.warp_spirit", "items.glove:2", "items.magic_power", "items.arrow_fire", "items.bow"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2", "items.arrow_fire", "items.bow"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2", "items.arrow_fire", "items.bow"]
     ],
     "temple_spirit_child_climb_east": [
-        ["warp_spirit", "boomerang"],
-        ["warp_spirit", "slingshot"],
-        ["warp_spirit", "glove:2", "hookshot"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "hookshot"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2"],
-        ["hookshot:2", "magic_power", "lens", "glove:2"]
+        ["items.warp_spirit", "items.boomerang"],
+        ["items.warp_spirit", "items.slingshot"],
+        ["items.warp_spirit", "items.glove:2", "items.hookshot"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.hookshot"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2"]
     ],
     "temple_spirit_child_climb_north": [
-        ["warp_spirit", "boomerang"],
-        ["warp_spirit", "slingshot"],
-        ["warp_spirit", "glove:2", "hookshot"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "hookshot"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2"],
-        ["hookshot:2", "magic_power", "lens", "glove:2"]
+        ["items.warp_spirit", "items.boomerang"],
+        ["items.warp_spirit", "items.slingshot"],
+        ["items.warp_spirit", "items.glove:2", "items.hookshot"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.hookshot"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2"]
     ],
     "temple_spirit_sun_block": [
-        ["warp_spirit", "bombs", "magic_power", "lens", "glove:2", "magic_din"],
-        ["warp_spirit", "glove:2", "magic_power", "lens", "magic_din"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2", "magic_din"],
-        ["hookshot:2", "magic_power", "lens", "glove:2", "magic_din"],
-        ["warp_spirit", "bombs", "magic_power", "lens", "glove:2", "arrow_fire", "bow"],
-        ["warp_spirit", "glove:2", "magic_power", "lens", "arrow_fire", "bow"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2", "arrow_fire", "bow"],
-        ["hookshot:2", "magic_power", "lens", "glove:2", "arrow_fire", "bow"]
+        ["items.warp_spirit", "items.bombs", "items.magic_power", "items.lens", "items.glove:2", "items.magic_din"],
+        ["items.warp_spirit", "items.glove:2", "items.magic_power", "items.lens", "items.magic_din"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2", "items.magic_din"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2", "items.magic_din"],
+        ["items.warp_spirit", "items.bombs", "items.magic_power", "items.lens", "items.glove:2", "items.arrow_fire", "items.bow"],
+        ["items.warp_spirit", "items.glove:2", "items.magic_power", "items.lens", "items.arrow_fire", "items.bow"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2", "items.arrow_fire", "items.bow"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2", "items.arrow_fire", "items.bow"]
     ],
     "temple_spirit_statue_hand": [
-        ["warp_spirit", "glove:2", "song_zelda"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2", "song_zelda"],
-        ["hookshot:2", "magic_power", "lens", "glove:2", "song_zelda"]
+        ["items.warp_spirit", "items.glove:2", "items.song_zelda"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2", "items.song_zelda"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2", "items.song_zelda"]
     ],
     "temple_spirit_main_room_NE": [
-        ["warp_spirit", "glove:2", "hookshot", "song_zelda"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2", "hookshot", "song_zelda"],
-        ["hookshot:2", "magic_power", "lens", "glove:2", "song_zelda"]
+        ["items.warp_spirit", "items.glove:2", "items.hookshot", "items.song_zelda"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2", "items.hookshot", "items.song_zelda"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2", "items.song_zelda"]
     ],
     "temple_spirit_gauntlets": [
-        ["warp_spirit", "bombs"],
-        ["warp_spirit", "glove:2"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2"],
-        ["hookshot:2", "magic_power", "lens", "glove:2"]
+        ["items.warp_spirit", "items.bombs"],
+        ["items.warp_spirit", "items.glove:2"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2"]
     ],
     "temple_spirit_shield": [
-        ["warp_spirit", "glove:2"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2"],
-        ["hookshot:2", "magic_power", "lens", "glove:2"]
+        ["items.warp_spirit", "items.glove:2"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2"]
     ],
     "temple_spirit_near_four_armos": [
-        ["warp_spirit", "glove:2", "shield_mirror"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2", "shield_mirror"],
-        ["hookshot:2", "magic_power", "lens", "glove:2", "shield_mirror"]
+        ["items.warp_spirit", "items.glove:2", "items.shield_mirror"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2", "items.shield_mirror"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2", "items.shield_mirror"]
     ],
     "temple_spirit_hallway_left_invisible": [
-        ["warp_spirit", "glove:2"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2"],
-        ["hookshot:2", "magic_power", "lens", "glove:2"]
+        ["items.warp_spirit", "items.glove:2"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2"]
     ],
     "temple_spirit_hallway_right_invisible": [
-        ["warp_spirit", "glove:2"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2"],
-        ["hookshot:2", "magic_power", "lens", "glove:2"]
+        ["items.warp_spirit", "items.glove:2"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2"]
     ],
     "temple_spirit_boss_key": [
-        ["warp_spirit", "glove:2", "shield_mirror", "bow", "song_zelda", "hookshot", "bombs"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2", "shield_mirror", "bow", "song_zelda", "hookshot", "bombs"],
-        ["hookshot:2", "magic_power", "lens", "glove:2", "shield_mirror", "bow", "song_zelda", "bombs"],
-        ["warp_spirit", "glove:2", "shield_mirror", "bow", "song_zelda", "hookshot", "hammer"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2", "shield_mirror", "bow", "song_zelda", "hookshot", "hammer"],
-        ["hookshot:2", "magic_power", "lens", "glove:2", "shield_mirror", "bow", "song_zelda", "hammer"]
+        ["items.warp_spirit", "items.glove:2", "items.shield_mirror", "items.bow", "items.song_zelda", "items.hookshot", "items.bombs"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2", "items.shield_mirror", "items.bow", "items.song_zelda", "items.hookshot", "items.bombs"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2", "items.shield_mirror", "items.bow", "items.song_zelda", "items.bombs"],
+        ["items.warp_spirit", "items.glove:2", "items.shield_mirror", "items.bow", "items.song_zelda", "items.hookshot", "items.hammer"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2", "items.shield_mirror", "items.bow", "items.song_zelda", "items.hookshot", "items.hammer"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2", "items.shield_mirror", "items.bow", "items.song_zelda", "items.hammer"]
     ],
     "temple_spirit_topmost": [
-        ["warp_spirit", "glove:2", "shield_mirror", "bombs"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2", "shield_mirror", "bombs"],
-        ["warp_spirit", "glove:2", "shield_mirror", "bow"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2", "shield_mirror", "bow"],
-        ["hookshot:2", "magic_power", "lens", "glove:2", "shield_mirror"]
+        ["items.warp_spirit", "items.glove:2", "items.shield_mirror", "items.bombs"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2", "items.shield_mirror", "items.bombs"],
+        ["items.warp_spirit", "items.glove:2", "items.shield_mirror", "items.bow"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2", "items.shield_mirror", "items.bow"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2", "items.shield_mirror"]
     ],
     "temple_spirit_twinrova": [
-        ["warp_spirit", "glove:2", "shield_mirror", "bombs", "hookshot"],
-        ["song_epona", "hoverboots", "magic_power", "lens", "glove:2", "shield_mirror", "bombs", "hookshot"],
-        ["hookshot:2", "magic_power", "lens", "glove:2", "shield_mirror", "bombs"]
+        ["items.warp_spirit", "items.glove:2", "items.shield_mirror", "items.bombs", "items.hookshot"],
+        ["items.song_epona", "items.hoverboots", "items.magic_power", "items.lens", "items.glove:2", "items.shield_mirror", "items.bombs", "items.hookshot"],
+        ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2", "items.shield_mirror", "items.bombs"]
     ],
     "well_front_left_hidden_wall":[
-        ["song_storm","lens","magic_power"]
+        ["items.song_storm","lens","magic_power"]
     ],
     "well_front_center_bombable":[
-        ["song_storm","bombs"]
+        ["items.song_storm","bombs"]
     ],
     "well_right_bottom_hidden_wall":[
-        ["song_storm","lens","magic_power"]
+        ["items.song_storm","lens","magic_power"]
     ],
     "well__center_large":[
-        ["song_storm","lens","magic_power"]
+        ["items.song_storm","lens","magic_power"]
     ],
     "well_center_small":[
-        ["song_storm","lens","magic_power"]
+        ["items.song_storm","lens","magic_power"]
     ],
     "well_back_left_bombable":[
-        ["song_storm","song_zelda"],
-        ["song_storm","scale"]
+        ["items.song_storm","song_zelda"],
+        ["items.song_storm","scale"]
     ],
     "well_coffin_key": [
-        ["song_storm","bombs"]
+        ["items.song_storm","bombs"]
     ],
     "well_defeat_boss":[
-        ["song_storm","song_zelda","sword_kokiri"]
+        ["items.song_storm","song_zelda","sword_kokiri"]
     ],
     "well_invisible":[
-        ["song_storm","song_zelda","lens","magic_power"]
+        ["items.song_storm","song_zelda","lens","magic_power"]
     ],
     "well_underwater_front":[
-        ["song_storm","song_zelda"]
+        ["items.song_storm","song_zelda"]
     ],
     "well_underwater_left":[
-        ["song_storm","song_zelda"]
+        ["items.song_storm","song_zelda"]
     ],
     "well_basement_ches":[
-        ["song_storm","bombs"]
+        ["items.song_storm","bombs"]
     ],
     "well_locked_pits":[
-        ["song_storm","lens","magic_power"]
+        ["items.song_storm","lens","magic_power"]
     ],
     "well_behind_right_grate":[
-        ["song_storm","lens","magic_power"]
+        ["items.song_storm","lens","magic_power"]
     ],
     "dodongo_map":[
-        ["bombs"],
-        ["hammer"],
-        ["glove"]
+        ["items.bombs"],
+        ["items.hammer"],
+        ["items.glove"]
     ],
     "dodongo_compass":[
-        ["bombs"],
-        ["hammer"],
-        ["glove"]
+        ["items.bombs"],
+        ["items.hammer"],
+        ["items.glove"]
     ],
     "dodongo_bomb_flower_platform":[
-        ["bombs"],
-        ["hammer"],
-        ["glove"]
+        ["items.bombs"],
+        ["items.hammer"],
+        ["items.glove"]
     ],
     "dodongo_bomb_bag":[
-        ["bombs","slingshot"],
-        ["bombs","bow"],
-        ["bombs","boots_hover"],
-        ["hammer","slingshot"],
-        ["hammer","bow"],
-        ["hammer","boots_hover"],
-        ["glove","slingshot"],
-        ["glove","bow"],
-        ["glove","boots_hover"]
+        ["items.bombs","slingshot"],
+        ["items.bombs","bow"],
+        ["items.bombs","boots_hover"],
+        ["items.hammer","slingshot"],
+        ["items.hammer","bow"],
+        ["items.hammer","boots_hover"],
+        ["items.glove","slingshot"],
+        ["items.glove","bow"],
+        ["items.glove","boots_hover"]
     ],
     "dodongo_end_bridge":[
-        ["hammer","boots_hover"],
-        ["hammer","bow"],
-        ["bombs","boots_hover"],
-        ["bombs","bow"],
-        ["bombs", "slingshot"]
+        ["items.hammer","boots_hover"],
+        ["items.hammer","bow"],
+        ["items.bombs","boots_hover"],
+        ["items.bombs","bow"],
+        ["items.bombs", "items.slingshot"]
     ],
     "dodongo_chest_above_dodongo":[
-        ["slingshot","bombs"],
-        ["bow","bombs"],
-        ["boots_hover","bombs"]
+        ["items.slingshot","bombs"],
+        ["items.bow","bombs"],
+        ["items.boots_hover","bombs"]
     ],
     "dodongo_dodongo":[
-        ["slingshot","bombs"],
-        ["bow","bombs"],
-        ["boots_hover","bombs"]
+        ["items.slingshot","bombs"],
+        ["items.bow","bombs"],
+        ["items.boots_hover","bombs"]
     ],
     "castle_town_zelda":[],
     "castle_town_child_shooting":[],
     "castle_town_bowling_1":[
-        ["bombs"]
+        ["items.bombs"]
     ],
     "castle_town_bowling_2":[
-        ["bombs"]
+        ["items.bombs"]
     ],
     "castle_town_chest_game":[
-        ["lens","magic_power"]
+        ["items.lens","magic_power"]
     ],
     "castle_town_dog":[],
     "castle_town_poes":[
-        ["Bow","song_epona","Bottle"]
+        ["items.Bow","song_epona","Bottle"]
     ],
     "castle_town_hyrule_fairy":[
-        ["bombs","song_zelda"]
+        ["items.bombs","song_zelda"]
     ],
     "castle_town_ganon_fairy":[
-        ["glove:3","song_zelda"]
+        ["items.glove:3","song_zelda"]
     ],
     "castle_town_warp":[
-        ["medallion_forest"]
+        ["items.medallion_forest"]
     ],
     "castle_town_light_arrows":[
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light"]
     ],
     "goron_maze_left":[
-        ["glove:2"],
-        ["hammer"]
+        ["items.glove:2"],
+        ["items.hammer"]
     ],
     "goron_maze_center":[
-        ["bombs"],
-        ["hammer"],
-        ["glove:2"]
+        ["items.bombs"],
+        ["items.hammer"],
+        ["items.glove:2"]
     ],
     "goron_maze_right":[
-        ["bombs"],
-        ["hammer"],
-        ["glove:2"]
+        ["items.bombs"],
+        ["items.hammer"],
+        ["items.glove:2"]
     ],
     "goron_hot_rodder":[
-        ["bombs"]
+        ["items.bombs"]
     ],
     "goron_little_link":[
-        ["glove"],
-        ["bombs"],
-        ["bow"]
+        ["items.glove"],
+        ["items.bombs"],
+        ["items.bow"]
     ],
     "goron_spinning_pot_hp":[
-        ["glove","song_zelda"],
-        ["bombs","song_zelda"],
-        ["glove","magic_power","magic_din"],
-        ["bombs","magic_power","magic_din"]
+        ["items.glove","song_zelda"],
+        ["items.bombs","song_zelda"],
+        ["items.glove","magic_power","magic_din"],
+        ["items.bombs","magic_power","magic_din"]
     ],
     "goron_darunia":[
-        ["song_zelda","song_saria"]
+        ["items.song_zelda","song_saria"]
     ],
     "woods_skull_kid":[
-        ["song_saria"]
+        ["items.song_saria"]
     ],
     "woods_deku_salesman":[],
     "woods_memory_game":[],
     "woods_shooting":[
-        ["slingshot"]
+        ["items.slingshot"]
     ],
     "woods_bomb_grotto":[
-        ["bombs","song_saria"],
-        ["bombs","warp_forest"],
-        ["hammer","song_saria"],
-        ["hammer","warp_forest"]
+        ["items.bombs"],
+        ["items.hammer"]
     ],
     "woods_deku_salesman_grotto":[
-        ["bombs"],
-        ["hammer"]
+        ["items.bombs"],
+        ["items.hammer","song_saria"],
+        ["items.hammer","warp_forest"]
     ],
     "woods_wolfos_grotto":[
-        ["bombs","song_saria"],
-        ["bombs","warp_forest"],
-        ["hammer","song_saria"],
-        ["hammer","warp_forest"]
+        ["items.bombs"],
+        ["items.hammer","song_saria"],
+        ["items.hammer","warp_forest"]
     ],
-    "woods_saria": [],
+    "woods_saria": [
+        ["chests.castle_town_zelda"]
+    ],
     "woods_warp":[
-        ["song_saria"],
-        ["warp_forest"]
+        ["items.song_saria"],
+        ["items.warp_forest"]
     ],
     "woods_deku_theater_1":[],
     "woods_deku_theater_2":[
-        ["song_saria","stone_forest","stone_fire","stone_water"]
+        ["items.song_saria","stone_forest","stone_fire","stone_water"]
     ],
     "temple_forest_entrance": [
-        ["song_saria", "hookshot"],
-        ["warp_forest", "hookshot"]
+        ["items.song_saria", "items.hookshot"],
+        ["items.warp_forest", "items.hookshot"]
     ],
     "temple_forest_behind_lobby": [
-        ["song_saria", "hookshot"],
-        ["warp_forest", "hookshot"]
+        ["items.song_saria", "items.hookshot"],
+        ["items.warp_forest", "items.hookshot"]
     ],
     "temple_forest_well": [
-        ["song_saria", "hookshot"],
-        ["warp_forest", "hookshot"]
+        ["items.song_saria", "items.hookshot"],
+        ["items.warp_forest", "items.hookshot"]
     ],
     "temple_forest_map": [
-        ["song_saria", "hookshot"],
-        ["warp_forest", "hookshot"]
+        ["items.song_saria", "items.hookshot"],
+        ["items.warp_forest", "items.hookshot"]
     ],
     "temple_forest_outside_hookshot": [
-        ["song_saria", "hookshot"],
-        ["warp_forest", "hookshot"]
+        ["items.song_saria", "items.hookshot"],
+        ["items.warp_forest", "items.hookshot"]
     ],
     "temple_forest_falling_room": [
-        ["song_saria", "hookshot", "bow"],
-        ["warp_forest", "hookshot", "bow"],
-        ["song_saria", "hookshot", "magic_power", "magic_din"],
-        ["warp_forest", "hookshot", "magic_power", "magic_din"]
+        ["items.song_saria", "items.hookshot", "items.bow"],
+        ["items.warp_forest", "items.hookshot", "items.bow"],
+        ["items.song_saria", "items.hookshot", "items.magic_power", "items.magic_din"],
+        ["items.warp_forest", "items.hookshot", "items.magic_power", "items.magic_din"]
     ],
     "temple_forest_block_push": [
-        ["song_saria", "hookshot", "bow"],
-        ["warp_forest", "hookshot", "bow"]
+        ["items.song_saria", "items.hookshot", "items.bow"],
+        ["items.warp_forest", "items.hookshot", "items.bow"]
     ],
     "temple_forest_boss_key": [
-        ["song_saria", "hookshot", "bow"],
-        ["warp_forest", "hookshot", "bow"]
+        ["items.song_saria", "items.hookshot", "items.bow"],
+        ["items.warp_forest", "items.hookshot", "items.bow"]
     ],
     "temple_forest_floormaster": [
-        ["song_saria", "hookshot"],
-        ["warp_forest", "hookshot"]
+        ["items.song_saria", "items.hookshot"],
+        ["items.warp_forest", "items.hookshot"]
     ],
     "temple_forest_bow": [
-        ["song_saria", "hookshot"],
-        ["warp_forest", "hookshot"]
+        ["items.song_saria", "items.hookshot"],
+        ["items.warp_forest", "items.hookshot"]
     ],
     "temple_forest_poe_red": [
-        ["song_saria", "hookshot", "bow"],
-        ["warp_forest", "hookshot", "bow"]
+        ["items.song_saria", "items.hookshot", "items.bow"],
+        ["items.warp_forest", "items.hookshot", "items.bow"]
     ],
     "temple_forest_poe_blue": [
-        ["song_saria", "hookshot", "bow"],
-        ["warp_forest", "hookshot", "bow"]
+        ["items.song_saria", "items.hookshot", "items.bow"],
+        ["items.warp_forest", "items.hookshot", "items.bow"]
     ],
     "temple_forest_near_boss": [
-        ["song_saria", "hookshot", "bow"],
-        ["warp_forest", "hookshot", "bow"]
+        ["items.song_saria", "items.hookshot", "items.bow"],
+        ["items.warp_forest", "items.hookshot", "items.bow"]
     ],
     "temple_forest_phantomganon": [
-        ["song_saria", "hookshot", "bow"],
-        ["warp_forest", "hookshot", "bow"]
+        ["items.song_saria", "items.hookshot", "items.bow"],
+        ["items.warp_forest", "items.hookshot", "items.bow"]
     ],
     "kakariko_anju_adult": [],
     "kakariko_anju_chickens": [],
     "kakariko_grotto": [],
     "kakariko_redead_grotto": [
-        ["bombs"],
-        ["hammer"]
+        ["items.bombs"],
+        ["items.hammer"]
     ],
     "kakariko_cow_hp": [],
     "kakariko_man_roof": [
-        ["hookshot"]
+        ["items.hookshot"]
     ],
     "kakariko_adult_shooting": [
-        ["bow"]
+        ["items.bow"]
     ],
     "kakariko_song_storm": [],
     "kakariko_windmill_hp": [
-        ["song_time"],
-        ["boomerang"]
+        ["items.song_time"],
+        ["items.boomerang"]
     ],
     "kakariko_race_1": [],
     "kakariko_race_2": [],
     "kakariko_digging": [],
     "kakariko_shield_grave": [],
     "kakariko_redead_grave": [
-        ["song_sun"]
+        ["items.song_sun"]
     ],
     "kakariko_sun_song": [
-        ["song_zelda"]
+        ["items.song_zelda"]
     ],
     "kakariko_sun_song_chest": [
-        ["song_zelda", "magic_power", "magic_din"],
-        ["song_zelda", "magic_power", "bow", "arrow_fire"]
+        ["items.song_zelda", "items.magic_power", "items.magic_din"],
+        ["items.song_zelda", "items.magic_power", "items.bow", "items.arrow_fire"]
     ],
     "kakariko_bean_hp": [
-        ["scale"],
-        ["bombs"],
-        ["hookshot:2"]
+        ["items.scale"],
+        ["items.bombs"],
+        ["items.hookshot:2"]
     ],
     "kakariko_warp": [
-        ["medallion_forest", "medallion_fire", "medallion_water"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water"]
     ],
     "kakariko_skulltula_10": [
-        ["skulltula:1"]
+        ["items.skulltula:1"]
     ],
     "kakariko_skulltula_20": [
-        ["skulltula:2"]
+        ["items.skulltula:2"]
     ],
     "kakariko_skulltula_30": [
-        ["skulltula:3"]
+        ["items.skulltula:3"]
     ],
     "kakariko_skulltula_40": [
-        ["skulltula:4"]
+        ["items.skulltula:4"]
     ],
     "kakariko_skulltula_50": [
-        ["skulltula:5"]
+        ["items.skulltula:5"]
     ],
     "castle_ganon_forest_trial": [
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light"]
     ],
     "castle_ganon_water_trial_left": [
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light"]
     ],
     "castle_ganon_water_trial_right": [
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light"]
     ],
     "castle_ganon_shadow_trial_first": [
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light", "hookshot:2"],
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light", "magic_power", "arrow_fire", "bow"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.hookshot:2"],
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.magic_power", "items.arrow_fire", "items.bow"]
     ],
     "castle_ganon_shadow_trial_second": [
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light", "hookshot:2", "boots_hover"],
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light", "magic_power", "arrow_fire", "bow"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.hookshot:2", "items.boots_hover"],
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.magic_power", "items.arrow_fire", "items.bow"]
     ],
     "castle_ganon_spirit_trial_first": [
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light", "hookshot", "bombs"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.hookshot", "items.bombs"]
     ],
     "castle_ganon_spirit_trial_second": [
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light", "hookshot", "bombs", "magic_power", "lens"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.hookshot", "items.bombs", "items.magic_power", "items.lens"]
     ],
     "castle_ganon_light_trial_first_left": [
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light", "gloves:3"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.gloves:3"]
     ],
     "castle_ganon_light_trial_second_left": [
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light", "gloves:3"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.gloves:3"]
     ],
     "castle_ganon_light_trial_third_left": [
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light", "gloves:3"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.gloves:3"]
     ],
     "castle_ganon_light_trial_first_right": [
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light", "gloves:3"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.gloves:3"]
     ],
     "castle_ganon_light_trial_second_right": [
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light", "gloves:3"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.gloves:3"]
     ],
     "castle_ganon_light_trial_third_right": [
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light", "gloves:3"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.gloves:3"]
     ],
     "castle_ganon_light_trail_invisible_enemies": [
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light", "gloves:3", "magic_power", "lens"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.gloves:3", "items.magic_power", "items.lens"]
     ],
     "castle_ganon_light_trial_lullaby": [
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light", "gloves:3", "song_zelda"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.gloves:3", "items.song_zelda"]
     ]
 
 

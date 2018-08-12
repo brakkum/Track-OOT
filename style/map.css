@@ -69,7 +69,7 @@
     appearance: none;
     width: 100%;
     height: 100%;
-    background: #00000077;
+    background: gold;
     outline: none;
 }
 
@@ -78,13 +78,13 @@
     appearance: none;
     width: 5px;
     height: 100%;
-    background: #000000;
+    background: black;
     cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
     width: 5px;
     height: 100%;
-    background: #000000;
+    background: black;
     cursor: pointer;
 }

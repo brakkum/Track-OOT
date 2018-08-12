@@ -1,51 +1,51 @@
 {
     "deku": [
-        ["slingshot"]
+        ["items.slingshot"]
     ],
     "dodongo": [
-        ["slingshot", "bombs"],
-        ["bow", "bombs"],
-        ["boots_hover", "bombs"]
+        ["items.slingshot", "items.bombs"],
+        ["items.bow", "items.bombs"],
+        ["items.boots_hover", "items.bombs"]
     ],
     "jabujabu": [
-        ["bombs", "song_zelda", "zora_letter", "bottle", "boomerang"],
-        ["scale", "zora_letter", "bottle", "boomerang"]
+        ["items.bombs", "items.song_zelda", "items.zora_letter", "items.bottle", "items.boomerang"],
+        ["items.scale", "items.zora_letter", "items.bottle", "items.boomerang"]
     ],
     "temple_forest": [
-        ["song_saria", "hookshot", "bow"],
-        ["warp_forest", "hookshot", "bow"]
+        ["items.song_saria", "items.hookshot", "items.bow"],
+        ["items.warp_forest", "items.hookshot", "items.bow"]
     ],
     "temple_fire": [
-        ["tunic_fire", "hammer", "boots_hover"],
-        ["tunic_fire", "hammer", "warp_fire", "glove", "bombs"],
-        ["tunic_fire", "hammer", "warp_fire", "glove", "bow", "song_time"],
-        ["tunic_fire", "hammer", "hookshot", "glove", "song_time"],
-        ["tunic_fire", "hammer", "hookshot", "glove", "bombs"]
+        ["items.tunic_fire", "items.hammer", "items.boots_hover"],
+        ["items.tunic_fire", "items.hammer", "items.warp_fire", "items.glove", "items.bombs"],
+        ["items.tunic_fire", "items.hammer", "items.warp_fire", "items.glove", "items.bow", "items.song_time"],
+        ["items.tunic_fire", "items.hammer", "items.hookshot", "items.glove", "items.song_time"],
+        ["items.tunic_fire", "items.hammer", "items.hookshot", "items.glove", "items.bombs"]
     ],
     "temple_water": [
-        ["tunic_water", "boots_iron", "hookshot:2"]
+        ["items.tunic_water", "items.boots_iron", "items.hookshot:2"]
     ],
     "temple_shadow": [
-        ["warp_shadow", "magic_power", "magic_din", "lens", "boots_hover", "bombs", "hookshot", "glove", "song_zelda", "bow"]
+        ["items.warp_shadow", "items.magic_power", "items.magic_din", "items.lens", "items.boots_hover", "items.bombs", "items.hookshot", "items.glove", "items.song_zelda", "items.bow"]
     ],
     "temple_spirit": [
-        ["song_epona", "hoverboots", "magic_power:1", "lens", "glove:2", "shield_mirror", "bombs", "hookshot"],
-        ["hookshot:2", "magic_power:1", "lens", "glove:2", "shield_mirror", "bombs", "hookshot"],
-        ["warp_spirit", "glove:2", "shield_mirror", "bombs", "hookshot"]
+        ["items.song_epona", "items.hoverboots", "items.magic_power:1", "items.lens", "items.glove:2", "items.shield_mirror", "items.bombs", "items.hookshot"],
+        ["items.hookshot:2", "items.magic_power:1", "items.lens", "items.glove:2", "items.shield_mirror", "items.bombs", "items.hookshot"],
+        ["items.warp_spirit", "items.glove:2", "items.shield_mirror", "items.bombs", "items.hookshot"]
     ],
     "castle_ganon": [
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light",
-            "power_magic", "bow", "arrow_light", "tunic_fire", "glove:3", "hookshot:2", "hammer", "bottle", "shield_mirror",
-            "bombs", "arrow_fire", "boots_hover"],
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light",
-            "power_magic", "bow", "arrow_light", "tunic_fire", "glove:3", "hookshot:2", "hammer", "bottle", "shield_mirror",
-            "bombs", "arrow_fire", "lens"],
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light",
-            "power_magic", "bow", "arrow_light", "tunic_fire", "glove:3", "hookshot:2", "hammer", "bottle", "shield_mirror",
-            "bombs", "magic_din", "boots_hover"],
-        ["medallion_forest", "medallion_fire", "medallion_water", "medallion_spirit", "medallion_shadow", "medallion_light",
-            "power_magic", "bow", "arrow_light", "tunic_fire", "glove:3", "hookshot:2", "hammer", "bottle", "shield_mirror",
-            "bombs", "magic_din", "lens"]
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light",
+            "power_magic", "items.bow", "items.arrow_light", "items.tunic_fire", "items.glove:3", "items.hookshot:2", "items.hammer", "items.bottle", "items.shield_mirror",
+            "bombs", "items.arrow_fire", "items.boots_hover"],
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light",
+            "power_magic", "items.bow", "items.arrow_light", "items.tunic_fire", "items.glove:3", "items.hookshot:2", "items.hammer", "items.bottle", "items.shield_mirror",
+            "bombs", "items.arrow_fire", "items.lens"],
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light",
+            "power_magic", "items.bow", "items.arrow_light", "items.tunic_fire", "items.glove:3", "items.hookshot:2", "items.hammer", "items.bottle", "items.shield_mirror",
+            "bombs", "items.magic_din", "items.boots_hover"],
+        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light",
+            "power_magic", "items.bow", "items.arrow_light", "items.tunic_fire", "items.glove:3", "items.hookshot:2", "items.hammer", "items.bottle", "items.shield_mirror",
+            "bombs", "items.magic_din", "items.lens"]
     ],
     "castle_town": [],
     "kakariko": [],

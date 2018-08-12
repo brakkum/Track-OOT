@@ -1,9 +1,7 @@
+setStatus("version", "nightly-20180812");
 
 var data;
-var savestate = {
-    items: {},
-    chests: {}
-};
+var savestate = new SaveState();
 var activestate = "";
 
 var stateChoice = document.getElementById("select-savegame");
@@ -30,6 +28,16 @@ document.getElementById("map-scale-slider").addEventListener("change", function(
     document.getElementById('map').style.setProperty("--map-scale", parseInt(event.target.value) / 100);
 });
 
+function changeItemInactiveEffect() {
+    var cn = parseInt(document.getElementById("item-container").getAttribute("data-inactive")) || 0;
+    if (++cn > 2) cn = 0;
+    document.getElementById("item-container").setAttribute("data-inactive", cn);
+}
+
+/*************************************************
+ *  Main function
+ */
+
 async function main() {
 
     data = await loadAll();
@@ -42,7 +50,7 @@ async function main() {
 
     populateMap();
 
-    reset();
+    //reset();
 }
 
 main();
@@ -84,7 +92,7 @@ function reset() {
 
 async function saveState() {
     if (stateChoice.value != "") {
-        localStorage.setItem(stateChoice.value, JSON.stringify(savestate));
+        localStorage.setItem(stateChoice.value, savestate.export());
         await dialogue_alert("Saved successfully.");
     }
 }
@@ -98,16 +106,7 @@ async function loadState() {
         if (!!confirm) {
             var item = localStorage.getItem(stateChoice.value);
             if (item != "" && item != "null") {
-                savestate = JSON.parse(item);
-                /*compatibility-codes*/
-                if (savestate.items.hasOwnProperty("tunic_goron")) {
-                    savestate.items.tunic_fire = savestate.items.tunic_goron;
-                    delete savestate.items.tunic_goron;
-                }
-                if (savestate.items.hasOwnProperty("tunic_zora")) {
-                    savestate.items.tunic_water = savestate.items.tunic_zora;
-                    delete savestate.items.tunic_zora;
-                }
+                savestate = new SaveState(item);
             }
             document.getElementById("save-savegame").disabled = false;
             activestate = stateChoice.value;
@@ -143,10 +142,10 @@ async function newState() {
         newState();
     }
     if (!!name) {
-        reset();
-        localStorage.setItem(name, JSON.stringify(savestate));
-        prepairSavegameChoice();
+        savestate = new SaveState();
         stateChoice.value = name;
+        await saveState();
+        prepairSavegameChoice();
         document.getElementById("save-savegame").disabled = false;
         document.getElementById("load-savegame").disabled = false;
         document.getElementById("delete-savegame").disabled = false;

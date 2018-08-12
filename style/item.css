@@ -19,8 +19,17 @@
     flex-shrink: 0;
 }
 
-#item-container .item-row .item.item-inactive {
-    opacity: 0.3;
+#item-container[data-inactive="0"] .item-row .item.item-inactive {
+    filter: contrast(0.3);
+    opacity: 0.6;
+}
+
+#item-container[data-inactive="1"] .item-row .item.item-inactive {
+    filter: sepia(1);
+}
+
+#item-container[data-inactive="2"] .item-row .item.item-inactive {
+    filter: grayscale(1);
 }
 
 #item-container .item-row .item:hover {

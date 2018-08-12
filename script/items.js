@@ -23,21 +23,24 @@ function createItemTracker() {
 function addItemWrapper(el) {
     var max = data.items[el.id].max;
     return function() {
-        if (++savestate.items[el.id] > max) {
-            savestate.items[el.id] = 0;
+        var val = savestate.read("items", el.id, 0);
+        if (++val > max) {
+            val = 0;
         }
+        savestate.write("items", el.id, val);
         setImage(el);
         updateMap();
     }
 }
 
 function setImage(el) {
+    var val = savestate.read("items", el.id, 0);
     if (data.items[el.id].max > 1) {
-        el.style.backgroundImage = "url('images/"+el.id+(savestate.items[el.id]||0)+".png')";
+        el.style.backgroundImage = "url('images/"+el.id+val+".png')";
     } else {
         el.style.backgroundImage = "url('images/"+el.id+".png')";
     }
-    if ((savestate.items[el.id]||0) == 0) {
+    if (val == 0) {
         el.classList.add("item-inactive");
     } else {
         el.classList.remove("item-inactive");

@@ -43,34 +43,35 @@ body {
     margin: 4px 0;
 }
 
-.unavailable{
+.unavailable {
     background-color: rgb(255, 0, 0);
 }
 
-.available{
+.available {
     background-color: rgb(0, 255, 0);
 }
 
-.possible{
+.possible {
     background-color: rgb(255, 255, 0);
 }
 
-.opened{
+.opened {
     background-color: rgb(127,127,127);
 }
 
-.DCunavailable{
+.DCunavailable,
+.DCpossible {
     color: rgb(255,0,0);
 }
 
-.DCavailable{
+.DCavailable {
     color: rgb(0,255,0);
 }
 
-.DCpossible{
+/*.DCpossible {
     color: rgb(210,190,30);
-}
+}*/
 
-.DCopened{
+.DCopened {
     color: rgb(127,127,127);
 }
