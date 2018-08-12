@@ -1,4 +1,4 @@
-setStatus("version", "nightly-20180812");
+setStatus("version", "0.0.1a - nightly-20180812 - hotfix 0001");
 
 var data;
 var savestate = new SaveState();
