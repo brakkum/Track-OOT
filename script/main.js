@@ -19,10 +19,10 @@ stateChoice.addEventListener("change", function() {
     document.getElementById("load-savegame").disabled = false;
     document.getElementById("delete-savegame").disabled = false;
 });
-stateSave.addEventListener("click", saveState);
-stateLoad.addEventListener("click", loadState);
-stateNew.addEventListener("click", newState);
-stateDel.addEventListener("click", deleteState);
+stateSave.addEventListener("click", state_Save);
+stateLoad.addEventListener("click", state_Load);
+stateNew.addEventListener("click", state_New);
+stateDel.addEventListener("click", state_Delete);
 
 document.getElementById("map-scale-slider").addEventListener("change", function(event) {
     document.getElementById('map').style.setProperty("--map-scale", parseInt(event.target.value) / 100);
@@ -90,14 +90,15 @@ function reset() {
     updateMap();
 }
 
-async function saveState() {
+async function state_Save() {
     if (stateChoice.value != "") {
-        localStorage.setItem(stateChoice.value, savestate.export());
-        await dialogue_alert("Saved successfully.");
+        stateChoice.value = activestate;
+        localStorage.setItem(activestate, savestate.export());
+        await dialogue_alert("Saved \""+activestate+"\" successfully.");
     }
 }
 
-async function loadState() {
+async function state_Load() {
     if (stateChoice.value != "") {
         var confirm = true;
         if (activestate != "") {
@@ -116,7 +117,7 @@ async function loadState() {
     }
 }
 
-async function deleteState() {
+async function state_Delete() {
     if (stateChoice.value != ""
     && await dialogue_confirm("Do you really want to delete \""+stateChoice.value+"\"?")) {
         localStorage.removeItem(stateChoice.value);
@@ -131,21 +132,26 @@ async function deleteState() {
     }
 }
 
-async function newState() {
+async function state_New() {
     var name = await dialogue_prompt("Please enter a new name! (Unsafed changes will be lost.)");
     if (name == "") {
         alert("The name can not be empty.");
-        newState();
+        state_New();
+        return;
     }
     if (localStorage.hasOwnProperty(name)) {
         alert("The name already exists.");
-        newState();
+        state_New();
+        return;
     }
     if (!!name) {
-        savestate = new SaveState();
-        stateChoice.value = name;
-        await saveState();
+        if (activestate != "" || await dialogue_confirm("Do you want to reset the current state?")) {
+            savestate = new SaveState();
+        }
+        localStorage.setItem(name, savestate.export());
         prepairSavegameChoice();
+        stateChoice.value = name;
+        activestate = name;
         document.getElementById("save-savegame").disabled = false;
         document.getElementById("load-savegame").disabled = false;
         document.getElementById("delete-savegame").disabled = false;

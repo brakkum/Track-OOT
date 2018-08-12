@@ -5,7 +5,7 @@
         ["items.song_storm"]
     ],
     "song_of_time": [
-        ["items.stone_forest","stone_fire","stone_water"]
+        ["items.stone_forest", "items.stone_fire", "items.stone_water"]
     ],
     "hyrule_north_grotto": [
         ["items.hammer"],
@@ -33,7 +33,7 @@
         ["items.scale"]
     ],
     "lake_sun": [
-        ["items.bow","hookshot:2"]
+        ["items.bow", "items.hookshot:2"]
     ],
     "lab_dive": [
         ["items.scale:2"]
@@ -634,47 +634,47 @@
         ["items.hookshot:2", "items.magic_power", "items.lens", "items.glove:2", "items.shield_mirror", "items.bombs"]
     ],
     "well_front_left_hidden_wall":[
-        ["items.song_storm","lens","magic_power"]
+        ["items.song_storm", "items.lens", "items.magic_power"]
     ],
     "well_front_center_bombable":[
-        ["items.song_storm","bombs"]
+        ["items.song_storm", "items.bombs"]
     ],
     "well_right_bottom_hidden_wall":[
-        ["items.song_storm","lens","magic_power"]
+        ["items.song_storm", "items.lens", "items.magic_power"]
     ],
     "well__center_large":[
-        ["items.song_storm","lens","magic_power"]
+        ["items.song_storm", "items.lens", "items.magic_power"]
     ],
     "well_center_small":[
-        ["items.song_storm","lens","magic_power"]
+        ["items.song_storm", "items.lens", "items.magic_power"]
     ],
     "well_back_left_bombable":[
-        ["items.song_storm","song_zelda"],
-        ["items.song_storm","scale"]
+        ["items.song_storm", "items.song_zelda"],
+        ["items.song_storm", "items.scale"]
     ],
     "well_coffin_key": [
-        ["items.song_storm","bombs"]
+        ["items.song_storm", "items.bombs"]
     ],
     "well_defeat_boss":[
-        ["items.song_storm","song_zelda","sword_kokiri"]
+        ["items.song_storm", "items.song_zelda", "items.sword_kokiri"]
     ],
     "well_invisible":[
-        ["items.song_storm","song_zelda","lens","magic_power"]
+        ["items.song_storm", "items.song_zelda", "items.lens", "items.magic_power"]
     ],
     "well_underwater_front":[
-        ["items.song_storm","song_zelda"]
+        ["items.song_storm", "items.song_zelda"]
     ],
     "well_underwater_left":[
-        ["items.song_storm","song_zelda"]
+        ["items.song_storm", "items.song_zelda"]
     ],
     "well_basement_ches":[
-        ["items.song_storm","bombs"]
+        ["items.song_storm", "items.bombs"]
     ],
     "well_locked_pits":[
-        ["items.song_storm","lens","magic_power"]
+        ["items.song_storm", "items.lens", "items.magic_power"]
     ],
     "well_behind_right_grate":[
-        ["items.song_storm","lens","magic_power"]
+        ["items.song_storm", "items.lens", "items.magic_power"]
     ],
     "dodongo_map":[
         ["items.bombs"],
@@ -692,32 +692,32 @@
         ["items.glove"]
     ],
     "dodongo_bomb_bag":[
-        ["items.bombs","slingshot"],
-        ["items.bombs","bow"],
-        ["items.bombs","boots_hover"],
-        ["items.hammer","slingshot"],
-        ["items.hammer","bow"],
-        ["items.hammer","boots_hover"],
-        ["items.glove","slingshot"],
-        ["items.glove","bow"],
-        ["items.glove","boots_hover"]
+        ["items.bombs", "items.slingshot"],
+        ["items.bombs", "items.bow"],
+        ["items.bombs", "items.boots_hover"],
+        ["items.hammer", "items.slingshot"],
+        ["items.hammer", "items.bow"],
+        ["items.hammer", "items.boots_hover"],
+        ["items.glove", "items.slingshot"],
+        ["items.glove", "items.bow"],
+        ["items.glove", "items.boots_hover"]
     ],
     "dodongo_end_bridge":[
-        ["items.hammer","boots_hover"],
-        ["items.hammer","bow"],
-        ["items.bombs","boots_hover"],
-        ["items.bombs","bow"],
+        ["items.hammer", "items.boots_hover"],
+        ["items.hammer", "items.bow"],
+        ["items.bombs", "items.boots_hover"],
+        ["items.bombs", "items.bow"],
         ["items.bombs", "items.slingshot"]
     ],
     "dodongo_chest_above_dodongo":[
-        ["items.slingshot","bombs"],
-        ["items.bow","bombs"],
-        ["items.boots_hover","bombs"]
+        ["items.slingshot", "items.bombs"],
+        ["items.bow", "items.bombs"],
+        ["items.boots_hover", "items.bombs"]
     ],
     "dodongo_dodongo":[
-        ["items.slingshot","bombs"],
-        ["items.bow","bombs"],
-        ["items.boots_hover","bombs"]
+        ["items.slingshot", "items.bombs"],
+        ["items.bow", "items.bombs"],
+        ["items.boots_hover", "items.bombs"]
     ],
     "castle_town_zelda":[],
     "castle_town_child_shooting":[],
@@ -728,17 +728,17 @@
         ["items.bombs"]
     ],
     "castle_town_chest_game":[
-        ["items.lens","magic_power"]
+        ["items.lens", "items.magic_power"]
     ],
     "castle_town_dog":[],
     "castle_town_poes":[
-        ["items.Bow","song_epona","Bottle"]
+        ["items.Bow", "items.song_epona", "items.Bottle"]
     ],
     "castle_town_hyrule_fairy":[
-        ["items.bombs","song_zelda"]
+        ["items.bombs", "items.song_zelda"]
     ],
     "castle_town_ganon_fairy":[
-        ["items.glove:3","song_zelda"]
+        ["items.glove:3", "items.song_zelda"]
     ],
     "castle_town_warp":[
         ["items.medallion_forest"]
@@ -769,13 +769,13 @@
         ["items.bow"]
     ],
     "goron_spinning_pot_hp":[
-        ["items.glove","song_zelda"],
-        ["items.bombs","song_zelda"],
-        ["items.glove","magic_power","magic_din"],
-        ["items.bombs","magic_power","magic_din"]
+        ["items.glove", "items.song_zelda"],
+        ["items.bombs", "items.song_zelda"],
+        ["items.glove", "items.magic_power", "items.magic_din"],
+        ["items.bombs", "items.magic_power", "items.magic_din"]
     ],
     "goron_darunia":[
-        ["items.song_zelda","song_saria"]
+        ["items.song_zelda", "items.song_saria"]
     ],
     "woods_skull_kid":[
         ["items.song_saria"]
@@ -791,13 +791,13 @@
     ],
     "woods_deku_salesman_grotto":[
         ["items.bombs"],
-        ["items.hammer","song_saria"],
-        ["items.hammer","warp_forest"]
+        ["items.hammer", "items.song_saria"],
+        ["items.hammer", "items.warp_forest"]
     ],
     "woods_wolfos_grotto":[
         ["items.bombs"],
-        ["items.hammer","song_saria"],
-        ["items.hammer","warp_forest"]
+        ["items.hammer", "items.song_saria"],
+        ["items.hammer", "items.warp_forest"]
     ],
     "woods_saria": [
         ["chests.castle_town_zelda"]
@@ -808,7 +808,7 @@
     ],
     "woods_deku_theater_1":[],
     "woods_deku_theater_2":[
-        ["items.song_saria","stone_forest","stone_fire","stone_water"]
+        ["items.song_saria", "items.stone_forest", "items.stone_fire", "items.stone_water"]
     ],
     "temple_forest_entrance": [
         ["items.song_saria", "items.hookshot"],
