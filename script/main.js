@@ -1,5 +1,3 @@
-setStatus("version", "0.0.1a - nightly-20180812 - hotfix 0001");
-
 var data;
 var savestate = new SaveState();
 var activestate = "";
@@ -41,6 +39,7 @@ function changeItemInactiveEffect() {
 async function main() {
 
     data = await loadAll();
+    setStatus("version", data.version);
 
     console.log("loaded database:\r\n%o", data);
 

@@ -1,3 +1,14 @@
+function loadText(file) {
+    return fetch(new Request(file, {
+        method: 'GET',
+        headers: new Headers({
+            "Content-Type": "text/plain"
+        }),
+        mode: 'cors',
+        cache: 'default'
+    })).then(r => r.text());
+}
+
 function loadJSON(file) {
     return fetch(new Request(file, {
         method: 'GET',
@@ -24,5 +35,6 @@ async function loadAll() {
     data.skulltula_logic = await loadJSON("database/skulltula_logic.json");
     // misc
     data.lang = await loadJSON("database/lang_en.json");
+    data.version = await loadText("version");
     return data;
 }
