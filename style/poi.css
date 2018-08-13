@@ -1,5 +1,8 @@
 .poi {
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     background-size: 100%;
     border: solid 2px black;
@@ -11,66 +14,52 @@
 }
 
 .poi.chest {
-    width: 16;
-    height: 16;
-    margin-left: -8px;
-    margin-top: -8px;
+    width: calc(16px * var(--map-scale));
+    height: calc(16px * var(--map-scale));
+    margin-left: calc(-8px * var(--map-scale));
+    margin-top: calc(-8px * var(--map-scale));
 }
 
 .poi.dungeon {
-    width: 24;
-    height: 24;
-    margin-left: -12px;
-    margin-top: -12px;
+    width: calc(24px * var(--map-scale));
+    height: calc(24px * var(--map-scale));
+    margin-left: calc(-12px * var(--map-scale));
+    margin-top: calc(-12px * var(--map-scale));
 }
 
-.poi .tooltipgray {
-    visibility: hidden;
-    width: 120px;
-    background-color: gray;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 120%;
-    left: 50%;
-    margin-left: -60px;
+.poi.skulltula {
+    width: calc(20px * var(--map-scale));
+    height: calc(20px * var(--map-scale));
+    margin-left: calc(-10px * var(--map-scale));
+    margin-top: calc(-10px * var(--map-scale));
 }
 
-.poi .tooltipgray:hover {
-    display: none;
-}
-
-.poi:hover .tooltipgray {
-    visibility: visible;
+.poi.dungeon .count,
+.poi.skulltula .count {
+    display: inline-block;
+    color: black;
+    line-height: 24px;
+    font-size: calc(1em * var(--map-scale));
 }
 
 .poi .tooltip {
     visibility: hidden;
-    width: 120px;
     background-color: black;
     color: #fff;
     text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
+    border-radius: 8px;
+    padding: 5px;
     position: absolute;
+    white-space: nowrap;
     z-index: 1;
-    bottom: 170%;
-    left: 50%;
-    margin-left: -60px;
+    top: calc(50% - 14px);
+    right: calc(100% + 5px);
+    font-size: 18px;
 }
 
-.poi .tooltip::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: black transparent transparent transparent;
+.poi.dungeon .tooltip {
+    background-color: gray;
+    color: #fff;
 }
 
 .poi .tooltip:hover {

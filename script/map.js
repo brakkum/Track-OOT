@@ -60,15 +60,11 @@ function populateDungeons(map_element) {
         }
 
         var ss = document.createElement('span');
-        ss.className = "chestCount";
-        ss.style.color = "black"
-        s.style.textAlign = "center";
-        ss.display = "inline-block";
-        ss.style.lineHeight = "24px";
+        ss.className = "count";
         s.appendChild(ss);
 
         var ss = document.createElement('span');
-        ss.className = "tooltipgray";
+        ss.className = "tooltip";
         ss.innerHTML = translate(id);
         s.appendChild(ss);
 
