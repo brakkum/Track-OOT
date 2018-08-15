@@ -1,18 +1,21 @@
 var poi = {
     chests: [],
     dungeons: [],
-    dungeon_chests: []
+    skulltulas: []
 };
+
+var poi_list = {
+    mode: "",
+    ref: "",
+    entries: []
+}
 
 function populateMap() {
     var map_element = document.getElementById('map');
-    populateChests(map_element);
-    populateDungeons(map_element);
-    updateMap();
-}
-
-function populateChests(map_element) {
-    for(k=0; k<data.chests.length; k++){
+    
+    // populate chest markers
+    /////////////////////////////////
+    for(let k=0; k<data.chests.length; k++){
         var id = data.chests[k].name;
         var s = document.createElement('span');
         s.style.color = 'black';
@@ -30,25 +33,15 @@ function populateChests(map_element) {
 
         map_element.appendChild(s);
     }
-}
-
-function toggleChest(x) {
-    var val = !savestate.read("chests", x.id, 0);
-    savestate.write("chests", x.id, val);
-    if(val) {
-        x.className = "poi chest opened";
-    } else {
-        x.className = "poi chest " + checkChestAvailable(x.id)
-    }
-}
-
-function populateDungeons(map_element) {
-    for(k=0; k<data.dungeons.length; k++){
+    
+    // populate dungeon markers
+    /////////////////////////////////
+    for(let k=0; k<data.dungeons.length; k++){
         var id = data.dungeons[k].name;
         s = document.createElement('span');
-        s.id = id;
+        s.id = "dungeon_" + id;
 
-        s.onclick = new Function('clickDungeon('+id+')');
+        s.onclick = new Function('clickDungeon(dungeon_'+id+')');
         s.style.left = data.dungeons[k].x;
         s.style.top = data.dungeons[k].y;
 
@@ -72,49 +65,103 @@ function populateDungeons(map_element) {
 
         map_element.appendChild(s);
     }
+
+    // populate skulltula markers
+    /////////////////////////////////
+    for (let key in data.skulltulas) {
+        var entry = data.skulltulas[key];
+        s = document.createElement('span');
+        s.id = "skulltula_" + key;
+
+        s.onclick = new Function('clickSkulltulas(skulltula_'+key+')');
+        s.style.left = entry.x;
+        s.style.top = entry.y;
+
+        var ss = document.createElement('span');
+        ss.className = "count";
+        s.appendChild(ss);
+
+        var ss = document.createElement('span');
+        ss.className = "tooltip";
+        ss.innerHTML = translate(key);
+        s.appendChild(ss);
+
+        poi.skulltulas.push(s);
+
+        map_element.appendChild(s);
+    }
+
+    // update markers
+    /////////////////////////////////
+    updateMap();
+}
+
+function toggleChest(x) {
+    var val = !savestate.read("chests", x.id, 0);
+    savestate.write("chests", x.id, val);
+    updateMap();
+}
+
+function toggleDungeon(x){
+    var val = !savestate.read("chests", x.id, 0);
+    savestate.write("chests", x.id, val);
+    updateMap();
+}
+
+function toggleSkulltula(x){
+    var val = !savestate.read("skulltulas", x.id, 0);
+    savestate.write("skulltulas", x.id, val);
+    updateMap();
 }
 
 function clickDungeon(d) {
+    poi_list.mode = "d";
+    var ref = poi_list.ref = d.id.slice(8);
     var dn = document.getElementById('dungeon-name');
-    dn.innerHTML = translate(d.id);
-    dn.setAttribute("data-ref", d.id);
-    dn.className = "DC" + checkBeatList(d.id);
-    var DClist = document.getElementById('dungeon-list');
-    DClist.innerHTML = ""
-
-    poi.dungeon_chests = [];
-    for (var i in data.dungeon_chests[d.id]) {
-        var key = data.dungeon_chests[d.id][i];
+    dn.innerHTML = translate(ref);
+    var list = document.getElementById('dungeon-list');
+    dn.setAttribute("data-mode", "dungeon");
+    list.innerHTML = "";
+    poi_list.entries = [];
+    for (var i in data.dungeon_chests[ref]) {
+        var key = data.dungeon_chests[ref][i];
         var s = document.createElement('li');
         s.id = key;
-        s.innerHTML = translate(key);
+        s.innerHTML = translate(key);          
 
-        if (savestate.read("chests", key, 0))
-            s.className = "dungeon-chest DCopened";               
-        else if (checkLogic(data.chest_logic[key]))
-            s.className = "dungeon-chest DCavailable";               
-        else
-            s.className = "dungeon-chest DCunavailable";              
-
-        s.onclick = new Function('toggleDungeonChest(this,"'+key+'")');
+        s.onclick = new Function('toggleDungeon(this,"'+key+'")');
         s.style.cursor = "pointer";
 
-        poi.dungeon_chests.push(s);
+        poi_list.entries.push(s);
 
-        DClist.appendChild(s)
+        list.appendChild(s)
     }
+    updateMap();
 }
 
-function toggleDungeonChest(x, key){
-    var val = !savestate.read("chests", x.id, 0);
-    savestate.write("chests", x.id, val);
-    if(val)
-        x.className = "dungeon-chest DCopened";               
-    else if (checkLogic(data.chest_logic[key]))
-        x.className = "dungeon-chest DCavailable";               
-    else
-        x.className = "dungeon-chest DCunavailable"; 
+function clickSkulltulas(d) {
+    poi_list.mode = "s";
+    var ref = poi_list.ref = d.id.slice(10);
+    var dn = document.getElementById('dungeon-name');
+    dn.innerHTML = translate(ref);
+    dn.setAttribute("data-ref", ref);
+    var list = document.getElementById('dungeon-list');
+    dn.setAttribute("data-mode", "skulltula");
+    list.innerHTML = "";
+    poi_list.entries = [];
+    for (var i in data.skulltulas[ref].items) {
+        var key = data.skulltulas[ref].items[i];
+        var s = document.createElement('li');
+        s.id = key;
+        s.innerHTML = translate(key);          
 
+        s.onclick = new Function('toggleSkulltula(this,"'+key+'")');
+        s.style.cursor = "pointer";
+
+        poi_list.entries.push(s);
+
+        list.appendChild(s)
+    }
     updateMap();
 }
 
@@ -122,7 +169,7 @@ function checkChestAvailable(name) {
     return checkLogic(data.chest_logic[name]) ? "available" : "unavailable";
 }
 
-function checkChestlist(name) {
+function checkChestList(name) {
     var chestlist = data.dungeon_chests[name];
     var canGet = 0;
     var unopened = 0
@@ -145,10 +192,32 @@ function checkChestlist(name) {
     return "possible"
 }
 
+function checkSulltulaList(name) {
+    var list = data.skulltulas[name].items;
+    var canGet = 0;
+    var unopened = 0
+    for (var i = 0; i < list.length; ++i) {
+        var key = list[i];
+        if (!savestate.read("skulltulas", key, 0)) {
+            unopened++;
+            if (checkLogic(data.skulltula_logic[key])) {
+                canGet++;
+            }
+        }
+    }
+
+    if (unopened == 0)
+        return "opened"
+    if (canGet == unopened)
+        return "available";
+    if (canGet == 0)
+        return "unavailable"
+    return "possible"
+}
 
 function checkBeatList(name) {
     if (data.dungeon_logic[name].length == 0)
-        return checkChestlist(name);
+        return checkChestList(name);
 
     var chestlist = data.dungeon_chests[name];
     var unopened = false;
@@ -199,7 +268,9 @@ function updateMap() {
     for (let sk in data.skulltula_logic) {
         if (!savestate.read("skulltulas", sk, 0)) skulltulas_missing++;
     }
-
+    
+    // update chest markers
+    /////////////////////////////////
     for (var i = 0; i < poi.chests.length; ++i) {
         var x = poi.chests[i];
         if(savestate.read("chests", x.id, 0)) {
@@ -210,13 +281,17 @@ function updateMap() {
             x.className = "poi chest " + avail;
         }
     }
+    
+    // update dungeon markers
+    /////////////////////////////////
     for (var i = 0; i < poi.dungeons.length; ++i) {
         var x = poi.dungeons[i];
-        x.className = "poi dungeon " + checkChestlist(x.id);
+        var ref = x.id.slice(8);
+        x.className = "poi dungeon " + checkChestList(ref);
 
         var DCcount = 0;
-        for (var j = 0; j <  data.dungeon_chests[x.id].length; ++j) {
-            var key = data.dungeon_chests[x.id][j];
+        for (var j = 0; j <  data.dungeon_chests[ref].length; ++j) {
+            var key = data.dungeon_chests[ref][j];
             if (!savestate.read("chests", key, 0) && checkLogic(data.chest_logic[key]))
                 DCcount++;
         }
@@ -229,21 +304,65 @@ function updateMap() {
             ss.innerHTML = DCcount;
 
     }
-    for (var i = 0; i < poi.dungeon_chests.length; ++i) {
-        var x = poi.dungeon_chests[i];
-        if (savestate.read("chests", x.id, 0))
-            x.className = "dungeon-chest DCopened";               
-        else {
-            if (checkLogic(data.chest_logic[x.id])) {
-                x.className = "dungeon-chest DCavailable";
-            } else {
-                x.className = "dungeon-chest DCunavailable"; 
-            }
-        }
-    }
+    
+    // update skulltula markers
+    /////////////////////////////////
+    for (var i = 0; i < poi.skulltulas.length; ++i) {
+        var x = poi.skulltulas[i];
+        var ref = x.id.slice(10);
+        x.className = "poi skulltula " + checkSulltulaList(ref);
 
+        var SKcount = 0;
+        for (var j = 0; j <  data.skulltulas[ref].items.length; ++j) {
+            var key = data.skulltulas[ref].items[j];
+            if (!savestate.read("skulltulas", key, 0) && checkLogic(data.skulltula_logic[key]))
+            SKcount++;
+        }
+        skulltulas_available += SKcount;
+
+        var ss = x.children[0];
+        if (SKcount == 0)
+            ss.innerHTML = "";
+        else
+            ss.innerHTML = SKcount;
+
+    }
+    
+    // update list entries
+    /////////////////////////////////
     var dn = document.getElementById('dungeon-name');
-    if (!!dn.getAttribute("data-ref")) dn.className = "DC" + checkBeatList(dn.getAttribute("data-ref"));
+    switch (poi_list.mode) {
+        case "s":
+            dn.className = "DCavailable";
+            for (var i = 0; i < poi_list.entries.length; ++i) {
+                var x = poi_list.entries[i];
+                if (savestate.read("skulltulas", x.id, 0))
+                    x.className = "dungeon-chest DCopened";               
+                else {
+                    if (checkLogic(data.skulltula_logic[x.id])) {
+                        x.className = "dungeon-chest DCavailable";
+                    } else {
+                        x.className = "dungeon-chest DCunavailable"; 
+                    }
+                }
+            }
+        break;
+        case "d":
+            dn.className = "DC" + checkBeatList(poi_list.ref);
+            for (var i = 0; i < poi_list.entries.length; ++i) {
+                var x = poi_list.entries[i];
+                if (savestate.read("chests", x.id, 0))
+                    x.className = "dungeon-chest DCopened";               
+                else {
+                    if (checkLogic(data.chest_logic[x.id])) {
+                        x.className = "dungeon-chest DCavailable";
+                    } else {
+                        x.className = "dungeon-chest DCunavailable"; 
+                    }
+                }
+            }
+        break;
+    }
 
     setStatus("chests-available", chests_available);
     setStatus("chests-missing", chests_missing);

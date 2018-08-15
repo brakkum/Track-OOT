@@ -34,14 +34,6 @@
     margin-top: calc(-10px * var(--map-scale));
 }
 
-.poi.dungeon .count,
-.poi.skulltula .count {
-    display: inline-block;
-    color: black;
-    line-height: 24px;
-    font-size: calc(1em * var(--map-scale));
-}
-
 .poi .tooltip {
     visibility: hidden;
     background-color: black;
@@ -53,11 +45,26 @@
     white-space: nowrap;
     z-index: 1;
     top: calc(50% - 14px);
-    right: calc(100% + 5px);
+    right: calc(100% + 10px);
     font-size: 18px;
 }
 
-.poi.dungeon .tooltip {
+.poi.dungeon .count {
+    display: inline-block;
+    color: black;
+    line-height: 24px;
+    font-size: calc(1em * var(--map-scale));
+}
+
+.poi.skulltula .count {
+    display: inline-block;
+    color: black;
+    line-height: 24px;
+    font-size: calc(0.8em * var(--map-scale));
+}
+
+.poi.dungeon .tooltip,
+.poi.skulltula .tooltip {
     background-color: gray;
     color: #fff;
 }
