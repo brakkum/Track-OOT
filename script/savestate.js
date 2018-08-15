@@ -18,10 +18,14 @@ function SaveState(json) {
     }
 
     this.read = function read(category, key, def) {
-        if (!state[category]) {
-            return def;
+        if (category == "mixin") {
+            if (typeof mixins[key] == "function") {
+                return mixins[key]();
+            }
+        } else if (state.hasOwnProperty(category) && state[category].hasOwnProperty(key)) {
+            return state[category][key];
         }
-        return state[category][key] || def;
+        return def;
     }
 
     function runCompatibility() {
@@ -34,5 +38,17 @@ function SaveState(json) {
             }
         }
     }
+
+    var mixins = {
+        "medallions": function() {
+            return state.hasOwnProperty("items")
+                && state.items.medallion_forest
+                && state.items.medallion_fire
+                && state.items.medallion_water
+                && state.items.medallion_spirit
+                && state.items.medallion_shadow
+                && state.items.medallion_light;
+        }
+    };
 
 }

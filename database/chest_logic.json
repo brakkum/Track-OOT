@@ -328,7 +328,7 @@
     "zoras_king_zora": [
         ["items.bombs", "items.song_zelda", "items.zora_letter", "items.bottle"],
         ["items.scale", "items.song_zelda", "items.zora_letter", "items.bottle"],
-        ["items.zora_letter", "items.bottle", "items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light"],
+        ["items.zora_letter", "items.bottle", "mixin.medallions"],
         ["items.zora_letter", "items.bottle", "items.wallet:2"]
     ],
     "jabujabu_boomerang": [
@@ -744,7 +744,7 @@
         ["items.medallion_forest"]
     ],
     "castle_town_light_arrows":[
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light"]
+        ["mixin.medallions"]
     ],
     "goron_maze_left":[
         ["items.glove:2"],
@@ -925,51 +925,51 @@
         ["items.skulltula:5"]
     ],
     "castle_ganon_forest_trial": [
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light"]
+        ["mixin.medallions"]
     ],
     "castle_ganon_water_trial_left": [
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light"]
+        ["mixin.medallions"]
     ],
     "castle_ganon_water_trial_right": [
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light"]
+        ["mixin.medallions"]
     ],
     "castle_ganon_shadow_trial_first": [
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.hookshot:2"],
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.magic_power", "items.arrow_fire", "items.bow"]
+        ["mixin.medallions", "items.hookshot:2"],
+        ["mixin.medallions", "items.magic_power", "items.arrow_fire", "items.bow"]
     ],
     "castle_ganon_shadow_trial_second": [
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.hookshot:2", "items.boots_hover"],
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.magic_power", "items.arrow_fire", "items.bow"]
+        ["mixin.medallions", "items.hookshot:2", "items.boots_hover"],
+        ["mixin.medallions", "items.magic_power", "items.arrow_fire", "items.bow"]
     ],
     "castle_ganon_spirit_trial_first": [
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.hookshot", "items.bombs"]
+        ["mixin.medallions", "items.hookshot", "items.bombs"]
     ],
     "castle_ganon_spirit_trial_second": [
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.hookshot", "items.bombs", "items.magic_power", "items.lens"]
+        ["mixin.medallions", "items.hookshot", "items.bombs", "items.magic_power", "items.lens"]
     ],
     "castle_ganon_light_trial_first_left": [
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.gloves:3"]
+        ["mixin.medallions", "items.glove:3"]
     ],
     "castle_ganon_light_trial_second_left": [
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.gloves:3"]
+        ["mixin.medallions", "items.glove:3"]
     ],
     "castle_ganon_light_trial_third_left": [
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.gloves:3"]
+        ["mixin.medallions", "items.glove:3"]
     ],
     "castle_ganon_light_trial_first_right": [
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.gloves:3"]
+        ["mixin.medallions", "items.glove:3"]
     ],
     "castle_ganon_light_trial_second_right": [
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.gloves:3"]
+        ["mixin.medallions", "items.glove:3"]
     ],
     "castle_ganon_light_trial_third_right": [
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.gloves:3"]
+        ["mixin.medallions", "items.glove:3"]
     ],
     "castle_ganon_light_trail_invisible_enemies": [
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.gloves:3", "items.magic_power", "items.lens"]
+        ["mixin.medallions", "items.glove:3", "items.magic_power", "items.lens"]
     ],
     "castle_ganon_light_trial_lullaby": [
-        ["items.medallion_forest", "items.medallion_fire", "items.medallion_water", "items.medallion_spirit", "items.medallion_shadow", "items.medallion_light", "items.gloves:3", "items.song_zelda"]
+        ["mixin.medallions", "items.glove:3", "items.song_zelda"]
     ]
 
 

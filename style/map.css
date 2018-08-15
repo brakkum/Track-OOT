@@ -12,6 +12,16 @@
     grid-area: map;
 }
 
+#map .poi {
+    visibility: hidden;
+}
+
+#map[data-mode~="chest"] .poi.chest,
+#map[data-mode~="chest"] .poi.dungeon,
+#map[data-mode~="skulltula"] .poi.skulltula {
+    visibility: visible;
+}
+
 #dungeon-container {
     display: flex;
     flex-direction: column;
@@ -20,15 +30,34 @@
     grid-area: dungeon;
 }
 
-#dungeon-container .dungeon-header {
-    text-align: center;
-}
-
 #dungeon-container #dungeon-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.5em;
 }
 
+#dungeon-container #dungeon-name:after {
+    margin-left: 5px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-origin: content-box;
+    content: " ";
+}
+
+#dungeon-container #dungeon-name[data-mode="dungeon"]:after {
+    background-image: url('../images/chest.svg');
+}
+
+#dungeon-container #dungeon-name[data-mode="skulltula"]:after {
+    background-image: url('../images/skulltula.svg');
+}
+
 #dungeon-container #dungeon-list {
+    min-height: 200px;
     -webkit-padding-start: 0;
     list-style: none;
     margin: 4px;
@@ -38,6 +67,47 @@
 
 #dungeon-container #dungeon-list .dungeon-chest:hover {
     background-color: #282828;
+}
+
+/**********************************
+    map options
+**********************************/
+
+#map .map-options {
+    position: absolute;
+    top: 88%;
+    left: 2%;
+}
+
+#map .map-options .map-option {
+    display: inline-block;
+    width: calc(40px * var(--map-scale));
+    height: calc(40px * var(--map-scale));
+    background-color: rgba(0,0,0,0.3);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-origin: content-box;
+    border-radius: 20%;
+    border: solid 2px black;
+    cursor: pointer;
+    opacity: 0.3;
+}
+
+.map-option#map-option-chest {
+    background-image: url('../images/chest.svg');
+}
+
+#map[data-mode~="chest"] .map-option#map-option-chest {
+    opacity: 1;
+}
+
+.map-option#map-option-skulltula {
+    background-image: url('../images/skulltula.svg');
+}
+
+#map[data-mode~="skulltula"] .map-option#map-option-skulltula {
+    opacity: 1;
 }
 
 /**********************************
