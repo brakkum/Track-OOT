@@ -4,10 +4,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style/style.css" type="text/css">
+        <script src="script/dialogue.js" defer></script>
         <script src="script/loader.js"></script>
+        <script src="script/logic.js"></script>
+        <script src="script/savestate.js"></script>
         <script src="script/items.js"></script>
         <script src="script/map.js"></script>
-        <script src="script/savestate.js"></script>
         <script src="script/main.js" defer></script>
         <style>
             #splash {
@@ -62,7 +64,7 @@
         <div class="content">
             <div class='layout-container'>
                 <div id='item-container' data-inactive="0"></div>
-                <div id='map' data-mode="chest">
+                <div id='map' data-mode="chests">
                     <div class="slidecontainer">
                         <span class="slidetext">+ / -</span>
                         <div class="slidetrack">
@@ -99,7 +101,8 @@
         </footer>
         <div id="dialogue">
             <div id="dialogue-window">
-                <p id="dialogue_text"></p>
+                <p id="dialogue_title"></p>
+                <textarea id="dialogue_text" readonly></textarea>
                 <input id="dialogue_input">
                 <button id="dialogue_abort" focus>Cancel</button>
                 <button id="dialogue_submit">OK</button>

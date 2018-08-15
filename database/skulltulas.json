@@ -1,243 +1,114 @@
 {
-    "hyrule_field": {
-        "x": "60.0%",
-        "y": "41.5%",
-        "items": [
-            "hyrule_north_east_grotto",
-            "hyrule_west_grotto"
-        ]
+    "hyrule_north_east_grotto": {
+        "x": "57.0%",
+        "y": "25.0%"
     },
-    "kokiri": {
-        "x": "78.5%",
-        "y": "58.0%",
-        "items": [
-            "kokiri_know_it_all_brothers_child_night",
-            "kokiri_twins_adult_night",
-            "kokiri_beanspot_near_shop_child"
-        ]
+    "hyrule_west_grotto": {
+        "x": "35.2%",
+        "y": "41.5%"
     },
-    "woods": {
-        "x": "78.0%",
-        "y": "48.0%",
-        "items": [
-            "woods_mask_theater_beanspot_child",
-            "woods_deku_salesman_beanspot_child",
-            "woods_deku_salesman_magic_bean_adult",
-            "woods_labyrinth_adult_night"
-        ]
+    "kokiri_know_it_all_brothers_child_night": {
+        "x": "75.4%",
+        "y": "61.3%"
     },
-    "castle_town": {
-        "x": "52.0%",
-        "y": "20.0%",
-        "items": [
-            "castle_town_pot_room_child",
-            "castle_town_tree_child",
-            "castle_town_storm_grotto_child",
-            "castle_town_near_ganon_fairy_adult"
-        ]
+    "kokiri_twins_adult_night": {
+        "x": "80.5%",
+        "y": "61.0%"
     },
-    "kakariko": {
-        "x": "65.0%",
-        "y": "24.0%",
-        "items": [
-            "kakariko_tree_child",
-            "kakariko_skulltula_house_child_night",
-            "kakariko_construction_site_child_night",
-            "kakariko_near_gate_child_night",
-            "kakariko_tower_child_night",
-            "kakariko_impas_house_roof_adult_night",
-            "kakariko_graveyard_royal_grave_child_night",
-            "kakariko_graveyard_beanspot_child_night"
-        ]
+    "kokiri_beanspot_near_shop_child": {
+        "x": "80.5%",
+        "y": "58.0%"
     },
-    "mountain": {
-        "x": "64.0%",
-        "y": "09.0%",
-        "items": [
-            "mountain_bombable",
-            "mountain_before_goron_hammer_rock_adult_night",
-            "mountain_cave_entrance_beanspot_child",
-            "mountain_wall_hammer_rock_adult_night",
-            "mountain_crater_beanspot_child",
-            "mountain_crater_box_child"
-        ]
+    "zora_river_tree_child": {
+        "x": "70.4%",
+        "y": "34.5%"
     },
-    "goron": {
-        "x": "60.0%",
-        "y": "06.5%",
-        "items": [
-            "goron_maze_center_child",
-            "goron_center_platform_adult"
-        ]
+    "zora_river_ladder_child_night": {
+        "x": "86.0%",
+        "y": "29.2%"
     },
-    "zora_river": {
+    "zora_river_wall1_adult_night": {
         "x": "75.5%",
-        "y": "34.5%",
-        "items": [
-            "zora_river_tree_child",
-            "zora_river_ladder_child_night",
-            "zora_river_wall1_adult_night",
-            "zora_river_wall2_adult_night"
-        ]
+        "y": "34.5%"
     },
-    "zoras": {
-        "x": "93.5%",
-        "y": "29.0%",
-        "items": [
-            "zoras_wall_ice_adult_night",
-            "zoras_tree_child",
-            "zoras_wall_child_night",
-            "zoras_fairy_hidden_cave_adult_night"
-        ]
+    "zora_river_wall2_adult_night": {
+        "x": "83.5%",
+        "y": "29.2%"
     },
-    "lonlon": {
-        "x": "47.0%",
-        "y": "41.5%",
-        "items": [
-            "lonlon_tree_child_night",
-            "lonlon_paddock_fence_child_night",
-            "lonlon_wall_child_night",
-            "lonlon_window_child_night"
-        ]
+    "lonlon_tree_child_night": {
+        "x": "49.0%",
+        "y": "38.0%"
     },
-    "deku": {
-        "x": "87.0%",
-        "y": "57.0%",
-        "items": [
-            "deku_3f_compass_side_child",
-            "deku_basement_vines_child",
-            "deku_basement_metal_gate_child",
-            "deku_bombable_behind_web_child"
-        ]
+    "lonlon_paddock_fence_child_night": {
+        "x": "49.0%",
+        "y": "43.5%"
     },
-    "dodongo": {
-        "x": "59.0%",
-        "y": "13.5%",
-        "items": [
-            "dodongo_east_corridor_bombable",
-            "dodongo_east_corridor_scarecrow_adult",
-            "dodongo_above_big_staircase_adult",
-            "dodongo_big_staircase_vines",
-            "dodongo_near_boss_bombable"
-        ]
+    "lonlon_wall_child_night": {
+        "x": "44.0%",
+        "y": "41.5%"
     },
-    "jabujabu": {
-        "x": "91.5%",
-        "y": "21.0%",
-        "items": [
-            "jabujabu_b1_ruto1_child",
-            "jabujabu_b1_ruto2_child",
-            "jabujabu_b1_rising_water_child",
-            "jabujabu_1f_near_boss_child"
-        ]
+    "lonlon_window_child_night": {
+        "x": "47.1%",
+        "y": "38.0%"
     },
-    "lake": {
-        "x": "38.6%",
-        "y": "80.0%",
-        "items": [
-            "lake_near_firearrows_child_night",
-            "lake_behind_lab_child_night",
-            "lake_beanspot_child",
-            "lake_dead_tree_adult_night",
-            "lake_lab_box_adult"
-        ]
+    "lake_near_firearrows_child_night": {
+        "x": "41.5%",
+        "y": "91.0%"
     },
-    "gerudo": {
+    "lake_behind_lab_child_night": {
+        "x": "35.2%",
+        "y": "77.4%"
+    },
+    "lake_beanspot_child": {
+        "x": "37.1%",
+        "y": "74.0%"
+    },
+    "lake_dead_tree_adult_night": {
+        "x": "33.7%",
+        "y": "91.0%"
+    },
+    "lake_lab_box_adult": {
+        "x": "35.2%",
+        "y": "74.0%"
+    },
+    "gerudo_wood_plank_child_night": {
+        "x": "29.5%",
+        "y": "37.5%"
+    },
+    "gerudo_behind_carpenter_tent_adult_night": {
+        "x": "22.0%",
+        "y": "33.0%"
+    },
+    "gerudo_rock_near_carpenter_tent_adult_night": {
+        "x": "22.0%",
+        "y": "38.0%"
+    },
+    "gerudo_river_beanspot_child": {
+        "x": "24.0%",
+        "y": "35.5%"
+    },
+    "gerudo_rooftop_adult_night": {
         "x": "18.8%",
-        "y": "28.0%",
-        "items": [
-            "gerudo_wood_plank_child_night",
-            "gerudo_behind_carpenter_tent_adult_night",
-            "gerudo_rock_near_carpenter_tent_adult_night",
-            "gerudo_river_beanspot_child",
-            "gerudo_rooftop_adult_night",
-            "gerudo_horseback_archery_target_adult_night"
-        ]
+        "y": "23.8%"
     },
-    "desert": {
+    "gerudo_horseback_archery_target_adult_night": {
+        "x": "21.7%",
+        "y": "28.0%"
+    },
+    "desert_fortress_adult": {
+        "x": "14.0%",
+        "y": "25.0%"
+    },
+    "desert_palm_tree_adult_night": {
         "x": "06.4%",
-        "y": "23.5%",
-        "items": [
-            "desert_fortress_adult",
-            "desert_palm_tree_adult_night",
-            "desert_magic_bean_adult_night",
-            "desert_beanspot_child"
-        ]
+        "y": "28.5%"
     },
-    "well": {
-        "x": "68.0%",
-        "y": "23.0%",
-        "items": [
-            "well_center_child",
-            "well_center_locked_room_child",
-            "well_locked_pits_child"
-        ]
+    "desert_magic_bean_adult_night": {
+        "x": "06.4%",
+        "y": "23.5%"
     },
-    "ice_cavern": {
-        "x": "90.5%",
-        "y": "16.0%",
-        "items": [
-            "ice_cavern_ice_blades_adult",
-            "ice_cavern_block_puzzle_adult",
-            "ice_cavern_compass_room_adult"
-        ]
-    }
-
-
-    ,
-    "temple_forest": {
-        "x": "78.5%",
-        "y": "39.0%",
-        "items": [
-            "temple_forest_entrance_adult",
-            "temple_forest_pillars_adult",
-            "temple_forest_lobby_adult",
-            "temple_forest_outside_hookshot_adult",
-            "temple_forest_near_boss_adult"
-        ]
-    },
-    "temple_fire": {
-        "x": "68.0%",
-        "y": "06.5%",
-        "items": [
-            "temple_fire_big_lava_time_block_adult",
-            "temple_fire_boulder_maze_bombable_adult",
-            "temple_fire_boulder_maze_scarecrow1_adult",
-            "temple_fire_boulder_maze_scarecrow2_adult",
-            "temple_fire_near_boss_key_adult"
-        ]
-    },
-    "temple_water": {
-        "x": "36.1%",
-        "y": "91.0%",
-        "items": [
-            "temple_water_lowest_level_south_adult",
-            "temple_water_big_waterfall_adult",
-            "temple_water_near_boss_key_adult",
-            "temple_water_center_pillar_adult",
-            "temple_water_river_adult"
-        ]
-    },
-    "temple_shadow": {
-        "x": "76.0%",
-        "y": "21.0%",
-        "items": [
-            "temple_shadow_invisible_blade_adult",
-            "temple_shadow_falling_spikes_adult",
-            "temple_shadow_behind_giant_pot_adult",
-            "temple_shadow_boat_adult",
-            "temple_shadow_behind_giant_pots_adult"
-        ]
-    },
-    "temple_spirit": {
-        "x": "02.5%",
-        "y": "17.0%",
-        "items": [
-            "temple_spirit_childsegment_left",
-            "temple_spirit_childsegment_sun_room",
-            "temple_spirit_childsegment_before_iron_knight",
-            "temple_spirit_rolling_boulders_time_block_adult",
-            "temple_spirit_coloss_room_adult"
-        ]
+    "desert_beanspot_child": {
+        "x": "04.5%",
+        "y": "21.5%"
     }
 }

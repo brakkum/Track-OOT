@@ -42,12 +42,12 @@ function SaveState(json) {
     var mixins = {
         "medallions": function() {
             return state.hasOwnProperty("items")
-                && state.items.medallion_forest
-                && state.items.medallion_fire
-                && state.items.medallion_water
-                && state.items.medallion_spirit
-                && state.items.medallion_shadow
-                && state.items.medallion_light;
+                && !!state.items.medallion_forest
+                && !!state.items.medallion_fire
+                && !!state.items.medallion_water
+                && !!state.items.medallion_spirit
+                && !!state.items.medallion_shadow
+                && !!state.items.medallion_light;
         }
     };
 

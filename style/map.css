@@ -12,13 +12,13 @@
     grid-area: map;
 }
 
-#map .poi {
+#map .poi.chest,
+#map .poi.skulltula {
     visibility: hidden;
 }
 
-#map[data-mode~="chest"] .poi.chest,
-#map[data-mode~="chest"] .poi.dungeon,
-#map[data-mode~="skulltula"] .poi.skulltula {
+#map[data-mode~="chests"] .poi.chest,
+#map[data-mode~="skulltulas"] .poi.skulltula {
     visibility: visible;
 }
 
@@ -48,11 +48,11 @@
     content: " ";
 }
 
-#dungeon-container #dungeon-name[data-mode="dungeon"]:after {
+#dungeon-container #dungeon-name[data-mode="chests"]:after {
     background-image: url('../images/chest.svg');
 }
 
-#dungeon-container #dungeon-name[data-mode="skulltula"]:after {
+#dungeon-container #dungeon-name[data-mode="skulltulas"]:after {
     background-image: url('../images/skulltula.svg');
 }
 
@@ -65,7 +65,7 @@
     overflow-y: auto;
 }
 
-#dungeon-container #dungeon-list .dungeon-chest:hover {
+#dungeon-container #dungeon-list .dungeon-entry:hover {
     background-color: #282828;
 }
 
@@ -98,7 +98,7 @@
     background-image: url('../images/chest.svg');
 }
 
-#map[data-mode~="chest"] .map-option#map-option-chest {
+#map[data-mode~="chests"] .map-option#map-option-chest {
     opacity: 1;
 }
 
@@ -106,7 +106,7 @@
     background-image: url('../images/skulltula.svg');
 }
 
-#map[data-mode~="skulltula"] .map-option#map-option-skulltula {
+#map[data-mode~="skulltulas"] .map-option#map-option-skulltula {
     opacity: 1;
 }
 

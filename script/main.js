@@ -31,11 +31,19 @@ document.getElementById("map-scale-slider").addEventListener("input", function(e
     document.getElementById('map').style.setProperty("--map-scale", parseInt(event.target.value) / 100);
 });
 document.getElementById("map-option-chest").addEventListener("click", function(event) {
-    document.getElementById('map').setAttribute("data-mode", "chest");
+    document.getElementById('map').setAttribute("data-mode", "chests");
+    poi_list.mode = "chests";
+    if (poi_list.ref != "") {
+        clickDungeon(document.getElementById("dungeon_"+poi_list.ref));
+    }
     updateMap();
 });
 document.getElementById("map-option-skulltula").addEventListener("click", function(event) {
-    document.getElementById('map').setAttribute("data-mode", "skulltula");
+    document.getElementById('map').setAttribute("data-mode", "skulltulas");
+    poi_list.mode = "skulltulas";
+    if (poi_list.ref != "") {
+        clickDungeon(document.getElementById("dungeon_"+poi_list.ref));
+    }
     updateMap();
 });
 
@@ -110,7 +118,7 @@ async function state_Save() {
     if (stateChoice.value != "") {
         stateChoice.value = activestate;
         localStorage.setItem(activestate, savestate.export());
-        await dialogue_alert("Saved \""+activestate+"\" successfully.");
+        await Dialogue.alert("Saved \""+activestate+"\" successfully.");
     }
 }
 
@@ -118,7 +126,7 @@ async function state_Load() {
     if (stateChoice.value != "") {
         var confirm = true;
         if (activestate != "") {
-            confirm = await dialogue_confirm("Do you really want to load? Unsaved changes will be lost.");
+            confirm = await Dialogue.confirm("Do you really want to load? Unsaved changes will be lost.");
         }
         if (!!confirm) {
             var item = localStorage.getItem(stateChoice.value);
@@ -135,7 +143,7 @@ async function state_Load() {
 
 async function state_Delete() {
     if (stateChoice.value != ""
-    && await dialogue_confirm("Do you really want to delete \""+stateChoice.value+"\"?")) {
+    && await Dialogue.confirm("Do you really want to delete \""+stateChoice.value+"\"?")) {
         localStorage.removeItem(stateChoice.value);
         if (stateChoice.value != activestate) {
             stateChoice.value = activestate;
@@ -149,19 +157,19 @@ async function state_Delete() {
 }
 
 async function state_New() {
-    var name = await dialogue_prompt("Please enter a new name! (Unsafed changes will be lost.)");
+    var name = await Dialogue.prompt("Please enter a new name! (Unsafed changes will be lost.)");
     if (name == "") {
-        dialogue_alert("The name can not be empty.");
+        Dialogue.alert("The name can not be empty.");
         state_New();
         return;
     }
     if (localStorage.hasOwnProperty(name)) {
-        dialogue_alert("The name already exists.");
+        Dialogue.alert("The name already exists.");
         state_New();
         return;
     }
     if (!!name) {
-        if (activestate != "" || await dialogue_confirm("Do you want to reset the current state?")) {
+        if (activestate != "" || await Dialogue.confirm("Do you want to reset the current state?")) {
             savestate = new SaveState();
         }
         localStorage.setItem(name, savestate.export());
@@ -179,28 +187,28 @@ async function state_Export() {
     if (stateChoice.value != "") {
         var confirm = true;
         if (activestate != "") {
-            confirm = await dialogue_confirm("The last saved state will be exported.");
+            confirm = await Dialogue.confirm("The last saved state will be exported.");
         }
         if (!!confirm) {
             var item = {
                 name: stateChoice.value,
                 data: JSON.parse(localStorage.getItem(stateChoice.value))
             };
-            dialogue_alert("Here is your export string of the latest saved state:<br /><br />"+btoa(JSON.stringify(item)));
+            Dialogue.alert("Here is your export string of the latest saved state", btoa(JSON.stringify(item)));
         }
     }
 }
 
 async function state_Import() {
-    var data = await dialogue_prompt("Please enter export string!");
+    var data = await Dialogue.prompt("Please enter export string!");
     if (data != null) {
         data = JSON.parse(atob(data));
-        if (localStorage.hasOwnProperty(data.name) && !(await dialogue_confirm("There is already a savegame with this name. Replace savegame?."))) {
+        if (localStorage.hasOwnProperty(data.name) && !(await Dialogue.confirm("There is already a savegame with this name. Replace savegame?."))) {
             return;
         }
         localStorage.setItem(data.name, JSON.stringify(data.data));
         prepairSavegameChoice();
-        if (!!(await dialogue_confirm("Imported \""+data.name+"\" successfully.<br /><br />Do you want to load the imported state?" + (activestate == "" ? "" : " Unsaved changes will be lost.")))) {
+        if (!!(await Dialogue.confirm("Imported \""+data.name+"\" successfully.", "Do you want to load the imported state?" + (activestate == "" ? "" : " Unsaved changes will be lost.")))) {
             stateChoice.value = data.name;
             var item = localStorage.getItem(data.name);
             if (item != "" && item != "null") {
@@ -215,50 +223,4 @@ async function state_Import() {
             updateMap();
         }
     }
-}
-
-var dlg         = document.getElementById("dialogue");
-var dlg_txt     = document.getElementById("dialogue_text");
-var dlg_ok      = document.getElementById("dialogue_submit");
-var dlg_abort   = document.getElementById("dialogue_abort");
-var dlg_input   = document.getElementById("dialogue_input");
-function dialogue_alert(msg) {
-    return new Promise(function(resolve) {
-        dlg.className = "alert";
-        dlg_txt.innerHTML = msg;
-        dlg_ok.onclick = function() {
-            resolve(true);
-            dlg.className = "";
-        };
-    });
-}
-function dialogue_confirm(msg) {
-    return new Promise(function(resolve) {
-        dlg.className = "confirm";
-        dlg_txt.innerHTML = msg;
-        dlg_ok.onclick = function() {
-            resolve(true);
-            dlg.className = "";
-        };
-        dlg_abort.onclick = function() {
-            resolve(false);
-            dlg.className = "";
-        };
-    });
-}
-function dialogue_prompt(msg) {
-    return new Promise(function(resolve, reject) {
-        dlg.className = "prompt";
-        dlg_txt.innerHTML = msg;
-        dlg_ok.onclick = function() {
-            resolve(dlg_input.value);
-            dlg.className = "";
-            dlg_input.value = "";
-        };
-        dlg_abort.onclick = function() {
-            resolve(null);
-            dlg.className = "";
-            dlg_input.value = "";
-        };
-    });
 }

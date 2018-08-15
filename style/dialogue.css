@@ -16,8 +16,24 @@
     background-color: white;
 }
 
-#dialogue #dialogue-window #dialogue_text {
+#dialogue #dialogue-window #dialogue_title {
     color: black;
+    max-width: 500px;
+    overflow: hidden;
+}
+
+#dialogue #dialogue-window #dialogue_text {
+    display: block;
+    color: black;
+    width: 500px;
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    resize: none;
+}
+#dialogue #dialogue-window #dialogue_text.empty {
+    display: none;
 }
 
 #dialogue.alert,

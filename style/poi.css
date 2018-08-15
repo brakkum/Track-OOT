@@ -13,7 +13,8 @@
     z-index: 10000;
 }
 
-.poi.chest {
+.poi.chest,
+.poi.skulltula {
     width: calc(16px * var(--map-scale));
     height: calc(16px * var(--map-scale));
     margin-left: calc(-8px * var(--map-scale));
@@ -25,13 +26,6 @@
     height: calc(24px * var(--map-scale));
     margin-left: calc(-12px * var(--map-scale));
     margin-top: calc(-12px * var(--map-scale));
-}
-
-.poi.skulltula {
-    width: calc(20px * var(--map-scale));
-    height: calc(20px * var(--map-scale));
-    margin-left: calc(-10px * var(--map-scale));
-    margin-top: calc(-10px * var(--map-scale));
 }
 
 .poi .tooltip {
@@ -56,15 +50,7 @@
     font-size: calc(1em * var(--map-scale));
 }
 
-.poi.skulltula .count {
-    display: inline-block;
-    color: black;
-    line-height: 24px;
-    font-size: calc(0.8em * var(--map-scale));
-}
-
-.poi.dungeon .tooltip,
-.poi.skulltula .tooltip {
+.poi.dungeon .tooltip {
     background-color: gray;
     color: #fff;
 }
