@@ -158,3 +158,17 @@
     background: black;
     cursor: pointer;
 }
+
+/**********************************
+    keys
+**********************************/
+
+#key-container {
+    top: 100%;
+}
+
+#key-container .item-row .item,
+#key-container .item-row .icon {
+    width: 40px;
+    height: 40px;
+}

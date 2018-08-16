@@ -25,6 +25,7 @@ async function loadAll() {
     // items
     data.items = await loadJSON("database/items.json");
     data.item_grid = await loadJSON("database/item_grid.json");
+    data.item_keys = await loadJSON("database/item_keys.json");
     // chests, dungeons & skulltulas
     data.chests = await loadJSON("database/chests.json");
     data.dungeons = await loadJSON("database/dungeons.json");

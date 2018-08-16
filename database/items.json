@@ -51,6 +51,13 @@
         "max": 5
     },
 
+    "membership":{
+        "max": 1
+    },
+    "saw":{
+        "max": 1
+    },
+
     "sword_kokiri":{
         "max": 1
     },
@@ -151,46 +158,75 @@
     "medallion_light":{
         "max": 1
     },
+
     "key_small_forest": {
-        "max": 5
+        "max": 5,
+        "type": "counting",
+        "images": "key_small.png"
     },
     "key_boss_forest": {
-        "max": 1
+        "max": 1,
+        "images": "key_boss.png"
     },
+
     "key_small_fire": {
-        "max": 6
+        "max": 6,
+        "type": "counting",
+        "images": "key_small.png"
     },
     "key_boss_fire": {
-        "max": 1
+        "max": 1,
+        "images": "key_boss.png"
     },
+
     "key_small_water": {
-        "max": 5
+        "max": 5,
+        "type": "counting",
+        "images": "key_small.png"
     },
     "key_boss_water": {
-        "max": 1
+        "max": 1,
+        "images": "key_boss.png"
     },
+
     "key_small_shadow": {
-        "max": 4
+        "max": 4,
+        "type": "counting",
+        "images": "key_small.png"
     },
     "key_boss_shadow": {
-        "max": 1
+        "max": 1,
+        "images": "key_boss.png"
     },
+
     "key_small_spirit": {
-        "max": 5
+        "max": 5,
+        "type": "counting",
+        "images": "key_small.png"
     },
     "key_boss_spirit": {
-        "max": 1
+        "max": 1,
+        "images": "key_boss.png"
     },
+
     "key_small_gerudo": {
-        "max": 4
+        "max": 4,
+        "type": "counting",
+        "images": "key_small.png"
     },
     "key_small_training": {
-        "max": 9
+        "max": 9,
+        "type": "counting",
+        "images": "key_small.png"
     },
     "key_small_well": {
-        "max": 3
+        "max": 3,
+        "type": "counting",
+        "images": "key_small.png"
     },
     "key_small_ganon": {
-        "max": 2
+        "max": 2,
+        "type": "counting",
+        "images": "key_small.png"
     }
 }
