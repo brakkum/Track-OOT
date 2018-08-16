@@ -109,7 +109,7 @@ function clickDungeon(ref) {
         s.id = key;
         s.innerHTML = translate(key);
 
-        s.onclick = new Function('togglePOI(this, "'+poi_list.mode+'", "'+key+'")');
+        s.onclick = new Function('togglePOI("'+poi_list.mode+'", "'+key+'")');
         s.style.cursor = "pointer";
 
         poi_list.entries.push(s);
