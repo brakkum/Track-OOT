@@ -19,7 +19,7 @@ function populateMap() {
         var s = document.createElement('span');
         s.style.color = 'black';
         s.id = id;
-        s.onclick = new Function('togglePOI("chests", '+id+')');
+        s.onclick = new Function('togglePOI("chests", "'+id+'")');
         s.style.left = data.chests[id].x;
         s.style.top = data.chests[id].y;
 
@@ -70,7 +70,7 @@ function populateMap() {
         var s = document.createElement('span');
         s.style.color = 'black';
         s.id = id;
-        s.onclick = new Function('togglePOI("skulltulas", '+id+')');
+        s.onclick = new Function('togglePOI("skulltulas", "'+id+'")');
         s.style.left = data.skulltulas[id].x;
         s.style.top = data.skulltulas[id].y;
 
@@ -89,9 +89,9 @@ function populateMap() {
     updateMap();
 }
 
-function togglePOI(category, x){
-    var val = !savestate.read(category, x.id, 0);
-    savestate.write(category, x.id, val);
+function togglePOI(category, key){
+    var val = !savestate.read(category, key, 0);
+    savestate.write(category, key, val);
     updateMap();
 }
 
