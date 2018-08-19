@@ -1,167 +1,242 @@
 {
     "bow":{
-        "max": 3
+        "max": 3,
+        "images": "bow.png",
+        "counting": ["", "30", "40", "50"]
     },
     "hookshot": {
-        "max": 2
+        "max": 2,
+        "images": [
+            "hookshot_small.png",
+            "hookshot_small.png",
+            "hookshot_long.png"
+        ]
     },
     "hammer":{
-        "max": 1
+        "max": 1,
+        "images": "hammer.png"
     },
     "slingshot":{
-        "max": 3
+        "max": 3,
+        "images": "slingshot.png",
+        "counting": ["", "30", "40", "50"]
     },
     "boomerang":{
-        "max": 1
+        "max": 1,
+        "images": "boomerang.png"
     },
     "bombs":{
-        "max": 3
+        "max": 3,
+        "images": "bombs.png",
+        "counting": ["", "20", "30", "40"]
     },
     "lens":{
-        "max": 1
+        "max": 1,
+        "images": "lens.png"
     },
     "magic_din":{
-        "max": 1
+        "max": 1,
+        "images": "magic_din.png"
     },
     "magic_farore":{
-        "max": 1
+        "max": 1,
+        "images": "magic_farore.png"
     },
     "magic_nayru":{
-        "max": 1
+        "max": 1,
+        "images": "magic_nayru.png"
     },
     "arrow_fire":{
-        "max": 1
+        "max": 1,
+        "images": "arrow_fire.png"
     },
     "arrow_ice":{
-        "max": 1
+        "max": 1,
+        "images": "arrow_ice.png"
     },
     "arrow_light":{
-        "max": 1
+        "max": 1,
+        "images": "arrow_light.png"
     },
     "ocarina":{
-        "max": 2
+        "max": 2,
+        "images": [
+            "ocarina_saria.png",
+            "ocarina_saria.png",
+            "ocarina_time.png"
+        ]
     },
     "bottle":{
-        "max": 4
+        "max": 4,
+        "counting": true,
+        "images": "bottle.png"
     },
     "wallet":{
-        "max": 2
+        "max": 2,
+        "images": [
+            "wallet_default.png",
+            "wallet_silver.png",
+            "wallet_gold.png"
+        ],
+        "counting": ["99", "200", "500"]
     },
     "skulltula":{
-        "max": 5
-    },
-
-    "membership":{
-        "max": 1
-    },
-    "saw":{
-        "max": 1
+        "max": 100,
+        "counting": true,
+        "images": "skulltula.png"
     },
 
     "sword_kokiri":{
-        "max": 1
+        "max": 1,
+        "images": "sword_kokiri.png"
     },
     "sword_biggoron":{
-        "max": 1
+        "max": 1,
+        "images": "sword_biggoron.png"
     },
     "shield_mirror":{
-        "max": 1
+        "max": 1,
+        "images": "shield_mirror.png"
     },
     "tunic_fire":{
-        "max": 1
+        "max": 1,
+        "images": "tunic_fire.png"
     },
     "tunic_water":{
-        "max": 1
+        "max": 1,
+        "images": "tunic_water.png"
     },
     "boots_iron":{
-        "max": 1
+        "max": 1,
+        "images": "boots_iron.png"
     },
     "boots_hover":{
-        "max": 1
+        "max": 1,
+        "images": "boots_hover.png"
     },
     "glove":{
-        "max": 3
+        "max": 3,
+        "images": [
+            "glove_goron.png",
+            "glove_goron.png",
+            "glove_silver.png",
+            "glove_gold.png"
+        ]
     },
     "scale":{
-        "max": 2
+        "max": 2,
+        "images": [
+            "scale_silver.png",
+            "scale_silver.png",
+            "scale_gold.png"
+        ]
     },
     "stone_of_agony":{
-        "max": 1
+        "max": 1,
+        "images": "stone_of_agony.png"
     },
     "magic_power":{
-        "max": 2
+        "max": 2,
+        "images": [
+            "magic_power_small.png",
+            "magic_power_small.png",
+            "magic_power_big.png"
+        ]
     },
     "zora_letter":{
-        "max": 1
+        "max": 1,
+        "images": "zora_letter.png"
     }, 
 
     "song_zelda":{
-        "max": 1
+        "max": 1,
+        "images": "song_zelda.png"
     },
     "song_epona":{
-        "max": 1
+        "max": 1,
+        "images": "song_epona.png"
     },
     "song_sun":{
-        "max": 1
+        "max": 1,
+        "images": "song_sun.png"
     },
     "song_saria":{
-        "max": 1
+        "max": 1,
+        "images": "song_saria.png"
     },
     "song_time":{
-        "max": 1
+        "max": 1,
+        "images": "song_time.png"
     },
     "song_storm":{
-        "max": 1
+        "max": 1,
+        "images": "song_storm.png"
     },
     "warp_forest":{
-        "max": 1
-    },
-    "warp_light":{
-        "max": 1
+        "max": 1,
+        "images": "warp_forest.png"
     },
     "warp_fire":{
-        "max": 1
+        "max": 1,
+        "images": "warp_fire.png"
     },
     "warp_water":{
-        "max": 1
+        "max": 1,
+        "images": "warp_water.png"
     },
     "warp_shadow":{
-        "max": 1
+        "max": 1,
+        "images": "warp_shadow.png"
     },
     "warp_spirit":{
-        "max": 1
+        "max": 1,
+        "images": "warp_spirit.png"
     },
+    "warp_light":{
+        "max": 1,
+        "images": "warp_light.png"
+    },
+
     "stone_forest":{
-        "max": 1
+        "max": 1,
+        "images": "stone_forest.png"
     },
     "stone_fire":{
-        "max": 1
+        "max": 1,
+        "images": "stone_fire.png"
     },
     "stone_water":{
-        "max": 1
+        "max": 1,
+        "images": "stone_water.png"
     },
     "medallion_forest":{
-        "max": 1
+        "max": 1,
+        "images": "medallion_forest.png"
     },
     "medallion_fire":{
-        "max": 1
+        "max": 1,
+        "images": "medallion_fire.png"
     },
     "medallion_water":{
-        "max": 1
+        "max": 1,
+        "images": "medallion_water.png"
     },
     "medallion_spirit":{
-        "max": 1
+        "max": 1,
+        "images": "medallion_spirit.png"
     },
     "medallion_shadow":{
-        "max": 1
+        "max": 1,
+        "images": "medallion_shadow.png"
     },
     "medallion_light":{
-        "max": 1
+        "max": 1,
+        "images": "medallion_light.png"
     },
 
     "key_small_forest": {
         "max": 5,
-        "type": "counting",
+        "counting": true,
         "images": "key_small.png"
     },
     "key_boss_forest": {
@@ -171,7 +246,7 @@
 
     "key_small_fire": {
         "max": 6,
-        "type": "counting",
+        "counting": true,
         "images": "key_small.png"
     },
     "key_boss_fire": {
@@ -181,7 +256,7 @@
 
     "key_small_water": {
         "max": 5,
-        "type": "counting",
+        "counting": true,
         "images": "key_small.png"
     },
     "key_boss_water": {
@@ -191,7 +266,7 @@
 
     "key_small_shadow": {
         "max": 4,
-        "type": "counting",
+        "counting": true,
         "images": "key_small.png"
     },
     "key_boss_shadow": {
@@ -201,7 +276,7 @@
 
     "key_small_spirit": {
         "max": 5,
-        "type": "counting",
+        "counting": true,
         "images": "key_small.png"
     },
     "key_boss_spirit": {
@@ -211,22 +286,22 @@
 
     "key_small_gerudo": {
         "max": 4,
-        "type": "counting",
+        "counting": true,
         "images": "key_small.png"
     },
     "key_small_training": {
         "max": 9,
-        "type": "counting",
+        "counting": true,
         "images": "key_small.png"
     },
     "key_small_well": {
         "max": 3,
-        "type": "counting",
+        "counting": true,
         "images": "key_small.png"
     },
     "key_small_ganon": {
         "max": 2,
-        "type": "counting",
+        "counting": true,
         "images": "key_small.png"
     }
 }

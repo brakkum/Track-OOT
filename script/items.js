@@ -28,6 +28,7 @@ function createItemButton(cont, name) {
     el.classList.add("item");
     setVisual(el, 0);
     el.onclick = new Function('toggleItem('+name+')');
+    el.oncontextmenu = new Function('untoggleItem('+name+')');
     itemGridEls.push(el);
     cont.appendChild(el);
 }
@@ -40,27 +41,43 @@ function createItemIcon(cont, img) {
 }
 
 function toggleItem(el) {
-    var max = data.items[el.id].max;
     var val = savestate.read("items", el.id, 0);
-    if (++val > max) {
+    if (++val > data.items[el.id].max) {
         val = 0;
     }
     savestate.write("items", el.id, val);
     setVisual(el, val);
     updateMap();
+    event.preventDefault();
+    return false;
+}
+
+function untoggleItem(el) {
+    var val = savestate.read("items", el.id, 0);
+    if (--val < 0) {
+        val = data.items[el.id].max;
+    }
+    savestate.write("items", el.id, val);
+    setVisual(el, val);
+    updateMap();
+    event.preventDefault();
+    return false;
 }
 
 function setVisual(el, val) {
     let id = el.id;
-    // update counting
-    if (data.items[el.id].type == "counting") {
-        el.innerHTML = val;
-    }
-    // update (in-)active
     if (val == 0) {
         el.classList.add("item-inactive");
+        el.innerHTML = "";
     } else {
         el.classList.remove("item-inactive");
+        if (!!data.items[el.id].counting) {
+            if (Array.isArray(data.items[el.id].counting)) {
+                el.innerHTML = data.items[el.id].counting[val];
+            } else {
+                el.innerHTML = val;
+            }
+        }
     }
     setImage(el, val);
 }
@@ -75,11 +92,7 @@ function setImage(el, val) {
             el.style.backgroundImage = "url('images/" + imgs + "')";
         }
     } else { // no image file defined
-        if (data.items[id].max > 1) {
-            el.style.backgroundImage = "url('images/" + id + val + ".png')";
-        } else {
-            el.style.backgroundImage = "url('images/" + id + ".png')";
-        }
+        el.style.backgroundImage = "url('images/unknown.png')";
     }
 }
 
