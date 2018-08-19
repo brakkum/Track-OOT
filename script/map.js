@@ -153,18 +153,32 @@ function updateMap() {
         x.className = "poi dungeon " + checkList(poi_list.mode, ref);
 
         var DCcount = 0;
-        for (var j = 0; j <  data.dungeons[ref][poi_list.mode].length; ++j) {
-            var key = data.dungeons[ref][poi_list.mode][j];
-            if (!savestate.read(poi_list.mode, key, 0) && checkLogic(poi_list.mode, key))
+        for (var j = 0; j <  data.dungeons[ref].chests.length; ++j) {
+            var key = data.dungeons[ref]["chests"][j];
+            if (!savestate.read("chests", key, 0) && checkLogic("chests", key))
                 DCcount++;
         }
         chests_available+=DCcount;
-
-        var ss = x.children[0];
-        if (DCcount == 0)
-            ss.innerHTML = "";
-        else
-            ss.innerHTML = DCcount;
+        var SKcount = 0;
+        for (var j = 0; j <  data.dungeons[ref].skulltulas.length; ++j) {
+            var key = data.dungeons[ref]["skulltulas"][j];
+            if (!savestate.read("skulltulas", key, 0) && checkLogic("skulltulas", key))
+            SKcount++;
+        }
+        skulltulas_available+=SKcount;
+        if (poi_list.mode == "chests") {
+            var ss = x.children[0];
+            if (DCcount == 0)
+                ss.innerHTML = "";
+            else
+                ss.innerHTML = DCcount;
+        } else if (poi_list.mode == "skulltulas") {
+            var ss = x.children[0];
+            if (SKcount == 0)
+                ss.innerHTML = "";
+            else
+                ss.innerHTML = SKcount;
+        }
 
     }
     
