@@ -283,6 +283,16 @@
         "max": 1,
         "images": "key_boss.png"
     },
+    
+    "key_small_ganon": {
+        "max": 2,
+        "counting": true,
+        "images": "key_small.png"
+    },
+    "key_boss_ganon": {
+        "max": 1,
+        "images": "key_boss.png"
+    },
 
     "key_small_gerudo": {
         "max": 4,
@@ -296,11 +306,6 @@
     },
     "key_small_well": {
         "max": 3,
-        "counting": true,
-        "images": "key_small.png"
-    },
-    "key_small_ganon": {
-        "max": 2,
         "counting": true,
         "images": "key_small.png"
     }
