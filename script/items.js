@@ -68,12 +68,15 @@ function setVisual(el, val) {
     let id = el.id;
     if (val == 0) {
         el.classList.add("item-inactive");
-        el.innerHTML = "";
     } else {
         el.classList.remove("item-inactive");
-        if (!!data.items[el.id].counting) {
-            if (Array.isArray(data.items[el.id].counting)) {
-                el.innerHTML = data.items[el.id].counting[val];
+    }
+    if (!!data.items[el.id].counting) {
+        if (Array.isArray(data.items[el.id].counting)) {
+            el.innerHTML = data.items[el.id].counting[val];
+        } else {
+            if (val == 0) {
+                el.innerHTML = "";
             } else {
                 el.innerHTML = val;
             }
