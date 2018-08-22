@@ -250,7 +250,7 @@ function recursiveGetLogic(root) {
         case "logic-value":
             var el = root.children[0];
             if (!el.classList.contains("placeholder"))
-                return {type:"value",el:recursiveGetLogic(el),value:root.querySelector("input").value};
+                return {type:"value",el:recursiveGetLogic(el),value:parseInt(root.querySelector("input").value)};
             else
                 return {type:"value",el:null,value:0};
         default:
@@ -287,6 +287,10 @@ function addLogicEl(el, target) {
     parent.insertBefore(el, target);
     if (!isMultiOperator(parent)) {
         target.style.display = "none";
+    }
+    var input = el.querySelector('input');
+    if (!!input) {
+        input.onchange = exportLogic;
     }
     return el;
 }
