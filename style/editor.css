@@ -1,0 +1,112 @@
+
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+
+.inactive {
+    display: none;
+}
+
+.accordion .card-body {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#logic_choice_board {
+    display: block;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 2px;
+    border: 1px solid gray;
+    height: 800px;
+    width: 100%;
+    overflow: auto;
+}
+
+#logic_output {
+    display: block;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 2px;
+    border: 1px solid gray;
+    height: 200px;
+    width: 100%;
+    resize: none;
+}
+
+.logic-operator {
+    display: table;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 2px;
+    cursor: move;
+    user-select: none;
+}
+
+.logic-operator * {
+    height: 25px;
+}
+
+.logic-operator.logic-or {
+    background-color: lightgreen;
+    border: 1px solid green;
+}
+
+.logic-operator.logic-and {
+    background-color: lightyellow;
+    border: 1px solid orange;
+}
+
+.logic-operator.logic-not {
+    background-color: lightpink;
+    border: 1px solid red;
+}
+
+.logic-operator.logic-value {
+    background-color: lightcyan;
+    border: 1px solid deepskyblue;
+}
+
+.logic-operator.logic-value input {
+    width: 50px;
+    margin: 0 5px;
+}
+
+.logic-operator .text {
+    padding: 0 5px;
+}
+
+.placeholder {
+    padding: 0 5px;
+    margin: 0 5px;
+    background-color: lightgray;
+    border: 1px solid gray;
+    border-radius: 2px;
+}
+
+.logic-item {
+    display: inline-table;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 2px;
+    background-color: rgb(130, 235, 229);
+    border: 1px solid rgb(37, 167, 128);
+    cursor: move;
+    user-select: none;
+}
+
+.logic-mixin {
+    display: inline-table;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 2px;
+    background-color: rgb(181, 100, 197);
+    border: 1px solid rgb(136, 60, 187);
+    cursor: move;
+    user-select: none;
+}
+
+.logic-operator:not(.logic-value) > .logic-item {
+    display: table;
+}

@@ -1,0 +1,120 @@
+<html>
+    <head>
+        <title>Tracker for OOT-Randomizer</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <script src="script/loader.js"></script>
+        <script src="script/editor.js" defer></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="style/editor.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-5">
+                    <ul id="logics" class="accordion">
+                        <li class="card">
+                            <div class="card-header" id="headingChest">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed card-name" data-toggle="collapse" data-target="#collapseChest" aria-expanded="false" aria-controls="collapseChest">
+                                        Chests
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseChest" class="collapse" aria-labelledby="headingChest" data-parent="#logics">
+                                <div class="card-body" id="category_chest">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="card">
+                            <div class="card-header" id="headingSkulltula">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed card-name" data-toggle="collapse" data-target="#collapseSkulltula" aria-expanded="false" aria-controls="collapseSkulltula">
+                                        Skulltulas
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseSkulltula" class="collapse" aria-labelledby="headingSkulltula" data-parent="#logics">
+                                <div class="card-body" id="category_skulltula">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="card">
+                            <div class="card-header" id="headingDungeon">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed card-name" data-toggle="collapse" data-target="#collapseDungeon" aria-expanded="false" aria-controls="collapseDungeon">
+                                        Dungeons
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseDungeon" class="collapse" aria-labelledby="headingDungeon" data-parent="#logics">
+                                <div class="card-body" id="category_dungeon">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <div id="logic_choice_name">
+                        unknown
+                    </div>
+                    <div id="logic_choice_board" ondrop="deleteElement(event)" ondragover="allowDrop(event)">
+                        <span class="placeholder" ondrop="dropOnPlaceholder(event)" ondragover="allowDrop(event)">...</span>
+                    </div>
+                    <textarea id="logic_output"></textarea>
+                </div>
+                <div class="col-3">
+                        <ul id="logical" class="accordion">
+                            <li class="card">
+                                <div class="card-header" id="headingLogic">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed card-name" data-toggle="collapse" data-target="#collapseLogic" aria-expanded="false" aria-controls="collapseLogic">
+                                            Logic
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseLogic" class="collapse" aria-labelledby="headingLogic" data-parent="#logical">
+                                    <div class="card-body" id="logic_operation">
+                                        <div id="logic-and" class="logic-operator logic-and" draggable="true">
+                                            <div class="text">AND</div>
+                                            <span class="placeholder">...</span>
+                                        </div>
+                                        <div id="logic-or" class="logic-operator logic-or" draggable="true">
+                                            <div class="text">OR</div>
+                                            <span class="placeholder">...</span>
+                                        </div>
+                                        <div id="logic-not" class="logic-operator logic-not" draggable="true">
+                                            <span class="text">NOT</span>
+                                            <span class="placeholder">...</span>
+                                        </div>
+                                        <div id="logic-value" class="logic-operator logic-value" draggable="true">
+                                            <span class="placeholder">...</span>
+                                            <span class="text">MIN</span>
+                                            <input type="number">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="card">
+                                <div class="card-header" id="headingItems">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed card-name" data-toggle="collapse" data-target="#collapseItems" aria-expanded="false" aria-controls="collapseItems">
+                                            Items
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseItems" class="collapse" aria-labelledby="headingItems" data-parent="#logical">
+                                    <div class="card-body" id="logic_items">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
