@@ -1,4 +1,10 @@
 
+/**
+ * TODO: add clipboard/editor clear button
+ * TODO: add save button
+ * TODO: export as file (maybe with option to export patch only)
+ */
+
 function translate(index) {
     if (!!data.lang[index]) {
         return data.lang[index];
@@ -169,7 +175,7 @@ function testLogic(data, logic) {
 
 // set/get logic
 function setLogic(logic) {
-    removeLogicEl(document.getElementById("logic_choice_board").children[0]);
+    removeLogicEl(document.getElementById("logic_choice_board").children[1]);
     return recursiveSetLogic(logic, document.getElementById("logic_choice_board").querySelector('.placeholder'));
 }
 
@@ -216,11 +222,12 @@ function recursiveSetLogic(logic, root) {
 }
 
 function getLogic() {
-    return recursiveGetLogic(document.getElementById("logic_choice_board").children[0]);
+    return recursiveGetLogic(document.getElementById("logic_choice_board").children[1]);
 }
 
 function recursiveGetLogic(root) {
     switch (root.getAttribute("data-id")) {
+        case null:
         case "":
             return null;
         case "logic-and":
@@ -248,7 +255,7 @@ function recursiveGetLogic(root) {
             else
                 return {type:"not",el:null};
         case "logic-value":
-            var el = root.children[0];
+            var el = root.children[1];
             if (!el.classList.contains("placeholder"))
                 return {type:"value",el:recursiveGetLogic(el),value:parseInt(root.querySelector("input").value)};
             else

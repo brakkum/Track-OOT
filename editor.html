@@ -55,60 +55,77 @@
                     </ul>
                 </div>
                 <div class="col-4">
-                    <div id="logic_choice_name">
-                        unknown
+
+                    <div id="logic_editor">
+                        <div id="logic_choice_board">
+                            <div id="logic_choice_name">
+                                unknown
+                            </div>
+                            <span class="placeholder" ondrop="dropOnPlaceholder(event)" ondragover="allowDrop(event)">...</span>
+                        </div>
+                
+                        <div id="logic_clipboard" class="logic-and">
+                            <div>
+                                clipboard
+                            </div>
+                            <span class="placeholder" ondrop="dropOnPlaceholder(event)" ondragover="allowDrop(event)">...</span>
+                        </div>
+                    
+                        <div id="logic_trash" ondrop="deleteElement(event)" ondragover="allowDrop(event)">
+                            <div>
+                                delete
+                            </div>
+                        </div>
+                        
+                        <textarea id="logic_output"></textarea>
+                        
                     </div>
-                    <div id="logic_choice_board" ondrop="deleteElement(event)" ondragover="allowDrop(event)">
-                        <span class="placeholder" ondrop="dropOnPlaceholder(event)" ondragover="allowDrop(event)">...</span>
-                    </div>
-                    <textarea id="logic_output"></textarea>
                 </div>
                 <div class="col-3">
-                        <ul id="logical" class="accordion">
-                            <li class="card">
-                                <div class="card-header" id="headingLogic">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed card-name" data-toggle="collapse" data-target="#collapseLogic" aria-expanded="false" aria-controls="collapseLogic">
-                                            Logic
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="collapseLogic" class="collapse" aria-labelledby="headingLogic" data-parent="#logical">
-                                    <div class="card-body" id="logic_operation">
-                                        <div id="logic-and" class="logic-operator logic-and" draggable="true">
-                                            <div class="text">AND</div>
-                                            <span class="placeholder">...</span>
-                                        </div>
-                                        <div id="logic-or" class="logic-operator logic-or" draggable="true">
-                                            <div class="text">OR</div>
-                                            <span class="placeholder">...</span>
-                                        </div>
-                                        <div id="logic-not" class="logic-operator logic-not" draggable="true">
-                                            <span class="text">NOT</span>
-                                            <span class="placeholder">...</span>
-                                        </div>
-                                        <div id="logic-value" class="logic-operator logic-value" draggable="true">
-                                            <span class="placeholder">...</span>
-                                            <span class="text">MIN</span>
-                                            <input type="number">
-                                        </div>
+                    <ul id="logical" class="accordion">
+                        <li class="card">
+                            <div class="card-header" id="headingLogic">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed card-name" data-toggle="collapse" data-target="#collapseLogic" aria-expanded="false" aria-controls="collapseLogic">
+                                        Operators
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseLogic" class="collapse" aria-labelledby="headingLogic" data-parent="#logical">
+                                <div class="card-body" id="logic_operation">
+                                    <div id="logic-and" class="logic-operator logic-and" draggable="true">
+                                        <div class="text">AND</div>
+                                        <span class="placeholder">...</span>
+                                    </div>
+                                    <div id="logic-or" class="logic-operator logic-or" draggable="true">
+                                        <div class="text">OR</div>
+                                        <span class="placeholder">...</span>
+                                    </div>
+                                    <div id="logic-not" class="logic-operator logic-not" draggable="true">
+                                        <div class="text">NOT</div>
+                                        <span class="placeholder">...</span>
+                                    </div>
+                                    <div id="logic-value" class="logic-operator logic-value" draggable="true">
+                                        <div class="text">MIN <input type="number"></div>
+                                        <span class="placeholder">...</span>
                                     </div>
                                 </div>
-                            </li>
-                            <li class="card">
-                                <div class="card-header" id="headingItems">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed card-name" data-toggle="collapse" data-target="#collapseItems" aria-expanded="false" aria-controls="collapseItems">
-                                            Items
-                                        </button>
-                                    </h5>
+                            </div>
+                        </li>
+                        <li class="card">
+                            <div class="card-header" id="headingItems">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed card-name" data-toggle="collapse" data-target="#collapseItems" aria-expanded="false" aria-controls="collapseItems">
+                                        Items
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseItems" class="collapse" aria-labelledby="headingItems" data-parent="#logical">
+                                <div class="card-body" id="logic_items">
                                 </div>
-                                <div id="collapseItems" class="collapse" aria-labelledby="headingItems" data-parent="#logical">
-                                    <div class="card-body" id="logic_items">
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

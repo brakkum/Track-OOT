@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    padding: 5px;
+}
+
 .inactive {
     display: none;
 }
@@ -13,31 +17,59 @@
     overflow-y: auto;
 }
 
+.accordion .card-body .logic-operator,
+.accordion .card-body .logic-item {
+    display: inline-table;
+}
+
+#logic_editor {
+    display: grid;
+    height: 800px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 600px 200px 200px;
+    grid-template-areas: 
+    "logic_board logic_clipboard"
+    "logic_board logic_trash"
+    "logic_output logic_output";
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+}
+
 #logic_choice_board {
     display: block;
     padding: 5px;
-    margin: 5px;
+    overflow: auto;
     border-radius: 2px;
     border: 1px solid gray;
-    height: 800px;
-    width: 100%;
+    grid-area: logic_board;
+}
+
+#logic_clipboard {
+    padding: 5px;
     overflow: auto;
+    border-radius: 2px;
+    border: 1px solid gray;
+    grid-area: logic_clipboard;
+}
+
+#logic_trash {
+    padding: 5px;
+    border-radius: 2px;
+    border: 1px solid gray;
+    grid-area: logic_trash;
 }
 
 #logic_output {
     display: block;
     padding: 5px;
-    margin: 5px;
     border-radius: 2px;
     border: 1px solid gray;
-    height: 200px;
-    width: 100%;
     resize: none;
+    grid-area: logic_output;
 }
 
 .logic-operator {
     display: table;
-    padding: 5px;
     margin: 5px;
     border-radius: 2px;
     cursor: move;
@@ -48,9 +80,19 @@
     height: 25px;
 }
 
+.logic-operator .text {
+    padding: 5px;
+    margin-bottom: 5px;
+    height: 35px;
+}
+
 .logic-operator.logic-or {
     background-color: lightgreen;
     border: 1px solid green;
+}
+
+.logic-operator.logic-or > .text {
+    border-bottom: 1px solid green;
 }
 
 .logic-operator.logic-and {
@@ -58,9 +100,17 @@
     border: 1px solid orange;
 }
 
+.logic-operator.logic-and > .text {
+    border-bottom: 1px solid orange;
+}
+
 .logic-operator.logic-not {
     background-color: lightpink;
     border: 1px solid red;
+}
+
+.logic-operator.logic-not > .text {
+    border-bottom: 1px solid red;
 }
 
 .logic-operator.logic-value {
@@ -68,25 +118,30 @@
     border: 1px solid deepskyblue;
 }
 
+.logic-operator.logic-value > .text {
+    border-bottom: 1px solid deepskyblue;
+}
+
+#logic_choice_board .logic-operator:hover {
+    box-shadow: inset 0 0 5px 1px rgba(0,0,0,0.7);
+}
+
 .logic-operator.logic-value input {
     width: 50px;
     margin: 0 5px;
 }
 
-.logic-operator .text {
-    padding: 0 5px;
-}
-
 .placeholder {
-    padding: 0 5px;
-    margin: 0 5px;
+    display: table;
+    padding: 5px 20px;
+    margin: 5px;
     background-color: lightgray;
     border: 1px solid gray;
     border-radius: 2px;
 }
 
 .logic-item {
-    display: inline-table;
+    display: table;
     padding: 5px;
     margin: 5px;
     border-radius: 2px;
@@ -94,19 +149,4 @@
     border: 1px solid rgb(37, 167, 128);
     cursor: move;
     user-select: none;
-}
-
-.logic-mixin {
-    display: inline-table;
-    padding: 5px;
-    margin: 5px;
-    border-radius: 2px;
-    background-color: rgb(181, 100, 197);
-    border: 1px solid rgb(136, 60, 187);
-    cursor: move;
-    user-select: none;
-}
-
-.logic-operator:not(.logic-value) > .logic-item {
-    display: table;
 }
