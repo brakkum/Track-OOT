@@ -1,6 +1,37 @@
+
+function checkLogicNew(logic) {
+    if (!logic || logic == null) return true;
+    switch(logic.type) {
+        case "and":
+            for (let i = 0; i < logic.el.length; ++i) {
+                var el = logic.el[i];
+                if (!!el && el != null) {
+                    if (!checkLogicNew(el)) return false;
+                }
+            }
+            return true;
+        case "or":
+            for (let i = 0; i < logic.el.length; ++i) {
+                var el = logic.el[i];
+                if (!!el && el != null) {
+                    if (checkLogicNew(el)) return true;
+                }
+            }
+            return false;
+        case "not":
+            return !checkLogicNew(logic.el);
+        case "value":
+            return checkLogicNew(logic.el) >= logic.value;
+        case "item":
+            return savestate.read("items", logic.el, 0);
+    }
+    return true;
+}
+
 function checkLogic(category, name) {
     if (!data.logic.hasOwnProperty(category) || !data.logic[category].hasOwnProperty(name)) return false;
     var logic = data.logic[category][name];
+    if (!Array.isArray(logic)) return checkLogicNew(logic);
     if (logic.length == 0) {
         return true;
     } else {
@@ -8,13 +39,19 @@ function checkLogic(category, name) {
         for (var i = 0; i < logic.length; ++i) {
             var test = logic[i];
             for (var j = 0; j < test.length; ++j) {
-                var [ch, tstel] = test[j].split(":");
+                var member = test[j];
+                var check = true;
+                if (member.startsWith("!")) {
+                    check = false;
+                    member = member.slice(1);
+                }
+                var [ch, tstel] = member.split(":");
                 ch = ch.split(".");
                 var val = savestate.read(ch[0], ch[1], 0);
                 if (!!tstel) {
-                    if (val < tstel) continue next_test;
+                    if (val < tstel == check) continue next_test;
                 } else {
-                    if (val == 0) continue next_test;
+                    if (!val == check) continue next_test;
                 }
             }
             return true;

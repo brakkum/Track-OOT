@@ -1,6 +1,9 @@
 {
 	"zora_river_tree_child" : [],
-	"zora_river_ladder_child_night" : [],
+	"zora_river_ladder_child_night" : [
+		["items.bombs"],
+		["items.scale"]
+	],
 	"zora_river_wall1_adult_night" : [
 		["items.hookshot"]
 	],
@@ -8,41 +11,43 @@
 		["items.hookshot"]
 	],
 	"zoras_wall_ice_adult_night" : [
-		["items.hookshot"]
+		["items.hookshot", "mixins.enter_zoras_adult"]
 	],
-	"zoras_tree_child" : [],
+	"zoras_tree_child" : [
+		["items.zora_letter", "mixins.enter_zoras_child"]
+	],
 	"zoras_wall_child_night" : [
-		["items.boomerang"]
+		["items.boomerang", "items.zora_letter", "mixins.enter_zoras_child"]
 	],
 	"zoras_fairy_hidden_cave_adult_night" : [
 		["items.hookshot", "items.lens", "items.magic_power", "items.glove:2"]
 	],
 	"jabujabu_b1_ruto1_child" : [
-		["items.boomerang"]
+		["items.boomerang", "items.zora_letter", "mixins.enter_zoras_child"]
 	],
 	"jabujabu_b1_ruto2_child" : [
-		["items.boomerang"]
+		["items.boomerang", "items.zora_letter", "mixins.enter_zoras_child"]
 	],
 	"jabujabu_b1_rising_water_child" : [
-		["items.boomerang"],
-		["items.slingshot"],
-		["items.bombs"],
-		["items.magic_din", "items.magic_power"]
+		["items.boomerang", "items.zora_letter", "mixins.enter_zoras_child"],
+		["items.slingshot", "items.zora_letter", "mixins.enter_zoras_child"],
+		["items.bombs", "items.zora_letter", "mixins.enter_zoras_child"],
+		["items.magic_din", "items.magic_power", "items.zora_letter", "mixins.enter_zoras_child"]
 	],
 	"jabujabu_1f_near_boss_child" : [
-		["items.boomerang"],
-		["items.slingshot"],
-		["items.bombs"],
-		["items.magic_din", "items.magic_power"]
+		["items.boomerang", "items.zora_letter", "mixins.enter_zoras_child"],
+		["items.slingshot", "items.zora_letter", "mixins.enter_zoras_child"],
+		["items.bombs", "items.zora_letter", "mixins.enter_zoras_child"],
+		["items.magic_din", "items.magic_power", "items.zora_letter", "mixins.enter_zoras_child"]
 	],
 	"ice_cavern_ice_blades_adult" : [
-		["items.hookshot"]
+		["items.hookshot", "items.zora_letter", "mixins.enter_zoras_adult"]
 	],
 	"ice_cavern_block_puzzle_adult" : [
-		["items.hookshot"]
+		["items.hookshot", "items.zora_letter", "mixins.enter_zoras_adult"]
 	],
 	"ice_cavern_compass_room_adult" : [
-		["items.hookshot"]
+		["items.hookshot", "items.zora_letter", "mixins.enter_zoras_adult"]
 	],
 	"kokiri_know_it_all_brothers_child_night" : [],
 	"kokiri_twins_adult_night" : [
@@ -72,24 +77,19 @@
 		["items.hookshot"]
 	],
 	"temple_forest_entrance_adult": [
-        ["items.song_saria", "items.hookshot"],
-        ["items.warp_forest", "items.hookshot"]
+        ["mixins.enter_temple_forest"]
     ],
 	"temple_forest_pillars_adult": [
-        ["items.song_saria", "items.hookshot"],
-        ["items.warp_forest", "items.hookshot"]
+        ["mixins.enter_temple_forest"]
     ],
 	"temple_forest_lobby_adult": [
-        ["items.song_saria", "items.hookshot"],
-        ["items.warp_forest", "items.hookshot"]
+        ["mixins.enter_temple_forest"]
     ],
 	"temple_forest_outside_hookshot_adult": [
-        ["items.song_saria", "items.hookshot"],
-        ["items.warp_forest", "items.hookshot"]
+        ["mixins.enter_temple_forest"]
     ],
 	"temple_forest_near_boss_adult": [
-        ["items.song_saria", "items.hookshot"],
-        ["items.warp_forest", "items.hookshot"]
+        ["mixins.enter_temple_forest"]
     ],
 	"kakariko_tree_child": [],
 	"kakariko_skulltula_house_child_night": [],
@@ -108,16 +108,16 @@
 		["items.bottle"]
 	],
 	"well_center_child": [
-		["items.lens", "items.magic_power"]
+		["mixins.enter_well", "items.lens", "items.magic_power"]
 	],
 	"well_center_locked_room_child": [
-		["items.lens", "items.magic_power"]
+		["mixins.enter_well", "items.lens", "items.magic_power"]
 	],
 	"well_locked_pits_child": [
-		["items.lens", "items.magic_power", "items.boomerang"]
+		["mixins.enter_well", "items.lens", "items.magic_power", "items.boomerang"]
 	],
 	"temple_shadow_invisible_blade_adult": [
-		["items.lens", "items.magic_power"]
+		["mixins.enter_temple_shadow"]
 	],
 	"temple_shadow_falling_spikes_adult": [
 		["items.lens", "items.magic_power", "items.hookshot"]

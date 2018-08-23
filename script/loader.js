@@ -32,9 +32,9 @@ async function loadAll() {
     data.skulltulas = await loadJSON("database/skulltulas.json");
     // logic
     data.logic = {
-        chests: await loadJSON("database/chest_logic.json"),
-        skulltulas: await loadJSON("database/skulltula_logic.json"),
-        dungeons: await loadJSON("database/dungeon_logic.json"),
+        chests: await loadJSON("database/logic_chest.json"),
+        skulltulas: await loadJSON("database/logic_skulltula.json"),
+        dungeons: await loadJSON("database/logic_dungeon.json")
     };
     // misc
     data.lang = await loadJSON("database/lang_en.json");
