@@ -30,6 +30,10 @@
         "images": "bombs.png",
         "counting": ["", "20", "30", "40"]
     },
+    "bombchu":{
+        "max": 1,
+        "images": "bombchu.png"
+    },
     "lens":{
         "max": 1,
         "images": "lens.png"
@@ -66,12 +70,12 @@
             "ocarina_time.png"
         ]
     },
-    "bottle":{
+    "bottle": {
         "max": 4,
         "counting": true,
         "images": "bottle.png"
     },
-    "wallet":{
+    "wallet": {
         "max": 2,
         "images": [
             "wallet_default.png",
@@ -80,10 +84,14 @@
         ],
         "counting": ["99", "200", "500"]
     },
-    "skulltula":{
+    "skulltula": {
         "max": 100,
         "counting": true,
         "images": "skulltula.png"
+    },
+    "egg": {
+        "max": 1,
+        "images": "egg.png"
     },
 
     "sword_kokiri":{
@@ -146,6 +154,10 @@
     "zora_letter":{
         "max": 1,
         "images": "zora_letter.png"
+    },
+    "membership":{
+        "max": 1,
+        "images": "membership.png"
     }, 
 
     "song_zelda":{

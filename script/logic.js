@@ -23,14 +23,22 @@ function checkLogicNew(logic) {
         case "value":
             return checkLogicNew(logic.el) >= logic.value;
         case "item":
-            return savestate.read("items", logic.el, 0);
+            return SaveState.read("items", logic.el, 0);
     }
     return true;
 }
 
 function checkLogic(category, name) {
     if (!data.logic.hasOwnProperty(category) || !data.logic[category].hasOwnProperty(name)) return false;
-    var logic = data.logic[category][name];
+    var logic;
+    
+    if (settings.use_custom_logic && data.logic_patched.hasOwnProperty(category) && data.logic_patched[category].hasOwnProperty(name)) {
+        logic = data.logic_patched[category][name];
+        return checkLogicNew(logic);
+    } else {
+        logic = data.logic[category][name];
+    }
+
     if (!Array.isArray(logic)) return checkLogicNew(logic);
     if (logic.length == 0) {
         return true;
@@ -47,7 +55,7 @@ function checkLogic(category, name) {
                 }
                 var [ch, tstel] = member.split(":");
                 ch = ch.split(".");
-                var val = savestate.read(ch[0], ch[1], 0);
+                var val = SaveState.read(ch[0], ch[1], 0);
                 if (!!tstel) {
                     if (val < tstel == check) continue next_test;
                 } else {
@@ -65,14 +73,16 @@ function checkAvailable(category, name) {
 }
 
 function checkBeatList(name) {
-    if (data.logic.dungeons[name].length == 0)
+    var logic = data.logic.dungeons[name];
+    if (!Array.isArray(logic) && logic != null) return checkLogicNew(logic);
+    if (logic.length == 0)
         return checkList("chests", name);
 
     var list = data.dungeons[name].chests;
     var unopened = false;
     for (var i = 0; i < list.length; ++i) {
         var key = list[i];
-        if (!savestate.read("chests", key, 0)) {
+        if (!SaveState.read("chests", key, 0)) {
             unopened = true;
             break;
         }
@@ -88,7 +98,7 @@ function checkList(category, name) {
     var unopened = 0
     for (var i = 0; i < list.length; ++i) {
         var key = list[i];
-        if (!savestate.read(category, key, 0)) {
+        if (!SaveState.read(category, key, 0)) {
             unopened++;
             if (checkLogic(category, key)) {
                 canGet++;

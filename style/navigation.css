@@ -40,26 +40,6 @@
 
 }
 
-.save-button {
-    width: 100px;
-    background-color: gold;
-    -webkit-appearance: none;
-    border: none;
-    outline: none;
-}
-
-.save-button:hover {
-    box-shadow: inset 0px 0px 2px 1px;
-}
-
-.save-button:active {
-    box-shadow: inset 0px 0px 4px 3px;
-}
-
-.save-button:disabled {
-    opacity: 0.3;
-}
-
 /**********************************
     footer
 **********************************/

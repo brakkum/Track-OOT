@@ -46,7 +46,7 @@ function populateMap() {
         var DCcount = 0;
         for (var i = 0; i < data.dungeons[id].chests.length; ++i) {
             var key = data.dungeons[id].chests[i];
-            if (!savestate.read("chests", key, 0) && checkLogic("chests", key))
+            if (!SaveState.read("chests", key, 0) && checkLogic("chests", key))
                 DCcount++;
         }
 
@@ -90,8 +90,8 @@ function populateMap() {
 }
 
 function togglePOI(category, key){
-    var val = !savestate.read(category, key, 0);
-    savestate.write(category, key, val);
+    var val = !SaveState.read(category, key, 0);
+    SaveState.write(category, key, val);
     updateMap();
 }
 
@@ -126,17 +126,17 @@ function updateMap() {
     var skulltulas_missing = 0;
 
     for (let ch in data.logic.chests) {
-        if (!savestate.read("chests", ch, 0)) chests_missing++;
+        if (!SaveState.read("chests", ch, 0)) chests_missing++;
     }
     for (let sk in data.logic.skulltulas) {
-        if (!savestate.read("skulltulas", sk, 0)) skulltulas_missing++;
+        if (!SaveState.read("skulltulas", sk, 0)) skulltulas_missing++;
     }
     
     // update chest markers
     /////////////////////////////////
     for (var i = 0; i < poi.chests.length; ++i) {
         var x = poi.chests[i];
-        if(savestate.read("chests", x.id, 0)) {
+        if(SaveState.read("chests", x.id, 0)) {
             x.className = "poi chest opened";
         } else {
             var avail = checkAvailable("chests", x.id);
@@ -155,14 +155,14 @@ function updateMap() {
         var DCcount = 0;
         for (var j = 0; j <  data.dungeons[ref].chests.length; ++j) {
             var key = data.dungeons[ref]["chests"][j];
-            if (!savestate.read("chests", key, 0) && checkLogic("chests", key))
+            if (!SaveState.read("chests", key, 0) && checkLogic("chests", key))
                 DCcount++;
         }
         chests_available+=DCcount;
         var SKcount = 0;
         for (var j = 0; j <  data.dungeons[ref].skulltulas.length; ++j) {
             var key = data.dungeons[ref]["skulltulas"][j];
-            if (!savestate.read("skulltulas", key, 0) && checkLogic("skulltulas", key))
+            if (!SaveState.read("skulltulas", key, 0) && checkLogic("skulltulas", key))
             SKcount++;
         }
         skulltulas_available+=SKcount;
@@ -186,7 +186,7 @@ function updateMap() {
     /////////////////////////////////
     for (var i = 0; i < poi.skulltulas.length; ++i) {
         var x = poi.skulltulas[i];
-        if(savestate.read("skulltulas", x.id, 0)) {
+        if(SaveState.read("skulltulas", x.id, 0)) {
             x.className = "poi skulltula opened";
         } else {
             var avail = checkAvailable("skulltulas", x.id);
@@ -205,7 +205,7 @@ function updateMap() {
     }
     for (var i = 0; i < poi_list.entries.length; ++i) {
         var x = poi_list.entries[i];
-        if (savestate.read(poi_list.mode, x.id, 0))
+        if (SaveState.read(poi_list.mode, x.id, 0))
             x.className = "dungeon-entry DCopened";               
         else {
             if (checkLogic(poi_list.mode, x.id)) {

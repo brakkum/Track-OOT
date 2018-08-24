@@ -35,6 +35,8 @@
     align-items: center;
     justify-content: center;
     font-size: 1.5em;
+    user-select: none;
+    cursor: default;
 }
 
 #dungeon-container #dungeon-name:after {
@@ -125,6 +127,8 @@
     color: black;
     line-height: 12px;
     margin-right: 5px;
+    user-select: none;
+    cursor: default;
 }
 
 .slidetrack {

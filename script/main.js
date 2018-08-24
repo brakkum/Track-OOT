@@ -1,6 +1,8 @@
 var data;
-var savestate = new SaveState();
 var activestate = "";
+var settings = {
+    use_custom_logic: false
+}
 
 var stateChoice = document.getElementById("select-savegame");
 var stateSave = document.getElementById("save-savegame");
@@ -9,6 +11,10 @@ var stateNew = document.getElementById("new-savegame");
 var stateDel = document.getElementById("delete-savegame");
 var stateExport = document.getElementById("export-savegame");
 var stateImport = document.getElementById("import-savegame");
+
+var settingsEdit = document.getElementById("edit-settings");
+var settingsCancel = document.getElementById("settings-cancel");
+var settingsSave = document.getElementById("settings-save");
 
 stateChoice.addEventListener("change", function() {
     if (activestate == stateChoice.value) {
@@ -26,6 +32,21 @@ stateNew.addEventListener("click", state_New);
 stateDel.addEventListener("click", state_Delete);
 stateExport.addEventListener("click", state_Export);
 stateImport.addEventListener("click", state_Import);
+
+settingsEdit.addEventListener("click", function() {
+    document.getElementById('settings').classList.add('active');
+});
+
+settingsCancel.addEventListener("click", function() {
+    document.getElementById('settings').classList.remove('active');
+});
+
+settingsSave.addEventListener("click", function() {
+    settings.use_custom_logic = document.getElementById('use_custom_logic').checked;
+    Storage.set("settings", "use_custom_logic", use_custom_logic);
+    updateMap();
+    document.getElementById('settings').classList.remove('active');
+});
 
 document.getElementById("map-scale-slider").addEventListener("input", function(event) {
     document.getElementById('map').style.setProperty("--map-scale", parseInt(event.target.value) / 100);
@@ -60,7 +81,6 @@ function changeItemInactiveEffect() {
 async function main() {
 
     data = await loadAll();
-    setStatus("version", data.version);
 
     console.log("loaded database:\r\n%o", data);
 
@@ -69,8 +89,6 @@ async function main() {
     createItemTracker();
 
     populateMap();
-
-    //reset();
 }
 
 main();
@@ -88,9 +106,10 @@ function setStatus(name, value) {
 
 function prepairSavegameChoice() {
     stateChoice.innerHTML = "<option disabled selected hidden value=\"\"> -- select state -- </option>";
-    for (var i = 0; i < localStorage.length; ++i) {
+    var keys = Storage.names("save");
+    for (var i = 0; i < keys.length; ++i) {
         var el = document.createElement("option");
-        el.id = localStorage.key(i);
+        el.id = keys[i];
         el.innerHTML = el.id;
         stateChoice.appendChild(el);
     }
@@ -103,21 +122,10 @@ function prepairSavegameChoice() {
     }
 }
 
-function reset() {
-    for (var name in data.items) {
-        savestate.items[name] = 0;
-    }
-    for (var name in data.chest_logic) {
-        savestate.chests[name] = false;
-    }
-    updateItems();
-    updateMap();
-}
-
 async function state_Save() {
     if (stateChoice.value != "") {
         stateChoice.value = activestate;
-        localStorage.setItem(activestate, savestate.export());
+        savestate.save(activestate);
         await Dialogue.alert("Saved \""+activestate+"\" successfully.");
     }
 }
@@ -129,12 +137,9 @@ async function state_Load() {
             confirm = await Dialogue.confirm("Do you really want to load? Unsaved changes will be lost.");
         }
         if (!!confirm) {
-            var item = localStorage.getItem(stateChoice.value);
-            if (item != "" && item != "null") {
-                savestate = new SaveState(item);
-            }
-            stateSave.disabled = false;
             activestate = stateChoice.value;
+            SaveState.load(activestate);
+            stateSave.disabled = false;
             updateItems();
             updateMap();
         }
@@ -170,9 +175,9 @@ async function state_New() {
     }
     if (!!name) {
         if (activestate != "" || await Dialogue.confirm("Do you want to reset the current state?")) {
-            savestate = new SaveState();
+            SaveState.reset();
         }
-        localStorage.setItem(name, savestate.export());
+        SaveState.save(name);
         prepairSavegameChoice();
         stateChoice.value = name;
         activestate = name;
@@ -192,7 +197,7 @@ async function state_Export() {
         if (!!confirm) {
             var item = {
                 name: stateChoice.value,
-                data: JSON.parse(localStorage.getItem(stateChoice.value))
+                data: Storage.get("save", stateChoice.value)
             };
             Dialogue.alert("Here is your export string of the latest saved state", btoa(JSON.stringify(item)));
         }
@@ -206,21 +211,28 @@ async function state_Import() {
         if (localStorage.hasOwnProperty(data.name) && !(await Dialogue.confirm("There is already a savegame with this name. Replace savegame?."))) {
             return;
         }
-        localStorage.setItem(data.name, JSON.stringify(data.data));
+        Storage.set("save", data.name, data.data);
         prepairSavegameChoice();
         if (!!(await Dialogue.confirm("Imported \""+data.name+"\" successfully.", "Do you want to load the imported state?" + (activestate == "" ? "" : " Unsaved changes will be lost.")))) {
             stateChoice.value = data.name;
-            var item = localStorage.getItem(data.name);
-            if (item != "" && item != "null") {
-                savestate = new SaveState(item);
-            }
+            activestate = data.name;
+            SaveState.load(activestate);
             stateSave.disabled = false;
             stateLoad.disabled = false;
             stateDel.disabled = false;
             stateExport.disabled = false;
-            activestate = data.name;
             updateItems();
             updateMap();
         }
     }
 }
+
+!function(){
+    var k = Object.keys(localStorage);
+    k.map(function(v) {
+        if (!v.includes("\0")) {
+            Storage.set("save", v, JSON.parse(localStorage.getItem(v)));
+            localStorage.removeItem(v);
+        }
+    });
+}();

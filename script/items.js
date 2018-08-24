@@ -41,11 +41,11 @@ function createItemIcon(cont, img) {
 }
 
 function toggleItem(el) {
-    var val = savestate.read("items", el.id, 0);
+    var val = SaveState.read("items", el.id, 0);
     if (++val > data.items[el.id].max) {
         val = 0;
     }
-    savestate.write("items", el.id, val);
+    SaveState.write("items", el.id, val);
     setVisual(el, val);
     updateMap();
     event.preventDefault();
@@ -53,11 +53,11 @@ function toggleItem(el) {
 }
 
 function untoggleItem(el) {
-    var val = savestate.read("items", el.id, 0);
+    var val = SaveState.read("items", el.id, 0);
     if (--val < 0) {
         val = data.items[el.id].max;
     }
-    savestate.write("items", el.id, val);
+    SaveState.write("items", el.id, val);
     setVisual(el, val);
     updateMap();
     event.preventDefault();
@@ -102,6 +102,6 @@ function setImage(el, val) {
 function updateItems() {
     for (var i = 0; i < itemGridEls.length; ++i) {
         let el = itemGridEls[i];
-        setVisual(el, savestate.read("items", el.id, 0));
+        setVisual(el, SaveState.read("items", el.id, 0));
     }
 }

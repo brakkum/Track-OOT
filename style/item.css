@@ -2,7 +2,7 @@
     display: inline-block;
     padding: 8px;
     grid-area: items;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .item-grid .item-row .item {

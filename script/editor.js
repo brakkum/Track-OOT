@@ -5,6 +5,18 @@
  * TODO: export as file (maybe with option to export patch only)
  */
 
+async function run() {
+    window.data = await loadAll();
+    fillLogics();
+    fillItems();
+    document.getElementById('control-save-local').onclick = saveLocalLogic;
+    document.getElementById('control-load-local').onclick = loadLocalLogic;
+    document.getElementById('control-remove-local').onclick = removeLocalLogic;
+    document.getElementById('control-download-local').onclick = downloadLocalLogic;
+    document.getElementById('control-load-remote').onclick = loadRemoteLogic;
+}
+run();
+
 function translate(index) {
     if (!!data.lang[index]) {
         return data.lang[index];
@@ -14,52 +26,60 @@ function translate(index) {
 
 function fillLogics() {
     var cont;
-    cont = document.getElementById("category_chest");
+    cont = document.getElementById("chest-panel").querySelector('.panel-body');
     for (let i in data.chests) {
-        var el = document.createElement("button");
-        el.className = "btn btn-secondary btn-lg btn-block";
+        var el = document.createElement("div");
+        el.className = "list-item";
         el.innerHTML = translate(i);
-        el.id = "chest_"+i;
+        el.id = "chests_"+i;
         el.setAttribute("title", i);
-        el.onclick = new Function("loadLogic("+el.id+", data.logic.chests['"+i+"'])");
+        el.onclick = new Function("loadLogic('chests', '"+i+"')");
+        if (data.logic_patched.hasOwnProperty('chests') && data.logic_patched.chests.hasOwnProperty(i))
+            el.classList.add('has-custom-logic');
         cont.appendChild(el);
     }
     for (let i in data.dungeons) {
         var chests = data.dungeons[i].chests;
         for (let j = 0; j < chests.length; ++j) {
-            var el = document.createElement("button");
-            el.className = "btn btn-secondary btn-lg btn-block";
+            var el = document.createElement("div");
+            el.className = "list-item";
             el.innerHTML = translate(i) + ": " + translate(chests[j]);
-            el.id = "chest_"+i+"_"+chests[j];
+            el.id = "chests_"+chests[j];
             el.setAttribute("title", chests[j]);
-            el.onclick = new Function("loadLogic("+el.id+", data.logic.chests['"+chests[j]+"'])");
+            el.onclick = new Function("loadLogic('chests', '"+chests[j]+"')");
+            if (data.logic_patched.hasOwnProperty('chests') && data.logic_patched.chests.hasOwnProperty(chests[j]))
+                el.classList.add('has-custom-logic');
             cont.appendChild(el);
         }
     }
-    cont = document.getElementById("category_skulltula");
+    cont = document.getElementById("skulltula-panel").querySelector('.panel-body');
     for (let i in data.logic.skulltulas) {
-        var el = document.createElement("button");
-        el.className = "btn btn-secondary btn-lg btn-block";
+        var el = document.createElement("div");
+        el.className = "list-item";
         el.innerHTML = translate(i);
-        el.id = "skulltula_"+i;
+        el.id = "skulltulas_"+i;
         el.setAttribute("title", i);
-        el.onclick = new Function("loadLogic("+el.id+", data.logic.skulltulas['"+i+"'])");
+        el.onclick = new Function("loadLogic('skulltulas', '"+i+"')");
+        if (data.logic_patched.hasOwnProperty('skulltulas') && data.logic_patched.skulltulas.hasOwnProperty(i))
+            el.classList.add('has-custom-logic');
         cont.appendChild(el);
     }
-    cont = document.getElementById("category_dungeon");
+    cont = document.getElementById("dungeon-panel").querySelector('.panel-body');
     for (let i in data.logic.dungeons) {
-        var el = document.createElement("button");
-        el.className = "btn btn-secondary btn-lg btn-block";
+        var el = document.createElement("div");
+        el.className = "list-item";
         el.innerHTML = translate(i);
-        el.id = "dungeon_"+i;
+        el.id = "dungeons_"+i;
         el.setAttribute("title", i);
-        el.onclick = new Function("loadLogic("+el.id+", data.logic.dungeons['"+i+"'])");
+        el.onclick = new Function("loadLogic('dungeons', '"+i+"')");
+        if (data.logic_patched.hasOwnProperty('dungeons') && data.logic_patched.dungeons.hasOwnProperty(i))
+            el.classList.add('has-custom-logic');
         cont.appendChild(el);
     }
 }
 
 function fillItems() {
-    var cont = document.getElementById("logic_items");
+    cont = document.getElementById("item-panel").querySelector('.panel-body');
     for (let i in data.items) {
         var el = document.createElement("div");
         el.className = "logic-item";
@@ -72,18 +92,33 @@ function fillItems() {
     }
 }
 
-async function run() {
-    window.data = await loadAll();
-    fillLogics();
-    fillItems();
+// load/save/download logic
+function loadLogic(category, id) {
+    var el = document.getElementById('editor-panel').querySelector('.panel-header');
+    el.setAttribute("data-cat", category);
+    el.setAttribute("data-id", id);
+    var logic = null;
+    if (data.logic_patched.hasOwnProperty(category) && data.logic_patched[category].hasOwnProperty(id)) {
+        logic = data.logic_patched[category][id];
+        el.innerHTML = translate(id) + " (local)";
+    } else {
+        logic = data.logic[category][id];
+        el.innerHTML = translate(id) + " (remote)";
+        if (Array.isArray(logic)) {
+            logic = convertOldLogic(logic);
+        }
+    }
+    setLogic(logic);
+    exportLogic();
 }
-run();
 
-// load/export logic
-function loadLogic(ref, logic) {
-    var el = document.getElementById('logic_choice_name');
-    el.innerHTML = ref.innerHTML;
-    el.setAttribute("data-id", ref.getAttribute("title"));
+function loadRemoteLogic() {
+    var el = document.getElementById('editor-panel').querySelector('.panel-header');
+    var category = el.getAttribute("data-cat");
+    var id = el.getAttribute("data-id");
+    if (!category || !id) return;
+    var logic = data.logic[category][id];
+    el.innerHTML = translate(id) + " (remote)";
     if (Array.isArray(logic)) {
         logic = convertOldLogic(logic);
     }
@@ -91,10 +126,55 @@ function loadLogic(ref, logic) {
     exportLogic();
 }
 
+function loadLocalLogic() {
+    var el = document.getElementById('editor-panel').querySelector('.panel-header');
+    var category = el.getAttribute("data-cat");
+    var id = el.getAttribute("data-id");
+    if (!category || !id) return;
+    var logic = null;
+    if (data.logic_patched.hasOwnProperty(category) && data.logic_patched[category].hasOwnProperty(id))
+        logic = data.logic_patched[category][id];
+    el.innerHTML = translate(id) + " (local)";
+    setLogic(logic);
+    exportLogic();
+}
+
+function saveLocalLogic() {
+    var el = document.getElementById('editor-panel').querySelector('.panel-header');
+    var category = el.getAttribute("data-cat");
+    var id = el.getAttribute("data-id");
+    if (!category || !id) return;
+    data.logic_patched[category] = data.logic_patched[category] || {};
+    data.logic_patched[category][id] = getLogic();
+    document.getElementById(category+'_'+id).classList.add('has-custom-logic');
+    Storage.set("settings", "logic", data.logic_patched);
+}
+
+function removeLocalLogic() {
+    var el = document.getElementById('editor-panel').querySelector('.panel-header');
+    var category = el.getAttribute("data-cat");
+    var id = el.getAttribute("data-id");
+    if (!category || !id) return;
+    if (data.logic_patched.hasOwnProperty(category) && data.logic_patched[category].hasOwnProperty(id)) {
+        delete data.logic_patched[category][id];
+        Storage.set("settings", "logic", data.logic_patched);
+        document.getElementById(category+'_'+id).classList.remove('has-custom-logic');
+    }
+}
+
+function downloadLocalLogic() {
+    var el = document.getElementById('editor-panel').querySelector('.panel-header');
+    saveJSON(data.logic_patched, "logic_patched.json");
+}
+
+// export logic
 function exportLogic() {
-    var el = document.getElementById('logic_choice_name');
-    var cont = document.getElementById("logic_output");
-    cont.value = '"' + el.getAttribute("data-id") + '": ' + JSON.stringify(getLogic(), " ", 4);
+    var el = document.getElementById('editor-panel').querySelector('.panel-header');
+    var cont = document.getElementById('output-panel').querySelector('.panel-body');
+    var res = {};
+    res[el.getAttribute("data-cat")] = {};
+    res[el.getAttribute("data-cat")][el.getAttribute("data-id")] = getLogic();
+    cont.innerHTML = JSON.stringify(res, " ", 4);
 }
 
 // convert old logic
@@ -145,6 +225,7 @@ function convertOldLogic(logic) {
 function testLogic(data, logic) {
     if (!data) data = {items:{}};
     if (!logic) logic = getLogic();
+    if (!logic || logic == null) return true;
     switch(logic.type) {
         case "and":
             for (let i = 0; i < logic.el.length; ++i) {
@@ -175,11 +256,12 @@ function testLogic(data, logic) {
 
 // set/get logic
 function setLogic(logic) {
-    removeLogicEl(document.getElementById("logic_choice_board").children[1]);
-    return recursiveSetLogic(logic, document.getElementById("logic_choice_board").querySelector('.placeholder'));
+    removeLogicEl(document.getElementById("editor-panel").querySelector(".panel-body > .logic-operator, .panel-body > .logic-item"));
+    return recursiveSetLogic(logic, document.getElementById("editor-panel").querySelector('.panel-body > .placeholder'));
 }
 
 function recursiveSetLogic(logic, root) {
+    if (logic == null) return null;
     switch(logic.type) {
         case "and":
             var a = addLogicEl(document.getElementById('logic-and'), root).querySelector('.placeholder');
@@ -219,47 +301,39 @@ function recursiveSetLogic(logic, root) {
             }
             break;
     }
+    return null;
 }
 
 function getLogic() {
-    return recursiveGetLogic(document.getElementById("logic_choice_board").children[1]);
+    return recursiveGetLogic(document.getElementById("editor-panel").querySelector(".panel-body > .logic-operator, .panel-body > .logic-item"));
 }
 
 function recursiveGetLogic(root) {
+    if (!root || root == null) return null;
     switch (root.getAttribute("data-id")) {
         case null:
         case "":
             return null;
         case "logic-and":
             var res = {type:"and",el:[]};
-            var ch = Array.from(root.children);
-            ch.shift();
+            var ch = Array.from(root.querySelectorAll(":scope > .logic-operator, :scope > .logic-item"));
             ch.forEach(el=>{
-                if (!el.classList.contains("placeholder"))
-                    res.el.push(recursiveGetLogic(el));
+                res.el.push(recursiveGetLogic(el));
             });
             return res;
         case "logic-or":
             var res = {type:"or",el:[]};
-            var ch = Array.from(root.children);
-            ch.shift();
+            var ch = Array.from(root.querySelectorAll(":scope > .logic-operator, :scope > .logic-item"));
             ch.forEach(el=>{
-                if (!el.classList.contains("placeholder"))
-                    res.el.push(recursiveGetLogic(el));
+                res.el.push(recursiveGetLogic(el));
             });
             return res;
         case "logic-not":
-            var el = root.children[1];
-            if (!el.classList.contains("placeholder"))
-                return {type:"not",el:recursiveGetLogic(el)};
-            else
-                return {type:"not",el:null};
+            var el = root.querySelector(":scope > .logic-operator, :scope > .logic-item");
+            return {type:"not",el:recursiveGetLogic(el)};
         case "logic-value":
-            var el = root.children[1];
-            if (!el.classList.contains("placeholder"))
-                return {type:"value",el:recursiveGetLogic(el),value:parseInt(root.querySelector("input").value)};
-            else
-                return {type:"value",el:null,value:0};
+            var el = root.querySelector(":scope > .logic-operator, :scope > .logic-item");
+            return {type:"value",el:recursiveGetLogic(el),value:parseInt(root.querySelector("input").value)};
         default:
             return {type:"item",el:root.getAttribute("data-id").slice(5)};
 
@@ -303,6 +377,7 @@ function addLogicEl(el, target) {
 }
 
 function removeLogicEl(el) {
+    if (!el || el == null) return;
     if (el.id.startsWith("logic_onboard_")) {
         var parent = el.parentElement;
         parent.removeChild(el);
@@ -351,3 +426,20 @@ function deleteElement(ev) {
 Array.from(document.getElementsByClassName('logic-operator')).forEach(element => {
     element.ondragstart = dragNewElement;
 });
+
+// save JSON (koldev - https://jsfiddle.net/koldev/cW7W5/)
+
+var saveJSON = (function () {
+    var a = document.createElement("a");
+    document.body.appendChild(a);
+    a.style = "display: none";
+    return function (data, fileName) {
+        var json = JSON.stringify(data),
+            blob = new Blob([json], {type: "octet/stream"}),
+            url = window.URL.createObjectURL(blob);
+        a.href = url;
+        a.download = fileName;
+        a.click();
+        window.URL.revokeObjectURL(url);
+    };
+}());

@@ -2,15 +2,16 @@
     <head>
         <title>Tracker for OOT-Randomizer</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style/style.css" type="text/css">
-        <script src="script/dialogue.js" defer></script>
-        <script src="script/loader.js"></script>
-        <script src="script/logic.js"></script>
-        <script src="script/savestate.js"></script>
-        <script src="script/items.js"></script>
-        <script src="script/map.js"></script>
-        <script src="script/main.js" defer></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="style/style.css?v=201808241034" type="text/css">
+        <script src="script/dialogue.js?v=201808241034" defer></script>
+        <script src="script/storage.js?v=201808241034"></script>
+        <script src="script/loader.js?v=201808241034"></script>
+        <script src="script/logic.js?v=201808241034"></script>
+        <script src="script/savestate.js?v=201808241034"></script>
+        <script src="script/items.js?v=201808241034"></script>
+        <script src="script/map.js?v=201808241034"></script>
+        <script src="script/main.js?v=201808241034" defer></script>
         <style>
             #splash {
                 position: absolute;
@@ -42,22 +43,25 @@
                     </select>
                 </li>
                 <li>
-                    <button class="save-button" id="save-savegame" disabled>SAVE</button>
+                    <button class="button" id="save-savegame" disabled>SAVE</button>
                 </li>
                 <li>
-                    <button class="save-button" id="load-savegame" disabled>LOAD</button>
+                    <button class="button" id="load-savegame" disabled>LOAD</button>
                 </li>
                 <li>
-                    <button class="save-button" id="new-savegame">NEW</button>
+                    <button class="button" id="new-savegame">NEW</button>
                 </li>
                 <li>
-                    <button class="save-button" id="delete-savegame" disabled>DELETE</button>
+                    <button class="button" id="delete-savegame" disabled>DELETE</button>
                 </li>
                 <li>
-                    <button class="save-button" id="export-savegame" disabled>EXPORT</button>
+                    <button class="button" id="export-savegame" disabled>EXPORT</button>
                 </li>
                 <li>
-                    <button class="save-button" id="import-savegame">IMPORT</button>
+                    <button class="button" id="import-savegame">IMPORT</button>
+                </li>
+                <li>
+                    <button class="button" id="edit-settings">SETTINGS</button>
                 </li>
             </ul>
         </nav>
@@ -90,16 +94,21 @@
         </div>
         <footer class="footer">
             <span class="footer-field">
-                Version: <span id="status-version">#</span>
+                version: <span id="status-version">0.3 - 201808241034</span>
             </span>
             <span class="footer-spacer">|</span>
             <span class="footer-field">
-                Chests Available / Missing: <span id="status-chests-available">#</span> / <span id="status-chests-missing">#</span>
+                chests available / missing: <span id="status-chests-available">#</span> / <span id="status-chests-missing">#</span>
             </span>
             <span class="footer-spacer">|</span>
             <span class="footer-field">
-                Skulltulas Available / Missing: <span id="status-skulltulas-available">#</span> / <span id="status-skulltulas-missing">#</span>
+                skulltulas available / missing: <span id="status-skulltulas-available">#</span> / <span id="status-skulltulas-missing">#</span>
             </span>
+            <span class="footer-spacer">|</span>
+            <span class="footer-field">
+                newest feature: custom logic &amp; logic editor (experimental)
+            </span>
+            <span class="footer-spacer">|</span>
             <span class="footer-right">
                 found a bug or missing feature - <a href="https://bitbucket.org/2deep4real/track-oot/issues" target="_blank">create an issue</a>
             </span>
@@ -111,6 +120,32 @@
                 <input id="dialogue_input">
                 <button id="dialogue_abort" focus>Cancel</button>
                 <button id="dialogue_submit">OK</button>
+            </div>
+        </div>
+        <div id="settings">
+            <div id="settings-window">
+                <h3>Settings</h3>
+                <div class="settings-option">
+                    <label>
+                        <input type="checkbox" id="use_custom_logic">
+                        use custom logic
+                    </label>
+                    <a href="/editor.html" target="_blank" class="button">edit logic</a>
+                </div>
+                <hr>
+                <p>
+                    "Custom logic" will use localy stored logic (generated with the logic editor).<br>
+                    The logic editor is a (hopefully) easy to use interface to generate or edit the logic of the tracker.<br>
+                    The editor was initially created for generating and editing rulesets for updates more easy,<br>
+                    but maybe someone wants to mess around with the logic a bit ;).<br><br>
+                    Currently skips are missing in logic, but I am on it, so stay tuned.<br>
+                    Randomizer settings are missing too, and, as soon as settings-strings go stable, parsing them.
+                </p>
+                <hr>
+                <div class="settings-footer">
+                    <button id="settings-cancel">cancel</button>
+                    <button id="settings-save">save</button>
+                </div>
             </div>
         </div>
         
