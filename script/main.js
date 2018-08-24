@@ -125,7 +125,7 @@ function prepairSavegameChoice() {
 async function state_Save() {
     if (stateChoice.value != "") {
         stateChoice.value = activestate;
-        savestate.save(activestate);
+        SaveState.save(activestate);
         await Dialogue.alert("Saved \""+activestate+"\" successfully.");
     }
 }
