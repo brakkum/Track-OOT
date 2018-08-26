@@ -1,292 +1,3730 @@
 {
-	"zora_river_tree_child" : [],
-	"zora_river_ladder_child_night" : [
-		["items.bombs"],
-		["items.scale"]
-	],
-	"zora_river_wall1_adult_night" : [
-		["items.hookshot"]
-	],
-	"zora_river_wall2_adult_night" : [
-		["items.hookshot"]
-	],
-	"zoras_wall_ice_adult_night" : [
-		["items.hookshot", "mixins.enter_zoras_adult"]
-	],
-	"zoras_tree_child" : [
-		["items.zora_letter", "mixins.enter_zoras_child"]
-	],
-	"zoras_wall_child_night" : [
-		["items.boomerang", "items.zora_letter", "mixins.enter_zoras_child"]
-	],
-	"zoras_fairy_hidden_cave_adult_night" : [
-		["items.hookshot", "items.lens", "items.magic_power", "items.glove:2"]
-	],
-	"jabujabu_b1_ruto1_child" : [
-		["items.boomerang", "items.zora_letter", "mixins.enter_zoras_child"]
-	],
-	"jabujabu_b1_ruto2_child" : [
-		["items.boomerang", "items.zora_letter", "mixins.enter_zoras_child"]
-	],
-	"jabujabu_b1_rising_water_child" : [
-		["items.boomerang", "items.zora_letter", "mixins.enter_zoras_child"],
-		["items.slingshot", "items.zora_letter", "mixins.enter_zoras_child"],
-		["items.bombs", "items.zora_letter", "mixins.enter_zoras_child"],
-		["items.magic_din", "items.magic_power", "items.zora_letter", "mixins.enter_zoras_child"]
-	],
-	"jabujabu_1f_near_boss_child" : [
-		["items.boomerang", "items.zora_letter", "mixins.enter_zoras_child"],
-		["items.slingshot", "items.zora_letter", "mixins.enter_zoras_child"],
-		["items.bombs", "items.zora_letter", "mixins.enter_zoras_child"],
-		["items.magic_din", "items.magic_power", "items.zora_letter", "mixins.enter_zoras_child"]
-	],
-	"ice_cavern_ice_blades_adult" : [
-		["items.hookshot", "items.zora_letter", "mixins.enter_zoras_adult"]
-	],
-	"ice_cavern_block_puzzle_adult" : [
-		["items.hookshot", "items.zora_letter", "mixins.enter_zoras_adult"]
-	],
-	"ice_cavern_compass_room_adult" : [
-		["items.hookshot", "items.zora_letter", "mixins.enter_zoras_adult"]
-	],
-	"kokiri_know_it_all_brothers_child_night" : [],
-	"kokiri_twins_adult_night" : [
-		["items.hookshot"]
-	],
-	"kokiri_beanspot_near_shop_child" : [
-		["items.bottle"]
-	],
-	"deku_3f_compass_side_child": [],
-	"deku_basement_vines_child": [
-		["items.boomerang"],
-		["items.slingshot"],
-		["items.magic_din", "items.magic_power"]
-	],
-	"deku_basement_metal_gate_child": [],
-	"deku_bombable_behind_web_child": [
-		["items.boomerang", "items.bombs"]
-	],
-	"woods_mask_theater_beanspot_child" : [
-		["items.bottle"]
-	],
-	"woods_deku_salesman_beanspot_child" : [
-		["items.bottle"]
-	],
-	"woods_deku_salesman_magic_bean_adult" : [],
-	"woods_labyrinth_adult_night" : [
-		["items.hookshot"]
-	],
-	"temple_forest_entrance_adult": [
-        ["mixins.enter_temple_forest"]
-    ],
-	"temple_forest_pillars_adult": [
-        ["mixins.enter_temple_forest"]
-    ],
-	"temple_forest_lobby_adult": [
-        ["mixins.enter_temple_forest"]
-    ],
-	"temple_forest_outside_hookshot_adult": [
-        ["mixins.enter_temple_forest"]
-    ],
-	"temple_forest_near_boss_adult": [
-        ["mixins.enter_temple_forest"]
-    ],
-	"kakariko_tree_child": [],
-	"kakariko_skulltula_house_child_night": [],
-	"kakariko_construction_site_child_night": [],
-	"kakariko_near_gate_child_night": [],
-	"kakariko_tower_child_night": [
-		["items.slingshot"]
-	],
-	"kakariko_impas_house_roof_adult_night": [
-		["items.hookshot"]
-	],
-	"kakariko_graveyard_royal_grave_child_night": [
-		["items.boomerang"]
-	],
-	"kakariko_graveyard_beanspot_child_night": [
-		["items.bottle"]
-	],
-	"well_center_child": [
-		["mixins.enter_well", "items.lens", "items.magic_power"]
-	],
-	"well_center_locked_room_child": [
-		["mixins.enter_well", "items.lens", "items.magic_power"]
-	],
-	"well_locked_pits_child": [
-		["mixins.enter_well", "items.lens", "items.magic_power", "items.boomerang"]
-	],
-	"temple_shadow_invisible_blade_adult": [
-		["mixins.enter_temple_shadow"]
-	],
-	"temple_shadow_falling_spikes_adult": [
-		["items.lens", "items.magic_power", "items.hookshot"]
-	],
-	"temple_shadow_behind_giant_pot_adult": [
-		["items.lens", "items.magic_power", "items.hookshot"]
-	],
-	"temple_shadow_boat_adult": [
-		["items.lens", "items.magic_power", "items.hookshot:2"]
-	],
-	"temple_shadow_behind_giant_pots_adult": [
-		["items.lens", "items.magic_power", "items.hookshot"]
-	],
-	"mountain_bombable": [
-        ["items.bombs"]
-    ],
-	"mountain_before_goron_hammer_rock_adult_night": [
-        ["items.hammer"]
-    ],
-	"mountain_cave_entrance_beanspot_child": [
-        ["items.bottle"]
-    ],
-	"mountain_wall_hammer_rock_adult_night": [
-        ["items.hammer"]
-    ],
-	"mountain_crater_beanspot_child": [
-        ["items.warp_fire", "items.bottle"]
-    ],
-	"mountain_crater_box_child": [
-        ["items.bombs"]
-    ],
-	"goron_maze_center_child":[
-        ["items.bombs"]
-    ],
-	"goron_center_platform_adult":[
-        ["items.hookshot"]
-    ],
-	"dodongo_east_corridor_bombable":[
-        ["items.bombs"]
-    ],
-	"dodongo_east_corridor_scarecrow_adult":[
-        ["items.bombs", "items.hookshot"],
-        ["items.hammer", "items.hookshot"],
-        ["items.glove", "items.hookshot"]
-    ],
-	"dodongo_above_big_staircase_adult":[
-        ["items.hookshot"]
-    ],
-	"dodongo_big_staircase_vines":[
-        ["items.boomerang"],
-		["items.slingshot"],
-		["items.bow"],
-		["items.bombs"],
-		["items.magic_din", "items.magic_power"],
-		["items.hookshot"]
-	],
-	"dodongo_near_boss_bombable":[
-        ["items.bombs"]
-    ],
-	"temple_fire_big_lava_time_block_adult":[
-        ["items.song_time"]
-    ],
-	"temple_fire_boulder_maze_bombable_adult":[
-        ["items.bombs"]
-    ],
-	"temple_fire_boulder_maze_scarecrow1_adult":[
-        ["items.hookshot"]
-    ],
-	"temple_fire_boulder_maze_scarecrow2_adult":[
-        ["items.hookshot"]
-    ],
-	"temple_fire_near_boss_key_adult":[
-        ["items.hammer"]
-    ],
-	"hyrule_north_east_grotto":[
-        ["items.bombs"],
-		["items.hammer"]
-    ],
-	"hyrule_west_grotto":[
-		["items.hammer", "items.magic_din", "items.magic_power"],
-		["items.hammer", "items.arrow_fire", "items.magic_power"]
-    ],
-	"castle_town_pot_room_child":[],
-	"castle_town_tree_child":[],
-	"castle_town_storm_grotto_child":[
-		["items.song_storm", "items.bombs"]
-	],
-	"castle_town_near_ganon_fairy_adult":[
-		["items.hookshot"]
-	],
-	"lonlon_tree_child_night":[],
-	"lonlon_paddock_fence_child_night":[],
-	"lonlon_wall_child_night":[
-		["items.boomerang"]
-	],
-	"lonlon_window_child_night":[
-		["items.boomerang"]
-	],
-	"lake_near_firearrows_child_night":[],
-	"lake_behind_lab_child_night":[
-		["items.boomerang"]
-	],
-	"lake_beanspot_child":[
-		["items.bottle"]
-	],
-	"lake_dead_tree_adult_night":[
-		["items.hookshot:2"]
-	],
-	"lake_lab_box_adult":[
-		["items.boots_iron"]
-	],
-	"temple_water_lowest_level_south_adult":[
-		["items.bombs", "items.boots_iron", "items.hookshot"]
-	],
-	"temple_water_big_waterfall_adult":[
-		["items.boots_iron", "items.hookshot:2"]
-	],
-	"temple_water_near_boss_key_adult":[
-		["items.boots_iron", "items.hookshot"]
-	],
-	"temple_water_center_pillar_adult":[
-		["items.boots_iron", "items.hookshot:2"]
-	],
-	"temple_water_river_adult":[
-		["items.boots_iron", "items.hookshot"]
-	],
-	"gerudo_wood_plank_child_night":[
-		["items.boomerang"]
-	],
-	"gerudo_behind_carpenter_tent_adult_night":[
-		["items.hookshot"]
-	],
-	"gerudo_rock_near_carpenter_tent_adult_night":[
-		["items.hookshot"]
-	],
-	"gerudo_river_beanspot_child":[
-		["items.bottle"]
-	],
-	"gerudo_rooftop_adult_night":[
-		["items.hookshot"]
-	],
-	"gerudo_horseback_archery_target_adult_night":[
-		["items.hookshot"]
-	],
-	"desert_fortress_adult":[
-		["items.hookshot"]
-	],
-	"desert_palm_tree_adult_night":[
-		["items.hookshot"]
-	],
-	"desert_magic_bean_adult_night":[],
-	"desert_beanspot_child":[
-		["items.bottle", "items.warp_spirit"]
-	],
-	"temple_spirit_childsegment_left":[
-		["items.boomerang"],
-		["items.slingshot"],
-		["items.bow"]
-	],
-	"temple_spirit_childsegment_sun_room":[
-		["items.boomerang"]
-	],
-	"temple_spirit_childsegment_before_iron_knight":[
-		["items.boomerang"]
-	],
-	"temple_spirit_rolling_boulders_time_block_adult":[
-		["items.song_time"]
-	],
-	"temple_spirit_coloss_room_adult":[
-		["items.hookshot"]
-	]
+    "zora_river_tree_child": {
+        "type": "or",
+        "el": []
+    },
+    "zora_river_ladder_child_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "scale"
+                    }
+                ]
+            }
+        ]
+    },
+    "zora_river_wall1_adult_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    }
+                ]
+            }
+        ]
+    },
+    "zora_river_wall2_adult_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    }
+                ]
+            }
+        ]
+    },
+    "zoras_wall_ice_adult_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    }
+                ]
+            }
+        ]
+    },
+    "zoras_tree_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "scale"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    }
+                ]
+            }
+        ]
+    },
+        "zoras_wall_child_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "scale"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    }
+                ]
+            }
+        ]
+    },
+    "zoras_fairy_hidden_cave_adult_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "scale"
+                    }
+                ]
+            }
+        ]
+    },
+    "jabujabu_b1_ruto1_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "scale"
+                    }
+                ]
+            }
+        ]
+    },
+    "jabujabu_b1_ruto2_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "scale"
+                    }
+                ]
+            }
+        ]
+    },
+    "jabujabu_b1_rising_water_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "scale"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "slingshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "scale"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    }
+                ]
+            }
+        ]
+    },
+    "jabujabu_1f_near_boss_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "scale"
+                    }
+                ]
+            }
+        ]
+    },
+    "ice_cavern_ice_blades_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "scale"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    }
+                ]
+            }
+        ]
+    },
+    "ice_cavern_block_puzzle_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    },
+                    {
+                        "type": "item",
+                        "el": "scale"
+                    }
+                ]
+            }
+        ]
+    },
+    "ice_cavern_compass_room_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "zora_letter"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "scale"
+                    }
+                ]
+            }
+        ]
+    },
+    "kokiri_know_it_all_brothers_child_night": {
+        "type": "or",
+        "el": []
+    },
+    "kokiri_twins_adult_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    }
+                ]
+            }
+        ]
+    },
+    "kokiri_beanspot_near_shop_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    }
+                ]
+            }
+        ]
+    },
+    "deku_3f_compass_side_child": {
+        "type": "or",
+        "el": []
+    },
+    "deku_basement_vines_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "slingshot"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "magic_din"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    }
+                ]
+            }
+        ]
+    },
+    "deku_basement_metal_gate_child": {
+        "type": "or",
+        "el": []
+    },
+    "deku_bombable_behind_web_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "slingshot"
+                    }
+                ]
+            }
+        ]
+    },
+    "woods_mask_theater_beanspot_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    }
+                ]
+            }
+        ]
+    },
+    "woods_deku_salesman_beanspot_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    }
+                ]
+            }
+        ]
+    },
+    "woods_deku_salesman_magic_bean_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_saria"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_forest"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "scale"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_saria"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "scale"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_forest"
+                    }
+                ]
+            }
+        ]
+    },
+    "woods_labyrinth_adult_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_forest"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "song_saria"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_forest_entrance_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_saria"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_forest"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_forest_pillars_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_saria"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_forest"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_saria"
+                    },
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bow"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_forest"
+                    },
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bow"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_forest_lobby_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_saria"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_forest"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_forest_outside_hookshot_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_saria"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_forest"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_forest_near_boss_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bow"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_saria"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bow"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_forest"
+                    }
+                ]
+            }
+        ]
+    },
+    "kakariko_tree_child": {
+        "type": "or",
+        "el": []
+    },
+    "kakariko_skulltula_house_child_night": {
+        "type": "or",
+        "el": []
+    },
+    "kakariko_construction_site_child_night": {
+        "type": "or",
+        "el": []
+    },
+    "kakariko_near_gate_child_night": {
+        "type": "or",
+        "el": []
+    },
+    "kakariko_tower_child_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "slingshot"
+                    }
+                ]
+            }
+        ]
+    },
+    "kakariko_impas_house_roof_adult_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    }
+                ]
+            }
+        ]
+    },
+    "kakariko_graveyard_royal_grave_child_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    }
+                ]
+            }
+        ]
+    },
+    "kakariko_graveyard_beanspot_child_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    }
+                ]
+            }
+        ]
+    },
+    "well_center_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    }
+                ]
+            }
+        ]
+    },
+    "well_center_locked_room_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    }
+                ]
+            }
+        ]
+    },
+    "well_locked_pits_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_shadow_invisible_blade_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_din"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_shadow"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_shadow_falling_spikes_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_din"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_shadow"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_shadow_behind_giant_pot_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_din"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_shadow"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_shadow_boat_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_din"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_shadow"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_shadow_behind_giant_pots_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_din"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_shadow"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    }
+                ]
+            }
+        ]
+    },
+    "mountain_bombable": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    }
+                ]
+            }
+        ]
+    },
+    "mountain_before_goron_hammer_rock_adult_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hammer"
+                    }
+                ]
+            }
+        ]
+    },
+    "mountain_cave_entrance_beanspot_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    }
+                ]
+            }
+        ]
+    },
+    "mountain_wall_hammer_rock_adult_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hammer"
+                    }
+                ]
+            }
+        ]
+    },
+    "mountain_crater_beanspot_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "warp_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    }
+                ]
+            }
+        ]
+    },
+    "mountain_crater_box_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    }
+                ]
+            }
+        ]
+    },
+    "goron_maze_center_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    }
+                ]
+            }
+        ]
+    },
+    "goron_center_platform_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "item",
+                "el": "hookshot"
+            },
+            {
+                "type": "item",
+                "el": "bow"
+            },
+            {
+                "type": "item",
+                "el": "bombs"
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "magic_din"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    }
+                ]
+            }
+        ]
+    },
+    "dodongo_east_corridor_bombable": {
+        "type": "or",
+        "el": [
+            {
+                "type": "item",
+                "el": "bombs"
+            },
+            {
+                "type": "item",
+                "el": "hammer"
+            }
+        ]
+    },
+    "dodongo_east_corridor_scarecrow_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hammer"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hammer"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        "value": 2
+                    }
+                ]
+            }
+        ]
+    },
+    "dodongo_above_big_staircase_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bow"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hammer"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bow"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bow"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hammer"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    }
+                ]
+            }
+        ]
+    },
+    "dodongo_big_staircase_vines": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "slingshot"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bow"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hammer"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bow"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hammer"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hammer"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_din"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_din"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    {
+                        "type": "item",
+                        "el": "slingshot"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bow"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    }
+                ]
+            }
+        ]
+    },
+    "dodongo_near_boss_bombable": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "slingshot"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bow"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hammer"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_fire_big_lava_time_block_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "song_time"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "song_time"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "song_time"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hammer"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "song_time"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hammer"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "song_time"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "song_time"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    },
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "song_time"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bow"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "song_time"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bow"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "song_time"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_fire"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_fire_boulder_maze_bombable_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    },
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_fire_boulder_maze_scarecrow1_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_fire_boulder_maze_scarecrow2_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "glove"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_fire_near_boss_key_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hammer"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_fire"
+                    }
+                ]
+            }
+        ]
+    },
+    "hyrule_north_east_grotto": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hammer"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    }
+                ]
+            }
+        ]
+    },
+    "hyrule_west_grotto": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hammer"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_din"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hammer"
+                    },
+                    {
+                        "type": "item",
+                        "el": "arrow_fire"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    }
+                ]
+            }
+        ]
+    },
+    "castle_town_pot_room_child": {
+        "type": "or",
+        "el": []
+    },
+    "castle_town_tree_child": {
+        "type": "or",
+        "el": []
+    },
+    "castle_town_storm_grotto_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "song_storm"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    }
+                ]
+            }
+        ]
+    },
+    "castle_town_near_ganon_fairy_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "item",
+                "el": "hookshot"
+            }
+        ]
+    },
+    "lonlon_tree_child_night": {
+        "type": "or",
+        "el": []
+    },
+    "lonlon_paddock_fence_child_night": {
+        "type": "or",
+        "el": []
+    },
+    "lonlon_wall_child_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "item",
+                "el": "boomerang"
+            }
+        ]
+    },
+    "lonlon_window_child_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "item",
+                "el": "boomerang"
+            }
+        ]
+    },
+    "lake_near_firearrows_child_night": {
+        "type": "or",
+        "el": []
+    },
+    "lake_behind_lab_child_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "item",
+                "el": "boomerang"
+            }
+        ]
+    },
+    "lake_beanspot_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "item",
+                "el": "bottle"
+            }
+        ]
+    },
+    "lake_dead_tree_adult_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "value",
+                "el": {
+                    "type": "item",
+                    "el": "hookshot"
+                },
+                "value": 2
+            }
+        ]
+    },
+    "lake_lab_box_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_iron"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_water_lowest_level_south_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_iron"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_water"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_water_big_waterfall_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boots_iron"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_water"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_water_near_boss_key_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boots_iron"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_water"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_water_center_pillar_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boots_iron"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_water"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_water_river_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boots_iron"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "tunic_water"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_time"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_zelda"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    }
+                ]
+            }
+        ]
+    },
+    "gerudo_wood_plank_child_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "item",
+                "el": "boomerang"
+            }
+        ]
+    },
+    "gerudo_behind_carpenter_tent_adult_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_epona"
+                    }
+                ]
+            },
+            {
+                "type": "value",
+                "el": {
+                    "type": "item",
+                    "el": "hookshot"
+                },
+                "value": 2
+            }
+        ]
+    },
+    "gerudo_rock_near_carpenter_tent_adult_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_epona"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    }
+                ]
+            },
+            {
+                "type": "value",
+                "el": {
+                    "type": "item",
+                    "el": "hookshot"
+                },
+                "value": 2
+            }
+        ]
+    },
+    "gerudo_river_beanspot_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "item",
+                "el": "bottle"
+            }
+        ]
+    },
+    "gerudo_rooftop_adult_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_epona"
+                    }
+                ]
+            },
+            {
+                "type": "value",
+                "el": {
+                    "type": "item",
+                    "el": "hookshot"
+                },
+                "value": 2
+            }
+        ]
+    },
+    "gerudo_horseback_archery_target_adult_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_epona"
+                    },
+                    {
+                        "type": "item",
+                        "el": "membership"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "membership"
+                    }
+                ]
+            }
+        ]
+    },
+    "desert_fortress_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_epona"
+                    },
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "membership"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "membership"
+                    }
+                ]
+            }
+        ]
+    },
+    "desert_palm_tree_adult_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_spirit"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_epona"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    }
+                ]
+            }
+        ]
+    },
+    "desert_magic_bean_adult_night": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_spirit"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "scale"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_spirit"
+                    }
+                ]
+            }
+        ]
+    },
+    "desert_beanspot_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "bottle"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_spirit"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_spirit_childsegment_left": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_spirit"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "slingshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_spirit"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_spirit_childsegment_sun_room": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_spirit"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "slingshot"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_spirit"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_spirit"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_epona"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    },
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_epona"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    },
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        "value": 2
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_spirit_childsegment_before_iron_knight": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "boomerang"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "bombs"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_spirit"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_spirit"
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_epona"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_spirit_rolling_boulders_time_block_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "song_time"
+                    },
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_time"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_spirit"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "bow"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_epona"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "bow"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_time"
+                    }
+                ]
+            }
+        ]
+    },
+    "temple_spirit_coloss_room_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "warp_spirit"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "item",
+                        "el": "ocarina"
+                    },
+                    {
+                        "type": "item",
+                        "el": "song_epona"
+                    },
+                    {
+                        "type": "item",
+                        "el": "boots_hover"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "hookshot"
+                    }
+                ]
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "item",
+                        "el": "lens"
+                    },
+                    {
+                        "type": "item",
+                        "el": "magic_power"
+                    },
+                    {
+                        "type": "value",
+                        "el": {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        "value": 2
+                    }
+                ]
+            }
+        ]
+    }
 }

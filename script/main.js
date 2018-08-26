@@ -149,7 +149,7 @@ async function state_Load() {
 async function state_Delete() {
     if (stateChoice.value != ""
     && await Dialogue.confirm("Do you really want to delete \""+stateChoice.value+"\"?")) {
-        localStorage.removeItem(stateChoice.value);
+        Storage.remove("save", stateChoice.value);
         if (stateChoice.value != activestate) {
             stateChoice.value = activestate;
             updateItems();

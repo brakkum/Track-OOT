@@ -1,45 +1,36 @@
 
-function checkLogicNew(logic) {
+function checkLogicObject(logic) {
     if (!logic || logic == null) return true;
     switch(logic.type) {
         case "and":
+            if (!logic.el.length) return true;
             for (let i = 0; i < logic.el.length; ++i) {
                 var el = logic.el[i];
                 if (!!el && el != null) {
-                    if (!checkLogicNew(el)) return false;
+                    if (!checkLogicObject(el)) return false;
                 }
             }
             return true;
         case "or":
+            if (!logic.el.length) return true;
             for (let i = 0; i < logic.el.length; ++i) {
                 var el = logic.el[i];
                 if (!!el && el != null) {
-                    if (checkLogicNew(el)) return true;
+                    if (checkLogicObject(el)) return true;
                 }
             }
             return false;
         case "not":
-            return !checkLogicNew(logic.el);
+            return !checkLogicObject(logic.el);
         case "value":
-            return checkLogicNew(logic.el) >= logic.value;
+            return checkLogicObject(logic.el) >= logic.value;
         case "item":
             return SaveState.read("items", logic.el, 0);
     }
     return true;
 }
 
-function checkLogic(category, name) {
-    if (!data.logic.hasOwnProperty(category) || !data.logic[category].hasOwnProperty(name)) return false;
-    var logic;
-    
-    if (settings.use_custom_logic && data.logic_patched.hasOwnProperty(category) && data.logic_patched[category].hasOwnProperty(name)) {
-        logic = data.logic_patched[category][name];
-        return checkLogicNew(logic);
-    } else {
-        logic = data.logic[category][name];
-    }
-
-    if (!Array.isArray(logic)) return checkLogicNew(logic);
+function checkLogicArray(logic) {
     if (logic.length == 0) {
         return true;
     } else {
@@ -68,27 +59,43 @@ function checkLogic(category, name) {
     return false;
 }
 
+function checkLogic(category, name) {
+    if (!data.logic.hasOwnProperty(category) || !data.logic[category].hasOwnProperty(name)) return false;
+    var logic;
+    
+    if (settings.use_custom_logic && data.logic_patched.hasOwnProperty(category) && data.logic_patched[category].hasOwnProperty(name)) {
+        logic = data.logic_patched[category][name];
+        return checkLogicObject(logic);
+    } else {
+        logic = data.logic[category][name];
+    }
+
+    if (!Array.isArray(logic)) return checkLogicObject(logic);
+    return checkLogicArray(logic);
+}
+
 function checkAvailable(category, name) {
     return checkLogic(category, name) ? "available" : "unavailable";
 }
 
-function checkBeatList(name) {
-    var logic = data.logic.dungeons[name];
-    if (!Array.isArray(logic) && logic != null) return checkLogicNew(logic);
-    if (logic.length == 0)
-        return checkList("chests", name);
-
-    var list = data.dungeons[name].chests;
-    var unopened = false;
+function checkOpened(category, name) {
+    var list = data.dungeons[name][category];
     for (var i = 0; i < list.length; ++i) {
         var key = list[i];
-        if (!SaveState.read("chests", key, 0)) {
-            unopened = true;
-            break;
+        if (!SaveState.read(category, key, 0)) {
+            return false;
         }
     }
+    return true;
+}
 
-    if (unopened) return checkLogic("dungeons", name) ? "available" : "unavailable";
+function checkBeatList(name) {
+    var logic = data.logic.dungeons[name];
+    if ((Array.isArray(logic) && logic.length == 0) || logic == null) {
+        return checkList("chests", name);
+    }
+
+    if (!checkOpened("chests", name)) return checkLogic("dungeons", name) ? "available" : "unavailable";
     return "opened";
 }
 

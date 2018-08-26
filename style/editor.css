@@ -189,9 +189,9 @@ input[type=number]::-webkit-outer-spin-button {
     cursor: move;
 }
 
-#editor-panel .logic-operator {
+/*#editor-panel .logic-operator {
     margin: 20px;
-}
+}*/
 
 .logic-operator > .operator-header {
     display: flex;

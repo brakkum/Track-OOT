@@ -13,6 +13,7 @@ async function run() {
     document.getElementById('control-load-local').onclick = loadLocalLogic;
     document.getElementById('control-remove-local').onclick = removeLocalLogic;
     document.getElementById('control-download-local').onclick = downloadLocalLogic;
+    document.getElementById('control-download-patched').onclick = downloadPatchedLogic;
     document.getElementById('control-load-remote').onclick = loadRemoteLogic;
 }
 run();
@@ -163,8 +164,18 @@ function removeLocalLogic() {
 }
 
 function downloadLocalLogic() {
-    var el = document.getElementById('editor-panel').querySelector('.panel-header');
-    saveJSON(data.logic_patched, "logic_patched.json");
+    saveJSON(data.logic_patched, "logic_patch.json");
+}
+
+function downloadPatchedLogic() {
+    var logic = JSON.parse(JSON.stringify(data.logic));
+    for (let i in data.logic_patched) {
+        logic[i] = logic[i] || {};
+        for (let j in data.logic_patched[i]) {
+            logic[i][j] = data.logic_patched[i][j];
+        }
+    }
+    saveJSON(logic, "logic.json");
 }
 
 // export logic
@@ -228,6 +239,7 @@ function testLogic(data, logic) {
     if (!logic || logic == null) return true;
     switch(logic.type) {
         case "and":
+            if (!logic.el.length) return true;
             for (let i = 0; i < logic.el.length; ++i) {
                 var el = logic.el[i];
                 if (!!el && el != null) {
@@ -236,6 +248,7 @@ function testLogic(data, logic) {
             }
             return true;
         case "or":
+            if (!logic.el.length) return true;
             for (let i = 0; i < logic.el.length; ++i) {
                 var el = logic.el[i];
                 if (!!el && el != null) {
