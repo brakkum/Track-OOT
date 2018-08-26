@@ -2,7 +2,9 @@ function loadText(file) {
     return fetch(new Request(file, {
         method: 'GET',
         headers: new Headers({
-            "Content-Type": "text/plain"
+            "content-type": "text/plain",
+            "pragma": "no-cache",
+            "cache-control": "no-cache"
         }),
         mode: 'cors',
         cache: 'default'
@@ -13,7 +15,9 @@ function loadJSON(file) {
     return fetch(new Request(file, {
         method: 'GET',
         headers: new Headers({
-            "Content-Type": "text/json"
+            "Content-Type": "text/plain",
+            "pragma": "no-cache",
+            "cache-control": "no-cache"
         }),
         mode: 'cors',
         cache: 'default'
@@ -21,18 +25,17 @@ function loadJSON(file) {
 }
 
 async function loadAll() {
-    var version = "201808261514";
     var data = {};
     // items
-    data.items = await loadJSON("database/items.json?v="+version);
-    data.item_grid = await loadJSON("database/item_grid.json?v="+version);
-    data.item_keys = await loadJSON("database/item_keys.json?v="+version);
+    data.items = await loadJSON("database/items.json");
+    data.item_grid = await loadJSON("database/item_grid.json");
+    data.item_keys = await loadJSON("database/item_keys.json");
     // chests, dungeons & skulltulas
-    data.chests = await loadJSON("database/chests.json?v="+version);
-    data.dungeons = await loadJSON("database/dungeons.json?v="+version);
-    data.skulltulas = await loadJSON("database/skulltulas.json?v="+version);
+    data.chests = await loadJSON("database/chests.json");
+    data.dungeons = await loadJSON("database/dungeons.json");
+    data.skulltulas = await loadJSON("database/skulltulas.json");
     // logic
-    data.logic = await loadJSON("database/logic.json?v="+version)
+    data.logic = await loadJSON("database/logic.json")
     /*data.logic = {
         chests: await loadJSON("database/logic_chest.json"),
         skulltulas: await loadJSON("database/logic_skulltula.json"),
@@ -40,6 +43,6 @@ async function loadAll() {
     };*/
     data.logic_patched = Storage.get("settings", "logic", {});
     // misc
-    data.lang = await loadJSON("database/lang_en.json?v="+version);
+    data.lang = await loadJSON("database/lang_en.json");
     return data;
 }
