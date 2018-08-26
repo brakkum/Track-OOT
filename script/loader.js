@@ -35,12 +35,7 @@ async function loadAll() {
     data.dungeons = await loadJSON("database/dungeons.json");
     data.skulltulas = await loadJSON("database/skulltulas.json");
     // logic
-    data.logic = await loadJSON("database/logic.json")
-    /*data.logic = {
-        chests: await loadJSON("database/logic_chest.json"),
-        skulltulas: await loadJSON("database/logic_skulltula.json"),
-        dungeons: await loadJSON("database/logic_dungeon.json")
-    };*/
+    data.logic = await loadJSON("database/logic.json");
     data.logic_patched = Storage.get("settings", "logic", {});
     // misc
     data.lang = await loadJSON("database/lang_en.json");
