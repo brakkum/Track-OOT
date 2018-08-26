@@ -12,7 +12,9 @@ async function run() {
     document.getElementById('control-save-local').onclick = saveLocalLogic;
     document.getElementById('control-load-local').onclick = loadLocalLogic;
     document.getElementById('control-remove-local').onclick = removeLocalLogic;
-    document.getElementById('control-download-local').onclick = downloadLocalLogic;
+    document.getElementById('control-clear-local').onclick = clearLocalLogic;
+    document.getElementById('control-download-patch').onclick = downloadLogicPatch;
+    document.getElementById('control-upload-patch').onclick = uploadLogicPatch;
     document.getElementById('control-download-patched').onclick = downloadPatchedLogic;
     document.getElementById('control-load-remote').onclick = loadRemoteLogic;
 }
@@ -163,8 +165,26 @@ function removeLocalLogic() {
     }
 }
 
-function downloadLocalLogic() {
+function clearLocalLogic() {
+    for (let i in data.logic_patched) {
+        for (let j in data.logic_patched[i]) {
+            document.getElementById(i+'_'+j).classList.remove('has-custom-logic');
+        }
+    }
+    data.logic_patched = {};
+    Storage.set("settings", "logic", data.logic_patched);
+}
+
+function downloadLogicPatch() {
     saveJSON(data.logic_patched, "logic_patch.json");
+}
+
+function uploadLogicPatch() {
+    uploadJSON(data.logic_patched, "logic_patch.json");
+}
+
+function importLogicPatch() {
+
 }
 
 function downloadPatchedLogic() {
@@ -439,6 +459,40 @@ function deleteElement(ev) {
 Array.from(document.getElementsByClassName('logic-operator')).forEach(element => {
     element.ondragstart = dragNewElement;
 });
+
+var uploadJSON = (function () {
+    var a = document.createElement("input");
+    a.setAttribute("type", "file");
+    document.body.appendChild(a);
+    a.style = "display: none";
+    a.addEventListener("change", handleFiles, false);
+    function handleFiles() {
+        var file = this.files[0];
+        var reader = new FileReader();
+        reader.onload = (function(theFile) {
+            return function(e) {
+                var a = e.target.result;
+                if (a.startsWith("data:application/json;base64,")) {
+                    a = a.slice(29);
+                }
+                var b = JSON.parse(atob(a));
+                for (let i in b) {
+                    data.logic_patched[i] = data.logic_patched[i] || {};
+                    for (let j in b[i]) {
+                        data.logic_patched[i][j] = b[i][j];
+                        document.getElementById(i+'_'+j).classList.add('has-custom-logic');
+                    }
+                }
+                Storage.set("settings", "logic", data.logic_patched);
+            };
+        })(file);
+        // Read in the image file as a data URL.
+        reader.readAsDataURL(file);
+    }
+    return function () {
+        a.click();
+    };
+}());
 
 // save JSON (koldev - https://jsfiddle.net/koldev/cW7W5/)
 

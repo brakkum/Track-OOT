@@ -2,9 +2,9 @@ function loadText(file) {
     return fetch(new Request(file, {
         method: 'GET',
         headers: new Headers({
-            "content-type": "text/plain",
-            "pragma": "no-cache",
-            "cache-control": "no-cache"
+            "Content-Type": "text/plain",
+            "Pragma": "no-cache",
+            "Cache-Control": "no-cache"
         }),
         mode: 'cors',
         cache: 'default'
@@ -15,9 +15,9 @@ function loadJSON(file) {
     return fetch(new Request(file, {
         method: 'GET',
         headers: new Headers({
-            "Content-Type": "text/plain",
-            "pragma": "no-cache",
-            "cache-control": "no-cache"
+            "Content-Type": "application/json",
+            "Pragma": "no-cache",
+            "Cache-Control": "no-cache"
         }),
         mode: 'cors',
         cache: 'default'

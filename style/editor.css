@@ -97,6 +97,7 @@ input[type=number]::-webkit-outer-spin-button {
     right: 0px;
     top: 0px;
     bottom: 0pc;
+    padding: 0 5px;
     content: "C";
     font-size: 1.5em;
     font-weight: bold;
