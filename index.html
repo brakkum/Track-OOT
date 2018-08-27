@@ -67,7 +67,10 @@
         </nav>
         <div class="content">
             <div class="layout-container">
-                <div id="item-container" class="item-grid" data-inactive="0"></div>
+                <div id="item-container" class="item-grid" data-inactive="0">
+                </div>
+                <div id="key-container" class="item-grid" data-inactive="0">
+                </div>
                 <div id="map" data-mode="chests">
                     <div class="slidecontainer">
                         <span class="slidetext">+ / -</span>
@@ -126,6 +129,10 @@
             <div id="settings-window">
                 <h3>Settings</h3>
                 <div class="settings-option">
+                    <label>
+                        <input type="checkbox" id="show_map" checked>
+                        show map
+                    </label>
                     <label>
                         <input type="checkbox" id="use_custom_logic">
                         use custom logic

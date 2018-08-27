@@ -38,13 +38,24 @@ settingsEdit.addEventListener("click", function() {
 });
 
 settingsCancel.addEventListener("click", function() {
+    document.getElementById('show_map').checked = settings.show_map;
+    document.getElementById('use_custom_logic').checked = settings.use_custom_logic;
     document.getElementById('settings').classList.remove('active');
 });
 
 settingsSave.addEventListener("click", function() {
     settings.use_custom_logic = document.getElementById('use_custom_logic').checked;
-    Storage.set("settings", "use_custom_logic", use_custom_logic);
-    updateMap();
+    Storage.set("settings", "use_custom_logic", settings.use_custom_logic);
+    settings.show_map = document.getElementById('show_map').checked;
+    Storage.set("settings", "show_map", settings.show_map);
+    if (settings.show_map) {
+        document.getElementById('map').style.display = "";
+        document.getElementById('dungeon-container').style.display = "";
+        updateMap();
+    } else {
+        document.getElementById('map').style.display = "none";
+        document.getElementById('dungeon-container').style.display = "none";
+    }
     document.getElementById('settings').classList.remove('active');
 });
 

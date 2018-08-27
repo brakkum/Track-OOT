@@ -34,9 +34,10 @@ body {
     justify-items: stretch;
     align-items: stretch;
     grid-template-columns: calc(7 * 50px + 16px) minmax(0%, 100%);
-    grid-template-rows: calc(8 * 50px + 16px) minmax(0%, 100%);
+    grid-template-rows: calc(8 * 50px + 16px) calc(3 * 40px + 16px) minmax(0%, 100%);
     grid-template-areas: 
-    "items map"
+    "items map" 
+    "keys map"
     "dungeon map";
 }
 
@@ -125,4 +126,9 @@ body {
 
 .button:disabled {
     opacity: 0.3;
+}
+
+.settings-option label {
+    display: block;
+    margin: 10px 0;
 }

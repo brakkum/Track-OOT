@@ -49,3 +49,17 @@
 .item-grid .item-row .item:hover {
     border: solid 2px gold;
 }
+
+/**********************************
+    keys
+**********************************/
+
+#key-container {
+    grid-area: keys;
+}
+
+#key-container .item-row .item,
+#key-container .item-row .icon {
+    width: 40px;
+    height: 40px;
+}
