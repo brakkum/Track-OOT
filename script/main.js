@@ -96,6 +96,8 @@ async function main() {
 
     console.log("loaded database:\r\n%o", data);
 
+    settings.show_map = Storage.get("settings", "show_map");
+    settings.use_custom_logic = Storage.get("settings", "use_custom_logic");
     document.getElementById('show_map').checked = settings.show_map;
     document.getElementById('use_custom_logic').checked = settings.use_custom_logic;
     if (!settings.show_map) {
