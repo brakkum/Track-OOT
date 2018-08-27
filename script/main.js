@@ -56,6 +56,7 @@ settingsSave.addEventListener("click", function() {
         document.getElementById('map').style.display = "none";
         document.getElementById('dungeon-container').style.display = "none";
     }
+    data.logic_patched = Storage.get("settings", "logic", {});
     document.getElementById('settings').classList.remove('active');
 });
 
@@ -94,6 +95,13 @@ async function main() {
     data = await loadAll();
 
     console.log("loaded database:\r\n%o", data);
+
+    document.getElementById('show_map').checked = settings.show_map;
+    document.getElementById('use_custom_logic').checked = settings.use_custom_logic;
+    if (!settings.show_map) {
+        document.getElementById('map').style.display = "none";
+        document.getElementById('dungeon-container').style.display = "none";
+    }
 
     prepairSavegameChoice();
 
