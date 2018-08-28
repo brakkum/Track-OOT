@@ -6,6 +6,54 @@ window.Dialogue = new (function() {
     var dlg_abort   = document.getElementById("dialogue_abort");
     var dlg_input   = document.getElementById("dialogue_input");
 
+    function createDialogue(options) {
+        return new Promise(function(resolve) {
+            var container = document.createElement('DIV');
+            var dialogue = document.createElement('DIV');
+            dialogue.className = "dialogue-window";
+            if (!!options.title) {
+                let title = document.createElement('DIV');
+                title.innerHTML = options.title;
+                dialogue.appendChild(title);
+            }
+            if (!!options.message) {
+                let message = document.createElement('DIV');
+                message.innerHTML = options.message;
+                dialogue.appendChild(message);
+            }
+            switch(options.buttons) {
+                case "YES_NO":
+                let button_no = document.createElement('BUTTON');
+                let button_yes = document.createElement('BUTTON');
+                button_yes.innerHTML = "No";
+                button_yes.innerHTML = "Yes";
+                button_no.onclick = function() {
+                    document.body.removeChild(dialogue);
+                    resolve(false);
+                };
+                button_yes.onclick = function() {
+                    document.body.removeChild(dialogue);
+                    resolve(true);
+                };
+                dialogue.appendChild(button_no);
+                dialogue.appendChild(button_yes);
+                break;
+                case "OK":
+                default:
+                let button_ok = document.createElement('BUTTON');
+                button_ok.innerHTML = "Accept";
+                button_ok.onclick = function() {
+                    document.body.removeChild(dialogue);
+                    resolve(true);
+                };
+                dialogue.appendChild(button_ok);
+                break;
+            }
+            container.appendChild(dialogue);
+            document.body.appendChild(container);
+        });
+    }
+
     this.alert = function(ttl, msg) {
         return new Promise(function(resolve) {
             dlg.className = "alert";
