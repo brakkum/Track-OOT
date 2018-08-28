@@ -1,0 +1,19 @@
+{
+    "has_explosives": {
+        "type":"item",
+        "el":"bombs"
+    },
+    "can_blast_or_smash": {
+        "type": "or",
+        "el": [
+            {
+                "type":"mixin",
+                "el":"has_explosives"
+            },
+            {
+                "type":"item",
+                "el":"hammer"
+            }
+        ]
+    }
+}

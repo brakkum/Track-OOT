@@ -107,9 +107,9 @@ input[type=number]::-webkit-outer-spin-button {
     display: none;
 }
 
-
-#operator-panel .logic-operator,
-#item-panel .logic-item {
+/*#item-panel .logic-item,
+#item-panel .logic-mixin,*/
+#operator-panel .logic-operator{
     display: inline-table;
 }
 
@@ -166,6 +166,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .placeholder,
 .logic-item,
+.logic-mixin,
 .logic-operator {
     display: table;
     margin: 5px;
@@ -179,14 +180,16 @@ input[type=number]::-webkit-outer-spin-button {
     border: 1px solid gray;
 }
 
-.logic-item {
+.logic-item,
+.logic-mixin {
     padding: 5px;
     background-color: rgb(130, 235, 229);
     border: 1px solid rgb(37, 167, 128);
 }
 
 .logic-operator,
-.logic-item {
+.logic-item,
+.logic-mixin {
     cursor: move;
 }
 

@@ -5,6 +5,9 @@
  * TODO: export as file (maybe with option to export patch only)
  */
 
+const CHILD_ITEM_QUERY = ".panel-body > .logic-operator, .panel-body > .logic-item, .panel-body > .logic-mixin";
+const CHILD_ITEM_QUERY_SCOPE = ":scope > .logic-operator, :scope > .logic-item, :scope > .logic-mixin";
+
 async function run() {
     window.data = await loadAll();
     fillLogics();
@@ -87,7 +90,17 @@ function fillItems() {
         var el = document.createElement("div");
         el.className = "logic-item";
         el.id = "item_" + i;
-        el.innerHTML = translate(i);
+        el.innerHTML = "Item: " + translate(i);
+        el.setAttribute("title", i);
+        el.setAttribute("draggable", true);
+        el.ondragstart = dragNewElement;
+        cont.appendChild(el);
+    }
+    for (let i in data.logic.mixins) {
+        var el = document.createElement("div");
+        el.className = "logic-mixin";
+        el.id = "mixin_" + i;
+        el.innerHTML = "Mixin: " + translate(i);
         el.setAttribute("title", i);
         el.setAttribute("draggable", true);
         el.ondragstart = dragNewElement;
@@ -183,10 +196,6 @@ function uploadLogicPatch() {
     uploadJSON(data.logic_patched, "logic_patch.json");
 }
 
-function importLogicPatch() {
-
-}
-
 function downloadPatchedLogic() {
     var logic = JSON.parse(JSON.stringify(data.logic));
     for (let i in data.logic_patched) {
@@ -252,44 +261,9 @@ function convertOldLogic(logic) {
     return res;
 }
 
-// test logic
-function testLogic(data, logic) {
-    if (!data) data = {items:{}};
-    if (!logic) logic = getLogic();
-    if (!logic || logic == null) return true;
-    switch(logic.type) {
-        case "and":
-            if (!logic.el.length) return true;
-            for (let i = 0; i < logic.el.length; ++i) {
-                var el = logic.el[i];
-                if (!!el && el != null) {
-                    if (!testLogic(data, el)) return false;
-                }
-            }
-            return true;
-        case "or":
-            if (!logic.el.length) return true;
-            for (let i = 0; i < logic.el.length; ++i) {
-                var el = logic.el[i];
-                if (!!el && el != null) {
-                    if (testLogic(data, el)) return true;
-                }
-            }
-            return false;
-        case "not":
-            return !testLogic(data, logic.el);
-        case "value":
-            return testLogic(data, logic.el) >= logic.value;
-        case "item":
-            if (!data.items.hasOwnProperty(logic.el)) return 0;
-            return data.items[logic.el];
-    }
-    return true;
-}
-
 // set/get logic
 function setLogic(logic) {
-    removeLogicEl(document.getElementById("editor-panel").querySelector(".panel-body > .logic-operator, .panel-body > .logic-item"));
+    removeLogicEl(document.getElementById("editor-panel").querySelector(CHILD_ITEM_QUERY));
     return recursiveSetLogic(logic, document.getElementById("editor-panel").querySelector('.panel-body > .placeholder'));
 }
 
@@ -328,6 +302,11 @@ function recursiveSetLogic(logic, root) {
                 recursiveSetLogic(logic.el, a);
             }
             break;
+        case "mixin":
+            if (!!logic.el && logic.el != null) {
+                addLogicEl(document.getElementById("mixin_"+logic.el), root);
+            }
+            break;
         case "item":
             if (!!logic.el && logic.el != null) {
                 addLogicEl(document.getElementById("item_"+logic.el), root);
@@ -338,7 +317,7 @@ function recursiveSetLogic(logic, root) {
 }
 
 function getLogic() {
-    return recursiveGetLogic(document.getElementById("editor-panel").querySelector(".panel-body > .logic-operator, .panel-body > .logic-item"));
+    return recursiveGetLogic(document.getElementById("editor-panel").querySelector(CHILD_ITEM_QUERY));
 }
 
 function recursiveGetLogic(root) {
@@ -349,27 +328,32 @@ function recursiveGetLogic(root) {
             return null;
         case "logic-and":
             var res = {type:"and",el:[]};
-            var ch = Array.from(root.querySelectorAll(":scope > .logic-operator, :scope > .logic-item"));
+            var ch = Array.from(root.querySelectorAll(CHILD_ITEM_QUERY_SCOPE));
             ch.forEach(el=>{
                 res.el.push(recursiveGetLogic(el));
             });
             return res;
         case "logic-or":
             var res = {type:"or",el:[]};
-            var ch = Array.from(root.querySelectorAll(":scope > .logic-operator, :scope > .logic-item"));
+            var ch = Array.from(root.querySelectorAll(CHILD_ITEM_QUERY_SCOPE));
             ch.forEach(el=>{
                 res.el.push(recursiveGetLogic(el));
             });
             return res;
         case "logic-not":
-            var el = root.querySelector(":scope > .logic-operator, :scope > .logic-item");
+            var el = root.querySelector(CHILD_ITEM_QUERY_SCOPE);
             return {type:"not",el:recursiveGetLogic(el)};
         case "logic-value":
-            var el = root.querySelector(":scope > .logic-operator, :scope > .logic-item");
+            var el = root.querySelector(CHILD_ITEM_QUERY_SCOPE);
             return {type:"value",el:recursiveGetLogic(el),value:parseInt(root.querySelector("input").value)};
         default:
-            return {type:"item",el:root.getAttribute("data-id").slice(5)};
-
+            if (root.classList.contains("logic-mixin")) {
+                return {type:"mixin",el:root.getAttribute("data-id").slice(6)};
+            }
+            if (root.classList.contains("logic-item")) {
+                return {type:"item",el:root.getAttribute("data-id").slice(5)};
+            }
+            return null;
     }
 }
 

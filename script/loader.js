@@ -36,6 +36,7 @@ async function loadAll() {
     data.skulltulas = await loadJSON("database/skulltulas.json");
     // logic
     data.logic = await loadJSON("database/logic.json");
+    data.logic.mixins = await loadJSON("database/mixins.json");
     data.logic_patched = Storage.get("settings", "logic", {});
     // misc
     data.lang = await loadJSON("database/lang_en.json");
