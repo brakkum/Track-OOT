@@ -183,7 +183,7 @@ async function state_Delete() {
 }
 
 async function state_New() {
-    var name = await Dialogue.prompt("Please enter a new name! (Unsafed changes will be lost.)");
+    var name = await Dialogue.prompt("Please enter a new name! (Unsaved changes will be lost.)");
     if (name == "") {
         Dialogue.alert("The name can not be empty.");
         state_New();
