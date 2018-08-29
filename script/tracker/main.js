@@ -1,8 +1,6 @@
 var data;
 var activestate = "";
-var settings = {
-    use_custom_logic: false
-}
+var settings = {}
 
 var stateChoice = document.getElementById("select-savegame");
 var stateSave = document.getElementById("save-savegame");
@@ -96,8 +94,8 @@ async function main() {
 
     console.log("loaded database:\r\n%o", data);
 
-    settings.show_map = Storage.get("settings", "show_map");
-    settings.use_custom_logic = Storage.get("settings", "use_custom_logic");
+    settings.show_map = Storage.get("settings", "show_map", true);
+    settings.use_custom_logic = Storage.get("settings", "use_custom_logic", false);
     document.getElementById('show_map').checked = settings.show_map;
     document.getElementById('use_custom_logic').checked = settings.use_custom_logic;
     if (!settings.show_map) {
