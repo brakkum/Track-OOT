@@ -15,5 +15,52 @@
                 "el":"hammer"
             }
         ]
+    },
+    "gerududo_fortress_access": {
+        "type": "or",
+        "el": [
+            {
+                "type": "value",
+                "value": 2,
+                "el": {
+                    "type":"item",
+                    "el":"hookshot"
+                }
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type":"item",
+                        "el":"ocarina"
+                    },
+                    {
+                        "type":"item",
+                        "el":"song_epona"
+                    }
+                ]
+            }
+        ]
+    },
+    "gerudo_fortress_open": {
+        "type": "and",
+        "el": [
+            {
+                "type":"mixin",
+                "el":"gerududo_fortress_access"
+            },
+            {
+                "type":"item",
+                "el":"membership"
+            },
+            {
+                "type": "value",
+                "value": 4,
+                "el": {
+                    "type":"item",
+                    "el":"key_small_gerudo"
+                }
+            }
+        ]
     }
 }

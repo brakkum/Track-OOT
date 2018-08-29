@@ -8,6 +8,7 @@ async function loadAll() {
         "database/skulltulas.json",
         "database/logic.json",
         "database/mixins.json",
+        "database/settings.json",
         "database/lang_en.json"
     ]);
     var data = {};
@@ -24,6 +25,7 @@ async function loadAll() {
     data.logic.mixins = buffer[7];
     data.logic_patched = Storage.get("settings", "logic", {});
     // misc
-    data.lang = buffer[8];
+    data.settings = buffer[8];
+    data.lang = buffer[9];
     return data;
 }

@@ -10,35 +10,53 @@
         <script src="script/utils/FileSystem.js"></script>
         <script src="script/utils/FileLoader.js"></script>
         <script src="script/utils/Storage.js"></script>
+        <script src="script/editor/logic.js?v=201808290216"></script>
         <script src="script/editor/loader.js?v=201808290216"></script>
+        <script src="script/editor/builder.js?v=201808290216"></script>
+        <script src="script/editor/controls.js?v=201808290216"></script>
         <script src="script/editor/main.js?v=201808290216" defer></script>
 
     </head>
     <body>
 
         <div id="editor-frame">
-            <!-- chests -->
-            <div class="panel" id="chest-panel">
+            <div class="panel" id="logics-panel">
                 <div class="panel-header">
-                    Chests - Reachable Logic
+                    Logics
                 </div>
                 <div class="panel-body">
-                </div>
-            </div>
-            <!-- skulltulas -->
-            <div class="panel" id="skulltula-panel">
-                <div class="panel-header">
-                    Skulltulas - Reachable Logic
-                </div>
-                <div class="panel-body">
-                </div>
-            </div>
-            <!-- dungeons -->
-            <div class="panel" id="dungeon-panel">
-                <div class="panel-header">
-                    Dungeons - Beatable Logic
-                </div>
-                <div class="panel-body">
+                    <!-- chests -->
+                    <div class="panel-group" id="chest-panel">
+                        <div class="panel-header">
+                            Chests - Reachable Logic
+                        </div>
+                        <div class="panel-body">
+                        </div>
+                    </div>
+                    <!-- skulltulas -->
+                    <div class="panel-group" id="skulltula-panel">
+                        <div class="panel-header">
+                            Skulltulas - Reachable Logic
+                        </div>
+                        <div class="panel-body">
+                        </div>
+                    </div>
+                    <!-- dungeons -->
+                    <div class="panel-group" id="dungeon-panel">
+                        <div class="panel-header">
+                            Dungeons - Beatable Logic
+                        </div>
+                        <div class="panel-body">
+                        </div>
+                    </div>
+                    <!-- mixins -->
+                    <div class="panel-group" id="mixins-panel">
+                        <div class="panel-header">
+                            Mixins
+                        </div>
+                        <div class="panel-body">
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -67,11 +85,32 @@
                 </div>
             </div>
             <!-- items -->
-            <div class="panel" id="item-panel">
+            <div class="panel" id="elements-panel">
                 <div class="panel-header">
-                    Items
+                    Logic elements
                 </div>
                 <div class="panel-body">
+                    <div class="panel-group" id="item-panel">
+                        <div class="panel-header">
+                            Items
+                        </div>
+                        <div class="panel-body">
+                        </div>
+                    </div>
+                    <div class="panel-group" id="mixin-panel">
+                        <div class="panel-header">
+                            Mixins
+                        </div>
+                        <div class="panel-body">
+                        </div>
+                    </div>
+                    <div class="panel-group" id="settings-panel">
+                        <div class="panel-header">
+                            Settings
+                        </div>
+                        <div class="panel-body">
+                        </div>
+                    </div>
                 </div>
             </div>
 

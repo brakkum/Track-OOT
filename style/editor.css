@@ -38,15 +38,13 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100vw;
     height: 100vh;
     padding: 5px;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: 2fr 2fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr 1fr 2fr;
     grid-template-areas: 
-    "chests chests editor editor clipboard operators"
-    "chests chests editor editor clipboard operators"
-    "skulltulas skulltulas editor editor clipboard items"
-    "skulltulas skulltulas editor editor trashcan items"   
-    "dungeons dungeons output output control items"   
-    "dungeons dungeons output output control items";
+    "logics editor clipboard operators"
+    "logics editor clipboard elements"
+    "logics editor trashcan elements" 
+    "logics output control elements";
     grid-column-gap: 5px;
     grid-row-gap: 5px;
 }
@@ -58,7 +56,8 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 2px;
 }
 
-.panel>.panel-header {
+.panel>.panel-header,
+.panel>.panel-body>.panel-group>.panel-header {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -70,13 +69,39 @@ input[type=number]::-webkit-outer-spin-button {
     user-select: none;
 }
 
-.panel>.panel-body {
+.panel>.panel-body>.panel-group>.panel-header {
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+}
+
+.panel>.panel-body,
+.panel>.panel-body>.panel-group>.panel-body {
     flex: 1;
     margin: 5px;
+}
+
+.panel>.panel-body {
     overflow-y: auto;
 }
 
-.panel>.panel-body>.list-item {
+.panel>.panel-body>.panel-group {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px black;
+    border-radius: 2px;
+    margin: 5px;
+}
+
+.panel>.panel-body>.panel-group:first-child {
+    margin-top: 0;
+}
+
+.panel>.panel-body>.panel-group:last-child {
+    margin-bottom: 0;
+}
+
+.panel>.panel-body .list-item {
     padding: 5px;
     margin: 5px;
     border: solid 1px black;
@@ -85,12 +110,16 @@ input[type=number]::-webkit-outer-spin-button {
     user-select: none;
 }
 
-.panel>.panel-body>.list-item:hover {
+.panel>.panel-body .list-item:hover {
+    background-color: lightgray;
+}
+
+.panel>.panel-body .list-item.active {
     background-color: black;
     color: white;
 }
 
-.panel>.panel-body>.list-item.has-custom-logic:after {
+.panel>.panel-body .list-item.has-custom-logic:after {
     display: flex;
     align-items: center;
     position: absolute;
@@ -113,24 +142,16 @@ input[type=number]::-webkit-outer-spin-button {
     display: inline-table;
 }
 
-#chest-panel {
-    grid-area: chests;
-}
-
-#skulltula-panel {
-    grid-area: skulltulas;
-}
-
-#dungeon-panel {
-    grid-area: dungeons;
+#logics-panel {
+    grid-area: logics;
 }
 
 #operator-panel {
     grid-area: operators;
 }
 
-#item-panel {
-    grid-area: items;
+#elements-panel {
+    grid-area: elements;
 }
 
 #editor-panel {
@@ -167,6 +188,7 @@ input[type=number]::-webkit-outer-spin-button {
 .placeholder,
 .logic-item,
 .logic-mixin,
+.logic-setting,
 .logic-operator {
     display: table;
     margin: 5px;
@@ -181,6 +203,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .logic-item,
+.logic-setting,
 .logic-mixin {
     padding: 5px;
     background-color: rgb(130, 235, 229);
@@ -189,6 +212,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .logic-operator,
 .logic-item,
+.logic-setting,
 .logic-mixin {
     cursor: move;
 }

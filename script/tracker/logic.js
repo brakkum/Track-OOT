@@ -26,6 +26,9 @@ function checkLogicObject(logic) {
             return checkLogicObject(logic.el) >= logic.value;
         case "mixin":
             return checkLogic("mixins", logic.el);
+        case "settings":
+            return true; // TODO: add settings to imitade randomizer settings
+            //return checkLogic("mixins", logic.el);
         case "item":
             return SaveState.read("items", logic.el, 0);
     }

@@ -1,46 +1,19 @@
 {
-    "man_on_roof": {
-        "default": 0,
-        "max": 1
-    },
-    "child_deadhand": {
-        "default": 0,
-        "max": 1
-    },
-    "dodongo_spike": {
-        "default": 0,
-        "max": 1
-    },
-    "windmill_hp": {
-        "default": 0,
-        "max": 1
-    },
-    "crater_bean_hp": {
-        "default": 0,
-        "max": 1
-    },
-    "zora_cucco": {
-        "default": 0,
-        "max": 1
-    },
-    "zora_hover": {
-        "default": 0,
-        "max": 1
-    },
-    "fewer_tunic": {
-        "default": 0,
-        "max": 1
-    },
-    "lens": {
-        "default": 0,
-        "max": 2
-    },
     "gerudo_fortress": {
-        "default": 0,
-        "max": 2
+        "dafault": 2,
+        "values": [
+            "Vanilla",
+            "Membership Card",
+            "Open"
+        ]
     },
     "ganon_castle": {
-        "default": 0,
-        "max": 3
+        "dafault": 3,
+        "values": [
+            "Vanilla",
+            "Open",
+            "Medallions",
+            "All dungeons"
+        ]
     }
 }
