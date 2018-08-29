@@ -1,10 +1,4 @@
 
-/**
- * TODO: add clipboard/editor clear button
- * TODO: add save button
- * TODO: export as file (maybe with option to export patch only)
- */
-
 const CHILD_ITEM_QUERY = ".panel-body > .logic-operator, .panel-body > .logic-item, .panel-body > .logic-mixin";
 const CHILD_ITEM_QUERY_SCOPE = ":scope > .logic-operator, :scope > .logic-item, :scope > .logic-mixin";
 
@@ -189,11 +183,24 @@ function clearLocalLogic() {
 }
 
 function downloadLogicPatch() {
-    saveJSON(data.logic_patched, "logic_patch.json");
+    FileSystem.save(JSON.stringify(data.logic_patched, " ", 4), "logic_patch_"+Date.now()+".json");
 }
 
 function uploadLogicPatch() {
-    uploadJSON(data.logic_patched, "logic_patch.json");
+    FileSystem.load().then(function(content) {
+        if (content.startsWith("data:application/json;base64,")) {
+            content = content.slice(29);
+        }
+        var buffer = JSON.parse(atob(content));
+        for (let i in buffer) {
+            data.logic_patched[i] = data.logic_patched[i] || {};
+            for (let j in buffer[i]) {
+                data.logic_patched[i][j] = buffer[i][j];
+                document.getElementById(i+'_'+j).classList.add('has-custom-logic');
+            }
+        }
+        Storage.set("settings", "logic", data.logic_patched);
+    });
 }
 
 function downloadPatchedLogic() {
@@ -204,7 +211,7 @@ function downloadPatchedLogic() {
             logic[i][j] = data.logic_patched[i][j];
         }
     }
-    saveJSON(logic, "logic.json");
+    FileSystem.save(JSON.stringify(logic, " ", 4), "logic.json");
 }
 
 // export logic
@@ -443,54 +450,3 @@ function deleteElement(ev) {
 Array.from(document.getElementsByClassName('logic-operator')).forEach(element => {
     element.ondragstart = dragNewElement;
 });
-
-var uploadJSON = (function () {
-    var a = document.createElement("input");
-    a.setAttribute("type", "file");
-    document.body.appendChild(a);
-    a.style = "display: none";
-    a.addEventListener("change", handleFiles, false);
-    function handleFiles() {
-        var file = this.files[0];
-        var reader = new FileReader();
-        reader.onload = (function(theFile) {
-            return function(e) {
-                var a = e.target.result;
-                if (a.startsWith("data:application/json;base64,")) {
-                    a = a.slice(29);
-                }
-                var b = JSON.parse(atob(a));
-                for (let i in b) {
-                    data.logic_patched[i] = data.logic_patched[i] || {};
-                    for (let j in b[i]) {
-                        data.logic_patched[i][j] = b[i][j];
-                        document.getElementById(i+'_'+j).classList.add('has-custom-logic');
-                    }
-                }
-                Storage.set("settings", "logic", data.logic_patched);
-            };
-        })(file);
-        // Read in the image file as a data URL.
-        reader.readAsDataURL(file);
-    }
-    return function () {
-        a.click();
-    };
-}());
-
-// save JSON (koldev - https://jsfiddle.net/koldev/cW7W5/)
-
-var saveJSON = (function () {
-    var a = document.createElement("a");
-    document.body.appendChild(a);
-    a.style = "display: none";
-    return function (data, fileName) {
-        var json = JSON.stringify(data),
-            blob = new Blob([json], {type: "octet/stream"}),
-            url = window.URL.createObjectURL(blob);
-        a.href = url;
-        a.download = fileName;
-        a.click();
-        window.URL.revokeObjectURL(url);
-    };
-}());

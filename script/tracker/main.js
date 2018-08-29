@@ -147,7 +147,7 @@ async function state_Save() {
     if (stateChoice.value != "") {
         stateChoice.value = activestate;
         SaveState.save(activestate);
-        await Dialogue.alert("Saved \""+activestate+"\" successfully.");
+        await Dialogue.alert("Success", "Saved \""+activestate+"\" successfully.");
     }
 }
 
@@ -155,7 +155,7 @@ async function state_Load() {
     if (stateChoice.value != "") {
         var confirm = true;
         if (activestate != "") {
-            confirm = await Dialogue.confirm("Do you really want to load? Unsaved changes will be lost.");
+            confirm = await Dialogue.confirm("Warning", "Do you really want to load? Unsaved changes will be lost.");
         }
         if (!!confirm) {
             activestate = stateChoice.value;
@@ -169,7 +169,7 @@ async function state_Load() {
 
 async function state_Delete() {
     if (stateChoice.value != ""
-    && await Dialogue.confirm("Do you really want to delete \""+stateChoice.value+"\"?")) {
+    && await Dialogue.confirm("Warning", "Do you really want to delete \""+stateChoice.value+"\"?")) {
         Storage.remove("save", stateChoice.value);
         if (stateChoice.value != activestate) {
             stateChoice.value = activestate;
@@ -183,19 +183,19 @@ async function state_Delete() {
 }
 
 async function state_New() {
-    var name = await Dialogue.prompt("Please enter a new name! (Unsaved changes will be lost.)");
-    if (name == "") {
-        Dialogue.alert("The name can not be empty.");
-        state_New();
-        return;
-    }
-    if (localStorage.hasOwnProperty(name)) {
-        Dialogue.alert("The name already exists.");
-        state_New();
-        return;
-    }
-    if (!!name) {
-        if (activestate != "" || await Dialogue.confirm("Do you want to reset the current state?")) {
+    var name = await Dialogue.prompt("New state", "Please enter a new name! (Unsaved changes will be lost.)");
+    if (name !== false) {
+        if (name == "") {
+            await Dialogue.alert("Warning", "The name can not be empty.");
+            state_New();
+            return;
+        }
+        if (localStorage.hasOwnProperty(name)) {
+            await Dialogue.alert("Warning", "The name already exists.");
+            state_New();
+            return;
+        }
+        if (activestate != "" || await Dialogue.confirm("Reset state?", "Do you want to reset the current state?")) {
             SaveState.reset();
         }
         SaveState.save(name);
@@ -213,23 +213,23 @@ async function state_Export() {
     if (stateChoice.value != "") {
         var confirm = true;
         if (activestate != "") {
-            confirm = await Dialogue.confirm("The last saved state will be exported.");
+            confirm = await Dialogue.confirm("Are you shure?", "The last saved state will be exported.");
         }
         if (!!confirm) {
             var item = {
                 name: stateChoice.value,
                 data: Storage.get("save", stateChoice.value)
             };
-            Dialogue.alert("Here is your export string of the latest saved state", btoa(JSON.stringify(item)));
+            Dialogue.alert("Your export string", btoa(JSON.stringify(item)).replace(/=*$/,""));
         }
     }
 }
 
 async function state_Import() {
-    var data = await Dialogue.prompt("Please enter export string!");
+    var data = await Dialogue.prompt("Import", "Please enter export string!");
     if (data != null) {
         data = JSON.parse(atob(data));
-        if (localStorage.hasOwnProperty(data.name) && !(await Dialogue.confirm("There is already a savegame with this name. Replace savegame?."))) {
+        if (localStorage.hasOwnProperty(data.name) && !(await Dialogue.confirm("Warning", "There is already a savegame with this name. Replace savegame?."))) {
             return;
         }
         Storage.set("save", data.name, data.data);

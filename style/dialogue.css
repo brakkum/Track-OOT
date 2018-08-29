@@ -1,49 +1,70 @@
-#dialogue {
+.dialogue {
     position: absolute;
-    display: none;
+    display: flex;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.3);
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
 }
 
-#dialogue #dialogue-window {
+.dialogue .dialogue-window {
     display: block;
-    padding: 50px;
+    padding: 20px 0;
     background-color: white;
 }
 
-#dialogue #dialogue-window #dialogue_title {
+.dialogue .dialogue-window .dialogue-title {
     color: black;
+    font-size: 1.5em;
+    margin: 10px 20px;
+    font-weight: bold;
     max-width: 500px;
     overflow: hidden;
 }
 
-#dialogue #dialogue-window #dialogue_text {
+.dialogue .dialogue-window .dialogue-text {
     display: block;
     color: black;
-    width: 500px;
-    height: 300px;
+    margin: 5px 20px;
+    min-width: 300px;
+    max-width: 500px;
+    max-height: 300px;
     overflow-y: auto;
     overflow-x: hidden;
     word-wrap: break-word;
     resize: none;
 }
-#dialogue #dialogue-window #dialogue_text.empty {
-    display: none;
+
+
+.dialogue .dialogue-window .dialogue-input-box {
+    display: block;
+    margin: 5px 20px;
 }
 
-#dialogue.alert,
-#dialogue.confirm,
-#dialogue.prompt {
+.dialogue .dialogue-window .dialogue-input-box .dialogue-input {
+    width: 100%;
+}
+
+.dialogue .dialogue-window .dialogue-buttons {
     display: flex;
+    margin: 10px 20px 0;
+    justify-content: flex-end;
 }
 
-#dialogue.alert #dialogue-window #dialogue_abort,
-#dialogue.alert #dialogue-window #dialogue_input,
-#dialogue.confirm #dialogue-window #dialogue_input {
-    display: none;
+.dialogue .dialogue-window .dialogue-buttons button {
+    margin-left: 10px;
+    color: white;
+    background-color: black;
+    border: solid 1px black;
+    -webkit-appearance: none;
+}
+
+.dialogue .dialogue-window .dialogue-buttons button:hover {
+    color: black;
+    background-color: white;
 }
