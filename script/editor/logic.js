@@ -192,18 +192,16 @@ function isMultiOperator(p) {
 }
 
 function moveLogicEl(el, target, clone) {
+    var new_parent = target.parentElement;
     if (!!clone) {
         el = cloneLogicEl(el);
-        var parent = target.parentElement;
-        parent.insertBefore(el, target);
-        return el;
+    } else {
+        var old_parent = el.parentElement;
+        if (!isMultiOperator(old_parent)) {
+            old_parent.querySelector(".placeholder").style.display = "";
+        }
     }
-    var old_parent = el.parentElement;
-    var new_parent = target.parentElement;
     new_parent.insertBefore(el, target);
-    if (!isMultiOperator(old_parent)) {
-        old_parent.querySelector(".placeholder").style.display = "";
-    }
     if (!isMultiOperator(new_parent)) {
         target.style.display = "none";
     }
@@ -221,7 +219,7 @@ function cloneLogicEl(el) {
             buf.ondrop = dropOnPlaceholder;
             buf.ondragover = allowDrop;
         } else if (buf.tagName == "INPUT" || buf.tagName == "SELECT") {
-            input.onchange = exportLogic;
+            buf.onchange = exportLogic;
         }
 
         var ch = Array.from(el.childNodes);
