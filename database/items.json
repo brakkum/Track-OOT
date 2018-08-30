@@ -86,12 +86,22 @@
     },
     "skulltula": {
         "max": 100,
+        "mark": 50,
         "counting": true,
         "images": "skulltula.png"
     },
     "egg": {
-        "max": 1,
-        "images": "egg.png"
+        "max": 7,
+        "images": [
+            "egg.png",
+            "egg.png",
+            "zelda_letter.png",
+            "mask_keaton.png",
+            "mask_skull.png",
+            "mask_spooky.png",
+            "mask_bunny.png",
+            "mask_truth.png"
+        ]
     },
 
     "sword_kokiri":{

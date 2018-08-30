@@ -42,24 +42,30 @@ function createItemIcon(cont, img) {
 
 function toggleItem(el) {
     var val = SaveState.read("items", el.id, 0);
-    if (++val > data.items[el.id].max) {
-        val = 0;
+    var ref = data.items[el.id];
+    if (val < ref.max) {
+        SaveState.write("items", el.id, ++val);
+        setVisual(el, val);
+        updateMap();
+        if ((ref.hasOwnProperty("mark") && val >= ref.mark) || val == ref.max) {
+            el.classList.add("mark");
+        }
     }
-    SaveState.write("items", el.id, val);
-    setVisual(el, val);
-    updateMap();
     event.preventDefault();
     return false;
 }
 
 function untoggleItem(el) {
     var val = SaveState.read("items", el.id, 0);
-    if (--val < 0) {
-        val = data.items[el.id].max;
+    var ref = data.items[el.id];
+    if (val > 0) {
+        SaveState.write("items", el.id, --val);
+        setVisual(el, val);
+        updateMap();
+        if (!ref.hasOwnProperty("mark") || val < ref.mark) {
+            el.classList.remove("mark");
+        }
     }
-    SaveState.write("items", el.id, val);
-    setVisual(el, val);
-    updateMap();
     event.preventDefault();
     return false;
 }
