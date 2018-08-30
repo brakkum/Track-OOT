@@ -192,7 +192,12 @@ function isMultiOperator(p) {
 }
 
 function moveLogicEl(el, target, clone) {
-    if (!!clone) return addLogicEl(el, target);
+    if (!!clone) {
+        el = cloneLogicEl(el);
+        var parent = target.parentElement;
+        parent.insertBefore(el, target);
+        return el;
+    }
     var old_parent = el.parentElement;
     var new_parent = target.parentElement;
     new_parent.insertBefore(el, target);
@@ -205,18 +210,42 @@ function moveLogicEl(el, target, clone) {
     return el;
 }
 
+function cloneLogicEl(el) {
+    var buf = el.cloneNode();
+
+    if (!buf.nodeName.startsWith("#")) {
+        if (buf.classList.contains("logic-operator") || buf.classList.contains("logic-element")) {
+            buf.id = "logic_onboard_"+(ID_CNT++);
+            buf.ondragstart = dragNewElement;
+        } else if (buf.classList.contains("placeholder")) {
+            buf.ondrop = dropOnPlaceholder;
+            buf.ondragover = allowDrop;
+        } else if (buf.tagName == "INPUT" || buf.tagName == "SELECT") {
+            input.onchange = exportLogic;
+        }
+
+        var ch = Array.from(el.childNodes);
+        if (!!ch) {
+            for (let i in ch) {
+                buf.appendChild(cloneLogicEl(ch[i]));
+            }
+        }
+    }
+    return buf;
+}
+
 function addLogicEl(el, target) {
     el = el.cloneNode(true);
     el.setAttribute("data-id", el.id);
     el.id = "logic_onboard_"+(ID_CNT++);
     el.ondragstart = dragNewElement;
+
+    var parent = target.parentElement;
     var ph = el.querySelector(".placeholder");
     if (!!ph) {
         ph.ondrop = dropOnPlaceholder;
         ph.ondragover = allowDrop;
     }
-    var parent = target.parentElement;
-    parent.insertBefore(el, target);
     if (!isMultiOperator(parent)) {
         target.style.display = "none";
     }
@@ -225,6 +254,8 @@ function addLogicEl(el, target) {
         input.onchange = exportLogic;
         input.removeAttribute("disabled");
     }
+
+    parent.insertBefore(el, target);
     return el;
 }
 
