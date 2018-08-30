@@ -4,6 +4,10 @@
             "type": "check",
             "default": false
         },
+        "keysanity": {
+            "type": "check",
+            "default": false
+        },
         "gerudo_fortress_open": {
             "type": "choice",
             "default": "Default behavior",

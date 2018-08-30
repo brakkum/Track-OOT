@@ -91,7 +91,7 @@ function dropOnPlaceholder(ev) {
     var id = ev.dataTransfer.getData("text");
     var el = document.getElementById(id);
     if (id.startsWith("logic_onboard_")) {
-        moveLogicEl(el, ev.target);
+        moveLogicEl(el, ev.target, ev.ctrlKey);
     } else {
         addLogicEl(el, ev.target);
     }

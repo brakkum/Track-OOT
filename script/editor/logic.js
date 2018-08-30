@@ -191,7 +191,8 @@ function isMultiOperator(p) {
     return p.classList.contains('logic-and') || p.classList.contains('logic-or');
 }
 
-function moveLogicEl(el, target) {
+function moveLogicEl(el, target, clone) {
+    if (!!clone) return addLogicEl(el, target);
     var old_parent = el.parentElement;
     var new_parent = target.parentElement;
     new_parent.insertBefore(el, target);
