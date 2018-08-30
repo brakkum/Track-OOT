@@ -1,17 +1,11 @@
 
 const CHILD_ITEM_QUERY = ".panel-body > " + [
     ".logic-operator",
-    ".logic-item",
-    ".logic-mixin",
-    ".logic-skip",
-    ".logic-setting"
+    ".logic-element"
 ].join(", .panel-body > ");
 const CHILD_ITEM_QUERY_SCOPE = ":scope > " + [
     ".logic-operator",
-    ".logic-item",
-    ".logic-mixin",
-    ".logic-skip",
-    ".logic-setting"
+    ".logic-element"
 ].join(", :scope > ");
 
 function debug() {
@@ -70,10 +64,10 @@ async function createMixin(e) {
 
         var el = document.createElement("div");
         el.className = "list-item";
-        el.innerHTML = translate(i);
-        el.id = "mixins_"+i;
-        el.setAttribute("title", i);
-        el.onclick = new Function("loadLogic('mixins', '"+i+"')");
+        el.innerHTML = translate(name);
+        el.id = "mixins_"+name;
+        el.setAttribute("title", name);
+        el.onclick = new Function("loadLogic('mixins', '"+name+"')");
         el.classList.add('has-new-logic');
         mixins_panel.insertBefore(el, create_mixin_button);
 

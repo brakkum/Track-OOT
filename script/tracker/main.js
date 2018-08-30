@@ -10,10 +10,6 @@ var stateDel = document.getElementById("delete-savegame");
 var stateExport = document.getElementById("export-savegame");
 var stateImport = document.getElementById("import-savegame");
 
-var settingsEdit = document.getElementById("edit-settings");
-var settingsCancel = document.getElementById("settings-cancel");
-var settingsSave = document.getElementById("settings-save");
-
 stateChoice.addEventListener("change", function() {
     if (activestate == stateChoice.value) {
         stateSave.disabled = false;
@@ -30,33 +26,6 @@ stateNew.addEventListener("click", state_New);
 stateDel.addEventListener("click", state_Delete);
 stateExport.addEventListener("click", state_Export);
 stateImport.addEventListener("click", state_Import);
-
-settingsEdit.addEventListener("click", function() {
-    document.getElementById('settings').classList.add('active');
-});
-
-settingsCancel.addEventListener("click", function() {
-    document.getElementById('show_map').checked = settings.show_map;
-    document.getElementById('use_custom_logic').checked = settings.use_custom_logic;
-    document.getElementById('settings').classList.remove('active');
-});
-
-settingsSave.addEventListener("click", function() {
-    settings.use_custom_logic = document.getElementById('use_custom_logic').checked;
-    Storage.set("settings", "use_custom_logic", settings.use_custom_logic);
-    settings.show_map = document.getElementById('show_map').checked;
-    Storage.set("settings", "show_map", settings.show_map);
-    if (settings.show_map) {
-        document.getElementById('map').style.display = "";
-        document.getElementById('dungeon-container').style.display = "";
-        updateMap();
-    } else {
-        document.getElementById('map').style.display = "none";
-        document.getElementById('dungeon-container').style.display = "none";
-    }
-    data.logic_patched = Storage.get("settings", "logic", {});
-    document.getElementById('settings').classList.remove('active');
-});
 
 document.getElementById("map-scale-slider").addEventListener("input", function(event) {
     document.getElementById('map').style.setProperty("--map-scale", parseInt(event.target.value) / 100);
@@ -94,14 +63,7 @@ async function main() {
 
     console.log("loaded database:\r\n%o", data);
 
-    settings.show_map = Storage.get("settings", "show_map", true);
-    settings.use_custom_logic = Storage.get("settings", "use_custom_logic", false);
-    document.getElementById('show_map').checked = settings.show_map;
-    document.getElementById('use_custom_logic').checked = settings.use_custom_logic;
-    if (!settings.show_map) {
-        document.getElementById('map').style.display = "none";
-        document.getElementById('dungeon-container').style.display = "none";
-    }
+    buildSettings();
 
     prepairSavegameChoice();
 
@@ -225,7 +187,12 @@ async function state_Export() {
 
 async function state_Import() {
     var data = await Dialogue.prompt("Import", "Please enter export string!");
-    if (data != null) {
+    if (data !== false) {
+        if (data == "") {
+            await Dialogue.alert("Warning", "The import string can not be empty.");
+            state_Import();
+            return;
+        }
         data = JSON.parse(atob(data));
         if (Storage.has("save", data.name) && !(await Dialogue.confirm("Warning", "There is already a savegame with this name. Replace savegame?."))) {
             return;

@@ -1,0 +1,99 @@
+#settings {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#settings.active {
+    display: flex;
+}
+
+#settings #settings-window {
+    display: block;
+    padding: 10px;
+    margin-top: 100px;
+    background-color: white;
+    color: black;
+    width: 1000px;
+}
+
+label.settings-option {
+    display: block;
+    padding: 10px;
+}
+
+label.settings-option:hover {
+    background-color: lightgray;
+}
+
+label.settings-option .option-text {
+    display: inline-block;
+    width: 400px;
+    user-select: none;
+}
+
+.card-panel .card-header {
+    display: block;
+    margin-bottom: 5px;
+    padding: 0 5px;
+    border-bottom: solid 1px black;
+}
+
+.card-panel .card-header .card-button {
+    display: inline-block;
+    padding: 5px;
+    border-left: solid 1px black;
+    border-right: solid 1px black;
+    border-top: solid 1px black;
+    border-radius: 2px 2px 0 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.card-panel .card-header .card-button:hover {
+    background-color: lightgray;
+}
+
+.card-panel .card-header .card-button.active {
+    background-color: black;
+    color: white;
+}
+
+.card-panel .card-header .card-button.disabled {
+    color: gray;
+    cursor: not-allowed;
+}
+
+.card-panel .card-body {
+    display: none;
+}
+
+.card-panel .card-body.active {
+    display: block;
+}
+
+#settings #settings-window .settings-buttons {
+    display: flex;
+    margin: 10px 20px 0;
+    justify-content: flex-end;
+}
+
+#settings #settings-window .settings-buttons button {
+    margin-left: 10px;
+    padding: 5px;
+    color: white;
+    background-color: black;
+    border: solid 1px black;
+    -webkit-appearance: none;
+}
+
+#settings #settings-window .settings-buttons button:hover {
+    color: black;
+    background-color: white;
+}

@@ -7,17 +7,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
         <link rel="stylesheet" href="style/dialogue.css" type="text/css">
-        <link rel="stylesheet" href="style/style.css?v=201808290216" type="text/css">
+        <link rel="stylesheet" href="style/settings.css" type="text/css">
+        <link rel="stylesheet" href="style/style.css?v=201808301504" type="text/css">
 
         <script src="script/utils/Dialogue.js"></script>
         <script src="script/utils/SaveState.js"></script>
         <script src="script/utils/Storage.js"></script>
         <script src="script/utils/FileLoader.js"></script>
-        <script src="script/tracker/loader.js?v=201808290216"></script>
-        <script src="script/tracker/logic.js?v=201808290216"></script>
-        <script src="script/tracker/items.js?v=201808290216"></script>
-        <script src="script/tracker/map.js?v=201808290216"></script>
-        <script src="script/tracker/main.js?v=201808290216" defer></script>
+        <script src="script/tracker/loader.js?v=201808301504"></script>
+        <script src="script/tracker/logic.js?v=201808301504"></script>
+        <script src="script/tracker/items.js?v=201808301504"></script>
+        <script src="script/tracker/map.js?v=201808301504"></script>
+        <script src="script/tracker/settings.js?v=201808301504" defer></script>
+        <script src="script/tracker/main.js?v=201808301504" defer></script>
 
         <style>
             #splash {
@@ -104,7 +106,7 @@
         </div>
         <footer class="footer">
             <span class="footer-field">
-                version: <span id="status-version">0.3 - 201808290216</span>
+                version: <span id="status-version">0.3 - 201808301504</span>
             </span>
             <span class="footer-spacer">|</span>
             <span class="footer-field">
@@ -125,29 +127,41 @@
         </footer>
         <div id="settings">
             <div id="settings-window">
-                <h3>Settings</h3>
-                <div class="settings-option">
-                    <label>
-                        <input type="checkbox" id="show_map" checked>
-                        show map
-                    </label>
-                    <label>
-                        <input type="checkbox" id="use_custom_logic">
-                        use custom logic
-                    </label>
-                    <a href="/editor.html" target="_blank" class="button">edit logic</a>
+                <div class="card-panel">
+                    <div class="card-header">
+                        <div class="card-button active" data-target="settings-tracker">Tracker settings</div>
+                        <div class="card-button disabled" data-target="settings-randomizer">Randomizer options</div>
+                        <div class="card-button disabled" data-target="settings-skips">Skips</div>
+                    </div>
+                    <div class="card-body active" id="settings-tracker">
+                        <div>
+                            <label class="settings-option">
+                                <span class="option-text">show map</span>
+                                <input type="checkbox" id="show_map" checked>
+                            </label>
+                            <label class="settings-option">
+                                <span class="option-text">use custom logic</span>
+                                <input type="checkbox" id="use_custom_logic">
+                                <a href="/editor.html" target="_blank" class="button">edit logic</a>
+                            </label>
+                        </div>
+                        <hr>
+                        <p>
+                            "Custom logic" will use localy stored logic (generated with the logic editor).<br>
+                            The logic editor is a (hopefully) easy to use interface to generate or edit the logic of the tracker.<br>
+                            The editor was initially created for generating and editing rulesets for updates more easy,<br>
+                            but maybe someone wants to mess around with the logic a bit ;).<br><br>
+                            Currently skips are missing in logic, but I am on it, so stay tuned.<br>
+                            Randomizer settings are missing too, and, as soon as settings-strings go stable, parsing them.
+                        </p>
+                    </div>
+                    <div class="card-body" id="settings-randomizer">
+                    </div>
+                    <div class="card-body" id="settings-skips">
+                    </div>
                 </div>
                 <hr>
-                <p>
-                    "Custom logic" will use localy stored logic (generated with the logic editor).<br>
-                    The logic editor is a (hopefully) easy to use interface to generate or edit the logic of the tracker.<br>
-                    The editor was initially created for generating and editing rulesets for updates more easy,<br>
-                    but maybe someone wants to mess around with the logic a bit ;).<br><br>
-                    Currently skips are missing in logic, but I am on it, so stay tuned.<br>
-                    Randomizer settings are missing too, and, as soon as settings-strings go stable, parsing them.
-                </p>
-                <hr>
-                <div class="settings-footer">
+                <div class="settings-buttons">
                     <button id="settings-cancel">cancel</button>
                     <button id="settings-save">save</button>
                 </div>

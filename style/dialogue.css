@@ -6,7 +6,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.3);
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
@@ -15,6 +15,7 @@
 .dialogue .dialogue-window {
     display: block;
     padding: 20px 0;
+    margin-top: 100px;
     background-color: white;
 }
 
@@ -58,6 +59,7 @@
 
 .dialogue .dialogue-window .dialogue-buttons button {
     margin-left: 10px;
+    padding: 5px;
     color: white;
     background-color: black;
     border: solid 1px black;
