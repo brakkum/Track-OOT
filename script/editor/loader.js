@@ -5,8 +5,7 @@ async function loadAll() {
         "database/dungeons.json",
         "database/skulltulas.json",
         "database/logic.json",
-        "database/mixins.json",
-        "database/settings.json",
+        "database/rom_options.json",
         "database/lang_en.json"
     ]);
     var data = {};
@@ -18,10 +17,9 @@ async function loadAll() {
     data.skulltulas = buffer[3];
     // logic
     data.logic = buffer[4];
-    data.logic.mixins = buffer[5];
     data.logic_patched = Storage.get("settings", "logic", {});
     // misc
-    data.settings = buffer[6];
-    data.lang = buffer[7];
+    data.rom_options = buffer[5];
+    data.lang = buffer[6];
     return data;
 }

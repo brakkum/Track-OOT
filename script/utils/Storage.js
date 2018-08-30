@@ -14,6 +14,10 @@ window.Storage = new (function Storage() {
         }
     }
 
+    this.has = function(category, name) {
+        localStorage.hasOwnProperty(category+"\0"+name);
+    }
+
     this.remove = function(category, name) {
         localStorage.removeItem(category+"\0"+name);
     }

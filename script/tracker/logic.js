@@ -22,17 +22,24 @@ function checkLogicObject(logic) {
             return false;
         case "not":
             return !checkLogicObject(logic.el);
+        case "equal":
+            return checkLogicObject(logic.el) == logic.value;
         case "value":
+        case "min":
             return checkLogicObject(logic.el) >= logic.value;
         case "mixin":
             return checkLogic("mixins", logic.el);
-        case "settings":
-            return true; // TODO: add settings to imitade randomizer settings
-            //return checkLogic("mixins", logic.el);
+        case "skip":
+            // TODO: add skips to imitade randomizer skips
+            return SaveState.read("skips", logic.el, data.rom_options.skips[logic.el].default);
+        case "setting":
+            // TODO: add settings to imitade randomizer settings
+            return SaveState.read("settings", logic.el, data.rom_options.settings[logic.el].default);
         case "item":
             return SaveState.read("items", logic.el, 0);
+        default:
+            return false;
     }
-    return true;
 }
 
 function checkLogicArray(logic) {

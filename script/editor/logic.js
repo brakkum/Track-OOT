@@ -24,7 +24,7 @@ function convertOldLogic(logic) {
             var [itm, cnt] = item.split(":");
             if (!!cnt) {
                 act.el = {
-                    type: "value",
+                    type: "min",
                     value: cnt,
                     el: null
                 };
@@ -57,7 +57,7 @@ function setLogic(logic) {
 }
 
 function recursiveSetLogic(logic, root) {
-    if (logic == null) return null;
+    if (logic == null) return;
     switch(logic.type) {
         case "and":
             var a = addLogicEl(document.getElementById('logic-and'), root).querySelector('.placeholder');
@@ -83,8 +83,17 @@ function recursiveSetLogic(logic, root) {
                 recursiveSetLogic(logic.el, a);
             }
             break;
+        case "equal":
+            var a = addLogicEl(document.getElementById('logic-equal'), root);
+            a.querySelector("input").value = logic.value;
+            a = a.querySelector('.placeholder');
+            if (!!logic.el && logic.el != null) {
+                recursiveSetLogic(logic.el, a);
+            }
+            break;
         case "value":
-            var a = addLogicEl(document.getElementById('logic-value'), root);
+        case "min":
+            var a = addLogicEl(document.getElementById('logic-min'), root);
             a.querySelector("input").value = logic.value;
             a = a.querySelector('.placeholder');
             if (!!logic.el && logic.el != null) {
@@ -96,9 +105,20 @@ function recursiveSetLogic(logic, root) {
                 addLogicEl(document.getElementById("mixin_"+logic.el), root);
             }
             break;
+        case "skip":
+            if (!!logic.el && logic.el != null) {
+                var a = addLogicEl(document.getElementById("skip_"+logic.el), root);
+                if (logic.hasOwnProperty("value")) {
+                    a.querySelector("select").value = logic.value;
+                }
+            }
+            break;
         case "setting":
             if (!!logic.el && logic.el != null) {
-                addLogicEl(document.getElementById("setting_"+logic.el), root);
+                var a = addLogicEl(document.getElementById("setting_"+logic.el), root);
+                if (logic.hasOwnProperty("value")) {
+                    a.querySelector("select").value = logic.value;
+                }
             }
             break;
         case "item":
@@ -107,7 +127,6 @@ function recursiveSetLogic(logic, root) {
             }
             break;
     }
-    return null;
 }
 
 function getLogic() {
@@ -137,19 +156,85 @@ function recursiveGetLogic(root) {
         case "logic-not":
             var el = root.querySelector(CHILD_ITEM_QUERY_SCOPE);
             return {type:"not",el:recursiveGetLogic(el)};
-        case "logic-value":
+        case "logic-equal":
             var el = root.querySelector(CHILD_ITEM_QUERY_SCOPE);
-            return {type:"value",el:recursiveGetLogic(el),value:parseInt(root.querySelector("input").value)};
+            return {type:"equal",el:recursiveGetLogic(el),value:parseInt(root.querySelector("input").value)};
+        case "logic-min":
+            var el = root.querySelector(CHILD_ITEM_QUERY_SCOPE);
+            return {type:"min",el:recursiveGetLogic(el),value:parseInt(root.querySelector("input").value)};
         default:
             if (root.classList.contains("logic-mixin")) {
                 return {type:"mixin",el:root.getAttribute("data-id").slice(6)};
             }
             if (root.classList.contains("logic-setting")) {
-                return {type:"setting",el:root.getAttribute("data-id").slice(5)};
+                if (root.classList.contains("logic-choice")) {
+                    return {type:"setting",el:root.getAttribute("data-id").slice(8),value:root.querySelector("select").value};
+                }
+                return {type:"setting",el:root.getAttribute("data-id").slice(8)};
+            }
+            if (root.classList.contains("logic-skip")) {
+                if (root.classList.contains("logic-choice")) {
+                    return {type:"skip",el:root.getAttribute("data-id").slice(5),value:root.querySelector("select").value};
+                }
+                return {type:"skip",el:root.getAttribute("data-id").slice(5)};
             }
             if (root.classList.contains("logic-item")) {
                 return {type:"item",el:root.getAttribute("data-id").slice(5)};
             }
             return null;
     }
+}
+
+var ID_CNT = 0;
+
+function isMultiOperator(p) {
+    return p.classList.contains('logic-and') || p.classList.contains('logic-or');
+}
+
+function moveLogicEl(el, target) {
+    var old_parent = el.parentElement;
+    var new_parent = target.parentElement;
+    new_parent.insertBefore(el, target);
+    if (!isMultiOperator(old_parent)) {
+        old_parent.querySelector(".placeholder").style.display = "";
+    }
+    if (!isMultiOperator(new_parent)) {
+        target.style.display = "none";
+    }
+    return el;
+}
+
+function addLogicEl(el, target) {
+    el = el.cloneNode(true);
+    el.setAttribute("data-id", el.id);
+    el.id = "logic_onboard_"+(ID_CNT++);
+    el.ondragstart = dragNewElement;
+    var ph = el.querySelector(".placeholder");
+    if (!!ph) {
+        ph.ondrop = dropOnPlaceholder;
+        ph.ondragover = allowDrop;
+    }
+    var parent = target.parentElement;
+    parent.insertBefore(el, target);
+    if (!isMultiOperator(parent)) {
+        target.style.display = "none";
+    }
+    var input = el.querySelector('input, select');
+    if (!!input) {
+        input.onchange = exportLogic;
+        input.removeAttribute("disabled");
+    }
+    return el;
+}
+
+function removeLogicEl(el) {
+    if (!el || el == null) return;
+    if (el.id.startsWith("logic_onboard_")) {
+        var parent = el.parentElement;
+        parent.removeChild(el);
+        if (!isMultiOperator(parent)) {
+            parent.querySelector(".placeholder").style.display = "";
+        }
+    }
+    return el;
 }

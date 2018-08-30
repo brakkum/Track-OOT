@@ -5,11 +5,13 @@
         <meta name="robots" content="noindex,nofollow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
+        <link rel="stylesheet" href="style/dialogue.css" type="text/css">
         <link rel="stylesheet" href="style/editor.css?v=201808290216">
 
         <script src="script/utils/FileSystem.js"></script>
         <script src="script/utils/FileLoader.js"></script>
         <script src="script/utils/Storage.js"></script>
+        <script src="script/utils/Dialogue.js"></script>
         <script src="script/editor/logic.js?v=201808290216"></script>
         <script src="script/editor/loader.js?v=201808290216"></script>
         <script src="script/editor/builder.js?v=201808290216"></script>
@@ -55,41 +57,46 @@
                             Mixins
                         </div>
                         <div class="panel-body">
+                            <div class="list-item" id="create-mixin">NEW MIXIN</div>
                         </div>
                     </div>
                 </div>
             </div>
             
             <!-- operators -->
-            <div class="panel" id="operator-panel">
-                <div class="panel-header">
-                    Operators
-                </div>
-                <div class="panel-body">
-                    <div id="logic-and" class="logic-operator logic-and" draggable="true">
-                        <div class="operator-header">AND</div>
-                        <span class="placeholder">...</span>
-                    </div>
-                    <div id="logic-or" class="logic-operator logic-or" draggable="true">
-                        <div class="operator-header">OR</div>
-                        <span class="placeholder">...</span>
-                    </div>
-                    <div id="logic-not" class="logic-operator logic-not" draggable="true">
-                        <div class="operator-header">NOT</div>
-                        <span class="placeholder">...</span>
-                    </div>
-                    <div id="logic-value" class="logic-operator logic-value" draggable="true">
-                        <div class="operator-header">MIN <input type="number" MIN="1" MAX="100"></div>
-                        <span class="placeholder">...</span>
-                    </div>
-                </div>
-            </div>
             <!-- items -->
             <div class="panel" id="elements-panel">
                 <div class="panel-header">
                     Logic elements
                 </div>
                 <div class="panel-body">
+                    <div class="panel-group" id="operator-panel">
+                        <div class="panel-header">
+                            Operators
+                        </div>
+                        <div class="panel-body">
+                            <div id="logic-and" class="logic-operator logic-and" draggable="true">
+                                <div class="operator-header">AND</div>
+                                <span class="placeholder">...</span>
+                            </div>
+                            <div id="logic-or" class="logic-operator logic-or" draggable="true">
+                                <div class="operator-header">OR</div>
+                                <span class="placeholder">...</span>
+                            </div>
+                            <div id="logic-not" class="logic-operator logic-not" draggable="true">
+                                <div class="operator-header">NOT</div>
+                                <span class="placeholder">...</span>
+                            </div>
+                            <div id="logic-equal" class="logic-operator logic-equal" draggable="true">
+                                <div class="operator-header">EQ <input type="number" MIN="0" MAX="100" value="0" disabled></div>
+                                <span class="placeholder">...</span>
+                            </div>
+                            <div id="logic-min" class="logic-operator logic-min" draggable="true">
+                                <div class="operator-header">MIN <input type="number" MIN="1" MAX="100" value="1" disabled></div>
+                                <span class="placeholder">...</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="panel-group" id="item-panel">
                         <div class="panel-header">
                             Items
@@ -97,9 +104,9 @@
                         <div class="panel-body">
                         </div>
                     </div>
-                    <div class="panel-group" id="mixin-panel">
+                    <div class="panel-group" id="skips-panel">
                         <div class="panel-header">
-                            Mixins
+                            Skips
                         </div>
                         <div class="panel-body">
                         </div>
@@ -107,6 +114,13 @@
                     <div class="panel-group" id="settings-panel">
                         <div class="panel-header">
                             Settings
+                        </div>
+                        <div class="panel-body">
+                        </div>
+                    </div>
+                    <div class="panel-group" id="mixin-panel">
+                        <div class="panel-header">
+                            Mixins
                         </div>
                         <div class="panel-body">
                         </div>

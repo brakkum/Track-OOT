@@ -3,21 +3,36 @@ const CHILD_ITEM_QUERY = ".panel-body > " + [
     ".logic-operator",
     ".logic-item",
     ".logic-mixin",
+    ".logic-skip",
     ".logic-setting"
 ].join(", .panel-body > ");
 const CHILD_ITEM_QUERY_SCOPE = ":scope > " + [
     ".logic-operator",
     ".logic-item",
     ".logic-mixin",
+    ".logic-skip",
     ".logic-setting"
 ].join(", :scope > ");
 
+function debug() {
+    document.getElementById("editor-frame").classList.toggle("debug-mode")
+}
+
+/* PANEL */
+var chest_panel = document.getElementById("chest-panel").querySelector('.panel-body');
+var skulltula_panel = document.getElementById("skulltula-panel").querySelector('.panel-body');
+var dungeon_panel = document.getElementById("dungeon-panel").querySelector('.panel-body');
+var mixins_panel = document.getElementById("mixins-panel").querySelector('.panel-body');
+var mixin_panel = document.getElementById("mixin-panel").querySelector('.panel-body');
+var item_panel = document.getElementById("item-panel").querySelector('.panel-body');
+var settings_panel = document.getElementById("settings-panel").querySelector('.panel-body');
+var skips_panel = document.getElementById("skips-panel").querySelector('.panel-body');
+/* BUTTONS */
+var create_mixin_button = document.getElementById('create-mixin');
+
 async function run() {
     window.data = await loadAll();
-    fillLogics();
-    fillItems();
-    fillMixins();
-    fillSettings();
+    fillEditor();
     document.getElementById('control-save-local').onclick = saveLocalLogic;
     document.getElementById('control-load-local').onclick = loadLocalLogic;
     document.getElementById('control-remove-local').onclick = removeLocalLogic;
@@ -26,6 +41,7 @@ async function run() {
     document.getElementById('control-upload-patch').onclick = uploadLogicPatch;
     document.getElementById('control-download-patched').onclick = downloadPatchedLogic;
     document.getElementById('control-load-remote').onclick = loadRemoteLogic;
+    create_mixin_button.onclick = createMixin;
 }
 run();
 
@@ -36,61 +52,36 @@ function translate(index) {
     return index;
 }
 
-// operate logic elements
-function moveLogicEl(el, target) {
-    var old_parent = el.parentElement;
-    var new_parent = target.parentElement;
-    new_parent.insertBefore(el, target);
-    if (!isMultiOperator(old_parent)) {
-        old_parent.querySelector(".placeholder").style.display = "";
-    }
-    if (!isMultiOperator(new_parent)) {
-        target.style.display = "none";
-    }
-    return el;
-}
-
-function addLogicEl(el, target) {
-    el = el.cloneNode(true);
-    el.setAttribute("data-id", el.id);
-    el.id = "logic_onboard_"+(ID_CNT++);
-    el.ondragstart = dragNewElement;
-    var ph = el.querySelector(".placeholder");
-    if (!!ph) {
-        ph.ondrop = dropOnPlaceholder;
-        ph.ondragover = allowDrop;
-    }
-    var parent = target.parentElement;
-    parent.insertBefore(el, target);
-    if (!isMultiOperator(parent)) {
-        target.style.display = "none";
-    }
-    var input = el.querySelector('input');
-    if (!!input) {
-        input.onchange = exportLogic;
-    }
-    return el;
-}
-
-function removeLogicEl(el) {
-    if (!el || el == null) return;
-    if (el.id.startsWith("logic_onboard_")) {
-        var parent = el.parentElement;
-        parent.removeChild(el);
-        if (!isMultiOperator(parent)) {
-            parent.querySelector(".placeholder").style.display = "";
+async function createMixin(e) {
+    var name = await Dialogue.prompt("New mixin", "Please enter a new name!");
+    if (name !== false) {
+        if (name == "") {
+            await Dialogue.alert("Warning", "The name can not be empty.");
+            state_New();
+            return;
         }
+        name = name.toLowerCase().replace(/ /g, "_");
+        if (data.logic.mixins.hasOwnProperty(name)) {
+            await Dialogue.alert("Warning", "The name already exists.");
+            state_New();
+            return;
+        }
+        data.logic.mixins[name] = null;
+
+        var el = document.createElement("div");
+        el.className = "list-item";
+        el.innerHTML = translate(i);
+        el.id = "mixins_"+i;
+        el.setAttribute("title", i);
+        el.onclick = new Function("loadLogic('mixins', '"+i+"')");
+        el.classList.add('has-new-logic');
+        mixins_panel.insertBefore(el, create_mixin_button);
+
+        mixin_panel.appendChild(createElement("mixin", name));
     }
-    return el;
 }
 
 // drag and drop
-var ID_CNT = 0;
-
-function isMultiOperator(p) {
-    return p.classList.contains('logic-and') || p.classList.contains('logic-or');
-}
-
 function allowDrop(ev) {
     ev.preventDefault();
     ev.stopPropagation();

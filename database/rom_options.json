@@ -1,0 +1,70 @@
+{
+    "settings": {
+        "bombchu_logic": {
+            "type": "check",
+            "default": false
+        },
+        "gerudo_fortress_open": {
+            "type": "choice",
+            "default": "Default behavior",
+            "values": [
+                "Default behavior",
+                "Rescue one carpenter",
+                "Start with Gerudo Card"
+            ]
+        },
+        "ganon_castle_open": {
+            "type": "choice",
+            "default": "Vanilla requirements",
+            "values": [
+                "All dungeons",
+                "All medallions",
+                "Vanilla requirements",
+                "Always open"
+            ]
+        }
+    },
+    "skips": {
+        "man_on_roof": {
+            "type": "check",
+            "default": false
+        },
+        "child_deadhand": {
+            "type": "check",
+            "default": false
+        },
+        "dodongo_spike": {
+            "type": "check",
+            "default": false
+        },
+        "windmill_hp": {
+            "type": "check",
+            "default": false
+        },
+        "crater_bean_hp": {
+            "type": "check",
+            "default": false
+        },
+        "zora_cucco": {
+            "type": "check",
+            "default": false
+        },
+        "zora_hover": {
+            "type": "check",
+            "default": false
+        },
+        "fewer_tunic": {
+            "type": "check",
+            "default": false
+        },
+        "lens_required": {
+            "type": "choice",
+            "default": "Required everywhere",
+            "values": [
+                "Only Chest Minigame",
+                "Chest Minigame and Wastelands",
+                "Required everywhere"
+            ]
+        }
+    }
+}

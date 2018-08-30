@@ -188,7 +188,7 @@ async function state_New() {
             state_New();
             return;
         }
-        if (localStorage.hasOwnProperty(name)) {
+        if (Storage.has("save", name)) {
             await Dialogue.alert("Warning", "The name already exists.");
             state_New();
             return;
@@ -227,7 +227,7 @@ async function state_Import() {
     var data = await Dialogue.prompt("Import", "Please enter export string!");
     if (data != null) {
         data = JSON.parse(atob(data));
-        if (localStorage.hasOwnProperty(data.name) && !(await Dialogue.confirm("Warning", "There is already a savegame with this name. Replace savegame?."))) {
+        if (Storage.has("save", data.name) && !(await Dialogue.confirm("Warning", "There is already a savegame with this name. Replace savegame?."))) {
             return;
         }
         Storage.set("save", data.name, data.data);
