@@ -30,11 +30,10 @@ function checkLogicObject(logic) {
         case "mixin":
             return checkLogic("mixins", logic.el);
         case "skip":
-            // TODO: add skips to imitade randomizer skips
             return SaveState.read("skips", logic.el, data.rom_options.skips[logic.el].default);
         case "setting":
-            // TODO: add settings to imitade randomizer settings
-            return SaveState.read("settings", logic.el, data.rom_options.settings[logic.el].default);
+        case "option":
+            return SaveState.read("options", logic.el, data.rom_options.options[logic.el].default);
         case "item":
             return SaveState.read("items", logic.el, 0);
         default:
@@ -71,17 +70,20 @@ function checkLogicArray(logic) {
     return false;
 }
 
-function checkLogic(category, name) {
-    if (!data.logic.hasOwnProperty(category) || !data.logic[category].hasOwnProperty(name)) return false;
-    var logic;
-    
-    if (settings.use_custom_logic && data.logic_patched.hasOwnProperty(category) && data.logic_patched[category].hasOwnProperty(name)) {
-        logic = data.logic_patched[category][name];
-        return checkLogicObject(logic);
-    } else {
-        logic = data.logic[category][name];
+function getLogic(category, name) {
+    if (Storage.get("settings", "use_custom_logic", false) && data.logic_patched.hasOwnProperty(category) && data.logic_patched[category].hasOwnProperty(name)) {
+        return data.logic_patched[category][name];
     }
+    if (data.logic.hasOwnProperty(category) || data.logic[category].hasOwnProperty(name)) {
+        return data.logic[category][name];
+    }
+}
 
+function checkLogic(category, name) {
+    var logic = getLogic(category, name);
+    if (typeof logic == "undefined") {
+        return false;
+    }
     if (!Array.isArray(logic)) return checkLogicObject(logic);
     return checkLogicArray(logic);
 }

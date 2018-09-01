@@ -1,3 +1,69 @@
+function generateSettingsPage(category, target) {
+    for (let i in data.rom_options[category]) {
+        var el = document.createElement("label");
+        var val = data.rom_options[category][i];
+        el.className = "settings-option";
+        var text = document.createElement("span");
+        text.innerHTML = translate(i);
+        text.className = "option-text";
+        el.appendChild(text);
+        var input;
+        switch (val.type) {
+            case "check":
+                input = document.createElement("input");
+                input.className = "settings-input";
+                input.setAttribute("type", "checkbox");
+                input.checked = SaveState.read(category, i, val.default);
+            break;
+            case "choice":
+                input = document.createElement("select");
+                input.className = "settings-input";
+                for (let j in val.values) {
+                    var option = document.createElement("option");
+                    option.innerHTML = val.values[j];
+                    input.appendChild(option);
+                }
+                input.value = SaveState.read(category, i, val.default);
+            break;
+        }
+        input.setAttribute("data-ref", i);
+        el.appendChild(input);
+        target.appendChild(el);
+    }
+}
+
+function resetSettingsPage(category, target) {
+    var buf = Array.from(target.querySelectorAll(".settings-option"));
+    for (let i in buf) {
+        var el = buf[i].querySelector(".settings-input");
+        var id = el.getAttribute("data-ref");
+        var val = data.rom_options[category][id];
+        switch (el.nodeName) {
+            case "INPUT":
+                el.checked = SaveState.read(category, id, val.default);
+            break;
+            case "SELECT":
+                el.value = SaveState.read(category, id, val.default);
+            break;
+        }
+    }
+}
+
+function readSettingsPage(category, target) {
+    var buf = Array.from(target.querySelectorAll(".settings-option"));
+    for (let i in buf) {
+        var el = buf[i].querySelector(".settings-input");
+        var id = el.getAttribute("data-ref");
+        switch (el.nodeName) {
+            case "INPUT":
+                SaveState.write(category, id, el.checked);
+            break;
+            case "SELECT":
+                SaveState.write(category, id, el.value);
+            break;
+        }
+    }
+}
 
 function buildSettings() {
     var settingsEdit = document.getElementById("edit-settings");
@@ -5,7 +71,7 @@ function buildSettings() {
     var settingsSave = document.getElementById("settings-save");
     
     var settings_container = document.getElementById('settings');
-    var settings_randomizer = document.getElementById("settings-randomizer");
+    var settings_options = document.getElementById("settings-options");
     var settings_skips = document.getElementById("settings-skips");
     
     var settings_show_map = settings_container.querySelector('#show_map');
@@ -16,17 +82,19 @@ function buildSettings() {
     });
     
     settingsCancel.addEventListener("click", function() {
-        settings_show_map.checked = settings.show_map;
-        settings_use_custom_logic.checked = settings.use_custom_logic;
+        settings_show_map.checked = Storage.get("settings", "show_map", true);
+        settings_use_custom_logic.checked = Storage.get("settings", "use_custom_logic", false);
+        resetSettingsPage("options", settings_options);
+        resetSettingsPage("skips", settings_skips);
         settings_container.classList.remove('active');
     });
     
     settingsSave.addEventListener("click", function() {
-        settings.use_custom_logic = settings_use_custom_logic.checked;
-        Storage.set("settings", "use_custom_logic", settings.use_custom_logic);
-        settings.show_map = settings_show_map.checked;
-        Storage.set("settings", "show_map", settings.show_map);
-        if (settings.show_map) {
+        Storage.set("settings", "use_custom_logic", settings_use_custom_logic.checked);
+        Storage.set("settings", "show_map", settings_show_map.checked);
+        readSettingsPage("options", settings_options);
+        readSettingsPage("skips", settings_skips);
+        if (settings_show_map.checked) {
             document.getElementById('map').style.display = "";
             document.getElementById('dungeon-container').style.display = "";
             updateMap();
@@ -51,71 +119,13 @@ function buildSettings() {
         });
     });
     
-    for (let i in data.rom_options.settings) {
-        var el = document.createElement("label");
-        el.className = "settings-option";
-        var text = document.createElement("span");
-        text.innerHTML = translate(i);
-        text.className = "option-text";
-        el.appendChild(text);
-        switch (data.rom_options.settings[i].type) {
-            case "check":
-                var input = document.createElement("input");
-                input.id = i;
-                input.setAttribute("type", "checkbox");
-                // TODO read setting
-                el.appendChild(input);
-            break;
-            case "choice":
-                var select = document.createElement("select");
-                select.id = i;
-                for (let j in data.rom_options.settings[i].values) {
-                    var option = document.createElement("option");
-                    option.innerHTML = data.rom_options.settings[i].values[j];
-                    select.appendChild(option);
-                }
-                // TODO read setting
-                el.appendChild(select);
-            break;
-        }
-        settings_randomizer.appendChild(el);
-    }
-    
-    for (let i in data.rom_options.skips) {
-        var el = document.createElement("label");
-        el.className = "settings-option";
-        var text = document.createElement("span");
-        text.innerHTML = translate(i);
-        text.className = "option-text";
-        el.appendChild(text);
-        switch (data.rom_options.skips[i].type) {
-            case "check":
-                var input = document.createElement("input");
-                input.id = i;
-                input.setAttribute("type", "checkbox");
-                // TODO read setting
-                el.appendChild(input);
-            break;
-            case "choice":
-                var select = document.createElement("select");
-                select.id = i;
-                for (let j in data.rom_options.skips[i].values) {
-                    var option = document.createElement("option");
-                    option.innerHTML = data.rom_options.skips[i].values[j];
-                    select.appendChild(option);
-                }
-                // TODO read setting
-                el.appendChild(select);
-            break;
-        }
-        settings_skips.appendChild(el);
-    }
+    generateSettingsPage("options", settings_options);
+    generateSettingsPage("skips", settings_skips);
 
-    settings.show_map = Storage.get("settings", "show_map", true);
-    settings.use_custom_logic = Storage.get("settings", "use_custom_logic", false);
-    settings_show_map.checked = settings.show_map;
-    settings_use_custom_logic.checked = settings.use_custom_logic;
-    if (!settings.show_map) {
+    settings_show_map.checked = Storage.get("settings", "show_map", true);
+    settings_use_custom_logic.checked = Storage.get("settings", "use_custom_logic", false);
+
+    if (!settings_show_map.checked) {
         document.getElementById('map').style.display = "none";
         document.getElementById('dungeon-container').style.display = "none";
     }

@@ -203,6 +203,13 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 2px;
 }
 
+.logic-operator.hover {
+    outline-style: solid;
+    outline-color: red;
+    outline-width: 2px;
+    outline-offset: 2px;
+}
+
 .placeholder {
     padding: 5px 20px;
     background-color: lightgray;
@@ -239,8 +246,8 @@ input[type=number]::-webkit-outer-spin-button {
     content: "SKIP";
 }
 
-#editor-panel .logic-element.logic-setting:before {
-    content: "SETTING";
+#editor-panel .logic-element.logic-option:before {
+    content: "OPTION";
 }
 
 #editor-panel .logic-element.logic-mixin:before {

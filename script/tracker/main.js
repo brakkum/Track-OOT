@@ -1,6 +1,5 @@
 var data;
 var activestate = "";
-var settings = {}
 
 var stateChoice = document.getElementById("select-savegame");
 var stateSave = document.getElementById("save-savegame");
@@ -120,6 +119,8 @@ async function state_Load() {
         if (!!confirm) {
             activestate = stateChoice.value;
             SaveState.load(activestate);
+            resetSettingsPage("options", document.getElementById("settings-options"));
+            resetSettingsPage("skips", document.getElementById("settings-skips"));
             stateSave.disabled = false;
             updateItems();
             updateMap();
@@ -159,6 +160,8 @@ async function state_New() {
             SaveState.reset();
         }
         SaveState.save(name);
+        resetSettingsPage("options", document.getElementById("settings-options"));
+        resetSettingsPage("skips", document.getElementById("settings-skips"));
         prepairSavegameChoice();
         stateChoice.value = name;
         activestate = name;

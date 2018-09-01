@@ -114,8 +114,9 @@ function recursiveSetLogic(logic, root) {
             }
             break;
         case "setting":
+        case "option":
             if (!!logic.el && logic.el != null) {
-                var a = addLogicEl(document.getElementById("setting_"+logic.el), root);
+                var a = addLogicEl(document.getElementById("option_"+logic.el), root);
                 if (logic.hasOwnProperty("value")) {
                     a.querySelector("select").value = logic.value;
                 }
@@ -166,11 +167,11 @@ function recursiveGetLogic(root) {
             if (root.classList.contains("logic-mixin")) {
                 return {type:"mixin",el:root.getAttribute("data-id").slice(6)};
             }
-            if (root.classList.contains("logic-setting")) {
+            if (root.classList.contains("logic-option")) {
                 if (root.classList.contains("logic-choice")) {
-                    return {type:"setting",el:root.getAttribute("data-id").slice(8),value:root.querySelector("select").value};
+                    return {type:"option",el:root.getAttribute("data-id").slice(7),value:root.querySelector("select").value};
                 }
-                return {type:"setting",el:root.getAttribute("data-id").slice(8)};
+                return {type:"option",el:root.getAttribute("data-id").slice(7)};
             }
             if (root.classList.contains("logic-skip")) {
                 if (root.classList.contains("logic-choice")) {
@@ -198,7 +199,7 @@ function moveLogicEl(el, target, clone) {
     } else {
         var old_parent = el.parentElement;
         if (!isMultiOperator(old_parent)) {
-            old_parent.querySelector(".placeholder").style.display = "";
+            old_parent.querySelector(":scope > .placeholder").style.display = "";
         }
     }
     new_parent.insertBefore(el, target);
@@ -212,7 +213,13 @@ function cloneLogicEl(el) {
     var buf = el.cloneNode();
 
     if (!buf.nodeName.startsWith("#")) {
-        if (buf.classList.contains("logic-operator") || buf.classList.contains("logic-element")) {
+        if (buf.classList.contains("logic-operator")) {
+            buf.id = "logic_onboard_"+(ID_CNT++);
+            buf.ondragstart = dragNewElement;
+            buf.onmouseover = elementMouseOver;
+            buf.onmouseout = elementMouseOut;
+            buf.ondragover = elementMouseOver;
+        } else if (buf.classList.contains("logic-element")) {
             buf.id = "logic_onboard_"+(ID_CNT++);
             buf.ondragstart = dragNewElement;
         } else if (buf.classList.contains("placeholder")) {
@@ -227,6 +234,10 @@ function cloneLogicEl(el) {
             for (let i in ch) {
                 buf.appendChild(cloneLogicEl(ch[i]));
             }
+        }
+
+        if (buf.tagName == "SELECT") {
+            buf.value = el.value;
         }
     }
     return buf;
@@ -246,6 +257,11 @@ function addLogicEl(el, target) {
     }
     if (!isMultiOperator(parent)) {
         target.style.display = "none";
+    }
+    if (el.classList.contains("logic-operator")) {
+        el.onmouseover = elementMouseOver;
+        el.onmouseout = elementMouseOut;
+        el.ondragover = elementMouseOver;
     }
     var input = el.querySelector('input, select');
     if (!!input) {

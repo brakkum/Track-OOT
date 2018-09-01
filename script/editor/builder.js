@@ -81,8 +81,8 @@ function fillEditor() {
     for (let i in data.items) {
         item_panel.appendChild(createElement("item", i));
     }
-    for (let i in data.rom_options.settings) {
-        settings_panel.appendChild(createOption("setting", i, data.rom_options.settings[i]));
+    for (let i in data.rom_options.options) {
+        options_panel.appendChild(createOption("option", i, data.rom_options.options[i]));
     }
     for (let i in data.rom_options.skips) {
         skips_panel.appendChild(createOption("skip", i, data.rom_options.skips[i]));

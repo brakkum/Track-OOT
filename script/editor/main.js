@@ -19,7 +19,7 @@ var dungeon_panel = document.getElementById("dungeon-panel").querySelector('.pan
 var mixins_panel = document.getElementById("mixins-panel").querySelector('.panel-body');
 var mixin_panel = document.getElementById("mixin-panel").querySelector('.panel-body');
 var item_panel = document.getElementById("item-panel").querySelector('.panel-body');
-var settings_panel = document.getElementById("settings-panel").querySelector('.panel-body');
+var options_panel = document.getElementById("options-panel").querySelector('.panel-body');
 var skips_panel = document.getElementById("skips-panel").querySelector('.panel-body');
 /* BUTTONS */
 var create_mixin_button = document.getElementById('create-mixin');
@@ -107,3 +107,20 @@ function deleteElement(ev) {
 Array.from(document.getElementsByClassName('logic-operator')).forEach(element => {
     element.ondragstart = dragNewElement;
 });
+
+/* hover and blur */
+function elementMouseOver(ev) {
+    var o = document.querySelector(".logic-operator.hover");
+    if (!!o) {
+        o.classList.remove("hover");
+    }
+    ev.currentTarget.classList.add("hover");
+    ev.stopPropagation();
+}
+
+function elementMouseOut(ev) {
+    if (ev.currentTarget.classList.contains("hover")) {
+        ev.currentTarget.classList.remove("hover");
+        ev.stopPropagation();
+    }
+}
