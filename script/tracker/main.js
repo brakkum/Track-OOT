@@ -163,6 +163,8 @@ async function state_New() {
         resetSettingsPage("options", document.getElementById("settings-options"));
         resetSettingsPage("skips", document.getElementById("settings-skips"));
         prepairSavegameChoice();
+        updateItems();
+        updateMap();
         stateChoice.value = name;
         activestate = name;
         stateSave.disabled = false;
