@@ -188,22 +188,18 @@ function recursiveGetLogic(root) {
 
 var ID_CNT = 0;
 
-function isMultiOperator(p) {
-    return p.classList.contains('logic-and') || p.classList.contains('logic-or');
-}
-
 function moveLogicEl(el, target, clone) {
     var new_parent = target.parentElement;
     if (!!clone) {
         el = cloneLogicEl(el);
     } else {
         var old_parent = el.parentElement;
-        if (!isMultiOperator(old_parent)) {
+        if (!old_parent.classList.contains('multiple-children')) {
             old_parent.querySelector(":scope > .placeholder").style.display = "";
         }
     }
     new_parent.insertBefore(el, target);
-    if (!isMultiOperator(new_parent)) {
+    if (!new_parent.classList.contains('multiple-children')) {
         target.style.display = "none";
     }
     return el;
@@ -255,7 +251,7 @@ function addLogicEl(el, target) {
         ph.ondrop = dropOnPlaceholder;
         ph.ondragover = allowDrop;
     }
-    if (!isMultiOperator(parent)) {
+    if (!parent.classList.contains('multiple-children')) {
         target.style.display = "none";
     }
     if (el.classList.contains("logic-operator")) {
@@ -278,7 +274,7 @@ function removeLogicEl(el) {
     if (el.id.startsWith("logic_onboard_")) {
         var parent = el.parentElement;
         parent.removeChild(el);
-        if (!isMultiOperator(parent)) {
+        if (!parent.classList.contains('multiple-children')) {
             parent.querySelector(".placeholder").style.display = "";
         }
     }

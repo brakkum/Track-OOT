@@ -41,7 +41,7 @@ input[type=number]::-webkit-outer-spin-button {
     height: 100vh;
     padding: 5px;
     grid-template-columns: 2fr 2fr 1fr 1fr;
-    grid-template-rows: 3fr 1fr 2fr;
+    grid-template-rows: 3fr 100px 2fr;
     grid-template-areas: 
     "logics editor clipboard elements"
     "logics editor trashcan elements" 
