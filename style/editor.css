@@ -1,4 +1,4 @@
-.dialogue {
+.dialog {
   position: absolute;
   display: flex;
   top: 0;
@@ -10,19 +10,21 @@
   justify-content: center;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px); }
-  .dialogue > .dialogue-window {
+  .dialog > .dialog-window {
     display: block;
     padding: 20px 0;
     margin-top: 100px;
-    background-color: white; }
-    .dialogue > .dialogue-window > .dialogue-title {
+    background-color: white;
+    border: solid 2px #9b9b9b;
+    border-radius: 10px; }
+    .dialog > .dialog-window > .dialog-title {
       color: black;
       font-size: 1.5em;
       margin: 10px 20px;
       font-weight: bold;
       max-width: 500px;
       overflow: hidden; }
-    .dialogue > .dialogue-window > .dialogue-text {
+    .dialog > .dialog-window > .dialog-text {
       display: block;
       color: black;
       margin: 5px 20px;
@@ -33,25 +35,32 @@
       overflow-x: hidden;
       word-wrap: break-word;
       resize: none; }
-    .dialogue > .dialogue-window > .dialogue-input-box {
+    .dialog > .dialog-window > .dialog-input-box {
       display: block;
       margin: 5px 20px; }
-      .dialogue > .dialogue-window > .dialogue-input-box > .dialogue-input {
-        width: 100%; }
-    .dialogue > .dialogue-window > .dialogue-buttons {
+      .dialog > .dialog-window > .dialog-input-box > .dialog-input {
+        width: 100%;
+        background-color: white;
+        border: solid 1px black;
+        color: black;
+        padding: 5px; }
+        .dialog > .dialog-window > .dialog-input-box > .dialog-input:focus {
+          box-shadow: #3bf5ff 0 0px 4px 2px; }
+    .dialog > .dialog-window > .dialog-buttons {
       display: flex;
       margin: 10px 20px 0;
       justify-content: flex-end; }
-      .dialogue > .dialogue-window > .dialogue-buttons > button {
+      .dialog > .dialog-window > .dialog-buttons > button {
         margin-left: 10px;
         padding: 5px;
-        color: white;
-        background-color: black;
+        color: black;
+        background-color: white;
         border: solid 1px black;
+        border-radius: 2px;
         -webkit-appearance: none; }
-        .dialogue > .dialogue-window > .dialogue-buttons > button:hover {
-          color: black;
-          background-color: white; }
+        .dialog > .dialog-window > .dialog-buttons > button:hover, .dialog > .dialog-window > .dialog-buttons > button:focus {
+          color: white;
+          background-color: black; }
 
 .panel {
   display: flex;

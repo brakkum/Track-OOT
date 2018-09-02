@@ -1,4 +1,8 @@
-.dialogue {
+.dialog {
+    $dialog-b-color: rgb(255, 255, 255);
+    $dialog-a-color: rgb(155, 155, 155);
+    $dialog-f-color: rgb(0, 0, 0);
+
     position: absolute;
     display: flex;
     top: 0;
@@ -11,14 +15,16 @@
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
 
-    &> .dialogue-window {
+    &> .dialog-window {
         display: block;
         padding: 20px 0;
         margin-top: 100px;
-        background-color: white;
+        background-color: $dialog-b-color;
+        border: solid 2px $dialog-a-color;
+        border-radius: 10px;
 
-        &> .dialogue-title {
-            color: black;
+        &> .dialog-title {
+            color: $dialog-f-color;
             font-size: 1.5em;
             margin: 10px 20px;
             font-weight: bold;
@@ -26,9 +32,9 @@
             overflow: hidden;
         }
 
-        &> .dialogue-text {
+        &> .dialog-text {
             display: block;
-            color: black;
+            color: $dialog-f-color;
             margin: 5px 20px;
             min-width: 300px;
             max-width: 500px;
@@ -39,16 +45,24 @@
             resize: none;
         }
 
-        &> .dialogue-input-box {
+        &> .dialog-input-box {
             display: block;
             margin: 5px 20px;
 
-            &> .dialogue-input {
+            &> .dialog-input {
                 width: 100%;
+                background-color: $dialog-b-color;
+                border: solid 1px $dialog-f-color;
+                color: $dialog-f-color;
+                padding: 5px;
+                
+                &:focus {
+                    box-shadow: #3bf5ff 0 0px 4px 2px;
+                }
             }
         }
 
-        &> .dialogue-buttons {
+        &> .dialog-buttons {
             display: flex;
             margin: 10px 20px 0;
             justify-content: flex-end;
@@ -56,14 +70,15 @@
             &> button {
                 margin-left: 10px;
                 padding: 5px;
-                color: white;
-                background-color: black;
-                border: solid 1px black;
+                color: $dialog-f-color;
+                background-color: $dialog-b-color;
+                border: solid 1px $dialog-f-color;
+                border-radius: 2px;
                 -webkit-appearance: none;
             
-                &:hover {
-                    color: black;
-                    background-color: white;
+                &:hover, &:focus {
+                    color: $dialog-b-color;
+                    background-color: $dialog-f-color;
                 }
             }
         }

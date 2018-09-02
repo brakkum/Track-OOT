@@ -73,16 +73,16 @@ function createPanel(title, target) {
 }
 
 async function createMixin(e) {
-    var name = await Dialogue.prompt("New mixin", "Please enter a new name!");
+    var name = await Dialog.prompt("New mixin", "Please enter a new name!");
     if (name !== false) {
         if (name == "") {
-            await Dialogue.alert("Warning", "The name can not be empty.");
+            await Dialog.alert("Warning", "The name can not be empty.");
             state_New();
             return;
         }
         name = name.toLowerCase().replace(/ /g, "_");
         if (data.logic.mixins.hasOwnProperty(name)) {
-            await Dialogue.alert("Warning", "The name already exists.");
+            await Dialog.alert("Warning", "The name already exists.");
             state_New();
             return;
         }
