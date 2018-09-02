@@ -474,12 +474,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "tunic_fire"
-                        },
-                        {
                             "type": "skip",
                             "el": "fewer_tunic"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "goron_tunic_access"
                         }
                     ]
                 },
@@ -588,12 +588,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "tunic_water"
-                        },
-                        {
                             "type": "skip",
                             "el": "fewer_tunic"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "zora_tunic_access"
                         }
                     ]
                 }
@@ -755,8 +755,8 @@
                     "el": "glove"
                 },
                 {
-                    "type": "item",
-                    "el": "tunic_fire"
+                    "type": "mixin",
+                    "el": "goron_tunic_access"
                 },
                 {
                     "type": "or",
@@ -772,6 +772,83 @@
                         {
                             "type": "mixin",
                             "el": "has_explosives"
+                        }
+                    ]
+                }
+            ]
+        },
+        "goron_tunic_access": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "tunic_fire"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "option",
+                            "el": "consider_buyable"
+                        },
+                        {
+                            "type": "item",
+                            "el": "wallet"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "bow"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "glove"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "zora_tunic_access": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "tunic_water"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "option",
+                            "el": "consider_buyable"
+                        },
+                        {
+                            "type": "item",
+                            "el": "bottle"
+                        },
+                        {
+                            "type": "item",
+                            "el": "ocarina"
+                        },
+                        {
+                            "type": "item",
+                            "el": "song_zelda"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "wallet"
+                            },
+                            "value": 2
                         }
                     ]
                 }
@@ -1600,8 +1677,8 @@
                     "el": "song_zelda"
                 },
                 {
-                    "type": "item",
-                    "el": "tunic_water"
+                    "type": "mixin",
+                    "el": "zora_tunic_access"
                 },
                 {
                     "type": "or",
@@ -3612,8 +3689,8 @@
                     "el": "has_explosives"
                 },
                 {
-                    "type": "item",
-                    "el": "tunic_fire"
+                    "type": "mixin",
+                    "el": "goron_tunic_access"
                 }
             ]
         },
@@ -3861,8 +3938,8 @@
                     "el": "hammer"
                 },
                 {
-                    "type": "item",
-                    "el": "tunic_fire"
+                    "type": "mixin",
+                    "el": "goron_tunic_access"
                 },
                 {
                     "type": "or",

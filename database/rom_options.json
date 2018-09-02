@@ -1,5 +1,9 @@
 {
     "options": {
+        "consider_buyable": {
+            "type": "check",
+            "default": false
+        },
         "bombchu_logic": {
             "type": "check",
             "default": false
