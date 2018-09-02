@@ -128,7 +128,7 @@
                             "el": "bombchu"
                         },
                         {
-                            "type": "setting",
+                            "type": "option",
                             "el": "bombchu_logic"
                         }
                     ]
@@ -160,7 +160,7 @@
                     ]
                 },
                 {
-                    "type": "setting",
+                    "type": "option",
                     "el": "gerudo_fortress_open",
                     "value": "Start with Gerudo Card"
                 }
@@ -236,7 +236,7 @@
             "type": "or",
             "el": [
                 {
-                    "type": "setting",
+                    "type": "option",
                     "el": "ganon_castle_open",
                     "value": "Always open"
                 },
@@ -244,7 +244,7 @@
                     "type": "and",
                     "el": [
                         {
-                            "type": "setting",
+                            "type": "option",
                             "el": "ganon_castle_open",
                             "value": "Vanilla requirements"
                         },
@@ -266,7 +266,7 @@
                     "type": "and",
                     "el": [
                         {
-                            "type": "setting",
+                            "type": "option",
                             "el": "ganon_castle_open",
                             "value": "All medallions"
                         },
@@ -300,7 +300,7 @@
                     "type": "and",
                     "el": [
                         {
-                            "type": "setting",
+                            "type": "option",
                             "el": "ganon_castle_open",
                             "value": "All dungeons"
                         },
@@ -367,7 +367,7 @@
                             "el": "bombchu"
                         },
                         {
-                            "type": "setting",
+                            "type": "option",
                             "el": "bombchu_logic"
                         }
                     ]
@@ -1032,6 +1032,44 @@
                                     "el": "hookshot"
                                 }
                             ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "gerudo_guard_1": {
+            "type": "mixin",
+            "el": "gerudo_fortress_access"
+        },
+        "gerudo_guard_2": {
+            "type": "mixin",
+            "el": "gerudo_fortress_access"
+        },
+        "gerudo_guard_3": {
+            "type": "mixin",
+            "el": "gerudo_fortress_access"
+        },
+        "gerudo_guard_4": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "gerudo_fortress_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        {
+                            "type": "item",
+                            "el": "boots_hover"
                         }
                     ]
                 }
@@ -6724,6 +6762,7 @@
                 }
             ]
         },
+        "castle_town_maron": null,
         "castle_town_zelda": {
             "type": "item",
             "el": "egg"
@@ -6742,7 +6781,7 @@
                         {
                             "type": "not",
                             "el": {
-                                "type": "setting",
+                                "type": "option",
                                 "el": "bombchu_logic"
                             }
                         }
@@ -6756,7 +6795,7 @@
                             "el": "bombchu"
                         },
                         {
-                            "type": "setting",
+                            "type": "option",
                             "el": "bombchu_logic"
                         }
                     ]
@@ -6776,7 +6815,7 @@
                         {
                             "type": "not",
                             "el": {
-                                "type": "setting",
+                                "type": "option",
                                 "el": "bombchu_logic"
                             }
                         }
@@ -6790,7 +6829,7 @@
                             "el": "bombchu"
                         },
                         {
-                            "type": "setting",
+                            "type": "option",
                             "el": "bombchu_logic"
                         }
                     ]

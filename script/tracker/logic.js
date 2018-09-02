@@ -30,10 +30,18 @@ function checkLogicObject(logic) {
         case "mixin":
             return checkLogic("mixins", logic.el);
         case "skip":
-            return SaveState.read("skips", logic.el, data.rom_options.skips[logic.el].default);
+            var val = SaveState.read("skips", logic.el, data.rom_options.skips[logic.el].default);
+            if (logic.hasOwnProperty("value")) {
+                return  val == logic.value;
+            }
+            return val;
         case "setting":
         case "option":
-            return SaveState.read("options", logic.el, data.rom_options.options[logic.el].default);
+            var val = SaveState.read("options", logic.el, data.rom_options.options[logic.el].default);
+            if (logic.hasOwnProperty("value")) {
+                return  val == logic.value;
+            }
+            return val;
         case "item":
             return SaveState.read("items", logic.el, 0);
         default:
