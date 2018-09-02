@@ -1,7 +1,9 @@
-@import "navigation.css";
-@import "item.css";
-@import "map.css";
-@import "poi.css";
+@import "tracker/navigation";
+@import "tracker/item";
+@import "tracker/map";
+@import "tracker/poi";
+@import "tracker/settings";
+@import "util/dialogue";
 
 * {
     position: relative;

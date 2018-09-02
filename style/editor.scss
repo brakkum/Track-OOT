@@ -1,0 +1,263 @@
+@import "util/dialogue";
+@import "util/panel";
+
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: black; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: gold; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: gray; 
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
+}
+
+#editor-frame {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    padding: 5px;
+    grid-template-columns: 2fr 2fr 1fr 1fr;
+    grid-template-rows: 3fr 1fr 2fr;
+    grid-template-areas: 
+    "logics editor clipboard elements"
+    "logics editor trashcan elements" 
+    "logics editor control elements";
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+}
+
+#editor-frame.debug-mode {
+    grid-template-areas: 
+    "logics editor clipboard elements"
+    "logics editor trashcan elements" 
+    "logics output control elements";
+}
+
+.panel>.panel-body .list-item.has-custom-logic:after,
+.panel>.panel-body .list-item.has-new-logic:after {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    bottom: 0pc;
+    padding: 0 5px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.panel>.panel-body .list-item.has-custom-logic:after {
+    content: "C";
+}
+
+.panel>.panel-body .list-item.has-new-logic:after {
+    content: "N";
+}
+
+.inactive {
+    display: none;
+}
+
+#logics-panel {
+    grid-area: logics;
+}
+
+#elements-panel {
+    grid-area: elements;
+}
+
+#editor-panel {
+    grid-area: editor;
+}
+
+#clipboard-panel {
+    grid-area: clipboard;
+}
+
+#trashcan-panel {
+    grid-area: trashcan;
+}
+
+#trashcan-panel>.panel-body {
+    background-image: url("../images/trash.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 50%;
+}
+
+#output-panel {
+    display: none;
+    grid-area: output;
+}
+
+#editor-frame.debug-mode #output-panel {
+    display: flex;
+}
+
+#output-panel>.panel-body {
+    white-space: pre;
+}
+
+#control-panel {
+    grid-area: control;
+}
+
+.placeholder,
+.logic-element,
+.logic-operator {
+    display: table;
+    margin: 5px;
+    user-select: none;
+    border-radius: 2px;
+}
+
+.logic-operator.hover {
+    outline-style: solid;
+    outline-color: red;
+    outline-width: 2px;
+    outline-offset: 2px;
+}
+
+.placeholder {
+    padding: 5px 20px;
+    background-color: lightgray;
+    border: 1px solid gray;
+}
+
+.logic-element {
+    padding: 5px;
+    background-color: rgb(130, 235, 229);
+    border: 1px solid rgb(37, 167, 128);
+}
+
+.logic-operator,
+.logic-element {
+    cursor: move;
+}
+
+#editor-panel .logic-element:before {
+    display: inline-flex;
+    width: 80px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-right: solid 1px black;
+    margin-right: 10px;
+}
+
+#editor-panel .logic-element.logic-item:before {
+    content: "ITEM";
+}
+
+#editor-panel .logic-element.logic-skip:before {
+    content: "SKIP";
+}
+
+#editor-panel .logic-element.logic-option:before {
+    content: "OPTION";
+}
+
+#editor-panel .logic-element.logic-mixin:before {
+    content: "MIXIN";
+}
+
+/*#editor-panel .logic-operator {
+    margin: 20px;
+}*/
+
+.logic-operator > .operator-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 35px;
+    padding: 5px;
+    user-select: none;
+}
+
+.logic-operator.logic-or {
+    background-color: lightgreen;
+    border: 1px solid green;
+}
+
+.logic-operator.logic-or > .operator-header {
+    border-bottom: 1px solid green;
+}
+
+.logic-operator.logic-and {
+    background-color: lightyellow;
+    border: 1px solid orange;
+}
+
+.logic-operator.logic-and > .operator-header {
+    border-bottom: 1px solid orange;
+}
+
+.logic-operator.logic-not {
+    background-color: lightpink;
+    border: 1px solid red;
+}
+
+.logic-operator.logic-not > .operator-header {
+    border-bottom: 1px solid red;
+}
+
+.logic-operator.logic-equal {
+    background-color: lightcyan;
+    border: 1px solid deepskyblue;
+}
+
+.logic-operator.logic-equal > .operator-header {
+    border-bottom: 1px solid deepskyblue;
+}
+
+.logic-operator.logic-min {
+    background-color: violet;
+    border: 1px solid darkmagenta;
+}
+
+.logic-operator.logic-min > .operator-header {
+    border-bottom: 1px solid darkmagenta;
+}
+
+#logic_choice_board .logic-operator:hover {
+    box-shadow: inset 0 0 5px 1px rgba(0,0,0,0.7);
+}
+
+.logic-equal input,
+.logic-min input,
+.logic-skip select,
+.logic-setting select {
+    height: 25px;
+    margin: 0 5px;
+}
+
+.logic-equal input,
+.logic-min input {
+    width: 50px;
+    text-align: right;
+}

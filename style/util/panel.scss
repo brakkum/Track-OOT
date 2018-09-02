@@ -1,0 +1,82 @@
+.panel {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px black;
+    border-radius: 2px;
+
+    .panel {
+        margin: 5px;
+    }
+
+    &> .panel-header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: 35px;
+        padding: 5px;
+        background-color: black;
+        color: white;
+        border-bottom: solid 1px black;
+        user-select: none;
+        flex-shrink: 0; 
+        z-index: 1;
+    }
+
+    &.panel-group > .panel-header {
+        position: sticky;
+        top: 0px;
+    }
+
+    &.collapsible {
+
+        &> .panel-header:after {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            bottom: 0pc;
+            padding: 0 5px;
+            font-size: 1.5em;
+            font-weight: bold;
+            content: "\25BC";
+        }
+
+        &> .panel-body {
+            display: none;
+        }
+
+        &.expanded > .panel-header:after {
+            content: "\25B2";
+        }
+
+        &.expanded > .panel-body {
+            display: block;
+        }
+    }
+
+    &> .panel-body {
+        flex-grow: 1;
+        margin: 5px;
+        overflow-y: auto;
+        z-index: 0;
+
+        &> .list-item {
+            padding: 5px;
+            margin: 5px;
+            border: solid 1px black;
+            border-radius: 2px;
+            cursor: pointer;
+            user-select: none;
+        
+            &:hover {
+                background-color: lightgray;
+            }
+            
+            &.active {
+                background-color: black;
+                color: white;
+            }
+        }
+    }
+}
