@@ -95,7 +95,20 @@ function uploadLogicPatch() {
             data.logic_patched[i] = data.logic_patched[i] || {};
             for (let j in buffer[i]) {
                 data.logic_patched[i][j] = buffer[i][j];
-                document.getElementById(i+'_'+j).classList.add('has-custom-logic');
+                if (i == "mixins" && !data.logic.mixins.hasOwnProperty(j)) {
+                    data.logic.mixins[j] = null;
+                    var el = document.createElement("div");
+                    el.className = "list-item";
+                    el.innerHTML = translate(j);
+                    el.id = "mixins_"+j;
+                    el.setAttribute("title", j);
+                    el.onclick = new Function("loadLogic('mixins', '"+j+"')");
+                    el.classList.add('has-new-logic');
+                    mixins_panel.insertBefore(el, create_mixin_button);
+                    mixin_panel.appendChild(createElement("mixin", j));
+                } else {
+                    document.getElementById(i+'_'+j).classList.add('has-custom-logic');
+                }
             }
         }
         Storage.set("settings", "logic", data.logic_patched);

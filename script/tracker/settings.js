@@ -20,7 +20,8 @@ function generateSettingsPage(category, target) {
                 input.className = "settings-input";
                 for (let j in val.values) {
                     var option = document.createElement("option");
-                    option.innerHTML = val.values[j];
+                    option.innerHTML = translate(val.values[j]);
+                    option.setAttribute("value", val.values[j]);
                     input.appendChild(option);
                 }
                 input.value = SaveState.read(category, i, val.default);

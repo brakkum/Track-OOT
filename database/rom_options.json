@@ -14,21 +14,21 @@
         },
         "gerudo_fortress_open": {
             "type": "choice",
-            "default": "Default behavior",
+            "default": "gerudo_fortress_open_default",
             "values": [
-                "Default behavior",
-                "Rescue one carpenter",
-                "Start with Gerudo Card"
+                "gerudo_fortress_open_default",
+                "gerudo_fortress_open_one",
+                "gerudo_fortress_open_open"
             ]
         },
         "ganon_castle_open": {
             "type": "choice",
-            "default": "Vanilla requirements",
+            "default": "ganon_castle_open_default",
             "values": [
-                "All dungeons",
-                "All medallions",
-                "Vanilla requirements",
-                "Always open"
+                "ganon_castle_open_dungeon",
+                "ganon_castle_open_medallion",
+                "ganon_castle_open_default",
+                "ganon_castle_open_open"
             ]
         }
     },
@@ -67,11 +67,11 @@
         },
         "lens_required": {
             "type": "choice",
-            "default": "Required everywhere",
+            "default": "lens_required_default",
             "values": [
-                "Only Chest Minigame",
-                "Chest Minigame and Wastelands",
-                "Required everywhere"
+                "lens_required_never",
+                "lens_required_wasteland",
+                "lens_required_default"
             ]
         }
     }

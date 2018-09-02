@@ -41,7 +41,8 @@ function createOption(category, id, val) {
         sel.setAttribute("disabled", "true");
         for (let i in val.values) {
             var opt = document.createElement("option");
-            opt.innerHTML = val.values[i];
+            opt.innerHTML = translate(val.values[i]);
+            opt.setAttribute("value", val.values[i]);
             sel.appendChild(opt);
         }
         sel.value = val.default;
