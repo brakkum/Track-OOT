@@ -41,7 +41,7 @@ input[type=number]::-webkit-outer-spin-button {
     height: 100vh;
     padding: 5px;
     grid-template-columns: 2fr 2fr 1fr 1fr;
-    grid-template-rows: 3fr 100px 2fr;
+    grid-template-rows: 3fr 150px 2fr;
     grid-template-areas: 
     "logics editor clipboard elements"
     "logics editor trashcan elements" 
@@ -57,25 +57,25 @@ input[type=number]::-webkit-outer-spin-button {
     "logics output control elements";
 }
 
-.panel>.panel-body .list-item.has-custom-logic:after,
-.panel>.panel-body .list-item.has-new-logic:after {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    bottom: 0pc;
-    padding: 0 5px;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-.panel>.panel-body .list-item.has-custom-logic:after {
-    content: "C";
-}
-
-.panel>.panel-body .list-item.has-new-logic:after {
-    content: "N";
+.panel>.panel-body {
+    .list-item.has-custom-logic:after,
+    .list-item.has-new-logic:after {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        bottom: 0pc;
+        padding: 0 5px;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    .list-item.has-custom-logic:after {
+        content: "C";
+    }
+    .list-item.has-new-logic:after {
+        content: "N";
+    }
 }
 
 .inactive {
@@ -96,17 +96,24 @@ input[type=number]::-webkit-outer-spin-button {
 
 #clipboard-panel {
     grid-area: clipboard;
+
+    .panel-body {   
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        align-items: flex-start;
+    }
 }
 
 #trashcan-panel {
     grid-area: trashcan;
-}
 
-#trashcan-panel>.panel-body {
-    background-image: url("../images/trash.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: auto 50%;
+    &> .panel-body {
+        background-image: url("../images/trash.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: auto 50%;
+    }
 }
 
 #output-panel {

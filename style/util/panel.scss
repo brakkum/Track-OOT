@@ -42,16 +42,12 @@
             content: "\25BC";
         }
 
-        &> .panel-body {
+        &:not(.expanded)> .panel-body {
             display: none;
         }
 
         &.expanded > .panel-header:after {
             content: "\25B2";
-        }
-
-        &.expanded > .panel-body {
-            display: block;
         }
     }
 
