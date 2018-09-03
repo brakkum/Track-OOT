@@ -1,12 +1,61 @@
 window.Dialog = new (function() {
 
+    var cnt = 0;
+    function getNewID() {
+        return "dialog_element_ID_" + (++cnt);
+    }
+
+    function createTitle(target, txt) {
+        var el = document.createElement('DIV');
+        el.id = getNewID();
+        el.className = "dialog-title";
+        el.innerHTML = txt || "";
+        target.appendChild(el);
+        target.setAttribute("aria-labelledby", el.id);
+        return el;
+    }
+
+    function createText(target, txt) {
+        var el = document.createElement('DIV');
+        el.id = getNewID();
+        el.className = "dialog-text";
+        el.innerHTML = txt || "";
+        target.appendChild(el);
+        target.setAttribute("aria-describedby", el.id);
+        return el;
+    }
+
+    function createButton(target, txt, onclick) {
+        var el = document.createElement('BUTTON');
+        el.innerHTML = txt || "";
+        el.onclick = onclick;
+        target.appendChild(el);
+        return el;
+    }
+
+    function createTextInput(target, placeholder) {
+        var el = document.createElement('INPUT');
+        el.className = "dialog-input";
+        el.setAttribute("placeholder", placeholder || "");
+        target.appendChild(el);
+        return el;
+    }
+
     this.createDialog = function(options) {
         return new Promise(function(resolve) {
-            var focuables;
             if (!options.title && !options.message) {
                 resolve(false);
+                if (!!options.return) options.return.focus();
                 return;
             }
+
+            function closeDialog(value) {
+                document.body.removeChild(container);
+                if (!!options.return) options.return.focus();
+                resolve(value);
+            }
+
+            var focuables = [];
             var container = document.createElement('DIV');
             // focuscatcher
             var focusCatcherTop = document.createElement('DIV');
@@ -20,63 +69,39 @@ window.Dialog = new (function() {
             dialog.setAttribute("role", "dialog");
             dialog.setAttribute("aria-modal", "true");
             if (!!options.title) {
-                let title = document.createElement('DIV');
-                title.className = "dialog-title";
-                title.innerHTML = options.title;
-                dialog.appendChild(title);
-                dialog.appendChild(document.createElement('HR'));
+                createTitle(dialog, options.title);
             }
             if (!!options.message) {
-                let message = document.createElement('DIV');
-                message.className = "dialog-text";
-                message.innerHTML = options.message;
-                dialog.appendChild(message);
+                createText(dialog, options.message);
             }
             let input;
             if (!!options.prompt) {
-                var input_box = document.createElement('DIV');
-                input_box.className = "dialog-input-box";
-                input = document.createElement('INPUT');
-                input.className = "dialog-input";
-                input.setAttribute("placeholder", "enter text");
-                input_box.appendChild(input);
-                dialog.appendChild(input_box);
+                var wrap = document.createElement('DIV');
+                wrap.className = "dialog-input-box";
+                focuables.push(createTextInput(wrap, "enter text"));
+                dialog.appendChild(wrap);
             }
             var buttons = document.createElement('DIV');
             buttons.className = "dialog-buttons";
             switch(options.buttons) {
                 case "YES_NO":
-                    button_no = document.createElement('BUTTON');
-                    button_yes = document.createElement('BUTTON');
-                    button_no.innerHTML = options.no_text || "No";
-                    button_yes.innerHTML = options.yes_text || "Yes";
-                    button_no.onclick = function() {
-                        document.body.removeChild(container);
-                        resolve(false);
-                    };
-                    button_yes.onclick = function() {
-                        document.body.removeChild(container);
-                        resolve(!!input ? input.value : true);
-                    };
-                    buttons.appendChild(button_no);
-                    buttons.appendChild(button_yes);
+                    focuables.push(createButton(buttons, options.no_text || "NO", function() {
+                        closeDialog(false);
+                    }));
+                    focuables.push(createButton(buttons, options.yes_text || "YES", function() {
+                        closeDialog(!!input ? input.value : true);
+                    }));
                 break;
                 case "YES":
                 default:
-                    button_yes = document.createElement('BUTTON');
-                    button_yes.innerHTML = options.yes_text || "Accept";
-                    button_yes.onclick = function() {
-                        document.body.removeChild(container);
-                        resolve(!!input ? input.value : true);
-                    };
-                    buttons.appendChild(button_yes);
+                    focuables.push(createButton(buttons, options.yes_text || "ACCEPT", function() {
+                        closeDialog(!!input ? input.value : true);
+                    }));
                 break;
             }
-            dialog.appendChild(document.createElement('HR'));
             dialog.appendChild(buttons);
             container.appendChild(dialog);
             document.body.appendChild(container);
-            focuables = dialog.querySelectorAll("input, select, button");
             focuables[0].focus();
             // focuscatcher
             var focusCatcherBottom = document.createElement('DIV');
@@ -92,36 +117,38 @@ window.Dialog = new (function() {
             dialog.onkeydown = function(ev) {
                 var key = ev.which || ev.keyCode;
                 if (key == 27) {
-                    document.body.removeChild(container);
-                    resolve(false);
+                    closeDialog(false);
                 }
             }
         });
     }
 
-    this.alert = function(ttl, msg) {
-        return this.createDialog({
-            title: ttl,
-            message: msg
-        });
-    };
-
-    this.confirm = function(ttl, msg) {
+    this.alert = function(ttl, msg, ret) {
         return this.createDialog({
             title: ttl,
             message: msg,
-            buttons: "YES_NO"
+            return: ret
         });
     };
 
-    this.prompt = function(ttl, msg) {
+    this.confirm = function(ttl, msg, ret) {
+        return this.createDialog({
+            title: ttl,
+            message: msg,
+            buttons: "YES_NO",
+            return: ret
+        });
+    };
+
+    this.prompt = function(ttl, msg, ret) {
         return this.createDialog({
             title: ttl,
             message: msg,
             prompt: true,
-            yes_text: "Submit",
-            no_text: "Abort",
-            buttons: "YES_NO"
+            yes_text: "SUBMIT",
+            no_text: "ABORT",
+            buttons: "YES_NO",
+            return: ret
         });
     };
 })();
