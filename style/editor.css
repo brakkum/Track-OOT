@@ -48,6 +48,7 @@
           box-shadow: #3bf5ff 0 0px 4px 2px; }
     .dialog > .dialog-window > .dialog-buttons {
       display: flex;
+      margin-top: 20px;
       padding: 10px 30px 10px;
       justify-content: flex-end;
       border-top: solid 2px #cccccc; }

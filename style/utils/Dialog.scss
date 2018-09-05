@@ -60,6 +60,7 @@
 
         &> .dialog-buttons {
             display: flex;
+            margin-top: 20px;
             padding: 10px 30px 10px;
             justify-content: flex-end;
             border-top: solid 2px darken(white, 20%);
