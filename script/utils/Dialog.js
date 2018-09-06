@@ -74,11 +74,12 @@ window.Dialog = new (function() {
             if (!!options.message) {
                 createText(dialog, options.message);
             }
-            let input;
+            var input;
             if (!!options.prompt) {
                 var wrap = document.createElement('DIV');
                 wrap.className = "dialog-input-box";
-                focuables.push(createTextInput(wrap, "enter text"));
+                input = createTextInput(wrap, "enter text");
+                focuables.push(input);
                 dialog.appendChild(wrap);
             }
             var buttons = document.createElement('DIV');
