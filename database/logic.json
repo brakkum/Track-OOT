@@ -1282,11 +1282,11 @@
                     "el": [
                         {
                             "type": "item",
-                            "el": "bombs"
+                            "el": "scale"
                         },
                         {
-                            "type": "item",
-                            "el": "scale"
+                            "type": "mixin",
+                            "el": "has_explosives"
                         }
                     ]
                 }
@@ -1295,10 +1295,6 @@
         "desert_colossus_fairy": {
             "type": "and",
             "el": [
-                {
-                    "type": "item",
-                    "el": "bombs"
-                },
                 {
                     "type": "item",
                     "el": "ocarina"
@@ -1310,6 +1306,10 @@
                 {
                     "type": "mixin",
                     "el": "spirit_temple_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
                 }
             ]
         },
@@ -3229,26 +3229,12 @@
                     "el": "has_explosives"
                 },
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "song_zelda"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "skip",
-                            "el": "zora_cucco"
-                        }
-                    ]
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_zelda"
                 }
             ]
         },
@@ -5464,6 +5450,14 @@
                     "el": "song_zelda"
                 },
                 {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    "value": 2
+                },
+                {
                     "type": "or",
                     "el": [
                         {
@@ -6177,12 +6171,21 @@
                     "el": "song_zelda"
                 },
                 {
-                    "type": "item",
-                    "el": "sword_kokiri"
-                },
-                {
                     "type": "mixin",
                     "el": "bottom_well_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "sword_kokiri"
+                        },
+                        {
+                            "type": "skip",
+                            "el": "child_deadhand"
+                        }
+                    ]
                 }
             ]
         },
@@ -6194,16 +6197,34 @@
                     "el": "song_zelda"
                 },
                 {
-                    "type": "item",
-                    "el": "lens"
-                },
-                {
-                    "type": "item",
-                    "el": "magic_power"
-                },
-                {
                     "type": "mixin",
                     "el": "bottom_well_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "lens"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "skip",
+                                "el": "lens_required",
+                                "value": "lens_required_default"
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -7805,40 +7826,48 @@
                     "type": "or",
                     "el": [
                         {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_forest"
+                            },
+                            "value": 3
+                        },
+                        {
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "min",
+                                    "type": "not",
                                     "el": {
-                                        "type": "item",
-                                        "el": "key_small_forest"
-                                    },
-                                    "value": 3
+                                        "type": "option",
+                                        "el": "keysanity"
+                                    }
                                 },
                                 {
-                                    "type": "option",
-                                    "el": "keysanity"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "item",
-                            "el": "boots_hover"
-                        },
-                        {
-                            "type": "item",
-                            "el": "bow"
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "song_time"
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "ocarina"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "song_time"
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -9124,17 +9153,12 @@
                             }
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "key_small_forest"
-                                    },
-                                    "value": 5
-                                }
-                            ]
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_forest"
+                            },
+                            "value": 5
                         }
                     ]
                 }
