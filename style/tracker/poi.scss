@@ -41,6 +41,7 @@
     top: calc(50% - 14px);
     right: calc(100% + 10px);
     font-size: 18px;
+    user-select: none;
 }
 
 .poi.dungeon .count {

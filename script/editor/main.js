@@ -18,6 +18,10 @@ var elements_panel = document.getElementById("elements-panel").querySelector('.p
 
 async function run() {
     window.data = await loadAll();
+    window.oncontextmenu = function() {
+        event.preventDefault();
+        return false;
+    }
     fillEditor();
     document.getElementById('control-save-local').onclick = saveLocalLogic;
     document.getElementById('control-load-local').onclick = loadLocalLogic;

@@ -73,6 +73,11 @@ async function main() {
     window.onfocus = function() {
         data.logic_patched = Storage.get("settings", "logic", {});
     }
+
+    window.oncontextmenu = function() {
+        event.preventDefault();
+        return false;
+    }
 }
 
 main();

@@ -67,8 +67,15 @@
     overflow-y: auto;
 }
 
-#dungeon-container #dungeon-list .dungeon-entry:hover {
-    background-color: #282828;
+#dungeon-container #dungeon-list .dungeon-entry {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding: 5px;
+
+    &:hover {
+        background-color: #282828;
+    }
 }
 
 /**********************************

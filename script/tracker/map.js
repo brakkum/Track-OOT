@@ -20,6 +20,7 @@ function populateMap() {
         s.style.color = 'black';
         s.id = id;
         s.onclick = new Function('togglePOI("chests", "'+id+'")');
+        s.oncontextmenu = new Function('untogglePOI("chests", "'+id+'")');
         s.style.left = data.chests[id].x;
         s.style.top = data.chests[id].y;
 
@@ -90,9 +91,17 @@ function populateMap() {
 }
 
 function togglePOI(category, key){
-    var val = !SaveState.read(category, key, 0);
-    SaveState.write(category, key, val);
+    SaveState.write(category, key, true);
     updateMap();
+    event.preventDefault();
+    return false;
+}
+
+function untogglePOI(category, key){
+    SaveState.write(category, key, false);
+    updateMap();
+    event.preventDefault();
+    return false;
 }
 
 function clickDungeon(ref) {
@@ -110,6 +119,7 @@ function clickDungeon(ref) {
         s.innerHTML = translate(key);
 
         s.onclick = new Function('togglePOI("'+poi_list.mode+'", "'+key+'")');
+        s.oncontextmenu = new Function('untogglePOI("'+poi_list.mode+'", "'+key+'")');
         s.style.cursor = "pointer";
 
         poi_list.entries.push(s);
