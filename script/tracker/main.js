@@ -69,6 +69,10 @@ async function main() {
     createItemTracker();
 
     populateMap();
+
+    window.onfocus = function() {
+        data.logic_patched = Storage.get("settings", "logic", {});
+    }
 }
 
 main();
@@ -97,9 +101,7 @@ function prepairSavegameChoice() {
     stateLoad.disabled = true;
     stateDel.disabled = true;
     stateExport.disabled = true;
-    if (activestate != "") {
-        stateChoice.value = activestate;
-    }
+    stateChoice.value = activestate;
 }
 
 async function state_Save() {
@@ -124,6 +126,7 @@ async function state_Load() {
             stateSave.disabled = false;
             updateItems();
             updateMap();
+            await Dialog.alert("Success", "State \""+activestate+"\" loaded.");
         }
     }
 }
@@ -131,15 +134,17 @@ async function state_Load() {
 async function state_Delete() {
     if (stateChoice.value != ""
     && await Dialog.confirm("Warning", "Do you really want to delete \""+stateChoice.value+"\"?")) {
-        Storage.remove("save", stateChoice.value);
-        if (stateChoice.value != activestate) {
-            stateChoice.value = activestate;
+        var del = stateChoice.value;
+        Storage.remove("save", del);
+        if (del != activestate) {
             updateItems();
             updateMap();
         } else {
             activestate == "";
         }
+        stateChoice.value = activestate;
         prepairSavegameChoice();
+        await Dialog.alert("Success", "State \""+del+"\" removed.");
     }
 }
 
@@ -156,7 +161,12 @@ async function state_New() {
             state_New();
             return;
         }
-        if (activestate != "" || await Dialog.confirm("Reset state?", "Do you want to reset the current state?")) {
+        if (activestate != "") {
+            if (await Dialog.confirm("Success", "State \""+name+"\" created.<br>Do you want to reset the current state?")) {
+                SaveState.reset();
+            }
+        } else {
+            await Dialog.alert("Success", "State \""+name+"\" created.");
             SaveState.reset();
         }
         SaveState.save(name);

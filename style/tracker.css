@@ -414,48 +414,54 @@ label.settings-option .option-text {
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px); }
   .dialog > .dialog-window {
-    display: block;
+    display: table;
+    height: 100px;
     margin-top: 100px;
     background-color: white;
     border: solid 2px #cccccc;
     border-radius: 4px; }
+    .dialog > .dialog-window :focus {
+      box-shadow: #3b92ff 0 0px 6px 3px; }
     .dialog > .dialog-window > .dialog-title {
       color: black;
       font-size: 1.5em;
       padding: 10px 20px 10px;
       font-weight: bold;
-      max-width: 500px;
       overflow: hidden;
       border-bottom: solid 2px #cccccc; }
-    .dialog > .dialog-window > .dialog-text {
+      .dialog > .dialog-window > .dialog-title.hidden {
+        display: none; }
+    .dialog > .dialog-window > .dialog-body {
       display: block;
-      color: black;
       padding: 20px;
-      min-width: 300px;
-      max-width: 500px;
-      max-height: 300px;
+      min-width: 20vw;
+      max-width: 50vw;
+      min-height: 10vh;
+      max-height: 50vh;
       overflow-y: auto;
-      overflow-x: hidden;
-      word-wrap: break-word;
-      resize: none; }
-    .dialog > .dialog-window > .dialog-input-box {
-      display: block;
-      margin: 5px 20px; }
-      .dialog > .dialog-window > .dialog-input-box > .dialog-input {
+      overflow-x: hidden; }
+      .dialog > .dialog-window > .dialog-body > .dialog-text {
+        display: block;
+        color: black;
+        padding-bottom: 20px;
+        word-wrap: break-word;
+        resize: none; }
+        .dialog > .dialog-window > .dialog-body > .dialog-text.hidden {
+          display: none; }
+      .dialog > .dialog-window > .dialog-body > .dialog-input {
         width: 100%;
+        padding: 5px;
         background-color: white;
         border: solid 1px black;
-        color: black;
-        padding: 5px; }
-        .dialog > .dialog-window > .dialog-input-box > .dialog-input:focus {
-          box-shadow: #3bf5ff 0 0px 4px 2px; }
-    .dialog > .dialog-window > .dialog-buttons {
+        color: black; }
+    .dialog > .dialog-window > .dialog-footer {
       display: flex;
+      height: 50px;
       margin-top: 20px;
       padding: 10px 30px 10px;
       justify-content: flex-end;
       border-top: solid 2px #cccccc; }
-      .dialog > .dialog-window > .dialog-buttons > button {
+      .dialog > .dialog-window > .dialog-footer > button {
         margin-left: 10px;
         padding: 5px;
         color: black;
@@ -464,9 +470,31 @@ label.settings-option .option-text {
         border-radius: 2px;
         cursor: pointer;
         -webkit-appearance: none; }
-        .dialog > .dialog-window > .dialog-buttons > button:hover, .dialog > .dialog-window > .dialog-buttons > button:focus {
+        .dialog > .dialog-window > .dialog-footer > button.hidden {
+          display: none; }
+        .dialog > .dialog-window > .dialog-footer > button:hover {
           color: white;
           background-color: black; }
+    .dialog > .dialog-window > .dialog-close {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 0px;
+      right: 0px;
+      width: 20px;
+      height: 20px;
+      color: black;
+      background-color: white;
+      border: none;
+      cursor: pointer;
+      -webkit-appearance: none; }
+      .dialog > .dialog-window > .dialog-close:after {
+        line-height: 1em;
+        content: "\2716"; }
+      .dialog > .dialog-window > .dialog-close:hover {
+        color: white;
+        background-color: black; }
 
 * {
   position: relative;

@@ -4544,16 +4544,21 @@
                             }
                         },
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "key_small_shadow"
-                            },
-                            "value": 5
-                        },
-                        {
-                            "type": "item",
-                            "el": "key_boss_shadow"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_shadow"
+                                    },
+                                    "value": 5
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "key_boss_shadow"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -8851,6 +8856,10 @@
                 {
                     "type": "mixin",
                     "el": "has_explosives"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
                 }
             ]
         },
@@ -9790,19 +9799,6 @@
                             "el": "dodongo_spike"
                         }
                     ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "bombs"
-                        },
-                        {
-                            "type": "item",
-                            "el": "glove"
-                        }
-                    ]
                 }
             ]
         },
@@ -10212,7 +10208,7 @@
                                 "type": "item",
                                 "el": "key_small_water"
                             },
-                            "value": 6
+                            "value": 5
                         }
                     ]
                 },

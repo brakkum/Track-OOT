@@ -1,155 +1,192 @@
-window.Dialog = new (function() {
+!function() {
+
+    const Q_TAB = [
+        'button:not([tabindex="-1"])',
+        '[href]:not([tabindex="-1"])',
+        'input:not([tabindex="-1"])',
+        'select:not([tabindex="-1"])',
+        'textarea:not([tabindex="-1"])',
+        '[tabindex]:not([tabindex="-1"])'
+    ].join(',');
 
     var cnt = 0;
     function getNewID() {
-        return "dialog_element_ID_" + (++cnt);
+        return "dialog_" + (++cnt);
     }
 
-    function createTitle(target, txt) {
-        var el = document.createElement('DIV');
-        el.id = getNewID();
-        el.className = "dialog-title";
-        el.innerHTML = txt || "";
-        target.appendChild(el);
-        target.setAttribute("aria-labelledby", el.id);
-        return el;
+    function createWindow() {
+        var id = getNewID();
+        var res = {
+            container: document.createElement('DIV'),
+            window: document.createElement('DIV'),
+            focusCT : document.createElement('DIV'),
+            focusCB : document.createElement('DIV'),
+            title : document.createElement('DIV'),
+            text : document.createElement('DIV'),
+            body : document.createElement('DIV'),
+            footer : document.createElement('DIV'),
+            submit : document.createElement('BUTTON'),
+            abort : document.createElement('BUTTON'),
+            close: document.createElement('button')
+        };
+        /* buttons */
+        res.close.className = "dialog-close";
+        res.close.setAttribute("title", "close");
+        res.submit.className = "hidden";
+        res.submit.setAttribute("type", "submit");
+        res.abort.className = "hidden";
+        res.abort.setAttribute("type", "reset");
+        /* title */
+        res.title.id = id + "_title";
+        res.title.className = "dialog-title hidden";
+        /* text */
+        res.text.id = id + "_text";
+        res.text.className = "dialog-text hidden";
+        /* body */
+        res.body.className = "dialog-body";
+        res.body.appendChild(res.text);
+        /* footer */
+        res.footer.className = "dialog-footer";
+        res.footer.appendChild(res.submit);
+        res.footer.appendChild(res.abort);
+        /* focus-catcher */
+        res.focusCT.setAttribute("tabindex", "0");
+        res.focusCB.setAttribute("tabindex", "0");
+        /* window */
+        res.window.className = "dialog-window";
+        res.window.id = id;
+        res.window.setAttribute("role", "dialog");
+        res.window.setAttribute("aria-modal", "true");
+        res.window.appendChild(res.title);
+        res.window.appendChild(res.body);
+        res.window.appendChild(res.footer);
+        res.window.appendChild(res.close);
+        /* container */
+        res.container.className = "dialog";
+        res.container.appendChild(res.focusCT);
+        res.container.appendChild(res.window);
+        res.container.appendChild(res.focusCB);
+        ///////////////////////////////////////
+        return res;
     }
 
-    function createText(target, txt) {
-        var el = document.createElement('DIV');
-        el.id = getNewID();
-        el.className = "dialog-text";
-        el.innerHTML = txt || "";
-        target.appendChild(el);
-        target.setAttribute("aria-describedby", el.id);
-        return el;
-    }
+    window.Dialog = function Dialog(callback, focus) {
 
-    function createButton(target, txt, onclick) {
-        var el = document.createElement('BUTTON');
-        el.innerHTML = txt || "";
-        el.onclick = onclick;
-        target.appendChild(el);
-        return el;
-    }
+        var w = createWindow();
+        var tab_itms = [];
 
-    function createTextInput(target, placeholder) {
-        var el = document.createElement('INPUT');
-        el.className = "dialog-input";
-        el.setAttribute("placeholder", placeholder || "");
-        target.appendChild(el);
-        return el;
-    }
+        function closeWindow(v) {
+            if (typeof callback == "function") callback(!!v);
+            document.body.removeChild(w.container);
+            if (!!focus) focus.focus();
+        }
+    
+        w.focusCT.onfocus = function() {
+            if (!!tab_itms.length) tab_itms[tab_itms.length-1].focus();
+        };
+        w.focusCB.onfocus = function() {
+            if (!!tab_itms.length) tab_itms[0].focus();
+        };
+        w.container.onkeydown = function(ev) {
+            var key = ev.which || ev.keyCode;
+            if (key == 27) {
+                closeWindow();
+            }
+            ev.stopPropagation();
+        };
+        w.submit.onclick = function(){closeWindow(true)};
+        w.abort.onclick = function(){closeWindow()};
+        w.close.onclick = function(){closeWindow()};
+    
+        this.setTitle = function(t) {
+            if (typeof t == "undefined") {
+                w.title.classList.add("hidden");
+                target.removeAttribute("aria-labelledby");
+            } else {
+                w.title.classList.remove("hidden");
+                w.title.innerHTML = t;
+                w.window.setAttribute("aria-labelledby", w.title.id);
+            }
+            return this;
+        }
+    
+        this.setText = function(t) {
+            if (typeof t == "undefined") {
+                w.text.classList.add("hidden");
+                target.removeAttribute("aria-describedby");
+            } else {
+                w.text.classList.remove("hidden");
+                w.text.innerHTML = t;
+                w.window.setAttribute("aria-describedby", w.text.id);
+            }
+            return this;
+        }
 
-    this.createDialog = function(options) {
+        this.setSubmitText = function(t) {
+            w.submit.classList.remove("hidden");
+            w.submit.innerHTML = t.toUpperCase();
+            w.submit.setAttribute("title", t);
+            tab_itms = Array.from(w.window.querySelectorAll(Q_TAB));
+            return this;
+        }
+
+        this.setAbortText = function(t) {
+            w.abort.classList.remove("hidden");
+            w.abort.innerHTML = t.toUpperCase();
+            w.abort.setAttribute("title", t);
+            tab_itms = Array.from(w.window.querySelectorAll(Q_TAB));
+            return this;
+        }
+
+        this.setCloseText = function(t) {
+            w.close.setAttribute("title", t);
+            tab_btns.push(w.close);
+            return this;
+        }
+
+        this.addElement = function(el) {
+            w.body.appendChild(el);
+            tab_itms = Array.from(w.window.querySelectorAll(Q_TAB));
+            return this;
+        }
+
+        tab_itms = Array.from(w.window.querySelectorAll(Q_TAB));
+        document.body.appendChild(w.container);
+
+    };
+
+    Dialog.alert = function(ttl, msg, ret) {
         return new Promise(function(resolve) {
-            if (!options.title && !options.message) {
-                resolve(false);
-                if (!!options.return) options.return.focus();
-                return;
-            }
-
-            function closeDialog(value) {
-                document.body.removeChild(container);
-                if (!!options.return) options.return.focus();
-                resolve(value);
-            }
-
-            var focuables = [];
-            var container = document.createElement('DIV');
-            // focuscatcher
-            var focusCatcherTop = document.createElement('DIV');
-            focusCatcherTop.setAttribute("tabindex", "0");
-            container.appendChild(focusCatcherTop);
-            // dialog
-            var dialog = document.createElement('DIV');
-            let button_no, button_yes;
-            container.className = "dialog";
-            dialog.className = "dialog-window";
-            dialog.setAttribute("role", "dialog");
-            dialog.setAttribute("aria-modal", "true");
-            if (!!options.title) {
-                createTitle(dialog, options.title);
-            }
-            if (!!options.message) {
-                createText(dialog, options.message);
-            }
-            var input;
-            if (!!options.prompt) {
-                var wrap = document.createElement('DIV');
-                wrap.className = "dialog-input-box";
-                input = createTextInput(wrap, "enter text");
-                focuables.push(input);
-                dialog.appendChild(wrap);
-            }
-            var buttons = document.createElement('DIV');
-            buttons.className = "dialog-buttons";
-            switch(options.buttons) {
-                case "YES_NO":
-                    focuables.push(createButton(buttons, options.no_text || "NO", function() {
-                        closeDialog(false);
-                    }));
-                    focuables.push(createButton(buttons, options.yes_text || "YES", function() {
-                        closeDialog(!!input ? input.value : true);
-                    }));
-                break;
-                case "YES":
-                default:
-                    focuables.push(createButton(buttons, options.yes_text || "ACCEPT", function() {
-                        closeDialog(!!input ? input.value : true);
-                    }));
-                break;
-            }
-            dialog.appendChild(buttons);
-            container.appendChild(dialog);
-            document.body.appendChild(container);
-            focuables[0].focus();
-            // focuscatcher
-            var focusCatcherBottom = document.createElement('DIV');
-            focusCatcherBottom.setAttribute("tabindex", "0");
-            container.appendChild(focusCatcherBottom);
-
-            focusCatcherTop.onfocus = function() {
-                focuables[focuables.length-1].focus();
-            }
-            focusCatcherBottom.onfocus = function() {
-                focuables[0].focus();
-            }
-            dialog.onkeydown = function(ev) {
-                var key = ev.which || ev.keyCode;
-                if (key == 27) {
-                    closeDialog(false);
-                }
-            }
-        });
-    }
-
-    this.alert = function(ttl, msg, ret) {
-        return this.createDialog({
-            title: ttl,
-            message: msg,
-            return: ret
+            (new Dialog(resolve, ret))
+                .setTitle(ttl)
+                .setText(msg)
+                .setSubmitText("OK");
         });
     };
 
-    this.confirm = function(ttl, msg, ret) {
-        return this.createDialog({
-            title: ttl,
-            message: msg,
-            buttons: "YES_NO",
-            return: ret
+    Dialog.confirm = function(ttl, msg, ret) {
+        return new Promise(function(resolve) {
+            (new Dialog(resolve, ret))
+                .setTitle(ttl)
+                .setText(msg)
+                .setSubmitText("YES")
+                .setAbortText("NO");
         });
     };
 
-    this.prompt = function(ttl, msg, ret) {
-        return this.createDialog({
-            title: ttl,
-            message: msg,
-            prompt: true,
-            yes_text: "SUBMIT",
-            no_text: "ABORT",
-            buttons: "YES_NO",
-            return: ret
+    Dialog.prompt = function(ttl, msg, ret) {
+        return new Promise(function(resolve) {
+            var el = document.createElement("input");
+            el.className = "dialog-input";
+            (new Dialog(function(v) {
+                resolve(!!v && el.value);
+            }, ret))
+                .setTitle(ttl)
+                .setText(msg)
+                .setSubmitText("SUBMIT")
+                .setAbortText("ABORT")
+                .addElement(el);
         });
     };
-})();
+
+}();
