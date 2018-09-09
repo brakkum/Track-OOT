@@ -47,9 +47,6 @@ function toggleItem(el) {
         SaveState.write("items", el.id, ++val);
         setVisual(el, val);
         updateMap();
-        if ((ref.hasOwnProperty("mark") && val >= ref.mark) || val == ref.max) {
-            el.classList.add("mark");
-        }
     }
     event.preventDefault();
     return false;
@@ -62,16 +59,13 @@ function untoggleItem(el) {
         SaveState.write("items", el.id, --val);
         setVisual(el, val);
         updateMap();
-        if (!ref.hasOwnProperty("mark") || val < ref.mark) {
-            el.classList.remove("mark");
-        }
     }
     event.preventDefault();
     return false;
 }
 
 function setVisual(el, val) {
-    let id = el.id;
+    var ref = data.items[el.id];
     if (val == 0) {
         el.classList.add("item-inactive");
     } else {
@@ -89,6 +83,11 @@ function setVisual(el, val) {
         }
     }
     setImage(el, val);
+    if ((ref.hasOwnProperty("mark") && val >= ref.mark) || val == ref.max) {
+        el.classList.add("mark");
+    } else {
+        el.classList.remove("mark");
+    }
 }
 
 function setImage(el, val) {
@@ -108,6 +107,7 @@ function setImage(el, val) {
 function updateItems() {
     for (var i = 0; i < itemGridEls.length; ++i) {
         let el = itemGridEls[i];
-        setVisual(el, SaveState.read("items", el.id, 0));
+        let val = SaveState.read("items", el.id, 0);
+        setVisual(el, val);
     }
 }
