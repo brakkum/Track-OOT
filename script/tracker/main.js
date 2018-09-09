@@ -46,6 +46,16 @@ document.getElementById("map-option-skulltula").addEventListener("click", functi
     updateMap();
 });
 
+window.onfocus = function() {
+    data.logic_patched = Storage.get("settings", "logic", {});
+    updateMap();
+}
+
+window.oncontextmenu = function() {
+    event.preventDefault();
+    return false;
+}
+
 function changeItemInactiveEffect() {
     var cn = parseInt(document.getElementById("item-container").getAttribute("data-inactive")) || 0;
     if (++cn > 2) cn = 0;
@@ -69,15 +79,6 @@ async function main() {
     createItemTracker();
 
     populateMap();
-
-    window.onfocus = function() {
-        data.logic_patched = Storage.get("settings", "logic", {});
-    }
-
-    window.oncontextmenu = function() {
-        event.preventDefault();
-        return false;
-    }
 }
 
 main();

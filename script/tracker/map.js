@@ -17,16 +17,29 @@ function populateMap() {
     /////////////////////////////////
     for (let id in data.chests) {
         var s = document.createElement('span');
+        var dta = data.chests[id];
         s.style.color = 'black';
         s.id = id;
         s.onclick = new Function('togglePOI("chests", "'+id+'")');
         s.oncontextmenu = new Function('untogglePOI("chests", "'+id+'")');
-        s.style.left = data.chests[id].x;
-        s.style.top = data.chests[id].y;
+        s.style.left = dta.x;
+        s.style.top = dta.y;
 
         var ss = document.createElement('span');
         ss.className = "tooltip";
         ss.innerHTML = translate(id);
+        if (dta.night) {
+            switch(dta.age) {
+                case "child": ss.classList.add("child-night"); break;
+                case "adult": ss.classList.add("adult-night"); break;
+                default: ss.classList.add("night"); break;
+            }
+        } else {
+            switch(dta.age) {
+                case "child": ss.classList.add("child"); break;
+                case "adult": ss.classList.add("adult"); break;
+            }
+        }
         s.appendChild(ss);
 
         poi.chests.push(s);
@@ -69,15 +82,29 @@ function populateMap() {
     /////////////////////////////////
     for (let id in data.skulltulas) {
         var s = document.createElement('span');
+        var dta = data.skulltulas[id];
         s.style.color = 'black';
         s.id = id;
         s.onclick = new Function('togglePOI("skulltulas", "'+id+'")');
-        s.style.left = data.skulltulas[id].x;
-        s.style.top = data.skulltulas[id].y;
+        s.oncontextmenu = new Function('untogglePOI("skulltulas", "'+id+'")');
+        s.style.left = dta.x;
+        s.style.top = dta.y;
 
         var ss = document.createElement('span');
         ss.className = "tooltip";
         ss.innerHTML = translate(id);
+        if (dta.night) {
+            switch(dta.age) {
+                case "child": ss.classList.add("child-night"); break;
+                case "adult": ss.classList.add("adult-night"); break;
+                default: ss.classList.add("night"); break;
+            }
+        } else {
+            switch(dta.age) {
+                case "child": ss.classList.add("child"); break;
+                case "adult": ss.classList.add("adult"); break;
+            }
+        }
         s.appendChild(ss);
 
         poi.skulltulas.push(s);

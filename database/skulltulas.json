@@ -1,114 +1,170 @@
 {
     "hyrule_north_east_grotto": {
         "x": "57.0%",
-        "y": "25.0%"
+        "y": "25.0%",
+        "age": "both",
+        "night": false
     },
     "hyrule_west_grotto": {
         "x": "35.2%",
-        "y": "41.5%"
+        "y": "41.5%",
+        "age": "both",
+        "night": false
     },
     "kokiri_know_it_all_brothers_child_night": {
         "x": "75.4%",
-        "y": "61.3%"
+        "y": "61.3%",
+        "age": "child",
+        "night": true
     },
     "kokiri_twins_adult_night": {
         "x": "80.5%",
-        "y": "61.0%"
+        "y": "61.0%",
+        "age": "adult",
+        "night": true
     },
     "kokiri_beanspot_near_shop_child": {
         "x": "80.5%",
-        "y": "58.0%"
+        "y": "58.0%",
+        "age": "child",
+        "night": false
     },
     "zora_river_tree_child": {
         "x": "70.4%",
-        "y": "34.5%"
+        "y": "34.5%",
+        "age": "child",
+        "night": false
     },
     "zora_river_ladder_child_night": {
         "x": "86.0%",
-        "y": "29.2%"
+        "y": "29.2%",
+        "age": "child",
+        "night": true
     },
     "zora_river_wall1_adult_night": {
         "x": "75.5%",
-        "y": "34.5%"
+        "y": "34.5%",
+        "age": "adult",
+        "night": true
     },
     "zora_river_wall2_adult_night": {
         "x": "83.5%",
-        "y": "29.2%"
+        "y": "29.2%",
+        "age": "adult",
+        "night": true
     },
     "lonlon_tree_child_night": {
         "x": "49.0%",
-        "y": "38.0%"
+        "y": "38.0%",
+        "age": "child",
+        "night": true
     },
     "lonlon_paddock_fence_child_night": {
         "x": "49.0%",
-        "y": "43.5%"
+        "y": "43.5%",
+        "age": "child",
+        "night": true
     },
     "lonlon_wall_child_night": {
         "x": "44.0%",
-        "y": "41.5%"
+        "y": "41.5%",
+        "age": "child",
+        "night": true
     },
     "lonlon_window_child_night": {
         "x": "47.1%",
-        "y": "38.0%"
+        "y": "38.0%",
+        "age": "child",
+        "night": true
     },
     "lake_near_firearrows_child_night": {
         "x": "41.5%",
-        "y": "91.0%"
+        "y": "91.0%",
+        "age": "child",
+        "night": true
     },
     "lake_behind_lab_child_night": {
         "x": "35.2%",
-        "y": "77.4%"
+        "y": "77.4%",
+        "age": "child",
+        "night": true
     },
     "lake_beanspot_child": {
         "x": "37.1%",
-        "y": "74.0%"
+        "y": "74.0%",
+        "age": "child",
+        "night": false
     },
     "lake_dead_tree_adult_night": {
         "x": "33.7%",
-        "y": "91.0%"
+        "y": "91.0%",
+        "age": "adult",
+        "night": true
     },
     "lake_lab_box_adult": {
         "x": "35.2%",
-        "y": "74.0%"
+        "y": "74.0%",
+        "age": "adult",
+        "night": false
     },
     "gerudo_wood_plank_child_night": {
         "x": "29.5%",
-        "y": "37.5%"
+        "y": "37.5%",
+        "age": "child",
+        "night": true
     },
     "gerudo_behind_carpenter_tent_adult_night": {
         "x": "22.0%",
-        "y": "33.0%"
+        "y": "33.0%",
+        "age": "adult",
+        "night": true
     },
     "gerudo_rock_near_carpenter_tent_adult_night": {
         "x": "22.0%",
-        "y": "38.0%"
+        "y": "38.0%",
+        "age": "adult",
+        "night": true
     },
     "gerudo_river_beanspot_child": {
         "x": "24.0%",
-        "y": "35.5%"
+        "y": "35.5%",
+        "age": "child",
+        "night": false
     },
     "gerudo_rooftop_adult_night": {
         "x": "18.8%",
-        "y": "23.8%"
+        "y": "23.8%",
+        "age": "adult",
+        "night": true
     },
     "gerudo_horseback_archery_target_adult_night": {
         "x": "21.7%",
-        "y": "28.0%"
+        "y": "28.0%",
+        "age": "adult",
+        "night": true
     },
     "desert_fortress_adult": {
         "x": "14.0%",
-        "y": "25.0%"
+        "y": "25.0%",
+        "age": "adult",
+        "night": false
     },
     "desert_palm_tree_adult_night": {
         "x": "06.4%",
-        "y": "28.5%"
+        "y": "28.5%",
+        "age": "adult",
+        "night": true
     },
     "desert_magic_bean_adult_night": {
         "x": "06.4%",
-        "y": "23.5%"
+        "y": "23.5%",
+        "age": "adult",
+        "night": true
     },
     "desert_beanspot_child": {
         "x": "04.5%",
-        "y": "21.5%"
+        "y": "21.5%",
+        "age": "child",
+        "night": false
     }
 }

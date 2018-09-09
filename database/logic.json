@@ -5971,16 +5971,21 @@
                             }
                         },
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "key_small_spirit"
-                            },
-                            "value": 5
-                        },
-                        {
-                            "type": "item",
-                            "el": "key_boss_spirit"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_spirit"
+                                    },
+                                    "value": 5
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "key_boss_spirit"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -6933,7 +6938,7 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 3
+                    "value": 2
                 }
             ]
         },
@@ -11290,16 +11295,21 @@
                             }
                         },
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "key_small_shadow"
-                            },
-                            "value": 5
-                        },
-                        {
-                            "type": "item",
-                            "el": "key_boss_shadow"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_shadow"
+                                    },
+                                    "value": 5
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "key_boss_shadow"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -11331,16 +11341,21 @@
                             }
                         },
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "key_small_spirit"
-                            },
-                            "value": 5
-                        },
-                        {
-                            "type": "item",
-                            "el": "key_boss_spirit"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_spirit"
+                                    },
+                                    "value": 5
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "key_boss_spirit"
+                                }
+                            ]
                         }
                     ]
                 },

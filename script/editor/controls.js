@@ -57,6 +57,7 @@ function saveLocalLogic() {
     data.logic_patched[category][id] = getLogic();
     document.getElementById(category+'_'+id).classList.add('has-custom-logic');
     Storage.set("settings", "logic", data.logic_patched);
+    el.innerHTML = translate(id) + " (local)";
 }
 
 function removeLocalLogic() {
@@ -68,6 +69,7 @@ function removeLocalLogic() {
         delete data.logic_patched[category][id];
         Storage.set("settings", "logic", data.logic_patched);
         document.getElementById(category+'_'+id).classList.remove('has-custom-logic');
+        loadRemoteLogic();
     }
 }
 

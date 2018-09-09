@@ -32,9 +32,10 @@
     visibility: hidden;
     background-color: black;
     color: #fff;
+    border: solid 1px white;
     text-align: center;
     border-radius: 8px;
-    padding: 5px;
+    padding: 10px;
     position: absolute;
     white-space: nowrap;
     z-index: 1;
@@ -42,6 +43,32 @@
     right: calc(100% + 10px);
     font-size: 18px;
     user-select: none;
+
+    &:after {
+        display: inline;
+        margin-left: 10px;
+        color: sandybrown;
+    }
+
+    &.night:after {
+        content: 'N';
+    }
+
+    &.child:after {
+        content: 'C';
+    }
+
+    &.adult:after {
+        content: 'A';
+    }
+
+    &.child-night:after {
+        content: 'CN';
+    }
+
+    &.adult-night:after {
+        content: 'AN';
+    }
 }
 
 .poi.dungeon .count {
@@ -49,11 +76,13 @@
     color: black;
     line-height: 24px;
     font-size: calc(1em * var(--map-scale));
+    user-select: none;
 }
 
 .poi.dungeon .tooltip {
     background-color: gray;
     color: #fff;
+    border: solid 1px white;
 }
 
 .poi .tooltip:hover {
