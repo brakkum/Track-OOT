@@ -81,6 +81,7 @@ function clearLocalLogic() {
     }
     data.logic_patched = {};
     Storage.set("settings", "logic", data.logic_patched);
+    loadRemoteLogic();
 }
 
 function downloadLogicPatch() {
