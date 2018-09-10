@@ -58,6 +58,7 @@ function saveLocalLogic() {
     document.getElementById(category+'_'+id).classList.add('has-custom-logic');
     Storage.set("settings", "logic", data.logic_patched);
     el.innerHTML = translate(id) + " (local)";
+    await Dialog.alert("Success", "Logic \""+translate(id)+"\" saved.");
 }
 
 function removeLocalLogic() {
@@ -66,22 +67,28 @@ function removeLocalLogic() {
     var id = el.getAttribute("data-id");
     if (!category || !id) return;
     if (data.logic_patched.hasOwnProperty(category) && data.logic_patched[category].hasOwnProperty(id)) {
-        delete data.logic_patched[category][id];
-        Storage.set("settings", "logic", data.logic_patched);
-        document.getElementById(category+'_'+id).classList.remove('has-custom-logic');
-        loadRemoteLogic();
+        if (await Dialog.confirm("Warning", "Do you really want to remove \""+translate(id)+"\"?")) {
+            delete data.logic_patched[category][id];
+            Storage.set("settings", "logic", data.logic_patched);
+            document.getElementById(category+'_'+id).classList.remove('has-custom-logic');
+            loadRemoteLogic();
+            await Dialog.alert("Success", "Logic \""+translate(id)+"\" removed.");
+        }
     }
 }
 
 function clearLocalLogic() {
-    for (let i in data.logic_patched) {
-        for (let j in data.logic_patched[i]) {
-            document.getElementById(i+'_'+j).classList.remove('has-custom-logic');
+    if (await Dialog.confirm("Warning", "Do you really want to remove all local logic?")) {
+        for (let i in data.logic_patched) {
+            for (let j in data.logic_patched[i]) {
+                document.getElementById(i+'_'+j).classList.remove('has-custom-logic');
+            }
         }
+        data.logic_patched = {};
+        Storage.set("settings", "logic", data.logic_patched);
+        loadRemoteLogic();
+        await Dialog.alert("Success", "Local logic removed.");
     }
-    data.logic_patched = {};
-    Storage.set("settings", "logic", data.logic_patched);
-    loadRemoteLogic();
 }
 
 function downloadLogicPatch() {

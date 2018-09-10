@@ -201,7 +201,7 @@ async function state_Export() {
                 name: stateChoice.value,
                 data: Storage.get("save", stateChoice.value)
             };
-            Dialog.alert("Your export string", btoa(JSON.stringify(item)).replace(/=*$/,""));
+            await Dialog.alert("Your export string", btoa(JSON.stringify(item)).replace(/=*$/,""));
         }
     }
 }
