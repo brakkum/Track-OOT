@@ -77,7 +77,7 @@ async function removeLocalLogic() {
     }
 }
 
-function clearLocalLogic() {
+async function clearLocalLogic() {
     if (await Dialog.confirm("Warning", "Do you really want to remove all local logic?")) {
         for (let i in data.logic_patched) {
             for (let j in data.logic_patched[i]) {
@@ -91,11 +91,11 @@ function clearLocalLogic() {
     }
 }
 
-function downloadLogicPatch() {
+async function downloadLogicPatch() {
     FileSystem.save(JSON.stringify(data.logic_patched, " ", 4), "logic_patch_"+Date.now()+".json");
 }
 
-function uploadLogicPatch() {
+async function uploadLogicPatch() {
     FileSystem.load().then(function(content) {
         if (content.startsWith("data:application/json;base64,")) {
             content = content.slice(29);
@@ -125,7 +125,7 @@ function uploadLogicPatch() {
     });
 }
 
-function downloadPatchedLogic() {
+async function downloadPatchedLogic() {
     var logic = JSON.parse(JSON.stringify(data.logic));
     for (let i in data.logic_patched) {
         logic[i] = logic[i] || {};
