@@ -1,4 +1,4 @@
-function loadLogic(category, id) {
+async function loadLogic(category, id) {
     var el = document.getElementById('editor-panel').querySelector('.panel-header');
     if (!!el.getAttribute("data-cat")) {
         document.getElementById(el.getAttribute("data-cat")+"_"+el.getAttribute("data-id")).classList.remove("active");
@@ -21,7 +21,7 @@ function loadLogic(category, id) {
     exportLogic();
 }
 
-function loadRemoteLogic() {
+async function loadRemoteLogic() {
     var el = document.getElementById('editor-panel').querySelector('.panel-header');
     var category = el.getAttribute("data-cat");
     var id = el.getAttribute("data-id");
@@ -35,7 +35,7 @@ function loadRemoteLogic() {
     exportLogic();
 }
 
-function loadLocalLogic() {
+async function loadLocalLogic() {
     var el = document.getElementById('editor-panel').querySelector('.panel-header');
     var category = el.getAttribute("data-cat");
     var id = el.getAttribute("data-id");
@@ -48,7 +48,7 @@ function loadLocalLogic() {
     exportLogic();
 }
 
-function saveLocalLogic() {
+async function saveLocalLogic() {
     var el = document.getElementById('editor-panel').querySelector('.panel-header');
     var category = el.getAttribute("data-cat");
     var id = el.getAttribute("data-id");
@@ -61,7 +61,7 @@ function saveLocalLogic() {
     await Dialog.alert("Success", "Logic \""+translate(id)+"\" saved.");
 }
 
-function removeLocalLogic() {
+async function removeLocalLogic() {
     var el = document.getElementById('editor-panel').querySelector('.panel-header');
     var category = el.getAttribute("data-cat");
     var id = el.getAttribute("data-id");
