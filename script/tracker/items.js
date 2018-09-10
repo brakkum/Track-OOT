@@ -27,8 +27,8 @@ function createItemButton(cont, name) {
     el.id = name;
     el.classList.add("item");
     setVisual(el, 0);
-    el.onclick = new Function('toggleItem('+name+')');
-    el.oncontextmenu = new Function('untoggleItem('+name+')');
+    el.onclick = toggleItem;
+    el.oncontextmenu = untoggleItem;
     itemGridEls.push(el);
     cont.appendChild(el);
 }
@@ -40,7 +40,8 @@ function createItemIcon(cont, img) {
     cont.appendChild(el);
 }
 
-function toggleItem(el) {
+function toggleItem(ev) {
+    var el = ev.currentTarget;
     var val = SaveState.read("items", el.id, 0);
     var ref = data.items[el.id];
     if (val < ref.max) {
@@ -48,11 +49,12 @@ function toggleItem(el) {
         setVisual(el, val);
         updateMap();
     }
-    event.preventDefault();
+    ev.preventDefault();
     return false;
 }
 
-function untoggleItem(el) {
+function untoggleItem(ev) {
+    var el = ev.currentTarget;
     var val = SaveState.read("items", el.id, 0);
     var ref = data.items[el.id];
     if (val > 0) {
@@ -60,7 +62,7 @@ function untoggleItem(el) {
         setVisual(el, val);
         updateMap();
     }
-    event.preventDefault();
+    ev.preventDefault();
     return false;
 }
 

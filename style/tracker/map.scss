@@ -61,6 +61,7 @@
 #dungeon-container #dungeon-list {
     min-height: 200px;
     -webkit-padding-start: 0;
+    -moz-padding-start: 0;
     list-style: none;
     margin: 4px;
     overflow-x: hidden;
@@ -70,7 +71,6 @@
 #dungeon-container #dungeon-list .dungeon-entry {
     display: flex;
     align-items: center;
-    height: 30px;
     padding: 5px;
 
     &:hover {

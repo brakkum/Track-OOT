@@ -18,8 +18,8 @@ var elements_panel = document.getElementById("elements-panel").querySelector('.p
 
 async function run() {
     window.data = await loadAll();
-    window.oncontextmenu = function() {
-        event.preventDefault();
+    window.oncontextmenu = function(ev) {
+        ev.preventDefault();
         return false;
     }
     fillEditor();

@@ -9,7 +9,7 @@ var stateDel = document.getElementById("delete-savegame");
 var stateExport = document.getElementById("export-savegame");
 var stateImport = document.getElementById("import-savegame");
 
-stateChoice.addEventListener("change", function() {
+stateChoice.addEventListener("change", function(ev) {
     if (activestate == stateChoice.value) {
         stateSave.disabled = false;
     } else {
@@ -26,10 +26,10 @@ stateDel.addEventListener("click", state_Delete);
 stateExport.addEventListener("click", state_Export);
 stateImport.addEventListener("click", state_Import);
 
-document.getElementById("map-scale-slider").addEventListener("input", function(event) {
-    document.getElementById('map').style.setProperty("--map-scale", parseInt(event.target.value) / 100);
+document.getElementById("map-scale-slider").addEventListener("input", function(ev) {
+    document.getElementById('map').style.setProperty("--map-scale", parseInt(ev.target.value) / 100);
 });
-document.getElementById("map-option-chest").addEventListener("click", function(event) {
+document.getElementById("map-option-chest").addEventListener("click", function(ev) {
     document.getElementById('map').setAttribute("data-mode", "chests");
     poi_list.mode = "chests";
     if (poi_list.ref != "") {
@@ -37,7 +37,7 @@ document.getElementById("map-option-chest").addEventListener("click", function(e
     }
     updateMap();
 });
-document.getElementById("map-option-skulltula").addEventListener("click", function(event) {
+document.getElementById("map-option-skulltula").addEventListener("click", function(ev) {
     document.getElementById('map').setAttribute("data-mode", "skulltulas");
     poi_list.mode = "skulltulas";
     if (poi_list.ref != "") {
@@ -46,13 +46,13 @@ document.getElementById("map-option-skulltula").addEventListener("click", functi
     updateMap();
 });
 
-window.onfocus = function() {
+window.onfocus = function(ev) {
     data.logic_patched = Storage.get("settings", "logic", {});
     updateMap();
 }
 
-window.oncontextmenu = function() {
-    event.preventDefault();
+window.oncontextmenu = function(ev) {
+    ev.preventDefault();
     return false;
 }
 

@@ -8,9 +8,13 @@
   flex-shrink: 0; }
 
 .header > ul {
+  display: inline;
   -webkit-padding-start: 0;
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;
+  -moz-padding-start: 0;
+  -moz-margin-before: 0;
+  -moz-margin-after: 0;
   list-style: none; }
 
 .header > ul > li {
@@ -169,6 +173,7 @@
 #dungeon-container #dungeon-list {
   min-height: 200px;
   -webkit-padding-start: 0;
+  -moz-padding-start: 0;
   list-style: none;
   margin: 4px;
   overflow-x: hidden;
@@ -177,7 +182,6 @@
 #dungeon-container #dungeon-list .dungeon-entry {
   display: flex;
   align-items: center;
-  height: 30px;
   padding: 5px; }
   #dungeon-container #dungeon-list .dungeon-entry:hover {
     background-color: #282828; }
@@ -270,7 +274,7 @@
   border: solid 2px black; }
 
 .poi:hover {
-  outline: solid 2px cyan;
+  box-shadow: 0px 0px 0px 2px cyan;
   z-index: 10000; }
 
 .poi.chest,
@@ -527,9 +531,11 @@ label.settings-option .option-text {
   font-weight: bold;
   outline: none; }
 
-body {
+#viewpane {
   display: flex;
   flex-direction: column;
+  width: 100vw;
+  height: 100vh;
   background-color: black;
   margin: 0px;
   color: white; }

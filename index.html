@@ -6,18 +6,19 @@
         <meta name="robots" content="nofollow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-        <link rel="stylesheet" href="style/tracker.css?v=201809092129" type="text/css">
+        <link rel="stylesheet" href="style/normalize.css">
+        <link rel="stylesheet" href="style/tracker.css?v=201809101641" type="text/css">
 
-        <script src="script/utils/Dialog.js?v=201809092129"></script>
-        <script src="script/utils/SaveState.js?v=201809092129"></script>
-        <script src="script/utils/Storage.js?v=201809092129"></script>
-        <script src="script/utils/FileLoader.js?v=201809092129"></script>
-        <script src="script/tracker/loader.js?v=201809092129"></script>
-        <script src="script/tracker/logic.js?v=201809092129"></script>
-        <script src="script/tracker/items.js?v=201809092129"></script>
-        <script src="script/tracker/map.js?v=201809092129"></script>
-        <script src="script/tracker/settings.js?v=201809092129" defer></script>
-        <script src="script/tracker/main.js?v=201809092129" defer></script>
+        <script src="script/utils/Dialog.js?v=201809101641"></script>
+        <script src="script/utils/SaveState.js?v=201809101641"></script>
+        <script src="script/utils/Storage.js?v=201809101641"></script>
+        <script src="script/utils/FileLoader.js?v=201809101641"></script>
+        <script src="script/tracker/loader.js?v=201809101641"></script>
+        <script src="script/tracker/logic.js?v=201809101641"></script>
+        <script src="script/tracker/items.js?v=201809101641"></script>
+        <script src="script/tracker/map.js?v=201809101641"></script>
+        <script src="script/tracker/settings.js?v=201809101641" defer></script>
+        <script src="script/tracker/main.js?v=201809101641" defer></script>
 
         <style>
             #splash {
@@ -43,131 +44,133 @@
         </script>
     </head>
     <body>
-        <nav class="header">
-            <ul>
-                <li class="select-savegame">
-                    <select id="select-savegame">
-                    </select>
-                </li>
-                <li>
-                    <button class="button" id="save-savegame" disabled>SAVE</button>
-                </li>
-                <li>
-                    <button class="button" id="load-savegame" disabled>LOAD</button>
-                </li>
-                <li>
-                    <button class="button" id="new-savegame">NEW</button>
-                </li>
-                <li>
-                    <button class="button" id="delete-savegame" disabled>DELETE</button>
-                </li>
-                <li>
-                    <button class="button" id="export-savegame" disabled>EXPORT</button>
-                </li>
-                <li>
-                    <button class="button" id="import-savegame">IMPORT</button>
-                </li>
-                <li>
-                    <button class="button" id="edit-settings">SETTINGS</button>
-                </li>
-            </ul>
-        </nav>
-        <div class="content">
-            <div class="layout-container">
-                <div id="item-container" class="item-grid" data-inactive="0">
-                </div>
-                <div id="key-container" class="item-grid" data-inactive="0">
-                </div>
-                <div id="map" data-mode="chests">
-                    <div class="slidecontainer">
-                        <span class="slidetext">+ / -</span>
-                        <div class="slidetrack">
-                            <input type="range" min="50" max="180" value="90" class="slider" id="map-scale-slider">
-                        </div>
+        <div id="viewpane">
+            <nav class="header">
+                <ul>
+                    <li class="select-savegame">
+                        <select id="select-savegame">
+                        </select>
+                    </li>
+                    <li>
+                        <button class="button" id="save-savegame" disabled>SAVE</button>
+                    </li>
+                    <li>
+                        <button class="button" id="load-savegame" disabled>LOAD</button>
+                    </li>
+                    <li>
+                        <button class="button" id="new-savegame">NEW</button>
+                    </li>
+                    <li>
+                        <button class="button" id="delete-savegame" disabled>DELETE</button>
+                    </li>
+                    <li>
+                        <button class="button" id="export-savegame" disabled>EXPORT</button>
+                    </li>
+                    <li>
+                        <button class="button" id="import-savegame">IMPORT</button>
+                    </li>
+                    <li>
+                        <button class="button" id="edit-settings">SETTINGS</button>
+                    </li>
+                </ul>
+            </nav>
+            <div class="content">
+                <div class="layout-container">
+                    <div id="item-container" class="item-grid" data-inactive="0">
                     </div>
                     <div id="key-container" class="item-grid" data-inactive="0">
                     </div>
-                    <div class="map-options">
-                        <div class="map-option" id="map-option-chest"></div>
-                        <div class="map-option" id="map-option-skulltula"></div>
-                    </div>
-                </div>
-                <div id="dungeon-container">
-                    <div id="dungeon-name">
-                        Hyrule
-                    </div>
-                    <hr class="spacer-line">
-                    <ul onselectstart="return false" id="dungeon-list">
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <footer class="footer">
-            <span class="footer-field">
-                version: <span id="status-version">0.4 - 201809092129</span>
-            </span>
-            <span class="footer-spacer">|</span>
-            <span class="footer-field">
-                for randomizer version 2.15.42 f.LUM
-            </span>
-            <span class="footer-spacer">|</span>
-            <span class="footer-field">
-                chests available / missing: <span id="status-chests-available">#</span> / <span id="status-chests-missing">#</span>
-            </span>
-            <span class="footer-spacer">|</span>
-            <span class="footer-field">
-                skulltulas available / missing: <span id="status-skulltulas-available">#</span> / <span id="status-skulltulas-missing">#</span>
-            </span>
-            <span class="footer-spacer">|</span>
-            <span class="footer-right">
-                found a bug or missing feature - <a href="https://bitbucket.org/2deep4real/track-oot/issues" target="_blank">create an issue</a>
-            </span>
-        </footer>
-        <div id="settings">
-            <div id="settings-window">
-                <div class="card-panel">
-                    <div class="card-header">
-                        <div class="card-button active" data-target="settings-tracker">Tracker settings</div>
-                        <div class="card-button" data-target="settings-options">Randomizer options</div>
-                        <div class="card-button" data-target="settings-skips">Skips</div>
-                    </div>
-                    <div class="card-body active" id="settings-tracker">
-                        <div>
-                            <label class="settings-option">
-                                <span class="option-text">show map</span>
-                                <input type="checkbox" id="show_map" checked>
-                            </label>
-                            <label class="settings-option">
-                                <span class="option-text">use custom logic</span>
-                                <input type="checkbox" id="use_custom_logic">
-                                <a href="/editor.html" target="_blank" class="button">edit logic</a>
-                            </label>
+                    <div id="map" data-mode="chests">
+                        <div class="slidecontainer">
+                            <span class="slidetext">+ / -</span>
+                            <div class="slidetrack">
+                                <input type="range" min="50" max="180" value="90" class="slider" id="map-scale-slider">
+                            </div>
                         </div>
-                        <hr>
-                        <p>
-                            "Custom logic" will use localy stored logic (generated with the logic editor).<br>
-                            The editor can be used to do quick fixes to logic.<br><br>
-                            Enjoy the new rom-options and skips, they will be saved by state.<br>
-                            I still have to find a way to parse the settings string.<br><br>
-                            Big thanks to...<br>
-                            <i class="thanks-name">TestRunner</i> for creating the original tracker this one is based of.<br>
-                            <i class="thanks-name">Scatter</i> for taking the time to build a logic compendium.<br>
-                            <i class="thanks-name">fraggerman</i> for helping with the logic of skulltulas.
-                        </p>
+                        <div id="key-container" class="item-grid" data-inactive="0">
+                        </div>
+                        <div class="map-options">
+                            <div class="map-option" id="map-option-chest"></div>
+                            <div class="map-option" id="map-option-skulltula"></div>
+                        </div>
                     </div>
-                    <div class="card-body" id="settings-options">
-                    </div>
-                    <div class="card-body" id="settings-skips">
+                    <div id="dungeon-container">
+                        <div id="dungeon-name">
+                            Hyrule
+                        </div>
+                        <hr class="spacer-line">
+                        <ul onselectstart="return false" id="dungeon-list">
+                        </ul>
                     </div>
                 </div>
-                <hr>
-                <div class="settings-buttons">
-                    <button id="settings-cancel">cancel</button>
-                    <button id="settings-save">save</button>
+            </div>
+            <footer class="footer">
+                <span class="footer-field">
+                    version: <span id="status-version">0.4 - 201809101641</span>
+                </span>
+                <span class="footer-spacer">|</span>
+                <span class="footer-field">
+                    for randomizer version 2.15.42 f.LUM
+                </span>
+                <span class="footer-spacer">|</span>
+                <span class="footer-field">
+                    chests available / missing: <span id="status-chests-available">#</span> / <span id="status-chests-missing">#</span>
+                </span>
+                <span class="footer-spacer">|</span>
+                <span class="footer-field">
+                    skulltulas available / missing: <span id="status-skulltulas-available">#</span> / <span id="status-skulltulas-missing">#</span>
+                </span>
+                <span class="footer-spacer">|</span>
+                <span class="footer-right">
+                    found a bug or missing feature - <a href="https://bitbucket.org/2deep4real/track-oot/issues" target="_blank">create an issue</a>
+                </span>
+            </footer>
+            <div id="settings">
+                <div id="settings-window">
+                    <div class="card-panel">
+                        <div class="card-header">
+                            <div class="card-button active" data-target="settings-tracker">Tracker settings</div>
+                            <div class="card-button" data-target="settings-options">Randomizer options</div>
+                            <div class="card-button" data-target="settings-skips">Skips</div>
+                        </div>
+                        <div class="card-body active" id="settings-tracker">
+                            <div>
+                                <label class="settings-option">
+                                    <span class="option-text">show map</span>
+                                    <input type="checkbox" id="show_map" checked>
+                                </label>
+                                <label class="settings-option">
+                                    <span class="option-text">use custom logic</span>
+                                    <input type="checkbox" id="use_custom_logic">
+                                    <a href="/editor.html" target="_blank" class="button">edit logic</a>
+                                </label>
+                            </div>
+                            <hr>
+                            <p>
+                                "Custom logic" will use localy stored logic (generated with the logic editor).<br>
+                                The editor can be used to do quick fixes to logic.<br><br>
+                                Enjoy the new rom-options and skips, they will be saved by state.<br>
+                                I still have to find a way to parse the settings string.<br><br>
+                                Big thanks to...<br>
+                                <i class="thanks-name">TestRunner</i> for creating the original tracker this one is based of.<br>
+                                <i class="thanks-name">Scatter</i> for taking the time to build a logic compendium.<br>
+                                <i class="thanks-name">fraggerman</i> for helping with the logic of skulltulas.
+                            </p>
+                        </div>
+                        <div class="card-body" id="settings-options">
+                        </div>
+                        <div class="card-body" id="settings-skips">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="settings-buttons">
+                        <button id="settings-cancel">cancel</button>
+                        <button id="settings-save">save</button>
+                    </div>
                 </div>
             </div>
         </div>
-        
+                
         <div id="splash">
             <img src="images/track-oot.png">
         </div>
