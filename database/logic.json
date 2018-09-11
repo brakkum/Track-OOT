@@ -8615,6 +8615,610 @@
                     ]
                 }
             ]
+        },
+        "woods_deku_salesman_grotto_2": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "hammer"
+                        },
+                        {
+                            "type": "item",
+                            "el": "ocarina"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "song_saria"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_forest"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                }
+            ]
+        },
+        "woods_deku_salesman_meadow_grotto_1": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_storm"
+                }
+            ]
+        },
+        "woods_deku_salesman_meadow_grotto_2": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_storm"
+                }
+            ]
+        },
+        "mountain_crater_ladder_salesman": {
+            "type": "mixin",
+            "el": "has_explosives"
+        },
+        "mountain_crater_grotto_salesman_1": {
+            "type": "item",
+            "el": "hammer"
+        },
+        "mountain_crater_grotto_salesman_2": {
+            "type": "item",
+            "el": "hammer"
+        },
+        "mountain_crater_grotto_salesman_3": {
+            "type": "item",
+            "el": "hammer"
+        },
+        "dodongo_lobby_salesman": {
+            "type": "mixin",
+            "el": "dodongo_cavern_access"
+        },
+        "dodongo_east_corridor_salesman": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
+        },
+        "dodongo_near_bomb_bag_salesman_1": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hammer"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "glove"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_din"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_power"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "dodongo_near_bomb_bag_salesman_2": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hammer"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "glove"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_din"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_power"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "jabujabu_elevator_dive_salesman": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "item",
+                            "el": "slingshot"
+                        },
+                        {
+                            "type": "item",
+                            "el": "boomerang"
+                        }
+                    ]
+                }
+            ]
+        },
+        "castle_ganon_under_bridge_salesman_1": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ganon_castle_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "skip",
+                                "el": "lens_required",
+                                "value": "lens_required_default"
+                            }
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "lens"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "castle_ganon_under_bridge_salesman_2": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ganon_castle_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "skip",
+                                "el": "lens_required",
+                                "value": "lens_required_default"
+                            }
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "lens"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "castle_ganon_under_bridge_salesman_3": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ganon_castle_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "skip",
+                                "el": "lens_required",
+                                "value": "lens_required_default"
+                            }
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "lens"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "castle_ganon_under_bridge_salesman_4": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ganon_castle_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "skip",
+                                "el": "lens_required",
+                                "value": "lens_required_default"
+                            }
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "lens"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "gerudo_behind_carpenter_tent_grotto_salesman_1": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "gerudo_fortress_access"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_storm"
+                }
+            ]
+        },
+        "gerudo_behind_carpenter_tent_grotto_salesman_2": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "gerudo_fortress_access"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_storm"
+                }
+            ]
+        },
+        "desert_colossus_grotto_salesman_1": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "spirit_temple_access"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    "value": 2
+                }
+            ]
+        },
+        "desert_colossus_grotto_salesman_2": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "spirit_temple_access"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    "value": 2
+                }
+            ]
+        },
+        "zora_river_grotto_salesman_1": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_storm"
+                }
+            ]
+        },
+        "zora_river_grotto_salesman_2": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_storm"
+                }
+            ]
+        },
+        "goron_grotto_salesman_1": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "ocarina"
+                        },
+                        {
+                            "type": "item",
+                            "el": "song_time"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "goron_tunic_access"
+                        },
+                        {
+                            "type": "item",
+                            "el": "hookshot"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        {
+                            "type": "item",
+                            "el": "magic_nayru"
+                        },
+                        {
+                            "type": "item",
+                            "el": "magic_power"
+                        }
+                    ]
+                }
+            ]
+        },
+        "goron_grotto_salesman_2": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "ocarina"
+                        },
+                        {
+                            "type": "item",
+                            "el": "song_time"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "goron_tunic_access"
+                        },
+                        {
+                            "type": "item",
+                            "el": "hookshot"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        {
+                            "type": "item",
+                            "el": "magic_nayru"
+                        },
+                        {
+                            "type": "item",
+                            "el": "magic_power"
+                        }
+                    ]
+                }
+            ]
+        },
+        "goron_grotto_salesman_3": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "ocarina"
+                        },
+                        {
+                            "type": "item",
+                            "el": "song_time"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "goron_tunic_access"
+                        },
+                        {
+                            "type": "item",
+                            "el": "hookshot"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        {
+                            "type": "item",
+                            "el": "magic_nayru"
+                        },
+                        {
+                            "type": "item",
+                            "el": "magic_power"
+                        }
+                    ]
+                }
+            ]
         }
     },
     "skulltulas": {

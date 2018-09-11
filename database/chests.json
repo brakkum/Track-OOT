@@ -1,7 +1,8 @@
 {
     "kokiri_sword": {
         "x": "76.0%",
-        "y": "63.5%"
+        "y": "63.5%",
+        "age": "child"
     },
     "midos_house": {
         "x": "78.5%",
@@ -9,7 +10,8 @@
     },
     "saria_ocarina": {
         "x": "72.0%",
-        "y": "58.0%"
+        "y": "58.0%",
+        "age": "child"
     },
     "kokiri_storm_grotto": {
         "x": "77.5%",
@@ -17,7 +19,8 @@
     },
     "song_of_time": {
         "x": "52.3%",
-        "y": "30.5%"
+        "y": "30.5%",
+        "age": "child"
     },
     "hyrule_north_grotto": {
         "x": "50.0%",
@@ -41,15 +44,18 @@
     },
     "talon_chicken": {
         "x": "49.0%",
-        "y": "38.0%"
+        "y": "38.0%",
+        "age": "child"
     },
     "maron_song": {
         "x": "47.0%",
-        "y": "41.5%"
+        "y": "41.5%",
+        "age": "child"
     },
     "lonlon_hp": {
         "x": "44.0%",
-        "y": "43.5%"
+        "y": "43.5%",
+        "age": "child"
     },
     "lonlon_grotto_deku_salesman_1": {
         "x": "46.0%",
@@ -63,16 +69,18 @@
     },
     "lonlon_grotto_deku_salesman_3": {
         "x": "47.0%",
-        "y": "48.5%",
+        "y": "49.0%",
         "mode": "shopsanity"
     },
     "bottle_zora": {
         "x": "38.6%",
-        "y": "80.0%"
+        "y": "80.0%",
+        "age": "child"
     },
     "lake_sun": {
         "x": "41.5%",
-        "y": "91.0%"
+        "y": "91.0%",
+        "age": "adult"
     },
     "lake_grave_grotto_salesman_1": {
         "x": "30.2%",
@@ -92,69 +100,85 @@
     },
     "lab_roof": {
         "x": "35.2%",
-        "y": "74.0%"
+        "y": "74.0%",
+        "age": "adult"
     },
     "fishing_child": {
         "x": "45.0%",
-        "y": "78.0%"
+        "y": "78.0%",
+        "age": "child"
     },
     "fishing_adult": {
         "x": "46.9%",
-        "y": "78.0%"
+        "y": "78.0%",
+        "age": "adult"
     },
     "gerudo_hammer_rock": {
         "x": "22.0%",
-        "y": "38.0%"
+        "y": "38.0%",
+        "age": "adult"
     },
     "gerudo_crate": {
         "x": "24.0%",
-        "y": "41.5%"
+        "y": "41.5%",
+        "age": "child"
     },
     "gerudo_behind_carpenter_tent_grotto_salesman_1": {
         "x": "20.0%",
         "y": "33.0%",
-        "mode": "shopsanity"
+        "mode": "shopsanity",
+        "age": "adult"
     },
     "gerudo_behind_carpenter_tent_grotto_salesman_2": {
         "x": "22.0%",
         "y": "33.0%",
-        "mode": "shopsanity"
+        "mode": "shopsanity",
+        "age": "adult"
     },
     "gerudo_waterfall": {
         "x": "25.5%",
-        "y": "32.0%"
+        "y": "32.0%",
+        "age": "child"
     },
     "gerudo_rooftop": {
         "x": "18.8%",
-        "y": "19.0%"
+        "y": "19.0%",
+        "age": "adult"
     },
     "gerudo_guard_1": {
         "x": "18.0%",
-        "y": "23.0%"
+        "y": "23.0%",
+        "age": "adult"
     },
     "gerudo_guard_2": {
         "x": "20.0%",
-        "y": "23.0%"
+        "y": "23.0%",
+        "age": "adult"
     },
     "gerudo_guard_3": {
         "x": "22.0%",
-        "y": "23.0%"
+        "y": "23.0%",
+        "age": "adult"
     },
     "gerudo_guard_4": {
         "x": "24.0%",
-        "y": "23.0%"
+        "y": "23.0%",
+        "age": "adult"
     },
     "gerudo_archer_1": {
         "x": "26.0%",
-        "y": "28.0%"
+        "y": "28.0%",
+        "age": "adult"
     },
     "gerudo_archer_2": {
         "x": "23.5%",
-        "y": "28.0%"
+        "y": "28.0%",
+        "age": "adult"
     },
     "desert_chest": {
         "x": "14.0%",
-        "y": "25.0%"
+        "y": "25.0%",
+        "age": "adult"
     },
     "desert_warp_spirit": {
         "x": "04.5%",
@@ -167,24 +191,29 @@
     "desert_colossus_grotto_salesman_1": {
         "x": "07.0%",
         "y": "15.5%",
-        "mode": "shopsanity"
+        "mode": "shopsanity",
+        "age": "adult"
     },
     "desert_colossus_grotto_salesman_2": {
         "x": "07.0%",
         "y": "19.0%",
-        "mode": "shopsanity"
+        "mode": "shopsanity",
+        "age": "adult"
     },
     "desert_colossus_hp": {
         "x": "06.4%",
-        "y": "23.5%"
+        "y": "23.5%",
+        "age": "adult"
     },
     "frog_game": {
         "x": "79.8%",
-        "y": "32.0%"
+        "y": "32.0%",
+        "age": "child"
     },
     "frog_rain": {
         "x": "78.0%",
-        "y": "32.0%"
+        "y": "32.0%",
+        "age": "child"
     },
     "zora_hp_1": {
         "x": "75.0%",

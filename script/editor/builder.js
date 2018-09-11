@@ -120,10 +120,16 @@ function fillEditor() {
     for (let i in data.chests) {
         chest_overworld_panel.appendChild(createListItem("chests", i));
     }
+    if (!Object.keys(data.chests).length) {
+        chest_overworld_panel.innerHTML = "<i>No Elements</i>";
+    }
     
     var skulltula_overworld_panel = createPanel("Overworld", skulltula_panel);
     for (let i in data.skulltulas) {
         skulltula_overworld_panel.appendChild(createListItem("skulltulas", i));
+    }
+    if (!Object.keys(data.skulltulas).length) {
+        skulltula_overworld_panel.innerHTML = "<i>No Elements</i>";
     }
     
     for (let i in data.dungeons) {
@@ -134,19 +140,24 @@ function fillEditor() {
         var chest_dungeon_panel = createPanel(translate(i), chest_panel);
         var skulltula_dungeon_panel = createPanel(translate(i), skulltula_panel);
 
-        for (let j = 0; j < chests.length; ++j) {
-            var el = createListItem("chests", chests[j]);
+        for (let j in chests) {
+            var el = createListItem("chests", j);
             chest_dungeon_panel.appendChild(el);
         }
-
-        for (let j = 0; j < skulltulas.length; ++j) {
-            var el = createListItem("skulltulas", skulltulas[j]);
+        if (!Object.keys(chests).length) {
+            chest_dungeon_panel.innerHTML = "<i>No Elements</i>";
+        }
+        
+        for (let j in skulltulas) {
+            var el = createListItem("skulltulas", j);
             skulltula_dungeon_panel.appendChild(el);
         }
-
-        if (!skulltulas.length) {
+        if (!Object.keys(skulltulas).length) {
             skulltula_dungeon_panel.innerHTML = "<i>No Elements</i>";
         }
+    }
+    if (!Object.keys(data.dungeons).length) {
+        dungeon_panel.innerHTML = "<i>No Elements</i>";
     }
     for (let i in data.logic.mixins) {
         mixins_panel.appendChild(createListItem("mixins", i));
