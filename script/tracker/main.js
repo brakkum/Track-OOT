@@ -112,10 +112,14 @@ function prepairSavegameChoice() {
         el.innerHTML = el.id;
         stateChoice.appendChild(el);
     }
-    stateSave.disabled = true;
-    stateLoad.disabled = true;
-    stateDel.disabled = true;
-    stateExport.disabled = true;
+    if (activestate == "") {
+        stateSave.disabled = true;
+        stateLoad.disabled = true;
+        stateDel.disabled = true;
+        stateExport.disabled = true;
+    } else {
+        stateSave.disabled = false;
+    }
     stateChoice.value = activestate;
 }
 

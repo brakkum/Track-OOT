@@ -163,10 +163,10 @@ function updateMap() {
 
         var DCcount = 0;
         for (let j in data.dungeons[ref].chests) {
-            if (!SaveState.read("chests", j, 0) && checkLogic("chests", j)) {
-                DCcount++;
-            }
             if (!data.dungeons[ref].chests[j].mode || data.dungeons[ref].chests[j].mode != "shopsanity" || SaveState.read("options", "shopsanity", false)) {
+                if (!SaveState.read("chests", j, 0) && checkLogic("chests", j)) {
+                    DCcount++;
+                }
                 chests_missing++;
             }
         }

@@ -76,13 +76,15 @@
         "images": "bottle.png"
     },
     "wallet": {
-        "max": 2,
+        "max": 3,
+        "mark": 2,
         "images": [
             "wallet_default.png",
             "wallet_silver.png",
+            "wallet_gold.png",
             "wallet_gold.png"
         ],
-        "counting": ["99", "200", "500"]
+        "counting": ["99", "200", "500", "999"]
     },
     "skulltula": {
         "max": 100,

@@ -24,6 +24,7 @@
             #splash {
                 position: absolute;
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 top: 0;
@@ -31,6 +32,11 @@
                 left: 0;
                 right: 0;
                 background-color: black;
+                color: white;
+            }
+
+            #splash span {
+                margin-top: 20px;
             }
 
             #splash.inactive {
@@ -177,6 +183,7 @@
                 
         <div id="splash">
             <img src="images/track-oot.png">
+            <span>Loading...</span>
         </div>
     </body>
 </html>
