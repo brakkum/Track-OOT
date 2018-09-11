@@ -2,438 +2,960 @@
     "woods": {
         "x": "78.0%",
         "y": "48.0%",
-        "chests": [
-            "woods_skull_kid",
-            "woods_deku_salesman",
-            "woods_memory_game",
-            "woods_shooting",
-            "woods_bomb_grotto",
-            "woods_deku_salesman_grotto",
-            "woods_wolfos_grotto",
-            "woods_saria",
-            "woods_warp",
-            "woods_deku_theater_1",
-            "woods_deku_theater_2"
-        ],
-        "skulltulas": [
-            "woods_mask_theater_beanspot_child",
-            "woods_deku_salesman_beanspot_child",
-            "woods_deku_salesman_magic_bean_adult",
-            "woods_labyrinth_adult_night"
-        ]
+        "chests": {
+            "woods_skull_kid": {
+                "age": "child"
+            },
+            "woods_deku_salesman": {},
+            "woods_memory_game": {
+                "age": "child"
+            },
+            "woods_shooting": {
+                "age": "child"
+            },
+            "woods_bomb_grotto": {},
+            "woods_deku_salesman_grotto": {},
+            "woods_deku_salesman_grotto_2": {
+                "mode": "shopsanity"
+            },
+            "woods_deku_salesman_meadow_grotto": {
+                "mode": "shopsanity"
+            },
+            "woods_deku_salesman_meadow_grotto_2": {
+                "mode": "shopsanity"
+            },
+            "woods_wolfos_grotto": {},
+            "woods_saria": {
+                "age": "child"
+            },
+            "woods_warp": {
+                "age": "adult"
+            },
+            "woods_deku_theater_1": {
+                "age": "child"
+            },
+            "woods_deku_theater_2": {
+                "age": "child"
+            }
+        },
+        "skulltulas": {
+            "woods_mask_theater_beanspot_child": {
+                "age": "child"
+            },
+            "woods_deku_salesman_beanspot_child": {
+                "age": "child"
+            },
+            "woods_deku_salesman_magic_bean_adult": {
+                "age": "adult",
+                "time": "night"
+            },
+            "woods_labyrinth_adult_night": {
+                "age": "adult",
+                "time": "night"
+            }
+        }
     },
     "castle_town": {
         "x": "52.0%",
         "y": "20.0%",
-        "chests": [
-            "castle_town_maron",
-            "castle_town_zelda",
-            "castle_town_child_shooting",
-            "castle_town_bowling_1",
-            "castle_town_bowling_2",
-            "castle_town_chest_game",
-            "castle_town_dog",
-            "castle_town_poes",
-            "castle_town_hyrule_fairy",
-            "castle_town_ganon_fairy",
-            "castle_town_warp",
-            "castle_town_light_arrows"
-        ],
-        "skulltulas": [
-            "castle_town_pot_room_child",
-            "castle_town_tree_child",
-            "castle_town_storm_grotto_child",
-            "castle_town_near_ganon_fairy_adult"
-        ]
+        "chests": {
+            "castle_town_maron": {
+                "age": "child"
+            },
+            "castle_town_zelda": {
+                "age": "child"
+            },
+            "castle_town_child_shooting": {
+                "age": "child",
+                "time": "day"
+            },
+            "castle_town_bowling_1": {
+                "age": "child"
+            },
+            "castle_town_bowling_2": {
+                "age": "child"
+            },
+            "castle_town_chest_game": {
+                "age": "child",
+                "time": "night"
+            },
+            "castle_town_dog": {
+                "age": "child",
+                "time": "night"
+            },
+            "castle_town_poes": {
+                "age": "adult"
+            },
+            "castle_town_hyrule_fairy": {
+                "age": "child"
+            },
+            "castle_town_ganon_fairy": {
+                "age": "adult"
+            },
+            "castle_town_warp": {
+                "age": "adult"
+            },
+            "castle_town_light_arrows": {
+                "age": "adult"
+            }
+        },
+        "skulltulas": {
+            "castle_town_pot_room_child": {
+                "age": "child"
+            },
+            "castle_town_tree_child": {
+                "age": "child"
+            },
+            "castle_town_storm_grotto_child": {
+                "age": "child"
+            },
+            "castle_town_near_ganon_fairy_adult": {
+                "age": "adult"
+            }
+        }
     },
     "kakariko": {
         "x": "65.0%",
         "y": "24.0%",
-        "chests": [
-            "kakariko_anju_adult",
-            "kakariko_anju_chickens",
-            "kakariko_grotto",
-            "kakariko_redead_grotto",
-            "kakariko_cow_hp",
-            "kakariko_man_roof",
-            "kakariko_adult_shooting",
-            "kakariko_song_storm",
-            "kakariko_windmill_hp",
-            "kakariko_race_1",
-            "kakariko_race_2",
-            "kakariko_digging",
-            "kakariko_shield_grave",
-            "kakariko_redead_grave",
-            "kakariko_sun_song",
-            "kakariko_sun_song_chest",
-            "kakariko_bean_hp",
-            "kakariko_warp",
-            "kakariko_skulltula_10",
-            "kakariko_skulltula_20",
-            "kakariko_skulltula_30",
-            "kakariko_skulltula_40",
-            "kakariko_skulltula_50"
-        ],
-        "skulltulas": [
-            "kakariko_tree_child",
-            "kakariko_skulltula_house_child_night",
-            "kakariko_construction_site_child_night",
-            "kakariko_near_gate_child_night",
-            "kakariko_tower_child_night",
-            "kakariko_impas_house_roof_adult_night",
-            "kakariko_graveyard_royal_grave_child_night",
-            "kakariko_graveyard_beanspot_child_night"
-        ]
+        "chests": {
+            "kakariko_anju_adult": {
+                "age": "adult"
+            },
+            "kakariko_anju_chickens": {
+                "age": "child"
+            },
+            "kakariko_grotto": {},
+            "kakariko_redead_grotto": {},
+            "kakariko_cow_hp": {},
+            "kakariko_man_roof": {},
+            "kakariko_adult_shooting": {
+                "age": "adult"
+            },
+            "kakariko_song_storm": {
+                "age": "adult"
+            },
+            "kakariko_windmill_hp": {},
+            "kakariko_race_1": {
+                "age": "adult"
+            },
+            "kakariko_race_2": {
+                "age": "adult"
+            },
+            "kakariko_digging": {
+                "age": "child"
+            },
+            "kakariko_shield_grave": {},
+            "kakariko_redead_grave": {},
+            "kakariko_sun_song": {},
+            "kakariko_sun_song_chest": {},
+            "kakariko_bean_hp": {
+                "age": "adult"
+            },
+            "kakariko_warp": {
+                "age": "adult"
+            },
+            "kakariko_skulltula_10": {},
+            "kakariko_skulltula_20": {},
+            "kakariko_skulltula_30": {},
+            "kakariko_skulltula_40": {},
+            "kakariko_skulltula_50": {}
+        },
+        "skulltulas": {
+            "kakariko_tree_child": {
+                "age": "child",
+                "time": "night"
+            },
+            "kakariko_skulltula_house_child_night": {
+                "age": "child",
+                "time": "night"
+            },
+            "kakariko_construction_site_child_night": {
+                "age": "child",
+                "time": "night"
+            },
+            "kakariko_near_gate_child_night": {
+                "age": "child",
+                "time": "night"
+            },
+            "kakariko_tower_child_night": {
+                "age": "child",
+                "time": "night"
+            },
+            "kakariko_impas_house_roof_adult_night": {
+                "age": "adult",
+                "time": "night"
+            },
+            "kakariko_graveyard_royal_grave_child_night": {
+                "age": "child",
+                "time": "night"
+            },
+            "kakariko_graveyard_beanspot_child_night": {
+                "age": "child",
+                "time": "night"
+            }
+        }
     },
     "mountain": {
         "x": "64.0%",
         "y": "09.0%",
-        "chests": [
-            "mountain_above_dodongo",
-            "mountain_outside_goron_chest",
-            "mountain_outside_goron_grotto",
-            "mountain_warp",
-            "mountain_crater_wall",
-            "mountain_magic_bean",
-            "mountain_crater_grotto",
-            "mountain_crater_fairy",
-            "mountain_summit_fairy",
-            "mountain_biggoron"
-        ],
-        "skulltulas": [
-            "mountain_bombable",
-            "mountain_before_goron_hammer_rock_adult_night",
-            "mountain_cave_entrance_beanspot_child",
-            "mountain_wall_hammer_rock_adult_night",
-            "mountain_crater_beanspot_child",
-            "mountain_crater_box_child"
-        ]
+        "chests": {
+            "mountain_above_dodongo": {},
+            "mountain_outside_goron_chest": {},
+            "mountain_outside_goron_grotto": {},
+            "mountain_warp": {
+                "age": "adult"
+            },
+            "mountain_crater_wall": {},
+            "mountain_magic_bean": {
+                "age": "adult"
+            },
+            "mountain_crater_grotto": {},
+            "mountain_crater_fairy": {
+                "age": "adult"
+            },
+            "mountain_summit_fairy": {},
+            "mountain_biggoron": {
+                "age": "adult"
+            }
+        },
+        "skulltulas": {
+            "mountain_bombable": {},
+            "mountain_before_goron_hammer_rock_adult_night": {
+                "age": "adult",
+                "time": "night"
+            },
+            "mountain_cave_entrance_beanspot_child": {
+                "age": "child"
+            },
+            "mountain_wall_hammer_rock_adult_night": {
+                "age": "adult",
+                "time": "night"
+            },
+            "mountain_crater_beanspot_child": {
+                "age": "child"
+            },
+            "mountain_crater_box_child": {
+                "age": "child"
+            }
+        }
     },
     "goron": {
         "x": "60.0%",
         "y": "06.5%",
-        "chests": [
-            "goron_maze_left",
-            "goron_maze_center",
-            "goron_maze_right",
-            "goron_hot_rodder",
-            "goron_little_link",
-            "goron_spinning_pot_hp",
-            "goron_darunia"
-        ],
-        "skulltulas": [
-            "goron_maze_center_child",
-            "goron_center_platform_adult"
-        ]
+        "chests": {
+            "goron_maze_left": {
+                "age": "adult"
+            },
+            "goron_maze_center": {},
+            "goron_maze_right": {},
+            "goron_hot_rodder": {
+                "age": "child"
+            },
+            "goron_little_link": {
+                "age": "adult"
+            },
+            "goron_spinning_pot_hp": {
+                "age": "child"
+            },
+            "goron_darunia": {
+                "age": "child"
+            }
+        },
+        "skulltulas": {
+            "goron_maze_center_child": {
+                "age": "child"
+            },
+            "goron_center_platform_adult": {
+                "age": "adult"
+            }
+        }
     },
     "zoras": {
         "x": "93.5%",
         "y": "29.0%",
-        "chests": [
-            "zoras_diving",
-            "zoras_torch",
-            "zoras_fairy",
-            "zoras_ice",
-            "zoras_underwater",
-            "zoras_king_zora"
-        ],
-        "skulltulas": [
-            "zoras_wall_ice_adult_night",
-            "zoras_tree_child",
-            "zoras_wall_child_night",
-            "zoras_fairy_hidden_cave_adult_night"
-        ]
+        "chests": {
+            "zoras_diving": {
+                "age": "child"
+            },
+            "zoras_torch": {
+                "age": "child"
+            },
+            "zoras_fairy": {},
+            "zoras_ice": {
+                "age": "adult"
+            },
+            "zoras_underwater": {
+                "age": "adult"
+            },
+            "zoras_king_zora": {
+                "age": "adult"
+            }
+        },
+        "skulltulas": {
+            "zoras_wall_ice_adult_night": {
+                "age": "adult",
+                "time": "night"
+            },
+            "zoras_tree_child": {
+                "age": "child"
+            },
+            "zoras_wall_child_night": {
+                "age": "child",
+                "time": "night"
+            },
+            "zoras_fairy_hidden_cave_adult_night": {
+                "age": "adult"
+            }
+        }
     },
 
     "well": {
         "x": "68.0%",
         "y": "23.0%",
-        "chests": [
-            "well_front_left_hidden_wall",
-            "well_front_center_bombable",
-            "well_right_bottom_hidden_wall",
-            "well__center_large",
-            "well_center_small",
-            "well_back_left_bombable",
-            "well_coffin_key",
-            "well_defeat_boss",
-            "well_invisible",
-            "well_underwater_front",
-            "well_underwater_left",
-            "well_basement_ches",
-            "well_locked_pits",
-            "well_behind_right_grate"
-        ],
-        "skulltulas": [
-            "well_center_child",
-            "well_center_locked_room_child",
-            "well_locked_pits_child"
-        ]
+        "chests": {
+            "well_front_left_hidden_wall": {
+                "age": "child"
+            },
+            "well_front_center_bombable": {
+                "age": "child"
+            },
+            "well_right_bottom_hidden_wall": {
+                "age": "child"
+            },
+            "well__center_large": {
+                "age": "child"
+            },
+            "well_center_small": {
+                "age": "child"
+            },
+            "well_back_left_bombable": {
+                "age": "child"
+            },
+            "well_coffin_key": {
+                "age": "child"
+            },
+            "well_defeat_boss": {
+                "age": "child"
+            },
+            "well_invisible": {
+                "age": "child"
+            },
+            "well_underwater_front": {
+                "age": "child"
+            },
+            "well_underwater_left": {
+                "age": "child"
+            },
+            "well_basement_ches": {
+                "age": "child"
+            },
+            "well_locked_pits": {
+                "age": "child"
+            },
+            "well_behind_right_grate": {
+                "age": "child"
+            }
+        },
+        "skulltulas": {
+            "well_center_child": {
+                "age": "child"
+            },
+            "well_center_locked_room_child": {
+                "age": "child"
+            },
+            "well_locked_pits_child": {
+                "age": "child"
+            }
+        }
     },
     "ice_cavern": {
         "x": "90.5%",
         "y": "16.0%",
-        "chests": [
-            "ice_cavern_map",
-            "ice_cavern_compass",
-            "ice_cavern_hp",
-            "ice_cavern_boots",
-            "ice_cavern_sheik"
-        ],
-        "skulltulas": [
-            "ice_cavern_ice_blades_adult",
-            "ice_cavern_block_puzzle_adult",
-            "ice_cavern_compass_room_adult"
-        ]
+        "chests": {
+            "ice_cavern_map": {
+                "age": "adult"
+            },
+            "ice_cavern_compass": {
+                "age": "adult"
+            },
+            "ice_cavern_hp": {
+                "age": "adult"
+            },
+            "ice_cavern_boots": {
+                "age": "adult"
+            },
+            "ice_cavern_sheik": {
+                "age": "adult"
+            }
+        },
+        "skulltulas": {
+            "ice_cavern_ice_blades_adult": {
+                "age": "adult"
+            },
+            "ice_cavern_block_puzzle_adult": {
+                "age": "adult"
+            },
+            "ice_cavern_compass_room_adult": {
+                "age": "adult"
+            }
+        }
     },
     "gerudo_training": {
         "x": "18.8%",
         "y": "28.0%",
-        "chests": [
-            "gerudo_training_lobby_left",
-            "gerudo_training_lobby_right",
-            "gerudo_training_stalfos",
-            "gerudo_training_beamos",
-            "gerudo_training_hidden_ceiling",
-            "gerudo_training_maze_1",
-            "gerudo_training_maze_2",
-            "gerudo_training_maze_3",
-            "gerudo_training_maze_final",
-            "gerudo_training_maze_right_central",
-            "gerudo_training_maze_right",
-            "gerudo_training_maze_right_key",
-            "gerudo_training_underwater_silver",
-            "gerudo_training_hammer_room_clear",
-            "gerudo_training_hammer_room_switch",
-            "gerudo_training_eye_statue",
-            "gerudo_training_scarecrow",
-            "gerudo_training_heavy_block_before",
-            "gerudo_training_heavy_block_1",
-            "gerudo_training_heavy_block_2",
-            "gerudo_training_heavy_block_3",
-            "gerudo_training_heavy_block_4"
-        ], 
-        "skulltulas": []
+        "chests": {
+            "gerudo_training_lobby_left": {
+                "age": "adult"
+            },
+            "gerudo_training_lobby_right": {
+                "age": "adult"
+            },
+            "gerudo_training_stalfos": {
+                "age": "adult"
+            },
+            "gerudo_training_beamos": {
+                "age": "adult"
+            },
+            "gerudo_training_hidden_ceiling": {
+                "age": "adult"
+            },
+            "gerudo_training_maze_1": {
+                "age": "adult"
+            },
+            "gerudo_training_maze_2": {
+                "age": "adult"
+            },
+            "gerudo_training_maze_3": {
+                "age": "adult"
+            },
+            "gerudo_training_maze_final": {
+                "age": "adult"
+            },
+            "gerudo_training_maze_right_central": {
+                "age": "adult"
+            },
+            "gerudo_training_maze_right": {
+                "age": "adult"
+            },
+            "gerudo_training_maze_right_key": {
+                "age": "adult"
+            },
+            "gerudo_training_underwater_silver": {
+                "age": "adult"
+            },
+            "gerudo_training_hammer_room_clear": {
+                "age": "adult"
+            },
+            "gerudo_training_hammer_room_switch": {
+                "age": "adult"
+            },
+            "gerudo_training_eye_statue": {
+                "age": "adult"
+            },
+            "gerudo_training_scarecrow": {
+                "age": "adult"
+            },
+            "gerudo_training_heavy_block_before": {
+                "age": "adult"
+            },
+            "gerudo_training_heavy_block_1": {
+                "age": "adult"
+            },
+            "gerudo_training_heavy_block_2": {
+                "age": "adult"
+            },
+            "gerudo_training_heavy_block_3": {
+                "age": "adult"
+            },
+            "gerudo_training_heavy_block_4": {
+                "age": "adult"
+            }
+        }, 
+        "skulltulas": {}
     },
 
     "deku": {
         "x": "87.0%",
         "y": "57.0%",
-        "chests": [
-            "deku_lobby",
-            "deku_slingshot",
-            "deku_slingshot_side",
-            "deku_compass",
-            "deku_compass_side",
-            "deku_basement",
-            "deku_gohma"
-        ],
-        "skulltulas": [
-            "deku_3f_compass_side_child",
-            "deku_basement_vines_child",
-            "deku_basement_metal_gate_child",
-            "deku_bombable_behind_web_child"
-        ]
+        "chests": {
+            "deku_lobby": {
+                "age": "child"
+            },
+            "deku_slingshot": {
+                "age": "child"
+            },
+            "deku_slingshot_side": {
+                "age": "child"
+            },
+            "deku_compass": {
+                "age": "child"
+            },
+            "deku_compass_side": {
+                "age": "child"
+            },
+            "deku_basement": {
+                "age": "child"
+            },
+            "deku_gohma": {
+                "age": "child"
+            }
+        },
+        "skulltulas": {
+            "deku_3f_compass_side_child": {
+                "age": "child"
+            },
+            "deku_basement_vines_child": {
+                "age": "child"
+            },
+            "deku_basement_metal_gate_child": {
+                "age": "child"
+            },
+            "deku_bombable_behind_web_child": {
+                "age": "child"
+            }
+        }
     },
     "dodongo": {
         "x": "59.0%",
         "y": "13.5%",
-        "chests": [
-            "dodongo_map",
-            "dodongo_compass",
-            "dodongo_bomb_flower_platform",
-            "dodongo_bomb_bag",
-            "dodongo_end_bridge",
-            "dodongo_chest_above_dodongo",
-            "dodongo_dodongo"
-        ],
-        "skulltulas": [
-            "dodongo_east_corridor_bombable",
-            "dodongo_east_corridor_scarecrow_adult",
-            "dodongo_above_big_staircase_adult",
-            "dodongo_big_staircase_vines",
-            "dodongo_near_boss_bombable"
-        ]
+        "chests": {
+            "dodongo_map": {},
+            "dodongo_compass": {},
+            "dodongo_bomb_flower_platform": {},
+            "dodongo_bomb_bag": {},
+            "dodongo_end_bridge": {},
+            "dodongo_chest_above_dodongo": {},
+            "dodongo_dodongo": {}
+        },
+        "skulltulas": {
+            "dodongo_east_corridor_bombable": {},
+            "dodongo_east_corridor_scarecrow_adult": {
+                "age": "adult"
+            },
+            "dodongo_above_big_staircase_adult": {},
+            "dodongo_big_staircase_vines": {},
+            "dodongo_near_boss_bombable": {}
+        }
     },
     "jabujabu": {
         "x": "91.5%",
         "y": "21.0%",
-        "chests": [
-            "jabujabu_boomerang",
-            "jabujabu_map",
-            "jabujabu_compass",
-            "jabujabu_barinade"
-        ],
-        "skulltulas": [
-            "jabujabu_b1_ruto1_child",
-            "jabujabu_b1_ruto2_child",
-            "jabujabu_b1_rising_water_child",
-            "jabujabu_1f_near_boss_child"
-        ]
+        "chests": {
+            "jabujabu_boomerang": {
+                "age": "child"
+            },
+            "jabujabu_map": {
+                "age": "child"
+            },
+            "jabujabu_compass": {
+                "age": "child"
+            },
+            "jabujabu_barinade": {
+                "age": "child"
+            }
+        },
+        "skulltulas": {
+            "jabujabu_b1_ruto1_child": {
+                "age": "child"
+            },
+            "jabujabu_b1_ruto2_child": {
+                "age": "child"
+            },
+            "jabujabu_b1_rising_water_child": {
+                "age": "child"
+            },
+            "jabujabu_1f_near_boss_child": {
+                "age": "child"
+            }
+        }
     },
     "temple_forest": {
         "x": "78.5%",
         "y": "39.0%",
-        "chests": [
-            "temple_forest_entrance",
-            "temple_forest_behind_lobby",
-            "temple_forest_well",
-            "temple_forest_map",
-            "temple_forest_outside_hookshot",
-            "temple_forest_block_push",
-            "temple_forest_boss_key",
-            "temple_forest_floormaster",
-            "temple_forest_bow",
-            "temple_forest_poe_red",
-            "temple_forest_poe_blue",
-            "temple_forest_falling_room",
-            "temple_forest_near_boss",
-            "temple_forest_phantomganon"
-        ],
-        "skulltulas": [
-            "temple_forest_entrance_adult",
-            "temple_forest_pillars_adult",
-            "temple_forest_lobby_adult",
-            "temple_forest_outside_hookshot_adult",
-            "temple_forest_near_boss_adult"
-        ]
+        "chests": {
+            "temple_forest_entrance": {
+                "age": "adult"
+            },
+            "temple_forest_behind_lobby": {
+                "age": "adult"
+            },
+            "temple_forest_well": {
+                "age": "adult"
+            },
+            "temple_forest_map": {
+                "age": "adult"
+            },
+            "temple_forest_outside_hookshot": {
+                "age": "adult"
+            },
+            "temple_forest_block_push": {
+                "age": "adult"
+            },
+            "temple_forest_boss_key": {
+                "age": "adult"
+            },
+            "temple_forest_floormaster": {
+                "age": "adult"
+            },
+            "temple_forest_bow": {
+                "age": "adult"
+            },
+            "temple_forest_poe_red": {
+                "age": "adult"
+            },
+            "temple_forest_poe_blue": {
+                "age": "adult"
+            },
+            "temple_forest_falling_room": {
+                "age": "adult"
+            },
+            "temple_forest_near_boss": {
+                "age": "adult"
+            },
+            "temple_forest_phantomganon": {
+                "age": "adult"
+            }
+        },
+        "skulltulas": {
+            "temple_forest_entrance_adult": {
+                "age": "adult"
+            },
+            "temple_forest_pillars_adult": {
+                "age": "adult"
+            },
+            "temple_forest_lobby_adult": {
+                "age": "adult"
+            },
+            "temple_forest_outside_hookshot_adult": {
+                "age": "adult"
+            },
+            "temple_forest_near_boss_adult": {
+                "age": "adult"
+            }
+        }
     },
     "temple_fire": {
         "x": "68.0%",
         "y": "06.5%",
-        "chests": [
-            "temple_fire_near_boss",
-            "temple_fire_dancer",
-            "temple_fire_boss_key",
-            "temple_fire_big_lava_bomb",
-            "temple_fire_big_lava_open",
-            "temple_fire_boulder_maze_lower",
-            "temple_fire_boulder_maze_side",
-            "temple_fire_boulder_maze_upper",
-            "temple_fire_boulder_maze_bomb",
-            "temple_fire_scarecrow",
-            "temple_fire_map",
-            "temple_fire_compass",
-            "temple_fire_highest_goron",
-            "temple_fire_hammer",
-            "temple_fire_volvagia"
-        ],
-        "skulltulas": [
-            "temple_fire_big_lava_time_block_adult",
-            "temple_fire_boulder_maze_bombable_adult",
-            "temple_fire_boulder_maze_scarecrow1_adult",
-            "temple_fire_boulder_maze_scarecrow2_adult",
-            "temple_fire_near_boss_key_adult"
-        ]
+        "chests": {
+            "temple_fire_near_boss": {
+                "age": "adult"
+            },
+            "temple_fire_dancer": {
+                "age": "adult"
+            },
+            "temple_fire_boss_key": {
+                "age": "adult"
+            },
+            "temple_fire_big_lava_bomb": {
+                "age": "adult"
+            },
+            "temple_fire_big_lava_open": {
+                "age": "adult"
+            },
+            "temple_fire_boulder_maze_lower": {
+                "age": "adult"
+            },
+            "temple_fire_boulder_maze_side": {
+                "age": "adult"
+            },
+            "temple_fire_boulder_maze_upper": {
+                "age": "adult"
+            },
+            "temple_fire_boulder_maze_bomb": {
+                "age": "adult"
+            },
+            "temple_fire_scarecrow": {
+                "age": "adult"
+            },
+            "temple_fire_map": {
+                "age": "adult"
+            },
+            "temple_fire_compass": {
+                "age": "adult"
+            },
+            "temple_fire_highest_goron": {
+                "age": "adult"
+            },
+            "temple_fire_hammer": {
+                "age": "adult"
+            },
+            "temple_fire_volvagia": {
+                "age": "adult"
+            }
+        },
+        "skulltulas": {
+            "temple_fire_big_lava_time_block_adult": {
+                "age": "adult"
+            },
+            "temple_fire_boulder_maze_bombable_adult": {
+                "age": "adult"
+            },
+            "temple_fire_boulder_maze_scarecrow1_adult": {
+                "age": "adult"
+            },
+            "temple_fire_boulder_maze_scarecrow2_adult": {
+                "age": "adult"
+            },
+            "temple_fire_near_boss_key_adult": {
+                "age": "adult"
+            }
+        }
     },
     "temple_water": {
         "x": "36.1%",
         "y": "91.0%",
-        "chests": [
-            "temple_water_map",
-            "temple_water_compass",
-            "temple_water_torches",
-            "temple_water_chest_dragon",
-            "temple_water_central_bow",
-            "temple_water_boss_key",
-            "temple_water_center_pillar",
-            "temple_water_cracked_wall",
-            "temple_water_dark_link",
-            "temple_water_river",
-            "temple_water_morpha"
-        ],
-        "skulltulas": [
-            "temple_water_lowest_level_south_adult",
-            "temple_water_big_waterfall_adult",
-            "temple_water_near_boss_key_adult",
-            "temple_water_center_pillar_adult",
-            "temple_water_river_adult"
-        ]
+        "chests": {
+            "temple_water_map": {
+                "age": "adult"
+            },
+            "temple_water_compass": {
+                "age": "adult"
+            },
+            "temple_water_torches": {
+                "age": "adult"
+            },
+            "temple_water_chest_dragon": {
+                "age": "adult"
+            },
+            "temple_water_central_bow": {
+                "age": "adult"
+            },
+            "temple_water_boss_key": {
+                "age": "adult"
+            },
+            "temple_water_center_pillar": {
+                "age": "adult"
+            },
+            "temple_water_cracked_wall": {
+                "age": "adult"
+            },
+            "temple_water_dark_link": {
+                "age": "adult"
+            },
+            "temple_water_river": {
+                "age": "adult"
+            },
+            "temple_water_morpha": {
+                "age": "adult"
+            }
+        },
+        "skulltulas": {
+            "temple_water_lowest_level_south_adult": {
+                "age": "adult"
+            },
+            "temple_water_big_waterfall_adult": {
+                "age": "adult"
+            },
+            "temple_water_near_boss_key_adult": {
+                "age": "adult"
+            },
+            "temple_water_center_pillar_adult": {
+                "age": "adult"
+            },
+            "temple_water_river_adult": {
+                "age": "adult"
+            }
+        }
     },
     "temple_shadow": {
         "x": "76.0%",
         "y": "21.0%",
-        "chests": [
-            "temple_shadow_map",
-            "temple_shadow_boots",
-            "temple_shadow_compass",
-            "temple_shadow_early_silver",
-            "temple_shadow_invisible_blades_visible",
-            "temple_shadow_invisible_blades_invisible",
-            "temple_shadow_falling_spikes_lower",
-            "temple_shadow_falling_spikes_upper",
-            "temple_shadow_falling_spikes_switch",
-            "temple_shadow_invisible_spikes",
-            "temple_shadow_giant_pot",
-            "temple_shadow_wind_hint",
-            "temple_shadow_after_wind_enemy",
-            "temple_shadow_after_wind_hidden",
-            "temple_shadow_spike_walls",
-            "temple_shadow_boss_key",
-            "temple_shadow_hidden_floormaster",
-            "temple_shadow_bongobongo"
-        ],
-        "skulltulas": [
-            "temple_shadow_invisible_blade_adult",
-            "temple_shadow_falling_spikes_adult",
-            "temple_shadow_behind_giant_pot_adult",
-            "temple_shadow_boat_adult",
-            "temple_shadow_behind_giant_pots_adult"
-        ]
+        "chests": {
+            "temple_shadow_map": {
+                "age": "adult"
+            },
+            "temple_shadow_boots": {
+                "age": "adult"
+            },
+            "temple_shadow_compass": {
+                "age": "adult"
+            },
+            "temple_shadow_early_silver": {
+                "age": "adult"
+            },
+            "temple_shadow_invisible_blades_visible": {
+                "age": "adult"
+            },
+            "temple_shadow_invisible_blades_invisible": {
+                "age": "adult"
+            },
+            "temple_shadow_falling_spikes_lower": {
+                "age": "adult"
+            },
+            "temple_shadow_falling_spikes_upper": {
+                "age": "adult"
+            },
+            "temple_shadow_falling_spikes_switch": {
+                "age": "adult"
+            },
+            "temple_shadow_invisible_spikes": {
+                "age": "adult"
+            },
+            "temple_shadow_giant_pot": {
+                "age": "adult"
+            },
+            "temple_shadow_wind_hint": {
+                "age": "adult"
+            },
+            "temple_shadow_after_wind_enemy": {
+                "age": "adult"
+            },
+            "temple_shadow_after_wind_hidden": {
+                "age": "adult"
+            },
+            "temple_shadow_spike_walls": {
+                "age": "adult"
+            },
+            "temple_shadow_boss_key": {
+                "age": "adult"
+            },
+            "temple_shadow_hidden_floormaster": {
+                "age": "adult"
+            },
+            "temple_shadow_bongobongo": {
+                "age": "adult"
+            }
+        },
+        "skulltulas": {
+            "temple_shadow_invisible_blade_adult": {
+                "age": "adult"
+            },
+            "temple_shadow_falling_spikes_adult": {
+                "age": "adult"
+            },
+            "temple_shadow_behind_giant_pot_adult": {
+                "age": "adult"
+            },
+            "temple_shadow_boat_adult": {
+                "age": "adult"
+            },
+            "temple_shadow_behind_giant_pots_adult": {
+                "age": "adult"
+            }
+        }
     },
     "temple_spirit": {
         "x": "02.5%",
         "y": "17.0%",
-        "chests": [
-            "temple_spirit_child_left",
-            "temple_spirit_child_right",
-            "temple_spirit_compass",
-            "temple_spirit_early_adult_right",
-            "temple_spirit_first_mirror_right",
-            "temple_spirit_first_mirror_left",
-            "temple_spirit_map",
-            "temple_spirit_child_climb_east",
-            "temple_spirit_child_climb_north",
-            "temple_spirit_sun_block",
-            "temple_spirit_statue_hand",
-            "temple_spirit_main_room_NE",
-            "temple_spirit_gauntlets",
-            "temple_spirit_shield",
-            "temple_spirit_near_four_armos",
-            "temple_spirit_hallway_left_invisible",
-            "temple_spirit_hallway_right_invisible",
-            "temple_spirit_boss_key",
-            "temple_spirit_topmost",
-            "temple_spirit_twinrova"
-        ],
-        "skulltulas": [
-            "temple_spirit_childsegment_left",
-            "temple_spirit_childsegment_sun_room",
-            "temple_spirit_childsegment_before_iron_knight",
-            "temple_spirit_rolling_boulders_time_block_adult",
-            "temple_spirit_coloss_room_adult"
-        ]
+        "chests": {
+            "temple_spirit_child_left": {
+                "age": "child"
+            },
+            "temple_spirit_child_right": {
+                "age": "child"
+            },
+            "temple_spirit_compass": {
+                "age": "adult"
+            },
+            "temple_spirit_early_adult_right": {
+                "age": "adult"
+            },
+            "temple_spirit_first_mirror_right": {
+                "age": "adult"
+            },
+            "temple_spirit_first_mirror_left": {
+                "age": "adult"
+            },
+            "temple_spirit_map": {},
+            "temple_spirit_child_climb_east": {},
+            "temple_spirit_child_climb_north": {},
+            "temple_spirit_sun_block": {},
+            "temple_spirit_statue_hand": {
+                "age": "adult"
+            },
+            "temple_spirit_main_room_NE": {
+                "age": "adult"
+            },
+            "temple_spirit_gauntlets": {
+                "age": "adult"
+            },
+            "temple_spirit_shield": {
+                "age": "adult"
+            },
+            "temple_spirit_near_four_armos": {
+                "age": "adult"
+            },
+            "temple_spirit_hallway_left_invisible": {
+                "age": "adult"
+            },
+            "temple_spirit_hallway_right_invisible": {
+                "age": "adult"
+            },
+            "temple_spirit_boss_key": {
+                "age": "adult"
+            },
+            "temple_spirit_topmost": {
+                "age": "adult"
+            },
+            "temple_spirit_twinrova": {
+                "age": "adult"
+            }
+        },
+        "skulltulas": {
+            "temple_spirit_childsegment_left": {
+                "age": "child"
+            },
+            "temple_spirit_childsegment_sun_room": {},
+            "temple_spirit_childsegment_before_iron_knight": {},
+            "temple_spirit_rolling_boulders_time_block_adult": {
+                "age": "adult"
+            },
+            "temple_spirit_coloss_room_adult": {
+                "age": "adult"
+            }
+        }
     },
     "castle_ganon": {
         "x": "52.0%",
         "y": "10.0%",
-        "chests": [
-            "castle_ganon_forest_trial",
-            "castle_ganon_water_trial_left",
-            "castle_ganon_water_trial_right",
-            "castle_ganon_shadow_trial_first",
-            "castle_ganon_shadow_trial_second",
-            "castle_ganon_spirit_trial_first",
-            "castle_ganon_spirit_trial_second",
-            "castle_ganon_light_trial_first_left",
-            "castle_ganon_light_trial_second_left",
-            "castle_ganon_light_trial_third_left",
-            "castle_ganon_light_trial_first_right",
-            "castle_ganon_light_trial_second_right",
-            "castle_ganon_light_trial_third_right",
-            "castle_ganon_light_trail_invisible_enemies",
-            "castle_ganon_light_trial_lullaby"
-        ],
-        "skulltulas": []
+        "chests": {
+            "castle_ganon_forest_trial": {
+                "age": "adult"
+            },
+            "castle_ganon_water_trial_left": {
+                "age": "adult"
+            },
+            "castle_ganon_water_trial_right": {
+                "age": "adult"
+            },
+            "castle_ganon_shadow_trial_first": {
+                "age": "adult"
+            },
+            "castle_ganon_shadow_trial_second": {
+                "age": "adult"
+            },
+            "castle_ganon_spirit_trial_first": {
+                "age": "adult"
+            },
+            "castle_ganon_spirit_trial_second": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trial_first_left": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trial_second_left": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trial_third_left": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trial_first_right": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trial_second_right": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trial_third_right": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trail_invisible_enemies": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trial_lullaby": {
+                "age": "adult"
+            }
+        },
+        "skulltulas": {}
     }
 }

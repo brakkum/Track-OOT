@@ -102,9 +102,8 @@ function checkAvailable(category, name) {
 
 function checkOpened(category, name) {
     var list = data.dungeons[name][category];
-    for (var i = 0; i < list.length; ++i) {
-        var key = list[i];
-        if (!SaveState.read(category, key, 0)) {
+    for (let i in list) {
+        if (!SaveState.read(category, i, 0)) {
             return false;
         }
     }
@@ -125,11 +124,10 @@ function checkList(category, name) {
     var list = data.dungeons[name][category];
     var canGet = 0;
     var unopened = 0
-    for (var i = 0; i < list.length; ++i) {
-        var key = list[i];
-        if (!SaveState.read(category, key, 0)) {
+    for (let i in list) {
+        if (!SaveState.read(category, i, 0)) {
             unopened++;
-            if (checkLogic(category, key)) {
+            if (checkLogic(category, i)) {
                 canGet++;
             }
         }

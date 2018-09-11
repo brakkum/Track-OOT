@@ -12,6 +12,10 @@
             "type": "check",
             "default": false
         },
+        "shopsanity": {
+            "type": "check",
+            "default": false
+        },
         "gerudo_fortress_open": {
             "type": "choice",
             "default": "gerudo_fortress_open_default",

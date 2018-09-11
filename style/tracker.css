@@ -305,20 +305,6 @@
   right: calc(100% + 10px);
   font-size: 18px;
   user-select: none; }
-  .poi .tooltip:after {
-    display: inline;
-    margin-left: 10px;
-    color: sandybrown; }
-  .poi .tooltip.night:after {
-    content: 'N'; }
-  .poi .tooltip.child:after {
-    content: 'C'; }
-  .poi .tooltip.adult:after {
-    content: 'A'; }
-  .poi .tooltip.child-night:after {
-    content: 'CN'; }
-  .poi .tooltip.adult-night:after {
-    content: 'AN'; }
 
 .poi.dungeon .count {
   display: inline-block;
@@ -530,6 +516,25 @@ label.settings-option .option-text {
   font-family: Arial, sans-serif;
   font-weight: bold;
   outline: none; }
+
+body .poi .hint-badge,
+body #dungeon-container #dungeon-list .dungeon-entry .hint-badge {
+  display: none; }
+body .poi[data-mode],
+body #dungeon-container #dungeon-list .dungeon-entry[data-mode] {
+  display: none; }
+body[data-shopsanity="true"] .poi[data-mode="shopsanity"],
+body[data-shopsanity="true"] #dungeon-container #dungeon-list .dungeon-entry[data-mode="shopsanity"] {
+  display: flex; }
+body[data-hint-badges="true"] .poi .tooltip .hint-badge,
+body[data-hint-badges="true"] #dungeon-container #dungeon-list .dungeon-entry .hint-badge {
+  display: inline;
+  margin-left: 10px;
+  color: black;
+  background-color: sandybrown;
+  border-radius: 10px;
+  padding: 0 5px;
+  font-weight: bold; }
 
 #viewpane {
   display: flex;

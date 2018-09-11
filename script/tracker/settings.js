@@ -76,6 +76,7 @@ function buildSettings() {
     var settings_skips = document.getElementById("settings-skips");
     
     var settings_show_map = settings_container.querySelector('#show_map');
+    var settings_show_hint_badges = settings_container.querySelector('#show_hint_badges');
     var settings_use_custom_logic = settings_container.querySelector('#use_custom_logic');
     
     settingsEdit.addEventListener("click", function() {
@@ -84,6 +85,7 @@ function buildSettings() {
     
     settingsCancel.addEventListener("click", function() {
         settings_show_map.checked = Storage.get("settings", "show_map", true);
+        settings_show_hint_badges.checked = Storage.get("settings", "show_hint_badges", false);
         settings_use_custom_logic.checked = Storage.get("settings", "use_custom_logic", false);
         resetSettingsPage("options", settings_options);
         resetSettingsPage("skips", settings_skips);
@@ -92,16 +94,27 @@ function buildSettings() {
     
     settingsSave.addEventListener("click", function() {
         Storage.set("settings", "use_custom_logic", settings_use_custom_logic.checked);
+        Storage.set("settings", "show_hint_badges", settings_show_hint_badges.checked);
         Storage.set("settings", "show_map", settings_show_map.checked);
         readSettingsPage("options", settings_options);
         readSettingsPage("skips", settings_skips);
-        if (settings_show_map.checked) {
+        if (Storage.get("settings", "show_map", true)) {
             document.getElementById('map').style.display = "";
             document.getElementById('dungeon-container').style.display = "";
             updateMap();
         } else {
             document.getElementById('map').style.display = "none";
             document.getElementById('dungeon-container').style.display = "none";
+        }
+        if (Storage.get("settings", "show_hint_badges", false)) {
+            document.body.setAttribute("data-hint-badges", "true");
+        } else {
+            document.body.setAttribute("data-hint-badges", "false");
+        }
+        if (SaveState.read("options", "shopsanity", false)) {
+            document.body.setAttribute("data-shopsanity", "true");
+        } else {
+            document.body.setAttribute("data-shopsanity", "false");
         }
         data.logic_patched = Storage.get("settings", "logic", {});
         document.getElementById('settings').classList.remove('active');
@@ -124,10 +137,21 @@ function buildSettings() {
     generateSettingsPage("skips", settings_skips);
 
     settings_show_map.checked = Storage.get("settings", "show_map", true);
+    settings_show_hint_badges.checked = Storage.get("settings", "show_hint_badges", false);
     settings_use_custom_logic.checked = Storage.get("settings", "use_custom_logic", false);
 
-    if (!settings_show_map.checked) {
+    if (!Storage.get("settings", "show_map", true)) {
         document.getElementById('map').style.display = "none";
         document.getElementById('dungeon-container').style.display = "none";
+    }
+    if (Storage.get("settings", "show_hint_badges", false)) {
+        document.body.setAttribute("data-hint-badges", "true");
+    } else {
+        document.body.setAttribute("data-hint-badges", "false");
+    }
+    if (SaveState.read("options", "shopsanity", false)) {
+        document.body.setAttribute("data-shopsanity", "true");
+    } else {
+        document.body.setAttribute("data-shopsanity", "false");
     }
 }

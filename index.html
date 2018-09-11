@@ -43,7 +43,7 @@
             }
         </script>
     </head>
-    <body>
+    <body data-hint-badges="false" data-shopsanity="false">
         <div id="viewpane">
             <nav class="header">
                 <ul>
@@ -82,7 +82,7 @@
                     </div>
                     <div id="map" data-mode="chests">
                         <div class="slidecontainer">
-                            <span class="slidetext">+ / -</span>
+                            <span class="slidetext">- / +</span>
                             <div class="slidetrack">
                                 <input type="range" min="50" max="180" value="90" class="slider" id="map-scale-slider">
                             </div>
@@ -136,11 +136,15 @@
                         <div class="card-body active" id="settings-tracker">
                             <div>
                                 <label class="settings-option">
-                                    <span class="option-text">show map</span>
+                                    <span class="option-text">Show map</span>
                                     <input type="checkbox" id="show_map" checked>
                                 </label>
                                 <label class="settings-option">
-                                    <span class="option-text">use custom logic</span>
+                                    <span class="option-text">Show hint badges (WIP)</span>
+                                    <input type="checkbox" id="show_hint_badges">
+                                </label>
+                                <label class="settings-option">
+                                    <span class="option-text">Use custom logic</span>
                                     <input type="checkbox" id="use_custom_logic">
                                     <a href="/editor.html" target="_blank" class="button">edit logic</a>
                                 </label>
@@ -154,7 +158,7 @@
                                 Big thanks to...<br>
                                 <i class="thanks-name">TestRunner</i> for creating the original tracker this one is based of.<br>
                                 <i class="thanks-name">Scatter</i> for taking the time to build a logic compendium.<br>
-                                <i class="thanks-name">fraggerman</i> for helping with the logic of skulltulas.
+                                <i class="thanks-name">fraggerman</i> for helping with the logic of skulltulas and shops.
                             </p>
                         </div>
                         <div class="card-body" id="settings-options">

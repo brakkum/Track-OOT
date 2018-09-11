@@ -9,6 +9,8 @@ var stateDel = document.getElementById("delete-savegame");
 var stateExport = document.getElementById("export-savegame");
 var stateImport = document.getElementById("import-savegame");
 
+var map_scale_slider = document.getElementById("map-scale-slider");
+
 stateChoice.addEventListener("change", function(ev) {
     if (activestate == stateChoice.value) {
         stateSave.disabled = false;
@@ -26,8 +28,12 @@ stateDel.addEventListener("click", state_Delete);
 stateExport.addEventListener("click", state_Export);
 stateImport.addEventListener("click", state_Import);
 
-document.getElementById("map-scale-slider").addEventListener("input", function(ev) {
-    document.getElementById('map').style.setProperty("--map-scale", parseInt(ev.target.value) / 100);
+map_scale_slider.addEventListener("input", function(ev) {
+    document.getElementById('map').style.setProperty("--map-scale", parseInt(map_scale_slider.value) / 100);
+});
+map_scale_slider.addEventListener("change", function(ev) {
+    document.getElementById('map').style.setProperty("--map-scale", parseInt(map_scale_slider.value) / 100);
+    Storage.set("settings", "map_zoom", parseInt(map_scale_slider.value));
 });
 document.getElementById("map-option-chest").addEventListener("click", function(ev) {
     document.getElementById('map').setAttribute("data-mode", "chests");
@@ -71,6 +77,9 @@ async function main() {
     data = await loadAll();
 
     console.log("loaded database:\r\n%o", data);
+
+    map_scale_slider.value = Storage.get("settings", "map_zoom", 90);
+    document.getElementById('map').style.setProperty("--map-scale", parseInt(map_scale_slider.value) / 100);
 
     buildSettings();
 

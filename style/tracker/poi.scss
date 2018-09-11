@@ -43,32 +43,6 @@
     right: calc(100% + 10px);
     font-size: 18px;
     user-select: none;
-
-    &:after {
-        display: inline;
-        margin-left: 10px;
-        color: sandybrown;
-    }
-
-    &.night:after {
-        content: 'N';
-    }
-
-    &.child:after {
-        content: 'C';
-    }
-
-    &.adult:after {
-        content: 'A';
-    }
-
-    &.child-night:after {
-        content: 'CN';
-    }
-
-    &.adult-night:after {
-        content: 'AN';
-    }
 }
 
 .poi.dungeon .count {

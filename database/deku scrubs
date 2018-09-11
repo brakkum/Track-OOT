@@ -1,6 +1,5 @@
 #TODO create JSON file containing scrubs & add logic to scrubs
 = GROTTO =
-crater grotto near goronia: 3 scrubs - hammer
 desert colossus near stone ring: 2 scrubs - strength 2
 gerudo valley behind tend: 2 scrubs - storm song
 hyrule field fences near lake: 1 scrub - smash or blast
@@ -14,11 +13,91 @@ goronia lava pit: 3 scrubs - longshot / hookshot & song time (?)
 = OVERWORLD =
 lost woods near theater: 2 scrubs - nothing
 lost woods bridge: 1 scrub - nothing
-child crater ladder: 1 scrub - nothing
 
 = DUNGEON =
-jabu jabu elevator bottom dive: 1 scrub - nothing
-dodongo lobby: 1 scrub - nothing
-dodongo east corridor: 1 scrub - blast or smash
-dodongo near bomb chest: 2 scrubs - blast or smash
-ganon castle: 4 scrubs - blast or smash (?)
+
+
+
+
+
+= CRATER =
+near goronia: 3 scrubs - adult - hammer & (Boots | explosives | bow | strength)
+ladder: 1 scrub - child - explosives
+
+= DODONGO =
+lobby: 1 scrub - DC_entry
+east corridor: 1 scrub - DC_entry & explosives
+near bomb chest: 2 scrubs - DC_entry & (explosives | (hammer & (strength | bow | (magic & din))))
+
+= JABU =
+elevator bottom dive: 1 scrub - Jabu_entry, slingshot OR boomerang OR explosives
+
+= GANON =
+ganon castle: 4 scrubs - GC_entry, lens, magic_power
+
+
+'HF Grotto Deku Scrub Piece of Heart': 'Hyrule Field'			- explosives
+'ZR Grotto Deku Scrub Red Potion': 'Zora\'s River'				- ocarina, SoS
+'ZR Grotto Deku Scrub Green Potion': 'Zora\'s River'			- ocarina, SoS
+'SFM Grotto Deku Scrub Red Potion': 'Sacred Forest Meadow'		- ocarina, SoS
+'SFM Grotto Deku Scrub Green Potion': 'Sacred Forest Meadow'	- ocarina, SoS
+'LH Grotto Deku Scrub Deku Nuts': 'Lake Hylia'					- none
+'LH Grotto Deku Scrub Bombs': 'Lake Hylia'						- none
+'LH Grotto Deku Scrub Arrows': 'Lake Hylia'						- none
+'Valley Grotto Deku Scrub Red Potion': 'Gerudo Valley'			- fortress_access, ocarina, SoS
+'Valley Grotto Deku Scrub Green Potion': 'Gerudo Valley'		- fortress_access, ocarina, SoS
+'LW Deku Scrub Deku Nuts': 'Lost Woods'							- none
+'LW Deku Scrub Deku Sticks': 'Lost Woods'						- none
+'LW Deku Scrub Deku Stick Upgrade': 'Lost Woods'				- none 
+'LW Grotto Deku Scrub Arrows': 'Lost Woods'						- explosives
+'LW Grotto Deku Scrub Deku Nut Upgrade': 'Lost Woods'			- explosives
+'Desert Grotto Deku Scrub Red Potion': 'Desert Colossus'		- spirit_access, gauntlet:2
+'Desert Grotto Deku Scrub Green Potion': 'Desert Colossus'		- spirit_access, gauntlet:2
+'Goron Grotto Deku Scrub Deku Nuts': 'Goron City'				- adult, (SoT, (!ohko OR goron_tunic OR hookshot:2 OR (nayru_love, magic_power)) OR (!ohko, goron_tunic, hookshot) OR (nayru_love, magic_power, hookshot)
+'Goron Grotto Deku Scrub Bombs': 'Goron City'					- adult, (SoT, (!ohko OR goron_tunic OR hookshot:2 OR (nayru_love, magic_power)) OR (!ohko, goron_tunic, hookshot) OR (nayru_love, magic_power, hookshot)
+'Goron Grotto Deku Scrub Arrows': 'Goron City'					- adult, (SoT, (!ohko OR goron_tunic OR hookshot:2 OR (nayru_love, magic_power)) OR (!ohko, goron_tunic, hookshot) OR (nayru_love, magic_power, hookshot)
+'LLR Grotto Deku Scrub Deku Nuts': 'Lon Lon Ranch'				- none
+'LLR Grotto Deku Scrub Bombs': 'Lon Lon Ranch'					- none
+'LLR Grotto Deku Scrub Arrows': 'Lon Lon Ranch'					- none
+
+
+
+
+===========================
+
+'DC Deku Scrub Near Bomb Bag Chest 2': 'Dodongo\'s Cavern' 		- DC_entry, explosives OR bow OR gloves OR (dins, magic_power)
+'DC Deku Scrub Near Bomb Bag Chest 1': 'Dodongo\'s Cavern' 		- DC_entry, explosives OR bow OR gloves OR (dins, magic_power)
+'DC Deku Scrub East Corridor': 'Dodongo\'s Cavern' 				- DC_entry, explosives
+'DC Deku Scrub Lobby': 'Dodongo\'s Cavern' 						- DC_entry
+'Jabu Deku Scrub Deku Nuts': 'Jabu Jabu\'s Belly'				- Jabu_entry, slingshot OR boomerang OR explosives
+'GC Deku Scrub Bombs': 'Ganon\'s Castle'						- GC_entry, lens, magic_power
+'GC Deku Scrub Arrows': 'Ganon\'s Castle'						- GC_entry, lens, magic_power
+'GC Deku Scrub Red Potion': 'Ganon\'s Castle'					- GC_entry, lens, magic_power
+'GC Deku Scrub Green Potion': 'Ganon\'s Castle'					- GC_entry, lens, magic_power
+'HF Grotto Deku Scrub Piece of Heart': 'Hyrule Field'			- explosives
+'ZR Grotto Deku Scrub Red Potion': 'Zora\'s River'				- ocarina, SoS
+'ZR Grotto Deku Scrub Green Potion': 'Zora\'s River'			- ocarina, SoS
+'SFM Grotto Deku Scrub Red Potion': 'Sacred Forest Meadow'		- ocarina, SoS
+'SFM Grotto Deku Scrub Green Potion': 'Sacred Forest Meadow'	- ocarina, SoS
+'LH Grotto Deku Scrub Deku Nuts': 'Lake Hylia'					- none
+'LH Grotto Deku Scrub Bombs': 'Lake Hylia'						- none
+'LH Grotto Deku Scrub Arrows': 'Lake Hylia'						- none
+'Valley Grotto Deku Scrub Red Potion': 'Gerudo Valley'			- fortress_access, ocarina, SoS
+'Valley Grotto Deku Scrub Green Potion': 'Gerudo Valley'		- fortress_access, ocarina, SoS
+'LW Deku Scrub Deku Nuts': 'Lost Woods'							- none
+'LW Deku Scrub Deku Sticks': 'Lost Woods'						- none
+'LW Deku Scrub Deku Stick Upgrade': 'Lost Woods'				- none 
+'LW Grotto Deku Scrub Arrows': 'Lost Woods'						- explosives
+'LW Grotto Deku Scrub Deku Nut Upgrade': 'Lost Woods'			- explosives
+'Desert Grotto Deku Scrub Red Potion': 'Desert Colossus'		- spirit_access, gauntlet:2
+'Desert Grotto Deku Scrub Green Potion': 'Desert Colossus'		- spirit_access, gauntlet:2
+'DMC Deku Scrub Bombs': 'Death Mountain Crater'					- child, explosives
+'DMC Grotto Deku Scrub Deku Nuts': 'Death Mountain Crater'		- hammer
+'DMC Grotto Deku Scrub Bombs': 'Death Mountain Crater'			- hammer
+'DMC Grotto Deku Scrub Arrows': 'Death Mountain Crater'			- hammer
+'Goron Grotto Deku Scrub Deku Nuts': 'Goron City'				- adult, (SoT, (!ohko OR goron_tunic OR hookshot:2 OR (nayru_love, magic_power)) OR (!ohko, goron_tunic, hookshot) OR (nayru_love, magic_power, hookshot)
+'Goron Grotto Deku Scrub Bombs': 'Goron City'					- adult, (SoT, (!ohko OR goron_tunic OR hookshot:2 OR (nayru_love, magic_power)) OR (!ohko, goron_tunic, hookshot) OR (nayru_love, magic_power, hookshot)
+'Goron Grotto Deku Scrub Arrows': 'Goron City'					- adult, (SoT, (!ohko OR goron_tunic OR hookshot:2 OR (nayru_love, magic_power)) OR (!ohko, goron_tunic, hookshot) OR (nayru_love, magic_power, hookshot)
+'LLR Grotto Deku Scrub Deku Nuts': 'Lon Lon Ranch'				- none
+'LLR Grotto Deku Scrub Bombs': 'Lon Lon Ranch'					- none
+'LLR Grotto Deku Scrub Arrows': 'Lon Lon Ranch'					- none

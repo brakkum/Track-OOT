@@ -10,42 +10,53 @@ var poi_list = {
     entries: []
 }
 
+function addBadge(target, age, time) {
+    if (!age && !time) return;
+    var el = document.createElement("span");
+    el.className = "hint-badge";
+    switch(age) {
+        case "child": el.innerHTML += "C"; break;
+        case "adult": el.innerHTML += "A"; break;
+    }
+    switch(time) {
+        case "night": el.innerHTML += "N"; break;
+        case "day": el.innerHTML += "D"; break;
+    }
+    target.appendChild(el);
+}
+
+function addPOIs(target, category) {
+    for (let id in data[category]) {
+        var s = document.createElement('span');
+        var dta = data[category][id];
+        s.style.color = 'black';
+        s.id = id;
+        s.onclick = new Function('togglePOI("'+category+'", "'+id+'")');
+        s.oncontextmenu = new Function('untogglePOI("'+category+'", "'+id+'")');
+        s.style.left = dta.x;
+        s.style.top = dta.y;
+        if (!!dta.mode) {
+            s.setAttribute("data-mode", dta.mode);
+        }
+
+        var ss = document.createElement('span');
+        ss.className = "tooltip";
+        ss.innerHTML = translate(id);
+        addBadge(ss, dta.age, dta.time);
+        s.appendChild(ss);
+
+        poi[category].push(s);
+
+        target.appendChild(s);
+    }
+}
+
 function populateMap() {
     var map_element = document.getElementById('map');
     
     // populate chest markers
     /////////////////////////////////
-    for (let id in data.chests) {
-        var s = document.createElement('span');
-        var dta = data.chests[id];
-        s.style.color = 'black';
-        s.id = id;
-        s.onclick = new Function('togglePOI("chests", "'+id+'")');
-        s.oncontextmenu = new Function('untogglePOI("chests", "'+id+'")');
-        s.style.left = dta.x;
-        s.style.top = dta.y;
-
-        var ss = document.createElement('span');
-        ss.className = "tooltip";
-        ss.innerHTML = translate(id);
-        if (dta.night) {
-            switch(dta.age) {
-                case "child": ss.classList.add("child-night"); break;
-                case "adult": ss.classList.add("adult-night"); break;
-                default: ss.classList.add("night"); break;
-            }
-        } else {
-            switch(dta.age) {
-                case "child": ss.classList.add("child"); break;
-                case "adult": ss.classList.add("adult"); break;
-            }
-        }
-        s.appendChild(ss);
-
-        poi.chests.push(s);
-
-        map_element.appendChild(s);
-    }
+    addPOIs(map_element, "chests");
     
     // populate dungeon markers
     /////////////////////////////////
@@ -57,17 +68,9 @@ function populateMap() {
         s.style.left = data.dungeons[id].x;
         s.style.top = data.dungeons[id].y;
 
-        var DCcount = 0;
-        for (var i = 0; i < data.dungeons[id].chests.length; ++i) {
-            var key = data.dungeons[id].chests[i];
-            if (!SaveState.read("chests", key, 0) && checkLogic("chests", key))
-                DCcount++;
-        }
-
         var ss = document.createElement('span');
         ss.className = "count";
         s.appendChild(ss);
-
         var ss = document.createElement('span');
         ss.className = "tooltip";
         ss.innerHTML = translate(id);
@@ -80,37 +83,7 @@ function populateMap() {
 
     // populate skulltula markers
     /////////////////////////////////
-    for (let id in data.skulltulas) {
-        var s = document.createElement('span');
-        var dta = data.skulltulas[id];
-        s.style.color = 'black';
-        s.id = id;
-        s.onclick = new Function('togglePOI("skulltulas", "'+id+'")');
-        s.oncontextmenu = new Function('untogglePOI("skulltulas", "'+id+'")');
-        s.style.left = dta.x;
-        s.style.top = dta.y;
-
-        var ss = document.createElement('span');
-        ss.className = "tooltip";
-        ss.innerHTML = translate(id);
-        if (dta.night) {
-            switch(dta.age) {
-                case "child": ss.classList.add("child-night"); break;
-                case "adult": ss.classList.add("adult-night"); break;
-                default: ss.classList.add("night"); break;
-            }
-        } else {
-            switch(dta.age) {
-                case "child": ss.classList.add("child"); break;
-                case "adult": ss.classList.add("adult"); break;
-            }
-        }
-        s.appendChild(ss);
-
-        poi.skulltulas.push(s);
-
-        map_element.appendChild(s);
-    }
+    addPOIs(map_element, "skulltulas");
 
     // update markers
     /////////////////////////////////
@@ -139,15 +112,18 @@ function clickDungeon(ref) {
     dn.setAttribute("data-mode", poi_list.mode);
     list.innerHTML = "";
     poi_list.entries = [];
-    for (var i in data.dungeons[poi_list.ref][poi_list.mode]) {
-        var key = data.dungeons[poi_list.ref][poi_list.mode][i];
+    for (let i in data.dungeons[poi_list.ref][poi_list.mode]) {
+        var dta = data.dungeons[poi_list.ref][poi_list.mode][i];
         var s = document.createElement('li');
-        s.id = key;
-        s.innerHTML = translate(key);
-
-        s.onclick = new Function('togglePOI("'+poi_list.mode+'", "'+key+'")');
-        s.oncontextmenu = new Function('untogglePOI("'+poi_list.mode+'", "'+key+'")');
+        s.id = i;
+        s.innerHTML = translate(i);
+        addBadge(s, dta.age, dta.time);
+        s.onclick = new Function('togglePOI("'+poi_list.mode+'", "'+i+'")');
+        s.oncontextmenu = new Function('untogglePOI("'+poi_list.mode+'", "'+i+'")');
         s.style.cursor = "pointer";
+        if (!!dta.mode) {
+            s.setAttribute("data-mode", dta.mode);
+        }
 
         poi_list.entries.push(s);
 
@@ -161,13 +137,6 @@ function updateMap() {
     var chests_missing = 0;
     var skulltulas_available = 0;
     var skulltulas_missing = 0;
-
-    for (let ch in data.logic.chests) {
-        if (!SaveState.read("chests", ch, 0)) chests_missing++;
-    }
-    for (let sk in data.logic.skulltulas) {
-        if (!SaveState.read("skulltulas", sk, 0)) skulltulas_missing++;
-    }
     
     // update chest markers
     /////////////////////////////////
@@ -179,6 +148,9 @@ function updateMap() {
             var avail = checkAvailable("chests", x.id);
             if (avail == "available") chests_available++;
             x.className = "poi chest " + avail;
+            if (!data.chests[x.id].mode || data.chests[x.id].mode != "shopsanity" || SaveState.read("options", "shopsanity", false)) {
+                chests_missing++;
+            }
         }
     }
     
@@ -190,17 +162,21 @@ function updateMap() {
         x.className = "poi dungeon " + checkList(poi_list.mode, ref);
 
         var DCcount = 0;
-        for (var j = 0; j <  data.dungeons[ref].chests.length; ++j) {
-            var key = data.dungeons[ref]["chests"][j];
-            if (!SaveState.read("chests", key, 0) && checkLogic("chests", key))
+        for (let j in data.dungeons[ref].chests) {
+            if (!SaveState.read("chests", j, 0) && checkLogic("chests", j)) {
                 DCcount++;
+            }
+            if (!data.dungeons[ref].chests[j].mode || data.dungeons[ref].chests[j].mode != "shopsanity" || SaveState.read("options", "shopsanity", false)) {
+                chests_missing++;
+            }
         }
         chests_available+=DCcount;
         var SKcount = 0;
-        for (var j = 0; j <  data.dungeons[ref].skulltulas.length; ++j) {
-            var key = data.dungeons[ref]["skulltulas"][j];
-            if (!SaveState.read("skulltulas", key, 0) && checkLogic("skulltulas", key))
-            SKcount++;
+        for (let j in data.dungeons[ref].skulltulas) {
+            if (!SaveState.read("skulltulas", j, 0) && checkLogic("skulltulas", j)) {
+                SKcount++;
+            }
+            skulltulas_missing++;
         }
         skulltulas_available+=SKcount;
         if (poi_list.mode == "chests") {
@@ -229,6 +205,7 @@ function updateMap() {
             var avail = checkAvailable("skulltulas", x.id);
             if (avail == "available") skulltulas_available++;
             x.className = "poi skulltula " + avail;
+            skulltulas_missing++;
         }
     }
     
