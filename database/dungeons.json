@@ -18,7 +18,7 @@
             "woods_deku_salesman_grotto_2": {
                 "mode": "shopsanity"
             },
-            "woods_deku_salesman_meadow_grotto": {
+            "woods_deku_salesman_meadow_grotto_1": {
                 "mode": "shopsanity"
             },
             "woods_deku_salesman_meadow_grotto_2": {
@@ -36,6 +36,12 @@
             },
             "woods_deku_theater_2": {
                 "age": "child"
+            },
+            "woods_deku_salesman_theater_1": {
+                "mode": "shopsanity"
+            },
+            "woods_deku_salesman_theater_2": {
+                "mode": "shopsanity"
             }
         },
         "skulltulas": {
@@ -206,6 +212,22 @@
                 "age": "adult"
             },
             "mountain_crater_wall": {},
+            "mountain_crater_ladder_salesman": {
+                "age": "child",
+                "mode": "shopsanity"
+            },
+            "mountain_crater_grotto_salesman_1": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "mountain_crater_grotto_salesman_2": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "mountain_crater_grotto_salesman_3": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
             "mountain_magic_bean": {
                 "age": "adult"
             },
@@ -259,6 +281,18 @@
             },
             "goron_darunia": {
                 "age": "child"
+            },
+            "goron_grotto_salesman_1": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "goron_grotto_salesman_2": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "goron_grotto_salesman_3": {
+                "age": "adult",
+                "mode": "shopsanity"
             }
         },
         "skulltulas": {
@@ -519,10 +553,22 @@
         "x": "59.0%",
         "y": "13.5%",
         "chests": {
+            "dodongo_lobby_salesman": {
+                "mode": "shopsanity"
+            },
+            "dodongo_east_corridor_salesman": {
+                "mode": "shopsanity"
+            },
             "dodongo_map": {},
             "dodongo_compass": {},
             "dodongo_bomb_flower_platform": {},
             "dodongo_bomb_bag": {},
+            "dodongo_near_bomb_bag_salesman_1": {
+                "mode": "shopsanity"
+            },
+            "dodongo_near_bomb_bag_salesman_2": {
+                "mode": "shopsanity"
+            },
             "dodongo_end_bridge": {},
             "dodongo_chest_above_dodongo": {},
             "dodongo_dodongo": {}
@@ -541,6 +587,10 @@
         "x": "91.5%",
         "y": "21.0%",
         "chests": {
+            "jabujabu_elevator_dive_salesman": {
+                "age": "child",
+                "mode": "shopsanity"
+            },
             "jabujabu_boomerang": {
                 "age": "child"
             },
@@ -910,6 +960,22 @@
         "x": "52.0%",
         "y": "10.0%",
         "chests": {
+            "castle_ganon_under_bridge_salesman_1": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "castle_ganon_under_bridge_salesman_2": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "castle_ganon_under_bridge_salesman_3": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "castle_ganon_under_bridge_salesman_4": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
             "castle_ganon_forest_trial": {
                 "age": "adult"
             },
