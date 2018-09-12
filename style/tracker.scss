@@ -5,12 +5,29 @@
 @import "tracker/settings";
 @import "utils/Dialog";
 
+@keyframes alertcolor {
+    0%{
+        color: orange;
+    }
+    50% {
+        color: red;
+    }
+    100% {
+        color: orange;
+    }
+}
+
 * {
     position: relative;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
     font-weight: bold;
     outline: none;
+}
+
+a {
+    color: black;
+    border-bottom: solid 1px black;
 }
 
 body {
@@ -53,6 +70,20 @@ body {
                 font-weight: bold;
             }
         }
+    }
+}
+
+.alert-text {
+    animation: alertcolor 5s linear infinite;
+    color: red;
+    font-weight: bold;
+
+    &.space-right {
+        margin-right: 10px;
+    }
+
+    &.space-left {
+        margin-left: 10px;
     }
 }
 
