@@ -4772,65 +4772,19 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "glove"
-                            },
-                            "value": 2
-                        },
-                        {
                             "type": "mixin",
                             "el": "has_explosives"
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
+                        },
                         {
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "key_small_spirit"
-                                            },
-                                            "value": 3
-                                        },
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "min",
-                                                    "el": {
-                                                        "type": "item",
-                                                        "el": "key_small_spirit"
-                                                    },
-                                                    "value": 2
-                                                },
-                                                {
-                                                    "type": "option",
-                                                    "el": "bombchu_logic"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "mixin",
-                                            "el": "has_explosives"
-                                        }
-                                    ]
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": 2
                                 },
                                 {
                                     "type": "item",
@@ -4859,43 +4813,22 @@
                                     ]
                                 }
                             ]
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "key_small_spirit"
-                                            },
-                                            "value": 5
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "has_explosives"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_spirit"
-                                }
-                            ]
+                            "type": "item",
+                            "el": "key_small_spirit"
                         }
                     ]
                 }
@@ -4912,25 +4845,16 @@
                     "type": "or",
                     "el": [
                         {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "glove"
                             },
                             "value": 2
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_spirit"
-                                }
-                            ]
                         }
                     ]
                 },
@@ -4947,146 +4871,6 @@
                         {
                             "type": "item",
                             "el": "key_small_spirit"
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "bow"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "hookshot"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "slingshot"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "boomerang"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "key_small_spirit"
-                                            },
-                                            "value": 3
-                                        },
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "min",
-                                                    "el": {
-                                                        "type": "item",
-                                                        "el": "key_small_spirit"
-                                                    },
-                                                    "value": 2
-                                                },
-                                                {
-                                                    "type": "option",
-                                                    "el": "bombchu_logic"
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "glove"
-                                    },
-                                    "value": 2
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "hookshot"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_spirit"
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "key_small_spirit"
-                                            },
-                                            "value": 5
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "slingshot"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "boomerang"
-                                        }
-                                    ]
-                                }
-                            ]
                         }
                     ]
                 }
@@ -5103,25 +4887,16 @@
                     "type": "or",
                     "el": [
                         {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "glove"
                             },
                             "value": 2
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_spirit"
-                                }
-                            ]
                         }
                     ]
                 },
@@ -5138,146 +4913,6 @@
                         {
                             "type": "item",
                             "el": "key_small_spirit"
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "bow"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "hookshot"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "slingshot"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "boomerang"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "key_small_spirit"
-                                            },
-                                            "value": 3
-                                        },
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "min",
-                                                    "el": {
-                                                        "type": "item",
-                                                        "el": "key_small_spirit"
-                                                    },
-                                                    "value": 2
-                                                },
-                                                {
-                                                    "type": "option",
-                                                    "el": "bombchu_logic"
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "glove"
-                                    },
-                                    "value": 2
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "hookshot"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_spirit"
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "key_small_spirit"
-                                            },
-                                            "value": 5
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "slingshot"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "boomerang"
-                                        }
-                                    ]
-                                }
-                            ]
                         }
                     ]
                 }
@@ -5294,81 +4929,19 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
-                            "type": "item",
-                            "el": "key_small_spirit"
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "glove"
-                            },
-                            "value": 2
-                        },
-                        {
                             "type": "mixin",
                             "el": "has_explosives"
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
+                        },
                         {
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "key_small_spirit"
-                                            },
-                                            "value": 3
-                                        },
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "min",
-                                                    "el": {
-                                                        "type": "item",
-                                                        "el": "key_small_spirit"
-                                                    },
-                                                    "value": 2
-                                                },
-                                                {
-                                                    "type": "option",
-                                                    "el": "bombchu_logic"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "mixin",
-                                            "el": "has_explosives"
-                                        }
-                                    ]
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": 2
                                 },
                                 {
                                     "type": "item",
@@ -5397,43 +4970,22 @@
                                     ]
                                 }
                             ]
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "key_small_spirit"
-                                            },
-                                            "value": 5
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "has_explosives"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_spirit"
-                                }
-                            ]
+                            "type": "item",
+                            "el": "key_small_spirit"
                         }
                     ]
                 }
@@ -11202,32 +10754,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "glove"
-                            },
-                            "value": 2
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_spirit"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
                             "type": "not",
                             "el": {
                                 "type": "option",
@@ -11237,146 +10763,6 @@
                         {
                             "type": "item",
                             "el": "key_small_spirit"
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "bow"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "hookshot"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "slingshot"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "boomerang"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "key_small_spirit"
-                                            },
-                                            "value": 3
-                                        },
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "min",
-                                                    "el": {
-                                                        "type": "item",
-                                                        "el": "key_small_spirit"
-                                                    },
-                                                    "value": 2
-                                                },
-                                                {
-                                                    "type": "option",
-                                                    "el": "bombchu_logic"
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "glove"
-                                    },
-                                    "value": 2
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "hookshot"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_spirit"
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "key_small_spirit"
-                                            },
-                                            "value": 5
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "slingshot"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "boomerang"
-                                        }
-                                    ]
-                                }
-                            ]
                         }
                     ]
                 }
@@ -11401,74 +10787,13 @@
                                 },
                                 {
                                     "type": "item",
-                                    "el": "hookshot"
-                                },
-                                {
-                                    "type": "item",
                                     "el": "boomerang"
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "key_small_spirit"
-                                        }
-                                    ]
                                 }
                             ]
                         },
                         {
                             "type": "and",
                             "el": [
-                                {
-                                    "type": "item",
-                                    "el": "boomerang"
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "has_explosives"
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "key_small_spirit"
-                                            },
-                                            "value": 5
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_spirit"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "hookshot"
-                                },
                                 {
                                     "type": "min",
                                     "el": {
@@ -11478,47 +10803,26 @@
                                     "value": 2
                                 },
                                 {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "key_small_spirit"
-                                            },
-                                            "value": 3
-                                        },
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "min",
-                                                    "el": {
-                                                        "type": "item",
-                                                        "el": "key_small_spirit"
-                                                    },
-                                                    "value": 2
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "boomerang"
-                                                },
-                                                {
-                                                    "type": "option",
-                                                    "el": "bombchu_logic"
-                                                }
-                                            ]
-                                        }
-                                    ]
+                                    "type": "item",
+                                    "el": "hookshot"
                                 }
                             ]
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "key_small_spirit"
                         }
                     ]
                 }
