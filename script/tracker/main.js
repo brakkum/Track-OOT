@@ -51,6 +51,12 @@ document.getElementById("map-option-skulltula").addEventListener("click", functi
     }
     updateMap();
 });
+document.getElementById("map-option-shops").addEventListener("click", function(ev) {
+    document.getElementById('shop-view').classList.add("active");
+});
+document.getElementById("shop-view-close-button").addEventListener("click", function(ev) {
+    document.getElementById('shop-view').classList.remove("active");
+});
 
 window.onfocus = function(ev) {
     data.logic_patched = Storage.get("settings", "logic", {});
@@ -144,7 +150,7 @@ async function state_Load() {
             resetSettingsPage("skips", document.getElementById("settings-skips"));
             stateSave.disabled = false;
             updateItems();
-            updateMap();
+            applySettingsChoices();
             await Dialog.alert("Success", "State \""+activestate+"\" loaded.");
         }
     }
@@ -193,7 +199,7 @@ async function state_New() {
         resetSettingsPage("skips", document.getElementById("settings-skips"));
         prepairSavegameChoice();
         updateItems();
-        updateMap();
+        applySettingsChoices();
         stateChoice.value = name;
         activestate = name;
         stateSave.disabled = false;
@@ -242,7 +248,7 @@ async function state_Import() {
             stateDel.disabled = false;
             stateExport.disabled = false;
             updateItems();
-            updateMap();
+            applySettingsChoices();
         }
     }
 }

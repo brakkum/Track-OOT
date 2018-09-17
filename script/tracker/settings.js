@@ -98,24 +98,7 @@ function buildSettings() {
         Storage.set("settings", "show_map", settings_show_map.checked);
         readSettingsPage("options", settings_options);
         readSettingsPage("skips", settings_skips);
-        if (Storage.get("settings", "show_map", true)) {
-            document.getElementById('map').style.display = "";
-            document.getElementById('dungeon-container').style.display = "";
-            updateMap();
-        } else {
-            document.getElementById('map').style.display = "none";
-            document.getElementById('dungeon-container').style.display = "none";
-        }
-        if (Storage.get("settings", "show_hint_badges", false)) {
-            document.body.setAttribute("data-hint-badges", "true");
-        } else {
-            document.body.setAttribute("data-hint-badges", "false");
-        }
-        if (SaveState.read("options", "shopsanity", false)) {
-            document.body.setAttribute("data-shopsanity", "true");
-        } else {
-            document.body.setAttribute("data-shopsanity", "false");
-        }
+        applySettingsChoices();
         data.logic_patched = Storage.get("settings", "logic", {});
         document.getElementById('settings').classList.remove('active');
     });
@@ -140,7 +123,15 @@ function buildSettings() {
     settings_show_hint_badges.checked = Storage.get("settings", "show_hint_badges", false);
     settings_use_custom_logic.checked = Storage.get("settings", "use_custom_logic", false);
 
-    if (!Storage.get("settings", "show_map", true)) {
+    applySettingsChoices();
+}
+
+function applySettingsChoices() {
+    if (Storage.get("settings", "show_map", true)) {
+        document.getElementById('map').style.display = "";
+        document.getElementById('dungeon-container').style.display = "";
+        updateMap();
+    } else {
         document.getElementById('map').style.display = "none";
         document.getElementById('dungeon-container').style.display = "none";
     }

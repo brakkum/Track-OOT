@@ -84,7 +84,7 @@ function setVisual(el, val) {
             }
         }
     }
-    setImage(el, val);
+    setImage(el, el.id, val);
     if ((ref.hasOwnProperty("mark") && val >= ref.mark) || val == ref.max) {
         el.classList.add("mark");
     } else {
@@ -92,8 +92,7 @@ function setVisual(el, val) {
     }
 }
 
-function setImage(el, val) {
-    let id = el.id;
+function setImage(el, id, val) {
     if (data.items[id].hasOwnProperty("images")) { // no image file defined
         let imgs = data.items[id].images;
         if (Array.isArray(imgs)) {

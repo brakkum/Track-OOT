@@ -8,6 +8,7 @@ async function loadAll() {
         "database/skulltulas.json",
         "database/logic.json",
         "database/rom_options.json",
+        "database/shops.json",
         "database/lang_en.json"
     ]);
     var data = {};
@@ -24,6 +25,7 @@ async function loadAll() {
     data.logic_patched = Storage.get("settings", "logic", {});
     // misc
     data.rom_options = buffer[7];
-    data.lang = buffer[8];
+    data.shops = buffer[8];
+    data.lang = buffer[9];
     return data;
 }

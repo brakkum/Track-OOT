@@ -16,6 +16,16 @@
         "max": 1,
         "images": "hammer.png"
     },
+    "stick":{
+        "max": 3,
+        "images": "stick.png",
+        "counting": ["", "10", "20", "30"]
+    },
+    "nut":{
+        "max": 3,
+        "images": "nut.png",
+        "counting": ["", "20", "30", "40"]
+    },
     "slingshot":{
         "max": 3,
         "images": "slingshot.png",
@@ -84,7 +94,8 @@
             "wallet_gold.png",
             "wallet_gold.png"
         ],
-        "counting": ["99", "200", "500", "999"]
+        "counting": ["99", "200", "500", "999"],
+        "always_active": true
     },
     "skulltula": {
         "max": 100,
@@ -93,10 +104,11 @@
         "images": "skulltula.png"
     },
     "egg": {
-        "max": 7,
+        "max": 8,
         "images": [
             "egg.png",
             "egg.png",
+            "cucco.png",
             "zelda_letter.png",
             "mask_keaton.png",
             "mask_skull.png",
@@ -105,18 +117,55 @@
             "mask_truth.png"
         ]
     },
+    "cojiro": {
+        "max": 10,
+        "images": [
+            "egg_cojiro.png",
+            "egg_cojiro.png",
+            "cojiro.png",
+            "mushroom.png",
+            "medicine.png",
+            "saw.png",
+            "broken_sword.png",
+            "prescription.png",
+            "frog.png",
+            "eyedrops.png",
+            "claim.png"
+        ]
+    },
 
     "sword_kokiri":{
         "max": 1,
         "images": "sword_kokiri.png"
     },
+    "sword_master":{
+        "max": 1,
+        "images": "sword_master.png",
+        "blacklist_shop": true
+    },
     "sword_biggoron":{
         "max": 1,
         "images": "sword_biggoron.png"
     },
+
+    "shield_kokiri":{
+        "max": 1,
+        "images": "shield_kokiri.png"
+    },
+    "shield_hylia":{
+        "max": 1,
+        "images": "shield_hylia.png"
+    },
     "shield_mirror":{
         "max": 1,
         "images": "shield_mirror.png"
+    },
+
+    "tunic_forest":{
+        "max": 0,
+        "images": "tunic_forest.png",
+        "always_active": true,
+        "blacklist_shop": true
     },
     "tunic_fire":{
         "max": 1,
@@ -126,6 +175,13 @@
         "max": 1,
         "images": "tunic_water.png"
     },
+
+    "boots_normal":{
+        "max": 0,
+        "images": "boots_normal.png",
+        "always_active": true,
+        "blacklist_shop": true
+    },
     "boots_iron":{
         "max": 1,
         "images": "boots_iron.png"
@@ -134,6 +190,7 @@
         "max": 1,
         "images": "boots_hover.png"
     },
+    
     "glove":{
         "max": 3,
         "images": [
@@ -153,7 +210,7 @@
     },
     "stone_of_agony":{
         "max": 1,
-        "images": "stone_of_agony.png"
+        "images": "stoneofagony.png"
     },
     "magic_power":{
         "max": 2,
@@ -223,39 +280,48 @@
 
     "stone_forest":{
         "max": 1,
-        "images": "stone_forest.png"
+        "images": "stone_forest.png",
+        "blacklist_shop": true
     },
     "stone_fire":{
         "max": 1,
-        "images": "stone_fire.png"
+        "images": "stone_fire.png",
+        "blacklist_shop": true
     },
     "stone_water":{
         "max": 1,
-        "images": "stone_water.png"
+        "images": "stone_water.png",
+        "blacklist_shop": true
     },
     "medallion_forest":{
         "max": 1,
-        "images": "medallion_forest.png"
+        "images": "medallion_forest.png",
+        "blacklist_shop": true
     },
     "medallion_fire":{
         "max": 1,
-        "images": "medallion_fire.png"
+        "images": "medallion_fire.png",
+        "blacklist_shop": true
     },
     "medallion_water":{
         "max": 1,
-        "images": "medallion_water.png"
+        "images": "medallion_water.png",
+        "blacklist_shop": true
     },
     "medallion_spirit":{
         "max": 1,
-        "images": "medallion_spirit.png"
+        "images": "medallion_spirit.png",
+        "blacklist_shop": true
     },
     "medallion_shadow":{
         "max": 1,
-        "images": "medallion_shadow.png"
+        "images": "medallion_shadow.png",
+        "blacklist_shop": true
     },
     "medallion_light":{
         "max": 1,
-        "images": "medallion_light.png"
+        "images": "medallion_light.png",
+        "blacklist_shop": true
     },
 
     "key_small_forest": {
@@ -332,5 +398,88 @@
         "max": 3,
         "counting": true,
         "images": "key_small.png"
+    },
+
+    "heart": {
+        "max": 0,
+        "images": "heart.png",
+        "always_active": true
+    },
+    "heart_piece": {
+        "max": 36,
+        "images": "heart_piece.png"
+    },
+    "heart_container": {
+        "max": 8,
+        "images": "heart_container.png"
+    },
+    "heart_double": {
+        "max": 1,
+        "images": "heart_double.png"
+    },
+    "arrows": {
+        "max": 0,
+        "images": "arrow.png",
+        "always_active": true
+    },
+    "seeds": {
+        "max": 0,
+        "images": "seeds.png",
+        "always_active": true
+    },
+    "sold_out": {
+        "max": 0,
+        "images": "sold_out.png",
+        "always_active": true
+    },
+    "blue_fire": {
+        "max": 0,
+        "images": "sold_out.png",
+        "always_active": true
+    },
+    "bugs": {
+        "max": 0,
+        "images": "sold_out.png",
+        "always_active": true
+    },
+    "fairy_spirit": {
+        "max": 0,
+        "images": "sold_out.png",
+        "always_active": true
+    },
+    "fish": {
+        "max": 0,
+        "images": "sold_out.png",
+        "always_active": true
+    },
+    "milk": {
+        "max": 0,
+        "images": "sold_out.png",
+        "always_active": true
+    },
+    "poe": {
+        "max": 0,
+        "images": "sold_out.png",
+        "always_active": true
+    },
+    "poe_big": {
+        "max": 0,
+        "images": "sold_out.png",
+        "always_active": true
+    },
+    "potion_red": {
+        "max": 0,
+        "images": "sold_out.png",
+        "always_active": true
+    },
+    "potion_green": {
+        "max": 0,
+        "images": "sold_out.png",
+        "always_active": true
+    },
+    "potion_blue": {
+        "max": 0,
+        "images": "sold_out.png",
+        "always_active": true
     }
 }

@@ -81,6 +81,10 @@ function populateMap() {
         map_element.appendChild(s);
     }
 
+    // shops
+    /////////////////////////////////
+    createShops();
+
     // populate skulltula markers
     /////////////////////////////////
     addPOIs(map_element, "skulltulas");
@@ -88,6 +92,31 @@ function populateMap() {
     // update markers
     /////////////////////////////////
     updateMap();
+}
+
+function createShops() {
+    var shops = document.getElementById('shop-view-body');
+    for (let i in data.shops) {
+        var shop = data.shops[i];
+        var el = document.createElement("div");
+        el.className = "shop";
+        var ttl = document.createElement("div");
+        ttl.className = "shop-title";
+        ttl.innerHTML = translate(i);
+        var bdy = document.createElement("div");
+        bdy.className = "shop-body";
+        for (let j = 0; j < shop.length; ++j) {
+            var item = shop[j];
+            var itm = document.createElement("div");
+            itm.className = "shop-item";
+            itm.title = translate(item.item) + " ["+item.amount+"] (" + item.price + " rupees)";
+            setImage(itm, item.item, 0);
+            bdy.appendChild(itm);
+        }
+        el.appendChild(ttl);
+        el.appendChild(bdy);
+        shops.appendChild(el);
+    }
 }
 
 function togglePOI(category, key){
