@@ -109,8 +109,18 @@ function createShops() {
             var item = shop[j];
             var itm = document.createElement("div");
             itm.className = "shop-item";
-            itm.title = translate(item.item) + " ["+item.amount+"] (" + item.price + " rupees)";
-            setImage(itm, item.item, 0);
+            var img = document.createElement("div");
+            img.className = "shop-item-image";
+            setImage(img, item.item, 0);
+            itm.appendChild(img);
+            var iam = document.createElement("div");
+            iam.innerHTML = translate(item.item) + " ("+item.amount+")";
+            iam.className = "shop-item-amount";
+            itm.appendChild(iam);
+            var ipr = document.createElement("div");
+            ipr.innerHTML = item.price;
+            ipr.className = "shop-item-price";
+            itm.appendChild(ipr);
             bdy.appendChild(itm);
         }
         el.appendChild(ttl);
