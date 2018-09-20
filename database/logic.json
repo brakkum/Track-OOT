@@ -4029,22 +4029,6 @@
                 {
                     "type": "item",
                     "el": "boots_hover"
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
-                            "type": "item",
-                            "el": "key_small_shadow"
-                        }
-                    ]
                 }
             ]
         },
@@ -4058,22 +4042,6 @@
                 {
                     "type": "item",
                     "el": "boots_hover"
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
-                            "type": "item",
-                            "el": "key_small_shadow"
-                        }
-                    ]
                 }
             ]
         },
@@ -5109,20 +5077,12 @@
                         {
                             "type": "item",
                             "el": "boots_hover"
-                        },
-                        {
-                            "type": "item",
-                            "el": "hookshot"
                         }
                     ]
                 },
                 {
-                    "type": "min",
-                    "el": {
-                        "type": "item",
-                        "el": "glove"
-                    },
-                    "value": 2
+                    "type": "item",
+                    "el": "hookshot"
                 }
             ]
         },
@@ -6543,27 +6503,11 @@
             "el": [
                 {
                     "type": "item",
-                    "el": "medallion_forest"
-                },
-                {
-                    "type": "item",
-                    "el": "medallion_fire"
-                },
-                {
-                    "type": "item",
-                    "el": "medallion_water"
-                },
-                {
-                    "type": "item",
                     "el": "medallion_spirit"
                 },
                 {
                     "type": "item",
                     "el": "medallion_shadow"
-                },
-                {
-                    "type": "item",
-                    "el": "medallion_light"
                 }
             ]
         },
@@ -9611,22 +9555,6 @@
                 {
                     "type": "item",
                     "el": "hookshot"
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
-                            "type": "item",
-                            "el": "key_small_shadow"
-                        }
-                    ]
                 }
             ]
         },
@@ -9908,29 +9836,39 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "skip",
-                            "el": "dodongo_spike"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "skip",
+                                            "el": "dodongo_spike"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
-                            "type": "item",
-                            "el": "bow"
-                        },
-                        {
-                            "type": "item",
-                            "el": "slingshot"
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "boomerang"
-                        },
-                        {
-                            "type": "item",
-                            "el": "hookshot"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "boomerang"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "slingshot"
+                                }
+                            ]
                         }
                     ]
                 }
