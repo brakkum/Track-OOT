@@ -113,56 +113,61 @@
             "type": "or",
             "el": [
                 {
-                    "type": "item",
-                    "el": "hammer"
-                },
-                {
-                    "type": "item",
-                    "el": "bombs"
-                },
-                {
                     "type": "and",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "bombchu"
+                            "type": "mixin",
+                            "el": "can_become_adult"
                         },
                         {
-                            "type": "option",
-                            "el": "bombchu_logic"
+                            "type": "item",
+                            "el": "hammer"
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
                 }
             ]
         },
         "gerudo_fortress_access": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "min",
-                    "el": {
-                        "type": "item",
-                        "el": "hookshot"
-                    },
-                    "value": 2
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "ocarina"
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "hookshot"
+                            },
+                            "value": 2
                         },
                         {
-                            "type": "item",
-                            "el": "song_epona"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "song_epona"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "option",
+                            "el": "gerudo_fortress_open",
+                            "value": "gerudo_fortress_open_open"
                         }
                     ]
-                },
-                {
-                    "type": "option",
-                    "el": "gerudo_fortress_open",
-                    "value": "gerudo_fortress_open_open"
                 }
             ]
         },
@@ -172,6 +177,10 @@
                 {
                     "type": "mixin",
                     "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 },
                 {
                     "type": "or",
@@ -207,142 +216,169 @@
             ]
         },
         "ganon_castle_access": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "option",
-                    "el": "ganon_castle_open",
-                    "value": "ganon_castle_open_open"
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
                             "type": "option",
                             "el": "ganon_castle_open",
-                            "value": "ganon_castle_open_default"
+                            "value": "ganon_castle_open_open"
                         },
                         {
-                            "type": "item",
-                            "el": "arrow_light"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "option",
+                                    "el": "ganon_castle_open",
+                                    "value": "ganon_castle_open_default"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "arrow_light"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "medallion_spirit"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "medallion_shadow"
+                                }
+                            ]
                         },
                         {
-                            "type": "item",
-                            "el": "medallion_spirit"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "option",
+                                    "el": "ganon_castle_open",
+                                    "value": "ganon_castle_open_medallion"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "medallion_forest"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "medallion_fire"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "medallion_water"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "medallion_spirit"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "medallion_shadow"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "medallion_light"
+                                }
+                            ]
                         },
                         {
-                            "type": "item",
-                            "el": "medallion_shadow"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "option",
-                            "el": "ganon_castle_open",
-                            "value": "ganon_castle_open_medallion"
-                        },
-                        {
-                            "type": "item",
-                            "el": "medallion_forest"
-                        },
-                        {
-                            "type": "item",
-                            "el": "medallion_fire"
-                        },
-                        {
-                            "type": "item",
-                            "el": "medallion_water"
-                        },
-                        {
-                            "type": "item",
-                            "el": "medallion_spirit"
-                        },
-                        {
-                            "type": "item",
-                            "el": "medallion_shadow"
-                        },
-                        {
-                            "type": "item",
-                            "el": "medallion_light"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "option",
-                            "el": "ganon_castle_open",
-                            "value": "ganon_castle_open_dungeon"
-                        },
-                        {
-                            "type": "item",
-                            "el": "stone_forest"
-                        },
-                        {
-                            "type": "item",
-                            "el": "stone_fire"
-                        },
-                        {
-                            "type": "item",
-                            "el": "stone_water"
-                        },
-                        {
-                            "type": "item",
-                            "el": "medallion_forest"
-                        },
-                        {
-                            "type": "item",
-                            "el": "medallion_fire"
-                        },
-                        {
-                            "type": "item",
-                            "el": "medallion_water"
-                        },
-                        {
-                            "type": "item",
-                            "el": "medallion_spirit"
-                        },
-                        {
-                            "type": "item",
-                            "el": "medallion_shadow"
-                        },
-                        {
-                            "type": "item",
-                            "el": "medallion_light"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "option",
+                                    "el": "ganon_castle_open",
+                                    "value": "ganon_castle_open_dungeon"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "stone_forest"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "stone_fire"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "stone_water"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "medallion_forest"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "medallion_fire"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "medallion_water"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "medallion_spirit"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "medallion_shadow"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "medallion_light"
+                                }
+                            ]
                         }
                     ]
                 }
             ]
         },
         "dodongo_cavern_access": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "item",
-                    "el": "hammer"
+                    "type": "mixin",
+                    "el": "can_enter_mountain"
                 },
                 {
-                    "type": "item",
-                    "el": "glove"
-                },
-                {
-                    "type": "item",
-                    "el": "bombs"
-                },
-                {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
                             "type": "item",
-                            "el": "bombchu"
+                            "el": "glove"
                         },
                         {
-                            "type": "option",
-                            "el": "bombchu_logic"
+                            "type": "item",
+                            "el": "bombs"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "bombchu"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "bombchu_logic"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hammer"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -354,6 +390,10 @@
                 {
                     "type": "item",
                     "el": "zora_letter"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
                 },
                 {
                     "type": "or",
@@ -409,6 +449,10 @@
                     "el": "ocarina"
                 },
                 {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
                     "type": "or",
                     "el": [
                         {
@@ -426,6 +470,10 @@
         "fire_temple_access": {
             "type": "and",
             "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
                 {
                     "type": "or",
                     "el": [
@@ -541,6 +589,10 @@
                     "el": "boots_iron"
                 },
                 {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
                     "type": "or",
                     "el": [
                         {
@@ -642,6 +694,10 @@
                     "el": "warp_shadow"
                 },
                 {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
                     "type": "or",
                     "el": [
                         {
@@ -683,6 +739,10 @@
                 {
                     "type": "mixin",
                     "el": "gerudo_fortress_carpenter_rescue"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -696,6 +756,10 @@
                 {
                     "type": "item",
                     "el": "song_storm"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
                 }
             ]
         },
@@ -752,19 +816,73 @@
                             "el": "wallet"
                         },
                         {
+                            "type": "mixin",
+                            "el": "can_enter_mountain"
+                        },
+                        {
                             "type": "or",
                             "el": [
                                 {
-                                    "type": "item",
-                                    "el": "bow"
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "can_become_adult"
+                                        },
+                                        {
+                                            "type": "or",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "bow"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "glove"
+                                                },
+                                                {
+                                                    "type": "mixin",
+                                                    "el": "has_explosives"
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 },
                                 {
-                                    "type": "item",
-                                    "el": "glove"
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "has_explosives"
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "or",
+                                            "el": [
+                                                {
+                                                    "type": "and",
+                                                    "el": [
+                                                        {
+                                                            "type": "item",
+                                                            "el": "ocarina"
+                                                        },
+                                                        {
+                                                            "type": "item",
+                                                            "el": "song_zelda"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "and",
+                                                    "el": [
+                                                        {
+                                                            "type": "item",
+                                                            "el": "magic_din"
+                                                        },
+                                                        {
+                                                            "type": "item",
+                                                            "el": "magic_power"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -787,24 +905,77 @@
                             "el": "consider_buyable"
                         },
                         {
-                            "type": "item",
-                            "el": "bottle"
-                        },
-                        {
-                            "type": "item",
-                            "el": "ocarina"
-                        },
-                        {
-                            "type": "item",
-                            "el": "song_zelda"
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "wallet"
                             },
                             "value": 2
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "scale"
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "ocarina"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "song_zelda"
+                                        },
+                                        {
+                                            "type": "or",
+                                            "el": [
+                                                {
+                                                    "type": "mixin",
+                                                    "el": "has_explosives"
+                                                },
+                                                {
+                                                    "type": "mixin",
+                                                    "el": "can_become_adult"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "skip",
+                                            "el": "zora_cucco"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "can_become_adult"
+                                        },
+                                        {
+                                            "type": "skip",
+                                            "el": "zora_hover"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
@@ -869,12 +1040,180 @@
                     ]
                 }
             ]
+        },
+        "can_leave_forest": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "option",
+                    "el": "doors_open_forest"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "item",
+                    "el": "scale"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "slingshot"
+                        },
+                        {
+                            "type": "item",
+                            "el": "sword_kokiri"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "magic_din"
+                        },
+                        {
+                            "type": "item",
+                            "el": "magic_power"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "ocarina"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "warp_light"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_water"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_shadow"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "can_enter_mountain": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "option",
+                    "el": "doors_open_mountain"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_leave_forest"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "egg"
+                                    },
+                                    "value": 3
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "magic_din"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "magic_power"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                }
+            ]
+        },
+        "can_become_adult": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "option",
+                            "el": "doors_open_temple"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "song_time"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "deku_tree_access": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "option",
+                    "el": "doors_open_forest"
+                },
+                {
+                    "type": "item",
+                    "el": "sword_kokiri"
+                }
+            ]
         }
     },
     "chests": {
         "kokiri_sword": null,
         "midos_house": null,
-        "saria_ocarina": null,
+        "saria_ocarina": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
         "kokiri_storm_grotto": {
             "type": "and",
             "el": [
@@ -891,6 +1230,10 @@
         "song_of_time": {
             "type": "and",
             "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
                 {
                     "type": "item",
                     "el": "stone_forest"
@@ -913,7 +1256,10 @@
             "type": "mixin",
             "el": "can_blast_or_smash"
         },
-        "hyrule_south_grotto": null,
+        "hyrule_south_grotto": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
         "hyrule_deku_salesman_grotto": {
             "type": "mixin",
             "el": "can_blast_or_smash"
@@ -929,32 +1275,54 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "boots_iron"
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "scale"
                             },
                             "value": 2
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "boots_iron"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                }
+                            ]
                         }
                     ]
                 }
             ]
         },
         "talon_chicken": {
-            "type": "min",
-            "el": {
-                "type": "item",
-                "el": "egg"
-            },
-            "value": 2
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "egg"
+                    },
+                    "value": 2
+                }
+            ]
         },
         "maron_song": {
             "type": "and",
             "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
                 {
                     "type": "item",
                     "el": "ocarina"
@@ -969,7 +1337,10 @@
                 }
             ]
         },
-        "lonlon_hp": null,
+        "lonlon_hp": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
         "bottle_zora": {
             "type": "item",
             "el": "scale"
@@ -992,85 +1363,125 @@
                         "el": "hookshot"
                     },
                     "value": 2
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
         "lab_dive": {
-            "type": "min",
-            "el": {
-                "type": "item",
-                "el": "scale"
-            },
-            "value": 2
-        },
-        "lab_roof": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "item",
-                    "el": "scale"
+                    "type": "mixin",
+                    "el": "can_leave_forest"
                 },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "scale"
+                    },
+                    "value": 2
+                }
+            ]
+        },
+        "lab_roof": {
+            "type": "and",
+            "el": [
                 {
                     "type": "mixin",
-                    "el": "has_explosives"
+                    "el": "can_become_adult"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
                             "type": "item",
-                            "el": "hookshot"
+                            "el": "scale"
                         },
                         {
-                            "type": "item",
-                            "el": "ocarina"
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                }
+                            ]
                         }
                     ]
                 }
             ]
         },
         "fishing_child": {
-            "type": "item",
-            "el": "sword_kokiri"
-        },
-        "fishing_adult": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "item",
-                    "el": "scale"
+                    "type": "mixin",
+                    "el": "can_leave_forest"
                 },
+                {
+                    "type": "item",
+                    "el": "sword_kokiri"
+                }
+            ]
+        },
+        "fishing_adult": {
+            "type": "and",
+            "el": [
                 {
                     "type": "mixin",
-                    "el": "has_explosives"
+                    "el": "can_become_adult"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
                             "type": "item",
-                            "el": "hookshot"
-                        },
-                        {
-                            "type": "item",
-                            "el": "ocarina"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "hookshot"
-                            },
-                            "value": 2
+                            "el": "scale"
                         },
                         {
                             "type": "mixin",
-                            "el": "water_temple_access"
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "hookshot"
+                                    },
+                                    "value": 2
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "water_temple_access"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -1089,8 +1500,14 @@
                 }
             ]
         },
-        "gerudo_crate": null,
-        "gerudo_waterfall": null,
+        "gerudo_crate": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
+        "gerudo_waterfall": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
         "gerudo_rooftop": {
             "type": "and",
             "el": [
@@ -1390,15 +1807,24 @@
             "el": [
                 {
                     "type": "item",
-                    "el": "boots_hover"
-                },
-                {
-                    "type": "item",
                     "el": "scale"
                 },
                 {
                     "type": "mixin",
                     "el": "has_explosives"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        },
+                        {
+                            "type": "item",
+                            "el": "boots_hover"
+                        }
+                    ]
                 }
             ]
         },
@@ -1407,28 +1833,80 @@
             "el": [
                 {
                     "type": "item",
-                    "el": "boots_hover"
-                },
-                {
-                    "type": "item",
                     "el": "scale"
                 },
                 {
                     "type": "mixin",
                     "el": "has_explosives"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        },
+                        {
+                            "type": "item",
+                            "el": "boots_hover"
+                        }
+                    ]
                 }
             ]
         },
-        "zora_river_grotto": null,
-        "deku_lobby": null,
-        "deku_compass": null,
-        "deku_compass_side": null,
-        "deku_basement": null,
-        "deku_slingshot": null,
-        "deku_slingshot_side": null,
+        "zora_river_grotto": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "item",
+                    "el": "scale"
+                }
+            ]
+        },
+        "deku_lobby": {
+            "type": "mixin",
+            "el": "deku_tree_access"
+        },
+        "deku_compass": {
+            "type": "mixin",
+            "el": "deku_tree_access"
+        },
+        "deku_compass_side": {
+            "type": "mixin",
+            "el": "deku_tree_access"
+        },
+        "deku_basement": {
+            "type": "mixin",
+            "el": "deku_tree_access"
+        },
+        "deku_slingshot": {
+            "type": "mixin",
+            "el": "deku_tree_access"
+        },
+        "deku_slingshot_side": {
+            "type": "mixin",
+            "el": "deku_tree_access"
+        },
         "deku_gohma": {
-            "type": "item",
-            "el": "slingshot"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                }
+            ]
         },
         "temple_water_map": {
             "type": "mixin",
@@ -1935,7 +2413,10 @@
                 }
             ]
         },
-        "mountain_above_dodongo": null,
+        "mountain_above_dodongo": {
+            "type": "mixin",
+            "el": "can_enter_mountain"
+        },
         "mountain_outside_goron_chest": {
             "type": "mixin",
             "el": "can_blast_or_smash"
@@ -1950,84 +2431,153 @@
                 {
                     "type": "item",
                     "el": "song_storm"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_enter_mountain"
                 }
             ]
         },
         "mountain_warp": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "ocarina"
-                        },
-                        {
-                            "type": "item",
-                            "el": "warp_fire"
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
-                            "type": "or",
+                            "type": "and",
                             "el": [
                                 {
                                     "type": "item",
-                                    "el": "hookshot"
+                                    "el": "ocarina"
                                 },
                                 {
                                     "type": "item",
-                                    "el": "boots_hover"
+                                    "el": "warp_fire"
                                 }
                             ]
                         },
                         {
-                            "type": "or",
+                            "type": "and",
                             "el": [
                                 {
-                                    "type": "item",
-                                    "el": "glove"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "bow"
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "has_explosives"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "or",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "boots_hover"
-                                },
-                                {
-                                    "type": "and",
+                                    "type": "or",
                                     "el": [
                                         {
                                             "type": "item",
-                                            "el": "ocarina"
+                                            "el": "hookshot"
                                         },
                                         {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "hookshot"
-                                            },
-                                            "value": 2
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "glove"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "ocarina"
+                                                },
+                                                {
+                                                    "type": "min",
+                                                    "el": {
+                                                        "type": "item",
+                                                        "el": "hookshot"
+                                                    },
+                                                    "value": 2
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_blast_or_smash"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "mountain_crater_wall": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_enter_mountain"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_fire"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "hookshot"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "scale"
                                         }
                                     ]
                                 }
@@ -2041,120 +2591,82 @@
                 }
             ]
         },
-        "mountain_crater_wall": {
-            "type": "or",
+        "mountain_magic_bean": {
+            "type": "and",
             "el": [
                 {
-                    "type": "item",
-                    "el": "glove"
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 },
                 {
-                    "type": "item",
-                    "el": "bow"
-                },
-                {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "ocarina"
-                        },
-                        {
-                            "type": "item",
-                            "el": "warp_fire"
-                        },
-                        {
-                            "type": "or",
+                            "type": "and",
                             "el": [
+                                {
+                                    "type": "skip",
+                                    "el": "crater_bean_hp"
+                                },
                                 {
                                     "type": "item",
                                     "el": "boots_hover"
                                 },
                                 {
-                                    "type": "item",
-                                    "el": "hookshot"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "scale"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "mixin",
-                    "el": "can_blast_or_smash"
-                }
-            ]
-        },
-        "mountain_magic_bean": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "skip",
-                            "el": "crater_bean_hp"
-                        },
-                        {
-                            "type": "item",
-                            "el": "boots_hover"
-                        },
-                        {
-                            "type": "or",
-                            "el": [
-                                {
-                                    "type": "and",
+                                    "type": "or",
                                     "el": [
                                         {
-                                            "type": "item",
-                                            "el": "ocarina"
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "ocarina"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "warp_fire"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "can_blast_or_smash"
                                         },
                                         {
                                             "type": "item",
-                                            "el": "warp_fire"
+                                            "el": "glove"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
                                         }
                                     ]
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "can_blast_or_smash"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "glove"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "bow"
                                 }
                             ]
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "ocarina"
                         },
                         {
-                            "type": "item",
-                            "el": "warp_fire"
-                        },
-                        {
-                            "type": "or",
+                            "type": "and",
                             "el": [
                                 {
                                     "type": "item",
-                                    "el": "scale"
+                                    "el": "ocarina"
                                 },
                                 {
-                                    "type": "mixin",
-                                    "el": "has_explosives"
+                                    "type": "item",
+                                    "el": "warp_fire"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "scale"
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -2180,6 +2692,10 @@
                 {
                     "type": "item",
                     "el": "song_zelda"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 },
                 {
                     "type": "or",
@@ -2242,7 +2758,19 @@
                 }
             ]
         },
-        "mountain_biggoron": null,
+        "mountain_biggoron": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
+        },
         "gerudo_training_lobby_left": {
             "type": "and",
             "el": [
@@ -3246,6 +3774,10 @@
                     "el": "zora_letter"
                 },
                 {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
                     "type": "or",
                     "el": [
                         {
@@ -3301,6 +3833,10 @@
                 {
                     "type": "item",
                     "el": "boots_iron"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 },
                 {
                     "type": "or",
@@ -3375,6 +3911,10 @@
                 {
                     "type": "item",
                     "el": "bottle"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 },
                 {
                     "type": "or",
@@ -6347,79 +6887,34 @@
                 }
             ]
         },
-        "castle_town_maron": null,
-        "castle_town_zelda": {
-            "type": "item",
-            "el": "egg"
+        "castle_town_maron": {
+            "type": "mixin",
+            "el": "can_leave_forest"
         },
-        "castle_town_child_shooting": null,
-        "castle_town_bowling_1": {
-            "type": "or",
+        "castle_town_zelda": {
+            "type": "and",
             "el": [
                 {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "bombs"
-                        },
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "bombchu_logic"
-                            }
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "can_leave_forest"
                 },
                 {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "bombchu"
-                        },
-                        {
-                            "type": "option",
-                            "el": "bombchu_logic"
-                        }
-                    ]
+                    "type": "item",
+                    "el": "egg"
                 }
             ]
+        },
+        "castle_town_child_shooting": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
+        "castle_town_bowling_1": {
+            "type": "mixin",
+            "el": "has_bombchus"
         },
         "castle_town_bowling_2": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "bombs"
-                        },
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "bombchu_logic"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "bombchu"
-                        },
-                        {
-                            "type": "option",
-                            "el": "bombchu_logic"
-                        }
-                    ]
-                }
-            ]
+            "type": "mixin",
+            "el": "has_bombchus"
         },
         "castle_town_chest_game": {
             "type": "and",
@@ -6431,10 +6926,17 @@
                 {
                     "type": "item",
                     "el": "magic_power"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
                 }
             ]
         },
-        "castle_town_dog": null,
+        "castle_town_dog": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
         "castle_town_poes": {
             "type": "and",
             "el": [
@@ -6453,6 +6955,10 @@
                 {
                     "type": "item",
                     "el": "bottle"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -6491,12 +6997,25 @@
                         "el": "glove"
                     },
                     "value": 3
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
         "castle_town_warp": {
-            "type": "item",
-            "el": "medallion_forest"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "medallion_forest"
+                }
+            ]
         },
         "castle_town_light_arrows": {
             "type": "and",
@@ -6508,23 +7027,36 @@
                 {
                     "type": "item",
                     "el": "medallion_shadow"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
         "goron_maze_left": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "item",
-                    "el": "hammer"
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 },
                 {
-                    "type": "min",
-                    "el": {
-                        "type": "item",
-                        "el": "glove"
-                    },
-                    "value": 2
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "hammer"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "glove"
+                            },
+                            "value": 2
+                        }
+                    ]
                 }
             ]
         },
@@ -6532,16 +7064,25 @@
             "type": "or",
             "el": [
                 {
-                    "type": "min",
-                    "el": {
-                        "type": "item",
-                        "el": "glove"
-                    },
-                    "value": 2
-                },
-                {
                     "type": "mixin",
                     "el": "can_blast_or_smash"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "glove"
+                            },
+                            "value": 2
+                        }
+                    ]
                 }
             ]
         },
@@ -6549,16 +7090,25 @@
             "type": "or",
             "el": [
                 {
-                    "type": "min",
-                    "el": {
-                        "type": "item",
-                        "el": "glove"
-                    },
-                    "value": 2
-                },
-                {
                     "type": "mixin",
                     "el": "can_blast_or_smash"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "glove"
+                            },
+                            "value": 2
+                        }
+                    ]
                 }
             ]
         },
@@ -6567,19 +7117,28 @@
             "el": "bombs"
         },
         "goron_little_link": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "item",
-                    "el": "glove"
-                },
-                {
-                    "type": "item",
-                    "el": "bow"
-                },
-                {
                     "type": "mixin",
-                    "el": "has_explosives"
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        }
+                    ]
                 }
             ]
         },
@@ -6629,6 +7188,54 @@
                             "el": "bombs"
                         }
                     ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "option",
+                            "el": "doors_open_mountain"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "can_leave_forest"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "egg"
+                                            },
+                                            "value": 3
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_din"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_power"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -6646,6 +7253,54 @@
                 {
                     "type": "item",
                     "el": "song_saria"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "option",
+                            "el": "doors_open_mountain"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "can_leave_forest"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "egg"
+                                            },
+                                            "value": 3
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_din"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_power"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -6765,6 +7420,10 @@
         "woods_warp": {
             "type": "and",
             "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
                 {
                     "type": "item",
                     "el": "ocarina"
@@ -7578,42 +8237,86 @@
                 }
             ]
         },
-        "kakariko_anju_adult": null,
-        "kakariko_anju_chickens": null,
-        "kakariko_grotto": null,
+        "kakariko_anju_adult": {
+            "type": "mixin",
+            "el": "can_become_adult"
+        },
+        "kakariko_anju_chickens": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
+        "kakariko_grotto": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
         "kakariko_redead_grotto": {
             "type": "mixin",
             "el": "can_blast_or_smash"
         },
-        "kakariko_cow_hp": null,
+        "kakariko_cow_hp": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
         "kakariko_man_roof": {
             "type": "or",
             "el": [
                 {
-                    "type": "item",
-                    "el": "hookshot"
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_leave_forest"
+                        },
+                        {
+                            "type": "skip",
+                            "el": "man_on_roof"
+                        }
+                    ]
                 },
                 {
-                    "type": "skip",
-                    "el": "man_on_roof"
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        },
+                        {
+                            "type": "item",
+                            "el": "hookshot"
+                        }
+                    ]
                 }
             ]
         },
         "kakariko_adult_shooting": {
-            "type": "item",
-            "el": "bow"
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "bow"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                }
+            ]
         },
         "kakariko_song_storm": {
-            "type": "item",
-            "el": "ocarina"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                }
+            ]
         },
         "kakariko_windmill_hp": {
             "type": "or",
             "el": [
-                {
-                    "type": "item",
-                    "el": "boomerang"
-                },
                 {
                     "type": "and",
                     "el": [
@@ -7624,6 +8327,23 @@
                         {
                             "type": "item",
                             "el": "song_time"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "boomerang"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_leave_forest"
                         }
                     ]
                 },
@@ -7633,10 +8353,22 @@
                 }
             ]
         },
-        "kakariko_race_1": null,
-        "kakariko_race_2": null,
-        "kakariko_digging": null,
-        "kakariko_shield_grave": null,
+        "kakariko_race_1": {
+            "type": "mixin",
+            "el": "can_become_adult"
+        },
+        "kakariko_race_2": {
+            "type": "mixin",
+            "el": "can_become_adult"
+        },
+        "kakariko_digging": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
+        "kakariko_shield_grave": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
         "kakariko_redead_grave": {
             "type": "and",
             "el": [
@@ -7647,6 +8379,10 @@
                 {
                     "type": "item",
                     "el": "song_sun"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
                 }
             ]
         },
@@ -7660,6 +8396,10 @@
                 {
                     "type": "item",
                     "el": "song_zelda"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
                 }
             ]
         },
@@ -7679,6 +8419,10 @@
                     "el": "magic_power"
                 },
                 {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
                     "type": "or",
                     "el": [
                         {
@@ -7695,6 +8439,10 @@
                                 {
                                     "type": "item",
                                     "el": "arrow_fire"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
                                 }
                             ]
                         }
@@ -7703,23 +8451,32 @@
             ]
         },
         "kakariko_bean_hp": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "item",
-                    "el": "scale"
-                },
-                {
                     "type": "mixin",
-                    "el": "has_explosives"
+                    "el": "can_become_adult"
                 },
                 {
-                    "type": "min",
-                    "el": {
-                        "type": "item",
-                        "el": "hookshot"
-                    },
-                    "value": 2
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "scale"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "hookshot"
+                            },
+                            "value": 2
+                        }
+                    ]
                 }
             ]
         },
@@ -7737,48 +8494,97 @@
                 {
                     "type": "item",
                     "el": "medallion_water"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
         "kakariko_skulltula_10": {
-            "type": "min",
-            "el": {
-                "type": "item",
-                "el": "skulltula"
-            },
-            "value": 10
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "skulltula"
+                    },
+                    "value": 10
+                }
+            ]
         },
         "kakariko_skulltula_20": {
-            "type": "min",
-            "el": {
-                "type": "item",
-                "el": "skulltula"
-            },
-            "value": 20
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "skulltula"
+                    },
+                    "value": 20
+                }
+            ]
         },
         "kakariko_skulltula_30": {
-            "type": "min",
-            "el": {
-                "type": "item",
-                "el": "skulltula"
-            },
-            "value": 30
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "skulltula"
+                    },
+                    "value": 30
+                }
+            ]
         },
         "kakariko_skulltula_40": {
-            "type": "min",
-            "el": {
-                "type": "item",
-                "el": "skulltula"
-            },
-            "value": 40
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "skulltula"
+                    },
+                    "value": 40
+                }
+            ]
         },
         "kakariko_skulltula_50": {
-            "type": "min",
-            "el": {
-                "type": "item",
-                "el": "skulltula"
-            },
-            "value": 50
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "skulltula"
+                    },
+                    "value": 50
+                }
+            ]
         },
         "castle_ganon_forest_trial": {
             "type": "mixin",
@@ -8218,16 +9024,43 @@
             "el": "has_explosives"
         },
         "mountain_crater_grotto_salesman_1": {
-            "type": "item",
-            "el": "hammer"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                }
+            ]
         },
         "mountain_crater_grotto_salesman_2": {
-            "type": "item",
-            "el": "hammer"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                }
+            ]
         },
         "mountain_crater_grotto_salesman_3": {
-            "type": "item",
-            "el": "hammer"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                }
+            ]
         },
         "dodongo_lobby_salesman": {
             "type": "mixin",
@@ -8596,6 +9429,23 @@
                 {
                     "type": "item",
                     "el": "song_storm"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "item",
+                            "el": "scale"
+                        }
+                    ]
                 }
             ]
         },
@@ -8609,159 +9459,221 @@
                 {
                     "type": "item",
                     "el": "song_storm"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "item",
+                            "el": "scale"
+                        }
+                    ]
                 }
             ]
         },
         "goron_grotto_salesman_1": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "ocarina"
-                        },
-                        {
-                            "type": "item",
-                            "el": "song_time"
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
-                            "type": "mixin",
-                            "el": "goron_tunic_access"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "song_time"
+                                }
+                            ]
                         },
                         {
-                            "type": "item",
-                            "el": "hookshot"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "hookshot"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "goron_tunic_access"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                }
+                            ]
                         },
                         {
-                            "type": "item",
-                            "el": "magic_nayru"
-                        },
-                        {
-                            "type": "item",
-                            "el": "magic_power"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_nayru"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
                         }
                     ]
                 }
             ]
         },
         "goron_grotto_salesman_2": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "ocarina"
-                        },
-                        {
-                            "type": "item",
-                            "el": "song_time"
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
-                            "type": "mixin",
-                            "el": "goron_tunic_access"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "song_time"
+                                }
+                            ]
                         },
                         {
-                            "type": "item",
-                            "el": "hookshot"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "hookshot"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "goron_tunic_access"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                }
+                            ]
                         },
                         {
-                            "type": "item",
-                            "el": "magic_nayru"
-                        },
-                        {
-                            "type": "item",
-                            "el": "magic_power"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_nayru"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
                         }
                     ]
                 }
             ]
         },
         "goron_grotto_salesman_3": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "ocarina"
-                        },
-                        {
-                            "type": "item",
-                            "el": "song_time"
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
-                            "type": "mixin",
-                            "el": "goron_tunic_access"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "song_time"
+                                }
+                            ]
                         },
                         {
-                            "type": "item",
-                            "el": "hookshot"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "hookshot"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "goron_tunic_access"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                }
+                            ]
                         },
                         {
-                            "type": "item",
-                            "el": "magic_nayru"
-                        },
-                        {
-                            "type": "item",
-                            "el": "magic_power"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_nayru"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
                         }
                     ]
                 }
             ]
         },
-        "lonlon_grotto_deku_salesman_1": null,
-        "lonlon_grotto_deku_salesman_2": null,
-        "lonlon_grotto_deku_salesman_3": null,
-        "lake_grave_grotto_salesman_1": null,
-        "lake_grave_grotto_salesman_2": null,
-        "lake_grave_grotto_salesman_3": null,
+        "lonlon_grotto_deku_salesman_1": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
+        "lonlon_grotto_deku_salesman_2": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
+        "lonlon_grotto_deku_salesman_3": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
+        "lake_grave_grotto_salesman_1": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
+        "lake_grave_grotto_salesman_2": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
+        "lake_grave_grotto_salesman_3": {
+            "type": "mixin",
+            "el": "can_leave_forest"
+        },
         "woods_deku_salesman_theater_1": null,
         "woods_deku_salesman_theater_2": null
     },
@@ -8996,9 +9908,18 @@
             "type": "item",
             "el": "bottle"
         },
-        "deku_3f_compass_side_child": null,
-        "deku_basement_vines_child": null,
-        "deku_basement_metal_gate_child": null,
+        "deku_3f_compass_side_child": {
+            "type": "mixin",
+            "el": "deku_tree_access"
+        },
+        "deku_basement_vines_child": {
+            "type": "mixin",
+            "el": "deku_tree_access"
+        },
+        "deku_basement_metal_gate_child": {
+            "type": "mixin",
+            "el": "deku_tree_access"
+        },
         "deku_bombable_behind_web_child": {
             "type": "and",
             "el": [
@@ -9013,6 +9934,10 @@
                 {
                     "type": "item",
                     "el": "slingshot"
+                },
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
                 }
             ]
         },
@@ -10924,8 +11849,17 @@
     },
     "dungeons": {
         "deku": {
-            "type": "item",
-            "el": "slingshot"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                }
+            ]
         },
         "dodongo": {
             "type": "and",

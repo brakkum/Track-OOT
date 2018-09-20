@@ -16,6 +16,18 @@
             "type": "check",
             "default": false
         },
+        "doors_open_forest": {
+            "type": "check",
+            "default": true
+        },
+        "doors_open_mountain": {
+            "type": "check",
+            "default": false
+        },
+        "doors_open_temple": {
+            "type": "check",
+            "default": false
+        },
         "gerudo_fortress_open": {
             "type": "choice",
             "default": "gerudo_fortress_open_default",
