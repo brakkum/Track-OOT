@@ -258,6 +258,8 @@
                     justify-content: flex-start;
                     padding: 5px;
                     border: solid 1px white;
+                    user-select: none;
+                    cursor: pointer;
 
                     .shop-item-image {
                         display: block;

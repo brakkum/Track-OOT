@@ -336,7 +336,9 @@
           align-items: center;
           justify-content: flex-start;
           padding: 5px;
-          border: solid 1px white; }
+          border: solid 1px white;
+          user-select: none;
+          cursor: pointer; }
           #shop-view #shop-view-body .shop .shop-body .shop-item .shop-item-image {
             display: block;
             height: 32px;

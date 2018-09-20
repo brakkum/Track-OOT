@@ -110,6 +110,8 @@ function createShops() {
             var item = shop[j];
             var shop_item = data.shop_items[item.item];
             var itm = document.createElement("div");
+            itm.onclick = new Function("clickShopItem('"+i+"','"+j+"')");
+            itm.oncontextmenu = new Function("clickShopReItem('"+i+"','"+j+"')");
             itm.className = "shop-item";
             var img = document.createElement("div");
             img.className = "shop-item-image";
@@ -136,6 +138,20 @@ function createShops() {
     }
 }
 
+function clickShopItem(id, slot) {
+    var bought = SaveState.read("shops_bought", id, [0,0,0,0,0,0,0,0]);
+    bought[slot] = 1;
+    SaveState.write("shops_bought", id, bought);
+    rebuildShop(id);
+}
+
+function clickShopReItem(id, slot) {
+    var bought = SaveState.read("shops_bought", id, [0,0,0,0,0,0,0,0]);
+    bought[slot] = 0;
+    SaveState.write("shops_bought", id, bought);
+    rebuildShop(id);
+}
+
 function rebuildAllShops() {
     for (let i in data.shops) {
         rebuildShop(i);
@@ -145,12 +161,16 @@ function rebuildAllShops() {
 function rebuildShop(id) {
     var itms = document.getElementById(id).querySelectorAll(".shop-item");
     var shop = SaveState.read("shops", id, data.shops[id]);
+    var bought = SaveState.read("shops_bought", id, [0,0,0,0,0,0,0,0]);
     for (let i = 0; i < 8; ++i) {
         var shop_slot = shop[i];
         var shop_item = data.shop_items[shop_slot.item];
         var slot = itms[i];
-        debugger;
-        slot.querySelector(".shop-item-image").style.backgroundImage = "url('images/" + shop_item.image + "')";
+        if (shop_item.refill || !bought[i]) {
+            slot.querySelector(".shop-item-image").style.backgroundImage = "url('images/" + shop_item.image + "')";
+        } else { 
+            slot.querySelector(".shop-item-image").style.backgroundImage = "url('images/sold_out.png')";
+        }
         slot.querySelector(".shop-item-title").innerHTML = translate(shop_slot.item) + (shop_item.refill ? "" : " " + translate("special_deal"));
         slot.querySelector(".shop-item-price").innerHTML = shop_slot.price;
     }
