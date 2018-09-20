@@ -150,6 +150,7 @@ async function state_Load() {
             resetSettingsPage("skips", document.getElementById("settings-skips"));
             stateSave.disabled = false;
             updateItems();
+            rebuildAllShops();
             applySettingsChoices();
             await Dialog.alert("Success", "State \""+activestate+"\" loaded.");
         }
@@ -199,6 +200,7 @@ async function state_New() {
         resetSettingsPage("skips", document.getElementById("settings-skips"));
         prepairSavegameChoice();
         updateItems();
+        rebuildAllShops();
         applySettingsChoices();
         stateChoice.value = name;
         activestate = name;

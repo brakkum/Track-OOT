@@ -9,7 +9,8 @@
   align-items: flex-start;
   justify-content: center;
   backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px); }
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 1000000; }
   .dialog > .dialog-window {
     display: table;
     height: 100px;

@@ -1,337 +1,273 @@
 {
     "shop_kokiri": [
         {
-            "item": "heart",
-            "amount": 1,
+            "item": "heart_1",
             "price": 10
         },
         {
-            "item": "arrows",
-            "amount": 10,
+            "item": "arrows_10",
             "price": 20
         },
         {
-            "item": "arrows",
-            "amount": 30,
-            "price": 60
-        },
-        {
-            "item": "seeds",
-            "amount": 30,
-            "price": 30
-        },
-        {
-            "item": "nut",
-            "amount": 5,
+            "item": "nuts_5",
             "price": 15
         },
         {
-            "item": "stick",
-            "amount": 1,
+            "item": "stick_1",
             "price": 10
         },
         {
-            "item": "shield_kokiri",
-            "amount": 1,
+            "item": "arrows_30",
+            "price": 60
+        },
+        {
+            "item": "seeds_30",
+            "price": 30
+        },
+        {
+            "item": "shield_kokiri_1",
             "price": 40
         },
         {
-            "item": "nut",
-            "amount": 10,
+            "item": "nuts_5",
             "price": 30
         }
     ],
     "shop_goron": [
         {
-            "item": "heart",
-            "amount": 1,
+            "item": "heart_1",
             "price": 10
         },
         {
-            "item": "heart",
-            "amount": 1,
+            "item": "heart_1",
             "price": 10
         },
         {
-            "item": "potion_red",
-            "amount": 1,
-            "price": 40
-        },
-        {
-            "item": "tunic_fire",
-            "amount": 1,
-            "price": 200
-        },
-        {
-            "item": "bombs",
-            "amount": 10,
+            "item": "bombs_10",
             "price": 50
         },
         {
-            "item": "bombs",
-            "amount": 30,
+            "item": "bombs_30",
             "price": 120
         },
         {
-            "item": "bombs",
-            "amount": 5,
+            "item": "potion_red_1",
+            "price": 40
+        },
+        {
+            "item": "tunic_fire_1",
+            "price": 200
+        },
+        {
+            "item": "bombs_5",
             "price": 25
         },
         {
-            "item": "bombs",
-            "amount": 20,
+            "item": "bombs_20",
             "price": 80
         }
     ],
     "shop_zora": [
         {
-            "item": "potion_red",
-            "amount": 1,
+            "item": "potion_red_1",
             "price": 50
         },
         {
-            "item": "arrows",
-            "amount": 50,
+            "item": "arrows_50",
             "price": 90
         },
         {
-            "item": "fish",
-            "amount": 1,
-            "price": 200
-        },
-        {
-            "item": "nut",
-            "amount": 5,
-            "price": 15
-        },
-        {
-            "item": "arrows",
-            "amount": 10,
+            "item": "arrows_10",
             "price": 20
         },
         {
-            "item": "arrows",
-            "amount": 30,
+            "item": "arrows_30",
             "price": 60
         },
         {
-            "item": "tunic_water",
-            "amount": 1,
+            "item": "fish_1",
+            "price": 200
+        },
+        {
+            "item": "nuts_5",
+            "price": 15
+        },
+        {
+            "item": "tunic_water_1",
             "price": 300
         },
         {
-            "item": "heart",
-            "amount": 1,
+            "item": "heart_1",
             "price": 10
         }
     ],
     "shop_bombchu": [
         {
-            "item": "bombchu",
-            "amount": 20,
+            "item": "bombchu_20",
             "price": 180
         },
         {
-            "item": "bombchu",
-            "amount": 20,
+            "item": "bombchu_20",
             "price": 180
         },
         {
-            "item": "bombchu",
-            "amount": 20,
-            "price": 180
-        },
-        {
-            "item": "bombchu",
-            "amount": 20,
-            "price": 180
-        },
-        {
-            "item": "bombchu",
-            "amount": 10,
+            "item": "bombchu_10",
             "price": 99
         },
         {
-            "item": "bombchu",
-            "amount": 10,
+            "item": "bombchu_10",
             "price": 99
         },
         {
-            "item": "bombchu",
-            "amount": 5,
+            "item": "bombchu_20",
+            "price": 180
+        },
+        {
+            "item": "bombchu_20",
+            "price": 180
+        },
+        {
+            "item": "bombchu_5",
             "price": 60
         },
         {
-            "item": "bombchu",
-            "amount": 10,
+            "item": "bombchu_10",
             "price": 99
         }
     ],
     "shop_basar_child": [
         {
-            "item": "arrows",
-            "amount": 30,
+            "item": "arrows_30",
             "price": 60
         },
         {
-            "item": "arrows",
-            "amount": 50,
+            "item": "arrows_50",
             "price": 90
         },
         {
-            "item": "stick",
-            "amount": 1,
-            "price": 10
-        },
-        {
-            "item": "arrows",
-            "amount": 10,
-            "price": 20
-        },
-        {
-            "item": "bombs",
-            "amount": 5,
+            "item": "bombs_5",
             "price": 35
         },
         {
-            "item": "heart",
-            "amount": 1,
+            "item": "heart_1",
             "price": 10
         },
         {
+            "item": "stick_1",
+            "price": 10
+        },
+        {
+            "item": "arrows_10",
+            "price": 20
+        },
+        {
             "item": "shield_hylia",
-            "amount": 1,
             "price": 80
         },
         {
-            "item": "nut",
-            "amount": 5,
+            "item": "nuts_5",
             "price": 15
         }
     ],
     "shop_magic_child": [
         {
-            "item": "bugs",
-            "amount": 1,
+            "item": "bugs_1",
             "price": 50
         },
         {
-            "item": "fish",
-            "amount": 1,
+            "item": "fish_1",
             "price": 200
         },
         {
-            "item": "poe",
-            "amount": 1,
+            "item": "potion_green_1",
             "price": 30
         },
         {
-            "item": "nut",
-            "amount": 5,
+            "item": "potion_red_1",
+            "price": 30
+        },
+        {
+            "item": "poe_1",
+            "price": 30
+        },
+        {
+            "item": "nuts_5",
             "price": 15
         },
         {
-            "item": "potion_green",
-            "amount": 1,
-            "price": 30
-        },
-        {
-            "item": "potion_red",
-            "amount": 1,
-            "price": 30
-        },
-        {
-            "item": "fairy_spirit",
-            "amount": 1,
+            "item": "fairy_spirit_1",
             "price": 50
         },
         {
-            "item": "blue_fire",
-            "amount": 1,
+            "item": "blue_fire_1",
             "price": 300
         }
     ],
     "shop_basar_adult": [
         {
-            "item": "arrows",
-            "amount": 30,
+            "item": "arrows_30",
             "price": 60
         },
         {
-            "item": "arrows",
-            "amount": 50,
+            "item": "arrows_50",
             "price": 90
         },
         {
-            "item": "stick",
-            "amount": 1,
-            "price": 10
-        },
-        {
-            "item": "arrows",
-            "amount": 10,
-            "price": 20
-        },
-        {
-            "item": "bombs",
-            "amount": 5,
+            "item": "bombs_5",
             "price": 35
         },
         {
-            "item": "heart",
-            "amount": 1,
+            "item": "heart_1",
             "price": 10
         },
         {
-            "item": "shield_hylia",
-            "amount": 1,
+            "item": "stick_1",
+            "price": 10
+        },
+        {
+            "item": "arrows_10",
+            "price": 20
+        },
+        {
+            "item": "shield_hylia_1",
             "price": 80
         },
         {
-            "item": "nut",
-            "amount": 5,
+            "item": "nuts_5",
             "price": 15
         }
     ],
     "shop_magic_adult": [
         {
-            "item": "bugs",
-            "amount": 1,
+            "item": "bugs_1",
             "price": 50
         },
         {
-            "item": "fish",
-            "amount": 1,
+            "item": "fish_1",
             "price": 200
         },
         {
-            "item": "poe",
-            "amount": 1,
+            "item": "potion_green_1",
             "price": 30
         },
         {
-            "item": "nut",
-            "amount": 5,
+            "item": "potion_red_1",
+            "price": 30
+        },
+        {
+            "item": "poe_1",
+            "price": 30
+        },
+        {
+            "item": "nuts_5",
             "price": 15
         },
         {
-            "item": "potion_green",
-            "amount": 1,
-            "price": 30
-        },
-        {
-            "item": "potion_red",
-            "amount": 1,
-            "price": 30
-        },
-        {
-            "item": "fairy_spirit",
-            "amount": 1,
+            "item": "fairy_spirit_1",
             "price": 50
         },
         {
-            "item": "blue_fire",
-            "amount": 1,
+            "item": "blue_fire_1",
             "price": 300
         }
     ]

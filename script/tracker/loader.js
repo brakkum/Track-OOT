@@ -9,6 +9,7 @@ async function loadAll() {
         "database/logic.json",
         "database/rom_options.json",
         "database/shops.json",
+        "database/shop_items.json",
         "database/lang_en.json"
     ]);
     var data = {};
@@ -26,6 +27,7 @@ async function loadAll() {
     // misc
     data.rom_options = buffer[7];
     data.shops = buffer[8];
-    data.lang = buffer[9];
+    data.shop_items = buffer[9];
+    data.lang = buffer[10];
     return data;
 }

@@ -400,11 +400,6 @@
         "images": "key_small.png"
     },
 
-    "heart": {
-        "max": 0,
-        "images": "heart.png",
-        "always_active": true
-    },
     "heart_piece": {
         "max": 36,
         "images": "heart_piece.png"
@@ -417,16 +412,7 @@
         "max": 1,
         "images": "heart_double.png"
     },
-    "arrows": {
-        "max": 0,
-        "images": "arrow.png",
-        "always_active": true
-    },
-    "seeds": {
-        "max": 0,
-        "images": "seeds.png",
-        "always_active": true
-    },
+
     "sold_out": {
         "max": 0,
         "images": "sold_out.png",
@@ -464,7 +450,7 @@
     },
     "poe_big": {
         "max": 0,
-        "images": "sold_out.png",
+        "images": "bottle_poe_big.png",
         "always_active": true
     },
     "potion_red": {
@@ -479,7 +465,7 @@
     },
     "potion_blue": {
         "max": 0,
-        "images": "sold_out.png",
+        "images": "bottle_potion_blue.png",
         "always_active": true
     }
 }

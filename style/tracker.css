@@ -312,23 +312,45 @@
       margin: 20px; }
       #shop-view #shop-view-body .shop .shop-title {
         color: white; }
+        #shop-view #shop-view-body .shop .shop-title .shop-edit {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          color: white;
+          background-color: black;
+          border: solid 1px white;
+          margin-left: 5px;
+          cursor: pointer; }
+          #shop-view #shop-view-body .shop .shop-title .shop-edit:hover {
+            color: black;
+            background-color: white; }
       #shop-view #shop-view-body .shop .shop-body {
         display: grid;
         grid-template-columns: repeat(4, 150px);
-        grid-template-rows: repeat(2, 120px); }
+        grid-template-rows: repeat(2, 120px);
+        grid-gap: 5px;
+        margin-top: 10px; }
         #shop-view #shop-view-body .shop .shop-body .shop-item {
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center; }
+          justify-content: flex-start;
+          padding: 5px;
+          border: solid 1px white; }
           #shop-view #shop-view-body .shop .shop-body .shop-item .shop-item-image {
             display: block;
             height: 32px;
             width: 32px; }
-          #shop-view #shop-view-body .shop .shop-body .shop-item .shop-item-amount {
-            display: block; }
+          #shop-view #shop-view-body .shop .shop-body .shop-item .shop-item-title {
+            display: block;
+            word-wrap: break-word;
+            overflow: hidden;
+            width: 100%;
+            flex: 1; }
           #shop-view #shop-view-body .shop .shop-body .shop-item .shop-item-price {
-            display: block; }
+            display: block;
+            width: 100%;
+            text-align: right; }
             #shop-view #shop-view-body .shop .shop-body .shop-item .shop-item-price:after {
               display: inline-block;
               width: 14px;
@@ -502,7 +524,8 @@ label.settings-option .option-text {
   align-items: flex-start;
   justify-content: center;
   backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px); }
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 1000000; }
   .dialog > .dialog-window {
     display: table;
     height: 100px;

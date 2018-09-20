@@ -68,7 +68,7 @@ function untoggleItem(ev) {
 
 function setVisual(el, val) {
     var ref = data.items[el.id];
-    if (val == 0) {
+    if (!ref.always_active && val == 0) {
         el.classList.add("item-inactive");
     } else {
         el.classList.remove("item-inactive");

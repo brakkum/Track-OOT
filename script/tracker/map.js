@@ -105,17 +105,19 @@ function createShops() {
         ttl.innerHTML = translate(i);
         var bdy = document.createElement("div");
         bdy.className = "shop-body";
+        bdy.id = i;
         for (let j = 0; j < shop.length; ++j) {
             var item = shop[j];
+            var shop_item = data.shop_items[item.item];
             var itm = document.createElement("div");
             itm.className = "shop-item";
             var img = document.createElement("div");
             img.className = "shop-item-image";
-            setImage(img, item.item, 0);
+            img.style.backgroundImage = "url('images/" + shop_item.image + "')";
             itm.appendChild(img);
             var iam = document.createElement("div");
-            iam.innerHTML = translate(item.item) + " ("+item.amount+")";
-            iam.className = "shop-item-amount";
+            iam.innerHTML = translate(item.item) + (shop_item.refill ? "" : " " + translate("special_deal"));
+            iam.className = "shop-item-title";
             itm.appendChild(iam);
             var ipr = document.createElement("div");
             ipr.innerHTML = item.price;
@@ -123,10 +125,85 @@ function createShops() {
             itm.appendChild(ipr);
             bdy.appendChild(itm);
         }
+        var edt = document.createElement('button');
+        edt.className = "shop-edit";
+        edt.innerHTML = "✎";
+        edt.onclick = new Function("editShop('"+i+"')");
+        ttl.appendChild(edt);
         el.appendChild(ttl);
         el.appendChild(bdy);
         shops.appendChild(el);
     }
+}
+
+function rebuildAllShops() {
+    for (let i in data.shops) {
+        rebuildShop(i);
+    }
+}
+
+function rebuildShop(id) {
+    var itms = document.getElementById(id).querySelectorAll(".shop-item");
+    var shop = SaveState.read("shops", id, data.shops[id]);
+    for (let i = 0; i < 8; ++i) {
+        var shop_slot = shop[i];
+        var shop_item = data.shop_items[shop_slot.item];
+        var slot = itms[i];
+        debugger;
+        slot.querySelector(".shop-item-image").style.backgroundImage = "url('images/" + shop_item.image + "')";
+        slot.querySelector(".shop-item-title").innerHTML = translate(shop_slot.item) + (shop_item.refill ? "" : " " + translate("special_deal"));
+        slot.querySelector(".shop-item-price").innerHTML = shop_slot.price;
+    }
+}
+
+function editShop(id) {
+    var itms = Object.keys(data.shop_items);
+    var shop = SaveState.read("shops", id, data.shops[id]);
+    var chooser = [];
+    var pricer = [];
+    var cont = document.createElement("div");
+    cont.className = "shop";
+    for (let i = 0; i < 8; ++i) {
+        var itm = document.createElement("div"),
+            chs = document.createElement("select"),
+            prc = document.createElement("input");
+        itm.className = "shop-item";
+        for (let j = 0; j < itms.length; ++j) {
+            var opt = document.createElement("option");
+            opt.innerHTML = translate(itms[j]) + (data.shop_items[itms[j]].refill ? "" : " " + translate("special_deal"));
+            opt.setAttribute("value", itms[j]);
+            chs.appendChild(opt);
+        }
+        chs.value = shop[i].item;
+        chs.className = "shop-item-title";
+        prc.setAttribute("type", "number");
+        prc.setAttribute("min-value", 1);
+        prc.setAttribute("max-value", 999);
+        prc.value = shop[i].price;
+        prc.className = "shop-item-price";
+        chooser.push(chs);
+        pricer.push(prc);
+        itm.appendChild(chs);
+        itm.appendChild(prc);
+        cont.appendChild(itm);
+    }
+    var d = new Dialog(function(result) {
+        if (!!result) {
+            var res = [];
+            for (let i = 0; i < 8; ++i) {
+                res.push({
+                    item: chooser[i].value,
+                    price: pricer[i].value
+                });
+            }
+            SaveState.write("shops", id, res);
+            rebuildShop(id);
+        }
+    });
+    d.setTitle(translate(id));
+    d.setSubmitText("SUBMIT");
+    d.setAbortText("ABORT");
+    d.addElement(cont);
 }
 
 function togglePOI(category, key){

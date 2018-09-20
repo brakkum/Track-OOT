@@ -1,0 +1,337 @@
+{
+    "heart_1": {
+        "image": "heart.png",
+        "refill": true
+    },
+    "arrows_10": {
+        "image": "arrow.png",
+        "refill": true
+    },
+    "arrows_30": {
+        "image": "arrow_2.png",
+        "refill": true
+    },
+    "arrows_50": {
+        "image": "arrow_3.png",
+        "refill": true
+    },
+    "seeds_30": {
+        "image": "seeds.png",
+        "refill": true
+    },
+    "stick_1": {
+        "image": "stick.png",
+        "refill": true
+    },
+    "nuts_5": {
+        "image": "nut.png",
+        "refill": true
+    },
+    "nuts_10": {
+        "image": "nut.png",
+        "refill": true
+    },
+    "bombs_5": {
+        "image": "bombs.png",
+        "refill": true
+    },
+    "bombs_10": {
+        "image": "bombs.png",
+        "refill": true
+    },
+    "bombs_20": {
+        "image": "bombs.png",
+        "refill": true
+    },
+    "bombs_30": {
+        "image": "bombs.png",
+        "refill": true
+    },
+    "bombchu_5": {
+        "image": "bombchu.png",
+        "refill": true
+    },
+    "bombchu_10": {
+        "image": "bombchu.png",
+        "refill": true
+    },
+    "bombchu_20": {
+        "image": "bombchu.png",
+        "refill": true
+    },
+    "blue_fire_1": {
+        "image": "bottle_blue_fire.png",
+        "refill": true
+    },
+    "bugs_1": {
+        "image": "bottle_bugs.png",
+        "refill": true
+    },
+    "fairy_spirit_1": {
+        "image": "bottle_fairy.png",
+        "refill": true
+    },
+    "fish_1": {
+        "image": "bottle_fish.png",
+        "refill": true
+    },
+    "poe_1": {
+        "image": "bottle_poe.png",
+        "refill": true
+    },
+    "potion_red_1": {
+        "image": "bottle_potion_red.png",
+        "refill": true
+    },
+    "potion_green_1": {
+        "image": "bottle_potion_green.png",
+        "refill": true
+    },
+    "shield_kokiri_1": {
+        "image": "shield_kokiri.png",
+        "refill": true
+    },
+    "shield_hylia_1": {
+        "image": "shield_hylia.png",
+        "refill": true
+    },
+    "tunic_fire_1": {
+        "image": "tunic_fire.png",
+        "refill": true
+    },
+    "tunic_water_1": {
+        "image": "tunic_water.png",
+        "refill": true
+    },
+    "heart_piece": {
+        "image": "heart_piece.png"
+    },
+    "heart_container": {
+        "image": "heart_container.png"
+    },
+    "heart_double": {
+        "image": "heart_double.png"
+    },
+    "blue_fire": {
+        "image": "bottle_blue_fire.png"
+    },
+    "bugs": {
+        "image": "bottle_bugs.png"
+    },
+    "fairy_spirit": {
+        "image": "bottle_fairy.png"
+    },
+    "fish": {
+        "image": "bottle_fish.png"
+    },
+    "milk": {
+        "image": "sold_out.png"
+    },
+    "poe": {
+        "image": "bottle_poe.png"
+    },
+    "potion_red": {
+        "image": "bottle_potion_red.png"
+    },
+    "potion_green": {
+        "image": "bottle_potion_green.png"
+    },
+    "potion_blue": {
+        "image": "bottle_potion_blue.png"
+    },
+    "key_small_forest": {
+        "image": "key_small.png"
+    },
+    "key_boss_forest": {
+        "image": "key_boss.png"
+    },
+    "key_small_fire": {
+        "image": "key_small.png"
+    },
+    "key_boss_fire": {
+        "image": "key_boss.png"
+    },
+    "key_small_water": {
+        "image": "key_small.png"
+    },
+    "key_boss_water": {
+        "image": "key_boss.png"
+    },
+    "key_small_shadow": {
+        "image": "key_small.png"
+    },
+    "key_boss_shadow": {
+        "image": "key_boss.png"
+    },
+    "key_small_spirit": {
+        "image": "key_small.png"
+    },
+    "key_boss_spirit": {
+        "image": "key_boss.png"
+    },
+    "key_small_ganon": {
+        "image": "key_small.png"
+    },
+    "key_boss_ganon": {
+        "image": "key_boss.png"
+    },
+    "key_small_gerudo": {
+        "image": "key_small.png"
+    },
+    "key_small_training": {
+        "image": "key_small.png"
+    },
+    "key_small_well": {
+        "image": "key_small.png"
+    },
+    "bow":{
+        "image": "bow.png"
+    },
+    "hookshot": {
+        "image": "hookshot_small.png"
+    },
+    "hammer":{
+        "image": "hammer.png"
+    },
+    "stick":{
+        "image": "stick.png"
+    },
+    "nut":{
+        "image": "nut.png"
+    },
+    "slingshot":{
+        "image": "slingshot.png"
+    },
+    "boomerang":{
+        "image": "boomerang.png"
+    },
+    "bombs":{
+        "image": "bombs.png"
+    },
+    "bombchu":{
+        "image": "bombchu.png"
+    },
+    "lens":{
+        "image": "lens.png"
+    },
+    "magic_din":{
+        "image": "magic_din.png"
+    },
+    "magic_farore":{
+        "image": "magic_farore.png"
+    },
+    "magic_nayru":{
+        "image": "magic_nayru.png"
+    },
+    "arrow_fire":{
+        "max": 1,
+        "image": "arrow_fire.png"
+    },
+    "arrow_ice":{
+        "max": 1,
+        "image": "arrow_ice.png"
+    },
+    "arrow_light":{
+        "max": 1,
+        "image": "arrow_light.png"
+    },
+    "ocarina":{
+        "image": "ocarina_saria.png"
+    },
+    "bottle": {
+        "image": "bottle.png"
+    },
+    "wallet": {
+        "image": "wallet_silver.png"
+    },
+    "skulltula": {
+        "image": "skulltula.png"
+    },
+    "egg": {
+        "image": "egg.png"
+    },
+    "cojiro": {
+        "image": "egg_cojiro.png"
+    },
+    "sword_kokiri":{
+        "image": "sword_kokiri.png"
+    },
+    "sword_biggoron":{
+        "image": "sword_biggoron.png"
+    },
+    "shield_kokiri":{
+        "image": "shield_kokiri.png"
+    },
+    "shield_hylia":{
+        "image": "shield_hylia.png"
+    },
+    "shield_mirror":{
+        "image": "shield_mirror.png"
+    },
+    "tunic_fire":{
+        "image": "tunic_fire.png"
+    },
+    "tunic_water":{
+        "image": "tunic_water.png"
+    },
+    "boots_iron":{
+        "image": "boots_iron.png"
+    },
+    "boots_hover":{
+        "image": "boots_hover.png"
+    },
+    "glove":{
+        "image": "glove_goron.png"
+    },
+    "scale":{
+        "image": "scale_silver.png"
+    },
+    "stone_of_agony":{
+        "image": "stoneofagony.png"
+    },
+    "magic_power":{
+        "image": "magic_power_small.png"
+    },
+    "zora_letter":{
+        "image": "zora_letter.png"
+    },
+    "membership":{
+        "image": "membership.png"
+    }, 
+    "song_zelda":{
+        "image": "song_zelda.png"
+    },
+    "song_epona":{
+        "image": "song_epona.png"
+    },
+    "song_sun":{
+        "image": "song_sun.png"
+    },
+    "song_saria":{
+        "image": "song_saria.png"
+    },
+    "song_time":{
+        "image": "song_time.png"
+    },
+    "song_storm":{
+        "image": "song_storm.png"
+    },
+    "warp_forest":{
+        "image": "warp_forest.png"
+    },
+    "warp_fire":{
+        "image": "warp_fire.png"
+    },
+    "warp_water":{
+        "image": "warp_water.png"
+    },
+    "warp_shadow":{
+        "image": "warp_shadow.png"
+    },
+    "warp_spirit":{
+        "image": "warp_spirit.png"
+    },
+    "warp_light":{
+        "image": "warp_light.png"
+    }
+}
