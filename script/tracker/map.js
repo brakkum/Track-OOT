@@ -303,19 +303,23 @@ function updateMap() {
         var DCcount = 0;
         for (let j in data.dungeons[ref].chests) {
             if (!data.dungeons[ref].chests[j].mode || data.dungeons[ref].chests[j].mode != "shopsanity" || SaveState.read("options", "shopsanity", false)) {
-                if (!SaveState.read("chests", j, 0) && checkLogic("chests", j)) {
-                    DCcount++;
+                if (!SaveState.read("chests", j, 0)) {
+                    if (checkLogic("chests", j)) {
+                        DCcount++;
+                    }
+                    chests_missing++;
                 }
-                chests_missing++;
             }
         }
         chests_available+=DCcount;
         var SKcount = 0;
         for (let j in data.dungeons[ref].skulltulas) {
-            if (!SaveState.read("skulltulas", j, 0) && checkLogic("skulltulas", j)) {
-                SKcount++;
+            if (!SaveState.read("skulltulas", j, 0)) {
+                if (checkLogic("skulltulas", j)) {
+                    SKcount++;
+                }
+                skulltulas_missing++;
             }
-            skulltulas_missing++;
         }
         skulltulas_available+=SKcount;
         if (poi_list.mode == "chests") {

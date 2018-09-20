@@ -4029,6 +4029,22 @@
                 {
                     "type": "item",
                     "el": "boots_hover"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "key_small_shadow"
+                        }
+                    ]
                 }
             ]
         },
@@ -4042,6 +4058,22 @@
                 {
                     "type": "item",
                     "el": "boots_hover"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "key_small_shadow"
+                        }
+                    ]
                 }
             ]
         },
@@ -5077,12 +5109,20 @@
                         {
                             "type": "item",
                             "el": "boots_hover"
+                        },
+                        {
+                            "type": "item",
+                            "el": "hookshot"
                         }
                     ]
                 },
                 {
-                    "type": "item",
-                    "el": "hookshot"
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    "value": 2
                 }
             ]
         },
@@ -9571,6 +9611,22 @@
                 {
                     "type": "item",
                     "el": "hookshot"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "key_small_shadow"
+                        }
+                    ]
                 }
             ]
         },
@@ -9852,39 +9908,29 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "hookshot"
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "skip",
-                                            "el": "dodongo_spike"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "bow"
-                                        }
-                                    ]
-                                }
-                            ]
+                            "type": "skip",
+                            "el": "dodongo_spike"
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "boomerang"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "slingshot"
-                                }
-                            ]
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "item",
+                            "el": "slingshot"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "boomerang"
+                        },
+                        {
+                            "type": "item",
+                            "el": "hookshot"
                         }
                     ]
                 }
