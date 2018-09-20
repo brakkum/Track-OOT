@@ -186,7 +186,8 @@ function editShop(id) {
     for (let i = 0; i < 8; ++i) {
         var itm = document.createElement("div"),
             chs = document.createElement("select"),
-            prc = document.createElement("input");
+            prc = document.createElement("input"),
+            rpy = document.createElement("span");
         itm.className = "shop-item";
         for (let j = 0; j < itms.length; ++j) {
             var opt = document.createElement("option");
@@ -203,8 +204,10 @@ function editShop(id) {
         prc.className = "shop-item-price";
         chooser.push(chs);
         pricer.push(prc);
+        rpy.innerHTML = "Rupee(s)";
         itm.appendChild(chs);
         itm.appendChild(prc);
+        itm.appendChild(rpy);
         cont.appendChild(itm);
     }
     var d = new Dialog(function(result) {
