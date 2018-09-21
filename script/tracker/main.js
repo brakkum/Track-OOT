@@ -80,7 +80,9 @@ function changeItemInactiveEffect() {
 
 async function main() {
 
+    FileLoader.onupdate = Splash.update;
     data = await loadAll();
+    Splash.hide();
 
     console.log("loaded database:\r\n%o", data);
 
@@ -95,8 +97,22 @@ async function main() {
 
     populateMap();
 }
+window.onload = function () {
+    Splash = (new function(){
+        var spl = document.getElementById("splash");
+        var ldn = spl.querySelector('.loading');
 
-main();
+        this.update = function(max, val) {
+            ldn.innerHTML = "Loading... " + val + "/" + max;
+        }
+
+        this.hide = function() {
+            spl.className = "inactive";
+        }
+
+    }());
+    main();
+}
 
 function translate(index) {
     if (!!data.lang[index]) {
