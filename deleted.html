@@ -1,0 +1,41 @@
+<html lang="en">
+    <head>
+        <title>Tracker for OOT-Randomizer</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Item- & Map-Tracker for: The Legend of Zelda - Ocarina of Time">
+        <meta name="robots" content="nofollow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <script>
+            localStorage.clear();
+        </script>
+        <style>
+            #splash {
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: black;
+                color: white;
+            }
+
+            #splash span {
+                margin-top: 20px;
+            }
+
+            #splash.inactive {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>   
+        <div id="splash">
+            <img src="images/track-oot.png">
+            <span class="loading">All local data erased, please close this tab/window to proceed!</span>
+        </div>
+    </body>
+</html>
