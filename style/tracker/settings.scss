@@ -28,6 +28,10 @@ label.settings-option {
     padding: 10px;
     align-items: center;
     justify-content: flex-start;
+
+    input[type="checkbox"] {
+        margin-right: 10px;
+    }
 }
 
 label.settings-option:hover {

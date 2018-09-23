@@ -1,4 +1,3 @@
-var data;
 var activestate = "";
 
 var stateChoice = document.getElementById("select-savegame");
@@ -6,123 +5,38 @@ var stateSave = document.getElementById("save-savegame");
 var stateLoad = document.getElementById("load-savegame");
 var stateNew = document.getElementById("new-savegame");
 var stateDel = document.getElementById("delete-savegame");
+var stateRename = document.getElementById("rename-savegame");
 var stateExport = document.getElementById("export-savegame");
 var stateImport = document.getElementById("import-savegame");
 
-var map_scale_slider = document.getElementById("map-scale-slider");
-
-stateChoice.addEventListener("change", function(ev) {
-    if (activestate == stateChoice.value) {
-        stateSave.disabled = false;
-    } else {
-        stateSave.disabled = true;
-    }
-    stateLoad.disabled = false;
-    stateDel.disabled = false;
-    stateExport.disabled = false;
-});
 stateSave.addEventListener("click", state_Save);
 stateLoad.addEventListener("click", state_Load);
 stateNew.addEventListener("click", state_New);
 stateDel.addEventListener("click", state_Delete);
+stateRename.addEventListener("click", state_Rename);
 stateExport.addEventListener("click", state_Export);
 stateImport.addEventListener("click", state_Import);
 
-map_scale_slider.addEventListener("input", function(ev) {
-    document.getElementById('map').style.setProperty("--map-scale", parseInt(map_scale_slider.value) / 100);
-});
-map_scale_slider.addEventListener("change", function(ev) {
-    document.getElementById('map').style.setProperty("--map-scale", parseInt(map_scale_slider.value) / 100);
-    Storage.set("settings", "map_zoom", parseInt(map_scale_slider.value));
-});
-document.getElementById("map-option-chest").addEventListener("click", function(ev) {
-    document.getElementById('map').setAttribute("data-mode", "chests");
-    poi_list.mode = "chests";
-    if (poi_list.ref != "") {
-        clickDungeon(document.getElementById("dungeon_"+poi_list.ref));
-    }
-    updateMap();
-});
-document.getElementById("map-option-skulltula").addEventListener("click", function(ev) {
-    document.getElementById('map').setAttribute("data-mode", "skulltulas");
-    poi_list.mode = "skulltulas";
-    if (poi_list.ref != "") {
-        clickDungeon(document.getElementById("dungeon_"+poi_list.ref));
-    }
-    updateMap();
-});
-document.getElementById("map-option-shops").addEventListener("click", function(ev) {
-    document.getElementById('shop-view').classList.add("active");
-});
-document.getElementById("shop-view-close-button").addEventListener("click", function(ev) {
-    document.getElementById('shop-view').classList.remove("active");
-});
+stateChoice.addEventListener("change", toggleStateButtons);
 
-window.onfocus = function(ev) {
-    data.logic_patched = Storage.get("settings", "logic", {});
-    updateMap();
-}
-
-window.oncontextmenu = function(ev) {
-    ev.preventDefault();
-    return false;
-}
-
-function changeItemInactiveEffect() {
-    var cn = parseInt(document.getElementById("item-container").getAttribute("data-inactive")) || 0;
-    if (++cn > 2) cn = 0;
-    document.getElementById("item-container").setAttribute("data-inactive", cn);
-}
-
-/*************************************************
- *  Main function
- */
-
-async function main() {
-
-    FileLoader.onupdate = Splash.update;
-    data = await loadAll();
-    Splash.hide();
-
-    console.log("loaded database:\r\n%o", data);
-
-    map_scale_slider.value = Storage.get("settings", "map_zoom", 90);
-    document.getElementById('map').style.setProperty("--map-scale", parseInt(map_scale_slider.value) / 100);
-
-    buildSettings();
-
-    prepairSavegameChoice();
-
-    createItemTracker();
-
-    populateMap();
-}
-window.onload = function () {
-    Splash = (new function(){
-        var spl = document.getElementById("splash");
-        var ldn = spl.querySelector('.loading');
-
-        this.update = function(max, val) {
-            ldn.innerHTML = "Loading... " + val + "/" + max;
+function toggleStateButtons() {
+    if (stateChoice.value == "") {
+        stateSave.disabled = true;
+        stateLoad.disabled = true;
+        stateDel.disabled = true;
+        stateExport.disabled = true;
+        stateRename.disabled = true;
+    } else {
+        if (stateChoice.value == activestate) {
+            stateSave.disabled = false;
+        } else {
+            stateSave.disabled = true;
         }
-
-        this.hide = function() {
-            spl.className = "inactive";
-        }
-
-    }());
-    main();
-}
-
-function translate(index) {
-    if (!!data.lang[index]) {
-        return data.lang[index];
+        stateLoad.disabled = false;
+        stateDel.disabled = false;
+        stateExport.disabled = false;
+        stateRename.disabled = false;
     }
-    return index;
-}
-
-function setStatus(name, value) {
-    document.getElementById("status-" + name).innerHTML = value;
 }
 
 function prepairSavegameChoice() {
@@ -133,14 +47,6 @@ function prepairSavegameChoice() {
         el.id = keys[i];
         el.innerHTML = el.id;
         stateChoice.appendChild(el);
-    }
-    if (activestate == "") {
-        stateSave.disabled = true;
-        stateLoad.disabled = true;
-        stateDel.disabled = true;
-        stateExport.disabled = true;
-    } else {
-        stateSave.disabled = false;
     }
     stateChoice.value = activestate;
 }
@@ -164,10 +70,10 @@ async function state_Load() {
             SaveState.load(activestate);
             resetSettingsPage("options", document.getElementById("settings-options"));
             resetSettingsPage("skips", document.getElementById("settings-skips"));
-            stateSave.disabled = false;
             updateItems();
             rebuildAllShops();
             applySettingsChoices();
+            toggleStateButtons();
             await Dialog.alert("Success", "State \""+activestate+"\" loaded.");
         }
     }
@@ -186,6 +92,7 @@ async function state_Delete() {
         }
         stateChoice.value = activestate;
         prepairSavegameChoice();
+        toggleStateButtons();
         await Dialog.alert("Success", "State \""+del+"\" removed.");
     }
 }
@@ -212,18 +119,43 @@ async function state_New() {
             SaveState.reset();
         }
         SaveState.save(name);
+        stateChoice.value = name;
+        activestate = name;
         resetSettingsPage("options", document.getElementById("settings-options"));
         resetSettingsPage("skips", document.getElementById("settings-skips"));
         prepairSavegameChoice();
         updateItems();
         rebuildAllShops();
         applySettingsChoices();
-        stateChoice.value = name;
-        activestate = name;
-        stateSave.disabled = false;
-        stateLoad.disabled = false;
-        stateDel.disabled = false;
-        stateExport.disabled = false;
+        toggleStateButtons();
+    }
+}
+
+async function state_Rename() {
+    if (stateChoice.value == "") return;
+    if (await Dialog.confirm("Warning", "Do you really want to rename \""+stateChoice.value+"\"?")) {
+        var name = await Dialog.prompt("New state", "Please enter a new name!");
+        if (name !== false) {
+            if (name == "") {
+                await Dialog.alert("Warning", "The name can not be empty.");
+                state_New();
+                return;
+            }
+            if (Storage.has("save", name)) {
+                await Dialog.alert("Warning", "The name already exists.");
+                state_New();
+                return;
+            }
+            var save = Storage.get("save", stateChoice.value);
+            Storage.remove("save", stateChoice.value);
+            Storage.set("save", name, save);
+            prepairSavegameChoice();
+            if (activestate != "" && activestate == stateChoice.value) {
+                activestate = name;
+            }
+            stateChoice.value = name;
+            toggleStateButtons();
+        }
     }
 }
 
@@ -261,22 +193,9 @@ async function state_Import() {
             stateChoice.value = data.name;
             activestate = data.name;
             SaveState.load(activestate);
-            stateSave.disabled = false;
-            stateLoad.disabled = false;
-            stateDel.disabled = false;
-            stateExport.disabled = false;
             updateItems();
             applySettingsChoices();
+            toggleStateButtons();
         }
     }
 }
-
-!function(){
-    var k = Object.keys(localStorage);
-    k.map(function(v) {
-        if (!v.includes("\0")) {
-            Storage.set("save", v, JSON.parse(localStorage.getItem(v)));
-            localStorage.removeItem(v);
-        }
-    });
-}();

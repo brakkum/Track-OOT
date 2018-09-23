@@ -31,8 +31,9 @@ function addPOIs(target, category) {
         var dta = data[category][id];
         s.style.color = 'black';
         s.id = id;
-        s.onclick = new Function('togglePOI("'+category+'", "'+id+'")');
-        s.oncontextmenu = new Function('untogglePOI("'+category+'", "'+id+'")');
+        s.setAttribute("data-category", category);
+        s.onclick = togglePOI;
+        s.oncontextmenu = untogglePOI;
         s.style.left = dta.x;
         s.style.top = dta.y;
         if (!!dta.mode) {
@@ -64,7 +65,7 @@ function populateMap() {
         s = document.createElement('span');
         s.id = "dungeon_" + id;
 
-        s.onclick = new Function('clickDungeon(dungeon_'+id+')');
+        s.onclick = clickDungeon;
         s.style.left = data.dungeons[id].x;
         s.style.top = data.dungeons[id].y;
 
@@ -130,7 +131,8 @@ function createShops() {
         var edt = document.createElement('button');
         edt.className = "shop-edit";
         edt.innerHTML = "✎";
-        edt.onclick = new Function("editShop('"+i+"')");
+        edt.onclick = editShop;
+        edt.setAttribute("data-ref", i);
         ttl.appendChild(edt);
         el.appendChild(ttl);
         el.appendChild(bdy);
@@ -176,7 +178,8 @@ function rebuildShop(id) {
     }
 }
 
-function editShop(id) {
+function editShop(ev) {
+    var id = ev.target.getAttribute("data-ref");
     var itms = Object.keys(data.shop_items);
     var shop = SaveState.read("shops", id, data.shops[id]);
     var chooser = [];
@@ -229,23 +232,27 @@ function editShop(id) {
     d.addElement(cont);
 }
 
-function togglePOI(category, key){
+function togglePOI(ev){
+    var key = ev.target.id;
+    var category = ev.target.getAttribute("data-category");
     SaveState.write(category, key, true);
     updateMap();
-    event.preventDefault();
+    ev.preventDefault();
     return false;
 }
 
-function untogglePOI(category, key){
+function untogglePOI(ev){
+    var key = ev.target.id;
+    var category = ev.target.getAttribute("data-category");
     SaveState.write(category, key, false);
     updateMap();
-    event.preventDefault();
+    ev.preventDefault();
     return false;
 }
 
-function clickDungeon(ref) {
+function clickDungeon(ev) {
     var dn = document.getElementById('dungeon-name');
-    poi_list.ref = ref.id.slice(8);
+    poi_list.ref = ev.target.id.slice(8);
     dn.innerHTML = translate(poi_list.ref);
     var list = document.getElementById('dungeon-list');
     dn.setAttribute("data-mode", poi_list.mode);
@@ -257,8 +264,9 @@ function clickDungeon(ref) {
         s.id = i;
         s.innerHTML = translate(i);
         addBadge(s, dta.age, dta.time);
-        s.onclick = new Function('togglePOI("'+poi_list.mode+'", "'+i+'")');
-        s.oncontextmenu = new Function('untogglePOI("'+poi_list.mode+'", "'+i+'")');
+        s.setAttribute("data-category", poi_list.mode);
+        s.onclick = togglePOI;
+        s.oncontextmenu = untogglePOI;
         s.style.cursor = "pointer";
         if (!!dta.mode) {
             s.setAttribute("data-mode", dta.mode);

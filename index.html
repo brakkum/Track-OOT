@@ -5,44 +5,9 @@
         <meta name="description" content="Item- & Map-Tracker for: The Legend of Zelda - Ocarina of Time">
         <meta name="robots" content="nofollow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
         <link rel="stylesheet" href="style/normalize.css">
-        <link rel="stylesheet" href="style/tracker.css?v=201809211753" type="text/css">
-
-        <script src="script/utils/Dialog.js?v=201809211753"></script>
-        <script src="script/utils/SaveState.js?v=201809211753"></script>
-        <script src="script/utils/Storage.js?v=201809211753"></script>
-        <script src="script/utils/FileLoader.js?v=201809211753"></script>
-        <script src="script/tracker/loader.js?v=201809211753"></script>
-        <script src="script/tracker/logic.js?v=201809211753"></script>
-        <script src="script/tracker/items.js?v=201809211753"></script>
-        <script src="script/tracker/map.js?v=201809211753"></script>
-        <script src="script/tracker/settings.js?v=201809211753" defer></script>
-        <script src="script/tracker/main.js?v=201809211753" defer></script>
-
-        <style>
-            #splash {
-                position: absolute;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background-color: black;
-                color: white;
-            }
-
-            #splash span {
-                margin-top: 20px;
-            }
-
-            #splash.inactive {
-                display: none;
-            }
-        </style>
+        <link rel="stylesheet" href="style/tracker.css?v=201809240007" type="text/css">
+        <script src="script/tracker.min.js?v=201809240007" defer></script>
     </head>
     <body data-hint-badges="false" data-shopsanity="false">
         <div id="viewpane">
@@ -62,13 +27,21 @@
                         <button class="button" id="new-savegame">NEW</button>
                     </li>
                     <li>
-                        <button class="button" id="delete-savegame" disabled>DELETE</button>
-                    </li>
-                    <li>
-                        <button class="button" id="export-savegame" disabled>EXPORT</button>
-                    </li>
-                    <li>
-                        <button class="button" id="import-savegame">IMPORT</button>
+                        <button class="button">MORE...</button>
+                        <ul>
+                            <li>
+                                <button class="button" id="delete-savegame" disabled>DELETE</button>
+                            </li>
+                            <li>
+                                <button class="button" id="rename-savegame" disabled>RENAME</button>
+                            </li>
+                            <li>
+                                <button class="button" id="export-savegame" disabled>EXPORT</button>
+                            </li>
+                            <li>
+                                <button class="button" id="import-savegame">IMPORT</button>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <button class="button" id="edit-settings">SETTINGS</button>
@@ -148,7 +121,11 @@
                                 <label class="settings-option">
                                     <span class="option-text">Use custom logic</span>
                                     <input type="checkbox" id="use_custom_logic">
-                                    <a href="/editor.html" target="_blank" class="button">edit logic</a>
+                                    <a href="/editor.html" target="_blank" class="button">EDIT</a>
+                                </label>
+                                <label class="settings-option">
+                                    <span class="option-text">Erase all stored data</span>
+                                    <button class="button">ERASE</button>
                                 </label>
                             </div>
                             <hr>
