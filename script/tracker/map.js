@@ -178,8 +178,8 @@ function rebuildShop(id) {
     }
 }
 
-function editShop(ev) {
-    var id = ev.target.getAttribute("data-ref");
+function editShop(event) {
+    var id = event.currentTarget.getAttribute("data-ref");
     var itms = Object.keys(data.shop_items);
     var shop = SaveState.read("shops", id, data.shops[id]);
     var chooser = [];
@@ -232,27 +232,27 @@ function editShop(ev) {
     d.addElement(cont);
 }
 
-function togglePOI(ev){
-    var key = ev.target.id;
-    var category = ev.target.getAttribute("data-category");
+function togglePOI(event){
+    var key = event.currentTarget.id;
+    var category = event.currentTarget.getAttribute("data-category");
     SaveState.write(category, key, true);
     updateMap();
-    ev.preventDefault();
+    event.preventDefault();
     return false;
 }
 
-function untogglePOI(ev){
-    var key = ev.target.id;
-    var category = ev.target.getAttribute("data-category");
+function untogglePOI(event){
+    var key = event.currentTarget.id;
+    var category = event.currentTarget.getAttribute("data-category");
     SaveState.write(category, key, false);
     updateMap();
-    ev.preventDefault();
+    event.preventDefault();
     return false;
 }
 
-function clickDungeon(ev) {
+function clickDungeon(event) {
     var dn = document.getElementById('dungeon-name');
-    poi_list.ref = ev.target.id.slice(8);
+    poi_list.ref = event.currentTarget.id.slice(8);
     dn.innerHTML = translate(poi_list.ref);
     var list = document.getElementById('dungeon-list');
     dn.setAttribute("data-mode", poi_list.mode);
