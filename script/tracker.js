@@ -25,7 +25,7 @@ document.getElementById("map-option-chest").addEventListener("click", function(e
     document.getElementById('map').setAttribute("data-mode", "chests");
     poi_list.mode = "chests";
     if (poi_list.ref != "") {
-        clickDungeon(document.getElementById("dungeon_"+poi_list.ref));
+        document.getElementById("dungeon_"+poi_list.ref).click();
     }
     updateMap();
 });
@@ -33,7 +33,7 @@ document.getElementById("map-option-skulltula").addEventListener("click", functi
     document.getElementById('map').setAttribute("data-mode", "skulltulas");
     poi_list.mode = "skulltulas";
     if (poi_list.ref != "") {
-        clickDungeon(document.getElementById("dungeon_"+poi_list.ref));
+        document.getElementById("dungeon_"+poi_list.ref).click();
     }
     updateMap();
 });
