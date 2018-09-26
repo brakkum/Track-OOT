@@ -4177,6 +4177,26 @@
                 {
                     "type": "item",
                     "el": "hammer"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": 8
+                        }
+                    ]
                 }
             ]
         },
