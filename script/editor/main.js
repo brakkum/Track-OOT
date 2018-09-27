@@ -1,11 +1,11 @@
-// @koala-prepend "utils/FileSystem.js"
-// @koala-prepend "utils/FileLoader.js"
-// @koala-prepend "utils/Storage.js"
-// @koala-prepend "utils/Dialog.js"
-// @koala-prepend "editor/logic.js"
-// @koala-prepend "editor/loader.js"
-// @koala-prepend "editor/builder.js"
-// @koala-prepend "editor/controls.js"
+// @koala-prepend "../utils/FileSystem.js"
+// @koala-prepend "../utils/FileLoader.js"
+// @koala-prepend "../utils/Storage.js"
+// @koala-prepend "../utils/Dialog.js"
+// @koala-prepend "logic.js"
+// @koala-prepend "loader.js"
+// @koala-prepend "builder.js"
+// @koala-prepend "controls.js"
 
 const CHILD_ITEM_QUERY = ".panel-body > " + [
     ".logic-operator",
