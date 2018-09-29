@@ -5783,12 +5783,20 @@
                         {
                             "type": "item",
                             "el": "boots_hover"
+                        },
+                        {
+                            "type": "item",
+                            "el": "hookshot"
                         }
                     ]
                 },
                 {
-                    "type": "item",
-                    "el": "hookshot"
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    "value": 2
                 }
             ]
         },
