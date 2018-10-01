@@ -753,6 +753,10 @@ label.settings-option .option-text {
 #splash.inactive {
   display: none;
 }
+#splash .splash-image {
+  width: 50vmin;
+  height: 50vmin;
+}
 
 @keyframes alertcolor {
   0% {
