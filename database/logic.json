@@ -1211,14 +1211,6 @@
             "el": [
                 {
                     "type": "item",
-                    "el": "song_zelda"
-                },
-                {
-                    "type": "item",
-                    "el": "ocarina"
-                },
-                {
-                    "type": "item",
                     "el": "bottle"
                 },
                 {
@@ -1243,6 +1235,37 @@
                         {
                             "type": "mixin",
                             "el": "ganon_castle_access"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "song_zelda"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "boots_hover"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "zora_hover"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -3980,6 +4003,10 @@
                                 {
                                     "type": "skip",
                                     "el": "zora_hover"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "boots_hover"
                                 }
                             ]
                         }
@@ -4054,6 +4081,10 @@
                                 {
                                     "type": "skip",
                                     "el": "zora_hover"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "boots_hover"
                                 }
                             ]
                         }
