@@ -346,6 +346,7 @@
     "well": {
         "x": "68.0%",
         "y": "23.0%",
+        "key_type": "key_small_well",
         "chests": {
             "well_front_left_hidden_wall": {
                 "age": "child"
@@ -437,6 +438,7 @@
     "gerudo_training": {
         "x": "18.8%",
         "y": "28.0%",
+        "key_type": "key_small_training",
         "chests": {
             "gerudo_training_lobby_left": {
                 "age": "adult"
@@ -511,6 +513,7 @@
     "deku": {
         "x": "87.0%",
         "y": "57.0%",
+        "hasmq": true,
         "chests": {
             "deku_lobby": {
                 "age": "child"
@@ -534,6 +537,29 @@
                 "age": "child"
             }
         },
+        "chests_mq": {
+            "deku_lobby_mq": {
+                "age": "child"
+            },
+            "deku_slingshot_mq": {
+                "age": "child"
+            },
+            "deku_slingshot_side_mq": {
+                "age": "child"
+            },
+            "deku_compass_mq": {
+                "age": "child"
+            },
+            "deku_compass_side_mq": {
+                "age": "child"
+            },
+            "deku_basement_mq": {
+                "age": "child"
+            },
+            "deku_gohma_mq": {
+                "age": "child"
+            }
+        },
         "skulltulas": {
             "deku_3f_compass_side_child": {
                 "age": "child"
@@ -547,6 +573,20 @@
             "deku_bombable_behind_web_child": {
                 "age": "child"
             }
+        },
+        "skulltulas_mq": {
+            "deku_3f_compass_side_child_mq": {
+                "age": "child"
+            },
+            "deku_basement_vines_child_mq": {
+                "age": "child"
+            },
+            "deku_basement_metal_gate_child_mq": {
+                "age": "child"
+            },
+            "deku_bombable_behind_web_child_mq": {
+                "age": "child"
+            }
         }
     },
     "dodongo": {
@@ -554,6 +594,30 @@
         "y": "13.5%",
         "chests": {
             "dodongo_lobby_salesman": {
+                "mode": "shopsanity"
+            },
+            "dodongo_east_corridor_salesman": {
+                "mode": "shopsanity"
+            },
+            "dodongo_map": {},
+            "dodongo_compass": {},
+            "dodongo_bomb_flower_platform": {},
+            "dodongo_bomb_bag": {},
+            "dodongo_near_bomb_bag_salesman_1": {
+                "mode": "shopsanity"
+            },
+            "dodongo_near_bomb_bag_salesman_2": {
+                "mode": "shopsanity"
+            },
+            "dodongo_end_bridge": {},
+            "dodongo_chest_above_dodongo": {},
+            "dodongo_dodongo": {}
+        },
+        "chests_mq": {
+            "dodongo_lobby_salesman_1_mq": {
+                "mode": "shopsanity"
+            },
+            "dodongo_lobby_salesman_2_mq": {
                 "mode": "shopsanity"
             },
             "dodongo_east_corridor_salesman": {
@@ -622,8 +686,53 @@
     "temple_forest": {
         "x": "78.5%",
         "y": "39.0%",
+        "key_type": "key_small_forest",
         "chests": {
             "temple_forest_entrance": {
+                "age": "adult"
+            },
+            "temple_forest_behind_lobby": {
+                "age": "adult"
+            },
+            "temple_forest_well": {
+                "age": "adult"
+            },
+            "temple_forest_map": {
+                "age": "adult"
+            },
+            "temple_forest_outside_hookshot": {
+                "age": "adult"
+            },
+            "temple_forest_block_push": {
+                "age": "adult"
+            },
+            "temple_forest_boss_key": {
+                "age": "adult"
+            },
+            "temple_forest_floormaster": {
+                "age": "adult"
+            },
+            "temple_forest_bow": {
+                "age": "adult"
+            },
+            "temple_forest_poe_red": {
+                "age": "adult"
+            },
+            "temple_forest_poe_blue": {
+                "age": "adult"
+            },
+            "temple_forest_falling_room": {
+                "age": "adult"
+            },
+            "temple_forest_near_boss": {
+                "age": "adult"
+            },
+            "temple_forest_phantomganon": {
+                "age": "adult"
+            }
+        },
+        "chests_mq": {
+            "temple_forest_entrance_mq": {
                 "age": "adult"
             },
             "temple_forest_behind_lobby": {
@@ -687,6 +796,7 @@
     "temple_fire": {
         "x": "68.0%",
         "y": "06.5%",
+        "key_type": "key_small_fire",
         "chests": {
             "temple_fire_near_boss": {
                 "age": "adult"
@@ -755,6 +865,7 @@
     "temple_water": {
         "x": "36.1%",
         "y": "91.0%",
+        "key_type": "key_small_water",
         "chests": {
             "temple_water_map": {
                 "age": "adult"
@@ -811,6 +922,7 @@
     "temple_shadow": {
         "x": "76.0%",
         "y": "21.0%",
+        "key_type": "key_small_shadow",
         "chests": {
             "temple_shadow_map": {
                 "age": "adult"
@@ -888,6 +1000,7 @@
     "temple_spirit": {
         "x": "02.5%",
         "y": "17.0%",
+        "key_type": "key_small_spirit",
         "chests": {
             "temple_spirit_child_left": {
                 "age": "child"
@@ -959,6 +1072,7 @@
     "castle_ganon": {
         "x": "52.0%",
         "y": "10.0%",
+        "key_type": "key_small_ganon",
         "chests": {
             "castle_ganon_under_bridge_salesman_1": {
                 "age": "adult",
@@ -1022,6 +1136,74 @@
                 "age": "adult"
             }
         },
-        "skulltulas": {}
+        "chests_mq": {
+            "castle_ganon_under_bridge_salesman_1": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "castle_ganon_under_bridge_salesman_2": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "castle_ganon_under_bridge_salesman_3": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "castle_ganon_under_bridge_salesman_4": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "castle_ganon_under_bridge_salesman_5_mq": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "castle_ganon_forest_trial": {
+                "age": "adult"
+            },
+            "castle_ganon_water_trial_left": {
+                "age": "adult"
+            },
+            "castle_ganon_water_trial_right": {
+                "age": "adult"
+            },
+            "castle_ganon_shadow_trial_first": {
+                "age": "adult"
+            },
+            "castle_ganon_shadow_trial_second": {
+                "age": "adult"
+            },
+            "castle_ganon_spirit_trial_first": {
+                "age": "adult"
+            },
+            "castle_ganon_spirit_trial_second": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trial_first_left": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trial_second_left": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trial_third_left": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trial_first_right": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trial_second_right": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trial_third_right": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trail_invisible_enemies": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trial_lullaby": {
+                "age": "adult"
+            }
+        },
+        "skulltulas": {},
+        "skulltulas_mq": {}
     }
 }

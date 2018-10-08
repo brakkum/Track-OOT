@@ -326,6 +326,7 @@
 
     "key_small_forest": {
         "max": 5,
+        "maxmq": 6,
         "counting": true,
         "images": "key_small.png"
     },
@@ -336,6 +337,7 @@
 
     "key_small_fire": {
         "max": 8,
+        "maxmq": 3,
         "counting": true,
         "images": "key_small.png"
     },
@@ -346,6 +348,7 @@
 
     "key_small_water": {
         "max": 6,
+        "maxmq": 2,
         "counting": true,
         "images": "key_small.png"
     },
@@ -366,6 +369,7 @@
 
     "key_small_spirit": {
         "max": 5,
+        "maxmq": 7,
         "counting": true,
         "images": "key_small.png"
     },
@@ -376,6 +380,7 @@
     
     "key_small_ganon": {
         "max": 2,
+        "maxmq": 3,
         "counting": true,
         "images": "key_small.png"
     },
@@ -391,11 +396,13 @@
     },
     "key_small_training": {
         "max": 9,
+        "maxmq": 3,
         "counting": true,
         "images": "key_small.png"
     },
     "key_small_well": {
         "max": 3,
+        "maxmq": 2,
         "counting": true,
         "images": "key_small.png"
     },

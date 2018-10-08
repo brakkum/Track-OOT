@@ -66,6 +66,15 @@ function changeItemInactiveEffect() {
 
 async function main() {
 
+    if ('serviceWorker' in navigator) {
+        try {
+            await navigator.serviceWorker.register('/script/ServiceWorker.js');
+            console.log('Service Worker Registered');
+        } catch(err) {
+            console.error(err);
+        }
+    }
+
     FileLoader.onupdate = Splash.update;
     data = await loadAll();
     Splash.hide();
