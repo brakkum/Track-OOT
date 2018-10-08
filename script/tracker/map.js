@@ -11,13 +11,17 @@ var poi_list = {
 }
 
 document.getElementById('dungeon-name').onclick = function(ev) {
-    var t = ev.currentTarget;
-    if (!!t.ref && !!data.dungeons[t.ref].hasmq) {
-        var v = !SaveState.read("mq", t.ref, false);
-        SaveState.write("mq", t.ref, v);
-        document.getElementById("dungeon_" + t.ref).click();
-    }
+    toogleDungeonMQ(ev.currentTarget.ref);
 };
+
+function toogleDungeonMQ(name) {
+    if (!!name && !!data.dungeons[name].hasmq) {
+        var v = !SaveState.read("mq", name, false);
+        SaveState.write("mq", name, v);
+        updateItems();        
+        document.getElementById("dungeon_" + name).click();
+    }
+}
 
 function addBadge(target, age, time) {
     if (!age && !time) return;
