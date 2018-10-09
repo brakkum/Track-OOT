@@ -1,6 +1,8 @@
 
 var chest_panel;
+var chest_mq_panel;
 var skulltula_panel;
+var skulltula_mq_panel;
 var dungeon_panel;
 var mixins_panel;
 var item_panel;
@@ -120,7 +122,7 @@ function fillEditor() {
     for (let i in data.chests) {
         chest_overworld_panel.appendChild(createListItem("chests", i));
     }
-    if (!Object.keys(data.chests).length) {
+    if (!data.chests || !Object.keys(data.chests).length) {
         chest_overworld_panel.innerHTML = "<i>No Elements</i>";
     }
     
@@ -128,7 +130,7 @@ function fillEditor() {
     for (let i in data.skulltulas) {
         skulltula_overworld_panel.appendChild(createListItem("skulltulas", i));
     }
-    if (!Object.keys(data.skulltulas).length) {
+    if (!data.skulltulas || !Object.keys(data.skulltulas).length) {
         skulltula_overworld_panel.innerHTML = "<i>No Elements</i>";
     }
     
@@ -144,7 +146,7 @@ function fillEditor() {
             var el = createListItem("chests", j);
             chest_dungeon_panel.appendChild(el);
         }
-        if (!Object.keys(chests).length) {
+        if (!chests || !Object.keys(chests).length) {
             chest_dungeon_panel.innerHTML = "<i>No Elements</i>";
         }
         
@@ -152,11 +154,33 @@ function fillEditor() {
             var el = createListItem("skulltulas", j);
             skulltula_dungeon_panel.appendChild(el);
         }
-        if (!Object.keys(skulltulas).length) {
+        if (!skulltulas || !Object.keys(skulltulas).length) {
             skulltula_dungeon_panel.innerHTML = "<i>No Elements</i>";
         }
+
+        if (!!data.dungeons[i].hasmq) {
+            var chests_mq = data.dungeons[i].chests_mq;
+            var skulltulas_mq = data.dungeons[i].skulltulas_mq;
+            var chest_dungeon_mq_panel = createPanel(translate(i) + " (MQ)", chest_panel);
+            var skulltula_dungeon_mq_panel = createPanel(translate(i) + " (MQ)", skulltula_panel);
+
+            for (let j in chests_mq) {
+                var el = createListItem("chests", j);
+                chest_dungeon_mq_panel.appendChild(el);
+            }
+            if (!chests_mq || !Object.keys(chests_mq).length) {
+                chest_dungeon_mq_panel.innerHTML = "<i>No Elements</i>";
+            }
+            for (let j in skulltulas_mq) {
+                var el = createListItem("skulltulas", j);
+                skulltula_dungeon_mq_panel.appendChild(el);
+            }
+            if (!skulltulas_mq || !Object.keys(skulltulas_mq).length) {
+                skulltula_dungeon_mq_panel.innerHTML = "<i>No Elements</i>";
+            }
+        }
     }
-    if (!Object.keys(data.dungeons).length) {
+    if (!data.dungeons || !Object.keys(data.dungeons).length) {
         dungeon_panel.innerHTML = "<i>No Elements</i>";
     }
     for (let i in data.logic.mixins) {
