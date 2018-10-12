@@ -111,12 +111,13 @@ body {
 
 .layout-container {
     display: grid;
+    width: 100%;
     justify-content: start;
     align-content: start;
     justify-items: stretch;
     align-items: stretch;
-    grid-template-columns: calc(7 * 50px + 16px) minmax(0%, 100%);
-    grid-template-rows: calc(8 * 50px + 16px) calc(3 * 40px + 16px) minmax(0%, 100%);
+    grid-template-columns: calc(9 * 40px + 16px) minmax(0%, 100%);
+    grid-template-rows: calc(8 * 40px + 16px) calc(3 * 40px + 16px) minmax(0%, 100%);
     grid-template-areas: 
     "items map" 
     "keys map"
@@ -167,7 +168,7 @@ body {
 .button {
     width: 100px;
     padding: 5px;
-    background-color: gold;
+    background-color: #cb9c3d;
     color: black;
     -webkit-appearance: none;
     border: none;

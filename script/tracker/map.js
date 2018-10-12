@@ -10,6 +10,19 @@ var poi_list = {
     entries: []
 }
 
+document.getElementById('dungeon-name').onclick = function(ev) {
+    toogleDungeonMQ(ev.currentTarget.ref);
+};
+
+function toogleDungeonMQ(name) {
+    if (!!name && !!data.dungeons[name].hasmq) {
+        var v = !SaveState.read("mq", name, false);
+        SaveState.write("mq", name, v);
+        updateItems();        
+        document.getElementById("dungeon_" + name).click();
+    }
+}
+
 function addBadge(target, age, time) {
     if (!age && !time) return;
     var el = document.createElement("span");
@@ -251,15 +264,23 @@ function untogglePOI(event){
 }
 
 function clickDungeon(event) {
+    var ref_id = event.currentTarget.id.slice(8);
+    var mq = SaveState.read("mq", ref_id, false);
     var dn = document.getElementById('dungeon-name');
-    poi_list.ref = event.currentTarget.id.slice(8);
+    poi_list.ref = ref_id;
+    dn.ref = ref_id;
     dn.innerHTML = translate(poi_list.ref);
+    if (mq) {
+        dn.innerHTML += " (MQ)";
+    }
     var list = document.getElementById('dungeon-list');
     dn.setAttribute("data-mode", poi_list.mode);
     list.innerHTML = "";
     poi_list.entries = [];
-    for (let i in data.dungeons[poi_list.ref][poi_list.mode]) {
-        var dta = data.dungeons[poi_list.ref][poi_list.mode][i];
+    var dd = data.dungeons[poi_list.ref][poi_list.mode + (mq?"_mq":"")];
+    if (!dd) dd = data.dungeons[poi_list.ref][poi_list.mode];
+    for (let i in dd) {
+        var dta = dd[i];
         var s = document.createElement('li');
         s.id = i;
         s.innerHTML = translate(i);

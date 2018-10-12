@@ -1,14 +1,14 @@
 [
     [
-        "icon:medallion_forest.png",
-        "icon:medallion_fire.png",
-        "icon:medallion_water.png",
-        "icon:medallion_shadow.png",
-        "icon:medallion_spirit.png",
-        "icon:ganon.png",
+        "icon:medallion_forest.png#toggle_forest_mq",
+        "icon:medallion_fire.png#toggle_fire_mq",
+        "icon:medallion_water.png#toggle_water_mq",
+        "icon:medallion_shadow.png#toggle_shadow_mq",
+        "icon:medallion_spirit.png#toggle_spirit_mq",
+        "icon:ganon.png#toggle_ganon_mq",
         "icon:saw.png",
-        "icon:arrow_ice.png",
-        "icon:lens.png"
+        "icon:arrow_ice.png#toggle_training_mq",
+        "icon:lens.png#toggle_well_mq"
     ],
     [
         "key_small_forest",
@@ -27,6 +27,7 @@
         "key_boss_water",
         "key_boss_shadow",
         "key_boss_spirit",
-        "key_boss_ganon"
+        "key_boss_ganon",
+        "membership"
     ]
 ]

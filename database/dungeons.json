@@ -346,6 +346,8 @@
     "well": {
         "x": "68.0%",
         "y": "23.0%",
+        "hasmq": true,
+        "key_type": "key_small_well",
         "chests": {
             "well_front_left_hidden_wall": {
                 "age": "child"
@@ -400,11 +402,40 @@
             "well_locked_pits_child": {
                 "age": "child"
             }
+        },
+        "chests_mq": {
+            "well_compass_chest_mq": {
+                "age": "child"
+            },
+            "well_map_chest_mq": {
+                "age": "child"
+            },
+            "well_lens_chest_mq": {
+                "age": "child"
+            },
+            "well_deadhand_freestanding_key_mq": {
+                "age": "child"
+            },
+            "well_east_inner_freestanding_key_mq": {
+                "age": "child"
+            }
+        },
+        "skulltulas_mq": {
+            "well_west_inner_mq": {
+                "age": "child"
+            },
+            "well_basement_mq": {
+                "age": "child"
+            },
+            "well_coffin_room_mq": {
+                "age": "child"
+            }
         }
     },
     "ice_cavern": {
         "x": "90.5%",
         "y": "16.0%",
+        "hasmq": true,
         "chests": {
             "ice_cavern_map": {
                 "age": "adult"
@@ -432,11 +463,41 @@
             "ice_cavern_compass_room_adult": {
                 "age": "adult"
             }
+        },
+         "chests_mq": {
+            "ice_cavern_map_mq": {
+                "age": "adult"
+            },
+            "ice_cavern_compass_mq": {
+                "age": "adult"
+            },
+            "ice_cavern_hp_mq": {
+                "age": "adult"
+            },
+            "ice_cavern_boots_mq": {
+                "age": "adult"
+            },
+            "ice_cavern_sheik_mq": {
+                "age": "adult"
+            }
+        },
+        "skulltulas_mq": {
+            "ice_cavern_hp_room": {
+                "age": "adult"
+            },
+            "ice_cavern_scarecrow": {
+                "age": "adult"
+            },
+            "ice_cavern_under_ice_block": {
+                "age": "adult"
+            }
         }
     },
     "gerudo_training": {
         "x": "18.8%",
         "y": "28.0%",
+        "hasmq": true,
+        "key_type": "key_small_training",
         "chests": {
             "gerudo_training_lobby_left": {
                 "age": "adult"
@@ -505,12 +566,66 @@
                 "age": "adult"
             }
         }, 
-        "skulltulas": {}
-    },
+        "skulltulas": {},
+        "chests_mq": {
+            "gerudo_training_lobby_left_mq": {
+                "age": "adult"
+            },
+            "gerudo_training_lobby_right_mq": {
+                "age": "adult"
+            },
+            "gerudo_training_hidden_ceiling_mq": {
+                "age": "adult"
+            },
+            "gerudo_training_maze_1_mq": {
+                "age": "adult"
+            },
+            "gerudo_training_maze_2_mq": {
+                "age": "adult"
+            },
+            "gerudo_training_maze_3_mq": {
+                "age": "adult"
+            },
+            "gerudo_training_dinolfos_mq": {
+                "age": "adult"
+            },
+            "gerudo_training_underwater_mq": {
+                "age": "adult"
+            },
+            "gerudo_training_first_iron_knuckle_mq": {
+                "age": "adult"
+            },
+            "gerudo_training_before_heavy_block_mq": {
+                "age": "adult"
+            },
+            "gerudo_training_heavy_block_mq": {
+                "age": "adult"
+            },
+            "gerudo_training_eye_statue_mq": {
+                "age": "adult"
+            },
+            "gerudo_training_second_iron_knuckle_mq": {
+                "age": "adult"
+            },
+            "gerudo_training_flame_circle_mq": {
+                "age": "adult"
+            },
+            "gerudo_training_maze_right_central_mq": {
+                "age": "adult"
+            },
+            "gerudo_training_maze_right_side_mq": {
+                "age": "adult"
+            },
+            "gerudo_training_ice_arrows_mq": {
+                "age": "adult"
+            }
+        } 
+},
 
     "deku": {
         "x": "87.0%",
         "y": "57.0%",
+        "hasmq": true,
         "chests": {
             "deku_lobby": {
                 "age": "child"
@@ -534,6 +649,35 @@
                 "age": "child"
             }
         },
+        "chests_mq": {
+            "deku_lobby_mq": {
+                "age": "child"
+            },
+            "deku_slingshot_mq": {
+                "age": "child"
+            },
+            "deku_slingshot_back_mq": {
+                "age": "child"
+            },
+            "deku_compass_mq": {
+                "age": "child"
+            },
+            "deku_basement_mq": {
+                "age": "child"
+            },
+            "deku_before_log": {
+                "age": "child"
+            },
+            "deku_after_log": {
+                "age": "child"
+            },
+            "deku_basement_salesman": {
+                "mode": "shopsanity"
+            },
+            "deku_gohma_mq": {
+                "age": "child"
+            }
+        },
         "skulltulas": {
             "deku_3f_compass_side_child": {
                 "age": "child"
@@ -547,11 +691,26 @@
             "deku_bombable_behind_web_child": {
                 "age": "child"
             }
+        },
+        "skulltulas_mq": {
+            "deku_crate_near_map_child_mq": {
+                "age": "child"
+            },
+            "deku_2f_compass_side_child_mq": {
+                "age": "child"
+            },
+            "deku_basement_grave_ceiling_child_mq": {
+                "age": "child"
+            },
+            "deku_basement_back_room_child_mq": {
+                "age": "child"
+            }
         }
     },
     "dodongo": {
         "x": "59.0%",
         "y": "13.5%",
+        "hasmq": true,
         "chests": {
             "dodongo_lobby_salesman": {
                 "mode": "shopsanity"
@@ -573,6 +732,28 @@
             "dodongo_chest_above_dodongo": {},
             "dodongo_dodongo": {}
         },
+        "chests_mq": {
+            "dodongo_map_mq": {},
+            "dodongo_compass_mq": {},
+            "dodongo_gohma_larva_room_mq": {},
+            "dodongo_torch_puzzle_room_mq": {},
+            "dodongo_under_grave_mq": {},
+            "dodongo_bomb_bag_mq": {},
+            "dodongo_main_room_salesman_1_mq": {
+                "mode": "shopsanity"
+            },
+            "dodongo_main_room_salesman_2_mq": {
+                "mode": "shopsanity"
+            },
+            "dodongo_1f_right_mq": {
+                "mode": "shopsanity"
+            },
+            "dodongo_above_stairs_mq": {
+                "mode": "shopsanity"
+            },
+            "dodongo_chest_above_dodongo_mq": {},
+            "dodongo_dodongo_mq": {}
+        },
         "skulltulas": {
             "dodongo_east_corridor_bombable": {},
             "dodongo_east_corridor_scarecrow_adult": {
@@ -581,11 +762,19 @@
             "dodongo_above_big_staircase_adult": {},
             "dodongo_big_staircase_vines": {},
             "dodongo_near_boss_bombable": {}
+        },
+        "skulltulas_mq": {
+            "dodongo_time_block_room_mq": {},
+            "dodongo_gohma_larva_skulltula_mq": {},
+            "dodongo_upper_lizalfos_room_mq": {},
+            "dodongo_scrub_poe_room_mq": {},
+            "dodongo_back_area_mq": {}
         }
     },
     "jabujabu": {
         "x": "91.5%",
         "y": "21.0%",
+        "hasmq": true,
         "chests": {
             "jabujabu_elevator_dive_salesman": {
                 "age": "child",
@@ -617,11 +806,65 @@
             "jabujabu_1f_near_boss_child": {
                 "age": "child"
             }
+        },
+        "chests_mq": {
+            "jabujabu_map_mq": {
+                "age": "child"
+            },
+            "jabujabu_entry_side_chest_mq": {
+                "age": "child"
+            },
+            "jabujabu_second_room_lower_chest_mq": {
+                "age": "child"
+            },
+            "jabujabu_compass_mq": {
+                "age": "child"
+            },
+            "jabujabu_basement_south_chest_mq": {
+                "age": "child"
+            },
+            "jabujabu_basement_north_chest_mq": {
+                "age": "child"
+            },
+            "jabujabu_boomerang_room_small_chest_mq": {
+                "age": "child"
+            },
+            "jabujabu_boomerang_chest_mq": {
+                "age": "child"
+            },
+            "jabujabu_like_like_chest_mq": {
+                "age": "child"
+            },
+            "jabujabu_second_room_upper_mq": {
+                "age": "child"
+            },
+            "jabujabu_near_boss_mq": {
+                "age": "child"
+            },
+            "jabujabu_barinade_mq": {
+                "age": "child"
+            }
+        },
+        "skulltulas_mq": {
+            "jabujabu_boomerang_room_mq": {
+                "age": "child"
+            },
+            "jabujabu_electric_worm_room_mq": {
+                "age": "child"
+            },
+            "jabujabu_near_boss_mq": {
+                "age": "child"
+            },
+            "jabujabu_invisible_enemies_room_mq": {
+                "age": "child"
+            }
         }
     },
     "temple_forest": {
         "x": "78.5%",
         "y": "39.0%",
+        "hasmq": true,
+        "key_type": "key_small_forest",
         "chests": {
             "temple_forest_entrance": {
                 "age": "adult"
@@ -666,6 +909,47 @@
                 "age": "adult"
             }
         },
+        "chests_mq": {
+            "temple_forest_entrance_mq": {
+                "age": "adult"
+            },
+            "temple_forest_behind_lobby_mq": {
+                "age": "adult"
+            },
+            "temple_forest_boss_key_mq": {
+                "age": "adult"
+            },
+            "temple_forest_redead_chest_mq": {
+                "age": "adult"
+            },
+            "temple_forest_well_chest_mq": {
+                "age": "adult"
+            },
+            "temple_forest_ne_outdoors_upper_mq": {
+                "age": "adult"
+            },
+            "temple_forest_ne_outdoors_lower_mq": {
+                "age": "adult"
+            },
+            "temple_forest_bow_mq": {
+                "age": "adult"
+            },
+            "temple_forest_map_mq": {
+                "age": "adult"
+            },
+            "temple_forest_compass_mq": {
+                "age": "adult"
+            },
+            "temple_forest_falling_room_mq": {
+                "age": "adult"
+            },
+            "temple_forest_near_boss_mq": {
+                "age": "adult"
+            },
+            "temple_forest_phantomganon_mq": {
+                "age": "adult"
+            }
+        },
         "skulltulas": {
             "temple_forest_entrance_adult": {
                 "age": "adult"
@@ -682,11 +966,30 @@
             "temple_forest_near_boss_adult": {
                 "age": "adult"
             }
+        },
+        "skulltulas_mq": {
+            "temple_forest_first_hallway_adult_mq": {
+                "age": "adult"
+            },
+            "temple_forest_block_push_room_adult_mq": {
+                "age": "adult"
+            },
+            "temple_forest_outdoor_west_adult_mq": {
+                "age": "adult"
+            },
+            "temple_forest_outdoor_east_adult_mq": {
+                "age": "adult"
+            },
+            "temple_forest_well_adult_mq": {
+                "age": "adult"
+            }
         }
     },
     "temple_fire": {
         "x": "68.0%",
         "y": "06.5%",
+        "hasmq": true,
+        "key_type": "key_small_fire",
         "chests": {
             "temple_fire_near_boss": {
                 "age": "adult"
@@ -734,7 +1037,7 @@
                 "age": "adult"
             }
         },
-        "skulltulas": {
+        "skulltulas_mq": {
             "temple_fire_big_lava_time_block_adult": {
                 "age": "adult"
             },
@@ -750,11 +1053,71 @@
             "temple_fire_near_boss_key_adult": {
                 "age": "adult"
             }
+        },
+        "chests_mq": {
+            "temple_fire_chest_near_boss_mq": {
+                "age": "adult"
+            },
+            "temple_fire_megaton_hammer_mq": {
+                "age": "adult"
+            },
+            "temple_fire_map_mq": {
+                "age": "adult"
+            },
+            "temple_fire_map_room_small_chest_mq": {
+                "age": "adult"
+            },
+            "temple_fire_boss_key_mq": {
+                "age": "adult"
+            },
+            "temple_fire_big_lava_bomb_mq": {
+                "age": "adult"
+            },
+            "temple_fire_boulder_maze_lower_mq": {
+                "age": "adult"
+            },
+            "temple_fire_boulder_maze_upper_mq": {
+                "age": "adult"
+            },
+            "temple_fire_boulder_maze_side_mq": {
+                "age": "adult"
+            },
+            "temple_fire_compass_mq": {
+                "age": "adult"
+            },
+            "temple_fire_freestanding_key_mq": {
+                "age": "adult"
+            },
+            "temple_fire_west_tower_top_mq": {
+                "age": "adult"
+            },
+            "temple_fire_volvagia_mq": {
+                "age": "adult"
+            }
+        },
+        "skulltulas": {
+            "temple_fire_big_lava_adult_mq": {
+                "age": "adult"
+            },
+            "temple_fire_east_tower_top_adult_mq": {
+                "age": "adult"
+            },
+            "temple_fire_fire_wall_maze_side_adult_mq": {
+                "age": "adult"
+            },
+            "temple_fire_above_fire_wall_maze_adult_mq": {
+                "age": "adult"
+            },
+            "temple_fire_fire_wall_maze_center_adult_mq": {
+                "age": "adult"
+            }
         }
     },
     "temple_water": {
         "x": "36.1%",
         "y": "91.0%",
+        "hasmq": true,
+        "key_type": "key_small_water",
         "chests": {
             "temple_water_map": {
                 "age": "adult"
@@ -806,11 +1169,53 @@
             "temple_water_river_adult": {
                 "age": "adult"
             }
+        },
+        "chests_mq": {
+            "temple_water_map_mq": {
+                "age": "adult"
+            },
+            "temple_water_central_pillar_mq": {
+                "age": "adult"
+            },
+            "temple_water_compass_mq": {
+                "age": "adult"
+            },
+            "temple_water_longshot_mq": {
+                "age": "adult"
+            },
+            "temple_water_boss_key_mq": {
+                "age": "adult"
+            },
+            "temple_water_freestanding_key_mq": {
+                "age": "adult"
+            },
+            "temple_water_morpha_mq": {
+                "age": "adult"
+            }
+        },
+        "skulltulas_mq": {
+            "temple_water_south_basement_adult_mq": {
+                "age": "adult"
+            },
+            "temple_water_north_basement_adult_mq": {
+                "age": "adult"
+            },
+            "temple_water_serpent_river_adult_mq": {
+                "age": "adult"
+            },
+            "temple_water_lizalfos_hallway_adult_mq": {
+                "age": "adult"
+            },
+            "temple_water_before_upper_water_switch_mq": {
+                "age": "adult"
+            }
         }
     },
     "temple_shadow": {
         "x": "76.0%",
         "y": "21.0%",
+        "hasmq": true,
+        "key_type": "key_small_shadow",
         "chests": {
             "temple_shadow_map": {
                 "age": "adult"
@@ -883,11 +1288,95 @@
             "temple_shadow_behind_giant_pots_adult": {
                 "age": "adult"
             }
+        },
+        "chests_mq": {
+            "temple_shadow_compass_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_boots_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_map_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_early_gibdos_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_near_ship_invisible_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_invisible_blades_visible_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_invisible_blades_invisible_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_beamos_silver_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_falling_spikes_lower_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_falling_spikes_upper_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_falling_spikes_switch_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_invisible_spikes_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_stalfos_room_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_wind_hint_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_after_wind_enemy_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_after_wind_hidden_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_spike_walls_left_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_boss_key_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_bomb_flower_chest_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_freestanding_key_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_bongobongo_mq": {
+                "age": "adult"
+            }
+        },
+         "skulltulas_mq": {
+            "temple_shadow_crusher_room_adult_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_wind_hint_adult_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_after_wind_adult_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_after_ship_adult_mq": {
+                "age": "adult"
+            },
+            "temple_shadow_near_boss_adult_mq": {
+                "age": "adult"
+            }
         }
     },
     "temple_spirit": {
         "x": "02.5%",
         "y": "17.0%",
+        "hasmq": true,
+        "key_type": "key_small_spirit",
         "chests": {
             "temple_spirit_child_left": {
                 "age": "child"
@@ -954,11 +1443,83 @@
             "temple_spirit_coloss_room_adult": {
                 "age": "adult"
             }
+        },
+        "chests_mq": {
+            "temple_spirit_entrance_front_left_mq":{},
+            "temple_spirit_entrance_back_left_mq": {},
+            "temple_spirit_entrance_back_right_mq": {},
+            "temple_spirit_child_left_mq": {
+                "age": "child"
+            },
+            "temple_spirit_map_mq": {
+                "age": "child"
+            },
+            "temple_spirit_child_climb_north_mq": {},
+            "temple_spirit_compass_chest_mq": {},
+            "temple_spirit_silver_block_hallway_mq": {},
+            "temple_spirit_sun_block_room_mq": {},
+            "temple_spirit_gauntlets_mq": {},
+            "temple_spirit_child_center_mq": {
+                 "age": "child"
+            },
+            "temple_spirit_child_climb_south_mq": {
+                 "age": "adult"
+            },
+            "temple_spirit_lower_ne_main_room_mq": { 
+                 "age": "adult"
+            },
+            "temple_spirit_upper_ne_main_room_mq": {
+                "age": "adult"
+            },
+            "temple_spirit_lower_adult_left_mq": {
+                "age": "adult"
+            },
+            "temple_spirit_lower_adult_right_mq": {
+                "age": "adult"
+            },
+            "temple_spirit_entrance_front_right_mq": {},
+            "temple_spirit_beamos_room_mq": {
+                "age": "adult"
+            },
+            "temple_spirit_dinolfos_ice_mq": {
+                "age": "adult"
+            },
+            "temple_spirit_mirror_shield_mq": {
+                "age": "adult"
+            },
+            "temple_spirit_boss_key_mq": {
+                "age": "adult"
+            },
+           "temple_spirit_mirror_puzzle_invisible_mq": {
+                "age": "adult"
+            },
+            "temple_spirit_twinrova_mq": {
+                "age": "adult"
+            }
+        },
+        "skulltulas_mq": {
+            "temple_spirit_sun_block_room": {
+                "age": "adult"
+            },
+            "temple_spirit_lower_adult_left": {
+                "age": "adult"
+            },
+            "temple_spirit_lower_adult_right": {
+                "age": "adult"
+            },
+            "temple_spirit_iron_knuckles_north": {
+                "age": "adult"
+            },
+            "temple_spirit_iron_knuckles_west": {
+                "age": "adult"
+            }
         }
     },
     "castle_ganon": {
         "x": "52.0%",
         "y": "10.0%",
+        "hasmq": true,
+        "key_type": "key_small_ganon",
         "chests": {
             "castle_ganon_under_bridge_salesman_1": {
                 "age": "adult",
@@ -1020,8 +1581,76 @@
             },
             "castle_ganon_light_trial_lullaby": {
                 "age": "adult"
+            },
+            "castle_ganon_boss_key": {
+                "age": "adult"
             }
         },
-        "skulltulas": {}
-    }
+        "skulltulas": {},
+        "skulltulas_mq": {},
+        "chests_mq": {
+            "castle_ganon_under_bridge_salesman_1_mq": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "castle_ganon_under_bridge_salesman_2_mq": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "castle_ganon_under_bridge_salesman_3_mq": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "castle_ganon_under_bridge_salesman_4_mq": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "castle_ganon_under_bridge_salesman_5_mq": {
+                "age": "adult",
+                "mode": "shopsanity"
+            },
+            "castle_ganon_forest_trial_first_mq": {
+                "age": "adult"
+            },
+            "castle_ganon_forest_trial_second_mq": {
+                "age": "adult"
+            },
+            "castle_ganon_forest_trial_key_mq": {
+                "age": "adult"
+            },
+            "castle_ganon_water_trial_mq": {
+                "age": "adult"
+            },
+            "castle_ganon_shadow_trial_first_mq": {
+                "age": "adult"
+            },
+            "castle_ganon_shadow_trial_second_mq": {
+                "age": "adult"
+            },
+            "castle_ganon_spirit_trial_first_mq": {
+                "age": "adult"
+            },
+            "castle_ganon_spirit_trial_second_mq": {
+                "age": "adult"
+            },
+            "castle_ganon_spirit_sun_front_left_mq": {
+                "age": "adult"
+            },
+            "castle_ganon_spirit_sun_back_left_mq": {
+                "age": "adult"
+            },
+            "castle_ganon_spirit_golden_mq": {
+                "age": "adult"
+            },
+            "castle_ganon_spirit_sun_back_right_mq": {
+                "age": "adult"
+            },
+            "castle_ganon_light_trial_lullaby_mq": {
+                "age": "adult"
+            },
+            "castle_ganon_boss_key_mq": {
+                "age": "adult"
+            }
+        }
+  }
 }

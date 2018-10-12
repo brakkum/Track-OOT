@@ -1,8 +1,11 @@
 #item-container {
     display: inline-block;
-    padding: 8px;
     grid-area: items;
     overflow: hidden;
+    background-color: #555;
+    border-width: 8px;
+    border-style: inset;
+    border-color: gray;
 }
 
 .item-grid .item-row .item {
@@ -18,19 +21,20 @@
     display: inline-flex;
     align-items: flex-end;
     justify-content: flex-end;
-    width: 50px;
-    height: 50px;
-    padding: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 2px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: 80% auto;
     background-origin: content-box;
     flex-grow: 0;
     flex-shrink: 0;
     line-height: 0.7em;
-    border: solid 2px transparent;
+    //border: solid 2px transparent;
     overflow: hidden;
     text-shadow: -1px 0 1px black, 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black;
+    font-size: 12px;
 }
 
 .item-grid .item-row .item.mark,
@@ -52,7 +56,7 @@
 }
 
 .item-grid .item-row .item:hover {
-    border: solid 2px gold;
+    background-size: contain;
 }
 
 /**********************************
@@ -61,6 +65,10 @@
 
 #key-container {
     grid-area: keys;
+    background-color: #555;
+    border-width: 8px;
+    border-style: inset;
+    border-color: gray;
 }
 
 #key-container .item-row .item,

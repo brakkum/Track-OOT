@@ -3,6 +3,34 @@ var itemGridEls = [];
 function createItemTracker() {
     createGrid(document.getElementById("item-container"), data.item_grid);
     createGrid(document.getElementById("key-container"), data.item_keys);
+
+    document.getElementById('toggle_forest_mq').onclick = function(ev) {
+        toogleDungeonMQ("temple_forest");
+    };
+    
+    document.getElementById('toggle_fire_mq').onclick = function(ev) {
+        toogleDungeonMQ("temple_fire");
+    };
+    
+    document.getElementById('toggle_water_mq').onclick = function(ev) {
+        toogleDungeonMQ("water_forest");
+    };
+    
+    document.getElementById('toggle_shadow_mq').onclick = function(ev) {
+        toogleDungeonMQ("temple_shadow");
+    };
+    
+    document.getElementById('toggle_ganon_mq').onclick = function(ev) {
+        toogleDungeonMQ("castle_ganon");
+    };
+    
+    document.getElementById('toggle_training_mq').onclick = function(ev) {
+        toogleDungeonMQ("gerudo_training");
+    };
+    
+    document.getElementById('toggle_well_mq').onclick = function(ev) {
+        toogleDungeonMQ("well");
+    };
 }
 
 function createGrid(container, grid_data) {
@@ -13,7 +41,8 @@ function createGrid(container, grid_data) {
         for (let j = 0; j < sub.length; ++j) {
             let name = sub[j];
             if (name.startsWith("icon:")) {
-                createItemIcon(cont, name.slice(5));
+                name = name.split("#");
+                createItemIcon(cont, name[0].slice(5), name[1]);
             } else {
                 createItemButton(cont, name);
             }
@@ -33,9 +62,12 @@ function createItemButton(cont, name) {
     cont.appendChild(el);
 }
 
-function createItemIcon(cont, img) {
+function createItemIcon(cont, img, ident) {
     var el = document.createElement('DIV');
     el.classList.add("icon");
+    if (!!ident) {
+        el.id = ident;
+    }
     el.style.backgroundImage = "url('images/" + img + "')";
     cont.appendChild(el);
 }
@@ -44,7 +76,13 @@ function toggleItem(ev) {
     var el = ev.currentTarget;
     var val = SaveState.read("items", el.id, 0);
     var ref = data.items[el.id];
-    if (val < ref.max) {
+    var m = ref.max;
+    if (ref.hasOwnProperty("related_dungeon")) {
+        if (!!SaveState.read("mq", ref.related_dungeon, false)) {
+            m = ref.maxmq || m;
+        }
+    }
+    if (val < m) {
         SaveState.write("items", el.id, ++val);
         setVisual(el, val);
         updateMap();
@@ -85,7 +123,13 @@ function setVisual(el, val) {
         }
     }
     setImage(el, el.id, val);
-    if ((ref.hasOwnProperty("mark") && val >= ref.mark) || val == ref.max) {
+    var m = ref.max;
+    if (ref.hasOwnProperty("related_dungeon")) {
+        if (!!SaveState.read("mq", ref.related_dungeon, false)) {
+            m = ref.maxmq || m;
+        }
+    }
+    if ((ref.hasOwnProperty("mark") && val >= ref.mark) || val >= m) {
         el.classList.add("mark");
     } else {
         el.classList.remove("mark");
