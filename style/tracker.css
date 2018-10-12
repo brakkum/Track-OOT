@@ -2,7 +2,7 @@
   top: 0;
   width: 100%;
   padding: 2px 10px;
-  background-color: gold;
+  background-color: #cb9c3d;
   color: black;
   flex-grow: 0;
   flex-shrink: 0;
@@ -35,7 +35,7 @@
   width: 100px;
   z-index: 100;
   padding: 5px;
-  background-color: gold;
+  background-color: #cb9c3d;
 }
 
 .header > ul > li:hover > ul {
@@ -67,7 +67,7 @@
   bottom: 0;
   width: 100%;
   padding: 2px 10px;
-  background-color: gold;
+  background-color: #cb9c3d;
   color: black;
   font-size: 0.8em;
   flex-grow: 0;
@@ -90,9 +90,12 @@
 
 #item-container {
   display: inline-block;
-  padding: 8px;
   grid-area: items;
   overflow: hidden;
+  background-color: #555;
+  border-width: 8px;
+  border-style: inset;
+  border-color: gray;
 }
 
 .item-grid .item-row .item {
@@ -108,19 +111,19 @@
   display: inline-flex;
   align-items: flex-end;
   justify-content: flex-end;
-  width: 50px;
-  height: 50px;
-  padding: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 2px;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: 80% auto;
   background-origin: content-box;
   flex-grow: 0;
   flex-shrink: 0;
   line-height: 0.7em;
-  border: solid 2px transparent;
   overflow: hidden;
   text-shadow: -1px 0 1px black, 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black;
+  font-size: 12px;
 }
 
 .item-grid .item-row .item.mark,
@@ -142,7 +145,7 @@
 }
 
 .item-grid .item-row .item:hover {
-  border: solid 2px gold;
+  background-size: contain;
 }
 
 /**********************************
@@ -150,12 +153,68 @@
 **********************************/
 #key-container {
   grid-area: keys;
+  background-color: #555;
+  border-width: 8px;
+  border-style: inset;
+  border-color: gray;
 }
 
 #key-container .item-row .item,
 #key-container .item-row .icon {
   width: 40px;
   height: 40px;
+}
+
+#map-container {
+  display: block;
+  grid-area: map;
+  background-color: #555;
+  border-width: 8px;
+  border-style: inset;
+  border-color: gray;
+  overflow: auto;
+  /**********************************
+      map options
+  **********************************/
+}
+#map-container .map-options {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  user-select: none;
+  padding: 10px;
+  background-color: #0007;
+  z-index: 2;
+}
+#map-container .map-options .map-option {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-origin: content-box;
+  border-radius: 20%;
+  border: solid 2px black;
+  cursor: pointer;
+  opacity: 0.3;
+}
+#map-container .map-option#map-option-chest {
+  background-image: url("../images/chest.svg");
+}
+#map-container[data-mode~="chests"] .map-option#map-option-chest {
+  opacity: 1;
+}
+#map-container .map-option#map-option-skulltula {
+  background-image: url("../images/skulltula.svg");
+}
+#map-container[data-mode~="skulltulas"] .map-option#map-option-skulltula {
+  opacity: 1;
+}
+#map-container .map-option#map-option-shops {
+  background-image: url("../images/shop.svg");
+  opacity: 1;
 }
 
 #map {
@@ -169,7 +228,6 @@
   left: 0px;
   flex-grow: 0;
   flex-shrink: 0;
-  grid-area: map;
 }
 
 #map .poi.chest,
@@ -188,6 +246,10 @@
   background-color: black;
   font-size: 1.0em;
   grid-area: dungeon;
+  background-color: #555;
+  border-width: 8px;
+  border-style: inset;
+  border-color: gray;
 }
 
 #dungeon-container #dungeon-name {
@@ -239,59 +301,16 @@
 }
 
 /**********************************
-    map options
-**********************************/
-#map .map-options {
-  position: absolute;
-  top: 88%;
-  left: 2%;
-  user-select: none;
-}
-
-#map .map-options .map-option {
-  display: inline-block;
-  width: calc(40px * var(--map-scale));
-  height: calc(40px * var(--map-scale));
-  background-color: rgba(0, 0, 0, 0.3);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  background-origin: content-box;
-  border-radius: 20%;
-  border: solid 2px black;
-  cursor: pointer;
-  opacity: 0.3;
-}
-
-.map-option#map-option-chest {
-  background-image: url("../images/chest.svg");
-}
-
-#map[data-mode~="chests"] .map-option#map-option-chest {
-  opacity: 1;
-}
-
-.map-option#map-option-skulltula {
-  background-image: url("../images/skulltula.svg");
-}
-
-#map[data-mode~="skulltulas"] .map-option#map-option-skulltula {
-  opacity: 1;
-}
-
-#map .map-option#map-option-shops {
-  background-image: url("../images/shop.svg");
-  opacity: 1;
-}
-
-/**********************************
     slider
 **********************************/
 .slidecontainer {
+  position: absolute;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 2px 10px;
+  padding: 10px;
+  background-color: #0007;
+  z-index: 2;
 }
 
 .slidetext {
@@ -314,7 +333,7 @@
   appearance: none;
   width: 100%;
   height: 100%;
-  background: gold;
+  background: #cb9c3d;
   outline: none;
 }
 
@@ -840,12 +859,13 @@ body[data-hint-badges="true"] #dungeon-container #dungeon-list .dungeon-entry .h
 
 .layout-container {
   display: grid;
+  width: 100%;
   justify-content: start;
   align-content: start;
   justify-items: stretch;
   align-items: stretch;
-  grid-template-columns: calc(7 * 50px + 16px) minmax(0%, 100%);
-  grid-template-rows: calc(8 * 50px + 16px) calc(3 * 40px + 16px) minmax(0%, 100%);
+  grid-template-columns: calc(9 * 40px + 16px) minmax(0%, 100%);
+  grid-template-rows: calc(8 * 40px + 16px) calc(3 * 40px + 16px) minmax(0%, 100%);
   grid-template-areas: "items map"  "keys map" "dungeon map";
 }
 
@@ -891,7 +911,7 @@ body[data-hint-badges="true"] #dungeon-container #dungeon-list .dungeon-entry .h
 .button {
   width: 100px;
   padding: 5px;
-  background-color: gold;
+  background-color: #cb9c3d;
   color: black;
   -webkit-appearance: none;
   border: none;

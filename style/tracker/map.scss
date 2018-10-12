@@ -1,3 +1,63 @@
+#map-container {
+    display: block;
+    grid-area: map;
+    background-color: #555;
+    border-width: 8px;
+    border-style: inset;
+    border-color: gray;
+    overflow: auto;
+
+    /**********************************
+        map options
+    **********************************/
+
+    .map-options {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        user-select: none;
+        padding: 10px;
+        background-color: #0007;
+        z-index: 2;
+    }
+
+    .map-options .map-option {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(0,0,0,0.3);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-origin: content-box;
+        border-radius: 20%;
+        border: solid 2px black;
+        cursor: pointer;
+        opacity: 0.3;
+    }
+
+    .map-option#map-option-chest {
+        background-image: url('../images/chest.svg');
+    }
+
+    &[data-mode~="chests"] .map-option#map-option-chest {
+        opacity: 1;
+    }
+
+    .map-option#map-option-skulltula {
+        background-image: url('../images/skulltula.svg');
+    }
+
+    &[data-mode~="skulltulas"] .map-option#map-option-skulltula {
+        opacity: 1;
+    }
+
+    .map-option#map-option-shops {
+        background-image: url('../images/shop.svg');
+        opacity: 1;
+    }
+}
+
 #map {
     --map-scale: 0.8;
     background-image: url("../images/map.png");
@@ -9,7 +69,6 @@
     left: 0px;
     flex-grow: 0;
     flex-shrink: 0;
-    grid-area: map;
 }
 
 #map .poi.chest,
@@ -28,6 +87,10 @@
     background-color: black;
     font-size: 1.0em;
     grid-area: dungeon;
+    background-color: #555;
+    border-width: 8px;
+    border-style: inset;
+    border-color: gray;
 }
 
 #dungeon-container #dungeon-name {
@@ -80,61 +143,17 @@
 }
 
 /**********************************
-    map options
-**********************************/
-
-#map .map-options {
-    position: absolute;
-    top: 88%;
-    left: 2%;
-    user-select: none;
-}
-
-#map .map-options .map-option {
-    display: inline-block;
-    width: calc(40px * var(--map-scale));
-    height: calc(40px * var(--map-scale));
-    background-color: rgba(0,0,0,0.3);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    background-origin: content-box;
-    border-radius: 20%;
-    border: solid 2px black;
-    cursor: pointer;
-    opacity: 0.3;
-}
-
-.map-option#map-option-chest {
-    background-image: url('../images/chest.svg');
-}
-
-#map[data-mode~="chests"] .map-option#map-option-chest {
-    opacity: 1;
-}
-
-.map-option#map-option-skulltula {
-    background-image: url('../images/skulltula.svg');
-}
-
-#map[data-mode~="skulltulas"] .map-option#map-option-skulltula {
-    opacity: 1;
-}
-
-#map .map-option#map-option-shops {
-    background-image: url('../images/shop.svg');
-    opacity: 1;
-}
-
-/**********************************
     slider
 **********************************/
 
 .slidecontainer {
+    position: absolute;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 2px 10px;
+    padding: 10px;
+    background-color: #0007;
+    z-index: 2;
 }
 
 .slidetext {
@@ -157,7 +176,7 @@
     appearance: none;
     width: 100%;
     height: 100%;
-    background: gold;
+    background: #cb9c3d;
     outline: none;
 }
 

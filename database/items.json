@@ -97,6 +97,11 @@
         "counting": ["99", "200", "500", "999"],
         "always_active": true
     },
+    "bean": {
+        "max": 10,
+        "counting": true,
+        "images": "bean.png"
+    },
     "skulltula": {
         "max": 100,
         "mark": 50,
@@ -118,10 +123,11 @@
         ]
     },
     "cojiro": {
-        "max": 10,
+        "max": 11,
         "images": [
             "egg_cojiro.png",
             "egg_cojiro.png",
+            "cucco.png",
             "cojiro.png",
             "mushroom.png",
             "medicine.png",
@@ -423,10 +429,12 @@
 
     "heart_piece": {
         "max": 36,
+        "counting": true,
         "images": "heart_piece.png"
     },
     "heart_container": {
         "max": 8,
+        "counting": true,
         "images": "heart_container.png"
     },
     "heart_double": {
