@@ -62,22 +62,24 @@
                     <div id="key-container" class="item-grid" data-inactive="0">
                     </div>
                     <div id="map-container">
+                        <div id="map-scroll">
+                            <div id="map" data-mode="chests">
+                            </div>
+                        </div>
                         <div class="slidecontainer">
                             <span class="slidetext">- / +</span>
                             <div class="slidetrack">
-                                <input type="range" min="50" max="180" value="90" class="slider" id="map-scale-slider">
-                            </div>
-                        </div>
-                        <div id="map" data-mode="chests">
-                            <div id="shop-view">
-                                <div id="shop-view-close-button">✖</div>
-                                <div id="shop-view-body"></div>
+                                <input type="range" min="50" max="500" value="90" class="slider" id="map-scale-slider">
                             </div>
                         </div>
                         <div class="map-options">
                             <div class="map-option" id="map-option-chest"></div>
                             <div class="map-option" id="map-option-skulltula"></div>
                             <div class="map-option" id="map-option-shops"></div>
+                        </div>
+                        <div id="shop-view">
+                            <div id="shop-view-close-button">✖</div>
+                            <div id="shop-view-body"></div>
                         </div>
                     </div>
                     <div id="dungeon-container">
