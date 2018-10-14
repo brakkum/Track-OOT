@@ -59,6 +59,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -77,25 +79,18 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none; }
-
-.footer .footer-field,
-.footer .footer-spacer {
-  height: 14px; }
-
-.footer .footer-spacer {
-  margin: 0 15px; }
-
-.footer .footer-right {
-  margin-left: auto; }
+  .footer .footer-field,
+  .footer .footer-spacer {
+    height: 14px; }
+  .footer .footer-spacer {
+    margin: 0 15px; }
+  .footer .footer-right {
+    margin-left: auto; }
 
 #item-container {
   display: inline-block;
   grid-area: items;
-  overflow: hidden;
-  background-color: #555;
-  border-width: 8px;
-  border-style: inset;
-  border-color: gray; }
+  overflow: hidden; }
 
 .item-grid .item-row .item {
   cursor: pointer; }
@@ -135,18 +130,10 @@
 .item-grid .item-row .icon.mark {
   color: lime; }
 
-.item-grid[data-inactive="0"] .item-row .item.item-inactive {
-  -webkit-filter: contrast(0.3);
-          filter: contrast(0.3);
-  opacity: 0.6; }
-
-.item-grid[data-inactive="1"] .item-row .item.item-inactive {
-  -webkit-filter: sepia(1);
-          filter: sepia(1); }
-
-.item-grid[data-inactive="2"] .item-row .item.item-inactive {
-  -webkit-filter: grayscale(1);
-          filter: grayscale(1); }
+.item-grid .item-row .item.item-inactive {
+  -webkit-filter: contrast(0.8) grayscale(0.5);
+          filter: contrast(0.8) grayscale(0.5);
+  opacity: 0.4; }
 
 .item-grid .item-row .item:hover {
   background-size: contain; }
@@ -155,16 +142,11 @@
     keys
 **********************************/
 #key-container {
-  grid-area: keys;
-  background-color: #555;
-  border-width: 8px;
-  border-style: inset;
-  border-color: gray; }
-
-#key-container .item-row .item,
-#key-container .item-row .icon {
-  width: 40px;
-  height: 40px; }
+  grid-area: keys; }
+  #key-container .item-row .item,
+  #key-container .item-row .icon {
+    width: 40px;
+    height: 40px; }
 
 #map-container {
   position: relative;
@@ -172,10 +154,6 @@
   display: -ms-flexbox;
   display: flex;
   grid-area: map;
-  background-color: black;
-  border-width: 8px;
-  border-style: inset;
-  border-color: gray;
   overflow: hidden;
   /**********************************
       map options
@@ -183,6 +161,25 @@
   /**********************************
       slider
   **********************************/ }
+  #map-container #map {
+    --map-scale: 0.8;
+    background-image: url("../images/map.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    width: calc(825px * var(--map-scale));
+    height: calc(466px * var(--map-scale));
+    left: 0px;
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    -ms-flex-negative: 0;
+        flex-shrink: 0; }
+    #map-container #map .poi.chest,
+    #map-container #map .poi.skulltula {
+      visibility: hidden; }
+  #map-container[data-mode~="chests"] #map .poi.chest, #map-container[data-mode~="skulltulas"] #map .poi.skulltula {
+    visibility: visible; }
   #map-container .map-options {
     position: absolute;
     bottom: 0;
@@ -271,29 +268,6 @@
     display: block;
     overflow: auto; }
 
-#map {
-  --map-scale: 0.8;
-  background-image: url("../images/map.png");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  position: relative;
-  width: calc(825px * var(--map-scale));
-  height: calc(466px * var(--map-scale));
-  left: 0px;
-  -webkit-box-flex: 0;
-      -ms-flex-positive: 0;
-          flex-grow: 0;
-  -ms-flex-negative: 0;
-      flex-shrink: 0; }
-
-#map .poi.chest,
-#map .poi.skulltula {
-  visibility: hidden; }
-
-#map[data-mode~="chests"] .poi.chest,
-#map[data-mode~="skulltulas"] .poi.skulltula {
-  visibility: visible; }
-
 #dungeon-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -304,11 +278,7 @@
           flex-direction: column;
   background-color: black;
   font-size: 1.0em;
-  grid-area: dungeon;
-  background-color: black;
-  border-width: 8px;
-  border-style: inset;
-  border-color: gray; }
+  grid-area: dungeon; }
 
 #dungeon-container #dungeon-name {
   display: -webkit-box;
@@ -322,6 +292,7 @@
           justify-content: center;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  padding: 5px;
   font-size: 1.5em;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -842,26 +813,28 @@ a {
   color: black;
   border-bottom: solid 1px black; }
 
-body .poi .hint-badge,
-body #dungeon-container #dungeon-list .dungeon-entry .hint-badge {
-  display: none; }
-body .poi[data-mode],
-body #dungeon-container #dungeon-list .dungeon-entry[data-mode] {
-  display: none; }
-body[data-shopsanity="true"] .poi[data-mode="shopsanity"],
-body[data-shopsanity="true"] #dungeon-container #dungeon-list .dungeon-entry[data-mode="shopsanity"] {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; }
-body[data-hint-badges="true"] .poi .tooltip .hint-badge,
-body[data-hint-badges="true"] #dungeon-container #dungeon-list .dungeon-entry .hint-badge {
-  display: inline;
-  margin-left: 10px;
-  color: black;
-  background-color: sandybrown;
-  border-radius: 10px;
-  padding: 0 5px;
-  font-weight: bold; }
+body {
+  overflow: hidden; }
+  body .poi .hint-badge,
+  body #dungeon-container #dungeon-list .dungeon-entry .hint-badge {
+    display: none; }
+  body .poi[data-mode],
+  body #dungeon-container #dungeon-list .dungeon-entry[data-mode] {
+    display: none; }
+  body[data-shopsanity="true"] .poi[data-mode="shopsanity"],
+  body[data-shopsanity="true"] #dungeon-container #dungeon-list .dungeon-entry[data-mode="shopsanity"] {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+  body[data-hint-badges="true"] .poi .tooltip .hint-badge,
+  body[data-hint-badges="true"] #dungeon-container #dungeon-list .dungeon-entry .hint-badge {
+    display: inline;
+    margin-left: 10px;
+    color: black;
+    background-color: sandybrown;
+    border-radius: 10px;
+    padding: 0 5px;
+    font-weight: bold; }
 
 .alert-text {
   -webkit-animation: alertcolor 5s linear infinite;
@@ -905,6 +878,8 @@ body[data-hint-badges="true"] #dungeon-container #dungeon-list .dungeon-entry .h
 .layout-container {
   display: grid;
   width: 100%;
+  min-height: 800px;
+  min-width: 1200px;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: start;
@@ -914,12 +889,25 @@ body[data-hint-badges="true"] #dungeon-container #dungeon-list .dungeon-entry .h
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
-  grid-template-columns: calc(9 * 40px + 16px) minmax(0%, 100%);
-  grid-template-rows: calc(8 * 40px + 16px) calc(3 * 40px + 16px) minmax(0%, 100%);
+  grid-template-columns: calc(9 * 40px + 8px) 1fr;
+  grid-template-rows: calc(8 * 40px + 8px) calc(3 * 40px + 8px) 1fr;
   grid-template-areas: "items map"  "keys map" "dungeon map"; }
 
 .spacer-line {
-  margin: 4px 0; }
+  border-color: #cb9c3d;
+  border-width: 4px;
+  border-style: outset;
+  margin: 5px 10px; }
+
+.content,
+#map-container,
+#dungeon-container,
+#item-container,
+#key-container {
+  background-color: black;
+  border-color: #cb9c3d;
+  border-width: 4px;
+  border-style: inset; }
 
 .unavailable {
   background-color: red; }
@@ -970,5 +958,24 @@ body[data-hint-badges="true"] #dungeon-container #dungeon-list .dungeon-entry .h
 
 .button:disabled {
   opacity: 0.3; }
+
+/**********************************
+    scrollbar
+**********************************/
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px; }
+
+/* Track */
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-corner {
+  background: black; }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #929292; }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #bebebe; }
 
 /*# sourceMappingURL=tracker.css.map */

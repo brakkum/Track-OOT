@@ -33,6 +33,8 @@ a {
 
 body {
 
+    overflow: hidden;
+
     .poi,
     #dungeon-container #dungeon-list .dungeon-entry {
 
@@ -112,12 +114,16 @@ body {
 .layout-container {
     display: grid;
     width: 100%;
+    min-height: 800px;
+    min-width: 1200px;
     justify-content: start;
     align-content: start;
     justify-items: stretch;
     align-items: stretch;
-    grid-template-columns: calc(9 * 40px + 16px) minmax(0%, 100%);
-    grid-template-rows: calc(8 * 40px + 16px) calc(3 * 40px + 16px) minmax(0%, 100%);
+    //grid-template-columns: calc(9 * 40px + 16px) minmax(0%, 100%);
+    //grid-template-rows: calc(8 * 40px + 16px) calc(3 * 40px + 16px) minmax(0%, 100%);
+    grid-template-columns: calc(9 * 40px + 8px) 1fr;
+    grid-template-rows: calc(8 * 40px + 8px) calc(3 * 40px + 8px) 1fr;
     grid-template-areas: 
     "items map" 
     "keys map"
@@ -125,7 +131,21 @@ body {
 }
 
 .spacer-line {
-    margin: 4px 0;
+    border-color: #cb9c3d;
+    border-width: 4px;
+    border-style: outset;
+    margin: 5px 10px;
+}
+
+.content,
+#map-container,
+#dungeon-container,
+#item-container,
+#key-container {
+    background-color: black;
+    border-color: #cb9c3d;
+    border-width: 4px;
+    border-style: inset;
 }
 
 .unavailable {
@@ -187,4 +207,29 @@ body {
 
 .button:disabled {
     opacity: 0.3;
+}
+
+/**********************************
+    scrollbar
+**********************************/
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-corner {
+    background: black; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(146, 146, 146);
+
+    &:hover {
+        background: rgb(190, 190, 190); 
+    }
 }

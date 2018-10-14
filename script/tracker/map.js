@@ -329,9 +329,17 @@ function updateMap() {
         var ref = x.id.slice(8);
         x.className = "poi dungeon " + checkList(poi_list.mode, ref);
 
+        var chests = data.dungeons[ref].chests;
+        var skulltulas = data.dungeons[ref].skulltulas;
+
+        if (!!data.dungeons[ref].hasmq && SaveState.read("mq", ref, false)) {
+            chests = data.dungeons[ref].chests_mq;
+            skulltulas = data.dungeons[ref].skulltulas_mq;
+        }
+
         var DCcount = 0;
-        for (let j in data.dungeons[ref].chests) {
-            if (!data.dungeons[ref].chests[j].mode || data.dungeons[ref].chests[j].mode != "shopsanity" || SaveState.read("options", "shopsanity", false)) {
+        for (let j in chests) {
+            if (!chests.mode || chests.mode != "shopsanity" || SaveState.read("options", "shopsanity", false)) {
                 if (!SaveState.read("chests", j, 0)) {
                     if (checkLogic("chests", j)) {
                         DCcount++;
@@ -342,7 +350,7 @@ function updateMap() {
         }
         chests_available+=DCcount;
         var SKcount = 0;
-        for (let j in data.dungeons[ref].skulltulas) {
+        for (let j in skulltulas) {
             if (!SaveState.read("skulltulas", j, 0)) {
                 if (checkLogic("skulltulas", j)) {
                     SKcount++;
