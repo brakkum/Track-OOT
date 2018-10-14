@@ -2,11 +2,32 @@
     position: relative;
     display: flex;
     grid-area: map;
-    background-color: black;
-    border-width: 8px;
-    border-style: inset;
-    border-color: gray;
     overflow: hidden;
+
+    
+
+    #map {
+        --map-scale: 0.8;
+        background-image: url("../images/map.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        position: relative;
+        width: calc(825px * var(--map-scale));
+        height: calc(466px * var(--map-scale));
+        left: 0px;
+        flex-grow: 0;
+        flex-shrink: 0;
+
+        .poi.chest,
+        .poi.skulltula {
+            visibility: hidden;
+        }
+    }
+
+    &[data-mode~="chests"] #map .poi.chest,
+    &[data-mode~="skulltulas"] #map .poi.skulltula {
+        visibility: visible;
+    }
 
     /**********************************
         map options
@@ -119,39 +140,12 @@
     }
 }
 
-#map {
-    --map-scale: 0.8;
-    background-image: url("../images/map.png");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    position: relative;
-    width: calc(825px * var(--map-scale));
-    height: calc(466px * var(--map-scale));
-    left: 0px;
-    flex-grow: 0;
-    flex-shrink: 0;
-}
-
-#map .poi.chest,
-#map .poi.skulltula {
-    visibility: hidden;
-}
-
-#map[data-mode~="chests"] .poi.chest,
-#map[data-mode~="skulltulas"] .poi.skulltula {
-    visibility: visible;
-}
-
 #dungeon-container {
     display: flex;
     flex-direction: column;
     background-color: black;
     font-size: 1.0em;
     grid-area: dungeon;
-    background-color: black;
-    border-width: 8px;
-    border-style: inset;
-    border-color: gray;
 }
 
 #dungeon-container #dungeon-name {
@@ -159,6 +153,7 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    padding: 5px;
     font-size: 1.5em;
     user-select: none;
     cursor: default;

@@ -22,7 +22,7 @@ map_scale_slider.addEventListener("change", function(ev) {
     Storage.set("settings", "map_zoom", parseInt(map_scale_slider.value));
 });
 document.getElementById("map-option-chest").addEventListener("click", function(ev) {
-    document.getElementById('map').setAttribute("data-mode", "chests");
+    document.getElementById('map-container').setAttribute("data-mode", "chests");
     poi_list.mode = "chests";
     if (poi_list.ref != "") {
         document.getElementById("dungeon_"+poi_list.ref).click();
@@ -30,7 +30,7 @@ document.getElementById("map-option-chest").addEventListener("click", function(e
     updateMap();
 });
 document.getElementById("map-option-skulltula").addEventListener("click", function(ev) {
-    document.getElementById('map').setAttribute("data-mode", "skulltulas");
+    document.getElementById('map-container').setAttribute("data-mode", "skulltulas");
     poi_list.mode = "skulltulas";
     if (poi_list.ref != "") {
         document.getElementById("dungeon_"+poi_list.ref).click();

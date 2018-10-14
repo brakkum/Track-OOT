@@ -28,6 +28,10 @@
             "type": "check",
             "default": false
         },
+         "fast_ganon": {
+            "type": "check",
+            "default": false
+        },
         "gerudo_fortress_open": {
             "type": "choice",
             "default": "gerudo_fortress_open_default",

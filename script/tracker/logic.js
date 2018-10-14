@@ -121,7 +121,12 @@ function checkBeatList(name) {
 }
 
 function checkList(category, name) {
-    var list = data.dungeons[name][category];
+    var list = data.dungeons[name][category];  
+
+    if (!!data.dungeons[name].hasmq && SaveState.read("mq", name, false)) {
+        list = data.dungeons[name][category+"_mq"];
+    }
+
     var canGet = 0;
     var unopened = 0
     for (let i in list) {

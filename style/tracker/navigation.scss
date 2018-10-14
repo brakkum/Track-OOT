@@ -68,6 +68,7 @@
 
 .footer {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     bottom: 0;
     width: 100%;
@@ -78,17 +79,17 @@
     flex-grow: 0;
     flex-shrink: 0;
     user-select: none;
-}
 
-.footer .footer-field,
-.footer .footer-spacer {
-    height: 14px;
-}
-
-.footer .footer-spacer {
-    margin: 0 15px;
-}
-
-.footer .footer-right {
-    margin-left: auto;
+    .footer-field,
+    .footer-spacer {
+        height: 14px;
+    }
+    
+    .footer-spacer {
+        margin: 0 15px;
+    }
+    
+    .footer-right {
+        margin-left: auto;
+    }
 }
