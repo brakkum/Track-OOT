@@ -889,8 +889,8 @@ body {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
+  grid-template-rows: calc(8 * 40px + 16px) calc(3 * 40px + 16px) minmax(0%, 100%);
   grid-template-columns: calc(9 * 40px + 8px) 1fr;
-  grid-template-rows: calc(8 * 40px + 8px) calc(3 * 40px + 8px) 1fr;
   grid-template-areas: "items map"  "keys map" "dungeon map"; }
 
 .spacer-line {
