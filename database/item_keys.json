@@ -1,5 +1,8 @@
 [
     [
+        "icon:stone_forest.png#toggle_deku_mq",
+        "icon:stone_fire.png#toggle_dodongo_mq",
+        "icon:stone_water.png#toggle_jabu_mq",
         "icon:medallion_forest.png#toggle_forest_mq",
         "icon:medallion_fire.png#toggle_fire_mq",
         "icon:medallion_water.png#toggle_water_mq",
@@ -8,9 +11,13 @@
         "icon:ganon.png#toggle_ganon_mq",
         "icon:saw.png",
         "icon:arrow_ice.png#toggle_training_mq",
-        "icon:lens.png#toggle_well_mq"
+        "icon:lens.png#toggle_well_mq",
+        "icon:boots_iron.png#toggle_ice_mq"
     ],
     [
+        "icon:",
+        "icon:",
+        "icon:",
         "key_small_forest",
         "key_small_fire",
         "key_small_water",
@@ -19,15 +26,67 @@
         "key_small_ganon",
         "key_small_gerudo",
         "key_small_training",
-        "key_small_well"
+        "key_small_well",
+        "icon:"
     ],
     [
+        "icon:",
+        "icon:",
+        "icon:",
         "key_boss_forest",
         "key_boss_fire",
         "key_boss_water",
         "key_boss_shadow",
         "key_boss_spirit",
         "key_boss_ganon",
-        "membership"
+        "membership",
+        "icon:",
+        "icon:",
+        "icon:"
+    ],
+    [
+        "dungeon_map_deku",
+        "dungeon_map_dogongo",
+        "dungeon_map_jabujabu",
+        "dungeon_map_temple_forest",
+        "dungeon_map_temple_fire",
+        "dungeon_map_temple_water",
+        "dungeon_map_temple_shadow",
+        "dungeon_map_temple_spirit",
+        "icon:",
+        "icon:",
+        "icon:",
+        "dungeon_map_well",
+        "dungeon_map_ice"
+    ],
+    [
+        "compass_deku",
+        "compass_dodongo",
+        "compass_jabujabu",
+        "compass_temple_forest",
+        "compass_temple_fire",
+        "compass_temple_water",
+        "compass_temple_shadow",
+        "compass_temple_spirit",
+        "icon:",
+        "icon:",
+        "icon:",
+        "compass_well",
+        "compass_ice"
+    ],
+    [
+        "text:N#toggle_deku_mq",
+        "text:N#toggle_dodongo_mq",
+        "text:N#toggle_jabu_mq",
+        "text:N#toggle_forest_mq",
+        "text:N#toggle_fire_mq",
+        "text:N#toggle_water_mq",
+        "text:N#toggle_shadow_mq",
+        "text:N#toggle_spirit_mq",
+        "text:N#toggle_ganon_mq",
+        "text:",
+        "text:N#toggle_training_mq",
+        "text:N#toggle_well_mq",
+        "text:N#toggle_ice_mq"
     ]
 ]

@@ -121,7 +121,7 @@ body {
     justify-items: stretch;
     align-items: stretch;
     //grid-template-columns: calc(9 * 40px + 16px) minmax(0%, 100%);
-    grid-template-rows: calc(8 * 40px + 16px) calc(3 * 40px + 16px) minmax(0%, 100%);
+    grid-template-rows: calc(8 * 40px + 8px) calc(6 * 27px + 8px) minmax(0%, 100%);
     grid-template-columns: calc(9 * 40px + 8px) 1fr;
     //grid-template-rows: calc(8 * 40px + 8px) calc(3 * 40px + 8px) 1fr;
     grid-template-areas: 
@@ -131,9 +131,9 @@ body {
 }
 
 .spacer-line {
-    border-color: #cb9c3d;
+    border-color: #d4ad5e #a17a2b #795b20 #c99836 ;
     border-width: 4px;
-    border-style: outset;
+    border-style: solid;
     margin: 5px 10px;
 }
 
@@ -143,9 +143,9 @@ body {
 #item-container,
 #key-container {
     background-color: black;
-    border-color: #cb9c3d;
+    border-color: #795b20 #c99836 #d4ad5e #a17a2b;
     border-width: 4px;
-    border-style: inset;
+    border-style: solid;
 }
 
 .unavailable {

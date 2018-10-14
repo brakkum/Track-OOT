@@ -4,6 +4,18 @@ function createItemTracker() {
     createGrid(document.getElementById("item-container"), data.item_grid);
     createGrid(document.getElementById("key-container"), data.item_keys);
 
+    document.getElementById('toggle_deku_mq').onclick = function(ev) {
+        toogleDungeonMQ("deku");
+    };
+
+    document.getElementById('toggle_dodongo_mq').onclick = function(ev) {
+        toogleDungeonMQ("dodongo");
+    };
+
+    document.getElementById('toggle_jabu_mq').onclick = function(ev) {
+        toogleDungeonMQ("jabujabu");
+    };
+
     document.getElementById('toggle_forest_mq').onclick = function(ev) {
         toogleDungeonMQ("temple_forest");
     };
@@ -13,11 +25,15 @@ function createItemTracker() {
     };
     
     document.getElementById('toggle_water_mq').onclick = function(ev) {
-        toogleDungeonMQ("water_forest");
+        toogleDungeonMQ("temple_water");
     };
     
     document.getElementById('toggle_shadow_mq').onclick = function(ev) {
         toogleDungeonMQ("temple_shadow");
+    };
+    
+    document.getElementById('toggle_spirit_mq').onclick = function(ev) {
+        toogleDungeonMQ("temple_spirit");
     };
     
     document.getElementById('toggle_ganon_mq').onclick = function(ev) {
@@ -31,6 +47,10 @@ function createItemTracker() {
     document.getElementById('toggle_well_mq').onclick = function(ev) {
         toogleDungeonMQ("well");
     };
+    
+    document.getElementById('toggle_ice_mq').onclick = function(ev) {
+        toogleDungeonMQ("ice_cavern");
+    };
 }
 
 function createGrid(container, grid_data) {
@@ -43,6 +63,9 @@ function createGrid(container, grid_data) {
             if (name.startsWith("icon:")) {
                 name = name.split("#");
                 createItemIcon(cont, name[0].slice(5), name[1]);
+            } else if (name.startsWith("text:")) {
+                name = name.split("#");
+                createItemText(cont, name[0].slice(5), name[1]);
             } else {
                 createItemButton(cont, name);
             }
@@ -69,6 +92,16 @@ function createItemIcon(cont, img, ident) {
         el.id = ident;
     }
     el.style.backgroundImage = "url('images/" + img + "')";
+    cont.appendChild(el);
+}
+
+function createItemText(cont, text, ident) {
+    var el = document.createElement('DIV');
+    el.classList.add("text");
+    if (!!ident) {
+        el.id = ident;
+    }
+    el.innerHTML = text;
     cont.appendChild(el);
 }
 
