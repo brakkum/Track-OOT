@@ -1270,6 +1270,44 @@
                     ]
                 }
             ]
+        },
+        "can_child_attack": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "item",
+                    "el": "boomerang"
+                },
+                {
+                    "type": "item",
+                    "el": "stick"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "item",
+                    "el": "sword_kokiri"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "magic_din"
+                        },
+                        {
+                            "type": "item",
+                            "el": "magic_power"
+                        }
+                    ]
+                }
+            ]
         }
     },
     "chests": {
@@ -6791,6 +6829,10 @@
                         },
                         {
                             "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "item",
                             "el": "glove"
                         },
                         {
@@ -6803,19 +6845,6 @@
                                 {
                                     "type": "item",
                                     "el": "magic_power"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "mixin",
-                                    "el": "can_become_adult"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "bow"
                                 }
                             ]
                         }
@@ -6834,17 +6863,8 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "mixin",
-                                    "el": "can_become_adult"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "bow"
-                                }
-                            ]
+                            "type": "item",
+                            "el": "bow"
                         },
                         {
                             "type": "and",
@@ -6883,34 +6903,20 @@
                                             "el": "slingshot"
                                         },
                                         {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "mixin",
-                                                    "el": "can_become_adult"
-                                                },
-                                                {
-                                                    "type": "or",
-                                                    "el": [
-                                                        {
-                                                            "type": "item",
-                                                            "el": "boots_hover"
-                                                        },
-                                                        {
-                                                            "type": "min",
-                                                            "el": {
-                                                                "type": "item",
-                                                                "el": "hookshot"
-                                                            },
-                                                            "value": 2
-                                                        },
-                                                        {
-                                                            "type": "skip",
-                                                            "el": "dodongo_spike"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "hookshot"
+                                            },
+                                            "value": 2
+                                        },
+                                        {
+                                            "type": "skip",
+                                            "el": "dodongo_spike"
                                         }
                                     ]
                                 }
@@ -6952,17 +6958,8 @@
                             ]
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "mixin",
-                                    "el": "can_become_adult"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "bow"
-                                }
-                            ]
+                            "type": "item",
+                            "el": "bow"
                         }
                     ]
                 },
@@ -6974,33 +6971,24 @@
                             "el": "slingshot"
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "mixin",
-                                    "el": "can_become_adult"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "boots_hover"
-                                },
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "hookshot"
-                                    },
-                                    "value": 2
-                                },
-                                {
-                                    "type": "skip",
-                                    "el": "dodongo_spike"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "bow"
-                                }
-                            ]
+                            "type": "item",
+                            "el": "boots_hover"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "hookshot"
+                            },
+                            "value": 2
+                        },
+                        {
+                            "type": "skip",
+                            "el": "dodongo_spike"
+                        },
+                        {
+                            "type": "item",
+                            "el": "bow"
                         }
                     ]
                 },
@@ -7014,10 +7002,6 @@
                         {
                             "type": "and",
                             "el": [
-                                {
-                                    "type": "mixin",
-                                    "el": "can_become_adult"
-                                },
                                 {
                                     "type": "item",
                                     "el": "hammer"
@@ -7068,38 +7052,24 @@
                             "el": "slingshot"
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "mixin",
-                                    "el": "can_become_adult"
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "boots_hover"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "bow"
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "hookshot"
-                                            },
-                                            "value": 2
-                                        },
-                                        {
-                                            "type": "skip",
-                                            "el": "dodongo_spike"
-                                        }
-                                    ]
-                                }
-                            ]
+                            "type": "item",
+                            "el": "boots_hover"
+                        },
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "hookshot"
+                            },
+                            "value": 2
+                        },
+                        {
+                            "type": "skip",
+                            "el": "dodongo_spike"
                         }
                     ]
                 }
@@ -7124,38 +7094,24 @@
                             "el": "slingshot"
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "mixin",
-                                    "el": "can_become_adult"
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "boots_hover"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "bow"
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "hookshot"
-                                            },
-                                            "value": 2
-                                        },
-                                        {
-                                            "type": "skip",
-                                            "el": "dodongo_spike"
-                                        }
-                                    ]
-                                }
-                            ]
+                            "type": "item",
+                            "el": "boots_hover"
+                        },
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "hookshot"
+                            },
+                            "value": 2
+                        },
+                        {
+                            "type": "skip",
+                            "el": "dodongo_spike"
                         }
                     ]
                 },
@@ -9384,10 +9340,6 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "mixin",
-                                    "el": "can_become_adult"
-                                },
-                                {
                                     "type": "item",
                                     "el": "hammer"
                                 },
@@ -9440,10 +9392,6 @@
                         {
                             "type": "and",
                             "el": [
-                                {
-                                    "type": "mixin",
-                                    "el": "can_become_adult"
-                                },
                                 {
                                     "type": "item",
                                     "el": "hammer"
@@ -9970,7 +9918,286 @@
             "el": "can_leave_forest"
         },
         "woods_deku_salesman_theater_1": null,
-        "woods_deku_salesman_theater_2": null
+        "woods_deku_salesman_theater_2": null,
+        "deku_lobby_mq": {
+            "type": "mixin",
+            "el": "deku_tree_access"
+        },
+        "deku_compass_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "deku_slingshot_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_child_attack"
+                }
+            ]
+        },
+        "deku_slingshot_back_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "deku_basement_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "deku_before_log": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "deku_after_log": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_time"
+                }
+            ]
+        },
+        "deku_basement_salesman": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "deku_gohma_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "el": "shield_kokiri"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "item",
+                            "el": "sword_kokiri"
+                        }
+                    ]
+                }
+            ]
+        }
     },
     "skulltulas": {
         "zora_river_tree_child": {
@@ -12413,6 +12640,170 @@
                             "el": "boots_hover"
                         }
                     ]
+                }
+            ]
+        },
+        "deku_crate_near_map_child_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_child_attack"
+                }
+            ]
+        },
+        "deku_2f_compass_side_child_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "el": "boomerang"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "bombs"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "song_time"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "item",
+                            "el": "bombchu"
+                        }
+                    ]
+                }
+            ]
+        },
+        "deku_basement_grave_ceiling_child_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "el": "boomerang"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_time"
+                }
+            ]
+        },
+        "deku_basement_back_room_child_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "el": "boomerang"
                 }
             ]
         }

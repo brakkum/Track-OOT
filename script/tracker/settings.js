@@ -140,9 +140,9 @@ function applySettingsChoices() {
     } else {
         document.body.setAttribute("data-hint-badges", "false");
     }
-    if (SaveState.read("options", "shopsanity", false)) {
-        document.body.setAttribute("data-shopsanity", "true");
+    if (SaveState.read("options", "scrubsanity", false)) {
+        document.body.setAttribute("data-scrubsanity", "true");
     } else {
-        document.body.setAttribute("data-shopsanity", "false");
+        document.body.setAttribute("data-scrubsanity", "false");
     }
 }

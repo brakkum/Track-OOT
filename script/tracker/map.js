@@ -313,11 +313,11 @@ function updateMap() {
         if(SaveState.read("chests", x.id, 0)) {
             x.className = "poi chest opened";
         } else {
-            var avail = checkAvailable("chests", x.id);
-            if (avail == "available") chests_available++;
-            x.className = "poi chest " + avail;
-            if (!data.chests[x.id].mode || data.chests[x.id].mode != "shopsanity" || SaveState.read("options", "shopsanity", false)) {
+            var avail = checkLogic("chests", x.id);
+            x.className = "poi chest " + (avail ? "available" : "unavailable");
+            if (!data.chests[x.id].mode || data.chests[x.id].mode != "scrubsanity" || SaveState.read("options", "scrubsanity", false)) {
                 chests_missing++;
+                if (avail) chests_available++;
             }
         }
     }
@@ -339,12 +339,10 @@ function updateMap() {
 
         var DCcount = 0;
         for (let j in chests) {
-            if (!chests.mode || chests.mode != "shopsanity" || SaveState.read("options", "shopsanity", false)) {
-                if (!SaveState.read("chests", j, 0)) {
-                    if (checkLogic("chests", j)) {
-                        DCcount++;
-                    }
+            if (!SaveState.read("chests", j, 0)) {
+                if (!chests[j].mode || chests[j].mode != "scrubsanity" || SaveState.read("options", "scrubsanity", false)) {
                     chests_missing++;
+                    if (checkLogic("chests", j)) DCcount++;
                 }
             }
         }
@@ -382,9 +380,9 @@ function updateMap() {
         if(SaveState.read("skulltulas", x.id, 0)) {
             x.className = "poi skulltula opened";
         } else {
-            var avail = checkAvailable("skulltulas", x.id);
-            if (avail == "available") skulltulas_available++;
-            x.className = "poi skulltula " + avail;
+            var avail = checkLogic("skulltulas", x.id);
+            if (avail) skulltulas_available++;
+            x.className = "poi skulltula " + (avail ? "available" : "unavailable");
             skulltulas_missing++;
         }
     }

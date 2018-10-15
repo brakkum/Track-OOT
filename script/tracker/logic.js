@@ -130,7 +130,7 @@ function checkList(category, name) {
     var canGet = 0;
     var unopened = 0
     for (let i in list) {
-        if (!list[i].mode || list[i].mode != "shopsanity" || SaveState.read("options", "shopsanity", false)) {
+        if (!list[i].mode || list[i].mode != "scrubsanity" || SaveState.read("options", "scrubsanity", false)) {
             if (!SaveState.read(category, i, 0)) {
                 unopened++;
                 if (checkLogic(category, i)) {
