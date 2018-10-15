@@ -28,10 +28,6 @@
             "type": "check",
             "default": false
         },
-         "fast_ganon": {
-            "type": "check",
-            "default": false
-        },
         "gerudo_fortress_open": {
             "type": "choice",
             "default": "gerudo_fortress_open_default",
@@ -50,7 +46,11 @@
                 "ganon_castle_open_default",
                 "ganon_castle_open_open"
             ]
-        }
+        },
+        "ganon_boss_door_open": {
+           "type": "check",
+           "default": false
+       }
     },
     "skips": {
         "man_on_roof": {
