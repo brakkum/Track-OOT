@@ -47,12 +47,12 @@ body {
         }
     }
 
-    &[data-shopsanity="true"] {
+    &[data-scrubsanity="true"] {
 
         .poi,
         #dungeon-container #dungeon-list .dungeon-entry {
 
-            &[data-mode="shopsanity"] {
+            &[data-mode="scrubsanity"] {
                 display: flex;
             }
         }
