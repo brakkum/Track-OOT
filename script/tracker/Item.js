@@ -25,7 +25,7 @@ function Item(name, cont) {
         }
         if (val < m) {
             SaveState.write("items", name, ++val);
-            setVisual(el, val);
+            setVisual();
             updateMap();
         }
         ev.preventDefault();
@@ -33,10 +33,9 @@ function Item(name, cont) {
     }
     
     function untoggleItem(ev) {
-        var val = SaveState.read("items", name, 0);
         if (val > 0) {
             SaveState.write("items", name, --val);
-            setVisual(el, val);
+            setVisual();
             updateMap();
         }
         ev.preventDefault();
