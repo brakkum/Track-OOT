@@ -9,7 +9,6 @@ function Item(name, cont) {
     setVisual(el, 0);
     el.onclick = toggleItem;
     el.oncontextmenu = untoggleItem;
-    itemGridEls.push(el);
     cont.appendChild(el);
 
     this.update = function() {
