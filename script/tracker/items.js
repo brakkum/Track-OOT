@@ -1,3 +1,5 @@
+// @koala-prepend "Item.js"
+
 var itemGridEls = [];
 
 function createItemTracker() {
@@ -75,14 +77,7 @@ function createGrid(container, grid_data) {
 }
 
 function createItemButton(cont, name) {
-    var el = document.createElement('DIV');
-    el.id = name;
-    el.classList.add("item");
-    setVisual(el, 0);
-    el.onclick = toggleItem;
-    el.oncontextmenu = untoggleItem;
-    itemGridEls.push(el);
-    cont.appendChild(el);
+    new Item(name, cont);
 }
 
 function createItemIcon(cont, img, ident) {
