@@ -77,7 +77,7 @@ function createGrid(container, grid_data) {
 }
 
 function createItemButton(cont, name) {
-    new Item(name, cont);
+    itemGridEls.push(new Item(name, cont));
 }
 
 function createItemIcon(cont, img, ident) {
@@ -179,8 +179,6 @@ function setImage(el, id, val) {
 
 function updateItems() {
     for (var i = 0; i < itemGridEls.length; ++i) {
-        let el = itemGridEls[i];
-        let val = SaveState.read("items", el.id, 0);
-        setVisual(el, val);
+        itemGridEls[i].update();
     }
 }
