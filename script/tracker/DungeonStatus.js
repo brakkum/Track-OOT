@@ -1,6 +1,6 @@
 function DungeonStatus(name, cont) {
 
-    var ref = data.items[name];
+    var ref = data.dungeons[name];
     var val = SaveState.read("items", name, 0);
 
     var el = document.createElement('DIV');
