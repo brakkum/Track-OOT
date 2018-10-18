@@ -10,16 +10,16 @@ async function loadAll() {
     ]);
     var data = {};
     // items
-    data.items = buffer[0];
+    data.items = buffer.shift();
     // chests, dungeons & skulltulas
-    data.chests = buffer[1];
-    data.dungeons = buffer[2];
-    data.skulltulas = buffer[3];
+    data.chests = buffer.shift();
+    data.dungeons = buffer.shift();
+    data.skulltulas = buffer.shift();
     // logic
-    data.logic = buffer[4];
+    data.logic = buffer.shift();
     data.logic_patched = Storage.get("settings", "logic", {});
     // misc
-    data.rom_options = buffer[5];
-    data.lang = buffer[6];
+    data.rom_options = buffer.shift();
+    data.lang = buffer.shift();
     return data;
 }

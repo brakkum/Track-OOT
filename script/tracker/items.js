@@ -3,8 +3,8 @@
 var itemGridEls = [];
 
 function createItemTracker() {
-    createGrid(document.getElementById("item-container"), data.item_grid);
-    createGrid(document.getElementById("key-container"), data.item_keys);
+    createGrid(document.getElementById("item-container"), data.grids.items);
+    createGrid(document.getElementById("key-container"), data.grids.keys_old);
 
     document.getElementById('toggle_deku_mq').onclick = function(ev) {
         toogleDungeonMQ("deku");
@@ -53,6 +53,7 @@ function createItemTracker() {
     document.getElementById('toggle_ice_mq').onclick = function(ev) {
         toogleDungeonMQ("ice_cavern");
     };
+
 }
 
 function createGrid(container, grid_data) {

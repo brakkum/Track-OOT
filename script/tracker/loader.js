@@ -1,8 +1,7 @@
 async function loadAll() {
     var buffer = await FileLoader.loadAllJSON([
         "database/items.json",
-        "database/item_grid.json",
-        "database/item_keys.json",
+        "database/grids.json",
         "database/chests.json",
         "database/dungeons.json",
         "database/skulltulas.json",
@@ -14,20 +13,19 @@ async function loadAll() {
     ]);
     var data = {};
     // items
-    data.items = buffer[0];
-    data.item_grid = buffer[1];
-    data.item_keys = buffer[2];
+    data.items = buffer.shift();
+    data.grids = buffer.shift();
     // chests, dungeons & skulltulas
-    data.chests = buffer[3];
-    data.dungeons = buffer[4];
-    data.skulltulas = buffer[5];
+    data.chests = buffer.shift();
+    data.dungeons = buffer.shift();
+    data.skulltulas = buffer.shift();
     // logic
-    data.logic = buffer[6];
+    data.logic = buffer.shift();
     data.logic_patched = Storage.get("settings", "logic", {});
     // misc
-    data.rom_options = buffer[7];
-    data.shops = buffer[8];
-    data.shop_items = buffer[9];
-    data.lang = buffer[10];
+    data.rom_options = buffer.shift();
+    data.shops = buffer.shift();
+    data.shop_items = buffer.shift();
+    data.lang = buffer.shift();
     return data;
 }
