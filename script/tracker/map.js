@@ -53,11 +53,12 @@ function addPOIs(target, category) {
             s.setAttribute("data-mode", dta.mode);
         }
 
-        var ss = document.createElement('span');
+        /*var ss = document.createElement('span');
         ss.className = "tooltip";
         ss.innerHTML = translate(id);
         addBadge(ss, dta.age, dta.time);
-        s.appendChild(ss);
+        s.appendChild(ss);*/
+        s.setAttribute("title", translate(id));
 
         poi[category].push(s);
 
@@ -85,10 +86,12 @@ function populateMap() {
         var ss = document.createElement('span');
         ss.className = "count";
         s.appendChild(ss);
-        var ss = document.createElement('span');
+
+        /*var ss = document.createElement('span');
         ss.className = "tooltip";
         ss.innerHTML = translate(id);
-        s.appendChild(ss);
+        s.appendChild(ss);*/
+        s.setAttribute("title", translate(id));
 
         poi.dungeons.push(s);
 
