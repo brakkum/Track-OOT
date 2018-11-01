@@ -112,19 +112,20 @@ body {
 }
 
 .layout-container {
+    --item-size: 40px;
     display: grid;
     width: 100%;
     justify-content: start;
     align-content: start;
     justify-items: stretch;
     align-items: stretch;
-    grid-template-columns: calc(9 * 40px + 8px) minmax(500px, 100%);
+    grid-template-columns: calc(9 * var(--item-size) + 8px) minmax(500px, 100%) 400px;
     //grid-template-rows: calc(8 * 40px + 8px) calc(3 * 40px + 8px) minmax(200px, 100%);
-    grid-template-rows: calc(8 * 40px + 8px) calc(6 * 27px + 8px) minmax(200px, 100%);
+    grid-template-rows: calc(8 * var(--item-size) + 8px) calc(3 * var(--item-size) + 8px) minmax(calc(13 * var(--item-size) + 8px), 100%);
     grid-template-areas: 
-    "items map" 
-    "keys map"
-    "dungeon map";
+    "items map dungeon" 
+    "keys map dungeon"
+    "dungeonstatus map dungeon";
 }
 
 .spacer-line {
@@ -138,7 +139,8 @@ body {
 #map-container,
 #dungeon-container,
 #item-container,
-#key-container {
+#key-container,
+#dungeon-status-container{
     background-color: black;
     border-color: #795b20 #c99836 #d4ad5e #a17a2b;
     border-width: 4px;

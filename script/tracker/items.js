@@ -1,59 +1,15 @@
-// @koala-prepend "Item.js"
+// @koala-prepend "../UI/Item.js"
+// @koala-prepend "../UI/DungeonStatus.js"
 
 var itemGridEls = [];
 
 function createItemTracker() {
     createGrid(document.getElementById("item-container"), data.grids.items);
-    createGrid(document.getElementById("key-container"), data.grids.keys_old);
-
-    document.getElementById('toggle_deku_mq').onclick = function(ev) {
-        toogleDungeonMQ("deku");
-    };
-
-    document.getElementById('toggle_dodongo_mq').onclick = function(ev) {
-        toogleDungeonMQ("dodongo");
-    };
-
-    document.getElementById('toggle_jabu_mq').onclick = function(ev) {
-        toogleDungeonMQ("jabujabu");
-    };
-
-    document.getElementById('toggle_forest_mq').onclick = function(ev) {
-        toogleDungeonMQ("temple_forest");
-    };
-    
-    document.getElementById('toggle_fire_mq').onclick = function(ev) {
-        toogleDungeonMQ("temple_fire");
-    };
-    
-    document.getElementById('toggle_water_mq').onclick = function(ev) {
-        toogleDungeonMQ("temple_water");
-    };
-    
-    document.getElementById('toggle_shadow_mq').onclick = function(ev) {
-        toogleDungeonMQ("temple_shadow");
-    };
-    
-    document.getElementById('toggle_spirit_mq').onclick = function(ev) {
-        toogleDungeonMQ("temple_spirit");
-    };
-    
-    document.getElementById('toggle_ganon_mq').onclick = function(ev) {
-        toogleDungeonMQ("castle_ganon");
-    };
-    
-    document.getElementById('toggle_training_mq').onclick = function(ev) {
-        toogleDungeonMQ("gerudo_training");
-    };
-    
-    document.getElementById('toggle_well_mq').onclick = function(ev) {
-        toogleDungeonMQ("well");
-    };
-    
-    document.getElementById('toggle_ice_mq').onclick = function(ev) {
-        toogleDungeonMQ("ice_cavern");
-    };
-
+    createGrid(document.getElementById("key-container"), data.grids.keys);
+    var dung = data.grids.dungeons;
+    for (var i = 0; i < dung.length; ++i) {
+        itemGridEls.push(new DungeonStatus(dung[i], document.getElementById("dungeon-status-container")));
+    }
 }
 
 function createGrid(container, grid_data) {
@@ -182,4 +138,5 @@ function updateItems() {
     for (var i = 0; i < itemGridEls.length; ++i) {
         itemGridEls[i].update();
     }
+
 }

@@ -34,8 +34,8 @@
 .item-grid .item-row .icon,
 .item-grid .item-row .text {
     display: inline-flex;
-    width: 40px;
-    height: 40px;
+    width: var(--item-size);
+    height: var(--item-size);
     padding: 2px;
     background-repeat: no-repeat;
     background-position: center;
@@ -71,12 +71,35 @@
 #key-container {
     grid-area: keys;
 
-    .item-row .item,
-    .item-row .icon,
-    .item-row .text {
-        //width: 40px;
-        //height: 40px;
-        width: 27px;
-        height: 27px;
+    .item-row {
+
+        .item,
+        .icon,
+        .text {
+            width: var(--item-size);
+            height: var(--item-size);
+        }
+    }
+}
+
+/**********************************
+    dungeon status
+**********************************/
+
+#dungeon-status-container {
+    grid-area: dungeonstatus;
+
+    .item-row {
+
+        &:hover {
+            background-color: #cb9c3d30;
+        }
+
+        .item,
+        .icon,
+        .text {
+            width: var(--item-size);
+            height: var(--item-size);
+        }
     }
 }

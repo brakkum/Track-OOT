@@ -6,7 +6,7 @@ function Item(name, cont) {
     var el = document.createElement('DIV');
     el.id = name;
     el.classList.add("item");
-    setVisual(el, 0);
+    setVisual();
     el.onclick = toggleItem;
     el.oncontextmenu = untoggleItem;
     cont.appendChild(el);
@@ -26,6 +26,7 @@ function Item(name, cont) {
         if (val < m) {
             SaveState.write("items", name, ++val);
             setVisual();
+            updateItems();
             updateMap();
         }
         ev.preventDefault();
@@ -36,6 +37,7 @@ function Item(name, cont) {
         if (val > 0) {
             SaveState.write("items", name, --val);
             setVisual();
+            updateItems();
             updateMap();
         }
         ev.preventDefault();

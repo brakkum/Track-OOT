@@ -308,6 +308,12 @@ function updateMap() {
     var chests_missing = 0;
     var skulltulas_available = 0;
     var skulltulas_missing = 0;
+
+    // update dungeon list name
+    /////////////////////////////////
+    if (!!poi_list.ref && !!poi_list.ref.length) {
+        document.getElementById("dungeon_" + poi_list.ref).click();
+    }
     
     // update chest markers
     /////////////////////////////////
