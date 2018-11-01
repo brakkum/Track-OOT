@@ -1,0 +1,31 @@
+{
+    "main": [{
+        "meta": {
+            "map": true,
+            "list": true,
+            "dungeon_stats": true
+        },
+        "css": {
+            "--item-size": "40px"
+        },
+        "layout": {
+            "type": "split-x",
+            "child": [{
+                "type": "split-y",
+                "child": [{
+                    "type": "panel",
+                    "ref": "grid_item"
+                },{
+                    "type": "panel",
+                    "ref": "grid_dungeon"
+                }]
+            },{
+                "type": "panel",
+                "ref": "map"
+            },{
+                "type": "panel",
+                "ref": "list_chests"
+            }]
+        }
+    }]
+}
