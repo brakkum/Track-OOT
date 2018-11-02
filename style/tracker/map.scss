@@ -151,9 +151,9 @@
 #dungeon-container #dungeon-name {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-shrink: 0;
-    padding: 5px;
+    padding: 5px 9px;
     font-size: 1.3em;
     user-select: none;
     cursor: default;

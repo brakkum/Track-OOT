@@ -68,6 +68,8 @@ function addPOIs(target, category) {
 
 function populateMap() {
     var map_element = document.getElementById('map');
+
+    fillDungeonList();
     
     // populate chest markers
     /////////////////////////////////
@@ -276,31 +278,103 @@ function clickDungeon(event) {
     if (mq) {
         dn.innerHTML += " (MQ)";
     }
-    var list = document.getElementById('dungeon-list');
     dn.setAttribute("data-mode", poi_list.mode);
-    list.innerHTML = "";
-    poi_list.entries = [];
     var dd = data.dungeons[poi_list.ref][poi_list.mode + (mq?"_mq":"")];
     if (!dd) dd = data.dungeons[poi_list.ref][poi_list.mode];
-    for (let i in dd) {
-        var dta = dd[i];
-        var s = document.createElement('li');
-        s.id = i;
-        s.innerHTML = translate(i);
-        addBadge(s, dta.age, dta.time);
-        s.setAttribute("data-category", poi_list.mode);
-        s.onclick = togglePOI;
-        s.oncontextmenu = untogglePOI;
-        s.style.cursor = "pointer";
-        if (!!dta.mode) {
-            s.setAttribute("data-mode", dta.mode);
+    fillDungeonList(dd);
+}
+
+function loadDungeonList(event) {
+    var ref_id = event;
+    if (typeof ref_id != "string") {
+        ref_id = event.currentTarget.getAttribute("data-ref");
+    }
+    var mq = SaveState.read("mq", ref_id, false);
+    var dn = document.getElementById('dungeon-name');
+    poi_list.ref = ref_id;
+    dn.ref = ref_id;
+    dn.innerHTML = translate(poi_list.ref);
+    if (mq) {
+        dn.innerHTML += " (MQ)";
+    }
+    dn.setAttribute("data-mode", poi_list.mode);
+    var dd;
+    if (ref_id == "overworld") {
+        dd = data[poi_list.mode];
+    } else {
+        dd = data.dungeons[poi_list.ref][poi_list.mode + (mq?"_mq":"")];
+        if (!dd) dd = data.dungeons[poi_list.ref][poi_list.mode];
+    }
+    fillDungeonList(dd);
+}
+
+function fillDungeonList(dd) {
+    var list = document.getElementById('dungeon-list');
+    list.innerHTML = "";
+    poi_list.entries = [];
+    if (!!dd) {
+        var r = document.createElement('li');
+        r.innerHTML = "(back)";
+        r.className = "dungeon-entry";
+        r.onclick = function() {
+            fillDungeonList();
+        };
+        r.style.cursor = "pointer";
+        list.appendChild(r);
+
+        for (let i in dd) {
+            var dta = dd[i];
+            var s = document.createElement('li');
+            s.id = i;
+            s.innerHTML = translate(i);
+            addBadge(s, dta.age, dta.time);
+            s.setAttribute("data-category", poi_list.mode);
+            s.onclick = togglePOI;
+            s.oncontextmenu = untogglePOI;
+            s.style.cursor = "pointer";
+            if (!!dta.mode) {
+                s.setAttribute("data-mode", dta.mode);
+            }
+            poi_list.entries.push(s);
+            list.appendChild(s);
         }
+    } else {
+        var dn = document.getElementById('dungeon-name');
+        poi_list.ref = "";
+        dn.ref = null;
+        dn.innerHTML = "Hyrule";
 
-        poi_list.entries.push(s);
+        var r = document.createElement('li');
+        r.innerHTML = "Overworld";
+        r.setAttribute("data-ref", "overworld");
+        r.onclick = loadDungeonList;
+        r.style.cursor = "pointer";
+        r.className = "dungeon-entry DCAvailable";
+        poi_list.entries.push(r);
+        list.appendChild(r);
 
-        list.appendChild(s)
+        dd = data.dungeons;
+
+        for (let i in dd) {
+            var dta = dd[i];
+            var s = document.createElement('li');
+            s.innerHTML = translate(i);
+            addBadge(s, dta.age, dta.time);
+            s.setAttribute("data-ref", i);
+            s.onclick = loadDungeonList;
+            s.style.cursor = "pointer";
+            s.className = "dungeon-entry DCAvailable";
+            poi_list.entries.push(s);
+            list.appendChild(s);
+        }
     }
     updateMap();
+}
+
+function reloadDungeonList() {
+    if (!!poi_list.ref && !!poi_list.ref.length) {
+        loadDungeonList(poi_list.ref);
+    }
 }
 
 function updateMap() {
@@ -308,12 +382,6 @@ function updateMap() {
     var chests_missing = 0;
     var skulltulas_available = 0;
     var skulltulas_missing = 0;
-
-    // update dungeon list name
-    /////////////////////////////////
-    if (!!poi_list.ref && !!poi_list.ref.length) {
-        document.getElementById("dungeon_" + poi_list.ref).click();
-    }
     
     // update chest markers
     /////////////////////////////////
@@ -409,10 +477,16 @@ function updateMap() {
         if (SaveState.read(poi_list.mode, x.id, 0))
             x.className = "dungeon-entry DCopened";               
         else {
-            if (checkLogic(poi_list.mode, x.id)) {
-                x.className = "dungeon-entry DCavailable";
+            var ref = x.getAttribute("data-ref");
+            if (!ref) {
+                ref = x.id;
+                if (checkLogic(poi_list.mode, ref)) {
+                    x.className = "dungeon-entry DCavailable";
+                } else {
+                    x.className = "dungeon-entry DCunavailable"; 
+                }
             } else {
-                x.className = "dungeon-entry DCunavailable"; 
+                x.className = "dungeon-entry DC" + checkList(poi_list.mode, ref);
             }
         }
     }

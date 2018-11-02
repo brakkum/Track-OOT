@@ -21,6 +21,7 @@
     background-color: white;
     color: black;
     width: 600px;
+    max-width: 100%;
 }
 
 label.settings-option {
@@ -102,6 +103,10 @@ label.settings-option .option-text {
 #settings #settings-window .settings-buttons button:hover {
     color: black;
     background-color: white;
+}
+
+#settings #settings-window .slider+.input-value {
+    margin-left: 5px;
 }
 
 #settings #settings-window .thanks-name {

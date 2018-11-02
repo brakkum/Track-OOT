@@ -18,7 +18,7 @@ function ToggleMQ(ref, cont) {
         val = !val;
         SaveState.write("mq", ref, val);
         el.innerHTML = val ? "MQ" : "V";
-        updateMap();
+        reloadDungeonList();
         ev.preventDefault();
         return false;
     }

@@ -121,10 +121,15 @@ function checkBeatList(name) {
 }
 
 function checkList(category, name) {
-    var list = data.dungeons[name][category];  
-
-    if (!!data.dungeons[name].hasmq && SaveState.read("mq", name, false)) {
-        list = data.dungeons[name][category+"_mq"];
+    var list;
+    if (name == "overworld") {
+        list = data[category]; 
+    } else {
+        if (!!data.dungeons[name].hasmq && SaveState.read("mq", name, false)) {
+            list = data.dungeons[name][category+"_mq"];
+        } else { 
+            list = data.dungeons[name][category];
+        }
     }
 
     var canGet = 0;
