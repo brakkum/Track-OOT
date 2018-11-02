@@ -8,6 +8,10 @@
     background-color: rgba(0,0,0,0.3);
     align-items: flex-start;
     justify-content: center;
+
+    @media (min-width: 601px) {
+        padding: 100px 0px;
+    }
 }
 
 #settings.active {
@@ -15,13 +19,18 @@
 }
 
 #settings #settings-window {
-    display: block;
+    display: grid;
+    grid-template-rows: minmax(100px, 100%) 2px 40px;
     padding: 10px;
-    margin-top: 100px;
     background-color: white;
     color: black;
     width: 600px;
     max-width: 100%;
+    max-height: 100%;
+
+    @media (max-width: 600px) {
+        margin-top: 0;
+    }
 }
 
 label.settings-option {
@@ -45,8 +54,13 @@ label.settings-option .option-text {
     user-select: none;
 }
 
+.card-panel {
+    display: grid;
+}
+
 .card-panel .card-header {
-    display: block;
+    display: flex;
+    flex-wrap: wrap-reverse;
     margin-bottom: 5px;
     padding: 0 5px;
     border-bottom: solid 1px black;
@@ -55,6 +69,7 @@ label.settings-option .option-text {
 .card-panel .card-header .card-button {
     display: inline-block;
     padding: 5px;
+    margin: 0 2px;
     border-left: solid 1px black;
     border-right: solid 1px black;
     border-top: solid 1px black;
@@ -79,6 +94,8 @@ label.settings-option .option-text {
 
 .card-panel .card-body {
     display: none;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .card-panel .card-body.active {
