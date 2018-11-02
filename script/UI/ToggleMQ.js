@@ -4,7 +4,7 @@ function ToggleMQ(ref, cont) {
 
     var el = document.createElement('DIV');
     el.id = name;
-    el.classList.add("text");
+    el.classList.add("switch");
     el.innerHTML = val ? "MQ" : "V";
     el.onclick = toggleItem;
     cont.appendChild(el);

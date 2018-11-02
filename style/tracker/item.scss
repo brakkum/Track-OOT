@@ -22,7 +22,8 @@
     cursor: default;
 }
 
-.item-grid .item-row .item {
+.item-grid .item-row .item,
+.item-grid .item-row .switch {
     cursor: pointer;
 }
 
@@ -32,14 +33,16 @@
     justify-content: flex-end;
 }
 
-.item-grid .item-row .text {
+.item-grid .item-row .text,
+.item-grid .item-row .switch {
     align-items: center;
     justify-content: center;
 }
 
 .item-grid .item-row .item,
 .item-grid .item-row .icon,
-.item-grid .item-row .text {
+.item-grid .item-row .text,
+.item-grid .item-row .switch {
     display: inline-flex;
     width: var(--item-size);
     height: var(--item-size);
@@ -51,10 +54,13 @@
     flex-grow: 0;
     flex-shrink: 0;
     line-height: 0.7em;
-    //border: solid 2px transparent;
     overflow: hidden;
     text-shadow: -1px 0 1px black, 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black;
     font-size: calc(var(--item-size) * 0.3);
+}
+
+.item-grid .item-row .switch {
+    font-size: calc(var(--item-size) * 0.4);
 }
 
 .item-grid .item-row .item.mark,
@@ -77,16 +83,6 @@
 
 #key-container {
     grid-area: keys;
-
-    .item-row {
-
-        .item,
-        .icon,
-        .text {
-            width: var(--item-size);
-            height: var(--item-size);
-        }
-    }
 }
 
 /**********************************
@@ -96,17 +92,7 @@
 #dungeon-status-container {
     grid-area: dungeonstatus;
 
-    .item-row {
-
-        &:hover {
-            background-color: #cb9c3d30;
-        }
-
-        .item,
-        .icon,
-        .text {
-            width: var(--item-size);
-            height: var(--item-size);
-        }
+    .item-row:hover {
+        background-color: #cb9c3d30;
     }
 }

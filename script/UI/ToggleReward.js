@@ -16,7 +16,7 @@ function ToggleReward(ref, cont) {
 
     var el = document.createElement('DIV');
     el.id = name;
-    el.classList.add("text");
+    el.classList.add("switch");
     el.onclick = toggleItem;
     el.oncontextmenu = untoggleItem;
     cont.appendChild(el);
