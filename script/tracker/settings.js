@@ -81,7 +81,7 @@ function buildSettings() {
     var settings_use_custom_logic = settings_container.querySelector('#use_custom_logic');
 
     settings_itemsize.addEventListener("input", function(ev) {
-        settings_container.querySelector('#item-scale-slider+.input-value').innerHTML = ev.currentTarget.value;
+        settings_container.querySelector('#item-scale-slider+.input-value').innerHTML = ev.currentTarget.value + "px";
     });
     
     settingsEdit.addEventListener("click", function() {
