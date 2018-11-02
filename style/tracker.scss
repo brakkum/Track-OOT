@@ -3,6 +3,7 @@
 @import "tracker/map";
 @import "tracker/poi";
 @import "tracker/settings";
+@import "tracker/layouts";
 @import "utils/Dialog";
 @import "utils/Splash";
 
@@ -24,6 +25,7 @@
     font-family: Arial, sans-serif;
     font-weight: bold;
     outline: none;
+    line-height: 1em;
 }
 
 a {
@@ -35,12 +37,39 @@ body {
 
     overflow: hidden;
 
+    .hint-badge {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+        background-color: #cb9c3d;
+        color: black;
+        border-radius: 10px;
+        font-size: 0.6em;
+        font-weight: bold;
+    }
+
+    .tooltip {
+        display: table;
+        background-color: black;
+        color: #fff;
+        border: solid 1px white;
+        text-align: center;
+        border-radius: 8px;
+        padding: 10px;
+        position: absolute;
+        white-space: nowrap;
+        z-index: 10000;
+        top: calc(50% - 14px);
+        right: calc(100% + 10px);
+        font-size: 18px;
+        user-select: none;
+    }
+
     .poi,
     #dungeon-container #dungeon-list .dungeon-entry {
-
-        .hint-badge {
-            display: none;
-        }
     
         &[data-mode] {
             display: none;
@@ -60,17 +89,11 @@ body {
 
     &[data-hint-badges="true"] {
 
-        .poi .tooltip,
+        .tooltip,
         #dungeon-container #dungeon-list .dungeon-entry {
     
             .hint-badge {
-                display: inline;
-                margin-left: 10px;
-                color: black;
-                background-color: sandybrown;
-                border-radius: 10px;
-                padding: 0 5px;
-                font-weight: bold;
+                display: inline-flex;
             }
         }
     }
@@ -127,141 +150,11 @@ body {
     "dungeonstatus map dungeon";
 }
 
-.layout-container[data-layout="items"] {
-    grid-template-columns: minmax(calc(9 * var(--item-size) + 8px), 100%);
-    grid-template-rows: calc(8 * var(--item-size) + 8px) minmax(calc(3 * var(--item-size) + 8px), 100%);
-    grid-template-areas: 
-    "items" 
-    "dungeonstatus"
-    "dungeon";
-
-    #key-container,
-    #dungeon-container,
-    #map-container {
-        display: none;
-    }
-}
-
-.layout-container[data-layout="items-minimal"] {
-    grid-template-columns: minmax(calc(9 * var(--item-size) + 8px), 100%);
-    grid-template-rows: calc(8 * var(--item-size) + 8px) minmax(calc(3 * var(--item-size) + 8px), 100%);
-    grid-template-areas: 
-    "items" 
-    "keys"
-    "dungeon";
-
-    #dungeon-status-container,
-    #dungeon-container,
-    #map-container {
-        display: none;
-    }
-}
-
-.layout-container[data-layout="mobile"] {
-    grid-template-columns: minmax(calc(9 * var(--item-size) + 8px), 100%);
-    grid-template-rows: calc(8 * var(--item-size) + 8px) calc(13 * var(--item-size) + 8px) minmax(500px, 100%);
-    grid-template-areas: 
-    "items" 
-    "dungeonstatus"
-    "dungeon";
-
-    #key-container,
-    #map-container {
-        display: none;
-    }
-}
-
-.layout-container[data-layout="mobile-minimal"] {
-    grid-template-columns: minmax(calc(9 * var(--item-size) + 8px), 100%);
-    grid-template-rows: calc(8 * var(--item-size) + 8px) calc(3 * var(--item-size) + 8px) minmax(500px, 100%);
-    grid-template-areas: 
-    "items" 
-    "keys"
-    "dungeon";
-
-    #dungeon-status-container,
-    #map-container {
-        display: none;
-    }
-}
-
-.layout-container[data-layout="map-minimal"] {
-    grid-template-columns: calc(9 * var(--item-size) + 8px) minmax(500px, 100%);
-    grid-template-rows: calc(8 * var(--item-size) + 8px) calc(3 * var(--item-size) + 8px) minmax(200px, 100%);
-    grid-template-areas: 
-    "items map" 
-    "keys map"
-    "dungeon map";
-
-    #dungeon-status-container {
-        display: none;
-    }
-}
-
-.layout-container[data-layout="map-center"] {
-    grid-template-columns: calc(9 * var(--item-size) + 8px) minmax(500px, 100%) 300px;
-    grid-template-rows: calc(8 * var(--item-size) + 8px) minmax(calc(13 * var(--item-size) + 8px), 100%);
-    grid-template-areas: 
-    "items map dungeon"
-    "dungeonstatus map dungeon";
-
-    #key-container {
-        display: none;
-    }
-}
-
-.layout-container[data-layout="map-compact"] {
-    grid-template-columns: calc(9 * var(--item-size) + 8px) minmax(calc(13 * var(--item-size) + 8px), 100%);
-    grid-template-rows: calc(7 * var(--item-size) + 8px) var(--item-size) minmax(200px, 100%);
-    grid-template-areas: 
-    "items dungeonstatus"  
-    "items map" 
-    "dungeon map";
-
-    #dungeon-status-container {
-        flex-direction: row;
-
-        .item-row {
-            flex-direction: column;
-        }
-    }
-
-    #key-container {
-        display: none;
-    }
-}
-
-.layout-container[data-layout="compact-minimal"] {
-    grid-template-columns: calc(9 * var(--item-size) + 8px) minmax(300px, 100%);
-    grid-template-rows: calc(8 * var(--item-size) + 8px) minmax(calc(3 * var(--item-size) + 8px), 100%);
-    grid-template-areas: 
-    "items dungeon"  
-    "keys dungeon";
-
-    #dungeon-status-container,
-    #map-container {
-        display: none;
-    }
-}
-
-.layout-container[data-layout="compact"] {
-    grid-template-columns: calc(9 * var(--item-size) + 8px) minmax(300px, 100%);
-    grid-template-rows: calc(8 * var(--item-size) + 8px) minmax(calc(13 * var(--item-size) + 8px), 100%);
-    grid-template-areas: 
-    "items dungeon"  
-    "dungeonstatus dungeon";
-
-    #key-container,
-    #map-container {
-        display: none;
-    }
-}
-
 .spacer-line {
     border-color: #d4ad5e #a17a2b #795b20 #c99836 ;
     border-width: 4px;
     border-style: solid;
-    margin: 5px 10px;
+    margin: 5px 5px;
 }
 
 .content,

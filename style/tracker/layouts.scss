@@ -1,0 +1,155 @@
+/**********************************************************************
+
+    Layouts used by Track-OOT
+
+**********************************************************************/
+
+.layout-container[data-layout="items"] {
+    grid-template-columns: minmax(calc(9 * var(--item-size) + 8px), 100%);
+    grid-template-rows: calc(8 * var(--item-size) + 8px) minmax(calc(3 * var(--item-size) + 8px), 100%);
+    grid-template-areas: 
+    "items" 
+    "dungeonstatus"
+    "dungeon";
+
+    #key-container,
+    #dungeon-container,
+    #map-container {
+        display: none;
+    }
+}
+
+.layout-container[data-layout="items-minimal"] {
+    grid-template-columns: minmax(calc(9 * var(--item-size) + 8px), 100%);
+    grid-template-rows: calc(8 * var(--item-size) + 8px) minmax(calc(3 * var(--item-size) + 8px), 100%);
+    grid-template-areas: 
+    "items" 
+    "keys"
+    "dungeon";
+
+    #dungeon-status-container,
+    #dungeon-container,
+    #map-container {
+        display: none;
+    }
+}
+
+.layout-container[data-layout="mobile"] {
+    grid-template-columns: minmax(calc(9 * var(--item-size) + 8px), 100%);
+    grid-template-rows: calc(8 * var(--item-size) + 8px) calc(13 * var(--item-size) + 8px) minmax(500px, 100%);
+    grid-template-areas: 
+    "items" 
+    "dungeonstatus"
+    "dungeon";
+
+    #key-container,
+    #map-container {
+        display: none;
+    }
+}
+
+.layout-container[data-layout="mobile-minimal"] {
+    grid-template-columns: minmax(calc(9 * var(--item-size) + 8px), 100%);
+    grid-template-rows: calc(8 * var(--item-size) + 8px) calc(3 * var(--item-size) + 8px) minmax(500px, 100%);
+    grid-template-areas: 
+    "items" 
+    "keys"
+    "dungeon";
+
+    #dungeon-status-container,
+    #map-container {
+        display: none;
+    }
+}
+
+.layout-container[data-layout="map-minimal"] {
+    grid-template-columns: calc(9 * var(--item-size) + 8px) minmax(500px, 100%);
+    grid-template-rows: calc(8 * var(--item-size) + 8px) calc(3 * var(--item-size) + 8px) minmax(200px, 100%);
+    grid-template-areas: 
+    "items map" 
+    "keys map"
+    "dungeon map";
+
+    #dungeon-status-container {
+        display: none;
+    }
+}
+
+.layout-container[data-layout="map-center"] {
+    grid-template-columns: calc(9 * var(--item-size) + 8px) minmax(500px, 100%) 300px;
+    grid-template-rows: calc(8 * var(--item-size) + 8px) minmax(calc(13 * var(--item-size) + 8px), 100%);
+    grid-template-areas: 
+    "items map dungeon"
+    "dungeonstatus map dungeon";
+
+    #key-container {
+        display: none;
+    }
+}
+
+.layout-container[data-layout="map-compact"] {
+    grid-template-columns: calc(9 * var(--item-size) + 8px) minmax(calc(13 * var(--item-size) + 8px), 100%);
+    grid-template-rows: calc(7 * var(--item-size) + 8px) var(--item-size) minmax(200px, 100%);
+    grid-template-areas: 
+    "items dungeonstatus"  
+    "items map" 
+    "dungeon map";
+
+    #dungeon-status-container {
+        flex-direction: row;
+
+        .item-row {
+            flex-direction: column;
+        }
+    }
+
+    #key-container {
+        display: none;
+    }
+}
+
+.layout-container[data-layout="compact-minimal"] {
+    grid-template-columns: calc(9 * var(--item-size) + 8px) minmax(300px, 100%);
+    grid-template-rows: calc(8 * var(--item-size) + 8px) minmax(calc(3 * var(--item-size) + 8px), 100%);
+    grid-template-areas: 
+    "items dungeon"  
+    "keys dungeon";
+
+    #dungeon-status-container,
+    #map-container {
+        display: none;
+    }
+}
+
+.layout-container[data-layout="compact"] {
+    grid-template-columns: calc(9 * var(--item-size) + 8px) minmax(300px, 100%);
+    grid-template-rows: calc(8 * var(--item-size) + 8px) minmax(calc(13 * var(--item-size) + 8px), 100%);
+    grid-template-areas: 
+    "items dungeon"  
+    "dungeonstatus dungeon";
+
+    #key-container,
+    #map-container {
+        display: none;
+    }
+}
+
+.layout-container[data-layout="flat"] {
+    grid-template-columns: calc(9 * var(--item-size) + 8px) calc(13 * var(--item-size) + 8px) minmax(300px, 100%);
+    grid-template-rows: minmax(calc(8 * var(--item-size) + 8px), 100%);
+    grid-template-areas: 
+    "items dungeonstatus dungeon";
+
+    #dungeon-status-container {
+        flex-direction: row;
+
+        .item-row {
+            flex-direction: column;
+        }
+    }
+
+    #key-container,
+    #map-container {
+        display: none;
+    }
+}

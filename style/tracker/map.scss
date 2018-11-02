@@ -4,16 +4,11 @@
     grid-area: map;
     overflow: hidden;
 
-    
-
     #map {
         --map-scale: 0.8;
-        background-image: url("../images/map.png");
         background-size: 100% 100%;
         background-repeat: no-repeat;
         position: relative;
-        width: calc(825px * var(--map-scale));
-        height: calc(466px * var(--map-scale));
         left: 0px;
         flex-grow: 0;
         flex-shrink: 0;
@@ -146,54 +141,95 @@
     background-color: black;
     font-size: 1.0em;
     grid-area: dungeon;
-}
 
-#dungeon-container #dungeon-name {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-shrink: 0;
-    padding: 5px 9px;
-    font-size: 1.3em;
-    user-select: none;
-    cursor: default;
-}
+    .dungeon-head {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-shrink: 0;
+        padding: 5px;
 
-#dungeon-container #dungeon-name:after {
-    margin-left: 5px;
-    width: 20px;
-    height: 20px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    background-origin: content-box;
-    content: " ";
-}
+        #dungeon-name {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex: 1;
+            padding: 4px;
+            font-size: 1.3em;
+            user-select: none;
+            cursor: default;
 
-#dungeon-container #dungeon-name[data-mode="chests"]:after {
-    background-image: url('../images/chest.svg');
-}
+            &[data-mode]:after {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: 5px;
+                width: 20px;
+                height: 20px;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                background-origin: content-box;
+                font-size: 0.5em;
+                font-weight: bolder;
+                border-radius: 20%;
+                border: solid 2px #cb9c3d;
+                background-color: #cb9c3d;
+                color: black;
+                content: "?";
+            }
 
-#dungeon-container #dungeon-name[data-mode="skulltulas"]:after {
-    background-image: url('../images/skulltula.svg');
-}
+            &[data-mode="v"]:after {
+                content: "V";
+            }
 
-#dungeon-container #dungeon-list {
-    -webkit-padding-start: 0;
-    -moz-padding-start: 0;
-    list-style: none;
-    margin: 4px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
+            &[data-mode="mq"]:after {
+                content: "MQ";
+            }
+        }
 
-#dungeon-container #dungeon-list .dungeon-entry {
-    display: flex;
-    align-items: center;
-    padding: 5px;
+        #dungeon-switch {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            padding: 4px;
+            flex-shrink: 0;
+            background-color: rgba(0,0,0,0.3);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            background-origin: content-box;
+            border-radius: 20%;
+            border: solid 2px #cb9c3d;
+            cursor: pointer;
 
-    &:hover {
-        background-color: #282828;
+            &[data-mode="chests"] {
+                background-image: url('../images/chest.svg');
+            }
+
+            &[data-mode="skulltulas"] {
+                background-image: url('../images/skulltula.svg');
+            }
+        }
+    }
+
+    #dungeon-list {
+        -webkit-padding-start: 0;
+        -moz-padding-start: 0;
+        list-style: none;
+        margin: 4px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    
+        .dungeon-entry {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+        
+            &:hover {
+                background-color: #282828;
+            }
+        }
     }
 }
 

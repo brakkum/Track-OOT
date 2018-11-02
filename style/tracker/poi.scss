@@ -28,41 +28,10 @@
     margin-top: calc(-12px * var(--map-scale));
 }
 
-.poi .tooltip {
-    visibility: hidden;
-    background-color: black;
-    color: #fff;
-    border: solid 1px white;
-    text-align: center;
-    border-radius: 8px;
-    padding: 10px;
-    position: absolute;
-    white-space: nowrap;
-    z-index: 1;
-    top: calc(50% - 14px);
-    right: calc(100% + 10px);
-    font-size: 18px;
-    user-select: none;
-}
-
 .poi.dungeon .count {
     display: inline-block;
     color: black;
     line-height: 24px;
     font-size: calc(1em * var(--map-scale));
     user-select: none;
-}
-
-.poi.dungeon .tooltip {
-    background-color: gray;
-    color: #fff;
-    border: solid 1px white;
-}
-
-.poi .tooltip:hover {
-    display: none;
-}
-
-.poi:hover .tooltip {
-    visibility: visible;
 }

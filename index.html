@@ -13,8 +13,8 @@
         <link rel="icon" type="image/svg+xml" href="images/logo.min.svg" sizes="any">
         <link rel="manifest" href="/manifest.json">
         <link rel="stylesheet" href="style/normalize.css">
-        <link rel="stylesheet" href="style/tracker.css?v=201811020412" type="text/css">
-        <script src="script/tracker/main.min.js?v=201811020412" defer></script>
+        <link rel="stylesheet" href="style/tracker.css?v=201811021717" type="text/css">
+        <script src="script/tracker/main.min.js?v=201811021717" defer></script>
     </head>
     <body data-hint-badges="false" data-shopsanity="false">
         <div id="viewpane">
@@ -65,8 +65,6 @@
                     </div>
                     <div id="map-container" data-mode="chests">
                         <div id="map-scroll">
-                            <div id="map">
-                            </div>
                         </div>
                         <div class="slidecontainer">
                             <span class="slidetext">- / +</span>
@@ -75,8 +73,6 @@
                             </div>
                         </div>
                         <div class="map-options">
-                            <div class="map-option" id="map-option-chest"></div>
-                            <div class="map-option" id="map-option-skulltula"></div>
                             <div class="map-option" id="map-option-shops"></div>
                         </div>
                         <div id="shop-view">
@@ -85,8 +81,11 @@
                         </div>
                     </div>
                     <div id="dungeon-container">
-                        <div id="dungeon-name">
-                            Hyrule
+                        <div class="dungeon-head">
+                            <div id="dungeon-name">
+                                Hyrule
+                            </div>
+                            <div id="dungeon-switch" data-mode="chests"></div>
                         </div>
                         <hr class="spacer-line">
                         <ul onselectstart="return false" id="dungeon-list">
@@ -96,7 +95,7 @@
             </div>
             <footer class="footer">
                 <span class="footer-field">
-                    <span id="status-version">0.7 [201811020412]</span> for 2.18.7 f.LUM
+                    <span id="status-version">0.7 [201811021717]</span> for 2.18.7 f.LUM
                 </span>
                 <span class="footer-spacer">|</span>
                 <span class="footer-field">
@@ -131,10 +130,11 @@
                                         <option value="map-minimal">Map (minimal)</option>
                                         <option value="map-center">Map (centered)</option>
                                         <option value="map-compact">Map (compact)</option>
-                                        <option value="compact">Compact [wip]</option>
-                                        <option value="compact-minimal">Compact (minimal) [wip]</option>
-                                        <option value="mobile">Mobile [wip]</option>
-                                        <option value="mobile-minimal">Mobile (minimal) [wip]</option>
+                                        <option value="compact">Compact</option>
+                                        <option value="compact-minimal">Compact (minimal)</option>
+                                        <option value="flat">Flat</option>
+                                        <option value="mobile">Mobile</option>
+                                        <option value="mobile-minimal">Mobile (minimal)</option>
                                     </select>
                                 </label>
                                 <label class="settings-option">
@@ -162,8 +162,8 @@
                             <p>
                                 Please be aware, that the logic of this tracker (mostly) follows the randomizer logic.<br>
                                 This is due to the fact, that the logic of the randomizer is a good estimation of the logic of the game itself.<br>
-                                If some logic does not add up or seems wierd, please <a href="https://bitbucket.org/2deep4real/track-oot/issues" target="_blank">REPORT</a> it and do not stay quiet!<br>
-                                I cant fix bugs if you do not report them...<br><br>
+                                If some logic does not add up or seems wierd, please <a href="https://bitbucket.org/2deep4real/track-oot/issues" target="_blank">REPORT</a> it.<br><br>
+                                Want to join my Discord? <a href="https://discord.gg/wgFVtuv" target="_blank">Here you go</a>!<br><br>
                                 Big thanks to:<br>
                                 <i class="thanks-name">TestRunner</i> for creating the original tracker.<br>
                                 <i class="thanks-name">Scatter</i> for building a logic compendium.<br>

@@ -21,22 +21,6 @@ map_scale_slider.addEventListener("change", function(ev) {
     document.getElementById('map').style.setProperty("--map-scale", parseInt(map_scale_slider.value) / 100);
     Storage.set("settings", "map_zoom", parseInt(map_scale_slider.value));
 });
-document.getElementById("map-option-chest").addEventListener("click", function(ev) {
-    document.getElementById('map-container').setAttribute("data-mode", "chests");
-    poi_list.mode = "chests";
-    if (poi_list.ref != "") {
-        document.getElementById("dungeon_"+poi_list.ref).click();
-    }
-    updateMap();
-});
-document.getElementById("map-option-skulltula").addEventListener("click", function(ev) {
-    document.getElementById('map-container').setAttribute("data-mode", "skulltulas");
-    poi_list.mode = "skulltulas";
-    if (poi_list.ref != "") {
-        document.getElementById("dungeon_"+poi_list.ref).click();
-    }
-    updateMap();
-});
 document.getElementById("map-option-shops").addEventListener("click", function(ev) {
     document.getElementById('shop-view').classList.add("active");
 });

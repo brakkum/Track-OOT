@@ -1,3 +1,6 @@
+// @koala-prepend "../UI/Map.js"
+// @koala-prepend "../UI/Tooltip.js"
+
 var poi = {
     chests: [],
     dungeons: [],
@@ -10,9 +13,17 @@ var poi_list = {
     entries: []
 }
 
-document.getElementById('dungeon-name').onclick = function(ev) {
+var map = new Map(document.getElementById("map-scroll"), "../images/map.png", 825, 466);
+
+document.getElementById('dungeon-name').addEventListener("click", function(ev) {
     toogleDungeonMQ(ev.currentTarget.ref);
-};
+});
+
+document.getElementById('dungeon-switch').addEventListener("click", function(ev) {
+    poi_list.mode = poi_list.mode == "chests" ? "skulltulas" : "chests";
+    ev.currentTarget.setAttribute("data-mode", poi_list.mode);
+    reloadDungeonList();
+});
 
 function toogleDungeonMQ(name) {
     if (!!name && !!data.dungeons[name].hasmq) {
@@ -35,7 +46,11 @@ function addBadge(target, age, time) {
         case "night": el.innerHTML += "N"; break;
         case "day": el.innerHTML += "D"; break;
     }
-    target.appendChild(el);
+    if (!!target) {
+        target.appendChild(el);
+    } else {
+        return el.outerHTML;
+    }
 }
 
 function addPOIs(target, category) {
@@ -53,12 +68,7 @@ function addPOIs(target, category) {
             s.setAttribute("data-mode", dta.mode);
         }
 
-        /*var ss = document.createElement('span');
-        ss.className = "tooltip";
-        ss.innerHTML = translate(id);
-        addBadge(ss, dta.age, dta.time);
-        s.appendChild(ss);*/
-        s.setAttribute("title", translate(id));
+        new Tooltip(s, translate(id) + (addBadge(false, dta.age, dta.time) || ""));
 
         poi[category].push(s);
 
@@ -89,11 +99,7 @@ function populateMap() {
         ss.className = "count";
         s.appendChild(ss);
 
-        /*var ss = document.createElement('span');
-        ss.className = "tooltip";
-        ss.innerHTML = translate(id);
-        s.appendChild(ss);*/
-        s.setAttribute("title", translate(id));
+        new Tooltip(s, translate(id));
 
         poi.dungeons.push(s);
 
@@ -275,10 +281,7 @@ function clickDungeon(event) {
     poi_list.ref = ref_id;
     dn.ref = ref_id;
     dn.innerHTML = translate(poi_list.ref);
-    if (mq) {
-        dn.innerHTML += " (MQ)";
-    }
-    dn.setAttribute("data-mode", poi_list.mode);
+    dn.setAttribute("data-mode", mq ? "mq" : "v");
     var dd = data.dungeons[poi_list.ref][poi_list.mode + (mq?"_mq":"")];
     if (!dd) dd = data.dungeons[poi_list.ref][poi_list.mode];
     fillDungeonList(dd);
@@ -289,21 +292,25 @@ function loadDungeonList(event) {
     if (typeof ref_id != "string") {
         ref_id = event.currentTarget.getAttribute("data-ref");
     }
-    var mq = SaveState.read("mq", ref_id, false);
     var dn = document.getElementById('dungeon-name');
     poi_list.ref = ref_id;
     dn.ref = ref_id;
     dn.innerHTML = translate(poi_list.ref);
-    if (mq) {
-        dn.innerHTML += " (MQ)";
-    }
-    dn.setAttribute("data-mode", poi_list.mode);
     var dd;
     if (ref_id == "overworld") {
         dd = data[poi_list.mode];
+        dn.removeAttribute("data-mode");
     } else {
-        dd = data.dungeons[poi_list.ref][poi_list.mode + (mq?"_mq":"")];
-        if (!dd) dd = data.dungeons[poi_list.ref][poi_list.mode];
+        var dun = data.dungeons[poi_list.ref];
+        if (dun.hasmq) {
+            var mq = SaveState.read("mq", ref_id, false);
+            dn.setAttribute("data-mode", mq ? "mq" : "v");
+            dd = dun[poi_list.mode + (mq?"_mq":"")];
+            if (!dd) dd = dun[poi_list.mode];
+        } else {
+            dd = dun[poi_list.mode];
+            dn.removeAttribute("data-mode");
+        }
     }
     fillDungeonList(dd);
 }
@@ -318,6 +325,7 @@ function fillDungeonList(dd) {
         r.className = "dungeon-entry";
         r.onclick = function() {
             fillDungeonList();
+            document.getElementById('dungeon-name').removeAttribute("data-mode");
         };
         r.style.cursor = "pointer";
         list.appendChild(r);
@@ -374,6 +382,8 @@ function fillDungeonList(dd) {
 function reloadDungeonList() {
     if (!!poi_list.ref && !!poi_list.ref.length) {
         loadDungeonList(poi_list.ref);
+    } else {
+        updateMap();
     }
 }
 
