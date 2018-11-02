@@ -106,6 +106,8 @@ function buildSettings() {
         readSettingsPage("options", settings_options);
         readSettingsPage("skips", settings_skips);
         applySettingsChoices();
+        reloadDungeonList();
+        updateMap();
         data.logic_patched = Storage.get("settings", "logic", {});
         document.getElementById('settings').classList.remove('active');
     });

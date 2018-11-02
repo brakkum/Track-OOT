@@ -581,14 +581,6 @@
             "type": "and",
             "el": [
                 {
-                    "type": "item",
-                    "el": "hookshot"
-                },
-                {
-                    "type": "item",
-                    "el": "boots_iron"
-                },
-                {
                     "type": "mixin",
                     "el": "can_become_adult"
                 },
@@ -596,12 +588,51 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "skip",
-                            "el": "fewer_tunic"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "boots_iron"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "skip",
+                                            "el": "fewer_tunic"
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "zora_tunic_access"
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
-                            "type": "mixin",
-                            "el": "zora_tunic_access"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "hookshot"
+                                    },
+                                    "value": 2
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "scale"
+                                    },
+                                    "value": 2
+                                }
+                            ]
                         }
                     ]
                 }
