@@ -85,6 +85,10 @@
             "type": "check",
             "default": false
         },
+        "morpha_scale": {
+            "type": "check",
+            "default": true
+        },
         "lens_required": {
             "type": "choice",
             "default": "lens_required_default",

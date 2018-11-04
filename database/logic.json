@@ -617,10 +617,18 @@
                             "type": "and",
                             "el": [
                                 {
+                                    "type": "option",
+                                    "el": "keysanity"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "morpha_scale"
+                                },
+                                {
                                     "type": "min",
                                     "el": {
                                         "type": "item",
-                                        "el": "hookshot"
+                                        "el": "scale"
                                     },
                                     "value": 2
                                 },
@@ -628,7 +636,7 @@
                                     "type": "min",
                                     "el": {
                                         "type": "item",
-                                        "el": "scale"
+                                        "el": "hookshot"
                                     },
                                     "value": 2
                                 }
@@ -6558,8 +6566,17 @@
                             "el": "sword_kokiri"
                         },
                         {
-                            "type": "skip",
-                            "el": "child_deadhand"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "skip",
+                                    "el": "child_deadhand"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "stick"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -10226,6 +10243,96 @@
                             "el": "sword_kokiri"
                         }
                     ]
+                }
+            ]
+        },
+        "well_compass_chest_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "bottom_well_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "sword_kokiri"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "skip",
+                                    "el": "child_deadhand"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "stick"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "well_map_chest_mq": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "song_zelda"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                }
+            ]
+        },
+        "well_deadhand_freestanding_key_mq": {
+            "type": "mixin",
+            "el": "has_explosives"
+        },
+        "well_lens_chest_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_well"
+                            },
+                            "value": 2
+                        }
+                    ]
+                }
+            ]
+        },
+        "well_east_inner_freestanding_key_mq": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "song_zelda"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
                 }
             ]
         }
