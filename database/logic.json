@@ -1690,16 +1690,49 @@
             ]
         },
         "gerudo_guard_1": {
-            "type": "mixin",
-            "el": "gerudo_fortress_access"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "gerudo_fortress_access"
+                },
+                {
+                    "type": "not",
+                    "el": {
+                        "type": "option",
+                        "el": "gerudo_fortress_open",
+                        "value": "gerudo_fortress_open_open"
+                    }
+                }
+            ]
         },
         "gerudo_guard_2": {
-            "type": "mixin",
-            "el": "gerudo_fortress_access"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "gerudo_fortress_access"
+                },
+                {
+                    "type": "option",
+                    "el": "gerudo_fortress_open",
+                    "value": "gerudo_fortress_open_default"
+                }
+            ]
         },
         "gerudo_guard_3": {
-            "type": "mixin",
-            "el": "gerudo_fortress_access"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "gerudo_fortress_access"
+                },
+                {
+                    "type": "option",
+                    "el": "gerudo_fortress_open",
+                    "value": "gerudo_fortress_open_default"
+                }
+            ]
         },
         "gerudo_guard_4": {
             "type": "and",
@@ -1707,6 +1740,11 @@
                 {
                     "type": "mixin",
                     "el": "gerudo_fortress_access"
+                },
+                {
+                    "type": "option",
+                    "el": "gerudo_fortress_open",
+                    "value": "gerudo_fortress_open_default"
                 },
                 {
                     "type": "or",
@@ -10335,6 +10373,93 @@
                     "el": "has_explosives"
                 }
             ]
+        },
+        "gerudo_fortress_clear": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "gerudo_fortress_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "option",
+                                    "el": "gerudo_fortress_open",
+                                    "value": "gerudo_fortress_open_one"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "option",
+                                                "el": "keysanity"
+                                            }
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "key_small_gerudo"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "option",
+                                    "el": "gerudo_fortress_open",
+                                    "value": "gerudo_fortress_open_default"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "hookshot"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "option",
+                                                "el": "keysanity"
+                                            }
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_gerudo"
+                                            },
+                                            "value": 4
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     },
     "skulltulas": {
@@ -13326,6 +13451,10 @@
                         {
                             "type": "item",
                             "el": "key_boss_ganon"
+                        },
+                        {
+                            "type": "option",
+                            "el": "ganon_boss_door_open"
                         }
                     ]
                 }
