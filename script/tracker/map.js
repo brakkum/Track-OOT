@@ -275,16 +275,7 @@ function untogglePOI(event){
 }
 
 function clickDungeon(event) {
-    var ref_id = event.currentTarget.id.slice(8);
-    var mq = SaveState.read("mq", ref_id, false);
-    var dn = document.getElementById('dungeon-name');
-    poi_list.ref = ref_id;
-    dn.ref = ref_id;
-    dn.innerHTML = translate(poi_list.ref);
-    dn.setAttribute("data-mode", mq ? "mq" : "v");
-    var dd = data.dungeons[poi_list.ref][poi_list.mode + (mq?"_mq":"")];
-    if (!dd) dd = data.dungeons[poi_list.ref][poi_list.mode];
-    fillDungeonList(dd);
+    loadDungeonList(event.currentTarget.id.slice(8));
 }
 
 function loadDungeonList(event) {
