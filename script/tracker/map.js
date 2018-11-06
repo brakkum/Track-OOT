@@ -22,6 +22,7 @@ document.getElementById('dungeon-name').addEventListener("click", function(ev) {
 document.getElementById('dungeon-switch').addEventListener("click", function(ev) {
     poi_list.mode = poi_list.mode == "chests" ? "skulltulas" : "chests";
     ev.currentTarget.setAttribute("data-mode", poi_list.mode);
+    document.getElementById('map-container').setAttribute("data-mode", poi_list.mode);
     reloadDungeonList();
 });
 
