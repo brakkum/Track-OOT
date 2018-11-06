@@ -56,11 +56,16 @@
     line-height: 0.7em;
     overflow: hidden;
     text-shadow: -1px 0 1px black, 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black;
-    font-size: calc(var(--item-size) * 0.3);
+}
+
+.item-grid .item-row .item,
+.item-grid .item-row .icon,
+.item-grid .item-row .text {
+    font-size: calc(var(--item-size) * 0.25);
 }
 
 .item-grid .item-row .switch {
-    font-size: calc(var(--item-size) * 0.4);
+    font-size: calc(var(--item-size) * 0.3);
 }
 
 .item-grid .item-row .item.mark,
@@ -78,7 +83,7 @@
 }
 
 .item-grid .item-row .switch:hover {
-    font-size: calc(var(--item-size) * 0.5);
+    font-size: calc(var(--item-size) * 0.4);
 }
 
 /**********************************
