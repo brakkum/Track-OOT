@@ -1,3 +1,4 @@
+@import "tracker/fonts";
 @import "tracker/navigation";
 @import "tracker/item";
 @import "tracker/map";
@@ -22,7 +23,7 @@
 * {
     position: relative;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: "Charlemagne", Arial, sans-serif;
     font-weight: bold;
     outline: none;
     line-height: 1em;
@@ -70,7 +71,7 @@ body {
 
     .poi,
     #dungeon-container #dungeon-list .dungeon-entry {
-    
+
         &[data-mode] {
             display: none;
         }
