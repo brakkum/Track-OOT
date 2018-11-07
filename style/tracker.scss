@@ -24,7 +24,7 @@
     position: relative;
     box-sizing: border-box;
     font-family: "Charlemagne", Arial, sans-serif;
-    font-weight: bold;
+    //font-weight: bold;
     outline: none;
     line-height: 1em;
 }
@@ -32,6 +32,7 @@
 a {
     color: black;
     border-bottom: solid 1px black;
+    font-weight: bold;
 }
 
 body {
@@ -217,6 +218,7 @@ body {
     outline: none;
     text-decoration: none;
     text-align: center;
+    font-weight: bold;
 }
 
 .button:hover {
