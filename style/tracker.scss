@@ -34,6 +34,33 @@ a {
     border-bottom: solid 1px black;
     font-weight: bold;
 }
+ 
+input[type="range"].slider {
+    display: inline-block;
+    width: 100px;
+    height: 7px;
+    margin-bottom: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #cb9c3d;
+    outline: none;
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 5px;
+        height: 100%;
+        background: black;
+        cursor: pointer;
+    }
+
+    &::-moz-range-thumb {
+        width: 5px;
+        height: 100%;
+        background: black;
+        cursor: pointer;
+    }
+}
 
 body {
 
