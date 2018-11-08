@@ -10460,6 +10460,75 @@
                     ]
                 }
             ]
+        },
+        "ice_cavern_map_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ice_cavern_access"
+                },
+                {
+                    "type": "item",
+                    "el": "bottle"
+                }
+            ]
+        },
+        "ice_cavern_compass_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ice_cavern_access"
+                },
+                {
+                    "type": "item",
+                    "el": "bottle"
+                }
+            ]
+        },
+        "ice_cavern_boots_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ice_cavern_access"
+                },
+                {
+                    "type": "item",
+                    "el": "bottle"
+                }
+            ]
+        },
+        "ice_cavern_sheik_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ice_cavern_access"
+                },
+                {
+                    "type": "item",
+                    "el": "bottle"
+                }
+            ]
+        },
+        "ice_cavern_hp_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ice_cavern_access"
+                },
+                {
+                    "type": "item",
+                    "el": "bottle"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                }
+            ]
         }
     },
     "skulltulas": {
@@ -13067,6 +13136,467 @@
                 {
                     "type": "item",
                     "el": "boomerang"
+                }
+            ]
+        },
+        "ice_cavern_hp_room": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ice_cavern_access"
+                },
+                {
+                    "type": "item",
+                    "el": "bottle"
+                }
+            ]
+        },
+        "ice_cavern_under_ice_block": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ice_cavern_access"
+                },
+                {
+                    "type": "item",
+                    "el": "bottle"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_time"
+                }
+            ]
+        },
+        "ice_cavern_scarecrow": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ice_cavern_access"
+                },
+                {
+                    "type": "item",
+                    "el": "bottle"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "ocarina"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "boots_hover"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "hookshot"
+                                    },
+                                    "value": 2
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "well_west_inner_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "bottom_well_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_child_attack"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "song_zelda"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "skip",
+                                "el": "lens_required",
+                                "value": "lens_required_default"
+                            }
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "lens"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "well_basement_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "bottom_well_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_child_attack"
+                }
+            ]
+        },
+        "well_coffin_room_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "bottom_well_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_child_attack"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_well"
+                            },
+                            "value": 2
+                        }
+                    ]
+                }
+            ]
+        },
+        "dodongo_time_block_room_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_child_attack"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_time"
+                }
+            ]
+        },
+        "dodongo_gohma_larva_skulltula_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "stick"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "glove"
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "magic_din"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "mixin",
+                                                    "el": "can_become_adult"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "bow"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "arrow_fire"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "dodongo_upper_lizalfos_room_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
+        },
+        "dodongo_back_area_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                }
+            ]
+        },
+        "dodongo_scrub_poe_room_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "glove"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_din"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_power"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "boomerang"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "slingshot"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "mixin",
+                                                    "el": "can_become_adult"
+                                                },
+                                                {
+                                                    "type": "mixin",
+                                                    "el": "has_explosives"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "glove"
+                                                },
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "and",
+                                                            "el": [
+                                                                {
+                                                                    "type": "mixin",
+                                                                    "el": "can_become_adult"
+                                                                },
+                                                                {
+                                                                    "type": "item",
+                                                                    "el": "hammer"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "item",
+                                                            "el": "stick"
+                                                        },
+                                                        {
+                                                            "type": "and",
+                                                            "el": [
+                                                                {
+                                                                    "type": "item",
+                                                                    "el": "magic_power"
+                                                                },
+                                                                {
+                                                                    "type": "item",
+                                                                    "el": "magic_din"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "and",
+                                                            "el": [
+                                                                {
+                                                                    "type": "mixin",
+                                                                    "el": "can_become_adult"
+                                                                },
+                                                                {
+                                                                    "type": "or",
+                                                                    "el": [
+                                                                        {
+                                                                            "type": "skip",
+                                                                            "el": "dodongo_spike"
+                                                                        },
+                                                                        {
+                                                                            "type": "item",
+                                                                            "el": "boots_hover"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }

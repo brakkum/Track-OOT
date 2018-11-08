@@ -46,7 +46,7 @@ function translate(index) {
     if (!!data.lang[index]) {
         return data.lang[index];
     }
-    return index;
+    return index.replace(/\_/g, " ");
 }
 
 // drag and drop
