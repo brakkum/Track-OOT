@@ -1,0 +1,163 @@
+<nav class="header">
+    <ul>
+        <li class="select-savegame">
+            <select id="select-savegame">
+            </select>
+        </li>
+        <li>
+            <button class="button" id="save-savegame" disabled>SAVE</button>
+        </li>
+        <li>
+            <button class="button" id="load-savegame" disabled>LOAD</button>
+        </li>
+        <li>
+            <button class="button" id="new-savegame">NEW</button>
+        </li>
+        <li>
+            <button class="button">MORE...</button>
+            <ul>
+                <li>
+                    <button class="button" id="delete-savegame" disabled>DELETE</button>
+                </li>
+                <li>
+                    <button class="button" id="rename-savegame" disabled>RENAME</button>
+                </li>
+                <li>
+                    <button class="button" id="export-savegame" disabled>EXPORT</button>
+                </li>
+                <li>
+                    <button class="button" id="import-savegame">IMPORT</button>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <button class="button" id="edit-settings">SETTINGS</button>
+        </li>
+    </ul>
+</nav>
+<div class="content">
+    <div class="layout-container" data-layout="map-compact" data-hint-badges="false" data-shopsanity="false">
+        <div id="item-container" class="item-grid" data-inactive="0">
+        </div>
+        <div id="key-container" class="item-grid" data-inactive="0">
+        </div>
+        <div id="dungeon-status-container" class="item-grid" data-inactive="0">
+        </div>
+        <div id="map-container" data-mode="chests">
+            <div id="map-scroll">
+            </div>
+            <div class="slidecontainer">
+                <span class="slidetext">- / +</span>
+                <input type="range" min="50" max="500" value="90" class="slider" id="map-scale-slider">
+            </div>
+            <div class="map-options">
+                <div class="map-option" id="map-option-shops"></div>
+            </div>
+            <div id="shop-view">
+                <div id="shop-view-close-button">✖</div>
+                <div id="shop-view-body"></div>
+            </div>
+        </div>
+        <div id="dungeon-container">
+            <div class="dungeon-head">
+                <div id="dungeon-name">
+                    Hyrule
+                </div>
+                <div id="dungeon-switch" data-mode="chests"></div>
+            </div>
+            <hr class="spacer-line">
+            <ul onselectstart="return false" id="dungeon-list">
+            </ul>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <span class="footer-field">
+        0.7 [<span id="status-version"></span>] for 2.18.7 f.LUM
+    </span>
+    <span class="footer-spacer">|</span>
+    <span class="footer-field">
+        chests available / missing: <span id="status-chests-available">#</span> / <span id="status-chests-missing">#</span>
+    </span>
+    <span class="footer-spacer">|</span>
+    <span class="footer-field">
+        skulltulas available / missing: <span id="status-skulltulas-available">#</span> / <span id="status-skulltulas-missing">#</span>
+    </span>
+    <span class="footer-spacer">|</span>
+    <span class="footer-right">
+        <span class="alert-text space-right">▶▶▶</span>
+        <a href="https://bitbucket.org/2deep4real/track-oot/issues" target="_blank">report bugs</a>
+        <span class="alert-text space-left">◀◀◀</span>
+    </span>
+</footer>
+<div id="settings">
+    <div id="settings-window">
+        <div class="card-panel">
+            <div class="card-header">
+                <div class="card-button active" data-target="settings-tracker">Tracker settings</div>
+                <div class="card-button" data-target="settings-options">Randomizer options</div>
+                <div class="card-button" data-target="settings-skips">Skips</div>
+            </div>
+            <div class="card-body active" id="settings-tracker">
+                <div>
+                    <label class="settings-option">
+                        <span class="option-text">Select Layout</span>
+                        <select type="checkbox" id="layout">
+                            <option value="items">Items only</option>
+                            <option value="items-minimal">Items only (minimal)</option>
+                            <option value="map-minimal">Map (minimal)</option>
+                            <option value="map-center">Map (centered)</option>
+                            <option value="map-compact">Map (compact)</option>
+                            <option value="compact">Compact</option>
+                            <option value="compact-minimal">Compact (minimal)</option>
+                            <option value="flat">Flat</option>
+                            <option value="mobile">Mobile</option>
+                            <option value="mobile-minimal">Mobile (minimal)</option>
+                        </select>
+                    </label>
+                    <label class="settings-option">
+                        <span class="option-text">Item Size</span>
+                        <span>
+                            <input type="range" min="32" max="64" value="40" class="slider" id="item-scale-slider">
+                            <span class="input-value">40px</span>
+                        </span>
+                    </label>
+                    <label class="settings-option">
+                        <span class="option-text">Show accessible badges</span>
+                        <input type="checkbox" id="show_hint_badges">
+                    </label>
+                    <label class="settings-option">
+                        <span class="option-text">Use custom logic</span>
+                        <input type="checkbox" id="use_custom_logic">
+                        <a href="/editor.html" target="_blank" class="button">EDIT</a>
+                    </label>
+                    <label class="settings-option">
+                        <span class="option-text">Erase all stored data</span>
+                        <button class="button" id="erase_all_data">ERASE</button>
+                    </label>
+                </div>
+                <hr>
+                <p>
+                    Please be aware, that the logic of this tracker (mostly) follows the randomizer logic.<br>
+                    This is due to the fact, that the logic of the randomizer is a good estimation of the logic of the game itself.<br>
+                    If some logic does not add up or seems wierd, please <a href="https://bitbucket.org/2deep4real/track-oot/issues" target="_blank">REPORT</a> it.<br><br>
+                    Join my Discord! ▶ <a href="https://discord.gg/wgFVtuv" target="_blank">Link</a><br><br>
+                    Big thanks to:<br>
+                    <i class="thanks-name">TestRunner</i> for creating the original tracker.<br>
+                    <i class="thanks-name">Scatter</i> for building a logic compendium.<br>
+                    <i class="thanks-name">fraggerman</i> for helping with the logic.<br>
+                    <i class="thanks-name">Luigimeansme</i> for helping with adding Master Quest.
+                </p>
+            </div>
+            <div class="card-body" id="settings-options">
+            </div>
+            <div class="card-body" id="settings-skips">
+            </div>
+        </div>
+        <hr>
+        <div class="settings-buttons">
+            <button id="settings-cancel">cancel</button>
+            <button id="settings-save">save</button>
+        </div>
+    </div>
+</div>

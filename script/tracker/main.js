@@ -49,7 +49,7 @@ function changeItemInactiveEffect() {
 
 async function main() {
 
-    document.getElementById('status-version').innerHTML = await fetch("version").then(r => r.text());
+    document.getElementById('status-version').innerHTML = await fetch("version").then(r => !!r.ok ? r.text() : "dev");
 
     data = await loadAll();
 
