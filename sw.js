@@ -68,10 +68,15 @@ self.addEventListener('message', event => {
 
 async function getMainFile(request) {
   var cache = await caches.open(CACHE_NAME_MAIN);
-  var response = await fetch(request);
-  if (!!response.ok) {
-    await cache.put(request.url, response.clone());
-  } else {
+  var response;
+  try {
+    response = await fetch(request);
+    if (!!response.ok) {
+      await cache.put(request.url, response.clone());
+    } else {
+      response = await cache.match(request.clone());
+    }
+  } catch(e) {
     response = await cache.match(request.clone());
   }
   var local = new Date(response.headers.get("Last-Modified"));
