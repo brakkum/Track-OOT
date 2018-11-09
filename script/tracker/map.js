@@ -136,8 +136,10 @@ function createShops() {
             var item = shop[j];
             var shop_item = data.shop_items[item.item];
             var itm = document.createElement("div");
-            itm.onclick = new Function("clickShopItem('"+i+"','"+j+"')");
-            itm.oncontextmenu = new Function("clickShopReItem('"+i+"','"+j+"')");
+            itm.setAttribute("data-shop", i);
+            itm.setAttribute("data-slot", j);
+            itm.onclick = clickShopItem;
+            itm.oncontextmenu = clickShopReItem;
             itm.className = "shop-item";
             var img = document.createElement("div");
             img.className = "shop-item-image";
@@ -165,14 +167,20 @@ function createShops() {
     }
 }
 
-function clickShopItem(id, slot) {
+function clickShopItem(event) {
+    var t = event.currentTarget;
+    var id = t.getAttribute("data-shop");
+    var slot = t.getAttribute("data-slot");
     var bought = SaveState.read("shops_bought", id, [0,0,0,0,0,0,0,0]);
     bought[slot] = 1;
     SaveState.write("shops_bought", id, bought);
     rebuildShop(id);
 }
 
-function clickShopReItem(id, slot) {
+function clickShopReItem(event) {
+    var t = event.currentTarget;
+    var id = t.getAttribute("data-shop");
+    var slot = t.getAttribute("data-slot");
     var bought = SaveState.read("shops_bought", id, [0,0,0,0,0,0,0,0]);
     bought[slot] = 0;
     SaveState.write("shops_bought", id, bought);

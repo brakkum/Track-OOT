@@ -6,7 +6,9 @@
             "woods_skull_kid": {
                 "age": "child"
             },
-            "woods_deku_salesman": {},
+            "woods_deku_salesman": {
+                "age": "child"
+            },
             "woods_memory_game": {
                 "age": "child"
             },
@@ -125,10 +127,12 @@
         "y": "24.0%",
         "chests": {
             "kakariko_anju_adult": {
-                "age": "adult"
+                "age": "adult",
+                "time": "day"
             },
             "kakariko_anju_chickens": {
-                "age": "child"
+                "age": "child",
+                "time": "day"
             },
             "kakariko_grotto": {},
             "kakariko_redead_grotto": {},

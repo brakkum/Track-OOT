@@ -2,7 +2,6 @@
 // @koala-prepend "../utils/SaveState.js"
 // @koala-prepend "../utils/Storage.js"
 // @koala-prepend "../utils/FileLoader.js"
-// @koala-prepend "../utils/Splash.js"
 // @koala-prepend "loader.js"
 // @koala-prepend "logic.js"
 // @koala-prepend "items.js"
@@ -50,18 +49,9 @@ function changeItemInactiveEffect() {
 
 async function main() {
 
-    if ('serviceWorker' in navigator) {
-        try {
-            await navigator.serviceWorker.register('/script/ServiceWorker.js');
-            console.log('Service Worker Registered');
-        } catch(err) {
-            console.error(err);
-        }
-    }
+    document.getElementById('status-version').innerHTML = await fetch("version").then(r => r.text());
 
-    FileLoader.onupdate = Splash.update;
     data = await loadAll();
-    Splash.hide();
 
     map_scale_slider.value = Storage.get("settings", "map_zoom", 90);
     document.getElementById('map').style.setProperty("--map-scale", parseInt(map_scale_slider.value) / 100);
@@ -73,6 +63,8 @@ async function main() {
     createItemTracker();
 
     populateMap();
+
+    Splash.hide();
 }
 
 main();

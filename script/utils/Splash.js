@@ -3,7 +3,7 @@ Splash = (new function(){
     var ldn = spl.querySelector('.loading');
 
     this.update = function(max, val) {
-        ldn.innerHTML = "Loading... " + val + "/" + max;
+        ldn.innerHTML = "loading... " + val + "/" + max;
     }
 
     this.hide = function() {

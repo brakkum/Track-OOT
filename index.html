@@ -13,8 +13,104 @@
         <link rel="icon" type="image/svg+xml" href="images/logo.min.svg" sizes="any">
         <link rel="manifest" href="/manifest.json">
         <link rel="stylesheet" href="style/normalize.css">
-        <link rel="stylesheet" href="style/tracker.css?v=201811070051" type="text/css">
-        <script src="script/tracker/main.min.js?v=201811070051" defer></script>
+        <style>
+            * {
+                position: relative;
+                box-sizing: border-box;
+                font-family: "Charlemagne", Arial, sans-serif;
+                outline: none;
+                line-height: 1em;
+            }
+
+            #splash {
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: black;
+                color: white;
+            }
+            
+            #splash span {
+                margin-top: 20px;
+            }
+            
+            #splash.inactive {
+                display: none;
+            }
+
+            #splash .splash-image {
+                width: 50vmin;
+                height: 50vmin;
+            }
+        </style>
+        <script>
+
+            window.addEventListener('load', function() {
+
+                var max_files = 0;
+                var load_files = 0;
+                
+                window.Splash = (new function(){
+                    var spl = document.getElementById("splash");
+                    var ldn = spl.querySelector('.loading');
+
+                    this.update = function(msg = "loading...") {
+                        ldn.innerHTML = msg;
+                    }
+
+                    this.hide = function() {
+                        spl.className = "inactive";
+                    }
+                }());
+
+                function startApp() {
+                    var s = document.createElement("script");
+                    s.src = "script/tracker/main.min.js";
+                    var t = document.createElement("link");
+                    t.href = "style/tracker.css";
+                    t.rel = "stylesheet";
+                    t.type = "text/css";
+                    document.head.appendChild(s);
+                    document.head.appendChild(t);
+                }
+
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+
+                        navigator.serviceWorker.addEventListener('message', event => {
+                            if (event.data.type == "state") {
+                                if (event.data.msg == "update success") {
+                                    Splash.update("starting...");
+                                    startApp();
+                                }
+                            } else if (event.data.type == "update") {
+                                if (event.data.msg == "loaded") {
+                                    Splash.update("updating " + (++load_files) + "/" + max_files);
+                                } else {
+                                    load_files = 0;
+                                    max_files = event.data.msg;
+                                    Splash.update("updating " + load_files + "/" + max_files);
+                                }
+                            }
+                        });
+
+                        navigator.serviceWorker.controller.postMessage("update");
+                    }, function(err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+                } else {
+                    startApp();
+                }
+            });
+            
+        </script>
     </head>
     <body data-hint-badges="false" data-shopsanity="false">
         <div id="viewpane">
@@ -93,7 +189,7 @@
             </div>
             <footer class="footer">
                 <span class="footer-field">
-                    <span id="status-version">0.7 [201811070051]</span> for 2.18.7 f.LUM
+                    0.7 [<span id="status-version"></span>] for 2.18.7 f.LUM
                 </span>
                 <span class="footer-spacer">|</span>
                 <span class="footer-field">
@@ -185,7 +281,7 @@
                 
         <div id="splash">
             <img class="splash-image" src="images/logo.min.svg">
-            <span class="loading">Loading...</span>
+            <span class="loading">loading...</span>
         </div>
     </body>
 </html>

@@ -6,7 +6,6 @@
 @import "tracker/settings";
 @import "tracker/layouts";
 @import "utils/Dialog";
-@import "utils/Splash";
 
 @keyframes alertcolor {
     0%{
@@ -18,15 +17,6 @@
     100% {
         color: orange;
     }
-}
-
-* {
-    position: relative;
-    box-sizing: border-box;
-    font-family: "Charlemagne", Arial, sans-serif;
-    //font-weight: bold;
-    outline: none;
-    line-height: 1em;
 }
 
 a {
