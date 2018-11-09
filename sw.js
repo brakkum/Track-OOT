@@ -110,10 +110,9 @@ async function updateFile(client, file) {
 
 async function checkFile(cache, url) {
   var response = await cache.match(url);
-  var local = new Date(response.headers.get("Last-Modified"));
-  if (local > version) version = local;
   if (!!response) {
     var local = new Date(response.headers.get("Last-Modified"));
+    if (local > version) version = local;
     var remote = new Date((await fetch(url, {
       method: 'HEAD',
       headers: new Headers({
