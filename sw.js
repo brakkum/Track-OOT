@@ -13,7 +13,12 @@ const CACHE_URLS = [
   self.location.origin + '/images/favicons/icon-96x96.png',
   self.location.origin + '/images/favicons/icon-144x144.png',
   self.location.origin + '/images/favicons/icon-192x192.png',
-  self.location.origin + '/images/logo.min.svg'
+  self.location.origin + '/images/logo.min.svg',
+  self.location.origin + '/favicon.ico',
+  self.location.origin + '/editor.html',
+  self.location.origin + '/script/editor/main.min.js',
+  self.location.origin + '/style/editor.css',
+  self.location.origin + '/deleted.html'
 ];
 
 var cmd = {
