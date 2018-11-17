@@ -98,7 +98,7 @@ async function updateFiles(client) {
       headers: new Headers({
           "Content-Type": "text/plain",
           "Pragma": "no-cache",
-          "Cache-Control": "no-cache, max-age=0, must-revalidate"
+          "Cache-Control": "no-cache"
       }),
       mode: 'cors',
       cache: 'default'
