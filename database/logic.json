@@ -1347,6 +1347,88 @@
                     ]
                 }
             ]
+        },
+        "can_stun_deku": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_child_attack"
+                },
+                {
+                    "type": "item",
+                    "el": "nut"
+                },
+                {
+                    "type": "item",
+                    "el": "shield_kokiri"
+                }
+            ]
+        },
+        "has_fire_source": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "magic_power"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "magic_din"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "bow"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "arrow_fire"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "can_see_with_lens": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "not",
+                    "el": {
+                        "type": "skip",
+                        "el": "lens_required",
+                        "value": "lens_required_default"
+                    }
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "magic_power"
+                        },
+                        {
+                            "type": "item",
+                            "el": "lens"
+                        }
+                    ]
+                }
+            ]
         }
     },
     "chests": {
@@ -9548,30 +9630,8 @@
                     "el": "ganon_castle_access"
                 },
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "skip",
-                                "el": "lens_required",
-                                "value": "lens_required_default"
-                            }
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "magic_power"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "lens"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "can_see_with_lens"
                 }
             ]
         },
@@ -9583,30 +9643,8 @@
                     "el": "ganon_castle_access"
                 },
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "skip",
-                                "el": "lens_required",
-                                "value": "lens_required_default"
-                            }
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "magic_power"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "lens"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "can_see_with_lens"
                 }
             ]
         },
@@ -9618,30 +9656,8 @@
                     "el": "ganon_castle_access"
                 },
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "skip",
-                                "el": "lens_required",
-                                "value": "lens_required_default"
-                            }
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "magic_power"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "lens"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "can_see_with_lens"
                 }
             ]
         },
@@ -9653,30 +9669,8 @@
                     "el": "ganon_castle_access"
                 },
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "skip",
-                                "el": "lens_required",
-                                "value": "lens_required_default"
-                            }
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "magic_power"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "lens"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "can_see_with_lens"
                 }
             ]
         },
@@ -10527,6 +10521,583 @@
                 {
                     "type": "mixin",
                     "el": "has_explosives"
+                }
+            ]
+        },
+        "dodongo_main_room_salesman_1_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                }
+            ]
+        },
+        "dodongo_main_room_salesman_2_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                }
+            ]
+        },
+        "dodongo_map_mq": {
+            "type": "mixin",
+            "el": "dodongo_cavern_access"
+        },
+        "dodongo_above_stairs_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                }
+            ]
+        },
+        "dodongo_compass_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_child_attack"
+                        },
+                        {
+                            "type": "item",
+                            "el": "nut"
+                        }
+                    ]
+                }
+            ]
+        },
+        "dodongo_gohma_larva_room_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "has_fire_source"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "stick"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "glove"
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "dodongo_torch_puzzle_room_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_blast_or_smash"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "skip",
+                                            "el": "dodongo_spike"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "hookshot"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "dodongo_1f_right_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "dodongo_bomb_bag_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "slingshot"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "stick"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_din"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_power"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "dodongo_under_grave_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                }
+            ]
+        },
+        "dodongo_chest_above_dodongo_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                }
+            ]
+        },
+        "dodongo_dodongo_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "bombs"
+                        },
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "item",
+                            "el": "sword_kokiri"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        }
+                    ]
+                }
+            ]
+        },
+        "jabujabu_map_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                }
+            ]
+        },
+        "jabujabu_entry_side_chest_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                }
+            ]
+        },
+        "jabujabu_second_room_lower_chest_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                }
+            ]
+        },
+        "jabujabu_compass_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                }
+            ]
+        },
+        "jabujabu_basement_south_chest_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                }
+            ]
+        },
+        "jabujabu_basement_north_chest_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                }
+            ]
+        },
+        "jabujabu_boomerang_room_small_chest_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                }
+            ]
+        },
+        "jabujabu_boomerang_chest_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                }
+            ]
+        },
+        "jabujabu_like_like_chest_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "item",
+                    "el": "boomerang"
+                }
+            ]
+        },
+        "jabujabu_second_room_upper_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "item",
+                    "el": "boomerang"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "sword_kokiri"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "jabujabu_near_boss_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "item",
+                    "el": "boomerang"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "sword_kokiri"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "jabujabu_barinade_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "item",
+                    "el": "boomerang"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "sword_kokiri"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }
@@ -13237,30 +13808,8 @@
                     ]
                 },
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "skip",
-                                "el": "lens_required",
-                                "value": "lens_required_default"
-                            }
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "lens"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "magic_power"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "can_see_with_lens"
                 }
             ]
         },
@@ -13593,6 +14142,130 @@
                                             ]
                                         }
                                     ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "jabujabu_boomerang_room_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_time"
+                }
+            ]
+        },
+        "jabujabu_electric_worm_room_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "item",
+                    "el": "boomerang"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "jabujabu_invisible_enemies_room_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "item",
+                    "el": "boomerang"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_see_with_lens"
+                }
+            ]
+        },
+        "jabujabu_near_boss_gs_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "item",
+                    "el": "boomerang"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "sword_kokiri"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
                                 }
                             ]
                         }

@@ -321,7 +321,10 @@ function fillDungeonList(dd) {
     poi_list.entries = [];
     if (!!dd) {
         var r = document.createElement('li');
-        r.innerHTML = "(back)";
+        var n = document.createElement('span');
+        n.className = "hint-name";
+        n.innerHTML = "(back)";
+        r.appendChild(n);
         r.className = "dungeon-entry";
         r.onclick = function() {
             fillDungeonList();
@@ -334,7 +337,10 @@ function fillDungeonList(dd) {
             var dta = dd[i];
             var s = document.createElement('li');
             s.id = i;
-            s.innerHTML = translate(i);
+            var n = document.createElement('span');
+            n.className = "hint-name";
+            n.innerHTML = translate(i);
+            s.appendChild(n);
             addBadge(s, dta.age, dta.time);
             s.setAttribute("data-category", poi_list.mode);
             s.onclick = togglePOI;
@@ -353,7 +359,10 @@ function fillDungeonList(dd) {
         dn.innerHTML = "Hyrule";
 
         var r = document.createElement('li');
-        r.innerHTML = "Overworld";
+        var n = document.createElement('span');
+        n.className = "hint-name";
+        n.innerHTML = "Overworld";
+        r.appendChild(n);
         r.setAttribute("data-ref", "overworld");
         r.onclick = loadDungeonList;
         r.style.cursor = "pointer";
@@ -366,7 +375,10 @@ function fillDungeonList(dd) {
         for (let i in dd) {
             var dta = dd[i];
             var s = document.createElement('li');
-            s.innerHTML = translate(i);
+            var n = document.createElement('span');
+            n.className = "hint-name";
+            n.innerHTML = translate(i);
+            s.appendChild(n);
             addBadge(s, dta.age, dta.time);
             s.setAttribute("data-ref", i);
             s.onclick = loadDungeonList;

@@ -135,6 +135,7 @@
                 margin-left: 5px;
                 width: 20px;
                 height: 20px;
+                flex-shrink: 0;
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: contain;
@@ -198,6 +199,12 @@
             &:hover {
                 background-color: #282828;
             }
+
+            .hint-name {
+                display: block;
+                flex: 1;
+            }
+
         }
     }
 }

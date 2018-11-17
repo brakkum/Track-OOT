@@ -7,6 +7,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <script>
             localStorage.clear();
+
+            if(window.navigator && navigator.serviceWorker) {
+                navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                    for(let registration of registrations) {
+                        registration.unregister();
+                    }
+                });
+            }
         </script>
         <style>
             #splash {
@@ -34,7 +42,7 @@
     </head>
     <body>   
         <div id="splash">
-            <img src="images/track-oot.png">
+            <img src="../images/logo.png">
             <span class="loading">All local data erased, please close this tab/window to proceed!</span>
         </div>
     </body>

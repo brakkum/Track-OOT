@@ -1,7 +1,7 @@
 const CACHE_NAME_MAIN = 'track-oot:main';
 const CACHE_NAME_DLC = 'track-oot:dlc';
 
-const CACHE_URLS = [
+var CACHE_URLS = [
   self.location.origin + '/',
   self.location.origin + '/manifest.json',
   self.location.origin + '/style/normalize.css',
@@ -14,11 +14,16 @@ const CACHE_URLS = [
   self.location.origin + '/images/favicons/icon-144x144.png',
   self.location.origin + '/images/favicons/icon-192x192.png',
   self.location.origin + '/images/logo.min.svg',
-  self.location.origin + '/favicon.ico',
+  self.location.origin + '/favicon.ico'
+];
+
+var WHITELIST_URLS = [
+  self.location.origin + '/editor',
   self.location.origin + '/editor.html',
   self.location.origin + '/script/editor/main.min.js',
   self.location.origin + '/style/editor.css',
-  self.location.origin + '/deleted.html'
+  self.location.origin + '/uninstall.html',
+  self.location.origin + '/uninstall'
 ];
 
 var cmd = {
@@ -48,6 +53,8 @@ self.addEventListener('fetch', function(event) {
                 +("00"+version.getHours()).slice(-2)
                 +("00"+version.getMinutes()).slice(-2))
     );
+  } else if (WHITELIST_URLS.indexOf(event.request.url)>=0) {
+    return false;
   } else if (CACHE_URLS.indexOf(event.request.url)>=0) {
     event.respondWith(getMainFile(event.request));
   } else {

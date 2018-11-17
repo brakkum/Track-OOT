@@ -83,7 +83,7 @@ function setStatus(name, value) {
 document.getElementById("erase_all_data").onclick = function() {
     Dialog.prompt("Erase all data?", "You are about to erase all data.<br>Please enter \"ERAZE\" to continue.<br><br>Warning: This cant be undone!").then(function(res) {
         if (res === "ERAZE") {
-            window.location = "deleted.html";
+            window.location = "uninstall.html";
         }
     });
 }
