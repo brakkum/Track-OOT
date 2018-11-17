@@ -93,7 +93,16 @@ async function getMainFile(request) {
 
 async function updateFiles(client) {
   try {
-    var files = await fetch(new Request("cache.index")).then(r => r.text());
+    var files = await fetch("cache.index", {
+      method: 'HEAD',
+      headers: new Headers({
+          "Content-Type": "text/plain",
+          "Pragma": "no-cache",
+          "Cache-Control": "no-cache"
+      }),
+      mode: 'cors',
+      cache: 'default'
+    }).then(r => r.text());
     files = files.split(/\r\n|\r|\n/);
     client.postMessage({
       type: "update",
