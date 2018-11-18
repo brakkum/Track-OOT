@@ -93,7 +93,15 @@ async function getMainFile(request) {
 
 async function updateFiles(client) {
   try {
-    var files = await fetch(new Request("cache.index")).then(r => r.text());
+    var files = await fetch(new Request("cache.index"), {
+      method: 'GET',
+      headers: new Headers({
+          "Content-Type": "text/plain",
+          "Pragma": "no-cache",
+          "Cache-Control": "no-cache"
+      }),
+      mode: 'cors'
+    }).then(r => r.text());
     files = files.split(/\r\n|\r|\n/);
     client.postMessage({
       type: "update",
@@ -137,8 +145,7 @@ async function checkFile(cache, url) {
           "Pragma": "no-cache",
           "Cache-Control": "no-cache"
       }),
-      mode: 'cors',
-      cache: 'default'
+      mode: 'cors'
     })).headers.get("Last-Modified"));
     return remote > local;
   } else {
@@ -154,8 +161,7 @@ async function loadFile(url) {
         "Pragma": "no-cache",
         "Cache-Control": "no-cache"
     }),
-    mode: 'cors',
-    cache: 'default'
+    mode: 'cors'
   }).then(function(response) {
     if (!response.ok) {
       throw new TypeError('Bad response status');
@@ -163,5 +169,5 @@ async function loadFile(url) {
     var local = new Date(response.headers.get("Last-Modified"));
     if (local > version) version = local;
     return response;
-  })
+  });
 }
