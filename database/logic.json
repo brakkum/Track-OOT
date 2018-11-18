@@ -11100,6 +11100,565 @@
                     ]
                 }
             ]
+        },
+        "temple_forest_entrance_mq": {
+            "type": "mixin",
+            "el": "forest_temple_access"
+        },
+        "temple_forest_behind_lobby_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "forest_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "key_small_forest"
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_time"
+                }
+            ]
+        },
+        "temple_forest_boss_key_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "forest_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "key_small_forest"
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "el": "glove"
+                }
+            ]
+        },
+        "temple_forest_redead_chest_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "forest_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "key_small_forest"
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "el": "glove"
+                }
+            ]
+        },
+        "temple_forest_ne_outdoors_upper_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "forest_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "key_small_forest"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "glove"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "boots_iron"
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "scale"
+                                            },
+                                            "value": 2
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "hookshot"
+                                            },
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "song_time"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "hookshot"
+                            },
+                            "value": 2
+                        },
+                        {
+                            "type": "item",
+                            "el": "boots_hover"
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_forest_bow_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "forest_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_forest"
+                            },
+                            "value": 2
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_forest_map_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "forest_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_forest"
+                            },
+                            "value": 2
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "el": "bow"
+                }
+            ]
+        },
+        "temple_forest_compass_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "forest_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_forest"
+                            },
+                            "value": 2
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "el": "bow"
+                }
+            ]
+        },
+        "temple_forest_well_chest_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "forest_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "key_small_forest"
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "el": "bow"
+                }
+            ]
+        },
+        "temple_forest_falling_room_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "forest_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_forest"
+                            },
+                            "value": 5
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "glove"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_forest_ne_outdoors_lower_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "forest_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_forest"
+                            },
+                            "value": 5
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "glove"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_forest_near_boss_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "forest_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_forest"
+                            },
+                            "value": 6
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "glove"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_forest_phantomganon_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "forest_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_forest"
+                                    },
+                                    "value": 6
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "key_boss_forest"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "glove"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     },
     "skulltulas": {
@@ -14266,6 +14825,188 @@
                                 {
                                     "type": "item",
                                     "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_forest_first_hallway_adult_mq": {
+            "type": "mixin",
+            "el": "forest_temple_access"
+        },
+        "temple_forest_block_push_room_adult_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "forest_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "key_small_forest"
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_forest_outdoor_west_adult_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "forest_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "key_small_forest"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_forest_well_adult_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "forest_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "key_small_forest"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "boots_iron"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "glove"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_forest_outdoor_east_adult_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "forest_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "key_small_forest"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "glove"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "boots_iron"
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "scale"
+                                            },
+                                            "value": 2
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "hookshot"
+                                            },
+                                            "value": 2
+                                        }
+                                    ]
                                 }
                             ]
                         }
