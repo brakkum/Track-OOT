@@ -14,7 +14,6 @@
     display: inline-flex;
     flex-wrap: wrap;
     width: 100%;
-    max-width: 1000px;
 }
 
 .header > ul,
@@ -31,7 +30,7 @@
 .header > ul > li,
 .header > ul > li > ul > li {
     display: inline-block;
-    width: 100px;
+    width: 150px;
     height: 26px;
 }
 
@@ -60,12 +59,15 @@
 .header > ul > li.select-savegame {
     flex-basis: 0%;
     flex-grow: 1;
+    max-width: 500px;
+    margin-right: 10px;
 }
 
 @media (max-width: 800px) {
 
     .header > ul > li.select-savegame {
         flex-basis: 100%;
+        margin-right: 0;
     }
 
 }

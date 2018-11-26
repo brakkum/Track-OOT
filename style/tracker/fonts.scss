@@ -1,4 +1,21 @@
-@font-face {
-    font-family: 'Charlemagne';
-    src: url('../fonts/CharlemagneRegular.ttf') format('truetype');
+$fonts: "Charlemagne",
+        "Sheikah",
+        "Ravenna",
+        "ReturnofGanon",
+        "Sherwood",
+        "ZeldaDX",
+        "Triforce",
+        "AncientHylian";
+
+@each $item in $fonts {
+
+    @font-face {
+        font-family: "#{$item}";
+        src: url('../fonts/#{$item}.ttf') format('truetype');
+    }
+
+    [data-font="#{$item}"], [data-font="#{$item}"] * {
+        font-family: "#{$item}", Arial, sans-serif;
+    }
+
 }

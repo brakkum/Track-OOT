@@ -1,13 +1,17 @@
-function Tooltip(target, content) {
+function Tooltip(target, content, viewpane) {
+
+    if (!(viewpane instanceof HTMLElement)) {
+        viewpane = document.body;
+    }
 
     var el = document.createElement('div');
     el.className = "tooltip";
     el.innerHTML = content;
 
     target.addEventListener("mouseover", function(ev) {
-        document.body.appendChild(el);
-        var w = document.documentElement.clientWidth;
-        var h = document.documentElement.clientHeight;
+        viewpane.appendChild(el);
+        var w = viewpane.clientWidth;
+        var h = viewpane.clientHeight;
         var x = ev.pageX;
         var y = ev.pageY;
 
@@ -31,7 +35,7 @@ function Tooltip(target, content) {
     });
 
     target.addEventListener("mouseout", function(ev) {
-        document.body.removeChild(el);
+        viewpane.removeChild(el);
     });
 
 }

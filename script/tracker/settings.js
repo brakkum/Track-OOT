@@ -75,6 +75,7 @@ function buildSettings() {
     var settings_options = document.getElementById("settings-options");
     var settings_skips = document.getElementById("settings-skips");
     
+    var settings_font = settings_container.querySelector('#font');
     var settings_layout = settings_container.querySelector('#layout');
     var settings_itemsize = settings_container.querySelector('#item-scale-slider');
     var settings_show_hint_badges = settings_container.querySelector('#show_hint_badges');
@@ -89,6 +90,7 @@ function buildSettings() {
     });
     
     settingsCancel.addEventListener("click", function() {
+        settings_font.value = Storage.get("settings", "font", "");
         settings_layout.value = Storage.get("settings", "layout", "map-compact");
         settings_itemsize.value = Storage.get("settings", "itemsize", 40);
         settings_show_hint_badges.checked = Storage.get("settings", "show_hint_badges", false);
@@ -101,6 +103,7 @@ function buildSettings() {
     settingsSave.addEventListener("click", function() {
         Storage.set("settings", "use_custom_logic", settings_use_custom_logic.checked);
         Storage.set("settings", "show_hint_badges", settings_show_hint_badges.checked);
+        Storage.set("settings", "font", settings_font.value);
         Storage.set("settings", "layout", settings_layout.value);
         Storage.set("settings", "itemsize", settings_itemsize.value);
         readSettingsPage("options", settings_options);
@@ -128,6 +131,7 @@ function buildSettings() {
     generateSettingsPage("options", settings_options);
     generateSettingsPage("skips", settings_skips);
 
+    settings_font.value = Storage.get("settings", "font", "");
     settings_layout.value = Storage.get("settings", "layout", "map-compact");
     settings_itemsize.value = Storage.get("settings", "itemsize", 40);
     settings_show_hint_badges.checked = Storage.get("settings", "show_hint_badges", false);
@@ -137,6 +141,8 @@ function buildSettings() {
 }
 
 function applySettingsChoices() {
+    var viewpane = document.getElementById("viewpane");
+    viewpane.setAttribute("data-font", Storage.get("settings", "font", ""));
     var layout_container = document.querySelector(".layout-container[data-layout]");
     layout_container.setAttribute("data-layout", Storage.get("settings", "layout", "map-compact"));
     layout_container.style.setProperty("--item-size", Storage.get("settings", "itemsize", 40) + "px");

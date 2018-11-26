@@ -57,23 +57,8 @@ body {
 
     overflow: hidden;
 
-    .hint-badge {
-        display: none;
-        align-items: center;
-        justify-content: center;
-        width: 20px;
-        height: 20px;
-        flex-shrink: 0;
-        margin-left: 10px;
-        background-color: #cb9c3d;
-        color: black;
-        border-radius: 10px;
-        font-size: 0.6em;
-        font-weight: bold;
-    }
-
     .tooltip {
-        display: table;
+        display: inline-flex;
         background-color: black;
         color: #fff;
         border: solid 1px white;
@@ -83,8 +68,6 @@ body {
         position: absolute;
         white-space: nowrap;
         z-index: 10000;
-        top: calc(50% - 14px);
-        right: calc(100% + 10px);
         font-size: 18px;
         user-select: none;
     }
@@ -108,13 +91,29 @@ body {
         }
     }
 
+    .hint-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 0;
+        height: 20px;
+        flex-shrink: 0;
+        margin-left: 0;
+        background-color: #cb9c3d;
+        color: black;
+        border-radius: 10px;
+        font-size: 0.6em;
+        font-weight: bold;
+    }
+
     &[data-hint-badges="true"] {
 
         .tooltip,
         #dungeon-container #dungeon-list .dungeon-entry {
     
-            .hint-badge {
-                display: inline-flex;
+            .hint-badge:not(.empty-hint) {
+                width: 20px;
+                margin-left: 10px;
             }
         }
     }

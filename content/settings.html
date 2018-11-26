@@ -1,0 +1,84 @@
+
+<div id="settings-window">
+    <div class="card-panel">
+        <div class="card-header">
+            <div class="card-button active" data-target="settings-tracker">Tracker settings</div>
+            <div class="card-button" data-target="settings-options">Randomizer options</div>
+            <div class="card-button" data-target="settings-skips">Skips</div>
+        </div>
+        <div class="card-body active" id="settings-tracker">
+            <div>
+                <label class="settings-option">
+                    <span class="option-text">Font</span>
+                    <select type="checkbox" id="font">
+                        <option value="">Default</option>
+                        <option value="Charlemagne">Charlemagne</option>
+                        <option value="Ravenna">Ravenna</option>
+                        <option value="ReturnofGanon">ReturnofGanon</option>
+                        <option value="Sherwood">Sherwood</option>
+                        <option value="ZeldaDX">ZeldaDX</option>
+                        <option value="Triforce">Triforce</option>
+                        <option value="AncientHylian">AncientHylian</option>
+                        <option value="Sheikah">Sheikah</option>
+                    </select>
+                </label>
+                <label class="settings-option">
+                    <span class="option-text">Select Layout</span>
+                    <select type="checkbox" id="layout">
+                        <option value="items">Items only</option>
+                        <option value="items-minimal">Items only (minimal)</option>
+                        <option value="map-minimal">Map (minimal)</option>
+                        <option value="map-center">Map (centered)</option>
+                        <option value="map-compact">Map (compact)</option>
+                        <option value="compact">Compact</option>
+                        <option value="compact-minimal">Compact (minimal)</option>
+                        <option value="flat">Flat</option>
+                        <option value="mobile">Mobile</option>
+                        <option value="mobile-minimal">Mobile (minimal)</option>
+                    </select>
+                </label>
+                <label class="settings-option">
+                    <span class="option-text">Item Size</span>
+                    <span>
+                        <input type="range" min="32" max="64" value="40" class="slider" id="item-scale-slider">
+                        <span class="input-value">40px</span>
+                    </span>
+                </label>
+                <label class="settings-option">
+                    <span class="option-text">Show accessible badges</span>
+                    <input type="checkbox" id="show_hint_badges">
+                </label>
+                <label class="settings-option">
+                    <span class="option-text">Use custom logic</span>
+                    <input type="checkbox" id="use_custom_logic">
+                    <a href="/editor.html" target="_blank" class="button">EDIT</a>
+                </label>
+                <label class="settings-option">
+                    <span class="option-text">Erase all stored data</span>
+                    <button class="button" id="erase_all_data">ERASE</button>
+                </label>
+            </div>
+            <hr>
+            <p>
+                Please be aware, that the logic of this tracker (mostly) follows the randomizer logic.<br>
+                This is due to the fact, that the logic of the randomizer is a good estimation of the logic of the game itself.<br>
+                If some logic does not add up or seems wierd, please <a href="https://bitbucket.org/2deep4real/track-oot/issues" target="_blank">REPORT</a> it.<br><br>
+                Join my Discord! ▶ <a href="https://discord.gg/wgFVtuv" target="_blank">Link</a><br><br>
+                Big thanks to:<br>
+                <i class="thanks-name">TestRunner</i> for creating the original tracker.<br>
+                <i class="thanks-name">Scatter</i> for building a logic compendium.<br>
+                <i class="thanks-name">fraggerman</i> for helping with the logic.<br>
+                <i class="thanks-name">Luigimeansme</i> for helping with adding Master Quest.
+            </p>
+        </div>
+        <div class="card-body" id="settings-options">
+        </div>
+        <div class="card-body" id="settings-skips">
+        </div>
+    </div>
+    <hr>
+    <div class="settings-buttons">
+        <button id="settings-cancel">cancel</button>
+        <button id="settings-save">save</button>
+    </div>
+</div>

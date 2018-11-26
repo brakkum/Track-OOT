@@ -16,7 +16,7 @@
             * {
                 position: relative;
                 box-sizing: border-box;
-                font-family: "Charlemagne", Arial, sans-serif;
+                font-family: Arial, sans-serif;
                 outline: none;
                 line-height: 1em;
             }
@@ -25,7 +25,7 @@
                 margin: 0;
             }
 
-            #viewpane {
+            #viewpane, #settings {
                 display: none;
             }
 
@@ -76,14 +76,19 @@
                     }
                 }());
 
-                async function startApp() {
-                    var doc = await fetch("content/tracker.html")
+                async function fillContent(id, url) {
+                    var doc = await fetch(url)
                         	.then(r => r.text())
                             .then(r => (new DOMParser()).parseFromString(r, "text/html"));
-                    var viewpane = document.getElementById('viewpane');
+                    var terget = document.getElementById(id);
                     while (doc.body.childNodes.length > 0) {
-                        viewpane.appendChild(doc.body.childNodes[0]);
+                        terget.appendChild(doc.body.childNodes[0]);
                     }
+                }
+
+                async function startApp() {
+                    await fillContent("viewpane", "content/tracker.html");
+                    await fillContent("settings", "content/settings.html");
                     var s = document.createElement("script");
                     s.src = "script/tracker/main.min.js";
                     var t = document.createElement("link");
@@ -128,6 +133,8 @@
     </head>
     <body>
         <div id="viewpane">
+        </div>
+        <div id="settings">
         </div>
         <div id="splash">
             <img class="splash-image" src="images/logo.min.svg">

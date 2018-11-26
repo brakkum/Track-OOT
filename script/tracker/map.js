@@ -36,9 +36,12 @@ function toogleDungeonMQ(name) {
 }
 
 function addBadge(target, age, time) {
-    if (!age && !time) return;
     var el = document.createElement("span");
-    el.className = "hint-badge";
+    if (!age && !time) {
+        el.className = "hint-badge empty-hint";
+    } else {
+        el.className = "hint-badge";
+    }
     switch(age) {
         case "child": el.innerHTML += "C"; break;
         case "adult": el.innerHTML += "A"; break;
@@ -69,7 +72,7 @@ function addPOIs(target, category) {
             s.setAttribute("data-mode", dta.mode);
         }
 
-        new Tooltip(s, translate(id) + (addBadge(false, dta.age, dta.time) || ""));
+        new Tooltip(s, translate(id) + (addBadge(false, dta.age, dta.time) || ""), document.getElementById("viewpane"));
 
         poi[category].push(s);
 
@@ -89,6 +92,7 @@ function populateMap() {
     // populate dungeon markers
     /////////////////////////////////
     for (let id in data.dungeons) {
+        var dta = data.dungeons[id];
         s = document.createElement('span');
         s.id = "dungeon_" + id;
 
@@ -100,7 +104,7 @@ function populateMap() {
         ss.className = "count";
         s.appendChild(ss);
 
-        new Tooltip(s, translate(id));
+        new Tooltip(s, translate(id) + (addBadge(false, dta.age, dta.time) || ""), document.getElementById("viewpane"));
 
         poi.dungeons.push(s);
 
@@ -325,6 +329,7 @@ function fillDungeonList(dd) {
         n.className = "hint-name";
         n.innerHTML = "(back)";
         r.appendChild(n);
+        addBadge(r);
         r.className = "dungeon-entry";
         r.onclick = function() {
             fillDungeonList();
@@ -363,6 +368,7 @@ function fillDungeonList(dd) {
         n.className = "hint-name";
         n.innerHTML = "Overworld";
         r.appendChild(n);
+        addBadge(r);
         r.setAttribute("data-ref", "overworld");
         r.onclick = loadDungeonList;
         r.style.cursor = "pointer";
