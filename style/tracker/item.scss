@@ -44,8 +44,8 @@
 .item-grid .item-row .text,
 .item-grid .item-row .switch {
     display: inline-flex;
-    width: var(--item-size);
-    height: var(--item-size);
+    width: calc(var(--item-size) * 1px);
+    height: calc(var(--item-size) * 1px);
     padding: 2px;
     background-repeat: no-repeat;
     background-position: center;
@@ -61,11 +61,11 @@
 .item-grid .item-row .item,
 .item-grid .item-row .icon,
 .item-grid .item-row .text {
-    font-size: calc(var(--item-size) * 0.25);
+    font-size: calc(var(--item-size) / 40 * 0.8em);
 }
 
 .item-grid .item-row .switch {
-    font-size: calc(var(--item-size) * 0.3);
+    font-size: calc(var(--item-size) / 40 * 0.9em);
 }
 
 .item-grid .item-row .item.mark,
@@ -83,7 +83,7 @@
 }
 
 .item-grid .item-row .switch:hover {
-    font-size: calc(var(--item-size) * 0.4);
+    font-size: calc(var(--item-size) / 40 * 1em);
 }
 
 /**********************************

@@ -145,7 +145,7 @@ function applySettingsChoices() {
     viewpane.setAttribute("data-font", Storage.get("settings", "font", ""));
     var layout_container = document.querySelector(".layout-container[data-layout]");
     layout_container.setAttribute("data-layout", Storage.get("settings", "layout", "map-compact"));
-    layout_container.style.setProperty("--item-size", Storage.get("settings", "itemsize", 40) + "px");
+    layout_container.style.setProperty("--item-size", Storage.get("settings", "itemsize", 40));
     if (Storage.get("settings", "show_hint_badges", false)) {
         document.body.setAttribute("data-hint-badges", "true");
     } else {
