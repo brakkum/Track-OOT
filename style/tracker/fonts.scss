@@ -1,12 +1,12 @@
 $fonts:
-        "Charlemagne" 1.1,
-        "Ravenna" 1.1,
-        "ReturnofGanon" 1.6,
-        "Sherwood" 1.1,
-        "ZeldaDX" 1.3,
-        "Triforce" 1,
-        "AncientHylian" 1.2,
-        "Sheikah" 1.2;
+        "Charlemagne" 1.1em,
+        "Ravenna" 1.1em,
+        "ReturnofGanon" 1.6em,
+        "Sherwood" 1.1em,
+        "ZeldaDX" 1.3em,
+        "Triforce" 1.4em,
+        "AncientHylian" 1.2em,
+        "Sheikah" 1.2em;
 
 @each $item in $fonts {
 
@@ -16,7 +16,7 @@ $fonts:
     }
 
     [data-font="#{nth($item, 1)}"] {
-        font-size: #{nth($item, 2)}em;
+        font-size: #{nth($item, 2)};
     }
 
     [data-font="#{nth($item, 1)}"], [data-font="#{nth($item, 1)}"] * {
