@@ -73,6 +73,7 @@ async function state_Load() {
             updateItems();
             rebuildAllShops();
             applySettingsChoices();
+            updateMap();
             toggleStateButtons();
             await Dialog.alert("Success", "State \""+activestate+"\" loaded.");
         }
@@ -110,7 +111,7 @@ async function state_New() {
             state_New();
             return;
         }
-        if (activestate != "") {
+        if (activestate == "") {
             if (await Dialog.confirm("Success", "State \""+name+"\" created.<br>Do you want to reset the current state?")) {
                 SaveState.reset();
             }
