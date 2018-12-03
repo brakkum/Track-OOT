@@ -306,18 +306,20 @@
                         word-wrap: break-word;
                         overflow: hidden;
                         width: 100%;
+                        font-size: 0.7em;
                         flex: 1;
                     }
 
                     .shop-item-price {
                         display: block;
                         width: 100%;
+                        font-size: 0.7em;
                         text-align: right;
 
                         &:after {
                             display: inline-block;
-                            width: 14px;
-                            height: 14px;
+                            width: 10px;
+                            height: 10px;
                             margin-left: 5px;
                             background-image: url('../images/rupees.png');
                             background-size: 14px;

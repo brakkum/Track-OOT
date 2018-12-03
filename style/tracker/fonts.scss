@@ -1,12 +1,15 @@
 $fonts:
-        "Charlemagne" 1.1em,
-        "Ravenna" 1.1em,
-        "ReturnofGanon" 1.6em,
-        "Sherwood" 1.1em,
-        "ZeldaDX" 1.3em,
-        "Triforce" 1.4em,
-        "AncientHylian" 1.2em,
-        "Sheikah" 1.2em;
+        "Charlemagne" 1em,
+        "Ravenna" 1em,
+        "ReturnofGanon" 1.5em,
+        "ZeldaDX" 1.15em,
+        "Triforce" 1.2em,
+        "AncientHylian" 1.1em,
+        "Sheikah" 1.1em;
+
+[data-font] {
+    font-size: 1.3em;
+}
 
 @each $item in $fonts {
 
@@ -26,5 +29,5 @@ $fonts:
 }
 
 :root {
-    font-size: 12px;
+    font-size: 14px;
 }
