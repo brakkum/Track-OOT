@@ -1,190 +1,192 @@
-std::map<std::string, std::string> m;
-m.emplace("Kokiri Sword Chest", "kokiri_sword");
-m.emplace("GS Kokiri Know It All House", "kokiri_know_it_all_brothers_child_night");
-m.emplace("GS Kokiri Bean Patch", "kokiri_beanspot_near_shop_child");
-m.emplace("GS Kokiri House of Twins", "kokiri_twins_adult_night");
-m.emplace("Mido Chest Top Left", "midos_house");
-m.emplace("Skull Kid", "woods_skull_kid");
-m.emplace("Ocarina Memory Game", "woods_memory_game");
-m.emplace("Target in Woods", "woods_shooting");
-m.emplace("LW Deku Scrub Deku Stick Upgrade", "woods_deku_salesman");
-m.emplace("GS Lost Woods Bean Patch Near Bridge", "woods_deku_salesman_beanspot_child");
-m.emplace("GS Lost Woods Bean Patch Near Stage", "woods_mask_theater_beanspot_child");
-m.emplace("LW Deku Scrub Deku Nuts", "woods_deku_salesman_theater_1");
-m.emplace("LW Deku Scrub Deku Sticks", "woods_deku_salesman_theater_2");
-m.emplace("Song from Saria", "woods_saria");
-m.emplace("Gift from Saria", "saria_ocarina");
-m.emplace("Ocarina of Time", "song_of_time");
-m.emplace("Underwater Bottle", "bottle_zora");
-m.emplace("Lake Hylia Sun", "lake_sun");
-m.emplace("Lake Hylia Freestanding PoH", "lab_roof");
-m.emplace("GS Lake Hylia Bean Patch", "lake_beanspot_child");
-m.emplace("GS Lake Hylia Lab Wall", "lake_behind_lab_child_night");
-m.emplace("GS Lake Hylia Small Island", "lake_near_firearrows_child_night");
-m.emplace("GS Lake Hylia Giant Tree", "lake_dead_tree_adult_night");
-m.emplace("Diving in the Lab", "lab_dive");
-m.emplace("GS Lab Underwater Crate", "lake_lab_box_adult");
-m.emplace("Child Fishing", "fishing_child");
-m.emplace("Adult Fishing", "fishing_adult");
-m.emplace("Gerudo Valley Waterfall Freestanding PoH", "gerudo_waterfall");
-m.emplace("Gerudo Valley Crate Freestanding PoH", "gerudo_crate");
-m.emplace("GS Gerudo Valley Small Bridge", "gerudo_wood_plank_child_night");
-m.emplace("GS Gerudo Valley Bean Patch", "gerudo_river_beanspot_child",);
-m.emplace("Gerudo Valley Hammer Rocks Chest", "gerudo_hammer_rock");
-m.emplace("GS Gerudo Valley Behind Tent", "gerudo_behind_carpenter_tent_adult_night");
-m.emplace("GS Gerudo Valley Pillar", "gerudo_rock_near_carpenter_tent_adult_night");
-m.emplace("Gerudo Fortress Rooftop Chest", "gerudo_rooftop");
-m.emplace("Horseback Archery 1000 Points", "gerudo_archer_1");
-m.emplace("Horseback Archery 1500 Points", "gerudo_archer_2");
-m.emplace("Gerudo Fortress North F1 Carpenter", "gerudo_guard_1");
-m.emplace("Gerudo Fortress North F2 Carpenter", "gerudo_guard_2");
-m.emplace("Gerudo Fortress South F1 Carpenter", "gerudo_guard_3");
-m.emplace("Gerudo Fortress South F2 Carpenter", "gerudo_guard_4",);
-m.emplace("Gerudo Fortress Membership Card", "gerudo_fortress_clear");
-m.emplace("GS Gerudo Fortress Archery Range", "gerudo_horseback_archery_target_adult_night");
-m.emplace("GS Gerudo Fortress Top Floor", "gerudo_rooftop_adult_night");
-m.emplace("Haunted Wasteland Structure Chest", "desert_chest");
-m.emplace("GS Wasteland Ruins", "desert_fortress_adult");
-m.emplace("Colossus Freestanding PoH", "desert_colossus_hp");
-m.emplace("Sheik at Colossus", "desert_warp_spirit");
-m.emplace("GS Desert Colossus Bean Patch", "desert_beanspot_child");
-m.emplace("GS Desert Colossus Tree", "desert_palm_tree_adult_night");
-m.emplace("GS Desert Colossus Hill", "desert_magic_bean_adult_night");
-m.emplace("Desert Colossus Fairy Reward", "desert_colossus_fairy",);
-m.emplace("Zelda", "castle_town_light_arrows");
-m.emplace("Sheik at Temple", "castle_town_warp");
-m.emplace("Malon Egg", "castle_town_maron");
-m.emplace("GS Hyrule Castle Tree", "castle_town_tree_child");
-m.emplace("Zeldas Letter", "castle_town_zelda");
-m.emplace("Hyrule Castle Fairy Reward", "castle_town_hyrule_fairy");
-m.emplace("GS Outside Ganon's Castle", "castle_town_near_ganon_fairy_adult");
-m.emplace("Ganons Castle Fairy Reward", "castle_town_ganon_fairy");
-m.emplace("10 Big Poes", "castle_town_poes");
-m.emplace("GS Castle Market Guard House", "castle_town_pot_room_child");
-m.emplace("Child Shooting Gallery", "castle_town_child_shooting");
-m.emplace("Bombchu Bowling Bomb Bag", "castle_town_bowling_1");
-m.emplace("Bombchu Bowling Piece of Heart", "castle_town_bowling_2");
-m.emplace("Treasure Chest Game", "castle_town_chest_game");
-m.emplace("Dog Lady", "castle_town_dog");
-m.emplace("Man on Roof", "kakariko_man_roof");
-m.emplace("Anju as Adult", "kakariko_anju_adult");
-m.emplace("Anjus Chickens", "kakariko_anju_chickens");
-m.emplace("Sheik in Kakariko", "kakariko_warp");
-m.emplace("GS Kakariko House Under Construction", "kakariko_construction_site_child_night");
-m.emplace("GS Kakariko Skulltula House", "kakariko_skulltula_house_child_night");
-m.emplace("GS Kakariko Guard's House", "kakariko_near_gate_child_night");
-m.emplace("GS Kakariko Tree", "kakariko_tree_child");
-m.emplace("GS Kakariko Watchtower",  "kakariko_tower_child_night");
-m.emplace("GS Kakariko Above Impa's House", "kakariko_impas_house_roof_adult_night");
-m.emplace("10 Gold Skulltulla Reward", "kakariko_skulltula_10");
-m.emplace("20 Gold Skulltulla Reward", "kakariko_skulltula_20");
-m.emplace("30 Gold Skulltulla Reward", "kakariko_skulltula_30");
-m.emplace("40 Gold Skulltulla Reward", "kakariko_skulltula_40");
-m.emplace("50 Gold Skulltulla Reward", "kakariko_skulltula_50");
-m.emplace("Impa House Freestanding PoH", "kakariko_cow_hp");
-m.emplace("Windmill Freestanding PoH", "kakariko_windmill_hp");
-m.emplace("Song at Windmill", "kakariko_song_storm");
-m.emplace("Adult Shooting Gallery", "kakariko_adult_shooting");
-m.emplace("Graveyard Freestanding PoH", "kakariko_bean_hp");
-m.emplace("Gravedigging Tour", "kakariko_digging");
-m.emplace("GS Graveyard Wall", "kakariko_graveyard_royal_grave_child_night");
-m.emplace("GS Graveyard Bean Patch", "kakariko_graveyard_beanspot_child_night");
-m.emplace("Shield Grave Chest", "kakariko_shield_grave");
-m.emplace("Heart Piece Grave Chest", "kakariko_redead_grave");
-m.emplace("Composer Grave Chest", "kakariko_sun_song_chest");
-m.emplace("Song from Composer Grave", "kakariko_sun_song");
-m.emplace("Hookshot Chest", "kakariko_race_1");
-m.emplace("Dampe Race Freestanding PoH", "kakariko_race_2");
-m.emplace("Death Mountain Bombable Chest", "mountain_outside_goron_chest");
-m.emplace("DM Trail Freestanding PoH", "mountain_above_dodongo");
-m.emplace("GS Mountain Trail Bean Patch", "mountain_crater_beanspot_child");
-m.emplace("GS Mountain Trail Bomb Alcove", "mountain_bombable");
-m.emplace("GS Mountain Trail Path to Crater", "mountain_wall_hammer_rock_adult_night");
-m.emplace("GS Mountain Trail Above Dodongo's Cavern", "mountain_before_goron_hammer_rock_adult_night");
-m.emplace("Goron City Leftmost Maze Chest", "goron_maze_left");
-m.emplace("Goron City Left Maze Chest", "goron_maze_center");
-m.emplace("Goron City Right Maze Chest", "goron_maze_right");
-m.emplace("Goron City Pot Freestanding PoH", "goron_spinning_pot_hp");
-m.emplace("Rolling Goron as Child", "goron_hot_rodder");
-m.emplace("Link the Goron", "goron_little_link");
-m.emplace("GS Goron City Boulder Maze", "goron_maze_center_child");
-m.emplace("GS Goron City Center Platform", "goron_center_platform_adult");
-m.emplace("Darunias Joy", "goron_darunia");
-m.emplace("DM Crater Wall Freestanding PoH", "mountain_crater_wall");
-m.emplace("Biggoron", "mountain_biggoron");
-m.emplace("GS Death Mountain Crater Crate", "mountain_crater_box_child");
-m.emplace("DMC Deku Scrub Bombs", "mountain_crater_ladder_salesman");
-m.emplace("DM Crater Volcano Freestanding PoH", "mountain_magic_bean");
-m.emplace("Sheik in Crater", "mountain_warp");
-m.emplace("GS Mountain Crater Bean Patch", "mountain_crater_beanspot_child");
-m.emplace("Crater Fairy Reward", "mountain_crater_fairy");
-m.emplace("Mountain Summit Fairy Reward", "mountain_summit_fairy");
-m.emplace("GS Zora River Tree", "zora_river_tree_child");
-m.emplace("Frog Ocarina Game", "frog_game");
-m.emplace("Frogs in the Rain", "frog_rain");
-m.emplace("GS Zora River Ladder", "zora_river_ladder_child_night");
-m.emplace("GS Zora River Near Raised Grottos", "zora_river_wall1_adult_night");
-m.emplace("GS Zora River Above Bridge", "zora_river_wall2_adult_night");
-m.emplace("Zora River Lower Freestanding PoH", "zora_hp_1");
-m.emplace("Zora River Upper Freestanding PoH", "zora_hp_2");
-m.emplace("Diving Minigame", "zoras_diving");
-m.emplace("Zoras Domain Torch Run", "zoras_torch");
-m.emplace("GS Zora's Fountain Tree", "zoras_tree_child");
-m.emplace("GS Zora's Fountain Above the Log", "zoras_wall_child_night");
-m.emplace("King Zora Thawed", "zoras_king_zora");
-m.emplace("GS Zora's Domain Frozen Waterfall", "zoras_wall_ice_adult_night");
-m.emplace("Zoras Fountain Iceberg Freestanding PoH", "zoras_ice");
-m.emplace("Zoras Fountain Bottom Freestanding PoH", "zoras_underwater");
-m.emplace("GS Zora's Fountain Hidden Cave", "zoras_fairy_hidden_cave_adult_night");
-m.emplace("Zoras Fountain Fairy Reward", "zoras_fairy");
-m.emplace("Song from Malon", "maron_song");
-m.emplace("GS Lon Lon Ranch Tree", "lonlon_tree_child_night");
-m.emplace("GS Lon Lon Ranch Rain Shed", "lonlon_paddock_fence_child_night");
-m.emplace("GS Lon Lon Ranch House Window", "lonlon_window_child_night");
-m.emplace("GS Lon Lon Ranch Back Wall", "lonlon_wall_child_night");
-m.emplace("Talons Chickens", "talon_chicken");
-m.emplace("Lon Lon Tower Freestanding PoH", "lonlon_hp");
-m.emplace("Sheik Forest Song", "woods_warp");
-m.emplace("GS Lost Woods Above Stage", "woods_deku_salesman_magic_bean_adult");
-m.emplace("GS Sacred Forest Meadow", "woods_labyrinth_adult_night");
-m.emplace("Ganons Tower Boss Key Chest", "castle_ganon_boss_key");
-m.emplace("Kokiri Forest Storms Grotto Chest", "kokiri_storm_grotto");
-m.emplace("Lost Woods Generic Grotto Chest", "woods_bomb_grotto");
-m.emplace("Deku Theater Skull Mask", "woods_deku_salesman_theater_1");
-m.emplace("Deku Theater Mask of Truth", "woods_deku_salesman_theater_2");
-m.emplace("LW Grotto Deku Scrub Arrows", "woods_deku_salesman_grotto_2");
-m.emplace("LW Grotto Deku Scrub Deku Nut Upgrade", "woods_deku_salesman_grotto");
-m.emplace("SFM Grotto Deku Scrub Red Potion", "woods_deku_salesman_meadow_grotto_1");
-m.emplace("SFM Grotto Deku Scrub Green Potion", "woods_deku_salesman_meadow_grotto_2");
-m.emplace("Wolfos Grotto Chest", "woods_wolfos_grotto");
-m.emplace("LLR Grotto Deku Scrub Deku Nuts", "lonlon_grotto_deku_salesman_1");
-m.emplace("LLR Grotto Deku Scrub Bombs", "lonlon_grotto_deku_salesman_2");
-m.emplace("LLR Grotto Deku Scrub Arrows", "lonlon_grotto_deku_salesman_3");
-m.emplace("Remote Southern Grotto Chest", "hyrule_forest_grotto");
-m.emplace("Field Near Lake Outside Fence Grotto Chest", "hyrule_south_grotto");
-m.emplace("HF Grotto Deku Scrub Piece of Heart", "hyrule_deku_salesman_grotto");
-m.emplace("GS Hyrule Field Near Gerudo Valley", "hyrule_west_grotto");
-m.emplace("Field West Castle Town Grotto Chest", "hyrule_north_grotto");
-m.emplace("GS Hyrule Field near Kakariko", "hyrule_north_east_grotto");
-m.emplace("Tektite Grotto Freestanding PoH", "diving_heart_piece_grotto");
-m.emplace("GS Hyrule Castle Grotto", "castle_town_storm_grotto_child");
-m.emplace("Redead Grotto Chest", "kakariko_redead_grotto");
-m.emplace("Kakariko Back Grotto Chest", "kakariko_grotto");
-m.emplace("Mountain Storms Grotto Chest", "mountain_outside_goron_grotto");
-m.emplace("Goron Grotto Deku Scrub Deku Nuts", "goron_grotto_salesman_1");
-m.emplace("Goron Grotto Deku Scrub Bombs", "goron_grotto_salesman_2");
-m.emplace("Goron Grotto Deku Scrub Arrows", "goron_grotto_salesman_3");
-m.emplace("Top of Crater Grotto Chest", "mountain_crater_grotto");
-m.emplace("DMC Grotto Deku Scrub Deku Nuts", "mountain_crater_grotto_salesman_1");
-m.emplace("DMC Grotto Deku Scrub Bombs", "mountain_crater_grotto_salesman_2");
-m.emplace("DMC Grotto Deku Scrub Arrows", "mountain_crater_grotto_salesman_3");
-m.emplace("Zora River Plateau Open Grotto Chest", "zora_river_grotto");
-m.emplace("ZR Grotto Deku Scrub Red Potion", "zora_river_grotto_salesman_1");
-m.emplace("ZR Grotto Deku Scrub Green Potion", "zora_river_grotto_salesman_2");
-m.emplace("LH Grotto Deku Scrub Deku Nuts", "lake_grave_grotto_salesman_1");
-m.emplace("LH Grotto Deku Scrub Bombs", "lake_grave_grotto_salesman_2");
-m.emplace("LH Grotto Deku Scrub Arrows", "lake_grave_grotto_salesman_3");
-m.emplace("Desert Grotto Deku Scrub Red Potion", "desert_colossus_grotto_salesman_1");
-m.emplace("Desert Grotto Deku Scrub Green Potion", "desert_colossus_grotto_salesman_2");
-m.emplace("Valley Grotto Deku Scrub Red Potion", "gerudo_behind_carpenter_tent_grotto_salesman_1");
-m.emplace("Valley Grotto Deku Scrub Green Potion", "gerudo_behind_carpenter_tent_grotto_salesman_2");
+{
+	"Kokiri Sword Chest": "chests.kokiri_sword",
+	"GS Kokiri Know It All House": "skulltulas.kokiri_know_it_all_brothers_child_night",
+	"GS Kokiri Bean Patch": "skulltulas.kokiri_beanspot_near_shop_child",
+	"GS Kokiri House of Twins": "skulltulas.kokiri_twins_adult_night",
+    
+	"Mido Chest Top Left": "chests.midos_house",
+	"Skull Kid": "chests.woods_skull_kid",
+	"Ocarina Memory Game": "chests.woods_memory_game",
+	"Target in Woods": "chests.woods_shooting",
+	"LW Deku Scrub Deku Stick Upgrade": "chests.woods_deku_salesman",
+	"GS Lost Woods Bean Patch Near Bridge": "skulltulas.woods_deku_salesman_beanspot_child",
+	"GS Lost Woods Bean Patch Near Stage": "skulltulas.woods_mask_theater_beanspot_child",
+	"LW Deku Scrub Deku Nuts": "chests.woods_deku_salesman_theater_1",
+	"LW Deku Scrub Deku Sticks": "chests.woods_deku_salesman_theater_2",
+	"Song from Saria": "chests.woods_saria",
+	"Gift from Saria": "chests.saria_ocarina",
+	"Ocarina of Time": "chests.song_of_time",
+	"Underwater Bottle": "chests.bottle_zora",
+	"Lake Hylia Sun": "chests.lake_sun",
+	"Lake Hylia Freestanding PoH": "chests.lab_roof",
+	"GS Lake Hylia Bean Patch": "skulltulas.lake_beanspot_child",
+	"GS Lake Hylia Lab Wall": "skulltulas.lake_behind_lab_child_night",
+	"GS Lake Hylia Small Island": "skulltulas.lake_near_firearrows_child_night",
+	"GS Lake Hylia Giant Tree": "skulltulas.lake_dead_tree_adult_night",
+	"Diving in the Lab": "chests.lab_dive",
+	"GS Lab Underwater Crate": "skulltulas.lake_lab_box_adult",
+	"Child Fishing": "chests.fishing_child",
+	"Adult Fishing": "chests.fishing_adult",
+	"Gerudo Valley Waterfall Freestanding PoH": "chests.gerudo_waterfall",
+	"Gerudo Valley Crate Freestanding PoH": "chests.gerudo_crate",
+	"GS Gerudo Valley Small Bridge": "skulltulas.gerudo_wood_plank_child_night",
+	"GS Gerudo Valley Bean Patch": "skulltulas.gerudo_river_beanspot_child",
+	"Gerudo Valley Hammer Rocks Chest": "chests.gerudo_hammer_rock",
+	"GS Gerudo Valley Behind Tent": "skulltulas.gerudo_behind_carpenter_tent_adult_night",
+	"GS Gerudo Valley Pillar": "skulltulas.gerudo_rock_near_carpenter_tent_adult_night",
+	"Gerudo Fortress Rooftop Chest": "chests.gerudo_rooftop",
+	"Horseback Archery 1000 Points": "chests.gerudo_archer_1",
+	"Horseback Archery 1500 Points": "chests.gerudo_archer_2",
+	"Gerudo Fortress North F1 Carpenter": "chests.gerudo_guard_1",
+	"Gerudo Fortress North F2 Carpenter": "chests.gerudo_guard_2",
+	"Gerudo Fortress South F1 Carpenter": "chests.gerudo_guard_3",
+	"Gerudo Fortress South F2 Carpenter": "chests.gerudo_guard_4",
+	"Gerudo Fortress Membership Card": "chests.gerudo_fortress_clear",
+	"GS Gerudo Fortress Archery Range": "skulltulas.gerudo_horseback_archery_target_adult_night",
+	"GS Gerudo Fortress Top Floor": "skulltulas.gerudo_rooftop_adult_night",
+	"Haunted Wasteland Structure Chest": "chests.desert_chest",
+	"GS Wasteland Ruins": "skulltulas.desert_fortress_adult",
+	"Colossus Freestanding PoH": "chests.desert_colossus_hp",
+	"Sheik at Colossus": "chests.desert_warp_spirit",
+	"GS Desert Colossus Bean Patch": "skulltulas.desert_beanspot_child",
+	"GS Desert Colossus Tree": "skulltulas.desert_palm_tree_adult_night",
+	"GS Desert Colossus Hill": "skulltulas.desert_magic_bean_adult_night",
+	"Desert Colossus Fairy Reward": "chests.desert_colossus_fairy",
+	"Zelda": "chests.castle_town_light_arrows",
+	"Sheik at Temple": "chests.castle_town_warp",
+	"Malon Egg": "chests.castle_town_maron",
+	"GS Hyrule Castle Tree": "skulltulas.castle_town_tree_child",
+	"Zeldas Letter": "chests.castle_town_zelda",
+	"Hyrule Castle Fairy Reward": "chests.castle_town_hyrule_fairy",
+	"GS Outside Ganon's Castle": "skulltulas.castle_town_near_ganon_fairy_adult",
+	"Ganons Castle Fairy Reward": "chests.castle_town_ganon_fairy",
+	"10 Big Poes": "chests.castle_town_poes",
+	"GS Castle Market Guard House": "skulltulas.castle_town_pot_room_child",
+	"Child Shooting Gallery": "chests.castle_town_child_shooting",
+	"Bombchu Bowling Bomb Bag": "chests.castle_town_bowling_1",
+	"Bombchu Bowling Piece of Heart": "chests.castle_town_bowling_2",
+	"Treasure Chest Game": "chests.castle_town_chest_game",
+	"Dog Lady": "chests.castle_town_dog",
+	"Man on Roof": "chests.kakariko_man_roof",
+	"Anju as Adult": "chests.kakariko_anju_adult",
+	"Anjus Chickens": "chests.kakariko_anju_chickens",
+	"Sheik in Kakariko": "chests.kakariko_warp",
+	"GS Kakariko House Under Construction": "skulltulas.kakariko_construction_site_child_night",
+	"GS Kakariko Skulltula House": "skulltulas.kakariko_skulltula_house_child_night",
+	"GS Kakariko Guard's House": "skulltulas.kakariko_near_gate_child_night",
+	"GS Kakariko Tree": "skulltulas.kakariko_tree_child",
+	"GS Kakariko Watchtower": "skulltulas.kakariko_tower_child_night",
+	"GS Kakariko Above Impa's House": "skulltulas.kakariko_impas_house_roof_adult_night",
+	"10 Gold Skulltulla Reward": "chests.kakariko_skulltula_10",
+	"20 Gold Skulltulla Reward": "chests.kakariko_skulltula_20",
+	"30 Gold Skulltulla Reward": "chests.kakariko_skulltula_30",
+	"40 Gold Skulltulla Reward": "chests.kakariko_skulltula_40",
+	"50 Gold Skulltulla Reward": "chests.kakariko_skulltula_50",
+	"Impa House Freestanding PoH": "chests.kakariko_cow_hp",
+	"Windmill Freestanding PoH": "chests.kakariko_windmill_hp",
+	"Song at Windmill": "chests.kakariko_song_storm",
+	"Adult Shooting Gallery": "chests.kakariko_adult_shooting",
+	"Graveyard Freestanding PoH": "chests.kakariko_bean_hp",
+	"Gravedigging Tour": "chests.kakariko_digging",
+	"GS Graveyard Wall": "skulltulas.kakariko_graveyard_royal_grave_child_night",
+	"GS Graveyard Bean Patch": "skulltulas.kakariko_graveyard_beanspot_child_night",
+	"Shield Grave Chest": "chests.kakariko_shield_grave",
+	"Heart Piece Grave Chest": "chests.kakariko_redead_grave",
+	"Composer Grave Chest": "chests.kakariko_sun_song_chest",
+	"Song from Composer Grave": "chests.kakariko_sun_song",
+	"Hookshot Chest": "chests.kakariko_race_1",
+	"Dampe Race Freestanding PoH": "chests.kakariko_race_2",
+	"Death Mountain Bombable Chest": "chests.mountain_outside_goron_chest",
+	"DM Trail Freestanding PoH": "chests.mountain_above_dodongo",
+	"GS Mountain Trail Bean Patch": "skulltulas.mountain_crater_beanspot_child",
+	"GS Mountain Trail Bomb Alcove": "skulltulas.mountain_bombable",
+	"GS Mountain Trail Path to Crater": "skulltulas.mountain_wall_hammer_rock_adult_night",
+	"GS Mountain Trail Above Dodongo's Cavern": "skulltulas.mountain_before_goron_hammer_rock_adult_night",
+	"Goron City Leftmost Maze Chest": "chests.goron_maze_left",
+	"Goron City Left Maze Chest": "chests.goron_maze_center",
+	"Goron City Right Maze Chest": "chests.goron_maze_right",
+	"Goron City Pot Freestanding PoH": "chests.goron_spinning_pot_hp",
+	"Rolling Goron as Child": "chests.goron_hot_rodder",
+	"Link the Goron": "chests.goron_little_link",
+	"GS Goron City Boulder Maze": "skulltulas.goron_maze_center_child",
+	"GS Goron City Center Platform": "skulltulas.goron_center_platform_adult",
+	"Darunias Joy": "chests.goron_darunia",
+	"DM Crater Wall Freestanding PoH": "chests.mountain_crater_wall",
+	"Biggoron": "chests.mountain_biggoron",
+	"GS Death Mountain Crater Crate": "skulltulas.mountain_crater_box_child",
+	"DMC Deku Scrub Bombs": "chests.mountain_crater_ladder_salesman",
+	"DM Crater Volcano Freestanding PoH": "chests.mountain_magic_bean",
+	"Sheik in Crater": "chests.mountain_warp",
+	"GS Mountain Crater Bean Patch": "skulltulas.mountain_crater_beanspot_child",
+	"Crater Fairy Reward": "chests.mountain_crater_fairy",
+	"Mountain Summit Fairy Reward": "chests.mountain_summit_fairy",
+	"GS Zora River Tree": "skulltulas.zora_river_tree_child",
+	"Frog Ocarina Game": "chests.frog_game",
+	"Frogs in the Rain": "chests.frog_rain",
+	"GS Zora River Ladder": "skulltulas.zora_river_ladder_child_night",
+	"GS Zora River Near Raised Grottos": "skulltulas.zora_river_wall1_adult_night",
+	"GS Zora River Above Bridge": "skulltulas.zora_river_wall2_adult_night",
+	"Zora River Lower Freestanding PoH": "chests.zora_hp_1",
+	"Zora River Upper Freestanding PoH": "chests.zora_hp_2",
+	"Diving Minigame": "chests.zoras_diving",
+	"Zoras Domain Torch Run": "chests.zoras_torch",
+	"GS Zora's Fountain Tree": "skulltulas.zoras_tree_child",
+	"GS Zora's Fountain Above the Log": "skulltulas.zoras_wall_child_night",
+	"King Zora Thawed": "chests.zoras_king_zora",
+	"GS Zora's Domain Frozen Waterfall": "skulltulas.zoras_wall_ice_adult_night",
+	"Zoras Fountain Iceberg Freestanding PoH": "chests.zoras_ice",
+	"Zoras Fountain Bottom Freestanding PoH": "chests.zoras_underwater",
+	"GS Zora's Fountain Hidden Cave": "skulltulas.zoras_fairy_hidden_cave_adult_night",
+	"Zoras Fountain Fairy Reward": "chests.zoras_fairy",
+	"Song from Malon": "chests.maron_song",
+	"GS Lon Lon Ranch Tree": "skulltulas.lonlon_tree_child_night",
+	"GS Lon Lon Ranch Rain Shed": "skulltulas.lonlon_paddock_fence_child_night",
+	"GS Lon Lon Ranch House Window": "skulltulas.lonlon_window_child_night",
+	"GS Lon Lon Ranch Back Wall": "skulltulas.lonlon_wall_child_night",
+	"Talons Chickens": "chests.talon_chicken",
+	"Lon Lon Tower Freestanding PoH": "chests.lonlon_hp",
+	"Sheik Forest Song": "chests.woods_warp",
+	"GS Lost Woods Above Stage": "skulltulas.woods_deku_salesman_magic_bean_adult",
+	"GS Sacred Forest Meadow": "skulltulas.woods_labyrinth_adult_night",
+	"Ganons Tower Boss Key Chest": "chests.castle_ganon_boss_key",
+	"Kokiri Forest Storms Grotto Chest": "chests.kokiri_storm_grotto",
+	"Lost Woods Generic Grotto Chest": "chests.woods_bomb_grotto",
+	"Deku Theater Skull Mask": "chests.woods_deku_salesman_theater_1",
+	"Deku Theater Mask of Truth": "chests.woods_deku_salesman_theater_2",
+	"LW Grotto Deku Scrub Arrows": "chests.woods_deku_salesman_grotto_2",
+	"LW Grotto Deku Scrub Deku Nut Upgrade": "chests.woods_deku_salesman_grotto",
+	"SFM Grotto Deku Scrub Red Potion": "chests.woods_deku_salesman_meadow_grotto_1",
+	"SFM Grotto Deku Scrub Green Potion": "chests.woods_deku_salesman_meadow_grotto_2",
+	"Wolfos Grotto Chest": "chests.woods_wolfos_grotto",
+	"LLR Grotto Deku Scrub Deku Nuts": "chests.lonlon_grotto_deku_salesman_1",
+	"LLR Grotto Deku Scrub Bombs": "chests.lonlon_grotto_deku_salesman_2",
+	"LLR Grotto Deku Scrub Arrows": "chests.lonlon_grotto_deku_salesman_3",
+	"Remote Southern Grotto Chest": "chests.hyrule_forest_grotto",
+	"Field Near Lake Outside Fence Grotto Chest": "chests.hyrule_south_grotto",
+	"HF Grotto Deku Scrub Piece of Heart": "chests.hyrule_deku_salesman_grotto",
+	"GS Hyrule Field Near Gerudo Valley": "skulltulas.hyrule_west_grotto",
+	"Field West Castle Town Grotto Chest": "chests.hyrule_north_grotto",
+	"GS Hyrule Field near Kakariko": "skulltulas.hyrule_north_east_grotto",
+	"Tektite Grotto Freestanding PoH": "chests.diving_heart_piece_grotto",
+	"GS Hyrule Castle Grotto": "skulltulas.castle_town_storm_grotto_child",
+	"Redead Grotto Chest": "chests.kakariko_redead_grotto",
+	"Kakariko Back Grotto Chest": "chests.kakariko_grotto",
+	"Mountain Storms Grotto Chest": "chests.mountain_outside_goron_grotto",
+	"Goron Grotto Deku Scrub Deku Nuts": "chests.goron_grotto_salesman_1",
+	"Goron Grotto Deku Scrub Bombs": "chests.goron_grotto_salesman_2",
+	"Goron Grotto Deku Scrub Arrows": "chests.goron_grotto_salesman_3",
+	"Top of Crater Grotto Chest": "chests.mountain_crater_grotto",
+	"DMC Grotto Deku Scrub Deku Nuts": "chests.mountain_crater_grotto_salesman_1",
+	"DMC Grotto Deku Scrub Bombs": "chests.mountain_crater_grotto_salesman_2",
+	"DMC Grotto Deku Scrub Arrows": "chests.mountain_crater_grotto_salesman_3",
+	"Zora River Plateau Open Grotto Chest": "chests.zora_river_grotto",
+	"ZR Grotto Deku Scrub Red Potion": "chests.zora_river_grotto_salesman_1",
+	"ZR Grotto Deku Scrub Green Potion": "chests.zora_river_grotto_salesman_2",
+	"LH Grotto Deku Scrub Deku Nuts": "chests.lake_grave_grotto_salesman_1",
+	"LH Grotto Deku Scrub Bombs": "chests.lake_grave_grotto_salesman_2",
+	"LH Grotto Deku Scrub Arrows": "chests.lake_grave_grotto_salesman_3",
+	"Desert Grotto Deku Scrub Red Potion": "chests.desert_colossus_grotto_salesman_1",
+	"Desert Grotto Deku Scrub Green Potion": "chests.desert_colossus_grotto_salesman_2",
+	"Valley Grotto Deku Scrub Red Potion": "chests.gerudo_behind_carpenter_tent_grotto_salesman_1",
+	"Valley Grotto Deku Scrub Green Potion": "chests.gerudo_behind_carpenter_tent_grotto_salesman_2"
+}

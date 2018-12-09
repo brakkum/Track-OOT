@@ -17,13 +17,14 @@ var CACHE_URLS = [
   self.location.origin + '/favicon.ico'
 ];
 
-var WHITELIST_URLS = [
+var BYPASS_URLS = [
+  self.location.origin + '/uninstall',
+  self.location.origin + '/uninstall.html'
+];
+
+var BYPASS_ORIGINS = [
   self.location.origin + '/editor',
-  self.location.origin + '/editor.html',
-  self.location.origin + '/script/editor/main.min.js',
-  self.location.origin + '/style/editor.css',
-  self.location.origin + '/uninstall.html',
-  self.location.origin + '/uninstall'
+  self.location.origin + '/editor.html'
 ];
 
 var cmd = {
@@ -53,7 +54,9 @@ self.addEventListener('fetch', function(event) {
                 +("00"+version.getHours()).slice(-2)
                 +("00"+version.getMinutes()).slice(-2))
     );
-  } else if (WHITELIST_URLS.indexOf(event.request.url)>=0) {
+  } else if (BYPASS_URLS.indexOf(event.request.url) >= 0
+          || BYPASS_ORIGINS.indexOf(event.request.url) >= 0
+          || BYPASS_ORIGINS.indexOf(event.request.referrer) >= 0) {
     return false;
   } else if (CACHE_URLS.indexOf(event.request.url)>=0) {
     event.respondWith(getMainFile(event.request));

@@ -207,7 +207,7 @@ function fillEditor() {
             mixin_panel.appendChild(createElement("mixin", i));
         }
     }
-    for (let i in data.items) {
+    for (let i of Object.keys(data.items).sort()) {
         item_panel.appendChild(createElement("item", i));
     }
     for (let i in data.rom_options.options) {
