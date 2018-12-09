@@ -11659,6 +11659,595 @@
                     ]
                 }
             ]
+        },
+        "temple_fire_chest_near_boss_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "boots_hover"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_fire_source"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "arrow_fire"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_power"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_din"
+                                                },
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "mixin",
+                                                            "el": "goron_tunic_access"
+                                                        },
+                                                        {
+                                                            "type": "item",
+                                                            "el": "bow"
+                                                        },
+                                                        {
+                                                            "type": "min",
+                                                            "el": {
+                                                                "type": "item",
+                                                                "el": "hookshot"
+                                                            },
+                                                            "value": 2
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_fire_map_room_small_chest_mq": {
+            "type": "mixin",
+            "el": "fire_temple_access"
+        },
+        "temple_fire_megaton_hammer_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "item",
+                            "el": "hammer"
+                        },
+                        {
+                            "type": "item",
+                            "el": "hookshot"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": 5
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_fire_map_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": 5
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_fire_big_lava_bomb_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                },
+                {
+                    "type": "item",
+                    "el": "hookshot"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_fire_source"
+                }
+            ]
+        },
+        "temple_fire_boss_key_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_fire_source"
+                },
+                {
+                    "type": "item",
+                    "el": "hookshot"
+                }
+            ]
+        },
+        "temple_fire_boulder_maze_lower_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                },
+                {
+                    "type": "mixin",
+                    "el": "goron_tunic_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_fire_source"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": 2
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_fire_boulder_maze_side_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                },
+                {
+                    "type": "mixin",
+                    "el": "goron_tunic_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_fire_source"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "item",
+                    "el": "hookshot"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": 2
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_fire_boulder_maze_upper_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                },
+                {
+                    "type": "mixin",
+                    "el": "goron_tunic_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_fire_source"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "item",
+                    "el": "hookshot"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": 2
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_fire_compass_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                },
+                {
+                    "type": "mixin",
+                    "el": "goron_tunic_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_fire_source"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "item",
+                    "el": "hookshot"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": 2
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_fire_freestanding_key_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                },
+                {
+                    "type": "mixin",
+                    "el": "goron_tunic_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_fire_source"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "item",
+                    "el": "hookshot"
+                },
+                {
+                    "type": "item",
+                    "el": "bow"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": 3
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_fire_west_tower_top_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                },
+                {
+                    "type": "mixin",
+                    "el": "goron_tunic_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_fire_source"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "item",
+                    "el": "hookshot"
+                },
+                {
+                    "type": "item",
+                    "el": "bow"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": 4
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_fire_volvagia_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                },
+                {
+                    "type": "mixin",
+                    "el": "goron_tunic_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_fire_source"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "key_boss_fire"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "boots_hover"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "bow"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "option",
+                                                "el": "keysanity"
+                                            }
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_fire"
+                                            },
+                                            "value": 3
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     },
     "skulltulas": {
@@ -15009,6 +15598,271 @@
                                     ]
                                 }
                             ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_fire_big_lava_adult_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                }
+            ]
+        },
+        "temple_fire_fire_wall_maze_side_adult_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                },
+                {
+                    "type": "mixin",
+                    "el": "goron_tunic_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_fire_source"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "item",
+                    "el": "hookshot"
+                },
+                {
+                    "type": "item",
+                    "el": "bow"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": 3
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "boots_hover"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "song_time"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_fire_east_tower_top_adult_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                },
+                {
+                    "type": "mixin",
+                    "el": "goron_tunic_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_fire_source"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "item",
+                    "el": "hookshot"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "boots_hover"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "song_time"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": 2
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_fire_fire_wall_maze_center_adult_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                },
+                {
+                    "type": "mixin",
+                    "el": "goron_tunic_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_fire_source"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "item",
+                    "el": "hookshot"
+                },
+                {
+                    "type": "item",
+                    "el": "bow"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": 3
+                        }
+                    ]
+                }
+            ]
+        },
+        "temple_fire_above_fire_wall_maze_adult_mq": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "fire_temple_access"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                },
+                {
+                    "type": "mixin",
+                    "el": "goron_tunic_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_fire_source"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "item",
+                    "el": "hookshot"
+                },
+                {
+                    "type": "item",
+                    "el": "bow"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": 5
                         }
                     ]
                 }

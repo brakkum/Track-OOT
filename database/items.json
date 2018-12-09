@@ -345,7 +345,7 @@
 
     "key_small_fire": {
         "max": 8,
-        "maxmq": 3,
+        "maxmq": 5,
         "related_dungeon": "temple_fire",
         "counting": true,
         "images": "key_small.png"
@@ -371,6 +371,7 @@
 
     "key_small_shadow": {
         "max": 5,
+        "maxmq": 6,
         "related_dungeon": "temple_shadow",
         "counting": true,
         "images": "key_small.png"
