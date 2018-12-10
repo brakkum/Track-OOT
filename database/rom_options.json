@@ -47,6 +47,30 @@
                 "ganon_castle_open_open"
             ]
         },
+        "forest_trial": {
+            "type": "check",
+            "default": true
+        },
+        "water_trial": {
+            "type": "check",
+            "default": true
+        },
+        "shadow_trial": {
+            "type": "check",
+            "default": true
+        },
+        "fire_trial": {
+            "type": "check",
+            "default": true
+        },
+        "light_trial": {
+            "type": "check",
+            "default": true
+        },
+        "spirit_trial": {
+            "type": "check",
+            "default": true
+        },
         "ganon_boss_door_open": {
            "type": "check",
            "default": false
