@@ -26,6 +26,12 @@ document.getElementById("map-option-shops").addEventListener("click", function(e
 document.getElementById("shop-view-close-button").addEventListener("click", function(ev) {
     document.getElementById('shop-view').classList.remove("active");
 });
+document.getElementById("map-option-songs").addEventListener("click", function(ev) {
+    document.getElementById('song-view').classList.add("active");
+});
+document.getElementById("song-view-close-button").addEventListener("click", function(ev) {
+    document.getElementById('song-view').classList.remove("active");
+});
 
 window.onfocus = function(ev) {
     data.logic_patched = Storage.get("settings", "logic", {});

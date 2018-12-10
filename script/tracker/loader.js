@@ -5,6 +5,7 @@ async function loadAll() {
         "database/chests.json",
         "database/dungeons.json",
         "database/skulltulas.json",
+        "database/songs.json",
         "database/logic.json",
         "database/rom_options.json",
         "database/shops.json",
@@ -19,6 +20,7 @@ async function loadAll() {
     data.chests = buffer.shift();
     data.dungeons = buffer.shift();
     data.skulltulas = buffer.shift();
+    data.songs = buffer.shift();
     // logic
     data.logic = buffer.shift();
     data.logic_patched = Storage.get("settings", "logic", {});

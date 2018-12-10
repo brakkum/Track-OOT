@@ -62,6 +62,11 @@
                 background-image: url('../images/shop.svg');
                 opacity: 1;
             }
+
+            &#map-option-songs {
+                background-image: url('../images/song.svg');
+                opacity: 1;
+            }
         }
     }
 
@@ -210,9 +215,9 @@
 }
 
 /**********************************
-    shop
+    map overlays
 **********************************/
-#shop-view {
+.map-overlay {
     position: absolute;
     display: none;
     top: 0px;
@@ -226,7 +231,7 @@
         display: block;
     }
 
-    #shop-view-close-button {
+    .map-overlay-close {
         position: absolute;
         display: flex;
         top: 10px;
@@ -244,92 +249,167 @@
         line-height: 1em;
     }
 
-    #shop-view-body {
+    .map-overlay-body {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
         height: 100%;
         overflow: auto;
+    }
 
-        .shop {
-            border: solid 1px white;
-            padding: 20px;
-            margin: 20px;
-    
-            .shop-title {
+    &#song-view .song {
+        border: solid 1px white;
+        padding: 20px;
+        margin: 20px;
+        width: 100%;
+
+        .song-title {
+            color: white;
+
+            .song-edit {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
                 color: white;
+                background-color: black;
+                border: solid 1px white;
+                margin-left: 5px;
+                cursor: pointer;
 
-                .shop-edit {
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    appearance: none;
-                    color: white;
-                    background-color: black;
-                    border: solid 1px white;
-                    margin-left: 5px;
-                    cursor: pointer;
-
-                    &:hover {
-                        color: black;
-                        background-color: white;
-                    }
+                &:hover {
+                    color: black;
+                    background-color: white;
                 }
             }
-    
-            .shop-body {
-                display: grid;
-                grid-template-columns: repeat(4, 150px);
-                grid-template-rows: repeat(2, 120px);
-                grid-gap: 5px;
-                margin-top: 10px;
-    
-                .shop-item {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: flex-start;
-                    padding: 5px;
-                    border: solid 1px white;
-                    user-select: none;
-                    cursor: pointer;
+        }
 
-                    .shop-item-image {
-                        display: block;
-                        height: 32px;
-                        width: 32px;
+        .song-body {
+            display: flex;
+            height: 100px;
+            background-repeat: repeat-x;
+            background-size: contain;
+            background-image: url("/images/stave_lines.svg");
+
+            &:before {
+                width: 50px;
+                height: 100px;
+                background-repeat: no-repeat;
+                background-size: auto 100%;
+                background-position: center;
+                background-image: url("/images/stave_key.svg");
+                content: " ";
+            }
+
+            .note {
+                height: 100px;
+                width: 30px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+
+                &.note_A {
+                    background-image: url("/images/note_A.svg");
+                }
+
+                &.note_D {
+                    background-image: url("/images/note_D.svg");
+                }
+
+                &.note_R {
+                    background-image: url("/images/note_R.svg");
+                }
+
+                &.note_L {
+                    background-image: url("/images/note_L.svg");
+                }
+
+                &.note_U {
+                    background-image: url("/images/note_U.svg");
+                }
+            }
+
+        }
+    }
+
+    &#shop-view .shop {
+        border: solid 1px white;
+        padding: 20px;
+        margin: 20px;
+
+        .shop-title {
+            color: white;
+
+            .shop-edit {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                color: white;
+                background-color: black;
+                border: solid 1px white;
+                margin-left: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    color: black;
+                    background-color: white;
+                }
+            }
+        }
+
+        .shop-body {
+            display: grid;
+            grid-template-columns: repeat(4, 150px);
+            grid-template-rows: repeat(2, 120px);
+            grid-gap: 5px;
+            margin-top: 10px;
+
+            .shop-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 5px;
+                border: solid 1px white;
+                user-select: none;
+                cursor: pointer;
+
+                .shop-item-image {
+                    display: block;
+                    height: 32px;
+                    width: 32px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+
+                .shop-item-title {
+                    display: block;
+                    word-wrap: break-word;
+                    overflow: hidden;
+                    width: 100%;
+                    font-size: 0.7em;
+                    flex: 1;
+                }
+
+                .shop-item-price {
+                    display: block;
+                    width: 100%;
+                    font-size: 0.7em;
+                    text-align: right;
+
+                    &:after {
+                        display: inline-block;
+                        width: 10px;
+                        height: 10px;
+                        margin-left: 5px;
+                        background-image: url('../images/rupees.png');
+                        background-size: 14px;
                         background-position: center;
                         background-repeat: no-repeat;
-                    }
-
-                    .shop-item-title {
-                        display: block;
-                        word-wrap: break-word;
-                        overflow: hidden;
-                        width: 100%;
-                        font-size: 0.7em;
-                        flex: 1;
-                    }
-
-                    .shop-item-price {
-                        display: block;
-                        width: 100%;
-                        font-size: 0.7em;
-                        text-align: right;
-
-                        &:after {
-                            display: inline-block;
-                            width: 10px;
-                            height: 10px;
-                            margin-left: 5px;
-                            background-image: url('../images/rupees.png');
-                            background-size: 14px;
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            content: " ";
-                        }
+                        content: " ";
                     }
                 }
             }
         }
     }
 }
+

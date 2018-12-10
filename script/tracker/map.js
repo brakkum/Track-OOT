@@ -115,6 +115,10 @@ function populateMap() {
     /////////////////////////////////
     createShops();
 
+    // songs
+    /////////////////////////////////
+    createSongs();
+
     // populate skulltula markers
     /////////////////////////////////
     addPOIs(map_element, "skulltulas");
@@ -124,6 +128,48 @@ function populateMap() {
     updateMap();
 }
 
+// songs
+/////////////////////////////////////
+function createSongs() {
+    var songs = document.getElementById('song-view-body');
+    for (let i in data.songs) {
+        var song = data.songs[i];
+        var el = document.createElement("div");
+        el.className = "song";
+        var ttl = document.createElement("div");
+        ttl.className = "song-title";
+        ttl.innerHTML = translate(i);
+        var bdy = document.createElement("div");
+        bdy.className = "song-body";
+        bdy.id = i;
+        for (let j = 0; j < song.notes.length; ++j) {
+            var note = song.notes[j];
+            var nt = document.createElement("div");
+            nt.className = "note note_"+note;
+            bdy.appendChild(nt);
+        }
+        /*
+        if (!!song.editable) {
+            var edt = document.createElement('button');
+            edt.className = "song-edit";
+            edt.innerHTML = "✎";
+            edt.onclick = editShop;
+            edt.setAttribute("data-ref", i);
+            ttl.appendChild(edt);
+        }
+        */
+        el.appendChild(ttl);
+        el.appendChild(bdy);
+        songs.appendChild(el);
+    }
+}
+
+function editSong(ev) {
+    // TODO
+}
+
+// shops
+/////////////////////////////////////
 function createShops() {
     var shops = document.getElementById('shop-view-body');
     for (let i in data.shops) {
