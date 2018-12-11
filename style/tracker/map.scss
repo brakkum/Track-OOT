@@ -282,53 +282,6 @@
                 }
             }
         }
-
-        .song-body {
-            display: flex;
-            height: 100px;
-            background-repeat: repeat-x;
-            background-size: contain;
-            background-image: url("/images/stave_lines.svg");
-
-            &:before {
-                width: 50px;
-                height: 100px;
-                background-repeat: no-repeat;
-                background-size: auto 100%;
-                background-position: center;
-                background-image: url("/images/stave_key.svg");
-                content: " ";
-            }
-
-            .note {
-                height: 100px;
-                width: 30px;
-                background-repeat: no-repeat;
-                background-size: contain;
-                background-position: center;
-
-                &.note_A {
-                    background-image: url("/images/note_A.svg");
-                }
-
-                &.note_D {
-                    background-image: url("/images/note_D.svg");
-                }
-
-                &.note_R {
-                    background-image: url("/images/note_R.svg");
-                }
-
-                &.note_L {
-                    background-image: url("/images/note_L.svg");
-                }
-
-                &.note_U {
-                    background-image: url("/images/note_U.svg");
-                }
-            }
-
-        }
     }
 
     &#shop-view .shop {
@@ -413,3 +366,104 @@
     }
 }
 
+.dialog-body .song {
+    padding: 20px;
+    background: black;
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+    
+        .btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            margin: 5px;
+    
+            &:hover {
+                box-shadow: 0 0 3px 2px #cb9c3d, inset 0 0 3px 0px #cb9c3d;
+            }
+    
+            &.btn_A {
+                background-image: url("/images/note_A.svg");
+            }
+    
+            &.btn_D {
+                background-image: url("/images/note_D.svg");
+            }
+    
+            &.btn_R {
+                background-image: url("/images/note_R.svg");
+            }
+    
+            &.btn_L {
+                background-image: url("/images/note_L.svg");
+            }
+    
+            &.btn_U {
+                background-image: url("/images/note_U.svg");
+            }
+    
+            &.btn_X {
+                background-image: url("/images/note_X.svg");
+            }
+    
+        }
+    
+    }
+}
+
+.stave {
+    display: flex;
+    height: 100px;
+    background-repeat: repeat-x;
+    background-size: contain;
+    background-image: url("/images/stave_lines.svg");
+
+    &:before {
+        width: 50px;
+        height: 100px;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-position: center;
+        background-image: url("/images/stave_key.svg");
+        content: " ";
+    }
+
+    .note {
+        height: 100px;
+        width: 30px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position-x: center;
+
+        &.note_A {
+            background-image: url("/images/note_A.svg");
+            background-position-y: 90%;
+        }
+
+        &.note_D {
+            background-image: url("/images/note_D.svg");
+            background-position-y: 75%;
+        }
+
+        &.note_R {
+            background-image: url("/images/note_R.svg");
+            background-position-y: 60%;
+        }
+
+        &.note_L {
+            background-image: url("/images/note_L.svg");
+            background-position-y: 45%;
+        }
+
+        &.note_U {
+            background-image: url("/images/note_U.svg");
+            background-position-y: 30%;
+        }
+    }
+
+}

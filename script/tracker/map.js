@@ -1,5 +1,6 @@
 // @koala-prepend "../UI/Map.js"
 // @koala-prepend "../UI/Tooltip.js"
+// @koala-prepend "../UI/SongBuilder.js"
 
 var poi = {
     chests: [],
@@ -140,32 +141,55 @@ function createSongs() {
         ttl.className = "song-title";
         ttl.innerHTML = translate(i);
         var bdy = document.createElement("div");
-        bdy.className = "song-body";
-        bdy.id = i;
+        bdy.className = "song-body stave";
+        bdy.id = "songlist_"+i;
         for (let j = 0; j < song.notes.length; ++j) {
             var note = song.notes[j];
             var nt = document.createElement("div");
             nt.className = "note note_"+note;
             bdy.appendChild(nt);
         }
-        /*
         if (!!song.editable) {
             var edt = document.createElement('button');
             edt.className = "song-edit";
             edt.innerHTML = "✎";
-            edt.onclick = editShop;
+            edt.onclick = editSong;
             edt.setAttribute("data-ref", i);
             ttl.appendChild(edt);
         }
-        */
         el.appendChild(ttl);
         el.appendChild(bdy);
         songs.appendChild(el);
     }
 }
 
-function editSong(ev) {
-    // TODO
+function rebuildSong(id) {
+    var song = document.getElementById("songlist_"+id);
+    song.innerHTML = "";
+    var notes = SaveState.read("songs", id.slice(9), data.songs[id].notes);
+    for (let j = 0; j < notes.length; ++j) {
+        var note = notes[j];
+        var nt = document.createElement("div");
+        nt.className = "note note_"+note;
+        song.appendChild(nt);
+    }
+}
+
+function editSong(event) {
+    var id = event.currentTarget.getAttribute("data-ref");
+    var song = SaveState.read("songs", id, data.songs[id].notes);
+    var song_builder = new SongBuilder(song);
+    var d = new Dialog(function(result) {
+        if (!!result) {
+            var res = song_builder.getSong();
+            SaveState.write("songs", id, res);
+            rebuildSong(id);
+        }
+    });
+    d.setTitle(translate(id));
+    d.setSubmitText("SUBMIT");
+    d.setAbortText("ABORT");
+    d.addElement(song_builder);
 }
 
 // shops
