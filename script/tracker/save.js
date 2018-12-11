@@ -72,6 +72,7 @@ async function state_Load() {
             resetSettingsPage("skips", document.getElementById("settings-skips"));
             updateItems();
             rebuildAllShops();
+            rebuildAllSongs();
             applySettingsChoices();
             updateMap();
             toggleStateButtons();
@@ -127,6 +128,7 @@ async function state_New() {
         prepairSavegameChoice();
         updateItems();
         rebuildAllShops();
+        rebuildAllSongs();
         applySettingsChoices();
         toggleStateButtons();
     }

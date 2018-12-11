@@ -163,6 +163,12 @@ function createSongs() {
     }
 }
 
+function rebuildAllSongs() {
+    for (let i in data.songs) {
+        rebuildSong(i);
+    }
+}
+
 function rebuildSong(id) {
     var song = document.getElementById("songlist_"+id);
     song.innerHTML = "";
