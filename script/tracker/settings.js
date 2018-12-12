@@ -81,6 +81,17 @@ function buildSettings() {
     var settings_show_hint_badges = settings_container.querySelector('#show_hint_badges');
     var settings_use_custom_logic = settings_container.querySelector('#use_custom_logic');
 
+    /*
+    var settings_custom_font = settings_container.querySelector('#load_custom_font');
+    var settings_custom_font_select = settings_container.querySelector("#custom_font_file_select");
+    settings_custom_font.addEventListener("click", function() {
+        settings_custom_font_select.click();
+    });
+    settings_custom_font_select.addEventListener("change", function(ev) {
+        console.log(ev);
+    });
+    */
+
     settings_itemsize.addEventListener("input", function(ev) {
         settings_container.querySelector('#item-scale-slider+.input-value').innerHTML = ev.currentTarget.value + "px";
     });
