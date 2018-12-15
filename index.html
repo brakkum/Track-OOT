@@ -110,30 +110,39 @@
                     navigator.serviceWorker.register('/sw.js').then(function(registration) {
                         console.log('ServiceWorker registration successful with scope: ', registration.scope);
 
-                        var infoElement = document.querySelector(".info");
-                        var infoTimer = setTimeout(function() {
-                            infoElement.style.display = "block";
-                        }, 10000);
-
-                        navigator.serviceWorker.addEventListener('message', event => {
-                            if (event.data.type == "state") {
-                                if (event.data.msg == "update success") {
-                                    Splash.update("starting...");
-                                    clearTimeout(infoTimer);
-                                    startApp();
-                                }
-                            } else if (event.data.type == "update") {
-                                if (event.data.msg == "loaded") {
-                                    Splash.update("updating " + (++load_files) + "/" + max_files);
-                                } else {
-                                    load_files = 0;
-                                    max_files = event.data.msg;
-                                    Splash.update("updating " + load_files + "/" + max_files);
-                                }
+                        function callSW() {
+                            if (!registration.active) {
+                                setTimeout(callSW, 10);
+                                return;
                             }
-                        });
 
-                        navigator.serviceWorker.controller.postMessage("update");
+                            var infoElement = document.querySelector(".info");
+                            var infoTimer = setTimeout(function() {
+                                infoElement.style.display = "block";
+                            }, 10000);
+
+                            navigator.serviceWorker.addEventListener('message', event => {
+                                if (event.data.type == "state") {
+                                    if (event.data.msg == "update success") {
+                                        Splash.update("starting...");
+                                        clearTimeout(infoTimer);
+                                        startApp();
+                                    }
+                                } else if (event.data.type == "update") {
+                                    if (event.data.msg == "loaded") {
+                                        Splash.update("updating " + (++load_files) + "/" + max_files);
+                                    } else {
+                                        load_files = 0;
+                                        max_files = event.data.msg;
+                                        Splash.update("updating " + load_files + "/" + max_files);
+                                    }
+                                }
+                            });
+
+                            registration.active.postMessage("update");
+                        }
+                        callSW();
+
                     }, function(err) {
                         console.log('ServiceWorker registration failed: ', err);
                     });

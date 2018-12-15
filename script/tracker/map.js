@@ -212,9 +212,10 @@ function createSongs() {
         let bdy = document.createElement("div");
         bdy.className = "song-body stave";
         bdy.id = "songlist_"+i;
-        for (let j = 0; j < song.notes.length; ++j) {
-            let note = song.notes[j];
-            let nt = document.createElement("div");
+        var notes = SaveState.read("songs", i, song.notes);
+        for (let j = 0; j < notes.length; ++j) {
+            var note = song.notes[j];
+            var nt = document.createElement("div");
             nt.className = "note note_"+note;
             bdy.appendChild(nt);
         }
@@ -241,7 +242,7 @@ function rebuildAllSongs() {
 function rebuildSong(id) {
     let song = document.getElementById("songlist_"+id);
     song.innerHTML = "";
-    let notes = SaveState.read("songs", id.slice(9), data.songs[id].notes);
+    var notes = SaveState.read("songs", id, data.songs[id].notes);
     for (let j = 0; j < notes.length; ++j) {
         let note = notes[j];
         let nt = document.createElement("div");
