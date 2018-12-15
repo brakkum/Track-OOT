@@ -20,18 +20,40 @@ map_scale_slider.addEventListener("change", function(ev) {
     document.getElementById('map').style.setProperty("--map-scale", parseInt(map_scale_slider.value) / 100);
     Storage.set("settings", "map_zoom", parseInt(map_scale_slider.value));
 });
+// shops
 document.getElementById("map-option-shops").addEventListener("click", function(ev) {
     document.getElementById('shop-view').classList.add("active");
 });
 document.getElementById("shop-view-close-button").addEventListener("click", function(ev) {
     document.getElementById('shop-view').classList.remove("active");
 });
+// songs
 document.getElementById("map-option-songs").addEventListener("click", function(ev) {
     document.getElementById('song-view').classList.add("active");
 });
 document.getElementById("song-view-close-button").addEventListener("click", function(ev) {
     document.getElementById('song-view').classList.remove("active");
 });
+// hints
+document.getElementById("map-option-hints").addEventListener("click", function(ev) {
+    document.getElementById('hint-view').classList.add("active");
+});
+document.getElementById("hint-view-close-button").addEventListener("click", function(ev) {
+    document.getElementById('hint-view').classList.remove("active");
+});
+// notes
+document.getElementById("map-option-notes").addEventListener("click", function(ev) {
+    document.getElementById('notes-view').classList.add("active");
+});
+document.getElementById("notes-view-close-button").addEventListener("click", function(ev) {
+    document.getElementById('notes-view').classList.remove("active");
+});
+function saveNotes() {
+    SaveState.write("extra", "notes", document.getElementById("tracker-notes").value);
+}
+function loadNotes() {
+    document.getElementById("tracker-notes").value = SaveState.read("extra", "notes", "");
+}
 
 window.onfocus = function(ev) {
     data.logic_patched = Storage.get("settings", "logic", {});
@@ -80,6 +102,18 @@ function translate(index) {
         return data.lang[index];
     }
     return index;
+}
+
+function compareByTranslation(a, b) {
+    let _a = translate(a);
+    let _b = translate(b);
+    if (translate(_a) < translate(_b)) {
+        return -1;
+    }
+    if (translate(_a) > translate(_b)) {
+        return 1;
+    }
+    return 0;
 }
 
 function setStatus(name, value) {

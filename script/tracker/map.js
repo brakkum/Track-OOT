@@ -1,20 +1,21 @@
 // @koala-prepend "../UI/Map.js"
 // @koala-prepend "../UI/Tooltip.js"
 // @koala-prepend "../UI/SongBuilder.js"
+// @koala-prepend "../UI/SelectBox.js"
 
-var poi = {
+let poi = {
     chests: [],
     dungeons: [],
     skulltulas: []
 };
 
-var poi_list = {
+let poi_list = {
     mode: "chests",
     ref: "",
     entries: []
 }
 
-var map = new Map(document.getElementById("map-scroll"), "../images/map.png", 825, 466);
+let map = new Map(document.getElementById("map-scroll"), "../images/map.png", 825, 466);
 
 document.getElementById('dungeon-name').addEventListener("click", function(ev) {
     toogleDungeonMQ(ev.currentTarget.ref);
@@ -29,7 +30,7 @@ document.getElementById('dungeon-switch').addEventListener("click", function(ev)
 
 function toogleDungeonMQ(name) {
     if (!!name && !!data.dungeons[name].hasmq) {
-        var v = !SaveState.read("mq", name, false);
+        let v = !SaveState.read("mq", name, false);
         SaveState.write("mq", name, v);
         updateItems();        
         document.getElementById("dungeon_" + name).click();
@@ -37,7 +38,7 @@ function toogleDungeonMQ(name) {
 }
 
 function addBadge(target, age, time) {
-    var el = document.createElement("span");
+    let el = document.createElement("span");
     if (!age && !time) {
         el.className = "hint-badge empty-hint";
     } else {
@@ -60,8 +61,8 @@ function addBadge(target, age, time) {
 
 function addPOIs(target, category) {
     for (let id in data[category]) {
-        var s = document.createElement('span');
-        var dta = data[category][id];
+        let s = document.createElement('span');
+        let dta = data[category][id];
         s.style.color = 'black';
         s.id = id;
         s.setAttribute("data-category", category);
@@ -82,7 +83,7 @@ function addPOIs(target, category) {
 }
 
 function populateMap() {
-    var map_element = document.getElementById('map');
+    let map_element = document.getElementById('map');
 
     fillDungeonList();
     
@@ -93,7 +94,7 @@ function populateMap() {
     // populate dungeon markers
     /////////////////////////////////
     for (let id in data.dungeons) {
-        var dta = data.dungeons[id];
+        let dta = data.dungeons[id];
         s = document.createElement('span');
         s.id = "dungeon_" + id;
 
@@ -101,7 +102,7 @@ function populateMap() {
         s.style.left = data.dungeons[id].x;
         s.style.top = data.dungeons[id].y;
 
-        var ss = document.createElement('span');
+        let ss = document.createElement('span');
         ss.className = "count";
         s.appendChild(ss);
 
@@ -112,13 +113,11 @@ function populateMap() {
         map_element.appendChild(s);
     }
 
-    // shops
+    // overlays
     /////////////////////////////////
     createShops();
-
-    // songs
-    /////////////////////////////////
     createSongs();
+    createHints();
 
     // populate skulltula markers
     /////////////////////////////////
@@ -129,28 +128,98 @@ function populateMap() {
     updateMap();
 }
 
+// hints
+/////////////////////////////////////
+function createHints() {
+    let hints = document.getElementById('hint-view-body');
+    data.hints.stones.sort(compareByTranslation);
+    data.hints.locations.sort(compareByTranslation);
+    data.hints.items.sort(compareByTranslation);
+    for (let i = 0; i < data.hints.stones.length; ++i) {
+        let stone = data.hints.stones[i];
+        let el = document.createElement("div");
+        el.className = "stone";
+        let ttl = document.createElement("div");
+        ttl.className = "stone-title";
+        ttl.innerHTML = translate(stone);
+        let bdy = document.createElement("div");
+        bdy.className = "stone-body";
+        bdy.id = "stonelist_"+stone;
+
+        let lbl_loc = document.createElement('label');
+        lbl_loc.innerHTML = translate("location");
+        let slt_loc = new SelectBox();
+        slt_loc.id = "stonelist_location_"+stone;
+        slt_loc.addOption("["+translate("empty")+"]", "0x01");
+        slt_loc.addOption("["+translate("junk")+"]", "0x02");
+        for (let j = 0; j < data.hints.locations.length; ++j) {
+            let loc = data.hints.locations[j];
+            slt_loc.addOption(translate(loc), loc);
+        }
+        slt_loc.setAttribute("data-ref", stone);
+        slt_loc.onchange = saveHintChange;
+        lbl_loc.appendChild(slt_loc);
+
+        let lbl_itm = document.createElement('label');
+        lbl_itm.innerHTML = translate("item");
+        let slt_itm = new SelectBox();
+        slt_itm.id = "stonelist_item_"+stone;
+        slt_itm.addOption("["+translate("empty")+"]", "0x01");
+        for (let j = 0; j < data.hints.items.length; ++j) {
+            let itm = data.hints.items[j];
+            slt_itm.addOption(translate(itm), itm);
+        }
+        slt_itm.setAttribute("data-ref", stone);
+        slt_itm.onchange = saveHintChange;
+        lbl_itm.appendChild(slt_itm);
+
+        bdy.appendChild(lbl_loc);
+        bdy.appendChild(lbl_itm);
+        el.appendChild(ttl);
+        el.appendChild(bdy);
+        hints.appendChild(el);
+    }
+}
+
+function saveHintChange(event) {
+    let el = event.target;
+    let id = el.getAttribute("data-ref");
+    let buf = SaveState.read("hints", id, {location:"0x01",item:"0x01"});
+    buf[el.id.split("_")[1]] = el.value;
+    SaveState.write("hints", id, buf);
+}
+
+function rebuildAllHints() {
+    for (let i in data.hints.stones) {
+        let stone = data.hints.stones[i];
+        let buf = SaveState.read("hints", stone, {location:"0x01",item:"0x01"});
+        document.getElementById("stonelist_location_"+stone).value = buf.location;
+        document.getElementById("stonelist_item_"+stone).value = buf.item;
+    }
+}
+
 // songs
 /////////////////////////////////////
 function createSongs() {
-    var songs = document.getElementById('song-view-body');
+    let songs = document.getElementById('song-view-body');
     for (let i in data.songs) {
-        var song = data.songs[i];
-        var el = document.createElement("div");
+        let song = data.songs[i];
+        let el = document.createElement("div");
         el.className = "song";
-        var ttl = document.createElement("div");
+        let ttl = document.createElement("div");
         ttl.className = "song-title";
         ttl.innerHTML = translate(i);
-        var bdy = document.createElement("div");
+        let bdy = document.createElement("div");
         bdy.className = "song-body stave";
         bdy.id = "songlist_"+i;
         for (let j = 0; j < song.notes.length; ++j) {
-            var note = song.notes[j];
-            var nt = document.createElement("div");
+            let note = song.notes[j];
+            let nt = document.createElement("div");
             nt.className = "note note_"+note;
             bdy.appendChild(nt);
         }
         if (!!song.editable) {
-            var edt = document.createElement('button');
+            let edt = document.createElement('button');
             edt.className = "song-edit";
             edt.innerHTML = "✎";
             edt.onclick = editSong;
@@ -170,24 +239,24 @@ function rebuildAllSongs() {
 }
 
 function rebuildSong(id) {
-    var song = document.getElementById("songlist_"+id);
+    let song = document.getElementById("songlist_"+id);
     song.innerHTML = "";
-    var notes = SaveState.read("songs", id.slice(9), data.songs[id].notes);
+    let notes = SaveState.read("songs", id.slice(9), data.songs[id].notes);
     for (let j = 0; j < notes.length; ++j) {
-        var note = notes[j];
-        var nt = document.createElement("div");
+        let note = notes[j];
+        let nt = document.createElement("div");
         nt.className = "note note_"+note;
         song.appendChild(nt);
     }
 }
 
 function editSong(event) {
-    var id = event.currentTarget.getAttribute("data-ref");
-    var song = SaveState.read("songs", id, data.songs[id].notes);
-    var song_builder = new SongBuilder(song);
-    var d = new Dialog(function(result) {
+    let id = event.currentTarget.getAttribute("data-ref");
+    let song = SaveState.read("songs", id, data.songs[id].notes);
+    let song_builder = new SongBuilder(song);
+    let d = new Dialog(function(result) {
         if (!!result) {
-            var res = song_builder.getSong();
+            let res = song_builder.getSong();
             SaveState.write("songs", id, res);
             rebuildSong(id);
         }
@@ -201,41 +270,41 @@ function editSong(event) {
 // shops
 /////////////////////////////////////
 function createShops() {
-    var shops = document.getElementById('shop-view-body');
+    let shops = document.getElementById('shop-view-body');
     for (let i in data.shops) {
-        var shop = data.shops[i];
-        var el = document.createElement("div");
+        let shop = data.shops[i];
+        let el = document.createElement("div");
         el.className = "shop";
-        var ttl = document.createElement("div");
+        let ttl = document.createElement("div");
         ttl.className = "shop-title";
         ttl.innerHTML = translate(i);
-        var bdy = document.createElement("div");
+        let bdy = document.createElement("div");
         bdy.className = "shop-body";
         bdy.id = i;
         for (let j = 0; j < shop.length; ++j) {
-            var item = shop[j];
-            var shop_item = data.shop_items[item.item];
-            var itm = document.createElement("div");
+            let item = shop[j];
+            let shop_item = data.shop_items[item.item];
+            let itm = document.createElement("div");
             itm.setAttribute("data-shop", i);
             itm.setAttribute("data-slot", j);
             itm.onclick = clickShopItem;
             itm.oncontextmenu = clickShopReItem;
             itm.className = "shop-item";
-            var img = document.createElement("div");
+            let img = document.createElement("div");
             img.className = "shop-item-image";
             img.style.backgroundImage = "url('images/" + shop_item.image + "')";
             itm.appendChild(img);
-            var iam = document.createElement("div");
+            let iam = document.createElement("div");
             iam.innerHTML = translate(item.item) + (shop_item.refill ? "" : " " + translate("special_deal"));
             iam.className = "shop-item-title";
             itm.appendChild(iam);
-            var ipr = document.createElement("div");
+            let ipr = document.createElement("div");
             ipr.innerHTML = item.price;
             ipr.className = "shop-item-price";
             itm.appendChild(ipr);
             bdy.appendChild(itm);
         }
-        var edt = document.createElement('button');
+        let edt = document.createElement('button');
         edt.className = "shop-edit";
         edt.innerHTML = "✎";
         edt.onclick = editShop;
@@ -248,20 +317,20 @@ function createShops() {
 }
 
 function clickShopItem(event) {
-    var t = event.currentTarget;
-    var id = t.getAttribute("data-shop");
-    var slot = t.getAttribute("data-slot");
-    var bought = SaveState.read("shops_bought", id, [0,0,0,0,0,0,0,0]);
+    let t = event.currentTarget;
+    let id = t.getAttribute("data-shop");
+    let slot = t.getAttribute("data-slot");
+    let bought = SaveState.read("shops_bought", id, [0,0,0,0,0,0,0,0]);
     bought[slot] = 1;
     SaveState.write("shops_bought", id, bought);
     rebuildShop(id);
 }
 
 function clickShopReItem(event) {
-    var t = event.currentTarget;
-    var id = t.getAttribute("data-shop");
-    var slot = t.getAttribute("data-slot");
-    var bought = SaveState.read("shops_bought", id, [0,0,0,0,0,0,0,0]);
+    let t = event.currentTarget;
+    let id = t.getAttribute("data-shop");
+    let slot = t.getAttribute("data-slot");
+    let bought = SaveState.read("shops_bought", id, [0,0,0,0,0,0,0,0]);
     bought[slot] = 0;
     SaveState.write("shops_bought", id, bought);
     rebuildShop(id);
@@ -274,13 +343,13 @@ function rebuildAllShops() {
 }
 
 function rebuildShop(id) {
-    var itms = document.getElementById(id).querySelectorAll(".shop-item");
-    var shop = SaveState.read("shops", id, data.shops[id]);
-    var bought = SaveState.read("shops_bought", id, [0,0,0,0,0,0,0,0]);
+    let itms = document.getElementById(id).querySelectorAll(".shop-item");
+    let shop = SaveState.read("shops", id, data.shops[id]);
+    let bought = SaveState.read("shops_bought", id, [0,0,0,0,0,0,0,0]);
     for (let i = 0; i < 8; ++i) {
-        var shop_slot = shop[i];
-        var shop_item = data.shop_items[shop_slot.item];
-        var slot = itms[i];
+        let shop_slot = shop[i];
+        let shop_item = data.shop_items[shop_slot.item];
+        let slot = itms[i];
         if (shop_item.refill || !bought[i]) {
             slot.querySelector(".shop-item-image").style.backgroundImage = "url('images/" + shop_item.image + "')";
         } else { 
@@ -292,21 +361,21 @@ function rebuildShop(id) {
 }
 
 function editShop(event) {
-    var id = event.currentTarget.getAttribute("data-ref");
-    var itms = Object.keys(data.shop_items);
-    var shop = SaveState.read("shops", id, data.shops[id]);
-    var chooser = [];
-    var pricer = [];
-    var cont = document.createElement("div");
+    let id = event.currentTarget.getAttribute("data-ref");
+    let itms = Object.keys(data.shop_items);
+    let shop = SaveState.read("shops", id, data.shops[id]);
+    let chooser = [];
+    let pricer = [];
+    let cont = document.createElement("div");
     cont.className = "shop";
     for (let i = 0; i < 8; ++i) {
-        var itm = document.createElement("div"),
+        let itm = document.createElement("div"),
             chs = document.createElement("select"),
             prc = document.createElement("input"),
             rpy = document.createElement("span");
         itm.className = "shop-item";
         for (let j = 0; j < itms.length; ++j) {
-            var opt = document.createElement("option");
+            let opt = document.createElement("option");
             opt.innerHTML = translate(itms[j]) + (data.shop_items[itms[j]].refill ? "" : " " + translate("special_deal"));
             opt.setAttribute("value", itms[j]);
             chs.appendChild(opt);
@@ -326,9 +395,9 @@ function editShop(event) {
         itm.appendChild(rpy);
         cont.appendChild(itm);
     }
-    var d = new Dialog(function(result) {
+    let d = new Dialog(function(result) {
         if (!!result) {
-            var res = [];
+            let res = [];
             for (let i = 0; i < 8; ++i) {
                 res.push({
                     item: chooser[i].value,
@@ -346,8 +415,8 @@ function editShop(event) {
 }
 
 function togglePOI(event){
-    var key = event.currentTarget.id;
-    var category = event.currentTarget.getAttribute("data-category");
+    let key = event.currentTarget.id;
+    let category = event.currentTarget.getAttribute("data-category");
     SaveState.write(category, key, true);
     updateMap();
     event.preventDefault();
@@ -355,8 +424,8 @@ function togglePOI(event){
 }
 
 function untogglePOI(event){
-    var key = event.currentTarget.id;
-    var category = event.currentTarget.getAttribute("data-category");
+    let key = event.currentTarget.id;
+    let category = event.currentTarget.getAttribute("data-category");
     SaveState.write(category, key, false);
     updateMap();
     event.preventDefault();
@@ -368,22 +437,22 @@ function clickDungeon(event) {
 }
 
 function loadDungeonList(event) {
-    var ref_id = event;
+    let ref_id = event;
     if (typeof ref_id != "string") {
         ref_id = event.currentTarget.getAttribute("data-ref");
     }
-    var dn = document.getElementById('dungeon-name');
+    let dn = document.getElementById('dungeon-name');
     poi_list.ref = ref_id;
     dn.ref = ref_id;
     dn.innerHTML = translate(poi_list.ref);
-    var dd;
+    let dd;
     if (ref_id == "overworld") {
         dd = data[poi_list.mode];
         dn.removeAttribute("data-mode");
     } else {
-        var dun = data.dungeons[poi_list.ref];
+        let dun = data.dungeons[poi_list.ref];
         if (dun.hasmq) {
-            var mq = SaveState.read("mq", ref_id, false);
+            let mq = SaveState.read("mq", ref_id, false);
             dn.setAttribute("data-mode", mq ? "mq" : "v");
             dd = dun[poi_list.mode + (mq?"_mq":"")];
             if (!dd) dd = dun[poi_list.mode];
@@ -396,12 +465,12 @@ function loadDungeonList(event) {
 }
 
 function fillDungeonList(dd) {
-    var list = document.getElementById('dungeon-list');
+    let list = document.getElementById('dungeon-list');
     list.innerHTML = "";
     poi_list.entries = [];
     if (!!dd) {
-        var r = document.createElement('li');
-        var n = document.createElement('span');
+        let r = document.createElement('li');
+        let n = document.createElement('span');
         n.className = "hint-name";
         n.innerHTML = "(back)";
         r.appendChild(n);
@@ -415,10 +484,10 @@ function fillDungeonList(dd) {
         list.appendChild(r);
 
         for (let i in dd) {
-            var dta = dd[i];
-            var s = document.createElement('li');
+            let dta = dd[i];
+            let s = document.createElement('li');
             s.id = i;
-            var n = document.createElement('span');
+            let n = document.createElement('span');
             n.className = "hint-name";
             n.innerHTML = translate(i);
             s.appendChild(n);
@@ -434,13 +503,13 @@ function fillDungeonList(dd) {
             list.appendChild(s);
         }
     } else {
-        var dn = document.getElementById('dungeon-name');
+        let dn = document.getElementById('dungeon-name');
         poi_list.ref = "";
         dn.ref = null;
         dn.innerHTML = "Hyrule";
 
-        var r = document.createElement('li');
-        var n = document.createElement('span');
+        let r = document.createElement('li');
+        let n = document.createElement('span');
         n.className = "hint-name";
         n.innerHTML = "Overworld";
         r.appendChild(n);
@@ -455,9 +524,9 @@ function fillDungeonList(dd) {
         dd = data.dungeons;
 
         for (let i in dd) {
-            var dta = dd[i];
-            var s = document.createElement('li');
-            var n = document.createElement('span');
+            let dta = dd[i];
+            let s = document.createElement('li');
+            let n = document.createElement('span');
             n.className = "hint-name";
             n.innerHTML = translate(i);
             s.appendChild(n);
@@ -482,19 +551,19 @@ function reloadDungeonList() {
 }
 
 function updateMap() {
-    var chests_available = 0;
-    var chests_missing = 0;
-    var skulltulas_available = 0;
-    var skulltulas_missing = 0;
+    let chests_available = 0;
+    let chests_missing = 0;
+    let skulltulas_available = 0;
+    let skulltulas_missing = 0;
     
     // update chest markers
     /////////////////////////////////
-    for (var i = 0; i < poi.chests.length; ++i) {
-        var x = poi.chests[i];
+    for (let i = 0; i < poi.chests.length; ++i) {
+        let x = poi.chests[i];
         if(SaveState.read("chests", x.id, 0)) {
             x.className = "poi chest opened";
         } else {
-            var avail = checkLogic("chests", x.id);
+            let avail = checkLogic("chests", x.id);
             x.className = "poi chest " + (avail ? "available" : "unavailable");
             if (!data.chests[x.id].mode || data.chests[x.id].mode != "scrubsanity" || SaveState.read("options", "scrubsanity", false)) {
                 chests_missing++;
@@ -505,20 +574,20 @@ function updateMap() {
     
     // update dungeon markers
     /////////////////////////////////
-    for (var i = 0; i < poi.dungeons.length; ++i) {
-        var x = poi.dungeons[i];
-        var ref = x.id.slice(8);
+    for (let i = 0; i < poi.dungeons.length; ++i) {
+        let x = poi.dungeons[i];
+        let ref = x.id.slice(8);
         x.className = "poi dungeon " + checkList(poi_list.mode, ref);
 
-        var chests = data.dungeons[ref].chests;
-        var skulltulas = data.dungeons[ref].skulltulas;
+        let chests = data.dungeons[ref].chests;
+        let skulltulas = data.dungeons[ref].skulltulas;
 
         if (!!data.dungeons[ref].hasmq && SaveState.read("mq", ref, false)) {
             chests = data.dungeons[ref].chests_mq;
             skulltulas = data.dungeons[ref].skulltulas_mq;
         }
 
-        var DCcount = 0;
+        let DCcount = 0;
         for (let j in chests) {
             if (!SaveState.read("chests", j, 0)) {
                 if (!chests[j].mode || chests[j].mode != "scrubsanity" || SaveState.read("options", "scrubsanity", false)) {
@@ -528,7 +597,7 @@ function updateMap() {
             }
         }
         chests_available+=DCcount;
-        var SKcount = 0;
+        let SKcount = 0;
         for (let j in skulltulas) {
             if (!SaveState.read("skulltulas", j, 0)) {
                 if (checkLogic("skulltulas", j)) {
@@ -539,13 +608,13 @@ function updateMap() {
         }
         skulltulas_available+=SKcount;
         if (poi_list.mode == "chests") {
-            var ss = x.children[0];
+            let ss = x.children[0];
             if (DCcount == 0)
                 ss.innerHTML = "";
             else
                 ss.innerHTML = DCcount;
         } else if (poi_list.mode == "skulltulas") {
-            var ss = x.children[0];
+            let ss = x.children[0];
             if (SKcount == 0)
                 ss.innerHTML = "";
             else
@@ -556,12 +625,12 @@ function updateMap() {
     
     // update skulltula markers
     /////////////////////////////////
-    for (var i = 0; i < poi.skulltulas.length; ++i) {
-        var x = poi.skulltulas[i];
+    for (let i = 0; i < poi.skulltulas.length; ++i) {
+        let x = poi.skulltulas[i];
         if(SaveState.read("skulltulas", x.id, 0)) {
             x.className = "poi skulltula opened";
         } else {
-            var avail = checkLogic("skulltulas", x.id);
+            let avail = checkLogic("skulltulas", x.id);
             if (avail) skulltulas_available++;
             x.className = "poi skulltula " + (avail ? "available" : "unavailable");
             skulltulas_missing++;
@@ -570,18 +639,18 @@ function updateMap() {
     
     // update list entries
     /////////////////////////////////
-    var dn = document.getElementById('dungeon-name');
+    let dn = document.getElementById('dungeon-name');
     if (poi_list.mode == "chests" && poi_list.ref != "") {
         dn.className = "DC" + checkBeatList(poi_list.ref);
     } else {
         dn.className = "DCavailable";
     }
-    for (var i = 0; i < poi_list.entries.length; ++i) {
-        var x = poi_list.entries[i];
+    for (let i = 0; i < poi_list.entries.length; ++i) {
+        let x = poi_list.entries[i];
         if (SaveState.read(poi_list.mode, x.id, 0))
             x.className = "dungeon-entry DCopened";               
         else {
-            var ref = x.getAttribute("data-ref");
+            let ref = x.getAttribute("data-ref");
             if (!ref) {
                 ref = x.id;
                 if (checkLogic(poi_list.mode, ref)) {

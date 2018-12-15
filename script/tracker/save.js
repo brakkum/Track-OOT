@@ -54,6 +54,7 @@ function prepairSavegameChoice() {
 async function state_Save() {
     if (stateChoice.value != "") {
         stateChoice.value = activestate;
+        saveNotes();
         SaveState.save(activestate);
         await Dialog.alert("Success", "Saved \""+activestate+"\" successfully.");
     }
@@ -70,9 +71,11 @@ async function state_Load() {
             SaveState.load(activestate);
             resetSettingsPage("options", document.getElementById("settings-options"));
             resetSettingsPage("skips", document.getElementById("settings-skips"));
+            loadNotes();
             updateItems();
             rebuildAllShops();
             rebuildAllSongs();
+            rebuildAllHints();
             applySettingsChoices();
             updateMap();
             toggleStateButtons();
@@ -126,9 +129,11 @@ async function state_New() {
         resetSettingsPage("options", document.getElementById("settings-options"));
         resetSettingsPage("skips", document.getElementById("settings-skips"));
         prepairSavegameChoice();
+        loadNotes();
         updateItems();
         rebuildAllShops();
         rebuildAllSongs();
+        rebuildAllHints();
         applySettingsChoices();
         toggleStateButtons();
     }

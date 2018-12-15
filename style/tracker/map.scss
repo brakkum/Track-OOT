@@ -67,6 +67,16 @@
                 background-image: url('../images/song.svg');
                 opacity: 1;
             }
+
+            &#map-option-hints {
+                background-image: url('../images/gossipstone.svg');
+                opacity: 1;
+            }
+
+            &#map-option-notes {
+                background-image: url('../images/notes.svg');
+                opacity: 1;
+            }
         }
     }
 
@@ -255,6 +265,53 @@
         width: 100%;
         height: 100%;
         overflow: auto;
+    }
+
+    &#notes-view #notes-view-body {
+        display: flex;
+        flex-direction: column;
+        border: solid 1px white;
+        padding: 20px;
+        width: 100%;
+
+        .notes-title {
+            color: white;
+            margin-bottom: 10px;
+            flex: 0;
+            flex-shrink: 0;
+        }
+
+        textarea {
+            flex: 1;
+            overflow: scroll;
+            resize: none;
+            background-color: #222222;
+            color: white;
+        }
+    }
+
+    &#hint-view .stone {
+        border: solid 1px white;
+        padding: 20px;
+        margin: 20px;
+        width: 100%;
+
+        .stone-title {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .stone-body label {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+
+            select {
+                width: 100%;
+                background-color: #222222;
+                color: white;
+            }
+        }
     }
 
     &#song-view .song {
