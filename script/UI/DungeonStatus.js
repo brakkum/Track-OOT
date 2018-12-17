@@ -12,6 +12,7 @@ function DungeonStatus(ddata, cont) {
     //////////////////////////////////
     // title
     title = createItemText(ddata.title);
+    title.style.color = ddata.color;
     el.appendChild(title);
     //////////////////////////////////
     // small key

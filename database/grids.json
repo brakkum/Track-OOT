@@ -128,6 +128,7 @@
         {
             "ref": "deku",
             "title": "DT",
+            "color": "#92ff92",
             "keys": false,
             "bosskey": false,
             "map": "dungeon_map_deku",
@@ -138,6 +139,7 @@
         {
             "ref": "dodongo",
             "title": "DC",
+            "color": "#ff6a6a",
             "keys": false,
             "bosskey": false,
             "map": "dungeon_map_dodongo",
@@ -148,6 +150,7 @@
         {
             "ref": "jabujabu",
             "title": "JB",
+            "color": "#8be4f3",
             "keys": false,
             "bosskey": false,
             "map": "dungeon_map_jabujabu",
@@ -158,6 +161,7 @@
         {
             "ref": "temple_forest",
             "title": "FoT",
+            "color": "#1bf11b",
             "keys": "key_small_forest",
             "bosskey": "key_boss_forest",
             "map": "dungeon_map_temple_forest",
@@ -168,6 +172,7 @@
         {
             "ref": "temple_fire",
             "title": "FiT",
+            "color": "#ff3c3c",
             "keys": "key_small_fire",
             "bosskey": "key_boss_fire",
             "map": "dungeon_map_temple_fire",
@@ -178,6 +183,7 @@
         {
             "ref": "temple_water",
             "title": "WT",
+            "color": "#7cb6ff",
             "keys": "key_small_water",
             "bosskey": "key_boss_water",
             "map": "dungeon_map_temple_water",
@@ -188,6 +194,7 @@
         {
             "ref": "temple_spirit",
             "title": "SpT",
+            "color": "#ffcd71",
             "keys": "key_small_spirit",
             "bosskey": "key_boss_spirit",
             "map": "dungeon_map_temple_spirit",
@@ -198,6 +205,7 @@
         {
             "ref": "temple_shadow",
             "title": "ShT",
+            "color": "#d967fd",
             "keys": "key_small_shadow",
             "bosskey": "key_boss_shadow",
             "map": "dungeon_map_temple_shadow",
@@ -208,6 +216,7 @@
         {
             "ref": "castle_ganon",
             "title": "GC",
+            "color": "#969696",
             "keys": "key_small_ganon",
             "bosskey": "key_boss_ganon",
             "map": false,
@@ -218,6 +227,7 @@
         {
             "ref": "gerudo_fortress",
             "title": "GF",
+            "color": "#ffb47d",
             "keys": "key_small_gerudo",
             "bosskey": "membership",
             "map": false,
@@ -228,6 +238,7 @@
         {
             "ref": "gerudo_training",
             "title": "GTG",
+            "color": "#ffffa4",
             "keys": "key_small_training",
             "bosskey": false,
             "map": false,
@@ -238,6 +249,7 @@
         {
             "ref": "well",
             "title": "BotW",
+            "color": "#ff99ff",
             "keys": "key_small_well",
             "bosskey": false,
             "map": "dungeon_map_well",
@@ -248,6 +260,7 @@
         {
             "ref": "ice_cavern",
             "title": "IC",
+            "color": "#abfdf5",
             "keys": false,
             "bosskey": false,
             "map": "dungeon_map_ice",
