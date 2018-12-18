@@ -2150,8 +2150,17 @@
             "el": "deku_tree_access"
         },
         "deku_slingshot": {
-            "type": "mixin",
-            "el": "deku_tree_access"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "item",
+                    "el": "shield_kokiri"
+                }
+            ]
         },
         "deku_slingshot_side": {
             "type": "mixin",
@@ -2167,6 +2176,10 @@
                 {
                     "type": "item",
                     "el": "slingshot"
+                },
+                {
+                    "type": "item",
+                    "el": "shield_kokiri"
                 }
             ]
         },
