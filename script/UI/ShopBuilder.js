@@ -28,14 +28,14 @@ function ShopBuilder(shop) {
                             buildShop();
                         }
                     });
-                    d.setTitle("Slot " + (slot + 1) + " Price");
+                    d.setTitle("Slot " + (parseInt(slot) + 1) + " Price");
                     d.setSubmitText("SUBMIT");
                     d.setAbortText("CANCEL");
                     d.addElement(shop_price);
                 }
             }
         });
-        d.setTitle("Slot " + (slot + 1) + " Item");
+        d.setTitle("Slot " + (parseInt(slot) + 1) + " Item");
         d.setSubmitText("SUBMIT");
         d.setAbortText("CANCEL");
         d.addElement(shop_item);
