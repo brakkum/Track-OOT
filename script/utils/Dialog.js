@@ -184,7 +184,7 @@
                 .setTitle(ttl)
                 .setText(msg)
                 .setSubmitText("SUBMIT")
-                .setAbortText("ABORT")
+                .setAbortText("CANCEL")
                 .addElement(el);
         });
     };

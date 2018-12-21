@@ -1,6 +1,7 @@
 // @koala-prepend "../UI/Map.js"
 // @koala-prepend "../UI/Tooltip.js"
 // @koala-prepend "../UI/SongBuilder.js"
+// @koala-prepend "../UI/ShopBuilder.js"
 // @koala-prepend "../UI/SelectBox.js"
 
 let poi = {
@@ -264,7 +265,7 @@ function editSong(event) {
     });
     d.setTitle(translate(id));
     d.setSubmitText("SUBMIT");
-    d.setAbortText("ABORT");
+    d.setAbortText("CANCEL");
     d.addElement(song_builder);
 }
 
@@ -367,51 +368,16 @@ function editShop(event) {
     let shop = SaveState.read("shops", id, data.shops[id]);
     let chooser = [];
     let pricer = [];
-    let cont = document.createElement("div");
-    cont.className = "shop";
-    for (let i = 0; i < 8; ++i) {
-        let itm = document.createElement("div"),
-            chs = document.createElement("select"),
-            prc = document.createElement("input"),
-            rpy = document.createElement("span");
-        itm.className = "shop-item";
-        for (let j = 0; j < itms.length; ++j) {
-            let opt = document.createElement("option");
-            opt.innerHTML = translate(itms[j]) + (data.shop_items[itms[j]].refill ? "" : " " + translate("special_deal"));
-            opt.setAttribute("value", itms[j]);
-            chs.appendChild(opt);
-        }
-        chs.value = shop[i].item;
-        chs.className = "shop-item-title";
-        prc.setAttribute("type", "number");
-        prc.setAttribute("min-value", 1);
-        prc.setAttribute("max-value", 999);
-        prc.value = shop[i].price;
-        prc.className = "shop-item-price";
-        chooser.push(chs);
-        pricer.push(prc);
-        rpy.innerHTML = "Rupee(s)";
-        itm.appendChild(chs);
-        itm.appendChild(prc);
-        itm.appendChild(rpy);
-        cont.appendChild(itm);
-    }
+    let cont = new ShopBuilder(shop);
     let d = new Dialog(function(result) {
         if (!!result) {
-            let res = [];
-            for (let i = 0; i < 8; ++i) {
-                res.push({
-                    item: chooser[i].value,
-                    price: pricer[i].value
-                });
-            }
-            SaveState.write("shops", id, res);
+            SaveState.write("shops", id, cont.getShop());
             rebuildShop(id);
         }
     });
     d.setTitle(translate(id));
     d.setSubmitText("SUBMIT");
-    d.setAbortText("ABORT");
+    d.setAbortText("CANCEL");
     d.addElement(cont);
 }
 

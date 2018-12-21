@@ -62,14 +62,18 @@ function dragNewElement(ev) {
 function dropOnPlaceholder(ev) {
     ev.preventDefault();
     ev.stopPropagation();
-    var id = ev.dataTransfer.getData("text");
-    var el = document.getElementById(id);
-    if (id.startsWith("logic_onboard_")) {
-        moveLogicEl(el, ev.target, ev.ctrlKey);
-    } else {
-        addLogicEl(el, ev.target);
+    if (!!ev.dataTransfer) {
+        var id = ev.dataTransfer.getData("text");
+        var el = document.getElementById(id);
+        if (!!el) {
+            if (id.startsWith("logic_onboard_")) {
+                moveLogicEl(el, ev.target, ev.ctrlKey);
+            } else {
+                addLogicEl(el, ev.target);
+            }
+            exportLogic();
+        }
     }
-    exportLogic();
 }
 
 function deleteElement(ev) {

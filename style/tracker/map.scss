@@ -428,54 +428,195 @@
     }
 }
 
-.dialog-body .song {
-    padding: 20px;
-    background: black;
+.dialog-body {
 
-    .button-container {
-        display: flex;
-        justify-content: center;
+    .song {
+        padding: 20px;
+        background: black;
     
-        .btn {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-            margin: 5px;
-    
-            &:hover {
-                box-shadow: 0 0 3px 2px #cb9c3d, inset 0 0 3px 0px #cb9c3d;
+        .button-container {
+            display: flex;
+            justify-content: center;
+        
+            .btn {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                margin: 5px;
+        
+                &:hover {
+                    box-shadow: 0 0 3px 2px #cb9c3d, inset 0 0 3px 0px #cb9c3d;
+                }
+        
+                &.btn_A {
+                    background-image: url("/images/note_A.svg");
+                }
+        
+                &.btn_D {
+                    background-image: url("/images/note_D.svg");
+                }
+        
+                &.btn_R {
+                    background-image: url("/images/note_R.svg");
+                }
+        
+                &.btn_L {
+                    background-image: url("/images/note_L.svg");
+                }
+        
+                &.btn_U {
+                    background-image: url("/images/note_U.svg");
+                }
+        
+                &.btn_X {
+                    background-image: url("/images/note_X.svg");
+                }
+        
             }
-    
-            &.btn_A {
-                background-image: url("/images/note_A.svg");
+        
+        }
+    }
+
+    .shop {
+
+        display: grid;
+        grid-template-columns: repeat(4, 150px);
+        grid-template-rows: repeat(2, 120px);
+        width: 655px;
+        grid-gap: 5px;
+        padding: 20px;
+        margin-top: 10px;
+        background-color: black;
+        color: white;
+
+        .shop-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 5px;
+            border: solid 1px white;
+            user-select: none;
+            cursor: pointer;
+
+            .shop-item-image {
+                display: block;
+                height: 32px;
+                width: 32px;
+                background-position: center;
+                background-repeat: no-repeat;
             }
-    
-            &.btn_D {
-                background-image: url("/images/note_D.svg");
+
+            .shop-item-title {
+                display: block;
+                word-wrap: break-word;
+                overflow: hidden;
+                width: 100%;
+                font-size: 0.7em;
+                flex: 1;
             }
-    
-            &.btn_R {
-                background-image: url("/images/note_R.svg");
+
+            .shop-item-price {
+                display: block;
+                width: 100%;
+                font-size: 0.7em;
+                text-align: right;
+
+                &:after {
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    margin-left: 5px;
+                    background-image: url('../images/rupees.png');
+                    background-size: 14px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    content: " ";
+                }
             }
-    
-            &.btn_L {
-                background-image: url("/images/note_L.svg");
+        }
+    }
+
+    .shop-items {
+
+        .shop-items-buttonlist {
+            display: flex;
+
+            .shop-item-categorybutton {
+                margin: 2px;
+                padding: 5px;
+                color: black;
+                background-color: white;
+                border: solid 1px black;
+                border-radius: 2px;
+                cursor: pointer;
+            
+                &:hover {
+                    color: white;
+                    background-color: black;
+                }
             }
-    
-            &.btn_U {
-                background-image: url("/images/note_U.svg");
-            }
-    
-            &.btn_X {
-                background-image: url("/images/note_X.svg");
-            }
-    
         }
     
+        .shop-items-container {
+    
+            display: flex;
+            flex-wrap: wrap;
+            width: 680px;
+            grid-gap: 5px;
+            padding: 20px;
+            margin-top: 10px;
+            background-color: black;
+            color: white;
+    
+            .shop-item-category {
+                display: none;
+                flex-wrap: wrap;
+    
+                &.active {
+                    display: flex;
+                }
+            }
+    
+            .shop-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                width: 150px;
+                height: 100px;
+                margin: 5px;
+                padding: 5px;
+                border: solid 1px white;
+                user-select: none;
+                cursor: pointer;
+    
+                &.active {
+                    border: solid 1px #cb9c3d;
+                }
+    
+                .shop-item-image {
+                    display: block;
+                    height: 32px;
+                    width: 32px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+    
+                .shop-item-title {
+                    display: block;
+                    word-wrap: break-word;
+                    overflow: hidden;
+                    width: 100%;
+                    flex: 1;
+                }
+            }
+        }
     }
+
 }
 
 .stave {
