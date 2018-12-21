@@ -127,6 +127,7 @@
             w.submit.innerHTML = t.toUpperCase();
             w.submit.setAttribute("title", t);
             tab_itms = Array.from(w.window.querySelectorAll(Q_TAB));
+            tab_itms[0].focus();
             return this;
         }
 
@@ -135,6 +136,7 @@
             w.abort.innerHTML = t.toUpperCase();
             w.abort.setAttribute("title", t);
             tab_itms = Array.from(w.window.querySelectorAll(Q_TAB));
+            tab_itms[0].focus();
             return this;
         }
 
@@ -147,10 +149,12 @@
         this.addElement = function(el) {
             w.body.appendChild(el);
             tab_itms = Array.from(w.window.querySelectorAll(Q_TAB));
+            tab_itms[0].focus();
             return this;
         }
 
         tab_itms = Array.from(w.window.querySelectorAll(Q_TAB));
+        tab_itms[0].focus();
         document.body.appendChild(w.container);
 
     };
