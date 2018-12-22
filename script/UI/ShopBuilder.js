@@ -5,7 +5,7 @@ function ShopBuilder(shop) {
     var cont = document.createElement("div");
     cont.className = "shop";
 
-    function clickShopItem() {
+    function clickShopItem(event) {
         let t = event.currentTarget;
         let slot = t.getAttribute("data-slot");
         let shop_item = new ShopItemChoice;
