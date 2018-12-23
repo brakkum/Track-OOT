@@ -72,6 +72,15 @@
         "max": 1,
         "images": "arrow_light.png"
     },
+    "arrows":{
+        "max": 3,
+        "images": [
+            "arrow_normal.png",
+            "arrow_fire.png",
+            "arrow_light.png",
+            "arrow_both.png"
+        ]
+    },
     "ocarina":{
         "max": 2,
         "images": [
@@ -195,6 +204,15 @@
     "boots_hover":{
         "max": 1,
         "images": "boots_hover.png"
+    },
+    "boots":{
+        "max": 3,
+        "images": [
+            "boots_normal.png",
+            "boots_iron.png",
+            "boots_hover.png",
+            "boots_both.png"
+        ]
     },
     
     "glove":{
