@@ -80,6 +80,8 @@ function deleteElement(ev) {
     var el = document.getElementById(ev.dataTransfer.getData("text"));
     removeLogicEl(el);
     exportLogic();
+    ev.preventDefault();
+    ev.stopPropagation();
 }
 
 Array.from(document.getElementsByClassName('logic-operator')).forEach(element => {
