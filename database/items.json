@@ -75,10 +75,28 @@
     "arrows":{
         "max": 3,
         "images": [
-            "arrow_normal.png",
+            "arrow_none.png",
             "arrow_fire.png",
             "arrow_light.png",
             "arrow_both.png"
+        ],
+        "affect": [
+            {
+                "arrow_fire": false,
+                "arrow_light": false
+            },
+            {
+                "arrow_fire": true,
+                "arrow_light": false
+            },
+            {
+                "arrow_fire": false,
+                "arrow_light": true
+            },
+            {
+                "arrow_fire": true,
+                "arrow_light": true
+            }
         ]
     },
     "ocarina":{
@@ -190,6 +208,33 @@
         "max": 1,
         "images": "tunic_water.png"
     },
+    "tunics":{
+        "max": 3,
+        "images": [
+            "tunic_forest.png",
+            "tunic_fire.png",
+            "tunic_water.png",
+            "tunic_both.png"
+        ],
+        "affect": [
+            {
+                "tunic_fire": false,
+                "tunic_water": false
+            },
+            {
+                "tunic_fire": true,
+                "tunic_water": false
+            },
+            {
+                "tunic_fire": false,
+                "tunic_water": true
+            },
+            {
+                "tunic_fire": true,
+                "tunic_water": true
+            }
+        ]
+    },
 
     "boots_normal":{
         "max": 0,
@@ -212,6 +257,24 @@
             "boots_iron.png",
             "boots_hover.png",
             "boots_both.png"
+        ],
+        "affect": [
+            {
+                "boots_iron": false,
+                "boots_hover": false
+            },
+            {
+                "boots_iron": true,
+                "boots_hover": false
+            },
+            {
+                "boots_iron": false,
+                "boots_hover": true
+            },
+            {
+                "boots_iron": true,
+                "boots_hover": true
+            }
         ]
     },
     

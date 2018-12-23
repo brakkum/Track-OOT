@@ -82,7 +82,7 @@ function getLogic(category, name) {
     if (Storage.get("settings", "use_custom_logic", false) && data.logic_patched.hasOwnProperty(category) && data.logic_patched[category].hasOwnProperty(name)) {
         return data.logic_patched[category][name];
     }
-    if (data.logic.hasOwnProperty(category) || data.logic[category].hasOwnProperty(name)) {
+    if (data.logic.hasOwnProperty(category) && data.logic[category].hasOwnProperty(name)) {
         return data.logic[category][name];
     }
 }
@@ -108,16 +108,6 @@ function checkOpened(category, name) {
         }
     }
     return true;
-}
-
-function checkBeatList(name) {
-    var logic = data.logic.dungeons[name];
-    if ((Array.isArray(logic) && logic.length == 0) || logic == null) {
-        return checkList("chests", name);
-    }
-
-    if (!checkOpened("chests", name)) return checkLogic("dungeons", name) ? "available" : "unavailable";
-    return "opened";
 }
 
 function checkList(category, name) {

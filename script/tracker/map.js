@@ -608,7 +608,7 @@ function updateMap() {
     /////////////////////////////////
     let dn = document.getElementById('dungeon-name');
     if (poi_list.mode == "chests" && poi_list.ref != "") {
-        dn.className = "DC" + checkBeatList(poi_list.ref);
+        dn.className = "DC" + checkList(poi_list.mode, poi_list.ref);
     } else {
         dn.className = "DCavailable";
     }

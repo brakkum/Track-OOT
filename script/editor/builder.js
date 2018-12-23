@@ -106,7 +106,6 @@ async function createMixin(e) {
 function fillEditor() {
     chest_panel = createPanel("Chests - Reachable Logic", logics_panel);
     skulltula_panel = createPanel("Skulltulas - Reachable Logic", logics_panel);
-    dungeon_panel = createPanel("Dungeons - Beatable Logic", logics_panel);
     mixins_panel = createPanel("Mixins", logics_panel);
     
     item_panel = createPanel("Items", elements_panel);
@@ -135,7 +134,6 @@ function fillEditor() {
     }
     
     for (let i in data.dungeons) {
-        dungeon_panel.appendChild(createListItem("dungeons", i));
         var chests = data.dungeons[i].chests;
         var skulltulas = data.dungeons[i].skulltulas;
 
