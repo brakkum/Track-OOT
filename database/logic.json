@@ -18730,17 +18730,8 @@
             ]
         },
         "castle_town_near_ganon_fairy_adult": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "can_become_adult"
-                },
-                {
-                    "type": "item",
-                    "el": "hookshot"
-                }
-            ]
+            "type": "mixin",
+            "el": "can_become_adult"
         },
         "lonlon_tree_child_night": {
             "type": "mixin",
