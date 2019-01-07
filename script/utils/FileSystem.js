@@ -28,7 +28,9 @@ window.FileSystem = new (function() {
         var url = window.URL.createObjectURL(new Blob([data], {type: "octet/stream"}));
         dl.href = url;
         dl.download = fileName;
+        document.body.appendChild(dl);
         dl.click();
         window.URL.revokeObjectURL(url);
+        document.body.removeChild(dl);
     }
 });

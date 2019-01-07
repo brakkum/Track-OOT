@@ -176,7 +176,7 @@
             "el": [
                 {
                     "type": "mixin",
-                    "el": "jabu_jabu_access"
+                    "el": "zora_fountain_access"
                 },
                 {
                     "type": "mixin",
@@ -388,52 +388,12 @@
             "type": "and",
             "el": [
                 {
-                    "type": "item",
-                    "el": "zora_letter"
-                },
-                {
                     "type": "mixin",
-                    "el": "can_leave_forest"
+                    "el": "zora_fountain_access"
                 },
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "scale"
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "mixin",
-                                    "el": "has_explosives"
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "item",
-                                                    "el": "ocarina"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "song_zelda"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "skip",
-                                            "el": "zora_cucco"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "item",
+                    "el": "bottle"
                 }
             ]
         },
@@ -1425,6 +1385,59 @@
                         {
                             "type": "item",
                             "el": "lens"
+                        }
+                    ]
+                }
+            ]
+        },
+        "zora_fountain_access": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "zora_letter"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "scale"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "ocarina"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "song_zelda"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "skip",
+                                            "el": "zora_cucco"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
@@ -4164,80 +4177,19 @@
             ]
         },
         "zoras_ice": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "item",
-                    "el": "zora_letter"
-                },
-                {
-                    "type": "mixin",
-                    "el": "can_become_adult"
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "scale"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "song_zelda"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "skip",
-                                    "el": "zora_cucco"
-                                },
-                                {
-                                    "type": "skip",
-                                    "el": "zora_hover"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "boots_hover"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+            "type": "mixin",
+            "el": "ice_cavern_access"
         },
         "zoras_underwater": {
             "type": "and",
             "el": [
                 {
-                    "type": "item",
-                    "el": "zora_letter"
+                    "type": "mixin",
+                    "el": "ice_cavern_access"
                 },
                 {
                     "type": "item",
                     "el": "boots_iron"
-                },
-                {
-                    "type": "mixin",
-                    "el": "can_become_adult"
                 },
                 {
                     "type": "or",
@@ -4249,54 +4201,6 @@
                         {
                             "type": "skip",
                             "el": "fewer_tunic"
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "scale"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "song_zelda"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "skip",
-                                    "el": "zora_cucco"
-                                },
-                                {
-                                    "type": "skip",
-                                    "el": "zora_hover"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "boots_hover"
-                                }
-                            ]
                         }
                     ]
                 }
@@ -17210,14 +17114,14 @@
         },
         "zoras_tree_child": {
             "type": "mixin",
-            "el": "jabu_jabu_access"
+            "el": "zora_fountain_access"
         },
         "zoras_wall_child_night": {
             "type": "and",
             "el": [
                 {
                     "type": "mixin",
-                    "el": "jabu_jabu_access"
+                    "el": "zora_fountain_access"
                 },
                 {
                     "type": "item",
