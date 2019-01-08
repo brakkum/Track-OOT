@@ -2176,8 +2176,17 @@
             ]
         },
         "deku_slingshot_side": {
-            "type": "mixin",
-            "el": "deku_tree_access"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "item",
+                    "el": "shield_kokiri"
+                }
+            ]
         },
         "deku_gohma": {
             "type": "and",
