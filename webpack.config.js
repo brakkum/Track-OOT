@@ -22,11 +22,10 @@ Array.prototype.push.apply(BUNDLE, glob.sync("./i18n/*.lang", {cwd: WORKING_DIRE
 Array.prototype.push.apply(BUNDLE, glob.sync("./content/*.html", {cwd: WORKING_DIRECORY}));
 
 let deepJSPath = path.resolve(__dirname, '../deepjs.2deep4real.de');
-fs.access(deepJSPath, fs.constants.F_OK, function(err) {
-  if (!!err) {
+
+if (!fs.existsSync(deepJSPath)) {
     deepJSPath = path.resolve(__dirname, 'node_modules/deepJS');
-  }
-});
+}
 
 module.exports = {
   mode: 'development',
