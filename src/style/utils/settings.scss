@@ -1,0 +1,138 @@
+#settings {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 1.2em;
+    z-index: 99999;
+
+    @media (min-width: 601px) {
+        padding: 100px 0px;
+    }
+}
+
+#settings.active {
+    display: flex;
+}
+
+#settings #settings-window {
+    display: grid;
+    grid-template-rows: minmax(100px, 1fr) 2px 40px;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    width: 600px;
+    max-width: 100%;
+    max-height: 100%;
+
+    @media (max-width: 600px) {
+        margin-top: 0;
+    }
+}
+
+label.settings-option {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: flex-start;
+
+    input[type="checkbox"] {
+        margin-right: 10px;
+    }
+}
+
+label.settings-option:hover {
+    background-color: lightgray;
+}
+
+label.settings-option .option-text {
+    display: inline-block;
+    flex-basis: 300px;
+    flex-shrink: 1;
+    user-select: none;
+}
+
+.card-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-panel .card-header {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    margin-bottom: 5px;
+    padding: 0 5px;
+    border-bottom: solid 1px black;
+    flex-shrink: 0;
+}
+
+.card-panel .card-header .card-button {
+    display: inline-block;
+    padding: 5px;
+    margin: 0 2px;
+    border-left: solid 1px black;
+    border-right: solid 1px black;
+    border-top: solid 1px black;
+    border-radius: 2px 2px 0 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.card-panel .card-header .card-button:hover {
+    background-color: lightgray;
+}
+
+.card-panel .card-header .card-button.active {
+    background-color: black;
+    color: white;
+}
+
+.card-panel .card-header .card-button.disabled {
+    color: gray;
+    cursor: not-allowed;
+}
+
+.card-panel .card-body {
+    display: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.card-panel .card-body.active {
+    display: block;
+}
+
+#settings #settings-window .settings-buttons {
+    display: flex;
+    margin: 10px 20px 0;
+    justify-content: flex-end;
+}
+
+#settings #settings-window .settings-buttons button {
+    margin-left: 10px;
+    padding: 5px;
+    color: white;
+    background-color: black;
+    border: solid 1px black;
+    -webkit-appearance: none;
+}
+
+#settings #settings-window .settings-buttons button:hover {
+    color: black;
+    background-color: white;
+}
+
+#settings #settings-window .slider+.input-value {
+    margin-left: 5px;
+}
+
+#settings #settings-window .thanks-name {
+    display: inline-block;
+    width: 150px;
+    font-weight: bolder;
+}

@@ -1,0 +1,30 @@
+$fonts:
+        "Charlemagne" 1em,
+        "Ravenna" 1em,
+        "ReturnofGanon" 1.5em,
+        "ZeldaDX" 1.15em,
+        "Triforce" 1.2em,
+        "AncientHylian" 1.1em,
+        "Sheikah" 1.1em;
+
+[data-font] {
+    font-size: 1.3em;
+}
+
+@each $item in $fonts {
+
+    @font-face {
+        font-family: "#{nth($item, 1)}";
+        src: url('/fonts/#{nth($item, 1)}.ttf') format('truetype');
+    }
+
+    [data-font="font_#{to-lower-case(nth($item, 1))}"] {
+        font-size: #{nth($item, 2)};
+        font-family: "#{nth($item, 1)}", Arial, sans-serif;
+    }
+
+}
+
+:root {
+    font-size: 14px;
+}

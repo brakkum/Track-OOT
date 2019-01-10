@@ -1,0 +1,127 @@
+<html lang="en">
+    <head>
+        <title>Editor for Track-OOT</title>
+        <meta charset="UTF-8">
+        <meta name="robots" content="noindex,nofollow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="style/editor.css">
+        <script src="script/editor/FileSystem.js" defer></script>
+        <script src="script/editor/FileLoader.js" defer></script>
+        <script src="script/editor/Storage.js" defer></script>
+        <script src="script/editor/Dialog.js" defer></script>
+        <script src="script/editor/logic.js" defer></script>
+        <script src="script/editor/loader.js" defer></script>
+        <script src="script/editor/builder.js" defer></script>
+        <script src="script/editor/controls.js" defer></script>
+        <script src="script/editor/main.js" defer></script>
+    </head>
+    <body>
+
+        <div id="editor-frame">
+            <div class="panel" id="logics-panel">
+                <div class="panel-header">
+                    Logics
+                </div>
+                <div class="panel-body">
+                </div>
+            </div>
+            
+            <!-- operators -->
+            <!-- items -->
+            <div class="panel" id="elements-panel">
+                <div class="panel-header">
+                    Logic elements
+                </div>
+                <div class="panel-body">
+                    <div class="panel panel-group collapsible" id="operator-panel">
+                        <div class="panel-header">
+                            Operators
+                        </div>
+                        <div class="panel-body">
+                            <div id="logic-and" class="logic-operator logic-and multiple-children" draggable="true">
+                                <div class="operator-header">AND</div>
+                                <span class="placeholder">...</span>
+                            </div>
+                            <div id="logic-or" class="logic-operator logic-or multiple-children" draggable="true">
+                                <div class="operator-header">OR</div>
+                                <span class="placeholder">...</span>
+                            </div>
+                            <div id="logic-not" class="logic-operator logic-not" draggable="true">
+                                <div class="operator-header">NOT</div>
+                                <span class="placeholder">...</span>
+                            </div>
+                            <!--
+                            <div id="logic-equal" class="logic-operator logic-equal" draggable="true">
+                                <div class="operator-header">EQ <input type="number" MIN="0" MAX="100" value="0" disabled></div>
+                                <span class="placeholder">...</span>
+                            </div>
+                            -->
+                            <div id="logic-min" class="logic-operator logic-min" draggable="true">
+                                <div class="operator-header">MIN <input type="number" MIN="1" MAX="100" value="1" disabled></div>
+                                <span class="placeholder">...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- editor board -->
+            <div class="panel" id="editor-panel">
+                <div class="panel-header">
+                    [select a logic]
+                </div>
+                <div class="panel-body">
+                    <span class="placeholder" ondrop="dropOnPlaceholder(event)" ondragover="allowDrop(event)">...</span>
+                </div>
+            </div>
+    
+            <!-- clipboard -->
+            <div class="panel" id="clipboard-panel">
+                <div class="panel-header">
+                    Clipboard
+                </div>
+                <div class="panel-body multiple-children">
+                    <span class="placeholder" ondrop="dropOnPlaceholder(event)" ondragover="allowDrop(event)">...</span>
+                </div>
+            </div>
+        
+            <!-- trashcan -->
+            <div class="panel" id="trashcan-panel">
+                <div class="panel-header">
+                    Remove
+                </div>
+                <div class="panel-body" ondrop="deleteElement(event)" ondragover="allowDrop(event)">
+                </div>
+            </div>
+            
+            <!-- output -->
+            <div class="panel" id="output-panel">
+                <div class="panel-header">
+                    Output
+                </div>
+                <div class="panel-body">
+                </div>
+            </div>
+            
+            <!-- control -->
+            <div class="panel" id="control-panel">
+                <div class="panel-header">
+                    Controls
+                </div>
+                <div class="panel-body">
+                    <div class="list-item" id="control-save-local">Save logic (local)</div>
+                    <div class="list-item" id="control-load-local">Load logic (local)</div>
+                    <div class="list-item" id="control-remove-local">Remove logic (local)</div>
+                    <div class="list-item" id="control-clear-local">Clear all logic (local)</div>
+                    <hr>
+                    <div class="list-item" id="control-load-remote">Load logic (remote)</div>
+                    <hr>
+                    <div class="list-item" id="control-download-patch">Download patch</div>
+                    <div class="list-item" id="control-upload-patch">Upload patch</div>
+                    <div class="list-item" id="control-download-patched">Download patched logic</div>
+                </div>
+            </div>
+            
+        </div>
+    </body>
+</html>

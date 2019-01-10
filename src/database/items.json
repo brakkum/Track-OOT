@@ -1,0 +1,663 @@
+{
+    "bow":{
+        "max": 3,
+        "images": "bow.png",
+        "counting": ["", "30", "40", "50"]
+    },
+    "hookshot": {
+        "max": 2,
+        "images": [
+            "hookshot_small.png",
+            "hookshot_small.png",
+            "hookshot_long.png"
+        ]
+    },
+    "hammer":{
+        "max": 1,
+        "images": "hammer.png"
+    },
+    "stick":{
+        "max": 3,
+        "images": "stick.png",
+        "counting": ["", "10", "20", "30"]
+    },
+    "nut":{
+        "max": 3,
+        "images": "nut.png",
+        "counting": ["", "20", "30", "40"]
+    },
+    "slingshot":{
+        "max": 3,
+        "images": "slingshot.png",
+        "counting": ["", "30", "40", "50"]
+    },
+    "boomerang":{
+        "max": 1,
+        "images": "boomerang.png"
+    },
+    "bombs":{
+        "max": 3,
+        "images": "bombs.png",
+        "counting": ["", "20", "30", "40"]
+    },
+    "bombchu":{
+        "max": 1,
+        "images": "bombchu.png"
+    },
+    "lens":{
+        "max": 1,
+        "images": "lens.png"
+    },
+    "magic_din":{
+        "max": 1,
+        "images": "magic_din.png"
+    },
+    "magic_farore":{
+        "max": 1,
+        "images": "magic_farore.png"
+    },
+    "magic_nayru":{
+        "max": 1,
+        "images": "magic_nayru.png"
+    },
+    "arrow_fire":{
+        "max": 1,
+        "images": "arrow_fire.png"
+    },
+    "arrow_ice":{
+        "max": 1,
+        "images": "arrow_ice.png"
+    },
+    "arrow_light":{
+        "max": 1,
+        "images": "arrow_light.png"
+    },
+    "arrows":{
+        "max": 3,
+        "images": [
+            "arrow_none.png",
+            "arrow_fire.png",
+            "arrow_light.png",
+            "arrow_both.png"
+        ],
+        "affect": [
+            {
+                "arrow_fire": 0,
+                "arrow_light": 0
+            },
+            {
+                "arrow_fire": 1,
+                "arrow_light": 0
+            },
+            {
+                "arrow_fire": 0,
+                "arrow_light": 1
+            },
+            {
+                "arrow_fire": 1,
+                "arrow_light": 1
+            }
+        ]
+    },
+    "ocarina":{
+        "max": 2,
+        "images": [
+            "ocarina_saria.png",
+            "ocarina_saria.png",
+            "ocarina_time.png"
+        ]
+    },
+    "bottle": {
+        "max": 4,
+        "counting": true,
+        "images": "bottle.png"
+    },
+    "wallet": {
+        "max": 3,
+        "mark": 2,
+        "images": [
+            "wallet_default.png",
+            "wallet_silver.png",
+            "wallet_gold.png",
+            "wallet_gold.png"
+        ],
+        "counting": ["99", "200", "500", "999"],
+        "always_active": true
+    },
+    "bean": {
+        "max": 10,
+        "counting": true,
+        "images": "bean.png"
+    },
+    "skulltula": {
+        "max": 6,
+        "mark": 5,
+        "counting": ["", "10", "20", "30", "40", "50", "100"],
+        "images": "skulltula.png"
+    },
+    "egg": {
+        "max": 8,
+        "images": [
+            "egg.png",
+            "egg.png",
+            "cucco.png",
+            "zelda_letter.png",
+            "mask_keaton.png",
+            "mask_skull.png",
+            "mask_spooky.png",
+            "mask_bunny.png",
+            "mask_truth.png"
+        ]
+    },
+    "cojiro": {
+        "max": 11,
+        "images": [
+            "egg_cojiro.png",
+            "egg_cojiro.png",
+            "cucco.png",
+            "cojiro.png",
+            "mushroom.png",
+            "medicine.png",
+            "saw.png",
+            "broken_sword.png",
+            "prescription.png",
+            "frog.png",
+            "eyedrops.png",
+            "claim.png"
+        ]
+    },
+
+    "sword_kokiri":{
+        "max": 1,
+        "images": "sword_kokiri.png"
+    },
+    "sword_master":{
+        "max": 1,
+        "images": "sword_master.png",
+        "blacklist_shop": true
+    },
+    "sword_biggoron":{
+        "max": 1,
+        "images": "sword_biggoron.png"
+    },
+
+    "shield_kokiri":{
+        "max": 1,
+        "images": "shield_kokiri.png"
+    },
+    "shield_hylia":{
+        "max": 1,
+        "images": "shield_hylia.png"
+    },
+    "shield_mirror":{
+        "max": 1,
+        "images": "shield_mirror.png"
+    },
+
+    "tunic_forest":{
+        "max": 0,
+        "images": "tunic_forest.png",
+        "always_active": true,
+        "blacklist_shop": true
+    },
+    "tunic_fire":{
+        "max": 1,
+        "images": "tunic_fire.png"
+    },
+    "tunic_water":{
+        "max": 1,
+        "images": "tunic_water.png"
+    },
+    "tunics":{
+        "max": 3,
+        "images": [
+            "tunic_forest.png",
+            "tunic_fire.png",
+            "tunic_water.png",
+            "tunic_both.png"
+        ],
+        "affect": [
+            {
+                "tunic_fire": 0,
+                "tunic_water": 0
+            },
+            {
+                "tunic_fire": 1,
+                "tunic_water": 0
+            },
+            {
+                "tunic_fire": 0,
+                "tunic_water": 1
+            },
+            {
+                "tunic_fire": 1,
+                "tunic_water": 1
+            }
+        ]
+    },
+
+    "boots_normal":{
+        "max": 0,
+        "images": "boots_normal.png",
+        "always_active": true,
+        "blacklist_shop": true
+    },
+    "boots_iron":{
+        "max": 1,
+        "images": "boots_iron.png"
+    },
+    "boots_hover":{
+        "max": 1,
+        "images": "boots_hover.png"
+    },
+    "boots":{
+        "max": 3,
+        "images": [
+            "boots_normal.png",
+            "boots_iron.png",
+            "boots_hover.png",
+            "boots_both.png"
+        ],
+        "affect": [
+            {
+                "boots_iron": false,
+                "boots_hover": false
+            },
+            {
+                "boots_iron": true,
+                "boots_hover": false
+            },
+            {
+                "boots_iron": false,
+                "boots_hover": true
+            },
+            {
+                "boots_iron": true,
+                "boots_hover": true
+            }
+        ]
+    },
+    
+    "glove":{
+        "max": 3,
+        "images": [
+            "glove_goron.png",
+            "glove_goron.png",
+            "glove_silver.png",
+            "glove_gold.png"
+        ]
+    },
+    "scale":{
+        "max": 2,
+        "images": [
+            "scale_silver.png",
+            "scale_silver.png",
+            "scale_gold.png"
+        ]
+    },
+    "stone_of_agony":{
+        "max": 1,
+        "images": "stoneofagony.png"
+    },
+    "magic_power":{
+        "max": 2,
+        "images": [
+            "magic_power_small.png",
+            "magic_power_small.png",
+            "magic_power_big.png"
+        ]
+    },
+    "zora_letter":{
+        "max": 1,
+        "images": "zora_letter.png"
+    },
+    "membership":{
+        "max": 1,
+        "images": "membership.png"
+    }, 
+
+    "song_zelda":{
+        "max": 1,
+        "images": "song_zelda.png"
+    },
+    "song_epona":{
+        "max": 1,
+        "images": "song_epona.png"
+    },
+    "song_sun":{
+        "max": 1,
+        "images": "song_sun.png"
+    },
+    "song_saria":{
+        "max": 1,
+        "images": "song_saria.png"
+    },
+    "song_time":{
+        "max": 1,
+        "images": "song_time.png"
+    },
+    "song_storm":{
+        "max": 1,
+        "images": "song_storm.png"
+    },
+    "warp_forest":{
+        "max": 1,
+        "images": "warp_forest.png"
+    },
+    "warp_fire":{
+        "max": 1,
+        "images": "warp_fire.png"
+    },
+    "warp_water":{
+        "max": 1,
+        "images": "warp_water.png"
+    },
+    "warp_shadow":{
+        "max": 1,
+        "images": "warp_shadow.png"
+    },
+    "warp_spirit":{
+        "max": 1,
+        "images": "warp_spirit.png"
+    },
+    "warp_light":{
+        "max": 1,
+        "images": "warp_light.png"
+    },
+
+    "stone_forest":{
+        "max": 1,
+        "images": "stone_forest.png",
+        "blacklist_shop": true
+    },
+    "stone_fire":{
+        "max": 1,
+        "images": "stone_fire.png",
+        "blacklist_shop": true
+    },
+    "stone_water":{
+        "max": 1,
+        "images": "stone_water.png",
+        "blacklist_shop": true
+    },
+    "medallion_forest":{
+        "max": 1,
+        "images": "medallion_forest.png",
+        "blacklist_shop": true
+    },
+    "medallion_fire":{
+        "max": 1,
+        "images": "medallion_fire.png",
+        "blacklist_shop": true
+    },
+    "medallion_water":{
+        "max": 1,
+        "images": "medallion_water.png",
+        "blacklist_shop": true
+    },
+    "medallion_spirit":{
+        "max": 1,
+        "images": "medallion_spirit.png",
+        "blacklist_shop": true
+    },
+    "medallion_shadow":{
+        "max": 1,
+        "images": "medallion_shadow.png",
+        "blacklist_shop": true
+    },
+    "medallion_light":{
+        "max": 1,
+        "images": "medallion_light.png",
+        "blacklist_shop": true
+    },
+
+    "key_small_forest": {
+        "max": 5,
+        "maxmq": 6,
+        "related_dungeon": "temple_forest",
+        "counting": true,
+        "images": "key_small.png"
+    },
+    "key_boss_forest": {
+        "max": 1,
+        "related_dungeon": "temple_forest",
+        "images": "key_boss.png"
+    },
+
+    "key_small_fire": {
+        "max": 8,
+        "maxmq": 5,
+        "related_dungeon": "temple_fire",
+        "counting": true,
+        "images": "key_small.png"
+    },
+    "key_boss_fire": {
+        "max": 1,
+        "related_dungeon": "temple_fire",
+        "images": "key_boss.png"
+    },
+
+    "key_small_water": {
+        "max": 6,
+        "maxmq": 2,
+        "related_dungeon": "temple_water",
+        "counting": true,
+        "images": "key_small.png"
+    },
+    "key_boss_water": {
+        "max": 1,
+        "related_dungeon": "temple_water",
+        "images": "key_boss.png"
+    },
+
+    "key_small_shadow": {
+        "max": 5,
+        "maxmq": 6,
+        "related_dungeon": "temple_shadow",
+        "counting": true,
+        "images": "key_small.png"
+    },
+    "key_boss_shadow": {
+        "max": 1,
+        "related_dungeon": "temple_shadow",
+        "images": "key_boss.png"
+    },
+
+    "key_small_spirit": {
+        "max": 5,
+        "maxmq": 7,
+        "related_dungeon": "temple_spirit",
+        "counting": true,
+        "images": "key_small.png"
+    },
+    "key_boss_spirit": {
+        "max": 1,
+        "related_dungeon": "temple_spirit",
+        "images": "key_boss.png"
+    },
+    
+    "key_small_ganon": {
+        "max": 2,
+        "maxmq": 3,
+        "related_dungeon": "castle_ganon",
+        "counting": true,
+        "images": "key_small.png"
+    },
+    "key_boss_ganon": {
+        "max": 1,
+        "related_dungeon": "castle_ganon",
+        "images": "key_boss.png"
+    },
+
+    "key_small_gerudo": {
+        "max": 4,
+        "counting": true,
+        "images": "key_small.png"
+    },
+    "key_small_training": {
+        "max": 9,
+        "maxmq": 3,
+        "related_dungeon": "gerudo_training",
+        "counting": true,
+        "images": "key_small.png"
+    },
+    "key_small_well": {
+        "max": 3,
+        "maxmq": 2,
+        "related_dungeon": "well",
+        "counting": true,
+        "images": "key_small.png"
+    },
+
+    "compass_deku": {
+        "max": 1,
+        "images": "compass.png"
+    },
+    "dungeon_map_deku": {
+        "max": 1,
+        "images": "dungeon_map.png"
+    },
+    "compass_dodongo": {
+        "max": 1,
+        "images": "compass.png"
+    },
+    "dungeon_map_dodongo": {
+        "max": 1,
+        "images": "dungeon_map.png"
+    },
+    "compass_jabujabu": {
+        "max": 1,
+        "images": "compass.png"
+    },
+    "dungeon_map_jabujabu": {
+        "max": 1,
+        "images": "dungeon_map.png"
+    },
+    "compass_temple_forest": {
+        "max": 1,
+        "images": "compass.png"
+    },
+    "dungeon_map_temple_forest": {
+        "max": 1,
+        "images": "dungeon_map.png"
+    },
+    "compass_temple_fire": {
+        "max": 1,
+        "images": "compass.png"
+    },
+    "dungeon_map_temple_fire": {
+        "max": 1,
+        "images": "dungeon_map.png"
+    },
+    "compass_temple_water": {
+        "max": 1,
+        "images": "compass.png"
+    },
+    "dungeon_map_temple_water": {
+        "max": 1,
+        "images": "dungeon_map.png"
+    },
+    "compass_temple_shadow": {
+        "max": 1,
+        "images": "compass.png"
+    },
+    "dungeon_map_temple_shadow": {
+        "max": 1,
+        "images": "dungeon_map.png"
+    },
+    "compass_temple_spirit": {
+        "max": 1,
+        "images": "compass.png"
+    },
+    "dungeon_map_temple_spirit": {
+        "max": 1,
+        "images": "dungeon_map.png"
+    },
+    "compass_well": {
+        "max": 1,
+        "images": "compass.png"
+    },
+    "dungeon_map_well": {
+        "max": 1,
+        "images": "dungeon_map.png"
+    },
+    "compass_ice": {
+        "max": 1,
+        "images": "compass.png"
+    },
+    "dungeon_map_ice": {
+        "max": 1,
+        "images": "dungeon_map.png"
+    },
+
+    "heart_piece": {
+        "max": 36,
+        "counting": true,
+        "images": "heart_piece.png"
+    },
+    "heart_container": {
+        "max": 8,
+        "counting": true,
+        "images": "heart_container.png"
+    },
+    "heart_double": {
+        "max": 1,
+        "images": "heart_double.png"
+    },
+
+    "sold_out": {
+        "max": 0,
+        "images": "sold_out.png",
+        "always_active": true
+    },
+    "blue_fire": {
+        "max": 0,
+        "images": "bottle_blue_fire.png",
+        "always_active": true
+    },
+    "bugs": {
+        "max": 0,
+        "images": "bottle_bugs.png",
+        "always_active": true
+    },
+    "fairy_spirit": {
+        "max": 0,
+        "images": "bottle_fairy.png",
+        "always_active": true
+    },
+    "fish": {
+        "max": 0,
+        "images": "bottle_fish.png",
+        "always_active": true
+    },
+    "milk": {
+        "max": 0,
+        "images": "sold_out.png",
+        "always_active": true
+    },
+    "poe": {
+        "max": 0,
+        "images": "bottle_poe.png",
+        "always_active": true
+    },
+    "poe_big": {
+        "max": 0,
+        "images": "bottle_poe_big.png",
+        "always_active": true
+    },
+    "potion_red": {
+        "max": 0,
+        "images": "bottle_potion_red.png",
+        "always_active": true
+    },
+    "potion_green": {
+        "max": 0,
+        "images": "bottle_potion_green.png",
+        "always_active": true
+    },
+    "potion_blue": {
+        "max": 0,
+        "images": "bottle_potion_blue.png",
+        "always_active": true
+    }
+}

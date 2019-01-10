@@ -1,0 +1,184 @@
+{
+    "settings": {
+        "font": {
+            "type": "choice",
+            "default": "font_default",
+            "values": [
+                "font_default",
+                "font_charlemagne",
+                "font_ravenna",
+                "font_returnofganon",
+                "font_zeldadx",
+                "font_triforce",
+                "font_ancienthylian",
+                "font_sheikah"
+            ]
+        },
+        "layout": {
+            "type": "choice",
+            "default": "map-compact",
+            "values": [
+                "items",
+                "items-minimal",
+                "map-minimal",
+                "map-center",
+                "map-compact",
+                "compact",
+                "compact-minimal",
+                "flat",
+                "mobile",
+                "mobile-minimal"
+            ]
+        },
+        "item_size": {
+            "type": "range",
+            "min": 32,
+            "max": 64,
+            "default": 40
+        },
+        "show_hint_badges": {
+            "type": "check",
+            "default": false
+        },
+        "use_custom_logic": {
+            "type": "check",
+            "default": false
+        },
+        "edit_custom_logic": {
+            "type": "button",
+            "text": "button_edit_logic"
+        },
+        "erase_all_data": {
+            "type": "button",
+            "text": "button_erase_data"
+        }
+    },
+    "options": {
+        "consider_buyable": {
+            "type": "check",
+            "default": false
+        },
+        "bombchu_logic": {
+            "type": "check",
+            "default": false
+        },
+        "keysanity": {
+            "type": "check",
+            "default": false
+        },
+        "scrubsanity": {
+            "type": "check",
+            "default": false
+        },
+        "doors_open_forest": {
+            "type": "check",
+            "default": true
+        },
+        "doors_open_zora": {
+            "type": "check",
+            "default": true
+        },
+        "doors_open_mountain": {
+            "type": "check",
+            "default": false
+        },
+        "doors_open_temple": {
+            "type": "check",
+            "default": false
+        },
+        "gerudo_fortress_open": {
+            "type": "choice",
+            "default": "gerudo_fortress_open_default",
+            "values": [
+                "gerudo_fortress_open_default",
+                "gerudo_fortress_open_one",
+                "gerudo_fortress_open_open"
+            ]
+        },
+        "ganon_castle_open": {
+            "type": "choice",
+            "default": "ganon_castle_open_default",
+            "values": [
+                "ganon_castle_open_dungeon",
+                "ganon_castle_open_medallion",
+                "ganon_castle_open_default",
+                "ganon_castle_open_open"
+            ]
+        },
+        "forest_trial": {
+            "type": "check",
+            "default": true
+        },
+        "water_trial": {
+            "type": "check",
+            "default": true
+        },
+        "shadow_trial": {
+            "type": "check",
+            "default": true
+        },
+        "fire_trial": {
+            "type": "check",
+            "default": true
+        },
+        "light_trial": {
+            "type": "check",
+            "default": true
+        },
+        "spirit_trial": {
+            "type": "check",
+            "default": true
+        },
+        "ganon_boss_door_open": {
+           "type": "check",
+           "default": false
+       }
+    },
+    "skips": {
+        "man_on_roof": {
+            "type": "check",
+            "default": false
+        },
+        "child_deadhand": {
+            "type": "check",
+            "default": false
+        },
+        "dodongo_spike": {
+            "type": "check",
+            "default": false
+        },
+        "windmill_hp": {
+            "type": "check",
+            "default": false
+        },
+        "crater_bean_hp": {
+            "type": "check",
+            "default": false
+        },
+        "zora_cucco": {
+            "type": "check",
+            "default": false
+        },
+        "zora_hover": {
+            "type": "check",
+            "default": false
+        },
+        "fewer_tunic": {
+            "type": "check",
+            "default": false
+        },
+        "morpha_scale": {
+            "type": "check",
+            "default": true
+        },
+        "lens_required": {
+            "type": "choice",
+            "default": "lens_required_default",
+            "values": [
+                "lens_required_never",
+                "lens_required_wasteland",
+                "lens_required_default"
+            ]
+        }
+    }
+}

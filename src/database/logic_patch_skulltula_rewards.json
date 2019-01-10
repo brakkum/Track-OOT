@@ -1,0 +1,250 @@
+{
+    "mixins": {
+        "zora_fountain_access": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "zora_letter"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "scale"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "ocarina"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "song_zelda"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "skip",
+                                            "el": "zora_cucco"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "ice_cavern_access": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "zora_fountain_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "song_zelda"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "skip",
+                                    "el": "zora_hover"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "boots_hover"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "jabu_jabu_access": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "zora_fountain_access"
+                },
+                {
+                    "type": "item",
+                    "el": "bottle"
+                }
+            ]
+        }
+    },
+    "skulltulas": {
+        "zoras_wall_child_night": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "zora_fountain_access"
+                },
+                {
+                    "type": "item",
+                    "el": "boomerang"
+                }
+            ]
+        },
+        "zoras_tree_child": {
+            "type": "mixin",
+            "el": "zora_fountain_access"
+        }
+    },
+    "chests": {
+        "zoras_ice": {
+            "type": "mixin",
+            "el": "ice_cavern_access"
+        },
+        "zoras_underwater": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ice_cavern_access"
+                },
+                {
+                    "type": "item",
+                    "el": "boots_iron"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "tunic_water"
+                        },
+                        {
+                            "type": "skip",
+                            "el": "fewer_tunic"
+                        }
+                    ]
+                }
+            ]
+        },
+        "kakariko_skulltula_10": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "skulltula"
+                    },
+                    "value": 1
+                }
+            ]
+        },
+        "kakariko_skulltula_20": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "skulltula"
+                    },
+                    "value": 2
+                }
+            ]
+        },
+        "kakariko_skulltula_30": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "skulltula"
+                    },
+                    "value": 3
+                }
+            ]
+        },
+        "kakariko_skulltula_40": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "skulltula"
+                    },
+                    "value": 4
+                }
+            ]
+        },
+        "kakariko_skulltula_50": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "skulltula"
+                    },
+                    "value": 5
+                }
+            ]
+        }
+    }
+}
