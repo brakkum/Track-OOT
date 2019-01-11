@@ -3,6 +3,7 @@ import Logger from "deepJS/util/Logger.mjs";
 
 let lang = {};
 
+/*
 var mutationObserver = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
         console.log(mutation);
@@ -17,6 +18,7 @@ mutationObserver.observe(document.documentElement, {
     attributeOldValue: true,
     characterDataOldValue: true
 });
+*/
 
 class I18n {
 

@@ -1,6 +1,7 @@
 import DeepLocalStorage from "deepJS/storage/LocalStorage.mjs";
 import EventBus from "deepJS/util/EventBus.mjs";
 import Dialog from "deepJS/ui/Dialog.mjs";
+import {createOption} from "deepJS/ui/UIHelper.mjs";
 import {showToast} from "deepJS/ui/Toast.mjs";
 import TrackerLocalState from "./LocalState.mjs";
 
@@ -48,10 +49,7 @@ function prepairSavegameChoice() {
     stateChoice.innerHTML = "<option disabled selected hidden value=\"\"> -- select state -- </option>";
     var keys = DeepLocalStorage.names("save");
     for (var i = 0; i < keys.length; ++i) {
-        var el = document.createElement("option");
-        el.id = keys[i];
-        el.innerHTML = el.id;
-        stateChoice.appendChild(el);
+        stateChoice.appendChild(createOption(keys[i]));
     }
     stateChoice.value = activestate;
 }
@@ -112,6 +110,9 @@ async function state_New() {
             state_New();
             return;
         }
+        DeepLocalStorage.set("save", name, {});
+        prepairSavegameChoice();
+        stateChoice.value = name;
         if (activestate == "") {
             if (await Dialog.confirm("Success", `State "${name}" created.<br>Do you want to reset the current state?`)) {
                 TrackerLocalState.reset();
@@ -122,9 +123,7 @@ async function state_New() {
             TrackerLocalState.reset();
             document.getElementById("tracker-notes").value = "";
         }
-        prepairSavegameChoice();
         TrackerLocalState.save(name);
-        stateChoice.value = name;
         activestate = name;
         EventBus.post("global-update");
         toggleStateButtons();
