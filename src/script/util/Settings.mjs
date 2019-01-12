@@ -2,6 +2,7 @@ import GlobalData from "deepJS/storage/GlobalData.mjs";
 import DeepLocalStorage from "deepJS/storage/LocalStorage.mjs";
 import SettingsWindow from "deepJS/ui/SettingsWindow.mjs";
 import EventBus from "deepJS/util/EventBus.mjs";
+import FileLoader from "deepJS/util/FileLoader.mjs";
 import TrackerLocalState from "./LocalState.mjs";
 import I18n from "./I18n.mjs";
 
@@ -11,7 +12,31 @@ const settingsEdit = document.getElementById("edit-settings");
 settings.innerHTML = `
 <div style="display: flex; margin-bottom: 10px;">
     <div style="flex: 1">
-        Tracker Version: <span id="tracker-version">DEV [00000000000000]</span>
+        <div style="padding: 5px;">
+            Tracker Version:
+            <span id="tracker-version">DEV</span>
+        </div>
+        <div style="padding: 5px;">
+            Version Date:
+            <span id="tracker-date">01.01.2019 00:00:00</span>
+        </div>
+        <hr>
+        <div id="update-check" style="padding: 5px;">
+            checking for new version...
+        </div>
+        <div id="update-available" style="padding: 5px; display: none;">
+            newer version found <button id="download-update">download</button>
+        </div>
+        <div id="update-unavailable" style="padding: 5px; display: none;">
+            already up to date
+        </div>
+        <div id="update-running" style="padding: 5px; display: none;">
+            <progress id="update-progress" value="0" max="0"></progress>
+        </div>
+        <div id="update-finished" style="padding: 5px; display: none;">
+            you need to reload for the new version to apply...
+            <button onclick="window.location.reload()">reload now</button>
+        </div>
     </div>
     <div style="width: 200px; height: 200px; background-image: url('images/logo.svg'); background-size: contain; background-position: left; background-repeat: no-repeat;"></div>
 </div>
@@ -31,6 +56,69 @@ Big thanks to:<br>
 <i class="thanks-name">Luigimeansme</i> for helping with adding Master Quest.
 </div>
 `;
+
+FileLoader.json("version.json").then(function(data) {
+    let version = settings.querySelector("#tracker-version");
+    let date = settings.querySelector("#tracker-date");
+    if (data.dev) {
+        version.innerHTML = `DEV [${data.commit}]`;
+    } else {
+        version.innerHTML = data.version;
+    }
+    let b = new Date(data.date);
+    let d = {
+        D: ("00"+b.getDate()).slice(-2),
+        M: ("00"+b.getMonth()+1).slice(-2),
+        Y: b.getFullYear(),
+        h: ("00"+b.getHours()).slice(-2),
+        m: ("00"+b.getMinutes()).slice(-2),
+        s: ("00"+b.getSeconds()).slice(-2)
+    };
+    date.innerHTML = `${d.D}.${d.M}.${d.Y} ${d.h}:${d.m}:${d.s}`;
+})
+
+if ('serviceWorker' in navigator) {
+    let prog = settings.querySelector("#update-progress");
+
+    function swStateRecieve(event) {
+        if (event.data.type == "state") {
+            switch(event.data.msg) {
+                case "update_available":
+                    settings.querySelector("#update-check").style.display = "none";
+                    settings.querySelector("#update-available").style.display = "block";
+                break;
+                case "update_unavailable":
+                    settings.querySelector("#update-check").style.display = "none";
+                    settings.querySelector("#update-unavailable").style.display = "block";
+                break;
+                case "need_download":
+                    prog.value = 0;
+                    prog.max = event.data.value;
+                break;
+                case "file_downloaded":
+                    prog.value = parseInt(prog.value) + 1;
+                break;
+                case "update_finished":
+                    settings.querySelector("#update-running").style.display = "none";
+                    settings.querySelector("#update-finished").style.display = "block";
+                break;
+            }
+        }
+    }
+    navigator.serviceWorker.addEventListener('message', swStateRecieve);
+
+    navigator.serviceWorker.getRegistration().then(function(registration) {
+        registration.active.postMessage("check");
+    });
+
+    settings.querySelector("#download-update").onclick = function() {
+        settings.querySelector("#update-available").style.display = "none";
+        settings.querySelector("#update-running").style.display = "block";
+        navigator.serviceWorker.getRegistration().then(function(registration) {
+            registration.active.postMessage("update");
+        });
+    }
+}
 
 settingsEdit.addEventListener("click", function() {
     settings.show(getSettings(), 'settings');
@@ -111,7 +199,11 @@ function applySettingsChoices() {
                 case "choice":
                     let opt = {};
                     for (let k in val.values) {
-                        opt[val.values[k]] = I18n.translate(val.values[k]);
+                        if (val.hasOwnProperty("names") && val.names.hasOwnProperty(k)) {
+                            opt[val.values[k]] = I18n.translate(val.names[k]);
+                        } else {
+                            opt[val.values[k]] = I18n.translate(val.values[k]);
+                        }
                     }
                     settings.addChoiceInput(i, label, j, val.default, opt);
                 break;

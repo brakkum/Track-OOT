@@ -57,100 +57,82 @@
                 text-align: center;
             }
         </style>
-        <script>
+        <script type="module">
 
-            window.addEventListener('load', function() {
+            let max_files = 0;
+            let load_files = 0;
+            let spl = document.getElementById("splash").querySelector('.loading');
 
-                var max_files = 0;
-                var load_files = 0;
-                
-                window.Splash = (new function(){
-                    var spl = document.getElementById("splash");
-                    var ldn = spl.querySelector('.loading');
+            function updateLoadingMessage(msg = "loading...") {
+                spl.innerHTML = msg;
+            }
 
-                    this.update = function(msg = "loading...") {
-                        ldn.innerHTML = msg;
-                    }
-
-                    this.hide = function() {
-                        spl.className = "inactive";
-                    }
-                }());
-
-                async function fillContent(id, url) {
-                    var doc = await fetch(url)
-                            .then(r => r.text())
-                            .then(r => (new DOMParser()).parseFromString(r, "text/html"));
-                    var target = document.getElementById(id);
-                    while (doc.body.childNodes.length > 0) {
-                        target.appendChild(doc.body.childNodes[0]);
-                    }
-                }
-
-                async function startApp() {
-                    await fillContent("viewpane", "content/app.html");
-                    var s = document.createElement("script");
-                    s.src = "script/app.min.js";
-                    var t = document.createElement("link");
-                    t.href = "style/app.min.css";
-                    t.rel = "stylesheet";
-                    t.type = "text/css";
-                    document.head.appendChild(s);
-                    document.head.appendChild(t);
-                }
-
-                startApp();
-                /*
-                if ('serviceWorker' in navigator) {
-                    navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-
-                        function callSW() {
-                            if (!registration.active) {
-                                setTimeout(callSW, 10);
-                                return;
+            function importHTML(url) {
+                return fetch(url)
+                        .then(r => r.text())
+                        .then(r => (new DOMParser()).parseFromString(r, "text/html"))
+                        .then(r => {
+                            while (r.body.childNodes.length > 0) {
+                                document.body.appendChild(r.body.childNodes[0]);
                             }
+                        });
+            }
 
-                            var infoElement = document.querySelector(".info");
-                            var infoTimer = setTimeout(function() {
-                                infoElement.style.display = "block";
-                            }, 10000);
+            function importCSS(url) {
+                return new Promise((res, rej) => {
+                let t = document.createElement("link");
+                t.href = url;
+                t.rel = "stylesheet";
+                t.type = "text/css";
+                t.onload = e => res(t);
+                t.onerror = rej;
+                document.head.appendChild(t);
+                });
+            }
 
-                            navigator.serviceWorker.addEventListener('message', event => {
-                                if (event.data.type == "state") {
-                                    if (event.data.msg == "update success") {
-                                        Splash.update("starting...");
-                                        clearTimeout(infoTimer);
-                                        startApp();
-                                    }
-                                } else if (event.data.type == "update") {
-                                    if (event.data.msg == "loaded") {
-                                        Splash.update("updating " + (++load_files) + "/" + max_files);
-                                    } else {
-                                        load_files = 0;
-                                        max_files = event.data.msg;
-                                        Splash.update("updating " + load_files + "/" + max_files);
-                                    }
-                                }
-                            });
+            async function startApp() {
+                navigator.serviceWorker.removeEventListener('message', swStateRecieve);
+                await importHTML("content/app.html");
+                await importCSS("style/app.min.css");
+                import("/script/app.min.js");
+            }
 
-                            registration.active.postMessage("update");
-                        }
-                        callSW();
-
-                    }, function(err) {
-                        console.log('ServiceWorker registration failed: ', err);
-                    });
-                } else {
-                    startApp();
+            function swStateRecieve(event) {
+                if (event.data.type == "state") {
+                    switch(event.data.msg) {
+                        case "start": startApp(); break;
+                        case "need_download":
+                            load_files = 0;
+                            max_files = event.data.value;
+                            updateLoadingMessage("installing, please wait... 0/" + max_files);
+                        break;
+                        case "file_downloaded":
+                            updateLoadingMessage("updating " + (++load_files) + "/" + max_files);
+                        break;
+                    }
                 }
-                */
-            });
-            
+            }
+
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                    function callSW() {
+                        if (!registration.active) {
+                            setTimeout(callSW, 10);
+                            return;
+                        }
+                        navigator.serviceWorker.addEventListener('message', swStateRecieve);
+                        registration.active.postMessage("start");
+                    }
+                    callSW();
+                }, function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            } else {
+                startApp();
+            }
         </script>
     </head>
     <body>
-        <div src="/content/app.html" id="viewpane"></div>
         <div id="splash">
             <img class="splash-image" src="/images/logo.svg">
             <span class="loading">loading...</span>

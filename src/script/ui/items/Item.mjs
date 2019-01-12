@@ -50,7 +50,14 @@ const TPL = new Template(`
 
 function updateCall() {
     EventBus.mute("item-update");
+    // savesatate
     this.value = TrackerLocalState.read("items", this.ref, 0);
+    // settings
+    let data = GlobalData.get("items")[this.ref];
+    if (data.hasOwnProperty("start_settings")) {
+        let stsp = data.start_settings.split(".");
+        this.startvalue = TrackerLocalState.read(stsp[0], stsp[1], 1);
+    }
     EventBus.unmute("item-update");
 }
 
@@ -98,20 +105,42 @@ class HTMLTrackerItem extends HTMLElement {
         this.setAttribute('value', val);
     }
 
+    get startvalue() {
+        return this.getAttribute('startvalue');
+    }
+
+    set startvalue(val) {
+        this.setAttribute('startvalue', val);
+    }
+
     static get observedAttributes() {
-        return ['ref', 'value'];
+        return ['ref', 'value', 'startvalue'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
         switch (name) {
+            case 'startvalue':
             case 'ref':
                 if (oldValue != newValue) {
                     this.innerHTML = "";
-                    let data = GlobalData.get("items")[newValue];
+                    let data = GlobalData.get("items")[this.ref];
                     if (!data) return;
+                    let start_value = parseInt(this.startvalue);
+                    if (isNaN(start_value) || start_value < 1) {
+                        start_value = 1;
+                    }
+                    let current_value = this.value || 0;
+                    if (current_value <= start_value) {
+                        current_value = 0;
+                        this.value = 0;
+                    }
                     for (let i = 0; i <= data.max; ++i) {
+                        if (i != 0 && i < start_value) continue;
                         let opt = document.createElement('option');
                         opt.setAttribute('value', i);
+                        if (i == current_value) {
+                            opt.setAttribute("slot", "value");
+                        }
                         if (Array.isArray(data.images)) {
                             opt.style.backgroundImage = `url("/images/${data.images[i]}")`;
                         } else {
@@ -135,7 +164,6 @@ class HTMLTrackerItem extends HTMLElement {
                         }
                         this.appendChild(opt);
                     }
-                    this.value = TrackerLocalState.read("items", newValue, 0);
                 }
             break;
             case 'value':

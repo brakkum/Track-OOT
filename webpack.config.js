@@ -1,17 +1,22 @@
 const fs = require('fs');
 const path = require("path");
 const glob = require('glob');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 const WORKING_DIRECORY = path.resolve(__dirname, 'src');
 const OUTPUT_DIRECORY = path.resolve(__dirname, 'dist');
-
+const NOCACHE = [
+  "/sw.js"
+];
 const BUNDLE = [
   './script/app.mjs',
   './style/app.scss',
   './index.html',
+  './sw.js',
   './editor.html',
   './style/editor.css',
-  './manifest.json'
+  './manifest.json',
+  './version.json'
 ];
 
 Array.prototype.push.apply(BUNDLE, glob.sync("./script/editor/*.js", {cwd: WORKING_DIRECORY}));
@@ -52,6 +57,26 @@ module.exports = {
     },
     open: true
   },
+  plugins: [
+    new ManifestPlugin({
+      fileName: "index.json",
+      writeToFileEmit: true,
+      serialize: function(manifest) {
+        let r = ["/"];
+        for (let i in manifest) {
+          let b = manifest[i];
+          if (b.startsWith("./")) {
+            b = b.slice(1);
+          } else {
+            b = "/" + b;
+          }
+          if (NOCACHE.indexOf(b) >= 0) continue;
+          r.push(b);
+        }
+        return JSON.stringify({"files":r}, null, 2);
+      }
+    })
+  ],
   module: {
     rules: [
       {
@@ -95,6 +120,7 @@ module.exports = {
       {
         test: /\.js$/,
         include: [
+          WORKING_DIRECORY,
           path.resolve(WORKING_DIRECORY, 'script/editor')
         ],
         use: [

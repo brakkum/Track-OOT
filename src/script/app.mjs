@@ -40,8 +40,10 @@ import "deepJS/ui/selection/ChoiceSelect.mjs";
     await import("ui/songs/SongList.mjs");
     await import("util/Settings.mjs");
 
-    if (!!window.Splash) {
-        Splash.hide();
+    
+    let spl = document.getElementById("splash");
+    if (!!spl) {
+        spl.className = "inactive";
     }
 
 }());

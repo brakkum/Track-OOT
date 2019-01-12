@@ -105,6 +105,34 @@
                 "ganon_castle_open_open"
             ]
         },
+        "trade_sequence_start_item": {
+            "type": "choice",
+            "default": 1,
+            "values": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+            ],
+            "names": [
+                "pocket_egg",
+                "pocket_cucco",
+                "mushroom",
+                "medicine",
+                "saw",
+                "broken_sword",
+                "prescription",
+                "frog",
+                "eyedrops",
+                "claim"
+            ]
+        },
         "forest_trial": {
             "type": "check",
             "default": true
