@@ -5,9 +5,6 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 
 const WORKING_DIRECORY = path.resolve(__dirname, 'src');
 const OUTPUT_DIRECORY = path.resolve(__dirname, 'dist');
-const NOCACHE = [
-  "/sw.js"
-];
 const BUNDLE = [
   './script/app.mjs',
   './style/app.scss',
@@ -70,10 +67,10 @@ module.exports = {
           } else {
             b = "/" + b;
           }
-          if (NOCACHE.indexOf(b) >= 0) continue;
+          //if (b == "/sw.js") continue;
           r.push(b);
         }
-        return JSON.stringify({"files":r}, null, 2);
+        return JSON.stringify(r, null, 2);
       }
     })
   ],

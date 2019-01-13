@@ -81,9 +81,9 @@ async function install(client) {
         client.postMessage({
             type: "state",
             msg: "need_download",
-            value: downloadlist.files.length
+            value: downloadlist.length
         });
-        await updateFileList(client, cache, downloadlist.files);
+        await updateFileList(client, cache, downloadlist);
         await cache.put(CACHE_INDEX, filelist);
         client.postMessage({
             type: "state",
@@ -98,9 +98,11 @@ async function checkUpdateAvailable(client) {
     let message = "update_available";
     if (!!response) {
         let loc = new Date(response.headers.get("Last-Modified"));
-        let rem = new Date((await fetchFile(CACHE_INDEX, "HEAD")).headers.get("Last-Modified"));
-        if (rem <= loc) {
-            message = "update_unavailable";
+        if (loc > new Date(0)) {
+            let rem = new Date((await fetchFile(CACHE_INDEX, "HEAD")).headers.get("Last-Modified"));
+            if (rem <= loc) {
+                message = "update_unavailable";
+            }
         }
     }
     client.postMessage({
@@ -120,9 +122,9 @@ async function updateFiles(client) {
     client.postMessage({
         type: "state",
         msg: "need_download",
-        value: downloadlist.files.length
+        value: downloadlist.length
     });
-    await updateFileList(client, cache, downloadlist.files);
+    await updateFileList(client, cache, downloadlist);
     await cache.put(CACHE_INDEX, filelist);
     client.postMessage({
         type: "state",
