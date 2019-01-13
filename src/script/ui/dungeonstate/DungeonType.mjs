@@ -94,12 +94,16 @@ class HTMLTrackerDungeonType extends HTMLElement {
                 if (oldValue != newValue) {
                     if (newValue === "") {
                         this.innerHTML = "";
+                        EventBus.mute("dungeon-type-update");
+                        this.value = "";
+                        EventBus.unmute("dungeon-type-update");
                     } else if (oldValue === null || oldValue === undefined || oldValue === "") {
                         this.appendChild(createOption("n", "N"));
                         this.appendChild(createOption("v", "V"));
                         this.appendChild(createOption("mq", "MQ"));
-                        this.value = "n";
+                        EventBus.mute("dungeon-type-update");
                         this.value = TrackerLocalState.read("dungeonTypes", newValue, "n");
+                        EventBus.unmute("dungeon-type-update");
                     }
                 }
             break;
