@@ -15,6 +15,7 @@ here is a full list of things that changed:
 - gossipstones are now added to map and locationlist
 - generic gossip stones are listed seperately, but checked together
 - trade sequence starting point added to settings
+- added switch for mq/vanilla to location list title
 
 [DATA]
 - changed language file to .ini but with the .lang extension (better readability & supporting comments)
@@ -60,15 +61,21 @@ also improved system stability to enhance user experience
 - add logic to gossipstones
 
 [TODO]
-- add switch for mq/vanilla to location list title
+
+= prio 1 =
 - map needs some visible tools for navigation
 - map needs some bound checks for movement and zoom
-- implement settings for dungeon status
-- reimplement logic editor
+
+= prio 2 =
 - implement layout manager
+- implement settings for dungeon status
 - add target player to shop slots
+
+= prio 3 =
+- reimplement logic editor
 - add optimization for lists
     - dont create/delete all the elements all the time! cache them! memory is not an issue...
     - buffer logic checks, update on item update
         - restructure events, item changed ==> logic update -> logic changed ==> location update
+        - bundle events into a single one
     - maybe analize logic to check what item changes whitch logic
