@@ -13,7 +13,8 @@ const BUNDLE = [
   './editor.html',
   './style/editor.css',
   './manifest.json',
-  './version.json'
+  './version.json',
+  './CHANGELOG'
 ];
 
 Array.prototype.push.apply(BUNDLE, glob.sync("./script/editor/*.js", {cwd: WORKING_DIRECORY}));
@@ -212,6 +213,20 @@ module.exports = {
 						loader: 'file-loader',
 						options: {
               name: '[path][name].[ext]',
+						}
+					}
+        ]
+      },
+      {
+        test: /CHANGELOG$/,
+        include: [
+          WORKING_DIRECORY
+        ],
+        use: [
+					{
+						loader: 'file-loader',
+						options: {
+              name: '[path][name]',
 						}
 					}
         ]

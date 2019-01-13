@@ -22,10 +22,14 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-    if (event.request.url == self.location.origin + "/version.json") {
-        event.respondWith(getVersion(event.request));
+    if ((new URL(event.request.url)).searchParams.get("nosw") !== null) {
+        return false;
     } else {
-        event.respondWith(getResponse(event.request));
+        if (event.request.url == self.location.origin + "/version.json") {
+            event.respondWith(getVersion(event.request));
+        } else {
+            event.respondWith(getResponse(event.request));
+        }
     }
 });
 

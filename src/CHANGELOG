@@ -14,9 +14,7 @@ here is a full list of things that changed:
 - skulltula counter now counting in 10's again, as the rom now tells the count on collect
 - gossipstones are now added to map and locationlist
 - generic gossip stones are listed seperately, but checked together
-- switch for child/adult/both era added
 - trade sequence starting point added to settings
-- new serviceworker added
 
 [DATA]
 - changed language file to .ini but with the .lang extension (better readability & supporting comments)
@@ -43,6 +41,7 @@ here is a full list of things that changed:
 - added custom elements for song view and editor
 - added custom elements for shop view and editor
 - added custom elements for gossipstones
+- switch for child/adult/both era added
 
 [UTILS]
 - added event bus for communication between modules
@@ -50,6 +49,7 @@ here is a full list of things that changed:
 - added module for savestates (well, save away)
 - added language handler
 - rewrite logic system to compensate for unknown states of dungeons (v/mq)
+- new serviceworker added
 
 
 

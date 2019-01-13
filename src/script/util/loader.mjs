@@ -27,6 +27,10 @@ export default async function loadData() {
         }));
     });
 
+    loading.push(FileLoader.json("version.json").then(function(data) {
+        GlobalData.set("version", data);
+    }));
+
     await Promise.all(loading);
 
     loading = [];

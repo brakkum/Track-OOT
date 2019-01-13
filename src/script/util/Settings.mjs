@@ -20,15 +20,20 @@ settings.innerHTML = `
             Version Date:
             <span id="tracker-date">01.01.2019 00:00:00</span>
         </div>
+        <div style="padding: 5px;">
+            <a href="CHANGELOG" target="_BLANK">see the changelog</a>
+        </div>
         <hr>
         <div id="update-check" style="padding: 5px;">
             checking for new version...
         </div>
         <div id="update-available" style="padding: 5px; display: none;">
             newer version found <button id="download-update">download</button>
+            <br>
+            <a href="CHANGELOG?nosw" target="_BLANK">see the changelog</a>
         </div>
         <div id="update-unavailable" style="padding: 5px; display: none;">
-            already up to date
+            already up to date <button id="check-update">check again</button>
         </div>
         <div id="update-running" style="padding: 5px; display: none;">
             <progress id="update-progress" value="0" max="0"></progress>
@@ -57,7 +62,8 @@ Big thanks to:<br>
 </div>
 `;
 
-FileLoader.json("version.json").then(function(data) {
+!function() {
+    let data = GlobalData.get("version");
     let version = settings.querySelector("#tracker-version");
     let date = settings.querySelector("#tracker-date");
     if (data.dev) {
@@ -75,7 +81,7 @@ FileLoader.json("version.json").then(function(data) {
         s: ("00"+b.getSeconds()).slice(-2)
     };
     date.innerHTML = `${d.D}.${d.M}.${d.Y} ${d.h}:${d.m}:${d.s}`;
-})
+}();
 
 if ('serviceWorker' in navigator) {
     let prog = settings.querySelector("#update-progress");
@@ -110,6 +116,14 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.getRegistration().then(function(registration) {
         registration.active.postMessage("check");
     });
+    
+    settings.querySelector("#check-update").onclick = function() {
+        settings.querySelector("#update-unavailable").style.display = "none";
+        settings.querySelector("#update-check").style.display = "block";
+        navigator.serviceWorker.getRegistration().then(function(registration) {
+            registration.active.postMessage("check");
+        });
+    }
 
     settings.querySelector("#download-update").onclick = function() {
         settings.querySelector("#update-available").style.display = "none";
