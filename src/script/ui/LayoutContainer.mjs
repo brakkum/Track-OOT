@@ -16,21 +16,13 @@ const TPL = new Template(`
         }
     </style>
     <style>
-        ::slotted(#item-grid) {
-            grid-area: item-grid;
-        }
-        ::slotted(#dungeon-status) {
-            grid-area: dungeon-status;
-        }
-        ::slotted(#location-map) {
-            grid-area: location-map;
-        }
-        ::slotted(#location-list) {
-            grid-area: location-list;
+        :host {
+            display: flex;
         }
         slot {
             --item-size: 40px;
             display: grid;
+            flex: 1;
             justify-content: start;
             align-content: start;
             justify-items: stretch;
@@ -48,6 +40,18 @@ const TPL = new Template(`
             ::slotted(#location-map) {
                 display: none;
             }
+        }
+        ::slotted(#item-grid) {
+            grid-area: item-grid;
+        }
+        ::slotted(#dungeon-status) {
+            grid-area: dungeon-status;
+        }
+        ::slotted(#location-map) {
+            grid-area: location-map;
+        }
+        ::slotted(#location-list) {
+            grid-area: location-list;
         }
     </style>
     <slot>
@@ -109,6 +113,15 @@ class HTMLTrackerLayoutContainer extends HTMLElement {
                         let selectors = Array.from(inactivePanel);
                         if (selectors.length > 0) {
                             style.insertRule(`${selectors.map(e => `::slotted(#${e})`).join(",")}{display:none!important;}`, style.cssRules.length);
+                        }
+                        let options = layout.options;
+                        if (!!options) {
+                            for (let i in options) {
+                                let el = this.querySelector(`#${i}`).children[0];
+                                for (let j in options[i]) {
+                                    el[j] = options[i][j];
+                                }
+                            }
                         }
                     }
                 }

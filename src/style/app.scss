@@ -30,30 +30,38 @@ $mobile-switch: 500px;
             flex: 1;
         }
 
-        .view-container.text-container {
+        .view-container {
             display: flex;
-            flex-direction: column;
-            width: 100%;
-            padding: 10px;
 
-            .view-container-title {
-                margin: 5px;
-                font-size: 2em;
-            }
-
-            .view-container-fulltext {
+            &> * {
                 flex: 1;
-                padding: 5px;
-                resize: none;
-                overflow: scroll;
-                background-color: var(--edit-background-color, #ffffff);
-                color: var(--edit-text-color, #000000);
+            }
+            
+            .text-container {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding: 10px;
 
-                span {
-                    display: block;
-                    padding: 2px;
-                    margin: 2px;
-                    white-space: pre;
+                .view-container-title {
+                    margin: 5px;
+                    font-size: 2em;
+                }
+
+                .view-container-fulltext {
+                    flex: 1;
+                    padding: 5px;
+                    resize: none;
+                    overflow: scroll;
+                    background-color: var(--edit-background-color, #ffffff);
+                    color: var(--edit-text-color, #000000);
+
+                    span {
+                        display: block;
+                        padding: 2px;
+                        margin: 2px;
+                        white-space: pre;
+                    }
                 }
             }
         }
@@ -70,7 +78,7 @@ $mobile-switch: 500px;
 #location-list {
     display: flex;
     border-style: solid;
-    border-width: 5px;
+    border-width: 2px;
     border-color: var(--page-border-color, #ffffff);
     overflow: hidden;
 

@@ -1,7 +1,7 @@
 {
     "items": {
-        "columns": "1fr",
-        "rows": "auto 1fr",
+        "columns": "minmax(min-content, 1fr)",
+        "rows": "min-content minmax(min-content, 1fr)",
         "areas": [
             ["item-grid"],
             ["dungeon-status"]
@@ -9,16 +9,13 @@
         "options": {
             "dungeon-status": {
                 "orientation": "row",
-                "active": [
-                    "key",
-                    "bosskey"
-                ]
+                "active": "key bosskey"
             }
         }
     },
     "items-list": {
-        "columns": "1fr",
-        "rows": "auto auto 1fr",
+        "columns": "minmax(calc(10px + 9 * var(--item-size, 40px)), 1fr)",
+        "rows": "min-content min-content minmax(360px, 1fr)",
         "areas": [
             ["item-grid"],
             ["dungeon-status"],
@@ -27,16 +24,13 @@
         "options": {
             "dungeon-status": {
                 "orientation": "row",
-                "active": [
-                    "key",
-                    "bosskey"
-                ]
+                "active": "key bosskey"
             }
         }
     },
     "map-right": {
-        "columns": "auto 1fr",
-        "rows": "auto auto 1fr",
+        "columns": "min-content minmax(400px, 1fr)",
+        "rows": "min-content min-content minmax(360px, 1fr)",
         "areas": [
             ["item-grid", "location-map"],
             ["dungeon-status", "location-map"],
@@ -45,16 +39,13 @@
         "options": {
             "dungeon-status": {
                 "orientation": "row",
-                "active": [
-                    "key",
-                    "bosskey"
-                ]
+                "active": "key bosskey"
             }
         }
     },
     "map-center": {
-        "columns": "auto 1fr auto",
-        "rows": "auto 1fr",
+        "columns": "min-content minmax(400px, 1fr) 360px",
+        "rows": "min-content minmax(calc(10px + 13 * var(--item-size, 40px)), 1fr)",
         "areas": [
             ["item-grid", "location-map", "location-list"],
             ["dungeon-status", "location-map", "location-list"]
@@ -62,20 +53,13 @@
         "options": {
             "dungeon-status": {
                 "orientation": "column",
-                "active": [
-                    "key",
-                    "bosskey",
-                    "map",
-                    "compass",
-                    "reward",
-                    "type"
-                ]
+                "active": "key bosskey map compass reward type"
             }
         }
     },
     "map-compact": {
-        "columns": "auto 1fr",
-        "rows": "auto auto 1fr",
+        "columns": "min-content minmax(calc(10px + 13 * var(--item-size, 40px)), 1fr)",
+        "rows": "min-content min-content minmax(360px, 1fr)",
         "areas": [
             ["item-grid", "dungeon-status"],
             ["item-grid", "location-map"],
@@ -84,20 +68,13 @@
         "options": {
             "dungeon-status": {
                 "orientation": "row",
-                "active": [
-                    "key",
-                    "bosskey",
-                    "map",
-                    "compass",
-                    "reward",
-                    "type"
-                ]
+                "active": "key bosskey map compass reward type"
             }
         }
     },
     "compact": {
-        "columns": "auto 1fr",
-        "rows": "auto 1fr",
+        "columns": "min-content minmax(360px, 1fr)",
+        "rows": "min-content minmax(calc(10px + 13 * var(--item-size, 40px)), 1fr)",
         "areas": [
             ["item-grid", "location-list"],
             ["dungeon-status", "location-list"]
@@ -105,34 +82,20 @@
         "options": {
             "dungeon-status": {
                 "orientation": "row",
-                "active": [
-                    "key",
-                    "bosskey",
-                    "map",
-                    "compass",
-                    "reward",
-                    "type"
-                ]
+                "active": "key bosskey map compass reward type"
             }
         }
     },
     "flat": {
-        "columns": "auto auto 1fr",
-        "rows": "1fr",
+        "columns": "min-content min-content minmax(360px, 1fr)",
+        "rows": "minmax(calc(10px + 9 * var(--item-size, 40px)), 1fr)",
         "areas": [
             ["item-grid", "dungeon-status", "location-list"]
         ],
         "options": {
             "dungeon-status": {
                 "orientation": "row",
-                "active": [
-                    "key",
-                    "bosskey",
-                    "map",
-                    "compass",
-                    "reward",
-                    "type"
-                ]
+                "active": "key bosskey map compass reward type"
             }
         }
     }

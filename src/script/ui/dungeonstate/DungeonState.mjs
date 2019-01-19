@@ -113,7 +113,7 @@ class HTMLTrackerDungeonState extends HTMLElement {
         switch (name) {
             case 'active':
                 if (oldValue != newValue) {
-                    switchActive.call(this, oldValue, newValue);
+                    switchActive.call(this, newValue);
                 }
             break;
         }
@@ -123,27 +123,16 @@ class HTMLTrackerDungeonState extends HTMLElement {
 
 customElements.define('ootrt-dungeonstate', HTMLTrackerDungeonState);
 
-function switchActive(oldValue, newValue) {
-    // TODO fix this shit
-    if (typeof oldValue === "string") {
-        oldValue = oldValue.split(" ");
+function switchActive(value) {
+    if (typeof value === "string") {
+        value = value.split(" ");
     } else {
-        oldValue = [];
+        value = [];
     }
-    if (typeof newValue === "string") {
-        newValue = newValue.split(" ");
-    } else {
-        newValue = [];
-    }
-    /* remove */
-    difference(oldValue, newValue).forEach(i => {
-        if (!i) return;
-        this.shadowRoot.querySelectorAll(`[type~=${i}]`).forEach(j => {
-            j.classList.add("inactive");
-        });
+    this.shadowRoot.querySelectorAll("[type]").forEach(j => {
+        j.classList.add("inactive");
     });
-    /* add */
-    difference(newValue, oldValue).forEach(i => {
+    value.forEach(i => {
         if (!i) return;
         this.shadowRoot.querySelectorAll(`[type~=${i}]`).forEach(j => {
             j.classList.remove("inactive");
