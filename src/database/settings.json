@@ -19,15 +19,12 @@
             "default": "map-compact",
             "values": [
                 "items",
-                "items-minimal",
-                "map-minimal",
+                "items-list",
+                "map-right",
                 "map-center",
                 "map-compact",
                 "compact",
-                "compact-minimal",
-                "flat",
-                "mobile",
-                "mobile-minimal"
+                "flat"
             ]
         },
         "item_size": {

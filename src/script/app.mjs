@@ -36,11 +36,13 @@ import "deepJS/ui/selection/ChoiceSelect.mjs";
     changeView({oldValue:"",newValue:document.getElementById("view-choice-bottom").value});
     EventBus.logEvents(true);
 
-    await import("ui/shops/ShopList.mjs");
-    await import("ui/songs/SongList.mjs");
-    await import("util/Settings.mjs");
+    await Promise.all([
+        import("ui/shops/ShopList.mjs"),
+        import("ui/songs/SongList.mjs"),
+        import("ui/LayoutContainer.mjs"),
+        import("util/Settings.mjs")
+    ]);
 
-    
     let spl = document.getElementById("splash");
     if (!!spl) {
         spl.className = "inactive";

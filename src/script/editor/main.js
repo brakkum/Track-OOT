@@ -37,6 +37,9 @@ function translate(index) {
     if (!!data.lang[index]) {
         return data.lang[index];
     }
+    if (typeof index != "string") {
+        return index;
+    }
     return index.replace(/\_/g, " ");
 }
 

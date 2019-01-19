@@ -173,9 +173,8 @@ function getSettings() {
 function applySettingsChoices() {
     var viewpane = document.getElementById("viewpane");
     viewpane.setAttribute("data-font", DeepLocalStorage.get("settings", "font", ""));
-    var layout_container = document.querySelector(".layout-container[data-layout]");
-    layout_container.setAttribute("data-layout", DeepLocalStorage.get("settings", "layout", "map-compact"));
-    layout_container.style.setProperty("--item-size", DeepLocalStorage.get("settings", "itemsize", 40));
+    document.querySelector("#layout-container").setAttribute("layout", DeepLocalStorage.get("settings", "layout", "map-compact"));
+    document.body.style.setProperty("--item-size", DeepLocalStorage.get("settings", "itemsize", 40));
     if (DeepLocalStorage.get("settings", "show_hint_badges", false)) {
         document.body.setAttribute("data-hint-badges", "true");
     } else {

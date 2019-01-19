@@ -24,7 +24,13 @@ async function loadAll() {
     let addon = buffer.shift();
     while (!!addon) {
         for (let i in addon) {
-            data.logic[i] = addon[i];
+            if (data.logic.hasOwnProperty(i)) {
+                for (let j in addon[i]) {
+                    data.logic[i][j] = addon[i][j];
+                }
+            } else {
+                data.logic[i] = addon[i];
+            }
         }
         addon = buffer.shift();
     }

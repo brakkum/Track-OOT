@@ -135,7 +135,7 @@ class HTMLTrackerItem extends HTMLElement {
                         this.value = 0;
                     }
                     for (let i = 0; i <= data.max; ++i) {
-                        if (i != 0 && i < start_value) continue;
+                        if (i != 0 && i <= start_value) continue;
                         let opt = document.createElement('option');
                         opt.setAttribute('value', i);
                         if (i == current_value) {

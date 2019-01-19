@@ -6,6 +6,7 @@ const FILES = [
     "items",
     "grids",
     "locations",
+    "layouts",
     "songs",
     "hints",
     "logic",
@@ -38,8 +39,12 @@ export default async function loadData() {
         loading.push(FileLoader.json(`database/logic_patch_${file}.json`).then(function(data) {
             let logic = GlobalData.get("logic", {});
             for (let i in data) {
-                for (let j in data[i]) {
-                    logic[i][j] = data[i][j];
+                if (logic.hasOwnProperty(i)) {
+                    for (let j in data[i]) {
+                        logic[i][j] = data[i][j];
+                    }
+                } else {
+                    logic[i] = data[i];
                 }
             }
         }));
