@@ -67,7 +67,7 @@ Big thanks to:<br>
     let version = settings.querySelector("#tracker-version");
     let date = settings.querySelector("#tracker-date");
     if (data.dev) {
-        version.innerHTML = `DEV [${data.commit}]`;
+        version.innerHTML = `DEV [${data.commit.slice(0,7)}]`;
     } else {
         version.innerHTML = data.version;
     }
