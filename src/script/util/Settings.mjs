@@ -120,6 +120,8 @@ if ('serviceWorker' in navigator) {
     }
     navigator.serviceWorker.addEventListener('message', swStateRecieve);
     function checkUpdate() {
+        settings.querySelector("#update-unavailable").style.display = "none";
+        settings.querySelector("#update-check").style.display = "block";
         navigator.serviceWorker.getRegistration().then(function(registration) {
             registration.active.postMessage("check");
         });
@@ -128,11 +130,7 @@ if ('serviceWorker' in navigator) {
     
     settings.querySelector("#check-update").onclick = function() {
         clearTimeout(checkUpdateTimeout);
-        settings.querySelector("#update-unavailable").style.display = "none";
-        settings.querySelector("#update-check").style.display = "block";
-        navigator.serviceWorker.getRegistration().then(function(registration) {
-            registration.active.postMessage("check");
-        });
+        checkUpdate();
     }
 
     settings.querySelector("#download-update").onclick = function() {
