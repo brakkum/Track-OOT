@@ -1,8 +1,8 @@
 import GlobalData from "deepJS/storage/GlobalData.mjs";
 import DeepLocalStorage from "deepJS/storage/LocalStorage.mjs";
 import SettingsWindow from "deepJS/ui/SettingsWindow.mjs";
+import {showPopover} from "deepJS/ui/PopOver.mjs";
 import EventBus from "deepJS/util/EventBus.mjs";
-import FileLoader from "deepJS/util/FileLoader.mjs";
 import TrackerLocalState from "./LocalState.mjs";
 import I18n from "./I18n.mjs";
 
@@ -83,8 +83,11 @@ Big thanks to:<br>
     date.innerHTML = `${d.D}.${d.M}.${d.Y} ${d.h}:${d.m}:${d.s}`;
 }();
 
+let showUpdatePopup = true;
+
 if ('serviceWorker' in navigator) {
     let prog = settings.querySelector("#update-progress");
+    let checkUpdateTimeout = undefined;
 
     function swStateRecieve(event) {
         if (event.data.type == "state") {
@@ -92,10 +95,14 @@ if ('serviceWorker' in navigator) {
                 case "update_available":
                     settings.querySelector("#update-check").style.display = "none";
                     settings.querySelector("#update-available").style.display = "block";
+                    if (showUpdatePopup) showPopover("A new update is available. Click here to download!", function() {
+                        settings.show(getSettings(), 'about');
+                    });
                 break;
                 case "update_unavailable":
                     settings.querySelector("#update-check").style.display = "none";
                     settings.querySelector("#update-unavailable").style.display = "block";
+                    checkUpdateTimeout = setTimeout(checkUpdate, 600000);
                 break;
                 case "need_download":
                     prog.value = 0;
@@ -112,12 +119,15 @@ if ('serviceWorker' in navigator) {
         }
     }
     navigator.serviceWorker.addEventListener('message', swStateRecieve);
-
-    navigator.serviceWorker.getRegistration().then(function(registration) {
-        registration.active.postMessage("check");
-    });
+    function checkUpdate() {
+        navigator.serviceWorker.getRegistration().then(function(registration) {
+            registration.active.postMessage("check");
+        });
+    }
+    checkUpdate();
     
     settings.querySelector("#check-update").onclick = function() {
+        clearTimeout(checkUpdateTimeout);
         settings.querySelector("#update-unavailable").style.display = "none";
         settings.querySelector("#update-check").style.display = "block";
         navigator.serviceWorker.getRegistration().then(function(registration) {
@@ -135,6 +145,7 @@ if ('serviceWorker' in navigator) {
 }
 
 settingsEdit.addEventListener("click", function() {
+    showUpdatePopup = false;
     settings.show(getSettings(), 'settings');
 });
 
@@ -150,6 +161,10 @@ settings.addEventListener('submit', function(event) {
     }
     applySettingsChoices();
     EventBus.post("global-update");
+});
+
+settings.addEventListener('close', function(event) {
+    showUpdatePopup = true;
 });
 
 function getSettings() {

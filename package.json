@@ -2,7 +2,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "deepJS": "https://bitbucket.org/2deep4real/deepjs.git#0.0.1"
+    "deepJS": "https://bitbucket.org/2deep4real/deepjs.git#0.0.2"
   },
   "scripts": {
     "build": "webpack --config webpack.config.js --mode production",

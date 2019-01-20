@@ -4,8 +4,8 @@ import Template from "deepJS/util/Template.mjs";
 const TPL = new Template(`
     <style id="dynamic-style">
         slot {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto 1fr;
+            grid-template-columns: minmax(min-content, 1fr);
+            grid-template-rows: min-content minmax(min-content, 1fr);
             grid-template-areas: 
             "item-grid" 
             "dungeon-status";
@@ -28,17 +28,17 @@ const TPL = new Template(`
             justify-items: stretch;
             align-items: stretch;
         }
-        @media (max-width: $mobile-switch) {
+        @media (max-width: 500px) {
             slot {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto auto 1fr;
+                grid-template-columns: minmax(min-content, 1fr);
+                grid-template-rows: min-content min-content minmax(360px, 1fr);
                 grid-template-areas: 
                 "item-grid" 
                 "dungeon-status"
                 "location-list";
             }
             ::slotted(#location-map) {
-                display: none;
+                display: none !important;
             }
         }
         ::slotted(#item-grid) {

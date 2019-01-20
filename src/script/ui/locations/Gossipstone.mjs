@@ -21,6 +21,7 @@ const TPL = new Template(`
         }
         #textarea {
             display: flex;
+            align-items: center;
             width: 100%;
         }
         #text {

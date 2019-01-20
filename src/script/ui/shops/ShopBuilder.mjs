@@ -13,7 +13,7 @@ const TPL = new Template(`
             box-sizing: border-box;
         }
         :host {
-            display: grid;
+            display: inline-grid;
             grid-template-columns: auto auto auto auto;
             grid-template-rows: auto auto;
             padding: 10px;

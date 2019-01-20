@@ -9,7 +9,7 @@ const TPL = new Template(`
         }
         :host {
             display: inline-block;
-            width: 500px;
+            width: 320px;
             padding: 10px;
             margin: 5px;
             background-color: black;
