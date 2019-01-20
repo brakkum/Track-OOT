@@ -134,7 +134,7 @@ class HTMLTrackerLocation extends HTMLElement {
                     el_era.src = `images/era_${data.era ||"both"}.svg`;
                     this.shadowRoot.getElementById("badge").appendChild(el_era);
 
-                    this.checked = TrackerLocalState.read("chests", newValue, false);
+                    this.checked = TrackerLocalState.read("chests", path[2], false);
                 }
             break;
             case 'checked':
@@ -148,7 +148,7 @@ class HTMLTrackerLocation extends HTMLElement {
                             el.classList.remove("avail");
                         }
                     }
-                    TrackerLocalState.write("chests", this.ref, newValue === "false" ? false : !!newValue);
+                    TrackerLocalState.write("chests", path[2], newValue === "false" ? false : !!newValue);
                     EventBus.post("location-update", this.ref, newValue);
                 }
             break;

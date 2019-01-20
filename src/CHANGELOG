@@ -52,8 +52,6 @@ here is a full list of things that changed:
 - rewrite logic system to compensate for unknown states of dungeons (v/mq)
 - new serviceworker added
 
-
-
 also improved system stability to enhance user experience
 
 
@@ -72,7 +70,6 @@ also improved system stability to enhance user experience
 - add target player to shop slots
 
 = prio 3 =
-- add remote control system
 - reimplement logic editor
 - add optimization for lists
     - dont create/delete all the elements all the time! cache them! memory is not an issue...
@@ -80,3 +77,18 @@ also improved system stability to enhance user experience
         - restructure events, item changed ==> logic update -> logic changed ==> location update
         - bundle events into a single one
     - maybe analize logic to check what item changes whitch logic
+
+
+== REQUESTS ==
+
+- have skulltulas count one at a time again
+    possible solutions
+    - maybe count to steps on shift click
+    - add alternative counting on shift
+    - add alternative item as alias for the skulltulas
+    -
+
+- add remote control system
+    possible solutions
+    - host remote server for websocket solution
+    - 

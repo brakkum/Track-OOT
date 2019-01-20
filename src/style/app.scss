@@ -32,13 +32,12 @@ $mobile-switch: 500px;
 
         .view-container {
             display: flex;
-
-            &> * {
+    
+            &:not(.text-container) > * {
                 flex: 1;
             }
             
-            .text-container {
-                display: flex;
+            &.text-container {
                 flex-direction: column;
                 width: 100%;
                 padding: 10px;

@@ -13,6 +13,14 @@ class TrackerLocalState {
     load(name) {
         if (DeepLocalStorage.has("save", name)) {
             state = DeepLocalStorage.get("save", name);
+            for (let i in state.chests) {
+                let j = i.split(".");
+                state.chests[j[j.length-1]] = state.chests[i];
+            }
+            for (let i in state.skulltulas) {
+                let j = i.split(".");
+                state.chests[j[j.length-1]] = state.chests[i];
+            }
             Logger.info(`loaded state from "${name}"`, "LocalState");
         } else {
             Logger.warn(`tried to load state "${name}" that does not exist`, "LocalState");
