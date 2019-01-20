@@ -126,8 +126,8 @@ class HTMLTrackerItem extends HTMLElement {
                     let data = GlobalData.get("items")[this.ref];
                     if (!data) return;
                     let start_value = parseInt(this.startvalue);
-                    if (isNaN(start_value) || start_value < 1) {
-                        start_value = 1;
+                    if (isNaN(start_value) || start_value < 0) {
+                        start_value = 0;
                     }
                     let current_value = this.value || 0;
                     if (current_value <= start_value) {

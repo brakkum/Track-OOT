@@ -42,6 +42,9 @@ const TPL = new Template(`
             padding: 2px;
             font-size: 0.8em;
         }
+        :host([orientation="column"]) div.text {
+            height: 40px;
+        }
         div.placeholder {
             width: 40px;
             height: 40px;
