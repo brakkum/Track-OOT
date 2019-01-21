@@ -114,6 +114,9 @@ class HTMLTrackerPOIArea extends HTMLElement {
         EventBus.on("location-update", locationUpdate.bind(this));
         EventBus.on("item-update", itemUpdate.bind(this));
         EventBus.onafter("global-update", itemUpdate.bind(this));
+        EventBus.on("location-mode-change", mode => {
+            this.mode = mode;
+        });
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
     }
