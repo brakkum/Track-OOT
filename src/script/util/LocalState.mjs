@@ -14,7 +14,6 @@ class TrackerLocalState {
     load(name) {
         if (DeepLocalStorage.has("save", name)) {
             state = DeepLocalStorage.get("save", name);
-            compatCode();
             Logger.info(`loaded state from "${name}"`, "LocalState");
         } else {
             Logger.warn(`tried to load state "${name}" that does not exist`, "LocalState");
@@ -48,24 +47,3 @@ class TrackerLocalState {
 }
 
 export default new TrackerLocalState;
-
-function compatCode() {
-    let data = GlobalData.get("skulltulas");
-    for (let i in state.chests) {
-        let j = i.split(".");
-        j = j[j.length-1];
-        if (j != i) {
-            state.chests[j] = state.chests[i];
-            delete state.chests[i];
-        }
-        state.skulltulas[j] = state.chests[j];
-    }
-    for (let i in state.skulltulas) {
-        let j = i.split(".");
-        j = j[j.length-1];
-        if (j != i) {
-            state.skulltulas[j] = state.skulltulas[i];
-            delete state.skulltulas[i];
-        }
-    }
-}
