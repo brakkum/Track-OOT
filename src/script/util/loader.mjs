@@ -15,9 +15,7 @@ const FILES = [
     "shop_items"
 ];
 
-const LOGIC_PATCHES = [
-    "skulltula_rewards"
-];
+const LOGIC_PATCHES = [];
 
 export default async function loadData() {
     let loading = [];

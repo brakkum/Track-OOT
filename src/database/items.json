@@ -130,9 +130,10 @@
         "images": "bean.png"
     },
     "skulltula": {
-        "max": 6,
-        "mark": 5,
-        "counting": ["", "10", "20", "30", "40", "50", "100"],
+        "max": 100,
+        "mark": 50,
+        "counting": true,
+        "alternate_counting": [0, 10, 20, 30, 40, 50, 100],
         "images": "skulltula.png"
     },
     "egg": {

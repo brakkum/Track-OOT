@@ -3,8 +3,7 @@ const FILES = [
     "database/locations.json",
     "database/logic.json",
     "database/settings.json",
-    "database/lang_en.json",
-    "database/logic_patch_skulltula_rewards.json"
+    "database/lang_en.json"
 ];
 
 async function loadAll() {

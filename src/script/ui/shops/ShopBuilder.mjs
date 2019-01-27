@@ -1,10 +1,7 @@
 import Template from "deepJS/util/Template.mjs";
-import GlobalData from "deepJS/storage/GlobalData.mjs";
-import TrackerLocalState from "util/LocalState.mjs";
-import EventBus from "deepJS/util/EventBus.mjs";
 import Dialog from "./ShopItemChoice.mjs";
 import I18n from "util/I18n.mjs";
-import "./ShopItem.mjs";
+import "./ShopEditItem.mjs";
 
 const TPL = new Template(`
     <style>
@@ -22,14 +19,14 @@ const TPL = new Template(`
             background-color: #222222;
         }
     </style>
-    <ootrt-shopitem id="slot0"></ootrt-shopitem>
-    <ootrt-shopitem id="slot1"></ootrt-shopitem>
-    <ootrt-shopitem id="slot2"></ootrt-shopitem>
-    <ootrt-shopitem id="slot3"></ootrt-shopitem>
-    <ootrt-shopitem id="slot4"></ootrt-shopitem>
-    <ootrt-shopitem id="slot5"></ootrt-shopitem>
-    <ootrt-shopitem id="slot6"></ootrt-shopitem>
-    <ootrt-shopitem id="slot7"></ootrt-shopitem>
+    <ootrt-shopedititem id="slot0"></ootrt-shopedititem>
+    <ootrt-shopedititem id="slot1"></ootrt-shopedititem>
+    <ootrt-shopedititem id="slot2"></ootrt-shopedititem>
+    <ootrt-shopedititem id="slot3"></ootrt-shopedititem>
+    <ootrt-shopedititem id="slot4"></ootrt-shopedititem>
+    <ootrt-shopedititem id="slot5"></ootrt-shopedititem>
+    <ootrt-shopedititem id="slot6"></ootrt-shopedititem>
+    <ootrt-shopedititem id="slot7"></ootrt-shopedititem>
 `);
 
 function editSlot(event) {

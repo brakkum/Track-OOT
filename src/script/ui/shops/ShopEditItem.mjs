@@ -30,19 +30,8 @@ const TPL = new Template(`
         #title {
             flex: 1;
         }
-        #info {
-            display: flex;
-            height: 20px;
-        }
-        #name {
-            width: 100px;
-            background-color: #2b2b2b;
-            color: white;
-            border: solid 1px #929292;
-            padding: 2px;
-        }
         #price {
-            flex: 1;
+            height: 10px;
             text-align: right;
         }
         #price:after {
@@ -59,24 +48,15 @@ const TPL = new Template(`
     </style>
     <div id="image"></div>
     <div id="title"></div>
-    <div id="info">
-        <input id="name" placeholder="you" autocomplete="off">
-        <div id="price"></div>
-    </div>
+    <div id="price"></div>
 `);
 
-export default class HTMLTrackerShopItem extends HTMLElement {
+export default class HTMLTrackerShopEditItem extends HTMLElement {
     
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
-        this.shadowRoot.getElementById("name").addEventListener("change", event => {
-            this.name = event.target.value;
-            let e = new Event("namechange");
-            e.name = this.name;
-            this.dispatchEvent(e);
-        });
     }
 
     get ref() {
@@ -103,16 +83,8 @@ export default class HTMLTrackerShopItem extends HTMLElement {
         this.setAttribute('checked', val);
     }
 
-    get name() {
-        return this.getAttribute('name');
-    }
-
-    set name(val) {
-        this.setAttribute('name', val);
-    }
-
     static get observedAttributes() {
-        return ['ref', 'price', 'checked', 'name'];
+        return ['ref', 'price', 'checked'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -143,15 +115,9 @@ export default class HTMLTrackerShopItem extends HTMLElement {
                     }
                 }
             break;
-            case 'name':
-            let el = this.shadowRoot.getElementById("name");
-                if (oldValue != newValue && el.value != newValue) {
-                    el.value = newValue;
-                }
-            break;
         }
     }
 
 }
 
-customElements.define('ootrt-shopitem', HTMLTrackerShopItem);
+customElements.define('ootrt-shopedititem', HTMLTrackerShopEditItem);

@@ -13,9 +13,7 @@ const TPL = new Template(`
             box-sizing: border-box;
         }
         :host {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
+            display: block;
             min-width: 825px;
             min-height: 466px;
             user-select: none;
@@ -32,13 +30,42 @@ const TPL = new Template(`
             transform-origin: center;
             transform: translate(calc(var(--map-offset-x, 0) * 1px), calc(var(--map-offset-y, 0) * 1px)) scale(var(--map-zoom, 1));
         }
-        slot.grabbing {
-            cursor: grabbing;
-        }
     </style>
-    <slot style="--map-zoom: 1;">
+    <slot id="map" style="--map-zoom: 1;">
     </slot>
 `);
+
+function mapMoveBegin(event) {
+    if (event.button === 0) {
+        let target = event.target;
+        target.classList.add("grabbed");
+        target.addEventListener("mousemove", moveMap);
+        target.addEventListener("mouseup", mapMoveEnd);
+        target.addEventListener("mouseleave", mapMoveEnd);
+    }
+}
+
+function mapMoveEnd(event) {
+    if (event.button === 0) {
+        let target = event.target;
+        target.classList.remove("grabbed");
+        target.removeEventListener("mousemove", moveMap);
+        target.removeEventListener("mouseup", mapMoveEnd);
+        target.removeEventListener("mouseleave", mapMoveEnd);
+    }
+}
+
+function moveMap(event) {
+    // TODO clip translation to boundaries
+    if (event.button === 0) {
+        let target = event.target;
+        let parent = target.parentNode.host;
+        let valX = parseInt(target.style.getPropertyValue("--map-offset-x") || 0) + event.movementX;
+        let valY = parseInt(target.style.getPropertyValue("--map-offset-y") || 0) + event.movementY;
+        target.style.setProperty("--map-offset-x", valX);
+        target.style.setProperty("--map-offset-y", valY);
+    }
+}
 
 class HTMLTrackerMap extends HTMLElement {
 
@@ -46,6 +73,7 @@ class HTMLTrackerMap extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
+        let map = this.shadowRoot.getElementById("map");
         this.addEventListener("wheel", event => {
             let target = this.shadowRoot.children[1];
             const delta = Math.sign(event.deltaY) / 50;
@@ -54,28 +82,9 @@ class HTMLTrackerMap extends HTMLElement {
             event.preventDefault();
             return false;
         });
-        this.shadowRoot.children[1].addEventListener("mousemove", event => {
-            // TODO clip translation to boundaries
-            if (event.buttons === 1) {
-                let target = this.shadowRoot.children[1];
-                let valX = parseInt(this.shadowRoot.children[1].style.getPropertyValue("--map-offset-x") || 0) + event.movementX;
-                let valY = parseInt(this.shadowRoot.children[1].style.getPropertyValue("--map-offset-y") || 0) + event.movementY;
-                target.style.setProperty("--map-offset-x", valX);
-                target.style.setProperty("--map-offset-y", valY);
-                event.preventDefault();
-                return false;
-            }
-        });
+        map.addEventListener("mousedown", mapMoveBegin);
         EventBus.on("location-mode-change", mode => this.mode = mode);
         EventBus.on("location-era-change", era => this.era = era);
-
-        this.shadowRoot.children[1].addEventListener("click", event => {
-            let oX = event.offsetX;
-            let oY = event.offsetY;
-            let cW = this.shadowRoot.children[1].clientWidth;
-            let cH = this.shadowRoot.children[1].clientHeight;
-            console.log("mapclick %s%% %s%%", (100 / cW * oX).toFixed(1), (100 / cH * oY).toFixed(1));
-        });
     }
 
     get mode() {

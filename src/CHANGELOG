@@ -64,6 +64,7 @@ also improved system stability to enhance user experience
 = prio 1 =
 - map needs some visible tools for navigation
 - map needs some bound checks for movement and zoom
+- scrubs on map dont apply to settings
 
 = prio 2 =
 - implement settings for dungeon status
@@ -81,12 +82,7 @@ also improved system stability to enhance user experience
 
 == REQUESTS ==
 
-- have skulltulas count one at a time again
-    possible solutions
-    - maybe count to steps on shift click
-    - add alternative counting on shift
-    - add alternative item as alias for the skulltulas
-    -
+- optionally increase skully token count with ticking off skullies
 
 - add remote control system
     possible solutions

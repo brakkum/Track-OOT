@@ -99,14 +99,24 @@ function uncheckSlot(event) {
     return false;
 }
 
+function renameSlot(event) {
+    let names = TrackerLocalState.read("shops_names", this.ref, ["","","","","","","",""]);
+    names[parseInt(event.target.id.slice(-1))] = event.name;
+    TrackerLocalState.write("shops_names", this.ref, names);
+    event.preventDefault();
+    return false;
+}
+
 function globalUpdate() {
     let data = TrackerLocalState.read("shops", this.ref, GlobalData.get("shops")[this.ref]);
     let ch = TrackerLocalState.read("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
+    let names = TrackerLocalState.read("shops_names", this.ref, ["","","","","","","",""]);
     for (let i = 0; i < 8; ++i) {
         let el = this.shadowRoot.getElementById(`slot${i}`);
         el.ref = data[i].item;
         el.price = data[i].price;
         el.checked = !!ch[i];
+        el.name = names[i];
     }
 }
 
@@ -122,6 +132,7 @@ export default class HTMLTrackerShopField extends HTMLElement {
             let el = this.shadowRoot.getElementById(`slot${i}`);
             el.onclick = checkSlot.bind(this);
             el.oncontextmenu = uncheckSlot.bind(this);
+            el.addEventListener("namechange", renameSlot.bind(this));
         }
     }
 

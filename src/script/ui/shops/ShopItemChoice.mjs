@@ -3,6 +3,7 @@ import Dialog from "deepJS/ui/Dialog.mjs";
 import Template from "deepJS/util/Template.mjs";
 import GlobalData from "deepJS/storage/GlobalData.mjs";
 import I18n from "util/I18n.mjs";
+import "./ShopEditItem.mjs";
 
 const TPL = new Template(`
     <style>
@@ -97,7 +98,7 @@ const Q_TAB = [
 
 async function settingsSubmit() {
     let ev = new Event('submit');
-    let el = this.shadowRoot.querySelector(`ootrt-shopitem[ref="${this.value}"]`);
+    let el = this.shadowRoot.querySelector(`ootrt-shopedititem[ref="${this.value}"]`);
     if (!!el) {
         ev.ref = el.ref;
         if (!isNaN(parseInt(el.price))) {
@@ -113,7 +114,7 @@ async function settingsSubmit() {
             let d = new Dialog({title: "Price", submit: true, cancel: true});
             d.onsubmit = function(result) {
                 if (!!result) {
-                    ev.price = shop_price.value;
+                    ev.price = parseInt(shop_price.value);
                     this.dispatchEvent(ev);
                     document.body.removeChild(this);
                 }
@@ -216,11 +217,11 @@ export default class HTMLTrackerShopItemChoice extends DeepWindow {
             break;
             case 'value':
                 if (oldValue != newValue) {
-                    let ol = this.shadowRoot.querySelector(`ootrt-shopitem[ref="${oldValue}"]`);
+                    let ol = this.shadowRoot.querySelector(`ootrt-shopedititem[ref="${oldValue}"]`);
                     if (!!ol) {
                         ol.classList.remove("active");
                     }
-                    let nl = this.shadowRoot.querySelector(`ootrt-shopitem[ref="${newValue}"]`);
+                    let nl = this.shadowRoot.querySelector(`ootrt-shopedititem[ref="${newValue}"]`);
                     if (!!nl) {
                         nl.classList.add("active");
                     }
@@ -295,7 +296,7 @@ export default class HTMLTrackerShopItemChoice extends DeepWindow {
     }
 
     addItem(category, ref, price) {
-        let item = document.createElement("ootrt-shopitem");
+        let item = document.createElement("ootrt-shopedititem");
         item.ref = ref;
         item.price = price;
         item.onclick = clickItem.bind(this);

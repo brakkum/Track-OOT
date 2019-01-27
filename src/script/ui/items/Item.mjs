@@ -184,16 +184,31 @@ class HTMLTrackerItem extends HTMLElement {
     }
 
     next(event) {
-        Logger.log(`get next value for "${this.ref}"`, "Item");
-        let all = this.querySelectorAll("option");
-        if (!!all.length) {
-            let opt = this.querySelector(`option[value="${this.value}"]`);
-            if (!!opt) {
-                if (!!opt.nextElementSibling) {
-                    this.value = opt.nextElementSibling.value;
+        let data = GlobalData.get("items")[this.ref];
+        if (event.shiftKey && !!data.alternate_counting) {
+            Logger.log(`get next alternative value for "${this.ref}"`, "Item");
+            for (let i = 0; i < data.alternate_counting.length; ++i) {
+                let alt = parseInt(data.alternate_counting[i]);
+                if (isNaN(alt)) {
+                    alt = 0;
                 }
-            } else {
-                this.value = all[0].value;
+                if (alt > parseInt(this.value)) {
+                    this.value = data.alternate_counting[i];
+                    break;
+                }
+            }
+        } else {
+            Logger.log(`get next value for "${this.ref}"`, "Item");
+            let all = this.querySelectorAll("option");
+            if (!!all.length) {
+                let opt = this.querySelector(`option[value="${this.value}"]`);
+                if (!!opt) {
+                    if (!!opt.nextElementSibling) {
+                        this.value = opt.nextElementSibling.value;
+                    }
+                } else {
+                    this.value = all[0].value;
+                }
             }
         }
         if (!event) return;
@@ -202,16 +217,31 @@ class HTMLTrackerItem extends HTMLElement {
     }
 
     prev(event) {
-        Logger.log(`get previous value for "${this.ref}"`, "Item");
-        let all = this.querySelectorAll("option");
-        if (!!all.length) {
-            let opt = this.querySelector(`option[value="${this.value}"]`);
-            if (!!opt) {
-                if (!!opt.previousElementSibling) {
-                    this.value = opt.previousElementSibling.value;
+        let data = GlobalData.get("items")[this.ref];
+        if (event.shiftKey && !!data.alternate_counting) {
+            Logger.log(`get previous alternative value for "${this.ref}"`, "Item");
+            for (let i = data.alternate_counting.length - 1; i >= 0; --i) {
+                let alt = parseInt(data.alternate_counting[i]);
+                if (isNaN(alt)) {
+                    alt = parseInt(data.max);
                 }
-            } else {
-                this.value = all[0].value;
+                if (alt < parseInt(this.value)) {
+                    this.value = data.alternate_counting[i];
+                    break;
+                }
+            }
+        } else {
+            Logger.log(`get previous value for "${this.ref}"`, "Item");
+            let all = this.querySelectorAll("option");
+            if (!!all.length) {
+                let opt = this.querySelector(`option[value="${this.value}"]`);
+                if (!!opt) {
+                    if (!!opt.previousElementSibling) {
+                        this.value = opt.previousElementSibling.value;
+                    }
+                } else {
+                    this.value = all[0].value;
+                }
             }
         }
         if (!event) return;
