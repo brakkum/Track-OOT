@@ -77,6 +77,10 @@ export default class HTMLTrackerShopItem extends HTMLElement {
             e.name = this.name;
             this.dispatchEvent(e);
         });
+        this.shadowRoot.getElementById("name").onclick = event => {
+            event.preventDefault();
+            return false;
+        };
     }
 
     get ref() {
