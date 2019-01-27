@@ -16,6 +16,7 @@ here is a full list of things that changed:
 - generic gossip stones are listed seperately, but checked together
 - trade sequence starting point added to settings
 - added switch for mq/vanilla to location list title
+- added target player to shop slots
 
 [DATA]
 - changed language file to .ini but with the .lang extension (better readability & supporting comments)
@@ -68,12 +69,12 @@ also improved system stability to enhance user experience
 
 = prio 2 =
 - implement settings for dungeon status
-- add target player to shop slots
 
 = prio 3 =
 - reimplement logic editor
 - add optimization for lists
     - dont create/delete all the elements all the time! cache them! memory is not an issue...
+        - could add a element index to store unused elements instead of deleting them. so the garbage collector can chill
     - buffer logic checks, update on item update
         - restructure events, item changed ==> logic update -> logic changed ==> location update
         - bundle events into a single one

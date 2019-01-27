@@ -10,7 +10,8 @@ const R_LN = /\r\n|\r|\n/;
 let cmd = {
     start: install,
     check: checkUpdateAvailable,
-    update: updateFiles
+    update: updateFiles,
+    forceupdate: updateFilesForced
 };
 
 self.addEventListener('install', function(event) {
@@ -71,6 +72,11 @@ function fetchFile(url, method = "GET") {
     });
 }
 
+async function overwriteCachedFile(cache, request, file) {
+    await cache.delete(request);
+    await cache.put(request, file);
+}
+
 async function install(client) {
     let cache = await caches.open(CACHE_NAME);
     let response = await cache.match(CACHE_INDEX);
@@ -122,6 +128,27 @@ async function updateFiles(client) {
         type: "state",
         msg: "check_update"
     });
+    let downloadlist = await checkUpdateNeeded(cache, await filelist.clone().json());
+    client.postMessage({
+        type: "state",
+        msg: "need_download",
+        value: downloadlist.length
+    });
+    await updateFileList(client, cache, downloadlist);
+    await cache.put(CACHE_INDEX, filelist);
+    client.postMessage({
+        type: "state",
+        msg: "update_finished"
+    });
+}
+
+async function updateFilesForced(client) {
+    let cache = await caches.open(CACHE_NAME);
+    let filelist = await fetchFile(CACHE_INDEX);
+    client.postMessage({
+        type: "state",
+        msg: "check_update"
+    });
     let downloadlist = await filelist.clone().json();
     client.postMessage({
         type: "state",
@@ -138,7 +165,7 @@ async function updateFiles(client) {
 
 async function checkUpdateNeeded(cache, filelist) {
     let r = [], p = [];
-    filelist.array.forEach(element => {
+    filelist.forEach(element => {
         p.push(new Promise(async a => {
             if (await checkFile(cache, element)) {
                 r.push(element);
@@ -176,7 +203,7 @@ async function updateFileList(client, cache, filelist) {
     await Promise.all(r);
     let w = [];
     for (let i in files) {
-        w.push(cache.put(i, files[i]));
+        w.push(overwriteCachedFile(cache, i, files[i]));
     }
     await Promise.all(w);
 }

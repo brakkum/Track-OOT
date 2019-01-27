@@ -37,20 +37,25 @@ settings.innerHTML = `
         </div>
         <div id="update-running" style="padding: 5px; display: none;">
             <progress id="update-progress" value="0" max="0"></progress>
+            <span id="update-progress-text">0/0</span>
         </div>
         <div id="update-finished" style="padding: 5px; display: none;">
             you need to reload for the new version to apply...
             <button onclick="window.location.reload()">reload now</button>
+        </div>
+        <div id="update-force" style="padding: 5px; display: none;">
+            if files seem corrupt, you can try to 
+            <button id="download-forced">force download</button>
         </div>
     </div>
     <div style="width: 200px; height: 200px; background-image: url('images/logo.svg'); background-size: contain; background-position: left; background-repeat: no-repeat;"></div>
 </div>
 <hr>
 <div>
-Please be aware, that the logic of this tracker (mostly) follows the randomizer logic.<br>
-This is due to the fact, that the logic of the randomizer is a good estimation of the logic of the game itself.<br>
-If the tracker acts weird, please <a href="https://bitbucket.org/2deep4real/track-oot/issues" target="_blank" rel="noreferrer">report the error!</a><br><br>
-You can also report via Discord ▶ <a href="https://discord.gg/wgFVtuv" target="_blank" rel="noreferrer">Join my Discord!</a><br><br>
+    Please be aware, that the logic of this tracker (mostly) follows the randomizer logic.<br>
+    This is due to the fact, that the logic of the randomizer is a good estimation of the logic of the game itself.<br>
+    If the tracker acts weird, please <a href="https://bitbucket.org/2deep4real/track-oot/issues" target="_blank" rel="noreferrer">report the error!</a><br><br>
+    You can also report via Discord ▶ <a href="https://discord.gg/wgFVtuv" target="_blank" rel="noreferrer">Join my Discord!</a><br><br>
 </div>
 <hr>
 <div>
@@ -87,6 +92,7 @@ let showUpdatePopup = true;
 
 if ('serviceWorker' in navigator) {
     let prog = settings.querySelector("#update-progress");
+    let progtext = settings.querySelector("#update-progress-text");
     let checkUpdateTimeout = undefined;
 
     function swStateRecieve(event) {
@@ -94,6 +100,7 @@ if ('serviceWorker' in navigator) {
             switch(event.data.msg) {
                 case "update_available":
                     settings.querySelector("#update-check").style.display = "none";
+                    settings.querySelector("#update-force").style.display = "block";
                     settings.querySelector("#update-available").style.display = "block";
                     if (showUpdatePopup) showPopover("A new update is available. Click here to download!", function() {
                         settings.show(getSettings(), 'about');
@@ -101,17 +108,23 @@ if ('serviceWorker' in navigator) {
                 break;
                 case "update_unavailable":
                     settings.querySelector("#update-check").style.display = "none";
+                    settings.querySelector("#update-force").style.display = "block";
                     settings.querySelector("#update-unavailable").style.display = "block";
                     checkUpdateTimeout = setTimeout(checkUpdate, 600000);
                 break;
                 case "need_download":
                     prog.value = 0;
                     prog.max = event.data.value;
+                    progtext.innerHTML = `${prog.value}/${prog.max}`;
                 break;
                 case "file_downloaded":
                     prog.value = parseInt(prog.value) + 1;
+                    progtext.innerHTML = `${prog.value}/${prog.max}`;
                 break;
                 case "update_finished":
+                    prog.value = 0;
+                    prog.max = 0;
+                    progtext.innerHTML = `0/0`;
                     settings.querySelector("#update-running").style.display = "none";
                     settings.querySelector("#update-finished").style.display = "block";
                 break;
@@ -121,6 +134,7 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.addEventListener('message', swStateRecieve);
     function checkUpdate() {
         settings.querySelector("#update-unavailable").style.display = "none";
+        settings.querySelector("#update-force").style.display = "none";
         settings.querySelector("#update-check").style.display = "block";
         navigator.serviceWorker.getRegistration().then(function(registration) {
             registration.active.postMessage("check");
@@ -135,11 +149,22 @@ if ('serviceWorker' in navigator) {
 
     settings.querySelector("#download-update").onclick = function() {
         settings.querySelector("#update-available").style.display = "none";
+        settings.querySelector("#update-force").style.display = "none";
         settings.querySelector("#update-running").style.display = "block";
         navigator.serviceWorker.getRegistration().then(function(registration) {
             registration.active.postMessage("update");
         });
     }
+
+    settings.querySelector("#download-forced").onclick = function() {
+        settings.querySelector("#update-available").style.display = "none";
+        settings.querySelector("#update-force").style.display = "none";
+        settings.querySelector("#update-running").style.display = "block";
+        navigator.serviceWorker.getRegistration().then(function(registration) {
+            registration.active.postMessage("forceupdate");
+        });
+    }
+
 }
 
 settingsEdit.addEventListener("click", function() {
