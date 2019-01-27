@@ -166,15 +166,16 @@ async function updateFilesForced(client) {
 async function checkUpdateNeeded(cache, filelist) {
     let r = [], p = [];
     filelist.forEach(element => {
-        p.push(new Promise(async a => {
-            if (await checkFile(cache, element)) {
-                r.push(element);
-            }
-            a();
-        }));
+        p.push(addFileIfNeeded(cache, element, r));
     });
     await Promise.all(p); 
     return r;
+}
+
+async function addFileIfNeeded(cache, element, arr) {
+    if (await checkFile(cache, element)) {
+        arr.push(element);
+    }
 }
 
 async function checkFile(cache, url) {
