@@ -69,7 +69,7 @@ const TPL = new Template(`
             color: white;
             background-color: black;
         }
-        ootrt-shopitem.active {
+        ootrt-shopedititem.active {
             box-shadow: 0 0 2px 2px red;
         }
     </style>
