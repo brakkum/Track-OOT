@@ -159,6 +159,7 @@ if ('serviceWorker' in navigator) {
     settings.querySelector("#download-forced").onclick = function() {
         settings.querySelector("#update-available").style.display = "none";
         settings.querySelector("#update-force").style.display = "none";
+        settings.querySelector("#update-unavailable").style.display = "none";
         settings.querySelector("#update-running").style.display = "block";
         navigator.serviceWorker.getRegistration().then(function(registration) {
             registration.active.postMessage("forceupdate");
