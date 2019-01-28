@@ -6,7 +6,7 @@
 
 .layout-container[data-layout="items"] {
     grid-template-columns: minmax(calc(9px * var(--item-size) + 8px), 100%);
-    grid-template-rows: calc(8px * var(--item-size) + 8px) minmax(calc(3px * var(--item-size) + 8px), 100%);
+    grid-template-rows: calc(8px * var(--item-size) + 8px) minmax(calc(13px * var(--item-size) + 8px), 100%);
     grid-template-areas: 
     "items" 
     "dungeonstatus"

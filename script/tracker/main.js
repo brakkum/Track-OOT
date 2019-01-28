@@ -127,3 +127,8 @@ document.getElementById("erase_all_data").onclick = function() {
         }
     });
 }
+
+function copyVersionString() {
+    var el = document.getElementById("version-string");
+    window.prompt("Version", el.innerText);   
+}
