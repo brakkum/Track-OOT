@@ -1,9 +1,9 @@
-import Template from "deepJS/util/Template.mjs";
-import GlobalData from "deepJS/storage/GlobalData.mjs";
-import TrackerLocalState from "util/LocalState.mjs";
-import EventBus from "deepJS/util/EventBus.mjs";
-import Dialog from "deepJS/ui/Dialog.mjs";
-import I18n from "util/I18n.mjs";
+import Template from "/deepJS/util/Template.mjs";
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import TrackerLocalState from "/script/util/LocalState.mjs";
+import EventBus from "/deepJS/util/EventBus.mjs";
+import Dialog from "/deepJS/ui/Dialog.mjs";
+import I18n from "/script/util/I18n.mjs";
 import "./ShopItem.mjs";
 import "./ShopBuilder.mjs";
 

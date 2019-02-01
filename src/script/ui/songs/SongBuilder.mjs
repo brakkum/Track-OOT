@@ -1,4 +1,4 @@
-import Template from "deepJS/util/Template.mjs";
+import Template from "/deepJS/util/Template.mjs";
 import "./SongStave.mjs";
 
 const TPL = new Template(`

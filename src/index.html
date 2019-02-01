@@ -69,15 +69,15 @@
             </div>
         </div>
         <script>
-            let max_files = 0;
-            let load_files = 0;
             let spl = document.getElementById("splash").querySelector('.loading');
-
             function updateLoadingMessage(msg = "loading...") {
                 spl.innerHTML = msg;
             }
+            if(document.head.createShadowRoot || document.head.attachShadow) {
+                let max_files = 0;
+                let load_files = 0;
 
-            function importHTML(url) {
+                function importHTML(url) {
                 return fetch(url)
                         .then(r => r.text())
                         .then(r => (new DOMParser()).parseFromString(r, "text/html"))
@@ -86,9 +86,9 @@
                                 document.body.appendChild(r.body.childNodes[0]);
                             }
                         });
-            }
+                }
 
-            function importCSS(url) {
+                function importCSS(url) {
                 return new Promise((res, rej) => {
                     let t = document.createElement("link");
                     t.href = url;
@@ -98,27 +98,27 @@
                     t.onerror = rej;
                     document.head.appendChild(t);
                 });
-            }
+                }
 
-            function importScript(url) {
+                function importModule(url) {
                 return new Promise((res, rej) => {
                     let t = document.createElement("script");
                     t.src = url;
-                    t.type = "text/javascript";
+                    t.type = "module";
                     t.onload = e => res(t);
                     t.onerror = rej;
                     document.head.appendChild(t);
                 });
-            }
+                }
 
-            async function startApp() {
+                async function startApp() {
                 navigator.serviceWorker.removeEventListener('message', swStateRecieve);
                 await importHTML("content/app.html");
-                await importCSS("style/app.min.css");
-                await importScript("/script/app.min.js");
-            }
+                await importCSS("style/app.css");
+                await importModule("/script/app.mjs");
+                }
 
-            function swStateRecieve(event) {
+                function swStateRecieve(event) {
                 if (event.data.type == "state") {
                     switch(event.data.msg) {
                         case "start": startApp(); break;
@@ -132,9 +132,9 @@
                         break;
                     }
                 }
-            }
+                }
 
-            if ('serviceWorker' in navigator) {
+                if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('/sw.js').then(function(registration) {
                     function callSW() {
                         if (!registration.active) {
@@ -148,8 +148,11 @@
                 }, function(err) {
                     console.log('ServiceWorker registration failed: ', err);
                 });
-            } else {
+                } else {
                 startApp();
+                }
+            } else {
+                updateLoadingMessage("I am sorry, but this page uses Shadow DOM...<br>This script detected, that the Browser you are using does not support this feature yet.");
             }
         </script>
     </body>

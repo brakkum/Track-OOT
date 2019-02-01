@@ -1,5 +1,5 @@
-import FileLoader from "deepJS/util/FileLoader.mjs";
-import Logger from "deepJS/util/Logger.mjs";
+import FileLoader from "/deepJS/util/FileLoader.mjs";
+import Logger from "/deepJS/util/Logger.mjs";
 
 let lang = {};
 

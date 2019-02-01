@@ -1,8 +1,9 @@
-import GlobalData from "deepJS/storage/GlobalData.mjs";
-import DeepLocalStorage from "deepJS/storage/LocalStorage.mjs";
-import SettingsWindow from "deepJS/ui/SettingsWindow.mjs";
-import {showPopover} from "deepJS/ui/PopOver.mjs";
-import EventBus from "deepJS/util/EventBus.mjs";
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import DeepLocalStorage from "/deepJS/storage/LocalStorage.mjs";
+import SettingsWindow from "/deepJS/ui/SettingsWindow.mjs";
+import {showPopover} from "/deepJS/ui/PopOver.mjs";
+import EventBus from "/deepJS/util/EventBus.mjs";
+import Dialog from "/deepJS/ui/Dialog.mjs";
 import TrackerLocalState from "./LocalState.mjs";
 import I18n from "./I18n.mjs";
 
@@ -127,6 +128,14 @@ if ('serviceWorker' in navigator) {
                     progtext.innerHTML = `0/0`;
                     settings.querySelector("#update-running").style.display = "none";
                     settings.querySelector("#update-finished").style.display = "block";
+                break;
+                case "error":
+                    settings.querySelector("#update-check").style.display = "none";
+                    settings.querySelector("#update-running").style.display = "none";
+                    settings.querySelector("#update-finished").style.display = "none";
+                    settings.querySelector("#update-force").style.display = "block";
+                    settings.querySelector("#update-unavailable").style.display = "block";
+                    Dialog.alert("Connection Lost", "The ServiceWorker was not able to establish or keep connection to the Server<br>Please try again later.")
                 break;
             }
         }

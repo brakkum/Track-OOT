@@ -1,8 +1,8 @@
-import GlobalData from "deepJS/storage/GlobalData.mjs";
-import Template from "deepJS/util/Template.mjs";
-import EventBus from "deepJS/util/EventBus.mjs";
-import {createOption} from "deepJS/ui/UIHelper.mjs";
-import TrackerLocalState from "util/LocalState.mjs";
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import Template from "/deepJS/util/Template.mjs";
+import EventBus from "/deepJS/util/EventBus.mjs";
+import {createOption} from "/deepJS/ui/UIHelper.mjs";
+import TrackerLocalState from "/script/util/LocalState.mjs";
 
 const TPL = new Template(`
     <style>

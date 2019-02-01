@@ -1,7 +1,7 @@
-import GlobalData from "deepJS/storage/GlobalData.mjs";
-import Template from "deepJS/util/Template.mjs";
-import EventBus from "deepJS/util/EventBus.mjs";
-import Logger from "deepJS/util/Logger.mjs";
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import Template from "/deepJS/util/Template.mjs";
+import EventBus from "/deepJS/util/EventBus.mjs";
+import Logger from "/deepJS/util/Logger.mjs";
 import "./POILocation.mjs";
 import "./POIGossipstone.mjs";
 import "./POIArea.mjs";

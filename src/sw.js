@@ -1,4 +1,4 @@
-const CACHE_INDEX = "index.json";
+const CACHE_INDEX = "/index.json";
 const CACHE_NAME = 'track-oot';
 const HEADER_CONFIG = new Headers({
     "Content-Type": "text/plain",
@@ -55,12 +55,20 @@ async function getVersion(request) {
     return version;
 }
 
-self.addEventListener('message', event => {
-    if (!event.source) return;
-    if (!!cmd[event.data]) {
-        cmd[event.data](event.source).catch(e => {
-            console.error("[ServiceWorker] " + e);
-        });
+self.addEventListener('message', async event => {
+    let src = event.source;
+    let dta = event.data;
+    if (!src) return;
+    if (!!cmd[dta]) {
+        try {
+            await cmd[dta](src);
+        } catch(e) {
+            src.postMessage({
+                type: "error",
+                cmd: dta,
+                msg: e
+            });
+        }
     }
 });
 

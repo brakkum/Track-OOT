@@ -2,23 +2,23 @@
     starting point for application
 */
 
-import "./third-party/custom-elements.min.js";
+import "/script/_vendor/custom-elements.min.js";
 
-import EventBus from "deepJS/util/EventBus.mjs";
-import Logger from "deepJS/util/Logger.mjs";
+import EventBus from "/deepJS/util/EventBus.mjs";
+import Logger from "/deepJS/util/Logger.mjs";
 
-import loadData from "util/loader.mjs";
-import I18n from "util/I18n.mjs";
-import "util/SaveHandler.mjs";
+import loadData from "/script/util/loader.mjs";
+import I18n from "/script/util/I18n.mjs";
+import "/script/util/SaveHandler.mjs";
 
-import "ui/items/ItemGrid.mjs";
-import "ui/dungeonstate/DungeonState.mjs";
-import "ui/locations/LocationView.mjs";
-import "ui/map/Map.mjs";
+import "/script/ui/items/ItemGrid.mjs";
+import "/script/ui/dungeonstate/DungeonState.mjs";
+import "/script/ui/locations/LocationView.mjs";
+import "/script/ui/map/Map.mjs";
 
-import "deepJS/ui/Dialog.mjs";
-import "deepJS/ui/Icon.mjs";
-import "deepJS/ui/selection/ChoiceSelect.mjs";
+import "/deepJS/ui/Dialog.mjs";
+import "/deepJS/ui/Icon.mjs";
+import "/deepJS/ui/selection/ChoiceSelect.mjs";
 
 (async function main() {
     Logger.setOutput(document.getElementById("tracker-log"));
@@ -26,10 +26,10 @@ import "deepJS/ui/selection/ChoiceSelect.mjs";
     await loadData();
     await I18n.load("en_us");
 
-    addModule('ootrt-itemgrid', "item-grid");
-    addModule('ootrt-dungeonstate', "dungeon-status").setAttribute("active", "key bosskey map compass type reward");
-    addModule('ootrt-locationview', "location-list").setAttribute("mode", "chests");
-    addModule('ootrt-map', "location-map").setAttribute("mode", "chests");
+    addHTMLModule('ootrt-itemgrid', "item-grid");
+    addHTMLModule('ootrt-dungeonstate', "dungeon-status").setAttribute("active", "key bosskey map compass type reward");
+    addHTMLModule('ootrt-locationview', "location-list").setAttribute("mode", "chests");
+    addHTMLModule('ootrt-map', "location-map").setAttribute("mode", "chests");
 
     document.getElementById("view-choice-top").onchange = changeView;
     document.getElementById("view-choice-bottom").onchange = changeView;
@@ -37,10 +37,10 @@ import "deepJS/ui/selection/ChoiceSelect.mjs";
     EventBus.logEvents(true);
 
     await Promise.all([
-        import("ui/shops/ShopList.mjs"),
-        import("ui/songs/SongList.mjs"),
-        import("ui/LayoutContainer.mjs"),
-        import("util/Settings.mjs")
+        importModule("/script/ui/shops/ShopList.mjs"),
+        importModule("/script/ui/songs/SongList.mjs"),
+        importModule("/script/ui/LayoutContainer.mjs"),
+        importModule("/script/util/Settings.mjs")
     ]);
 
     let spl = document.getElementById("splash");
@@ -54,7 +54,18 @@ document.getElementById("hamburger-button").onclick = function(event) {
     document.getElementById("menu").classList.toggle("open");
 }
 
-function addModule(name, target) {
+function importModule(url) {
+    return new Promise((res, rej) => {
+        let t = document.createElement("script");
+        t.src = url;
+        t.type = "module";
+        t.onload = e => res(t);
+        t.onerror = rej;
+        document.head.appendChild(t);
+    });
+}
+
+function addHTMLModule(name, target) {
     let el = document.createElement(name);
     document.getElementById(target).appendChild(el);
     return el;

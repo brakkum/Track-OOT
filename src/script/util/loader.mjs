@@ -1,6 +1,6 @@
-import GlobalData from "deepJS/storage/GlobalData.mjs";
-import LocalStorage from "deepJS/storage/LocalStorage.mjs";
-import FileLoader from "deepJS/util/FileLoader.mjs";
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import LocalStorage from "/deepJS/storage/LocalStorage.mjs";
+import FileLoader from "/deepJS/util/FileLoader.mjs";
 
 const FILES = [
     "items",

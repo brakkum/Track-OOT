@@ -1,6 +1,6 @@
-import DeepLocalStorage from "deepJS/storage/LocalStorage.mjs";
-import GlobalData from "deepJS/storage/GlobalData.mjs";
-import Logic from "deepJS/util/Logic.mjs";
+import DeepLocalStorage from "/deepJS/storage/LocalStorage.mjs";
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import Logic from "/deepJS/util/Logic.mjs";
 import TrackerLocalState from "./LocalState.mjs";
 
 function checkLogic(logic) {

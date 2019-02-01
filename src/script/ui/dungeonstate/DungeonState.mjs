@@ -1,5 +1,5 @@
-import GlobalData from "deepJS/storage/GlobalData.mjs";
-import Template from "deepJS/util/Template.mjs";
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import Template from "/deepJS/util/Template.mjs";
 import "./DungeonReward.mjs";
 import "./DungeonType.mjs";
 

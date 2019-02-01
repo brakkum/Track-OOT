@@ -1,10 +1,10 @@
-import GlobalData from "deepJS/storage/GlobalData.mjs";
-import Template from "deepJS/util/Template.mjs";
-import EventBus from "deepJS/util/EventBus.mjs";
-import "deepJS/ui/selection/SwitchButton.mjs";
-import TrackerLocalState from "util/LocalState.mjs";
-import I18n from "util/I18n.mjs";
-import Logic from "util/Logic.mjs";
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import Template from "/deepJS/util/Template.mjs";
+import EventBus from "/deepJS/util/EventBus.mjs";
+import "/deepJS/ui/selection/SwitchButton.mjs";
+import TrackerLocalState from "/script/util/LocalState.mjs";
+import I18n from "/script/util/I18n.mjs";
+import Logic from "/script/util/Logic.mjs";
 import "./Location.mjs";
 import "./Gossipstone.mjs";
 

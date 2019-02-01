@@ -1,7 +1,8 @@
-import GlobalData from "deepJS/storage/GlobalData.mjs";
-import Template from "deepJS/util/Template.mjs";
-import EventBus from "deepJS/util/EventBus.mjs";
-import Logger from "deepJS/util/Logger.mjs";
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import Template from "/deepJS/util/Template.mjs";
+import EventBus from "/deepJS/util/EventBus.mjs";
+import Logger from "/deepJS/util/Logger.mjs";
+import TrackerLocalState from "/script/util/LocalState.mjs";
 import "./POILocation.mjs";
 import "./POIGossipstone.mjs";
 import "./POIArea.mjs";
@@ -85,6 +86,9 @@ class HTMLTrackerMap extends HTMLElement {
         map.addEventListener("mousedown", mapMoveBegin);
         EventBus.on("location-mode-change", mode => this.mode = mode);
         EventBus.on("location-era-change", era => this.era = era);
+        EventBus.onafter("global-update", event => {
+            this.attributeChangedCallback("", "");
+        });
     }
 
     get mode() {
@@ -135,11 +139,13 @@ class HTMLTrackerMap extends HTMLElement {
                                     Object.keys(buff).forEach(j => {
                                         let buf = buff[j];
                                         if (!buf.era || !this.era || this.era === buf.era) {
-                                            let el = document.createElement('ootrt-poilocation');
-                                            el.style.left = buf.x;
-                                            el.style.top = buf.y;
-                                            el.ref = `overworld.${this.mode}.${j}`;
-                                            this.appendChild(el);
+                                            if (!buf.mode || buf.mode != "scrubsanity" || TrackerLocalState.read("options", "scrubsanity", false)) {
+                                                let el = document.createElement('ootrt-poilocation');
+                                                el.style.left = buf.x;
+                                                el.style.top = buf.y;
+                                                el.ref = `overworld.${this.mode}.${j}`;
+                                                this.appendChild(el);
+                                            }
                                         }
                                     });
                                 }

@@ -1,8 +1,8 @@
-import DeepWindow from "deepJS/ui/Window.mjs";
-import Dialog from "deepJS/ui/Dialog.mjs";
-import Template from "deepJS/util/Template.mjs";
-import GlobalData from "deepJS/storage/GlobalData.mjs";
-import I18n from "util/I18n.mjs";
+import DeepWindow from "/deepJS/ui/Window.mjs";
+import Dialog from "/deepJS/ui/Dialog.mjs";
+import Template from "/deepJS/util/Template.mjs";
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import I18n from "/script/util/I18n.mjs";
 import "./ShopEditItem.mjs";
 
 const TPL = new Template(`

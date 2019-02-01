@@ -1,6 +1,6 @@
-import DeepLocalStorage from "deepJS/storage/LocalStorage.mjs";
-import GlobalData from "deepJS/storage/GlobalData.mjs";
-import Logger from "deepJS/util/Logger.mjs";
+import DeepLocalStorage from "/deepJS/storage/LocalStorage.mjs";
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import Logger from "/deepJS/util/Logger.mjs";
 
 let state = {};
 

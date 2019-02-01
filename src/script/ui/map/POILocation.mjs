@@ -1,11 +1,11 @@
-import GlobalData from "deepJS/storage/GlobalData.mjs";
-import Template from "deepJS/util/Template.mjs";
-import EventBus from "deepJS/util/EventBus.mjs";
-import Logger from "deepJS/util/Logger.mjs";
-import "deepJS/ui/Tooltip.mjs";
-import TrackerLocalState from "util/LocalState.mjs";
-import Logic from "util/Logic.mjs";
-import I18n from "util/I18n.mjs";
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import Template from "/deepJS/util/Template.mjs";
+import EventBus from "/deepJS/util/EventBus.mjs";
+import Logger from "/deepJS/util/Logger.mjs";
+import "/deepJS/ui/Tooltip.mjs";
+import TrackerLocalState from "/script/util/LocalState.mjs";
+import Logic from "/script/util/Logic.mjs";
+import I18n from "/script/util/I18n.mjs";
 
 const TPL = new Template(`
     <style>

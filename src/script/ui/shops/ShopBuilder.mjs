@@ -1,6 +1,6 @@
-import Template from "deepJS/util/Template.mjs";
+import Template from "/deepJS/util/Template.mjs";
 import Dialog from "./ShopItemChoice.mjs";
-import I18n from "util/I18n.mjs";
+import I18n from "/script/util/I18n.mjs";
 import "./ShopEditItem.mjs";
 
 const TPL = new Template(`
