@@ -180,6 +180,7 @@ async function updateFilesForced(client) {
         value: downloadlist.length
     });
     await updateFileList(client, cache, downloadlist);
+    await removeUnusedFiles(client, cache, downloadlist);
     await cache.put(CACHE_INDEX, filelist);
     client.postMessage({
         type: "state",
