@@ -2,8 +2,7 @@ const FILES = [
     "database/items.json",
     "database/locations.json",
     "database/logic.json",
-    "database/settings.json",
-    "database/lang_en.json"
+    "database/settings.json"
 ];
 
 async function loadAll() {
