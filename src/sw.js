@@ -129,6 +129,21 @@ async function checkUpdateAvailable(client) {
     });
 }
 
+async function removeUnusedFiles(client, cache, downloadlist) {
+    client.postMessage({
+        type: "state",
+        msg: "cleaning"
+    });
+    let cache = await caches.open(CACHE_NAME);
+    let filelist = await fetchFile(CACHE_INDEX);
+    let removelist = diff(filelist, downloadlist);
+    let w = [];
+    for (let i in removelist) {
+        w.push(await cache.delete(request));
+    }
+    await Promise.all(w);
+}
+
 async function updateFiles(client) {
     let cache = await caches.open(CACHE_NAME);
     let filelist = await fetchFile(CACHE_INDEX);
@@ -143,6 +158,7 @@ async function updateFiles(client) {
         value: downloadlist.length
     });
     await updateFileList(client, cache, downloadlist);
+    await removeUnusedFiles(client, cache, downloadlist);
     await cache.put(CACHE_INDEX, filelist);
     client.postMessage({
         type: "state",
@@ -224,4 +240,9 @@ async function downloadFile(url, tries = 3) {
     } catch(e) {
         return await downloadFile(url, tries-1);
     }
+}
+
+function diff(a, b) {
+    var c = new Set(b);
+    return a.filter(d =>!c.has(d));
 }

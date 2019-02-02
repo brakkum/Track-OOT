@@ -8,7 +8,7 @@ here is a full list of things that changed:
 
 [GENERAL]
 - switching to es6-modules, classes & custom-elements with shadow-dom (drop support for edge & safari)
-- transpile js and scss with webpack, babel and sass
+- the server now builds using gulp with sass transpiler, that way im taking full advantage of es6 modules
 - added logging to trace bugs more effectively
 - better handling of savestate loading through global events
 - skulltula counter now counting in 10's again, as the rom now tells the count on collect
@@ -64,12 +64,11 @@ also improved system stability to enhance user experience
 [TODO]
 
 = prio 1 =
-- server configuration to only rebuild changed files
 - map needs some visible tools for navigation
 - map needs some bound checks for movement and zoom
-- scrubs on map dont apply to settings
 
 = prio 2 =
+- custom layout (aka build yourself a tracker using mine)
 - implement settings for dungeon status
 
 = prio 3 =

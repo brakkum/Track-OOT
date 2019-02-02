@@ -118,7 +118,7 @@
     },
     "compact": {
         "columns": "min-content minmax(360px, 1fr)",
-        "rows": "min-content minmax(calc(10px + 13 * var(--item-size, 40px)), 1fr)",
+        "rows": "min-content minmax(calc(10px + 6.5 * var(--item-size, 40px)), 1fr)",
         "areas": [
             ["item-grid", "location-list"],
             ["dungeon-status", "location-list"]
@@ -132,7 +132,7 @@
     },
     "flat": {
         "columns": "min-content min-content minmax(360px, 1fr)",
-        "rows": "minmax(calc(10px + 9 * var(--item-size, 40px)), 1fr)",
+        "rows": "minmax(calc(10px + 8 * var(--item-size, 40px)), 1fr)",
         "areas": [
             ["item-grid", "dungeon-status", "location-list"]
         ],
