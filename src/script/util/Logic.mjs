@@ -28,7 +28,7 @@ function checkLogic(logic) {
 }
 
 function getLogic(category, name) {
-    if (DeepLocalStorage.get("settings", "general:use_custom_logic", false)
+    if (DeepLocalStorage.get("settings", "use_custom_logic", false)
     && GlobalData.get("logic_patched").hasOwnProperty(category)
     && GlobalData.get("logic_patched")[category].hasOwnProperty(name)) {
         return GlobalData.get("logic_patched")[category][name];
@@ -58,7 +58,7 @@ class TrackerLogic {
             if (dType === "n") {
                 let res_v = this.checkLogicList(category, name, "v");
                 let res_m = this.checkLogicList(category, name, "mq");
-                if (DeepLocalStorage.get("settings", "general:unknown_dungeon_need_both", true)) {
+                if (DeepLocalStorage.get("settings", "unknown_dungeon_need_both", false)) {
                     return Math.min(res_v, res_m) || res_v || res_m;
                 } else {
                     return Math.max(res_v, res_m);
@@ -70,7 +70,7 @@ class TrackerLogic {
         let canGet = 0;
         let unopened = 0;
         for (let i in list) {
-            if (!list[i].mode || list[i].mode != "scrubsanity" || TrackerLocalState.read("settings", "options:scrubsanity", false)) {
+            if (!list[i].mode || list[i].mode != "scrubsanity" || TrackerLocalState.read("options", "scrubsanity", false)) {
                 if (!TrackerLocalState.read(category, i, 0)) {
                     unopened++;
                     if (this.checkLogic(category, i)) {
