@@ -34,7 +34,7 @@ async function run() {
 run();
 
 function translate(index) {
-    if (!!data.lang[index]) {
+    if (!!data.lang && !!data.lang[index]) {
         return data.lang[index];
     }
     if (typeof index != "string") {
