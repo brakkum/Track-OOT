@@ -18197,8 +18197,42 @@
             "el": "can_become_adult"
         },
         "dodongo_east_corridor_bombable": {
-            "type": "mixin",
-            "el": "can_blast_or_smash"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        },
+                        {
+                            "type": "item",
+                            "el": "slingshot"
+                        },
+                        {
+                            "type": "item",
+                            "el": "boomerang"
+                        },
+                        {
+                            "type": "item",
+                            "el": "sword_kokiri"
+                        },
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        }
+                    ]
+                }
+            ]
         },
         "dodongo_east_corridor_scarecrow_adult": {
             "type": "and",
