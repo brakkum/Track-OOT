@@ -134,8 +134,8 @@ async function removeUnusedFiles(client, cache, downloadlist) {
         type: "state",
         msg: "cleaning"
     });
-    let filelist = await fetchFile(CACHE_INDEX);
-    let removelist = diff(await filelist.json(), downloadlist);
+    let filelist = (await cache.keys()).map(e => e.url);
+    let removelist = diff(filelist, downloadlist);
     let w = [];
     for (let i in removelist) {
         w.push(await cache.delete(removelist[i]));
