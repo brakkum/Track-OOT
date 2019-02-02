@@ -138,7 +138,7 @@ async function removeUnusedFiles(client, cache, downloadlist) {
     let removelist = diff(await filelist.json(), downloadlist);
     let w = [];
     for (let i in removelist) {
-        w.push(await cache.delete(request));
+        w.push(await cache.delete(removelist[i]));
     }
     await Promise.all(w);
 }
@@ -150,14 +150,15 @@ async function updateFiles(client) {
         type: "state",
         msg: "check_update"
     });
-    let downloadlist = await checkUpdateNeeded(cache, await filelist.clone().json());
+    let allfileslist = await filelist.clone().json();
+    let downloadlist = await checkUpdateNeeded(cache, allfileslist);
     client.postMessage({
         type: "state",
         msg: "need_download",
         value: downloadlist.length
     });
     await updateFileList(client, cache, downloadlist);
-    await removeUnusedFiles(client, cache, downloadlist);
+    await removeUnusedFiles(client, cache, allfileslist);
     await cache.put(CACHE_INDEX, filelist);
     client.postMessage({
         type: "state",
