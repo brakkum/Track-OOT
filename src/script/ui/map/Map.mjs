@@ -23,6 +23,7 @@ const TPL = new Template(`
             user-select: none;
         }
         #map-wrapper {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -31,8 +32,8 @@ const TPL = new Template(`
         }
         #map {
             display: block;
-            width: 825px;
-            height: 466px;
+            width: 820px;
+            height: 460px;
             flex-shrink: 0;
             background-repeat: no-repeat;
             background-size: 100%;
@@ -42,15 +43,104 @@ const TPL = new Template(`
             transform-origin: center;
             transform: translate(calc(var(--map-offset-x, 0) * 1px), calc(var(--map-offset-y, 0) * 1px)) scale(var(--map-zoom, 1));
         }
+        #map-settings {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            right: 0;
+            bottom: -164px;
+            width: 250px;
+            height: 164px;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            border-style: solid;
+            border-width: 2px;
+            border-color: var(--page-border-color-inverted, #ffffff);
+            transition: bottom 1s;
+        }
+        #map-settings.active {
+            bottom: 0;
+        }
+        #toggle-button {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            right: 0;
+            top: -42px;
+            width: 40px;
+            height: 40px;
+            font-size: 30px;
+            font-weight: bold;
+            color: var(--navigation-text-color, #000000);
+            background: var(--navigation-background-color, #ffffff);
+            cursor: pointer;
+        }
+        #map-zoom {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            padding: 0 8px;
+        }
+        #map-scale-slider {
+            flex: 1;
+            height: 7px;
+            margin-left: 8px;
+            -webkit-appearance: none;
+            background: #cb9c3d;
+        }
+        #map-scale-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 10px;
+            height: 100%;
+            background: red;
+            cursor: pointer;
+        }
+        #map-scale-slider::-moz-range-thumb {
+            width: 10px;
+            height: 100%;
+            background: red;
+            cursor: pointer;
+        }
+        #map-overview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 138px;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position: center;
+            background-origin: content-box;
+            background-image: url("/images/map.png");
+            overflow: hidden;
+        }
+        #map-viewport {
+            background-color: rgba(255,255,255,0.2);
+            flex-shrink: 0;
+            border: solid 2px red;
+            pointer-events: none;
+        }
     </style>
     <div id="map-wrapper">
         <slot id="map" style="--map-zoom: 1;">
         </slot>
-    <div>
+        <div id="map-settings">
+            <div id="toggle-button">⇑</div>
+            <div id="map-zoom">
+                <span class="slidetext">- / +</span>
+                <input type="range" min="50" max="300" value="100" class="slider" id="map-scale-slider">
+            </div>
+            <div id="map-overview">
+                <div id="map-viewport">
+                </div>
+            </div>
+        </div>
+    </div>
 `);
 
 function mapMoveBegin(event) {
-    if (event.button === 0) {
+    if (event.buttons === 1) {
         let target = event.target;
         if (target.id === "map") {
             target.classList.add("grabbed");
@@ -62,7 +152,7 @@ function mapMoveBegin(event) {
 }
 
 function mapMoveEnd(event) {
-    if (event.button === 0) {
+    if (event.buttons === 1) {
         let target = event.target;
         target.classList.remove("grabbed");
         target.removeEventListener("mousemove", moveMap);
@@ -73,51 +163,70 @@ function mapMoveEnd(event) {
 
 function moveMap(event) {
     // TODO clip translation to boundaries
-    if (event.button === 0) {
+    if (event.buttons === 1) {
         let target = event.target;
         if (target.id === "map") {
-            mapContainBoundaries(target, target.parentNode, event.movementX, event.movementY);
+            let vrtX = parseInt(target.style.getPropertyValue("--map-offset-x") || 0);
+            let vrtY = parseInt(target.style.getPropertyValue("--map-offset-y") || 0);
+            target.style.setProperty("--map-offset-x", vrtX + event.movementX);
+            target.style.setProperty("--map-offset-y", vrtY + event.movementY);
+            mapContainBoundaries(target, target.parentNode);
         }
     }
 }
 
-function mapContainBoundaries(target, parent, moveX = 0, moveY = 0, zoomD = 0, force = false) {
+function mapContainBoundaries(target, parent) {
+    let mapvp = parent.querySelector("#map-viewport");
+
     let parW = parent.clientWidth;
     let parH = parent.clientHeight;
 
     let zoom = parseFloat(target.style.getPropertyValue("--map-zoom") || 1);
-    if (zoomD != 0) {
-        zoom = Math.min(Math.max(0.5, zoom - zoomD), 3);
-        target.style.setProperty("--map-zoom", zoom);
-    }
 
     let vrtX = parseInt(target.style.getPropertyValue("--map-offset-x") || 0);
     let vrtY = parseInt(target.style.getPropertyValue("--map-offset-y") || 0);
     let vrtW = target.clientWidth * zoom;
     let vrtH = target.clientHeight * zoom;
 
-    if (force || moveX != 0 || zoomD != 0) {
-        if (parW > vrtW) {
-            let dst = parW/2-vrtW/2;
-            vrtX = Math.min(Math.max(-dst, vrtX + moveX), dst);
-        } else {
-            let dst = -(parW/2-vrtW/2);
-            vrtX = Math.min(Math.max(-dst, vrtX + moveX), dst);
-        }
-        target.style.setProperty("--map-offset-x", vrtX);
+    if (parW > vrtW) {
+        let dst = parW/2-vrtW/2;
+        vrtX = Math.min(Math.max(-dst, vrtX), dst);
+    } else {
+        let dst = -(parW/2-vrtW/2);
+        vrtX = Math.min(Math.max(-dst, vrtX), dst);
+    }
+    if (parH > vrtH) {
+        let dst = parH/2-vrtH/2;
+        vrtY = Math.min(Math.max(-dst, vrtY), dst);
+    } else {
+        let dst = -(parH/2-vrtH/2);
+        vrtY = Math.min(Math.max(-dst, vrtY), dst);
     }
 
-    if (force || moveY != 0 || zoomD != 0) {
-        if (parH > vrtH) {
-            let dst = parH/2-vrtH/2;
-            vrtY = Math.min(Math.max(-dst, vrtY + moveY), dst);
-        } else {
-            let dst = -(parH/2-vrtH/2);
-            vrtY = Math.min(Math.max(-dst, vrtY + moveY), dst);
-        }
-        target.style.setProperty("--map-offset-y", vrtY);
-    }
+    target.style.setProperty("--map-offset-x", vrtX);
+    target.style.setProperty("--map-offset-y", vrtY);
+
+    let sW = 246 / vrtW * parW;
+    let sH = 138 / vrtH * parH;
+    mapvp.style.width = sW + "px";
+    mapvp.style.height = sH + "px";
+    mapvp.style.transform = `translate(${-vrtX * 246 / vrtW}px, ${-vrtY * 138 / vrtH}px)`;
 }
+
+function overviewSelect(event, map) {
+    if (event.buttons === 1) {
+        let evX = event.layerX;
+        let evY = event.layerY;
+        let zoom = parseFloat(map.style.getPropertyValue("--map-zoom") || 1);
+        let vrtW = map.clientWidth * zoom;
+        let vrtH = map.clientHeight * zoom;
+        map.style.setProperty("--map-offset-x", -(evX - 123) * (vrtW / 246));
+        map.style.setProperty("--map-offset-y", -(evY - 69) * (vrtH / 138));
+        mapContainBoundaries(map, map.parentNode);
+    }
+    event.preventDefault();
+    return false;
+};
 
 class HTMLTrackerMap extends HTMLElement {
 
@@ -126,11 +235,20 @@ class HTMLTrackerMap extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
         let map = this.shadowRoot.getElementById("map");
+        let mapslide = this.shadowRoot.getElementById("map-scale-slider");
         this.addEventListener("wheel", event => {
+            let zoom = parseFloat(map.style.getPropertyValue("--map-zoom") || 1);
             const delta = Math.sign(event.deltaY) / 50;
-            mapContainBoundaries(map, map.parentNode, 0, 0, delta);
+            zoom = Math.min(Math.max(0.5, zoom - delta), 3);
+            mapslide.value = zoom * 100;
+            map.style.setProperty("--map-zoom", zoom);
+            mapContainBoundaries(map, map.parentNode);
             event.preventDefault();
             return false;
+        });
+        mapslide.addEventListener("input", event => {
+            map.style.setProperty("--map-zoom", mapslide.value / 100);
+            mapContainBoundaries(map, map.parentNode);
         });
         map.addEventListener("mousedown", mapMoveBegin);
         EventBus.on("location-mode-change", mode => this.mode = mode);
@@ -138,7 +256,24 @@ class HTMLTrackerMap extends HTMLElement {
         EventBus.onafter("global-update", event => {
             this.attributeChangedCallback("", "");
         });
-        window.addEventListener("resize", e => mapContainBoundaries(map, map.parentNode, 0, 0, 0, true))
+        window.addEventListener("resize", e => {
+            mapContainBoundaries(map, map.parentNode);
+        });
+        let mapview = this.shadowRoot.getElementById("map-overview");
+        mapview.addEventListener("mousedown", event => overviewSelect(event, map));
+        mapview.addEventListener("mousemove", event => overviewSelect(event, map));
+        let settings = this.shadowRoot.getElementById("map-settings");
+        let toggle = this.shadowRoot.getElementById("toggle-button");
+        toggle.addEventListener("click", event => {
+            if (settings.classList.contains("active")) {
+                settings.classList.remove("active");
+                toggle.innerHTML = "⇑";
+            } else {
+                mapContainBoundaries(map, map.parentNode);
+                settings.classList.add("active");
+                toggle.innerHTML = "⇓";
+            }
+        });
     }
 
     get mode() {
