@@ -17,8 +17,8 @@ const TPL = new Template(`
             display: flex;
             align-items: center;
             justify-content: center;
-            min-width: 825px;
-            min-height: 466px;
+            /*min-width: 825px;*/
+            /*min-height: 466px;*/
             user-select: none;
         }
         slot {
