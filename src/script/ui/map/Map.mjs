@@ -14,7 +14,9 @@ const TPL = new Template(`
             box-sizing: border-box;
         }
         :host {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             min-width: 825px;
             min-height: 466px;
             user-select: none;
@@ -39,10 +41,12 @@ const TPL = new Template(`
 function mapMoveBegin(event) {
     if (event.button === 0) {
         let target = event.target;
-        target.classList.add("grabbed");
-        target.addEventListener("mousemove", moveMap);
-        target.addEventListener("mouseup", mapMoveEnd);
-        target.addEventListener("mouseleave", mapMoveEnd);
+        if (target.id === "map") {
+            target.classList.add("grabbed");
+            target.addEventListener("mousemove", moveMap);
+            target.addEventListener("mouseup", mapMoveEnd);
+            target.addEventListener("mouseleave", mapMoveEnd);
+        }
     }
 }
 
@@ -60,11 +64,48 @@ function moveMap(event) {
     // TODO clip translation to boundaries
     if (event.button === 0) {
         let target = event.target;
-        let parent = target.parentNode.host;
-        let valX = parseInt(target.style.getPropertyValue("--map-offset-x") || 0) + event.movementX;
-        let valY = parseInt(target.style.getPropertyValue("--map-offset-y") || 0) + event.movementY;
-        target.style.setProperty("--map-offset-x", valX);
-        target.style.setProperty("--map-offset-y", valY);
+        if (target.id === "map") {
+            let parent = target.parentNode.host;
+            mapContainBoundaries(target, parent, event.movementX, event.movementY);
+        }
+    }
+}
+
+function mapContainBoundaries(target, parent, moveX = 0, moveY = 0, zoomD = 0) {
+    let parW = parent.clientWidth;
+    let parH = parent.clientHeight;
+
+    let zoom = parseFloat(target.style.getPropertyValue("--map-zoom") || 1);
+    if (zoomD != 0) {
+        zoom = Math.min(Math.max(0.5, zoom - zoomD), 3);
+        target.style.setProperty("--map-zoom", zoom);
+    }
+
+    let vrtX = parseInt(target.style.getPropertyValue("--map-offset-x") || 0);
+    let vrtY = parseInt(target.style.getPropertyValue("--map-offset-y") || 0);
+    let vrtW = target.clientWidth * zoom;
+    let vrtH = target.clientHeight * zoom;
+
+    if (moveX != 0 || zoomD != 0) {
+        if (parW > vrtW) {
+            let dst = parW/2-vrtW/2;
+            vrtX = Math.min(Math.max(-dst, vrtX + moveX), dst);
+        } else {
+            let dst = -(parW/2-vrtW/2);
+            vrtX = Math.min(Math.max(-dst, vrtX + moveX), dst);
+        }
+        target.style.setProperty("--map-offset-x", vrtX);
+    }
+
+    if (moveY != 0 || zoomD != 0) {
+        if (parH > vrtH) {
+            let dst = parH/2-vrtH/2;
+            vrtY = Math.min(Math.max(-dst, vrtY + moveY), dst);
+        } else {
+            let dst = -(parH/2-vrtH/2);
+            vrtY = Math.min(Math.max(-dst, vrtY + moveY), dst);
+        }
+        target.style.setProperty("--map-offset-y", vrtY);
     }
 }
 
@@ -78,8 +119,7 @@ class HTMLTrackerMap extends HTMLElement {
         this.addEventListener("wheel", event => {
             let target = this.shadowRoot.children[1];
             const delta = Math.sign(event.deltaY) / 50;
-            let val = parseFloat(this.shadowRoot.children[1].style.getPropertyValue("--map-zoom") || 1) - delta;
-            target.style.setProperty("--map-zoom", Math.min(Math.max(val, 0.5), 3));
+            mapContainBoundaries(target, this, 0, 0, delta);
             event.preventDefault();
             return false;
         });

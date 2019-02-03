@@ -15,12 +15,14 @@
   "scripts": {
     "build": "gulp build",
     "buildDev": "gulp buildDev",
+    "watch": "gulp watch",
     "serve": "serve dev"
   },
   "devDependencies": {
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-changed": "^3.2.0",
+    "gulp-deleted": "^0.0.2",
     "gulp-filelist": "^1.1.1",
     "gulp-htmlmin": "^5.0.1",
     "gulp-jsonminify": "^1.1.0",

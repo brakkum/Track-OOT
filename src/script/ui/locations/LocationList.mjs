@@ -5,6 +5,7 @@ import "/deepJS/ui/selection/SwitchButton.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
 import I18n from "/script/util/I18n.mjs";
 import Logic from "/script/util/Logic.mjs";
+import "../dungeonstate/DungeonType.mjs";
 import "./Location.mjs";
 import "./Gossipstone.mjs";
 
@@ -78,6 +79,24 @@ const TPL = new Template(`
             color: var(--location-status-possible-color, #000000);
         }
     </style>
+    <div id="title">
+        <div id="title-text"></div>
+        <ootrt-dungeontype id="location-type">
+        </ootrt-dungeontype>
+        <deep-switchbutton id="location-era">
+            <option value="" style="background-image: url('images/era_both.svg')"></option>
+            <option value="child" style="background-image: url('images/era_child.svg')"></option>
+            <option value="adult" style="background-image: url('images/era_adult.svg')"></option>
+        </deep-switchbutton>
+        <deep-switchbutton id="location-mode">
+            <option value="chests" style="background-image: url('images/chest.svg')"></option>
+            <option value="skulltulas" style="background-image: url('images/skulltula.svg')"></option>
+            <option value="gossipstones" style="background-image: url('images/gossips.svg')"></option>
+        </deep-switchbutton>
+    </div>
+    <div id="body">
+        
+    </div>
 `);
 
 function translate(value) {
@@ -173,8 +192,10 @@ class HTMLTrackerLocationList extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
             let cnt = this.shadowRoot.getElementById("body");
+            let locationType = this.shadowRoot.getElementById("location-type");
             cnt.innerHTML = "";
             if (this.mode === "gossipstones") {
+                locationType.ref = "";
                 this.shadowRoot.getElementById("title-text").innerHTML = I18n.translate("hyrule");
                 let data = GlobalData.get("locations")["overworld"][`gossipstones_v`];
                 if (!!data) {
@@ -190,6 +211,7 @@ class HTMLTrackerLocationList extends HTMLElement {
             } else {
                 let data = GlobalData.get("locations");
                 if (!this.ref || this.ref === "") {
+                    locationType.ref = "";
                     this.shadowRoot.getElementById("title-text").innerHTML = I18n.translate("hyrule");
                     this.shadowRoot.getElementById("title").className = "";
                     if (!!data) {
@@ -207,27 +229,30 @@ class HTMLTrackerLocationList extends HTMLElement {
                     bck.innerHTML = `(${I18n.translate("back")})`;
                     bck.addEventListener("click", () => this.ref = "");
                     cnt.appendChild(bck);
-                    if (!!this.mode && this.mode !== "") {
-                        data = GlobalData.get("locations")[this.ref];
-                        let dType = TrackerLocalState.read("dungeonTypes", this.ref, data.hasmq ? "n" : "v");
-                        if (dType === "n") {
-                            let v = document.createElement('div');
-                            v.dataset.ref = "v";
-                            v.innerHTML = I18n.translate("vanilla");
-                            v.addEventListener("click", () => {
-                                TrackerLocalState.write("dungeonTypes", this.ref, "v");
-                                this.attributeChangedCallback("", "", this.ref);
-                            });
-                            cnt.appendChild(v);
-                            let mq = document.createElement('div');
-                            mq.dataset.ref = "mq";
-                            mq.innerHTML = I18n.translate("masterquest");
-                            mq.addEventListener("click", () => {
-                                TrackerLocalState.write("dungeonTypes", this.ref, "mq");
-                                this.attributeChangedCallback("", "", this.ref);
-                            });
-                            cnt.appendChild(mq);
-                        } else {
+                    data = GlobalData.get("locations")[this.ref];
+                    let dType = TrackerLocalState.read("dungeonTypes", this.ref, data.hasmq ? "n" : "v");
+                    if (data.hasmq) {
+                        locationType.ref = this.ref;
+                    } else {
+                        locationType.ref = "";
+                    }
+                    if (dType === "n") {
+                        let v = document.createElement('div');
+                        v.dataset.ref = "v";
+                        v.innerHTML = I18n.translate("vanilla");
+                        v.addEventListener("click", () => {
+                            locationType.value = "v";
+                        });
+                        cnt.appendChild(v);
+                        let mq = document.createElement('div');
+                        mq.dataset.ref = "mq";
+                        mq.innerHTML = I18n.translate("masterquest");
+                        mq.addEventListener("click", () => {
+                            locationType.value = "mq";
+                        });
+                        cnt.appendChild(mq);
+                    } else {    
+                        if (!!this.mode && this.mode !== "") {
                             data = data[`${this.mode}_${dType}`];
                             if (!!data) {
                                 Object.keys(data).forEach(i => {

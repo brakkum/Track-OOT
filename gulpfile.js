@@ -20,6 +20,7 @@ const jsonminify   = require('gulp-jsonminify');
 const svgo         = require('gulp-svgo');
 const sass         = require('gulp-sass');
 const changed      = require('gulp-changed');
+const deleted      = require('gulp-deleted');
 const filelist     = require('gulp-filelist');
 const autoprefixer = require('gulp-autoprefixer');
 
@@ -104,12 +105,14 @@ function copySCSS_dev() {
 
 function copyCSS_prod() {
     return gulp.src(PATHS.app.base + "/style/**/*.css")
+        .pipe(autoprefixer())
         .pipe(changed(PATHS.target.prod + "/style"))
         .pipe(gulp.dest(PATHS.target.prod + "/style"));
 }
 
 function copyCSS_dev() {
     return gulp.src(PATHS.app.base + "/style/**/*.css")
+        .pipe(autoprefixer())
         .pipe(changed(PATHS.target.dev + "/style"))
         .pipe(gulp.dest(PATHS.target.dev + "/style"));
 }
@@ -239,3 +242,27 @@ exports.buildDev = gulp.series(
     ),
     writeTOC_dev
 );
+
+exports.watch = function() {
+    return gulp.watch(
+        PATHS.app.base + "/**/*",
+        gulp.series(
+            gulp.parallel(
+                copyHTML_dev,
+                copyJSON_dev,
+                copyI18N_dev,
+                copyImg_dev,
+                copySCSS_dev,
+                copyCSS_dev,
+                copyFonts_dev,
+                copyAppJS_dev,
+                copyDeepJS_dev,
+                copyVendorJS_dev,
+                copyOldJS_dev,
+                copySW_dev,
+                copyChangelog_dev
+            ),
+            writeTOC_dev
+        )
+    );
+}
