@@ -15,16 +15,25 @@ const TPL = new Template(`
         }
         :host {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: stretch;
+            justify-content: stretch;
+            width: 100%;
             /*min-width: 825px;*/
             /*min-height: 466px;*/
             user-select: none;
         }
-        slot {
+        #map-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            overflow: hidden;
+        }
+        #map {
             display: block;
             width: 825px;
             height: 466px;
+            flex-shrink: 0;
             background-repeat: no-repeat;
             background-size: 100%;
             background-position: center;
@@ -34,8 +43,10 @@ const TPL = new Template(`
             transform: translate(calc(var(--map-offset-x, 0) * 1px), calc(var(--map-offset-y, 0) * 1px)) scale(var(--map-zoom, 1));
         }
     </style>
-    <slot id="map" style="--map-zoom: 1;">
-    </slot>
+    <div id="map-wrapper">
+        <slot id="map" style="--map-zoom: 1;">
+        </slot>
+    <div>
 `);
 
 function mapMoveBegin(event) {
@@ -65,13 +76,12 @@ function moveMap(event) {
     if (event.button === 0) {
         let target = event.target;
         if (target.id === "map") {
-            let parent = target.parentNode.host;
-            mapContainBoundaries(target, parent, event.movementX, event.movementY);
+            mapContainBoundaries(target, target.parentNode, event.movementX, event.movementY);
         }
     }
 }
 
-function mapContainBoundaries(target, parent, moveX = 0, moveY = 0, zoomD = 0) {
+function mapContainBoundaries(target, parent, moveX = 0, moveY = 0, zoomD = 0, force = false) {
     let parW = parent.clientWidth;
     let parH = parent.clientHeight;
 
@@ -86,7 +96,7 @@ function mapContainBoundaries(target, parent, moveX = 0, moveY = 0, zoomD = 0) {
     let vrtW = target.clientWidth * zoom;
     let vrtH = target.clientHeight * zoom;
 
-    if (moveX != 0 || zoomD != 0) {
+    if (force || moveX != 0 || zoomD != 0) {
         if (parW > vrtW) {
             let dst = parW/2-vrtW/2;
             vrtX = Math.min(Math.max(-dst, vrtX + moveX), dst);
@@ -97,7 +107,7 @@ function mapContainBoundaries(target, parent, moveX = 0, moveY = 0, zoomD = 0) {
         target.style.setProperty("--map-offset-x", vrtX);
     }
 
-    if (moveY != 0 || zoomD != 0) {
+    if (force || moveY != 0 || zoomD != 0) {
         if (parH > vrtH) {
             let dst = parH/2-vrtH/2;
             vrtY = Math.min(Math.max(-dst, vrtY + moveY), dst);
@@ -117,9 +127,8 @@ class HTMLTrackerMap extends HTMLElement {
         this.shadowRoot.appendChild(TPL.generate());
         let map = this.shadowRoot.getElementById("map");
         this.addEventListener("wheel", event => {
-            let target = this.shadowRoot.children[1];
             const delta = Math.sign(event.deltaY) / 50;
-            mapContainBoundaries(target, this, 0, 0, delta);
+            mapContainBoundaries(map, map.parentNode, 0, 0, delta);
             event.preventDefault();
             return false;
         });
@@ -129,6 +138,7 @@ class HTMLTrackerMap extends HTMLElement {
         EventBus.onafter("global-update", event => {
             this.attributeChangedCallback("", "");
         });
+        window.addEventListener("resize", e => mapContainBoundaries(map, map.parentNode, 0, 0, 0, true))
     }
 
     get mode() {
