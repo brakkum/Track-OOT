@@ -44,6 +44,8 @@ here is a full list of things that changed:
 - added custom elements for shop view and editor
 - added custom elements for gossipstones
 - switch for child/adult/both era added
+- added setting to decide, if an unknown dungeon type means both types are required, or just one of them
+- remaining chests / skulltulas now count min and max values if a dungeon is not defined
 
 [UTILS]
 - added event bus for communication between modules
