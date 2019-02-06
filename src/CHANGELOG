@@ -36,6 +36,7 @@ here is a full list of things that changed:
 - added custom element for map
     - map is now zoomable through mouse wheel
     - map can now be dragged around
+    - a map overview was implemented to ease the use on smaller screens
 - added custom elements for poi's
     - poi's now have different looks
     - improved tooltips for map
@@ -63,12 +64,8 @@ also improved system stability to enhance user experience
 
 [TODO]
 
-= prio 1 =
-- map needs some visible tools for navigation
-- map needs some bound checks for movement and zoom
-
 = prio 2 =
-- custom layout (aka build yourself a tracker using mine)
+- custom layout (aka build yourself a tracker)
 - implement settings for dungeon status
 
 = prio 3 =
