@@ -40,6 +40,10 @@
             "type": "check",
             "default": false
         },
+        "unknown_dungeon_need_both": {
+            "type": "check",
+            "default": false
+        },
         "use_custom_logic": {
             "type": "check",
             "default": false
@@ -67,6 +71,10 @@
             "default": false
         },
         "scrubsanity": {
+            "type": "check",
+            "default": false
+        },
+        "skullsanity": {
             "type": "check",
             "default": false
         },

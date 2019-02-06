@@ -821,6 +821,7 @@ font=Select Font
 layout=Select Layout
 item_size=Item Size
 show_hint_badges=Show accessible badges
+unknown_dungeon_need_both=Need both V and MQ for unknown dungeon type
 use_custom_logic=Use custom logic
 edit_custom_logic=Edit custom logic
 button_edit_logic=edit
@@ -828,18 +829,19 @@ erase_all_data=Erase all stored data
 button_erase_data=erase
 
 ; SETTINGS - ROM OPTIONS
-consider_buyable=Check for buyable Items (Tunics / Bombchus)
+consider_buyable=Consider buyable Items (Tunics / Wasteland Bombchus) in logic
 bombchu_logic=Consider Bombchus in logic
-keysanity=Keysanity / Multiplayer
+keysanity=Consider keys in logic
 scrubsanity=Scrubsanity
-doors_open_forest=Open Forest (WIP)
-doors_open_mountain=Open Mountain Trail Gate (WIP)
-doors_open_temple=Open Temple of Time (WIP)
-doors_open_zora=Open Zoras Fountain (WIP)
+skullsanity=Skullsanity (do not autocount) [WIP]
+doors_open_forest=Open Forest [WIP]
+doors_open_mountain=Open Mountain Trail Gate [WIP]
+doors_open_temple=Open Temple of Time [WIP]
+doors_open_zora=Open Zoras Fountain
 gerudo_fortress_open=Gerudo Fortress behavior
 ganon_castle_open=Ganons Castle entry
 ganon_boss_door_open=Open Ganon Boss Door
-trade_sequence_start_item=Start Trading Sequence at (WIP)
+trade_sequence_start_item=Start adult trading sequence at
 
 ; SETTINGS - SKIPS
 man_on_roof=Man on roof without Hookshot

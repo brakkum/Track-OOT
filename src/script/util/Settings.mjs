@@ -219,7 +219,7 @@ function getSettings() {
 }
     
 function applySettingsChoices() {
-    var viewpane = document.getElementById("viewpane");
+    var viewpane = document.getElementById("content");
     viewpane.setAttribute("data-font", DeepLocalStorage.get("settings", "font", ""));
     document.querySelector("#layout-container").setAttribute("layout", DeepLocalStorage.get("settings", "layout", "map-compact"));
     document.body.style.setProperty("--item-size", DeepLocalStorage.get("settings", "itemsize", 40));
