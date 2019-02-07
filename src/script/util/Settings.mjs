@@ -241,7 +241,7 @@ function applySettingsChoices() {
         document.body.setAttribute("data-scrubsanity", "false");
     }
     if (DeepLocalStorage.get("settings", "use_custom_logic", false)) {
-        GlobalData.set("logic_patched", LocalStorage.get("settings", "logic", {}));
+        GlobalData.set("logic_patched", DeepLocalStorage.get("settings", "logic", {}));
     }
 }
 
