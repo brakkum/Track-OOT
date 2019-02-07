@@ -24,10 +24,17 @@ import "/deepJS/ui/Icon.mjs";
 import "/deepJS/ui/selection/ChoiceSelect.mjs";
 
 (async function main() {
-    Logger.setOutput(document.getElementById("tracker-log"));
 
     await loadData();
     await I18n.load("en_us");
+
+    if (!!GlobalData.get("version").dev) {
+        Logger.setOutput(document.getElementById("tracker-log"));
+        EventBus.logEvents(true);
+    } else {
+        document.getElementById("tab_log_top").style.display = "none";
+        document.getElementById("tab_log_bottom").style.display = "none";
+    }
 
     addHTMLModule('ootrt-itemgrid', "item-grid");
     addHTMLModule('ootrt-dungeonstate', "dungeon-status").setAttribute("active", "key bosskey map compass type reward");
@@ -37,7 +44,6 @@ import "/deepJS/ui/selection/ChoiceSelect.mjs";
     document.getElementById("view-choice-top").onchange = changeView;
     document.getElementById("view-choice-bottom").onchange = changeView;
     changeView({oldValue:"",newValue:document.getElementById("view-choice-bottom").value});
-    EventBus.logEvents(true);
 
     await Promise.all([
         importModule("/script/ui/shops/ShopList.mjs"),
