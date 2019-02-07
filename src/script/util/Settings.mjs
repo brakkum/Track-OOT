@@ -202,7 +202,7 @@ settings.addEventListener('close', function(event) {
 
 window.onfocus = function(ev) {
     if (DeepLocalStorage.get("settings", "use_custom_logic", false)) {
-        GlobalData.set("logic_patched", LocalStorage.get("settings", "logic", {}));
+        GlobalData.set("logic_patched", DeepLocalStorage.get("settings", "logic", {}));
         EventBus.post("global-update");
     }
 }
