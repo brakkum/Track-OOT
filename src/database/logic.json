@@ -340,6 +340,46 @@
                                     "el": "medallion_light"
                                 }
                             ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "option",
+                                    "el": "ganon_castle_open",
+                                    "value": "ganon_castle_open_stones"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "stone_forest"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "stone_fire"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "stone_water"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "option",
+                                    "el": "ganon_castle_open",
+                                    "value": "ganon_castle_open_skulltulas"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "skulltula"
+                                    },
+                                    "value": 100
+                                }
+                            ]
                         }
                     ]
                 }
