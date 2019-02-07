@@ -17,6 +17,7 @@ here is a full list of things that changed:
 - trade sequence starting point added to settings
 - added switch for mq/vanilla to location list title
 - added target player to shop slots
+- added ganon castle options 3 spiritual stones and 100 skulltulas
 
 [DATA]
 - changed language file to .ini but with the .lang extension (better readability & supporting comments)
@@ -68,7 +69,15 @@ also improved system stability to enhance user experience
 
 = prio 2 =
 - custom layout (aka build yourself a tracker)
-- implement settings for dungeon status
+- implement settings for dungeon status control
+- custom element for selection lists (list-select)
+    - actual list, not dropdown
+    - multiselect possibility
+- custom element using 2 list-select
+    - add search options
+    - 1 list with deactivated elements
+    - 1 list with activated elements
+    - buttons for (de-)activating elements
 
 = prio 3 =
 - reimplement logic editor
