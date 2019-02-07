@@ -200,6 +200,13 @@ settings.addEventListener('close', function(event) {
     showUpdatePopup = true;
 });
 
+window.onfocus = function(ev) {
+    if (DeepLocalStorage.get("settings", "use_custom_logic", false)) {
+        GlobalData.set("logic_patched", LocalStorage.get("settings", "logic", {}));
+        EventBus.post("global-update");
+    }
+}
+
 function getSettings() {
     let options = GlobalData.get("settings");
     let res = {};
@@ -232,6 +239,9 @@ function applySettingsChoices() {
         document.body.setAttribute("data-scrubsanity", "true");
     } else {
         document.body.setAttribute("data-scrubsanity", "false");
+    }
+    if (DeepLocalStorage.get("settings", "use_custom_logic", false)) {
+        GlobalData.set("logic_patched", LocalStorage.get("settings", "logic", {}));
     }
 }
 
