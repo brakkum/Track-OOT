@@ -284,7 +284,9 @@ function applySettingsChoices() {
                             window.open("editor.html", '_blank');
                         });
                     } else if (j == "erase_all_data") {
-                        settings.addButton(i, label, j, I18n.translate(val.text), e => {});
+                        settings.addButton(i, label, j, I18n.translate(val.text), e => {
+                            window.open("uninstall.html");
+                        });
                     }
                 break;
             }
