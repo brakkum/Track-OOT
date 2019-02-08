@@ -6,7 +6,7 @@ const PATHS = {
         js: "./src/script",
         css: "./src/style/app.scss"
     },
-    deepJS: "node_modules/deepJS",
+    deepJS: "node_modules/deepjs-modules",
     target: {
         dev: "./dev",
         prod: "./prod"

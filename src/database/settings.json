@@ -31,13 +31,15 @@
             ]
         },
         "item_size": {
-            "type": "range",
+            "type": "hidden",
+            "old_type": "range",
             "min": 32,
             "max": 64,
             "default": 40
         },
         "show_hint_badges": {
-            "type": "check",
+            "type": "hidden",
+            "old_type": "check",
             "default": false
         },
         "unknown_dungeon_need_both": {
@@ -143,71 +145,84 @@
                 "claim"
             ]
         },
+        "trials": {
+            "type": "list",
+            "values": [
+                "forest_trial",
+                "water_trial",
+                "shadow_trial",
+                "fire_trial",
+                "light_trial",
+                "spirit_trial"
+            ],
+            "default": [
+                "forest_trial",
+                "water_trial",
+                "shadow_trial",
+                "fire_trial",
+                "light_trial",
+                "spirit_trial"
+            ]
+        },
         "forest_trial": {
-            "type": "check",
+            "type": "hidden",
             "default": true
         },
         "water_trial": {
-            "type": "check",
+            "type": "hidden",
             "default": true
         },
         "shadow_trial": {
-            "type": "check",
+            "type": "hidden",
             "default": true
         },
         "fire_trial": {
-            "type": "check",
+            "type": "hidden",
             "default": true
         },
         "light_trial": {
-            "type": "check",
+            "type": "hidden",
             "default": true
         },
         "spirit_trial": {
-            "type": "check",
+            "type": "hidden",
             "default": true
         },
         "ganon_boss_door_open": {
            "type": "check",
            "default": false
-       }
+        }
     },
     "skips": {
-        "man_on_roof": {
-            "type": "check",
-            "default": false
-        },
-        "child_deadhand": {
-            "type": "check",
-            "default": false
-        },
-        "dodongo_spike": {
-            "type": "check",
-            "default": false
-        },
-        "windmill_hp": {
-            "type": "check",
-            "default": false
-        },
-        "crater_bean_hp": {
-            "type": "check",
-            "default": false
-        },
-        "zora_cucco": {
-            "type": "check",
-            "default": false
-        },
-        "zora_hover": {
-            "type": "check",
-            "default": false
-        },
-        "fewer_tunic": {
-            "type": "check",
-            "default": false
-        },
-        "morpha_scale": {
-            "type": "check",
-            "default": true
+        "tricks": {
+            "type": "list",
+            "values": [
+                "morpha_scale",
+                "fewer_tunic",
+                "child_deadhand",
+                "man_on_roof",
+                "dodongo_staircase",
+                "dodongo_spike",
+                "gerudo_kitchen",
+                "deku_vine_gs",
+                "hammer_through_wall",
+                "botw_strength_sticks",
+                "fotmq_puzzle_bombchu",
+                "spt_child_bridge_bombchu",
+                "windmill_hp",
+                "crater_bean_hp",
+                "gtgmq_silver_hook",
+                "fot_east_vines_hook",
+                "fotmq_well_hook",
+                "dm_bomb_strength",
+                "wt_bosskey_noitem",
+                "forest_adult_gs_hover",
+                "sptmq_frozen_nofire",
+                "fitmq_bosskey_nobow",
+                "zora_cucco",
+                "zora_hover"
+            ],
+            "default": []
         },
         "lens_required": {
             "type": "choice",
@@ -217,6 +232,102 @@
                 "lens_required_wasteland",
                 "lens_required_default"
             ]
+        },
+        "morpha_scale": {
+            "type": "hidden",
+            "default": false
+        },
+        "fewer_tunic": {
+            "type": "hidden",
+            "default": false
+        },
+        "child_deadhand": {
+            "type": "hidden",
+            "default": false
+        },
+        "man_on_roof": {
+            "type": "hidden",
+            "default": false
+        },
+        "dodongo_staircase": {
+            "type": "hidden",
+            "default": false
+        },
+        "dodongo_spike": {
+            "type": "hidden",
+            "default": false
+        },
+        "gerudo_kitchen": {
+            "type": "hidden",
+            "default": false
+        },
+        "deku_vine_gs": {
+            "type": "hidden",
+            "default": false
+        },
+        "hammer_through_wall": {
+            "type": "hidden",
+            "default": false
+        },
+        "botw_strength_sticks": {
+            "type": "hidden",
+            "default": false
+        },
+        "fotmq_puzzle_bombchu": {
+            "type": "hidden",
+            "default": false
+        },
+        "spt_child_bridge_bombchu": {
+            "type": "hidden",
+            "default": false
+        },
+        "windmill_hp": {
+            "type": "hidden",
+            "default": false
+        },
+        "crater_bean_hp": {
+            "type": "hidden",
+            "default": false
+        },
+        "gtgmq_silver_hook": {
+            "type": "hidden",
+            "default": false
+        },
+        "fot_east_vines_hook": {
+            "type": "hidden",
+            "default": false
+        },
+        "fotmq_well_hook": {
+            "type": "hidden",
+            "default": false
+        },
+        "dm_bomb_strength": {
+            "type": "hidden",
+            "default": false
+        },
+        "wt_bosskey_noitem": {
+            "type": "hidden",
+            "default": false
+        },
+        "forest_adult_gs_hover": {
+            "type": "hidden",
+            "default": false
+        },
+        "sptmq_frozen_nofire": {
+            "type": "hidden",
+            "default": false
+        },
+        "fitmq_bosskey_nobow": {
+            "type": "hidden",
+            "default": false
+        },
+        "zora_cucco": {
+            "type": "hidden",
+            "default": false
+        },
+        "zora_hover": {
+            "type": "hidden",
+            "default": false
         }
     }
 }

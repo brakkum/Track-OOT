@@ -1,9 +1,7 @@
 {
   "license": "UNLICENSED",
   "private": true,
-  "dependencies": {
-    "deepJS": "https://bitbucket.org/2deep4real/deepjs.git#0.0.4"
-  },
+  "dependencies": {},
   "browserslist": [
     "ff >= 63",
     "Chrome >= 61",
@@ -19,6 +17,7 @@
     "serve": "serve dev"
   },
   "devDependencies": {
+    "deepjs-modules": "^0.0.6",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-changed": "^3.2.0",

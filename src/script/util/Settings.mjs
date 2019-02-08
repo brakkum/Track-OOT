@@ -188,7 +188,21 @@ settings.addEventListener('submit', function(event) {
             if (i === "settings") {
                 DeepLocalStorage.set(i, j, event.data[i][j]);
             } else {
-                TrackerLocalState.write(i, j, event.data[i][j]);
+                if (j === "tricks" || j === "trials") {
+                    let v = event.data[i][j];
+                    if (v.length > 0) {
+                        v = new Set(v.split(","));
+                        GlobalData.get("settings")[i][j].values.forEach(el => {
+                            TrackerLocalState.write(i, el, v.has(el));
+                        });
+                    } else {
+                        GlobalData.get("settings")[i][j].values.forEach(el => {
+                            TrackerLocalState.write(i, el, false);
+                        });
+                    }
+                } else {
+                    TrackerLocalState.write(i, j, event.data[i][j]);
+                }
             }
         }
     }
@@ -212,13 +226,34 @@ function getSettings() {
     let res = {};
     for (let i in options) {
         res[i] = res[i] || {};
-        if (i === "settings") {
-            for (let j in options[i]) {
-                res[i][j] = DeepLocalStorage.get(i, j, options[i][j].default);
-            }
-        } else {
-            for (let j in options[i]) {
-                res[i][j] = TrackerLocalState.read(i, j, options[i][j].default);
+        for (let j in options[i]) {
+            if (options[i][j].type === "hidden") continue;
+            if (i === "settings") {
+                if (options[i][j].type === "list") {
+                    let def = new Set(options[i][j].default);
+                    let val = [];
+                    options[i][j].values.forEach(el => {
+                        if (DeepLocalStorage.get(i, el, def.has(el))) {
+                            val.push(el);
+                        }
+                    });
+                    res[i][j] = val.join(",");
+                } else {
+                    res[i][j] = DeepLocalStorage.get(i, j, options[i][j].default);
+                }
+            } else {
+                if (options[i][j].type === "list") {
+                    let def = new Set(options[i][j].default);
+                    let val = [];
+                    options[i][j].values.forEach(el => {
+                        if (TrackerLocalState.read(i, el, def.has(el))) {
+                            val.push(el);
+                        }
+                    });
+                    res[i][j] = val.join(",");
+                } else {
+                    res[i][j] = TrackerLocalState.read(i, j, options[i][j].default);
+                }
             }
         }
     }
@@ -245,6 +280,18 @@ function applySettingsChoices() {
     }
 }
 
+function convertValueList(values = [], names = []) {
+    let opt = {};
+    for (let k in values) {
+        if (names.hasOwnProperty(k)) {
+            opt[values[k]] = I18n.translate(names[k]);
+        } else {
+            opt[values[k]] = I18n.translate(values[k]);
+        }
+    }
+    return opt;
+}
+
 !function() {
     let options = GlobalData.get("settings");
     for (let i in options) {
@@ -268,15 +315,10 @@ function applySettingsChoices() {
                     settings.addCheckInput(i, label, j, val.default);
                 break;
                 case "choice":
-                    let opt = {};
-                    for (let k in val.values) {
-                        if (val.hasOwnProperty("names") && val.names.hasOwnProperty(k)) {
-                            opt[val.values[k]] = I18n.translate(val.names[k]);
-                        } else {
-                            opt[val.values[k]] = I18n.translate(val.values[k]);
-                        }
-                    }
-                    settings.addChoiceInput(i, label, j, val.default, opt);
+                    settings.addChoiceInput(i, label, j, val.default, convertValueList(val.values, val.names));
+                break;
+                case "list":
+                    settings.addListSelectInput(i, label, j, val.default.join(","), true, convertValueList(val.values, val.names));
                 break;
                 case "button":
                     if (j == "edit_custom_logic") {
