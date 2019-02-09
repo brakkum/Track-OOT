@@ -340,46 +340,6 @@
                                     "el": "medallion_light"
                                 }
                             ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "option",
-                                    "el": "ganon_castle_open",
-                                    "value": "ganon_castle_open_stones"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "stone_forest"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "stone_fire"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "stone_water"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "option",
-                                    "el": "ganon_castle_open",
-                                    "value": "ganon_castle_open_skulltulas"
-                                },
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "skulltula"
-                                    },
-                                    "value": 100
-                                }
-                            ]
                         }
                     ]
                 }
@@ -1162,10 +1122,6 @@
             "type": "or",
             "el": [
                 {
-                    "type": "option",
-                    "el": "doors_open_mountain"
-                },
-                {
                     "type": "and",
                     "el": [
                         {
@@ -1176,29 +1132,20 @@
                             "type": "or",
                             "el": [
                                 {
+                                    "type": "option",
+                                    "el": "doors_open_mountain"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
                                     "type": "min",
                                     "el": {
                                         "type": "item",
                                         "el": "egg"
                                     },
                                     "value": 3
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "has_explosives"
-                                },
-                                {
-                                    "type": "and",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "magic_din"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "magic_power"
-                                        }
-                                    ]
                                 }
                             ]
                         }
@@ -1206,7 +1153,20 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "can_become_adult"
+                    "el": "can_blast_or_smash"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "magic_din"
+                        },
+                        {
+                            "type": "item",
+                            "el": "magic_power"
+                        }
+                    ]
                 }
             ]
         },
@@ -8716,16 +8676,30 @@
                     "type": "and",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "ocarina"
-                        },
-                        {
-                            "type": "item",
-                            "el": "song_time"
-                        },
-                        {
                             "type": "mixin",
                             "el": "can_become_adult"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "skip",
+                                    "el": "windmill_hp"
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "song_time"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "ocarina"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
@@ -8741,10 +8715,6 @@
                             "el": "can_leave_forest"
                         }
                     ]
-                },
-                {
-                    "type": "skip",
-                    "el": "windmill_hp"
                 }
             ]
         },
@@ -19354,25 +19324,97 @@
             ]
         },
         "temple_spirit_childsegment_sun_room": {
-            "type": "and",
+            "type": "or",
             "el": [
                 {
-                    "type": "mixin",
-                    "el": "spirit_temple_access"
-                },
-                {
-                    "type": "or",
+                    "type": "and",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "item",
+                            "el": "ocarina"
                         },
                         {
                             "type": "item",
-                            "el": "key_small_spirit"
+                            "el": "warp_spirit"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_child_attack"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "option",
+                                        "el": "keysanity"
+                                    }
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "key_small_spirit"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "spirit_temple_access"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "glove"
+                            },
+                            "value": 2
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "option",
+                                        "el": "keysanity"
+                                    }
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": 2
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "bombchu_logic"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": 3
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }

@@ -77,7 +77,8 @@
             "default": false
         },
         "skullsanity": {
-            "type": "check",
+            "type": "hidden",
+            "old_type": "check",
             "default": false
         },
         "doors_open_forest": {
