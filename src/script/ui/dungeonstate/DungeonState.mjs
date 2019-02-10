@@ -1,5 +1,6 @@
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
+import I18n from "/script/util/I18n.mjs";
 import "./DungeonReward.mjs";
 import "./DungeonType.mjs";
 
@@ -163,6 +164,7 @@ function createRow(data) {
         itm.setAttribute("type", "key");
         types.push("key");
         itm.setAttribute('ref', data.keys);
+        itm.title = I18n.translate(data.keys);
         el.appendChild(itm);
     } else {
         let itm = createItemPlaceholder();
@@ -178,6 +180,7 @@ function createRow(data) {
         itm.setAttribute("type", "bosskey");
         types.push("bosskey");
         itm.setAttribute('ref', data.bosskey);
+        itm.title = I18n.translate(data.bosskey);
         el.appendChild(itm);
     } else {
         let itm = createItemPlaceholder();
@@ -193,6 +196,7 @@ function createRow(data) {
         itm.setAttribute("type", "map");
         types.push("map");
         itm.setAttribute('ref', data.map);
+        itm.title = I18n.translate(data.map);
         el.appendChild(itm);
     } else {
         let itm = createItemPlaceholder();
@@ -208,6 +212,7 @@ function createRow(data) {
         itm.setAttribute("type", "compass");
         types.push("compass");
         itm.setAttribute('ref', data.compass);
+        itm.title = I18n.translate(data.compass);
         el.appendChild(itm);
     } else {
         let itm = createItemPlaceholder();
@@ -223,6 +228,7 @@ function createRow(data) {
         itm.setAttribute("type", "reward");
         types.push("reward");
         itm.setAttribute('ref', data.ref);
+        itm.title = I18n.translate(data.ref) + I18n.translate("dun_reward");
         el.appendChild(itm);
     } else {
         let itm = createItemPlaceholder();
@@ -238,6 +244,7 @@ function createRow(data) {
         itm.setAttribute("type", "type");
         types.push("type");
         itm.setAttribute('ref', data.ref);
+        itm.title = I18n.translate(data.ref) + I18n.translate("dun_type");
         el.appendChild(itm);
     } else {
         let itm = createItemPlaceholder();

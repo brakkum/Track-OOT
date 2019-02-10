@@ -28,6 +28,7 @@ const TPL = new Template(`
             display: flex;
             flex: 1;
             align-items: center;
+            -moz-user-select: none;
             user-select: none;
             color: var(--location-status-unavailable-color, #000000);
         }

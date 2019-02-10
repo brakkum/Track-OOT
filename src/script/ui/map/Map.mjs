@@ -20,7 +20,9 @@ const TPL = new Template(`
             width: 100%;
             /*min-width: 825px;*/
             /*min-height: 466px;*/
+            -moz-user-select: none;
             user-select: none;
+            overflow: hidden;
         }
         #map-wrapper {
             position: relative;

@@ -1,5 +1,6 @@
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
+import I18n from "/script/util/I18n.mjs";
 import "./Item.mjs";
 
 const TPL = new Template(`
@@ -53,6 +54,7 @@ class HTMLTrackerItemGrid extends HTMLElement {
                     cnt.appendChild(createItemText(j.slice(5)));
                 } else {
                     let itm = document.createElement('ootrt-item');
+                    itm.title = I18n.translate(j);
                     itm.setAttribute('ref', j);
                     cnt.appendChild(itm);
                 }

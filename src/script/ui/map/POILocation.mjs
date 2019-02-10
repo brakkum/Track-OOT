@@ -15,6 +15,7 @@ const TPL = new Template(`
             width: 16px;
             height: 16px;
             box-sizing: border-box;
+            -moz-user-select: none;
             user-select: none;
             transform: translate(-8px, -8px);
         }
@@ -49,6 +50,7 @@ const TPL = new Template(`
         #text {
             display: flex;
             align-items: center;
+            -moz-user-select: none;
             user-select: none;
             white-space: nowrap;
         }

@@ -52,6 +52,7 @@ const TPL = new Template(`
         }
         #tooltip {
             padding: 10px;
+            -moz-user-select: none;
             user-select: none;
             white-space: nowrap;
         }
