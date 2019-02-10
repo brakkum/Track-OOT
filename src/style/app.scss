@@ -1,0 +1,127 @@
+$mobile-switch: 500px;
+
+@import "theme.css";
+@import "tracker/navigation";
+@import "tracker/fonts";
+@import "inputs";
+@import "utils/dialog";
+
+#viewpane {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    background-color: var(--page-background-color, #000000);
+    color: var(--page-text-color, #ffffff);
+
+    * {
+        user-select: none;
+    }
+
+    #content {
+        display: flex;
+        
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: auto;
+
+        &> * {
+            flex: 1;
+        }
+
+        .view-container {
+            display: flex;
+    
+            &:not(.text-container) > * {
+                flex: 1;
+            }
+            
+            &.text-container {
+                flex-direction: column;
+                width: 100%;
+                padding: 10px;
+
+                .view-container-title {
+                    margin: 5px;
+                    font-size: 2em;
+                }
+
+                .view-container-fulltext {
+                    flex: 1;
+                    padding: 5px;
+                    resize: none;
+                    overflow: scroll;
+                    background-color: var(--edit-background-color, #ffffff);
+                    color: var(--edit-text-color, #000000);
+
+                    span {
+                        display: block;
+                        padding: 2px;
+                        margin: 2px;
+                        white-space: pre;
+                    }
+                }
+            }
+        }
+
+        .view-container:not(.active) {
+            display: none;
+        }
+    }
+}
+
+#item-grid,
+#dungeon-status,
+#location-map,
+#location-list {
+    display: flex;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--page-border-color, #ffffff);
+    overflow: hidden;
+
+    &> * {
+        flex: 1;
+        padding: 5px;
+    }
+
+    ootrt-dungeonstate {
+        justify-self: flex-start;
+        align-self: flex-start;
+    }
+}
+
+deep-choiceselect {
+    padding: 4px;
+    background-color: var(--navigation-background-color, #ffffff);
+
+    &#view-choice-bottom {
+
+        @media (max-width: $mobile-switch) {
+            display: none;
+        }
+    }
+
+    option {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-origin: content-box;
+        border-radius: 20%;
+        border: solid 2px var(--navigation-text-color, #000000);
+        padding: 4px;
+        margin: 0 2px;
+        filter: drop-shadow(black 1px 1px 1px);
+
+        deep-icon {
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+    }
+
+}
