@@ -1683,10 +1683,6 @@
                 {
                     "type": "mixin",
                     "el": "can_leave_forest"
-                },
-                {
-                    "type": "item",
-                    "el": "sword_kokiri"
                 }
             ]
         },
@@ -18300,14 +18296,18 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "skip",
-                                            "el": "dodongo_spike"
-                                        },
-                                        {
                                             "type": "item",
                                             "el": "bow"
+                                        },
+                                        {
+                                            "type": "skip",
+                                            "el": "dodongo_spike"
                                         }
                                     ]
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
                                 }
                             ]
                         },
@@ -18319,8 +18319,26 @@
                                     "el": "boomerang"
                                 },
                                 {
-                                    "type": "item",
-                                    "el": "slingshot"
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "slingshot"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "mixin",
+                                                    "el": "can_become_adult"
+                                                },
+                                                {
+                                                    "type": "skip",
+                                                    "el": "dodongo_spike"
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 }
                             ]
                         }
