@@ -128,8 +128,12 @@ export default class HTMLTrackerShopItem extends HTMLElement {
                     if (!!this.checked && this.checked == "true") {
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/sold_out.png")`;
                     } else {
-                        let img = GlobalData.get("shop_items")[this.ref].image;
-                        this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/${img}")`;
+                        let dta = GlobalData.get("shop_items")[this.ref];
+                        if (!!dta) {
+                            this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/${dta.image}")`;
+                        } else {
+                            this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/unknown.svg")`;
+                        }
                     }
                 }
             break;

@@ -98,9 +98,15 @@ class HTMLTrackerDungeonType extends HTMLElement {
                         this.value = "";
                         EventBus.unmute("dungeon-type-update");
                     } else if (oldValue === null || oldValue === undefined || oldValue === "") {
-                        this.appendChild(createOption("n", "N"));
-                        this.appendChild(createOption("v", "V"));
-                        this.appendChild(createOption("mq", "MQ"));
+                        this.appendChild(createOption("n", "", {
+                            backgroundImage: `url("/images/type_undefined.svg")`
+                        }));
+                        this.appendChild(createOption("v", "", {
+                            backgroundImage: `url("/images/type_vanilla.svg")`
+                        }));
+                        this.appendChild(createOption("mq", "", {
+                            backgroundImage: `url("/images/type_masterquest.svg")`
+                        }));
                         EventBus.mute("dungeon-type-update");
                         this.value = TrackerLocalState.read("dungeonTypes", newValue, "n");
                         EventBus.unmute("dungeon-type-update");

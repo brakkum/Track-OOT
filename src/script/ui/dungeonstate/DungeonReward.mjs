@@ -98,7 +98,9 @@ class HTMLTrackerDungeonReward extends HTMLElement {
                     if (newValue === "") {
                         this.innerHTML = "";
                     } else if (oldValue === null || oldValue === undefined || oldValue === "") {
-                        this.appendChild(createOption(0, "?"));
+                        this.appendChild(createOption(0, "", {
+                            backgroundImage: `url("/images/unknown.svg")`
+                        }));
                         for (let i = 0; i < REWARDS.length; ++i) {
                             let j = GlobalData.get("items")[REWARDS[i]].images;
                             if (Array.isArray(j)) {
