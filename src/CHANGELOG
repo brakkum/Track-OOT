@@ -1,61 +1,11 @@
 CHANGELOG
 =========================================================================================================================================
 Application:    Track-OOT
-Version:        1.0
+Version:        1.1.0
 
-the tracker got a full rewrite
 here is a full list of things that changed:
 
-[GENERAL]
-- switching to es6-modules, classes & custom-elements with shadow-dom (drop support for edge & safari)
-- the server now builds using gulp with sass transpiler, that way im taking full advantage of es6 modules
-- added logging to trace bugs more effectively
-- better handling of savestate loading through global events
-- skulltula counter now counting in 10's again, as the rom now tells the count on collect
-- gossipstones are now added to map and locationlist
-- generic gossip stones are listed seperately, but checked together
-- trade sequence starting point added to settings
-- added switch for mq/vanilla to location list title
-- added target player to shop slots
-- added ganon castle options 3 spiritual stones and 100 skulltulas
 
-[DATA]
-- changed language file to .ini but with the .lang extension (better readability & supporting comments)
-- also relocated language file to the i18n folder
-- merged dungeons.json, chests.json and skulltulas.json into one data file locations.json
-
-[UI]
-- added custom elements for items
-- added custom elements for dungeon state
-    - dungeon state can now show and hide all categories
-    - dungeon state will not show empty dungeons, so it grows and shrinks respectively
-    - dungeon state can now change its orientation by itself
-- added custom elements for locations (list)
-- change menu to hamburger-format on smaller screens
-- change map-overlays to become feature-panels instead
-    - add tab-buttons to choose active feature-panel
-- added custom element for map
-    - map is now zoomable through mouse wheel
-    - map can now be dragged around
-    - a map overview was implemented to ease the use on smaller screens
-- added custom elements for poi's
-    - poi's now have different looks
-    - improved tooltips for map
-- added improved settings system
-- added custom elements for song view and editor
-- added custom elements for shop view and editor
-- added custom elements for gossipstones
-- switch for child/adult/both era added
-- added setting to decide, if an unknown dungeon type means both types are required, or just one of them
-- remaining chests / skulltulas now count min and max values if a dungeon is not defined
-
-[UTILS]
-- added event bus for communication between modules
-- added module for global data storage (all tracker data goes here)
-- added module for savestates (well, save away)
-- added language handler
-- rewrite logic system to compensate for unknown states of dungeons (v/mq)
-- new serviceworker added
 
 also improved system stability to enhance user experience
 
