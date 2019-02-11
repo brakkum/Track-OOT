@@ -7011,20 +7011,34 @@
                                             "el": "slingshot"
                                         },
                                         {
-                                            "type": "item",
-                                            "el": "boots_hover"
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "hookshot"
-                                            },
-                                            "value": 2
-                                        },
-                                        {
-                                            "type": "skip",
-                                            "el": "dodongo_spike"
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "mixin",
+                                                    "el": "can_become_adult"
+                                                },
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "item",
+                                                            "el": "boots_hover"
+                                                        },
+                                                        {
+                                                            "type": "min",
+                                                            "el": {
+                                                                "type": "item",
+                                                                "el": "hookshot"
+                                                            },
+                                                            "value": 2
+                                                        },
+                                                        {
+                                                            "type": "skip",
+                                                            "el": "dodongo_spike"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
@@ -7066,8 +7080,17 @@
                             ]
                         },
                         {
-                            "type": "item",
-                            "el": "bow"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "bow"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -7079,24 +7102,38 @@
                             "el": "slingshot"
                         },
                         {
-                            "type": "item",
-                            "el": "boots_hover"
-                        },
-                        {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "hookshot"
-                            },
-                            "value": 2
-                        },
-                        {
-                            "type": "skip",
-                            "el": "dodongo_spike"
-                        },
-                        {
-                            "type": "item",
-                            "el": "bow"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "hookshot"
+                                            },
+                                            "value": 2
+                                        },
+                                        {
+                                            "type": "skip",
+                                            "el": "dodongo_spike"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
@@ -7113,6 +7150,10 @@
                                 {
                                     "type": "item",
                                     "el": "hammer"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
                                 },
                                 {
                                     "type": "or",
@@ -7160,24 +7201,38 @@
                             "el": "slingshot"
                         },
                         {
-                            "type": "item",
-                            "el": "boots_hover"
-                        },
-                        {
-                            "type": "item",
-                            "el": "bow"
-                        },
-                        {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "hookshot"
-                            },
-                            "value": 2
-                        },
-                        {
-                            "type": "skip",
-                            "el": "dodongo_spike"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "hookshot"
+                                            },
+                                            "value": 2
+                                        },
+                                        {
+                                            "type": "skip",
+                                            "el": "dodongo_spike"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
@@ -7199,27 +7254,11 @@
                     "el": [
                         {
                             "type": "item",
-                            "el": "slingshot"
+                            "el": "bombs"
                         },
                         {
                             "type": "item",
-                            "el": "boots_hover"
-                        },
-                        {
-                            "type": "item",
-                            "el": "bow"
-                        },
-                        {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "hookshot"
-                            },
-                            "value": 2
-                        },
-                        {
-                            "type": "skip",
-                            "el": "dodongo_spike"
+                            "el": "glove"
                         }
                     ]
                 },
@@ -7228,11 +7267,41 @@
                     "el": [
                         {
                             "type": "item",
-                            "el": "bombs"
+                            "el": "slingshot"
                         },
                         {
-                            "type": "item",
-                            "el": "glove"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "hookshot"
+                                            },
+                                            "value": 2
+                                        },
+                                        {
+                                            "type": "skip",
+                                            "el": "dodongo_spike"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
