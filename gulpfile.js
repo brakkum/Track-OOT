@@ -76,13 +76,13 @@ function copyImg_dev() {
 }
 
 function copyChangelog_prod() {
-    return gulp.src(PATHS.app.base + "/CHANGELOG")
+    return gulp.src(PATHS.app.base + "/CHANGELOG.MD")
         .pipe(changed(PATHS.target.prod))
         .pipe(gulp.dest(PATHS.target.prod));
 }
 
 function copyChangelog_dev() {
-    return gulp.src(PATHS.app.base + "/CHANGELOG")
+    return gulp.src(PATHS.app.base + "/CHANGELOG.MD")
         .pipe(changed(PATHS.target.dev))
         .pipe(gulp.dest(PATHS.target.dev));
 }
