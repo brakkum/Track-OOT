@@ -11,6 +11,7 @@ const FILES = [
     "hints",
     "logic",
     "settings",
+    "filter",
     "shops",
     "shop_items"
 ];

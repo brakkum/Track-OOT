@@ -124,6 +124,7 @@ class HTMLTrackerPOILocation extends HTMLElement {
         EventBus.on("location-update", locationUpdate.bind(this));
         EventBus.on("item-update", itemUpdate.bind(this));
         EventBus.onafter("global-update", globalUpdate.bind(this));
+        //EventBus.onafter("location-era-change", era => );
     }
 
     get ref() {
