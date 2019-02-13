@@ -8,6 +8,7 @@ var mixins_panel;
 var item_panel;
 var skips_panel;
 var options_panel;
+var filter_panel;
 var mixin_panel;
 var create_mixin_button;
 
@@ -112,6 +113,7 @@ function fillEditor() {
     item_panel = createPanel("Items", elements_panel);
     skips_panel = createPanel("Skips", elements_panel);
     options_panel = createPanel("Options", elements_panel);
+    filter_panel = createPanel("Filter", elements_panel);
     mixin_panel = createPanel("Mixins", elements_panel);
 
     document.getElementById("operator-panel").querySelector('.panel-header').onclick = function(ev) {
@@ -200,5 +202,8 @@ function fillEditor() {
     }
     for (let i in data.settings.skips) {
         skips_panel.appendChild(createOption("skip", i, data.settings.skips[i]));
+    }
+    for (let i in data.filter) {
+        filter_panel.appendChild(createOption("filter", i, data.filter[i]));
     }
 }

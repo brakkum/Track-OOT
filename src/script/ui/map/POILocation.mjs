@@ -104,12 +104,17 @@ function globalUpdate() {
     this.checked = TrackerLocalState.read(path[1], path[2], false);
     EventBus.unmute("location-update");
     if (!this.checked || this.checked === "false") {
-        let el = this.shadowRoot.getElementById("marker");
-        if (Logic.checkLogic(path[1], path[2])) {
-            el.classList.add("avail");
-        } else {
-            el.classList.remove("avail");
-        }
+        checkLogic.apply(this);
+    }
+}
+
+function checkLogic() {
+    let path = this.ref.split(".");
+    let el = this.shadowRoot.querySelector("div");
+    if (Logic.checkLogic(path[1], path[2])) {
+        el.classList.add("avail");
+    } else {
+        el.classList.remove("avail");
     }
 }
 
@@ -124,6 +129,7 @@ class HTMLTrackerPOILocation extends HTMLElement {
         EventBus.on("location-update", locationUpdate.bind(this));
         EventBus.on("item-update", itemUpdate.bind(this));
         EventBus.onafter("global-update", globalUpdate.bind(this));
+        EventBus.onafter("location-era-change", checkLogic.bind(this));
     }
 
     get ref() {
