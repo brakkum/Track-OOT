@@ -77,11 +77,14 @@ class TrackerLogic {
         let canGet = 0;
         let unopened = 0;
         for (let i in list) {
-            if (!list[i].mode || list[i].mode != "scrubsanity" || TrackerLocalState.read("options", "scrubsanity", false)) {
-                if (!TrackerLocalState.read(category, i, 0)) {
-                    unopened++;
-                    if (this.checkLogic(category, i)) {
-                        canGet++;
+            let filter = MemoryStorage.get("active_filter", "filter_era_active", GlobalData.get("filter")["filter_era_active"].default);
+            if (!list[i].era || !filter || filter === list[i].era) {
+                if (!list[i].mode || list[i].mode != "scrubsanity" || TrackerLocalState.read("options", "scrubsanity", false)) {
+                    if (!TrackerLocalState.read(category, i, 0)) {
+                        unopened++;
+                        if (this.checkLogic(category, i)) {
+                            canGet++;
+                        }
                     }
                 }
             }

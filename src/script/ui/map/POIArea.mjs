@@ -1,4 +1,5 @@
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import MemoryStorage from "/deepJS/storage/MemoryStorage.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import Logger from "/deepJS/util/Logger.mjs";
@@ -79,10 +80,13 @@ function canGet(name, category) {
     list = GlobalData.get("locations")[name][`${category}_${dType}`];
     let canGet = 0;
     for (let i in list) {
-        if (!list[i].mode || list[i].mode != "scrubsanity" || TrackerLocalState.read("options", "scrubsanity", false)) {
-            if (!TrackerLocalState.read(category, i, 0)) {
-                if (Logic.checkLogic(category, i)) {
-                    canGet++;
+        let filter = MemoryStorage.get("active_filter", "filter_era_active", GlobalData.get("filter")["filter_era_active"].default);
+        if (!list[i].era || !filter || filter === list[i].era) {
+            if (!list[i].mode || list[i].mode != "scrubsanity" || TrackerLocalState.read("options", "scrubsanity", false)) {
+                if (!TrackerLocalState.read(category, i, 0)) {
+                    if (Logic.checkLogic(category, i)) {
+                        canGet++;
+                    }
                 }
             }
         }
@@ -100,7 +104,7 @@ function itemUpdate(name, value) {
     this.attributeChangedCallback("", "");
 }
 
-function dungeonTypeUppdate(ref, val) {
+function dungeonTypeUpdate(ref, val) {
     if (this.ref === ref) {
         this.attributeChangedCallback("", "");
     }
@@ -111,9 +115,10 @@ class HTMLTrackerPOIArea extends HTMLElement {
     constructor() {
         super();
         this.addEventListener("click", () => EventBus.post("location-change", this.ref));
-        EventBus.on("dungeon-type-update", dungeonTypeUppdate.bind(this));
+        EventBus.on("dungeon-type-update", dungeonTypeUpdate.bind(this));
         EventBus.on("location-update", locationUpdate.bind(this));
         EventBus.on("item-update", itemUpdate.bind(this));
+        EventBus.onafter("location-era-change", itemUpdate.bind(this));
         EventBus.onafter("global-update", itemUpdate.bind(this));
         EventBus.on("location-mode-change", mode => {
             this.mode = mode;
