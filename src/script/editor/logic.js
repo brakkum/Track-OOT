@@ -77,6 +77,14 @@ function recursiveSetLogic(logic, root) {
                 }
             }
             break;
+        case "filter":
+            if (!!logic.el && logic.el != null) {
+                var a = addLogicEl(document.getElementById("filter_"+logic.el), root);
+                if (logic.hasOwnProperty("value")) {
+                    a.querySelector("select").value = logic.value;
+                }
+            }
+            break;
         case "item":
             if (!!logic.el && logic.el != null) {
                 addLogicEl(document.getElementById("item_"+logic.el), root);
@@ -133,6 +141,12 @@ function recursiveGetLogic(root) {
                     return {type:"skip",el:root.getAttribute("data-id").slice(5),value:root.querySelector("select").value};
                 }
                 return {type:"skip",el:root.getAttribute("data-id").slice(5)};
+            }
+            if (root.classList.contains("logic-filter")) {
+                if (root.classList.contains("logic-choice")) {
+                    return {type:"filter",el:root.getAttribute("data-id").slice(7),value:root.querySelector("select").value};
+                }
+                return {type:"filter",el:root.getAttribute("data-id").slice(7)};
             }
             if (root.classList.contains("logic-item")) {
                 return {type:"item",el:root.getAttribute("data-id").slice(5)};

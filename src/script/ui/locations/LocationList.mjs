@@ -1,4 +1,5 @@
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import MemoryStorage from "/deepJS/storage/MemoryStorage.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import "/deepJS/ui/selection/SwitchButton.mjs";
@@ -157,6 +158,7 @@ class HTMLTrackerLocationList extends HTMLElement {
         });
         this.shadowRoot.getElementById('location-era').addEventListener("change", event => {
             this.era = event.newValue;
+            MemoryStorage.set("active_filter", "filter_era_active", this.era);
             EventBus.post("location-era-change", this.era);
         });
     }

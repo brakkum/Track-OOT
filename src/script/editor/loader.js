@@ -2,7 +2,8 @@ const FILES = [
     "database/items.json",
     "database/locations.json",
     "database/logic.json",
-    "database/settings.json"
+    "database/settings.json",
+    "database/filter.json"
 ];
 
 async function loadAll() {
@@ -17,6 +18,7 @@ async function loadAll() {
     data.logic_patched = Storage.get("settings", "logic", {});
     // misc
     data.settings = buffer.shift();
+    data.filter = buffer.shift();
     data.lang = buffer.shift();
 
     let addon = buffer.shift();
