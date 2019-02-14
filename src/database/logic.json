@@ -443,6 +443,14 @@
                 {
                     "type": "item",
                     "el": "bottle"
+                },
+                {
+                    "type": "not",
+                    "el": {
+                        "type": "filter",
+                        "el": "filter_era_active",
+                        "value": "adult"
+                    }
                 }
             ]
         },
@@ -704,11 +712,6 @@
                                     "value": "lens_required_never"
                                 }
                             ]
-                        },
-                        {
-                            "type": "filter",
-                            "el": "filter_era_active",
-                            "value": "adult"
                         }
                     ]
                 },
@@ -722,96 +725,6 @@
                         {
                             "type": "item",
                             "el": "warp_spirit"
-                        },
-                        {
-                            "type": "filter",
-                            "el": "filter_era_active",
-                            "value": "adult"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "ocarina"
-                        },
-                        {
-                            "type": "item",
-                            "el": "warp_spirit"
-                        },
-                        {
-                            "type": "filter",
-                            "el": "filter_era_active",
-                            "value": "child"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "gerudo_fortress_carpenter_rescue"
-                        },
-                        {
-                            "type": "or",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "boots_hover"
-                                },
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "hookshot"
-                                    },
-                                    "value": 2
-                                }
-                            ]
-                        },
-                        {
-                            "type": "or",
-                            "el": [
-                                {
-                                    "type": "and",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "lens"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "magic_power"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "skip",
-                                    "el": "lens_required",
-                                    "value": "lens_required_never"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "or",
-                            "el": [
-                                {
-                                    "type": "and",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "ocarina"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "warp_spirit"
-                                        }
-                                    ]
-                                }
-                            ]
                         }
                     ]
                 }
@@ -903,6 +816,14 @@
                 {
                     "type": "mixin",
                     "el": "can_leave_forest"
+                },
+                {
+                    "type": "not",
+                    "el": {
+                        "type": "filter",
+                        "el": "filter_era_active",
+                        "value": "adult"
+                    }
                 }
             ]
         },
@@ -1313,6 +1234,14 @@
                     "el": "can_leave_forest"
                 },
                 {
+                    "type": "not",
+                    "el": {
+                        "type": "filter",
+                        "el": "filter_era_active",
+                        "value": "child"
+                    }
+                },
+                {
                     "type": "or",
                     "el": [
                         {
@@ -1415,38 +1344,51 @@
             ]
         },
         "can_child_attack": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "item",
-                    "el": "slingshot"
+                    "type": "not",
+                    "el": {
+                        "type": "filter",
+                        "el": "filter_era_active",
+                        "value": "adult"
+                    }
                 },
                 {
-                    "type": "item",
-                    "el": "boomerang"
-                },
-                {
-                    "type": "item",
-                    "el": "stick"
-                },
-                {
-                    "type": "mixin",
-                    "el": "has_explosives"
-                },
-                {
-                    "type": "item",
-                    "el": "sword_kokiri"
-                },
-                {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
                             "type": "item",
-                            "el": "magic_din"
+                            "el": "slingshot"
                         },
                         {
                             "type": "item",
-                            "el": "magic_power"
+                            "el": "boomerang"
+                        },
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "item",
+                            "el": "sword_kokiri"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -1468,8 +1410,21 @@
                     "el": "nut"
                 },
                 {
-                    "type": "item",
-                    "el": "shield_kokiri"
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "filter",
+                                "el": "filter_era_active",
+                                "value": "adult"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "shield_kokiri"
+                        }
+                    ]
                 }
             ]
         },
@@ -5971,10 +5926,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -5988,6 +5939,10 @@
                                 {
                                     "type": "item",
                                     "el": "magic_power"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
                                 },
                                 {
                                     "type": "or",
@@ -6010,6 +5965,23 @@
                                             "el": "magic_din"
                                         }
                                     ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
                                 }
                             ]
                         }
@@ -6044,16 +6016,38 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "mixin",
-                            "el": "has_explosives"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": 2
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                }
+                            ]
                         },
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "glove"
-                            },
-                            "value": 2
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
+                                }
+                            ]
                         }
                     ]
                 },
@@ -6086,16 +6080,38 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "mixin",
-                            "el": "has_explosives"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": 2
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                }
+                            ]
                         },
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "glove"
-                            },
-                            "value": 2
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
+                                }
+                            ]
                         }
                     ]
                 },
@@ -6128,10 +6144,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -6145,6 +6157,10 @@
                                 {
                                     "type": "item",
                                     "el": "magic_power"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
                                 },
                                 {
                                     "type": "or",
@@ -6167,6 +6183,23 @@
                                             "el": "magic_din"
                                         }
                                     ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
                                 }
                             ]
                         }
@@ -6304,16 +6337,38 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "glove"
-                            },
-                            "value": 2
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": 2
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                }
+                            ]
                         },
                         {
-                            "type": "mixin",
-                            "el": "has_explosives"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
+                                }
+                            ]
                         }
                     ]
                 },
@@ -6339,21 +6394,12 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "key_small_spirit"
-                                            },
-                                            "value": 3
-                                        }
-                                    ]
+                                    "type": "mixin",
+                                    "el": "has_explosives"
                                 },
                                 {
                                     "type": "mixin",
-                                    "el": "has_explosives"
+                                    "el": "can_become_adult"
                                 },
                                 {
                                     "type": "min",
@@ -6362,6 +6408,14 @@
                                         "el": "hookshot"
                                     },
                                     "value": 2
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_spirit"
+                                    },
+                                    "value": 3
                                 }
                             ]
                         }
@@ -7371,10 +7425,6 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "item",
-                                            "el": "slingshot"
-                                        },
-                                        {
                                             "type": "and",
                                             "el": [
                                                 {
@@ -7405,6 +7455,23 @@
                                                             "el": "bow"
                                                         }
                                                     ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "slingshot"
+                                                },
+                                                {
+                                                    "type": "not",
+                                                    "el": {
+                                                        "type": "filter",
+                                                        "el": "filter_era_active",
+                                                        "value": "adult"
+                                                    }
                                                 }
                                             ]
                                         }
@@ -7470,10 +7537,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "slingshot"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -7504,6 +7567,23 @@
                                             "el": "bow"
                                         }
                                     ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "slingshot"
+                                },
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
                                 }
                             ]
                         }
@@ -7569,10 +7649,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "slingshot"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -7603,6 +7679,23 @@
                                             "el": "bow"
                                         }
                                     ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "slingshot"
+                                },
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
                                 }
                             ]
                         }
@@ -7638,10 +7731,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "slingshot"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -7672,6 +7761,23 @@
                                             "el": "bow"
                                         }
                                     ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "slingshot"
+                                },
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
                                 }
                             ]
                         }
@@ -9185,6 +9291,14 @@
                         {
                             "type": "mixin",
                             "el": "can_leave_forest"
+                        },
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "filter",
+                                "el": "filter_era_active",
+                                "value": "adult"
+                            }
                         }
                     ]
                 }
@@ -11113,6 +11227,14 @@
                                             "el": "has_explosives"
                                         }
                                     ]
+                                },
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
                                 }
                             ]
                         }
@@ -11130,10 +11252,6 @@
                 {
                     "type": "or",
                     "el": [
-                        {
-                            "type": "item",
-                            "el": "stick"
-                        },
                         {
                             "type": "and",
                             "el": [
@@ -11176,6 +11294,23 @@
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "stick"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -11200,10 +11335,6 @@
                             "el": "has_explosives"
                         },
                         {
-                            "type": "item",
-                            "el": "stick"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -11213,6 +11344,23 @@
                                 {
                                     "type": "item",
                                     "el": "magic_din"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "stick"
                                 }
                             ]
                         }
@@ -11249,10 +11397,6 @@
                                             "el": "has_explosives"
                                         },
                                         {
-                                            "type": "item",
-                                            "el": "stick"
-                                        },
-                                        {
                                             "type": "and",
                                             "el": [
                                                 {
@@ -11264,8 +11408,20 @@
                                                     "el": "magic_power"
                                                 }
                                             ]
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "stick"
                                         }
                                     ]
+                                },
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
                                 }
                             ]
                         }
@@ -11323,16 +11479,34 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "stick"
-                        },
-                        {
-                            "type": "item",
-                            "el": "sword_kokiri"
-                        },
-                        {
                             "type": "mixin",
                             "el": "can_become_adult"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "stick"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "sword_kokiri"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
@@ -12885,10 +13059,6 @@
                             "el": "spirit_temple_access"
                         },
                         {
-                            "type": "mixin",
-                            "el": "can_blast_or_smash"
-                        },
-                        {
                             "type": "or",
                             "el": [
                                 {
@@ -12897,6 +13067,18 @@
                                         {
                                             "type": "item",
                                             "el": "slingshot"
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "filter",
+                                                "el": "filter_era_active",
+                                                "value": "adult"
+                                            }
                                         }
                                     ]
                                 },
@@ -12910,50 +13092,14 @@
                                         {
                                             "type": "mixin",
                                             "el": "can_become_adult"
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "can_blast_or_smash"
                                         }
                                     ]
                                 }
                             ]
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "slingshot"
-                        },
-                        {
-                            "type": "filter",
-                            "el": "filter_era_active",
-                            "value": "child"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "bow"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "can_become_adult"
-                        },
-                        {
-                            "type": "filter",
-                            "el": "filter_era_active",
-                            "value": "adult"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "can_blast_or_smash"
                         }
                     ]
                 }
@@ -13206,6 +13352,14 @@
                     "el": "slingshot"
                 },
                 {
+                    "type": "not",
+                    "el": {
+                        "type": "filter",
+                        "el": "filter_era_active",
+                        "value": "adult"
+                    }
+                },
+                {
                     "type": "or",
                     "el": [
                         {
@@ -13333,6 +13487,10 @@
                                         "el": "glove"
                                     },
                                     "value": 2
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
                                 }
                             ]
                         },
@@ -13346,6 +13504,14 @@
                                 {
                                     "type": "item",
                                     "el": "song_time"
+                                },
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
                                 }
                             ]
                         }
@@ -13397,6 +13563,14 @@
                                             }
                                         }
                                     ]
+                                },
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
                                 }
                             ]
                         },
@@ -13422,6 +13596,10 @@
                                         "el": "glove"
                                     },
                                     "value": 2
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
                                 }
                             ]
                         },
@@ -13459,6 +13637,14 @@
                                             }
                                         }
                                     ]
+                                },
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
                                 }
                             ]
                         }

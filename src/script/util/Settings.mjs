@@ -94,7 +94,7 @@ let showUpdatePopup = true;
 if ('serviceWorker' in navigator) {
     let prog = settings.querySelector("#update-progress");
     let progtext = settings.querySelector("#update-progress-text");
-    let checkUpdateTimeout = undefined;
+    //let checkUpdateTimeout = undefined;
 
     function swStateRecieve(event) {
         if (event.data.type == "state") {
@@ -111,7 +111,7 @@ if ('serviceWorker' in navigator) {
                     settings.querySelector("#update-check").style.display = "none";
                     settings.querySelector("#update-force").style.display = "block";
                     settings.querySelector("#update-unavailable").style.display = "block";
-                    checkUpdateTimeout = setTimeout(checkUpdate, 600000);
+                    //checkUpdateTimeout = setTimeout(checkUpdate, 600000);
                 break;
                 case "need_download":
                     prog.value = 0;
@@ -152,7 +152,7 @@ if ('serviceWorker' in navigator) {
     checkUpdate();
     
     settings.querySelector("#check-update").onclick = function() {
-        clearTimeout(checkUpdateTimeout);
+        //clearTimeout(checkUpdateTimeout);
         checkUpdate();
     }
 
@@ -216,8 +216,12 @@ settings.addEventListener('close', function(event) {
 
 window.onfocus = function(ev) {
     if (DeepLocalStorage.get("settings", "use_custom_logic", false)) {
-        GlobalData.set("logic_patched", DeepLocalStorage.get("settings", "logic", {}));
-        EventBus.post("global-update");
+        let oldValue = GlobalData.get("logic_patched", {});
+        let newValue = DeepLocalStorage.get("settings", "logic", {});
+        if (JSON.stringify(oldValue) == JSON.stringify(newValue)) {
+            GlobalData.set("logic_patched", newValue);
+            EventBus.post("global-update");
+        }
     }
 }
 
