@@ -22,7 +22,7 @@ settings.innerHTML = `
             <span id="tracker-date">01.01.2019 00:00:00</span>
         </div>
         <div style="padding: 5px;">
-            <a href="CHANGELOG" target="_BLANK">see the changelog</a>
+            <a href="CHANGELOG.MD" target="_BLANK">see the changelog</a>
         </div>
         <hr>
         <div id="update-check" style="padding: 5px;">
