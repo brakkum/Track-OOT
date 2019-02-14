@@ -7,6 +7,10 @@ import TrackerLocalState from "./LocalState.mjs";
 function checkLogic(logic) {
     if (!logic || logic == null) return true;
     switch(logic.type) {
+        case "false":
+            return false;
+        case "true":
+            return true;
         case "mixin":
             return this.checkLogic("mixins", logic.el);
         case "skip":

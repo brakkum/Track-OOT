@@ -15,6 +15,12 @@ function setLogic(logic) {
 function recursiveSetLogic(logic, root) {
     if (logic == null) return;
     switch(logic.type) {
+        case "false":
+            addLogicEl(document.getElementById('logic-false'), root);
+            break;
+        case "true":
+            addLogicEl(document.getElementById('logic-true'), root);
+            break;
         case "and":
             var a = addLogicEl(document.getElementById('logic-and'), root).querySelector('.placeholder');
             for (let i = 0; i < logic.el.length; ++i) {
@@ -103,6 +109,10 @@ function recursiveGetLogic(root) {
         case null:
         case "":
             return null;
+        case "logic-false":
+            return {type:"false"};
+        case "logic-true":
+            return {type:"true"};
         case "logic-and":
             var res = {type:"and",el:[]};
             var ch = Array.from(root.querySelectorAll(CHILD_ITEM_QUERY_SCOPE));
