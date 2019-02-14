@@ -163,7 +163,8 @@
                 "fire_trial",
                 "light_trial",
                 "spirit_trial"
-            ]
+            ],
+            "logic_editor_visible": false
         },
         "forest_trial": {
             "type": "hidden",
@@ -223,7 +224,8 @@
                 "zora_cucco",
                 "zora_hover"
             ],
-            "default": []
+            "default": [],
+            "logic_editor_visible": false
         },
         "lens_required": {
             "type": "choice",

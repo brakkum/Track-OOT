@@ -198,10 +198,14 @@ function fillEditor() {
         item_panel.appendChild(createElement("item", i));
     }
     for (let i in data.settings.options) {
-        options_panel.appendChild(createOption("option", i, data.settings.options[i]));
+        if (data.settings.options[i].logic_editor_visible !== false) {
+            options_panel.appendChild(createOption("option", i, data.settings.options[i]));
+        }
     }
     for (let i in data.settings.skips) {
-        skips_panel.appendChild(createOption("skip", i, data.settings.skips[i]));
+        if (data.settings.skips[i].logic_editor_visible !== false) {
+            skips_panel.appendChild(createOption("skip", i, data.settings.skips[i]));
+        }
     }
     for (let i in data.filter) {
         filter_panel.appendChild(createOption("filter", i, data.filter[i]));
