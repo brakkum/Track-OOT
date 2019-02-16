@@ -110,7 +110,7 @@ function globalUpdate() {
 
 function checkLogic() {
     let path = this.ref.split(".");
-    let el = this.shadowRoot.querySelector("div");
+    let el = this.shadowRoot.getElementById("marker");
     if (Logic.checkLogic(path[1], path[2])) {
         el.classList.add("avail");
     } else {
@@ -160,6 +160,7 @@ class HTMLTrackerPOILocation extends HTMLElement {
                     let data = GlobalData.get("locations")["overworld"][`${path[1]}_v`][path[2]];
                     let txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = I18n.translate(path[2]);
+                    
                     let tooltip = this.shadowRoot.getElementById("tooltip");
                     let left = parseFloat(this.style.left.slice(0, -1));
                     let top = parseFloat(this.style.top.slice(0, -1));
@@ -194,6 +195,13 @@ class HTMLTrackerPOILocation extends HTMLElement {
                     let el_era = document.createElement("deep-icon");
                     el_era.src = `images/era_${data.era ||"both"}.svg`;
                     this.shadowRoot.getElementById("badge").appendChild(el_era);
+                    
+                    let el = this.shadowRoot.getElementById("marker");
+                    if (Logic.checkLogic(path[1], path[2])) {
+                        el.classList.add("avail");
+                    } else {
+                        el.classList.remove("avail");
+                    }
 
                     this.checked = TrackerLocalState.read(path[1], path[2], false);
                 }
