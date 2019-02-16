@@ -17,3 +17,5 @@ Version:        1.1.1
 - add back old language file
 - add language selection
 - fixed reference to future update changelog
+- addeed ctrl key to jump too next marker in items supporting it (currently skulltula only)
+    - firefox bypasses event catching of right click menu on shift press, it is recommendet to use ctrl on firefox
