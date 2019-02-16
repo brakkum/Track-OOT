@@ -194,7 +194,7 @@ class HTMLTrackerItem extends HTMLElement {
     next(event) {
         if (!this.readonly) {
             let data = GlobalData.get("items")[this.ref];
-            if (event.shiftKey && !!data.alternate_counting) {
+            if ((event.shiftKey || event.ctrlKey) && !!data.alternate_counting) {
                 Logger.log(`get next alternative value for "${this.ref}"`, "Item");
                 for (let i = 0; i < data.alternate_counting.length; ++i) {
                     let alt = parseInt(data.alternate_counting[i]);
@@ -229,7 +229,7 @@ class HTMLTrackerItem extends HTMLElement {
     prev(event) {
         if (!this.readonly) {
             let data = GlobalData.get("items")[this.ref];
-            if (event.shiftKey && !!data.alternate_counting) {
+            if ((event.shiftKey || event.ctrlKey) && !!data.alternate_counting) {
                 Logger.log(`get previous alternative value for "${this.ref}"`, "Item");
                 for (let i = data.alternate_counting.length - 1; i >= 0; --i) {
                     let alt = parseInt(data.alternate_counting[i]);

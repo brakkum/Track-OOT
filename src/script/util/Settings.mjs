@@ -31,7 +31,7 @@ settings.innerHTML = `
         <div id="update-available" style="padding: 5px; display: none;">
             newer version found <button id="download-update">download</button>
             <br>
-            <a href="CHANGELOG?nosw" target="_BLANK">see the changelog</a>
+            <a href="CHANGELOG.MD?nosw" target="_BLANK">see the changelog</a>
         </div>
         <div id="update-unavailable" style="padding: 5px; display: none;">
             already up to date <button id="check-update">check again</button>
@@ -78,9 +78,10 @@ Big thanks to:<br>
         version.innerHTML = data.version;
     }
     let b = new Date(data.date);
+    let m = b.getMonth()+1;
     let d = {
         D: ("00"+b.getDate()).slice(-2),
-        M: ("00"+b.getMonth()+1).slice(-2),
+        M: ("00"+m).slice(-2),
         Y: b.getFullYear(),
         h: ("00"+b.getHours()).slice(-2),
         m: ("00"+b.getMinutes()).slice(-2),

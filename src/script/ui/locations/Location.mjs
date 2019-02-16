@@ -140,6 +140,12 @@ class HTMLTrackerLocation extends HTMLElement {
                     el_era.src = `images/era_${data.era ||"both"}.svg`;
                     this.shadowRoot.getElementById("badge").appendChild(el_era);
 
+                    if (Logic.checkLogic(path[1], path[2])) {
+                        txt.classList.add("avail");
+                    } else {
+                        txt.classList.remove("avail");
+                    }
+
                     this.checked = TrackerLocalState.read(path[1], path[2], false);
                 }
             break;

@@ -119,35 +119,68 @@ class HTMLTrackerGossipstone extends HTMLElement {
         this.setAttribute('ref', val);
     }
 
+    get checked() {
+        return this.getAttribute('checked');
+    }
+
+    set checked(val) {
+        this.setAttribute('checked', val);
+    }
+
     static get observedAttributes() {
-        return ['ref'];
+        return ['ref', 'checked'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue != newValue) {
-            let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
-            let txt = this.shadowRoot.getElementById("text");
-            txt.innerHTML = I18n.translate(this.ref);
+        switch (name) {
+            case 'ref':
+                if (oldValue != newValue) {
+                    let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
+                    let txt = this.shadowRoot.getElementById("text");
+                    txt.innerHTML = I18n.translate(this.ref);
 
-            this.shadowRoot.getElementById("badge").innerHTML = "";
+                    this.shadowRoot.getElementById("badge").innerHTML = "";
 
-            let el_time = document.createElement("deep-icon");
-            el_time.src = `images/time_${data.time || "both"}.svg`;
-            this.shadowRoot.getElementById("badge").appendChild(el_time);
+                    let el_time = document.createElement("deep-icon");
+                    el_time.src = `images/time_${data.time || "both"}.svg`;
+                    this.shadowRoot.getElementById("badge").appendChild(el_time);
 
-            let el_era = document.createElement("deep-icon");
-            el_era.src = `images/era_${data.era ||"both"}.svg`;
-            this.shadowRoot.getElementById("badge").appendChild(el_era);
+                    let el_era = document.createElement("deep-icon");
+                    el_era.src = `images/era_${data.era ||"both"}.svg`;
+                    this.shadowRoot.getElementById("badge").appendChild(el_era);
+                    
+                    if (Logic.checkLogic("gossipstones", this.ref)) {
+                        txt.classList.add("avail");
+                    } else {
+                        txt.classList.remove("avail");
+                    }
 
-            this.setValue(TrackerLocalState.read("gossipstones", data.ref || this.ref, {item: "0x01", location: "0x01"}));
+                    this.checked = TrackerLocalState.read("gossipstones", data.ref || this.ref, false);
+                    this.setValue(TrackerLocalState.read("gossipstones", data.ref || this.ref, {item: "0x01", location: "0x01"}));
+                }
+            break;
+            case 'checked':
+                if (oldValue != newValue) {
+                    let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
+                    if (!newValue || newValue === "false") {
+                        let el = this.shadowRoot.getElementById("text");
+                        if (Logic.checkLogic("gossipstones", this.ref)) {
+                            el.classList.add("avail");
+                        } else {
+                            el.classList.remove("avail");
+                        }
+                    }
+                    TrackerLocalState.write("gossipstones", data.ref || this.ref, newValue === "false" ? false : !!newValue);
+                    EventBus.post("gossipstone-update", data.ref || this.ref, newValue);
+                }
+            break;
         }
     }
 
     check(event) {
         hintstoneDialog(this.ref).then(r => {
             this.setValue(r);
-            let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
-            EventBus.post("gossipstone-update", data.ref || this.ref, this.shadowRoot.getElementById("text").classList.contains("checked"));
+            this.checked = this.shadowRoot.getElementById("text").classList.contains("checked");
         });
         if (!event) return;
         event.preventDefault();
