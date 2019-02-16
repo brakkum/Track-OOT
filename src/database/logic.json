@@ -12187,57 +12187,130 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "key_small_forest"
-                            },
-                            "value": 5
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "bow"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "item",
-                                    "el": "magic_din"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "magic_power"
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "option",
+                                                "el": "keysanity"
+                                            }
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_forest"
+                                            },
+                                            "value": 1
+                                        }
+                                    ]
                                 },
                                 {
                                     "type": "or",
                                     "el": [
                                         {
                                             "type": "item",
-                                            "el": "glove"
+                                            "el": "bow"
                                         },
                                         {
                                             "type": "and",
                                             "el": [
                                                 {
+                                                    "type": "item",
+                                                    "el": "bombchu"
+                                                },
+                                                {
                                                     "type": "skip",
                                                     "el": "fotmq_puzzle_bombchu"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "glove"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "hookshot"
+                                    },
+                                    "value": 2
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "option",
+                                                "el": "keysanity"
+                                            }
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_forest"
+                                            },
+                                            "value": 5
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_din"
                                                 },
                                                 {
                                                     "type": "item",
-                                                    "el": "bombchu"
+                                                    "el": "magic_power"
+                                                },
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "item",
+                                                            "el": "glove"
+                                                        },
+                                                        {
+                                                            "type": "and",
+                                                            "el": [
+                                                                {
+                                                                    "type": "skip",
+                                                                    "el": "fotmq_puzzle_bombchu"
+                                                                },
+                                                                {
+                                                                    "type": "item",
+                                                                    "el": "bombchu"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
