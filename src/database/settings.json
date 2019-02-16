@@ -2,10 +2,10 @@
     "settings": {
         "language": {
             "type": "choice",
-            "default": "us_en.easy",
+            "default": "en_us",
             "values": [
-                "us_en",
-                "us_en.easy"
+                "en_us",
+                "en_us.easy"
             ]
         },
         "font": {
