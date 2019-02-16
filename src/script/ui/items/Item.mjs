@@ -87,6 +87,7 @@ class HTMLTrackerItem extends HTMLElement {
         }
         EventBus.on("item-update", itemUpdate.bind(this));
         EventBus.on("global-update", updateCall.bind(this));
+        EventBus.on("dungeon-type-update", this.fillItemChoices.bind(this));
     }
 
     get ref() {
@@ -130,48 +131,7 @@ class HTMLTrackerItem extends HTMLElement {
             case 'startvalue':
             case 'ref':
                 if (oldValue != newValue) {
-                    this.innerHTML = "";
-                    let data = GlobalData.get("items")[this.ref];
-                    if (!data) return;
-                    let start_value = parseInt(this.startvalue);
-                    if (isNaN(start_value) || start_value < 0) {
-                        start_value = 0;
-                    }
-                    let current_value = this.value || 0;
-                    if (current_value <= start_value) {
-                        current_value = 0;
-                        this.value = 0;
-                    }
-                    for (let i = 0; i <= data.max; ++i) {
-                        if (i != 0 && i <= start_value) continue;
-                        let opt = document.createElement('option');
-                        opt.setAttribute('value', i);
-                        if (i == current_value) {
-                            opt.setAttribute("slot", "value");
-                        }
-                        if (Array.isArray(data.images)) {
-                            opt.style.backgroundImage = `url("/images/${data.images[i]}")`;
-                        } else {
-                            opt.style.backgroundImage = `url("/images/${data.images}")`;
-                        }
-                        if (i == 0 && !data.always_active) {
-                            opt.style.filter = "contrast(0.8) grayscale(0.5)";
-                            opt.style.opacity= "0.4";
-                        }
-                        if (!!data.counting) {
-                            if (Array.isArray(data.counting)) {
-                                opt.innerHTML = data.counting[i];
-                            } else {
-                                if (i > 0 || data.always_active) {
-                                    opt.innerHTML = i;
-                                }
-                            }
-                            if (i >= data.max || !!data.mark && i >= data.mark) {
-                                opt.classList.add("mark");
-                            }
-                        }
-                        this.appendChild(opt);
-                    }
+                    this.fillItemChoices();
                 }
             break;
             case 'value':
@@ -188,6 +148,69 @@ class HTMLTrackerItem extends HTMLElement {
                     EventBus.post("item-update", this.ref, newValue);
                 }
             break;
+        }
+    }
+
+    fillItemChoices() {
+        this.innerHTML = "";
+        let data = GlobalData.get("items")[this.ref];
+        if (!data) return;
+        let start_value = parseInt(this.startvalue);
+        if (isNaN(start_value) || start_value < 0) {
+            start_value = 0;
+        }
+        let current_value = this.value || 0;
+        if (current_value <= start_value) {
+            current_value = 0;
+            this.value = 0;
+        }
+
+        let max_value = 0;
+        if (data.hasOwnProperty("related_dungeon")) {
+            let type = TrackerLocalState.read("dungeonTypes", data.related_dungeon, "n");
+            if (type == "v") {
+                max_value = data.max;
+            } else if (type == "mq") {
+                max_value = data.maxmq || data.max;
+            } else {
+                max_value = Math.max(data.maxmq, data.max);
+            }
+        }
+
+        if (current_value > max_value) {
+            current_value = max_value;
+            this.value = max_value;
+        }
+
+        for (let i = 0; i <= max_value; ++i) {
+            if (i != 0 && i <= start_value) continue;
+            let opt = document.createElement('option');
+            opt.setAttribute('value', i);
+            if (i == current_value) {
+                opt.setAttribute("slot", "value");
+            }
+            if (Array.isArray(data.images)) {
+                opt.style.backgroundImage = `url("/images/${data.images[i]}")`;
+            } else {
+                opt.style.backgroundImage = `url("/images/${data.images}")`;
+            }
+            if (i == 0 && !data.always_active) {
+                opt.style.filter = "contrast(0.8) grayscale(0.5)";
+                opt.style.opacity= "0.4";
+            }
+            if (!!data.counting) {
+                if (Array.isArray(data.counting)) {
+                    opt.innerHTML = data.counting[i];
+                } else {
+                    if (i > 0 || data.always_active) {
+                        opt.innerHTML = i;
+                    }
+                }
+                if (i >= max_value || !!data.mark && i >= data.mark) {
+                    opt.classList.add("mark");
+                }
+            }
+            this.appendChild(opt);
         }
     }
 
