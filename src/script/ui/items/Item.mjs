@@ -166,15 +166,17 @@ class HTMLTrackerItem extends HTMLElement {
         }
 
         let max_value = 0;
-        if (data.hasOwnProperty("related_dungeon")) {
+        if (data.hasOwnProperty("related_dungeon") && data.hasOwnProperty("maxmq")) {
             let type = TrackerLocalState.read("dungeonTypes", data.related_dungeon, "n");
             if (type == "v") {
                 max_value = data.max;
             } else if (type == "mq") {
-                max_value = data.maxmq || data.max;
+                max_value = data.maxmq;
             } else {
                 max_value = Math.max(data.maxmq, data.max);
             }
+        } else {
+            max_value = data.max;
         }
 
         if (current_value > max_value) {
