@@ -4,9 +4,10 @@
 
 Application:    Track-OOT
 
-Version:        1.1.5
+Version:        1.1.8
 
 ---
 
 ### HOTFIX
-- item max value applied again
+- fixed missing check for keysanity setting in Ganons Castle
+- added need for stick/kokiri sword to beat bosses in child dungeons
