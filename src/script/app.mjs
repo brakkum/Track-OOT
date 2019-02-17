@@ -60,6 +60,10 @@ import "/deepJS/ui/selection/ChoiceSelect.mjs";
 
 }());
 
+window.onbeforeunload = function() {
+    return "Are you sure you want to close the tracker?\nUnsafed progress will be lost.";
+}
+
 document.getElementById("hamburger-button").onclick = function(event) {
     document.getElementById("menu").classList.toggle("open");
 }
