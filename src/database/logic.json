@@ -2314,6 +2314,19 @@
                 {
                     "type": "item",
                     "el": "shield_kokiri"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "shield_kokiri"
+                        },
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        }
+                    ]
                 }
             ]
         },
@@ -4419,6 +4432,19 @@
                 {
                     "type": "item",
                     "el": "boomerang"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "shield_kokiri"
+                        },
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        }
+                    ]
                 }
             ]
         },
@@ -14666,14 +14692,6 @@
                                     "type": "min",
                                     "el": {
                                         "type": "item",
-                                        "el": "key_small_ganon"
-                                    },
-                                    "value": 2
-                                },
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
                                         "el": "glove"
                                     },
                                     "value": 3
@@ -14685,6 +14703,26 @@
                                 {
                                     "type": "option",
                                     "el": "light_trial"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_ganon"
+                                            },
+                                            "value": 2
+                                        },
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "option",
+                                                "el": "keysanity"
+                                            }
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -14991,14 +15029,6 @@
                                                     "type": "min",
                                                     "el": {
                                                         "type": "item",
-                                                        "el": "key_small_ganon"
-                                                    },
-                                                    "value": 2
-                                                },
-                                                {
-                                                    "type": "min",
-                                                    "el": {
-                                                        "type": "item",
                                                         "el": "glove"
                                                     },
                                                     "value": 3
@@ -15010,6 +15040,26 @@
                                                 {
                                                     "type": "option",
                                                     "el": "light_trial"
+                                                },
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "min",
+                                                            "el": {
+                                                                "type": "item",
+                                                                "el": "key_small_ganon"
+                                                            },
+                                                            "value": 2
+                                                        },
+                                                        {
+                                                            "type": "not",
+                                                            "el": {
+                                                                "type": "option",
+                                                                "el": "keysanity"
+                                                            }
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         },
@@ -15190,12 +15240,24 @@
                                     "el": "water_trial"
                                 },
                                 {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "key_small_ganon"
-                                    },
-                                    "value": 3
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_ganon"
+                                            },
+                                            "value": 3
+                                        },
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "option",
+                                                "el": "keysanity"
+                                            }
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -15334,14 +15396,6 @@
                                     "type": "min",
                                     "el": {
                                         "type": "item",
-                                        "el": "key_small_ganon"
-                                    },
-                                    "value": 3
-                                },
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
                                         "el": "glove"
                                     },
                                     "value": 3
@@ -15353,6 +15407,26 @@
                                 {
                                     "type": "option",
                                     "el": "light_trial"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_ganon"
+                                            },
+                                            "value": 3
+                                        },
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "option",
+                                                "el": "keysanity"
+                                            }
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -15510,12 +15584,24 @@
                                                     "el": "water_trial"
                                                 },
                                                 {
-                                                    "type": "min",
-                                                    "el": {
-                                                        "type": "item",
-                                                        "el": "key_small_ganon"
-                                                    },
-                                                    "value": 3
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "min",
+                                                            "el": {
+                                                                "type": "item",
+                                                                "el": "key_small_ganon"
+                                                            },
+                                                            "value": 3
+                                                        },
+                                                        {
+                                                            "type": "not",
+                                                            "el": {
+                                                                "type": "option",
+                                                                "el": "keysanity"
+                                                            }
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         },
@@ -15655,14 +15741,6 @@
                                                     "type": "min",
                                                     "el": {
                                                         "type": "item",
-                                                        "el": "key_small_ganon"
-                                                    },
-                                                    "value": 3
-                                                },
-                                                {
-                                                    "type": "min",
-                                                    "el": {
-                                                        "type": "item",
                                                         "el": "glove"
                                                     },
                                                     "value": 3
@@ -15674,6 +15752,26 @@
                                                 {
                                                     "type": "option",
                                                     "el": "light_trial"
+                                                },
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "min",
+                                                            "el": {
+                                                                "type": "item",
+                                                                "el": "key_small_ganon"
+                                                            },
+                                                            "value": 3
+                                                        },
+                                                        {
+                                                            "type": "not",
+                                                            "el": {
+                                                                "type": "option",
+                                                                "el": "keysanity"
+                                                            }
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         },
