@@ -143,56 +143,95 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
     static get observedAttributes() {
         return ['ref'];
     }
+
+    get checked() {
+        return this.getAttribute('checked');
+    }
+
+    set checked(val) {
+        this.setAttribute('checked', val);
+    }
+
+    static get observedAttributes() {
+        return ['ref', 'checked'];
+    }
     
     attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue != newValue) {
-            let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
-            let txt = this.shadowRoot.getElementById("text");
-            txt.innerHTML = I18n.translate(this.ref);
-            let tooltip = this.shadowRoot.getElementById("tooltip");
-            let left = parseFloat(this.style.left.slice(0, -1));
-            let top = parseFloat(this.style.top.slice(0, -1));
-            if (left < 30) {
-                if (top < 30) {
-                    tooltip.position = "bottomright";
-                } else if (top > 70) {
-                    tooltip.position = "topright";
-                } else {
-                    tooltip.position = "right";
+        switch (name) {
+            case 'ref':
+                if (oldValue != newValue) {
+                    let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
+                    let txt = this.shadowRoot.getElementById("text");
+                    txt.innerHTML = I18n.translate(this.ref);
+                    
+                    let tooltip = this.shadowRoot.getElementById("tooltip");
+                    let left = parseFloat(this.style.left.slice(0, -1));
+                    let top = parseFloat(this.style.top.slice(0, -1));
+                    if (left < 30) {
+                        if (top < 30) {
+                            tooltip.position = "bottomright";
+                        } else if (top > 70) {
+                            tooltip.position = "topright";
+                        } else {
+                            tooltip.position = "right";
+                        }
+                    } else if (left > 70) {
+                        if (top < 30) {
+                            tooltip.position = "bottomleft";
+                        } else if (top > 70) {
+                            tooltip.position = "topleft";
+                        } else {
+                            tooltip.position = "left";
+                        }
+                    } else {
+                        if (top < 30) {
+                            tooltip.position = "bottom";
+                        } 
+                    }
+
+                    this.shadowRoot.getElementById("badge").innerHTML = "";
+
+                    let el_time = document.createElement("deep-icon");
+                    el_time.src = `images/time_${data.time || "both"}.svg`;
+                    this.shadowRoot.getElementById("badge").appendChild(el_time);
+
+                    let el_era = document.createElement("deep-icon");
+                    el_era.src = `images/era_${data.era ||"both"}.svg`;
+                    this.shadowRoot.getElementById("badge").appendChild(el_era);
+                    
+                    let el = this.shadowRoot.getElementById("marker");
+                    if (Logic.checkLogic("gossipstones", this.ref)) {
+                        el.classList.add("avail");
+                    } else {
+                        el.classList.remove("avail");
+                    }
+
+                    this.checked = TrackerLocalState.read("gossipstones", data.ref || this.ref, false);
+                    this.setValue(TrackerLocalState.read("gossipstones", data.ref || this.ref, {item: "0x01", location: "0x01"}));
                 }
-            } else if (left > 70) {
-                if (top < 30) {
-                    tooltip.position = "bottomleft";
-                } else if (top > 70) {
-                    tooltip.position = "topleft";
-                } else {
-                    tooltip.position = "left";
+            break;
+            case 'checked':
+                if (oldValue != newValue) {
+                    let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
+                    if (!newValue || newValue === "false") {
+                        let el = this.shadowRoot.getElementById("marker");
+                        if (Logic.checkLogic("gossipstones", this.ref)) {
+                            el.classList.add("avail");
+                        } else {
+                            el.classList.remove("avail");
+                        }
+                    }
+                    TrackerLocalState.write("gossipstones", data.ref || this.ref, newValue === "false" ? false : !!newValue);
+                    EventBus.post("gossipstone-update", data.ref || this.ref, newValue);
                 }
-            } else {
-                if (top < 30) {
-                    tooltip.position = "bottom";
-                } 
-            }
-
-            this.shadowRoot.getElementById("badge").innerHTML = "";
-
-            let el_time = document.createElement("deep-icon");
-            el_time.src = `images/time_${data.time || "both"}.svg`;
-            this.shadowRoot.getElementById("badge").appendChild(el_time);
-
-            let el_era = document.createElement("deep-icon");
-            el_era.src = `images/era_${data.era ||"both"}.svg`;
-            this.shadowRoot.getElementById("badge").appendChild(el_era);
-
-            this.setValue(TrackerLocalState.read("gossipstones", data.ref || this.ref, {item: "0x01", location: "0x01"}));
+            break;
         }
     }
 
     check(event) {
         hintstoneDialog(this.ref).then(r => {
             this.setValue(r);
-            let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
-            EventBus.post("gossipstone-update", data.ref || this.ref, this.shadowRoot.getElementById("marker").classList.contains("checked"));
+            this.checked = this.shadowRoot.getElementById("text").classList.contains("checked");
         });
         if (!event) return;
         event.preventDefault();

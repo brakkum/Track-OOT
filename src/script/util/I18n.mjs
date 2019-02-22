@@ -20,6 +20,11 @@ mutationObserver.observe(document.documentElement, {
 });
 */
 
+const LANGUAGES = {
+    "en_us": "English",
+    "en_us.easy": "English (Descriptive names)"
+};
+
 class I18n {
 
     async load(code) {
@@ -38,8 +43,11 @@ class I18n {
     }
 
     translate(index) {
-        if (!!lang && !!lang[index]) {
-            return lang[index];
+        if (typeof LANGUAGES[index] == "string") {
+            return LANGUAGES[index].trim();
+        }
+        if (typeof lang == "object" && typeof lang[index] == "string") {
+            return lang[index].trim();
         }
         Logger.warn(`translation for "${index}" missing`, "I18n");
         return index;

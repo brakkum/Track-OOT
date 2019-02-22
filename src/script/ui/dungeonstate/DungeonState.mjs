@@ -60,11 +60,6 @@ const TPL = new Template(`
     </style>
 `);
 
-function difference(a1, a2) {
-    var a2Set = new Set(a2);
-    return a1.filter(function(x) { return !a2Set.has(x); });
-}
-
 function createItemText(text) {
     var el = document.createElement('DIV');
     el.classList.add("text");

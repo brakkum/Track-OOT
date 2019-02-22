@@ -4,6 +4,7 @@
 
 import "/script/_vendor/custom-elements.min.js";
 
+import DeepLocalStorage from "/deepJS/storage/LocalStorage.mjs";
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import Logger from "/deepJS/util/Logger.mjs";
@@ -26,7 +27,7 @@ import "/deepJS/ui/selection/ChoiceSelect.mjs";
 (async function main() {
 
     await loadData();
-    await I18n.load("en_us");
+    await I18n.load(DeepLocalStorage.get("settings", "language", "en_us"));
 
     if (!!GlobalData.get("version").dev) {
         Logger.setOutput(document.getElementById("tracker-log"));
@@ -58,6 +59,10 @@ import "/deepJS/ui/selection/ChoiceSelect.mjs";
     }
 
 }());
+
+window.onbeforeunload = function() {
+    return "Are you sure you want to close the tracker?\nUnsafed progress will be lost.";
+}
 
 document.getElementById("hamburger-button").onclick = function(event) {
     document.getElementById("menu").classList.toggle("open");

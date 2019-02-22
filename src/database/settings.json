@@ -1,5 +1,13 @@
 {
     "settings": {
+        "language": {
+            "type": "choice",
+            "default": "en_us",
+            "values": [
+                "en_us",
+                "en_us.easy"
+            ]
+        },
         "font": {
             "type": "choice",
             "default": "font_default",
@@ -224,6 +232,12 @@
                 "zora_cucco",
                 "zora_hover"
             ],
+            "default": [],
+            "logic_editor_visible": false
+        },
+        "known_sequence_breaks": {
+            "type": "list",
+            "values": [],
             "default": [],
             "logic_editor_visible": false
         },
