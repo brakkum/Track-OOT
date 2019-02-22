@@ -11774,8 +11774,12 @@
                             }
                         },
                         {
-                            "type": "item",
-                            "el": "key_small_forest"
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_forest"
+                            },
+                            "value": 3
                         }
                     ]
                 },
@@ -11845,6 +11849,10 @@
                                     "el": "bombchu"
                                 }
                             ]
+                        },
+                        {
+                            "type": "item",
+                            "el": "boots_hover"
                         }
                     ]
                 }
@@ -11888,6 +11896,32 @@
                                     "el": [
                                         {
                                             "type": "item",
+                                            "el": "glove"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "skip",
+                                                    "el": "fotmq_puzzle_bombchu"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "bombchu"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
                                             "el": "boots_iron"
                                         },
                                         {
@@ -11920,28 +11954,6 @@
                                             ]
                                         }
                                     ]
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "glove"
-                                        },
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "skip",
-                                                    "el": "fotmq_puzzle_bombchu"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "bombchu"
-                                                }
-                                            ]
-                                        }
-                                    ]
                                 }
                             ]
                         }
@@ -11950,6 +11962,18 @@
                 {
                     "type": "or",
                     "el": [
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "hookshot"
+                            },
+                            "value": 2
+                        },
+                        {
+                            "type": "item",
+                            "el": "boots_hover"
+                        },
                         {
                             "type": "and",
                             "el": [
@@ -11964,16 +11988,17 @@
                             ]
                         },
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "hookshot"
-                            },
-                            "value": 2
-                        },
-                        {
-                            "type": "item",
-                            "el": "boots_hover"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "fot_east_vines_hook"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -12002,7 +12027,7 @@
                                 "type": "item",
                                 "el": "key_small_forest"
                             },
-                            "value": 2
+                            "value": 4
                         }
                     ]
                 },
@@ -12012,10 +12037,6 @@
                         {
                             "type": "item",
                             "el": "glove"
-                        },
-                        {
-                            "type": "item",
-                            "el": "bow"
                         },
                         {
                             "type": "and",
@@ -12057,7 +12078,29 @@
                                 "type": "item",
                                 "el": "key_small_forest"
                             },
-                            "value": 2
+                            "value": 4
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "skip",
+                                    "el": "fotmq_puzzle_bombchu"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "bombchu"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -12090,7 +12133,29 @@
                                 "type": "item",
                                 "el": "key_small_forest"
                             },
-                            "value": 2
+                            "value": 4
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "skip",
+                                    "el": "fotmq_puzzle_bombchu"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "bombchu"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -12173,28 +12238,28 @@
                                 {
                                     "type": "item",
                                     "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "skip",
+                                    "el": "fotmq_puzzle_bombchu"
                                 },
                                 {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "glove"
-                                        },
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "skip",
-                                                    "el": "fotmq_puzzle_bombchu"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "bombchu"
-                                                }
-                                            ]
-                                        }
-                                    ]
+                                    "type": "item",
+                                    "el": "bombchu"
                                 }
                             ]
                         }
@@ -12315,28 +12380,28 @@
                                                 {
                                                     "type": "item",
                                                     "el": "magic_power"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "glove"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "skip",
+                                                    "el": "fotmq_puzzle_bombchu"
                                                 },
                                                 {
-                                                    "type": "or",
-                                                    "el": [
-                                                        {
-                                                            "type": "item",
-                                                            "el": "glove"
-                                                        },
-                                                        {
-                                                            "type": "and",
-                                                            "el": [
-                                                                {
-                                                                    "type": "skip",
-                                                                    "el": "fotmq_puzzle_bombchu"
-                                                                },
-                                                                {
-                                                                    "type": "item",
-                                                                    "el": "bombchu"
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
+                                                    "type": "item",
+                                                    "el": "bombchu"
                                                 }
                                             ]
                                         }
@@ -21843,8 +21908,21 @@
                             "el": "bow"
                         },
                         {
-                            "type": "skip",
-                            "el": "fotmq_puzzle_bombchu"
+                            "type": "item",
+                            "el": "boots_hover"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "skip",
+                                    "el": "fotmq_puzzle_bombchu"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "bombchu"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -21884,8 +21962,42 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "item",
-                                    "el": "boots_iron"
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "boots_iron"
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "scale"
+                                            },
+                                            "value": 2
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "hookshot"
+                                            },
+                                            "value": 2
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "hookshot"
+                                                },
+                                                {
+                                                    "type": "skip",
+                                                    "el": "fotmq_well_hook"
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 },
                                 {
                                     "type": "or",
@@ -21895,8 +22007,21 @@
                                             "el": "glove"
                                         },
                                         {
-                                            "type": "skip",
-                                            "el": "fotmq_puzzle_bombchu"
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "skip",
+                                                    "el": "fotmq_puzzle_bombchu"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "bombchu"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
                                         }
                                     ]
                                 }
@@ -21996,6 +22121,10 @@
                                                     "el": "bombchu"
                                                 }
                                             ]
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
                                         }
                                     ]
                                 }
