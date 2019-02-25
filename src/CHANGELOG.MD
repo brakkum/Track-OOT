@@ -4,9 +4,9 @@
 
 Application:    Track-OOT
 
-Version:        1.1.10
+Version:        1.1.11
 
 ---
 
 ### HOTFIX
-- fixed various logic issues in FoTMQ including #85 and some oversights when new skips where added
+- fixed missing check for warp song on some child chests in spirit temple
