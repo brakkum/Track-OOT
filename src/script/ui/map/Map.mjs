@@ -326,7 +326,7 @@ class HTMLTrackerMap extends HTMLElement {
                                     Object.keys(buff).forEach(j => {
                                         let buf = buff[j];
                                         if (!buf.era || !this.era || this.era === buf.era) {
-                                            if (!buf.mode || buf.mode != "scrubsanity" || TrackerLocalState.read("options", "scrubsanity", false)) {
+                                            if (!buf.mode || TrackerLocalState.read("options", buf.mode, false)) {
                                                 let el = document.createElement('ootrt-poilocation');
                                                 el.style.left = buf.x;
                                                 el.style.top = buf.y;

@@ -121,7 +121,7 @@ function canGet(name, category, dType) {
     let canGet = 0;
     let isOpen = 0;
     for (let i in list) {
-        if (!list[i].mode || list[i].mode != "scrubsanity" || TrackerLocalState.read("options", "scrubsanity", false)) {
+        if (!list[i].mode || TrackerLocalState.read("options", list[i].mode, false)) {
             if (!TrackerLocalState.read(category, i, 0)) {
                 if (Logic.checkLogic(category, i)) {
                     canGet++;

@@ -4,9 +4,11 @@
 
 Application:    Track-OOT
 
-Version:        1.1.11
+Version:        1.2.0
 
 ---
 
-### HOTFIX
-- fixed missing check for warp song on some child chests in spirit temple
+### NEW LOCATIONS (HOWDY FELLA)
+- added cow checks
+- added cow translations
+- added cow logic

@@ -275,11 +275,6 @@ function applySettingsChoices() {
     } else {
         document.body.setAttribute("data-hint-badges", "false");
     }
-    if (TrackerLocalState.read("options", "scrubsanity", false)) {
-        document.body.setAttribute("data-scrubsanity", "true");
-    } else {
-        document.body.setAttribute("data-scrubsanity", "false");
-    }
     if (DeepLocalStorage.get("settings", "use_custom_logic", false)) {
         GlobalData.set("logic_patched", DeepLocalStorage.get("settings", "logic", {}));
     }

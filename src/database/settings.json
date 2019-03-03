@@ -84,6 +84,10 @@
             "type": "check",
             "default": false
         },
+        "cowsanity": {
+            "type": "check",
+            "default": false
+        },
         "skullsanity": {
             "type": "hidden",
             "old_type": "check",

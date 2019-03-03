@@ -12,6 +12,12 @@
                 "y": "58.0%",
                 "counts": 4
             },
+            "links_house_cow": {
+                "x": "79.0%",
+                "y": "64.0%",
+                "era": "adult",
+                "mode": "cowsanity"
+            },
             "saria_ocarina": {
                 "x": "72.0%",
                 "y": "58.0%",
@@ -45,41 +51,6 @@
             "diving_heart_piece_grotto": {
                 "x": "44.0%",
                 "y": "32.0%"
-            },
-            "talon_chicken": {
-                "x": "49.0%",
-                "y": "38.0%",
-                "era": "child",
-                "time": "day"
-            },
-            "maron_song": {
-                "x": "47.0%",
-                "y": "41.5%",
-                "era": "child",
-                "time": "day"
-            },
-            "lonlon_hp": {
-                "x": "44.0%",
-                "y": "43.5%",
-                "era": "child"
-            },
-            "lonlon_grotto_deku_salesman_1": {
-                "x": "46.0%",
-                "y": "45.5%",
-                "mode": "scrubsanity",
-                "era": "child"
-            },
-            "lonlon_grotto_deku_salesman_2": {
-                "x": "48.0%",
-                "y": "45.5%",
-                "mode": "scrubsanity",
-                "era": "child"
-            },
-            "lonlon_grotto_deku_salesman_3": {
-                "x": "47.0%",
-                "y": "49.0%",
-                "mode": "scrubsanity",
-                "era": "child"
             },
             "bottle_zora": {
                 "x": "38.6%",
@@ -125,6 +96,17 @@
                 "y": "78.0%",
                 "era": "adult"
             },
+            "hyrule_west_grotto_cow": {
+                "x": "35.2%",
+                "y": "41.5%",
+                "mode": "cowsanity"
+            },
+            "gerudo_river_cow": {
+                "x": "24.0%",
+                "y": "35.5%",
+                "era": "child",
+                "mode": "cowsanity"
+            },
             "gerudo_hammer_rock": {
                 "x": "22.0%",
                 "y": "38.0%",
@@ -149,48 +131,6 @@
             "gerudo_waterfall": {
                 "x": "25.5%",
                 "y": "32.0%"
-            },
-            "gerudo_rooftop": {
-                "x": "18.8%",
-                "y": "19.0%",
-                "era": "adult"
-            },
-            "gerudo_guard_1": {
-                "x": "18.0%",
-                "y": "23.0%",
-                "era": "adult"
-            },
-            "gerudo_guard_2": {
-                "x": "20.0%",
-                "y": "23.0%",
-                "era": "adult"
-            },
-            "gerudo_guard_3": {
-                "x": "22.0%",
-                "y": "23.0%",
-                "era": "adult"
-            },
-            "gerudo_guard_4": {
-                "x": "24.0%",
-                "y": "23.0%",
-                "era": "adult"
-            },
-            "gerudo_fortress_clear": {
-                "x": "26.0%",
-                "y": "23.0%",
-                "era": "adult"
-            },
-            "gerudo_archer_1": {
-                "x": "26.0%",
-                "y": "28.0%",
-                "era": "adult",
-                "time": "day"
-            },
-            "gerudo_archer_2": {
-                "x": "23.5%",
-                "y": "28.0%",
-                "era": "adult",
-                "time": "day"
             },
             "desert_chest": {
                 "x": "14.0%",
@@ -304,29 +244,6 @@
                 "era": "adult",
                 "time": "night"
             },
-            "lonlon_tree_child_night": {
-                "x": "49.0%",
-                "y": "38.0%",
-                "era": "child"
-            },
-            "lonlon_paddock_fence_child_night": {
-                "x": "49.0%",
-                "y": "43.5%",
-                "era": "child",
-                "time": "night"
-            },
-            "lonlon_wall_child_night": {
-                "x": "44.0%",
-                "y": "41.5%",
-                "era": "child",
-                "time": "night"
-            },
-            "lonlon_window_child_night": {
-                "x": "47.1%",
-                "y": "38.0%",
-                "era": "child",
-                "time": "night"
-            },
             "lake_near_firearrows_child_night": {
                 "x": "41.5%",
                 "y": "91.0%",
@@ -377,18 +294,6 @@
                 "x": "24.0%",
                 "y": "35.5%",
                 "era": "child"
-            },
-            "gerudo_rooftop_adult_night": {
-                "x": "18.8%",
-                "y": "23.8%",
-                "era": "adult",
-                "time": "night"
-            },
-            "gerudo_horseback_archery_target_adult_night": {
-                "x": "21.7%",
-                "y": "28.0%",
-                "era": "adult",
-                "time": "night"
             },
             "desert_fortress_adult": {
                 "x": "14.0%",
@@ -588,6 +493,111 @@
             }
         }
     },
+    "lonlon": {
+        "x": "47.0%",
+        "y": "41.5%",
+        "chests_v": {
+            "talon_chicken": {
+                "era": "child",
+                "time": "day"
+            },
+            "maron_song": {
+                "era": "child",
+                "time": "day"
+            },
+            "lonlon_hp": {
+                "era": "child"
+            },
+            "lonlon_grotto_deku_salesman_1": {
+                "mode": "scrubsanity",
+                "era": "child"
+            },
+            "lonlon_grotto_deku_salesman_2": {
+                "mode": "scrubsanity",
+                "era": "child"
+            },
+            "lonlon_grotto_deku_salesman_3": {
+                "mode": "scrubsanity",
+                "era": "child"
+            },
+            "lonlon_cow_tower_1": {
+                "mode": "cowsanity"
+            },
+            "lonlon_cow_tower_2": {
+                "mode": "cowsanity"
+            },
+            "lonlon_cow_stables_1": {
+                "mode": "cowsanity"
+            },
+            "lonlon_cow_stables_2": {
+                "mode": "cowsanity"
+            }
+        },
+        "skulltulas_v": {
+            "lonlon_tree_child_night": {
+                "era": "child"
+            },
+            "lonlon_paddock_fence_child_night": {
+                "era": "child",
+                "time": "night"
+            },
+            "lonlon_wall_child_night": {
+                "era": "child",
+                "time": "night"
+            },
+            "lonlon_window_child_night": {
+                "era": "child",
+                "time": "night"
+            }
+        }
+    },
+    "gerudo": {
+        "x": "18.8%",
+        "y": "19.0%",
+        "era": "adult",
+        "chests_v": {
+            "gerudo_rooftop": {
+                "era": "adult"
+            },
+            "gerudo_guard_1": {
+                "era": "adult"
+            },
+            "gerudo_guard_2": {
+                "era": "adult"
+            },
+            "gerudo_guard_3": {
+                "era": "adult"
+            },
+            "gerudo_guard_4": {
+                "era": "adult"
+            },
+            "gerudo_fortress_clear": {
+                "era": "adult"
+            },
+            "gerudo_archer_1": {
+                "era": "adult",
+                "time": "day"
+            },
+            "gerudo_archer_2": {
+                "era": "adult",
+                "time": "day"
+            }
+        },
+        "skulltulas_v": {
+            "gerudo_rooftop_adult_night": {
+                "x": "18.8%",
+                "y": "23.8%",
+                "era": "adult",
+                "time": "night"
+            },
+            "gerudo_horseback_archery_target_adult_night": {
+                "x": "21.7%",
+                "y": "28.0%",
+                "era": "adult",
+                "time": "night"
+            }
+        }
+    },
     "woods": {
         "x": "78.0%",
         "y": "48.0%",
@@ -754,6 +764,9 @@
             "kakariko_warp": {
                 "era": "adult"
             },
+            "kakariko_impas_cow": {
+                "mode": "cowsanity"
+            },
             "kakariko_skulltula_10": {},
             "kakariko_skulltula_20": {},
             "kakariko_skulltula_30": {},
@@ -820,6 +833,9 @@
             "mountain_crater_grotto_salesman_3": {
                 "era": "adult",
                 "mode": "scrubsanity"
+            },
+            "mountain_grotto_cow": {
+                "mode": "cowsanity"
             },
             "mountain_magic_bean": {
                 "era": "adult"
@@ -1422,6 +1438,10 @@
             },
             "jabujabu_like_like_chest_mq": {
                 "era": "child"
+            },
+            "jabujabu_cow": {
+                "era": "child",
+                "mode": "cowsanity"
             },
             "jabujabu_second_room_upper_mq": {
                 "era": "child"

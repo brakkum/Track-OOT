@@ -18315,6 +18315,245 @@
                     "value": 2
                 }
             ]
+        },
+        "links_house_cow": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_epona"
+                }
+            ]
+        },
+        "gerudo_river_cow": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_epona"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                }
+            ]
+        },
+        "kakariko_impas_cow": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_epona"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                }
+            ]
+        },
+        "lonlon_cow_tower_1": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_epona"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                }
+            ]
+        },
+        "lonlon_cow_tower_2": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_epona"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                }
+            ]
+        },
+        "lonlon_cow_stables_1": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_epona"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                }
+            ]
+        },
+        "lonlon_cow_stables_2": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_epona"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                }
+            ]
+        },
+        "hyrule_west_grotto_cow": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_epona"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hammer"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_fire_source"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "mountain_grotto_cow": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_epona"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
+        },
+        "jabujabu_cow": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "jabu_jabu_access"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                },
+                {
+                    "type": "item",
+                    "el": "boomerang"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "sword_kokiri"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_epona"
+                }
+            ]
         }
     },
     "skulltulas": {
