@@ -260,7 +260,7 @@ class HTMLTrackerLocationList extends HTMLElement {
                                 Object.keys(data).forEach(i => {
                                     let buf = data[i];
                                     if (!buf.era || !this.era || this.era === buf.era) {
-                                        if (!buf.mode || buf.mode != "scrubsanity" || TrackerLocalState.read("options", "scrubsanity", false)) {
+                                        if (!buf.mode || TrackerLocalState.read("options", buf.mode, false)) {
                                             let el = document.createElement('ootrt-listlocation');
                                             el.ref = `${this.ref}.${this.mode}.${i}`;
                                             cnt.appendChild(el);

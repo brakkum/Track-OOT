@@ -17,9 +17,6 @@ hyrule_north_grotto=Hyrule Field North Grotto
 hyrule_forest_grotto=Hyrule Field Forest Grotto
 hyrule_south_grotto=Hyrule Field South Grotto
 diving_heart_piece_grotto=Diving Heart Piece Grotto
-talon_chicken=Talon's Chickens Minigame
-maron_song=Epona's Song
-lonlon_hp=Lon Lon Heart Piece
 bottle_zora=Underwater Bottle
 lake_sun=Lake Hylia Sun
 lab_dive=Diving in the Lab
@@ -29,14 +26,6 @@ fishing_adult=Adult Fishing
 gerudo_hammer_rock=Gerudo Valley Hammer Rocks Chest
 gerudo_crate=Gerudo Valley Crate Heart Piece
 gerudo_waterfall=Gerudo Valley Waterfall Heart Piece
-gerudo_rooftop=Gerudo Fortress Rooftop Chest
-gerudo_guard_1=Gerudo Carpenter Guard 1
-gerudo_guard_2=Gerudo Carpenter Guard 2
-gerudo_guard_3=Gerudo Carpenter Guard 3
-gerudo_guard_4=Gerudo Carpenter Guard 4
-gerudo_fortress_clear=Gerudo Fortress Clear
-gerudo_archer_1=Horseback Archery Game 1000pts
-gerudo_archer_2=Horseback Archery Game 1500pts
 desert_chest=Haunted Wasteland Chest
 desert_warp_spirit=Requiem of Spirit
 desert_colossus_hp=Desert Colossus Heart Piece
@@ -46,6 +35,23 @@ frog_game=Frog Ocarina Game
 zora_hp_1=Zora River Heart Piece 1
 zora_hp_2=Zora River Heart Piece 2
 zora_river_grotto=Zora River Grotto
+
+; LOCATIONS - LONLON
+lonlon=Lon Lon-Farm
+talon_chicken=Talon's Chickens Minigame
+maron_song=Epona's Song
+lonlon_hp=Tower Heart Piece
+
+; LOCATIONS - GERUDO
+gerudo=Gerudo Fortress
+gerudo_rooftop=Fortress Rooftop Chest
+gerudo_guard_1=Carpenter Guard 1
+gerudo_guard_2=Carpenter Guard 2
+gerudo_guard_3=Carpenter Guard 3
+gerudo_guard_4=Carpenter Guard 4
+gerudo_fortress_clear=Guards Cleared
+gerudo_archer_1=Horseback Archery Game 1000pts
+gerudo_archer_2=Horseback Archery Game 1500pts
 
 ; LOCATIONS - DEKU
 deku=Deku Tree 
@@ -833,6 +839,7 @@ consider_buyable=Consider buyable Items (Tunics / Wasteland Bombchus) in logic
 bombchu_logic=Consider Bombchus in logic
 keysanity=Keysanity
 scrubsanity=Scrubsanity
+cowsanity=Cowsanity
 skullsanity=Skullsanity (do not autocount) [WIP]
 doors_open_forest=Open Forest
 doors_open_mountain=Open Mountain Trail Gate
@@ -946,6 +953,7 @@ stick_1=Deku Stick
 nuts_5=Deku Nuts (5)
 nuts_10=Deku Nuts (10)
 bombs_5=Bombs (5)
+bombs_5_2=Bombs (5)
 bombs_10=Bombs (10)
 bombs_20=Bombs (20)
 bombs_30=Bombs (30)
