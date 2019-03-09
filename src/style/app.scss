@@ -129,3 +129,51 @@ deep-choiceselect {
 #tracker-log {
     font-family: monospace;
 }
+
+#logic-board {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    padding: 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: #111;
+    
+    grid-template-columns: 2fr 2fr 1fr 1fr;
+    grid-template-rows: 1fr 150px;
+    grid-template-areas: 
+    "logics workingarea clipboard elements"
+    "logics workingarea trashcan elements";
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+
+    #logics {
+        position: relative;
+        grid-area: logics;
+        border: solid 2px #222;
+        border-color: #777;
+    }
+    #workingarea {
+        grid-area: workingarea;
+    }
+    #clipboard {
+        grid-area: clipboard;
+    }
+    #trashcan {
+        grid-area: trashcan;
+    }
+    #elements {
+        grid-area: elements;
+    }
+    .logic-location {
+        border: solid 1px #fff;
+        background-color: #000;
+        color: #fff;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+        overflow: hidden;
+    }
+}

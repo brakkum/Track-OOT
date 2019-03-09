@@ -1,5 +1,8 @@
 "use strict";
 
+const fs = require('fs');
+const path = require("path");
+
 const PATHS = {
     app: {
         base: "./src",
@@ -12,6 +15,15 @@ const PATHS = {
         prod: "./prod"
     }
 };
+
+PATHS.deepJS = path.resolve(__dirname, '../deepjs.2deep4real.de');
+fs.access(PATHS.deepJS, fs.constants.F_OK, function(err) {
+  if (!!err) {
+    PATHS.deepJS = path.resolve(__dirname, 'node_modules/deepJS');
+  }
+});
+
+
 
 const gulp         = require("gulp");
 const terser       = require('gulp-terser');

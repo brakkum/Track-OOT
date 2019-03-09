@@ -73,22 +73,18 @@
             function updateLoadingMessage(msg = "loading...") {
                 spl.innerHTML = msg;
             }
-            if(document.head.createShadowRoot || document.head.attachShadow) {
-                let max_files = 0;
-                let load_files = 0;
 
-                function importHTML(url) {
+            function importHTML(url) {
                 return fetch(url)
-                        .then(r => r.text())
-                        .then(r => (new DOMParser()).parseFromString(r, "text/html"))
-                        .then(r => {
-                            while (r.body.childNodes.length > 0) {
-                                document.body.appendChild(r.body.childNodes[0]);
-                            }
-                        });
-                }
-
-                function importCSS(url) {
+                    .then(r => r.text())
+                    .then(r => (new DOMParser()).parseFromString(r, "text/html"))
+                    .then(r => {
+                        while (r.body.childNodes.length > 0) {
+                            document.body.appendChild(r.body.childNodes[0]);
+                        }
+                    });
+            }
+            function importCSS(url) {
                 return new Promise((res, rej) => {
                     let t = document.createElement("link");
                     t.href = url;
@@ -98,9 +94,8 @@
                     t.onerror = rej;
                     document.head.appendChild(t);
                 });
-                }
-
-                function importModule(url) {
+            }
+            function importModule(url) {
                 return new Promise((res, rej) => {
                     let t = document.createElement("script");
                     t.src = url;
@@ -109,13 +104,17 @@
                     t.onerror = rej;
                     document.head.appendChild(t);
                 });
-                }
+            }
+
+            if(document.head.createShadowRoot || document.head.attachShadow) {
+                let max_files = 0;
+                let load_files = 0;
 
                 async function startApp() {
-                navigator.serviceWorker.removeEventListener('message', swStateRecieve);
-                await importHTML("content/app.html");
-                await importCSS("style/app.css");
-                await importModule("/script/app.mjs");
+                    navigator.serviceWorker.removeEventListener('message', swStateRecieve);
+                    await importHTML("content/app.html");
+                    await importCSS("style/app.css");
+                    await importModule("/script/app.mjs");
                 }
 
                 function swStateRecieve(event) {
