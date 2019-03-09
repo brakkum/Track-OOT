@@ -323,7 +323,7 @@ function convertValueList(values = [], names = []) {
                 case "button":
                     if (j == "edit_custom_logic") {
                         settings.addButton(i, label, j, I18n.translate(val.text), e => {
-                            window.open("editor.html", '_blank');
+                            document.getElementById('view-pager').active = "editor";
                         });
                     } else if (j == "erase_all_data") {
                         settings.addButton(i, label, j, I18n.translate(val.text), e => {

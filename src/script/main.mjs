@@ -18,8 +18,8 @@ import "/deepJS/ui/selection/ChoiceSelect.mjs";
 (async function main() {
 
     if (!!GlobalData.get("version").dev) {
-        Logger.setOutput(document.getElementById("tracker-log"));
-        EventBus.logEvents(true);
+        //Logger.setOutput(document.getElementById("tracker-log"));
+        //EventBus.logEvents(true);
     } else {
         document.getElementById("tab_log_top").style.display = "none";
         document.getElementById("tab_log_bottom").style.display = "none";

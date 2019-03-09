@@ -95,15 +95,15 @@ function createCategory(data, ref) {
     
 function loadChestLogic(event) {
     let l = GlobalData.get("logic").chests[event.target.dataset.ref];
-    workingarea.loadLogic(l);
+    document.getElementById('workingarea').loadLogic(l);
 }
     
 function loadSkulltulaLogic(event) {
     let l = GlobalData.get("logic").skulltulas[event.target.dataset.ref];
-    workingarea.loadLogic(l);
+    document.getElementById('workingarea').loadLogic(l);
 }
     
 function loadMixinLogic(event) {
     let l = GlobalData.get("logic").mixins[event.target.dataset.ref];
-    workingarea.loadLogic(l);
+    document.getElementById('workingarea').loadLogic(l);
 }
