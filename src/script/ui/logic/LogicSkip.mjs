@@ -12,16 +12,16 @@ const TPL = new Template(`
     <div id="ref" class="body"></div>
 `);
 
-export default class DeepLogicSkip extends DeepLogicAbstractElement {
+export default class TrackerLogicSkip extends DeepLogicAbstractElement {
 
     constructor() {
         super();
         this.shadowRoot.appendChild(TPL.generate());
     }
 
-    visualizeValue() {
-        // TODO get actual referenced value
-        this.shadowRoot.querySelector(".header").dataset.value = "";
+    update() {
+        this.value = MemoryStorage.get("skips", this.ref, GlobalData.get("skips").options[this.ref].default);
+        this.shadowRoot.getElementById("head").dataset.value = this.value;
     }
 
     toJSON() {
@@ -67,5 +67,5 @@ export default class DeepLogicSkip extends DeepLogicAbstractElement {
 
 }
 
-DeepLogicAbstractElement.registerReference("skip", DeepLogicSkip);
-customElements.define('deep-logic-skip', DeepLogicSkip);
+DeepLogicAbstractElement.registerReference("skip", TrackerLogicSkip);
+customElements.define('tracker-logic-skip', TrackerLogicSkip);

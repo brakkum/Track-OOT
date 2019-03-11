@@ -22,7 +22,7 @@ const TPL = new Template(`
     <div id="ref" class="body"></div>
 `);
 
-export default class DeepLogicItem extends DeepLogicAbstractElement {
+export default class TrackerLogicItem extends DeepLogicAbstractElement {
 
     constructor() {
         super();
@@ -30,7 +30,7 @@ export default class DeepLogicItem extends DeepLogicAbstractElement {
     }
 
     update() {
-        this.value = TrackerLocalState.read("items", this.ref, false);
+        this.value = TrackerLocalState.read("items", this.ref, 0);
         this.shadowRoot.getElementById("head").dataset.value = this.value;
     }
 
@@ -73,5 +73,5 @@ export default class DeepLogicItem extends DeepLogicAbstractElement {
 
 }
 
-DeepLogicAbstractElement.registerReference("item", DeepLogicItem);
-customElements.define('deep-logic-item', DeepLogicItem);
+DeepLogicAbstractElement.registerReference("item", TrackerLogicItem);
+customElements.define('tracker-logic-item', TrackerLogicItem);

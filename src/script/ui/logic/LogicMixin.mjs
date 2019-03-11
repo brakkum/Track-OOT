@@ -1,5 +1,6 @@
 import Template from "/deepJS/util/Template.mjs";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.mjs";
+import TrackerLogic from "/script/util/Logic.mjs";
 
 const TPL = new Template(`
     <style>
@@ -12,16 +13,16 @@ const TPL = new Template(`
     <div id="ref" class="body"></div>
 `);
 
-export default class DeepLogicMixin extends DeepLogicAbstractElement {
+export default class TrackerLogicMixin extends DeepLogicAbstractElement {
 
     constructor() {
         super();
         this.shadowRoot.appendChild(TPL.generate());
     }
 
-    visualizeValue() {
-        // TODO get actual referenced value
-        this.shadowRoot.querySelector(".header").dataset.value = "";
+    update() {
+        this.value = TrackerLogic.getValue(this.ref);
+        this.shadowRoot.getElementById("head").dataset.value = this.value;
     }
 
     toJSON() {
@@ -67,5 +68,5 @@ export default class DeepLogicMixin extends DeepLogicAbstractElement {
 
 }
 
-DeepLogicAbstractElement.registerReference("mixin", DeepLogicMixin);
-customElements.define('deep-logic-mixin', DeepLogicMixin);
+DeepLogicAbstractElement.registerReference("mixin", TrackerLogicMixin);
+customElements.define('tracker-logic-mixin', TrackerLogicMixin);

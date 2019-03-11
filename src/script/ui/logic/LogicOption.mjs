@@ -12,16 +12,16 @@ const TPL = new Template(`
     <div id="ref" class="body"></div>
 `);
 
-export default class DeepLogicOption extends DeepLogicAbstractElement {
+export default class TrackerLogicOption extends DeepLogicAbstractElement {
 
     constructor() {
         super();
         this.shadowRoot.appendChild(TPL.generate());
     }
 
-    visualizeValue() {
-        // TODO get actual referenced value
-        this.shadowRoot.querySelector(".header").dataset.value = "";
+    update() {
+        this.value = MemoryStorage.get("options", this.ref, GlobalData.get("settings").options[this.ref].default);
+        this.shadowRoot.getElementById("head").dataset.value = this.value;
     }
 
     toJSON() {
@@ -67,5 +67,5 @@ export default class DeepLogicOption extends DeepLogicAbstractElement {
 
 }
 
-DeepLogicAbstractElement.registerReference("option", DeepLogicOption);
-customElements.define('deep-logic-option', DeepLogicOption);
+DeepLogicAbstractElement.registerReference("option", TrackerLogicOption);
+customElements.define('tracker-logic-option', TrackerLogicOption);

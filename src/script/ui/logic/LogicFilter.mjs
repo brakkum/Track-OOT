@@ -12,16 +12,16 @@ const TPL = new Template(`
     <div id="ref" class="body"></div>
 `);
 
-export default class DeepLogicFilter extends DeepLogicAbstractElement {
+export default class TrackerLogicFilter extends DeepLogicAbstractElement {
 
     constructor() {
         super();
         this.shadowRoot.appendChild(TPL.generate());
     }
 
-    visualizeValue() {
-        // TODO get actual referenced value
-        this.shadowRoot.querySelector(".header").dataset.value = "";
+    update() {
+        this.value = MemoryStorage.get("active_filter", this.ref, GlobalData.get("filter")[this.ref].default);
+        this.shadowRoot.getElementById("head").dataset.value = this.value;
     }
 
     toJSON() {
@@ -67,5 +67,5 @@ export default class DeepLogicFilter extends DeepLogicAbstractElement {
 
 }
 
-DeepLogicAbstractElement.registerReference("filter", DeepLogicFilter);
-customElements.define('deep-logic-filter', DeepLogicFilter);
+DeepLogicAbstractElement.registerReference("filter", TrackerLogicFilter);
+customElements.define('tracker-logic-filter', TrackerLogicFilter);
