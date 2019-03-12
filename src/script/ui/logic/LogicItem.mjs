@@ -1,4 +1,5 @@
 import Template from "/deepJS/util/Template.mjs";
+import EventBus from "/deepJS/util/EventBus.mjs";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
 
@@ -12,8 +13,7 @@ const TPL = new Template(`
             background-color: #85ff85;
             content: attr(data-value);
         }
-        :host([visualize]:not([visualize="false"])[value="0"]) .header:before,
-        :host([visualize]:not([visualize="false"])[value="false"]) .header:before {
+        :host([visualize]:not([visualize="false"])[value="0"]) .header:before {
             background-color: #ff8585;
             content: "FALSE";
         }
@@ -27,6 +27,11 @@ export default class TrackerLogicItem extends DeepLogicAbstractElement {
     constructor() {
         super();
         this.shadowRoot.appendChild(TPL.generate());
+        EventBus.on("item-update", ref => {
+            if (ref == this.ref) {
+                this.update();
+            }
+        });
     }
 
     update() {
@@ -37,7 +42,7 @@ export default class TrackerLogicItem extends DeepLogicAbstractElement {
     toJSON() {
         return {
             type: "item",
-            item: this.ref
+            el: this.ref
         };
     }
 
@@ -50,7 +55,9 @@ export default class TrackerLogicItem extends DeepLogicAbstractElement {
     }
 
     static get observedAttributes() {
-        return ['ref'];
+        let attr = DeepLogicAbstractElement.observedAttributes;
+        attr.push('ref');
+        return attr;
     }
       
     attributeChangedCallback(name, oldValue, newValue) {
@@ -58,9 +65,11 @@ export default class TrackerLogicItem extends DeepLogicAbstractElement {
             case 'ref':
                 if (oldValue != newValue) {
                     this.shadowRoot.getElementById("ref").innerHTML = this.ref;
-                    this.value = TrackerLocalState.read("items", this.ref, false);
-                    this.shadowRoot.getElementById("head").dataset.value = this.value;
+                    this.update();
                 }
+                break;
+            default: 
+                super.attributeChangedCallback(name, oldValue, newValue);
                 break;
         }
     }

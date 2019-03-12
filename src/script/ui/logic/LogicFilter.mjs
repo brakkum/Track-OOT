@@ -1,5 +1,8 @@
 import Template from "/deepJS/util/Template.mjs";
+import EventBus from "/deepJS/util/EventBus.mjs";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.mjs";
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import MemoryStorage from "/deepJS/storage/MemoryStorage.mjs";
 
 const TPL = new Template(`
     <style>
@@ -8,7 +11,7 @@ const TPL = new Template(`
             --logic-color-border: lightgrey;
         }
     </style>
-    <div class="header">FILTER</div>
+    <div id="head" class="header">FILTER</div>
     <div id="ref" class="body"></div>
 `);
 
@@ -17,6 +20,11 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
     constructor() {
         super();
         this.shadowRoot.appendChild(TPL.generate());
+        EventBus.on("filter", ref => {
+            if (ref == this.ref) {
+                this.update();
+            }
+        });
     }
 
     update() {
@@ -31,8 +39,8 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
                 el = el.toJSON();
             }
             return {
-                type: "item",
-                item: this.ref
+                type: "filter",
+                el: this.ref
             };
         }
     }
@@ -54,6 +62,7 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
             case 'ref':
                 if (oldValue != newValue) {
                     this.shadowRoot.getElementById("ref").innerHTML = this.ref;
+                    this.update();
                 }
                 break;
         }

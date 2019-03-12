@@ -94,10 +94,10 @@ function gossipstoneUpdate(name, value) {
     }
 }
 
-function itemUpdate(name, value) {
-    let el = this.shadowRoot.getElementById("marker");
-    if (!el.classList.contains("checked")) {
-        if (Logic.checkLogic("gossipstones", this.ref)) {
+function logicUpdate(type, ref, value) {
+    if ("gossipstones" == type && this.ref == ref) {
+        let el = this.shadowRoot.querySelector("marker");
+        if (!!value) {
             el.classList.add("avail");
         } else {
             el.classList.remove("avail");
@@ -110,14 +110,6 @@ function globalUpdate() {
     let ref = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref].ref || this.ref;
     this.setValue(TrackerLocalState.read("gossipstones", ref, {item: "0x01", location: "0x01"}));
     EventBus.unmute("gossipstone-update");
-    let el = this.shadowRoot.getElementById("marker");
-    if (!el.classList.contains("checked")) {
-        if (Logic.checkLogic("gossipstones", this.ref)) {
-            el.classList.add("avail");
-        } else {
-            el.classList.remove("avail");
-        }
-    }
 }
 
 class HTMLTrackerPOIGossipstone extends HTMLElement {
@@ -128,7 +120,7 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
         this.shadowRoot.appendChild(TPL.generate());
         this.addEventListener("click", this.check);
         EventBus.on("gossipstone-update", gossipstoneUpdate.bind(this));
-        EventBus.on("item-update", itemUpdate.bind(this));
+        EventBus.on("logic", logicUpdate.bind(this));
         EventBus.onafter("global-update", globalUpdate.bind(this));
     }
 

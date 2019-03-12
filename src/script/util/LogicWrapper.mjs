@@ -1,46 +1,36 @@
-
 import DeepLocalStorage from "/deepJS/storage/LocalStorage.mjs";
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
+import {deepEquals} from "/deepJS/util/Helper.mjs";
+import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.mjs";
+import "/script/ui/logic/LogicItem.mjs";
+import "/script/ui/logic/LogicMixin.mjs";
+import "/script/ui/logic/LogicOption.mjs";
+import "/script/ui/logic/LogicSkip.mjs";
+import "/script/ui/logic/LogicFilter.mjs";
 
-const LOGIC_DEFAULT = new WeakMap;
-const LOGIC_CUSTOM = new WeakMap;
+const LOGIC = new WeakMap;
+const TYPE = new WeakMap;
+const REF = new WeakMap;
 const VALUE = new WeakMap;
 
+const LOGIC_SOURCE = new WeakMap;
 const INSTANCES = new WeakSet;
-
-function buildDefaultLogic(logic, type, ref) {
-    let build = DeepLogicAbstractElement.buildLogic(logic[type][ref]);
-    build.onupdate = v => {
-        if (!DeepLocalStorage.get("settings", "use_custom_logic", false)) {
-            this.value = v;
-            EventBus.post("logic", type, ref, v);
-        }
-    };
-    return build;
-}
-
-function buildCustomLogic(logic, type, ref) {
-    let build = DeepLogicAbstractElement.buildLogic(logic[type][ref]);
-    build.onupdate = v => {
-        if (DeepLocalStorage.get("settings", "use_custom_logic", false)) {
-            this.value = v;
-            EventBus.post("logic", type, ref, v);
-        }
-    };
-    return build;
-}
 
 export default class LogicWrapper {
 
     constructor(type, ref) {
-        LOGIC_DEFAULT.set(this, buildDefaultLogic.apply(this, GlobalData.get("logic"), type, ref, false));
-        LOGIC_CUSTOM.set(this, buildCustomLogic.apply(this, GlobalData.get("logic_patched"), type, ref, true));
+        TYPE.set(this, type);
+        REF.set(this, ref);
+        this.loadLogic();
         INSTANCES.add(this);
     }
 
-    set value(value) {
-        VALUE.set(this, value);
+    set value(val) {
+        let buf = parseInt(val);
+        if (isNaN(buf)) buf = 0;
+        VALUE.set(this, buf);
+        EventBus.post("logic", TYPE.get(this), REF.get(this), buf);
     }
 
     get value() {
@@ -49,20 +39,40 @@ export default class LogicWrapper {
         }
         return false;
     }
-
-    loadCustomLogic() {
+    
+    loadLogic() {
+        let logic;
         if (DeepLocalStorage.get("settings", "use_custom_logic", false)) {
-            let oldValue = GlobalData.get("logic_patched", {});
-            let newValue = DeepLocalStorage.get("settings", "logic", {});
-            if (JSON.stringify(oldValue) == JSON.stringify(newValue)) {
-                GlobalData.set("logic_patched", newValue);
-                
+            logic = GlobalData.get("logic_patched", GlobalData.get("logic"));
+        } else {
+            logic = GlobalData.get("logic");
+        }
+        let type = TYPE.get(this);
+        let ref = REF.get(this);
+        if (!!logic[type] && !!logic[type][ref]) {
+            logic = logic[type][ref];
+            if (!LOGIC_SOURCE.has(this) || !deepEquals(LOGIC_SOURCE.get(this), logic)) {
+                let build = DeepLogicAbstractElement.buildLogic(logic);
+                if (!!build) {
+                    build.onupdate = value => this.value = value;
+                    LOGIC.set(this, build);
+                }
+                this.value = build.value;
+                LOGIC_SOURCE.set(this, logic);
             }
+        } else {
+            this.value = false;
+            LOGIC.delete(this);
+            LOGIC_SOURCE.delete(this);
         }
     }
 
 }
-
-window.onfocus = function(ev) {
-    
+        
+window.onfocus = function(event) {
+    if (DeepLocalStorage.get("settings", "use_custom_logic", false)) {
+        for (let i of Array.from(INSTANCES)) {
+            i.loadLogic();
+        }
+    }
 }

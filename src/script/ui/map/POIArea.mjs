@@ -84,7 +84,7 @@ function canGet(name, category) {
         if (!list[i].era || !filter || filter === list[i].era) {
             if (!list[i].mode || TrackerLocalState.read("options", list[i].mode, false)) {
                 if (!TrackerLocalState.read(category, i, 0)) {
-                    if (Logic.checkLogic(category, i)) {
+                    if (Logic.getValue(category, i)) {
                         canGet++;
                     }
                 }

@@ -86,35 +86,22 @@ function locationUpdate(name, value) {
     }
 }
 
-function itemUpdate(name, value) {
-    if (!this.checked || this.checked === "false") {
-        let el = this.shadowRoot.getElementById("marker");
-        let path = this.ref.split(".");
-        if (Logic.checkLogic(path[1], path[2])) {
-            el.classList.add("avail");
-        } else {
-            el.classList.remove("avail");
-        }
-    }
-}
-
 function globalUpdate() {
     let path = this.ref.split(".");
     EventBus.mute("location-update");
     this.checked = TrackerLocalState.read(path[1], path[2], false);
     EventBus.unmute("location-update");
-    if (!this.checked || this.checked === "false") {
-        checkLogic.apply(this);
-    }
 }
 
-function checkLogic() {
+function logicUpdate(type, ref, value) {
     let path = this.ref.split(".");
-    let el = this.shadowRoot.getElementById("marker");
-    if (Logic.checkLogic(path[1], path[2])) {
-        el.classList.add("avail");
-    } else {
-        el.classList.remove("avail");
+    if (path[1] == type && path[2] == ref) {
+        let el = this.shadowRoot.getElementById("marker");
+        if (!!value) {
+            el.classList.add("avail");
+        } else {
+            el.classList.remove("avail");
+        }
     }
 }
 
@@ -127,9 +114,8 @@ class HTMLTrackerPOILocation extends HTMLElement {
         this.addEventListener("click", this.check);
         this.addEventListener("contextmenu", this.uncheck);
         EventBus.on("location-update", locationUpdate.bind(this));
-        EventBus.on("item-update", itemUpdate.bind(this));
+        EventBus.on("logic", logicUpdate.bind(this));
         EventBus.onafter("global-update", globalUpdate.bind(this));
-        EventBus.onafter("location-era-change", checkLogic.bind(this));
     }
 
     get ref() {
@@ -197,7 +183,7 @@ class HTMLTrackerPOILocation extends HTMLElement {
                     this.shadowRoot.getElementById("badge").appendChild(el_era);
                     
                     let el = this.shadowRoot.getElementById("marker");
-                    if (Logic.checkLogic(path[1], path[2])) {
+                    if (Logic.getValue(path[1], path[2])) {
                         el.classList.add("avail");
                     } else {
                         el.classList.remove("avail");
@@ -211,7 +197,7 @@ class HTMLTrackerPOILocation extends HTMLElement {
                     let path = this.ref.split(".");
                     if (!newValue || newValue === "false") {
                         let el = this.shadowRoot.getElementById("marker");
-                        if (Logic.checkLogic(path[1], path[2])) {
+                        if (Logic.getValue(path[1], path[2])) {
                             el.classList.add("avail");
                         } else {
                             el.classList.remove("avail");

@@ -1,4 +1,5 @@
 import Template from "/deepJS/util/Template.mjs";
+import EventBus from "/deepJS/util/EventBus.mjs";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.mjs";
 import TrackerLogic from "/script/util/Logic.mjs";
 
@@ -9,19 +10,25 @@ const TPL = new Template(`
             --logic-color-border: lightgrey;
         }
     </style>
-    <div class="header">MIXIN</div>
+    <div id="head" class="header">MIXIN</div>
     <div id="ref" class="body"></div>
 `);
 
+// FIXME mixins not updated correctly
 export default class TrackerLogicMixin extends DeepLogicAbstractElement {
 
     constructor() {
         super();
         this.shadowRoot.appendChild(TPL.generate());
+        EventBus.on("logic", (type, ref) => {
+            if ("mixins" == type && this.ref == ref) {
+                update();
+            }
+        });
     }
 
     update() {
-        this.value = TrackerLogic.getValue(this.ref);
+        this.value = TrackerLogic.getValue("mixins", this.ref);
         this.shadowRoot.getElementById("head").dataset.value = this.value;
     }
 
@@ -32,8 +39,8 @@ export default class TrackerLogicMixin extends DeepLogicAbstractElement {
                 el = el.toJSON();
             }
             return {
-                type: "item",
-                item: this.ref
+                type: "mixin",
+                el: this.ref
             };
         }
     }
@@ -55,6 +62,7 @@ export default class TrackerLogicMixin extends DeepLogicAbstractElement {
             case 'ref':
                 if (oldValue != newValue) {
                     this.shadowRoot.getElementById("ref").innerHTML = this.ref;
+                    this.update();
                 }
                 break;
         }

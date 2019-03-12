@@ -1,5 +1,8 @@
 import Template from "/deepJS/util/Template.mjs";
+import EventBus from "/deepJS/util/EventBus.mjs";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.mjs";
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import TrackerLocalState from "/script/util/LocalState.mjs";
 
 const TPL = new Template(`
     <style>
@@ -8,7 +11,7 @@ const TPL = new Template(`
             --logic-color-border: lightgrey;
         }
     </style>
-    <div class="header">SKIP</div>
+    <div id="head" class="header">SKIP</div>
     <div id="ref" class="body"></div>
 `);
 
@@ -17,10 +20,13 @@ export default class TrackerLogicSkip extends DeepLogicAbstractElement {
     constructor() {
         super();
         this.shadowRoot.appendChild(TPL.generate());
+        EventBus.on("settings", () => {
+            this.update();
+        });
     }
 
     update() {
-        this.value = MemoryStorage.get("skips", this.ref, GlobalData.get("skips").options[this.ref].default);
+        this.value = TrackerLocalState.read("skips", this.ref, GlobalData.get("settings").skips[this.ref].default);
         this.shadowRoot.getElementById("head").dataset.value = this.value;
     }
 
@@ -31,8 +37,8 @@ export default class TrackerLogicSkip extends DeepLogicAbstractElement {
                 el = el.toJSON();
             }
             return {
-                type: "item",
-                item: this.ref
+                type: "skip",
+                el: this.ref
             };
         }
     }
@@ -54,6 +60,7 @@ export default class TrackerLogicSkip extends DeepLogicAbstractElement {
             case 'ref':
                 if (oldValue != newValue) {
                     this.shadowRoot.getElementById("ref").innerHTML = this.ref;
+                    this.update();
                 }
                 break;
         }

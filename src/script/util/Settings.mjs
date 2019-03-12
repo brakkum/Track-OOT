@@ -215,17 +215,6 @@ settings.addEventListener('close', function(event) {
     showUpdatePopup = true;
 });
 
-window.onfocus = function(ev) {
-    if (DeepLocalStorage.get("settings", "use_custom_logic", false)) {
-        let oldValue = GlobalData.get("logic_patched", {});
-        let newValue = DeepLocalStorage.get("settings", "logic", {});
-        if (JSON.stringify(oldValue) == JSON.stringify(newValue)) {
-            GlobalData.set("logic_patched", newValue);
-            EventBus.post("global-update");
-        }
-    }
-}
-
 function getSettings() {
     let options = GlobalData.get("settings");
     let res = {};
