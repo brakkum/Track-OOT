@@ -15,7 +15,6 @@ const TPL = new Template(`
         }
         :host([visualize]:not([visualize="false"])[value="0"]) .header:before {
             background-color: #ff8585;
-            content: "FALSE";
         }
     </style>
     <div id="head" class="header">ITEM</div>

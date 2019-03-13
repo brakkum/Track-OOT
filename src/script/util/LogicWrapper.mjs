@@ -30,7 +30,9 @@ export default class LogicWrapper {
         let buf = parseInt(val);
         if (isNaN(buf)) buf = 0;
         VALUE.set(this, buf);
-        EventBus.post("logic", TYPE.get(this), REF.get(this), buf);
+        let type = TYPE.get(this);
+        let ref = REF.get(this);
+        EventBus.post("logic", type, ref, buf);
     }
 
     get value() {
@@ -54,7 +56,9 @@ export default class LogicWrapper {
             if (!LOGIC_SOURCE.has(this) || !deepEquals(LOGIC_SOURCE.get(this), logic)) {
                 let build = DeepLogicAbstractElement.buildLogic(logic);
                 if (!!build) {
-                    build.onupdate = value => this.value = value;
+                    build.onupdate = value => {
+                        this.value = value;
+                    };
                     LOGIC.set(this, build);
                 }
                 this.value = build.value;
