@@ -7,6 +7,8 @@ import Dialog from "/deepJS/ui/Dialog.mjs";
 import TrackerLocalState from "./LocalState.mjs";
 import I18n from "./I18n.mjs";
 
+import "/deepJS/ui/Paging.mjs";
+
 const settings = new SettingsWindow;
 const settingsEdit = document.getElementById("edit-settings");
 

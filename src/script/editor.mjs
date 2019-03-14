@@ -29,81 +29,83 @@ import "/script/ui/logic/LogicFilter.mjs";
 
     fillLogics(locations, logic);
     fillOperators(items, options, skips, filter, logic);
-}());
 
-function fillOperators(items, options, skips, filter, logic) {
-    let container = document.getElementById("elements");
+    let workingarea = document.getElementById('workingarea');
 
-    for (let j in items) {
-        let el = document.createElement("deep-logic-item");
-        el.ref = j;
-        el.template = "true";
-        container.appendChild(el);
+    function fillOperators(items, options, skips, filter, logic) {
+        let container = document.getElementById("elements");
+
+        for (let j in items) {
+            let el = document.createElement("deep-logic-item");
+            el.ref = j;
+            el.template = "true";
+            container.appendChild(el);
+        }
+
+        for (let j in logic.mixins) {
+            let el = document.createElement("deep-logic-mixin");
+            el.ref = j;
+            el.template = "true";
+            container.appendChild(el);
+        }
     }
 
-    for (let j in logic.mixins) {
-        let el = document.createElement("deep-logic-mixin");
-        el.ref = j;
-        el.template = "true";
-        container.appendChild(el);
-    }
-}
+    function fillLogics(locations, logic) {
+        let container = document.getElementById("logics");
 
-function fillLogics(locations, logic) {
-    let container = document.getElementById("logics");
+        container.appendChild(createCategory(locations, "chests_v"));
+        container.appendChild(createCategory(locations, "chests_mq"));
+        container.appendChild(createCategory(locations, "skulltulas_v"));
+        container.appendChild(createCategory(locations, "skulltulas_mq"));
 
-    container.appendChild(createCategory(locations, "chests_v"));
-    container.appendChild(createCategory(locations, "chests_mq"));
-    container.appendChild(createCategory(locations, "skulltulas_v"));
-    container.appendChild(createCategory(locations, "skulltulas_mq"));
-
-    let cnt = document.createElement("deep-collapsepanel");
-    cnt.caption = "mixins";
-    for (let j in logic.mixins) {
-        let el = document.createElement("div");
-        el.dataset.ref = j;
-        el.className = "logic-location";
-        el.onclick = loadMixinLogic;
-        el.innerHTML = j;
-        el.title = j;
-        cnt.appendChild(el);
-    }
-    container.appendChild(cnt);
-}
-
-function createCategory(data, ref) {
-    let ocnt = document.createElement("deep-collapsepanel");
-    ocnt.caption = ref;
-    for (let i in data) {
-        let loc = data[i][ref];
-        if (!loc) continue;
         let cnt = document.createElement("deep-collapsepanel");
-        cnt.caption = i;
-        for (let j in loc) {
+        cnt.caption = "mixins";
+        for (let j in logic.mixins) {
             let el = document.createElement("div");
             el.dataset.ref = j;
             el.className = "logic-location";
-            el.onclick = ref.startsWith("chest") ? loadChestLogic : loadSkulltulaLogic;
+            el.onclick = loadMixinLogic;
             el.innerHTML = j;
             el.title = j;
             cnt.appendChild(el);
         }
-        ocnt.appendChild(cnt);
+        container.appendChild(cnt);
     }
-    return ocnt;
-}
-    
-function loadChestLogic(event) {
-    let l = GlobalData.get("logic").chests[event.target.dataset.ref];
-    document.getElementById('workingarea').loadLogic(l);
-}
-    
-function loadSkulltulaLogic(event) {
-    let l = GlobalData.get("logic").skulltulas[event.target.dataset.ref];
-    document.getElementById('workingarea').loadLogic(l);
-}
-    
-function loadMixinLogic(event) {
-    let l = GlobalData.get("logic").mixins[event.target.dataset.ref];
-    document.getElementById('workingarea').loadLogic(l);
-}
+
+    function createCategory(data, ref) {
+        let ocnt = document.createElement("deep-collapsepanel");
+        ocnt.caption = ref;
+        for (let i in data) {
+            let loc = data[i][ref];
+            if (!loc) continue;
+            let cnt = document.createElement("deep-collapsepanel");
+            cnt.caption = i;
+            for (let j in loc) {
+                let el = document.createElement("div");
+                el.dataset.ref = j;
+                el.className = "logic-location";
+                el.onclick = ref.startsWith("chest") ? loadChestLogic : loadSkulltulaLogic;
+                el.innerHTML = j;
+                el.title = j;
+                cnt.appendChild(el);
+            }
+            ocnt.appendChild(cnt);
+        }
+        return ocnt;
+    }
+        
+    function loadChestLogic(event) {
+        let l = GlobalData.get("logic").chests[event.target.dataset.ref];
+        workingarea.loadLogic(l);
+    }
+        
+    function loadSkulltulaLogic(event) {
+        let l = GlobalData.get("logic").skulltulas[event.target.dataset.ref];
+        workingarea.loadLogic(l);
+    }
+        
+    function loadMixinLogic(event) {
+        let l = GlobalData.get("logic").mixins[event.target.dataset.ref];
+        workingarea.loadLogic(l);
+    }
+}());
