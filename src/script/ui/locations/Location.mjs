@@ -2,6 +2,7 @@ import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import Logger from "/deepJS/util/Logger.mjs";
+import "/deepJS/ui/ContextMenu.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
 import Logic from "/script/util/Logic.mjs";
 import I18n from "/script/util/I18n.mjs";
@@ -43,6 +44,12 @@ const TPL = new Template(`
     </style>
     <div id="text"></div>
     <div id="badge"></div>
+    <deep-contextmenu id="yay">
+        <a class="item" href="alert('test')">Test</a>
+        <div class="item">foobar</div>
+        <div class="splitter"></div>
+        <div class="item">barfoo</div>
+    </deep-contextmenu>
 `);
 
 function locationUpdate(name, value) {
@@ -162,6 +169,7 @@ class HTMLTrackerLocation extends HTMLElement {
     }
     
     uncheck(event) {
+        this.shadowRoot.getElementById("yay").show(event.clientX, event.clientY);
         Logger.log(`uncheck location "${this.ref}"`, "Location");
         this.checked = false;
         if (!event) return;
