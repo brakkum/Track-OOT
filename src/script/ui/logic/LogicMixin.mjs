@@ -1,7 +1,9 @@
 import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.mjs";
-import TrackerLogic from "/script/util/Logic.mjs";
+import Dialog from "/deepJS/ui/Dialog.mjs";
+import Logic from "/script/util/Logic.mjs";
+import I18n from "/script/util/I18n.mjs";
 
 const TPL = new Template(`
     <style>
@@ -9,28 +11,48 @@ const TPL = new Template(`
             --logic-color-back: white;
             --logic-color-border: lightgrey;
         }
+        :host(:not([visualize])) #view,
+        :host([visualize="false"]) #view {
+            display: none;
+        }
+        #view {
+            margin-left: 8px;
+            padding: 5px;
+            background: #cccccc;
+            cursor: pointer;
+        }
     </style>
-    <div id="head" class="header">MIXIN</div>
+    <div id="head" class="header">MIXIN<span id="view">view</span></div>
     <div id="ref" class="body"></div>
 `);
 
-// FIXME mixins not updated correctly
+function showLogic(ref) {
+    let d = new Dialog({
+        title: `MIXIN - ${ref}`,
+        submit: "OK"
+    });
+    d.value = ref;
+    d.appendChild(Logic.getLogicView("mixins", ref));
+    d.show();
+}
+
 export default class TrackerLogicMixin extends DeepLogicAbstractElement {
 
     constructor() {
         super();
         this.shadowRoot.appendChild(TPL.generate());
-        EventBus.on("logic", (type, ref) => {
-            if ("mixins" == type) {
-                if (this.ref == ref) {
-                    update();
-                }
+        EventBus.on("logic", function(type, ref) {
+            if ("mixins" == type && this.ref == ref) {
+                this.update();
             }
-        });
+        }.bind(this));
+        this.shadowRoot.getElementById("view").addEventListener("click", function(event) {
+            showLogic(this.ref);
+        }.bind(this));
     }
 
     update() {
-        this.value = TrackerLogic.getValue("mixins", this.ref);
+        this.value = Logic.getValue("mixins", this.ref);
         this.shadowRoot.getElementById("head").dataset.value = this.value;
     }
 

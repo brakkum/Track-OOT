@@ -3,13 +3,14 @@ import "/deepJS/ui/logic/LogicEditorClipboard.mjs";
 import "/deepJS/ui/logic/LogicEditorElements.mjs";
 import "/deepJS/ui/logic/LogicEditorTrashcan.mjs";
 import "/deepJS/ui/logic/LogicEditorWorkingarea.mjs";
+import "/deepJS/ui/Panel.mjs";
+import "/deepJS/ui/CollapsePanel.mjs";
+
 import "/deepJS/ui/logic/elements/literals/LogicTrue.mjs";
 import "/deepJS/ui/logic/elements/operators/LogicAnd.mjs";
 import "/deepJS/ui/logic/elements/operators/LogicOr.mjs";
 import "/deepJS/ui/logic/elements/operators/LogicNot.mjs";
 import "/deepJS/ui/logic/elements/restrictors/LogicMin.mjs";
-import "/deepJS/ui/Panel.mjs";
-import "/deepJS/ui/CollapsePanel.mjs";
 import "/script/ui/logic/LogicItem.mjs";
 import "/script/ui/logic/LogicMixin.mjs";
 import "/script/ui/logic/LogicOption.mjs";

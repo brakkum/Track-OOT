@@ -3,6 +3,12 @@ import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import {deepEquals} from "/deepJS/util/Helper.mjs";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.mjs";
+
+import "/deepJS/ui/logic/elements/literals/LogicTrue.mjs";
+import "/deepJS/ui/logic/elements/operators/LogicAnd.mjs";
+import "/deepJS/ui/logic/elements/operators/LogicOr.mjs";
+import "/deepJS/ui/logic/elements/operators/LogicNot.mjs";
+import "/deepJS/ui/logic/elements/restrictors/LogicMin.mjs";
 import "/script/ui/logic/LogicItem.mjs";
 import "/script/ui/logic/LogicMixin.mjs";
 import "/script/ui/logic/LogicOption.mjs";
@@ -49,25 +55,35 @@ export default class LogicWrapper {
         } else {
             logic = GlobalData.get("logic");
         }
-        let type = TYPE.get(this);
-        let ref = REF.get(this);
-        if (!!logic[type] && !!logic[type][ref]) {
-            logic = logic[type][ref];
-            if (!LOGIC_SOURCE.has(this) || !deepEquals(LOGIC_SOURCE.get(this), logic)) {
-                let build = DeepLogicAbstractElement.buildLogic(logic);
-                if (!!build) {
-                    build.onupdate = value => {
-                        this.value = value;
-                    };
-                    LOGIC.set(this, build);
+        if (!!logic) {
+            let type = TYPE.get(this);
+            let ref = REF.get(this);
+            if (!!logic[type] && !!logic[type][ref]) {
+                logic = logic[type][ref];
+                if (!LOGIC_SOURCE.has(this) || !deepEquals(LOGIC_SOURCE.get(this), logic)) {
+                    let build = DeepLogicAbstractElement.buildLogic(logic);
+                    if (!!build) {
+                        build.onupdate = value => {
+                            this.value = value;
+                        };
+                        build.readonly = true;
+                        build.visualize = true;
+                        LOGIC.set(this, build);
+                    }
+                    this.value = build.value;
+                    LOGIC_SOURCE.set(this, logic);
                 }
-                this.value = build.value;
-                LOGIC_SOURCE.set(this, logic);
+            } else {
+                this.value = false;
+                LOGIC.delete(this);
+                LOGIC_SOURCE.delete(this);
             }
-        } else {
-            this.value = false;
-            LOGIC.delete(this);
-            LOGIC_SOURCE.delete(this);
+        }
+    }
+
+    getLogic() {
+        if (LOGIC.has(this)) {
+            return LOGIC.get(this);
         }
     }
 

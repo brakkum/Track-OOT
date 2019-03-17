@@ -2,6 +2,7 @@ import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import Logger from "/deepJS/util/Logger.mjs";
+import Dialog from "/deepJS/ui/Dialog.mjs";
 import "/deepJS/ui/ContextMenu.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
 import Logic from "/script/util/Logic.mjs";
@@ -44,11 +45,10 @@ const TPL = new Template(`
     </style>
     <div id="text"></div>
     <div id="badge"></div>
-    <deep-contextmenu id="yay">
-        <a class="item" href="alert('test')">Test</a>
-        <div class="item">foobar</div>
+    <deep-contextmenu id="menu">
+        <div id="menu-check" class="item">Check<span style="font-size:0.7em;color:#777777;margin-left:15px;float:right;">(leftclick)</span></div>
         <div class="splitter"></div>
-        <div class="item">barfoo</div>
+        <div id="menu-logic" class="item">Show Logic</div>
     </deep-contextmenu>
 `);
 
@@ -79,6 +79,17 @@ function logicUpdate(type, ref, value) {
     }
 }
 
+function showLogic(ref) {
+    let path = ref.split(".");
+    let d = new Dialog({
+        title: I18n.translate(path[2]),
+        submit: "OK"
+    });
+    d.value = ref;
+    d.appendChild(Logic.getLogicView(path[1], path[2]));
+    d.show();
+}
+
 class HTMLTrackerLocation extends HTMLElement {
 
     constructor() {
@@ -90,6 +101,10 @@ class HTMLTrackerLocation extends HTMLElement {
         EventBus.onafter("global-update", globalUpdate.bind(this));
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
+
+        this.shadowRoot.getElementById("menu-logic").addEventListener("click", function(event) {
+            showLogic(this.ref);
+        }.bind(this));
     }
 
     get ref() {
@@ -133,7 +148,7 @@ class HTMLTrackerLocation extends HTMLElement {
                     el_era.src = `images/era_${data.era ||"both"}.svg`;
                     this.shadowRoot.getElementById("badge").appendChild(el_era);
 
-                    if (Logic.checkLogic(path[1], path[2])) {
+                    if (Logic.getValue(path[1], path[2])) {
                         txt.classList.add("avail");
                     } else {
                         txt.classList.remove("avail");
@@ -147,7 +162,7 @@ class HTMLTrackerLocation extends HTMLElement {
                     let path = this.ref.split(".");
                     if (!newValue || newValue === "false") {
                         let el = this.shadowRoot.getElementById("text");
-                        if (Logic.checkLogic(path[1], path[2])) {
+                        if (Logic.getValue(path[1], path[2])) {
                             el.classList.add("avail");
                         } else {
                             el.classList.remove("avail");
@@ -169,7 +184,7 @@ class HTMLTrackerLocation extends HTMLElement {
     }
     
     uncheck(event) {
-        this.shadowRoot.getElementById("yay").show(event.clientX, event.clientY);
+        this.shadowRoot.getElementById("menu").show(event.clientX, event.clientY);
         Logger.log(`uncheck location "${this.ref}"`, "Location");
         this.checked = false;
         if (!event) return;

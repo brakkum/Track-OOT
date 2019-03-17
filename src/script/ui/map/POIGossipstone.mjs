@@ -192,7 +192,7 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
                     this.shadowRoot.getElementById("badge").appendChild(el_era);
                     
                     let el = this.shadowRoot.getElementById("marker");
-                    if (Logic.checkLogic("gossipstones", this.ref)) {
+                    if (Logic.vetValue("gossipstones", this.ref)) {
                         el.classList.add("avail");
                     } else {
                         el.classList.remove("avail");
@@ -207,7 +207,7 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
                     let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
                     if (!newValue || newValue === "false") {
                         let el = this.shadowRoot.getElementById("marker");
-                        if (Logic.checkLogic("gossipstones", this.ref)) {
+                        if (Logic.vetValue("gossipstones", this.ref)) {
                             el.classList.add("avail");
                         } else {
                             el.classList.remove("avail");
