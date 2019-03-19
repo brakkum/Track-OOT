@@ -1,15 +1,64 @@
-<div id="logic-board">
-    <deep-panel caption="logics" id="logics"></deep-panel>
-    <deep-logiceditor-workingarea id="workingarea" visualize="true"></deep-logiceditor-workingarea>
-    <deep-logiceditor-clipboard id="clipboard"></deep-logiceditor-clipboard>
-    <deep-logiceditor-trashcan id="trashcan"></deep-logiceditor-trashcan>
-    <deep-logiceditor-elements id="elements">
-        <deep-logic-true template></deep-logic-true>
-
-        <deep-logic-not template></deep-logic-not>
-        <deep-logic-and template></deep-logic-and>
-        <deep-logic-or template></deep-logic-or>
-
-        <deep-logic-min template></deep-logic-min>
-    </deep-logiceditor-elements>
+<div id="viewpane">
+    <nav id="menu" class="header">
+        <ul>
+            <li>
+                <button class="button hamburger-hide">FILE</button>
+                <ul>
+                    <li>
+                        <button class="button" id="editor-menu-file-savelogic">SAVE LOGIC</button>
+                    </li>
+                    <li>
+                        <div class="splitter"></div>
+                    </li>
+                    <li>
+                        <button class="button" id="editor-menu-file-loadpatch">LOAD PATCH</button>
+                    </li>
+                    <li>
+                        <button class="button" id="editor-menu-file-savepatch">SAVE PATCH</button>
+                    </li>
+                    <li>
+                        <div class="splitter"></div>
+                    </li>
+                    <li>
+                        <button class="button" id="editor-menu-file-removepatch">REMOVE PATCH</button>
+                    </li>
+                    <li>
+                        <div class="splitter"></div>
+                    </li>
+                    <li>
+                        <button class="button" id="editor-menu-file-exit">EXIT EDITOR</button>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <button id="hamburger-button">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+        <deep-choiceselect id="view-choice-top">
+            <option title="Item & Map Tracker" value="tracker" style="background-image: url('images/tracker.svg')">
+            </option>
+            <option title="Shops" value="shops" style="background-image: url('images/shops.svg')"></option>
+            <option title="Songs" value="songs" style="background-image: url('images/songs.svg')"></option>
+            <option title="Notes" value="notes" style="background-image: url('images/notes.svg')"></option>
+            <option title="Logger" value="log" style="background-image: url('images/log.svg')" id="tab_log_top">
+            </option>
+        </deep-choiceselect>
+    </nav>
+    <div id="logic-board">
+        <deep-panel caption="logics" id="logics"></deep-panel>
+        <deep-logiceditor-workingarea id="workingarea" visualize="true"></deep-logiceditor-workingarea>
+        <deep-logiceditor-clipboard id="clipboard"></deep-logiceditor-clipboard>
+        <deep-logiceditor-trashcan id="trashcan"></deep-logiceditor-trashcan>
+        <deep-logiceditor-elements id="elements">
+            <deep-logic-true template></deep-logic-true>
+    
+            <deep-logic-not template></deep-logic-not>
+            <deep-logic-and template></deep-logic-and>
+            <deep-logic-or template></deep-logic-or>
+    
+            <deep-logic-min template></deep-logic-min>
+        </deep-logiceditor-elements>
+    </div>
 </div>

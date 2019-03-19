@@ -132,8 +132,7 @@ deep-choiceselect {
 
 #logic-board {
     display: grid;
-    width: 100vw;
-    height: 100vh;
+    flex: 1;
     padding: 10px;
     -webkit-user-select: none;
     -moz-user-select: none;

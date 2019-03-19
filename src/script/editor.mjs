@@ -109,4 +109,8 @@ import "/script/ui/logic/LogicFilter.mjs";
         let l = GlobalData.get("logic").mixins[event.target.dataset.ref];
         workingarea.loadLogic(l);
     }
+
+    document.getElementById("editor-menu-file-exit").addEventListener("click", function(event) {
+        document.getElementById('view-pager').active = "main";
+    });
 }());

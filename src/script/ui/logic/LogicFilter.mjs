@@ -54,7 +54,9 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
     }
 
     static get observedAttributes() {
-        return ['ref'];
+        let attr = DeepLogicAbstractElement.observedAttributes;
+        attr.push('ref');
+        return attr;
     }
       
     attributeChangedCallback(name, oldValue, newValue) {
@@ -64,6 +66,9 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
                     this.shadowRoot.getElementById("ref").innerHTML = this.ref;
                     this.update();
                 }
+                break;
+            default: 
+                super.attributeChangedCallback(name, oldValue, newValue);
                 break;
         }
     }
