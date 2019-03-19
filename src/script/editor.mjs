@@ -1,4 +1,5 @@
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import FileSystem from "/deepJS/util/FileSystem.mjs";
 import "/deepJS/ui/logic/LogicEditorClipboard.mjs";
 import "/deepJS/ui/logic/LogicEditorElements.mjs";
 import "/deepJS/ui/logic/LogicEditorTrashcan.mjs";
@@ -114,3 +115,15 @@ import "/script/ui/logic/LogicFilter.mjs";
         document.getElementById('view-pager').active = "main";
     });
 }());
+
+async function downloadPatchedLogic() {
+    let logic = JSON.parse(JSON.stringify(GlobalData.get("logic")));
+    let logic_patched = GlobalData.get("logic_patched");
+    for (let i in logic_patched) {
+        logic[i] = logic[i] || {};
+        for (let j in logic_patched[i]) {
+            logic[i][j] = logic_patched[i][j];
+        }
+    }
+    FileSystem.save(JSON.stringify(logic, " ", 4), "logic.json");
+}
