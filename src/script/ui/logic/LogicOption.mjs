@@ -61,7 +61,16 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    this.shadowRoot.getElementById("ref").innerHTML = this.ref;
+                    let bdy = this.shadowRoot.getElementById("ref");
+                    bdy.innerHTML = this.ref;
+                    let values = GlobalData.get("settings").options[this.ref].values;
+                    if (Array.isArray(values)) {
+                        let el = document.createElement('select');
+                        for (let i of values) {
+                            // TODO
+                        }
+                        bdy.appendChild(el);
+                    }
                     this.update();
                 }
                 break;

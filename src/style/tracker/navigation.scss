@@ -95,13 +95,6 @@
             width: 150px;
             padding: 5px;
 
-            .splitter {
-                display: block;
-                margin: 10px 5px;
-                height: 2px;
-                background: #000000;
-            }
-
             @media (max-width: $mobile-switch) {
                 width: 100%;
             }
