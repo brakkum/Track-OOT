@@ -1,8 +1,10 @@
 import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
+import {createOption} from "/deepJS/ui/UIHelper.mjs";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.mjs";
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import MemoryStorage from "/deepJS/storage/MemoryStorage.mjs";
+import I18n from "/script/util/I18n.mjs";
 
 const TPL = new Template(`
     <style>
@@ -10,9 +12,13 @@ const TPL = new Template(`
             --logic-color-back: white;
             --logic-color-border: lightgrey;
         }
+        #select.hidden {
+            display: none;
+        }
     </style>
     <div id="head" class="header">FILTER</div>
     <div id="ref" class="body"></div>
+    <select id="select" class="hidden"></select>
 `);
 
 export default class TrackerLogicFilter extends DeepLogicAbstractElement {
@@ -63,7 +69,22 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    this.shadowRoot.getElementById("ref").innerHTML = this.ref;
+                    let bdy = this.shadowRoot.getElementById("ref");
+                    bdy.innerHTML = I18n.translate(this.ref);
+                    let data = GlobalData.get("filter")[this.ref];
+                    let el = this.shadowRoot.getElementById('select');
+                    if (Array.isArray(data.values)) {
+                        el.classList.remove('hidden');
+                        el.innerHTML = "";
+                        for (let i of data.values) {
+                            el.appendChild(createOption(i, I18n.translate(i)));
+                        }
+                        el.value = data.default;
+                    } else {
+                        el.classList.add('hidden');
+                        el.innerHTML = "";
+                        el.value = "";
+                    }
                     this.update();
                 }
                 break;

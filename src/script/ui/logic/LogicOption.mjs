@@ -1,8 +1,10 @@
 import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
+import {createOption} from "/deepJS/ui/UIHelper.mjs";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.mjs";
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
+import I18n from "/script/util/I18n.mjs";
 
 const TPL = new Template(`
     <style>
@@ -10,9 +12,13 @@ const TPL = new Template(`
             --logic-color-back: white;
             --logic-color-border: lightgrey;
         }
+        #select.hidden {
+            display: none;
+        }
     </style>
     <div id="head" class="header">OPTION</div>
     <div id="ref" class="body"></div>
+    <select id="select" class="hidden"></select>
 `);
 
 export default class TrackerLogicOption extends DeepLogicAbstractElement {
@@ -62,14 +68,20 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
             case 'ref':
                 if (oldValue != newValue) {
                     let bdy = this.shadowRoot.getElementById("ref");
-                    bdy.innerHTML = this.ref;
-                    let values = GlobalData.get("settings").options[this.ref].values;
-                    if (Array.isArray(values)) {
-                        let el = document.createElement('select');
-                        for (let i of values) {
-                            // TODO
+                    bdy.innerHTML = I18n.translate(this.ref);
+                    let data = GlobalData.get("settings").options[this.ref];
+                    let el = this.shadowRoot.getElementById('select');
+                    if (Array.isArray(data.values)) {
+                        el.classList.remove('hidden');
+                        el.innerHTML = "";
+                        for (let i of data.values) {
+                            el.appendChild(createOption(i, I18n.translate(i)));
                         }
-                        bdy.appendChild(el);
+                        el.value = data.default;
+                    } else {
+                        el.classList.add('hidden');
+                        el.innerHTML = "";
+                        el.value = "";
                     }
                     this.update();
                 }

@@ -2,6 +2,7 @@ import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
+import I18n from "/script/util/I18n.mjs";
 
 const TPL = new Template(`
     <style>
@@ -63,7 +64,7 @@ export default class TrackerLogicItem extends DeepLogicAbstractElement {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    this.shadowRoot.getElementById("ref").innerHTML = this.ref;
+                    this.shadowRoot.getElementById("ref").innerHTML = I18n.translate(this.ref);
                     this.update();
                 }
                 break;

@@ -87,7 +87,7 @@ export default class TrackerLogicMixin extends DeepLogicAbstractElement {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    this.shadowRoot.getElementById("ref").innerHTML = this.ref;
+                    this.shadowRoot.getElementById("ref").innerHTML = I18n.translate(this.ref);
                     this.update();
                 }
                 break;
