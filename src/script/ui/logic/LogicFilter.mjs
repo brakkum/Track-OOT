@@ -12,14 +12,18 @@ const TPL = new Template(`
             --logic-color-back: white;
             --logic-color-border: lightgrey;
         }
-        #select.hidden {
+        #selection.body.hidden {
             display: none;
         }
     </style>
     <div id="head" class="header">FILTER</div>
     <div id="ref" class="body"></div>
-    <select id="select" class="hidden"></select>
+    <div id="selection" class="body hidden">
+        <select id="select"></select>
+    </div>
 `);
+
+const SELECTOR_VALUE = new WeakMap;
 
 export default class TrackerLogicFilter extends DeepLogicAbstractElement {
 
@@ -34,8 +38,12 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
     }
 
     update() {
-        this.value = MemoryStorage.get("active_filter", this.ref, GlobalData.get("filter")[this.ref].default);
-        this.shadowRoot.getElementById("head").dataset.value = this.value;
+        let value = MemoryStorage.get("active_filter", this.ref, GlobalData.get("filter")[this.ref].default);
+        if (SELECTOR_VALUE.has(this)) {
+            value = value == SELECTOR_VALUE.get(this);
+        }
+        this.value = value;
+        this.shadowRoot.getElementById("head").dataset.value = value;
     }
 
     toJSON() {
@@ -73,15 +81,20 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
                     bdy.innerHTML = I18n.translate(this.ref);
                     let data = GlobalData.get("filter")[this.ref];
                     let el = this.shadowRoot.getElementById('select');
+                    let slc = this.shadowRoot.getElementById('selection');
                     if (Array.isArray(data.values)) {
-                        el.classList.remove('hidden');
+                        slc.classList.remove('hidden');
                         el.innerHTML = "";
                         for (let i of data.values) {
                             el.appendChild(createOption(i, I18n.translate(i)));
                         }
-                        el.value = data.default;
+                        if (SELECTOR_VALUE.has(this)) {
+                            el.value = SELECTOR_VALUE.get(this);
+                        } else {
+                            el.value = data.default;
+                        }
                     } else {
-                        el.classList.add('hidden');
+                        slc.classList.add('hidden');
                         el.innerHTML = "";
                         el.value = "";
                     }
@@ -96,6 +109,11 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
 
     loadLogic(logic) {
         if (!!logic) {
+            if (!!logic.value) {
+                SELECTOR_VALUE.set(this, logic.value);
+            } else if (SELECTOR_VALUE.has(this)) {
+                SELECTOR_VALUE.remove(this);
+            }
             this.ref = logic.el;
         }
     }

@@ -100,7 +100,7 @@ function copyChangelog_dev() {
 }
 
 function copySCSS_prod() {
-    return gulp.src(PATHS.app.base + "/style/app.scss")
+    return gulp.src(PATHS.app.base + "/style/**/*.scss")
         .pipe(newer(PATHS.target.prod + "/style"))
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(autoprefixer())
@@ -108,7 +108,7 @@ function copySCSS_prod() {
 }
 
 function copySCSS_dev() {
-    return gulp.src(PATHS.app.base + "/style/app.scss", {sourcemaps: true})
+    return gulp.src(PATHS.app.base + "/style/**/*.scss", {sourcemaps: true})
         .pipe(newer(PATHS.target.dev  + "/style"))
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(autoprefixer())

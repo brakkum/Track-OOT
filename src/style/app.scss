@@ -1,10 +1,11 @@
-$mobile-switch: 500px;
+@import "variables";
 
 @import "theme.css";
-@import "tracker/navigation";
-@import "tracker/fonts";
-@import "inputs";
-@import "utils/dialog";
+@import "tracker/navigation.css";
+@import "tracker/fonts.css";
+@import "inputs.css";
+@import "utils/dialog.css";
+@import "utils/settings.css";
 
 #viewpane {
     display: flex;

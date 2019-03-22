@@ -210,7 +210,7 @@ settings.addEventListener('submit', function(event) {
         }
     }
     applySettingsChoices();
-    EventBus.post("global-update");
+    EventBus.post("settings");
 });
 
 settings.addEventListener('close', function(event) {
