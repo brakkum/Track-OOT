@@ -84,15 +84,13 @@ export default class TrackerLogicMixin extends DeepLogicAbstractElement {
     }
       
     attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback(name, oldValue, newValue);
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
                     this.shadowRoot.getElementById("ref").innerHTML = I18n.translate(this.ref);
                     this.update();
                 }
-                break;
-            default: 
-                super.attributeChangedCallback(name, oldValue, newValue);
                 break;
         }
     }

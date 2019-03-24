@@ -6,6 +6,8 @@ document.getElementById('editor-menu-file-loadpatch').onclick = uploadPatch;
 document.getElementById('editor-menu-file-removepatch').onclick = removePatch;
 document.getElementById("editor-menu-file-exit").onclick = exitEditor;
 
+let logicContainer = document.getElementById("logics");
+
 async function downloadPatchedLogic() {
     let logic = JSON.parse(JSON.stringify(GlobalData.get("logic")));
     let logic_patched = GlobalData.get("logic_patched");
@@ -35,5 +37,7 @@ async function removePatch() {
 }
 
 function exitEditor() {
+    
+    logicContainer.querySelector('.logic-location').click();
     document.getElementById('view-pager').active = "main";
 }

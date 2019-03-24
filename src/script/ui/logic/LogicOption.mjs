@@ -33,6 +33,10 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
         EventBus.on("settings", () => {
             this.update();
         });
+        let select = this.shadowRoot.getElementById('select');
+        select.addEventListener('change', function(event) {
+            SELECTOR_VALUE.set(this, select.value);
+        }.bind(this));
     }
 
     update() {
@@ -50,9 +54,14 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
             if (!!el) {
                 el = el.toJSON();
             }
+            let value;
+            if (SELECTOR_VALUE.has(this)) {
+                value = SELECTOR_VALUE.get(this);
+            }
             return {
                 type: "option",
-                el: this.ref
+                el: this.ref,
+                value: value
             };
         }
     }
@@ -72,6 +81,7 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
     }
       
     attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback(name, oldValue, newValue);
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
@@ -99,8 +109,11 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
                     this.update();
                 }
                 break;
-            default: 
-                super.attributeChangedCallback(name, oldValue, newValue);
+            case 'readonly':
+                if (oldValue != newValue) {
+                    let select = this.shadowRoot.getElementById('select');
+                    select.readOnly = newValue != null && newValue != "false";
+                }
                 break;
         }
     }

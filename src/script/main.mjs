@@ -63,11 +63,11 @@ function addHTMLModule(name, target) {
 }
 
 function changeView(event) {
-    let o = document.querySelector(`#content #view-${event.oldValue}`);
+    let o = document.querySelector(`#main-content #view-${event.oldValue}`);
     if (!!o) {
         o.classList.remove('active');
     }
-    let n = document.querySelector(`#content #view-${event.newValue}`);
+    let n = document.querySelector(`#main-content #view-${event.newValue}`);
     if (!!n) {
         n.classList.add('active');
     }
