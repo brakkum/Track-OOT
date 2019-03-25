@@ -1,5 +1,6 @@
 @import "variables";
 
+@import "LigatureSymbols.css";
 @import "theme.css";
 @import "tracker/navigation.css";
 @import "tracker/fonts.css";
@@ -7,7 +8,7 @@
 @import "utils/dialog.css";
 @import "utils/settings.css";
 
-#viewpane {
+.viewpane {
     display: flex;
     flex-direction: column;
     width: 100vw;
@@ -154,13 +155,9 @@ deep-choiceselect {
         border: solid 2px #222;
         border-color: #777;
     }
-    #workingarea-panel {
+    #workingarea {
         grid-area: workingarea;
         background-color: #222;
-
-        #workingarea {
-            display: contents;
-        }
     }
     #clipboard-panel {
         grid-area: clipboard;

@@ -34,7 +34,6 @@ import I18n from "/script/util/I18n.mjs";
     fillLogics(locations, logic);
     fillOperators(items, settings, filter, logic);
 
-    let workingareaPanel = document.getElementById('workingarea-panel');
     let workingarea = document.getElementById('workingarea');
 
     function fillOperators(items, settings, filter, logic) {
@@ -109,21 +108,21 @@ import I18n from "/script/util/I18n.mjs";
         let ref = event.target.dataset.ref;
         let l = GlobalData.get("logic").chests[ref];
         workingarea.loadLogic(l);
-        workingareaPanel.caption = `[C] ${I18n.translate(ref)}`;
+        workingarea.caption = `[C] ${I18n.translate(ref)}`;
     }
         
     function loadSkulltulaLogic(event) {
         let ref = event.target.dataset.ref;
         let l = GlobalData.get("logic").skulltulas[ref];
         workingarea.loadLogic(l);
-        workingareaPanel.caption = `[S] ${I18n.translate(ref)}`;
+        workingarea.caption = `[S] ${I18n.translate(ref)}`;
     }
         
     function loadMixinLogic(event) {
         let ref = event.target.dataset.ref;
         let l = GlobalData.get("logic").mixins[ref];
         workingarea.loadLogic(l);
-        workingareaPanel.caption = `[M] ${I18n.translate(ref)}`;
+        workingarea.caption = `[M] ${I18n.translate(ref)}`;
     }
 
     logicContainer.querySelector('.logic-location').click();

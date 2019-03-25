@@ -1,4 +1,5 @@
 import FileSystem from "/deepJS/util/FileSystem.mjs";
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
 
 document.getElementById('editor-menu-file-savelogic').onclick = downloadPatchedLogic;
 document.getElementById('editor-menu-file-savepatch').onclick = downloadPatch;
@@ -10,7 +11,7 @@ let logicContainer = document.getElementById("logics");
 
 async function downloadPatchedLogic() {
     let logic = JSON.parse(JSON.stringify(GlobalData.get("logic")));
-    let logic_patched = GlobalData.get("logic_patched");
+    let logic_patched = GlobalData.get("logic_patched", {});
     for (let i in logic_patched) {
         logic[i] = logic[i] || {};
         for (let j in logic_patched[i]) {
@@ -21,7 +22,7 @@ async function downloadPatchedLogic() {
 }
 
 async function downloadPatch() {
-    let logic = GlobalData.get("logic_patched");
+    let logic = GlobalData.get("logic_patched", {});
     FileSystem.save(JSON.stringify(logic, " ", 4), `logic.${(new Date).valueOf()}.json`);
 }
 
@@ -33,11 +34,10 @@ async function uploadPatch() {
 }
 
 async function removePatch() {
-    // TODO
+    GlobalData.set("logic_patched", {});
 }
 
 function exitEditor() {
-    
     logicContainer.querySelector('.logic-location').click();
     document.getElementById('view-pager').active = "main";
 }

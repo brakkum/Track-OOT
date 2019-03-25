@@ -130,13 +130,27 @@ function copyCSS_dev() {
 }
 
 function copyFonts_prod() {
-    return gulp.src(PATHS.app.base + "/fonts/**/*.ttf")
+    return gulp.src([
+            PATHS.app.base + "/fonts/**/*.ttf",
+            PATHS.app.base + "/fonts/**/*.eot",
+            PATHS.app.base + "/fonts/**/*.otf",
+            PATHS.app.base + "/fonts/**/*.woff",
+            PATHS.app.base + "/fonts/**/*.woff2",
+            PATHS.app.base + "/fonts/**/*.svg"
+        ])
         .pipe(newer(PATHS.target.prod + "/fonts"))
         .pipe(gulp.dest(PATHS.target.prod + "/fonts"));
 }
 
 function copyFonts_dev() {
-    return gulp.src(PATHS.app.base + "/fonts/**/*.ttf")
+    return gulp.src([
+            PATHS.app.base + "/fonts/**/*.ttf",
+            PATHS.app.base + "/fonts/**/*.eot",
+            PATHS.app.base + "/fonts/**/*.otf",
+            PATHS.app.base + "/fonts/**/*.woff",
+            PATHS.app.base + "/fonts/**/*.woff2",
+            PATHS.app.base + "/fonts/**/*.svg"
+        ])
         .pipe(newer(PATHS.target.dev + "/fonts"))
         .pipe(gulp.dest(PATHS.target.dev + "/fonts"));
 }

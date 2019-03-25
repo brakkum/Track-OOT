@@ -1,5 +1,5 @@
-<div id="viewpane">
-    <nav id="menu" class="header">
+<div class="viewpane">
+    <nav id="editor-menu" class="header">
         <ul>
             <li>
                 <button class="button hamburger-hide">FILE</button>
@@ -31,27 +31,16 @@
                 </ul>
             </li>
         </ul>
-        <button id="hamburger-button">
+        <button id="editor-hamburger-button">
             <div></div>
             <div></div>
             <div></div>
         </button>
-        <deep-choiceselect id="view-choice-top">
-            <option title="Item & Map Tracker" value="tracker" style="background-image: url('images/tracker.svg')">
-            </option>
-            <option title="Shops" value="shops" style="background-image: url('images/shops.svg')"></option>
-            <option title="Songs" value="songs" style="background-image: url('images/songs.svg')"></option>
-            <option title="Notes" value="notes" style="background-image: url('images/notes.svg')"></option>
-            <option title="Logger" value="log" style="background-image: url('images/log.svg')" id="tab_log_top">
-            </option>
-        </deep-choiceselect>
     </nav>
     <div id="editor-content" class="content">
         <div id="logic-board">
             <deep-panel caption="logics" id="logics"></deep-panel>
-            <deep-panel caption="" id="workingarea-panel">
-                <deep-logiceditor-workingarea id="workingarea" visualize="true"></deep-logiceditor-workingarea>
-            </deep-panel>
+            <deep-logiceditor-workingarea id="workingarea" visualize="true"></deep-logiceditor-workingarea>
             <deep-panel caption="clipboard" id="clipboard-panel">
                 <deep-logiceditor-clipboard id="clipboard"></deep-logiceditor-clipboard>
             </deep-panel>
