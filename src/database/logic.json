@@ -11132,6 +11132,19 @@
                 {
                     "type": "mixin",
                     "el": "can_stun_deku"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_blast_or_smash"
+                        },
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        }
+                    ]
                 }
             ]
         },
@@ -11145,6 +11158,19 @@
                 {
                     "type": "mixin",
                     "el": "can_stun_deku"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_blast_or_smash"
+                        },
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        }
+                    ]
                 }
             ]
         },
@@ -11162,6 +11188,19 @@
                 {
                     "type": "mixin",
                     "el": "can_stun_deku"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_blast_or_smash"
+                        },
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        }
+                    ]
                 }
             ]
         },
@@ -11203,28 +11242,24 @@
                     "el": [
                         {
                             "type": "mixin",
+                            "el": "can_blast_or_smash"
+                        },
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
                             "el": "has_fire_source"
                         },
                         {
                             "type": "and",
                             "el": [
-                                {
-                                    "type": "item",
-                                    "el": "stick"
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "glove"
-                                        },
-                                        {
-                                            "type": "mixin",
-                                            "el": "has_explosives"
-                                        }
-                                    ]
-                                },
                                 {
                                     "type": "not",
                                     "el": {
@@ -11232,6 +11267,10 @@
                                         "el": "filter_era_active",
                                         "value": "adult"
                                     }
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "stick"
                                 }
                             ]
                         }
@@ -11250,6 +11289,36 @@
                     "type": "or",
                     "el": [
                         {
+                            "type": "mixin",
+                            "el": "can_blast_or_smash"
+                        },
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "stick"
+                                }
+                            ]
+                        },
+                        {
                             "type": "and",
                             "el": [
                                 {
@@ -11261,10 +11330,6 @@
                                     "el": "magic_din"
                                 }
                             ]
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "can_blast_or_smash"
                         },
                         {
                             "type": "and",
@@ -11289,23 +11354,6 @@
                                             "el": "hookshot"
                                         }
                                     ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "not",
-                                    "el": {
-                                        "type": "filter",
-                                        "el": "filter_era_active",
-                                        "value": "adult"
-                                    }
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "stick"
                                 }
                             ]
                         }
@@ -11377,11 +11425,32 @@
                     "el": [
                         {
                             "type": "mixin",
+                            "el": "can_blast_or_smash"
+                        },
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
                             "el": "can_become_adult"
                         },
                         {
                             "type": "and",
                             "el": [
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
+                                },
                                 {
                                     "type": "item",
                                     "el": "slingshot"
@@ -11392,6 +11461,10 @@
                                         {
                                             "type": "mixin",
                                             "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "stick"
                                         },
                                         {
                                             "type": "and",
@@ -11405,20 +11478,8 @@
                                                     "el": "magic_power"
                                                 }
                                             ]
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "stick"
                                         }
                                     ]
-                                },
-                                {
-                                    "type": "not",
-                                    "el": {
-                                        "type": "filter",
-                                        "el": "filter_era_active",
-                                        "value": "adult"
-                                    }
                                 }
                             ]
                         }
@@ -19838,7 +19899,7 @@
         },
         "mountain_bombable": {
             "type": "mixin",
-            "el": "has_explosives"
+            "el": "can_blast_or_smash"
         },
         "mountain_before_goron_hammer_rock_adult_night": {
             "type": "and",
@@ -21721,6 +21782,19 @@
                     "el": [
                         {
                             "type": "mixin",
+                            "el": "can_blast_or_smash"
+                        },
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
                             "el": "can_child_attack"
                         },
                         {
@@ -21750,6 +21824,23 @@
                     "type": "or",
                     "el": [
                         {
+                            "type": "mixin",
+                            "el": "can_blast_or_smash"
+                        },
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "has_fire_source"
+                        },
+                        {
                             "type": "and",
                             "el": [
                                 {
@@ -21757,52 +21848,12 @@
                                     "el": "stick"
                                 },
                                 {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "glove"
-                                        },
-                                        {
-                                            "type": "mixin",
-                                            "el": "has_explosives"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "magic_power"
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "magic_din"
-                                        },
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "mixin",
-                                                    "el": "can_become_adult"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "bow"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "arrow_fire"
-                                                }
-                                            ]
-                                        }
-                                    ]
+                                    "type": "not",
+                                    "el": {
+                                        "type": "filter",
+                                        "el": "filter_era_active",
+                                        "value": "adult"
+                                    }
                                 }
                             ]
                         }
