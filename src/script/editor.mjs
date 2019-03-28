@@ -17,8 +17,14 @@ import "/script/ui/logic/LogicOption.mjs";
 import "/script/ui/logic/LogicSkip.mjs";
 import "/script/ui/logic/LogicFilter.mjs";
 
+import EditorLogic from "/script/editor/Logic.mjs";
 import "/script/editor/Navigation.mjs";
 import I18n from "/script/util/I18n.mjs";
+
+let active_logic = {
+    type: "",
+    key: ""
+};
 
 (async function main() {
     
@@ -106,24 +112,46 @@ import I18n from "/script/util/I18n.mjs";
         
     function loadChestLogic(event) {
         let ref = event.target.dataset.ref;
-        let l = GlobalData.get("logic").chests[ref];
-        workingarea.loadLogic(l);
+        workingarea.dataset.logicType = "chests";
+        workingarea.dataset.logicKey = ref;
+        workingarea.loadLogic(EditorLogic.get("chests", ref));
         workingarea.caption = `[C] ${I18n.translate(ref)}`;
     }
         
     function loadSkulltulaLogic(event) {
         let ref = event.target.dataset.ref;
-        let l = GlobalData.get("logic").skulltulas[ref];
-        workingarea.loadLogic(l);
+        workingarea.dataset.logicType = "skulltulas";
+        workingarea.dataset.logicKey = ref;
+        workingarea.loadLogic(EditorLogic.get("skulltulas", ref));
         workingarea.caption = `[S] ${I18n.translate(ref)}`;
     }
         
     function loadMixinLogic(event) {
         let ref = event.target.dataset.ref;
-        let l = GlobalData.get("logic").mixins[ref];
-        workingarea.loadLogic(l);
+        workingarea.dataset.logicType = "mixins";
+        workingarea.dataset.logicKey = ref;
+        workingarea.loadLogic(EditorLogic.get("mixins", ref));
         workingarea.caption = `[M] ${I18n.translate(ref)}`;
     }
+
+    workingarea.addEventListener('save', function(event) {
+        let type = workingarea.dataset.logicType;
+        let key = workingarea.dataset.logicKey;
+        EditorLogic.set(type, key, workingarea.getLogic());
+    });
+
+    workingarea.addEventListener('load', function(event) {
+        let type = workingarea.dataset.logicType;
+        let key = workingarea.dataset.logicKey;
+        workingarea.loadLogic(EditorLogic.get(type, key));
+    });
+
+    workingarea.addEventListener('clear', function(event) {
+        let type = workingarea.dataset.logicType;
+        let key = workingarea.dataset.logicKey;
+        EditorLogic.remove(type, key);
+        workingarea.loadLogic(EditorLogic.get(type, key));
+    });
 
     logicContainer.querySelector('.logic-location').click();
 }());

@@ -1,5 +1,6 @@
 import FileSystem from "/deepJS/util/FileSystem.mjs";
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import EditorLogic from "/script/editor/Logic.mjs";
 
 document.getElementById('editor-menu-file-savelogic').onclick = downloadPatchedLogic;
 document.getElementById('editor-menu-file-savepatch').onclick = downloadPatch;
@@ -8,6 +9,7 @@ document.getElementById('editor-menu-file-removepatch').onclick = removePatch;
 document.getElementById("editor-menu-file-exit").onclick = exitEditor;
 
 let logicContainer = document.getElementById("logics");
+let workingarea = document.getElementById('workingarea');
 
 async function downloadPatchedLogic() {
     let logic = JSON.parse(JSON.stringify(GlobalData.get("logic")));
@@ -27,17 +29,24 @@ async function downloadPatch() {
 }
 
 async function uploadPatch() {
-    let data = await FileSystem.load();
-    if (!!data) {
-        GlobalData.set("logic_patched", JSON.parse(data));
+    let res = await FileSystem.load(".json");
+    if (!!res && !!res.data) {
+        EditorLogic.patch(res.data);
+        let type = workingarea.dataset.logicType;
+        let key = workingarea.dataset.logicKey;
+        workingarea.loadLogic(EditorLogic.get(type, key));
     }
 }
 
 async function removePatch() {
-    GlobalData.set("logic_patched", {});
+    EditorLogic.clear();
+    let type = workingarea.dataset.logicType;
+    let key = workingarea.dataset.logicKey;
+    workingarea.loadLogic(EditorLogic.get(type, key));
 }
 
 function exitEditor() {
     logicContainer.querySelector('.logic-location').click();
     document.getElementById('view-pager').active = "main";
 }
+
