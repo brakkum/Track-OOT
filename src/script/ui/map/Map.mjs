@@ -255,7 +255,7 @@ class HTMLTrackerMap extends HTMLElement {
         map.addEventListener("mousedown", mapMoveBegin);
         EventBus.on("location-mode-change", mode => this.mode = mode);
         EventBus.on("location-era-change", era => this.era = era);
-        EventBus.onafter("global-update", event => {
+        EventBus.on("force-location-update", event => {
             this.attributeChangedCallback("", "");
         });
         window.addEventListener("resize", e => {

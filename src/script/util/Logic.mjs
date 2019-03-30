@@ -87,7 +87,7 @@ class TrackerLogic {
             LOGIC["mixins"][i] = new LogicWrapper("mixins", i);
         }
         for (let i in GlobalData.get("logic_patched").mixins) {
-            if (!!Logic.getLogicView("mixins", i)) continue;
+            if (!!LOGIC["mixins"][i]) continue;
             LOGIC["mixins"][i] = new LogicWrapper("mixins", i);
         }
     }

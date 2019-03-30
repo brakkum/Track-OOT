@@ -126,7 +126,7 @@ export default class HTMLTrackerShopField extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
-        EventBus.on("global-update", globalUpdate.bind(this));
+        EventBus.on("force-shop-update", globalUpdate.bind(this));
         this.shadowRoot.getElementById("edit").onclick = editShop.bind(this);
         for (let i = 0; i < 8; ++i) {
             let el = this.shadowRoot.getElementById(`slot${i}`);

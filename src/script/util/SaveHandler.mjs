@@ -73,7 +73,9 @@ async function state_Load() {
             activestate = stateChoice.value;
             TrackerLocalState.load(activestate);
             document.getElementById("tracker-notes").value = TrackerLocalState.read("extras", "notes", "");
-            EventBus.post("global-update");
+            EventBus.post("force-item-update");
+            EventBus.post("force-logic-update");
+            EventBus.post("force-location-update");
             toggleStateButtons();
             showToast(`State "${activestate}" loaded.`);
         }
@@ -88,7 +90,11 @@ async function state_Delete() {
         if (del == activestate) {
             activestate == "";
             TrackerLocalState.reset();
-            EventBus.post("global-update");
+            EventBus.post("force-item-update");
+            EventBus.post("force-logic-update");
+            EventBus.post("force-location-update");
+            EventBus.post("force-shop-update");
+            EventBus.post("force-song-update");
         }
         stateChoice.value = activestate;
         prepairSavegameChoice();
@@ -125,7 +131,9 @@ async function state_New() {
         }
         TrackerLocalState.save(name);
         activestate = name;
-        EventBus.post("global-update");
+        EventBus.post("force-item-update");
+        EventBus.post("force-logic-update");
+        EventBus.post("force-location-update");
         toggleStateButtons();
     }
 }
@@ -192,7 +200,9 @@ async function state_Import() {
             stateChoice.value = data.name;
             activestate = data.name;
             TrackerLocalState.load(activestate);
-            EventBus.post("global-update");
+            EventBus.post("force-item-update");
+            EventBus.post("force-logic-update");
+            EventBus.post("force-location-update");
             toggleStateButtons();
         }
     }

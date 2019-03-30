@@ -48,7 +48,7 @@ const TPL = new Template(`
     </slot>
 `);
 
-function updateCall() { // TODO do not mute this! do it for others like this, too
+function updateCall() {
     EventBus.mute("item-update");
     // savesatate
     this.value = TrackerLocalState.read("items", this.ref, 0);
@@ -85,8 +85,9 @@ class HTMLTrackerItem extends HTMLElement {
                 all[0].setAttribute("slot", "value");
             }
         }
+        /* event bus */
         EventBus.on("item-update", itemUpdate.bind(this));
-        EventBus.on("global-update", updateCall.bind(this));
+        EventBus.on("force-item-update", updateCall.bind(this));
         EventBus.on("dungeon-type-update", this.fillItemChoices.bind(this));
     }
 

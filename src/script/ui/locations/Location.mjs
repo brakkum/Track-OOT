@@ -42,11 +42,18 @@ const TPL = new Template(`
             width: 20px;
             height: 20px;
         }
+        .menu-tip {
+            font-size: 0.7em;
+            color: #777777;
+            margin-left: 15px;
+            float: right;
+        }
     </style>
     <div id="text"></div>
     <div id="badge"></div>
     <deep-contextmenu id="menu">
-        <div id="menu-check" class="item">Check<span style="font-size:0.7em;color:#777777;margin-left:15px;float:right;">(leftclick)</span></div>
+        <div id="menu-check" class="item">Check<span class=".menu-tip">(leftclick)</span></div>
+        <div id="menu-uncheck" class="item">Uncheck<span class=".menu-tip">(ctrl + rightclick)</span></div>
         <div class="splitter"></div>
         <div id="menu-logic" class="item">Show Logic</div>
     </deep-contextmenu>
@@ -81,30 +88,50 @@ function logicUpdate(type, ref, value) {
 
 function showLogic(ref) {
     let path = ref.split(".");
-    let d = new Dialog({
-        title: I18n.translate(path[2]),
-        submit: "OK"
-    });
-    d.value = ref;
-    d.appendChild(Logic.getLogicView(path[1], path[2]));
-    d.show();
+    let l = Logic.getLogicView(path[1], path[2]);
+    if (!!l) {
+        let d = new Dialog({
+            title: I18n.translate(path[2]),
+            submit: "OK"
+        });
+        d.value = ref;
+        d.appendChild(l);
+        d.show();
+    }
+}
+
+function click(event) {
+    this.check();
+    event.preventDefault();
+    return false;
+}
+
+function contextMenu(event) {
+    if (event.ctrlKey) {
+        this.uncheck();
+    } else {
+        this.shadowRoot.getElementById("menu").show(event.clientX, event.clientY);
+    }
+    event.preventDefault();
+    return false;
 }
 
 class HTMLTrackerLocation extends HTMLElement {
 
     constructor() {
         super();
-        this.addEventListener("click", this.check);
-        this.addEventListener("contextmenu", this.uncheck);
-        EventBus.on("location-update", locationUpdate.bind(this));
-        EventBus.on("logic", logicUpdate.bind(this));
-        EventBus.onafter("global-update", globalUpdate.bind(this));
+        this.addEventListener("click", click.bind(this));
+        this.addEventListener("contextmenu", contextMenu.bind(this));
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
 
         this.shadowRoot.getElementById("menu-logic").addEventListener("click", function(event) {
             showLogic(this.ref);
         }.bind(this));
+        /* event bus */
+        EventBus.on("location-update", locationUpdate.bind(this));
+        EventBus.on("force-location-update", globalUpdate.bind(this));
+        EventBus.on("logic", logicUpdate.bind(this));
     }
 
     get ref() {
@@ -175,21 +202,14 @@ class HTMLTrackerLocation extends HTMLElement {
         }
     }
 
-    check(event) {
+    check() {
         Logger.log(`check location "${this.ref}"`, "Location");
         this.checked = true;
-        if (!event) return;
-        event.preventDefault();
-        return false;
     }
     
-    uncheck(event) {
-        this.shadowRoot.getElementById("menu").show(event.clientX, event.clientY);
+    uncheck() {
         Logger.log(`uncheck location "${this.ref}"`, "Location");
         this.checked = false;
-        if (!event) return;
-        event.preventDefault();
-        return false;
     }
 
 }

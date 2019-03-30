@@ -37,6 +37,7 @@ export default class TrackerLogicSkip extends DeepLogicAbstractElement {
         select.addEventListener('change', function(event) {
             SELECTOR_VALUE.set(this, select.value);
         }.bind(this));
+        EventBus.on("force-logic-update", this.update.bind(this));
     }
 
     update() {

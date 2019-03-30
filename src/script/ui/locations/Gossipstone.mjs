@@ -105,8 +105,8 @@ class HTMLTrackerGossipstone extends HTMLElement {
         super();
         this.addEventListener("click", this.check);
         EventBus.on("gossipstone-update", gossipstoneUpdate.bind(this));
+        EventBus.on("force-location-update", globalUpdate.bind(this));
         EventBus.on("item-update", itemUpdate.bind(this));
-        EventBus.onafter("global-update", globalUpdate.bind(this));
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
     }
@@ -148,8 +148,8 @@ class HTMLTrackerGossipstone extends HTMLElement {
                     let el_era = document.createElement("deep-icon");
                     el_era.src = `images/era_${data.era ||"both"}.svg`;
                     this.shadowRoot.getElementById("badge").appendChild(el_era);
-                    
-                    if (Logic.checkLogic("gossipstones", this.ref)) {
+
+                    if (Logic.getValue("gossipstones", this.ref)) {
                         txt.classList.add("avail");
                     } else {
                         txt.classList.remove("avail");
@@ -164,7 +164,7 @@ class HTMLTrackerGossipstone extends HTMLElement {
                     let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
                     if (!newValue || newValue === "false") {
                         let el = this.shadowRoot.getElementById("text");
-                        if (Logic.checkLogic("gossipstones", this.ref)) {
+                        if (Logic.getValue("gossipstones", this.ref)) {
                             el.classList.add("avail");
                         } else {
                             el.classList.remove("avail");

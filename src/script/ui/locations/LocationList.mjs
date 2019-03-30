@@ -146,9 +146,9 @@ class HTMLTrackerLocationList extends HTMLElement {
         super();
         EventBus.on("location-change", ref => this.ref = ref);
         EventBus.on("dungeon-type-update", dungeonTypeUppdate.bind(this));
-        EventBus.onafter("location-update", locationUpdate.bind(this));
-        EventBus.onafter("item-update", locationUpdate.bind(this));
-        EventBus.onafter("global-update", locationUpdate.bind(this));
+        EventBus.on("location-update", locationUpdate.bind(this));
+        EventBus.on("item-update", locationUpdate.bind(this));
+        EventBus.on("force-location-update", locationUpdate.bind(this));
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
         this.attributeChangedCallback("", "");
