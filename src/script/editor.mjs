@@ -21,11 +21,6 @@ import EditorLogic from "/script/editor/Logic.mjs";
 import "/script/editor/Navigation.mjs";
 import I18n from "/script/util/I18n.mjs";
 
-let active_logic = {
-    type: "",
-    key: ""
-};
-
 (async function main() {
     
     let locations = GlobalData.get("locations");
@@ -35,15 +30,19 @@ let active_logic = {
     let settings = GlobalData.get("settings");
     let filter = GlobalData.get("filter");
 
+    let mixins = {};
+
     let logic = GlobalData.get("logic");
     let custom_logic = GlobalData.get("logic_patched");
-    for (let i in custom_logic) {
-        if (!!logic[i]) {
-            logic[i] = custom_logic[i];
-        } else {
-            for (let j in custom_logic[i]) {
-                logic[i][j] = custom_logic[i][j];
-            }
+
+    if (!!logic.mixins) {
+        for (let i in logic.mixins) {
+            mixins[i] = logic.mixins[i];
+        }
+    }
+    if (!!custom_logic.mixins) {
+        for (let i in custom_logic.mixins) {
+            mixins[i] = custom_logic.mixins[i];
         }
     }
 

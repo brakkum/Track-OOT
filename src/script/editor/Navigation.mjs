@@ -15,9 +15,12 @@ async function downloadPatchedLogic() {
     let logic = JSON.parse(JSON.stringify(GlobalData.get("logic")));
     let logic_patched = GlobalData.get("logic_patched", {});
     for (let i in logic_patched) {
-        logic[i] = logic[i] || {};
-        for (let j in logic_patched[i]) {
-            logic[i][j] = logic_patched[i][j];
+        if (!logic[i]) {
+            logic[i] = logic_patched[i];
+        } else {
+            for (let j in logic_patched[i]) {
+                logic[i][j] = logic_patched[i][j];
+            }
         }
     }
     FileSystem.save(JSON.stringify(logic, " ", 4), "logic.json");
