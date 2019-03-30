@@ -48,7 +48,7 @@ const TPL = new Template(`
     </slot>
 `);
 
-function updateCall() {
+function updateCall() { // TODO do not mute this! do it for others like this, too
     EventBus.mute("item-update");
     // savesatate
     this.value = TrackerLocalState.read("items", this.ref, 0);

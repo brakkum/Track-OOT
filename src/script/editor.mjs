@@ -36,6 +36,16 @@ let active_logic = {
     let filter = GlobalData.get("filter");
 
     let logic = GlobalData.get("logic");
+    let custom_logic = GlobalData.get("logic_patched");
+    for (let i in custom_logic) {
+        if (!!logic[i]) {
+            logic[i] = custom_logic[i];
+        } else {
+            for (let j in custom_logic[i]) {
+                logic[i][j] = custom_logic[i][j];
+            }
+        }
+    }
 
     fillLogics(locations, logic);
     fillOperators(items, settings, filter, logic);

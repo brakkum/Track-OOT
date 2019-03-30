@@ -30,11 +30,11 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
     constructor() {
         super();
         this.shadowRoot.appendChild(TPL.generate());
-        EventBus.on("filter", ref => {
+        EventBus.on("filter", function(ref) {
             if (ref == this.ref) {
                 this.update();
             }
-        });
+        }.bind(this));
         let select = this.shadowRoot.getElementById('select');
         select.addEventListener('change', function(event) {
             SELECTOR_VALUE.set(this, select.value);
@@ -47,7 +47,7 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
             value = value == SELECTOR_VALUE.get(this);
         }
         this.value = value;
-        this.shadowRoot.getElementById("head").dataset.value = value;
+        this.shadowRoot.getElementById("head").dataset.value = this.value;
     }
 
     toJSON() {

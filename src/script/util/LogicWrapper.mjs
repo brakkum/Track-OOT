@@ -33,8 +33,7 @@ export default class LogicWrapper {
     }
 
     set value(val) {
-        let buf = parseInt(val);
-        if (isNaN(buf)) buf = 0;
+        let buf = parseInt(val) || 0;
         VALUE.set(this, buf);
         let type = TYPE.get(this);
         let ref = REF.get(this);
@@ -49,35 +48,39 @@ export default class LogicWrapper {
     }
     
     loadLogic() {
-        let logic;
+        let type = TYPE.get(this);
+        let ref = REF.get(this);
+        let logic = null;
         if (DeepLocalStorage.get("settings", "use_custom_logic", false)) {
-            logic = GlobalData.get("logic_patched", GlobalData.get("logic"));
-        } else {
-            logic = GlobalData.get("logic");
+            let custom_logic = GlobalData.get("logic_patched", {});
+            if (!!custom_logic[type] && !!custom_logic[type][ref]) {
+                logic = custom_logic[type][ref];
+            }
+        }
+        if (!logic) {
+            let default_logic = GlobalData.get("logic", {});
+            if (!!default_logic[type] && !!default_logic[type][ref]) {
+                logic = default_logic[type][ref];
+            }
         }
         if (!!logic) {
-            let type = TYPE.get(this);
-            let ref = REF.get(this);
-            if (!!logic[type] && !!logic[type][ref]) {
-                logic = logic[type][ref];
-                if (!LOGIC_SOURCE.has(this) || !deepEquals(LOGIC_SOURCE.get(this), logic)) {
-                    let build = DeepLogicAbstractElement.buildLogic(logic);
-                    if (!!build) {
-                        build.onupdate = value => {
-                            this.value = value;
-                        };
-                        build.readonly = true;
-                        build.visualize = true;
-                        LOGIC.set(this, build);
-                    }
-                    this.value = build.value;
-                    LOGIC_SOURCE.set(this, logic);
+            if (!LOGIC_SOURCE.has(this) || !deepEquals(LOGIC_SOURCE.get(this), logic)) {
+                let build = DeepLogicAbstractElement.buildLogic(logic);
+                if (!!build) {
+                    build.addEventListener('update', function(event) {
+                        this.value = event.value;
+                    }.bind(this));
+                    build.readonly = true;
+                    build.visualize = true;
+                    LOGIC.set(this, build);
                 }
-            } else {
-                this.value = false;
-                LOGIC.delete(this);
-                LOGIC_SOURCE.delete(this);
+                this.value = build.value;
+                LOGIC_SOURCE.set(this, logic);
             }
+        } else {
+            this.value = false;
+            LOGIC.delete(this);
+            LOGIC_SOURCE.delete(this);
         }
     }
 
