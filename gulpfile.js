@@ -182,13 +182,13 @@ function copyDeepJS_dev() {
 }
 
 function copyVendorJS_prod() {
-    return gulp.src(PATHS.app.js + "/_vendor/**/*.min.js")
+    return gulp.src(PATHS.app.js + "/_vendor/**/*.js")
         .pipe(newer(PATHS.target.prod + "/script/_vendor"))
         .pipe(gulp.dest(PATHS.target.prod + "/script/_vendor"));
 }
 
 function copyVendorJS_dev() {
-    return gulp.src(PATHS.app.js + "/_vendor/**/*.min.js")
+    return gulp.src(PATHS.app.js + "/_vendor/**/*.js")
         .pipe(newer(PATHS.target.dev + "/script/_vendor"))
         .pipe(gulp.dest(PATHS.target.dev + "/script/_vendor"));
 }
