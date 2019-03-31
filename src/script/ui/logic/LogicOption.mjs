@@ -113,7 +113,11 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
             case 'readonly':
                 if (oldValue != newValue) {
                     let select = this.shadowRoot.getElementById('select');
-                    select.readOnly = newValue != null && newValue != "false";
+                    if (newValue != null) {
+                        select.setAttribute("disabled", newValue);
+                    } else {
+                        select.removeAttribute("disabled");
+                    }
                 }
                 break;
         }

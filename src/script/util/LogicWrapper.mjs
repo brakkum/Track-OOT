@@ -36,7 +36,6 @@ export default class LogicWrapper {
             event.preventDefault();
             return false;
         }.bind(this));
-        window.onfocus = e => console.log("ja");
     }
 
     set value(val) {
