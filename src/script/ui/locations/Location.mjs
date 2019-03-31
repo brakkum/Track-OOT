@@ -52,8 +52,8 @@ const TPL = new Template(`
     <div id="text"></div>
     <div id="badge"></div>
     <deep-contextmenu id="menu">
-        <div id="menu-check" class="item">Check<span class=".menu-tip">(leftclick)</span></div>
-        <div id="menu-uncheck" class="item">Uncheck<span class=".menu-tip">(ctrl + rightclick)</span></div>
+        <div id="menu-check" class="item">Check<span class="menu-tip">(leftclick)</span></div>
+        <div id="menu-uncheck" class="item">Uncheck<span class="menu-tip">(ctrl + rightclick)</span></div>
         <div class="splitter"></div>
         <div id="menu-logic" class="item">Show Logic</div>
     </deep-contextmenu>
@@ -106,6 +106,12 @@ function click(event) {
     return false;
 }
 
+function unclick(event) {
+    this.uncheck();
+    event.preventDefault();
+    return false;
+}
+
 function contextMenu(event) {
     if (event.ctrlKey) {
         this.uncheck();
@@ -124,7 +130,9 @@ class HTMLTrackerLocation extends HTMLElement {
         this.addEventListener("contextmenu", contextMenu.bind(this));
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
-
+        /* context menu */
+        this.shadowRoot.getElementById("menu-check").addEventListener("click", click.bind(this));
+        this.shadowRoot.getElementById("menu-uncheck").addEventListener("click", unclick.bind(this));
         this.shadowRoot.getElementById("menu-logic").addEventListener("click", function(event) {
             showLogic(this.ref);
         }.bind(this));
