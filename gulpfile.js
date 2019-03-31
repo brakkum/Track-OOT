@@ -16,14 +16,12 @@ const PATHS = {
     }
 };
 
-PATHS.deepJS = path.resolve(__dirname, '../deepjs.2deep4real.de');
-fs.access(PATHS.deepJS, fs.constants.F_OK, function(err) {
+let deepJS = path.resolve(__dirname, '../deepjs.2deep4real.de');
+fs.access(deepJS, fs.constants.F_OK, function(err) {
   if (!!err) {
-    PATHS.deepJS = path.resolve(__dirname, 'node_modules/deepJS');
+    PATHS.deepJS = deepJS;
   }
 });
-
-
 
 const gulp         = require("gulp");
 const terser       = require('gulp-terser');
