@@ -30,6 +30,13 @@ export default class LogicWrapper {
         REF.set(this, ref);
         this.loadLogic();
         INSTANCES.add(this);
+        EventBus.on("settings", this.loadLogic.bind(this));
+        window.addEventListener('focus', function(event) {
+            this.loadLogic();
+            event.preventDefault();
+            return false;
+        }.bind(this));
+        window.onfocus = e => console.log("ja");
     }
 
     set value(val) {

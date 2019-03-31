@@ -211,6 +211,7 @@ settings.addEventListener('submit', function(event) {
     }
     applySettingsChoices();
     EventBus.post("settings");
+    EventBus.post("force-location-update");
 });
 
 settings.addEventListener('close', function(event) {

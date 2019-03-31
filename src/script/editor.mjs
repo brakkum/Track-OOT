@@ -143,24 +143,18 @@ import I18n from "/script/util/I18n.mjs";
         workingarea.caption = `[M] ${I18n.translate(ref)}`;
     }
 
-    workingarea.addEventListener('save', function(event) {
-        let type = workingarea.dataset.logicType;
-        let key = workingarea.dataset.logicKey;
-        EditorLogic.set(type, key, workingarea.getLogic());
-    });
-
-    workingarea.addEventListener('load', function(event) {
+    function refreshLogic(event) {
         let type = workingarea.dataset.logicType;
         let key = workingarea.dataset.logicKey;
         workingarea.loadLogic(EditorLogic.get(type, key));
-    });
+        event.preventDefault();
+        return false;
+    }
 
-    workingarea.addEventListener('clear', function(event) {
-        let type = workingarea.dataset.logicType;
-        let key = workingarea.dataset.logicKey;
-        EditorLogic.remove(type, key);
-        workingarea.loadLogic(EditorLogic.get(type, key));
-    });
+    workingarea.addEventListener('save', refreshLogic);
+    workingarea.addEventListener('load', refreshLogic);
+    workingarea.addEventListener('clear', refreshLogic);
+    window.addEventListener('focus', refreshLogic);
 
     logicContainer.querySelector('.logic-location').click();
 }());
