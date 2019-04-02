@@ -101,29 +101,47 @@
             }
             function importCSS(url) {
                 return new Promise((res, rej) => {
-                    let t = document.createElement("link");
-                    t.href = url;
-                    t.rel = "stylesheet";
-                    t.type = "text/css";
-                    t.onload = e => res(t);
-                    t.onerror = e => {
-                        updateLoadingMessage(`CSS: ${e.message}`);
+                    fetch(url).then(function(r) {
+                        if (r.status == 200) {
+                            let t = document.createElement("link");
+                            t.href = url;
+                            t.rel = "stylesheet";
+                            t.type = "text/css";
+                            t.onload = function() {res(t)};
+                            t.onerror = function(e) {
+                                updateLoadingMessage(`error appending style "${url}"`);
+                                rej(e.message);
+                            };
+                            document.head.appendChild(t);
+                        } else {
+                            updateLoadingMessage(`error loading module "${url}" - status: ${r.status}`);
+                        }
+                    }).catch(function(e) {
+                        updateLoadingMessage(`Style: ${e}`);
                         rej(e);
-                    };
-                    document.head.appendChild(t);
+                    });
                 });
             }
             function importModule(url) {
                 return new Promise((res, rej) => {
-                    let t = document.createElement("script");
-                    t.src = url;
-                    t.type = "module";
-                    t.onload = e => res(t);
-                    t.onerror = e => {
-                        updateLoadingMessage(`JS: ${e.message}`);
+                    fetch(url).then(function(r) {
+                        if (r.status == 200) {
+                            let t = document.createElement("script");
+                            t.src = url;
+                            t.type = "module";
+                            t.onload = function() {res(t)};
+                            t.onerror = function(e) {
+                                updateLoadingMessage(`error appending module "${url}"`);
+                                rej(e.message);
+                            };
+                            document.head.appendChild(t);
+                        } else {
+                            updateLoadingMessage(`error loading module "${url}" - status: ${r.status}`);
+                        }
+                    }).catch(function(e) {
+                        updateLoadingMessage(`Module: ${e}`);
                         rej(e);
-                    };
-                    document.head.appendChild(t);
+                    });
                 });
             }
 
