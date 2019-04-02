@@ -1,6 +1,5 @@
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import "/deepJS/ui/logic/LogicEditorClipboard.mjs";
-import "/deepJS/ui/logic/LogicEditorElements.mjs";
 import "/deepJS/ui/logic/LogicEditorTrashcan.mjs";
 import "/deepJS/ui/logic/LogicEditorWorkingarea.mjs";
 import "/deepJS/ui/Panel.mjs";
