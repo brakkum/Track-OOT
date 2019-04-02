@@ -82,97 +82,98 @@
             function updateLoadingMessage(msg = "loading...") {
                 spl.innerHTML = msg;
             }
-            try {
-                function importHTML(url) {
-                    return fetch(url)
-                        .then(r => r.text())
-                        .then(r => (new DOMParser()).parseFromString(r, "text/html"))
-                        .then(r => {
-                            while (r.body.childNodes.length > 0) {
-                                document.body.appendChild(r.body.childNodes[0]);
-                            }
-                        });
-                }
-                function importCSS(url) {
-                    return new Promise((res, rej) => {
-                        let t = document.createElement("link");
-                        t.href = url;
-                        t.rel = "stylesheet";
-                        t.type = "text/css";
-                        t.onload = e => res(t);
-                        t.onerror = rej;
-                        document.head.appendChild(t);
+            window.onerror = function(msg, url, line, col, error) {
+                updateLoadingMessage(msg);
+                return false;
+            };
+            
+            function importHTML(url) {
+                return fetch(url)
+                    .then(r => r.text())
+                    .then(r => (new DOMParser()).parseFromString(r, "text/html"))
+                    .then(r => {
+                        while (r.body.childNodes.length > 0) {
+                            document.body.appendChild(r.body.childNodes[0]);
+                        }
                     });
+            }
+            function importCSS(url) {
+                return new Promise((res, rej) => {
+                    let t = document.createElement("link");
+                    t.href = url;
+                    t.rel = "stylesheet";
+                    t.type = "text/css";
+                    t.onload = e => res(t);
+                    t.onerror = rej;
+                    document.head.appendChild(t);
+                });
+            }
+            function importModule(url) {
+                return new Promise((res, rej) => {
+                    let t = document.createElement("script");
+                    t.src = url;
+                    t.type = "module";
+                    t.onload = e => res(t);
+                    t.onerror = rej;
+                    document.head.appendChild(t);
+                });
+            }
+
+            if(document.head.createShadowRoot || document.head.attachShadow) {
+                let max_files = 0;
+                let load_files = 0;
+
+                async function startApp() {
+                    updateLoadingMessage("load framework...");
+                    navigator.serviceWorker.removeEventListener('message', swStateRecieve);
+                    updateLoadingMessage("add structure...");
+                    await importHTML("content/app.html");
+                    updateLoadingMessage("add style...");
+                    await importCSS("style/app.css");
+                    updateLoadingMessage("add script...");
+                    await importModule("/script/app.mjs");
                 }
-                function importModule(url) {
-                    return new Promise((res, rej) => {
-                        let t = document.createElement("script");
-                        t.src = url;
-                        t.type = "module";
-                        t.onload = e => res(t);
-                        t.onerror = rej;
-                        document.head.appendChild(t);
-                    });
-                }
 
-                if(document.head.createShadowRoot || document.head.attachShadow) {
-                    let max_files = 0;
-                    let load_files = 0;
-
-                    async function startApp() {
-                        updateLoadingMessage("load framework...");
-                        navigator.serviceWorker.removeEventListener('message', swStateRecieve);
-                        updateLoadingMessage("add structure...");
-                        await importHTML("content/app.html");
-                        updateLoadingMessage("add style...");
-                        await importCSS("style/app.css");
-                        updateLoadingMessage("add script...");
-                        await importModule("/script/app.mjs");
-                    }
-
-                    function swStateRecieve(event) {
-                        if (event.data.type == "state") {
-                            switch(event.data.msg) {
-                                case "start": startApp(); break;
-                                case "need_download":
-                                    load_files = 0;
-                                    max_files = event.data.value;
-                                    updateLoadingMessage("installing, please wait... 0/" + max_files);
-                                break;
-                                case "file_downloaded":
-                                    updateLoadingMessage("updating " + (++load_files) + "/" + max_files);
-                                break;
-                            }
+                function swStateRecieve(event) {
+                    if (event.data.type == "state") {
+                        switch(event.data.msg) {
+                            case "start": startApp(); break;
+                            case "need_download":
+                                load_files = 0;
+                                max_files = event.data.value;
+                                updateLoadingMessage("installing, please wait... 0/" + max_files);
+                            break;
+                            case "file_downloaded":
+                                updateLoadingMessage("updating " + (++load_files) + "/" + max_files);
+                            break;
                         }
                     }
-
-                    if ('serviceWorker' in navigator) {
-                        navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                            updateLoadingMessage("call servant...");
-                            function callSW() {
-                                if (!registration.active) {
-                                    setTimeout(callSW, 10);
-                                    return;
-                                }
-                                navigator.serviceWorker.addEventListener('message', swStateRecieve);
-                                registration.active.postMessage("start");
-                            }
-                            callSW();
-                        }, function(err) {
-                            updateLoadingMessage("ServiceWorker registration failed");
-                            console.log('ServiceWorker registration failed: ', err);
-                        });
-                    } else {
-                        updateLoadingMessage("start without service...");
-                        startApp();
-                    }
-                } else {
-                    updateLoadingMessage("I am sorry, but this page uses Shadow DOM...<br>This script detected, that the Browser you are using does not support this feature yet.");
                 }
-            } catch(e) {
-                updateLoadingMessage(e.message);
-                console.error(e);
+
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                        updateLoadingMessage("call servant...");
+                        function callSW() {
+                            if (!registration.active) {
+                                setTimeout(callSW, 10);
+                                return;
+                            }
+                            navigator.serviceWorker.addEventListener('message', swStateRecieve);
+                            registration.active.postMessage("start");
+                        }
+                        callSW();
+                    }, function(err) {
+                        updateLoadingMessage("ServiceWorker registration failed");
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+                } else {
+                    updateLoadingMessage("start without service...");
+                    startApp();
+                }
+            } else {
+                updateLoadingMessage("I am sorry, but this page uses Shadow DOM...<br>This script detected, that the Browser you are using does not support this feature yet.");
             }
+                
         </script>
     </body>
 </html>
