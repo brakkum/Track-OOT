@@ -14,6 +14,12 @@
         <link rel="icon" type="image/svg+xml" href="/images/logo.svg" sizes="any">
         <link rel="manifest" href="/manifest.json">
         <script src="script/_vendor/webcomponents-bundle.js"></script>
+        <script>
+            window.addEventListener('contextmenu', function() {
+                event.preventDefault();
+                return false;
+            });
+        </script>
         <style>
             *:not(deep-dialog) {
                 box-sizing: border-box;

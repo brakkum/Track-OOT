@@ -145,7 +145,7 @@ const TPL = new Template(`
 `);
 
 function mapMoveBegin(event) {
-    if (event.buttons === 1) {
+    if (event.button === 0) {
         let target = event.target;
         if (target.id === "map") {
             target.classList.add("grabbed");
@@ -157,7 +157,7 @@ function mapMoveBegin(event) {
 }
 
 function mapMoveEnd(event) {
-    if (event.buttons === 1) {
+    if (event.button === 0) {
         let target = event.target;
         target.classList.remove("grabbed");
         target.removeEventListener("mousemove", moveMap);
@@ -167,8 +167,7 @@ function mapMoveEnd(event) {
 }
 
 function moveMap(event) {
-    // TODO clip translation to boundaries
-    if (event.buttons === 1) {
+    if (event.button === 0) {
         let target = event.target;
         if (target.id === "map") {
             let vrtX = parseInt(target.style.getPropertyValue("--map-offset-x") || 0);
@@ -264,7 +263,7 @@ class HTMLTrackerMap extends HTMLElement {
         });
         map.addEventListener("mousedown", function(event) {
             if (!mapfixed.checked) {
-                mapMoveBegin();
+                mapMoveBegin(event);
             }
             event.preventDefault();
             return false;
