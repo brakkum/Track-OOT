@@ -4,11 +4,10 @@
 
 Application:    Track-OOT
 
-Version:        1.2.1
+Version:        1.2.2
 
 ---
 
 ### Hotfixes
-- fixed mountain bomb alcove skulltula
-- fixed various checks in DC MQ which were missing a check for the first mud wall
-- fixed Dodongo's Cavern Gohma Larva Room; it was checking for more than needed
+- fixed missing can_become_adult check for bow usage in DC
+
