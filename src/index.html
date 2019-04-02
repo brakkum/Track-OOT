@@ -95,6 +95,8 @@
                         while (r.body.childNodes.length > 0) {
                             document.body.appendChild(r.body.childNodes[0]);
                         }
+                    }).error(e => {
+                        updateLoadingMessage(e.message);
                     });
             }
             function importCSS(url) {
@@ -104,7 +106,10 @@
                     t.rel = "stylesheet";
                     t.type = "text/css";
                     t.onload = e => res(t);
-                    t.onerror = rej;
+                    t.onerror = e => {
+                        updateLoadingMessage(e.message);
+                        rej(e);
+                    };
                     document.head.appendChild(t);
                 });
             }
@@ -114,7 +119,10 @@
                     t.src = url;
                     t.type = "module";
                     t.onload = e => res(t);
-                    t.onerror = rej;
+                    t.onerror = e => {
+                        updateLoadingMessage(e.message);
+                        rej(e);
+                    };
                     document.head.appendChild(t);
                 });
             }
