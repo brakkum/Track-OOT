@@ -95,7 +95,6 @@
                         while (r.body.childNodes.length > 0) {
                             document.body.appendChild(r.body.childNodes[0]);
                         }
-                        throw new Error("test");
                     }).catch(e => {
                         updateLoadingMessage(e.message);
                     });
