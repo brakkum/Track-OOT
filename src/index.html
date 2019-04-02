@@ -96,7 +96,7 @@
                             document.body.appendChild(r.body.childNodes[0]);
                         }
                     }).catch(e => {
-                        updateLoadingMessage(e.message);
+                        updateLoadingMessage(es);
                     });
             }
             function importCSS(url) {
@@ -107,7 +107,7 @@
                     t.type = "text/css";
                     t.onload = e => res(t);
                     t.onerror = e => {
-                        updateLoadingMessage(e.message);
+                        updateLoadingMessage(e);
                         rej(e);
                     };
                     document.head.appendChild(t);
@@ -120,7 +120,7 @@
                     t.type = "module";
                     t.onload = e => res(t);
                     t.onerror = e => {
-                        updateLoadingMessage(e.message);
+                        updateLoadingMessage(e);
                         rej(e);
                     };
                     document.head.appendChild(t);
