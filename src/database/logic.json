@@ -7446,10 +7446,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "bow"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -7516,6 +7512,19 @@
                                             ]
                                         }
                                     ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "bow"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
                                 }
                             ]
                         }
