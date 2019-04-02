@@ -17,14 +17,16 @@ import "/deepJS/ui/selection/ChoiceSelect.mjs";
 
 (async function main() {
 
+    updateLoadingMessage("apply logger...");
     if (!!GlobalData.get("version").dev) {
-        //Logger.setOutput(document.getElementById("tracker-log"));
+        Logger.setOutput(document.getElementById("tracker-log"));
         //EventBus.logEvents(true);
     } else {
         document.getElementById("tab_log_top").style.display = "none";
         document.getElementById("tab_log_bottom").style.display = "none";
     }
 
+    updateLoadingMessage("add modules...");
     addHTMLModule('ootrt-itemgrid', "item-grid");
     addHTMLModule('ootrt-dungeonstate', "dungeon-status").setAttribute("active", "key bosskey map compass type reward");
     addHTMLModule('ootrt-locationlist', "location-list").setAttribute("mode", "chests");
@@ -41,6 +43,7 @@ import "/deepJS/ui/selection/ChoiceSelect.mjs";
         importModule("/script/util/Settings.mjs")
     ]);
 
+    updateLoadingMessage("wake up...");
     let spl = document.getElementById("splash");
     if (!!spl) {
         spl.className = "inactive";

@@ -12,9 +12,13 @@ import "/deepJS/ui/Paging.mjs";
 
 (async function main() {
 
+    updateLoadingMessage("load data...");
     await loadData();
+    updateLoadingMessage("learn languages...");
     await I18n.load(DeepLocalStorage.get("settings", "language", "en_us"));
+    updateLoadingMessage("build logic data...");
     Logic.loadLogic();
+    updateLoadingMessage("poke application...");
     await importModule("/deepJS/ui/Import.mjs");
 
 }());
