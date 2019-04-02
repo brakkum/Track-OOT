@@ -120,44 +120,51 @@
                 let load_files = 0;
 
                 async function startApp() {
+                    updateLoadingMessage("load framework...");
                     navigator.serviceWorker.removeEventListener('message', swStateRecieve);
+                    updateLoadingMessage("add structure...");
                     await importHTML("content/app.html");
+                    updateLoadingMessage("add style...");
                     await importCSS("style/app.css");
+                    updateLoadingMessage("add script...");
                     await importModule("/script/app.mjs");
                 }
 
                 function swStateRecieve(event) {
-                if (event.data.type == "state") {
-                    switch(event.data.msg) {
-                        case "start": startApp(); break;
-                        case "need_download":
-                            load_files = 0;
-                            max_files = event.data.value;
-                            updateLoadingMessage("installing, please wait... 0/" + max_files);
-                        break;
-                        case "file_downloaded":
-                            updateLoadingMessage("updating " + (++load_files) + "/" + max_files);
-                        break;
+                    if (event.data.type == "state") {
+                        switch(event.data.msg) {
+                            case "start": startApp(); break;
+                            case "need_download":
+                                load_files = 0;
+                                max_files = event.data.value;
+                                updateLoadingMessage("installing, please wait... 0/" + max_files);
+                            break;
+                            case "file_downloaded":
+                                updateLoadingMessage("updating " + (++load_files) + "/" + max_files);
+                            break;
+                        }
                     }
-                }
                 }
 
                 if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                    function callSW() {
-                        if (!registration.active) {
-                            setTimeout(callSW, 10);
-                            return;
+                    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                        updateLoadingMessage("call servant...");
+                        function callSW() {
+                            if (!registration.active) {
+                                setTimeout(callSW, 10);
+                                return;
+                            }
+                            navigator.serviceWorker.addEventListener('message', swStateRecieve);
+                            registration.active.postMessage("start");
                         }
-                        navigator.serviceWorker.addEventListener('message', swStateRecieve);
-                        registration.active.postMessage("start");
-                    }
-                    callSW();
-                }, function(err) {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
+                        callSW();
+                    }, function(err) {
+                        updateLoadingMessage("ServiceWorker registration failed");
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
                 } else {
-                startApp();
+                    updateLoadingMessage("start without service...");
+                    startApp();
                 }
             } else {
                 updateLoadingMessage("I am sorry, but this page uses Shadow DOM...<br>This script detected, that the Browser you are using does not support this feature yet.");
