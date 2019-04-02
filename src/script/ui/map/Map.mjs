@@ -50,9 +50,9 @@ const TPL = new Template(`
             display: flex;
             flex-direction: column;
             right: 0;
-            bottom: -164px;
+            bottom: -180px;
             width: 250px;
-            height: 164px;
+            height: 180px;
             font-family: Arial, sans-serif;
             background-color: black;
             border-style: solid;
@@ -78,7 +78,7 @@ const TPL = new Template(`
             background: var(--navigation-background-color, #ffffff);
             cursor: pointer;
         }
-        #map-zoom {
+        .map-options {
             display: flex;
             align-items: center;
             flex: 1;
@@ -129,9 +129,12 @@ const TPL = new Template(`
         </slot>
         <div id="map-settings">
             <div id="toggle-button">⇑</div>
-            <div id="map-zoom">
+            <div class="map-options">
                 <span class="slidetext">- / +</span>
                 <input type="range" min="50" max="300" value="100" class="slider" id="map-scale-slider">
+            </div>
+            <div class="map-options">
+                <label><input type="checkbox" id="map-fixed" /> Map fixed</label>
             </div>
             <div id="map-overview">
                 <div id="map-viewport">
@@ -238,35 +241,64 @@ class HTMLTrackerMap extends HTMLElement {
         this.shadowRoot.appendChild(TPL.generate());
         let map = this.shadowRoot.getElementById("map");
         let mapslide = this.shadowRoot.getElementById("map-scale-slider");
-        this.addEventListener("wheel", event => {
-            let zoom = parseFloat(map.style.getPropertyValue("--map-zoom") || 1);
-            const delta = Math.sign(event.deltaY) / 50;
-            zoom = Math.min(Math.max(0.5, zoom - delta), 3);
-            mapslide.value = zoom * 100;
-            map.style.setProperty("--map-zoom", zoom);
-            mapContainBoundaries(map, map.parentNode);
+        let mapfixed = this.shadowRoot.getElementById("map-fixed");
+        this.addEventListener("wheel", function(event) {
+            if (!mapfixed.checked) {
+                let zoom = parseFloat(map.style.getPropertyValue("--map-zoom") || 1);
+                const delta = Math.sign(event.deltaY) / 50;
+                zoom = Math.min(Math.max(0.5, zoom - delta), 3);
+                mapslide.value = zoom * 100;
+                map.style.setProperty("--map-zoom", zoom);
+                mapContainBoundaries(map, map.parentNode);
+            }
             event.preventDefault();
             return false;
         });
-        mapslide.addEventListener("input", event => {
-            map.style.setProperty("--map-zoom", mapslide.value / 100);
-            mapContainBoundaries(map, map.parentNode);
+        mapslide.addEventListener("input", function(event) {
+            if (!mapfixed.checked) {
+                map.style.setProperty("--map-zoom", mapslide.value / 100);
+                mapContainBoundaries(map, map.parentNode);
+            }
+            event.preventDefault();
+            return false;
         });
-        map.addEventListener("mousedown", mapMoveBegin);
-        EventBus.on("location-mode-change", mode => this.mode = mode);
-        EventBus.on("location-era-change", era => this.era = era);
-        EventBus.on("force-location-update", event => {
+        map.addEventListener("mousedown", function(event) {
+            if (!mapfixed.checked) {
+                mapMoveBegin();
+            }
+            event.preventDefault();
+            return false;
+        });
+        EventBus.on("location-mode-change", function(mode) {
+            this.mode = mode;
+        });
+        EventBus.on("location-era-change", function(era) {
+            this.era = era;
+        });
+        EventBus.on("force-location-update", function() {
             this.attributeChangedCallback("", "");
         });
-        window.addEventListener("resize", e => {
+        window.addEventListener("resize", function(event) {
             mapContainBoundaries(map, map.parentNode);
         });
         let mapview = this.shadowRoot.getElementById("map-overview");
-        mapview.addEventListener("mousedown", event => overviewSelect(event, map));
-        mapview.addEventListener("mousemove", event => overviewSelect(event, map));
+        mapview.addEventListener("mousedown", function(event) {
+            if (!mapfixed.checked) {
+                overviewSelect(event, map);
+            }
+            event.preventDefault();
+            return false;
+        });
+        mapview.addEventListener("mousemove", function(event) {
+            if (!mapfixed.checked) {
+                overviewSelect(event, map);
+            }
+            event.preventDefault();
+            return false;
+        });
         let settings = this.shadowRoot.getElementById("map-settings");
         let toggle = this.shadowRoot.getElementById("toggle-button");
-        toggle.addEventListener("click", event => {
+        toggle.addEventListener("click", function(event) {
             if (settings.classList.contains("active")) {
                 settings.classList.remove("active");
                 toggle.innerHTML = "⇑";
@@ -275,6 +307,8 @@ class HTMLTrackerMap extends HTMLElement {
                 settings.classList.add("active");
                 toggle.innerHTML = "⇓";
             }
+            event.preventDefault();
+            return false;
         });
     }
 
