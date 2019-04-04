@@ -14,6 +14,7 @@
         <link rel="icon" type="image/svg+xml" href="/images/logo.svg" sizes="any">
         <link rel="manifest" href="/manifest.json">
         <script src="script/_vendor/webcomponents-bundle.js"></script>
+        <script src="script/_vendor/import.js"></script>
         <script>
             window.addEventListener('contextmenu', function() {
                 event.preventDefault();
@@ -86,78 +87,24 @@
                 updateLoadingMessage(msg);
                 return false;
             };
-            
-            function importHTML(url) {
-                return fetch(url)
-                    .then(r => r.text())
-                    .then(r => (new DOMParser()).parseFromString(r, "text/html"))
-                    .then(r => {
-                        while (r.body.childNodes.length > 0) {
-                            document.body.appendChild(r.body.childNodes[0]);
-                        }
-                    }).catch(e => {
-                        updateLoadingMessage(e);
-                    });
-            }
-            function importCSS(url) {
-                return new Promise((res, rej) => {
-                    fetch(url).then(function(r) {
-                        if (r.status == 200) {
-                            let t = document.createElement("link");
-                            t.href = url;
-                            t.rel = "stylesheet";
-                            t.type = "text/css";
-                            t.onload = function() {res(t)};
-                            t.onerror = function(e) {
-                                updateLoadingMessage(`error appending style "${url}"`);
-                                rej(e.message);
-                            };
-                            document.head.appendChild(t);
-                        } else {
-                            updateLoadingMessage(`error loading module "${url}" - status: ${r.status}`);
-                        }
-                    }).catch(function(e) {
-                        updateLoadingMessage(`Style: ${e}`);
-                        rej(e);
-                    });
-                });
-            }
-            function importModule(url) {
-                return new Promise((res, rej) => {
-                    fetch(url).then(function(r) {
-                        if (r.status == 200) {
-                            let t = document.createElement("script");
-                            t.src = url;
-                            t.type = "module";
-                            t.onload = function() {res(t)};
-                            t.onerror = function(e) {
-                                updateLoadingMessage(`error appending module "${url}"`);
-                                rej(e.message);
-                            };
-                            document.head.appendChild(t);
-                        } else {
-                            updateLoadingMessage(`error loading module "${url}" - status: ${r.status}`);
-                        }
-                    }).catch(function(e) {
-                        updateLoadingMessage(`Module: ${e}`);
-                        rej(e);
-                    });
-                });
-            }
 
             if(document.head.createShadowRoot || document.head.attachShadow) {
                 let max_files = 0;
                 let load_files = 0;
 
                 async function startApp() {
-                    updateLoadingMessage("load framework...");
-                    navigator.serviceWorker.removeEventListener('message', swStateRecieve);
-                    updateLoadingMessage("add structure...");
-                    await importHTML("content/app.html");
-                    updateLoadingMessage("add style...");
-                    await importCSS("style/app.css");
-                    updateLoadingMessage("add script...");
-                    await importModule("/script/app.mjs");
+                    try {
+                        updateLoadingMessage("load framework...");
+                        navigator.serviceWorker.removeEventListener('message', swStateRecieve);
+                        updateLoadingMessage("add structure...");
+                        await $import.importHTML("/content/app.html");
+                        updateLoadingMessage("add style...");
+                        await $import.importCSS("/style/app.css");
+                        updateLoadingMessage("add script...");
+                        await $import.importModule("/script/app.mjs");
+                    } catch(e) {
+                        updateLoadingMessage(e);
+                    }
                 }
 
                 function swStateRecieve(event) {

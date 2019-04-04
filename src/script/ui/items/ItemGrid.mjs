@@ -44,7 +44,6 @@ class HTMLTrackerItemGrid extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
-        window.ShadyCSS && window.ShadyCSS.styleElement(this);
 
         let data = GlobalData.get("grids")["items"];
         for (let i of data) {

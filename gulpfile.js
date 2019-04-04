@@ -16,28 +16,36 @@ const PATHS = {
     }
 };
 
-let deepJS = path.resolve(__dirname, '../deepjs.2deep4real.de');
-fs.access(deepJS, fs.constants.F_OK, function(err) {
-  if (!!err) {
-    PATHS.deepJS = deepJS;
-  }
-});
+function fileExists(filename) {
+    try {
+        require('fs').accessSync(filename)
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
 
-const gulp         = require("gulp");
-const terser       = require('gulp-terser');
-const htmlmin      = require('gulp-htmlmin');
-const jsonminify   = require('gulp-jsonminify');
-const svgo         = require('gulp-svgo');
-const sass         = require('gulp-sass');
-const newer        = require('gulp-newer');
-const deleted      = require('gulp-deleted');
-const filelist     = require('gulp-filelist');
+let deepJS = path.resolve(__dirname, '../deepjs.2deep4real.de');
+
+if (fileExists(deepJS)) {
+    PATHS.deepJS = '../deepjs.2deep4real.de';
+}
+
+const gulp = require("gulp");
+const terser = require('gulp-terser');
+const htmlmin = require('gulp-htmlmin');
+const jsonminify = require('gulp-jsonminify');
+const svgo = require('gulp-svgo');
+const sass = require('gulp-sass');
+const newer = require('gulp-newer');
+const deleted = require('gulp-deleted');
+const filelist = require('gulp-filelist');
 const autoprefixer = require('gulp-autoprefixer');
 
 function copyHTML_prod() {
     return gulp.src(PATHS.app.base + "/**/*.html")
         .pipe(newer(PATHS.target.prod))
-        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(htmlmin({ collapseWhitespace: true }))
         .pipe(gulp.dest(PATHS.target.prod));
 }
 
@@ -100,17 +108,17 @@ function copyChangelog_dev() {
 function copySCSS_prod() {
     return gulp.src(PATHS.app.base + "/style/**/*.scss")
         .pipe(newer(PATHS.target.prod + "/style"))
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(gulp.dest(PATHS.target.prod + "/style"));
 }
 
 function copySCSS_dev() {
-    return gulp.src(PATHS.app.base + "/style/**/*.scss", {sourcemaps: true})
-        .pipe(newer(PATHS.target.dev  + "/style"))
-        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+    return gulp.src(PATHS.app.base + "/style/**/*.scss", { sourcemaps: true })
+        .pipe(newer(PATHS.target.dev + "/style"))
+        .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
         .pipe(autoprefixer())
-        .pipe(gulp.dest(PATHS.target.dev + "/style", {sourcemaps: "."}));
+        .pipe(gulp.dest(PATHS.target.dev + "/style", { sourcemaps: "." }));
 }
 
 function copyCSS_prod() {
@@ -129,26 +137,26 @@ function copyCSS_dev() {
 
 function copyFonts_prod() {
     return gulp.src([
-            PATHS.app.base + "/fonts/**/*.ttf",
-            PATHS.app.base + "/fonts/**/*.eot",
-            PATHS.app.base + "/fonts/**/*.otf",
-            PATHS.app.base + "/fonts/**/*.woff",
-            PATHS.app.base + "/fonts/**/*.woff2",
-            PATHS.app.base + "/fonts/**/*.svg"
-        ])
+        PATHS.app.base + "/fonts/**/*.ttf",
+        PATHS.app.base + "/fonts/**/*.eot",
+        PATHS.app.base + "/fonts/**/*.otf",
+        PATHS.app.base + "/fonts/**/*.woff",
+        PATHS.app.base + "/fonts/**/*.woff2",
+        PATHS.app.base + "/fonts/**/*.svg"
+    ])
         .pipe(newer(PATHS.target.prod + "/fonts"))
         .pipe(gulp.dest(PATHS.target.prod + "/fonts"));
 }
 
 function copyFonts_dev() {
     return gulp.src([
-            PATHS.app.base + "/fonts/**/*.ttf",
-            PATHS.app.base + "/fonts/**/*.eot",
-            PATHS.app.base + "/fonts/**/*.otf",
-            PATHS.app.base + "/fonts/**/*.woff",
-            PATHS.app.base + "/fonts/**/*.woff2",
-            PATHS.app.base + "/fonts/**/*.svg"
-        ])
+        PATHS.app.base + "/fonts/**/*.ttf",
+        PATHS.app.base + "/fonts/**/*.eot",
+        PATHS.app.base + "/fonts/**/*.otf",
+        PATHS.app.base + "/fonts/**/*.woff",
+        PATHS.app.base + "/fonts/**/*.woff2",
+        PATHS.app.base + "/fonts/**/*.svg"
+    ])
         .pipe(newer(PATHS.target.dev + "/fonts"))
         .pipe(gulp.dest(PATHS.target.dev + "/fonts"));
 }
@@ -219,13 +227,13 @@ function copySW_dev() {
 
 function writeTOC_prod() {
     return gulp.src([PATHS.target.prod + "/**/*", "!" + PATHS.target.prod + "/index.json"])
-        .pipe(filelist("index.json", {relative:true}))
+        .pipe(filelist("index.json", { relative: true }))
         .pipe(gulp.dest(PATHS.target.prod));
 }
 
 function writeTOC_dev() {
     return gulp.src([PATHS.target.dev + "/**/*", "!" + PATHS.target.dev + "/index.json"])
-        .pipe(filelist("index.json", {relative:true}))
+        .pipe(filelist("index.json", { relative: true }))
         .pipe(gulp.dest(PATHS.target.dev));
 }
 
@@ -267,7 +275,7 @@ exports.buildDev = gulp.series(
     writeTOC_dev
 );
 
-exports.watch = function() {
+exports.watch = function () {
     return gulp.watch(
         PATHS.app.base + "/**/*",
         gulp.series(

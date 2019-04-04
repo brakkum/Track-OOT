@@ -19,6 +19,6 @@ import "/deepJS/ui/Paging.mjs";
     updateLoadingMessage("build logic data...");
     Logic.loadLogic();
     updateLoadingMessage("poke application...");
-    await importModule("/deepJS/ui/Import.mjs");
+    await $import.importModule("/deepJS/ui/Import.mjs");
 
 }());

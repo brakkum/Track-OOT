@@ -37,11 +37,14 @@ import "/deepJS/ui/selection/ChoiceSelect.mjs";
     changeView({oldValue:"",newValue:document.getElementById("view-choice-bottom").value});
 
     await Promise.all([
-        importModule("/script/ui/shops/ShopList.mjs"),
-        importModule("/script/ui/songs/SongList.mjs"),
-        importModule("/script/ui/LayoutContainer.mjs"),
-        importModule("/script/util/Settings.mjs")
+        $import.importModule("/script/ui/shops/ShopList.mjs"),
+        $import.importModule("/script/ui/songs/SongList.mjs"),
+        $import.importModule("/script/ui/LayoutContainer.mjs"),
+        $import.importModule("/script/util/Settings.mjs")
     ]);
+
+    updateChestStates();
+    updateSkulltulasStates();
 
     updateLoadingMessage("wake up...");
     let spl = document.getElementById("splash");

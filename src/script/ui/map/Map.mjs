@@ -84,27 +84,6 @@ const TPL = new Template(`
             flex: 1;
             padding: 0 8px;
         }
-        #map-scale-slider {
-            flex: 1;
-            height: 7px;
-            margin-left: 8px;
-            -webkit-appearance: none;
-            background: #cb9c3d;
-        }
-        #map-scale-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 10px;
-            height: 100%;
-            background: red;
-            cursor: pointer;
-        }
-        #map-scale-slider::-moz-range-thumb {
-            width: 10px;
-            height: 100%;
-            background: red;
-            cursor: pointer;
-        }
         #map-overview {
             display: flex;
             align-items: center;
@@ -122,6 +101,35 @@ const TPL = new Template(`
             flex-shrink: 0;
             border: solid 2px red;
             pointer-events: none;
+        }
+        #map-scale-slider {
+            -webkit-appearance: none;
+            flex: 1;
+            height: 7px;
+            margin-left: 0 0 0 8px;
+        }
+        #map-scale-slider:focus {
+            outline: none;
+        }
+        #map-scale-slider::-webkit-slider-runnable-track,
+        #map-scale-slider::-moz-range-track {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            background: #cb9c3d;
+            border: none;
+            border-radius: 0px;
+        }
+        #map-scale-slider::-webkit-slider-thumb,
+        #map-scale-slider::-moz-range-thumb {
+            -webkit-appearance: none;
+            height: 100%;
+            width: 10px;
+            cursor: pointer;
+            margin-top: 0px;
+            background: #000000;
+            border: none;
+            border-radius: 0px;
         }
     </style>
     <div id="map-wrapper">
