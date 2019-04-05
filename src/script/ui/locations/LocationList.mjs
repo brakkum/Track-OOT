@@ -84,15 +84,15 @@ const TPL = new Template(`
         <div id="title-text"></div>
         <ootrt-dungeontype id="location-type">
         </ootrt-dungeontype>
-        <deep-switchbutton id="location-era">
-            <option value="" style="background-image: url('images/era_both.svg')"></option>
-            <option value="child" style="background-image: url('images/era_child.svg')"></option>
-            <option value="adult" style="background-image: url('images/era_adult.svg')"></option>
+        <deep-switchbutton value="" id="location-era">
+            <option value="" slot="" style="background-image: url('images/era_both.svg')"></option>
+            <option value="child" slot="child" style="background-image: url('images/era_child.svg')"></option>
+            <option value="adult" slot="adult" style="background-image: url('images/era_adult.svg')"></option>
         </deep-switchbutton>
-        <deep-switchbutton id="location-mode">
-            <option value="chests" style="background-image: url('images/chest.svg')"></option>
-            <option value="skulltulas" style="background-image: url('images/skulltula.svg')"></option>
-            <option value="gossipstones" style="background-image: url('images/gossips.svg')"></option>
+        <deep-switchbutton value="chests" id="location-mode">
+            <option value="chests" slot="chests" style="background-image: url('images/chest.svg')"></option>
+            <option value="skulltulas" slot="skulltulas" style="background-image: url('images/skulltula.svg')"></option>
+            <option value="gossipstones" slot="gossipstones" style="background-image: url('images/gossips.svg')"></option>
         </deep-switchbutton>
     </div>
     <div id="body">
