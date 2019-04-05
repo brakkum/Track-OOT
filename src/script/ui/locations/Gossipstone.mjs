@@ -76,7 +76,7 @@ function gossipstoneUpdate(name, value) {
 function itemUpdate(name, value) {
     let el = this.shadowRoot.getElementById("text");
     if (!el.classList.contains("checked")) {
-        if (Logic.checkLogic("gossipstones", this.ref)) {
+        if (Logic.getValue("gossipstones", this.ref)) {
             el.classList.add("avail");
         } else {
             el.classList.remove("avail");
@@ -91,7 +91,7 @@ function globalUpdate() {
     EventBus.unmute("gossipstone-update");
     let el = this.shadowRoot.getElementById("text");
     if (!el.classList.contains("checked")) {
-        if (Logic.checkLogic("gossipstones", this.ref)) {
+        if (Logic.getValue("gossipstones", this.ref)) {
             el.classList.add("avail");
         } else {
             el.classList.remove("avail");
