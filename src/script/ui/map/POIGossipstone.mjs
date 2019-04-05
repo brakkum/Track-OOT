@@ -97,10 +97,12 @@ function gossipstoneUpdate(name, value) {
 function logicUpdate(type, ref, value) {
     if ("gossipstones" == type && this.ref == ref) {
         let el = this.shadowRoot.querySelector("marker");
-        if (!!value) {
-            el.classList.add("avail");
-        } else {
-            el.classList.remove("avail");
+        if (!!el) {
+            if (!!value) {
+                el.classList.add("avail");
+            } else {
+                el.classList.remove("avail");
+            }
         }
     }
 }
