@@ -27,11 +27,15 @@ const TPL = new Template(`
         :host([orientation="column"]) div.item-row {
             flex-direction: row;
         }
-        ootrt-item {
+        ootrt-item,
+        ootrt-dungeonreward,
+        ootrt-dungeontype {
             display: block;
             padding: 5px;
         }
-        ootrt-item:hover {
+        ootrt-item:hover,
+        ootrt-dungeonreward:hover,
+        ootrt-dungeontype:hover {
             padding: 2px;
         }
         div.text {

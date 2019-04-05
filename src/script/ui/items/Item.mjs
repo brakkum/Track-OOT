@@ -20,7 +20,7 @@ const TPL = new Template(`
             width: 100%;
             height: 100%;
         }
-        ::slotted(option) {
+        ::slotted(div) {
             display: inline-flex;
             align-items: flex-end;
             justify-content: flex-end;
@@ -40,11 +40,11 @@ const TPL = new Template(`
             padding: 0;
             line-height: 0.7em;
         }
-        ::slotted(option.mark) {
+        ::slotted(div.mark) {
             color: #54ff54;
         }
     </style>
-    <slot name="value">
+    <slot id="slot" name="">
     </slot>
 `);
 
@@ -77,14 +77,6 @@ class HTMLTrackerItem extends HTMLElement {
         this.addEventListener("contextmenu", this.prev);
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
-        /* init */
-        if (!this.value) {
-            let all = this.querySelectorAll("option");
-            if (!!all.length) {
-                this.value = all[0].value;
-                all[0].setAttribute("slot", "value");
-            }
-        }
         /* event bus */
         EventBus.on("item-update", itemUpdate.bind(this));
         EventBus.on("force-item-update", updateCall.bind(this));
@@ -137,14 +129,7 @@ class HTMLTrackerItem extends HTMLElement {
             break;
             case 'value':
                 if (oldValue != newValue) {
-                    let ol = this.querySelector(`option[value="${oldValue}"]`);
-                    if (!!ol) {
-                        ol.removeAttribute("slot");
-                    }
-                    let nl = this.querySelector(`option[value="${newValue}"]`);
-                    if (!!nl) {
-                        nl.setAttribute("slot", "value");
-                    }
+                    this.shadowRoot.getElementById("slot").setAttribute("name", newValue);
                     TrackerLocalState.write("items", this.ref, parseInt(newValue));
                     EventBus.post("item-update", this.ref, newValue);
                 }
@@ -187,16 +172,11 @@ class HTMLTrackerItem extends HTMLElement {
 
         for (let i = 0; i <= max_value; ++i) {
             if (i != 0 && i <= start_value) continue;
-            let opt = document.createElement('option');
-            opt.setAttribute('value', i);
-            if (i == current_value) {
-                opt.setAttribute("slot", "value");
+            let img = data.images;
+            if (Array.isArray(img)) {
+                img = img[i];
             }
-            if (Array.isArray(data.images)) {
-                opt.style.backgroundImage = `url("/images/${data.images[i]}")`;
-            } else {
-                opt.style.backgroundImage = `url("/images/${data.images}")`;
-            }
+            let opt = createOption(i, `/images/${img}`);
             if (i == 0 && !data.always_active) {
                 opt.style.filter = "contrast(0.8) grayscale(0.5)";
                 opt.style.opacity= "0.4";
@@ -234,15 +214,15 @@ class HTMLTrackerItem extends HTMLElement {
                 }
             } else {
                 Logger.log(`get next value for "${this.ref}"`, "Item");
-                let all = this.querySelectorAll("option");
+                let all = this.querySelectorAll("div[value]");
                 if (!!all.length) {
-                    let opt = this.querySelector(`option[value="${this.value}"]`);
+                    let opt = this.querySelector(`div[value="${this.value}"]`);
                     if (!!opt) {
                         if (!!opt.nextElementSibling) {
-                            this.value = opt.nextElementSibling.value;
+                            this.value = opt.nextElementSibling.getAttribute("value");
                         }
                     } else {
-                        this.value = all[0].value;
+                        this.value = all[0].getAttribute("value");
                     }
                 }
             }
@@ -269,12 +249,12 @@ class HTMLTrackerItem extends HTMLElement {
                 }
             } else {
                 Logger.log(`get previous value for "${this.ref}"`, "Item");
-                let all = this.querySelectorAll("option");
+                let all = this.querySelectorAll("div[value]");
                 if (!!all.length) {
-                    let opt = this.querySelector(`option[value="${this.value}"]`);
+                    let opt = this.querySelector(`div[value="${this.value}"]`);
                     if (!!opt) {
                         if (!!opt.previousElementSibling) {
-                            this.value = opt.previousElementSibling.value;
+                            this.value = opt.previousElementSibling.getAttribute("value");
                         }
                     } else {
                         this.value = all[0].value;
@@ -290,3 +270,11 @@ class HTMLTrackerItem extends HTMLElement {
 }
 
 customElements.define('ootrt-item', HTMLTrackerItem);
+
+function createOption(value, img) {
+    let opt = document.createElement('div');
+    opt.setAttribute('value', value);
+    opt.setAttribute('slot', value);
+    opt.style.backgroundImage = `url("${img}"`;
+    return opt;
+}

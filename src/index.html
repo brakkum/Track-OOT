@@ -13,7 +13,6 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/icon-16x16.png">
         <link rel="icon" type="image/svg+xml" href="/images/logo.svg" sizes="any">
         <link rel="manifest" href="/manifest.json">
-        <script src="script/_vendor/webcomponents-bundle.js"></script>
         <script src="script/_vendor/import.js"></script>
         <script>
             window.addEventListener('contextmenu', function() {
@@ -97,7 +96,9 @@
                 async function startApp() {
                     try {
                         updateLoadingMessage("load framework...");
-                        navigator.serviceWorker.removeEventListener('message', swStateRecieve);
+                        if ('serviceWorker' in navigator) {
+                            navigator.serviceWorker.removeEventListener('message', swStateRecieve);
+                        }
                         updateLoadingMessage("add structure...");
                         let r = await $import.importHTML("/content/app.html");
                         while (r.length > 0) {
