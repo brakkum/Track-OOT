@@ -73,10 +73,10 @@ function gossipstoneUpdate(name, value) {
     }
 }
 
-function itemUpdate(name, value) {
-    let el = this.shadowRoot.getElementById("text");
-    if (!el.classList.contains("checked")) {
-        if (Logic.getValue("gossipstones", this.ref)) {
+function logicUpdate(type, ref, value) {
+    if ("gossipstones" == type && this.ref == ref) {
+        let el = this.shadowRoot.getElementById("text");
+        if (!!value) {
             el.classList.add("avail");
         } else {
             el.classList.remove("avail");
@@ -106,7 +106,7 @@ class HTMLTrackerGossipstone extends HTMLElement {
         this.addEventListener("click", this.check);
         EventBus.on("gossipstone-update", gossipstoneUpdate.bind(this));
         EventBus.on("force-location-update", globalUpdate.bind(this));
-        EventBus.on("item-update", itemUpdate.bind(this));
+        EventBus.on("logic", logicUpdate.bind(this));
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
     }
