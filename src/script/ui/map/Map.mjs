@@ -278,13 +278,13 @@ class HTMLTrackerMap extends HTMLElement {
         });
         EventBus.on("location-mode-change", function(mode) {
             this.mode = mode;
-        });
+        }.bind(this));
         EventBus.on("location-era-change", function(era) {
             this.era = era;
-        });
+        }.bind(this));
         EventBus.on("force-location-update", function() {
             this.attributeChangedCallback("", "");
-        });
+        }.bind(this));
         window.addEventListener("resize", function(event) {
             mapContainBoundaries(map, map.parentNode);
         });
