@@ -45,6 +45,14 @@ function toggleStateButtons() {
     }
 }
 
+function throwEvents() {
+    EventBus.post("force-item-update");
+    EventBus.post("force-logic-update");
+    EventBus.post("force-location-update");
+    EventBus.post("force-shop-update");
+    EventBus.post("force-song-update");
+}
+
 function prepairSavegameChoice() {
     stateChoice.innerHTML = "<option disabled selected hidden value=\"\"> -- select state -- </option>";
     var keys = DeepLocalStorage.names("save");
@@ -73,9 +81,7 @@ async function state_Load() {
             activestate = stateChoice.value;
             TrackerLocalState.load(activestate);
             document.getElementById("tracker-notes").value = TrackerLocalState.read("extras", "notes", "");
-            EventBus.post("force-item-update");
-            EventBus.post("force-logic-update");
-            EventBus.post("force-location-update");
+            throwEvents();
             toggleStateButtons();
             showToast(`State "${activestate}" loaded.`);
         }
@@ -90,11 +96,7 @@ async function state_Delete() {
         if (del == activestate) {
             activestate == "";
             TrackerLocalState.reset();
-            EventBus.post("force-item-update");
-            EventBus.post("force-logic-update");
-            EventBus.post("force-location-update");
-            EventBus.post("force-shop-update");
-            EventBus.post("force-song-update");
+            throwEvents();
         }
         stateChoice.value = activestate;
         prepairSavegameChoice();
@@ -131,9 +133,7 @@ async function state_New() {
         }
         TrackerLocalState.save(name);
         activestate = name;
-        EventBus.post("force-item-update");
-        EventBus.post("force-logic-update");
-        EventBus.post("force-location-update");
+        throwEvents();
         toggleStateButtons();
     }
 }
@@ -200,9 +200,7 @@ async function state_Import() {
             stateChoice.value = data.name;
             activestate = data.name;
             TrackerLocalState.load(activestate);
-            EventBus.post("force-item-update");
-            EventBus.post("force-logic-update");
-            EventBus.post("force-location-update");
+            throwEvents();
             toggleStateButtons();
         }
     }
