@@ -74,6 +74,10 @@ function itemUpdate(name, value) {
     }
 }
 
+function updateDungeon(ref, val) {
+
+}
+
 class HTMLTrackerItem extends HTMLElement {
 
     constructor() {
@@ -85,7 +89,7 @@ class HTMLTrackerItem extends HTMLElement {
         /* event bus */
         EventBus.on("item-update", itemUpdate.bind(this));
         EventBus.on("force-item-update", updateCall.bind(this));
-        EventBus.on("dungeon-type-update", this.fillItemChoices.bind(this));
+        EventBus.on("dungeon-type-update", updateDungeon.bind(this));
     }
 
     connectedCallback() {
@@ -195,7 +199,11 @@ class HTMLTrackerItem extends HTMLElement {
             if (Array.isArray(img)) {
                 img = img[i];
             }
-            this.appendChild(createOption(i, `/images/${img}`, data, max_value));
+            let opt = createOption(i, `/images/${img}`, data, max_value);
+            if (i == current_value) {
+                opt.classList.add("active");
+            }
+            this.appendChild(opt);
         }
 
         this.value = current_value;
