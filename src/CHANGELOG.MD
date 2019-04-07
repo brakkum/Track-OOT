@@ -26,3 +26,4 @@ Version:        DEV (1.3)
 
 ### UI
 - better "colors" for listselection
+- add option to lock the map in place
