@@ -143,9 +143,9 @@ class HTMLTrackerDungeonReward extends HTMLElement {
     }
 
     next(ev) {
-        let all = this.querySelectorAll("div");
+        let all = this.querySelectorAll("[value]");
         if (!!all.length) {
-            let opt = this.querySelector(`div[value="${this.value}"]`);
+            let opt = this.querySelector(`[value="${this.value}"]`);
             if (!!opt) {
                 if (!!opt.nextElementSibling) {
                     this.value = opt.nextElementSibling.getAttribute("value");
