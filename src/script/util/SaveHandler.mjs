@@ -63,7 +63,7 @@ function prepairSavegameChoice() {
 }
 
 function createOption(value) {
-    let opt = document.createElement('deep-option');
+    let opt = document.createElement('option');
     opt.value = value;
     opt.innerHTML = value;
     return opt;
