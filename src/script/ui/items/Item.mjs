@@ -2,6 +2,7 @@ import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import Logger from "/deepJS/util/Logger.mjs";
+import "/deepJS/ui/selection/Option.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
 
 const TPL = new Template(`
@@ -20,7 +21,11 @@ const TPL = new Template(`
             width: 100%;
             height: 100%;
         }
-        ::slotted(div) {
+        ::slotted(:not([value])),
+        ::slotted([value]:not(.active)) {
+            display: none !important;
+        }
+        ::slotted([value]) {
             display: inline-flex;
             align-items: flex-end;
             justify-content: flex-end;
@@ -40,11 +45,11 @@ const TPL = new Template(`
             padding: 0;
             line-height: 0.7em;
         }
-        ::slotted(div.mark) {
+        ::slotted([value].mark) {
             color: #54ff54;
         }
     </style>
-    <slot id="slot" name="">
+    <slot>
     </slot>
 `);
 
@@ -81,6 +86,15 @@ class HTMLTrackerItem extends HTMLElement {
         EventBus.on("item-update", itemUpdate.bind(this));
         EventBus.on("force-item-update", updateCall.bind(this));
         EventBus.on("dungeon-type-update", this.fillItemChoices.bind(this));
+    }
+
+    connectedCallback() {
+        if (!this.value) {
+            let all = this.querySelectorAll("[value]");
+            if (!!all.length) {
+                this.value = all[0].value;
+            }
+        }
     }
 
     get ref() {
@@ -129,7 +143,14 @@ class HTMLTrackerItem extends HTMLElement {
             break;
             case 'value':
                 if (oldValue != newValue) {
-                    this.shadowRoot.getElementById("slot").setAttribute("name", newValue);
+                    let oe = this.querySelector(`.active`);
+                    if (!!oe) {
+                        oe.classList.remove("active");
+                    }
+                    let ne = this.querySelector(`[value="${newValue}"]`);
+                    if (!!ne) {
+                        ne.classList.add("active");
+                    }
                     TrackerLocalState.write("items", this.ref, parseInt(newValue));
                     EventBus.post("item-update", this.ref, newValue);
                 }
@@ -148,7 +169,6 @@ class HTMLTrackerItem extends HTMLElement {
         let current_value = this.value || 0;
         if (current_value <= start_value) {
             current_value = 0;
-            this.value = 0;
         }
 
         let max_value = 0;
@@ -167,7 +187,6 @@ class HTMLTrackerItem extends HTMLElement {
 
         if (current_value > max_value) {
             current_value = max_value;
-            this.value = max_value;
         }
 
         for (let i = 0; i <= max_value; ++i) {
@@ -176,25 +195,10 @@ class HTMLTrackerItem extends HTMLElement {
             if (Array.isArray(img)) {
                 img = img[i];
             }
-            let opt = createOption(i, `/images/${img}`);
-            if (i == 0 && !data.always_active) {
-                opt.style.filter = "contrast(0.8) grayscale(0.5)";
-                opt.style.opacity= "0.4";
-            }
-            if (!!data.counting) {
-                if (Array.isArray(data.counting)) {
-                    opt.innerHTML = data.counting[i];
-                } else {
-                    if (i > 0 || data.always_active) {
-                        opt.innerHTML = i;
-                    }
-                }
-                if (i >= max_value || !!data.mark && i >= data.mark) {
-                    opt.classList.add("mark");
-                }
-            }
-            this.appendChild(opt);
+            this.appendChild(createOption(i, `/images/${img}`, data, max_value));
         }
+
+        this.value = current_value;
     }
 
     next(event) {
@@ -214,9 +218,9 @@ class HTMLTrackerItem extends HTMLElement {
                 }
             } else {
                 Logger.log(`get next value for "${this.ref}"`, "Item");
-                let all = this.querySelectorAll("div[value]");
+                let all = this.querySelectorAll("[value]");
                 if (!!all.length) {
-                    let opt = this.querySelector(`div[value="${this.value}"]`);
+                    let opt = this.querySelector(`[value="${this.value}"]`);
                     if (!!opt) {
                         if (!!opt.nextElementSibling) {
                             this.value = opt.nextElementSibling.getAttribute("value");
@@ -249,9 +253,9 @@ class HTMLTrackerItem extends HTMLElement {
                 }
             } else {
                 Logger.log(`get previous value for "${this.ref}"`, "Item");
-                let all = this.querySelectorAll("div[value]");
+                let all = this.querySelectorAll("[value]");
                 if (!!all.length) {
-                    let opt = this.querySelector(`div[value="${this.value}"]`);
+                    let opt = this.querySelector(`[value="${this.value}"]`);
                     if (!!opt) {
                         if (!!opt.previousElementSibling) {
                             this.value = opt.previousElementSibling.getAttribute("value");
@@ -271,10 +275,25 @@ class HTMLTrackerItem extends HTMLElement {
 
 customElements.define('ootrt-item', HTMLTrackerItem);
 
-function createOption(value, img) {
-    let opt = document.createElement('div');
-    opt.setAttribute('value', value);
-    opt.setAttribute('slot', value);
+function createOption(value, img, data, max_value) {
+    let opt = document.createElement('deep-option');
+    opt.value = value;
     opt.style.backgroundImage = `url("${img}"`;
+    if (value == 0 && !data.always_active) {
+        opt.style.filter = "contrast(0.8) grayscale(0.5)";
+        opt.style.opacity= "0.4";
+    }
+    if (!!data.counting) {
+        if (Array.isArray(data.counting)) {
+            opt.innerHTML = data.counting[value];
+        } else {
+            if (value > 0 || data.always_active) {
+                opt.innerHTML = value;
+            }
+        }
+        if (value >= max_value || !!data.mark && value >= data.mark) {
+            opt.classList.add("mark");
+        }
+    }
     return opt;
 }

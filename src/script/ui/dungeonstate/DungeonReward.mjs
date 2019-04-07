@@ -1,6 +1,7 @@
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
+import "/deepJS/ui/selection/Option.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
 
 const TPL = new Template(`
@@ -19,7 +20,11 @@ const TPL = new Template(`
             width: 100%;
             height: 100%;
         }
-        ::slotted(div) {
+        ::slotted(:not([value])),
+        ::slotted([value]:not(.active)) {
+            display: none !important;
+        }
+        ::slotted([value]) {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -40,7 +45,7 @@ const TPL = new Template(`
             line-height: 0.7em;
         }
     </style>
-    <slot id="slot" name="">
+    <slot>
     </slot>
 `);
 
@@ -70,6 +75,15 @@ class HTMLTrackerDungeonReward extends HTMLElement {
         this.shadowRoot.appendChild(TPL.generate());
         /* event bus */
         EventBus.on("global-update", updateCall.bind(this));
+    }
+
+    connectedCallback() {
+        if (!this.value) {
+            let all = this.querySelectorAll("[value]");
+            if (!!all.length) {
+                this.value = all[0].value;
+            }
+        }
     }
 
     get ref() {
@@ -113,7 +127,14 @@ class HTMLTrackerDungeonReward extends HTMLElement {
             break;
             case 'value':
                 if (oldValue != newValue) {
-                    this.shadowRoot.getElementById("slot").setAttribute("name", newValue);
+                    let oe = this.querySelector(`.active`);
+                    if (!!oe) {
+                        oe.classList.remove("active");
+                    }
+                    let ne = this.querySelector(`[value="${newValue}"]`);
+                    if (!!ne) {
+                        ne.classList.add("active");
+                    }
                     TrackerLocalState.write("dungeonRewards", this.ref, newValue);
                     EventBus.post("dungeon-reward-update", this.ref, newValue);
                 }
@@ -148,9 +169,8 @@ class HTMLTrackerDungeonReward extends HTMLElement {
 customElements.define('ootrt-dungeonreward', HTMLTrackerDungeonReward);
 
 function createOption(value, img) {
-    let opt = document.createElement('div');
-    opt.setAttribute('value', value);
-    opt.setAttribute('slot', value);
+    let opt = document.createElement('deep-option');
+    opt.value = value;
     opt.style.backgroundImage = `url("${img}"`;
     return opt;
 }

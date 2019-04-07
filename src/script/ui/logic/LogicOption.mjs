@@ -1,6 +1,5 @@
 import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
-import {createOption} from "/deepJS/ui/UIHelper.mjs";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.mjs";
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
@@ -138,3 +137,10 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
 
 DeepLogicAbstractElement.registerReference("option", TrackerLogicOption);
 customElements.define('tracker-logic-option', TrackerLogicOption);
+
+function createOption(value, content) {
+    let opt = document.createElement('option');
+    opt.value = value;
+    opt.innerHTML = content;
+    return opt;
+}

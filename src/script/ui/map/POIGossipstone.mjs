@@ -3,7 +3,6 @@ import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import Logger from "/deepJS/util/Logger.mjs";
 import Dialog from "/deepJS/ui/Dialog.mjs";
-import {createOption} from "/deepJS/ui/UIHelper.mjs";
 import "/deepJS/ui/Tooltip.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
 import Logic from "/script/util/Logic.mjs";
@@ -312,4 +311,11 @@ function hintstoneDialog(ref) {
         d.appendChild(lbl_itm);
         d.show();
     });
+}
+
+function createOption(value, content) {
+    let opt = document.createElement('deep-option');
+    opt.value = value;
+    opt.innerHTML = content;
+    return opt;
 }

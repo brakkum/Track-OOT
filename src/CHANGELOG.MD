@@ -18,3 +18,11 @@ Version:        DEV (1.3)
     - check/uncheck option in context menu
     - show logic in context menu (logic activation status of the current check)
 - quick uncheck locations now ctrl+rightclick
+
+### SAFARI
+- added compatibility for safari
+    - safari may be missing serviceworker
+- fixed bugs ignored by firefox and chrome
+
+### UI
+- better "colors" for listselection

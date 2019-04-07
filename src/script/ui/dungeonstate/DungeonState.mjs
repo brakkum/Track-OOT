@@ -227,7 +227,7 @@ function createRow(data) {
         itm.setAttribute("type", "reward");
         types.push("reward");
         itm.setAttribute('ref', data.ref);
-        itm.title = I18n.translate(data.ref) + I18n.translate("dun_reward");
+        itm.title = I18n.translate(data.ref) + " " + I18n.translate("dun_reward");
         el.appendChild(itm);
     } else {
         let itm = createItemPlaceholder();
@@ -243,7 +243,7 @@ function createRow(data) {
         itm.setAttribute("type", "type");
         types.push("type");
         itm.setAttribute('ref', data.ref);
-        itm.title = I18n.translate(data.ref) + I18n.translate("dun_type");
+        itm.title = I18n.translate(data.ref) + " " + I18n.translate("dun_type");
         el.appendChild(itm);
     } else {
         let itm = createItemPlaceholder();

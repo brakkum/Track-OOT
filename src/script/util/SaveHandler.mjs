@@ -1,7 +1,6 @@
 import DeepLocalStorage from "/deepJS/storage/LocalStorage.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import Dialog from "/deepJS/ui/Dialog.mjs";
-import {createOption} from "/deepJS/ui/UIHelper.mjs";
 import {showToast} from "/deepJS/ui/Toast.mjs";
 import TrackerLocalState from "./LocalState.mjs";
 
@@ -60,6 +59,13 @@ function prepairSavegameChoice() {
         stateChoice.appendChild(createOption(keys[i]));
     }
     stateChoice.value = activestate;
+}
+
+function createOption(value) {
+    let opt = document.createElement('deep-option');
+    opt.value = value;
+    opt.innerHTML = value;
+    return opt;
 }
 
 async function state_Save() {
