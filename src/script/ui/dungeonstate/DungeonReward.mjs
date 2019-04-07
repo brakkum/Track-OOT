@@ -74,7 +74,7 @@ class HTMLTrackerDungeonReward extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
         /* event bus */
-        EventBus.on("global-update", updateCall.bind(this));
+        EventBus.on("force-dungeonstate-update", updateCall.bind(this));
     }
 
     connectedCallback() {

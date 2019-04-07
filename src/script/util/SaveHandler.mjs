@@ -50,6 +50,7 @@ function throwEvents() {
     EventBus.post("force-location-update");
     EventBus.post("force-shop-update");
     EventBus.post("force-song-update");
+    EventBus.post("force-dungeonstate-update");
 }
 
 function prepairSavegameChoice() {
