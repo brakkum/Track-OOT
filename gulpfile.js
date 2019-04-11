@@ -278,23 +278,6 @@ exports.buildDev = gulp.series(
 exports.watch = function () {
     return gulp.watch(
         PATHS.appBase + "/**/*",
-        gulp.series(
-            gulp.parallel(
-                copyHTML_dev,
-                copyJSON_dev,
-                copyI18N_dev,
-                copyImg_dev,
-                copySCSS_dev,
-                copyCSS_dev,
-                copyFonts_dev,
-                copyScript_dev,
-                copyDeepJS_dev,
-                copyVendorJS_dev,
-                copyOldJS_dev,
-                copySW_dev,
-                copyChangelog_dev
-            ),
-            writeTOC_dev
-        )
+        exports.build
     );
 }
