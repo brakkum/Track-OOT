@@ -4449,20 +4449,56 @@
             ]
         },
         "ice_cavern_map": {
-            "type": "mixin",
-            "el": "ice_cavern_access"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ice_cavern_access"
+                },
+                {
+                    "type": "item",
+                    "el": "bottle"
+                }
+            ]
         },
         "ice_cavern_compass": {
-            "type": "mixin",
-            "el": "ice_cavern_access"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ice_cavern_access"
+                },
+                {
+                    "type": "item",
+                    "el": "bottle"
+                }
+            ]
         },
         "ice_cavern_hp": {
-            "type": "mixin",
-            "el": "ice_cavern_access"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ice_cavern_access"
+                },
+                {
+                    "type": "item",
+                    "el": "bottle"
+                }
+            ]
         },
         "ice_cavern_boots": {
-            "type": "mixin",
-            "el": "ice_cavern_access"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ice_cavern_access"
+                },
+                {
+                    "type": "item",
+                    "el": "bottle"
+                }
+            ]
         },
         "ice_cavern_sheik": {
             "type": "mixin",
