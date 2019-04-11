@@ -22,34 +22,28 @@
         }
 
         cleanup(dest = "/") {
-            let files = [];
-            return through(function(file) {
-                this.push(file);
-                return files.push(file);
-            }, function() {
-                let destFiles = glob.sync("./**/*", {
-                    nodir: true,
-                    cwd: dest,
-                    absolute: true
-                });
-
-                let srcFiles = Array.from(FILES);
-
-                // fs.writeFileSync("src.txt", srcFiles.sort().join("\n"));
-                // fs.writeFileSync("dst.txt", destFiles.sort().join("\n"));
-                
-                for (let i in destFiles) {
-                    let fName = destFiles[i];
-                    if (!(srcFiles.indexOf(fName) + 1)) {
-                        console.log(`delete file: ${fName}`);
-                        del.sync(fName);
-                    }
-                }
-
-                FILES.clear();
-
-                return this.emit("end");
+            let destFiles = glob.sync("./**/*", {
+                nodir: true,
+                cwd: dest,
+                absolute: true
             });
+
+            let srcFiles = Array.from(FILES);
+
+            // fs.writeFileSync("src.txt", srcFiles.sort().join("\n"));
+            // fs.writeFileSync("dst.txt", destFiles.sort().join("\n"));
+            
+            for (let i in destFiles) {
+                let fName = destFiles[i];
+                if (!(srcFiles.indexOf(fName) + 1)) {
+                    console.log(`delete file: ${fName}`);
+                    del.sync(fName);
+                }
+            }
+
+            // TODO remove empty folders
+
+            FILES.clear();
         }
 
     }
