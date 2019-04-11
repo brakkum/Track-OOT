@@ -4,10 +4,10 @@
 
 Application:    Track-OOT
 
-Version:        1.2.2
+Version:        1.2.3
 
 ---
 
 ### Hotfixes
-- fixed missing can_become_adult check for bow usage in DC
-
+- added missing bottle to ice cavern checks if zora fountain is open
+- changed default value of open zora fountain to false
