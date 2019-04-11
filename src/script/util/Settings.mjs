@@ -132,15 +132,14 @@ if ('serviceWorker' in navigator) {
                     settings.querySelector("#update-running").style.display = "none";
                     settings.querySelector("#update-finished").style.display = "block";
                 break;
-                case "error":
-                    settings.querySelector("#update-check").style.display = "none";
-                    settings.querySelector("#update-running").style.display = "none";
-                    settings.querySelector("#update-finished").style.display = "none";
-                    settings.querySelector("#update-force").style.display = "block";
-                    settings.querySelector("#update-unavailable").style.display = "block";
-                    Dialog.alert("Connection Lost", "The ServiceWorker was not able to establish or keep connection to the Server<br>Please try again later.")
-                break;
             }
+        } else if (event.data.type == "error") {
+            settings.querySelector("#update-check").style.display = "none";
+            settings.querySelector("#update-running").style.display = "none";
+            settings.querySelector("#update-finished").style.display = "none";
+            settings.querySelector("#update-force").style.display = "block";
+            settings.querySelector("#update-unavailable").style.display = "block";
+            Dialog.alert("Connection Lost", "The ServiceWorker was not able to establish or keep connection to the Server<br>Please try again later.");
         }
     }
     navigator.serviceWorker.addEventListener('message', swStateRecieve);
