@@ -4,10 +4,9 @@
 
 Application:    Track-OOT
 
-Version:        1.2.3
+Version:        1.2.4
 
 ---
 
 ### Hotfixes
-- added missing bottle to ice cavern checks if zora fountain is open
-- changed default value of open zora fountain to false
+- made gossipstones save value again
