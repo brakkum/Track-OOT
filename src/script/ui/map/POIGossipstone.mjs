@@ -314,7 +314,7 @@ function hintstoneDialog(ref) {
 }
 
 function createOption(value, content) {
-    let opt = document.createElement('deep-option');
+    let opt = document.createElement('option');
     opt.value = value;
     opt.innerHTML = content;
     return opt;
