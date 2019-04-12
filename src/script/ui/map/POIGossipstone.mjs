@@ -214,8 +214,11 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
                             el.classList.remove("avail");
                         }
                     }
-                    TrackerLocalState.write("gossipstones", data.ref || this.ref, newValue === "false" ? false : !!newValue);
-                    EventBus.post("gossipstone-update", data.ref || this.ref, newValue);
+                    let val = newValue != "false";
+                    if (!!val) {
+                        val = TrackerLocalState.read("gossipstones", data.ref || this.ref, {item: "0x00", location: "0x00"});
+                    }
+                    EventBus.post("gossipstone-update", data.ref || this.ref, val);
                 }
             break;
         }
