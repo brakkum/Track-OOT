@@ -8,12 +8,16 @@
 
     const FILES = new Set();
 
+    function normalizePath(path) {
+        return path.replace(/\\/g, "/");
+    }
+
     class Deleted {
 
         register(src = "/", dest = "/") {
             let files = [];
             return through(function(file) {
-                FILES.add(path.resolve(dest, path.relative(src, file.path)));
+                FILES.add(normalizePath(path.resolve(dest, path.relative(src, file.path))));
                 this.push(file);
                 return files.push(file);
             }, function() {

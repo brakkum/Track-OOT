@@ -153,10 +153,14 @@ export default class HTMLTrackerShopField extends HTMLElement {
             let data = TrackerLocalState.read("shops", newValue, GlobalData.get("shops")[newValue]);
             let title = this.shadowRoot.getElementById("title-text");
             title.innerHTML = I18n.translate(newValue);
+            let names = TrackerLocalState.read("shops_names", this.ref, ["","","","","","","",""]);
+            let checked = TrackerLocalState.read("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
             for (let i = 0; i < 8; ++i) {
                 let el = this.shadowRoot.getElementById(`slot${i}`);
                 el.ref = data[i].item;
                 el.price = data[i].price;
+                el.checked = !!checked[i];
+                el.name = names[i];
             }
         }
     }
