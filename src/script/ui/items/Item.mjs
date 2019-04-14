@@ -141,8 +141,9 @@ class HTMLTrackerItem extends HTMLElement {
         if (oldValue != newValue) {
             switch (name) {
                 case 'ref':
+                    //this.startvalue = TrackerLocalState.read("items", this.ref, 1);
                     this.value = TrackerLocalState.read("items", this.ref, 0);
-                    this.startvalue = TrackerLocalState.read("items", this.ref, 1);
+                    this.fillItemChoices();
                 break;
                 case 'startvalue':
                     this.fillItemChoices();
