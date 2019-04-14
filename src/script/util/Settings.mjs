@@ -209,7 +209,7 @@ settings.addEventListener('submit', function(event) {
         }
     }
     applySettingsChoices();
-    EventBus.post("settings");
+    EventBus.post("force-item-update");
     EventBus.post("force-location-update");
 });
 

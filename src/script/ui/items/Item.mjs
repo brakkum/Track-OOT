@@ -62,6 +62,8 @@ function updateCall() {
     if (data.hasOwnProperty("start_settings")) {
         let stsp = data.start_settings.split(".");
         this.startvalue = TrackerLocalState.read(stsp[0], stsp[1], 1);
+    } else {
+        this.fillItemChoices();
     }
     EventBus.unmute("item-update");
 }
@@ -141,9 +143,7 @@ class HTMLTrackerItem extends HTMLElement {
         if (oldValue != newValue) {
             switch (name) {
                 case 'ref':
-                    //this.startvalue = TrackerLocalState.read("items", this.ref, 1);
-                    this.value = TrackerLocalState.read("items", this.ref, 0);
-                    this.fillItemChoices();
+                    updateCall.call(this);
                 break;
                 case 'startvalue':
                     this.fillItemChoices();
