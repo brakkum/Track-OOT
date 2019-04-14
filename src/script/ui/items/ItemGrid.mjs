@@ -32,7 +32,7 @@ const TPL = new Template(`
 `);
 
 function createItemText(text) {
-    var el = document.createElement('DIV');
+    let el = document.createElement('DIV');
     el.classList.add("text");
     el.innerHTML = text;
     return el;

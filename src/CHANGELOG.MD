@@ -27,3 +27,8 @@ Version:        DEV (1.3)
 ### UI
 - better "colors" for listselection
 - add option to lock the map in place
+
+### SESSION PERSIST
+- the current session will now be copied into session storage
+- simply reloading will not remove any changes (even without saving)
+- loading another save will overwrite existing session (obviously)

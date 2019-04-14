@@ -138,15 +138,14 @@ class HTMLTrackerItem extends HTMLElement {
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
-        switch (name) {
-            case 'startvalue':
-            case 'ref':
-                if (oldValue != newValue) {
+        if (oldValue != newValue) {
+            switch (name) {
+                case 'ref':
+                    this.value = TrackerLocalState.read("items", this.ref, 0);
+                case 'startvalue':
                     this.fillItemChoices();
-                }
-            break;
-            case 'value':
-                if (oldValue != newValue) {
+                break;
+                case 'value':
                     let oe = this.querySelector(`.active`);
                     if (!!oe) {
                         oe.classList.remove("active");
@@ -157,8 +156,8 @@ class HTMLTrackerItem extends HTMLElement {
                     }
                     TrackerLocalState.write("items", this.ref, parseInt(newValue));
                     EventBus.post("item-update", this.ref, newValue);
-                }
-            break;
+                break;
+            }
         }
     }
 

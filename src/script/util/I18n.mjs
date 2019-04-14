@@ -4,7 +4,7 @@ import Logger from "/deepJS/util/Logger.mjs";
 let lang = {};
 
 /*
-var mutationObserver = new MutationObserver(function(mutations) {
+let mutationObserver = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
         console.log(mutation);
     });
