@@ -23,6 +23,9 @@ Version:        DEV (1.3)
 - added compatibility for safari
     - safari may be missing serviceworker
 - fixed bugs ignored by firefox and chrome
+- BUG: safari, chrome and firefox are currently not taking longclicks on iOS
+    - you can check things, but dont uncheck
+    - context menu will not be shown
 
 ### UI
 - better "colors" for listselection
