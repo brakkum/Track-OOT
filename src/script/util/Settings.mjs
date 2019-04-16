@@ -211,6 +211,7 @@ settings.addEventListener('submit', function(event) {
     applySettingsChoices();
     EventBus.post("force-item-update");
     EventBus.post("force-location-update");
+    EventBus.post("force-logic-update");
 });
 
 settings.addEventListener('close', function(event) {
