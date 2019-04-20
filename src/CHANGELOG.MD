@@ -4,7 +4,7 @@
 
 Application:    Track-OOT
 
-Version:        1.3.0
+Version:        1.3.1
 
 ---
 
@@ -37,3 +37,6 @@ Version:        1.3.0
 - safari, chrome and firefox are currently not taking longclicks on iOS
     - can check things, but dont uncheck
     - context menu will not be shown
+
+### FIX BUILD ERROR
+- version 1.3.0 had a build error, preventing the go-live
