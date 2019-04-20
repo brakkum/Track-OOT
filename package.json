@@ -1,7 +1,22 @@
 {
   "license": "MIT",
   "author": "Denis Peters (2deep4real)",
-  "dependencies": {},
+  "dependencies": {
+    "deepjs-modules": "^0.0.18",
+    "del": "^4.1.0",
+    "glob-all": "^3.1.0",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-eslint": "^5.0.0",
+    "gulp-filelist": "^1.1.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-jsonminify": "^1.1.0",
+    "gulp-newer": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-svgo": "^2.1.0",
+    "gulp-terser": "^1.1.7",
+    "through": "^2.3.8"
+  },
   "browserslist": [
     "ff >= 63",
     "Chrome >= 61",
@@ -15,20 +30,5 @@
     "buildDev": "gulp buildDev",
     "watch": "gulp watch",
     "serve": "serve dev"
-  },
-  "devDependencies": {
-    "deepjs-modules": "^0.0.17",
-    "del": "^4.1.0",
-    "glob-all": "^3.1.0",
-    "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^6.0.0",
-    "gulp-filelist": "^1.1.1",
-    "gulp-htmlmin": "^5.0.1",
-    "gulp-jsonminify": "^1.1.0",
-    "gulp-newer": "^1.4.0",
-    "gulp-sass": "^4.0.2",
-    "gulp-svgo": "^2.1.0",
-    "gulp-terser": "^1.1.7",
-    "through": "^2.3.8"
   }
 }

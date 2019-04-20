@@ -35,6 +35,7 @@ const sass = require('gulp-sass');
 const newer = require('gulp-newer');
 const filelist = require('gulp-filelist');
 const autoprefixer = require('gulp-autoprefixer');
+const eslint = require('gulp-eslint');
 const deleted = require("./deleted");
 
 function copyHTML_prod() {
@@ -280,4 +281,26 @@ exports.watch = function () {
         PATHS.appBase + "/**/*",
         exports.build
     );
+}
+
+exports.eslint = function () {
+    return gulp.src([PATHS.appBase + "/script/**/*.mjs", PATHS.deepJS + "/**/*.mjs"])
+        .pipe(eslint({
+            "parserOptions": {
+              "ecmaVersion": 2018,
+              "sourceType": "module",
+              "ecmaFeatures": {
+                "jsx": false
+              }
+            },
+            "env": {
+              "browser": true,
+              "es6": true
+            },
+            "rules": {
+              "eqeqeq": "off"
+            }
+          }))
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
 }
