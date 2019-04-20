@@ -1,8 +1,8 @@
 import DeepLocalStorage from "/deepJS/storage/LocalStorage.mjs";
-import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import DeepSessionStorage from "/deepJS/storage/SessionStorage.mjs";
 import Logger from "/deepJS/util/Logger.mjs";
 
-let state = {};
+let state = DeepSessionStorage.toObject();
 
 class TrackerLocalState {
 
@@ -14,6 +14,12 @@ class TrackerLocalState {
     load(name) {
         if (DeepLocalStorage.has("save", name)) {
             state = DeepLocalStorage.get("save", name);
+            DeepSessionStorage.purge();
+            for (let i in state) {
+                for (let j in state[i]) {
+                    DeepSessionStorage.set(i, j, state[i][j]);
+                }
+            }
             Logger.info(`loaded state from "${name}"`, "LocalState");
         } else {
             Logger.warn(`tried to load state "${name}" that does not exist`, "LocalState");
@@ -24,6 +30,7 @@ class TrackerLocalState {
     write(category, key, value) {
         state[category] = state[category] || {};
         state[category][key] = value;
+        DeepSessionStorage.set(category, key, value);
     }
 
     read(category, key, def) {
@@ -35,6 +42,7 @@ class TrackerLocalState {
 
     reset() {
         state = {};
+        DeepSessionStorage.purge();
         Logger.info(`state resettet`, "LocalState");
     }
 

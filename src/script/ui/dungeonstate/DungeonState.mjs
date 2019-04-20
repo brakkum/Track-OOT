@@ -27,11 +27,15 @@ const TPL = new Template(`
         :host([orientation="column"]) div.item-row {
             flex-direction: row;
         }
-        ootrt-item {
+        ootrt-item,
+        ootrt-dungeonreward,
+        ootrt-dungeontype {
             display: block;
             padding: 5px;
         }
-        ootrt-item:hover {
+        ootrt-item:hover,
+        ootrt-dungeonreward:hover,
+        ootrt-dungeontype:hover {
             padding: 2px;
         }
         div.text {
@@ -61,14 +65,14 @@ const TPL = new Template(`
 `);
 
 function createItemText(text) {
-    var el = document.createElement('DIV');
+    let el = document.createElement('DIV');
     el.classList.add("text");
     el.innerHTML = text;
     return el;
 }
 
 function createItemPlaceholder() {
-    var el = document.createElement('DIV');
+    let el = document.createElement('DIV');
     el.classList.add("placeholder");
     return el;
 }
@@ -223,7 +227,7 @@ function createRow(data) {
         itm.setAttribute("type", "reward");
         types.push("reward");
         itm.setAttribute('ref', data.ref);
-        itm.title = I18n.translate(data.ref) + I18n.translate("dun_reward");
+        itm.title = I18n.translate(data.ref) + " " + I18n.translate("dun_reward");
         el.appendChild(itm);
     } else {
         let itm = createItemPlaceholder();
@@ -239,7 +243,7 @@ function createRow(data) {
         itm.setAttribute("type", "type");
         types.push("type");
         itm.setAttribute('ref', data.ref);
-        itm.title = I18n.translate(data.ref) + I18n.translate("dun_type");
+        itm.title = I18n.translate(data.ref) + " " + I18n.translate("dun_type");
         el.appendChild(itm);
     } else {
         let itm = createItemPlaceholder();

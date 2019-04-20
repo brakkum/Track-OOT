@@ -3,7 +3,6 @@ import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import Logger from "/deepJS/util/Logger.mjs";
 import Dialog from "/deepJS/ui/Dialog.mjs";
-import {createOption} from "/deepJS/ui/UIHelper.mjs";
 import "/deepJS/ui/Tooltip.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
 import Logic from "/script/util/Logic.mjs";
@@ -94,13 +93,15 @@ function gossipstoneUpdate(name, value) {
     }
 }
 
-function itemUpdate(name, value) {
-    let el = this.shadowRoot.getElementById("marker");
-    if (!el.classList.contains("checked")) {
-        if (Logic.checkLogic("gossipstones", this.ref)) {
-            el.classList.add("avail");
-        } else {
-            el.classList.remove("avail");
+function logicUpdate(type, ref, value) {
+    if ("gossipstones" == type && this.ref == ref) {
+        let el = this.shadowRoot.querySelector("marker");
+        if (!!el) {
+            if (!!value) {
+                el.classList.add("avail");
+            } else {
+                el.classList.remove("avail");
+            }
         }
     }
 }
@@ -110,14 +111,6 @@ function globalUpdate() {
     let ref = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref].ref || this.ref;
     this.setValue(TrackerLocalState.read("gossipstones", ref, {item: "0x01", location: "0x01"}));
     EventBus.unmute("gossipstone-update");
-    let el = this.shadowRoot.getElementById("marker");
-    if (!el.classList.contains("checked")) {
-        if (Logic.checkLogic("gossipstones", this.ref)) {
-            el.classList.add("avail");
-        } else {
-            el.classList.remove("avail");
-        }
-    }
 }
 
 class HTMLTrackerPOIGossipstone extends HTMLElement {
@@ -128,8 +121,8 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
         this.shadowRoot.appendChild(TPL.generate());
         this.addEventListener("click", this.check);
         EventBus.on("gossipstone-update", gossipstoneUpdate.bind(this));
-        EventBus.on("item-update", itemUpdate.bind(this));
-        EventBus.onafter("global-update", globalUpdate.bind(this));
+        EventBus.on("force-location-update", globalUpdate.bind(this));
+        EventBus.on("logic", logicUpdate.bind(this));
     }
 
     get ref() {
@@ -200,7 +193,7 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
                     this.shadowRoot.getElementById("badge").appendChild(el_era);
                     
                     let el = this.shadowRoot.getElementById("marker");
-                    if (Logic.checkLogic("gossipstones", this.ref)) {
+                    if (Logic.getValue("gossipstones", this.ref)) {
                         el.classList.add("avail");
                     } else {
                         el.classList.remove("avail");
@@ -215,7 +208,7 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
                     let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
                     if (!newValue || newValue === "false") {
                         let el = this.shadowRoot.getElementById("marker");
-                        if (Logic.checkLogic("gossipstones", this.ref)) {
+                        if (Logic.getValue("gossipstones", this.ref)) {
                             el.classList.add("avail");
                         } else {
                             el.classList.remove("avail");
@@ -321,4 +314,11 @@ function hintstoneDialog(ref) {
         d.appendChild(lbl_itm);
         d.show();
     });
+}
+
+function createOption(value, content) {
+    let opt = document.createElement('option');
+    opt.value = value;
+    opt.innerHTML = content;
+    return opt;
 }

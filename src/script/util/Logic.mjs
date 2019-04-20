@@ -1,63 +1,31 @@
-import DeepLocalStorage from "/deepJS/storage/LocalStorage.mjs";
-import MemoryStorage from "/deepJS/storage/MemoryStorage.mjs";
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
-import Logic from "/deepJS/util/Logic.mjs";
-import TrackerLocalState from "./LocalState.mjs";
+import MemoryStorage from "/deepJS/storage/MemoryStorage.mjs";
+import DeepLocalStorage from "/deepJS/storage/LocalStorage.mjs";
+import TrackerLocalState from "/script/util/LocalState.mjs";
+import LogicWrapper from "/script/util/LogicWrapper.mjs";
 
-function checkLogic(logic) {
-    if (!logic || logic == null) return true;
-    switch(logic.type) {
-        case "false":
-            return false;
-        case "true":
-            return true;
-        case "mixin":
-            return this.checkLogic("mixins", logic.el);
-        case "skip":
-            let skip = TrackerLocalState.read("skips", logic.el, GlobalData.get("settings").skips[logic.el].default);
-            if (logic.hasOwnProperty("value")) {
-                return skip == logic.value;
-            }
-            return skip;
-        case "option":
-            let option = TrackerLocalState.read("options", logic.el, GlobalData.get("settings").options[logic.el].default);
-            if (logic.hasOwnProperty("value")) {
-                return option == logic.value;
-            }
-            return option;
-        case "filter":
-            let filter = MemoryStorage.get("active_filter", logic.el, GlobalData.get("filter")[logic.el].default);
-            if (logic.hasOwnProperty("value")) {
-                return filter == logic.value;
-            }
-            return filter;
-        case "item":
-            return TrackerLocalState.read("items", logic.el, 0);
-        default:
-            return false;
-    }
-}
+const LOGIC = {
+    chests: {},
+    skulltulas: {},
+    gossipstones: {},
+    mixins: {}
+};
 
-function getLogic(category, name) {
-    if (DeepLocalStorage.get("settings", "use_custom_logic", false)
-    && GlobalData.get("logic_patched").hasOwnProperty(category)
-    && GlobalData.get("logic_patched")[category].hasOwnProperty(name)) {
-        return GlobalData.get("logic_patched")[category][name];
-    }
-    if (GlobalData.get("logic").hasOwnProperty(category)
-    && GlobalData.get("logic")[category].hasOwnProperty(name)) {
-        return GlobalData.get("logic")[category][name];
-    }
-}
+const CATEGORIES = {
+    "chests_v": "chests",
+    "chests_mq": "chests",
+    "skulltulas_v": "skulltulas",
+    "skulltulas_mq": "skulltulas",
+    "gossipstones_v": "gossipstones"
+};
 
 class TrackerLogic {
 
-    checkLogic(category, name) {
-        let logic = getLogic(category, name);
-        if (typeof logic == "undefined") {
-            return false;
+    getValue(type, ref) {
+        if (!!LOGIC[type] && !!LOGIC[type][ref]) {
+            return LOGIC[type][ref].value;
         }
-        return Logic.checkLogic(logic, checkLogic.bind(this));
+        return false;
     }
 
     checkLogicList(category, name, mode) {
@@ -86,7 +54,7 @@ class TrackerLogic {
                 if (!list[i].mode || TrackerLocalState.read("options", list[i].mode, false)) {
                     if (!TrackerLocalState.read(category, i, 0)) {
                         unopened++;
-                        if (this.checkLogic(category, i)) {
+                        if (this.getValue(category, i)) {
                             canGet++;
                         }
                     }
@@ -102,37 +70,40 @@ class TrackerLogic {
         return 0b010;
     }
 
-}
-
-export default new TrackerLogic;
-
-window.printLogic = function(category, name, followMixins) {
-    console.log(printLogicRecursive(getLogic(category, name), 0, followMixins));
-}
-
-function printLogicRecursive(logic, level = 0, mixins = false) {
-    if (!!mixins && logic.type == "mixin") {
-        return printLogicRecursive(getLogic("mixins", logic.el), level)
-    } else {
-        if (typeof logic.el == "object") {
-            if (logic.el == null) {
-                return `${(new Array(level+1)).join("\t")} <null>\n`;
-            } else if (Array.isArray(logic.el)) {
-                // TODO read settings reduce && and ||
-                return `${(new Array(level+1)).join("\t")}- ${logic.type}\n${logic.el.map(el => printLogicRecursive(el, level+1)).join("")}`;
-            } else {
-                return `${(new Array(level+1)).join("\t")}- ${logic.type}\n${printLogicRecursive(logic.el, level+1)}`;
+    loadLogic() {
+        let locations = GlobalData.get("locations");
+        for (let loc in locations) {
+            for (let cat in CATEGORIES) {
+                let category = CATEGORIES[cat];
+                let checks = locations[loc][cat];
+                if (!!checks) {
+                    for (let check in checks) {
+                        LOGIC[category][check] = new LogicWrapper(category, check);
+                    }
+                }
             }
-        } else {
-            if (typeof logic == "boolean") {
-                return `${(new Array(level+1)).join("\t")}${logic?"TRUE":"FALSE"}\n`;
-            } else if (typeof logic == "string") {
-                return `${(new Array(level+1)).join("\t")}"${logic}"\n`;
-            } else if (typeof logic == "number") {
-                return `${(new Array(level+1)).join("\t")}${logic}\n`;
-            } else {
-                return `${(new Array(level+1)).join("\t")}[${logic.type}] ${logic.el}\n`;
+        }
+        for (let i in GlobalData.get("logic").mixins) {
+            LOGIC["mixins"][i] = new LogicWrapper("mixins", i);
+        }
+        for (let i in GlobalData.get("logic_patched").mixins) {
+            if (!!LOGIC["mixins"][i]) continue;
+            LOGIC["mixins"][i] = new LogicWrapper("mixins", i);
+        }
+    }
+
+    updateLogic() {
+        for (let i in LOGIC) {
+            for (let j in LOGIC[i]) {
+                LOGIC[i][j].loadLogic();
             }
         }
     }
+
+    getLogicView(type, ref) {
+        return LOGIC[type][ref].getLogic();
+    }
+
 }
+
+export default new TrackerLogic;

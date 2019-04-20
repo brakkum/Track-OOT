@@ -1,11 +1,11 @@
 import DeepLocalStorage from "/deepJS/storage/LocalStorage.mjs";
+import DeepSessionStorage from "/deepJS/storage/SessionStorage.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import Dialog from "/deepJS/ui/Dialog.mjs";
-import {createOption} from "/deepJS/ui/UIHelper.mjs";
 import {showToast} from "/deepJS/ui/Toast.mjs";
 import TrackerLocalState from "./LocalState.mjs";
 
-let activestate = "";
+let activestate = DeepSessionStorage.get('meta', 'active_state', "");
 
 const stateChoice = document.getElementById("select-savegame");
 const stateSave = document.getElementById("save-savegame");
@@ -24,6 +24,21 @@ stateRename.addEventListener("click", state_Rename);
 stateExport.addEventListener("click", state_Export);
 stateImport.addEventListener("click", state_Import);
 stateChoice.addEventListener("change", toggleStateButtons);
+
+const notePad = document.getElementById("tracker-notes");
+notePad.value = TrackerLocalState.read("extras", "notes", "");
+!function() {
+    let notePadTimer = null;
+    notePad.oninput = function() {
+        if (!!notePadTimer) {
+            clearTimeout(notePadTimer);
+        }
+        notePadTimer = setTimeout(writeNotePadValue, 1000);
+    }
+    function writeNotePadValue() {
+        TrackerLocalState.write("extras", "notes", notePad.value);
+    };
+}();
 
 function toggleStateButtons() {
     if (stateChoice.value == "") {
@@ -45,19 +60,34 @@ function toggleStateButtons() {
     }
 }
 
+function throwEvents() {
+    EventBus.post("force-item-update");
+    EventBus.post("force-logic-update");
+    EventBus.post("force-location-update");
+    EventBus.post("force-shop-update");
+    EventBus.post("force-song-update");
+    EventBus.post("force-dungeonstate-update");
+}
+
 function prepairSavegameChoice() {
     stateChoice.innerHTML = "<option disabled selected hidden value=\"\"> -- select state -- </option>";
-    var keys = DeepLocalStorage.names("save");
-    for (var i = 0; i < keys.length; ++i) {
+    let keys = DeepLocalStorage.names("save");
+    for (let i = 0; i < keys.length; ++i) {
         stateChoice.appendChild(createOption(keys[i]));
     }
     stateChoice.value = activestate;
 }
 
+function createOption(value) {
+    let opt = document.createElement('option');
+    opt.value = value;
+    opt.innerHTML = value;
+    return opt;
+}
+
 async function state_Save() {
     if (stateChoice.value != "") {
         stateChoice.value = activestate;
-        TrackerLocalState.write("extras", "notes", document.getElementById("tracker-notes").value)
         TrackerLocalState.save(activestate);
         showToast(`Saved "${activestate}" successfully.`);
     }
@@ -65,15 +95,16 @@ async function state_Save() {
 
 async function state_Load() {
     if (stateChoice.value != "") {
-        var confirm = true;
+        let confirm = true;
         if (activestate != "") {
             confirm = await Dialog.confirm("Warning", "Do you really want to load? Unsaved changes will be lost.");
         }
         if (!!confirm) {
             activestate = stateChoice.value;
             TrackerLocalState.load(activestate);
-            document.getElementById("tracker-notes").value = TrackerLocalState.read("extras", "notes", "");
-            EventBus.post("global-update");
+            DeepSessionStorage.set('meta', 'active_state', activestate);
+            notePad.value = TrackerLocalState.read("extras", "notes", "");
+            throwEvents();
             toggleStateButtons();
             showToast(`State "${activestate}" loaded.`);
         }
@@ -83,12 +114,13 @@ async function state_Load() {
 async function state_Delete() {
     if (stateChoice.value != ""
     && await Dialog.confirm("Warning", `Do you really want to delete "${stateChoice.value}"?`)) {
-        var del = stateChoice.value;
+        let del = stateChoice.value;
         DeepLocalStorage.remove("save", del);
         if (del == activestate) {
-            activestate == "";
+            activestate = "";
             TrackerLocalState.reset();
-            EventBus.post("global-update");
+            DeepSessionStorage.set('meta', 'active_state', activestate);
+            throwEvents();
         }
         stateChoice.value = activestate;
         prepairSavegameChoice();
@@ -98,7 +130,7 @@ async function state_Delete() {
 }
 
 async function state_New() {
-    var name = await Dialog.prompt("New state", `Please enter a new name!${activestate !== "" ? "(Unsaved changes will be lost.)" : ""}`);
+    let name = await Dialog.prompt("New state", `Please enter a new name!${activestate !== "" ? "(Unsaved changes will be lost.)" : ""}`);
     if (name !== false && typeof name != "undefined") {
         if (name == "") {
             await Dialog.alert("Warning", "The name can not be empty.");
@@ -116,16 +148,17 @@ async function state_New() {
         if (activestate == "") {
             if (await Dialog.confirm("Success", `State "${name}" created.<br>Do you want to reset the current state?`)) {
                 TrackerLocalState.reset();
-                document.getElementById("tracker-notes").value = "";
+                notePad.value = "";
             }
         } else {
             showToast(`State "${name}" created.`);
             TrackerLocalState.reset();
-            document.getElementById("tracker-notes").value = "";
+            notePad.value = "";
         }
         TrackerLocalState.save(name);
         activestate = name;
-        EventBus.post("global-update");
+        DeepSessionStorage.set('meta', 'active_state', activestate);
+        throwEvents();
         toggleStateButtons();
     }
 }
@@ -133,7 +166,7 @@ async function state_New() {
 async function state_Rename() {
     if (stateChoice.value == "") return;
     if (await Dialog.confirm("Warning", `Do you really want to rename "${stateChoice.value}"?`)) {
-        var name = await Dialog.prompt("New state", "Please enter a new name!");
+        let name = await Dialog.prompt("New state", "Please enter a new name!");
         if (name !== false) {
             if (name == "") {
                 await Dialog.alert("Warning", "The name can not be empty.");
@@ -145,12 +178,13 @@ async function state_Rename() {
                 state_New();
                 return;
             }
-            var save = DeepLocalStorage.get("save", stateChoice.value);
+            let save = DeepLocalStorage.get("save", stateChoice.value);
             DeepLocalStorage.remove("save", stateChoice.value);
             DeepLocalStorage.set("save", name, save);
             prepairSavegameChoice();
             if (activestate != "" && activestate == stateChoice.value) {
                 activestate = name;
+                DeepSessionStorage.set('meta', 'active_state', activestate);
             }
             stateChoice.value = name;
             toggleStateButtons();
@@ -160,12 +194,12 @@ async function state_Rename() {
 
 async function state_Export() {
     if (stateChoice.value != "") {
-        var confirm = true;
+        let confirm = true;
         if (activestate != "") {
             confirm = await Dialog.confirm("Are you shure?", "The last saved state will be exported.");
         }
         if (!!confirm) {
-            var item = {
+            let item = {
                 name: stateChoice.value,
                 data: DeepLocalStorage.get("save", stateChoice.value)
             };
@@ -175,7 +209,7 @@ async function state_Export() {
 }
 
 async function state_Import() {
-    var data = await Dialog.prompt("Import", "Please enter export string!");
+    let data = await Dialog.prompt("Import", "Please enter export string!");
     if (data !== false) {
         if (data == "") {
             await Dialog.alert("Warning", "The import string can not be empty.");
@@ -192,10 +226,12 @@ async function state_Import() {
             stateChoice.value = data.name;
             activestate = data.name;
             TrackerLocalState.load(activestate);
-            EventBus.post("global-update");
+            DeepSessionStorage.set('meta', 'active_state', activestate);
+            throwEvents();
             toggleStateButtons();
         }
     }
 }
 
 prepairSavegameChoice();
+toggleStateButtons();

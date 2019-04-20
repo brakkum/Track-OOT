@@ -1,12 +1,13 @@
-$mobile-switch: 500px;
+@import "variables";
 
 @import "theme.css";
-@import "tracker/navigation";
-@import "tracker/fonts";
-@import "inputs";
-@import "utils/dialog";
+@import "tracker/navigation.css";
+@import "tracker/fonts.css";
+@import "inputs.css";
+@import "utils/dialog.css";
+@import "utils/settings.css";
 
-#viewpane {
+.viewpane {
     display: flex;
     flex-direction: column;
     width: 100vw;
@@ -19,7 +20,7 @@ $mobile-switch: 500px;
         user-select: none;
     }
 
-    #content {
+    .content {
         display: flex;
         
         flex: 1;
@@ -103,7 +104,7 @@ deep-choiceselect {
         }
     }
 
-    option {
+    deep-option {
         display: inline-block;
         width: 40px;
         height: 40px;
@@ -128,4 +129,64 @@ deep-choiceselect {
 
 #tracker-log {
     font-family: monospace;
+}
+
+#logic-board {
+    display: grid;
+    flex: 1;
+    padding: 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: #111;
+    
+    grid-template-columns: 2fr 2fr 1fr 1fr;
+    grid-template-rows: 1fr 150px;
+    grid-template-areas: 
+    "logics workingarea clipboard elements"
+    "logics workingarea trashcan elements";
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+
+    #logics {
+        position: relative;
+        grid-area: logics;
+        border: solid 2px #222;
+        border-color: #777;
+    }
+    #workingarea {
+        grid-area: workingarea;
+        background-color: #222;
+    }
+    #clipboard-panel {
+        grid-area: clipboard;
+        background-color: #222;
+
+        #clipboard {
+            display: contents;
+        }
+    }
+    #trashcan {
+        grid-area: trashcan;
+    }
+    #elements {
+        grid-area: elements;
+    }
+    .logic-location {
+        border: solid 1px #fff;
+        background-color: #000;
+        color: #fff;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+        overflow: hidden;
+    }
+}
+
+#trashcan {
+    background-image: url('/images/trash.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }

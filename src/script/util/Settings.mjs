@@ -7,6 +7,8 @@ import Dialog from "/deepJS/ui/Dialog.mjs";
 import TrackerLocalState from "./LocalState.mjs";
 import I18n from "./I18n.mjs";
 
+import "/deepJS/ui/Paging.mjs";
+
 const settings = new SettingsWindow;
 const settingsEdit = document.getElementById("edit-settings");
 
@@ -130,15 +132,14 @@ if ('serviceWorker' in navigator) {
                     settings.querySelector("#update-running").style.display = "none";
                     settings.querySelector("#update-finished").style.display = "block";
                 break;
-                case "error":
-                    settings.querySelector("#update-check").style.display = "none";
-                    settings.querySelector("#update-running").style.display = "none";
-                    settings.querySelector("#update-finished").style.display = "none";
-                    settings.querySelector("#update-force").style.display = "block";
-                    settings.querySelector("#update-unavailable").style.display = "block";
-                    Dialog.alert("Connection Lost", "The ServiceWorker was not able to establish or keep connection to the Server<br>Please try again later.")
-                break;
             }
+        } else if (event.data.type == "error") {
+            settings.querySelector("#update-check").style.display = "none";
+            settings.querySelector("#update-running").style.display = "none";
+            settings.querySelector("#update-finished").style.display = "none";
+            settings.querySelector("#update-force").style.display = "block";
+            settings.querySelector("#update-unavailable").style.display = "block";
+            Dialog.alert("Connection Lost", "The ServiceWorker was not able to establish or keep connection to the Server<br>Please try again later.");
         }
     }
     navigator.serviceWorker.addEventListener('message', swStateRecieve);
@@ -208,23 +209,14 @@ settings.addEventListener('submit', function(event) {
         }
     }
     applySettingsChoices();
-    EventBus.post("global-update");
+    EventBus.post("force-item-update");
+    EventBus.post("force-location-update");
+    EventBus.post("force-logic-update");
 });
 
 settings.addEventListener('close', function(event) {
     showUpdatePopup = true;
 });
-
-window.onfocus = function(ev) {
-    if (DeepLocalStorage.get("settings", "use_custom_logic", false)) {
-        let oldValue = GlobalData.get("logic_patched", {});
-        let newValue = DeepLocalStorage.get("settings", "logic", {});
-        if (JSON.stringify(oldValue) == JSON.stringify(newValue)) {
-            GlobalData.set("logic_patched", newValue);
-            EventBus.post("global-update");
-        }
-    }
-}
 
 function getSettings() {
     let options = GlobalData.get("settings");
@@ -266,7 +258,7 @@ function getSettings() {
 }
     
 function applySettingsChoices() {
-    var viewpane = document.getElementById("content");
+    let viewpane = document.getElementById("main-content");
     viewpane.setAttribute("data-font", DeepLocalStorage.get("settings", "font", ""));
     document.querySelector("#layout-container").setAttribute("layout", DeepLocalStorage.get("settings", "layout", "map-compact"));
     document.body.style.setProperty("--item-size", DeepLocalStorage.get("settings", "itemsize", 40));
@@ -323,7 +315,8 @@ function convertValueList(values = [], names = []) {
                 case "button":
                     if (j == "edit_custom_logic") {
                         settings.addButton(i, label, j, I18n.translate(val.text), e => {
-                            window.open("editor.html", '_blank');
+                            document.getElementById('view-pager').active = "editor";
+                            settings.close();
                         });
                     } else if (j == "erase_all_data") {
                         settings.addButton(i, label, j, I18n.translate(val.text), e => {

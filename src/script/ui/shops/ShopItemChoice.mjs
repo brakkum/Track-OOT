@@ -201,7 +201,7 @@ export default class HTMLTrackerShopItemChoice extends DeepWindow {
                     if (!!ol) {
                         ol.classList.remove("active");
                     }
-                    let ob = this.shadowRoot.querySelector(`[target="${oldValue}"`);
+                    let ob = this.shadowRoot.querySelector(`[target="${oldValue}"]`);
                     if (!!ob) {
                         ob.classList.remove("active");
                     }
@@ -209,7 +209,7 @@ export default class HTMLTrackerShopItemChoice extends DeepWindow {
                     if (!!nl) {
                         nl.classList.add("active");
                     }
-                    let nb = this.shadowRoot.querySelector(`[target="${newValue}"`);
+                    let nb = this.shadowRoot.querySelector(`[target="${newValue}"]`);
                     if (!!nb) {
                         nb.classList.add("active");
                     }

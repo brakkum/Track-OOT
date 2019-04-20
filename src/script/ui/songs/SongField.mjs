@@ -68,7 +68,7 @@ export default class HTMLTrackerSongField extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
-        EventBus.on("global-update", globalUpdate.bind(this));
+        EventBus.on("force-song-update", globalUpdate.bind(this));
     }
 
     get ref() {

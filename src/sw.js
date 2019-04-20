@@ -66,18 +66,29 @@ self.addEventListener('message', async event => {
             src.postMessage({
                 type: "error",
                 cmd: dta,
-                msg: e
+                msg: e.message,
+                stack: e.stack
             });
         }
+    } else {
+        src.postMessage({
+            type: "error",
+            cmd: dta,
+            msg: "command not found"
+        });
     }
 });
 
-function fetchFile(url, method = "GET") {
-    return fetch(url, {
+async function fetchFile(url, method = "GET") {
+    let r = await fetch(url, {
         method: method,
         headers: HEADER_CONFIG,
         mode: 'cors'
     });
+    if (r.status < 200 || r.status >= 300) {
+        throw new Error(`error fetching file "${url}" - status: ${r.status}`);
+    }
+    return r;
 }
 
 async function overwriteCachedFile(cache, request, file) {

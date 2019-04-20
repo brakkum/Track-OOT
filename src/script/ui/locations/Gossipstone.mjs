@@ -2,7 +2,6 @@ import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import Dialog from "/deepJS/ui/Dialog.mjs";
-import {createOption} from "/deepJS/ui/UIHelper.mjs";
 import Logger from "/deepJS/util/Logger.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
 import Logic from "/script/util/Logic.mjs";
@@ -73,10 +72,10 @@ function gossipstoneUpdate(name, value) {
     }
 }
 
-function itemUpdate(name, value) {
-    let el = this.shadowRoot.getElementById("text");
-    if (!el.classList.contains("checked")) {
-        if (Logic.checkLogic("gossipstones", this.ref)) {
+function logicUpdate(type, ref, value) {
+    if ("gossipstones" == type && this.ref == ref) {
+        let el = this.shadowRoot.getElementById("text");
+        if (!!value) {
             el.classList.add("avail");
         } else {
             el.classList.remove("avail");
@@ -91,7 +90,7 @@ function globalUpdate() {
     EventBus.unmute("gossipstone-update");
     let el = this.shadowRoot.getElementById("text");
     if (!el.classList.contains("checked")) {
-        if (Logic.checkLogic("gossipstones", this.ref)) {
+        if (Logic.getValue("gossipstones", this.ref)) {
             el.classList.add("avail");
         } else {
             el.classList.remove("avail");
@@ -105,8 +104,8 @@ class HTMLTrackerGossipstone extends HTMLElement {
         super();
         this.addEventListener("click", this.check);
         EventBus.on("gossipstone-update", gossipstoneUpdate.bind(this));
-        EventBus.on("item-update", itemUpdate.bind(this));
-        EventBus.onafter("global-update", globalUpdate.bind(this));
+        EventBus.on("force-location-update", globalUpdate.bind(this));
+        EventBus.on("logic", logicUpdate.bind(this));
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
     }
@@ -148,8 +147,8 @@ class HTMLTrackerGossipstone extends HTMLElement {
                     let el_era = document.createElement("deep-icon");
                     el_era.src = `images/era_${data.era ||"both"}.svg`;
                     this.shadowRoot.getElementById("badge").appendChild(el_era);
-                    
-                    if (Logic.checkLogic("gossipstones", this.ref)) {
+
+                    if (Logic.getValue("gossipstones", this.ref)) {
                         txt.classList.add("avail");
                     } else {
                         txt.classList.remove("avail");
@@ -164,7 +163,7 @@ class HTMLTrackerGossipstone extends HTMLElement {
                     let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
                     if (!newValue || newValue === "false") {
                         let el = this.shadowRoot.getElementById("text");
-                        if (Logic.checkLogic("gossipstones", this.ref)) {
+                        if (Logic.getValue("gossipstones", this.ref)) {
                             el.classList.add("avail");
                         } else {
                             el.classList.remove("avail");
@@ -270,4 +269,11 @@ function hintstoneDialog(ref) {
         d.appendChild(lbl_itm);
         d.show();
     });
+}
+
+function createOption(value, content) {
+    let opt = document.createElement('option');
+    opt.value = value;
+    opt.innerHTML = content;
+    return opt;
 }

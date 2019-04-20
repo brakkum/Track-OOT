@@ -1557,8 +1557,12 @@
         }
     },
     "chests": {
-        "kokiri_sword": null,
-        "midos_house": null,
+        "kokiri_sword": {
+            "type": "true"
+        },
+        "midos_house": {
+            "type": "true"
+        },
         "saria_ocarina": {
             "type": "mixin",
             "el": "can_leave_forest"
@@ -8257,7 +8261,9 @@
                 }
             ]
         },
-        "woods_deku_salesman": null,
+        "woods_deku_salesman": {
+            "type": "true"
+        },
         "woods_memory_game": {
             "type": "item",
             "el": "ocarina"
@@ -10605,8 +10611,12 @@
             "type": "mixin",
             "el": "can_leave_forest"
         },
-        "woods_deku_salesman_theater_1": null,
-        "woods_deku_salesman_theater_2": null,
+        "woods_deku_salesman_theater_1": {
+            "type": "true"
+        },
+        "woods_deku_salesman_theater_2": {
+            "type": "true"
+        },
         "deku_lobby_mq": {
             "type": "mixin",
             "el": "deku_tree_access"
@@ -14951,10 +14961,7 @@
         "castle_ganon_boss": {
             "type": "and",
             "el": [
-                {
-                    "type": "mixin",
-                    "el": "ganon_castle_access"
-                },
+                null,
                 {
                     "type": "or",
                     "el": [
@@ -14979,22 +14986,12 @@
                                                     "type": "item",
                                                     "el": "magic_power"
                                                 },
-                                                {
-                                                    "type": "option",
-                                                    "el": "forest_trial"
-                                                },
-                                                {
-                                                    "type": "mixin",
-                                                    "el": "has_fire_source"
-                                                }
+                                                null,
+                                                null
                                             ]
                                         },
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "forest_trial"
-                                            }
+                                            "type": "not"
                                         }
                                     ]
                                 },
@@ -15026,7 +15023,7 @@
                                                         "type": "item",
                                                         "el": "glove"
                                                     },
-                                                    "value": 3
+                                                    "value": "3"
                                                 },
                                                 {
                                                     "type": "min",
@@ -15034,20 +15031,13 @@
                                                         "type": "item",
                                                         "el": "hookshot"
                                                     },
-                                                    "value": 2
+                                                    "value": "2"
                                                 },
-                                                {
-                                                    "type": "option",
-                                                    "el": "fire_trial"
-                                                }
+                                                null
                                             ]
                                         },
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "fire_trial"
-                                            }
+                                            "type": "not"
                                         }
                                     ]
                                 },
@@ -15077,18 +15067,11 @@
                                                     "type": "item",
                                                     "el": "bottle"
                                                 },
-                                                {
-                                                    "type": "option",
-                                                    "el": "water_trial"
-                                                }
+                                                null
                                             ]
                                         },
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "water_trial"
-                                            }
+                                            "type": "not"
                                         }
                                     ]
                                 },
@@ -15124,10 +15107,7 @@
                                                                     "type": "item",
                                                                     "el": "arrow_fire"
                                                                 },
-                                                                {
-                                                                    "type": "mixin",
-                                                                    "el": "can_see_with_lens"
-                                                                }
+                                                                null
                                                             ]
                                                         },
                                                         {
@@ -15139,7 +15119,7 @@
                                                                         "type": "item",
                                                                         "el": "hookshot"
                                                                     },
-                                                                    "value": 2
+                                                                    "value": "2"
                                                                 },
                                                                 {
                                                                     "type": "item",
@@ -15149,27 +15129,16 @@
                                                                     "type": "item",
                                                                     "el": "magic_din"
                                                                 },
-                                                                {
-                                                                    "type": "mixin",
-                                                                    "el": "can_see_with_lens"
-                                                                }
+                                                                null
                                                             ]
                                                         }
                                                     ]
                                                 },
-                                                {
-                                                    "type": "option",
-                                                    "el": "shadow_trial"
-                                                }
+                                                null
                                             ]
                                         },
                                         {
-                                            "type": "not",
-                                            "el": null
-                                        },
-                                        {
-                                            "type": "option",
-                                            "el": "shadow_trial"
+                                            "type": "not"
                                         }
                                     ]
                                 },
@@ -15195,26 +15164,16 @@
                                                     "type": "item",
                                                     "el": "shield_mirror"
                                                 },
-                                                {
-                                                    "type": "mixin",
-                                                    "el": "has_bombchus"
-                                                },
+                                                null,
                                                 {
                                                     "type": "item",
                                                     "el": "hookshot"
                                                 },
-                                                {
-                                                    "type": "option",
-                                                    "el": "spirit_trial"
-                                                }
+                                                null
                                             ]
                                         },
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "spirit_trial"
-                                            }
+                                            "type": "not"
                                         }
                                     ]
                                 },
@@ -15242,16 +15201,13 @@
                                                         "type": "item",
                                                         "el": "glove"
                                                     },
-                                                    "value": 3
+                                                    "value": "3"
                                                 },
                                                 {
                                                     "type": "item",
                                                     "el": "hookshot"
                                                 },
-                                                {
-                                                    "type": "option",
-                                                    "el": "light_trial"
-                                                },
+                                                null,
                                                 {
                                                     "type": "or",
                                                     "el": [
@@ -15261,25 +15217,17 @@
                                                                 "type": "item",
                                                                 "el": "key_small_ganon"
                                                             },
-                                                            "value": 2
+                                                            "value": "2"
                                                         },
                                                         {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "option",
-                                                                "el": "keysanity"
-                                                            }
+                                                            "type": "not"
                                                         }
                                                     ]
                                                 }
                                             ]
                                         },
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "light_trial"
-                                            }
+                                            "type": "not"
                                         }
                                     ]
                                 },
@@ -15304,10 +15252,7 @@
                                     "type": "item",
                                     "el": "magic_power"
                                 },
-                                {
-                                    "type": "option",
-                                    "el": "ganon_boss_door_open"
-                                }
+                                null
                             ]
                         }
                     ]
@@ -15655,10 +15600,7 @@
         "castle_ganon_boss_mq": {
             "type": "and",
             "el": [
-                {
-                    "type": "mixin",
-                    "el": "ganon_castle_access"
-                },
+                null,
                 {
                     "type": "or",
                     "el": [
@@ -15683,10 +15625,7 @@
                                                     "type": "item",
                                                     "el": "magic_power"
                                                 },
-                                                {
-                                                    "type": "option",
-                                                    "el": "forest_trial"
-                                                },
+                                                null,
                                                 {
                                                     "type": "item",
                                                     "el": "song_time"
@@ -15698,11 +15637,7 @@
                                             ]
                                         },
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "forest_trial"
-                                            }
+                                            "type": "not"
                                         }
                                     ]
                                 },
@@ -15734,12 +15669,9 @@
                                                         "type": "item",
                                                         "el": "glove"
                                                     },
-                                                    "value": 3
+                                                    "value": "3"
                                                 },
-                                                {
-                                                    "type": "option",
-                                                    "el": "fire_trial"
-                                                },
+                                                null,
                                                 {
                                                     "type": "or",
                                                     "el": [
@@ -15749,7 +15681,7 @@
                                                                 "type": "item",
                                                                 "el": "hookshot"
                                                             },
-                                                            "value": 2
+                                                            "value": "2"
                                                         },
                                                         {
                                                             "type": "item",
@@ -15760,11 +15692,7 @@
                                             ]
                                         },
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "fire_trial"
-                                            }
+                                            "type": "not"
                                         }
                                     ]
                                 },
@@ -15790,10 +15718,7 @@
                                                     "type": "item",
                                                     "el": "bottle"
                                                 },
-                                                {
-                                                    "type": "option",
-                                                    "el": "water_trial"
-                                                },
+                                                null,
                                                 {
                                                     "type": "or",
                                                     "el": [
@@ -15803,25 +15728,17 @@
                                                                 "type": "item",
                                                                 "el": "key_small_ganon"
                                                             },
-                                                            "value": 3
+                                                            "value": "3"
                                                         },
                                                         {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "option",
-                                                                "el": "keysanity"
-                                                            }
+                                                            "type": "not"
                                                         }
                                                     ]
                                                 }
                                             ]
                                         },
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "water_trial"
-                                            }
+                                            "type": "not"
                                         }
                                     ]
                                 },
@@ -15853,10 +15770,7 @@
                                                                     "type": "item",
                                                                     "el": "hookshot"
                                                                 },
-                                                                {
-                                                                    "type": "mixin",
-                                                                    "el": "has_fire_source"
-                                                                }
+                                                                null
                                                             ]
                                                         },
                                                         {
@@ -15865,23 +15779,12 @@
                                                         }
                                                     ]
                                                 },
-                                                {
-                                                    "type": "option",
-                                                    "el": "shadow_trial"
-                                                },
-                                                {
-                                                    "type": "mixin",
-                                                    "el": "can_see_with_lens"
-                                                }
+                                                null,
+                                                null
                                             ]
                                         },
                                         {
-                                            "type": "not",
-                                            "el": null
-                                        },
-                                        {
-                                            "type": "option",
-                                            "el": "shadow_trial"
+                                            "type": "not"
                                         }
                                     ]
                                 },
@@ -15907,14 +15810,8 @@
                                                     "type": "item",
                                                     "el": "shield_mirror"
                                                 },
-                                                {
-                                                    "type": "mixin",
-                                                    "el": "has_bombchus"
-                                                },
-                                                {
-                                                    "type": "option",
-                                                    "el": "spirit_trial"
-                                                },
+                                                null,
+                                                null,
                                                 {
                                                     "type": "item",
                                                     "el": "hammer"
@@ -15922,11 +15819,7 @@
                                             ]
                                         },
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "spirit_trial"
-                                            }
+                                            "type": "not"
                                         }
                                     ]
                                 },
@@ -15954,16 +15847,13 @@
                                                         "type": "item",
                                                         "el": "glove"
                                                     },
-                                                    "value": 3
+                                                    "value": "3"
                                                 },
                                                 {
                                                     "type": "item",
                                                     "el": "hookshot"
                                                 },
-                                                {
-                                                    "type": "option",
-                                                    "el": "light_trial"
-                                                },
+                                                null,
                                                 {
                                                     "type": "or",
                                                     "el": [
@@ -15973,25 +15863,17 @@
                                                                 "type": "item",
                                                                 "el": "key_small_ganon"
                                                             },
-                                                            "value": 3
+                                                            "value": "3"
                                                         },
                                                         {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "option",
-                                                                "el": "keysanity"
-                                                            }
+                                                            "type": "not"
                                                         }
                                                     ]
                                                 }
                                             ]
                                         },
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "light_trial"
-                                            }
+                                            "type": "not"
                                         }
                                     ]
                                 },
@@ -16016,10 +15898,7 @@
                                     "type": "item",
                                     "el": "magic_power"
                                 },
-                                {
-                                    "type": "option",
-                                    "el": "ganon_boss_door_open"
-                                }
+                                null
                             ]
                         }
                     ]

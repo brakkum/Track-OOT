@@ -84,15 +84,15 @@ const TPL = new Template(`
         <div id="title-text"></div>
         <ootrt-dungeontype id="location-type">
         </ootrt-dungeontype>
-        <deep-switchbutton id="location-era">
-            <option value="" style="background-image: url('images/era_both.svg')"></option>
-            <option value="child" style="background-image: url('images/era_child.svg')"></option>
-            <option value="adult" style="background-image: url('images/era_adult.svg')"></option>
+        <deep-switchbutton value="" id="location-era">
+            <deep-option value="" style="background-image: url('images/era_both.svg')"></deep-option>
+            <deep-option value="child" style="background-image: url('images/era_child.svg')"></deep-option>
+            <deep-option value="adult" style="background-image: url('images/era_adult.svg')"></deep-option>
         </deep-switchbutton>
-        <deep-switchbutton id="location-mode">
-            <option value="chests" style="background-image: url('images/chest.svg')"></option>
-            <option value="skulltulas" style="background-image: url('images/skulltula.svg')"></option>
-            <option value="gossipstones" style="background-image: url('images/gossips.svg')"></option>
+        <deep-switchbutton value="chests" id="location-mode">
+            <deep-option value="chests" style="background-image: url('images/chest.svg')"></deep-option>
+            <deep-option value="skulltulas" style="background-image: url('images/skulltula.svg')"></deep-option>
+            <deep-option value="gossipstones" style="background-image: url('images/gossips.svg')"></deep-option>
         </deep-switchbutton>
     </div>
     <div id="body">
@@ -146,9 +146,9 @@ class HTMLTrackerLocationList extends HTMLElement {
         super();
         EventBus.on("location-change", ref => this.ref = ref);
         EventBus.on("dungeon-type-update", dungeonTypeUppdate.bind(this));
-        EventBus.onafter("location-update", locationUpdate.bind(this));
-        EventBus.onafter("item-update", locationUpdate.bind(this));
-        EventBus.onafter("global-update", locationUpdate.bind(this));
+        EventBus.on("location-update", locationUpdate.bind(this));
+        EventBus.on("item-update", locationUpdate.bind(this));
+        EventBus.on("force-location-update", locationUpdate.bind(this));
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
         this.attributeChangedCallback("", "");

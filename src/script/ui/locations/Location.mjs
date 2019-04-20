@@ -2,6 +2,8 @@ import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import Logger from "/deepJS/util/Logger.mjs";
+import Dialog from "/deepJS/ui/Dialog.mjs";
+import "/deepJS/ui/ContextMenu.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
 import Logic from "/script/util/Logic.mjs";
 import I18n from "/script/util/I18n.mjs";
@@ -40,9 +42,21 @@ const TPL = new Template(`
             width: 20px;
             height: 20px;
         }
+        .menu-tip {
+            font-size: 0.7em;
+            color: #777777;
+            margin-left: 15px;
+            float: right;
+        }
     </style>
     <div id="text"></div>
     <div id="badge"></div>
+    <deep-contextmenu id="menu">
+        <div id="menu-check" class="item">Check<span class="menu-tip">(leftclick)</span></div>
+        <div id="menu-uncheck" class="item">Uncheck<span class="menu-tip">(ctrl + rightclick)</span></div>
+        <div class="splitter"></div>
+        <div id="menu-logic" class="item">Show Logic</div>
+    </deep-contextmenu>
 `);
 
 function locationUpdate(name, value) {
@@ -53,11 +67,18 @@ function locationUpdate(name, value) {
     }
 }
 
-function itemUpdate(name, value) {
-    if (!this.checked || this.checked === "false") {
+function globalUpdate() {
+    let path = this.ref.split(".");
+    EventBus.mute("location-update");
+    this.checked = TrackerLocalState.read(path[1], path[2], false);
+    EventBus.unmute("location-update");
+}
+
+function logicUpdate(type, ref, value) {
+    let path = this.ref.split(".");
+    if (path[1] == type && path[2] == ref) {
         let el = this.shadowRoot.getElementById("text");
-        let path = this.ref.split(".");
-        if (Logic.checkLogic(path[1], path[2])) {
+        if (!!value) {
             el.classList.add("avail");
         } else {
             el.classList.remove("avail");
@@ -65,38 +86,60 @@ function itemUpdate(name, value) {
     }
 }
 
-function globalUpdate() {
-    let path = this.ref.split(".");
-    EventBus.mute("location-update");
-    this.checked = TrackerLocalState.read(path[1], path[2], false);
-    EventBus.unmute("location-update");
-    if (!this.checked || this.checked === "false") {
-        checkLogic.apply(this);
+function showLogic(ref) {
+    let path = ref.split(".");
+    let l = Logic.getLogicView(path[1], path[2]);
+    if (!!l) {
+        let d = new Dialog({
+            title: I18n.translate(path[2]),
+            submit: "OK"
+        });
+        d.value = ref;
+        d.appendChild(l);
+        d.show();
     }
 }
 
-function checkLogic() {
-    let path = this.ref.split(".");
-    let el = this.shadowRoot.querySelector("div");
-    if (Logic.checkLogic(path[1], path[2])) {
-        el.classList.add("avail");
+function click(event) {
+    this.check();
+    event.preventDefault();
+    return false;
+}
+
+function unclick(event) {
+    this.uncheck();
+    event.preventDefault();
+    return false;
+}
+
+function contextMenu(event) {
+    if (event.ctrlKey) {
+        this.uncheck();
     } else {
-        el.classList.remove("avail");
+        this.shadowRoot.getElementById("menu").show(event.clientX, event.clientY);
     }
+    event.preventDefault();
+    return false;
 }
 
 class HTMLTrackerLocation extends HTMLElement {
 
     constructor() {
         super();
-        this.addEventListener("click", this.check);
-        this.addEventListener("contextmenu", this.uncheck);
-        EventBus.on("location-update", locationUpdate.bind(this));
-        EventBus.on("item-update", itemUpdate.bind(this));
-        EventBus.onafter("global-update", globalUpdate.bind(this));
-        EventBus.onafter("location-era-change", checkLogic.bind(this));
+        this.addEventListener("click", click.bind(this));
+        this.addEventListener("contextmenu", contextMenu.bind(this));
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
+        /* context menu */
+        this.shadowRoot.getElementById("menu-check").addEventListener("click", click.bind(this));
+        this.shadowRoot.getElementById("menu-uncheck").addEventListener("click", unclick.bind(this));
+        this.shadowRoot.getElementById("menu-logic").addEventListener("click", function(event) {
+            showLogic(this.ref);
+        }.bind(this));
+        /* event bus */
+        EventBus.on("location-update", locationUpdate.bind(this));
+        EventBus.on("force-location-update", globalUpdate.bind(this));
+        EventBus.on("logic", logicUpdate.bind(this));
     }
 
     get ref() {
@@ -140,7 +183,7 @@ class HTMLTrackerLocation extends HTMLElement {
                     el_era.src = `images/era_${data.era ||"both"}.svg`;
                     this.shadowRoot.getElementById("badge").appendChild(el_era);
 
-                    if (Logic.checkLogic(path[1], path[2])) {
+                    if (Logic.getValue(path[1], path[2])) {
                         txt.classList.add("avail");
                     } else {
                         txt.classList.remove("avail");
@@ -154,7 +197,7 @@ class HTMLTrackerLocation extends HTMLElement {
                     let path = this.ref.split(".");
                     if (!newValue || newValue === "false") {
                         let el = this.shadowRoot.getElementById("text");
-                        if (Logic.checkLogic(path[1], path[2])) {
+                        if (Logic.getValue(path[1], path[2])) {
                             el.classList.add("avail");
                         } else {
                             el.classList.remove("avail");
@@ -167,20 +210,14 @@ class HTMLTrackerLocation extends HTMLElement {
         }
     }
 
-    check(event) {
+    check() {
         Logger.log(`check location "${this.ref}"`, "Location");
         this.checked = true;
-        if (!event) return;
-        event.preventDefault();
-        return false;
     }
     
-    uncheck(event) {
+    uncheck() {
         Logger.log(`uncheck location "${this.ref}"`, "Location");
         this.checked = false;
-        if (!event) return;
-        event.preventDefault();
-        return false;
     }
 
 }

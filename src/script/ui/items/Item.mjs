@@ -2,6 +2,7 @@ import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import Logger from "/deepJS/util/Logger.mjs";
+import "/deepJS/ui/selection/Option.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
 
 const TPL = new Template(`
@@ -20,7 +21,11 @@ const TPL = new Template(`
             width: 100%;
             height: 100%;
         }
-        ::slotted(option) {
+        ::slotted(:not([value])),
+        ::slotted([value]:not(.active)) {
+            display: none !important;
+        }
+        ::slotted([value]) {
             display: inline-flex;
             align-items: flex-end;
             justify-content: flex-end;
@@ -40,11 +45,11 @@ const TPL = new Template(`
             padding: 0;
             line-height: 0.7em;
         }
-        ::slotted(option.mark) {
+        ::slotted([value].mark) {
             color: #54ff54;
         }
     </style>
-    <slot name="value">
+    <slot>
     </slot>
 `);
 
@@ -57,6 +62,8 @@ function updateCall() {
     if (data.hasOwnProperty("start_settings")) {
         let stsp = data.start_settings.split(".");
         this.startvalue = TrackerLocalState.read(stsp[0], stsp[1], 1);
+    } else {
+        this.fillItemChoices();
     }
     EventBus.unmute("item-update");
 }
@@ -69,6 +76,10 @@ function itemUpdate(name, value) {
     }
 }
 
+function updateDungeon(ref, val) {
+
+}
+
 class HTMLTrackerItem extends HTMLElement {
 
     constructor() {
@@ -77,17 +88,19 @@ class HTMLTrackerItem extends HTMLElement {
         this.addEventListener("contextmenu", this.prev);
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
-        /* init */
+        /* event bus */
+        EventBus.on("item-update", itemUpdate.bind(this));
+        EventBus.on("force-item-update", updateCall.bind(this));
+        EventBus.on("dungeon-type-update", updateDungeon.bind(this));
+    }
+
+    connectedCallback() {
         if (!this.value) {
-            let all = this.querySelectorAll("option");
+            let all = this.querySelectorAll("[value]");
             if (!!all.length) {
                 this.value = all[0].value;
-                all[0].setAttribute("slot", "value");
             }
         }
-        EventBus.on("item-update", itemUpdate.bind(this));
-        EventBus.on("global-update", updateCall.bind(this));
-        EventBus.on("dungeon-type-update", this.fillItemChoices.bind(this));
     }
 
     get ref() {
@@ -127,27 +140,27 @@ class HTMLTrackerItem extends HTMLElement {
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
-        switch (name) {
-            case 'startvalue':
-            case 'ref':
-                if (oldValue != newValue) {
+        if (oldValue != newValue) {
+            switch (name) {
+                case 'ref':
+                    updateCall.call(this);
+                break;
+                case 'startvalue':
                     this.fillItemChoices();
-                }
-            break;
-            case 'value':
-                if (oldValue != newValue) {
-                    let ol = this.querySelector(`option[value="${oldValue}"]`);
-                    if (!!ol) {
-                        ol.removeAttribute("slot");
+                break;
+                case 'value':
+                    let oe = this.querySelector(`.active`);
+                    if (!!oe) {
+                        oe.classList.remove("active");
                     }
-                    let nl = this.querySelector(`option[value="${newValue}"]`);
-                    if (!!nl) {
-                        nl.setAttribute("slot", "value");
+                    let ne = this.querySelector(`[value="${newValue}"]`);
+                    if (!!ne) {
+                        ne.classList.add("active");
                     }
                     TrackerLocalState.write("items", this.ref, parseInt(newValue));
                     EventBus.post("item-update", this.ref, newValue);
-                }
-            break;
+                break;
+            }
         }
     }
 
@@ -162,7 +175,6 @@ class HTMLTrackerItem extends HTMLElement {
         let current_value = this.value || 0;
         if (current_value <= start_value) {
             current_value = 0;
-            this.value = 0;
         }
 
         let max_value = 0;
@@ -181,39 +193,22 @@ class HTMLTrackerItem extends HTMLElement {
 
         if (current_value > max_value) {
             current_value = max_value;
-            this.value = max_value;
         }
 
         for (let i = 0; i <= max_value; ++i) {
             if (i != 0 && i <= start_value) continue;
-            let opt = document.createElement('option');
-            opt.setAttribute('value', i);
+            let img = data.images;
+            if (Array.isArray(img)) {
+                img = img[i];
+            }
+            let opt = createOption(i, `/images/${img}`, data, max_value);
             if (i == current_value) {
-                opt.setAttribute("slot", "value");
-            }
-            if (Array.isArray(data.images)) {
-                opt.style.backgroundImage = `url("/images/${data.images[i]}")`;
-            } else {
-                opt.style.backgroundImage = `url("/images/${data.images}")`;
-            }
-            if (i == 0 && !data.always_active) {
-                opt.style.filter = "contrast(0.8) grayscale(0.5)";
-                opt.style.opacity= "0.4";
-            }
-            if (!!data.counting) {
-                if (Array.isArray(data.counting)) {
-                    opt.innerHTML = data.counting[i];
-                } else {
-                    if (i > 0 || data.always_active) {
-                        opt.innerHTML = i;
-                    }
-                }
-                if (i >= max_value || !!data.mark && i >= data.mark) {
-                    opt.classList.add("mark");
-                }
+                opt.classList.add("active");
             }
             this.appendChild(opt);
         }
+
+        this.value = current_value;
     }
 
     next(event) {
@@ -233,15 +228,15 @@ class HTMLTrackerItem extends HTMLElement {
                 }
             } else {
                 Logger.log(`get next value for "${this.ref}"`, "Item");
-                let all = this.querySelectorAll("option");
+                let all = this.querySelectorAll("[value]");
                 if (!!all.length) {
-                    let opt = this.querySelector(`option[value="${this.value}"]`);
+                    let opt = this.querySelector(`[value="${this.value}"]`);
                     if (!!opt) {
                         if (!!opt.nextElementSibling) {
-                            this.value = opt.nextElementSibling.value;
+                            this.value = opt.nextElementSibling.getAttribute("value");
                         }
                     } else {
-                        this.value = all[0].value;
+                        this.value = all[0].getAttribute("value");
                     }
                 }
             }
@@ -268,12 +263,12 @@ class HTMLTrackerItem extends HTMLElement {
                 }
             } else {
                 Logger.log(`get previous value for "${this.ref}"`, "Item");
-                let all = this.querySelectorAll("option");
+                let all = this.querySelectorAll("[value]");
                 if (!!all.length) {
-                    let opt = this.querySelector(`option[value="${this.value}"]`);
+                    let opt = this.querySelector(`[value="${this.value}"]`);
                     if (!!opt) {
                         if (!!opt.previousElementSibling) {
-                            this.value = opt.previousElementSibling.value;
+                            this.value = opt.previousElementSibling.getAttribute("value");
                         }
                     } else {
                         this.value = all[0].value;
@@ -289,3 +284,26 @@ class HTMLTrackerItem extends HTMLElement {
 }
 
 customElements.define('ootrt-item', HTMLTrackerItem);
+
+function createOption(value, img, data, max_value) {
+    let opt = document.createElement('deep-option');
+    opt.value = value;
+    opt.style.backgroundImage = `url("${img}"`;
+    if (value == 0 && !data.always_active) {
+        opt.style.filter = "contrast(0.8) grayscale(0.5)";
+        opt.style.opacity= "0.4";
+    }
+    if (!!data.counting) {
+        if (Array.isArray(data.counting)) {
+            opt.innerHTML = data.counting[value];
+        } else {
+            if (value > 0 || data.always_active) {
+                opt.innerHTML = value;
+            }
+        }
+        if (value >= max_value || !!data.mark && value >= data.mark) {
+            opt.classList.add("mark");
+        }
+    }
+    return opt;
+}
