@@ -4,7 +4,7 @@
 
 Application:    Track-OOT
 
-Version:        DEV (1.3)
+Version:        1.3.0
 
 ---
 
