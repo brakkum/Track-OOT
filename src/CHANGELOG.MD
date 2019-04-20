@@ -19,14 +19,6 @@ Version:        DEV (1.3)
     - show logic in context menu (logic activation status of the current check)
 - quick uncheck locations now ctrl+rightclick
 
-### SAFARI
-- added compatibility for safari
-    - safari may be missing serviceworker
-- fixed bugs ignored by firefox and chrome
-- BUG: safari, chrome and firefox are currently not taking longclicks on iOS
-    - you can check things, but dont uncheck
-    - context menu will not be shown
-
 ### UI
 - better "colors" for listselection
 - add option to lock the map in place
@@ -35,3 +27,13 @@ Version:        DEV (1.3)
 - the current session will now be copied into session storage
 - simply reloading will not remove any changes (even without saving)
 - loading another save will overwrite existing session (obviously)
+
+### SAFARI
+- added compatibility for safari
+    - safari may be missing serviceworker
+- fixed bugs ignored by firefox and chrome
+
+### KNOWN BUGS ON IOS
+- safari, chrome and firefox are currently not taking longclicks on iOS
+    - can check things, but dont uncheck
+    - context menu will not be shown
