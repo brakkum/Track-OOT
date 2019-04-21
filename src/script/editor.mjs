@@ -150,6 +150,7 @@ import I18n from "/script/util/I18n.mjs";
         return false;
     }
 
+    // TODO implement save and clear
     workingarea.addEventListener('save', refreshLogic);
     workingarea.addEventListener('load', refreshLogic);
     workingarea.addEventListener('clear', refreshLogic);
