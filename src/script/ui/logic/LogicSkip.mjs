@@ -49,21 +49,15 @@ export default class TrackerLogicSkip extends DeepLogicAbstractElement {
     }
 
     toJSON() {
-        if (this.children.length > 0) {
-            let el = this.children[0];
-            if (!!el) {
-                el = el.toJSON();
-            }
-            let value;
-            if (SELECTOR_VALUE.has(this)) {
-                value = SELECTOR_VALUE.get(this);
-            }
-            return {
-                type: "skip",
-                el: this.ref,
-                value: value
-            };
+        let value;
+        if (SELECTOR_VALUE.has(this)) {
+            value = SELECTOR_VALUE.get(this);
         }
+        return {
+            type: "skip",
+            el: this.ref,
+            value: value
+        };
     }
 
     get ref() {
