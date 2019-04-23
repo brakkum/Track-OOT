@@ -4,9 +4,9 @@
 
 Application:    Track-OOT
 
-Version:        1.3.3
+Version:        1.3.4
 
 ---
 
 ### HOTFIX
-- make logic editor save again
+- fixed missing trial checks for ganon fight
