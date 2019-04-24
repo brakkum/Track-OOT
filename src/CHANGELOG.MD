@@ -4,9 +4,9 @@
 
 Application:    Track-OOT
 
-Version:        1.3.4
+Version:        1.3.5
 
 ---
 
 ### HOTFIX
-- fixed missing trial checks for ganon fight
+- fixed missing adult check for LW Bomb Grotto

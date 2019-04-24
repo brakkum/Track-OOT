@@ -8273,17 +8273,8 @@
             "el": "slingshot"
         },
         "woods_bomb_grotto": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "item",
-                    "el": "hammer"
-                },
-                {
-                    "type": "mixin",
-                    "el": "has_explosives"
-                }
-            ]
+            "type": "mixin",
+            "el": "can_blast_or_smash"
         },
         "woods_deku_salesman_grotto": {
             "type": "or",
