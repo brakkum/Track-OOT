@@ -2998,46 +2998,60 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "glove"
-                        },
-                        {
-                            "type": "item",
-                            "el": "bow"
+                            "type": "mixin",
+                            "el": "can_blast_or_smash"
                         },
                         {
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_fire"
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
                                 },
                                 {
                                     "type": "or",
                                     "el": [
                                         {
                                             "type": "item",
-                                            "el": "boots_hover"
+                                            "el": "glove"
                                         },
                                         {
                                             "type": "item",
-                                            "el": "hookshot"
+                                            "el": "bow"
                                         },
                                         {
-                                            "type": "item",
-                                            "el": "scale"
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "ocarina"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "warp_fire"
+                                                },
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "item",
+                                                            "el": "boots_hover"
+                                                        },
+                                                        {
+                                                            "type": "item",
+                                                            "el": "hookshot"
+                                                        },
+                                                        {
+                                                            "type": "item",
+                                                            "el": "scale"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
                             ]
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "can_blast_or_smash"
                         }
                     ]
                 }
@@ -19370,10 +19384,6 @@
             "el": [
                 {
                     "type": "mixin",
-                    "el": "can_child_attack"
-                },
-                {
-                    "type": "mixin",
                     "el": "can_leave_forest"
                 }
             ]
@@ -19381,10 +19391,6 @@
         "kakariko_skulltula_house_child_night": {
             "type": "and",
             "el": [
-                {
-                    "type": "mixin",
-                    "el": "can_child_attack"
-                },
                 {
                     "type": "mixin",
                     "el": "can_leave_forest"
@@ -19396,10 +19402,6 @@
             "el": [
                 {
                     "type": "mixin",
-                    "el": "can_child_attack"
-                },
-                {
-                    "type": "mixin",
                     "el": "can_leave_forest"
                 }
             ]
@@ -19407,10 +19409,6 @@
         "kakariko_near_gate_child_night": {
             "type": "and",
             "el": [
-                {
-                    "type": "mixin",
-                    "el": "can_child_attack"
-                },
                 {
                     "type": "mixin",
                     "el": "can_leave_forest"
@@ -20489,10 +20487,6 @@
             "el": [
                 {
                     "type": "mixin",
-                    "el": "can_child_attack"
-                },
-                {
-                    "type": "mixin",
                     "el": "can_leave_forest"
                 }
             ]
@@ -20500,10 +20494,6 @@
         "lonlon_paddock_fence_child_night": {
             "type": "and",
             "el": [
-                {
-                    "type": "mixin",
-                    "el": "can_child_attack"
-                },
                 {
                     "type": "mixin",
                     "el": "can_leave_forest"
