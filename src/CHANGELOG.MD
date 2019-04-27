@@ -4,10 +4,12 @@
 
 Application:    Track-OOT
 
-Version:        1.3.6
+Version:        1.3.7
 
 ---
 
 ### HOTFIX
-- fixed crater wall HP missing adult checks for Link the goron crater entry
-- fixed some child skulltulas not requireing child_can_attack in lon lon ranch and kakariko
+- fixed GCMQ Ganon Fight missing entrance and trial checks
+- fixed IC Scarecrow Skulltula missing hookshot check
+- fixed a typo in normal language file
+- made a description more clear in descriptive language file: "Freestanding Key" -> "Freestanding Item"
