@@ -15646,289 +15646,13 @@
         "castle_ganon_boss_mq": {
             "type": "and",
             "el": [
-                null,
+                {
+                    "type": "mixin",
+                    "el": "ganon_castle_access"
+                },
                 {
                     "type": "or",
                     "el": [
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "item",
-                                                    "el": "bow"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "arrow_light"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "magic_power"
-                                                },
-                                                null,
-                                                {
-                                                    "type": "item",
-                                                    "el": "song_time"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "ocarina"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "not"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "item",
-                                                    "el": "bow"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "arrow_light"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "magic_power"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "tunic_fire"
-                                                },
-                                                {
-                                                    "type": "min",
-                                                    "el": {
-                                                        "type": "item",
-                                                        "el": "glove"
-                                                    },
-                                                    "value": "3"
-                                                },
-                                                null,
-                                                {
-                                                    "type": "or",
-                                                    "el": [
-                                                        {
-                                                            "type": "min",
-                                                            "el": {
-                                                                "type": "item",
-                                                                "el": "hookshot"
-                                                            },
-                                                            "value": "2"
-                                                        },
-                                                        {
-                                                            "type": "item",
-                                                            "el": "boots_hover"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "not"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "item",
-                                                    "el": "bow"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "arrow_light"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "magic_power"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "bottle"
-                                                },
-                                                null,
-                                                {
-                                                    "type": "or",
-                                                    "el": [
-                                                        {
-                                                            "type": "min",
-                                                            "el": {
-                                                                "type": "item",
-                                                                "el": "key_small_ganon"
-                                                            },
-                                                            "value": "3"
-                                                        },
-                                                        {
-                                                            "type": "not"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "not"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "item",
-                                                    "el": "bow"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "arrow_light"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "magic_power"
-                                                },
-                                                {
-                                                    "type": "or",
-                                                    "el": [
-                                                        {
-                                                            "type": "and",
-                                                            "el": [
-                                                                {
-                                                                    "type": "item",
-                                                                    "el": "hookshot"
-                                                                },
-                                                                null
-                                                            ]
-                                                        },
-                                                        {
-                                                            "type": "item",
-                                                            "el": "boots_hover"
-                                                        }
-                                                    ]
-                                                },
-                                                null,
-                                                null
-                                            ]
-                                        },
-                                        {
-                                            "type": "not"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "item",
-                                                    "el": "bow"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "arrow_light"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "magic_power"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "shield_mirror"
-                                                },
-                                                null,
-                                                null,
-                                                {
-                                                    "type": "item",
-                                                    "el": "hammer"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "not"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "item",
-                                                    "el": "bow"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "arrow_light"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "magic_power"
-                                                },
-                                                {
-                                                    "type": "min",
-                                                    "el": {
-                                                        "type": "item",
-                                                        "el": "glove"
-                                                    },
-                                                    "value": "3"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "hookshot"
-                                                },
-                                                null,
-                                                {
-                                                    "type": "or",
-                                                    "el": [
-                                                        {
-                                                            "type": "min",
-                                                            "el": {
-                                                                "type": "item",
-                                                                "el": "key_small_ganon"
-                                                            },
-                                                            "value": "3"
-                                                        },
-                                                        {
-                                                            "type": "not"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "not"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "key_boss_ganon"
-                                }
-                            ]
-                        },
                         {
                             "type": "and",
                             "el": [
@@ -15944,10 +15668,328 @@
                                     "type": "item",
                                     "el": "magic_power"
                                 },
-                                null
+                                {
+                                    "type": "option",
+                                    "el": "forest_trial"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "song_time"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                }
                             ]
+                        },
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "forest_trial"
+                            }
                         }
                     ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "bow"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "arrow_light"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "tunic_fire"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": "0"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "fire_trial"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "hookshot"
+                                            },
+                                            "value": "0"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "fire_trial"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "bow"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "arrow_light"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "bottle"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "water_trial"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_ganon"
+                                            },
+                                            "value": "0"
+                                        },
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "option",
+                                                "el": "keysanity"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "water_trial"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "bow"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "arrow_light"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "hookshot"
+                                                },
+                                                {
+                                                    "type": "mixin",
+                                                    "el": "has_fire_source"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "shadow_trial"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_see_with_lens"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "shadow_trial"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "bow"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "arrow_light"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "shield_mirror"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_bombchus"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "spirit_trial"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hammer"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "spirit_trial"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "bow"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "arrow_light"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": "0"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "light_trial"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_ganon"
+                                            },
+                                            "value": "0"
+                                        },
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "option",
+                                                "el": "keysanity"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "light_trial"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "el": "bow"
+                },
+                {
+                    "type": "item",
+                    "el": "arrow_light"
+                },
+                {
+                    "type": "item",
+                    "el": "magic_power"
                 }
             ]
         },
@@ -21616,10 +21658,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "ocarina"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -21632,7 +21670,20 @@
                                         "type": "item",
                                         "el": "hookshot"
                                     },
-                                    "value": 2
+                                    "value": "2"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
                                 }
                             ]
                         }
