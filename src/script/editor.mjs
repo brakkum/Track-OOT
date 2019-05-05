@@ -150,9 +150,23 @@ import I18n from "/script/util/I18n.mjs";
         return false;
     }
 
-    workingarea.addEventListener('save', refreshLogic);
+    function storeLogic(event) {
+        let type = workingarea.dataset.logicType;
+        let key = workingarea.dataset.logicKey;
+        EditorLogic.set(type, key, workingarea.getLogic());
+        return refreshLogic(event);
+    }
+
+    function removeLogic(event) {
+        let type = workingarea.dataset.logicType;
+        let key = workingarea.dataset.logicKey;
+        EditorLogic.remove(type, key);
+        return refreshLogic(event);
+    }
+
+    workingarea.addEventListener('save', storeLogic);
     workingarea.addEventListener('load', refreshLogic);
-    workingarea.addEventListener('clear', refreshLogic);
+    workingarea.addEventListener('clear', removeLogic);
     window.addEventListener('focus', refreshLogic);
 
     logicContainer.querySelector('.logic-location').click();

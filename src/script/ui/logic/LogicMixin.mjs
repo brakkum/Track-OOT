@@ -57,16 +57,10 @@ export default class TrackerLogicMixin extends DeepLogicAbstractElement {
     }
 
     toJSON() {
-        if (this.children.length > 0) {
-            let el = this.children[0];
-            if (!!el) {
-                el = el.toJSON();
-            }
-            return {
-                type: "mixin",
-                el: this.ref
-            };
-        }
+        return {
+            type: "mixin",
+            el: this.ref
+        };
     }
 
     get ref() {

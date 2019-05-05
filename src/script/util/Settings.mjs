@@ -315,7 +315,7 @@ function convertValueList(values = [], names = []) {
                 case "button":
                     if (j == "edit_custom_logic") {
                         settings.addButton(i, label, j, I18n.translate(val.text), e => {
-                            document.getElementById('view-pager').active = "editor";
+                            document.getElementById('view-pager').setAttribute("active", "editor");
                             settings.close();
                         });
                     } else if (j == "erase_all_data") {

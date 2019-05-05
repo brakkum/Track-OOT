@@ -44,7 +44,7 @@ class EditorLogic {
     remove(type, key) {
         let data = GlobalData.get("logic_patched", {});
         if (!!data[type] && !!data[type][key]) {
-            data[type][key] = undefined;
+            delete data[type][key];
             GlobalData.set("logic_patched", data);
             LocalStorage.set("settings", "logic", data);
         }
