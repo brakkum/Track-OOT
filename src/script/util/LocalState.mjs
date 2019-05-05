@@ -52,6 +52,10 @@ class TrackerLocalState {
         }
         return [];
     }
+
+    getState() {
+        return JSON.parse(JSON.stringify(state));
+    }
 }
 
 export default new TrackerLocalState;

@@ -39,6 +39,7 @@ import "/deepJS/ui/selection/ChoiceSelect.mjs";
     await Promise.all([
         $import.importModule("/script/ui/shops/ShopList.mjs"),
         $import.importModule("/script/ui/songs/SongList.mjs"),
+        $import.importModule("/script/ui/multiplayer/Multiplayer.mjs"),
         $import.importModule("/script/ui/LayoutContainer.mjs"),
         $import.importModule("/script/util/Settings.mjs")
     ]);
