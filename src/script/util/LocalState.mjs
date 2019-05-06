@@ -56,6 +56,10 @@ class TrackerLocalState {
     getState() {
         return JSON.parse(JSON.stringify(state));
     }
+
+    setState(value) {
+        state = JSON.parse(JSON.stringify(value));
+    }
 }
 
 export default new TrackerLocalState;

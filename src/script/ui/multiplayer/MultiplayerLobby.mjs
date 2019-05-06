@@ -82,13 +82,23 @@ class HTMLMultiplayerLobby extends HTMLElement {
                 if (res.success === true) {
                     DeepWebRAT.onmessage = function(key, msg) {
                         console.log(key, msg);
+                        if (msg.type == "event") {
+                            DeepWebRAT.sendButOne(key, msg);
+                            EventBus.post(msg.data.name, msg.data.data);
+                        }
                     };
                     DeepWebRAT.onconnect = function(key) {
                         DeepWebRAT.send({
                             type: "state",
                             data: TrackerLocalState.getState()
                         });
-                        EventBus.on(function(event) {
+                        EventBus.on([
+                            "item-update",
+                            "location-update",
+                            "dungeon-type-update",
+                            "dungeon-reward-update",
+                            "update-settings"
+                        ], function(event) {
                             DeepWebRAT.send({
                                 type: "event",
                                 data: event
@@ -114,8 +124,19 @@ class HTMLMultiplayerLobby extends HTMLElement {
             if (res.success === true) {
                 DeepWebRAT.onmessage = function(key, msg) {
                     console.log(key, msg);
+                    if (msg.type == "state") {
+                        TrackerLocalState.setState(msg.data);
+                    } else if (msg.type == "event") {
+                        EventBus.post(msg.data.name, msg.data.data);
+                    }
                 };
-                EventBus.on(function(event) {
+                EventBus.on([
+                    "item-update",
+                    "location-update",
+                    "dungeon-type-update",
+                    "dungeon-reward-update",
+                    "update-settings"
+                ], function(event) {
                     DeepWebRAT.send({
                         type: "event",
                         data: event
