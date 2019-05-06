@@ -216,12 +216,14 @@ function onSettingsEvent(event) {
     EventBus.post("force-item-update");
     EventBus.post("force-location-update");
     EventBus.post("force-logic-update");
+}
+
+settings.addEventListener('submit', function(event) {
+    onSettingsEvent(event);
     EventBus.post("update-settings", {
         value: settings
     });
-}
-
-settings.addEventListener('submit', onSettingsEvent);
+});
 EventBus.on("net:update-settings", onSettingsEvent);
 
 settings.addEventListener('close', function(event) {
