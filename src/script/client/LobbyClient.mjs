@@ -31,6 +31,7 @@ export default class DeepLobbyClient {
                     }));
                 break;
                 case "uuid":
+                    console.log("LOBBY:UUID", msg.body);
                     this.UUID = msg.body;
                     READY_AWAIT.get(this).forEach(function(fn) {
                         fn(true);

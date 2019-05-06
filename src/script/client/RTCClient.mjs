@@ -20,19 +20,20 @@ export default class DeepRTCClient {
         ON_DISCONNECTED.set(this, EMPTY_FN);
         let rtc = new RTCPeerConnection(configuration);
         RTC.set(this, rtc);
+        rtc.onconnectionstatechange = function (event) {
+            console.log("RTC:STATE", rtc.connectionState);
+        }.bind(this);
         let dch = rtc.createDataChannel("data");
+        dch.onopen = function(event) {
+            ON_CONNECTED.get(this)();
+        }.bind(this);
+        dch.onclose = function(event) {
+            ON_DISCONNECTED.get(this)();
+        }.bind(this);
         dch.onmessage = function(event) {
             ON_MESSAGE.get(this)(JSON.parse(event.data));
         }.bind(this);
         DCH.set(this, dch);
-        rtc.onconnectionstatechange = function (event) {
-            switch (rtc.connectionState) {
-                case "connected": ON_CONNECTED.get(this)();
-                break;
-                case "disconnected": ON_DISCONNECTED.get(this)();
-                break;
-            }
-        }.bind(this);
         rtc.onicecandidate = function(event) {
             sigCh.sendICE(reciever, event.candidate);
         };

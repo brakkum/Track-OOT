@@ -53,14 +53,17 @@ class DeepWebRAT {
     }
 
     async register(name, pass = "", desc = "") {
+        console.log("LOBBY:REGISTER_ROOM", name, pass, desc);
         if (MASTER_NAME.has(this)) return;
         MASTER_NAME.set(this, name);
         let client = new DeepLobbyClient(LOBBY_WS.get(this), async function(key) {
+            console.log("LOBBY:REQUESTED_CONNECTION", key);
             let sig = new DeepSigClient(SIG_WS.get(this));
             await sig.isReady();
             let rtc = new DeepRTCHost(sig, key);
             rtc.key = key;
             rtc.onmessage = function(msg) {
+                console.log("RECIEVE", rtc.key, msg);
                 ON_MESSAGE.get(this)(rtc.key, msg);
             }.bind(this);
             RTC_INST.get(this).set(key, rtc);
@@ -87,6 +90,7 @@ class DeepWebRAT {
     }
     
     async unregister() {
+        console.log("LOBBY:UNREGISTER_ROOM");
         let res = await getFile(`${LOBBY_HTTP.get(this)}/lobby?action=unregister&name=${MASTER_NAME.get(this)}&pass=${MASTER_KEY.get(this)}`);
         res = await res.json();
         if (res.success === true) {
@@ -96,14 +100,17 @@ class DeepWebRAT {
     }
     
     async connect(name, pass = "") {
+        console.log("LOBBY:GET_HOST_UUID", name, pass);
         let sig = new DeepSigClient(SIG_WS.get(this));
         await sig.isReady();
         let res = await getFile(`${LOBBY_HTTP.get(this)}/lobby?action=resolve&name=${name}&pass=${pass}`, sig.UUID);
         res = await res.json();
         if (res.success === true) {
+            console.log("LOBBY:CONNECT_TO_HOST", res.key);
             let rtc = new DeepRTCClient(sig, res.key);
             rtc.key = res.key;
             rtc.onmessage = function(msg) {
+                console.log("RECIEVE", rtc.key, msg);
                 ON_MESSAGE.get(this)(rtc.key, msg);
             }.bind(this);
             rtc.onconnected = function() {
@@ -122,27 +129,32 @@ class DeepWebRAT {
     }
 
     async disconnect() {
+        console.log("LOBBY:DISCONNECT");
         RTC_INST.get(this).forEach(function(rtc) {
             rtc.close();
         });
     }
     
     async getInstances() {
+        console.log("LOBBY:REFRESH_INSTANCES");
         let res = await getFile(`${LOBBY_HTTP.get(this)}/lobby`);
         return await res.json();
     }
 
     send(msg) {
+        console.log("SEND[BC]", msg);
         Array.from(RTC_INST.get(this).values()).forEach(function(rtc) {
             rtc.send(msg)
         });
     }
 
     sendOne(key, msg) {
+        console.log("SEND[uc]", key, msg);
         RTC_INST.get(this).get(key).send(msg);
     }
 
     sendButOne(key, msg) {
+        console.log("SEND[mc] (exclude)", key, msg);
         Array.from(RTC_INST.get(this).values()).forEach(function(rtc) {
             if (rtc.key == key) return;
             rtc.send(msg);

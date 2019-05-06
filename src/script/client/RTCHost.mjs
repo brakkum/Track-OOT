@@ -25,15 +25,16 @@ export default class DeepRTCHost {
         let rtc = new RTCPeerConnection(configuration);
         RTC.set(this, rtc);
         rtc.onconnectionstatechange = function (event) {
-            switch (rtc.connectionState) {
-                case "connected": ON_CONNECTED.get(this)();
-                break;
-                case "disconnected": ON_DISCONNECTED.get(this)();
-                break;
-            }
+            console.log("RTC:STATE", rtc.connectionState);
         }.bind(this);
         rtc.ondatachannel = function(event) {
             let dch = event.channel;
+            dch.onopen = function(event) {
+                ON_CONNECTED.get(this)();
+            }.bind(this);
+            dch.onclose = function(event) {
+                ON_DISCONNECTED.get(this)();
+            }.bind(this);
             dch.onmessage = function(event) {
                 ON_MESSAGE.get(this)(JSON.parse(event.data));
             }.bind(this);

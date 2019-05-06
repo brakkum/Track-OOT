@@ -51,6 +51,7 @@ export default class DeepSigClient {
                     CLIENT.get(this).send(JSON.stringify({type:"pong",time:msg.time}));
                 break;
                 case "uuid":
+                    console.log("SIG:UUID", msg.body);
                     this.UUID = msg.body;
                     READY_AWAIT.get(this).forEach(function(fn) {
                         fn(true);
@@ -58,6 +59,7 @@ export default class DeepSigClient {
                     READY_AWAIT.delete(this);
                 break;
                 case "sdp":
+                    console.log("SIG:SDP", msg.body);
                     if (msg.body.type == "offer") {
                         ON_OFFER.get(this)(msg.sender, msg.body);
                     } else if (msg.body.type == "answer") {
@@ -65,6 +67,7 @@ export default class DeepSigClient {
                     }
                 break;
                 case "ice":
+                    console.log("SIG:ICE", msg.body);
                     ON_ICE.get(this)(msg.sender, msg.body);
                 break;
             }
