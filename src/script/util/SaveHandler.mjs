@@ -93,9 +93,7 @@ function throwEvents() {
     EventBus.post("force-shop-update");
     EventBus.post("force-song-update");
     EventBus.post("force-dungeonstate-update");
-    EventBus.post("update-settings", {
-        value: getSettings()
-    });
+    EventBus.post("state-changed");
 }
 
 function prepairSavegameChoice() {

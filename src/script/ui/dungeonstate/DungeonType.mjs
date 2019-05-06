@@ -49,7 +49,9 @@ const TPL = new Template(`
 `);
 
 function updateCall(event) {
+    EventBus.mute("dungeon-type-update");
     this.value = TrackerLocalState.read("dungeonTypes", this.ref, "n");
+    EventBus.unmute("dungeon-type-update");
 }
 
 function dungeonTypeUppdate(event){

@@ -62,7 +62,9 @@ const REWARDS = [
 ];
 
 function updateCall(event) {
+    EventBus.mute("dungeon-reward-update");
     this.value = TrackerLocalState.read("dungeonRewards", this.ref, 0);
+    EventBus.unmute("dungeon-reward-update");
 }
 
 function dungeonRewardUppdate(event){

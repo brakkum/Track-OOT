@@ -92,6 +92,12 @@ class HTMLMultiplayerLobby extends HTMLElement {
                             type: "state",
                             data: TrackerLocalState.getState()
                         });
+                        EventBus.on("state-changed", function(event) {
+                            DeepWebRAT.send({
+                                type: "state",
+                                data: TrackerLocalState.getState()
+                            });
+                        });
                         EventBus.on([
                             "item-update",
                             "location-update",
