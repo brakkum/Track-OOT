@@ -2,6 +2,7 @@ import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import Dialog from "/deepJS/ui/Dialog.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
+import Logger from "/deepJS/util/Logger.mjs";
 import DeepWebRAT from "/script/client/WebRAT.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
 
@@ -81,7 +82,6 @@ class HTMLMultiplayerLobby extends HTMLElement {
                 let res = await DeepWebRAT.register(host_name.value, host_pass.value, host_desc.value);
                 if (res.success === true) {
                     DeepWebRAT.onmessage = function(key, msg) {
-                        console.log(key, msg);
                         if (msg.type == "event") {
                             DeepWebRAT.sendButOne(key, msg);
                             EventBus.post(`net:${msg.data.name}`, msg.data.data);
@@ -123,9 +123,12 @@ class HTMLMultiplayerLobby extends HTMLElement {
             }
             if (res.success === true) {
                 DeepWebRAT.onmessage = function(key, msg) {
-                    console.log(key, msg);
                     if (msg.type == "state") {
                         TrackerLocalState.setState(msg.data);
+                        EventBus.post("force-item-update");
+                        EventBus.post("force-logic-update");
+                        EventBus.post("force-location-update");
+                        EventBus.post("force-dungeonstate-update");
                     } else if (msg.type == "event") {
                         EventBus.post(`net:${msg.data.name}`, msg.data.data);
                     }

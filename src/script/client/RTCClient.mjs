@@ -1,3 +1,6 @@
+
+import Logger from "/deepJS/util/Logger.mjs";
+
 const RTC = new WeakMap();
 const DCH = new WeakMap();
 
@@ -21,7 +24,7 @@ export default class DeepRTCClient {
         let rtc = new RTCPeerConnection(configuration);
         RTC.set(this, rtc);
         rtc.onconnectionstatechange = function (event) {
-            console.log("RTC:STATE", rtc.connectionState);
+            Logger.info(`STATE: "${rtc.connectionState}"`, "RAT-RTC");
         }.bind(this);
         let dch = rtc.createDataChannel("data");
         dch.onopen = function(event) {

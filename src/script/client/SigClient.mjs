@@ -1,3 +1,5 @@
+
+import Logger from "/deepJS/util/Logger.mjs";
 import DeepMessageBuffer from "./MessageBuffer.mjs";
 
 const SEC = window.location.protocol == "https:";
@@ -51,7 +53,7 @@ export default class DeepSigClient {
                     CLIENT.get(this).send(JSON.stringify({type:"pong",time:msg.time}));
                 break;
                 case "uuid":
-                    console.log("SIG:UUID", msg.body);
+                    Logger.info(`UUID: ${JSON.stringify(msg.body)}`, "RAT-SIG");
                     this.UUID = msg.body;
                     READY_AWAIT.get(this).forEach(function(fn) {
                         fn(true);
@@ -59,7 +61,7 @@ export default class DeepSigClient {
                     READY_AWAIT.delete(this);
                 break;
                 case "sdp":
-                    console.log("SIG:SDP", msg.body);
+                    Logger.info(`SDP: ${JSON.stringify(msg.body)}`, "RAT-SIG");
                     if (msg.body.type == "offer") {
                         ON_OFFER.get(this)(msg.sender, msg.body);
                     } else if (msg.body.type == "answer") {
@@ -67,7 +69,7 @@ export default class DeepSigClient {
                     }
                 break;
                 case "ice":
-                    console.log("SIG:ICE", msg.body);
+                    Logger.info(`ICE: ${JSON.stringify(msg.body)}`, "RAT-SIG");
                     ON_ICE.get(this)(msg.sender, msg.body);
                 break;
             }

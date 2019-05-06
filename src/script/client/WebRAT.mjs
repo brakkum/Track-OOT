@@ -1,3 +1,5 @@
+
+import Logger from "/deepJS/util/Logger.mjs";
 import DeepSigClient from "./SigClient.mjs";
 import DeepRTCClient from "./RTCClient.mjs";
 import DeepRTCHost from "./RTCHost.mjs";
@@ -53,29 +55,29 @@ class DeepWebRAT {
     }
 
     async register(name, pass = "", desc = "") {
-        console.log("LOBBY:REGISTER_ROOM", name, pass, desc);
+        Logger.info(`REGISTER_ROOM: ${name}`, "RAT-LOBBY");
         if (MASTER_NAME.has(this)) return;
         MASTER_NAME.set(this, name);
         let client = new DeepLobbyClient(LOBBY_WS.get(this), async function(key) {
-            console.log("LOBBY:REQUESTED_CONNECTION", key);
+            Logger.info(`REQUESTED_CONNECTION: ${key}`, "RAT-LOBBY");
             let sig = new DeepSigClient(SIG_WS.get(this));
             await sig.isReady();
             let rtc = new DeepRTCHost(sig, key);
             rtc.key = key;
             rtc.onmessage = function(msg) {
-                console.log("RECIEVE", rtc.key, msg);
+                Logger.info(`${rtc.key}: ${JSON.stringify(msg)}`, "RAT-MSG");
                 ON_MESSAGE.get(this)(rtc.key, msg);
             }.bind(this);
             RTC_INST.get(this).set(key, rtc);
             rtc.onconnected = function() {
                 sig.close();
                 ON_CONNECT.get(this)(rtc.key);
-                console.log(`connected to client ${key}`);
+                Logger.info(`CONNECTED: ${rtc.key}`, "RAT-RTC");
             }.bind(this);
             rtc.ondisconnected = function() {
                 RTC_INST.get(this).delete(rtc.key);
                 ON_DISCONNECT.get(this)(rtc.key);
-                console.log(`disconnected from client ${key}`);
+                Logger.info(`DISCONNECTED: ${rtc.key}`, "RAT-RTC");
             }.bind(this);
             return sig.UUID;
         }.bind(this));
@@ -90,7 +92,7 @@ class DeepWebRAT {
     }
     
     async unregister() {
-        console.log("LOBBY:UNREGISTER_ROOM");
+        Logger.info("UNREGISTER_ROOM", "RAT-LOBBY");
         let res = await getFile(`${LOBBY_HTTP.get(this)}/lobby?action=unregister&name=${MASTER_NAME.get(this)}&pass=${MASTER_KEY.get(this)}`);
         res = await res.json();
         if (res.success === true) {
@@ -100,28 +102,28 @@ class DeepWebRAT {
     }
     
     async connect(name, pass = "") {
-        console.log("LOBBY:GET_HOST_UUID", name, pass);
+        Logger.info(`GET_HOST_UUID: ${name}`, "RAT-LOBBY");
         let sig = new DeepSigClient(SIG_WS.get(this));
         await sig.isReady();
         let res = await getFile(`${LOBBY_HTTP.get(this)}/lobby?action=resolve&name=${name}&pass=${pass}`, sig.UUID);
         res = await res.json();
         if (res.success === true) {
-            console.log("LOBBY:CONNECT_TO_HOST", res.key);
+            Logger.info(`CONNECT_TO: ${rtc.key}`, "RAT-RTC");
             let rtc = new DeepRTCClient(sig, res.key);
             rtc.key = res.key;
             rtc.onmessage = function(msg) {
-                console.log("RECIEVE", rtc.key, msg);
+                Logger.info(`${rtc.key}: ${JSON.stringify(msg)}`, "RAT-MSG");
                 ON_MESSAGE.get(this)(rtc.key, msg);
             }.bind(this);
             rtc.onconnected = function() {
                 sig.close();
                 ON_CONNECT.get(this)(rtc.key);
-                console.log(`connected to host ${res.key}`);
+                Logger.info(`CONNECTED: ${rtc.key}`, "RAT-RTC");
             }.bind(this);
             rtc.ondisconnected = function() {
                 RTC_INST.get(this).delete(rtc.key);
                 ON_DISCONNECT.get(this)(rtc.key);
-                console.log(`disconnected from host ${res.key}`);
+                Logger.info(`DISCONNECTED: ${rtc.key}`, "RAT-RTC");
             }.bind(this);
             RTC_INST.get(this).set(res.key, rtc);
         }
@@ -129,32 +131,29 @@ class DeepWebRAT {
     }
 
     async disconnect() {
-        console.log("LOBBY:DISCONNECT");
+        Logger.info("DISCONNECT", "RAT-RTC");
         RTC_INST.get(this).forEach(function(rtc) {
             rtc.close();
         });
     }
     
     async getInstances() {
-        console.log("LOBBY:REFRESH_INSTANCES");
+        Logger.info("REFRESH_INSTANCES", "RAT-LOBBY");
         let res = await getFile(`${LOBBY_HTTP.get(this)}/lobby`);
         return await res.json();
     }
 
     send(msg) {
-        console.log("SEND[BC]", msg);
         Array.from(RTC_INST.get(this).values()).forEach(function(rtc) {
             rtc.send(msg)
         });
     }
 
     sendOne(key, msg) {
-        console.log("SEND[uc]", key, msg);
         RTC_INST.get(this).get(key).send(msg);
     }
 
     sendButOne(key, msg) {
-        console.log("SEND[mc] (exclude)", key, msg);
         Array.from(RTC_INST.get(this).values()).forEach(function(rtc) {
             if (rtc.key == key) return;
             rtc.send(msg);

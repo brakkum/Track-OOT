@@ -1,3 +1,6 @@
+
+import Logger from "/deepJS/util/Logger.mjs";
+
 const CLIENT = new WeakMap();
 const TIMEOUT = new WeakMap();
 const READY_AWAIT = new WeakMap();
@@ -31,7 +34,7 @@ export default class DeepLobbyClient {
                     }));
                 break;
                 case "uuid":
-                    console.log("LOBBY:UUID", msg.body);
+                    Logger.info(`UUID: ${JSON.stringify(msg.body)}`, "RAT-LOBBY");
                     this.UUID = msg.body;
                     READY_AWAIT.get(this).forEach(function(fn) {
                         fn(true);

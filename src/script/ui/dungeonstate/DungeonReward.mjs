@@ -65,6 +65,14 @@ function updateCall(event) {
     this.value = TrackerLocalState.read("dungeonRewards", this.ref, 0);
 }
 
+function dungeonRewardUppdate(event){
+    if (this.ref === event.data.name && this.value !== event.data.value) {
+        EventBus.mute("dungeon-reward-update");
+        this.value = event.data.value;
+        EventBus.unmute("dungeon-reward-update");
+    }
+}
+
 class HTMLTrackerDungeonReward extends HTMLElement {
 
     constructor() {
@@ -75,6 +83,7 @@ class HTMLTrackerDungeonReward extends HTMLElement {
         this.shadowRoot.appendChild(TPL.generate());
         /* event bus */
         EventBus.on("force-dungeonstate-update", updateCall.bind(this));
+        EventBus.on(["dungeon-reward-update","net:dungeon-reward-update"], dungeonRewardUppdate.bind(this));
     }
 
     connectedCallback() {
@@ -136,7 +145,7 @@ class HTMLTrackerDungeonReward extends HTMLElement {
                         ne.classList.add("active");
                     }
                     TrackerLocalState.write("dungeonRewards", this.ref, newValue);
-                    EventBus.post(["dungeon-reward-update","net:dungeon-reward-update"], {
+                    EventBus.post("dungeon-reward-update", {
                         name: this.ref,
                         value: newValue
                     });
