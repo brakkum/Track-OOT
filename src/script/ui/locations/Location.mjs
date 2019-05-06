@@ -59,26 +59,26 @@ const TPL = new Template(`
     </deep-contextmenu>
 `);
 
-function locationUpdate(name, value) {
-    if (this.ref === name && this.checked !== value) {
+function locationUpdate(event) {
+    if (this.ref === event.data.name && this.checked !== event.data.value) {
         EventBus.mute("location-update");
         this.checked = value;
         EventBus.unmute("location-update");
     }
 }
 
-function globalUpdate() {
+function globalUpdate(event) {
     let path = this.ref.split(".");
     EventBus.mute("location-update");
     this.checked = TrackerLocalState.read(path[1], path[2], false);
     EventBus.unmute("location-update");
 }
 
-function logicUpdate(type, ref, value) {
+function logicUpdate(event) {
     let path = this.ref.split(".");
-    if (path[1] == type && path[2] == ref) {
+    if (path[1] == event.data.type && path[2] == event.data.ref) {
         let el = this.shadowRoot.getElementById("text");
-        if (!!value) {
+        if (!!event.data.value) {
             el.classList.add("avail");
         } else {
             el.classList.remove("avail");
@@ -204,7 +204,10 @@ class HTMLTrackerLocation extends HTMLElement {
                         }
                     }
                     TrackerLocalState.write(path[1], path[2], newValue === "false" ? false : !!newValue);
-                    EventBus.post("location-update", this.ref, newValue);
+                    EventBus.post("location-update", {
+                        name: this.ref,
+                        value: newValue
+                    });
                 }
             break;
         }

@@ -48,14 +48,14 @@ const TPL = new Template(`
     </slot>
 `);
 
-function updateCall() {
+function updateCall(event) {
     this.value = TrackerLocalState.read("dungeonTypes", this.ref, "n");
 }
 
-function dungeonTypeUppdate(ref, value){
-    if (this.ref === ref && this.value !== value) {
+function dungeonTypeUppdate(event){
+    if (this.ref === event.data.name && this.value !== event.data.value) {
         EventBus.mute("dungeon-type-update");
-        this.value = value;
+        this.value = event.data.value;
         EventBus.unmute("dungeon-type-update");
     }
 }
@@ -132,7 +132,10 @@ class HTMLTrackerDungeonType extends HTMLElement {
                         ne.classList.add("active");
                     }
                     TrackerLocalState.write("dungeonTypes", this.ref, newValue);
-                    EventBus.post("dungeon-type-update", this.ref, newValue);
+                    EventBus.post("dungeon-type-update", {
+                        name: this.ref,
+                        value: newValue
+                    });
                 }
             break;
         }

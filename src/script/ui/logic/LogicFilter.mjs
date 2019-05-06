@@ -29,8 +29,8 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
     constructor() {
         super();
         this.shadowRoot.appendChild(TPL.generate());
-        EventBus.on("filter", function(ref) {
-            if (ref == this.ref) {
+        EventBus.on("filter", function(event) {
+            if (event.data.ref == this.ref) {
                 this.update();
             }
         }.bind(this));

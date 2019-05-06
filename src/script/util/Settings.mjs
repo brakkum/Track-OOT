@@ -185,6 +185,7 @@ settingsEdit.addEventListener("click", function() {
 });
 
 settings.addEventListener('submit', function(event) {
+    let settings = {};
     for (let i in event.data) {
         for (let j in event.data[i]) {
             if (i === "settings") {
@@ -207,11 +208,17 @@ settings.addEventListener('submit', function(event) {
                 }
             }
         }
+        if (i !== "settings") {
+            settings[i] = event.data[i];
+        }
     }
     applySettingsChoices();
     EventBus.post("force-item-update");
     EventBus.post("force-location-update");
     EventBus.post("force-logic-update");
+    EventBus.post("update-settings", {
+        value: settings
+    });
 });
 
 settings.addEventListener('close', function(event) {

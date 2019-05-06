@@ -109,7 +109,7 @@ function translate(value) {
     }
 }
 
-function locationUpdate() {
+function locationUpdate(event) {
     if ((!this.ref || this.ref === "") && this.mode != "gossipstones") {
         this.shadowRoot.querySelector('#title').className = "";
         let ch = Array.from(this.shadowRoot.getElementById("body").children);
@@ -134,8 +134,8 @@ function locationUpdate() {
     }
 }
 
-function dungeonTypeUppdate(ref, val) {
-    if (this.ref === ref) {
+function dungeonTypeUppdate(event) {
+    if (this.ref === event.data.name) {
         this.attributeChangedCallback("", "");
     }
 }
@@ -144,7 +144,7 @@ class HTMLTrackerLocationList extends HTMLElement {
 
     constructor() {
         super();
-        EventBus.on("location-change", ref => this.ref = ref);
+        EventBus.on("location-change", event => this.ref = event.data.name);
         EventBus.on("dungeon-type-update", dungeonTypeUppdate.bind(this));
         EventBus.on("location-update", locationUpdate.bind(this));
         EventBus.on("item-update", locationUpdate.bind(this));
@@ -154,12 +154,16 @@ class HTMLTrackerLocationList extends HTMLElement {
         this.attributeChangedCallback("", "");
         this.shadowRoot.getElementById('location-mode').addEventListener("change", event => {
             this.mode = event.newValue;
-            EventBus.post("location-mode-change", this.mode);
+            EventBus.post("location-mode-change", {
+                value: this.mode
+            });
         });
         this.shadowRoot.getElementById('location-era').addEventListener("change", event => {
             this.era = event.newValue;
             MemoryStorage.set("active_filter", "filter_era_active", this.era);
-            EventBus.post("location-era-change", this.era);
+            EventBus.post("location-era-change", {
+                value: this.era
+            });
         });
     }
 

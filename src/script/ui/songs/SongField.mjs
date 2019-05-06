@@ -57,7 +57,7 @@ function editSong(event) {
     d.show();
 }
 
-function globalUpdate() {
+function globalUpdate(event) {
     let data = GlobalData.get("songs")[this.ref];
     this.shadowRoot.getElementById("stave").value = TrackerLocalState.read("songs", this.ref, data.notes)
 }

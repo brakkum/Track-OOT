@@ -29,14 +29,16 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
     constructor() {
         super();
         this.shadowRoot.appendChild(TPL.generate());
-        EventBus.on("settings", function() {
+        EventBus.on("settings", function(event) {
             this.update();
         }.bind(this));
         let select = this.shadowRoot.getElementById('select');
         select.addEventListener('change', function(event) {
             SELECTOR_VALUE.set(this, select.value);
         }.bind(this));
-        EventBus.on("force-logic-update", this.update.bind(this));
+        EventBus.on("force-logic-update", function(event) {
+            this.update();
+        }.bind(this));
     }
 
     update() {

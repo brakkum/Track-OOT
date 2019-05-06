@@ -85,7 +85,7 @@ function changeView(event) {
 
 // state update
 // TODO create module for this
-EventBus.on(["logic", "dungeon-type-update", "location-update"], function() {
+EventBus.on(["logic", "dungeon-type-update", "location-update"], function(event) {
     updateChestStates();
     updateSkulltulasStates();
 });

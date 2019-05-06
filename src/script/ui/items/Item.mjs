@@ -53,7 +53,7 @@ const TPL = new Template(`
     </slot>
 `);
 
-function updateCall() {
+function updateCall(event) {
     EventBus.mute("item-update");
     // savesatate
     this.value = TrackerLocalState.read("items", this.ref, 0);
@@ -68,16 +68,16 @@ function updateCall() {
     EventBus.unmute("item-update");
 }
 
-function itemUpdate(name, value) {
-    if (this.ref === name && this.value !== value) {
+function itemUpdate(event) {
+    if (this.ref === event.data.name && this.value !== event.data.value) {
         EventBus.mute("item-update");
-        this.value = value;
+        this.value = event.data.value;
         EventBus.unmute("item-update");
     }
 }
 
-function updateDungeon(ref, val) {
-
+function updateDungeon(event) {
+    // XXX WTF is this empty?
 }
 
 class HTMLTrackerItem extends HTMLElement {
@@ -158,7 +158,10 @@ class HTMLTrackerItem extends HTMLElement {
                         ne.classList.add("active");
                     }
                     TrackerLocalState.write("items", this.ref, parseInt(newValue));
-                    EventBus.post("item-update", this.ref, newValue);
+                    EventBus.post("item-update", {
+                        name: this.ref,
+                        value: newValue
+                    });
                 break;
             }
         }

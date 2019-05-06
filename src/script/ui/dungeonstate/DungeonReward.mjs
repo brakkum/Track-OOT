@@ -61,7 +61,7 @@ const REWARDS = [
     "medallion_light"
 ];
 
-function updateCall() {
+function updateCall(event) {
     this.value = TrackerLocalState.read("dungeonRewards", this.ref, 0);
 }
 
@@ -136,7 +136,10 @@ class HTMLTrackerDungeonReward extends HTMLElement {
                         ne.classList.add("active");
                     }
                     TrackerLocalState.write("dungeonRewards", this.ref, newValue);
-                    EventBus.post("dungeon-reward-update", this.ref, newValue);
+                    EventBus.post("dungeon-reward-update", {
+                        name: this.ref,
+                        value: newValue
+                    });
                 }
             break;
         }

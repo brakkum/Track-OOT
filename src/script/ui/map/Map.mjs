@@ -276,13 +276,13 @@ class HTMLTrackerMap extends HTMLElement {
             event.preventDefault();
             return false;
         });
-        EventBus.on("location-mode-change", function(mode) {
-            this.mode = mode;
+        EventBus.on("location-mode-change", function(event) {
+            this.mode = event.data.value;
         }.bind(this));
-        EventBus.on("location-era-change", function(era) {
-            this.era = era;
+        EventBus.on("location-era-change", function(event) {
+            this.era = event.data.value;
         }.bind(this));
-        EventBus.on("force-location-update", function() {
+        EventBus.on("force-location-update", function(event) {
             this.attributeChangedCallback("", "");
         }.bind(this));
         window.addEventListener("resize", function(event) {

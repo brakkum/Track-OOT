@@ -30,7 +30,7 @@ export default class LogicWrapper {
         REF.set(this, ref);
         this.loadLogic();
         INSTANCES.add(this);
-        EventBus.on("settings", this.loadLogic.bind(this));
+        EventBus.on("settings", event => this.loadLogic());
         window.addEventListener('focus', function(event) {
             this.loadLogic();
             event.preventDefault();
@@ -43,7 +43,11 @@ export default class LogicWrapper {
         VALUE.set(this, buf);
         let type = TYPE.get(this);
         let ref = REF.get(this);
-        EventBus.post("logic", type, ref, buf);
+        EventBus.post("logic", {
+            type: type,
+            ref: ref,
+            value: buf
+        });
     }
 
     get value() {

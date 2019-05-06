@@ -63,19 +63,19 @@ const TPL = new Template(`
     <div id="extra"></div>
 `);
 
-function gossipstoneUpdate(name, value) {
+function gossipstoneUpdate(event) {
     let ref = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref].ref || this.ref;
-    if (ref === name && this.shadowRoot.getElementById("text").classList.contains("checked") !== value) {
+    if (ref === event.data.name && this.shadowRoot.getElementById("text").classList.contains("checked") !== event.data.value) {
         EventBus.mute("gossipstone-update");
         this.setValue(TrackerLocalState.read("gossipstones", ref, {item: "0x01", location: "0x01"}));
         EventBus.unmute("gossipstone-update");
     }
 }
 
-function logicUpdate(type, ref, value) {
-    if ("gossipstones" == type && this.ref == ref) {
+function logicUpdate(event) {
+    if ("gossipstones" == event.data.type && this.ref == event.data.ref) {
         let el = this.shadowRoot.getElementById("text");
-        if (!!value) {
+        if (!!event.data.value) {
             el.classList.add("avail");
         } else {
             el.classList.remove("avail");
@@ -83,7 +83,7 @@ function logicUpdate(type, ref, value) {
     }
 }
 
-function globalUpdate() {
+function globalUpdate(event) {
     EventBus.mute("gossipstone-update");
     let ref = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref].ref || this.ref;
     this.setValue(TrackerLocalState.read("gossipstones", ref, {item: "0x01", location: "0x01"}));
@@ -173,7 +173,10 @@ class HTMLTrackerGossipstone extends HTMLElement {
                     if (!!val) {
                         val = TrackerLocalState.read("gossipstones", data.ref || this.ref, {item: "0x00", location: "0x00"});
                     }
-                    EventBus.post("gossipstone-update", data.ref || this.ref, val);
+                    EventBus.post("gossipstone-update", {
+                        name: data.ref || this.ref,
+                        value: val
+                    });
                 }
             break;
         }

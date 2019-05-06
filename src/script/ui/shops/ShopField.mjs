@@ -107,7 +107,7 @@ function renameSlot(event) {
     return false;
 }
 
-function globalUpdate() {
+function globalUpdate(event) {
     let data = TrackerLocalState.read("shops", this.ref, GlobalData.get("shops")[this.ref]);
     let ch = TrackerLocalState.read("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
     let names = TrackerLocalState.read("shops_names", this.ref, ["","","","","","","",""]);

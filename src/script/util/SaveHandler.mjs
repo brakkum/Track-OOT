@@ -1,3 +1,4 @@
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import DeepLocalStorage from "/deepJS/storage/LocalStorage.mjs";
 import DeepSessionStorage from "/deepJS/storage/SessionStorage.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
@@ -60,6 +61,31 @@ function toggleStateButtons() {
     }
 }
 
+function getSettings() {
+    let res = {};
+    let options = GlobalData.get("settings");
+    for (let i in options) {
+        if (i != "settings") {
+            res[i] = {};
+            for (let j in options[i]) {
+                if (options[i][j].type === "list") {
+                    let def = new Set(options[i][j].default);
+                    let val = [];
+                    options[i][j].values.forEach(el => {
+                        if (TrackerLocalState.read(i, el, def.has(el))) {
+                            val.push(el);
+                        }
+                    });
+                    res[i][j] = val.join(",");
+                } else {
+                    res[i][j] = TrackerLocalState.read(i, j, options[i][j].default);
+                }
+            }
+        }
+    }
+    return res;
+}
+
 function throwEvents() {
     EventBus.post("force-item-update");
     EventBus.post("force-logic-update");
@@ -67,6 +93,9 @@ function throwEvents() {
     EventBus.post("force-shop-update");
     EventBus.post("force-song-update");
     EventBus.post("force-dungeonstate-update");
+    EventBus.post("update-settings", {
+        value: getSettings()
+    });
 }
 
 function prepairSavegameChoice() {

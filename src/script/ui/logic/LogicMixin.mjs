@@ -41,8 +41,8 @@ export default class TrackerLogicMixin extends DeepLogicAbstractElement {
     constructor() {
         super();
         this.shadowRoot.appendChild(TPL.generate());
-        EventBus.on("logic", function(type, ref) {
-            if ("mixins" == type && this.ref == ref) {
+        EventBus.on("logic", function(event) {
+            if ("mixins" == event.data.type && this.ref == event.data.ref) {
                 this.update();
             }
         }.bind(this));
