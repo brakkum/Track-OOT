@@ -117,9 +117,9 @@ class HTMLTrackerPOIArea extends HTMLElement {
         this.addEventListener("click", () => EventBus.post("location-change", {
             name: this.ref
         }));
-        EventBus.on("dungeon-type-update", dungeonTypeUpdate.bind(this));
-        EventBus.on("location-update", locationUpdate.bind(this));
-        EventBus.on("item-update", itemUpdate.bind(this));
+        EventBus.on(["dungeon-type-update","net:dungeon-type-update"], dungeonTypeUpdate.bind(this));
+        EventBus.on(["location-update", "net:location-update"], locationUpdate.bind(this));
+        EventBus.on(["item-update", "net:item-update"], itemUpdate.bind(this));
         EventBus.on("location-era-change", itemUpdate.bind(this));
         EventBus.on("force-location-update", itemUpdate.bind(this));
         EventBus.on("location-mode-change", event => {

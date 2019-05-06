@@ -84,7 +84,7 @@ class HTMLMultiplayerLobby extends HTMLElement {
                         console.log(key, msg);
                         if (msg.type == "event") {
                             DeepWebRAT.sendButOne(key, msg);
-                            EventBus.post(msg.data.name, msg.data.data);
+                            EventBus.post(`net:${msg.data.name}`, msg.data.data);
                         }
                     };
                     DeepWebRAT.onconnect = function(key) {
@@ -127,7 +127,7 @@ class HTMLMultiplayerLobby extends HTMLElement {
                     if (msg.type == "state") {
                         TrackerLocalState.setState(msg.data);
                     } else if (msg.type == "event") {
-                        EventBus.post(msg.data.name, msg.data.data);
+                        EventBus.post(`net:${msg.data.name}`, msg.data.data);
                     }
                 };
                 EventBus.on([

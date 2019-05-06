@@ -137,7 +137,7 @@ class HTMLTrackerLocation extends HTMLElement {
             showLogic(this.ref);
         }.bind(this));
         /* event bus */
-        EventBus.on("location-update", locationUpdate.bind(this));
+        EventBus.on(["location-update", "net:location-update"], locationUpdate.bind(this));
         EventBus.on("force-location-update", globalUpdate.bind(this));
         EventBus.on("logic", logicUpdate.bind(this));
     }

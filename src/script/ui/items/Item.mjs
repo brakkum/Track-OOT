@@ -89,9 +89,9 @@ class HTMLTrackerItem extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
         /* event bus */
-        EventBus.on("item-update", itemUpdate.bind(this));
+        EventBus.on(["item-update", "net:item-update"], itemUpdate.bind(this));
         EventBus.on("force-item-update", updateCall.bind(this));
-        EventBus.on("dungeon-type-update", updateDungeon.bind(this));
+        EventBus.on(["dungeon-type-update","net:dungeon-type-update"], updateDungeon.bind(this));
     }
 
     connectedCallback() {

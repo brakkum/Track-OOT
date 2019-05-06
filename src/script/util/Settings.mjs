@@ -184,7 +184,7 @@ settingsEdit.addEventListener("click", function() {
     settings.show(getSettings(), 'settings');
 });
 
-settings.addEventListener('submit', function(event) {
+function onSettingsEvent(event) {
     let settings = {};
     for (let i in event.data) {
         for (let j in event.data[i]) {
@@ -219,7 +219,10 @@ settings.addEventListener('submit', function(event) {
     EventBus.post("update-settings", {
         value: settings
     });
-});
+}
+
+settings.addEventListener('submit', onSettingsEvent);
+EventBus.on("net:update-settings", onSettingsEvent);
 
 settings.addEventListener('close', function(event) {
     showUpdatePopup = true;

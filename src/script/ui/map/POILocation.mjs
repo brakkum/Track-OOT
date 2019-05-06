@@ -114,7 +114,7 @@ class HTMLTrackerPOILocation extends HTMLElement {
         this.addEventListener("click", this.check);
         this.addEventListener("contextmenu", this.uncheck);
         /* event bus */
-        EventBus.on("location-update", locationUpdate.bind(this));
+        EventBus.on(["location-update", "net:location-update"], locationUpdate.bind(this));
         EventBus.on("force-location-update", globalUpdate.bind(this));
         EventBus.on("logic", logicUpdate.bind(this));
     }

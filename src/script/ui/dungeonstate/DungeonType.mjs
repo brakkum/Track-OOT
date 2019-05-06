@@ -70,7 +70,7 @@ class HTMLTrackerDungeonType extends HTMLElement {
         this.shadowRoot.appendChild(TPL.generate());
         /* event bus */
         EventBus.on("force-dungeonstate-update", updateCall.bind(this));
-        EventBus.on("dungeon-type-update", dungeonTypeUppdate.bind(this));
+        EventBus.on(["dungeon-type-update","net:dungeon-type-update"], dungeonTypeUppdate.bind(this));
     }
 
     connectedCallback() {
