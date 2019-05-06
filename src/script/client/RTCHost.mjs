@@ -11,7 +11,7 @@ const ON_DISCONNECTED = new WeakMap();
 
 const configuration = {
     iceServers: [{
-        urls: 'stun:stun.l.google.com'
+        urls: 'stun:stun.l.google.com:19302'
     }]
 };
 
