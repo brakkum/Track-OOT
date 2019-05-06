@@ -12,7 +12,9 @@ const ON_DISCONNECTED = new WeakMap();
 const configuration = {
     iceServers: [{
         urls: [
-            'stun:stun.l.google.com'
+            'stun:stun.l.google.com',
+            'turn:turn01.hubl.in?transport=udp',
+            'turn:turn02.hubl.in?transport=tcp'
         ]
     }]
 };
