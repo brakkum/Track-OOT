@@ -61,7 +61,7 @@ class DeepWebRAT {
             let rtc = new DeepRTCHost(sig, key);
             rtc.key = key;
             rtc.onmessage = function(msg) {
-                ON_MESSAGE.get(this)(msg);
+                ON_MESSAGE.get(this)(rtc.key, msg);
             }.bind(this);
             RTC_INST.get(this).set(key, rtc);
             rtc.onconnected = function() {
@@ -104,7 +104,7 @@ class DeepWebRAT {
             let rtc = new DeepRTCClient(sig, res.key);
             rtc.key = res.key;
             rtc.onmessage = function(msg) {
-                ON_MESSAGE.get(this)(msg);
+                ON_MESSAGE.get(this)(rtc.key, msg);
             }.bind(this);
             rtc.onconnected = function() {
                 sig.close();

@@ -88,13 +88,10 @@ class HTMLMultiplayerLobby extends HTMLElement {
                             type: "state",
                             data: TrackerLocalState.getState()
                         });
-                        EventBus.on(function(name, ...args) {
+                        EventBus.on(function(event) {
                             DeepWebRAT.send({
                                 type: "event",
-                                data: {
-                                    event: name,
-                                    args: args
-                                }
+                                data: event
                             });
                         });
                     };
@@ -118,13 +115,10 @@ class HTMLMultiplayerLobby extends HTMLElement {
                 DeepWebRAT.onmessage = function(key, msg) {
                     console.log(key, msg);
                 };
-                EventBus.on(function(name, ...args) {
+                EventBus.on(function(event) {
                     DeepWebRAT.send({
                         type: "event",
-                        data: {
-                            event: name,
-                            args: args
-                        }
+                        data: event
                     });
                 });
                 this.dispatchEvent(new Event('join'));
