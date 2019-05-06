@@ -108,7 +108,7 @@ class DeepWebRAT {
         let res = await getFile(`${LOBBY_HTTP.get(this)}/lobby?action=resolve&name=${name}&pass=${pass}`, sig.UUID);
         res = await res.json();
         if (res.success === true) {
-            Logger.info(`CONNECT_TO: ${rtc.key}`, "RAT-RTC");
+            Logger.info(`CONNECT_TO: ${res.key}`, "RAT-RTC");
             let rtc = new DeepRTCClient(sig, res.key);
             rtc.key = res.key;
             rtc.onmessage = function(msg) {
