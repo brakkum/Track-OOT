@@ -40,10 +40,25 @@ class TrackerLocalState {
         return def;
     }
 
+    remove(category, key) {
+        if (!!state.hasOwnProperty(category)) {
+            if (!!state[category].hasOwnProperty(key)) {
+                delete state[category][key];
+            }
+            if (!Object.keys(state[category]).length) {
+                delete state[category];
+            }
+        }
+    }
+
     reset() {
         state = {};
         DeepSessionStorage.purge();
         Logger.info(`state resettet`, "LocalState");
+    }
+
+    categories() {
+        return Object.keys(state);
     }
 
     names(category) {

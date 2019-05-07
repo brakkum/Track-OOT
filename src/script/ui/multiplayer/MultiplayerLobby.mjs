@@ -69,6 +69,20 @@ function getState() {
     return state;
 }
 
+function setState(state) {
+    for (let i of TrackerLocalState.categories()) {
+        if (i === "shops_names") continue;
+        for (let j in TrackerLocalState.names(i)) {
+            if (i === "extras" && j === "notes") continue;
+            if (!!state[i] && !!state[i][j]) {
+                TrackerLocalState.write(i, j, state[i][j]);
+            } else {
+                TrackerLocalState.remove(i, j);
+            }
+        }
+    }
+}
+
 class HTMLMultiplayerLobby extends HTMLElement {
 
     constructor() {
@@ -140,11 +154,7 @@ class HTMLMultiplayerLobby extends HTMLElement {
             if (res.success === true) {
                 DeepWebRAT.onmessage = function(key, msg) {
                     if (msg.type == "state") {
-                        for (let i in msg.data) {
-                            for (let j in msg.data[i]) {
-                                TrackerLocalState.write(i, j, msg.data[i][j]);
-                            }
-                        }
+                        setState(msg.data);
                         EventBus.fire("force-item-update");
                         EventBus.fire("force-logic-update");
                         EventBus.fire("force-location-update");
