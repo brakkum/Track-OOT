@@ -4,18 +4,6 @@ import Logger from "/deepJS/util/Logger.mjs";
 
 let state = DeepSessionStorage.toObject();
 
-function joinData(source, target) {
-    for (let i in source) {
-        if (typeof source[i] == "object"
-        && target.hasOwnProperty(i)) {
-            joinData(source[i], target[i]);
-        } else {
-            target[i] = source[i];
-        }
-    }
-    return target;
-}
-
 class TrackerLocalState {
 
     save(name) {
@@ -70,7 +58,12 @@ class TrackerLocalState {
     }
 
     setState(value) {
-        joinData(state, JSON.parse(JSON.stringify(value)));
+        let buf = JSON.parse(JSON.stringify(value));
+        for (let i in buf) {
+            for (let j in buf[i]) {
+                this.write(i, j, buf[i][j]);
+            }
+        }
     }
 }
 
