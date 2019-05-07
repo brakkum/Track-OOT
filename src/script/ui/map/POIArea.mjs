@@ -114,7 +114,7 @@ class HTMLTrackerPOIArea extends HTMLElement {
 
     constructor() {
         super();
-        this.addEventListener("click", () => EventBus.post("location-change", {
+        this.addEventListener("click", () => EventBus.fire("location-change", {
             name: this.ref
         }));
         EventBus.on(["dungeon-type-update","net:dungeon-type-update"], dungeonTypeUpdate.bind(this));

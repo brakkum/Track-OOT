@@ -62,13 +62,13 @@ function toggleStateButtons() {
 }
 
 function throwEvents() {
-    EventBus.post("force-item-update");
-    EventBus.post("force-logic-update");
-    EventBus.post("force-location-update");
-    EventBus.post("force-shop-update");
-    EventBus.post("force-song-update");
-    EventBus.post("force-dungeonstate-update");
-    EventBus.post("state-changed");
+    EventBus.fire("force-item-update");
+    EventBus.fire("force-logic-update");
+    EventBus.fire("force-location-update");
+    EventBus.fire("force-shop-update");
+    EventBus.fire("force-song-update");
+    EventBus.fire("force-dungeonstate-update");
+    EventBus.fire("state-changed");
 }
 
 function prepairSavegameChoice() {

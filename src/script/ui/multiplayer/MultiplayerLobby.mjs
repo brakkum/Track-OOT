@@ -91,7 +91,7 @@ class HTMLMultiplayerLobby extends HTMLElement {
                     DeepWebRAT.onmessage = function(key, msg) {
                         if (msg.type == "event") {
                             DeepWebRAT.sendButOne(key, msg);
-                            EventBus.post(`net:${msg.data.name}`, msg.data.data);
+                            EventBus.fire(`net:${msg.data.name}`, msg.data.data);
                         }
                     };
                     DeepWebRAT.onconnect = function(key) {
@@ -141,12 +141,12 @@ class HTMLMultiplayerLobby extends HTMLElement {
                 DeepWebRAT.onmessage = function(key, msg) {
                     if (msg.type == "state") {
                         TrackerLocalState.setState(msg.data);
-                        EventBus.post("force-item-update");
-                        EventBus.post("force-logic-update");
-                        EventBus.post("force-location-update");
-                        EventBus.post("force-dungeonstate-update");
+                        EventBus.fire("force-item-update");
+                        EventBus.fire("force-logic-update");
+                        EventBus.fire("force-location-update");
+                        EventBus.fire("force-dungeonstate-update");
                     } else if (msg.type == "event") {
-                        EventBus.post(`net:${msg.data.name}`, msg.data.data);
+                        EventBus.fire(`net:${msg.data.name}`, msg.data.data);
                     }
                 };
                 EventBus.on([

@@ -218,7 +218,7 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
                     if (!!val) {
                         val = TrackerLocalState.read("gossipstones", data.ref || this.ref, {item: "0x00", location: "0x00"});
                     }
-                    EventBus.post("gossipstone-update", {
+                    EventBus.fire("gossipstone-update", {
                         name: data.ref || this.ref,
                         value: val
                     });

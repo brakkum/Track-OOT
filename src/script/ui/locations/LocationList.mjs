@@ -154,14 +154,14 @@ class HTMLTrackerLocationList extends HTMLElement {
         this.attributeChangedCallback("", "");
         this.shadowRoot.getElementById('location-mode').addEventListener("change", event => {
             this.mode = event.newValue;
-            EventBus.post("location-mode-change", {
+            EventBus.fire("location-mode-change", {
                 value: this.mode
             });
         });
         this.shadowRoot.getElementById('location-era').addEventListener("change", event => {
             this.era = event.newValue;
             MemoryStorage.set("active_filter", "filter_era_active", this.era);
-            EventBus.post("location-era-change", {
+            EventBus.fire("location-era-change", {
                 value: this.era
             });
         });

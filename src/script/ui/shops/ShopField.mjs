@@ -71,7 +71,7 @@ function editShop(event) {
                 el.ref = res[i].item;
                 el.price = res[i].price;
             }
-            EventBus.push("shop-items-update", {
+            EventBus.fire("shop-items-update", {
                 name: this.ref,
                 value: res
             });
@@ -87,7 +87,7 @@ function checkSlot(event) {
         let ch = TrackerLocalState.read("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
         ch[parseInt(event.target.id.slice(-1))] = 1;
         TrackerLocalState.write("shops_bought", this.ref, ch);
-        EventBus.push("shop-bought-update", {
+        EventBus.fire("shop-bought-update", {
             name: this.ref,
             value: ch
         });
@@ -102,7 +102,7 @@ function uncheckSlot(event) {
         let ch = TrackerLocalState.read("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
         ch[parseInt(event.target.id.slice(-1))] = 0;
         TrackerLocalState.write("shops_bought", this.ref, ch);
-        EventBus.push("shop-bought-update", {
+        EventBus.fire("shop-bought-update", {
             name: this.ref,
             value: ch
         });

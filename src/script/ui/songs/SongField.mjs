@@ -51,7 +51,7 @@ function editSong(event) {
             let res = builder.value;
             TrackerLocalState.write("songs", this.ref, res);
             this.shadowRoot.getElementById("stave").value = res;
-            EventBus.push("song-update", {
+            EventBus.fire("song-update", {
                 name: this.ref,
                 value: res
             });

@@ -213,14 +213,14 @@ function onSettingsEvent(event) {
         }
     }
     applySettingsChoices();
-    EventBus.post("force-item-update");
-    EventBus.post("force-location-update");
-    EventBus.post("force-logic-update");
+    EventBus.fire("force-item-update");
+    EventBus.fire("force-location-update");
+    EventBus.fire("force-logic-update");
     return settings;
 }
 
 settings.addEventListener('submit', function(event) {
-    EventBus.post("update-settings", onSettingsEvent(event));
+    EventBus.fire("update-settings", onSettingsEvent(event));
 });
 EventBus.on("net:update-settings", onSettingsEvent);
 

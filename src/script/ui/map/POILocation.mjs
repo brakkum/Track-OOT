@@ -205,7 +205,7 @@ class HTMLTrackerPOILocation extends HTMLElement {
                         }
                     }
                     TrackerLocalState.write(path[1], path[2], newValue === "false" ? false : !!newValue);
-                    EventBus.post("location-update", {
+                    EventBus.fire("location-update", {
                         name: this.ref,
                         value: newValue
                     });

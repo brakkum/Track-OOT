@@ -43,7 +43,7 @@ export default class LogicWrapper {
         VALUE.set(this, buf);
         let type = TYPE.get(this);
         let ref = REF.get(this);
-        EventBus.post("logic", {
+        EventBus.fire("logic", {
             type: type,
             ref: ref,
             value: buf

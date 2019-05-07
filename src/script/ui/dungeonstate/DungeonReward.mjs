@@ -147,7 +147,7 @@ class HTMLTrackerDungeonReward extends HTMLElement {
                         ne.classList.add("active");
                     }
                     TrackerLocalState.write("dungeonRewards", this.ref, newValue);
-                    EventBus.post("dungeon-reward-update", {
+                    EventBus.fire("dungeon-reward-update", {
                         name: this.ref,
                         value: newValue
                     });

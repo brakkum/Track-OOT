@@ -158,7 +158,7 @@ class HTMLTrackerItem extends HTMLElement {
                         ne.classList.add("active");
                     }
                     TrackerLocalState.write("items", this.ref, parseInt(newValue));
-                    EventBus.post("item-update", {
+                    EventBus.fire("item-update", {
                         name: this.ref,
                         value: newValue
                     });

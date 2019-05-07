@@ -134,7 +134,7 @@ class HTMLTrackerDungeonType extends HTMLElement {
                         ne.classList.add("active");
                     }
                     TrackerLocalState.write("dungeonTypes", this.ref, newValue);
-                    EventBus.post("dungeon-type-update", {
+                    EventBus.fire("dungeon-type-update", {
                         name: this.ref,
                         value: newValue
                     });
