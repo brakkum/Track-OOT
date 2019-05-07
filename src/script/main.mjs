@@ -21,6 +21,9 @@ import "/deepJS/ui/selection/ChoiceSelect.mjs";
     if (!!GlobalData.get("version").dev) {
         Logger.addOutput(document.getElementById("tracker-log"));
         Logger.addOutput(console);
+        EventBus.on(function(event) {
+            Logger.info(JSON.stringify(event), "Event");
+        });
     } else {
         document.getElementById("tab_log_top").style.display = "none";
         document.getElementById("tab_log_bottom").style.display = "none";

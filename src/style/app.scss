@@ -129,6 +129,10 @@ deep-choiceselect {
 
 #tracker-log {
     font-family: monospace;
+
+    &>* {
+        user-select: text;
+    }
 }
 
 #logic-board {
