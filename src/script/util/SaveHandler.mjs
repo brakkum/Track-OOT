@@ -61,31 +61,6 @@ function toggleStateButtons() {
     }
 }
 
-function getSettings() {
-    let res = {};
-    let options = GlobalData.get("settings");
-    for (let i in options) {
-        if (i != "settings") {
-            res[i] = {};
-            for (let j in options[i]) {
-                if (options[i][j].type === "list") {
-                    let def = new Set(options[i][j].default);
-                    let val = [];
-                    options[i][j].values.forEach(el => {
-                        if (TrackerLocalState.read(i, el, def.has(el))) {
-                            val.push(el);
-                        }
-                    });
-                    res[i][j] = val.join(",");
-                } else {
-                    res[i][j] = TrackerLocalState.read(i, j, options[i][j].default);
-                }
-            }
-        }
-    }
-    return res;
-}
-
 function throwEvents() {
     EventBus.post("force-item-update");
     EventBus.post("force-logic-update");

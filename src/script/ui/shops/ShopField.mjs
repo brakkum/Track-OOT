@@ -71,6 +71,10 @@ function editShop(event) {
                 el.ref = res[i].item;
                 el.price = res[i].price;
             }
+            EventBus.push("shop-items-update", {
+                name: this.ref,
+                value: res
+            });
         }
     }.bind(this));
     d.appendChild(builder);
@@ -83,6 +87,10 @@ function checkSlot(event) {
         let ch = TrackerLocalState.read("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
         ch[parseInt(event.target.id.slice(-1))] = 1;
         TrackerLocalState.write("shops_bought", this.ref, ch);
+        EventBus.push("shop-bought-update", {
+            name: this.ref,
+            value: ch
+        });
     }
     event.preventDefault();
     return false;
@@ -94,6 +102,10 @@ function uncheckSlot(event) {
         let ch = TrackerLocalState.read("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
         ch[parseInt(event.target.id.slice(-1))] = 0;
         TrackerLocalState.write("shops_bought", this.ref, ch);
+        EventBus.push("shop-bought-update", {
+            name: this.ref,
+            value: ch
+        });
     }
     event.preventDefault();
     return false;
@@ -120,6 +132,27 @@ function globalUpdate(event) {
     }
 }
 
+function shopItemUpdate(event) {
+    if (this.ref === event.data.name) {
+        TrackerLocalState.write("shops", this.ref, event.data.value);
+        for (let i = 0; i < 8; ++i) {
+            let el = this.shadowRoot.getElementById(`slot${i}`);
+            el.ref = event.data.value[i].item;
+            el.price = event.data.value[i].price;
+        }
+    }
+}
+
+function shopBoughtUpdate(event) {
+    if (this.ref === event.data.name) {
+        TrackerLocalState.write("shops_bought", this.ref, event.data.value);
+        for (let i = 0; i < 8; ++i) {
+            let el = this.shadowRoot.getElementById(`slot${i}`);
+            el.checked = !!event.data.value[i];
+        }
+    }
+}
+
 export default class HTMLTrackerShopField extends HTMLElement {
     
     constructor() {
@@ -127,6 +160,8 @@ export default class HTMLTrackerShopField extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
         EventBus.on("force-shop-update", globalUpdate.bind(this));
+        EventBus.on("net:shop-item-update", shopItemUpdate.bind(this));
+        EventBus.on("net:shop-bought-update", shopBoughtUpdate.bind(this));
         this.shadowRoot.getElementById("edit").onclick = editShop.bind(this);
         for (let i = 0; i < 8; ++i) {
             let el = this.shadowRoot.getElementById(`slot${i}`);

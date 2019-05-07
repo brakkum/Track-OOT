@@ -62,6 +62,13 @@ const TPL = new Template(`
     </div>
 `);
 
+function getState() {
+    let state = TrackerLocalState.getState();
+    delete state.extras.notes;
+    delete state.shops_names;
+    return state;
+}
+
 class HTMLMultiplayerLobby extends HTMLElement {
 
     constructor() {
@@ -90,12 +97,12 @@ class HTMLMultiplayerLobby extends HTMLElement {
                     DeepWebRAT.onconnect = function(key) {
                         DeepWebRAT.send({
                             type: "state",
-                            data: TrackerLocalState.getState()
+                            data: getState()
                         });
                         EventBus.on("state-changed", function(event) {
                             DeepWebRAT.send({
                                 type: "state",
-                                data: TrackerLocalState.getState()
+                                data: getState()
                             });
                         });
                         EventBus.on([
@@ -103,6 +110,9 @@ class HTMLMultiplayerLobby extends HTMLElement {
                             "location-update",
                             "dungeon-type-update",
                             "dungeon-reward-update",
+                            "song-update",
+                            "shop-item-update",
+                            "shop-bought-update",
                             "update-settings"
                         ], function(event) {
                             DeepWebRAT.send({
@@ -144,6 +154,9 @@ class HTMLMultiplayerLobby extends HTMLElement {
                     "location-update",
                     "dungeon-type-update",
                     "dungeon-reward-update",
+                    "song-update",
+                    "shop-item-update",
+                    "shop-bought-update",
                     "update-settings"
                 ], function(event) {
                     DeepWebRAT.send({

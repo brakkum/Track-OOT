@@ -51,6 +51,10 @@ function editSong(event) {
             let res = builder.value;
             TrackerLocalState.write("songs", this.ref, res);
             this.shadowRoot.getElementById("stave").value = res;
+            EventBus.push("song-update", {
+                name: this.ref,
+                value: res
+            });
         }
     }.bind(this));
     d.appendChild(builder);
@@ -62,6 +66,13 @@ function globalUpdate(event) {
     this.shadowRoot.getElementById("stave").value = TrackerLocalState.read("songs", this.ref, data.notes)
 }
 
+function songUpdate(event) {
+    if (this.ref === event.data.name) {
+        TrackerLocalState.write("songs", this.ref, event.data.value);
+        this.shadowRoot.getElementById("stave").value = event.data.value;
+    }
+}
+
 export default class HTMLTrackerSongField extends HTMLElement {
     
     constructor() {
@@ -69,6 +80,7 @@ export default class HTMLTrackerSongField extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
         EventBus.on("force-song-update", globalUpdate.bind(this));
+        EventBus.on("net:song-update", songUpdate.bind(this));
     }
 
     get ref() {
