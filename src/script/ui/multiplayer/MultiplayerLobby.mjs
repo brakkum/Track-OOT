@@ -140,13 +140,17 @@ class HTMLMultiplayerLobby extends HTMLElement {
             if (res.success === true) {
                 DeepWebRAT.onmessage = function(key, msg) {
                     if (msg.type == "state") {
-                        TrackerLocalState.setState(msg.data);
+                        for (let i in msg.data) {
+                            for (let j in msg.data[i]) {
+                                TrackerLocalState.write(i, j, msg.data[i][j]);
+                            }
+                        }
                         EventBus.fire("force-item-update");
                         EventBus.fire("force-logic-update");
                         EventBus.fire("force-location-update");
-                        EventBus.fire("force-dungeonstate-update");
                         EventBus.fire("force-shop-update");
                         EventBus.fire("force-song-update");
+                        EventBus.fire("force-dungeonstate-update");
                     } else if (msg.type == "event") {
                         EventBus.fire(`net:${msg.data.name}`, msg.data.data);
                     }

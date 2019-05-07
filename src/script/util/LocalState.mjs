@@ -56,15 +56,6 @@ class TrackerLocalState {
     getState() {
         return JSON.parse(JSON.stringify(state));
     }
-
-    setState(value) {
-        let buf = JSON.parse(JSON.stringify(value));
-        for (let i in buf) {
-            for (let j in buf[i]) {
-                this.write(i, j, buf[i][j]);
-            }
-        }
-    }
 }
 
 export default new TrackerLocalState;
