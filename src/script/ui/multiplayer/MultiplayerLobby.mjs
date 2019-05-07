@@ -122,6 +122,7 @@ class HTMLMultiplayerLobby extends HTMLElement {
                         EventBus.on([
                             "item-update",
                             "location-update",
+                            "gossipstone-update",
                             "dungeon-type-update",
                             "dungeon-reward-update",
                             "song-update",
@@ -168,6 +169,7 @@ class HTMLMultiplayerLobby extends HTMLElement {
                 EventBus.on([
                     "item-update",
                     "location-update",
+                    "gossipstone-update",
                     "dungeon-type-update",
                     "dungeon-reward-update",
                     "song-update",

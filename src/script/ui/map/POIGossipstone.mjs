@@ -86,9 +86,9 @@ const TPL = new Template(`
 
 function gossipstoneUpdate(event) {
     let ref = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref].ref || this.ref;
-    if (ref === event.data.name && this.shadowRoot.getElementById("text").classList.contains("checked") !== event.data.value) {
+    if (ref === event.data.name) {
         EventBus.mute("gossipstone-update");
-        this.setValue(TrackerLocalState.read("gossipstones", ref, {item: "0x01", location: "0x01"}));
+        this.setValue(event.data.value);
         EventBus.unmute("gossipstone-update");
     }
 }
@@ -120,7 +120,7 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
         this.addEventListener("click", this.check);
-        EventBus.on("gossipstone-update", gossipstoneUpdate.bind(this));
+        EventBus.on(["gossipstone-update","net:gossipstone-update"], gossipstoneUpdate.bind(this));
         EventBus.on("force-location-update", globalUpdate.bind(this));
         EventBus.on("logic", logicUpdate.bind(this));
     }
@@ -205,7 +205,6 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
             break;
             case 'checked':
                 if (oldValue != newValue) {
-                    let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
                     if (!newValue || newValue === "false") {
                         let el = this.shadowRoot.getElementById("marker");
                         if (Logic.getValue("gossipstones", this.ref)) {
@@ -214,14 +213,6 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
                             el.classList.remove("avail");
                         }
                     }
-                    let val = newValue != "false";
-                    if (!!val) {
-                        val = TrackerLocalState.read("gossipstones", data.ref || this.ref, {item: "0x00", location: "0x00"});
-                    }
-                    EventBus.fire("gossipstone-update", {
-                        name: data.ref || this.ref,
-                        value: val
-                    });
                 }
             break;
         }
@@ -258,6 +249,11 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
                 }
             }
         }
+        let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
+        EventBus.fire("gossipstone-update", {
+            name: data.ref || this.ref,
+            value: value
+        });
     }
 
 }
