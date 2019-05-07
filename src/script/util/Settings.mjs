@@ -220,9 +220,7 @@ function onSettingsEvent(event) {
 }
 
 settings.addEventListener('submit', function(event) {
-    EventBus.post("update-settings", {
-        value: onSettingsEvent(event)
-    });
+    EventBus.post("update-settings", onSettingsEvent(event));
 });
 EventBus.on("net:update-settings", onSettingsEvent);
 
