@@ -160,7 +160,7 @@ export default class HTMLTrackerShopField extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(TPL.generate());
         EventBus.on("force-shop-update", globalUpdate.bind(this));
-        EventBus.on("net:shop-item-update", shopItemUpdate.bind(this));
+        EventBus.on("net:shop-items-update", shopItemUpdate.bind(this));
         EventBus.on("net:shop-bought-update", shopBoughtUpdate.bind(this));
         this.shadowRoot.getElementById("edit").onclick = editShop.bind(this);
         for (let i = 0; i < 8; ++i) {

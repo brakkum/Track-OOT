@@ -111,7 +111,7 @@ class HTMLMultiplayerLobby extends HTMLElement {
                             "dungeon-type-update",
                             "dungeon-reward-update",
                             "song-update",
-                            "shop-item-update",
+                            "shop-items-update",
                             "shop-bought-update",
                             "update-settings"
                         ], function(event) {
@@ -145,6 +145,8 @@ class HTMLMultiplayerLobby extends HTMLElement {
                         EventBus.fire("force-logic-update");
                         EventBus.fire("force-location-update");
                         EventBus.fire("force-dungeonstate-update");
+                        EventBus.fire("force-shop-update");
+                        EventBus.fire("force-song-update");
                     } else if (msg.type == "event") {
                         EventBus.fire(`net:${msg.data.name}`, msg.data.data);
                     }
@@ -155,7 +157,7 @@ class HTMLMultiplayerLobby extends HTMLElement {
                     "dungeon-type-update",
                     "dungeon-reward-update",
                     "song-update",
-                    "shop-item-update",
+                    "shop-items-update",
                     "shop-bought-update",
                     "update-settings"
                 ], function(event) {
