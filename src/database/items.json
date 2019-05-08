@@ -6,11 +6,13 @@
     },
     "hookshot": {
         "max": 2,
+        "mark": false,
         "images": [
             "hookshot_small.png",
             "hookshot_small.png",
             "hookshot_long.png"
-        ]
+        ],
+        "counting": ["", "H", "L"]
     },
     "hammer":{
         "max": 1,
@@ -282,20 +284,24 @@
     
     "glove":{
         "max": 3,
+        "mark": false,
         "images": [
             "glove_goron.png",
             "glove_goron.png",
             "glove_silver.png",
             "glove_gold.png"
-        ]
+        ],
+        "counting": ["", "", "S", "G"]
     },
     "scale":{
         "max": 2,
+        "mark": false,
         "images": [
             "scale_silver.png",
             "scale_silver.png",
             "scale_gold.png"
-        ]
+        ],
+        "counting": ["", "S", "G"]
     },
     "stone_of_agony":{
         "max": 1,
@@ -303,11 +309,13 @@
     },
     "magic_power":{
         "max": 2,
+        "mark": false,
         "images": [
             "magic_power_small.png",
             "magic_power_small.png",
             "magic_power_big.png"
-        ]
+        ],
+        "counting": ["", "", "+"]
     },
     "zora_letter":{
         "max": 1,

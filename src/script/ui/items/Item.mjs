@@ -304,8 +304,11 @@ function createOption(value, img, data, max_value) {
                 opt.innerHTML = value;
             }
         }
-        if (value >= max_value || !!data.mark && value >= data.mark) {
-            opt.classList.add("mark");
+        if (data.mark !== false) {
+            let mark = parseInt(data.mark);
+            if (value >= max_value || !isNaN(mark) && value >= mark) {
+                opt.classList.add("mark");
+            }
         }
     }
     return opt;

@@ -14,3 +14,9 @@ Version:        1.4.0
 
 ### REWORK EVENTS
 - events got generalised
+
+### ITEM MARKER FOR READABILITY
+- hookshot marker [H/L]
+- gloves marker [S/G]
+- scale marker [S/G]
+- 2nd magic marker [+]
