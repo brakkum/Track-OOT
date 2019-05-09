@@ -1,5 +1,5 @@
 
-import Logger from "./Logger.mjs";
+import Logger from "/deepJS/util/Logger.mjs";
 import DeepMessageBuffer from "./MessageBuffer.mjs";
 
 const MESSAGE_BUFFER = new WeakMap();
