@@ -1,5 +1,8 @@
 
-import Logger from "/deepJS/util/Logger.mjs";
+import Logger from "./Logger.mjs";
+import DeepMessageBuffer from "./MessageBuffer.mjs";
+
+const MESSAGE_BUFFER = new WeakMap();
 
 const RTC = new WeakMap();
 const DCH = new WeakMap();
@@ -21,6 +24,7 @@ export default class DeepRTCClient {
         ON_MESSAGE.set(this, EMPTY_FN);
         ON_CONNECTED.set(this, EMPTY_FN);
         ON_DISCONNECTED.set(this, EMPTY_FN);
+        MESSAGE_BUFFER.set(this, new DeepMessageBuffer());
         let rtc = new RTCPeerConnection(configuration);
         RTC.set(this, rtc);
         rtc.onconnectionstatechange = function (event) {
@@ -28,6 +32,10 @@ export default class DeepRTCClient {
         }.bind(this);
         let dch = rtc.createDataChannel("data");
         dch.onopen = function(event) {
+            MESSAGE_BUFFER.get(this).each(function(msg) {
+                dch.send(msg);
+            });
+            DCH.set(this, dch);
             ON_CONNECTED.get(this)();
         }.bind(this);
         dch.onclose = function(event) {
@@ -36,7 +44,6 @@ export default class DeepRTCClient {
         dch.onmessage = function(event) {
             ON_MESSAGE.get(this)(JSON.parse(event.data));
         }.bind(this);
-        DCH.set(this, dch);
         rtc.onicecandidate = function(event) {
             sigCh.sendICE(reciever, event.candidate);
         };
@@ -62,7 +69,11 @@ export default class DeepRTCClient {
     }
 
     send(msg) {
-        DCH.get(this).send(JSON.stringify(msg));
+        if (DCH.has(this)) {
+            DCH.get(this).send(JSON.stringify(msg));
+        } else {
+            MESSAGE_BUFFER.get(this).add(JSON.stringify(msg));
+        }
     }
 
     set onmessage(value) {
