@@ -64,8 +64,12 @@ const TPL = new Template(`
 
 function getState() {
     let state = TrackerLocalState.getState();
-    delete state.extras.notes;
-    delete state.shops_names;
+    if (!!state.extras && !!state.extras.notes) {
+        delete state.extras.notes;
+    }
+    if (!!state.shops_names) {
+        delete state.shops_names;
+    }
     return state;
 }
 
