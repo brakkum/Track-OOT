@@ -28,7 +28,7 @@ export default class TrackerLogicItem extends DeepLogicAbstractElement {
         super();
         this.shadowRoot.appendChild(TPL.generate());
         EventBus.on(["item-update", "net:item-update"], function(event) {
-            if (event.data.ref == this.ref) {
+            if (event.data.name == this.ref) {
                 this.update();
             }
         }.bind(this));

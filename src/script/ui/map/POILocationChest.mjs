@@ -81,25 +81,21 @@ const TPL = new Template(`
 function locationUpdate(event) {
     if (this.ref === event.data.name && this.checked !== event.data.value) {
         EventBus.mute("location-update");
-        EventBus.mute("external-location-update"); // quick fix
         this.checked = event.data.value;
         EventBus.unmute("location-update");
-        EventBus.unmute("external-location-update"); // quick fix
     }
 }
 
 function globalUpdate(event) {
     let path = this.ref.split(".");
     EventBus.mute("location-update");
-    EventBus.mute("external-location-update"); // quick fix
-    this.checked = TrackerLocalState.read(path[1], path[2], false);
+    this.checked = TrackerLocalState.read("chests", path[2], false);
     EventBus.unmute("location-update");
-    EventBus.unmute("external-location-update"); // quick fix
 }
 
 function logicUpdate(event) {
     let path = this.ref.split(".");
-    if (path[1] == event.data.type && path[2] == event.data.ref) {
+    if (event.data.type == "chests" && event.data.ref == path[2]) {
         let el = this.shadowRoot.getElementById("marker");
         if (!!event.data.value) {
             el.classList.add("avail");
@@ -109,7 +105,7 @@ function logicUpdate(event) {
     }
 }
 
-class HTMLTrackerPOILocation extends HTMLElement {
+class HTMLTrackerPOILocationChest extends HTMLElement {
 
     constructor() {
         super();
@@ -119,7 +115,6 @@ class HTMLTrackerPOILocation extends HTMLElement {
         this.addEventListener("contextmenu", this.uncheck);
         /* event bus */
         EventBus.on(["location-update", "net:location-update"], locationUpdate.bind(this));
-        EventBus.on(["external-location-update", "net:external-location-update"], locationUpdate.bind(this)); // quick fix
         EventBus.on("force-location-update", globalUpdate.bind(this));
         EventBus.on("logic", logicUpdate.bind(this));
     }
@@ -149,7 +144,7 @@ class HTMLTrackerPOILocation extends HTMLElement {
             case 'ref':
                 if (oldValue != newValue) {
                     let path = newValue.split('.');
-                    let data = GlobalData.get("locations")["overworld"][`${path[1]}_v`][path[2]];
+                    let data = GlobalData.get("locations")["overworld"][path[1]][path[2]];
                     let txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = I18n.translate(path[2]);
                     
@@ -189,13 +184,13 @@ class HTMLTrackerPOILocation extends HTMLElement {
                     this.shadowRoot.getElementById("badge").appendChild(el_era);
                     
                     let el = this.shadowRoot.getElementById("marker");
-                    if (Logic.getValue(path[1], path[2])) {
+                    if (Logic.getValue("chests", path[2])) {
                         el.classList.add("avail");
                     } else {
                         el.classList.remove("avail");
                     }
 
-                    this.checked = TrackerLocalState.read(path[1], path[2], false);
+                    this.checked = TrackerLocalState.read("chests", path[2], false);
                 }
             break;
             case 'checked':
@@ -203,18 +198,14 @@ class HTMLTrackerPOILocation extends HTMLElement {
                     let path = this.ref.split(".");
                     if (!newValue || newValue === "false") {
                         let el = this.shadowRoot.getElementById("marker");
-                        if (Logic.getValue(path[1], path[2])) {
+                        if (Logic.getValue("chests", path[2])) {
                             el.classList.add("avail");
                         } else {
                             el.classList.remove("avail");
                         }
                     }
-                    TrackerLocalState.write(path[1], path[2], newValue === "false" ? false : !!newValue);
+                    TrackerLocalState.write("chests", path[2], newValue === "false" ? false : !!newValue);
                     EventBus.fire("location-update", {
-                        name: this.ref,
-                        value: newValue
-                    });
-                    EventBus.fire("external-location-update", { // quick fix
                         name: this.ref,
                         value: newValue
                     });
@@ -241,4 +232,4 @@ class HTMLTrackerPOILocation extends HTMLElement {
 
 }
 
-customElements.define('ootrt-poilocation', HTMLTrackerPOILocation);
+customElements.define('ootrt-poilocationchest', HTMLTrackerPOILocationChest);

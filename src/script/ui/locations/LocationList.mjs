@@ -7,7 +7,8 @@ import TrackerLocalState from "/script/util/LocalState.mjs";
 import I18n from "/script/util/I18n.mjs";
 import Logic from "/script/util/Logic.mjs";
 import "../dungeonstate/DungeonType.mjs";
-import "./Location.mjs";
+import "./LocationChest.mjs";
+import "./LocationSkulltula.mjs";
 import "./Gossipstone.mjs";
 
 const TPL = new Template(`
@@ -100,6 +101,49 @@ const TPL = new Template(`
     </div>
 `);
 
+const LOCATION_ELEMENTS = new Map();
+
+function generateLocations() {
+    let data = GlobalData.get("locations");
+    if (!!data.overworld && !!data.overworld.gossipstones_v) {
+        for (let i in data.overworld.gossipstones_v) {
+            let el = document.createElement('ootrt-listgossipstone');
+            el.ref = i;
+            LOCATION_ELEMENTS.set(`G:${i}`, el);
+        }
+    }
+    for (let i in data) {
+        if (!!data[i].chests_v) {
+            for (let j in data[i].chests_v) {
+                let el = document.createElement('ootrt-listlocationchest');
+                el.ref = `${i}.chests_v.${j}`;
+                LOCATION_ELEMENTS.set(`${i}.chests_v.${j}`, el);
+            }
+        }
+        if (!!data[i].skulltulas_v) {
+            for (let j in data[i].skulltulas_v) {
+                let el = document.createElement('ootrt-listlocationskulltula');
+                el.ref = `${i}.skulltulas_v.${j}`;
+                LOCATION_ELEMENTS.set(`${i}.skulltulas_v.${j}`, el);
+            }
+        }
+        if (!!data[i].chests_mq) {
+            for (let j in data[i].chests_mq) {
+                let el = document.createElement('ootrt-listlocationchest');
+                el.ref = `${i}.chests_mq.${j}`;
+                LOCATION_ELEMENTS.set(`${i}.chests_mq.${j}`, el);
+            }
+        }
+        if (!!data[i].skulltulas_mq) {
+            for (let j in data[i].skulltulas_mq) {
+                let el = document.createElement('ootrt-listlocationskulltula');
+                el.ref = `${i}.skulltulas_mq.${j}`;
+                LOCATION_ELEMENTS.set(`${i}.skulltulas_mq.${j}`, el);
+            }
+        }
+    }
+}
+
 function translate(value) {
     switch (value) {
         case 0b100: return "available";
@@ -144,6 +188,7 @@ class HTMLTrackerLocationList extends HTMLElement {
 
     constructor() {
         super();
+        generateLocations();
         EventBus.on("location-change", event => this.ref = event.data.name);
         EventBus.on(["dungeon-type-update", "net:dungeon-type-update"], dungeonTypeUppdate.bind(this));
         EventBus.on(["location-update", "net:location-update"], locationUpdate.bind(this));
@@ -208,8 +253,7 @@ class HTMLTrackerLocationList extends HTMLElement {
                     Object.keys(data).forEach(i => {
                         let buf = data[i];
                         if (!buf.era || !this.era || this.era === buf.era) {
-                            let el = document.createElement('ootrt-listgossipstone');
-                            el.ref = i;
+                            let el = LOCATION_ELEMENTS.get(`G:${i}`);
                             cnt.appendChild(el);
                         }
                     });
@@ -265,11 +309,8 @@ class HTMLTrackerLocationList extends HTMLElement {
                                     let buf = data[i];
                                     if (!buf.era || !this.era || this.era === buf.era) {
                                         if (!buf.mode || TrackerLocalState.read("options", buf.mode, false)) {
-                                            EventBus.mute("external-location-update"); // quick fix
-                                            let el = document.createElement('ootrt-listlocation');
-                                            el.ref = `${this.ref}.${this.mode}.${i}`;
+                                            let el = LOCATION_ELEMENTS.get(`${this.ref}.${this.mode}_${dType}.${i}`);
                                             cnt.appendChild(el);
-                                            EventBus.unmute("external-location-update"); // quick fix
                                         }
                                     }
                                 });
