@@ -62,7 +62,7 @@ const TPL = new Template(`
 function locationUpdate(event) {
     if (this.ref === event.data.name && this.checked !== event.data.value) {
         EventBus.mute("location-update");
-        this.checked = value;
+        this.checked = event.data.value;
         EventBus.unmute("location-update");
     }
 }
