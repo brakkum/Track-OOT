@@ -110,6 +110,7 @@ function translate(value) {
 }
 
 function locationUpdate(event) {
+    EventBus.mute("external-location-update"); // quick fix
     if ((!this.ref || this.ref === "") && this.mode != "gossipstones") {
         this.shadowRoot.querySelector('#title').className = "";
         let ch = Array.from(this.shadowRoot.getElementById("body").children);
@@ -132,6 +133,7 @@ function locationUpdate(event) {
             this.shadowRoot.querySelector('#title').className = translate(Logic.checkLogicList(this.mode, this.ref || "overworld"));
         }
     }
+    EventBus.unmute("external-location-update"); // quick fix
 }
 
 function dungeonTypeUppdate(event) {

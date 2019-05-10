@@ -121,7 +121,8 @@ class HTMLMultiplayerLobby extends HTMLElement {
                         });
                         EventBus.on([
                             "item-update",
-                            "location-update",
+                            //"location-update",
+                            "external-location-update", // quick fix
                             "gossipstone-update",
                             "dungeon-type-update",
                             "dungeon-reward-update",
@@ -168,7 +169,8 @@ class HTMLMultiplayerLobby extends HTMLElement {
                 };
                 EventBus.on([
                     "item-update",
-                    "location-update",
+                    //"location-update",
+                    "external-location-update", // quick fix
                     "gossipstone-update",
                     "dungeon-type-update",
                     "dungeon-reward-update",

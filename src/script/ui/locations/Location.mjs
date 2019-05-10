@@ -62,16 +62,20 @@ const TPL = new Template(`
 function locationUpdate(event) {
     if (this.ref === event.data.name && this.checked !== event.data.value) {
         EventBus.mute("location-update");
+        EventBus.mute("external-location-update"); // quick fix
         this.checked = value;
         EventBus.unmute("location-update");
+        EventBus.unmute("external-location-update"); // quick fix
     }
 }
 
 function globalUpdate(event) {
     let path = this.ref.split(".");
     EventBus.mute("location-update");
+    EventBus.mute("external-location-update"); // quick fix
     this.checked = TrackerLocalState.read(path[1], path[2], false);
     EventBus.unmute("location-update");
+    EventBus.unmute("external-location-update"); // quick fix
 }
 
 function logicUpdate(event) {
@@ -138,6 +142,7 @@ class HTMLTrackerLocation extends HTMLElement {
         }.bind(this));
         /* event bus */
         EventBus.on(["location-update", "net:location-update"], locationUpdate.bind(this));
+        EventBus.on(["external-location-update", "net:external-location-update"], locationUpdate.bind(this)); // quick fix
         EventBus.on("force-location-update", globalUpdate.bind(this));
         EventBus.on("logic", logicUpdate.bind(this));
     }
@@ -205,6 +210,10 @@ class HTMLTrackerLocation extends HTMLElement {
                     }
                     TrackerLocalState.write(path[1], path[2], newValue === "false" ? false : !!newValue);
                     EventBus.fire("location-update", {
+                        name: this.ref,
+                        value: newValue
+                    });
+                    EventBus.fire("external-location-update", { // quick fix
                         name: this.ref,
                         value: newValue
                     });
