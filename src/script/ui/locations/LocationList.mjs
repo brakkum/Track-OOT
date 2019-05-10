@@ -110,7 +110,6 @@ function translate(value) {
 }
 
 function locationUpdate(event) {
-    EventBus.mute("external-location-update"); // quick fix
     if ((!this.ref || this.ref === "") && this.mode != "gossipstones") {
         this.shadowRoot.querySelector('#title').className = "";
         let ch = Array.from(this.shadowRoot.getElementById("body").children);
@@ -133,7 +132,6 @@ function locationUpdate(event) {
             this.shadowRoot.querySelector('#title').className = translate(Logic.checkLogicList(this.mode, this.ref || "overworld"));
         }
     }
-    EventBus.unmute("external-location-update"); // quick fix
 }
 
 function dungeonTypeUppdate(event) {
@@ -267,9 +265,11 @@ class HTMLTrackerLocationList extends HTMLElement {
                                     let buf = data[i];
                                     if (!buf.era || !this.era || this.era === buf.era) {
                                         if (!buf.mode || TrackerLocalState.read("options", buf.mode, false)) {
+                                            EventBus.mute("external-location-update"); // quick fix
                                             let el = document.createElement('ootrt-listlocation');
                                             el.ref = `${this.ref}.${this.mode}.${i}`;
                                             cnt.appendChild(el);
+                                            EventBus.unmute("external-location-update"); // quick fix
                                         }
                                     }
                                 });
