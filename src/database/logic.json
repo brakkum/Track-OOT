@@ -2262,6 +2262,19 @@
                 }
             ]
         },
+        "zora_river_bean_salesman": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "scale"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                }
+            ]
+        },
         "deku_lobby": {
             "type": "mixin",
             "el": "deku_tree_access"
