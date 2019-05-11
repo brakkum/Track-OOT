@@ -20,3 +20,6 @@ Version:        1.4.0
 - gloves marker [S/G]
 - scale marker [S/G]
 - 2nd magic marker [+]
+
+### PREFORMANCE
+- location elements wll now be cached, increasing overall performance
