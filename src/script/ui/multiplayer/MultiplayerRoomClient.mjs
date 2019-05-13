@@ -1,18 +1,27 @@
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import DeepWebRAT from "/script/client/WebRAT.mjs";
+import "./MPHost.mjs";
+import "./MPClient.mjs";
 
 const TPL = new Template(`
     <style>
         :host {
             display: flex;
         }
+        .empty-message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: #ffffff;
+        }
     </style>
     <div id="online-room-container">
         <div id="room-list" class="view-container-title">Room (proof of concept) <button id="leave_button">leave</button></div>
-        <div id="room-peer-list">
-
-        </div>
+        <slot id="room-peer-list">
+            <div class="empty-message">The room is empty</div>
+        </slot>
     </div>
 `);
 
