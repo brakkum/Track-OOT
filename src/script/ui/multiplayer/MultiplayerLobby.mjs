@@ -2,7 +2,7 @@ import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import Dialog from "/deepJS/ui/Dialog.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
-import DeepWebRAT from "/script/client/WebRAT.mjs";
+import RATController from "/script/util/RATController.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
 import "./MPRoom.mjs";
 
@@ -12,10 +12,22 @@ const TPL = new Template(`
             display: flex;
             flex-direction: column;
         }
+        #content {
+            display: flex;
+            flex: 1;
+            padding: 0 0 20px;
+        }
         #lobby_list {
             flex: 1;
             overflox-y: auto;
             overflow-x: hidden;
+        }
+        #overlay {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
         }
         #lobby_register {
             display: flex;
@@ -42,9 +54,12 @@ const TPL = new Template(`
         }
     </style>
     <div class="view-container-title">Multiplayer Lobby (proof of concept) <button id="refresh_button">refresh</button></div>
-    <slot id="lobby_list">
-        <div class="empty-message">No rooms found.<br>Please press refresh!</div>
-    </slot>
+    <div id="content">
+        <slot id="lobby_list">
+            <div class="empty-message">No rooms found.<br>Please press refresh!</div>
+        </slot>
+        <div id="overlay"></div>
+    </div>
     <div id="lobby_register">
         <label class="label-top flex-200px">
             <span>Room name:</span>
@@ -62,31 +77,6 @@ const TPL = new Template(`
     </div>
 `);
 
-function getState() {
-    let state = TrackerLocalState.getState();
-    if (!!state.extras && !!state.extras.notes) {
-        delete state.extras.notes;
-    }
-    if (!!state.shops_names) {
-        delete state.shops_names;
-    }
-    return state;
-}
-
-function setState(state) {
-    for (let i of TrackerLocalState.categories()) {
-        if (i === "shops_names") continue;
-        for (let j of TrackerLocalState.names(i)) {
-            if (i === "extras" && j === "notes") continue;
-            if (!!state[i] && !!state[i][j]) {
-                TrackerLocalState.write(i, j, state[i][j]);
-            } else {
-                TrackerLocalState.remove(i, j);
-            }
-        }
-    }
-}
-
 class HTMLMultiplayerLobby extends HTMLElement {
 
     constructor() {
@@ -103,45 +93,9 @@ class HTMLMultiplayerLobby extends HTMLElement {
 
         host_button.addEventListener("click", async function() {
             if (!!host_name.value) {
-                let res = await DeepWebRAT.register(host_name.value, host_pass.value, host_desc.value);
-                if (res.success === true) {
-                    DeepWebRAT.onmessage = function(key, msg) {
-                        if (msg.type == "event") {
-                            DeepWebRAT.sendButOne(key, msg);
-                            EventBus.fire(`net:${msg.data.name}`, msg.data.data);
-                        }
-                    };
-                    DeepWebRAT.onconnect = function(key) {
-                        DeepWebRAT.send({
-                            type: "state",
-                            data: getState()
-                        });
-                        EventBus.on("state-changed", function(event) {
-                            DeepWebRAT.send({
-                                type: "state",
-                                data: getState()
-                            });
-                        });
-                        EventBus.on([
-                            "item-update",
-                            "location-update",
-                            "gossipstone-update",
-                            "dungeon-type-update",
-                            "dungeon-reward-update",
-                            "song-update",
-                            "shop-items-update",
-                            "shop-bought-update",
-                            "update-settings"
-                        ], function(event) {
-                            DeepWebRAT.send({
-                                type: "event",
-                                data: event
-                            });
-                        });
-                    };
-                    this.dispatchEvent(new Event('create'));
-                } else {
-                    // show error message
+                let res = await RATController.host(host_name.value, host_pass.value, host_desc.value);
+                if (!!res) {
+                    this.dispatchEvent(new Event('host'));
                 }
             }
         }.bind(this));
@@ -151,49 +105,18 @@ class HTMLMultiplayerLobby extends HTMLElement {
             let res;
             if (!!el.pass && el.pass != "false") {
                 let pass = await Dialog.prompt("pasword required", "please enter password");
-                res = await DeepWebRAT.connect(el.name, pass);
+                res = await RATController.connect(el.name, pass);
             } else {
-                res = await DeepWebRAT.connect(el.name);
+                res = await RATController.connect(el.name);
             }
-            if (res.success === true) {
-                DeepWebRAT.onmessage = function(key, msg) {
-                    if (msg.type == "state") {
-                        setState(msg.data);
-                        EventBus.fire("force-item-update");
-                        EventBus.fire("force-logic-update");
-                        EventBus.fire("force-location-update");
-                        EventBus.fire("force-shop-update");
-                        EventBus.fire("force-song-update");
-                        EventBus.fire("force-dungeonstate-update");
-                    } else if (msg.type == "event") {
-                        EventBus.fire(`net:${msg.data.name}`, msg.data.data);
-                    }
-                };
-                EventBus.on([
-                    "item-update",
-                    "location-update",
-                    "gossipstone-update",
-                    "dungeon-type-update",
-                    "dungeon-reward-update",
-                    "song-update",
-                    "shop-items-update",
-                    "shop-bought-update",
-                    "update-settings"
-                ], function(event) {
-                    DeepWebRAT.send({
-                        type: "event",
-                        data: event
-                    });
-                });
+            if (!!res) {
                 this.dispatchEvent(new Event('join'));
             }
         }.bind(this);
 
         let refresh = async function() {
             let res = await DeepWebRAT.getInstances();
-
             this.innerHTML = "";
-
             if (!!res) {
                 res.forEach(function(inst) {
                     let el = document.createElement("ootrt-mproom");

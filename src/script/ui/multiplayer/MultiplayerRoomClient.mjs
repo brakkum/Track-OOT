@@ -1,6 +1,6 @@
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
-import DeepWebRAT from "/script/client/WebRAT.mjs";
+import RATController from "/script/util/RATController.mjs";
 import "./MPHost.mjs";
 import "./MPClient.mjs";
 
@@ -35,9 +35,29 @@ class HTMLMultiplayerRoomClient extends HTMLElement {
         let leave_button = this.shadowRoot.getElementById("leave_button");
 
         leave_button.addEventListener("click", async function() {
-            await DeepWebRAT.disconnect();
+            await RATController.disconnect();
             this.dispatchEvent(new Event('leave'));
         }.bind(this));
+    }
+
+    updateRoom(data) {
+        this.innerHTML = "";
+        if (!!data.host) {
+            let el = document.createElement("ootrt-mphost");
+            el.name = inst.name;
+            el.pass = inst.pass;
+            el.desc = inst.desc;
+            this.appendChild(el);
+        }
+        if (!!data.peers) {
+            res.forEach(function(inst) {
+                let el = document.createElement("ootrt-mpclient");
+                el.name = inst.name;
+                el.pass = inst.pass;
+                el.desc = inst.desc;
+                this.appendChild(el);
+            });
+        }
     }
 
 }

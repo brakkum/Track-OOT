@@ -8,6 +8,9 @@ let username = "";
 let clients = new Map;
 let clientData = new Map;
 
+const EMPTY_FN = function() {};
+let ON_ROOMUPDATE = EMPTY_FN;
+
 function getState() {
     let state = TrackerLocalState.getState();
     if (!!state.extras && !!state.extras.notes) {
@@ -41,9 +44,13 @@ function getClientNameList() {
 }
 
 class RATController {
-    
-    constructor() {
 
+    set onroomupdate(value) {
+        if (typeof value == "function") {
+            ON_ROOMUPDATE = value;
+        } else {
+            ON_ROOMUPDATE = EMPTY_FN;
+        }
     }
 
     async host(name, pass, desc) {
@@ -59,6 +66,10 @@ class RATController {
         } else {
             await Dialog.alert("Error registering to Lobby", "Can not register a room without a name.");
         }
+    }
+
+    async close() {
+        await DeepWebRAT.unregister();
     }
 
     async connect(name, pass) {
@@ -86,6 +97,10 @@ class RATController {
         }
     }
 
+    async disconnect() {
+        await DeepWebRAT.disconnect();
+    }
+
 }
 
 export default new RATController;
@@ -105,7 +120,7 @@ async function promtName() {
 function onJoined() {
     DeepWebRAT.onmessage = function(key, msg) {
         if (msg.type == "room") {
-            //EventBus.fire("room-change", msg.data);
+            ON_ROOMUPDATE(msg.data);
         } else if (msg.type == "state") {
             setState(msg.data);
             EventBus.fire("force-item-update");
@@ -134,7 +149,6 @@ function onJoined() {
             data: event
         });
     });
-    // this.dispatchEvent(new Event('join'));
 }
 
 async function onHosting() {
@@ -155,7 +169,7 @@ async function onHosting() {
                     name: msg.data,
                     write: true // TODO
                 });
-                //EventBus.fire("room-change", msg.data);
+                ON_ROOMUPDATE(msg.data);
             }
         } else if (msg.type == "event") {
             if (permissions)
@@ -195,5 +209,4 @@ async function onHosting() {
             });
         });
     };
-    //this.dispatchEvent(new Event('create'));
 }
