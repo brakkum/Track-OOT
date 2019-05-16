@@ -1,4 +1,6 @@
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import Dialog from "/deepJS/ui/Dialog.mjs";
+import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.mjs";
 import "/deepJS/ui/logic/LogicEditorClipboard.mjs";
 import "/deepJS/ui/logic/LogicEditorTrashcan.mjs";
 import "/deepJS/ui/logic/LogicEditorWorkingarea.mjs";
@@ -19,6 +21,14 @@ import "/script/ui/logic/LogicFilter.mjs";
 import EditorLogic from "/script/editor/Logic.mjs";
 import "/script/editor/Navigation.mjs";
 import I18n from "/script/util/I18n.mjs";
+
+const LOGIC_OPERATORS = [
+    "deep-logic-true",
+    "deep-logic-not",
+    "deep-logic-and",
+    "deep-logic-or",
+    "deep-logic-min"
+];
 
 (async function main() {
     
@@ -45,23 +55,41 @@ import I18n from "/script/util/I18n.mjs";
         }
     }
 
-    fillLogics(locations, logic);
-    fillOperators(items, settings, filter, logic);
-
     let workingarea = document.getElementById('workingarea');
 
-    function fillOperators(items, settings, filter, logic) {
-        let container = document.getElementById("elements");
+    workingarea.addEventListener("placeholderclicked", function(event) {
+        createAddLogicDialog();
+    });
 
-        container.appendChild(createOperatorCategory(items, "tracker-logic-item", "items"));
-        container.appendChild(createOperatorCategory(settings.options, "tracker-logic-option", "options"));
-        container.appendChild(createOperatorCategory(settings.skips, "tracker-logic-skip", "skips"));
-        container.appendChild(createOperatorCategory(filter, "tracker-logic-filter", "filter"));
-        container.appendChild(createOperatorCategory(logic.mixins, "tracker-logic-mixin", "mixins"));
-        
+    fillLogics(locations, logic);
+    fillOperators(document.getElementById("elements"), items, settings, filter, logic);
+
+    function fillOperators(container, items, settings, filter, logic, onclick) {
+        container.appendChild(createDefaultOperatorCategory(onclick));
+
+        container.appendChild(createOperatorCategory(items, "tracker-logic-item", "items", onclick));
+        container.appendChild(createOperatorCategory(settings.options, "tracker-logic-option", "options", onclick));
+        container.appendChild(createOperatorCategory(settings.skips, "tracker-logic-skip", "skips", onclick));
+        container.appendChild(createOperatorCategory(filter, "tracker-logic-filter", "filter", onclick));
+        container.appendChild(createOperatorCategory(logic.mixins, "tracker-logic-mixin", "mixins", onclick));
     }
 
-    function createOperatorCategory(data, type, ref) {
+    function createDefaultOperatorCategory(onclick) {
+        let ocnt = document.createElement("deep-collapsepanel");
+        ocnt.caption = "default";
+        for (let i in LOGIC_OPERATORS) {
+            let el = document.createElement(LOGIC_OPERATORS[i]);
+            el.template = "true";
+            if (typeof onclick == "function") {
+                el.onclick = onclick;
+                el.readonly = "true";
+            }
+            ocnt.appendChild(el);
+        }
+        return ocnt;
+    }
+
+    function createOperatorCategory(data, type, ref, onclick) {
         let ocnt = document.createElement("deep-collapsepanel");
         ocnt.caption = ref;
         for (let i in data) {
@@ -69,6 +97,10 @@ import I18n from "/script/util/I18n.mjs";
                 let el = document.createElement(type);
                 el.ref = i;
                 el.template = "true";
+                if (typeof onclick == "function") {
+                    el.onclick = onclick;
+                    el.readonly = "true";
+                }
                 ocnt.appendChild(el);
             }
         }
@@ -116,6 +148,37 @@ import I18n from "/script/util/I18n.mjs";
             ocnt.appendChild(cnt);
         }
         return ocnt;
+    }
+
+    function createAddLogicDialog() {
+        let dialogElement = document.createElement('div');
+        let d = new Dialog({
+            title: "Add element to logic",
+            submit: "OK"
+        });
+        d.onsubmit = function(reciever, slot, result) {
+            if (!!result) {
+                let res = dialogElement.dataset.choice;
+                if (!!res) {
+                    let el = DeepLogicAbstractElement.buildLogic(JSON.parse(res));
+                    if (!!slot) {
+                        el.slot = slot;
+                    }
+                    reciever.appendChild(el);
+                }
+            }
+        }.bind(this, event.reciever, event.name);
+        let last = null;
+        fillOperators(dialogElement, items, settings, filter, logic, function(event) {
+            if (last != null) {
+                last.style.boxShadow = "";
+            }
+            dialogElement.dataset.choice = JSON.stringify(event.target.toJSON());
+            last = event.target;
+            last.style.boxShadow = "0 0 0 5px black";
+        });
+        d.appendChild(dialogElement);
+        d.show();
     }
         
     function loadChestLogic(event) {
@@ -167,7 +230,7 @@ import I18n from "/script/util/I18n.mjs";
     workingarea.addEventListener('save', storeLogic);
     workingarea.addEventListener('load', refreshLogic);
     workingarea.addEventListener('clear', removeLogic);
-    window.addEventListener('focus', refreshLogic);
+    //window.addEventListener('focus', refreshLogic);
 
     logicContainer.querySelector('.logic-location').click();
 }());
