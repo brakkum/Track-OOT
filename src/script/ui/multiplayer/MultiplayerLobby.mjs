@@ -13,13 +13,11 @@ const TPL = new Template(`
             flex-direction: column;
         }
         #content {
+            position: relative;
             display: flex;
             flex: 1;
             padding: 0 0 20px;
-        }
-        #lobby_list {
-            flex: 1;
-            overflox-y: auto;
+            overflow-y: auto;
             overflow-x: hidden;
         }
         #overlay {
@@ -28,6 +26,7 @@ const TPL = new Template(`
             top: 0;
             right: 0;
             bottom: 0;
+            display: none;
         }
         #lobby_register {
             display: flex;
@@ -49,6 +48,7 @@ const TPL = new Template(`
             display: flex;
             justify-content: center;
             align-items: center;
+            flex: 1;
             height: 100%;
             color: #ffffff;
         }
@@ -115,7 +115,7 @@ class HTMLMultiplayerLobby extends HTMLElement {
         }.bind(this);
 
         let refresh = async function() {
-            let res = await DeepWebRAT.getInstances();
+            let res = await RATController.getInstances();
             this.innerHTML = "";
             if (!!res) {
                 res.forEach(function(inst) {

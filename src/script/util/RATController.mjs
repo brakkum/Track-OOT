@@ -44,6 +44,10 @@ function getClientNameList() {
 }
 
 class RATController {
+    
+    getInstances() {
+        return DeepWebRAT.getInstances();
+    }
 
     set onroomupdate(value) {
         if (typeof value == "function") {
@@ -75,7 +79,7 @@ class RATController {
     async connect(name, pass) {
         let res = await DeepWebRAT.connect(name, pass);
         if (res.success === true) {
-            DeepWebRAT.onmessage = function(key, msg) {
+            DeepWebRAT.onmessage = async function(key, msg) {
                 if (msg.type == "name") {
                     if (!!msg.data) {
                         onJoined.call(this);
@@ -107,7 +111,7 @@ export default new RATController;
 
 async function promtName() {
     username = await Dialog.prompt("Please select a username", "Please enter a name (at least 3 characters).", username);
-    if (typeof username != string) {
+    if (typeof username != "string") {
         
     }
     if (username.length < 3) {

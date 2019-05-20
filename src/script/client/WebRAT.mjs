@@ -12,7 +12,8 @@ async function getFile(url, data) {
         method: !!data?"POST":"GET",
         cache: "no-cache",
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache'
         },
         body: JSON.stringify(data)
     });

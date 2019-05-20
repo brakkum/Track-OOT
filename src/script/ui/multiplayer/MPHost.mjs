@@ -51,7 +51,7 @@ const TPL = new Template(`
     </div>
 `);
 
-class HTMLMultiplayerLobbyRoom extends HTMLElement {
+class HTMLMultiplayerHost extends HTMLElement {
 
     constructor() {
         super();
@@ -83,4 +83,4 @@ class HTMLMultiplayerLobbyRoom extends HTMLElement {
 
 }
 
-customElements.define('ootrt-mpclient', HTMLMultiplayerLobbyRoom);
+customElements.define('ootrt-mphost', HTMLMultiplayerHost);

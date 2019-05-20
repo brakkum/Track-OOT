@@ -8,11 +8,15 @@ const TPL = new Template(`
     <style>
         :host {
             display: flex;
+            padding: 0 0 20px;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
         .empty-message {
             display: flex;
             justify-content: center;
             align-items: center;
+            flex: 1;
             height: 100%;
             color: #ffffff;
         }
@@ -33,6 +37,7 @@ class HTMLMultiplayerRoomMaster extends HTMLElement {
         this.shadowRoot.appendChild(TPL.generate());
 
         let close_button = this.shadowRoot.getElementById("close_button");
+        let leave_button = this.shadowRoot.getElementById("leave_button");
 
         close_button.addEventListener("click", async function() {
             await RATController.close();

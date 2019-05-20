@@ -8,11 +8,15 @@ const TPL = new Template(`
     <style>
         :host {
             display: flex;
+            padding: 0 0 20px;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
         .empty-message {
             display: flex;
             justify-content: center;
             align-items: center;
+            flex: 1;
             height: 100%;
             color: #ffffff;
         }
