@@ -62,13 +62,20 @@ class RATController {
             let res = await DeepWebRAT.register(name, pass, desc);
             if (res.success === true) {
                 username = name;
-                await promtName();
-                onHosting.call(this);
+                if (!await promtName()) {
+                    await Dialog.alert("Aborted Lobby creation", "Lobby will be closed now.");
+                    await this.close();
+                } else {
+                    onHosting.call(this);
+                    return true;
+                }
             } else {
                 await Dialog.alert("Error registering to Lobby", "An error occured while registering your room to the lobby.\nCheck if the room already exists and try again!");
+                return false;
             }
         } else {
             await Dialog.alert("Error registering to Lobby", "Can not register a room without a name.");
+            return false;
         }
     }
 
@@ -76,29 +83,31 @@ class RATController {
         await DeepWebRAT.unregister();
     }
 
-    async connect(name, pass) {
-        let res = await DeepWebRAT.connect(name, pass);
-        if (res.success === true) {
-            DeepWebRAT.onmessage = async function(key, msg) {
-                if (msg.type == "name") {
-                    if (!!msg.data) {
-                        onJoined.call(this);
-                    } else {
-                        await Dialog.alert("Username taken", `The username "${username}" is already taken.\nPlease choose another one!`);
-                        DeepWebRAT.send({
-                            type: "name",
-                            data: await promtName()
-                        });
+    connect(name, pass) {
+        return new Promise(async function(resolve) {
+            let res = await DeepWebRAT.connect(name, pass);
+            if (res.success === true) {
+                DeepWebRAT.onmessage = async function(key, msg) {
+                    if (msg.type == "name") {
+                        if (!!msg.data) {
+                            onJoined.call(this);
+                            resolve(true);
+                        } else {
+                            await Dialog.alert("Username taken", `The username "${username}" is already taken.\nPlease choose another one!`);
+                            if (!promptPeerName()) {
+                                resolve(false);
+                            }
+                        }
                     }
+                };
+                if (!promptPeerName()) {
+                    resolve(false);
                 }
-            };
-            DeepWebRAT.send({
-                type: "name",
-                data: await promtName()
-            });
-        } else {
-            await Dialog.alert("Connection refused", "You have no permission to enter the room.\nDid you enter the correct password?");
-        }
+            } else {
+                await Dialog.alert("Connection refused", "You have no permission to enter the room.\nDid you enter the correct password?");
+                resolve(false);
+            }
+        });
     }
 
     async disconnect() {
@@ -112,13 +121,25 @@ export default new RATController;
 async function promtName() {
     username = await Dialog.prompt("Please select a username", "Please enter a name (at least 3 characters).", username);
     if (typeof username != "string") {
-        
+        return false;
     }
     if (username.length < 3) {
         await Dialog.alert("Invalid username", "Username can not be less then 3 characters.");
-        return await promtPeerName();
+        return await promtName();
     }
     return username;
+}
+
+async function promptPeerName() {
+    let name = await promtName();
+    if (!name) {
+        return false;
+    }
+    DeepWebRAT.send({
+        type: "name",
+        data: name
+    });
+    return true;
 }
 
 function onJoined() {
@@ -168,49 +189,69 @@ async function onHosting() {
                     type: "name",
                     data: true
                 });
+                DeepWebRAT.sendOne(key, {
+                    type: "state",
+                    data: getState()
+                });
                 clients.set(msg.data, key);
                 clientData.set(key, {
                     name: msg.data,
                     write: true // TODO
                 });
-                ON_ROOMUPDATE(msg.data);
+                // spread the message
+                let data = getClientNameList();
+                DeepWebRAT.send({
+                    type: "room",
+                    data: data
+                });
+                ON_ROOMUPDATE(data);
             }
         } else if (msg.type == "event") {
-            if (permissions)
-            DeepWebRAT.sendButOne(key, msg);
-            EventBus.fire(`net:${msg.data.name}`, msg.data.data);
+            if (clients.has(msg.data)) {
+                DeepWebRAT.sendButOne(key, msg);
+                EventBus.fire(`net:${msg.data.name}`, msg.data.data);
+            }
         }
     };
     DeepWebRAT.onconnect = function(key) {
+        DeepWebRAT.sendOne(key, {
+            type: "state",
+            data: getState()
+        });
+    };
+    DeepWebRAT.ondisconnect = function(key) { 
+        let ud = clientData.get(key);
+        clients.delete(ud);
+        clientData.delete(key);
+        // spread the message
+        let data = getClientNameList();
         DeepWebRAT.send({
             type: "room",
-            data: getClientNameList()
+            data: data
         });
+        ON_ROOMUPDATE(data);
+    };
+    EventBus.on("state-changed", function(event) {
         DeepWebRAT.send({
             type: "state",
             data: getState()
         });
-        EventBus.on("state-changed", function(event) {
-            DeepWebRAT.send({
-                type: "state",
-                data: getState()
-            });
+    });
+    EventBus.on([
+        "item-update",
+        "location-update",
+        "gossipstone-update",
+        "dungeon-type-update",
+        "dungeon-reward-update",
+        "song-update",
+        "shop-items-update",
+        "shop-bought-update",
+        "update-settings"
+    ], function(event) {
+        DeepWebRAT.send({
+            type: "event",
+            data: event
         });
-        EventBus.on([
-            "item-update",
-            "location-update",
-            "gossipstone-update",
-            "dungeon-type-update",
-            "dungeon-reward-update",
-            "song-update",
-            "shop-items-update",
-            "shop-bought-update",
-            "update-settings"
-        ], function(event) {
-            DeepWebRAT.send({
-                type: "event",
-                data: event
-            });
-        });
-    };
+    });
+    ON_ROOMUPDATE(getClientNameList());
 }

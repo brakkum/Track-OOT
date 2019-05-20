@@ -22,18 +22,23 @@ const TPL = new Template(`
             font-size: 30px;
             justify-content: center;
             align-items: center;
+            margin-right: 10px;
         }
         #detail {
             display: flex;
             flex-direction: column;
-            height: 100px;
-            width: 500px;
+            color: #ffffff;
         }
         #name {
             flex: 1;
             display: flex;
             align-items: center;
-            color: #ffffff;
+        }
+        #desc {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            opacity: 0.4;
         }
         #actions {
             flex: 1;

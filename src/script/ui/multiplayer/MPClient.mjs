@@ -1,6 +1,5 @@
 import Template from "/deepJS/util/Template.mjs";
 
-/* room elements */
 const TPL = new Template(`
     <style>       
         :host {
@@ -9,17 +8,10 @@ const TPL = new Template(`
             margin: 10px;
             background-color: #111111;
         }
-        :host(:hover) {
-            background-color: #333333;
-        }
         #icon {
-            display: flex;
-            flex-wrap: wrap;
-            width: 50px;
-            color: #ffffff;
-            font-size: 30px;
-            justify-content: center;
-            align-items: center;
+            width: 4px;
+            background-color: #c5d6d8;
+            margin-right: 10px;
         }
         #detail {
             display: flex;

@@ -7,6 +7,7 @@ import "/deepJS/ui/logic/LogicEditorWorkingarea.mjs";
 import "/deepJS/ui/Panel.mjs";
 import "/deepJS/ui/CollapsePanel.mjs";
 
+import "/deepJS/ui/logic/elements/literals/LogicFalse.mjs";
 import "/deepJS/ui/logic/elements/literals/LogicTrue.mjs";
 import "/deepJS/ui/logic/elements/operators/LogicAnd.mjs";
 import "/deepJS/ui/logic/elements/operators/LogicOr.mjs";
@@ -23,6 +24,7 @@ import "/script/editor/Navigation.mjs";
 import I18n from "/script/util/I18n.mjs";
 
 const LOGIC_OPERATORS = [
+    "deep-logic-false",
     "deep-logic-true",
     "deep-logic-not",
     "deep-logic-and",

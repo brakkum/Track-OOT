@@ -1,9 +1,6 @@
-import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import Dialog from "/deepJS/ui/Dialog.mjs";
-import EventBus from "/deepJS/util/EventBus.mjs";
 import RATController from "/script/util/RATController.mjs";
-import TrackerLocalState from "/script/util/LocalState.mjs";
 import "./MPRoom.mjs";
 
 const TPL = new Template(`
@@ -16,6 +13,7 @@ const TPL = new Template(`
             position: relative;
             display: flex;
             flex: 1;
+            flex-direction: column;
             padding: 0 0 20px;
             overflow-y: auto;
             overflow-x: hidden;
@@ -125,7 +123,7 @@ class HTMLMultiplayerLobby extends HTMLElement {
                     el.desc = inst.desc;
                     el.addEventListener("click", connect);
                     this.appendChild(el);
-                });
+                }.bind(this));
             }
         }.bind(this);
 

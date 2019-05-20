@@ -1,4 +1,3 @@
-import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import RATController from "/script/util/RATController.mjs";
 import "./MPHost.mjs";
@@ -8,6 +7,13 @@ const TPL = new Template(`
     <style>
         :host {
             display: flex;
+            flex-direction: column;
+        }
+        #content {
+            position: relative;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
             padding: 0 0 20px;
             overflow-y: auto;
             overflow-x: hidden;
@@ -21,8 +27,8 @@ const TPL = new Template(`
             color: #ffffff;
         }
     </style>
-    <div id="online-room-container">
-        <div id="room-list" class="view-container-title">Room (proof of concept) <button id="leave_button">leave</button></div>
+    <div id="room-list" class="view-container-title">Room (proof of concept) <button id="leave_button">leave</button></div>
+    <div id="content">
         <slot id="room-peer-list">
             <div class="empty-message">The room is empty</div>
         </slot>
@@ -48,19 +54,15 @@ class HTMLMultiplayerRoomClient extends HTMLElement {
         this.innerHTML = "";
         if (!!data.host) {
             let el = document.createElement("ootrt-mphost");
-            el.name = inst.name;
-            el.pass = inst.pass;
-            el.desc = inst.desc;
+            el.name = data.host;
             this.appendChild(el);
         }
         if (!!data.peers) {
-            res.forEach(function(inst) {
+            data.peers.forEach(function(inst) {
                 let el = document.createElement("ootrt-mpclient");
                 el.name = inst.name;
-                el.pass = inst.pass;
-                el.desc = inst.desc;
                 this.appendChild(el);
-            });
+            }.bind(this));
         }
     }
 

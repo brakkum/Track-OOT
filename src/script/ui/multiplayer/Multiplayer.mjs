@@ -1,5 +1,5 @@
 import Template from "/deepJS/util/Template.mjs";
-import DeepWebRAT from "/script/client/WebRAT.mjs";
+import RATController from "/script/util/RATController.mjs";
 import "./MultiplayerLobby.mjs";
 import "./MultiplayerRoomClient.mjs";
 import "./MultiplayerRoomMaster.mjs";
@@ -10,10 +10,10 @@ const TPL = new Template(`
             display: flex;
             flex: 1;
         }
-        * {
+        :host > * {
             flex: 1;
         }
-        :not(.active) {
+        :host > :not(.active) {
             display: none;
         }
     </style>
@@ -33,7 +33,12 @@ class HTMLMultiplayer extends HTMLElement {
         let room_master = this.shadowRoot.getElementById("room_master");
         let room_client = this.shadowRoot.getElementById("room_client");
 
-        lobby_view.addEventListener("create", function() {
+        RATController.onroomupdate = function(data) {
+            room_master.updateRoom(data);
+            room_client.updateRoom(data);
+        }
+
+        lobby_view.addEventListener("host", function() {
             lobby_view.classList.remove("active");
             room_master.classList.add("active");
         });
