@@ -47,7 +47,6 @@ class HTMLMultiplayerRoomMaster extends HTMLElement {
 
         close_button.addEventListener("click", async function() {
             await RATController.close();
-            this.dispatchEvent(new Event('close'));
             close_button.style.display = "none";
         }.bind(this));
 
