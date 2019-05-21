@@ -10,40 +10,42 @@ const TPL = new Template(`
         }
         #icon {
             width: 4px;
-            background-color: #c5d6d8;
             margin-right: 10px;
+        }
+        #icon[title="host"] {
+            background-color: #f9cd2d;
+        }
+        #icon[title="client"] {
+            background-color: #c5d6d8;
+        }
+        #icon[title="spectator"] {
+            background-color: #c5d6d8;
         }
         #detail {
             display: flex;
-            flex-direction: column;
-            height: 100px;
-            width: 500px;
+            flex-wrap: wrap;
+            flex: 1; 
         }
         #name {
-            flex: 1;
             display: flex;
             align-items: center;
+            flex: 1;
+            min-width: 200px;
             color: #ffffff;
         }
-        #actions {
-            flex: 1;
-            display: flex;
-            align-items: center;
-        }
     </style>
-    <div id="icon"></div>
+    <div id="icon" title="none"></div>
     <div id="detail">
         <div id="name"></div>
-        <div id="actions"></div>
     </div>
 `);
 
-class HTMLMultiplayerClient extends HTMLElement {
+class HTMLMultiplayerUser extends HTMLElement {
 
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
     }
 
     get name() {
@@ -54,8 +56,16 @@ class HTMLMultiplayerClient extends HTMLElement {
         this.setAttribute('name', val);
     }
 
+    get role() {
+        return this.getAttribute('role');
+    }
+
+    set role(val) {
+        this.setAttribute('role', val);
+    }
+
     static get observedAttributes() {
-        return ['name'];
+        return ['name', 'role'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -64,10 +74,13 @@ class HTMLMultiplayerClient extends HTMLElement {
                 case 'name':
                     this.shadowRoot.getElementById("name").innerHTML = newValue;
                 break;
+                case 'role':
+                    this.shadowRoot.getElementById("icon").setAttribute("title", newValue);
+                break;
             }
         }
     }
 
 }
 
-customElements.define('ootrt-mpclient', HTMLMultiplayerClient);
+customElements.define('ootrt-mpuser', HTMLMultiplayerUser);

@@ -110,7 +110,7 @@ class HTMLTrackerPOILocationChest extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         this.addEventListener("click", this.check);
         this.addEventListener("contextmenu", this.uncheck);
         /* event bus */
@@ -177,11 +177,11 @@ class HTMLTrackerPOILocationChest extends HTMLElement {
 
                     let el_time = document.createElement("deep-icon");
                     el_time.src = `images/time_${data.time || "both"}.svg`;
-                    this.shadowRoot.getElementById("badge").appendChild(el_time);
+                    this.shadowRoot.getElementById("badge").append(el_time);
 
                     let el_era = document.createElement("deep-icon");
                     el_era.src = `images/era_${data.era ||"both"}.svg`;
-                    this.shadowRoot.getElementById("badge").appendChild(el_era);
+                    this.shadowRoot.getElementById("badge").append(el_era);
                     
                     let el = this.shadowRoot.getElementById("marker");
                     if (Logic.getValue("chests", path[2])) {

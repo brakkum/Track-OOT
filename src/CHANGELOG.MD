@@ -13,6 +13,7 @@ Version:        1.4.0
 - net messages tranfered over p2p
 - multiplayer room does show connected instances
     - host is always on top and marked differently
+    - possibility to kick peers from the room
 
 ### REWORK EVENTS
 - events got generalised

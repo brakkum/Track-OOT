@@ -1,7 +1,6 @@
 import Template from "/deepJS/util/Template.mjs";
 import RATController from "/script/util/RATController.mjs";
-import "./MPHost.mjs";
-import "./MPClient.mjs";
+import "./MPUser.mjs";
 
 const TPL = new Template(`
     <style>
@@ -40,7 +39,7 @@ class HTMLMultiplayerRoomClient extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
 
         let leave_button = this.shadowRoot.getElementById("leave_button");
 
@@ -53,15 +52,33 @@ class HTMLMultiplayerRoomClient extends HTMLElement {
     updateRoom(data) {
         this.innerHTML = "";
         if (!!data.host) {
-            let el = document.createElement("ootrt-mphost");
+            let el = document.createElement("ootrt-mpuser");
             el.name = data.host;
-            this.appendChild(el);
+            el.role = 'host';
+            this.append(el);
         }
         if (!!data.peers) {
             data.peers.forEach(function(inst) {
-                let el = document.createElement("ootrt-mpclient");
-                el.name = inst.name;
-                this.appendChild(el);
+                let el = document.createElement("ootrt-mpuser");
+                el.name = inst;
+                el.role = 'client';
+                if (inst == RATController.getUsername()) {
+                    this.prepend(el);
+                } else {
+                    this.append(el);
+                }
+            }.bind(this));
+        }
+        if (!!data.viewer) {
+            data.viewer.forEach(function(inst) {
+                let el = document.createElement("ootrt-mpuser");
+                el.name = inst;
+                el.role = 'spectator';
+                if (inst == RATController.getUsername()) {
+                    this.prepend(el);
+                } else {
+                    this.append(el);
+                }
             }.bind(this));
         }
     }

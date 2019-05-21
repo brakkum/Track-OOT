@@ -131,6 +131,11 @@ class DeepWebRAT {
         return {success: res.success};
     }
 
+    async cut(key) {
+        Logger.info(`CUT: ${key}`, "RAT-RTC");
+        RTC_INST.get(this).get(key).close();
+    }
+
     async disconnect() {
         Logger.info("DISCONNECT", "RAT-RTC");
         RTC_INST.get(this).forEach(function(rtc) {

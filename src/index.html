@@ -102,7 +102,7 @@
                         updateLoadingMessage("add structure...");
                         let r = await $import.importHTML("/content/app.html");
                         while (r.length > 0) {
-                            document.body.appendChild(r[0]);
+                            document.body.append(r[0]);
                         }
                         updateLoadingMessage("add style...");
                         await $import.importCSS("/style/app.css");

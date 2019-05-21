@@ -37,7 +37,7 @@
                         rej(e);
                     })
                 };
-                document.head.appendChild(t);
+                document.head.append(t);
             });
         }
     
@@ -56,7 +56,7 @@
                         rej(e);
                     })
                 };
-                document.head.appendChild(t);
+                document.head.append(t);
             });
         }
 

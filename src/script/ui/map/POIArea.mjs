@@ -126,7 +126,7 @@ class HTMLTrackerPOIArea extends HTMLElement {
             this.mode = event.data.value;
         });
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
     }
 
     get ref() {

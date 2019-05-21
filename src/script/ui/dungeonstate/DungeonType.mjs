@@ -69,7 +69,7 @@ class HTMLTrackerDungeonType extends HTMLElement {
         this.addEventListener("click", this.next);
         this.addEventListener("contextmenu", this.revert);
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         /* event bus */
         EventBus.on("force-dungeonstate-update", updateCall.bind(this));
         EventBus.on(["dungeon-type-update","net:dungeon-type-update"], dungeonTypeUppdate.bind(this));
@@ -114,9 +114,9 @@ class HTMLTrackerDungeonType extends HTMLElement {
                         this.value = "";
                         EventBus.unmute("dungeon-type-update");
                     } else if (oldValue === null || oldValue === undefined || oldValue === "") {
-                        this.appendChild(createOption("n", "/images/type_undefined.svg"));
-                        this.appendChild(createOption("v", "/images/type_vanilla.svg"));
-                        this.appendChild(createOption("mq", "/images/type_masterquest.svg"));
+                        this.append(createOption("n", "/images/type_undefined.svg"));
+                        this.append(createOption("v", "/images/type_vanilla.svg"));
+                        this.append(createOption("mq", "/images/type_masterquest.svg"));
                         EventBus.mute("dungeon-type-update");
                         this.value = TrackerLocalState.read("dungeonTypes", newValue, "n");
                         EventBus.unmute("dungeon-type-update");

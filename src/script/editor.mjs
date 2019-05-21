@@ -67,13 +67,13 @@ const LOGIC_OPERATORS = [
     fillOperators(document.getElementById("elements"), items, settings, filter, logic);
 
     function fillOperators(container, items, settings, filter, logic, onclick) {
-        container.appendChild(createDefaultOperatorCategory(onclick));
+        container.append(createDefaultOperatorCategory(onclick));
 
-        container.appendChild(createOperatorCategory(items, "tracker-logic-item", "items", onclick));
-        container.appendChild(createOperatorCategory(settings.options, "tracker-logic-option", "options", onclick));
-        container.appendChild(createOperatorCategory(settings.skips, "tracker-logic-skip", "skips", onclick));
-        container.appendChild(createOperatorCategory(filter, "tracker-logic-filter", "filter", onclick));
-        container.appendChild(createOperatorCategory(logic.mixins, "tracker-logic-mixin", "mixins", onclick));
+        container.append(createOperatorCategory(items, "tracker-logic-item", "items", onclick));
+        container.append(createOperatorCategory(settings.options, "tracker-logic-option", "options", onclick));
+        container.append(createOperatorCategory(settings.skips, "tracker-logic-skip", "skips", onclick));
+        container.append(createOperatorCategory(filter, "tracker-logic-filter", "filter", onclick));
+        container.append(createOperatorCategory(logic.mixins, "tracker-logic-mixin", "mixins", onclick));
     }
 
     function createDefaultOperatorCategory(onclick) {
@@ -86,7 +86,7 @@ const LOGIC_OPERATORS = [
                 el.onclick = onclick;
                 el.readonly = "true";
             }
-            ocnt.appendChild(el);
+            ocnt.append(el);
         }
         return ocnt;
     }
@@ -103,7 +103,7 @@ const LOGIC_OPERATORS = [
                     el.onclick = onclick;
                     el.readonly = "true";
                 }
-                ocnt.appendChild(el);
+                ocnt.append(el);
             }
         }
         return ocnt;
@@ -111,10 +111,10 @@ const LOGIC_OPERATORS = [
 
     function fillLogics(locations, logic) {
 
-        logicContainer.appendChild(createLogicCategory(locations, "chests_v"));
-        logicContainer.appendChild(createLogicCategory(locations, "chests_mq"));
-        logicContainer.appendChild(createLogicCategory(locations, "skulltulas_v"));
-        logicContainer.appendChild(createLogicCategory(locations, "skulltulas_mq"));
+        logicContainer.append(createLogicCategory(locations, "chests_v"));
+        logicContainer.append(createLogicCategory(locations, "chests_mq"));
+        logicContainer.append(createLogicCategory(locations, "skulltulas_v"));
+        logicContainer.append(createLogicCategory(locations, "skulltulas_mq"));
 
         let cnt = document.createElement("deep-collapsepanel");
         cnt.caption = "mixins";
@@ -125,9 +125,9 @@ const LOGIC_OPERATORS = [
             el.onclick = loadMixinLogic;
             el.innerHTML = I18n.translate(j);
             el.title = j;
-            cnt.appendChild(el);
+            cnt.append(el);
         }
-        logicContainer.appendChild(cnt);
+        logicContainer.append(cnt);
     }
 
     function createLogicCategory(data, ref) {
@@ -145,9 +145,9 @@ const LOGIC_OPERATORS = [
                 el.onclick = ref.startsWith("chest") ? loadChestLogic : loadSkulltulaLogic;
                 el.innerHTML = I18n.translate(j);
                 el.title = j;
-                cnt.appendChild(el);
+                cnt.append(el);
             }
-            ocnt.appendChild(cnt);
+            ocnt.append(cnt);
         }
         return ocnt;
     }
@@ -166,7 +166,7 @@ const LOGIC_OPERATORS = [
                     if (!!slot) {
                         el.slot = slot;
                     }
-                    reciever.appendChild(el);
+                    reciever.append(el);
                 }
             }
         }.bind(this, event.reciever, event.name);
@@ -179,7 +179,7 @@ const LOGIC_OPERATORS = [
             last = event.target;
             last.style.boxShadow = "0 0 0 5px black";
         });
-        d.appendChild(dialogElement);
+        d.append(dialogElement);
         d.show();
     }
         

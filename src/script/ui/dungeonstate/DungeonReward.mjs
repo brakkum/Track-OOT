@@ -82,7 +82,7 @@ class HTMLTrackerDungeonReward extends HTMLElement {
         this.addEventListener("click", this.next);
         this.addEventListener("contextmenu", this.revert);
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         /* event bus */
         EventBus.on("force-dungeonstate-update", updateCall.bind(this));
         EventBus.on(["dungeon-reward-update","net:dungeon-reward-update"], dungeonRewardUppdate.bind(this));
@@ -124,13 +124,13 @@ class HTMLTrackerDungeonReward extends HTMLElement {
                     if (newValue === "") {
                         this.innerHTML = "";
                     } else if (oldValue === null || oldValue === undefined || oldValue === "") {
-                        this.appendChild(createOption(0, "/images/unknown.svg"));
+                        this.append(createOption(0, "/images/unknown.svg"));
                         for (let i = 0; i < REWARDS.length; ++i) {
                             let j = GlobalData.get("items")[REWARDS[i]].images;
                             if (Array.isArray(j)) {
                                 j = j[0];
                             }
-                            this.appendChild(createOption(i+1, `/images/${j}`));
+                            this.append(createOption(i+1, `/images/${j}`));
                         }
                         this.value = TrackerLocalState.read("dungeonRewards", newValue, 0);
                     }

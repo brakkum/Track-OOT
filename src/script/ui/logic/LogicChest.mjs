@@ -26,7 +26,7 @@ export default class TrackerLogicChest extends DeepLogicAbstractElement {
 
     constructor() {
         super();
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         EventBus.on(["location-update", "net:location-update"], function(event) {
             if (event.data.name == this.ref) {
                 this.update(event.data.value);

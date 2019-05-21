@@ -70,7 +70,7 @@ export default class HTMLTrackerShopItem extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         this.shadowRoot.getElementById("name").addEventListener("change", event => {
             this.name = event.target.value;
             let e = new Event("namechange");

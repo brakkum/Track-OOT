@@ -87,7 +87,7 @@ class HTMLTrackerItem extends HTMLElement {
         this.addEventListener("click", this.next);
         this.addEventListener("contextmenu", this.prev);
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         /* event bus */
         EventBus.on(["item-update", "net:item-update"], itemUpdate.bind(this));
         EventBus.on("force-item-update", updateCall.bind(this));
@@ -208,7 +208,7 @@ class HTMLTrackerItem extends HTMLElement {
             if (i == current_value) {
                 opt.classList.add("active");
             }
-            this.appendChild(opt);
+            this.append(opt);
         }
 
         this.value = current_value;

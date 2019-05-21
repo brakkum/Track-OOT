@@ -43,7 +43,7 @@ class HTMLTrackerItemGrid extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
 
         let data = GlobalData.get("grids")["items"];
         for (let i of data) {
@@ -51,15 +51,15 @@ class HTMLTrackerItemGrid extends HTMLElement {
             cnt.classList.add("item-row");
             for (let j of i) {
                 if (j.startsWith("text:")) {
-                    cnt.appendChild(createItemText(j.slice(5)));
+                    cnt.append(createItemText(j.slice(5)));
                 } else {
                     let itm = document.createElement('ootrt-item');
                     itm.title = I18n.translate(j);
                     itm.setAttribute('ref', j);
-                    cnt.appendChild(itm);
+                    cnt.append(itm);
                 }
             }
-            this.shadowRoot.appendChild(cnt);
+            this.shadowRoot.append(cnt);
         }
     }
 

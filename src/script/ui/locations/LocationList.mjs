@@ -195,7 +195,7 @@ class HTMLTrackerLocationList extends HTMLElement {
         EventBus.on(["item-update", "net:item-update"], locationUpdate.bind(this));
         EventBus.on("force-location-update", locationUpdate.bind(this));
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         this.attributeChangedCallback("", "");
         this.shadowRoot.getElementById('location-mode').addEventListener("change", event => {
             this.mode = event.newValue;
@@ -254,7 +254,7 @@ class HTMLTrackerLocationList extends HTMLElement {
                         let buf = data[i];
                         if (!buf.era || !this.era || this.era === buf.era) {
                             let el = LOCATION_ELEMENTS.get(`G:${i}`);
-                            cnt.appendChild(el);
+                            cnt.append(el);
                         }
                     });
                 }
@@ -270,7 +270,7 @@ class HTMLTrackerLocationList extends HTMLElement {
                             el.dataset.ref = i;
                             el.addEventListener("click", () => this.ref = i);
                             el.innerHTML = I18n.translate(i);
-                            cnt.appendChild(el);
+                            cnt.append(el);
                         });
                     }
                 } else {
@@ -278,7 +278,7 @@ class HTMLTrackerLocationList extends HTMLElement {
                     let bck = document.createElement('div');
                     bck.innerHTML = `(${I18n.translate("back")})`;
                     bck.addEventListener("click", () => this.ref = "");
-                    cnt.appendChild(bck);
+                    cnt.append(bck);
                     data = GlobalData.get("locations")[this.ref];
                     let dType = TrackerLocalState.read("dungeonTypes", this.ref, data.hasmq ? "n" : "v");
                     if (data.hasmq) {
@@ -293,14 +293,14 @@ class HTMLTrackerLocationList extends HTMLElement {
                         v.addEventListener("click", () => {
                             locationType.value = "v";
                         });
-                        cnt.appendChild(v);
+                        cnt.append(v);
                         let mq = document.createElement('div');
                         mq.dataset.ref = "mq";
                         mq.innerHTML = I18n.translate("masterquest");
                         mq.addEventListener("click", () => {
                             locationType.value = "mq";
                         });
-                        cnt.appendChild(mq);
+                        cnt.append(mq);
                     } else {    
                         if (!!this.mode && this.mode !== "") {
                             data = data[`${this.mode}_${dType}`];
@@ -310,7 +310,7 @@ class HTMLTrackerLocationList extends HTMLElement {
                                     if (!buf.era || !this.era || this.era === buf.era) {
                                         if (!buf.mode || TrackerLocalState.read("options", buf.mode, false)) {
                                             let el = LOCATION_ELEMENTS.get(`${this.ref}.${this.mode}_${dType}.${i}`);
-                                            cnt.appendChild(el);
+                                            cnt.append(el);
                                         }
                                     }
                                 });

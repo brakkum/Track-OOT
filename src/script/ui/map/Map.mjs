@@ -290,7 +290,7 @@ class HTMLTrackerMap extends HTMLElement {
         super();
         generateLocations();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         let map = this.shadowRoot.getElementById("map");
         let mapslide = this.shadowRoot.getElementById("map-scale-slider");
         let mapfixed = this.shadowRoot.getElementById("map-fixed");
@@ -395,7 +395,7 @@ class HTMLTrackerMap extends HTMLElement {
                             let buf = data[i];
                             if (!buf.era || !this.era || this.era === buf.era) {
                                 let el = LOCATION_ELEMENTS.get(`G:${i}`);
-                                this.appendChild(el);
+                                this.append(el);
                             }
                         });
                     }
@@ -411,7 +411,7 @@ class HTMLTrackerMap extends HTMLElement {
                                         if (!buf.era || !this.era || this.era === buf.era) {
                                             if (!buf.mode || TrackerLocalState.read("options", buf.mode, false)) {
                                                 let el = LOCATION_ELEMENTS.get(`${i}.${this.mode}_v.${j}`);
-                                                this.appendChild(el);
+                                                this.append(el);
                                             }
                                         }
                                     });
@@ -419,7 +419,7 @@ class HTMLTrackerMap extends HTMLElement {
                             } else {
                                 let el = LOCATION_ELEMENTS.get(`A:${i}`);
                                 el.mode = this.mode;
-                                this.appendChild(el);
+                                this.append(el);
                             }
                         });
                     }

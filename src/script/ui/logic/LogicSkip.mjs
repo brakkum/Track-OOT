@@ -28,7 +28,7 @@ export default class TrackerLogicSkip extends DeepLogicAbstractElement {
 
     constructor() {
         super();
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         EventBus.on("settings", function(event) {
             this.update();
         }.bind(this));
@@ -90,7 +90,7 @@ export default class TrackerLogicSkip extends DeepLogicAbstractElement {
                         slc.classList.remove('hidden');
                         el.innerHTML = "";
                         for (let i of data.values) {
-                            el.appendChild(createOption(i, I18n.translate(i)));
+                            el.append(createOption(i, I18n.translate(i)));
                         }
                         if (SELECTOR_VALUE.has(this)) {
                             el.value = SELECTOR_VALUE.get(this);

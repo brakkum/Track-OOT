@@ -68,7 +68,7 @@ document.getElementById("hamburger-button").onclick = function(event) {
 
 function addHTMLModule(name, target) {
     let el = document.createElement(name);
-    document.getElementById(target).appendChild(el);
+    document.getElementById(target).append(el);
     return el;
 }
 

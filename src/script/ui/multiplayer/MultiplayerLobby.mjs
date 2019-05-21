@@ -80,7 +80,7 @@ class HTMLMultiplayerLobby extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
 
         let host_name = this.shadowRoot.getElementById("host_name");
         let host_pass = this.shadowRoot.getElementById("host_pass");
@@ -122,7 +122,7 @@ class HTMLMultiplayerLobby extends HTMLElement {
                     el.pass = inst.pass;
                     el.desc = inst.desc;
                     el.addEventListener("click", connect);
-                    this.appendChild(el);
+                    this.append(el);
                 }.bind(this));
             }
         }.bind(this);

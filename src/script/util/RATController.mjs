@@ -6,7 +6,8 @@ import TrackerLocalState from "/script/util/LocalState.mjs";
 
 let username = "";
 let clients = new Map;
-let clientData = new Map;
+let spectators = new Map;
+let reverseLookup = new Map;
 
 const EMPTY_FN = function() {};
 let ON_ROOMUPDATE = EMPTY_FN;
@@ -39,7 +40,8 @@ function setState(state) {
 function getClientNameList() {
     return {
         host: username,
-        peers: Array.from(clientData.values())
+        peers: Array.from(clients.values()),
+        viewer: Array.from(spectators.values())
     };
 }
 
@@ -47,6 +49,10 @@ class RATController {
     
     getInstances() {
         return DeepWebRAT.getInstances();
+    }
+
+    getUsername() {
+        return username;
     }
 
     set onroomupdate(value) {
@@ -110,6 +116,20 @@ class RATController {
         });
     }
 
+    async kick(name) {
+        if (reverseLookup.has(name)) {
+            let reason = await Dialog.prompt("Please provide a reason", "Please provide a reason for kicking the client.");
+            if (typeof reason == "string") {
+                let key = reverseLookup.get(name);
+                DeepWebRAT.sendOne(key, {
+                    type: "kick",
+                    data: reason
+                });
+                await DeepWebRAT.cut(key);
+            }
+        }
+    }
+
     async disconnect() {
         await DeepWebRAT.disconnect();
     }
@@ -143,8 +163,14 @@ async function promptPeerName() {
 }
 
 function onJoined() {
-    DeepWebRAT.onmessage = function(key, msg) {
-        if (msg.type == "room") {
+    DeepWebRAT.onmessage = async function(key, msg) {
+        if (msg.type == "join") {
+            // TODO toast a join message
+        } else if (msg.type == "leave") {
+            // TODO toast a leave message
+        } else if (msg.type == "kick") {
+            await Dialog.alert("You have been kicked", `You have been kicked by the host: ${!!msg.data ? msg.data : "no reason provided"}.`);
+        } else if (msg.type == "room") {
             ON_ROOMUPDATE(msg.data);
         } else if (msg.type == "state") {
             setState(msg.data);
@@ -179,7 +205,7 @@ function onJoined() {
 async function onHosting() {
     DeepWebRAT.onmessage = function(key, msg) {
         if (msg.type == "name") {
-            if (msg.data == username || clients.has(msg.data)) {
+            if (msg.data == username || reverseLookup.has(msg.data)) {
                 DeepWebRAT.sendOne(key, {
                     type: "name",
                     data: false
@@ -193,12 +219,14 @@ async function onHosting() {
                     type: "state",
                     data: getState()
                 });
-                clients.set(msg.data, key);
-                clientData.set(key, {
-                    name: msg.data,
-                    write: true // TODO
+                clients.set(key, msg.data);
+                // or spectators.set(key, msg.data);
+                reverseLookup.set(msg.data, key);
+                // TODO toast a join message
+                DeepWebRAT.sendButOne(key, {
+                    type: "join",
+                    data: msg.data
                 });
-                // spread the message
                 let data = getClientNameList();
                 DeepWebRAT.send({
                     type: "room",
@@ -207,7 +235,7 @@ async function onHosting() {
                 ON_ROOMUPDATE(data);
             }
         } else if (msg.type == "event") {
-            if (clients.has(msg.data)) {
+            if (clients.has(key)) {
                 DeepWebRAT.sendButOne(key, msg);
                 EventBus.fire(`net:${msg.data.name}`, msg.data.data);
             }
@@ -219,11 +247,23 @@ async function onHosting() {
             data: getState()
         });
     };
-    DeepWebRAT.ondisconnect = function(key) { 
-        let ud = clientData.get(key);
-        clients.delete(ud);
-        clientData.delete(key);
-        // spread the message
+    DeepWebRAT.ondisconnect = function(key) {
+        let name = "";
+        if (clients.has(key)) {
+            name = clients.get(key);
+            clients.delete(key);
+        } else if (spectators.has(key)) {
+            name = spectators.get(key);
+            clients.delete(key);
+        } else {
+            return;
+        }
+        // TODO toast a leave message
+        DeepWebRAT.send({
+            type: "leave",
+            data: name
+        });
+        reverseLookup.delete(name);
         let data = getClientNameList();
         DeepWebRAT.send({
             type: "room",

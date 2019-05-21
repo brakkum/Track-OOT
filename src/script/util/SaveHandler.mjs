@@ -75,7 +75,7 @@ function prepairSavegameChoice() {
     stateChoice.innerHTML = "<option disabled selected hidden value=\"\"> -- select state -- </option>";
     let keys = DeepLocalStorage.names("save");
     for (let i = 0; i < keys.length; ++i) {
-        stateChoice.appendChild(createOption(keys[i]));
+        stateChoice.append(createOption(keys[i]));
     }
     stateChoice.value = activestate;
 }

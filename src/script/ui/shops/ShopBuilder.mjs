@@ -45,7 +45,7 @@ export default class HTMLTrackerShopBuilder extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         for (let i = 0; i < 8; ++i) {
             let el = this.shadowRoot.getElementById(`slot${i}`);
             el.onclick = editSlot.bind(this);

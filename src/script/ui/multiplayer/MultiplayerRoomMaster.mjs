@@ -1,7 +1,8 @@
 import Template from "/deepJS/util/Template.mjs";
 import RATController from "/script/util/RATController.mjs";
-import "./MPHost.mjs";
-import "./MPClient.mjs";
+import "./MPUser.mjs";
+import "./MPManagedUser.mjs";
+
 
 const TPL = new Template(`
     <style>
@@ -40,7 +41,7 @@ class HTMLMultiplayerRoomMaster extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
 
         let close_button = this.shadowRoot.getElementById("close_button");
         let leave_button = this.shadowRoot.getElementById("leave_button");
@@ -64,19 +65,35 @@ class HTMLMultiplayerRoomMaster extends HTMLElement {
     updateRoom(data) {
         this.innerHTML = "";
         if (!!data.host) {
-            let el = document.createElement("ootrt-mphost");
+            let el = document.createElement("ootrt-mpuser");
             el.name = data.host;
-            this.appendChild(el);
+            el.role = 'host';
+            this.append(el);
         }
         if (!!data.peers) {
             data.peers.forEach(function(inst) {
-                let el = document.createElement("ootrt-mpclient");
-                el.name = inst.name;
-                this.appendChild(el);
+                let el = document.createElement("ootrt-mpmanageduser");
+                el.name = inst;
+                el.role = 'client';
+                el.addEventListener("kick", kickUser);
+                this.append(el);
+            }.bind(this));
+        }
+        if (!!data.viewer) {
+            data.viewer.forEach(function(inst) {
+                let el = document.createElement("ootrt-mpmanageduser");
+                el.name = inst;
+                el.role = 'spectator';
+                el.addEventListener("kick", kickUser);
+                this.append(el);
             }.bind(this));
         }
     }
 
+}
+
+function kickUser(event) {
+    RATController.kick(event.target.name);
 }
 
 customElements.define('ootrt-multiplayerroommaster', HTMLMultiplayerRoomMaster);

@@ -57,7 +57,7 @@ function editSong(event) {
             });
         }
     }.bind(this));
-    d.appendChild(builder);
+    d.append(builder);
     d.show();
 }
 
@@ -78,7 +78,7 @@ export default class HTMLTrackerSongField extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         EventBus.on("force-song-update", globalUpdate.bind(this));
         EventBus.on("net:song-update", songUpdate.bind(this));
     }
@@ -105,7 +105,7 @@ export default class HTMLTrackerSongField extends HTMLElement {
                 let edt = document.createElement('button');
                 edt.innerHTML = "✎";
                 edt.onclick = editSong.bind(this);
-                title.appendChild(edt);
+                title.append(edt);
             }
         }
     }

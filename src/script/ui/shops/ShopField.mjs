@@ -77,7 +77,7 @@ function editShop(event) {
             });
         }
     }.bind(this));
-    d.appendChild(builder);
+    d.append(builder);
     d.show();
 }
 
@@ -158,7 +158,7 @@ export default class HTMLTrackerShopField extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         EventBus.on("force-shop-update", globalUpdate.bind(this));
         EventBus.on("net:shop-items-update", shopItemUpdate.bind(this));
         EventBus.on("net:shop-bought-update", shopBoughtUpdate.bind(this));

@@ -95,7 +95,7 @@ function showLogic(ref) {
             submit: "OK"
         });
         d.value = ref;
-        d.appendChild(l);
+        d.append(l);
         d.show();
     }
 }
@@ -129,7 +129,7 @@ class HTMLTrackerLocationSkulltula extends HTMLElement {
         this.addEventListener("click", click.bind(this));
         this.addEventListener("contextmenu", contextMenu.bind(this));
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         /* context menu */
         this.shadowRoot.getElementById("menu-check").addEventListener("click", click.bind(this));
         this.shadowRoot.getElementById("menu-uncheck").addEventListener("click", unclick.bind(this));
@@ -176,11 +176,11 @@ class HTMLTrackerLocationSkulltula extends HTMLElement {
 
                     let el_time = document.createElement("deep-icon");
                     el_time.src = `images/time_${data.time || "both"}.svg`;
-                    this.shadowRoot.getElementById("badge").appendChild(el_time);
+                    this.shadowRoot.getElementById("badge").append(el_time);
 
                     let el_era = document.createElement("deep-icon");
                     el_era.src = `images/era_${data.era || "both"}.svg`;
-                    this.shadowRoot.getElementById("badge").appendChild(el_era);
+                    this.shadowRoot.getElementById("badge").append(el_era);
 
                     if (Logic.getValue("skulltulas", path[2])) {
                         txt.classList.add("avail");

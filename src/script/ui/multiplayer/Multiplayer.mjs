@@ -27,7 +27,7 @@ class HTMLMultiplayer extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         
         let lobby_view = this.shadowRoot.getElementById("lobby_view");
         let room_master = this.shadowRoot.getElementById("room_master");
