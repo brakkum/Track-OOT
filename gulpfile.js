@@ -37,6 +37,9 @@ const filelist = require('gulp-filelist');
 const autoprefixer = require('gulp-autoprefixer');
 const eslint = require('gulp-eslint');
 const deleted = require("./deleted");
+const modifyFile = require('gulp-modify-file');
+const git = require('gulp-git');
+const data = require('gulp-data');
 
 function copyHTML_prod() {
     return gulp.src(PATHS.appBase + "/**/*.html")
@@ -230,6 +233,62 @@ function writeTOC_dev() {
         .pipe(gulp.dest(PATHS.targetDev));
 }
 
+function writeVersion_prod() {
+
+    let tag;
+
+    return gulp.src([PATHS.appBase + "/version.json"])
+        .pipe(data(function(file, cb) {
+            git.revParse({args: '--abbrev-ref HEAD'},  (err, succ) => {
+                if (err) {
+                    cb(err, null);
+                } else {
+                    tag = succ;
+                    cb(null, succ);
+                }
+            })
+        }))
+        .pipe(modifyFile((content, path, file) => {
+            let jsonContent = JSON.parse(content);
+            jsonContent.commit = "";
+            jsonContent.dev = false;
+            jsonContent.version = tag;
+            jsonContent.date = new Date();
+            return JSON.stringify(jsonContent);
+        }))
+        .pipe(gulp.dest(PATHS.targetProd));
+}
+
+function writeVersion_dev() {
+
+    let commit_hash;
+
+    return gulp.src([PATHS.appBase + "/version.json"])
+        .pipe(data(function(file, cb) {
+            git.revParse({args: 'HEAD'},  (err, succ) => {
+                if (err) {
+                    cb(err, null);
+                } else {
+                    commit_hash = succ;
+                    cb(null, succ);
+                }
+            })
+        }))
+        .pipe(modifyFile((content, path, file) => {
+            let jsonContent = JSON.parse(content);
+            jsonContent.commit = commit_hash;
+            jsonContent.dev = true;
+            jsonContent.version = "";
+            jsonContent.date = new Date();
+            return JSON.stringify(jsonContent);
+        }))
+        .pipe(gulp.dest(PATHS.targetDev));   
+}
+
+
+exports.writeVersion_prod = gulp.series(writeVersion_prod);
+exports.writeVersion_dev = gulp.series(writeVersion_dev);
+
 function cleanup_prod(done) {
     deleted.cleanup(PATHS.targetProd);
     done();
@@ -254,6 +313,7 @@ exports.build = gulp.series(
         copySW_prod,
         copyChangelog_prod
     ),
+    writeVersion_prod,
     cleanup_prod,
     writeTOC_prod
 );
@@ -272,6 +332,7 @@ exports.buildDev = gulp.series(
         copySW_dev,
         copyChangelog_dev
     ),
+    writeVersion_dev,
     cleanup_dev,
     writeTOC_dev
 );
