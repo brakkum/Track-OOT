@@ -1,12 +1,6 @@
 kind: pipeline
 name: prod-system
 
-#trigger:
-#  branch:
-#    - master
-#  event:
-#    - tag
-
 steps:
 - name: build
   image: node:latest
@@ -16,27 +10,5 @@ steps:
     - yarn --version
     - yarn install
     - yarn buildDev
-    - echo ${DRONE_COMMIT_SHA}
     - echo ${DRONE_TAG}
-
----
-kind: pipeline
-name: dev-system
-
-#trigger:
-#  branch:
-#    - dev
-#  event:
-#    - push
-
-steps:
-- name: build
-  image: node:latest
-  commands:
-    - node -v
-    - npm -v
-    - yarn --version
-    - yarn install
-    - yarn buildDev
-    - echo ${DRONE_COMMIT_SHA}
-    - echo ${DRONE_TAG}
+    - echo "{\"version}"
