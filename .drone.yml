@@ -9,6 +9,6 @@ steps:
     - npm -v
     - yarn --version
     - yarn install
-    - yarn buildDev
+    - yarn build
     - echo ${DRONE_TAG}
     - echo "{\"version}"
