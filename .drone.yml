@@ -1,6 +1,14 @@
 kind: pipeline
 name: default
 
+trigger:
+  branch:
+    - master
+    - dev
+  event:
+    - push
+    - tag
+
 steps:
 - name: build
   image: node:latest
@@ -12,4 +20,8 @@ steps:
     - yarn buildDev
     - echo ${DRONE_COMMIT_SHA}
     - echo ${DRONE_TAG}
-
+  when:
+    event:
+      - push
+    branch:
+      - dev
