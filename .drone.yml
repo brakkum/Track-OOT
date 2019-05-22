@@ -1,13 +1,10 @@
 kind: pipeline
-name: default
+name: prod-system
 
 trigger:
   branch:
     - master
-    - dev
-    - feature/droneci
   event:
-    - push
     - tag
 
 steps:
@@ -21,8 +18,25 @@ steps:
     - yarn buildDev
     - echo ${DRONE_COMMIT_SHA}
     - echo ${DRONE_TAG}
-  when:
-    event:
-      - push
-    branch:
-      - dev
+
+---
+kind: pipeline
+name: dev-system
+
+trigger:
+  branch:
+    - dev
+  event:
+    - push
+
+steps:
+- name: build
+  image: node:latest
+  commands:
+    - node -v
+    - npm -v
+    - yarn --version
+    - yarn install
+    - yarn buildDev
+    - echo ${DRONE_COMMIT_SHA}
+    - echo ${DRONE_TAG}
