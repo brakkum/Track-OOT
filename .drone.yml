@@ -1,11 +1,11 @@
 kind: pipeline
 name: prod-system
 
-trigger:
-  branch:
-    - master
-  event:
-    - tag
+#trigger:
+#  branch:
+#    - master
+#  event:
+#    - tag
 
 steps:
 - name: build
@@ -23,11 +23,11 @@ steps:
 kind: pipeline
 name: dev-system
 
-trigger:
-  branch:
-    - dev
-  event:
-    - push
+#trigger:
+#  branch:
+#    - dev
+#  event:
+#    - push
 
 steps:
 - name: build
