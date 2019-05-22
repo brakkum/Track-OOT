@@ -1,10 +1,5 @@
 kind: pipeline
 name: default
-when:
-  ref:
-  - refs/tags/*
-  branch:
-  - dev
 
 steps:
 - name: build
