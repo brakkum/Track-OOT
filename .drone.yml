@@ -5,6 +5,7 @@ trigger:
   branch:
     - master
     - dev
+    - feature/droneci
   event:
     - push
     - tag
