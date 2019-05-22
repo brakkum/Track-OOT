@@ -10,4 +10,6 @@ steps:
     - yarn --version
     - yarn install
     - yarn buildDev
+    - echo ${DRONE_COMMIT_SHA}
+    - echo ${DRONE_TAG}
 
