@@ -10,3 +10,8 @@ steps:
     - yarn --version
     - yarn install
     - yarn buildDev
+  when:
+    ref:
+    - refs/tags/*
+    branch:
+    - dev
