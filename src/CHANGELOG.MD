@@ -25,4 +25,4 @@ Version:        1.4.0
 - 2nd magic marker [+]
 
 ### PREFORMANCE
-- location elements wll now be cached, increasing overall performance
+- location elements will now be cached, increasing overall performance
