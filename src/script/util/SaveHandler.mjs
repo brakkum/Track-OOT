@@ -181,13 +181,16 @@ async function state_Rename() {
                 return;
             }
             let save = DeepLocalStorage.get("save", stateChoice.value);
+            if (!!save.meta) {
+                delete save.meta;
+            }
             DeepLocalStorage.remove("save", stateChoice.value);
             DeepLocalStorage.set("save", name, save);
-            prepairSavegameChoice();
             if (activestate != "" && activestate == stateChoice.value) {
                 activestate = name;
                 DeepSessionStorage.set('meta', 'active_state', activestate);
             }
+            prepairSavegameChoice();
             stateChoice.value = name;
             toggleStateButtons();
         }
