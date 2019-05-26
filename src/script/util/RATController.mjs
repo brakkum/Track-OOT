@@ -24,9 +24,9 @@ function getState() {
 }
 
 function setState(state) {
-    for (let i of state) {
+    for (let i in state) {
         if (i === "shops_names") continue;
-        for (let j of state[i]) {
+        for (let j in state[i]) {
             if (i === "extras" && j === "notes") continue;
             if (!!state[i] && !!state[i][j]) {
                 TrackerLocalState.write(i, j, state[i][j]);
