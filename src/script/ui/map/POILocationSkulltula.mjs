@@ -78,26 +78,26 @@ const TPL = new Template(`
     </deep-tooltip>
 `);
 
-function locationUpdate(name, value) {
-    if (this.ref === name && this.checked !== value) {
+function locationUpdate(event) {
+    if (this.ref === event.data.name && this.checked !== event.data.value) {
         EventBus.mute("location-update");
-        this.checked = value;
+        this.checked = event.data.value;
         EventBus.unmute("location-update");
     }
 }
 
-function globalUpdate() {
+function globalUpdate(event) {
     let path = this.ref.split(".");
     EventBus.mute("location-update");
-    this.checked = TrackerLocalState.read(path[1], path[2], false);
+    this.checked = TrackerLocalState.read("skulltulas", path[2], false);
     EventBus.unmute("location-update");
 }
 
-function logicUpdate(type, ref, value) {
+function logicUpdate(event) {
     let path = this.ref.split(".");
-    if (path[1] == type && path[2] == ref) {
+    if (event.data.type == "skulltulas" && event.data.ref == path[2]) {
         let el = this.shadowRoot.getElementById("marker");
-        if (!!value) {
+        if (!!event.data.value) {
             el.classList.add("avail");
         } else {
             el.classList.remove("avail");
@@ -105,16 +105,16 @@ function logicUpdate(type, ref, value) {
     }
 }
 
-class HTMLTrackerPOILocation extends HTMLElement {
+class HTMLTrackerPOILocationSkulltula extends HTMLElement {
 
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         this.addEventListener("click", this.check);
         this.addEventListener("contextmenu", this.uncheck);
         /* event bus */
-        EventBus.on("location-update", locationUpdate.bind(this));
+        EventBus.on(["location-update", "net:location-update"], locationUpdate.bind(this));
         EventBus.on("force-location-update", globalUpdate.bind(this));
         EventBus.on("logic", logicUpdate.bind(this));
     }
@@ -144,7 +144,7 @@ class HTMLTrackerPOILocation extends HTMLElement {
             case 'ref':
                 if (oldValue != newValue) {
                     let path = newValue.split('.');
-                    let data = GlobalData.get("locations")["overworld"][`${path[1]}_v`][path[2]];
+                    let data = GlobalData.get("locations")["overworld"][path[1]][path[2]];
                     let txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = I18n.translate(path[2]);
                     
@@ -177,20 +177,20 @@ class HTMLTrackerPOILocation extends HTMLElement {
 
                     let el_time = document.createElement("deep-icon");
                     el_time.src = `images/time_${data.time || "both"}.svg`;
-                    this.shadowRoot.getElementById("badge").appendChild(el_time);
+                    this.shadowRoot.getElementById("badge").append(el_time);
 
                     let el_era = document.createElement("deep-icon");
                     el_era.src = `images/era_${data.era ||"both"}.svg`;
-                    this.shadowRoot.getElementById("badge").appendChild(el_era);
+                    this.shadowRoot.getElementById("badge").append(el_era);
                     
                     let el = this.shadowRoot.getElementById("marker");
-                    if (Logic.getValue(path[1], path[2])) {
+                    if (Logic.getValue("skulltulas", path[2])) {
                         el.classList.add("avail");
                     } else {
                         el.classList.remove("avail");
                     }
 
-                    this.checked = TrackerLocalState.read(path[1], path[2], false);
+                    this.checked = TrackerLocalState.read("skulltulas", path[2], false);
                 }
             break;
             case 'checked':
@@ -198,14 +198,17 @@ class HTMLTrackerPOILocation extends HTMLElement {
                     let path = this.ref.split(".");
                     if (!newValue || newValue === "false") {
                         let el = this.shadowRoot.getElementById("marker");
-                        if (Logic.getValue(path[1], path[2])) {
+                        if (Logic.getValue("skulltulas", path[2])) {
                             el.classList.add("avail");
                         } else {
                             el.classList.remove("avail");
                         }
                     }
-                    TrackerLocalState.write(path[1], path[2], newValue === "false" ? false : !!newValue);
-                    EventBus.post("location-update", this.ref, newValue);
+                    TrackerLocalState.write("skulltulas", path[2], newValue === "false" ? false : !!newValue);
+                    EventBus.fire("location-update", {
+                        name: this.ref,
+                        value: newValue
+                    });
                 }
             break;
         }
@@ -229,4 +232,4 @@ class HTMLTrackerPOILocation extends HTMLElement {
 
 }
 
-customElements.define('ootrt-poilocation', HTMLTrackerPOILocation);
+customElements.define('ootrt-poilocationskulltula', HTMLTrackerPOILocationSkulltula);

@@ -184,7 +184,8 @@ settingsEdit.addEventListener("click", function() {
     settings.show(getSettings(), 'settings');
 });
 
-settings.addEventListener('submit', function(event) {
+function onSettingsEvent(event) {
+    let settings = {};
     for (let i in event.data) {
         for (let j in event.data[i]) {
             if (i === "settings") {
@@ -207,12 +208,21 @@ settings.addEventListener('submit', function(event) {
                 }
             }
         }
+        if (i !== "settings") {
+            settings[i] = event.data[i];
+        }
     }
     applySettingsChoices();
-    EventBus.post("force-item-update");
-    EventBus.post("force-location-update");
-    EventBus.post("force-logic-update");
+    EventBus.fire("force-item-update");
+    EventBus.fire("force-location-update");
+    EventBus.fire("force-logic-update");
+    return settings;
+}
+
+settings.addEventListener('submit', function(event) {
+    EventBus.fire("update-settings", onSettingsEvent(event));
 });
+EventBus.on("net:update-settings", onSettingsEvent);
 
 settings.addEventListener('close', function(event) {
     showUpdatePopup = true;

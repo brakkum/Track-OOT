@@ -51,15 +51,26 @@ function editSong(event) {
             let res = builder.value;
             TrackerLocalState.write("songs", this.ref, res);
             this.shadowRoot.getElementById("stave").value = res;
+            EventBus.fire("song-update", {
+                name: this.ref,
+                value: res
+            });
         }
     }.bind(this));
-    d.appendChild(builder);
+    d.append(builder);
     d.show();
 }
 
-function globalUpdate() {
+function globalUpdate(event) {
     let data = GlobalData.get("songs")[this.ref];
     this.shadowRoot.getElementById("stave").value = TrackerLocalState.read("songs", this.ref, data.notes)
+}
+
+function songUpdate(event) {
+    if (this.ref === event.data.name) {
+        TrackerLocalState.write("songs", this.ref, event.data.value);
+        this.shadowRoot.getElementById("stave").value = event.data.value;
+    }
 }
 
 export default class HTMLTrackerSongField extends HTMLElement {
@@ -67,8 +78,9 @@ export default class HTMLTrackerSongField extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         EventBus.on("force-song-update", globalUpdate.bind(this));
+        EventBus.on("net:song-update", songUpdate.bind(this));
     }
 
     get ref() {
@@ -93,7 +105,7 @@ export default class HTMLTrackerSongField extends HTMLElement {
                 let edt = document.createElement('button');
                 edt.innerHTML = "✎";
                 edt.onclick = editSong.bind(this);
-                title.appendChild(edt);
+                title.append(edt);
             }
         }
     }

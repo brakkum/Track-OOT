@@ -2262,6 +2262,19 @@
                 }
             ]
         },
+        "zora_river_bean_salesman": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "scale"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                }
+            ]
+        },
         "deku_lobby": {
             "type": "mixin",
             "el": "deku_tree_access"
@@ -4519,8 +4532,21 @@
             ]
         },
         "ice_cavern_sheik": {
-            "type": "mixin",
-            "el": "ice_cavern_access"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "ice_cavern_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "bottle"
+                }
+            ]
         },
         "temple_fire_near_boss": {
             "type": "mixin",

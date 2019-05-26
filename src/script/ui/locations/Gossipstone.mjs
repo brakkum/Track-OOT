@@ -63,19 +63,19 @@ const TPL = new Template(`
     <div id="extra"></div>
 `);
 
-function gossipstoneUpdate(name, value) {
+function gossipstoneUpdate(event) {
     let ref = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref].ref || this.ref;
-    if (ref === name && this.shadowRoot.getElementById("text").classList.contains("checked") !== value) {
+    if (ref === event.data.name) {
         EventBus.mute("gossipstone-update");
-        this.setValue(TrackerLocalState.read("gossipstones", ref, {item: "0x01", location: "0x01"}));
+        this.setValue(event.data.value);
         EventBus.unmute("gossipstone-update");
     }
 }
 
-function logicUpdate(type, ref, value) {
-    if ("gossipstones" == type && this.ref == ref) {
+function logicUpdate(event) {
+    if ("gossipstones" == event.data.type && this.ref == event.data.ref) {
         let el = this.shadowRoot.getElementById("text");
-        if (!!value) {
+        if (!!event.data.value) {
             el.classList.add("avail");
         } else {
             el.classList.remove("avail");
@@ -83,7 +83,7 @@ function logicUpdate(type, ref, value) {
     }
 }
 
-function globalUpdate() {
+function globalUpdate(event) {
     EventBus.mute("gossipstone-update");
     let ref = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref].ref || this.ref;
     this.setValue(TrackerLocalState.read("gossipstones", ref, {item: "0x01", location: "0x01"}));
@@ -103,11 +103,11 @@ class HTMLTrackerGossipstone extends HTMLElement {
     constructor() {
         super();
         this.addEventListener("click", this.check);
-        EventBus.on("gossipstone-update", gossipstoneUpdate.bind(this));
+        EventBus.on(["gossipstone-update","net:gossipstone-update"], gossipstoneUpdate.bind(this));
         EventBus.on("force-location-update", globalUpdate.bind(this));
         EventBus.on("logic", logicUpdate.bind(this));
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
     }
 
     get ref() {
@@ -142,11 +142,11 @@ class HTMLTrackerGossipstone extends HTMLElement {
 
                     let el_time = document.createElement("deep-icon");
                     el_time.src = `images/time_${data.time || "both"}.svg`;
-                    this.shadowRoot.getElementById("badge").appendChild(el_time);
+                    this.shadowRoot.getElementById("badge").append(el_time);
 
                     let el_era = document.createElement("deep-icon");
                     el_era.src = `images/era_${data.era ||"both"}.svg`;
-                    this.shadowRoot.getElementById("badge").appendChild(el_era);
+                    this.shadowRoot.getElementById("badge").append(el_era);
 
                     if (Logic.getValue("gossipstones", this.ref)) {
                         txt.classList.add("avail");
@@ -160,7 +160,6 @@ class HTMLTrackerGossipstone extends HTMLElement {
             break;
             case 'checked':
                 if (oldValue != newValue) {
-                    let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
                     if (!newValue || newValue === "false") {
                         let el = this.shadowRoot.getElementById("text");
                         if (Logic.getValue("gossipstones", this.ref)) {
@@ -169,11 +168,6 @@ class HTMLTrackerGossipstone extends HTMLElement {
                             el.classList.remove("avail");
                         }
                     }
-                    let val = newValue != "false";
-                    if (!!val) {
-                        val = TrackerLocalState.read("gossipstones", data.ref || this.ref, {item: "0x00", location: "0x00"});
-                    }
-                    EventBus.post("gossipstone-update", data.ref || this.ref, val);
                 }
             break;
         }
@@ -210,6 +204,11 @@ class HTMLTrackerGossipstone extends HTMLElement {
                 }
             }
         }
+        let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
+        EventBus.fire("gossipstone-update", {
+            name: data.ref || this.ref,
+            value: value
+        });
     }
 
 }
@@ -228,15 +227,15 @@ function hintstoneDialog(ref) {
         lbl_loc.style.padding = "5px";
         lbl_loc.innerHTML = I18n.translate("location");
         let slt_loc = document.createElement("select");
-        slt_loc.appendChild(createOption("0x01", "["+I18n.translate("empty")+"]"));
-        slt_loc.appendChild(createOption("0x02", "["+I18n.translate("junk")+"]"));
+        slt_loc.append(createOption("0x01", "["+I18n.translate("empty")+"]"));
+        slt_loc.append(createOption("0x02", "["+I18n.translate("junk")+"]"));
         for (let j = 0; j < data.locations.length; ++j) {
             let loc = data.locations[j];
-            slt_loc.appendChild(createOption(loc, I18n.translate(loc)));
+            slt_loc.append(createOption(loc, I18n.translate(loc)));
         }
         slt_loc.style.width = "200px";
         slt_loc.value = value.location;
-        lbl_loc.appendChild(slt_loc);
+        lbl_loc.append(slt_loc);
     
         let lbl_itm = document.createElement('label');
         lbl_itm.style.display = "flex";
@@ -245,14 +244,14 @@ function hintstoneDialog(ref) {
         lbl_itm.style.padding = "5px";
         lbl_itm.innerHTML = I18n.translate("item");
         let slt_itm = document.createElement("select");
-        slt_itm.appendChild(createOption("0x01", "["+I18n.translate("empty")+"]"));
+        slt_itm.append(createOption("0x01", "["+I18n.translate("empty")+"]"));
         for (let j = 0; j < data.items.length; ++j) {
             let itm = data.items[j];
-            slt_itm.appendChild(createOption(itm, I18n.translate(itm)));
+            slt_itm.append(createOption(itm, I18n.translate(itm)));
         }
         slt_itm.style.width = "200px";
         slt_itm.value = value.item;
-        lbl_itm.appendChild(slt_itm);
+        lbl_itm.append(slt_itm);
         
         let d = new Dialog({title: I18n.translate(ref), submit: true, cancel: true});
         d.onsubmit = function(ref, result) {
@@ -265,8 +264,8 @@ function hintstoneDialog(ref) {
                 resolve(false);
             }
         }.bind(this, ref);
-        d.appendChild(lbl_loc);
-        d.appendChild(lbl_itm);
+        d.append(lbl_loc);
+        d.append(lbl_itm);
         d.show();
     });
 }

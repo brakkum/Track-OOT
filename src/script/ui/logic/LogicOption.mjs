@@ -28,15 +28,17 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
 
     constructor() {
         super();
-        this.shadowRoot.appendChild(TPL.generate());
-        EventBus.on("settings", function() {
+        this.shadowRoot.append(TPL.generate());
+        EventBus.on("settings", function(event) {
             this.update();
         }.bind(this));
         let select = this.shadowRoot.getElementById('select');
         select.addEventListener('change', function(event) {
             SELECTOR_VALUE.set(this, select.value);
         }.bind(this));
-        EventBus.on("force-logic-update", this.update.bind(this));
+        EventBus.on("force-logic-update", function(event) {
+            this.update();
+        }.bind(this));
     }
 
     update() {
@@ -88,7 +90,7 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
                         slc.classList.remove('hidden');
                         el.innerHTML = "";
                         for (let i of data.values) {
-                            el.appendChild(createOption(i, I18n.translate(i)));
+                            el.append(createOption(i, I18n.translate(i)));
                         }
                         if (SELECTOR_VALUE.has(this)) {
                             el.value = SELECTOR_VALUE.get(this);

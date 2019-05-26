@@ -48,14 +48,16 @@ const TPL = new Template(`
     </slot>
 `);
 
-function updateCall() {
+function updateCall(event) {
+    EventBus.mute("dungeon-type-update");
     this.value = TrackerLocalState.read("dungeonTypes", this.ref, "n");
+    EventBus.unmute("dungeon-type-update");
 }
 
-function dungeonTypeUppdate(ref, value){
-    if (this.ref === ref && this.value !== value) {
+function dungeonTypeUppdate(event){
+    if (this.ref === event.data.name && this.value !== event.data.value) {
         EventBus.mute("dungeon-type-update");
-        this.value = value;
+        this.value = event.data.value;
         EventBus.unmute("dungeon-type-update");
     }
 }
@@ -67,10 +69,10 @@ class HTMLTrackerDungeonType extends HTMLElement {
         this.addEventListener("click", this.next);
         this.addEventListener("contextmenu", this.revert);
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         /* event bus */
         EventBus.on("force-dungeonstate-update", updateCall.bind(this));
-        EventBus.on("dungeon-type-update", dungeonTypeUppdate.bind(this));
+        EventBus.on(["dungeon-type-update","net:dungeon-type-update"], dungeonTypeUppdate.bind(this));
     }
 
     connectedCallback() {
@@ -112,9 +114,9 @@ class HTMLTrackerDungeonType extends HTMLElement {
                         this.value = "";
                         EventBus.unmute("dungeon-type-update");
                     } else if (oldValue === null || oldValue === undefined || oldValue === "") {
-                        this.appendChild(createOption("n", "/images/type_undefined.svg"));
-                        this.appendChild(createOption("v", "/images/type_vanilla.svg"));
-                        this.appendChild(createOption("mq", "/images/type_masterquest.svg"));
+                        this.append(createOption("n", "/images/type_undefined.svg"));
+                        this.append(createOption("v", "/images/type_vanilla.svg"));
+                        this.append(createOption("mq", "/images/type_masterquest.svg"));
                         EventBus.mute("dungeon-type-update");
                         this.value = TrackerLocalState.read("dungeonTypes", newValue, "n");
                         EventBus.unmute("dungeon-type-update");
@@ -132,7 +134,10 @@ class HTMLTrackerDungeonType extends HTMLElement {
                         ne.classList.add("active");
                     }
                     TrackerLocalState.write("dungeonTypes", this.ref, newValue);
-                    EventBus.post("dungeon-type-update", this.ref, newValue);
+                    EventBus.fire("dungeon-type-update", {
+                        name: this.ref,
+                        value: newValue
+                    });
                 }
             break;
         }

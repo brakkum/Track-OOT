@@ -20,12 +20,12 @@ export default class HTMLTrackerShopList extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         let shops = GlobalData.get("shops");
         for (let i in shops) {
             let el = document.createElement("ootrt-shopfield");
             el.ref = i;
-            this.shadowRoot.appendChild(el);
+            this.shadowRoot.append(el);
         }
     }
 

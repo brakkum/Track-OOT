@@ -32,7 +32,7 @@ function showLogic(ref) {
         submit: "OK"
     });
     d.value = ref;
-    d.appendChild(Logic.getLogicView("mixins", ref));
+    d.append(Logic.getLogicView("mixins", ref));
     d.show();
 }
 
@@ -40,9 +40,9 @@ export default class TrackerLogicMixin extends DeepLogicAbstractElement {
 
     constructor() {
         super();
-        this.shadowRoot.appendChild(TPL.generate());
-        EventBus.on("logic", function(type, ref) {
-            if ("mixins" == type && this.ref == ref) {
+        this.shadowRoot.append(TPL.generate());
+        EventBus.on("logic", function(event) {
+            if ("mixins" == event.data.type && this.ref == event.data.ref) {
                 this.update();
             }
         }.bind(this));

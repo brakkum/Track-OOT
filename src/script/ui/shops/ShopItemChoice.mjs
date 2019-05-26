@@ -119,7 +119,7 @@ async function settingsSubmit() {
                     document.body.removeChild(this);
                 }
             }.bind(this);
-            d.appendChild(shop_price);
+            d.append(shop_price);
             d.show();
         }
     }
@@ -137,10 +137,10 @@ export default class HTMLTrackerShopItemChoice extends DeepWindow {
         let window = this.shadowRoot.getElementById('window');
         this.shadowRoot.getElementById('body').innerHTML = "";
         this.shadowRoot.insertBefore(els.children[0], this.shadowRoot.getElementById('focus_catcher_top'));
-        this.shadowRoot.getElementById('body').appendChild(els.getElementById('panel_about'));
+        this.shadowRoot.getElementById('body').append(els.getElementById('panel_about'));
         let ctgrs = els.getElementById('categories');
         window.insertBefore(ctgrs, this.shadowRoot.getElementById('body'));
-        window.appendChild(els.getElementById('footer'));
+        window.append(els.getElementById('footer'));
 
         ctgrs.onclick = (event) => {
             let t = event.target.getAttribute('target');
@@ -285,13 +285,13 @@ export default class HTMLTrackerShopItemChoice extends DeepWindow {
             pnl.className = "panel";
             pnl.id = `panel_${id}`;
             pnl.dataset.ref = id;
-            this.shadowRoot.getElementById('body').appendChild(pnl);
+            this.shadowRoot.getElementById('body').append(pnl);
             let cb = document.createElement('div');
             cb.className = "category";
             cb.setAttribute('target', id);
             cb.innerHTML = title;
             let cbt = this.shadowRoot.getElementById('categories');
-            cbt.appendChild(cb);
+            cbt.append(cb);
         }
     }
 
@@ -300,7 +300,7 @@ export default class HTMLTrackerShopItemChoice extends DeepWindow {
         item.ref = ref;
         item.price = price;
         item.onclick = clickItem.bind(this);
-        this.shadowRoot.getElementById(`panel_${category}`).appendChild(item);
+        this.shadowRoot.getElementById(`panel_${category}`).append(item);
     }
 
 }

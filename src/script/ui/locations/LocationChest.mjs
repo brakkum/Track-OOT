@@ -59,26 +59,26 @@ const TPL = new Template(`
     </deep-contextmenu>
 `);
 
-function locationUpdate(name, value) {
-    if (this.ref === name && this.checked !== value) {
+function locationUpdate(event) {
+    if (this.ref === event.data.name && this.checked !== event.data.value) {
         EventBus.mute("location-update");
-        this.checked = value;
+        this.checked = event.data.value;
         EventBus.unmute("location-update");
     }
 }
 
-function globalUpdate() {
+function globalUpdate(event) {
     let path = this.ref.split(".");
     EventBus.mute("location-update");
-    this.checked = TrackerLocalState.read(path[1], path[2], false);
+    this.checked = TrackerLocalState.read("chests", path[2], false);
     EventBus.unmute("location-update");
 }
 
-function logicUpdate(type, ref, value) {
+function logicUpdate(event) {
     let path = this.ref.split(".");
-    if (path[1] == type && path[2] == ref) {
+    if (event.data.type == "chests" && event.data.ref == path[2]) {
         let el = this.shadowRoot.getElementById("text");
-        if (!!value) {
+        if (!!event.data.value) {
             el.classList.add("avail");
         } else {
             el.classList.remove("avail");
@@ -88,14 +88,14 @@ function logicUpdate(type, ref, value) {
 
 function showLogic(ref) {
     let path = ref.split(".");
-    let l = Logic.getLogicView(path[1], path[2]);
+    let l = Logic.getLogicView("chests", path[2]);
     if (!!l) {
         let d = new Dialog({
             title: I18n.translate(path[2]),
             submit: "OK"
         });
         d.value = ref;
-        d.appendChild(l);
+        d.append(l);
         d.show();
     }
 }
@@ -122,14 +122,14 @@ function contextMenu(event) {
     return false;
 }
 
-class HTMLTrackerLocation extends HTMLElement {
+class HTMLTrackerLocationChest extends HTMLElement {
 
     constructor() {
         super();
         this.addEventListener("click", click.bind(this));
         this.addEventListener("contextmenu", contextMenu.bind(this));
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         /* context menu */
         this.shadowRoot.getElementById("menu-check").addEventListener("click", click.bind(this));
         this.shadowRoot.getElementById("menu-uncheck").addEventListener("click", unclick.bind(this));
@@ -137,7 +137,7 @@ class HTMLTrackerLocation extends HTMLElement {
             showLogic(this.ref);
         }.bind(this));
         /* event bus */
-        EventBus.on("location-update", locationUpdate.bind(this));
+        EventBus.on(["location-update", "net:location-update"], locationUpdate.bind(this));
         EventBus.on("force-location-update", globalUpdate.bind(this));
         EventBus.on("logic", logicUpdate.bind(this));
     }
@@ -167,9 +167,8 @@ class HTMLTrackerLocation extends HTMLElement {
             case 'ref':
                 if (oldValue != newValue) {
                     let path = newValue.split('.');
-                    let data = GlobalData.get("locations")[path[0]]
-                    let dType = TrackerLocalState.read("dungeonTypes", path[0], data.hasmq ? "n" : "v");
-                    data = data[`${path[1]}_${dType}`][path[2]];
+                    let data = GlobalData.get("locations")[path[0]];
+                    data = data[path[1]][path[2]];
                     let txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = I18n.translate(path[2]);
 
@@ -177,19 +176,19 @@ class HTMLTrackerLocation extends HTMLElement {
 
                     let el_time = document.createElement("deep-icon");
                     el_time.src = `images/time_${data.time || "both"}.svg`;
-                    this.shadowRoot.getElementById("badge").appendChild(el_time);
+                    this.shadowRoot.getElementById("badge").append(el_time);
 
                     let el_era = document.createElement("deep-icon");
-                    el_era.src = `images/era_${data.era ||"both"}.svg`;
-                    this.shadowRoot.getElementById("badge").appendChild(el_era);
+                    el_era.src = `images/era_${data.era || "both"}.svg`;
+                    this.shadowRoot.getElementById("badge").append(el_era);
 
-                    if (Logic.getValue(path[1], path[2])) {
+                    if (Logic.getValue("chests", path[2])) {
                         txt.classList.add("avail");
                     } else {
                         txt.classList.remove("avail");
                     }
 
-                    this.checked = TrackerLocalState.read(path[1], path[2], false);
+                    this.checked = TrackerLocalState.read("chests", path[2], false);
                 }
             break;
             case 'checked':
@@ -197,14 +196,17 @@ class HTMLTrackerLocation extends HTMLElement {
                     let path = this.ref.split(".");
                     if (!newValue || newValue === "false") {
                         let el = this.shadowRoot.getElementById("text");
-                        if (Logic.getValue(path[1], path[2])) {
+                        if (Logic.getValue("chests", path[2])) {
                             el.classList.add("avail");
                         } else {
                             el.classList.remove("avail");
                         }
                     }
-                    TrackerLocalState.write(path[1], path[2], newValue === "false" ? false : !!newValue);
-                    EventBus.post("location-update", this.ref, newValue);
+                    TrackerLocalState.write("chests", path[2], newValue === "false" ? false : !!newValue);
+                    EventBus.fire("location-update", {
+                        name: this.ref,
+                        value: newValue
+                    });
                 }
             break;
         }
@@ -222,4 +224,4 @@ class HTMLTrackerLocation extends HTMLElement {
 
 }
 
-customElements.define('ootrt-listlocation', HTMLTrackerLocation);
+customElements.define('ootrt-listlocationchest', HTMLTrackerLocationChest);

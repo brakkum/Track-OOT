@@ -20,7 +20,7 @@ function fileExists(filename) {
 }
 
 !function () {
-    let deepJS = path.resolve(__dirname, '../deepjs.2deep4real.de');
+    let deepJS = path.resolve(__dirname, '../deepJS');
     if (fileExists(deepJS)) {
         PATHS.deepJS = deepJS;
     }

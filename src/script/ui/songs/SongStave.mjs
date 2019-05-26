@@ -68,7 +68,7 @@ export default class HTMLTrackerStave extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
     }
 
     get value() {
@@ -90,7 +90,7 @@ export default class HTMLTrackerStave extends HTMLElement {
             for (let i = 0; i < newValue.length; ++i) {
                 let el = document.createElement("div");
                 el.className = `note note_${newValue[i]}`;
-                notes.appendChild(el);
+                notes.append(el);
             }
         }
     }

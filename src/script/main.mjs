@@ -19,8 +19,11 @@ import "/deepJS/ui/selection/ChoiceSelect.mjs";
 
     updateLoadingMessage("apply logger...");
     if (!!GlobalData.get("version").dev) {
-        Logger.setOutput(document.getElementById("tracker-log"));
-        //EventBus.logEvents(true);
+        Logger.addOutput(document.getElementById("tracker-log"));
+        Logger.addOutput(console);
+        EventBus.on(function(event) {
+            Logger.info(JSON.stringify(event), "Event");
+        });
     } else {
         document.getElementById("tab_log_top").style.display = "none";
         document.getElementById("tab_log_bottom").style.display = "none";
@@ -39,6 +42,7 @@ import "/deepJS/ui/selection/ChoiceSelect.mjs";
     await Promise.all([
         $import.importModule("/script/ui/shops/ShopList.mjs"),
         $import.importModule("/script/ui/songs/SongList.mjs"),
+        $import.importModule("/script/ui/multiplayer/Multiplayer.mjs"),
         $import.importModule("/script/ui/LayoutContainer.mjs"),
         $import.importModule("/script/util/Settings.mjs")
     ]);
@@ -64,7 +68,7 @@ document.getElementById("hamburger-button").onclick = function(event) {
 
 function addHTMLModule(name, target) {
     let el = document.createElement(name);
-    document.getElementById(target).appendChild(el);
+    document.getElementById(target).append(el);
     return el;
 }
 
@@ -84,7 +88,13 @@ function changeView(event) {
 
 // state update
 // TODO create module for this
-EventBus.on(["logic", "dungeon-type-update", "location-update"], function() {
+EventBus.on([
+    "logic",
+    "dungeon-type-update",
+    "location-update",
+    "net:dungeon-type-update",
+    "net:location-update"
+], function(event) {
     updateChestStates();
     updateSkulltulasStates();
 });

@@ -28,9 +28,9 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
 
     constructor() {
         super();
-        this.shadowRoot.appendChild(TPL.generate());
-        EventBus.on("filter", function(ref) {
-            if (ref == this.ref) {
+        this.shadowRoot.append(TPL.generate());
+        EventBus.on("filter", function(event) {
+            if (event.data.ref == this.ref) {
                 this.update();
             }
         }.bind(this));
@@ -89,7 +89,7 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
                         slc.classList.remove('hidden');
                         el.innerHTML = "";
                         for (let i of data.values) {
-                            el.appendChild(createOption(i, I18n.translate(i)));
+                            el.append(createOption(i, I18n.translate(i)));
                         }
                         if (SELECTOR_VALUE.has(this)) {
                             el.value = SELECTOR_VALUE.get(this);

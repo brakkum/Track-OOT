@@ -82,11 +82,11 @@ class HTMLTrackerDungeonState extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
 
         let data = GlobalData.get("grids")["dungeons"];
         for (let i = 0; i < data.length; ++i) {
-            this.shadowRoot.appendChild(createRow(data[i]));
+            this.shadowRoot.append(createRow(data[i]));
         }
 
         switchActive.call(this, "", this.active);
@@ -154,7 +154,7 @@ function createRow(data) {
     // title
     let title = createItemText(data.title);
     title.style.color = data.color;
-    el.appendChild(title);
+    el.append(title);
     //////////////////////////////////
     // small key
     if (!!data.keys) {
@@ -164,12 +164,12 @@ function createRow(data) {
         types.push("key");
         itm.setAttribute('ref', data.keys);
         itm.title = I18n.translate(data.keys);
-        el.appendChild(itm);
+        el.append(itm);
     } else {
         let itm = createItemPlaceholder();
         itm.classList.add("inactive");
         itm.setAttribute("type", "key");
-        el.appendChild(itm);
+        el.append(itm);
     }
     //////////////////////////////////
     // boss key
@@ -180,12 +180,12 @@ function createRow(data) {
         types.push("bosskey");
         itm.setAttribute('ref', data.bosskey);
         itm.title = I18n.translate(data.bosskey);
-        el.appendChild(itm);
+        el.append(itm);
     } else {
         let itm = createItemPlaceholder();
         itm.classList.add("inactive");
         itm.setAttribute("type", "bosskey");
-        el.appendChild(itm);
+        el.append(itm);
     }
     //////////////////////////////////
     // map
@@ -196,12 +196,12 @@ function createRow(data) {
         types.push("map");
         itm.setAttribute('ref', data.map);
         itm.title = I18n.translate(data.map);
-        el.appendChild(itm);
+        el.append(itm);
     } else {
         let itm = createItemPlaceholder();
         itm.classList.add("inactive");
         itm.setAttribute("type", "map");
-        el.appendChild(itm);
+        el.append(itm);
     }
     //////////////////////////////////
     // compass
@@ -212,12 +212,12 @@ function createRow(data) {
         types.push("compass");
         itm.setAttribute('ref', data.compass);
         itm.title = I18n.translate(data.compass);
-        el.appendChild(itm);
+        el.append(itm);
     } else {
         let itm = createItemPlaceholder();
         itm.classList.add("inactive");
         itm.setAttribute("type", "compass");
-        el.appendChild(itm);
+        el.append(itm);
     }
     //////////////////////////////////
     // reward
@@ -228,12 +228,12 @@ function createRow(data) {
         types.push("reward");
         itm.setAttribute('ref', data.ref);
         itm.title = I18n.translate(data.ref) + " " + I18n.translate("dun_reward");
-        el.appendChild(itm);
+        el.append(itm);
     } else {
         let itm = createItemPlaceholder();
         itm.classList.add("inactive");
         itm.setAttribute("type", "reward");
-        el.appendChild(itm);
+        el.append(itm);
     }
     //////////////////////////////////
     // mode
@@ -244,12 +244,12 @@ function createRow(data) {
         types.push("type");
         itm.setAttribute('ref', data.ref);
         itm.title = I18n.translate(data.ref) + " " + I18n.translate("dun_type");
-        el.appendChild(itm);
+        el.append(itm);
     } else {
         let itm = createItemPlaceholder();
         itm.classList.add("inactive");
         itm.setAttribute("type", "type");
-        el.appendChild(itm);
+        el.append(itm);
     }
 
     el.setAttribute("type", types.join(' '));

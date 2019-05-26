@@ -71,9 +71,13 @@ function editShop(event) {
                 el.ref = res[i].item;
                 el.price = res[i].price;
             }
+            EventBus.fire("shop-items-update", {
+                name: this.ref,
+                value: res
+            });
         }
     }.bind(this));
-    d.appendChild(builder);
+    d.append(builder);
     d.show();
 }
 
@@ -83,6 +87,10 @@ function checkSlot(event) {
         let ch = TrackerLocalState.read("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
         ch[parseInt(event.target.id.slice(-1))] = 1;
         TrackerLocalState.write("shops_bought", this.ref, ch);
+        EventBus.fire("shop-bought-update", {
+            name: this.ref,
+            value: ch
+        });
     }
     event.preventDefault();
     return false;
@@ -94,6 +102,10 @@ function uncheckSlot(event) {
         let ch = TrackerLocalState.read("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
         ch[parseInt(event.target.id.slice(-1))] = 0;
         TrackerLocalState.write("shops_bought", this.ref, ch);
+        EventBus.fire("shop-bought-update", {
+            name: this.ref,
+            value: ch
+        });
     }
     event.preventDefault();
     return false;
@@ -107,7 +119,7 @@ function renameSlot(event) {
     return false;
 }
 
-function globalUpdate() {
+function globalUpdate(event) {
     let data = TrackerLocalState.read("shops", this.ref, GlobalData.get("shops")[this.ref]);
     let ch = TrackerLocalState.read("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
     let names = TrackerLocalState.read("shops_names", this.ref, ["","","","","","","",""]);
@@ -120,13 +132,36 @@ function globalUpdate() {
     }
 }
 
+function shopItemUpdate(event) {
+    if (this.ref === event.data.name) {
+        TrackerLocalState.write("shops", this.ref, event.data.value);
+        for (let i = 0; i < 8; ++i) {
+            let el = this.shadowRoot.getElementById(`slot${i}`);
+            el.ref = event.data.value[i].item;
+            el.price = event.data.value[i].price;
+        }
+    }
+}
+
+function shopBoughtUpdate(event) {
+    if (this.ref === event.data.name) {
+        TrackerLocalState.write("shops_bought", this.ref, event.data.value);
+        for (let i = 0; i < 8; ++i) {
+            let el = this.shadowRoot.getElementById(`slot${i}`);
+            el.checked = !!event.data.value[i];
+        }
+    }
+}
+
 export default class HTMLTrackerShopField extends HTMLElement {
     
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         EventBus.on("force-shop-update", globalUpdate.bind(this));
+        EventBus.on("net:shop-items-update", shopItemUpdate.bind(this));
+        EventBus.on("net:shop-bought-update", shopBoughtUpdate.bind(this));
         this.shadowRoot.getElementById("edit").onclick = editShop.bind(this);
         for (let i = 0; i < 8; ++i) {
             let el = this.shadowRoot.getElementById(`slot${i}`);

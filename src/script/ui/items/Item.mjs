@@ -53,7 +53,7 @@ const TPL = new Template(`
     </slot>
 `);
 
-function updateCall() {
+function updateCall(event) {
     EventBus.mute("item-update");
     // savesatate
     this.value = TrackerLocalState.read("items", this.ref, 0);
@@ -68,16 +68,16 @@ function updateCall() {
     EventBus.unmute("item-update");
 }
 
-function itemUpdate(name, value) {
-    if (this.ref === name && this.value !== value) {
+function itemUpdate(event) {
+    if (this.ref === event.data.name && this.value !== event.data.value) {
         EventBus.mute("item-update");
-        this.value = value;
+        this.value = event.data.value;
         EventBus.unmute("item-update");
     }
 }
 
-function updateDungeon(ref, val) {
-
+function updateDungeon(event) {
+    // XXX WTF is this empty?
 }
 
 class HTMLTrackerItem extends HTMLElement {
@@ -87,11 +87,11 @@ class HTMLTrackerItem extends HTMLElement {
         this.addEventListener("click", this.next);
         this.addEventListener("contextmenu", this.prev);
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         /* event bus */
-        EventBus.on("item-update", itemUpdate.bind(this));
+        EventBus.on(["item-update", "net:item-update"], itemUpdate.bind(this));
         EventBus.on("force-item-update", updateCall.bind(this));
-        EventBus.on("dungeon-type-update", updateDungeon.bind(this));
+        EventBus.on(["dungeon-type-update","net:dungeon-type-update"], updateDungeon.bind(this));
     }
 
     connectedCallback() {
@@ -158,7 +158,10 @@ class HTMLTrackerItem extends HTMLElement {
                         ne.classList.add("active");
                     }
                     TrackerLocalState.write("items", this.ref, parseInt(newValue));
-                    EventBus.post("item-update", this.ref, newValue);
+                    EventBus.fire("item-update", {
+                        name: this.ref,
+                        value: newValue
+                    });
                 break;
             }
         }
@@ -205,7 +208,7 @@ class HTMLTrackerItem extends HTMLElement {
             if (i == current_value) {
                 opt.classList.add("active");
             }
-            this.appendChild(opt);
+            this.append(opt);
         }
 
         this.value = current_value;
@@ -301,8 +304,11 @@ function createOption(value, img, data, max_value) {
                 opt.innerHTML = value;
             }
         }
-        if (value >= max_value || !!data.mark && value >= data.mark) {
-            opt.classList.add("mark");
+        if (data.mark !== false) {
+            let mark = parseInt(data.mark);
+            if (value >= max_value || !isNaN(mark) && value >= mark) {
+                opt.classList.add("mark");
+            }
         }
     }
     return opt;

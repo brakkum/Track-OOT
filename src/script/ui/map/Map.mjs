@@ -3,7 +3,8 @@ import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import Logger from "/deepJS/util/Logger.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
-import "./POILocation.mjs";
+import "./POILocationChest.mjs";
+import "./POILocationSkulltula.mjs";
 import "./POIGossipstone.mjs";
 import "./POIArea.mjs";
 
@@ -152,6 +153,49 @@ const TPL = new Template(`
     </div>
 `);
 
+const LOCATION_ELEMENTS = new Map();
+
+function generateLocations() {
+    let data = GlobalData.get("locations");
+    if (!!data.overworld && !!data.overworld.gossipstones_v) {
+        for (let i in data.overworld.gossipstones_v) {
+            let el = document.createElement('ootrt-poigossipstone');
+            el.style.left = data.overworld.gossipstones_v[i].x;
+            el.style.top = data.overworld.gossipstones_v[i].y;
+            el.ref = i;
+            LOCATION_ELEMENTS.set(`G:${i}`, el);
+        }
+    }
+    for (let i in data) {
+        if (data[i].spread) {
+            if (!!data[i].chests_v) {
+                for (let j in data[i].chests_v) {
+                    let el = document.createElement('ootrt-poilocationchest');
+                    el.style.left = data[i].chests_v[j].x;
+                    el.style.top = data[i].chests_v[j].y;
+                    el.ref = `${i}.chests_v.${j}`;
+                    LOCATION_ELEMENTS.set(`${i}.chests_v.${j}`, el);
+                }
+            }
+            if (!!data[i].skulltulas_v) {
+                for (let j in data[i].skulltulas_v) {
+                    let el = document.createElement('ootrt-poilocationskulltula');
+                    el.style.left = data[i].skulltulas_v[j].x;
+                    el.style.top = data[i].skulltulas_v[j].y;
+                    el.ref = `${i}.skulltulas_v.${j}`;
+                    LOCATION_ELEMENTS.set(`${i}.skulltulas_v.${j}`, el);
+                }
+            }
+        } else {
+            let el = document.createElement('ootrt-poiarea');
+            el.style.left = data[i].x;
+            el.style.top = data[i].y;
+            el.ref = i;
+            LOCATION_ELEMENTS.set(`A:${i}`, el);
+        }
+    }
+}
+
 function mapMoveBegin(event) {
     if (event.button === 0) {
         let target = event.target;
@@ -244,8 +288,9 @@ class HTMLTrackerMap extends HTMLElement {
 
     constructor() {
         super();
+        generateLocations();
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         let map = this.shadowRoot.getElementById("map");
         let mapslide = this.shadowRoot.getElementById("map-scale-slider");
         let mapfixed = this.shadowRoot.getElementById("map-fixed");
@@ -276,13 +321,13 @@ class HTMLTrackerMap extends HTMLElement {
             event.preventDefault();
             return false;
         });
-        EventBus.on("location-mode-change", function(mode) {
-            this.mode = mode;
+        EventBus.on("location-mode-change", function(event) {
+            this.mode = event.data.value;
         }.bind(this));
-        EventBus.on("location-era-change", function(era) {
-            this.era = era;
+        EventBus.on("location-era-change", function(event) {
+            this.era = event.data.value;
         }.bind(this));
-        EventBus.on("force-location-update", function() {
+        EventBus.on("force-location-update", function(event) {
             this.attributeChangedCallback("", "");
         }.bind(this));
         window.addEventListener("resize", function(event) {
@@ -349,11 +394,8 @@ class HTMLTrackerMap extends HTMLElement {
                         Object.keys(data).forEach(i => {
                             let buf = data[i];
                             if (!buf.era || !this.era || this.era === buf.era) {
-                                let el = document.createElement('ootrt-poigossipstone');
-                                el.style.left = buf.x;
-                                el.style.top = buf.y;
-                                el.ref = i;
-                                this.appendChild(el);
+                                let el = LOCATION_ELEMENTS.get(`G:${i}`);
+                                this.append(el);
                             }
                         });
                     }
@@ -361,29 +403,23 @@ class HTMLTrackerMap extends HTMLElement {
                     let data = GlobalData.get("locations");
                     if (!!data) {
                         Object.keys(data).forEach(i => {
-                            if (i === "overworld") {
-                                let buff = GlobalData.get("locations")["overworld"][`${this.mode}_v`];
+                            if (!!data[i].spread) {
+                                let buff = GlobalData.get("locations")[i][`${this.mode}_v`];
                                 if (!!buff) {
                                     Object.keys(buff).forEach(j => {
                                         let buf = buff[j];
                                         if (!buf.era || !this.era || this.era === buf.era) {
                                             if (!buf.mode || TrackerLocalState.read("options", buf.mode, false)) {
-                                                let el = document.createElement('ootrt-poilocation');
-                                                el.style.left = buf.x;
-                                                el.style.top = buf.y;
-                                                el.ref = `overworld.${this.mode}.${j}`;
-                                                this.appendChild(el);
+                                                let el = LOCATION_ELEMENTS.get(`${i}.${this.mode}_v.${j}`);
+                                                this.append(el);
                                             }
                                         }
                                     });
                                 }
                             } else {
-                                let el = document.createElement('ootrt-poiarea');
-                                el.style.left = data[i].x;
-                                el.style.top = data[i].y;
-                                el.ref = i;
+                                let el = LOCATION_ELEMENTS.get(`A:${i}`);
                                 el.mode = this.mode;
-                                this.appendChild(el);
+                                this.append(el);
                             }
                         });
                     }

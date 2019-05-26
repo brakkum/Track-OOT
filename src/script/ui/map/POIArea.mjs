@@ -94,18 +94,18 @@ function canGet(name, category) {
     return canGet;
 }
 
-function locationUpdate(name, value) {
-    if (this.ref === name.split('.')[0]) {
+function locationUpdate(event) {
+    if (this.ref === event.data.name.split('.')[0]) {
         this.attributeChangedCallback("", "");
     }
 }
 
-function itemUpdate(name, value) {
+function itemUpdate(event) {
     this.attributeChangedCallback("", "");
 }
 
-function dungeonTypeUpdate(ref, val) {
-    if (this.ref === ref) {
+function dungeonTypeUpdate(event) {
+    if (this.ref === event.data.ref) {
         this.attributeChangedCallback("", "");
     }
 }
@@ -114,17 +114,19 @@ class HTMLTrackerPOIArea extends HTMLElement {
 
     constructor() {
         super();
-        this.addEventListener("click", () => EventBus.post("location-change", this.ref));
-        EventBus.on("dungeon-type-update", dungeonTypeUpdate.bind(this));
-        EventBus.on("location-update", locationUpdate.bind(this));
-        EventBus.on("item-update", itemUpdate.bind(this));
+        this.addEventListener("click", () => EventBus.fire("location-change", {
+            name: this.ref
+        }));
+        EventBus.on(["dungeon-type-update","net:dungeon-type-update"], dungeonTypeUpdate.bind(this));
+        EventBus.on(["location-update", "net:location-update"], locationUpdate.bind(this));
+        EventBus.on(["item-update", "net:item-update"], itemUpdate.bind(this));
         EventBus.on("location-era-change", itemUpdate.bind(this));
         EventBus.on("force-location-update", itemUpdate.bind(this));
-        EventBus.on("location-mode-change", mode => {
-            this.mode = mode;
+        EventBus.on("location-mode-change", event => {
+            this.mode = event.data.value;
         });
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
     }
 
     get ref() {

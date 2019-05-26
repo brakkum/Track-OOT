@@ -1,3 +1,4 @@
+import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import DeepLocalStorage from "/deepJS/storage/LocalStorage.mjs";
 import DeepSessionStorage from "/deepJS/storage/SessionStorage.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
@@ -61,19 +62,20 @@ function toggleStateButtons() {
 }
 
 function throwEvents() {
-    EventBus.post("force-item-update");
-    EventBus.post("force-logic-update");
-    EventBus.post("force-location-update");
-    EventBus.post("force-shop-update");
-    EventBus.post("force-song-update");
-    EventBus.post("force-dungeonstate-update");
+    EventBus.fire("force-item-update");
+    EventBus.fire("force-logic-update");
+    EventBus.fire("force-location-update");
+    EventBus.fire("force-shop-update");
+    EventBus.fire("force-song-update");
+    EventBus.fire("force-dungeonstate-update");
+    EventBus.fire("state-changed");
 }
 
 function prepairSavegameChoice() {
     stateChoice.innerHTML = "<option disabled selected hidden value=\"\"> -- select state -- </option>";
     let keys = DeepLocalStorage.names("save");
     for (let i = 0; i < keys.length; ++i) {
-        stateChoice.appendChild(createOption(keys[i]));
+        stateChoice.append(createOption(keys[i]));
     }
     stateChoice.value = activestate;
 }
@@ -179,13 +181,16 @@ async function state_Rename() {
                 return;
             }
             let save = DeepLocalStorage.get("save", stateChoice.value);
+            if (!!save.meta) {
+                delete save.meta;
+            }
             DeepLocalStorage.remove("save", stateChoice.value);
             DeepLocalStorage.set("save", name, save);
-            prepairSavegameChoice();
             if (activestate != "" && activestate == stateChoice.value) {
                 activestate = name;
                 DeepSessionStorage.set('meta', 'active_state', activestate);
             }
+            prepairSavegameChoice();
             stateChoice.value = name;
             toggleStateButtons();
         }

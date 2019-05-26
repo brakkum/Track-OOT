@@ -1,10 +1,13 @@
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
+import Dialog from "/deepJS/ui/Dialog.mjs";
+import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.mjs";
 import "/deepJS/ui/logic/LogicEditorClipboard.mjs";
 import "/deepJS/ui/logic/LogicEditorTrashcan.mjs";
 import "/deepJS/ui/logic/LogicEditorWorkingarea.mjs";
 import "/deepJS/ui/Panel.mjs";
 import "/deepJS/ui/CollapsePanel.mjs";
 
+import "/deepJS/ui/logic/elements/literals/LogicFalse.mjs";
 import "/deepJS/ui/logic/elements/literals/LogicTrue.mjs";
 import "/deepJS/ui/logic/elements/operators/LogicAnd.mjs";
 import "/deepJS/ui/logic/elements/operators/LogicOr.mjs";
@@ -19,6 +22,15 @@ import "/script/ui/logic/LogicFilter.mjs";
 import EditorLogic from "/script/editor/Logic.mjs";
 import "/script/editor/Navigation.mjs";
 import I18n from "/script/util/I18n.mjs";
+
+const LOGIC_OPERATORS = [
+    "deep-logic-false",
+    "deep-logic-true",
+    "deep-logic-not",
+    "deep-logic-and",
+    "deep-logic-or",
+    "deep-logic-min"
+];
 
 (async function main() {
     
@@ -45,23 +57,41 @@ import I18n from "/script/util/I18n.mjs";
         }
     }
 
-    fillLogics(locations, logic);
-    fillOperators(items, settings, filter, logic);
-
     let workingarea = document.getElementById('workingarea');
 
-    function fillOperators(items, settings, filter, logic) {
-        let container = document.getElementById("elements");
+    workingarea.addEventListener("placeholderclicked", function(event) {
+        createAddLogicDialog();
+    });
 
-        container.appendChild(createOperatorCategory(items, "tracker-logic-item", "items"));
-        container.appendChild(createOperatorCategory(settings.options, "tracker-logic-option", "options"));
-        container.appendChild(createOperatorCategory(settings.skips, "tracker-logic-skip", "skips"));
-        container.appendChild(createOperatorCategory(filter, "tracker-logic-filter", "filter"));
-        container.appendChild(createOperatorCategory(logic.mixins, "tracker-logic-mixin", "mixins"));
-        
+    fillLogics(locations, logic);
+    fillOperators(document.getElementById("elements"), items, settings, filter, logic);
+
+    function fillOperators(container, items, settings, filter, logic, onclick) {
+        container.append(createDefaultOperatorCategory(onclick));
+
+        container.append(createOperatorCategory(items, "tracker-logic-item", "items", onclick));
+        container.append(createOperatorCategory(settings.options, "tracker-logic-option", "options", onclick));
+        container.append(createOperatorCategory(settings.skips, "tracker-logic-skip", "skips", onclick));
+        container.append(createOperatorCategory(filter, "tracker-logic-filter", "filter", onclick));
+        container.append(createOperatorCategory(logic.mixins, "tracker-logic-mixin", "mixins", onclick));
     }
 
-    function createOperatorCategory(data, type, ref) {
+    function createDefaultOperatorCategory(onclick) {
+        let ocnt = document.createElement("deep-collapsepanel");
+        ocnt.caption = "default";
+        for (let i in LOGIC_OPERATORS) {
+            let el = document.createElement(LOGIC_OPERATORS[i]);
+            el.template = "true";
+            if (typeof onclick == "function") {
+                el.onclick = onclick;
+                el.readonly = "true";
+            }
+            ocnt.append(el);
+        }
+        return ocnt;
+    }
+
+    function createOperatorCategory(data, type, ref, onclick) {
         let ocnt = document.createElement("deep-collapsepanel");
         ocnt.caption = ref;
         for (let i in data) {
@@ -69,7 +99,11 @@ import I18n from "/script/util/I18n.mjs";
                 let el = document.createElement(type);
                 el.ref = i;
                 el.template = "true";
-                ocnt.appendChild(el);
+                if (typeof onclick == "function") {
+                    el.onclick = onclick;
+                    el.readonly = "true";
+                }
+                ocnt.append(el);
             }
         }
         return ocnt;
@@ -77,10 +111,10 @@ import I18n from "/script/util/I18n.mjs";
 
     function fillLogics(locations, logic) {
 
-        logicContainer.appendChild(createLogicCategory(locations, "chests_v"));
-        logicContainer.appendChild(createLogicCategory(locations, "chests_mq"));
-        logicContainer.appendChild(createLogicCategory(locations, "skulltulas_v"));
-        logicContainer.appendChild(createLogicCategory(locations, "skulltulas_mq"));
+        logicContainer.append(createLogicCategory(locations, "chests_v"));
+        logicContainer.append(createLogicCategory(locations, "chests_mq"));
+        logicContainer.append(createLogicCategory(locations, "skulltulas_v"));
+        logicContainer.append(createLogicCategory(locations, "skulltulas_mq"));
 
         let cnt = document.createElement("deep-collapsepanel");
         cnt.caption = "mixins";
@@ -91,9 +125,9 @@ import I18n from "/script/util/I18n.mjs";
             el.onclick = loadMixinLogic;
             el.innerHTML = I18n.translate(j);
             el.title = j;
-            cnt.appendChild(el);
+            cnt.append(el);
         }
-        logicContainer.appendChild(cnt);
+        logicContainer.append(cnt);
     }
 
     function createLogicCategory(data, ref) {
@@ -111,11 +145,42 @@ import I18n from "/script/util/I18n.mjs";
                 el.onclick = ref.startsWith("chest") ? loadChestLogic : loadSkulltulaLogic;
                 el.innerHTML = I18n.translate(j);
                 el.title = j;
-                cnt.appendChild(el);
+                cnt.append(el);
             }
-            ocnt.appendChild(cnt);
+            ocnt.append(cnt);
         }
         return ocnt;
+    }
+
+    function createAddLogicDialog() {
+        let dialogElement = document.createElement('div');
+        let d = new Dialog({
+            title: "Add element to logic",
+            submit: "OK"
+        });
+        d.onsubmit = function(reciever, slot, result) {
+            if (!!result) {
+                let res = dialogElement.dataset.choice;
+                if (!!res) {
+                    let el = DeepLogicAbstractElement.buildLogic(JSON.parse(res));
+                    if (!!slot) {
+                        el.slot = slot;
+                    }
+                    reciever.append(el);
+                }
+            }
+        }.bind(this, event.reciever, event.name);
+        let last = null;
+        fillOperators(dialogElement, items, settings, filter, logic, function(event) {
+            if (last != null) {
+                last.style.boxShadow = "";
+            }
+            dialogElement.dataset.choice = JSON.stringify(event.target.toJSON());
+            last = event.target;
+            last.style.boxShadow = "0 0 0 5px black";
+        });
+        d.append(dialogElement);
+        d.show();
     }
         
     function loadChestLogic(event) {
@@ -167,7 +232,7 @@ import I18n from "/script/util/I18n.mjs";
     workingarea.addEventListener('save', storeLogic);
     workingarea.addEventListener('load', refreshLogic);
     workingarea.addEventListener('clear', removeLogic);
-    window.addEventListener('focus', refreshLogic);
+    //window.addEventListener('focus', refreshLogic);
 
     logicContainer.querySelector('.logic-location').click();
 }());

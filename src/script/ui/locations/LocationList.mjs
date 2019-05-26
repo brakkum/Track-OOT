@@ -7,7 +7,8 @@ import TrackerLocalState from "/script/util/LocalState.mjs";
 import I18n from "/script/util/I18n.mjs";
 import Logic from "/script/util/Logic.mjs";
 import "../dungeonstate/DungeonType.mjs";
-import "./Location.mjs";
+import "./LocationChest.mjs";
+import "./LocationSkulltula.mjs";
 import "./Gossipstone.mjs";
 
 const TPL = new Template(`
@@ -100,6 +101,49 @@ const TPL = new Template(`
     </div>
 `);
 
+const LOCATION_ELEMENTS = new Map();
+
+function generateLocations() {
+    let data = GlobalData.get("locations");
+    if (!!data.overworld && !!data.overworld.gossipstones_v) {
+        for (let i in data.overworld.gossipstones_v) {
+            let el = document.createElement('ootrt-listgossipstone');
+            el.ref = i;
+            LOCATION_ELEMENTS.set(`G:${i}`, el);
+        }
+    }
+    for (let i in data) {
+        if (!!data[i].chests_v) {
+            for (let j in data[i].chests_v) {
+                let el = document.createElement('ootrt-listlocationchest');
+                el.ref = `${i}.chests_v.${j}`;
+                LOCATION_ELEMENTS.set(`${i}.chests_v.${j}`, el);
+            }
+        }
+        if (!!data[i].skulltulas_v) {
+            for (let j in data[i].skulltulas_v) {
+                let el = document.createElement('ootrt-listlocationskulltula');
+                el.ref = `${i}.skulltulas_v.${j}`;
+                LOCATION_ELEMENTS.set(`${i}.skulltulas_v.${j}`, el);
+            }
+        }
+        if (!!data[i].chests_mq) {
+            for (let j in data[i].chests_mq) {
+                let el = document.createElement('ootrt-listlocationchest');
+                el.ref = `${i}.chests_mq.${j}`;
+                LOCATION_ELEMENTS.set(`${i}.chests_mq.${j}`, el);
+            }
+        }
+        if (!!data[i].skulltulas_mq) {
+            for (let j in data[i].skulltulas_mq) {
+                let el = document.createElement('ootrt-listlocationskulltula');
+                el.ref = `${i}.skulltulas_mq.${j}`;
+                LOCATION_ELEMENTS.set(`${i}.skulltulas_mq.${j}`, el);
+            }
+        }
+    }
+}
+
 function translate(value) {
     switch (value) {
         case 0b100: return "available";
@@ -109,7 +153,7 @@ function translate(value) {
     }
 }
 
-function locationUpdate() {
+function locationUpdate(event) {
     if ((!this.ref || this.ref === "") && this.mode != "gossipstones") {
         this.shadowRoot.querySelector('#title').className = "";
         let ch = Array.from(this.shadowRoot.getElementById("body").children);
@@ -134,8 +178,8 @@ function locationUpdate() {
     }
 }
 
-function dungeonTypeUppdate(ref, val) {
-    if (this.ref === ref) {
+function dungeonTypeUppdate(event) {
+    if (this.ref === event.data.name) {
         this.attributeChangedCallback("", "");
     }
 }
@@ -144,22 +188,27 @@ class HTMLTrackerLocationList extends HTMLElement {
 
     constructor() {
         super();
-        EventBus.on("location-change", ref => this.ref = ref);
-        EventBus.on("dungeon-type-update", dungeonTypeUppdate.bind(this));
-        EventBus.on("location-update", locationUpdate.bind(this));
-        EventBus.on("item-update", locationUpdate.bind(this));
+        generateLocations();
+        EventBus.on("location-change", event => this.ref = event.data.name);
+        EventBus.on(["dungeon-type-update", "net:dungeon-type-update"], dungeonTypeUppdate.bind(this));
+        EventBus.on(["location-update", "net:location-update"], locationUpdate.bind(this));
+        EventBus.on(["item-update", "net:item-update"], locationUpdate.bind(this));
         EventBus.on("force-location-update", locationUpdate.bind(this));
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(TPL.generate());
+        this.shadowRoot.append(TPL.generate());
         this.attributeChangedCallback("", "");
         this.shadowRoot.getElementById('location-mode').addEventListener("change", event => {
             this.mode = event.newValue;
-            EventBus.post("location-mode-change", this.mode);
+            EventBus.fire("location-mode-change", {
+                value: this.mode
+            });
         });
         this.shadowRoot.getElementById('location-era').addEventListener("change", event => {
             this.era = event.newValue;
             MemoryStorage.set("active_filter", "filter_era_active", this.era);
-            EventBus.post("location-era-change", this.era);
+            EventBus.fire("location-era-change", {
+                value: this.era
+            });
         });
     }
 
@@ -204,9 +253,8 @@ class HTMLTrackerLocationList extends HTMLElement {
                     Object.keys(data).forEach(i => {
                         let buf = data[i];
                         if (!buf.era || !this.era || this.era === buf.era) {
-                            let el = document.createElement('ootrt-listgossipstone');
-                            el.ref = i;
-                            cnt.appendChild(el);
+                            let el = LOCATION_ELEMENTS.get(`G:${i}`);
+                            cnt.append(el);
                         }
                     });
                 }
@@ -222,7 +270,7 @@ class HTMLTrackerLocationList extends HTMLElement {
                             el.dataset.ref = i;
                             el.addEventListener("click", () => this.ref = i);
                             el.innerHTML = I18n.translate(i);
-                            cnt.appendChild(el);
+                            cnt.append(el);
                         });
                     }
                 } else {
@@ -230,7 +278,7 @@ class HTMLTrackerLocationList extends HTMLElement {
                     let bck = document.createElement('div');
                     bck.innerHTML = `(${I18n.translate("back")})`;
                     bck.addEventListener("click", () => this.ref = "");
-                    cnt.appendChild(bck);
+                    cnt.append(bck);
                     data = GlobalData.get("locations")[this.ref];
                     let dType = TrackerLocalState.read("dungeonTypes", this.ref, data.hasmq ? "n" : "v");
                     if (data.hasmq) {
@@ -245,14 +293,14 @@ class HTMLTrackerLocationList extends HTMLElement {
                         v.addEventListener("click", () => {
                             locationType.value = "v";
                         });
-                        cnt.appendChild(v);
+                        cnt.append(v);
                         let mq = document.createElement('div');
                         mq.dataset.ref = "mq";
                         mq.innerHTML = I18n.translate("masterquest");
                         mq.addEventListener("click", () => {
                             locationType.value = "mq";
                         });
-                        cnt.appendChild(mq);
+                        cnt.append(mq);
                     } else {    
                         if (!!this.mode && this.mode !== "") {
                             data = data[`${this.mode}_${dType}`];
@@ -261,9 +309,8 @@ class HTMLTrackerLocationList extends HTMLElement {
                                     let buf = data[i];
                                     if (!buf.era || !this.era || this.era === buf.era) {
                                         if (!buf.mode || TrackerLocalState.read("options", buf.mode, false)) {
-                                            let el = document.createElement('ootrt-listlocation');
-                                            el.ref = `${this.ref}.${this.mode}.${i}`;
-                                            cnt.appendChild(el);
+                                            let el = LOCATION_ELEMENTS.get(`${this.ref}.${this.mode}_${dType}.${i}`);
+                                            cnt.append(el);
                                         }
                                     }
                                 });
