@@ -4,7 +4,7 @@ import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractEle
 import "/deepJS/ui/logic/LogicEditorClipboard.mjs";
 import "/deepJS/ui/logic/LogicEditorTrashcan.mjs";
 import "/deepJS/ui/logic/LogicEditorWorkingarea.mjs";
-import "/deepJS/ui/Panel.mjs";
+import "/deepJS/ui/CaptionPanel.mjs";
 import "/deepJS/ui/CollapsePanel.mjs";
 
 import "/deepJS/ui/logic/elements/literals/LogicFalse.mjs";

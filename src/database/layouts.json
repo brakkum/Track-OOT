@@ -1,146 +1,295 @@
 {
     "items": {
-        "columns": "minmax(min-content, 1fr)",
-        "rows": "min-content minmax(min-content, 1fr)",
-        "areas": [
-            ["item-grid"],
-            ["dungeon-status"]
-        ],
-        "options": {
-            "dungeon-status": {
-                "orientation": "row",
-                "active": "key bosskey"
+        "type": "vbox",
+        "items": [{
+            "type": "panel",
+            "name": "item-grid",
+            "options": {
+                "item-size": 40,
+                "layout": "items"
             }
-        }
+        },{
+            "type": "panel",
+            "name": "dungeon-status",
+            "options": {
+                "item-size": 40,
+                "orientation": "row",
+                "active": [
+                    "key",
+                    "bosskey"
+                ]
+            }
+        }]
     },
     "items-dt": {
-        "columns": "minmax(min-content, 1fr)",
-        "rows": "min-content minmax(min-content, 1fr)",
-        "areas": [
-            ["item-grid"],
-            ["dungeon-status"]
-        ],
-        "options": {
-            "dungeon-status": {
-                "orientation": "row",
-                "active": "key bosskey type"
+        "type": "vbox",
+        "items": [{
+            "type": "panel",
+            "name": "item-grid",
+            "options": {
+                "item-size": 40,
+                "layout": "items"
             }
-        }
+        },{
+            "type": "panel",
+            "name": "dungeon-status",
+            "options": {
+                "item-size": 40,
+                "orientation": "row",
+                "active": [
+                    "key",
+                    "bosskey",
+                    "type"
+                ]
+            }
+        }]
     },
     "items-list": {
-        "columns": "minmax(calc(10px + 9 * var(--item-size, 40px)), 1fr)",
-        "rows": "min-content min-content minmax(360px, 1fr)",
-        "areas": [
-            ["item-grid"],
-            ["dungeon-status"],
-            ["location-list"]
-        ],
-        "options": {
-            "dungeon-status": {
-                "orientation": "row",
-                "active": "key bosskey"
+        "type": "vbox",
+        "items": [{
+            "type": "panel",
+            "name": "item-grid",
+            "options": {
+                "item-size": 40,
+                "layout": "items"
             }
-        }
+        },{
+            "type": "panel",
+            "name": "dungeon-status",
+            "options": {
+                "item-size": 40,
+                "orientation": "row",
+                "active": [
+                    "key",
+                    "bosskey"
+                ]
+            }
+        },{
+            "type": "panel",
+            "name": "location-list"
+        }]
     },
     "items-list-dt": {
-        "columns": "minmax(calc(10px + 9 * var(--item-size, 40px)), 1fr)",
-        "rows": "min-content min-content minmax(360px, 1fr)",
-        "areas": [
-            ["item-grid"],
-            ["dungeon-status"],
-            ["location-list"]
-        ],
-        "options": {
-            "dungeon-status": {
-                "orientation": "row",
-                "active": "key bosskey type"
+        "type": "vbox",
+        "items": [{
+            "type": "panel",
+            "name": "item-grid",
+            "options": {
+                "item-size": 40,
+                "layout": "items"
             }
-        }
+        },{
+            "type": "panel",
+            "name": "dungeon-status",
+            "options": {
+                "item-size": 40,
+                "orientation": "row",
+                "active": [
+                    "key",
+                    "bosskey",
+                    "type"
+                ]
+            }
+        },{
+            "type": "panel",
+            "name": "location-list"
+        }]
     },
     "map-right": {
-        "columns": "min-content minmax(400px, 1fr)",
-        "rows": "min-content min-content minmax(360px, 1fr)",
-        "areas": [
-            ["item-grid", "location-map"],
-            ["dungeon-status", "location-map"],
-            ["location-list", "location-map"]
-        ],
-        "options": {
-            "dungeon-status": {
-                "orientation": "row",
-                "active": "key bosskey"
-            }
-        }
+        "type": "hbox",
+        "items": [{
+            "type": "vbox",
+            "items": [{
+                "type": "panel",
+                "name": "item-grid",
+                "options": {
+                    "item-size": 40,
+                    "layout": "items"
+                }
+            },{
+                "type": "panel",
+                "name": "dungeon-status",
+                "options": {
+                    "item-size": 40,
+                    "orientation": "row",
+                    "active": [
+                        "key",
+                        "bosskey"
+                    ]
+                }
+            },{
+                "type": "panel",
+                "name": "location-list"
+            }]
+        },{
+            "type": "panel",
+            "name": "location-map"
+        }]
     },
     "map-right-dt": {
-        "columns": "min-content minmax(400px, 1fr)",
-        "rows": "min-content min-content minmax(360px, 1fr)",
-        "areas": [
-            ["item-grid", "location-map"],
-            ["dungeon-status", "location-map"],
-            ["location-list", "location-map"]
-        ],
-        "options": {
-            "dungeon-status": {
-                "orientation": "row",
-                "active": "key bosskey type"
-            }
-        }
+        "type": "hbox",
+        "items": [{
+            "type": "vbox",
+            "items": [{
+                "type": "panel",
+                "name": "item-grid",
+                "options": {
+                    "item-size": 40,
+                    "layout": "items"
+                }
+            },{
+                "type": "panel",
+                "name": "dungeon-status",
+                "options": {
+                    "item-size": 40,
+                    "orientation": "row",
+                    "active": [
+                        "key",
+                        "bosskey",
+                        "type"
+                    ]
+                }
+            },{
+                "type": "panel",
+                "name": "location-list"
+            }]
+        },{
+            "type": "panel",
+            "name": "location-map"
+        }]
     },
     "map-center": {
-        "columns": "min-content minmax(400px, 1fr) 360px",
-        "rows": "min-content minmax(calc(10px + 13 * var(--item-size, 40px)), 1fr)",
-        "areas": [
-            ["item-grid", "location-map", "location-list"],
-            ["dungeon-status", "location-map", "location-list"]
-        ],
-        "options": {
-            "dungeon-status": {
-                "orientation": "column",
-                "active": "key bosskey map compass reward type"
-            }
-        }
+        "type": "hbox",
+        "items": [{
+            "type": "vbox",
+            "items": [{
+                "type": "panel",
+                "name": "item-grid",
+                "options": {
+                    "item-size": 40,
+                    "layout": "items"
+                }
+            },{
+                "type": "panel",
+                "name": "dungeon-status",
+                "options": {
+                    "item-size": 40,
+                    "orientation": "column",
+                    "active": [
+                        "key",
+                        "bosskey",
+                        "map",
+                        "compass",
+                        "reward",
+                        "type"
+                    ]
+                }
+            }]
+        },{
+            "type": "panel",
+            "name": "location-map"
+        },{
+            "type": "panel",
+            "name": "location-list"
+        }]
     },
     "map-compact": {
-        "columns": "min-content minmax(calc(10px + 13 * var(--item-size, 40px)), 1fr)",
-        "rows": "min-content min-content minmax(360px, 1fr)",
-        "areas": [
-            ["item-grid", "dungeon-status"],
-            ["item-grid", "location-map"],
-            ["location-list", "location-map"]
-        ],
-        "options": {
-            "dungeon-status": {
-                "orientation": "row",
-                "active": "key bosskey map compass reward type"
-            }
-        }
+        "type": "hbox",
+        "items": [{
+            "type": "vbox",
+            "items": [{
+                "type": "panel",
+                "name": "item-grid",
+                "options": {
+                    "item-size": 40,
+                    "layout": "items"
+                }
+            },{
+                "type": "panel",
+                "name": "location-list"
+            }]
+        },{
+            "type": "vbox",
+            "items":[{
+                "type": "panel",
+                "name": "dungeon-status",
+                "options": {
+                    "item-size": 40,
+                    "orientation": "row",
+                    "active": [
+                        "key",
+                        "bosskey",
+                        "map",
+                        "compass",
+                        "reward",
+                        "type"
+                    ]
+                }
+            },{
+                "type": "panel",
+                "name": "location-map"
+            }]
+        }]
     },
     "compact": {
-        "columns": "min-content minmax(360px, 1fr)",
-        "rows": "min-content minmax(calc(10px + 6.5 * var(--item-size, 40px)), 1fr)",
-        "areas": [
-            ["item-grid", "location-list"],
-            ["dungeon-status", "location-list"]
-        ],
-        "options": {
-            "dungeon-status": {
-                "orientation": "row",
-                "active": "key bosskey map compass reward type"
-            }
-        }
+        "type": "hbox",
+        "items": [{
+            "type": "vbox",
+            "items": [{
+                "type": "panel",
+                "name": "item-grid",
+                "options": {
+                    "item-size": 40,
+                    "layout": "items"
+                }
+            },{
+                "type": "panel",
+                "name": "dungeon-status",
+                "options": {
+                    "item-size": 40,
+                    "orientation": "row",
+                    "active": [
+                        "key",
+                        "bosskey",
+                        "map",
+                        "compass",
+                        "reward",
+                        "type"
+                    ]
+                }
+            }]
+        },{
+            "type": "panel",
+            "name": "location-list"
+        }]
     },
     "flat": {
-        "columns": "min-content min-content minmax(360px, 1fr)",
-        "rows": "minmax(calc(10px + 8 * var(--item-size, 40px)), 1fr)",
-        "areas": [
-            ["item-grid", "dungeon-status", "location-list"]
-        ],
-        "options": {
-            "dungeon-status": {
-                "orientation": "row",
-                "active": "key bosskey map compass reward type"
+        "type": "hbox",
+        "items": [{
+            "type": "panel",
+            "name": "item-grid",
+            "options": {
+                "item-size": 40,
+                "layout": "items"
             }
-        }
+        },{
+            "type": "panel",
+            "name": "dungeon-status",
+            "options": {
+                "item-size": 40,
+                "orientation": "row",
+                "active": [
+                    "key",
+                    "bosskey",
+                    "map",
+                    "compass",
+                    "reward",
+                    "type"
+                ]
+            }
+        },{
+            "type": "panel",
+            "name": "location-list"
+        }]
     }
 }
