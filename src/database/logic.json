@@ -3435,7 +3435,7 @@
                             "el": {
                                 "type": "skip",
                                 "el": "lens_required",
-                                "value": "lens_required_never"
+                                "value": "lens_required_default"
                             }
                         },
                         {
@@ -3469,7 +3469,7 @@
                                 "type": "item",
                                 "el": "key_small_training"
                             },
-                            "value": 3
+                            "value": "3"
                         }
                     ]
                 }

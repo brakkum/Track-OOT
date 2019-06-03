@@ -4,9 +4,9 @@
 
 Application:    Track-OOT
 
-Version:        1.4.2
+Version:        1.4.3
 
 ---
 
 ### HOTFIX
-- added fire temple basement key door back in for keysanity
+- fixed wrong lens requirement for GTG Hidden Ceiling Chest
