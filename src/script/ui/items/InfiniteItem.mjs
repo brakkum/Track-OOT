@@ -136,7 +136,8 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
             if ((event.shiftKey || event.ctrlKey)) {
                 this.value = 0;
             } else {
-                this.value = parseInt(this.value) - 1;
+                let val = parseInt(this.value) - 1;
+                if (val >= 0) this.value = val;
             }
         }
         if (!event) return;
