@@ -1751,14 +1751,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "scale"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -1770,6 +1762,10 @@
                                     "el": "ocarina"
                                 }
                             ]
+                        },
+                        {
+                            "type": "item",
+                            "el": "bean"
                         }
                     ]
                 }
@@ -2086,17 +2082,8 @@
                     "el": "warp_spirit"
                 },
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "scale"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        }
-                    ]
+                    "type": "item",
+                    "el": "bean"
                 }
             ]
         },
@@ -3135,17 +3122,8 @@
                                     "el": "warp_fire"
                                 },
                                 {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "scale"
-                                        },
-                                        {
-                                            "type": "mixin",
-                                            "el": "has_explosives"
-                                        }
-                                    ]
+                                    "type": "item",
+                                    "el": "bean"
                                 }
                             ]
                         }
@@ -9499,20 +9477,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "scale"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "hookshot"
                             },
-                            "value": 2
+                            "value": "2"
+                        },
+                        {
+                            "type": "item",
+                            "el": "bean"
                         }
                     ]
                 }
@@ -19135,19 +19109,6 @@
                     "el": [
                         {
                             "type": "item",
-                            "el": "scale"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "item",
                             "el": "warp_forest"
                         },
                         {
@@ -19163,6 +19124,10 @@
                 {
                     "type": "mixin",
                     "el": "can_become_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "bean"
                 }
             ]
         },
@@ -20509,10 +20474,6 @@
                                     "el": "hookshot"
                                 },
                                 {
-                                    "type": "mixin",
-                                    "el": "can_blast_or_smash"
-                                },
-                                {
                                     "type": "or",
                                     "el": [
                                         {
@@ -20533,6 +20494,10 @@
                                             "el": "magic_din"
                                         }
                                     ]
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hammer"
                                 }
                             ]
                         }
