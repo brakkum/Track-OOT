@@ -217,17 +217,21 @@ class HTMLTrackerItem extends HTMLElement {
     next(event) {
         if (!this.readonly) {
             let data = GlobalData.get("items")[this.ref];
-            if ((event.shiftKey || event.ctrlKey) && !!data.alternate_counting) {
-                Logger.log(`get next alternative value for "${this.ref}"`, "Item");
-                for (let i = 0; i < data.alternate_counting.length; ++i) {
-                    let alt = parseInt(data.alternate_counting[i]);
-                    if (isNaN(alt)) {
-                        alt = 0;
+            if ((event.shiftKey || event.ctrlKey)) {
+                if (!!data.alternate_counting) {
+                    Logger.log(`get next alternative value for "${this.ref}"`, "Item");
+                    for (let i = 0; i < data.alternate_counting.length; ++i) {
+                        let alt = parseInt(data.alternate_counting[i]);
+                        if (isNaN(alt)) {
+                            alt = 0;
+                        }
+                        if (alt > parseInt(this.value)) {
+                            this.value = data.alternate_counting[i];
+                            break;
+                        }
                     }
-                    if (alt > parseInt(this.value)) {
-                        this.value = data.alternate_counting[i];
-                        break;
-                    }
+                } else {
+                    this.value = parseInt(data.max);
                 }
             } else {
                 Logger.log(`get next value for "${this.ref}"`, "Item");
@@ -252,17 +256,21 @@ class HTMLTrackerItem extends HTMLElement {
     prev(event) {
         if (!this.readonly) {
             let data = GlobalData.get("items")[this.ref];
-            if ((event.shiftKey || event.ctrlKey) && !!data.alternate_counting) {
-                Logger.log(`get previous alternative value for "${this.ref}"`, "Item");
-                for (let i = data.alternate_counting.length - 1; i >= 0; --i) {
-                    let alt = parseInt(data.alternate_counting[i]);
-                    if (isNaN(alt)) {
-                        alt = parseInt(data.max);
+            if ((event.shiftKey || event.ctrlKey)) {
+                if (!!data.alternate_counting) {
+                    Logger.log(`get previous alternative value for "${this.ref}"`, "Item");
+                    for (let i = data.alternate_counting.length - 1; i >= 0; --i) {
+                        let alt = parseInt(data.alternate_counting[i]);
+                        if (isNaN(alt)) {
+                            alt = parseInt(data.max);
+                        }
+                        if (alt < parseInt(this.value)) {
+                            this.value = data.alternate_counting[i];
+                            break;
+                        }
                     }
-                    if (alt < parseInt(this.value)) {
-                        this.value = data.alternate_counting[i];
-                        break;
-                    }
+                } else {
+                    this.value = 0;
                 }
             } else {
                 Logger.log(`get previous value for "${this.ref}"`, "Item");

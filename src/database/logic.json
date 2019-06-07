@@ -1751,14 +1751,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "scale"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -1770,6 +1762,10 @@
                                     "el": "ocarina"
                                 }
                             ]
+                        },
+                        {
+                            "type": "item",
+                            "el": "bean"
                         }
                     ]
                 }
@@ -2086,17 +2082,8 @@
                     "el": "warp_spirit"
                 },
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "scale"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        }
-                    ]
+                    "type": "item",
+                    "el": "bean"
                 }
             ]
         },
@@ -2461,7 +2448,7 @@
                                                 "type": "item",
                                                 "el": "key_small_water"
                                             },
-                                            "value": 6
+                                            "value": "5"
                                         }
                                     ]
                                 }
@@ -2558,7 +2545,7 @@
                                 "type": "item",
                                 "el": "key_small_water"
                             },
-                            "value": 6
+                            "value": "5"
                         }
                     ]
                 },
@@ -2594,7 +2581,7 @@
                         "type": "item",
                         "el": "hookshot"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "item",
@@ -2654,7 +2641,7 @@
                                         "type": "item",
                                         "el": "key_small_water"
                                     },
-                                    "value": 5
+                                    "value": "4"
                                 }
                             ]
                         }
@@ -2714,7 +2701,7 @@
                                         "type": "item",
                                         "el": "key_small_water"
                                     },
-                                    "value": 5
+                                    "value": "4"
                                 }
                             ]
                         }
@@ -2767,7 +2754,7 @@
                                 "type": "item",
                                 "el": "key_small_water"
                             },
-                            "value": 6
+                            "value": "5"
                         }
                     ]
                 }
@@ -2821,7 +2808,7 @@
                                 "type": "item",
                                 "el": "key_small_water"
                             },
-                            "value": 6
+                            "value": "5"
                         }
                     ]
                 }
@@ -3135,17 +3122,8 @@
                                     "el": "warp_fire"
                                 },
                                 {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "scale"
-                                        },
-                                        {
-                                            "type": "mixin",
-                                            "el": "has_explosives"
-                                        }
-                                    ]
+                                    "type": "item",
+                                    "el": "bean"
                                 }
                             ]
                         }
@@ -3435,7 +3413,7 @@
                             "el": {
                                 "type": "skip",
                                 "el": "lens_required",
-                                "value": "lens_required_never"
+                                "value": "lens_required_default"
                             }
                         },
                         {
@@ -3469,7 +3447,7 @@
                                 "type": "item",
                                 "el": "key_small_training"
                             },
-                            "value": 3
+                            "value": "3"
                         }
                     ]
                 }
@@ -4640,8 +4618,12 @@
                             }
                         },
                         {
-                            "type": "item",
-                            "el": "key_small_fire"
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": "2"
                         }
                     ]
                 }
@@ -4665,8 +4647,12 @@
                             }
                         },
                         {
-                            "type": "item",
-                            "el": "key_small_fire"
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": "2"
                         }
                     ]
                 }
@@ -4695,7 +4681,7 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 3
+                            "value": "4"
                         }
                     ]
                 }
@@ -4724,7 +4710,7 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 5
+                            "value": "6"
                         }
                     ]
                 }
@@ -4753,7 +4739,7 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 3
+                            "value": "4"
                         }
                     ]
                 }
@@ -4782,7 +4768,7 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 5
+                            "value": "6"
                         }
                     ]
                 },
@@ -4831,7 +4817,7 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 5
+                            "value": "6"
                         }
                     ]
                 }
@@ -4860,7 +4846,7 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 5
+                            "value": "6"
                         },
                         {
                             "type": "and",
@@ -4875,7 +4861,7 @@
                                         "type": "item",
                                         "el": "key_small_fire"
                                     },
-                                    "value": 4
+                                    "value": "5"
                                 }
                             ]
                         }
@@ -4906,7 +4892,7 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 6
+                            "value": "7"
                         }
                     ]
                 }
@@ -4939,7 +4925,7 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 7
+                            "value": "8"
                         },
                         {
                             "type": "and",
@@ -4950,7 +4936,7 @@
                                         "type": "item",
                                         "el": "key_small_fire"
                                     },
-                                    "value": 6
+                                    "value": "7"
                                 },
                                 {
                                     "type": "item",
@@ -5033,7 +5019,7 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 7
+                            "value": "8"
                         },
                         {
                             "type": "and",
@@ -5044,7 +5030,7 @@
                                         "type": "item",
                                         "el": "key_small_fire"
                                     },
-                                    "value": 6
+                                    "value": "7"
                                 },
                                 {
                                     "type": "item",
@@ -5115,7 +5101,7 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 7
+                            "value": "8"
                         }
                     ]
                 }
@@ -9491,20 +9477,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "scale"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "hookshot"
                             },
-                            "value": 2
+                            "value": "2"
+                        },
+                        {
+                            "type": "item",
+                            "el": "bean"
                         }
                     ]
                 }
@@ -19127,19 +19109,6 @@
                     "el": [
                         {
                             "type": "item",
-                            "el": "scale"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "item",
                             "el": "warp_forest"
                         },
                         {
@@ -19155,6 +19124,10 @@
                 {
                     "type": "mixin",
                     "el": "can_become_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "bean"
                 }
             ]
         },
@@ -20268,8 +20241,12 @@
                             }
                         },
                         {
-                            "type": "item",
-                            "el": "key_small_fire"
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": "2"
                         }
                     ]
                 }
@@ -20298,7 +20275,7 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 3
+                            "value": "4"
                         }
                     ]
                 },
@@ -20339,7 +20316,7 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 5
+                            "value": "6"
                         }
                     ]
                 }
@@ -20376,7 +20353,7 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 5
+                            "value": "6"
                         }
                     ]
                 }
@@ -20392,6 +20369,26 @@
                 {
                     "type": "item",
                     "el": "hammer"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity"
+                            }
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": "8"
+                        }
+                    ]
                 }
             ]
         },
@@ -20477,10 +20474,6 @@
                                     "el": "hookshot"
                                 },
                                 {
-                                    "type": "mixin",
-                                    "el": "can_blast_or_smash"
-                                },
-                                {
                                     "type": "or",
                                     "el": [
                                         {
@@ -20501,6 +20494,10 @@
                                             "el": "magic_din"
                                         }
                                     ]
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hammer"
                                 }
                             ]
                         }
@@ -20737,7 +20734,7 @@
                                 "type": "item",
                                 "el": "key_small_water"
                             },
-                            "value": 6
+                            "value": "4"
                         }
                     ]
                 },
@@ -20747,7 +20744,7 @@
                         "type": "item",
                         "el": "hookshot"
                     },
-                    "value": 2
+                    "value": "2"
                 }
             ]
         },
@@ -20796,7 +20793,7 @@
                                 "type": "item",
                                 "el": "key_small_water"
                             },
-                            "value": 5
+                            "value": "4"
                         }
                     ]
                 },
@@ -20828,7 +20825,7 @@
                         "type": "item",
                         "el": "hookshot"
                     },
-                    "value": 2
+                    "value": "2"
                 }
             ]
         },
@@ -20884,7 +20881,7 @@
                                         "type": "item",
                                         "el": "key_small_water"
                                     },
-                                    "value": 5
+                                    "value": "4"
                                 }
                             ]
                         }
@@ -20899,7 +20896,7 @@
                                 "type": "item",
                                 "el": "hookshot"
                             },
-                            "value": 2
+                            "value": "2"
                         },
                         {
                             "type": "and",
@@ -20953,7 +20950,7 @@
                                 "type": "item",
                                 "el": "key_small_water"
                             },
-                            "value": 6
+                            "value": "5"
                         }
                     ]
                 }
