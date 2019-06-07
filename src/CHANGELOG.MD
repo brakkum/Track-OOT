@@ -4,10 +4,16 @@
 
 Application:    Track-OOT
 
-Version:        1.4.4
+Version:        1.4.5
 
 ---
 
 ### HOTFIX
-- changed bean logic to require beans to be clicked instead of the bean merchant being accessible to support randomizing the bean merchant
-- fixed logic for the HF skull near Gerudo Valley which was assuming can_blast_or_smash when adult and now requires a Hammer. child logic there is unchanged
+- shift clicking on items without alternate counting now jump to max/min value
+
+### FEATURE
+- added ice traps (FOOL) as countable item
+    - this is just for fun
+    - counts infinite
+    - shift + right-click to rese
+- changed the fool image

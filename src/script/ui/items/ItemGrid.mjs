@@ -2,6 +2,7 @@ import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import I18n from "/script/util/I18n.mjs";
 import "./Item.mjs";
+import "./InfiniteItem.mjs";
 
 const TPL = new Template(`
     <style>
@@ -53,10 +54,18 @@ class HTMLTrackerItemGrid extends HTMLElement {
                 if (j.startsWith("text:")) {
                     cnt.append(createItemText(j.slice(5)));
                 } else {
-                    let itm = document.createElement('ootrt-item');
-                    itm.title = I18n.translate(j);
-                    itm.setAttribute('ref', j);
-                    cnt.append(itm);
+                    let data = GlobalData.get("items")[j];
+                    if (data.max === false) {
+                        let itm = document.createElement('ootrt-infiniteitem');
+                        itm.title = I18n.translate(j);
+                        itm.setAttribute('ref', j);
+                        cnt.append(itm);
+                    } else {
+                        let itm = document.createElement('ootrt-item');
+                        itm.title = I18n.translate(j);
+                        itm.setAttribute('ref', j);
+                        cnt.append(itm);
+                    }
                 }
             }
             this.shadowRoot.append(cnt);
