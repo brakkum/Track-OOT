@@ -92,8 +92,10 @@ EventBus.on([
     "logic",
     "dungeon-type-update",
     "location-update",
+    "update-settings",
     "net:dungeon-type-update",
-    "net:location-update"
+    "net:location-update",
+    "net:update-settings"
 ], function(event) {
     updateChestStates();
     updateSkulltulasStates();
@@ -125,30 +127,32 @@ function updateChestStates() {
     if (!!data) {
         Object.keys(data).forEach(name => {
             let buff = GlobalData.get("locations")[name];
-            let dType = TrackerLocalState.read("dungeonTypes", name, buff.hasmq ? "n" : "v");
-            if (dType == "n") {
-                let cv = canGet(name, "chests", "v");
-                let cm = canGet(name, "chests", "mq");
-                if (cv.access < cm.access) {
-                    access_min += cv.access;
-                    access_max += cm.access;
+            if (!buff.mode || TrackerLocalState.read("options", buff.mode, false)) {
+                let dType = TrackerLocalState.read("dungeonTypes", name, buff.hasmq ? "n" : "v");
+                if (dType == "n") {
+                    let cv = canGet(name, "chests", "v");
+                    let cm = canGet(name, "chests", "mq");
+                    if (cv.access < cm.access) {
+                        access_min += cv.access;
+                        access_max += cm.access;
+                    } else {
+                        access_min += cm.access;
+                        access_max += cv.access;
+                    }
+                    if (cv.open < cm.open) {
+                        open_min += cv.open;
+                        open_max += cm.open;
+                    } else {
+                        open_min += cm.open;
+                        open_max += cv.open;
+                    }
                 } else {
-                    access_min += cm.access;
-                    access_max += cv.access;
+                    let c = canGet(name, "chests", dType);
+                    access_min += c.access;
+                    access_max += c.access;
+                    open_min += c.open;
+                    open_max += c.open;
                 }
-                if (cv.open < cm.open) {
-                    open_min += cv.open;
-                    open_max += cm.open;
-                } else {
-                    open_min += cm.open;
-                    open_max += cv.open;
-                }
-            } else {
-                let c = canGet(name, "chests", dType);
-                access_min += c.access;
-                access_max += c.access;
-                open_min += c.open;
-                open_max += c.open;
             }
         });
     }
