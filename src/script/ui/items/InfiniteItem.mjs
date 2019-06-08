@@ -124,7 +124,9 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
 
     next(event) {
         if (!this.readonly) {
-            this.value = parseInt(this.value) + 1;
+            let val = parseInt(this.value);
+            if (val < 9999) this.value = val + 1;
+            else value = 9999;
         }
         if (!event) return;
         event.preventDefault();
@@ -136,8 +138,9 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
             if ((event.shiftKey || event.ctrlKey)) {
                 this.value = 0;
             } else {
-                let val = parseInt(this.value) - 1;
-                if (val >= 0) this.value = val;
+                let val = parseInt(this.value);
+                if (val > 0) this.value = val - 1;
+                else value = 0;
             }
         }
         if (!event) return;
