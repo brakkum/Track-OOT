@@ -163,6 +163,17 @@
     ],
     "dungeons": [
         {
+            "ref": "pocket",
+            "title": "LINK",
+            "color": "#ffffff",
+            "keys": false,
+            "bosskey": false,
+            "map": false,
+            "compass": false,
+            "hasmq": false,
+            "boss_reward": true
+        },
+        {
             "ref": "deku",
             "title": "DT",
             "color": "#92ff92",
