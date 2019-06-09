@@ -115,10 +115,9 @@ class TrackerLogic {
             let t = e.target;
             let svg = this.getLogicSVG(t.dataset.type, t.dataset.ref);
             let png = await svg2png(svg);
-            let svg_win = window.open("", "svg_win", "menubar=no,location=no,resizable=yes,scrollbars=yes,status=no");
+            let svg_win = window.open("", "_blank", "menubar=no,location=no,resizable=yes,scrollbars=yes,status=no");
             let img = document.createElement("img");
             img.src = png;
-            svg_win.document.body.append(svg);
             svg_win.document.body.append(img);
         }.bind(this));
         el.append(b);
