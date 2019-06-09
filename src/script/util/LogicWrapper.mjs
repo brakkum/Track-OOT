@@ -94,6 +94,14 @@ export default class LogicWrapper {
         }
     }
 
+    buildSVG() {
+        if (LOGIC_SOURCE.has(this)) {
+            return DeepLogicAbstractElement.buildSVG(LOGIC_SOURCE.get(this));
+        } else {
+            return DeepLogicAbstractElement.buildSVG();
+        }
+    }
+
     getLogic() {
         if (LOGIC.has(this)) {
             return LOGIC.get(this);

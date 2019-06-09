@@ -21,6 +21,12 @@ const TPL = new Template(`
         <select id="select"></select>
     </div>
 `);
+const SVG = new Template(`
+    <div class="logic-element" style="--logic-color-back: white; --logic-color-border: lightgrey;">
+        <div class="header">SKIP</div>
+        <div class="body"></div>
+    </div>
+`);
 
 const SELECTOR_VALUE = new WeakMap;
 
@@ -47,7 +53,6 @@ export default class TrackerLogicSkip extends DeepLogicAbstractElement {
             value = value == SELECTOR_VALUE.get(this);
         }
         this.value = value;
-        this.shadowRoot.getElementById("head").dataset.value = this.value;
     }
 
     toJSON() {
@@ -127,6 +132,22 @@ export default class TrackerLogicSkip extends DeepLogicAbstractElement {
             }
             this.ref = logic.el;
         }
+    }
+
+    static getSVG(logic) {
+        let el = SVG.generate().children[0];
+        let cnt = el.querySelector(".body");
+        let hdr = el.querySelector(".header");
+        if (!!logic) {
+            cnt.innerHTML = I18n.translate(logic.el);
+            let value = TrackerLocalState.read("skips", logic.el, GlobalData.get("settings").skips[logic.el].default);
+            if (SELECTOR_VALUE.has(this)) {
+                value = value == SELECTOR_VALUE.get(this);
+            }
+            el.dataset.value = +value;
+            hdr.dataset.value = +value;
+        }
+        return el;
     }
 
 }

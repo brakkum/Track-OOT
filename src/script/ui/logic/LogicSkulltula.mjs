@@ -21,6 +21,12 @@ const TPL = new Template(`
     <div id="head" class="header">SKULLTULA</div>
     <div id="ref" class="body"></div>
 `);
+const SVG = new Template(`
+    <div class="logic-element" style="--logic-color-back: white; --logic-color-border: lightgrey;">
+        <div class="header">SKULLTULA</div>
+        <div class="body"></div>
+    </div>
+`);
 
 export default class TrackerLogicSkulltula extends DeepLogicAbstractElement {
 
@@ -43,7 +49,6 @@ export default class TrackerLogicSkulltula extends DeepLogicAbstractElement {
         } else {
             this.value = parseInt(value)||0;
         }
-        this.shadowRoot.getElementById("head").dataset.value = this.value;
     }
 
     toJSON() {
@@ -83,6 +88,19 @@ export default class TrackerLogicSkulltula extends DeepLogicAbstractElement {
         if (!!logic) {
             this.ref = logic.el;
         }
+    }
+
+    static getSVG(logic) {
+        let el = SVG.generate().children[0];
+        let cnt = el.querySelector(".body");
+        let hdr = el.querySelector(".header");
+        if (!!logic) {
+            cnt.innerHTML = I18n.translate(logic.el);
+            let value = +TrackerLocalState.read("skulltulas", logic.el, false);
+            el.dataset.value = value;
+            hdr.dataset.value = value;
+        }
+        return el;
     }
 
 }

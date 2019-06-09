@@ -25,6 +25,12 @@ const TPL = new Template(`
     <div id="head" class="header">MIXIN<span id="view">view</span></div>
     <div id="ref" class="body"></div>
 `);
+const SVG = new Template(`
+    <div class="logic-element" style="--logic-color-back: white; --logic-color-border: lightgrey;">
+        <div class="header">MIXIN</div>
+        <div class="body"></div>
+    </div>
+`);
 
 function showLogic(ref) {
     let d = new Dialog({
@@ -53,7 +59,6 @@ export default class TrackerLogicMixin extends DeepLogicAbstractElement {
 
     update() {
         this.value = Logic.getValue("mixins", this.ref);
-        this.shadowRoot.getElementById("head").dataset.value = this.value;
     }
 
     toJSON() {
@@ -93,6 +98,21 @@ export default class TrackerLogicMixin extends DeepLogicAbstractElement {
         if (!!logic) {
             this.ref = logic.el;
         }
+    }
+
+    static getSVG(logic) {
+        let el = SVG.generate().children[0];
+        let cnt = el.querySelector(".body");
+        let hdr = el.querySelector(".header");
+        if (!!logic) {
+            cnt.innerHTML = I18n.translate(logic.el);
+            let itm = Logic.getLogicSVG("mixins", logic.el);
+            cnt.append(itm.querySelector(".logic-element"));
+            let value = +Logic.getValue("mixins", logic.el);
+            el.dataset.value = value;
+            hdr.dataset.value = value;
+        }
+        return el;
     }
 
 }

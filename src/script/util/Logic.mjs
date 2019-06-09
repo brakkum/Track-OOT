@@ -1,5 +1,6 @@
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import MemoryStorage from "/deepJS/storage/MemoryStorage.mjs";
+import {svg2png} from "/deepJS/util/Helper.mjs";
 import DeepLocalStorage from "/deepJS/storage/LocalStorage.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
 import LogicWrapper from "/script/util/LogicWrapper.mjs";
@@ -100,8 +101,29 @@ class TrackerLogic {
         }
     }
 
+    getLogicSVG(type, ref) {
+        return LOGIC[type][ref].buildSVG();
+    }
+
     getLogicView(type, ref) {
-        return LOGIC[type][ref].getLogic();
+        let el = document.createElement("div");
+        let b = document.createElement("button");
+        b.innerHTML = "PNG";
+        b.dataset.type = type;
+        b.dataset.ref = ref;
+        b.addEventListener("click", async function(e) {
+            let t = e.target;
+            let svg = this.getLogicSVG(t.dataset.type, t.dataset.ref);
+            let png = await svg2png(svg);
+            let svg_win = window.open("", "svg_win", "menubar=no,location=no,resizable=yes,scrollbars=yes,status=no");
+            let img = document.createElement("img");
+            img.src = png;
+            svg_win.document.body.append(svg);
+            svg_win.document.body.append(img);
+        }.bind(this));
+        el.append(b);
+        el.append(LOGIC[type][ref].getLogic());
+        return el;
     }
 
 }
