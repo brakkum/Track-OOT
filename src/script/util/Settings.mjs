@@ -179,6 +179,10 @@ if ('serviceWorker' in navigator) {
 
 }
 
+document.getElementById("join-discord").addEventListener("click", function() {
+    window.open("https://discord.gg/wgFVtuv", "_blank");
+});
+
 settingsEdit.addEventListener("click", function() {
     showUpdatePopup = false;
     settings.show(getSettings(), 'settings');
