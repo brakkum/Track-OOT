@@ -4,10 +4,9 @@
 
 Application:    Track-OOT
 
-Version:        1.4.7
+Version:        1.4.8
 
 ---
 
 ### HOTFIX
-- fix infinite item cant count higher than 9999 (it would break the layout to count higher)
-- added links pocket to dungeon state
+- moved morpha_with_gold_scale skip to morpha instead of water_temple_access
