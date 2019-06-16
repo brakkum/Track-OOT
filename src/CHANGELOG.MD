@@ -4,9 +4,10 @@
 
 Application:    Track-OOT
 
-Version:        1.4.8
+Version:        1.4.9
 
 ---
 
 ### HOTFIX
-- moved morpha_with_gold_scale skip to morpha instead of water_temple_access
+- fixed ice trap counter value display bugged
+- added domain changing dialog at startup for old domain
