@@ -1,6 +1,7 @@
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import Logger from "/deepJS/util/Logger.mjs";
+import Dialog from "/deepJS/ui/Dialog.mjs";
 
 import TrackerLocalState from "/script/util/LocalState.mjs";
 import Logic from "/script/util/Logic.mjs";
@@ -11,7 +12,6 @@ import "/script/ui/dungeonstate/DungeonState.mjs";
 import "/script/ui/locations/LocationList.mjs";
 import "/script/ui/map/Map.mjs";
 
-import "/deepJS/ui/Dialog.mjs";
 import "/deepJS/ui/Icon.mjs";
 import "/deepJS/ui/selection/ChoiceSelect.mjs";
 
@@ -54,6 +54,22 @@ import "/deepJS/ui/selection/ChoiceSelect.mjs";
     let spl = document.getElementById("splash");
     if (!!spl) {
         spl.className = "inactive";
+    }
+
+    if (window.location.host == "track-oot.2deep4real.de") {
+        setTimeout(function() {
+            Dialog.alert("Domain changing", "The domain of this application is changing to <a href=\"http://track-oot.net\">track-oot.net</a>.<br>"
+                        + "Please consider to export your savestates to the new domain.<br><br>"
+                        + "This domain will be active until 01.08.2019. After that it will be shut down."
+                        + "The same applies to <a href=\"http://track-oot-dev.2deep4real.de\">track-oot-dev.2deep4real.de</a>");
+        }, 1000);
+    } else if (window.location.host == "track-oot-dev.2deep4real.de") {
+        setTimeout(function() {
+            Dialog.alert("Domain changing", "The domain of this application is changing to <a href=\"http://dev.track-oot.net\">dev.track-oot.net</a>.<br>"
+                        + "Please consider to export your savestates to the new domain.<br><br>"
+                        + "This domain will be active until 01.08.2019. After that it will be shut down."
+                        + "The same applies to <a href=\"http://track-oot.2deep4real.de\">track-oot.2deep4real.de</a>");
+        }, 1000);
     }
 
 }());
