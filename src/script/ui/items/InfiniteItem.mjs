@@ -12,29 +12,35 @@ const TPL = new Template(`
             box-sizing: border-box;
         }
         :host {
-            display: inline-flex;
-            align-items: flex-end;
-            justify-content: flex-end;
-            color: white;
-            font-size: 0.8em;
-            text-shadow: -1px 0 1px black, 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
             background-origin: content-box;
+        }
+        #value {
+            width: 100%;
+            height: 100%;
+            display: inline-flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            width: 100%;
+            height: 100%;
+            color: white;
+            font-size: 0.8em;
+            text-shadow: -1px 0 1px black, 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black;
             flex-grow: 0;
             flex-shrink: 0;
             min-height: 0;
             white-space: normal;
             padding: 0;
             line-height: 0.7em;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
         }
     </style>
-    <slot>
-    </slot>
+    <div id="value"></div>
 `);
 
 function updateCall(event) {
@@ -111,7 +117,7 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
                     updateCall.call(this);
                 break;
                 case 'value':
-                    this.innerHTML = newValue;
+                    this.shadowRoot.getElementById("value").innerHTML = newValue;
                     TrackerLocalState.write("items", this.ref, parseInt(newValue));
                     EventBus.fire("item-update", {
                         name: this.ref,
@@ -126,7 +132,7 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
         if (!this.readonly) {
             let val = parseInt(this.value);
             if (val < 9999) this.value = val + 1;
-            else value = 9999;
+            else this.value = 9999;
         }
         if (!event) return;
         event.preventDefault();
@@ -140,7 +146,7 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
             } else {
                 let val = parseInt(this.value);
                 if (val > 0) this.value = val - 1;
-                else value = 0;
+                else this.value = 0;
             }
         }
         if (!event) return;

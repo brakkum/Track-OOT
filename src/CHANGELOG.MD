@@ -4,10 +4,10 @@
 
 Application:    Track-OOT
 
-Version:        1.4.7
+Version:        1.4.9
 
 ---
 
 ### HOTFIX
-- fix infinite item cant count higher than 9999 (it would break the layout to count higher)
-- added links pocket to dungeon state
+- fixed ice trap counter value display bugged
+- added domain changing dialog at startup for old domain

@@ -602,62 +602,23 @@
                     "el": "can_become_adult"
                 },
                 {
+                    "type": "item",
+                    "el": "hookshot"
+                },
+                {
+                    "type": "item",
+                    "el": "boots_iron"
+                },
+                {
                     "type": "or",
                     "el": [
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "hookshot"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "boots_iron"
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "skip",
-                                            "el": "fewer_tunic"
-                                        },
-                                        {
-                                            "type": "mixin",
-                                            "el": "zora_tunic_access"
-                                        }
-                                    ]
-                                }
-                            ]
+                            "type": "skip",
+                            "el": "fewer_tunic"
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "option",
-                                    "el": "keysanity"
-                                },
-                                {
-                                    "type": "skip",
-                                    "el": "morpha_scale"
-                                },
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "scale"
-                                    },
-                                    "value": 2
-                                },
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "hookshot"
-                                    },
-                                    "value": 2
-                                }
-                            ]
+                            "type": "mixin",
+                            "el": "zora_tunic_access"
                         }
                     ]
                 }
@@ -2818,16 +2779,12 @@
             "type": "and",
             "el": [
                 {
-                    "type": "mixin",
-                    "el": "water_temple_access"
-                },
-                {
                     "type": "min",
                     "el": {
                         "type": "item",
                         "el": "hookshot"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "or",
@@ -2842,6 +2799,40 @@
                         {
                             "type": "item",
                             "el": "key_boss_water"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "water_temple_access"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "skip",
+                                    "el": "morpha_scale"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "scale"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "hookshot"
+                                    },
+                                    "value": "2"
+                                }
+                            ]
                         }
                     ]
                 }

@@ -16,11 +16,13 @@ const TPL = new Template(`
         div.item-row {
             display: flex;
         }
-        ootrt-item {
+        ootrt-item,
+        ootrt-infiniteitem {
             display: block;
             padding: 5px;
         }
-        ootrt-item:hover {
+        ootrt-item:hover,
+        ootrt-infiniteitem:hover {
             padding: 2px;
         }
         div.text {
