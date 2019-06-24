@@ -7,11 +7,6 @@ import TrackerLocalState from "/script/util/LocalState.mjs";
 import Logic from "/script/util/Logic.mjs";
 import "/script/util/SaveHandler.mjs";
 
-import "/script/ui/items/ItemGrid.mjs";
-import "/script/ui/dungeonstate/DungeonState.mjs";
-import "/script/ui/locations/LocationList.mjs";
-import "/script/ui/map/Map.mjs";
-
 import "/deepJS/ui/Icon.mjs";
 import "/deepJS/ui/selection/ChoiceSelect.mjs";
 
@@ -30,10 +25,6 @@ import "/deepJS/ui/selection/ChoiceSelect.mjs";
     }
 
     updateLoadingMessage("add modules...");
-    addHTMLModule('ootrt-itemgrid', "item-grid");
-    addHTMLModule('ootrt-dungeonstate', "dungeon-status").setAttribute("active", "key bosskey map compass type reward");
-    addHTMLModule('ootrt-locationlist', "location-list").setAttribute("mode", "chests");
-    addHTMLModule('ootrt-map', "location-map").setAttribute("mode", "chests");
 
     document.getElementById("view-choice-top").onchange = changeView;
     document.getElementById("view-choice-bottom").onchange = changeView;

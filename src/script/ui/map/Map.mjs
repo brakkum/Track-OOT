@@ -2,6 +2,7 @@ import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
 import Logger from "/deepJS/util/Logger.mjs";
+import Panel from "/deepJS/ui/layout/Panel.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
 import "./POILocationChest.mjs";
 import "./POILocationSkulltula.mjs";
@@ -15,22 +16,17 @@ const TPL = new Template(`
             box-sizing: border-box;
         }
         :host {
-            display: flex;
-            align-items: stretch;
-            justify-content: stretch;
-            width: 100%;
-            /*min-width: 825px;*/
-            /*min-height: 466px;*/
+            display: grid;
+            min-width: 400px;
+            min-height: 200px;
             -moz-user-select: none;
             user-select: none;
-            overflow: hidden;
         }
         #map-wrapper {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex: 1;
             overflow: hidden;
         }
         #map {
@@ -284,7 +280,7 @@ function overviewSelect(event, map) {
     return false;
 };
 
-class HTMLTrackerMap extends HTMLElement {
+class HTMLTrackerMap extends Panel {
 
     constructor() {
         super();
@@ -364,6 +360,10 @@ class HTMLTrackerMap extends HTMLElement {
         });
     }
 
+    connectedCallback() {
+        this.setAttribute("mode", "chests");
+    }
+
     get mode() {
         return this.getAttribute('mode');
     }
@@ -430,4 +430,5 @@ class HTMLTrackerMap extends HTMLElement {
 
 }
 
+Panel.registerReference("location-map", HTMLTrackerMap);
 customElements.define('ootrt-map', HTMLTrackerMap);

@@ -2,6 +2,7 @@ import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import MemoryStorage from "/deepJS/storage/MemoryStorage.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import EventBus from "/deepJS/util/EventBus.mjs";
+import Panel from "/deepJS/ui/layout/Panel.mjs";
 import "/deepJS/ui/selection/SwitchButton.mjs";
 import TrackerLocalState from "/script/util/LocalState.mjs";
 import I18n from "/script/util/I18n.mjs";
@@ -178,19 +179,19 @@ function locationUpdate(event) {
     }
 }
 
-function dungeonTypeUppdate(event) {
+function dungeonTypeUpdate(event) {
     if (this.ref === event.data.name) {
         this.attributeChangedCallback("", "");
     }
 }
 
-class HTMLTrackerLocationList extends HTMLElement {
+class HTMLTrackerLocationList extends Panel {
 
     constructor() {
         super();
         generateLocations();
         EventBus.on("location-change", event => this.ref = event.data.name);
-        EventBus.on(["dungeon-type-update", "net:dungeon-type-update"], dungeonTypeUppdate.bind(this));
+        EventBus.on(["dungeon-type-update", "net:dungeon-type-update"], dungeonTypeUpdate.bind(this));
         EventBus.on(["location-update", "net:location-update"], locationUpdate.bind(this));
         EventBus.on(["item-update", "net:item-update"], locationUpdate.bind(this));
         EventBus.on("force-location-update", locationUpdate.bind(this));
@@ -210,6 +211,10 @@ class HTMLTrackerLocationList extends HTMLElement {
                 value: this.era
             });
         });
+    }
+
+    connectedCallback() {
+        this.setAttribute("mode", "chests");
     }
 
     get ref() {
@@ -325,4 +330,5 @@ class HTMLTrackerLocationList extends HTMLElement {
 
 }
 
+Panel.registerReference("location-list", HTMLTrackerLocationList);
 customElements.define('ootrt-locationlist', HTMLTrackerLocationList);

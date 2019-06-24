@@ -1,5 +1,6 @@
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
+import Panel from "/deepJS/ui/layout/Panel.mjs";
 import I18n from "/script/util/I18n.mjs";
 import "./Item.mjs";
 import "./InfiniteItem.mjs";
@@ -41,7 +42,7 @@ function createItemText(text) {
     return el;
 }
 
-class HTMLTrackerItemGrid extends HTMLElement {
+class HTMLTrackerItemGrid extends Panel {
 
     constructor() {
         super();
@@ -76,4 +77,5 @@ class HTMLTrackerItemGrid extends HTMLElement {
 
 }
 
+Panel.registerReference("item-grid", HTMLTrackerItemGrid);
 customElements.define('ootrt-itemgrid', HTMLTrackerItemGrid);

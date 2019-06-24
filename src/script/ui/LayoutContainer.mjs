@@ -1,6 +1,12 @@
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
 
+import "/deepJS/ui/layout/Layout.mjs";
+import "/script/ui/items/ItemGrid.mjs";
+import "/script/ui/dungeonstate/DungeonState.mjs";
+import "/script/ui/locations/LocationList.mjs";
+import "/script/ui/map/Map.mjs";
+
 const TPL = new Template(`
     <style>
         :host {
@@ -9,12 +15,12 @@ const TPL = new Template(`
             justify-content: stretch;
             align-items: stretch;
         }
-        ::slotted(:not(:first-child)) {
-            display: none;
+        #layout {
+            flex: 1;
         }
     </style>
-    <slot>
-    </slot>
+    <deep-layout id="layout">
+    </deep-layout>
 `);
 
 class HTMLTrackerLayoutContainer extends HTMLElement {
@@ -43,7 +49,7 @@ class HTMLTrackerLayoutContainer extends HTMLElement {
                 if (oldValue != newValue) {
                     let layout = GlobalData.get("layouts")[newValue];
                     if (!!layout) {
-                        // todo
+                        this.shadowRoot.getElementById("layout").loadLayout(layout);
                     }
                 }
             break;

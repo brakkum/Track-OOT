@@ -1,6 +1,7 @@
 import GlobalData from "/deepJS/storage/GlobalData.mjs";
 import Template from "/deepJS/util/Template.mjs";
 import I18n from "/script/util/I18n.mjs";
+import Panel from "/deepJS/ui/layout/Panel.mjs";
 import "./DungeonReward.mjs";
 import "./DungeonType.mjs";
 
@@ -77,7 +78,7 @@ function createItemPlaceholder() {
     return el;
 }
 
-class HTMLTrackerDungeonState extends HTMLElement {
+class HTMLTrackerDungeonState extends Panel {
 
     constructor() {
         super();
@@ -88,8 +89,7 @@ class HTMLTrackerDungeonState extends HTMLElement {
         for (let i = 0; i < data.length; ++i) {
             this.shadowRoot.append(createRow(data[i]));
         }
-
-        switchActive.call(this, "", this.active);
+        switchActive.call(this, this.active);
     }
 
     get active() {
@@ -124,11 +124,12 @@ class HTMLTrackerDungeonState extends HTMLElement {
 
 }
 
+Panel.registerReference("dungeon-status", HTMLTrackerDungeonState);
 customElements.define('ootrt-dungeonstate', HTMLTrackerDungeonState);
 
 function switchActive(value) {
     if (typeof value === "string") {
-        value = value.split(" ");
+        value = value.split(/,\s*/);
     } else {
         value = [];
     }
