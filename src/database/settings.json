@@ -38,6 +38,11 @@
                 "flat"
             ]
         },
+        "edit_layouts": {
+            "type": "button",
+            "text": "button_edit_layouts",
+            "view": "layouteditor"
+        },
         "item_size": {
             "type": "hidden",
             "old_type": "range",
@@ -60,11 +65,13 @@
         },
         "edit_custom_logic": {
             "type": "button",
-            "text": "button_edit_logic"
+            "text": "button_edit_logic",
+            "view": "logiceditor"
         },
         "erase_all_data": {
             "type": "button",
-            "text": "button_erase_data"
+            "text": "button_erase_data",
+            "url": "uninstall.html"
         }
     },
     "options": {

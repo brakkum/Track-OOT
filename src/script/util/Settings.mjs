@@ -327,19 +327,20 @@ function convertValueList(values = [], names = []) {
                     settings.addListSelectInput(i, label, j, val.default.join(","), true, convertValueList(val.values, val.names));
                 break;
                 case "button":
-                    if (j == "edit_custom_logic") {
-                        settings.addButton(i, label, j, I18n.translate(val.text), e => {
-                            document.getElementById('view-pager').setAttribute("active", "editor");
-                            settings.close();
-                        });
-                    } else if (j == "erase_all_data") {
-                        settings.addButton(i, label, j, I18n.translate(val.text), e => {
-                            window.open("uninstall.html");
-                        });
+                    if (!!val.view) {
+                        settings.addButton(i, label, j, I18n.translate(val.text), switchView.bind(this, val.view));
+                    } else if (!!val.url) {
+                        settings.addButton(i, label, j, I18n.translate(val.text), window.open.bind(window, val.url));
+                    } else {
+                        settings.addButton(i, label, j, I18n.translate(val.text), alert.bind(window, "not functionality bound"));
                     }
                 break;
             }
         }
+    }
+    function switchView(view) {
+        document.getElementById('view-pager').setAttribute("active", view);
+        settings.close();
     }
     applySettingsChoices();
 }();
