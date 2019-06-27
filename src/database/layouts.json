@@ -6,7 +6,15 @@
             "name": "item-grid",
             "options": {
                 "item-size": 40,
-                "layout": "items"
+                "items": [
+                    "bombs bow medallion_forest",
+                    "boomerang hammer medallion_fire",
+                    "hookshot magic_din medallion_water",
+                    "zora_letter arrows medallion_spirit",
+                    "shield_mirror glove medallion_shadow",
+                    "boots scale medallion_light",
+                    "stone_forest stone_fire stone_water"
+                ]
             }
         },{
             "type": "panel",
@@ -27,8 +35,7 @@
             "type": "panel",
             "name": "item-grid",
             "options": {
-                "item-size": 40,
-                "layout": "items"
+                "item-size": 40
             }
         },{
             "type": "panel",
@@ -50,8 +57,7 @@
             "type": "panel",
             "name": "item-grid",
             "options": {
-                "item-size": 40,
-                "layout": "items"
+                "item-size": 40
             }
         },{
             "type": "panel",
@@ -75,8 +81,7 @@
             "type": "panel",
             "name": "item-grid",
             "options": {
-                "item-size": 40,
-                "layout": "items"
+                "item-size": 40
             }
         },{
             "type": "panel",
@@ -103,8 +108,7 @@
                 "type": "panel",
                 "name": "item-grid",
                 "options": {
-                    "item-size": 40,
-                    "layout": "items"
+                    "item-size": 40
                 }
             },{
                 "type": "panel",
@@ -134,8 +138,7 @@
                 "type": "panel",
                 "name": "item-grid",
                 "options": {
-                    "item-size": 40,
-                    "layout": "items"
+                    "item-size": 40
                 }
             },{
                 "type": "panel",
@@ -166,8 +169,7 @@
                 "type": "panel",
                 "name": "item-grid",
                 "options": {
-                    "item-size": 40,
-                    "layout": "items"
+                    "item-size": 40
                 }
             },{
                 "type": "panel",
@@ -201,8 +203,7 @@
                 "type": "panel",
                 "name": "item-grid",
                 "options": {
-                    "item-size": 40,
-                    "layout": "items"
+                    "item-size": 40
                 }
             },{
                 "type": "panel",
@@ -239,8 +240,7 @@
                 "type": "panel",
                 "name": "item-grid",
                 "options": {
-                    "item-size": 40,
-                    "layout": "items"
+                    "item-size": 40
                 }
             },{
                 "type": "panel",
@@ -269,8 +269,7 @@
             "type": "panel",
             "name": "item-grid",
             "options": {
-                "item-size": 40,
-                "layout": "items"
+                "item-size": 40
             }
         },{
             "type": "panel",

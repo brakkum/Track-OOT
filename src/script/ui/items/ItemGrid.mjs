@@ -14,6 +14,9 @@ const TPL = new Template(`
         :host {
             display: inline-block;
         }
+        #container {
+            display: contents;
+        }
         div.item-row {
             display: flex;
         }
@@ -33,6 +36,8 @@ const TPL = new Template(`
             padding: 2px;
         }
     </style>
+    <div id="container">
+    </div>
 `);
 
 function createItemText(text) {
@@ -48,30 +53,56 @@ class HTMLTrackerItemGrid extends Panel {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
+    }
 
-        let data = GlobalData.get("grids")["items"];
-        for (let i of data) {
-            let cnt = document.createElement('div');
-            cnt.classList.add("item-row");
-            for (let j of i) {
-                if (j.startsWith("text:")) {
-                    cnt.append(createItemText(j.slice(5)));
-                } else {
-                    let data = GlobalData.get("items")[j];
-                    if (data.max === false) {
-                        let itm = document.createElement('ootrt-infiniteitem');
-                        itm.title = I18n.translate(j);
-                        itm.setAttribute('ref', j);
-                        cnt.append(itm);
-                    } else {
-                        let itm = document.createElement('ootrt-item');
-                        itm.title = I18n.translate(j);
-                        itm.setAttribute('ref', j);
-                        cnt.append(itm);
+    connectedCallback() {
+        if (!this.items) {
+            this.items = GlobalData.get("grids")["items"].map(e=>e.join(" ")).join(",");
+        }
+    }
+
+    get items() {
+        return this.getAttribute('items');
+    }
+
+    set items(val) {
+        this.setAttribute('items', val);
+    }
+
+    static get observedAttributes() {
+        return ['items'];
+    }
+    
+    attributeChangedCallback(name, oldValue, newValue) {
+        switch (name) {
+            case 'items':
+                if (oldValue != newValue) {
+                    let els = newValue.split(",").map(e=>e.split(" "));
+                    for (let i of els) {
+                        let cnt = document.createElement('div');
+                        cnt.classList.add("item-row");
+                        for (let j of i) {
+                            if (j.startsWith("text:")) {
+                                cnt.append(createItemText(j.slice(5)));
+                            } else {
+                                let data = GlobalData.get("items")[j];
+                                if (data.max === false) {
+                                    let itm = document.createElement('ootrt-infiniteitem');
+                                    itm.title = I18n.translate(j);
+                                    itm.setAttribute('ref', j);
+                                    cnt.append(itm);
+                                } else {
+                                    let itm = document.createElement('ootrt-item');
+                                    itm.title = I18n.translate(j);
+                                    itm.setAttribute('ref', j);
+                                    cnt.append(itm);
+                                }
+                            }
+                        }
+                        this.shadowRoot.append(cnt);
                     }
                 }
-            }
-            this.shadowRoot.append(cnt);
+            break;
         }
     }
 
