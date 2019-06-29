@@ -106,9 +106,12 @@ if ('serviceWorker' in navigator) {
                     settings.querySelector("#update-check").style.display = "none";
                     settings.querySelector("#update-force").style.display = "block";
                     settings.querySelector("#update-available").style.display = "block";
-                    if (showUpdatePopup) showPopover("A new update is available. Click here to download!", function() {
-                        settings.show(getSettings(), 'about');
-                    });
+                    if (showUpdatePopup) {
+                        let popover = showPopover("A new update is available. Click here to download!", 60);
+                        popover.addEventListener("click", function() {
+                            settings.show(getSettings(), 'about');
+                        });
+                    }
                 break;
                 case "update_unavailable":
                     settings.querySelector("#update-check").style.display = "none";

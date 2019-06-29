@@ -10,14 +10,20 @@ import "/deepJS/ui/CollapsePanel.mjs";
 import "/deepJS/ui/logic/elements/literals/LogicFalse.mjs";
 import "/deepJS/ui/logic/elements/literals/LogicTrue.mjs";
 import "/deepJS/ui/logic/elements/operators/LogicAnd.mjs";
+import "/deepJS/ui/logic/elements/operators/LogicNand.mjs";
 import "/deepJS/ui/logic/elements/operators/LogicOr.mjs";
+import "/deepJS/ui/logic/elements/operators/LogicNor.mjs";
+import "/deepJS/ui/logic/elements/operators/LogicXor.mjs";
 import "/deepJS/ui/logic/elements/operators/LogicNot.mjs";
 import "/deepJS/ui/logic/elements/restrictors/LogicMin.mjs";
+import "/deepJS/ui/logic/elements/restrictors/LogicMax.mjs";
 import "/script/ui/logic/LogicItem.mjs";
 import "/script/ui/logic/LogicMixin.mjs";
 import "/script/ui/logic/LogicOption.mjs";
 import "/script/ui/logic/LogicSkip.mjs";
 import "/script/ui/logic/LogicFilter.mjs";
+import "/script/ui/logic/LogicChest.mjs";
+import "/script/ui/logic/LogicSkulltula.mjs";
 
 import EditorLogic from "/script/editor/Logic.mjs";
 import "/script/editor/Navigation.mjs";
@@ -28,8 +34,12 @@ const LOGIC_OPERATORS = [
     "deep-logic-true",
     "deep-logic-not",
     "deep-logic-and",
+    "deep-logic-nand",
     "deep-logic-or",
-    "deep-logic-min"
+    "deep-logic-nor",
+    "deep-logic-xor",
+    "deep-logic-min",
+    "deep-logic-max"
 ];
 
 (async function main() {
@@ -73,6 +83,9 @@ const LOGIC_OPERATORS = [
         container.append(createOperatorCategory(settings.options, "tracker-logic-option", "options", onclick));
         container.append(createOperatorCategory(settings.skips, "tracker-logic-skip", "skips", onclick));
         container.append(createOperatorCategory(filter, "tracker-logic-filter", "filter", onclick));
+        // TODO create location operator factory
+        // container.append(createOperatorCategory(chests, "tracker-logic-chest", "chests", onclick));
+        // container.append(createOperatorCategory(skulltulas, "tracker-logic-skulltula", "skulltulas", onclick));
         container.append(createOperatorCategory(logic.mixins, "tracker-logic-mixin", "mixins", onclick));
     }
 
