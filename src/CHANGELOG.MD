@@ -4,10 +4,9 @@
 
 Application:    Track-OOT
 
-Version:        1.4.9
+Version:        1.4.10
 
 ---
 
 ### HOTFIX
-- fixed ice trap counter value display bugged
-- added domain changing dialog at startup for old domain
+- fix gossipstones on map not updated on item update
