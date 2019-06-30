@@ -95,13 +95,11 @@ function gossipstoneUpdate(event) {
 
 function logicUpdate(event) {
     if ("gossipstones" == event.data.type && this.ref == event.data.ref) {
-        let el = this.shadowRoot.querySelector("marker");
-        if (!!el) {
-            if (!!event.data.value) {
-                el.classList.add("avail");
-            } else {
-                el.classList.remove("avail");
-            }
+        let el = this.shadowRoot.getElementById("marker");
+        if (!!event.data.value) {
+            el.classList.add("avail");
+        } else {
+            el.classList.remove("avail");
         }
     }
 }
