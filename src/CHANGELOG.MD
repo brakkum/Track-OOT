@@ -4,9 +4,10 @@
 
 Application:    Track-OOT
 
-Version:        1.4.10
+Version:        1.4.11
 
 ---
 
 ### HOTFIX
-- fix gossipstones on map not updated on item update
+- added sheik check back to ice cavern mq
+    - sheik in vanilla ice cavern was added back some time ago
