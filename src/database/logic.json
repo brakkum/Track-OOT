@@ -21011,8 +21011,21 @@
                     "el": "gerudo_fortress_access"
                 },
                 {
-                    "type": "item",
-                    "el": "hookshot"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "hookshot"
+                        },
+                        {
+                            "type": "item",
+                            "el": "boots_hover"
+                        },
+                        {
+                            "type": "skip",
+                            "el": "gerudo_kitchen"
+                        }
+                    ]
                 }
             ]
         },
