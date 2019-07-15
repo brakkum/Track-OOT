@@ -38,6 +38,7 @@ const TPL = new Template(`
             white-space: normal;
             padding: 0;
             line-height: 0.7em;
+            font-weight: bold;
         }
     </style>
     <div id="value"></div>

@@ -4,9 +4,11 @@
 
 Application:    Track-OOT
 
-Version:        1.4.12
+Version:        1.4.13
 
 ---
 
 ### HOTFIX
-- fixed logic for top of gerudo fortress skulltula
+- add triforce piece item
+- add bridge condition for triforce hunt
+- add triforce item to itemgrid

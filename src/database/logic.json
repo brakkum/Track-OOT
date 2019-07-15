@@ -377,7 +377,25 @@
                                         "type": "item",
                                         "el": "skulltula"
                                     },
-                                    "value": 100
+                                    "value": "100"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "option",
+                                    "el": "ganon_castle_open",
+                                    "value": "ganon_castle_open_triforce"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "triforce_piece"
+                                    },
+                                    "value": "20"
                                 }
                             ]
                         }

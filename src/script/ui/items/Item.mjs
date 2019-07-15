@@ -44,6 +44,7 @@ const TPL = new Template(`
             white-space: normal;
             padding: 0;
             line-height: 0.7em;
+            font-weight: bold;
         }
         ::slotted([value].mark) {
             color: #54ff54;
