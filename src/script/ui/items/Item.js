@@ -72,6 +72,7 @@ function updateCall(event) {
 function itemUpdate(event) {
     if (this.ref === event.data.name && this.value !== event.data.value) {
         EventBus.mute("item-update");
+        console.log(`item update event: ${new Date}`);
         this.value = event.data.value;
         EventBus.unmute("item-update");
     }

@@ -17,8 +17,10 @@ const TPL = new Template(`
         }
         :host {
             display: grid;
-            min-width: 400px;
-            min-height: 200px;
+            min-width: 100%;
+            min-height: 100%;
+            width: 400px;
+            height: 200px;
             -moz-user-select: none;
             user-select: none;
         }
