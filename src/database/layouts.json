@@ -5,7 +5,7 @@
             "type": "panel",
             "name": "item-grid",
             "options": {
-                "item-size": 40,
+                "itemsize": 40,
                 "items": [
                     "bombs bow medallion_forest",
                     "boomerang hammer medallion_fire",
@@ -20,7 +20,7 @@
             "type": "panel",
             "name": "dungeon-status",
             "options": {
-                "item-size": 40,
+                "itemsize": 40,
                 "orientation": "row",
                 "active": [
                     "key",
@@ -35,13 +35,13 @@
             "type": "panel",
             "name": "item-grid",
             "options": {
-                "item-size": 40
+                "itemsize": 40
             }
         },{
             "type": "panel",
             "name": "dungeon-status",
             "options": {
-                "item-size": 40,
+                "itemsize": 40,
                 "orientation": "row",
                 "active": [
                     "key",
@@ -57,13 +57,13 @@
             "type": "panel",
             "name": "item-grid",
             "options": {
-                "item-size": 40
+                "itemsize": 40
             }
         },{
             "type": "panel",
             "name": "dungeon-status",
             "options": {
-                "item-size": 40,
+                "itemsize": 40,
                 "orientation": "row",
                 "active": [
                     "key",
@@ -81,13 +81,13 @@
             "type": "panel",
             "name": "item-grid",
             "options": {
-                "item-size": 40
+                "itemsize": 40
             }
         },{
             "type": "panel",
             "name": "dungeon-status",
             "options": {
-                "item-size": 40,
+                "itemsize": 40,
                 "orientation": "row",
                 "active": [
                     "key",
@@ -108,13 +108,13 @@
                 "type": "panel",
                 "name": "item-grid",
                 "options": {
-                    "item-size": 40
+                    "itemsize": 40
                 }
             },{
                 "type": "panel",
                 "name": "dungeon-status",
                 "options": {
-                    "item-size": 40,
+                    "itemsize": 40,
                     "orientation": "row",
                     "active": [
                         "key",
@@ -138,13 +138,13 @@
                 "type": "panel",
                 "name": "item-grid",
                 "options": {
-                    "item-size": 40
+                    "itemsize": 40
                 }
             },{
                 "type": "panel",
                 "name": "dungeon-status",
                 "options": {
-                    "item-size": 40,
+                    "itemsize": 40,
                     "orientation": "row",
                     "active": [
                         "key",
@@ -169,13 +169,13 @@
                 "type": "panel",
                 "name": "item-grid",
                 "options": {
-                    "item-size": 40
+                    "itemsize": 40
                 }
             },{
                 "type": "panel",
                 "name": "dungeon-status",
                 "options": {
-                    "item-size": 40,
+                    "itemsize": 40,
                     "orientation": "column",
                     "active": [
                         "key",
@@ -189,7 +189,8 @@
             }]
         },{
             "type": "panel",
-            "name": "location-map"
+            "name": "location-map",
+            "autosize": true    
         },{
             "type": "panel",
             "name": "location-list"
@@ -203,7 +204,7 @@
                 "type": "panel",
                 "name": "item-grid",
                 "options": {
-                    "item-size": 40
+                    "itemsize": 40
                 }
             },{
                 "type": "panel",
@@ -215,7 +216,7 @@
                 "type": "panel",
                 "name": "dungeon-status",
                 "options": {
-                    "item-size": 40,
+                    "itemsize": 40,
                     "orientation": "row",
                     "active": [
                         "key",
@@ -240,13 +241,13 @@
                 "type": "panel",
                 "name": "item-grid",
                 "options": {
-                    "item-size": 40
+                    "itemsize": 40
                 }
             },{
                 "type": "panel",
                 "name": "dungeon-status",
                 "options": {
-                    "item-size": 40,
+                    "itemsize": 40,
                     "orientation": "row",
                     "active": [
                         "key",
@@ -269,13 +270,13 @@
             "type": "panel",
             "name": "item-grid",
             "options": {
-                "item-size": 40
+                "itemsize": 40
             }
         },{
             "type": "panel",
             "name": "dungeon-status",
             "options": {
-                "item-size": 40,
+                "itemsize": 40,
                 "orientation": "row",
                 "active": [
                     "key",
