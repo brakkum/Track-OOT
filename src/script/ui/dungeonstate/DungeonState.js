@@ -11,9 +11,11 @@ const TPL = new Template(`
             position: relative;
             box-sizing: border-box;
         }
-        #container {
-            display: inline-flex;
+        :host {
+            display: flex;
             flex-direction: row;
+            min-width: min-content;
+            min-height: min-content;
         }
         :host([orientation="column"]) #container {
             flex-direction: column;
@@ -63,8 +65,6 @@ const TPL = new Template(`
             display: none;
         }
     </style>
-    <div id="container">
-    </div>
 `);
 
 function createItemText(text) {
@@ -87,18 +87,11 @@ class HTMLTrackerDungeonState extends Panel {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
 
-        let container = this.shadowRoot.getElementById("container");
         let data = GlobalData.get("grids")["dungeons"];
         for (let i = 0; i < data.length; ++i) {
-            container.append(createRow(data[i]));
+            this.shadowRoot.append(createRow(data[i]));
         }
         switchActive.call(this, this.active);
-    }
-
-    connectedCallback() {
-        let container = this.shadowRoot.getElementById("container");
-        this.style.minWidth = `${container.clientWidth}px`;
-        this.style.minHeight = `${container.clientHeight}px`;
     }
 
     get active() {
@@ -127,10 +120,6 @@ class HTMLTrackerDungeonState extends Panel {
                 if (oldValue != newValue) {
                     switchActive.call(this, newValue);
                 }
-            case 'orientation':
-                let container = this.shadowRoot.getElementById("container");
-                this.style.minWidth = `${container.clientWidth}px`;
-                this.style.minHeight = `${container.clientHeight}px`;
             break;
         }
     }

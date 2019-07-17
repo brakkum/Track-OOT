@@ -5,6 +5,8 @@ import I18n from "/script/util/I18n.js";
 import "./Item.js";
 import "./InfiniteItem.js";
 
+// TODO use same method as in DungeonState (no extra container)
+
 const TPL = new Template(`
     <style>
         * {
