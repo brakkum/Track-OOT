@@ -1,6 +1,6 @@
 
 import Dialog from "/deepJS/ui/Dialog.js";
-import EventBus from "/deepJS/util/EventBus.js";
+import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import DeepWebRAT from "/script/client/WebRAT.js";
 import TrackerLocalState from "/script/util/LocalState.js";
 

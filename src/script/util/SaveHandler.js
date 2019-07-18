@@ -1,7 +1,7 @@
 import GlobalData from "/deepJS/storage/GlobalData.js";
 import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
 import DeepSessionStorage from "/deepJS/storage/SessionStorage.js";
-import EventBus from "/deepJS/util/EventBus.js";
+import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import {showToast} from "/deepJS/ui/Toast.js";
 import TrackerLocalState from "./LocalState.js";
@@ -68,7 +68,7 @@ function throwEvents() {
     EventBus.trigger("force-shop-update");
     EventBus.trigger("force-song-update");
     EventBus.trigger("force-dungeonstate-update");
-    EventBus.trigger("state-changed");
+    EventBus.trigger("state-changed", TrackerLocalState.getState());
 }
 
 function prepairSavegameChoice() {

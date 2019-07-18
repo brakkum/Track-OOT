@@ -1,6 +1,6 @@
 import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
 import GlobalData from "/deepJS/storage/GlobalData.js";
-import EventBus from "/deepJS/util/EventBus.js";
+import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import {deepEquals} from "/deepJS/util/Helper.js";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
 

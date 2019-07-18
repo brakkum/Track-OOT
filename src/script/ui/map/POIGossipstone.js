@@ -1,6 +1,6 @@
 import GlobalData from "/deepJS/storage/GlobalData.js";
 import Template from "/deepJS/util/Template.js";
-import EventBus from "/deepJS/util/EventBus.js";
+import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import "/deepJS/ui/Tooltip.js";

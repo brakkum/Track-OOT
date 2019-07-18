@@ -15,9 +15,8 @@ const TPL = new Template(`
         }
         :host {
             display: inline-block;
-        }
-        #container {
-            display: contents;
+            min-width: min-content;
+            min-height: min-content;
         }
         div.item-row {
             display: flex;
@@ -38,8 +37,6 @@ const TPL = new Template(`
             padding: 2px;
         }
     </style>
-    <div id="container">
-    </div>
 `);
 
 function createItemText(text) {

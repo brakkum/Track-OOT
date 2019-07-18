@@ -2,7 +2,7 @@ import GlobalData from "/deepJS/storage/GlobalData.js";
 import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
 import SettingsWindow from "/deepJS/ui/SettingsWindow.js";
 import {showPopover} from "/deepJS/ui/PopOver.js";
-import EventBus from "/deepJS/util/EventBus.js";
+import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import TrackerLocalState from "./LocalState.js";
 import I18n from "./I18n.js";

@@ -12,13 +12,59 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/images/favicons/icon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/icon-16x16.png">
     <script type="module">
+        import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
+        import EventBus from "/deepJS/util/EventBus/EventBus.js";
+        import EventBusModuleShare from "/deepJS/util/EventBus/EventBusModuleShare.js";
+        import Panel from "/deepJS/ui/layout/Panel.js";
+        import loadData from "/script/util/loader.js";
+        import I18n from "/script/util/I18n.js";
+        import Logic from "/script/util/Logic.js";
         import "/script/ui/items/ItemGrid.js";
         import "/script/ui/dungeonstate/DungeonState.js";
         import "/script/ui/locations/LocationList.js";
         import "/script/ui/map/Map.js";
+
+        function createPanel(layout) {
+            let cnt = document.getElementById("container");
+            let el = new (Panel.getReference(layout.name));
+            for (let i in layout.options) {
+                el.setAttribute(i, layout.options[i]);
+            }
+            cnt.append(el);
+            let waw = window.outerWidth - window.innerWidth;
+            let wah = window.outerHeight - window.innerHeight;
+            window.resizeTo(waw + el.clientWidth, wah + el.clientHeight);
+        }
+
+        (async function main() {
+
+            await loadData();
+            await I18n.load(DeepLocalStorage.get("settings", "language", "en_us"));
+            Logic.loadLogic();
+            EventBus.addModule(EventBusModuleShare);
+
+            let conf = decodeURI(window.location.hash.slice(1));
+            createPanel(JSON.parse(conf));
+            
+            EventBus.trigger("detached-window-created", {});
+
+        }());
+
     </script>
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
-    <!-- add panel here -->
+    <div id="container">
+        <!-- add panel here -->
+    </div>
 </body>
 </html>

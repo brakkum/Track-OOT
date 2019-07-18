@@ -1,5 +1,6 @@
 import GlobalData from "/deepJS/storage/GlobalData.js";
-import EventBus from "/deepJS/util/EventBus.js";
+import EventBus from "/deepJS/util/EventBus/EventBus.js";
+import EventBusModuleShare from "/deepJS/util/EventBus/EventBusModuleShare.js";
 import Logger from "/deepJS/util/Logger.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 
@@ -11,6 +12,8 @@ import "/deepJS/ui/Icon.js";
 import "/deepJS/ui/selection/ChoiceSelect.js";
 
 (async function main() {
+
+    EventBus.addModule(EventBusModuleShare);
 
     updateLoadingMessage("apply logger...");
     if (!!GlobalData.get("version").dev) {
@@ -62,6 +65,15 @@ import "/deepJS/ui/selection/ChoiceSelect.js";
                         + "The same applies to <a href=\"http://track-oot.2deep4real.de\">track-oot.2deep4real.de</a>");
         }, 1000);
     }
+
+    window.addEventListener('keydown', function(event) {
+        if (event.ctrlKey == true && event.altKey == true && event.key == "i") {
+            window.open('detached.html#{"name":"item-grid","options":{"itemsize":40}}', "TrackOOT", "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,titlebar=0", false);
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        }
+    });
 
 }());
 
