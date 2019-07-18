@@ -12744,23 +12744,32 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "item",
-                                            "el": "bow"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "arrow_fire"
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "bow"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "arrow_fire"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_power"
+                                                }
+                                            ]
                                         },
                                         {
                                             "type": "and",
                                             "el": [
                                                 {
                                                     "type": "item",
-                                                    "el": "magic_power"
+                                                    "el": "magic_din"
                                                 },
                                                 {
                                                     "type": "item",
-                                                    "el": "magic_din"
+                                                    "el": "magic_power"
                                                 },
                                                 {
                                                     "type": "or",
@@ -12779,7 +12788,7 @@
                                                                 "type": "item",
                                                                 "el": "hookshot"
                                                             },
-                                                            "value": 2
+                                                            "value": "2"
                                                         }
                                                     ]
                                                 }
@@ -13152,10 +13161,6 @@
                     "el": "has_fire_source"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
-                },
-                {
                     "type": "item",
                     "el": "hookshot"
                 },
@@ -13179,7 +13184,20 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 3
+                            "value": "3"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "skip",
+                            "el": "hammer_through_wall"
                         }
                     ]
                 }
@@ -13205,10 +13223,6 @@
                     "el": "has_fire_source"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
-                },
-                {
                     "type": "item",
                     "el": "hookshot"
                 },
@@ -13232,7 +13246,20 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 4
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "skip",
+                            "el": "hammer_through_wall"
                         }
                     ]
                 }
@@ -13284,16 +13311,25 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "mixin",
-                                    "el": "has_explosives"
-                                },
-                                {
                                     "type": "item",
                                     "el": "hookshot"
                                 },
                                 {
                                     "type": "item",
                                     "el": "bow"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "skip",
+                                            "el": "hammer_through_wall"
+                                        }
+                                    ]
                                 },
                                 {
                                     "type": "or",
@@ -13311,7 +13347,7 @@
                                                 "type": "item",
                                                 "el": "key_small_fire"
                                             },
-                                            "value": 3
+                                            "value": "3"
                                         }
                                     ]
                                 }
@@ -22539,10 +22575,6 @@
                     "el": "has_fire_source"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
-                },
-                {
                     "type": "item",
                     "el": "hookshot"
                 },
@@ -22566,7 +22598,7 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 3
+                            "value": "3"
                         }
                     ]
                 },
@@ -22589,6 +22621,19 @@
                                     "el": "song_time"
                                 }
                             ]
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "skip",
+                            "el": "hammer_through_wall"
                         }
                     ]
                 }
@@ -22614,20 +22659,12 @@
                     "el": "has_fire_source"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
-                },
-                {
                     "type": "item",
                     "el": "hookshot"
                 },
                 {
                     "type": "or",
                     "el": [
-                        {
-                            "type": "item",
-                            "el": "boots_hover"
-                        },
                         {
                             "type": "and",
                             "el": [
@@ -22640,6 +22677,14 @@
                                     "el": "song_time"
                                 }
                             ]
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "hookshot"
+                            },
+                            "value": "2"
                         }
                     ]
                 },
@@ -22659,7 +22704,20 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 2
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "skip",
+                            "el": "hammer_through_wall"
                         }
                     ]
                 }
@@ -22738,10 +22796,6 @@
                     "el": "has_fire_source"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
-                },
-                {
                     "type": "item",
                     "el": "hookshot"
                 },
@@ -22765,7 +22819,20 @@
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 5
+                            "value": "5"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "skip",
+                            "el": "hammer_through_wall"
                         }
                     ]
                 }
