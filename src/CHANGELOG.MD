@@ -9,6 +9,6 @@ Version:        1.4.13
 ---
 
 ### HOTFIX
-- add triforce piece item
-- add bridge condition for triforce hunt
-- add triforce item to itemgrid
+- fixed logic for chest near boss
+- fixed logic for east tower top GS
+- added hammer rusted switches skip
