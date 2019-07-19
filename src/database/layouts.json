@@ -5,6 +5,27 @@
             "type": "panel",
             "name": "item-grid",
             "options": {
+                "itemsize": 40
+            }
+        },{
+            "type": "panel",
+            "name": "dungeon-status",
+            "options": {
+                "itemsize": 40,
+                "orientation": "row",
+                "active": [
+                    "key",
+                    "bosskey"
+                ]
+            }
+        }]
+    },
+    "race": {
+        "type": "vbox",
+        "items": [{
+            "type": "panel",
+            "name": "item-grid",
+            "options": {
                 "itemsize": 40,
                 "items": [
                     "bombs bow medallion_forest",
@@ -21,7 +42,7 @@
             "name": "dungeon-status",
             "options": {
                 "itemsize": 40,
-                "orientation": "row",
+                "orientation": "column",
                 "active": [
                     "key",
                     "bosskey"

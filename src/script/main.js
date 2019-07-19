@@ -68,7 +68,7 @@ import "/deepJS/ui/selection/ChoiceSelect.js";
 
     window.addEventListener('keydown', function(event) {
         if (event.ctrlKey == true && event.altKey == true && event.key == "i") {
-            window.open('detached.html#{"name":"item-grid","options":{"itemsize":40}}', "TrackOOT", "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,titlebar=0", false);
+            window.open('detached.html#items', "TrackOOT", "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,titlebar=0", false);
             event.preventDefault();
             event.stopPropagation();
             return false;

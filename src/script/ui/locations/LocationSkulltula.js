@@ -2,6 +2,7 @@ import GlobalData from "/deepJS/storage/GlobalData.js";
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
+import {svg2png} from "/deepJS/util/Helper.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import "/deepJS/ui/ContextMenu.js";
 import TrackerLocalState from "/script/util/LocalState.js";
@@ -56,6 +57,7 @@ const TPL = new Template(`
         <div id="menu-uncheck" class="item">Uncheck<span class="menu-tip">(ctrl + rightclick)</span></div>
         <div class="splitter"></div>
         <div id="menu-logic" class="item">Show Logic</div>
+        <div id="menu-logic-image" class="item">Create Logic Image</div>
     </deep-contextmenu>
 `);
 
@@ -100,6 +102,16 @@ function showLogic(ref) {
     }
 }
 
+async function printLogic(ref) {
+    let path = ref.split(".");
+    let svg = Logic.getLogicSVG("skulltulas", path[2]);
+    let png = await svg2png(svg);
+    let svg_win = window.open("", "_blank", "menubar=no,location=no,resizable=yes,scrollbars=yes,status=no");
+    let img = document.createElement("img");
+    img.src = png;
+    svg_win.document.body.append(img);
+}
+
 function click(event) {
     this.check();
     event.preventDefault();
@@ -135,6 +147,9 @@ class HTMLTrackerLocationSkulltula extends HTMLElement {
         this.shadowRoot.getElementById("menu-uncheck").addEventListener("click", unclick.bind(this));
         this.shadowRoot.getElementById("menu-logic").addEventListener("click", function(event) {
             showLogic(this.ref);
+        }.bind(this));
+        this.shadowRoot.getElementById("menu-logic-image").addEventListener("click", function(event) {
+            printLogic(this.ref);
         }.bind(this));
         /* event bus */
         EventBus.register(["location-update", "net:location-update"], locationUpdate.bind(this));

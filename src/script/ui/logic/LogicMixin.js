@@ -8,8 +8,8 @@ import I18n from "/script/util/I18n.js";
 const TPL = new Template(`
     <style>
         :host {
-            --logic-color-back: #b4e2d1;
-            --logic-color-border: #3228bf;
+            --logic-color-back: #a9a9a9;
+            --logic-color-border: #222222;
         }
         :host(:not([visualize])) #view,
         :host([visualize="false"]) #view {
@@ -26,7 +26,7 @@ const TPL = new Template(`
     <div id="ref" class="body"></div>
 `);
 const SVG = new Template(`
-    <div class="logic-element" style="--logic-color-back: #b4e2d1; --logic-color-border: #3228bf;">
+    <div class="logic-element" style="--logic-color-back: #a9a9a9; --logic-color-border: #222222;">
         <div class="header">MIXIN</div>
         <div class="body"></div>
     </div>
