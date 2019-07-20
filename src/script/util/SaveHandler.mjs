@@ -36,6 +36,9 @@ notePad.value = TrackerLocalState.read("extras", "notes", "");
         }
         notePadTimer = setTimeout(writeNotePadValue, 1000);
     }
+    notePad.oncontextmenu = function(event) {
+        event.stopPropagation();
+    }
     function writeNotePadValue() {
         TrackerLocalState.write("extras", "notes", notePad.value);
     };

@@ -56,6 +56,12 @@
                     background-color: var(--edit-background-color, #ffffff);
                     color: var(--edit-text-color, #000000);
 
+                    &#tracker-notes {
+                        word-wrap: unset;
+                        white-space: pre;
+                        user-select: text;
+                    }
+
                     span {
                         display: block;
                         padding: 2px;
