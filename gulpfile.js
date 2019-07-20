@@ -19,12 +19,12 @@ function fileExists(filename) {
     }
 }
 
-!function () {
+if (process.argv.indexOf('-nolocal') < 0) {
     let deepJS = path.resolve(__dirname, '../deepJS');
     if (fileExists(deepJS)) {
         PATHS.deepJS = deepJS;
     }
-}();
+}
 
 const gulp = require("gulp");
 const terser = require('gulp-terser');

@@ -4,11 +4,9 @@
 
 Application:    Track-OOT
 
-Version:        1.4.13
+Version:        1.4.15
 
 ---
 
 ### HOTFIX
-- fixed logic for chest near boss
-- fixed logic for east tower top GS
-- added hammer rusted switches skip
+- fix locationlist not triggering filter update for logic
