@@ -25,7 +25,7 @@ const TPL = new Template(`
             flex-direction: column;
         }
         div.item-row:hover {
-            background-color: var(--dungeon-status-hover-color, #ffffff32);
+            background-color: var(--main-hover-color, #ffffff32);
         }
         :host([orientation="column"]) div.item-row {
             flex-direction: row;

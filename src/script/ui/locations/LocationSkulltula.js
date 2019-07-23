@@ -2,7 +2,7 @@ import GlobalData from "/deepJS/storage/GlobalData.js";
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
-import {svg2png} from "/deepJS/util/Helper.js";
+import Helper from "/deepJS/util/Helper.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import "/deepJS/ui/ContextMenu.js";
 import TrackerLocalState from "/script/util/LocalState.js";
@@ -17,7 +17,12 @@ const TPL = new Template(`
         }
         :host {
             display: flex;
+            align-items: center;
             width: 100%;
+            padding: 5px;
+        }
+        :host(:hover) {
+            background-color: var(--main-hover-color, #ffffff32);
         }
         #text {
             flex: 1;
@@ -105,7 +110,7 @@ function showLogic(ref) {
 async function printLogic(ref) {
     let path = ref.split(".");
     let svg = Logic.getLogicSVG("skulltulas", path[2]);
-    let png = await svg2png(svg);
+    let png = await Helper.svg2png(svg);
     let svg_win = window.open("", "_blank", "menubar=no,location=no,resizable=yes,scrollbars=yes,status=no");
     let img = document.createElement("img");
     img.src = png;

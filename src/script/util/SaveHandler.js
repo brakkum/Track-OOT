@@ -3,7 +3,7 @@ import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
 import DeepSessionStorage from "/deepJS/storage/SessionStorage.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
-import {showToast} from "/deepJS/ui/Toast.js";
+import Toast from "/deepJS/ui/Toast.js";
 import TrackerLocalState from "./LocalState.js";
 
 let activestate = DeepSessionStorage.get('meta', 'active_state', "");
@@ -94,7 +94,7 @@ async function state_Save() {
     if (stateChoice.value != "") {
         stateChoice.value = activestate;
         TrackerLocalState.save(activestate);
-        showToast(`Saved "${activestate}" successfully.`);
+        Toast.show(`Saved "${activestate}" successfully.`);
     }
 }
 
@@ -111,7 +111,7 @@ async function state_Load() {
             notePad.value = TrackerLocalState.read("extras", "notes", "");
             throwEvents();
             toggleStateButtons();
-            showToast(`State "${activestate}" loaded.`);
+            Toast.show(`State "${activestate}" loaded.`);
         }
     }
 }
@@ -130,7 +130,7 @@ async function state_Delete() {
         stateChoice.value = activestate;
         prepairSavegameChoice();
         toggleStateButtons();
-        showToast(`State "${del}" removed.`);
+        Toast.show(`State "${del}" removed.`);
     }
 }
 
@@ -156,7 +156,7 @@ async function state_New() {
                 notePad.value = "";
             }
         } else {
-            showToast(`State "${name}" created.`);
+            Toast.show(`State "${name}" created.`);
             TrackerLocalState.reset();
             notePad.value = "";
         }

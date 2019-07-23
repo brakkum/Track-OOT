@@ -38,6 +38,7 @@
             await loadData();
             await I18n.load(DeepLocalStorage.get("settings", "language", "en_us"));
             Logic.loadLogic();
+            EventBusModuleShare.mute("logic");
             EventBus.addModule(EventBusModuleShare);
 
             let conf = decodeURI(window.location.hash.slice(1));

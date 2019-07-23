@@ -13,6 +13,7 @@ import "/deepJS/ui/selection/ChoiceSelect.js";
 
 (async function main() {
 
+    EventBusModuleShare.mute("logic");
     EventBus.addModule(EventBusModuleShare);
 
     updateLoadingMessage("apply logger...");

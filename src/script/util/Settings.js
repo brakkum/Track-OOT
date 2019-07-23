@@ -1,7 +1,7 @@
 import GlobalData from "/deepJS/storage/GlobalData.js";
 import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
 import SettingsWindow from "/deepJS/ui/SettingsWindow.js";
-import {showPopover} from "/deepJS/ui/PopOver.js";
+import PopOver from "/deepJS/ui/PopOver.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import TrackerLocalState from "./LocalState.js";
@@ -107,7 +107,7 @@ if ('serviceWorker' in navigator) {
                     settings.querySelector("#update-force").style.display = "block";
                     settings.querySelector("#update-available").style.display = "block";
                     if (showUpdatePopup) {
-                        let popover = showPopover("A new update is available. Click here to download!", 60);
+                        let popover = PopOver.show("A new update is available. Click here to download!", 60);
                         popover.addEventListener("click", function() {
                             settings.show(getSettings(), 'about');
                         });

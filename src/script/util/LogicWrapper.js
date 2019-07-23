@@ -1,7 +1,7 @@
 import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
 import GlobalData from "/deepJS/storage/GlobalData.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
-import {deepEquals} from "/deepJS/util/Helper.js";
+import Helper from "/deepJS/util/Helper.js";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
 
 import "/deepJS/ui/logic/elements/literals/LogicTrue.js";
@@ -74,7 +74,7 @@ export default class LogicWrapper {
             }
         }
         if (!!logic) {
-            if (!LOGIC_SOURCE.has(this) || !deepEquals(LOGIC_SOURCE.get(this), logic)) {
+            if (!LOGIC_SOURCE.has(this) || !Helper.deepEquals(LOGIC_SOURCE.get(this), logic)) {
                 let build = DeepLogicAbstractElement.buildLogic(logic);
                 if (!!build) {
                     build.addEventListener('update', function(event) {
