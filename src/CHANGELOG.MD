@@ -4,11 +4,10 @@
 
 Application:    Track-OOT
 
-Version:        1.4.16
+Version:        1.4.17
 
 ---
 
 ### HOTFIX
-- fix notes not allowing context menu
-- fix notes in FF not allowing up/down button
-- fix notes not allowing text selection
+- huge refactor of Spirit MQ, everything that was broken should be fixed now
+- fixed WT Serpent River Skulltula, was missing an "or keysanity" block around lullaby
