@@ -76,9 +76,23 @@
             "type": "check",
             "default": false
         },
-        "keysanity": {
-            "type": "check",
-            "default": false
+        "keysanity_small": {
+            "type": "choice",
+            "default": "keysanity_small_ignore",
+            "values": [
+                "keysanity_small_ignore",
+                "keysanity_small_track",
+                "keysanity_small_keysanity"
+            ]
+        },
+        "keysanity_boss": {
+            "type": "choice",
+            "default": "keysanity_boss_ignore",
+            "values": [
+                "keysanity_boss_ignore",
+                "keysanity_boss_track",
+                "keysanity_boss_keysanity"
+            ]
         },
         "scrubsanity": {
             "type": "check",

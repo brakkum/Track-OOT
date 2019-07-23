@@ -27,15 +27,12 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "item",
                                             "el": "key_small_gerudo"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -65,19 +62,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_gerudo"
                                             },
-                                            "value": 4
+                                            "value": "4"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -2415,19 +2409,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_water"
                                             },
                                             "value": "5"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -2512,19 +2503,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_water"
                             },
                             "value": "5"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -2611,16 +2599,19 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "option",
-                                    "el": "keysanity"
-                                },
-                                {
                                     "type": "min",
                                     "el": {
                                         "type": "item",
                                         "el": "key_small_water"
                                     },
                                     "value": "4"
+                                },
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "option",
+                                        "el": "keysanity_small"
+                                    }
                                 }
                             ]
                         }
@@ -2671,16 +2662,19 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "option",
-                                    "el": "keysanity"
-                                },
-                                {
                                     "type": "min",
                                     "el": {
                                         "type": "item",
                                         "el": "key_small_water"
                                     },
                                     "value": "4"
+                                },
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "option",
+                                        "el": "keysanity_small"
+                                    }
                                 }
                             ]
                         }
@@ -2699,10 +2693,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "option",
-                            "el": "keysanity"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -2714,6 +2704,11 @@
                                     "el": "ocarina"
                                 }
                             ]
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small",
+                            "value": "keysanity_small_keysanity"
                         }
                     ]
                 },
@@ -2721,19 +2716,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_water"
                             },
                             "value": "5"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -2766,12 +2758,13 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "option",
-                            "el": "keysanity"
-                        },
-                        {
                             "type": "item",
                             "el": "song_zelda"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small",
+                            "value": "keysanity_small_keysanity"
                         }
                     ]
                 },
@@ -2779,19 +2772,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_water"
                             },
                             "value": "5"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -2812,15 +2802,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_boss_water"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_boss"
                         }
                     ]
                 },
@@ -3448,19 +3435,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_training"
                             },
                             "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -3477,19 +3461,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_training"
                             },
-                            "value": 4
+                            "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -3506,19 +3487,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_training"
                             },
-                            "value": 6
+                            "value": "6"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -3535,19 +3513,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_training"
                             },
-                            "value": 7
+                            "value": "7"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -3564,19 +3539,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_training"
                             },
-                            "value": 9
+                            "value": "9"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -3613,8 +3585,11 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "option",
-                                    "el": "keysanity"
+                                    "type": "not",
+                                    "el": {
+                                        "type": "option",
+                                        "el": "keysanity_small"
+                                    }
                                 },
                                 {
                                     "type": "min",
@@ -3622,7 +3597,7 @@
                                         "type": "item",
                                         "el": "key_small_training"
                                     },
-                                    "value": 9
+                                    "value": "9"
                                 }
                             ]
                         }
@@ -3661,8 +3636,11 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "option",
-                                    "el": "keysanity"
+                                    "type": "not",
+                                    "el": {
+                                        "type": "option",
+                                        "el": "keysanity_small"
+                                    }
                                 },
                                 {
                                     "type": "min",
@@ -3670,7 +3648,7 @@
                                         "type": "item",
                                         "el": "key_small_training"
                                     },
-                                    "value": 9
+                                    "value": "9"
                                 }
                             ]
                         }
@@ -3709,8 +3687,11 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "option",
-                                    "el": "keysanity"
+                                    "type": "not",
+                                    "el": {
+                                        "type": "option",
+                                        "el": "keysanity_small"
+                                    }
                                 },
                                 {
                                     "type": "min",
@@ -3718,7 +3699,7 @@
                                         "type": "item",
                                         "el": "key_small_training"
                                     },
-                                    "value": 9
+                                    "value": "9"
                                 }
                             ]
                         }
@@ -3794,8 +3775,11 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "option",
-                                    "el": "keysanity"
+                                    "type": "not",
+                                    "el": {
+                                        "type": "option",
+                                        "el": "keysanity_small"
+                                    }
                                 },
                                 {
                                     "type": "min",
@@ -3803,7 +3787,7 @@
                                         "type": "item",
                                         "el": "key_small_training"
                                     },
-                                    "value": 9
+                                    "value": "9"
                                 }
                             ]
                         }
@@ -3854,8 +3838,11 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "option",
-                                    "el": "keysanity"
+                                    "type": "not",
+                                    "el": {
+                                        "type": "option",
+                                        "el": "keysanity_small"
+                                    }
                                 },
                                 {
                                     "type": "min",
@@ -3863,7 +3850,7 @@
                                         "type": "item",
                                         "el": "key_small_training"
                                     },
-                                    "value": 9
+                                    "value": "9"
                                 }
                             ]
                         }
@@ -3918,8 +3905,11 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "option",
-                                    "el": "keysanity"
+                                    "type": "not",
+                                    "el": {
+                                        "type": "option",
+                                        "el": "keysanity_small"
+                                    }
                                 },
                                 {
                                     "type": "min",
@@ -3927,7 +3917,7 @@
                                         "type": "item",
                                         "el": "key_small_training"
                                     },
-                                    "value": 9
+                                    "value": "9"
                                 }
                             ]
                         }
@@ -3992,8 +3982,11 @@
                                             "type": "and",
                                             "el": [
                                                 {
-                                                    "type": "option",
-                                                    "el": "keysanity"
+                                                    "type": "not",
+                                                    "el": {
+                                                        "type": "option",
+                                                        "el": "keysanity_small"
+                                                    }
                                                 },
                                                 {
                                                     "type": "min",
@@ -4001,7 +3994,7 @@
                                                         "type": "item",
                                                         "el": "key_small_training"
                                                     },
-                                                    "value": 9
+                                                    "value": "9"
                                                 }
                                             ]
                                         }
@@ -4558,19 +4551,31 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_fire"
+                                    },
+                                    "value": "8"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "keysanity_small",
+                                    "value": "keysanity_small_track"
+                                }
+                            ]
                         },
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "key_small_fire"
-                            },
-                            "value": 8
+                            "type": "option",
+                            "el": "keysanity_small",
+                            "value": "keysanity_small_keysanity"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -4591,19 +4596,31 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_fire"
+                                    },
+                                    "value": "8"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "keysanity_small",
+                                    "value": "keysanity_small_track"
+                                }
+                            ]
                         },
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "key_small_fire"
-                            },
-                            "value": 8
+                            "type": "option",
+                            "el": "keysanity_small",
+                            "value": "keysanity_small_keysanity"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -4624,19 +4641,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "2"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -4653,19 +4667,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "2"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -4682,19 +4693,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -4711,19 +4719,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "6"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -4740,19 +4745,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -4769,19 +4771,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "6"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -4818,19 +4817,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "6"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -4847,21 +4843,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "key_small_fire"
-                            },
-                            "value": "6"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -4877,6 +4858,18 @@
                                     "value": "5"
                                 }
                             ]
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": "6"
                         }
                     ]
                 }
@@ -4893,19 +4886,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "7"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -4926,21 +4916,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "key_small_fire"
-                            },
-                            "value": "8"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -4960,6 +4935,18 @@
                                     "el": "boots_hover"
                                 }
                             ]
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_fire"
+                            },
+                            "value": "8"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -5020,13 +5007,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
@@ -5054,6 +5034,10 @@
                                     "el": "boots_hover"
                                 }
                             ]
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -5082,15 +5066,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_boss_fire"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_boss"
                         }
                     ]
                 },
@@ -5102,19 +5083,16 @@
                             "el": "boots_hover"
                         },
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "8"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -5199,15 +5177,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_shadow"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -5236,15 +5211,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_shadow"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -5273,15 +5245,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_shadow"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -5306,19 +5275,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_shadow"
                             },
-                            "value": 2
+                            "value": "2"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -5347,19 +5313,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_shadow"
                             },
-                            "value": 2
+                            "value": "2"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -5388,19 +5351,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_shadow"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -5429,19 +5389,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_shadow"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -5470,19 +5427,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_shadow"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -5515,19 +5469,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_shadow"
                             },
-                            "value": 4
+                            "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -5560,19 +5511,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_shadow"
                             },
-                            "value": 4
+                            "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -5605,19 +5553,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_shadow"
                             },
-                            "value": 4
+                            "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -5651,7 +5596,7 @@
                                 "type": "item",
                                 "el": "hookshot"
                             },
-                            "value": 2
+                            "value": "2"
                         },
                         {
                             "type": "and",
@@ -5672,28 +5617,29 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "item",
+                            "el": "key_boss_shadow"
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "key_small_shadow"
-                                    },
-                                    "value": 5
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "key_boss_shadow"
-                                }
-                            ]
+                            "type": "option",
+                            "el": "keysanity_boss"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_shadow"
+                            },
+                            "value": "5"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -5963,25 +5909,22 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "or",
                     "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
                         {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_spirit"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -6000,25 +5943,22 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "or",
                     "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
                         {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_spirit"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -6043,7 +5983,7 @@
                                         "type": "item",
                                         "el": "glove"
                                     },
-                                    "value": 2
+                                    "value": "2"
                                 },
                                 {
                                     "type": "item",
@@ -6108,15 +6048,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_spirit"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -6141,7 +6078,7 @@
                                         "type": "item",
                                         "el": "glove"
                                     },
-                                    "value": 2
+                                    "value": "2"
                                 },
                                 {
                                     "type": "mixin",
@@ -6180,15 +6117,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_spirit"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -6213,7 +6147,7 @@
                                         "type": "item",
                                         "el": "glove"
                                     },
-                                    "value": 2
+                                    "value": "2"
                                 },
                                 {
                                     "type": "mixin",
@@ -6252,15 +6186,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_spirit"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -6285,7 +6216,7 @@
                                         "type": "item",
                                         "el": "glove"
                                     },
-                                    "value": 2
+                                    "value": "2"
                                 },
                                 {
                                     "type": "item",
@@ -6350,15 +6281,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_spirit"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -6385,25 +6313,22 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "or",
                     "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
                         {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_spirit"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -6428,19 +6353,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_spirit"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -6463,7 +6385,7 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 2
+                    "value": "2"
                 }
             ]
         },
@@ -6486,7 +6408,7 @@
                                         "type": "item",
                                         "el": "glove"
                                     },
-                                    "value": 2
+                                    "value": "2"
                                 },
                                 {
                                     "type": "mixin",
@@ -6525,21 +6447,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "key_small_spirit"
-                            },
-                            "value": 5
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -6556,7 +6463,7 @@
                                         "type": "item",
                                         "el": "hookshot"
                                     },
-                                    "value": 2
+                                    "value": "2"
                                 },
                                 {
                                     "type": "min",
@@ -6564,9 +6471,21 @@
                                         "type": "item",
                                         "el": "key_small_spirit"
                                     },
-                                    "value": 3
+                                    "value": "3"
                                 }
                             ]
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_spirit"
+                            },
+                            "value": "5"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -6585,25 +6504,22 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "or",
                     "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
                         {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_spirit"
                             },
-                            "value": 4
+                            "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -6626,25 +6542,22 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "or",
                     "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
                         {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_spirit"
                             },
-                            "value": 4
+                            "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -6671,25 +6584,22 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "or",
                     "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
                         {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_spirit"
                             },
-                            "value": 4
+                            "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -6738,25 +6648,22 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "or",
                     "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
                         {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_spirit"
                             },
-                            "value": 4
+                            "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -6805,25 +6712,22 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "or",
                     "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
                         {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_spirit"
                             },
-                            "value": 5
+                            "value": "5"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -6862,25 +6766,22 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "or",
                     "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
                         {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_spirit"
                             },
-                            "value": 5
+                            "value": "5"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -6920,36 +6821,7 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 2
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "key_small_spirit"
-                                    },
-                                    "value": 5
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "key_boss_spirit"
-                                }
-                            ]
-                        }
-                    ]
+                    "value": "2"
                 },
                 {
                     "type": "item",
@@ -6962,6 +6834,36 @@
                 {
                     "type": "mixin",
                     "el": "has_explosives"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_spirit"
+                            },
+                            "value": "5"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "key_boss_spirit"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_boss"
+                        }
+                    ]
                 }
             ]
         },
@@ -7305,19 +7207,16 @@
                                                     "type": "or",
                                                     "el": [
                                                         {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "option",
-                                                                "el": "keysanity"
-                                                            }
-                                                        },
-                                                        {
                                                             "type": "min",
                                                             "el": {
                                                                 "type": "item",
                                                                 "el": "key_small_well"
                                                             },
-                                                            "value": 3
+                                                            "value": "3"
+                                                        },
+                                                        {
+                                                            "type": "option",
+                                                            "el": "keysanity_small"
                                                         }
                                                     ]
                                                 }
@@ -7381,19 +7280,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_well"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -7436,19 +7332,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_well"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -8516,7 +8409,7 @@
                                                 "type": "item",
                                                 "el": "hookshot"
                                             },
-                                            "value": 2
+                                            "value": "2"
                                         },
                                         {
                                             "type": "min",
@@ -8524,7 +8417,7 @@
                                                 "type": "item",
                                                 "el": "scale"
                                             },
-                                            "value": 2
+                                            "value": "2"
                                         },
                                         {
                                             "type": "item",
@@ -8558,15 +8451,12 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "item",
                                             "el": "key_small_forest"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -8587,19 +8477,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_forest"
                                             },
-                                            "value": 2
+                                            "value": "2"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -8648,7 +8535,7 @@
                                                 "type": "item",
                                                 "el": "hookshot"
                                             },
-                                            "value": 2
+                                            "value": "2"
                                         },
                                         {
                                             "type": "min",
@@ -8656,7 +8543,7 @@
                                                 "type": "item",
                                                 "el": "scale"
                                             },
-                                            "value": 2
+                                            "value": "2"
                                         },
                                         {
                                             "type": "item",
@@ -8690,15 +8577,12 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "item",
                                             "el": "key_small_forest"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -8719,19 +8603,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_forest"
                                             },
-                                            "value": 2
+                                            "value": "2"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -8779,15 +8660,12 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "item",
                                             "el": "key_small_forest"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -8808,19 +8686,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_forest"
                                             },
-                                            "value": 2
+                                            "value": "2"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -8867,19 +8742,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_forest"
                             },
-                            "value": 5
+                            "value": "5"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -8904,15 +8776,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_forest"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -8940,7 +8809,7 @@
                             "type": "not",
                             "el": {
                                 "type": "option",
-                                "el": "keysanity"
+                                "el": "keysanity_small"
                             }
                         },
                         {
@@ -8949,7 +8818,7 @@
                                 "type": "item",
                                 "el": "key_small_forest"
                             },
-                            "value": 2
+                            "value": "2"
                         }
                     ]
                 }
@@ -8976,15 +8845,12 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "item",
                                             "el": "key_small_forest"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -9005,19 +8871,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_forest"
                                             },
-                                            "value": 2
+                                            "value": "2"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -9047,18 +8910,11 @@
                                 "type": "item",
                                 "el": "key_small_forest"
                             },
-                            "value": 3
+                            "value": "3"
                         },
                         {
                             "type": "and",
                             "el": [
-                                {
-                                    "type": "not",
-                                    "el": {
-                                        "type": "option",
-                                        "el": "keysanity"
-                                    }
-                                },
                                 {
                                     "type": "or",
                                     "el": [
@@ -9084,6 +8940,10 @@
                                             ]
                                         }
                                     ]
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "keysanity_small"
                                 }
                             ]
                         }
@@ -9110,19 +8970,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_forest"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -9147,19 +9004,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_forest"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -9184,19 +9038,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_forest"
                             },
-                            "value": 5
+                            "value": "5"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -9221,28 +9072,29 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
+                            "type": "min",
                             "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                                "type": "item",
+                                "el": "key_small_forest"
+                            },
+                            "value": "5"
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "key_small_forest"
-                                    },
-                                    "value": 5
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "key_boss_forest"
-                                }
-                            ]
+                            "type": "option",
+                            "el": "keysanity_small"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "key_boss_forest"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_boss"
                         }
                     ]
                 }
@@ -9963,21 +9815,18 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 3
+                    "value": "3"
                 },
                 {
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_ganon"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -11003,19 +10852,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_well"
                             },
-                            "value": 2
+                            "value": "2"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -11065,15 +10911,12 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "item",
                                             "el": "key_small_gerudo"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -11112,19 +10955,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_gerudo"
                                             },
-                                            "value": 4
+                                            "value": "4"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -11916,15 +11756,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_forest"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -11949,19 +11786,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_forest"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -12000,15 +11834,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_forest"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -12051,15 +11882,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_forest"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -12112,7 +11940,7 @@
                                                 "type": "item",
                                                 "el": "scale"
                                             },
-                                            "value": 2
+                                            "value": "2"
                                         },
                                         {
                                             "type": "min",
@@ -12120,7 +11948,7 @@
                                                 "type": "item",
                                                 "el": "hookshot"
                                             },
-                                            "value": 2
+                                            "value": "2"
                                         },
                                         {
                                             "type": "and",
@@ -12150,7 +11978,7 @@
                                 "type": "item",
                                 "el": "hookshot"
                             },
-                            "value": 2
+                            "value": "2"
                         },
                         {
                             "type": "item",
@@ -12197,19 +12025,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_forest"
                             },
-                            "value": 4
+                            "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -12248,19 +12073,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_forest"
                             },
-                            "value": 4
+                            "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -12303,19 +12125,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_forest"
                             },
-                            "value": 4
+                            "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -12358,15 +12177,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_forest"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -12387,19 +12203,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_forest"
                             },
-                            "value": 5
+                            "value": "5"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -12466,19 +12279,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_forest"
                                             },
-                                            "value": 1
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 },
@@ -12518,7 +12328,7 @@
                                         "type": "item",
                                         "el": "hookshot"
                                     },
-                                    "value": 2
+                                    "value": "2"
                                 }
                             ]
                         },
@@ -12529,19 +12339,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_forest"
                                             },
-                                            "value": 5
+                                            "value": "5"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 },
@@ -12606,19 +12413,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_forest"
                             },
-                            "value": 6
+                            "value": "6"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -12658,35 +12462,6 @@
                     "el": "forest_temple_access"
                 },
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "key_small_forest"
-                                    },
-                                    "value": 6
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "key_boss_forest"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
                     "type": "item",
                     "el": "bow"
                 },
@@ -12709,6 +12484,36 @@
                                     "el": "bombchu"
                                 }
                             ]
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_forest"
+                            },
+                            "value": "6"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "key_boss_forest"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_boss"
                         }
                     ]
                 }
@@ -12838,19 +12643,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 5
+                            "value": "5"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -12871,19 +12673,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 5
+                            "value": "5"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -12971,19 +12770,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 2
+                            "value": "2"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -13020,19 +12816,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 2
+                            "value": "2"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -13065,19 +12858,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 2
+                            "value": "2"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -13127,19 +12917,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 2
+                            "value": "2"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -13176,19 +12963,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -13238,19 +13022,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -13292,15 +13073,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_boss_fire"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_boss"
                         }
                     ]
                 },
@@ -13339,19 +13117,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_fire"
                                             },
                                             "value": "3"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -13581,11 +13356,8 @@
                             "value": "6"
                         },
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -13611,19 +13383,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_spirit"
                                             },
                                             "value": "2"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -13687,19 +13456,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_spirit"
                                             },
                                             "value": "2"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -13750,19 +13516,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_spirit"
                                             },
                                             "value": "7"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 },
@@ -13935,11 +13698,8 @@
                             "value": "7"
                         },
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -13982,19 +13742,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_spirit"
                                             },
                                             "value": "2"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -14101,19 +13858,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_spirit"
                                             },
                                             "value": "2"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -14156,19 +13910,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_spirit"
                                             },
                                             "value": "7"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 },
@@ -14224,19 +13975,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_spirit"
                                             },
                                             "value": "4"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 },
@@ -14297,11 +14045,8 @@
                             "value": "7"
                         },
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -14354,19 +14099,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_spirit"
                             },
                             "value": "7"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -14586,11 +14328,8 @@
                             "value": "7"
                         },
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -14692,11 +14431,8 @@
                             "value": "5"
                         },
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -14753,11 +14489,8 @@
                             "value": "5"
                         },
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -14818,11 +14551,8 @@
                             "value": "5"
                         },
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -14883,11 +14613,8 @@
                             "value": "5"
                         },
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -14952,11 +14679,8 @@
                             "value": "6"
                         },
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -15017,11 +14741,8 @@
                             "value": "6"
                         },
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -15029,15 +14750,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_boss_spirit"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_boss"
                         }
                     ]
                 }
@@ -15115,7 +14833,7 @@
                                         "type": "item",
                                         "el": "glove"
                                     },
-                                    "value": 3
+                                    "value": "3"
                                 },
                                 {
                                     "type": "min",
@@ -15123,7 +14841,7 @@
                                         "type": "item",
                                         "el": "hookshot"
                                     },
-                                    "value": 2
+                                    "value": "2"
                                 },
                                 {
                                     "type": "option",
@@ -15228,7 +14946,7 @@
                                                         "type": "item",
                                                         "el": "hookshot"
                                                     },
-                                                    "value": 2
+                                                    "value": "2"
                                                 },
                                                 {
                                                     "type": "item",
@@ -15330,7 +15048,7 @@
                                         "type": "item",
                                         "el": "glove"
                                     },
-                                    "value": 3
+                                    "value": "3"
                                 },
                                 {
                                     "type": "item",
@@ -15349,14 +15067,11 @@
                                                 "type": "item",
                                                 "el": "key_small_ganon"
                                             },
-                                            "value": 2
+                                            "value": "2"
                                         },
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -15445,7 +15160,7 @@
                                         "type": "item",
                                         "el": "glove"
                                     },
-                                    "value": "0"
+                                    "value": "3"
                                 },
                                 {
                                     "type": "min",
@@ -15453,7 +15168,7 @@
                                         "type": "item",
                                         "el": "hookshot"
                                     },
-                                    "value": "0"
+                                    "value": "2"
                                 },
                                 {
                                     "type": "option",
@@ -15558,7 +15273,7 @@
                                                         "type": "item",
                                                         "el": "hookshot"
                                                     },
-                                                    "value": "0"
+                                                    "value": "2"
                                                 },
                                                 {
                                                     "type": "item",
@@ -15660,7 +15375,7 @@
                                         "type": "item",
                                         "el": "glove"
                                     },
-                                    "value": "0"
+                                    "value": "3"
                                 },
                                 {
                                     "type": "item",
@@ -15679,14 +15394,11 @@
                                                 "type": "item",
                                                 "el": "key_small_ganon"
                                             },
-                                            "value": "0"
+                                            "value": "2"
                                         },
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -15791,7 +15503,7 @@
                                         "type": "item",
                                         "el": "glove"
                                     },
-                                    "value": 3
+                                    "value": "3"
                                 },
                                 {
                                     "type": "option",
@@ -15806,7 +15518,7 @@
                                                 "type": "item",
                                                 "el": "hookshot"
                                             },
-                                            "value": 2
+                                            "value": "2"
                                         },
                                         {
                                             "type": "item",
@@ -15860,14 +15572,11 @@
                                                 "type": "item",
                                                 "el": "key_small_ganon"
                                             },
-                                            "value": 3
+                                            "value": "3"
                                         },
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -16010,7 +15719,7 @@
                                         "type": "item",
                                         "el": "glove"
                                     },
-                                    "value": 3
+                                    "value": "3"
                                 },
                                 {
                                     "type": "item",
@@ -16029,14 +15738,11 @@
                                                 "type": "item",
                                                 "el": "key_small_ganon"
                                             },
-                                            "value": 3
+                                            "value": "3"
                                         },
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -16129,7 +15835,7 @@
                                         "type": "item",
                                         "el": "glove"
                                     },
-                                    "value": "0"
+                                    "value": "3"
                                 },
                                 {
                                     "type": "option",
@@ -16144,7 +15850,7 @@
                                                 "type": "item",
                                                 "el": "hookshot"
                                             },
-                                            "value": "0"
+                                            "value": "2"
                                         },
                                         {
                                             "type": "item",
@@ -16198,14 +15904,11 @@
                                                 "type": "item",
                                                 "el": "key_small_ganon"
                                             },
-                                            "value": "0"
+                                            "value": "3"
                                         },
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -16348,7 +16051,7 @@
                                         "type": "item",
                                         "el": "glove"
                                     },
-                                    "value": "0"
+                                    "value": "3"
                                 },
                                 {
                                     "type": "item",
@@ -16367,14 +16070,11 @@
                                                 "type": "item",
                                                 "el": "key_small_ganon"
                                             },
-                                            "value": "0"
+                                            "value": "3"
                                         },
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -16436,16 +16136,21 @@
             "type": "and",
             "el": [
                 {
-                    "type": "min",
-                    "el": {
-                        "type": "item",
-                        "el": "key_small_training"
-                    },
-                    "value": 1
-                },
-                {
                     "type": "mixin",
                     "el": "training_grounds_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "key_small_training"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
+                        }
+                    ]
                 }
             ]
         },
@@ -16955,14 +16660,11 @@
                                 "type": "item",
                                 "el": "key_small_training"
                             },
-                            "value": 3
+                            "value": "3"
                         },
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -16975,7 +16677,7 @@
                                 "type": "item",
                                 "el": "hookshot"
                             },
-                            "value": 2
+                            "value": "2"
                         },
                         {
                             "type": "and",
@@ -17407,7 +17109,7 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 3
+                    "value": "3"
                 },
                 {
                     "type": "item",
@@ -17421,19 +17123,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_ganon"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -17529,11 +17228,20 @@
                         "type": "item",
                         "el": "hookshot"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
-                    "type": "item",
-                    "el": "key_boss_water"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "option",
+                            "el": "keysanity_boss"
+                        },
+                        {
+                            "type": "item",
+                            "el": "key_boss_water"
+                        }
+                    ]
                 }
             ]
         },
@@ -17614,15 +17322,11 @@
                         "type": "item",
                         "el": "hookshot"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "item",
                     "el": "boots_iron"
-                },
-                {
-                    "type": "item",
-                    "el": "key_small_water"
                 },
                 {
                     "type": "item",
@@ -17631,6 +17335,19 @@
                 {
                     "type": "item",
                     "el": "magic_din"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "key_small_water"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
+                        }
+                    ]
                 }
             ]
         },
@@ -17647,15 +17364,11 @@
                         "type": "item",
                         "el": "hookshot"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "item",
                     "el": "boots_iron"
-                },
-                {
-                    "type": "item",
-                    "el": "key_small_water"
                 },
                 {
                     "type": "item",
@@ -17675,6 +17388,19 @@
                         {
                             "type": "item",
                             "el": "ocarina"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
+                        },
+                        {
+                            "type": "item",
+                            "el": "key_small_water"
                         }
                     ]
                 }
@@ -19588,15 +19314,12 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "item",
                                             "el": "key_small_forest"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -19617,19 +19340,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_forest"
                                             },
-                                            "value": 2
+                                            "value": "2"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -19669,7 +19389,7 @@
                                                 "type": "item",
                                                 "el": "hookshot"
                                             },
-                                            "value": 2
+                                            "value": "2"
                                         },
                                         {
                                             "type": "and",
@@ -19734,15 +19454,12 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "item",
                                             "el": "key_small_forest"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -19763,19 +19480,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "min",
                                             "el": {
                                                 "type": "item",
                                                 "el": "key_small_forest"
                                             },
-                                            "value": 2
+                                            "value": "2"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small"
                                         }
                                     ]
                                 }
@@ -19804,19 +19518,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_forest"
                             },
-                            "value": 5
+                            "value": "5"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -19947,7 +19658,7 @@
                             "el": {
                                 "type": "skip",
                                 "el": "lens_required",
-                                "value": "Required everywhere"
+                                "value": "lens_required_never"
                             }
                         },
                         {
@@ -19969,19 +19680,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_well"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -20006,7 +19714,7 @@
                             "el": {
                                 "type": "skip",
                                 "el": "lens_required",
-                                "value": "Required everywhere"
+                                "value": "lens_required_never"
                             }
                         },
                         {
@@ -20028,19 +19736,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_well"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -20065,7 +19770,7 @@
                             "el": {
                                 "type": "skip",
                                 "el": "lens_required",
-                                "value": "Required everywhere"
+                                "value": "lens_required_never"
                             }
                         },
                         {
@@ -20087,19 +19792,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_well"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -20145,15 +19847,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_shadow"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -20186,19 +19885,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_shadow"
                             },
-                            "value": 2
+                            "value": "2"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -20225,25 +19921,22 @@
                         "type": "item",
                         "el": "hookshot"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "or",
                     "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
                         {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_shadow"
                             },
-                            "value": 4
+                            "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -20276,19 +19969,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_shadow"
                             },
-                            "value": 4
+                            "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -20636,19 +20326,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "2"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -20665,19 +20352,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -20706,19 +20390,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "6"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -20743,19 +20424,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "6"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -20776,19 +20454,31 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_fire"
+                                    },
+                                    "value": "8"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "keysanity_small",
+                                    "value": "keysanity_small_track"
+                                }
+                            ]
                         },
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "key_small_fire"
-                            },
-                            "value": "8"
+                            "type": "option",
+                            "el": "keysanity_small",
+                            "value": "keysanity_small_keysanity"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -21124,19 +20814,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_water"
                             },
                             "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -21183,19 +20870,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_water"
                             },
                             "value": "4"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -21274,16 +20958,19 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "option",
-                                    "el": "keysanity"
-                                },
-                                {
                                     "type": "min",
                                     "el": {
                                         "type": "item",
                                         "el": "key_small_water"
                                     },
                                     "value": "4"
+                                },
+                                {
+                                    "type": "not",
+                                    "el": {
+                                        "type": "option",
+                                        "el": "keysanity_small"
+                                    }
                                 }
                             ]
                         }
@@ -21336,19 +21023,17 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_water"
                             },
                             "value": "5"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small",
+                            "value": "keysanity_small_ignore"
                         }
                     ]
                 },
@@ -21356,12 +21041,13 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "option",
-                            "el": "keysanity"
-                        },
-                        {
                             "type": "item",
                             "el": "song_zelda"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small",
+                            "value": "keysanity_small_keysanity"
                         }
                     ]
                 }
@@ -21648,15 +21334,12 @@
                             "type": "or",
                             "el": [
                                 {
-                                    "type": "not",
-                                    "el": {
-                                        "type": "option",
-                                        "el": "keysanity"
-                                    }
-                                },
-                                {
                                     "type": "item",
                                     "el": "key_small_spirit"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "keysanity_small"
                                 }
                             ]
                         }
@@ -21675,18 +21358,11 @@
                                 "type": "item",
                                 "el": "glove"
                             },
-                            "value": 2
+                            "value": "2"
                         },
                         {
                             "type": "or",
                             "el": [
-                                {
-                                    "type": "not",
-                                    "el": {
-                                        "type": "option",
-                                        "el": "keysanity"
-                                    }
-                                },
                                 {
                                     "type": "and",
                                     "el": [
@@ -21696,7 +21372,7 @@
                                                 "type": "item",
                                                 "el": "key_small_spirit"
                                             },
-                                            "value": 2
+                                            "value": "2"
                                         },
                                         {
                                             "type": "option",
@@ -21705,17 +21381,16 @@
                                     ]
                                 },
                                 {
-                                    "type": "and",
-                                    "el": [
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "key_small_spirit"
-                                            },
-                                            "value": 3
-                                        }
-                                    ]
+                                    "type": "option",
+                                    "el": "keysanity_small"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_spirit"
+                                    },
+                                    "value": "3"
                                 }
                             ]
                         }
@@ -21755,7 +21430,7 @@
                                         "type": "item",
                                         "el": "glove"
                                     },
-                                    "value": 2
+                                    "value": "2"
                                 },
                                 {
                                     "type": "item",
@@ -21769,15 +21444,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_spirit"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -21836,19 +21508,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_spirit"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -21858,7 +21527,7 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "or",
@@ -21869,7 +21538,7 @@
                                 "type": "item",
                                 "el": "hookshot"
                             },
-                            "value": 2
+                            "value": "2"
                         },
                         {
                             "type": "and",
@@ -22196,19 +21865,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_well"
                             },
-                            "value": 2
+                            "value": "2"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -22633,15 +22299,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_forest"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -22658,15 +22321,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_forest"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -22713,15 +22373,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_forest"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -22748,7 +22405,7 @@
                                                 "type": "item",
                                                 "el": "scale"
                                             },
-                                            "value": 2
+                                            "value": "2"
                                         },
                                         {
                                             "type": "min",
@@ -22756,7 +22413,7 @@
                                                 "type": "item",
                                                 "el": "hookshot"
                                             },
-                                            "value": 2
+                                            "value": "2"
                                         },
                                         {
                                             "type": "and",
@@ -22816,15 +22473,12 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "item",
                             "el": "key_small_forest"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -22851,7 +22505,7 @@
                                                 "type": "item",
                                                 "el": "scale"
                                             },
-                                            "value": 2
+                                            "value": "2"
                                         },
                                         {
                                             "type": "min",
@@ -22859,7 +22513,7 @@
                                                 "type": "item",
                                                 "el": "hookshot"
                                             },
-                                            "value": 2
+                                            "value": "2"
                                         },
                                         {
                                             "type": "and",
@@ -22952,19 +22606,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -23058,19 +22709,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "2"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -23124,19 +22772,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
-                            "value": 3
+                            "value": "3"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 }
@@ -23173,19 +22818,16 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
-                        },
-                        {
                             "type": "min",
                             "el": {
                                 "type": "item",
                                 "el": "key_small_fire"
                             },
                             "value": "5"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -23276,11 +22918,8 @@
                             "value": "7"
                         },
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -23329,11 +22968,8 @@
                             "value": "7"
                         },
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -23471,11 +23107,8 @@
                             "value": "7"
                         },
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "option",
-                                "el": "keysanity"
-                            }
+                            "type": "option",
+                            "el": "keysanity_small"
                         }
                     ]
                 },
@@ -23560,15 +23193,24 @@
                         "type": "item",
                         "el": "hookshot"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "item",
                     "el": "boots_iron"
                 },
                 {
-                    "type": "item",
-                    "el": "key_small_water"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "key_small_water"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
+                        }
+                    ]
                 }
             ]
         },
@@ -23585,15 +23227,11 @@
                         "type": "item",
                         "el": "hookshot"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "item",
                     "el": "boots_iron"
-                },
-                {
-                    "type": "item",
-                    "el": "key_small_water"
                 },
                 {
                     "type": "item",
@@ -23623,6 +23261,19 @@
                 {
                     "type": "item",
                     "el": "arrow_fire"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "key_small_water"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
+                        }
+                    ]
                 }
             ]
         },
@@ -23639,15 +23290,11 @@
                         "type": "item",
                         "el": "hookshot"
                     },
-                    "value": 2
+                    "value": "2"
                 },
                 {
                     "type": "item",
                     "el": "boots_iron"
-                },
-                {
-                    "type": "item",
-                    "el": "key_small_water"
                 },
                 {
                     "type": "item",
@@ -23671,12 +23318,21 @@
                     ]
                 },
                 {
-                    "type": "min",
-                    "el": {
-                        "type": "item",
-                        "el": "key_small_water"
-                    },
-                    "value": 2
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "key_small_water"
+                            },
+                            "value": "2"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small"
+                        }
+                    ]
                 }
             ]
         },
