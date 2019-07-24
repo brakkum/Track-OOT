@@ -96,6 +96,7 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
                             el.value = SELECTOR_VALUE.get(this);
                         } else {
                             el.value = data.default;
+                            SELECTOR_VALUE.set(this, data.default);
                         }
                     } else {
                         slc.classList.add('hidden');

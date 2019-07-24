@@ -194,6 +194,7 @@ class HTMLTrackerLocationList extends HTMLElement {
         EventBus.on(["location-update", "net:location-update"], locationUpdate.bind(this));
         EventBus.on(["item-update", "net:item-update"], locationUpdate.bind(this));
         EventBus.on("force-location-update", locationUpdate.bind(this));
+        EventBus.on("logic", locationUpdate.bind(this));
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         this.attributeChangedCallback("", "");

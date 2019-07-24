@@ -122,6 +122,7 @@ class HTMLTrackerPOIArea extends HTMLElement {
         EventBus.on(["item-update", "net:item-update"], itemUpdate.bind(this));
         EventBus.on("location-era-change", itemUpdate.bind(this));
         EventBus.on("force-location-update", itemUpdate.bind(this));
+        EventBus.on("logic", itemUpdate.bind(this));
         EventBus.on("location-mode-change", event => {
             this.mode = event.data.value;
         });
