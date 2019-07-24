@@ -2398,12 +2398,16 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "option",
-                                            "el": "keysanity"
-                                        },
-                                        {
                                             "type": "item",
                                             "el": "song_zelda"
+                                        },
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "option",
+                                                "el": "keysanity_small",
+                                                "value": "keysanity_small_ignore"
+                                            }
                                         }
                                     ]
                                 },
@@ -2484,10 +2488,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "option",
-                            "el": "keysanity"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -2499,6 +2499,14 @@
                                     "el": "ocarina"
                                 }
                             ]
+                        },
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity_small",
+                                "value": "keysanity_small_ignore"
+                            }
                         }
                     ]
                 },
@@ -21141,10 +21149,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "option",
-                            "el": "keysanity"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -21156,6 +21160,14 @@
                                     "el": "ocarina"
                                 }
                             ]
+                        },
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity_small",
+                                "value": "keysanity_small_ignore"
+                            }
                         }
                     ]
                 },
@@ -21198,10 +21210,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "option",
-                            "el": "keysanity"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -21213,6 +21221,14 @@
                                     "el": "ocarina"
                                 }
                             ]
+                        },
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "keysanity_small",
+                                "value": "keysanity_small_ignore"
+                            }
                         }
                     ]
                 },
