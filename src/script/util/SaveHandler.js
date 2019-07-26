@@ -65,7 +65,7 @@ function toggleStateButtons() {
 }
 
 function throwEvents() {
-    EventBus.trigger("state_changed", TrackerLocalState.getState());
+    EventBus.trigger("state", TrackerLocalState.getState());
 }
 
 function prepairSavegameChoice() {
