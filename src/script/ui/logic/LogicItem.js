@@ -32,7 +32,11 @@ export default class TrackerLogicItem extends DeepLogicAbstractElement {
             }
         }.bind(this));
         EventBus.register("state", function(event) {
-            this.update(event.data.items[this.ref]);
+            let value;
+            if (!!event.data.items) {
+                value = event.data.items[this.ref];
+            }
+            this.update(value);
         }.bind(this));
     }
 

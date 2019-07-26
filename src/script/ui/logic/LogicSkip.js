@@ -40,7 +40,11 @@ export default class TrackerLogicSkip extends DeepLogicAbstractElement {
             SELECTOR_VALUE.set(this, select.value);
         }.bind(this));
         EventBus.register(["state", "settings"], function(event) {
-            this.update(event.data.skips[this.ref]||0);
+            let value;
+            if (!!event.data.skips) {
+                value = event.data.skips[this.ref];
+            }
+            this.update(value);
         }.bind(this));
     }
 

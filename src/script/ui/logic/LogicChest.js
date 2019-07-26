@@ -32,7 +32,11 @@ export default class TrackerLogicChest extends DeepLogicAbstractElement {
             }
         }.bind(this));
         EventBus.register("state", function(event) {
-            this.update(event.data.chests[this.ref]);
+            let value;
+            if (!!event.data.chests) {
+                value = event.data.chests[this.ref];
+            }
+            this.update(value);
         }.bind(this));
     }
 

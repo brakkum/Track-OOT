@@ -40,7 +40,11 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
             SELECTOR_VALUE.set(this, select.value);
         }.bind(this));
         EventBus.register(["state", "settings"], function(event) {
-            this.update(event.data.options[this.ref]||0);
+            let value;
+            if (!!event.data.options) {
+                value = event.data.options[this.ref];
+            }
+            this.update(value);
         }.bind(this));
     }
 

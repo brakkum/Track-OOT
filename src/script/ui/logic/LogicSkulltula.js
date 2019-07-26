@@ -39,7 +39,11 @@ export default class TrackerLogicSkulltula extends DeepLogicAbstractElement {
             }
         }.bind(this));
         EventBus.register("state", function(event) {
-            this.update(event.data.skulltulas[this.ref]||0);
+            let value;
+            if (!!event.data.skulltulas) {
+                value = event.data.skulltulas[this.ref];
+            }
+            this.update(value);
         }.bind(this));
     }
 
