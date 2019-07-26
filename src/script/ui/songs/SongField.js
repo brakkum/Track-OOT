@@ -63,7 +63,10 @@ function editSong(event) {
 }
 
 function stateChanged(event) {
-    let value = parseInt(event.data.songs[this.ref]);
+    let value;
+    if (!!event.data.songs) {
+        value = event.data.songs[this.ref];
+    }
     if (typeof value == "undefined") {
         value = GlobalData.get("songs")[this.ref].notes;
     }

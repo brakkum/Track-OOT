@@ -121,18 +121,31 @@ function renameSlot(event) {
 }
 
 function stateChanged(event) {
-    let data = parseInt(event.data.shops[this.ref]);
+    /* shop items */
+    let data;
+    if (!!event.data.shops) {
+        data = !!event.data.shops[this.ref];
+    }
     if (typeof data == "undefined") {
         data = GlobalData.get("shops")[this.ref];
     }
-    let ch = parseInt(event.data.shops_bought[this.ref]);
+    /* shop bought */
+    let ch;
+    if (!!event.data.shops_bought) {
+        ch = event.data.shops_bought[this.ref];
+    }
     if (typeof ch == "undefined") {
         ch = [0,0,0,0,0,0,0,0];
     }
-    let names = parseInt(event.data.shops_names[this.ref]);
+    /* shop names */
+    let names;
+    if (!!event.data.shops_names) {
+        names = event.data.shops_names[this.ref];
+    }
     if (typeof names == "undefined") {
         names = ["","","","","","","",""];
     }
+    /* update shop */
     for (let i = 0; i < 8; ++i) {
         let el = this.shadowRoot.getElementById(`slot${i}`);
         el.ref = data[i].item;

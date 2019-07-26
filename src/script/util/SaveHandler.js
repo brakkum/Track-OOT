@@ -64,10 +64,6 @@ function toggleStateButtons() {
     }
 }
 
-function throwEvents() {
-    EventBus.trigger("state", TrackerLocalState.getState());
-}
-
 function prepairSavegameChoice() {
     stateChoice.innerHTML = "<option disabled selected hidden value=\"\"> -- select state -- </option>";
     let keys = DeepLocalStorage.names("save");
@@ -103,7 +99,7 @@ async function state_Load() {
             TrackerLocalState.load(activestate);
             DeepSessionStorage.set('meta', 'active_state', activestate);
             notePad.value = TrackerLocalState.read("extras", "notes", "");
-            throwEvents();
+            EventBus.trigger("state", TrackerLocalState.getState());
             toggleStateButtons();
             Toast.show(`State "${activestate}" loaded.`);
         }
@@ -119,7 +115,7 @@ async function state_Delete() {
             activestate = "";
             TrackerLocalState.reset();
             DeepSessionStorage.set('meta', 'active_state', activestate);
-            throwEvents();
+            EventBus.trigger("state", TrackerLocalState.getState());
         }
         stateChoice.value = activestate;
         prepairSavegameChoice();
@@ -157,7 +153,7 @@ async function state_New() {
         TrackerLocalState.save(name);
         activestate = name;
         DeepSessionStorage.set('meta', 'active_state', activestate);
-        throwEvents();
+        EventBus.trigger("state", TrackerLocalState.getState());
         toggleStateButtons();
     }
 }
@@ -229,7 +225,7 @@ async function state_Import() {
             activestate = data.name;
             TrackerLocalState.load(activestate);
             DeepSessionStorage.set('meta', 'active_state', activestate);
-            throwEvents();
+            EventBus.trigger("state", TrackerLocalState.getState());
             toggleStateButtons();
         }
     }

@@ -84,7 +84,10 @@ function stateChanged(event) {
     if (GROUP.has(this)) {
         ref = GROUP.get(this);
     }
-    let value = event.data.gossipstones[ref];
+    let value;
+    if (!!event.data.gossipstones) {
+        value = event.data.gossipstones[this.ref];
+    }
     if (typeof value == "undefined") {
         value = {item: "0x01", location: "0x01"};
     }

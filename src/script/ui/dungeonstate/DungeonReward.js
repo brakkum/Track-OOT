@@ -64,8 +64,11 @@ const REWARDS = [
 
 function stateChanged(event) {
     EventBus.mute("dungeonreward");
-    let value = parseInt(event.data.dungeonRewards[this.ref]);
-    if (typeof value == "undefined" || isNaN(value)) {
+    let value;
+    if (!!event.data.dungeonRewards) {
+        value = parseInt(event.data.dungeonRewards[this.ref]);
+    }
+    if (isNaN(value)) {
         value = 0;
     }
     this.value = value;

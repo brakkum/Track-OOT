@@ -51,7 +51,10 @@ const TPL = new Template(`
 
 function stateChanged(event) {
     EventBus.mute("dungeontype");
-    let value = parseInt(event.data.dungeonTypes[this.ref]);
+    let value;
+    if (!!event.data.dungeonTypes) {
+        value = event.data.dungeonTypes[this.ref];
+    }
     if (typeof value == "undefined" || value == "") {
         value = "n";
     }

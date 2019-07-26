@@ -78,7 +78,10 @@ function locationUpdate(event) {
 function stateChanged(event) {
     let path = this.ref.split(".");
     EventBus.mute("chest");
-    let value = !!event.data.chests[path[2]];
+    let value;
+    if (!!event.data.chests) {
+        value = !!event.data.chests[path[2]];
+    }
     if (typeof value == "undefined") {
         value = false;
     }

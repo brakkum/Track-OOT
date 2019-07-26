@@ -58,8 +58,11 @@ const TPL = new Template(`
 function stateChanged(event) {
     EventBus.mute("item");
     // savesatate
-    let value = parseInt(event.data.items[this.ref]);
-    if (typeof value == "undefined" || isNaN(value)) {
+    let value;
+    if (!!event.data.items) {
+        value = parseInt(event.data.items[this.ref]);
+    }
+    if (isNaN(value)) {
         value = 0;
     }
     this.value = value;
