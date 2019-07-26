@@ -193,15 +193,6 @@ class HTMLTrackerLocationList extends Panel {
     constructor() {
         super();
         generateLocations();
-<<<<<<< HEAD:src/script/ui/locations/LocationList.mjs
-        EventBus.on("location-change", event => this.ref = event.data.name);
-        EventBus.on(["dungeon-type-update", "net:dungeon-type-update"], dungeonTypeUppdate.bind(this));
-        EventBus.on(["location-update", "net:location-update"], locationUpdate.bind(this));
-        EventBus.on(["item-update", "net:item-update"], locationUpdate.bind(this));
-        EventBus.on("force-location-update", locationUpdate.bind(this));
-        EventBus.on("logic", locationUpdate.bind(this));
-=======
->>>>>>> feature/layout:src/script/ui/locations/LocationList.js
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         this.attributeChangedCallback("", "");

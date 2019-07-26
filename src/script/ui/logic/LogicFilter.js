@@ -101,11 +101,7 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
                         if (SELECTOR_VALUE.has(this)) {
                             el.value = SELECTOR_VALUE.get(this);
                         } else {
-<<<<<<< HEAD:src/script/ui/logic/LogicFilter.mjs
-                            el.value = data.default;
-=======
                             el.value = data.default; 
->>>>>>> feature/layout:src/script/ui/logic/LogicFilter.js
                             SELECTOR_VALUE.set(this, data.default);
                         }
                     } else {

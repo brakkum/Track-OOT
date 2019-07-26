@@ -118,18 +118,6 @@ class HTMLTrackerPOIArea extends HTMLElement {
         this.addEventListener("click", () => EventBus.trigger("location_change", {
             name: this.ref
         }));
-<<<<<<< HEAD:src/script/ui/map/POIArea.mjs
-        EventBus.on(["dungeon-type-update","net:dungeon-type-update"], dungeonTypeUpdate.bind(this));
-        EventBus.on(["location-update", "net:location-update"], locationUpdate.bind(this));
-        EventBus.on(["item-update", "net:item-update"], itemUpdate.bind(this));
-        EventBus.on("location-era-change", itemUpdate.bind(this));
-        EventBus.on("force-location-update", itemUpdate.bind(this));
-        EventBus.on("logic", itemUpdate.bind(this));
-        EventBus.on("location-mode-change", event => {
-            this.mode = event.data.value;
-        });
-=======
->>>>>>> feature/layout:src/script/ui/map/POIArea.js
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
