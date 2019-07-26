@@ -41,7 +41,7 @@ function setState(state) {
         }
     }
     // TODO use eventbus plugin
-    eventModule.trigger("state_changed", TrackerLocalState.getState());
+    eventModule.trigger("state", TrackerLocalState.getState());
 }
 
 function getClientNameList() {
