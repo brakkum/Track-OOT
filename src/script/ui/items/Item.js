@@ -70,8 +70,11 @@ function stateChanged(event) {
     let data = GlobalData.get("items")[this.ref];
     if (data.hasOwnProperty("start_settings")) {
         let stsp = data.start_settings.split(".");
-        let startvalue = parseInt(event.data[stsp[0]][stsp[1]]);
-        if (typeof startvalue == "undefined" || isNaN(startvalue)) {
+        let startvalue;
+        if (!!event.data[stsp[0]]) {
+            value = parseInt(event.data[stsp[0]][stsp[1]]);
+        }
+        if (isNaN(startvalue)) {
             startvalue = 1;
         }
         this.startvalue = startvalue;
