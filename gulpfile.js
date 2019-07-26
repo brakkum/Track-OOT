@@ -174,7 +174,7 @@ function copyFonts_dev() {
 }
 
 function copyScript_prod() {
-    return gulp.src([PATHS.appBase + "/script/**/*.js", PATHS.appBase + "/script/**/*.mjs"])
+    return gulp.src([PATHS.appBase + "/script/**/*.js", PATHS.appBase + "/script/**/*.js"])
         .pipe(deleted.register(PATHS.appBase + "/script", PATHS.targetProd + "/script"))
         .pipe(newer(PATHS.targetProd + "/script"))
         .pipe(terser())
@@ -182,14 +182,14 @@ function copyScript_prod() {
 }
 
 function copyScript_dev() {
-    return gulp.src([PATHS.appBase + "/script/**/*.js", PATHS.appBase + "/script/**/*.mjs"])
+    return gulp.src([PATHS.appBase + "/script/**/*.js", PATHS.appBase + "/script/**/*.js"])
         .pipe(deleted.register(PATHS.appBase + "/script", PATHS.targetDev + "/script"))
         .pipe(newer(PATHS.targetDev + "/script"))
         .pipe(gulp.dest(PATHS.targetDev + "/script"));
 }
 
 function copyDeepJS_prod() {
-    return gulp.src(PATHS.deepJS + "/**/*.mjs")
+    return gulp.src(PATHS.deepJS + "/**/*.js")
         .pipe(deleted.register(PATHS.deepJS, PATHS.targetProd + "/deepJS"))
         .pipe(newer(PATHS.targetProd + "/deepJS"))
         .pipe(terser())
@@ -197,7 +197,7 @@ function copyDeepJS_prod() {
 }
 
 function copyDeepJS_dev() {
-    return gulp.src(PATHS.deepJS + "/**/*.mjs")
+    return gulp.src(PATHS.deepJS + "/**/*.js")
         .pipe(deleted.register(PATHS.deepJS, PATHS.targetDev + "/deepJS"))
         .pipe(newer(PATHS.targetDev + "/deepJS"))
         .pipe(gulp.dest(PATHS.targetDev + "/deepJS"));
@@ -284,7 +284,7 @@ exports.watch = function () {
 }
 
 exports.eslint = function () {
-    return gulp.src([PATHS.appBase + "/script/**/*.mjs", PATHS.deepJS + "/**/*.mjs"])
+    return gulp.src([PATHS.appBase + "/script/**/*.js", PATHS.deepJS + "/**/*.js"])
         .pipe(eslint({
             "parserOptions": {
               "ecmaVersion": 2018,

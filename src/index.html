@@ -107,7 +107,7 @@
                         updateLoadingMessage("add style...");
                         await $import.importCSS("/style/app.css");
                         updateLoadingMessage("add script...");
-                        await $import.importModule("/script/app.mjs");
+                        await $import.importModule("/script/app.js");
                     } catch(e) {
                         printError(e);
                     }

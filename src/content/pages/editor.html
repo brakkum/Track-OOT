@@ -39,23 +39,14 @@
     </nav>
     <div id="editor-content" class="content">
         <div id="logic-board">
-            <deep-panel caption="logics" id="logics"></deep-panel>
+            <deep-captionpanel caption="logics" id="logics"></deep-captionpanel>
             <deep-logiceditor-workingarea id="workingarea" visualize="true"></deep-logiceditor-workingarea>
-            <deep-panel caption="clipboard" id="clipboard-panel">
+            <deep-captionpanel caption="clipboard" id="clipboard-panel">
                 <deep-logiceditor-clipboard id="clipboard"></deep-logiceditor-clipboard>
-            </deep-panel>
+            </deep-captionpanel>
             <deep-logiceditor-trashcan id="trashcan"></deep-logiceditor-trashcan>
-            <deep-panel caption="elements" id="elements">
-                <deep-collapsepanel caption="default">
-                    <deep-logic-true template></deep-logic-true>
-            
-                    <deep-logic-not template></deep-logic-not>
-                    <deep-logic-and template></deep-logic-and>
-                    <deep-logic-or template></deep-logic-or>
-            
-                    <deep-logic-min template></deep-logic-min>
-                </deep-collapsepanel>
-            </deep-panel>
+            <deep-captionpanel caption="elements" id="elements">
+            </deep-captionpanel>
         </div>
     </div>
 </div>
