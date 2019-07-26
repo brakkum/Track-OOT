@@ -7,6 +7,7 @@ import I18n from "/script/util/I18n.js";
 import "./ShopItem.js";
 import "./ShopBuilder.js";
 
+const EVENT_LISTENERS = new WeakMap();
 const TPL = new Template(`
     <style>
         * {
@@ -87,7 +88,7 @@ function checkSlot(event) {
         let ch = TrackerLocalState.read("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
         ch[parseInt(event.target.id.slice(-1))] = 1;
         TrackerLocalState.write("shops_bought", this.ref, ch);
-        EventBus.trigger("shop-bought-update", {
+        EventBus.trigger("shop_bought", {
             name: this.ref,
             value: ch
         });
@@ -102,7 +103,7 @@ function uncheckSlot(event) {
         let ch = TrackerLocalState.read("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
         ch[parseInt(event.target.id.slice(-1))] = 0;
         TrackerLocalState.write("shops_bought", this.ref, ch);
-        EventBus.trigger("shop-bought-update", {
+        EventBus.trigger("shop_bought", {
             name: this.ref,
             value: ch
         });
@@ -119,10 +120,19 @@ function renameSlot(event) {
     return false;
 }
 
-function globalUpdate(event) {
-    let data = TrackerLocalState.read("shops", this.ref, GlobalData.get("shops")[this.ref]);
-    let ch = TrackerLocalState.read("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
-    let names = TrackerLocalState.read("shops_names", this.ref, ["","","","","","","",""]);
+function stateChanged(event) {
+    let data = parseInt(event.data.shops[this.ref]);
+    if (typeof data == "undefined") {
+        data = GlobalData.get("shops")[this.ref];
+    }
+    let ch = parseInt(event.data.shops_bought[this.ref]);
+    if (typeof ch == "undefined") {
+        ch = [0,0,0,0,0,0,0,0];
+    }
+    let names = parseInt(event.data.shops_names[this.ref]);
+    if (typeof names == "undefined") {
+        names = ["","","","","","","",""];
+    }
     for (let i = 0; i < 8; ++i) {
         let el = this.shadowRoot.getElementById(`slot${i}`);
         el.ref = data[i].item;
@@ -159,9 +169,6 @@ export default class HTMLTrackerShopField extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-        EventBus.register("force-shop-update", globalUpdate.bind(this));
-        EventBus.register("net:shop-items-update", shopItemUpdate.bind(this));
-        EventBus.register("net:shop-bought-update", shopBoughtUpdate.bind(this));
         this.shadowRoot.getElementById("edit").onclick = editShop.bind(this);
         for (let i = 0; i < 8; ++i) {
             let el = this.shadowRoot.getElementById(`slot${i}`);
@@ -169,6 +176,26 @@ export default class HTMLTrackerShopField extends HTMLElement {
             el.oncontextmenu = uncheckSlot.bind(this);
             el.addEventListener("namechange", renameSlot.bind(this));
         }
+        /* event bus */
+        let events = new Map();
+        events.set("shop_items", shopItemUpdate.bind(this));
+        events.set("shop_bought", shopBoughtUpdate.bind(this));
+        events.set("state", stateChanged.bind(this));
+        EVENT_LISTENERS.set(this, events);
+    }
+
+    connectedCallback() {
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.register(key, value);
+        });
+    }
+
+    disconnectedCallback() {
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.unregister(key, value);
+        });
     }
 
     get ref() {

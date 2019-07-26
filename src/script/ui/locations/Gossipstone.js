@@ -7,6 +7,7 @@ import TrackerLocalState from "/script/util/LocalState.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
 
+const EVENT_LISTENERS = new WeakMap();
 const TPL = new Template(`
     <style>
         * {
@@ -63,13 +64,40 @@ const TPL = new Template(`
     <div id="extra"></div>
 `);
 
+const GROUP = new WeakMap();
+
 function gossipstoneUpdate(event) {
-    let ref = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref].ref || this.ref;
-    if (ref === event.data.name) {
-        EventBus.mute("gossipstone-update");
-        this.setValue(event.data.value);
-        EventBus.unmute("gossipstone-update");
+    let ref = this.ref;
+    if (GROUP.has(this)) {
+        ref = GROUP.get(this);
     }
+    if (ref === event.data.name) {
+        EventBus.mute("gossipstone");
+        this.setValue(event.data.value);
+        EventBus.unmute("gossipstone");
+    }
+}
+
+function stateChanged(event) {
+    EventBus.mute("gossipstone");
+    let ref = this.ref;
+    if (GROUP.has(this)) {
+        ref = GROUP.get(this);
+    }
+    let value = event.data.gossipstones[ref];
+    if (typeof value == "undefined") {
+        value = {item: "0x01", location: "0x01"};
+    }
+    this.setValue(value);
+    let el = this.shadowRoot.getElementById("text");
+    if (!el.classList.contains("checked")) {
+        if (Logic.getValue("gossipstones", this.ref)) {
+            el.classList.add("avail");
+        } else {
+            el.classList.remove("avail");
+        }
+    }
+    EventBus.unmute("gossipstone");
 }
 
 function logicUpdate(event) {
@@ -83,31 +111,33 @@ function logicUpdate(event) {
     }
 }
 
-function globalUpdate(event) {
-    EventBus.mute("gossipstone-update");
-    let ref = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref].ref || this.ref;
-    this.setValue(TrackerLocalState.read("gossipstones", ref, {item: "0x01", location: "0x01"}));
-    EventBus.unmute("gossipstone-update");
-    let el = this.shadowRoot.getElementById("text");
-    if (!el.classList.contains("checked")) {
-        if (Logic.getValue("gossipstones", this.ref)) {
-            el.classList.add("avail");
-        } else {
-            el.classList.remove("avail");
-        }
-    }
-}
-
 class HTMLTrackerGossipstone extends HTMLElement {
 
     constructor() {
         super();
         this.addEventListener("click", this.check);
-        EventBus.register(["gossipstone-update","net:gossipstone-update"], gossipstoneUpdate.bind(this));
-        EventBus.register("force-location-update", globalUpdate.bind(this));
-        EventBus.register("logic", logicUpdate.bind(this));
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
+        /* event bus */
+        let events = new Map();
+        events.set("gossipstone", gossipstoneUpdate.bind(this));
+        events.set("state", stateChanged.bind(this));
+        events.set("logic", logicUpdate.bind(this));
+        EVENT_LISTENERS.set(this, events);
+    }
+
+    connectedCallback() {
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.register(key, value);
+        });
+    }
+
+    disconnectedCallback() {
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.unregister(key, value);
+        });
     }
 
     get ref() {
@@ -154,8 +184,14 @@ class HTMLTrackerGossipstone extends HTMLElement {
                         txt.classList.remove("avail");
                     }
 
-                    this.checked = TrackerLocalState.read("gossipstones", data.ref || this.ref, false);
-                    this.setValue(TrackerLocalState.read("gossipstones", data.ref || this.ref, {item: "0x01", location: "0x01"}));
+                    let ref = this.ref;
+                    if (!!data.ref) {
+                        GROUP.set(this, data.ref);
+                        ref = data.ref;
+                    }
+
+                    this.checked = TrackerLocalState.read("gossipstones", ref, false);
+                    this.setValue(TrackerLocalState.read("gossipstones", ref, {item: "0x01", location: "0x01"}));
                 }
             break;
             case 'checked':
@@ -205,7 +241,7 @@ class HTMLTrackerGossipstone extends HTMLElement {
             }
         }
         let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
-        EventBus.trigger("gossipstone-update", {
+        EventBus.trigger("gossipstone", {
             name: data.ref || this.ref,
             value: value
         });

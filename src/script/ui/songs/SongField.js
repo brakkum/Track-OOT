@@ -7,6 +7,7 @@ import I18n from "/script/util/I18n.js";
 import "./SongStave.js";
 import "./SongBuilder.js";
 
+const EVENT_LISTENERS = new WeakMap();
 const TPL = new Template(`
     <style>
         * {
@@ -51,7 +52,7 @@ function editSong(event) {
             let res = builder.value;
             TrackerLocalState.write("songs", this.ref, res);
             this.shadowRoot.getElementById("stave").value = res;
-            EventBus.trigger("song-update", {
+            EventBus.trigger("song", {
                 name: this.ref,
                 value: res
             });
@@ -61,9 +62,12 @@ function editSong(event) {
     d.show();
 }
 
-function globalUpdate(event) {
-    let data = GlobalData.get("songs")[this.ref];
-    this.shadowRoot.getElementById("stave").value = TrackerLocalState.read("songs", this.ref, data.notes)
+function stateChanged(event) {
+    let value = parseInt(event.data.songs[this.ref]);
+    if (typeof value == "undefined") {
+        value = GlobalData.get("songs")[this.ref].notes;
+    }
+    this.shadowRoot.getElementById("stave").value = value;
 }
 
 function songUpdate(event) {
@@ -79,8 +83,25 @@ export default class HTMLTrackerSongField extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-        EventBus.register("force-song-update", globalUpdate.bind(this));
-        EventBus.register("net:song-update", songUpdate.bind(this));
+        /* event bus */
+        let events = new Map();
+        events.set("song", songUpdate.bind(this));
+        events.set("state", stateChanged.bind(this));
+        EVENT_LISTENERS.set(this, events);
+    }
+
+    connectedCallback() {
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.register(key, value);
+        });
+    }
+
+    disconnectedCallback() {
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.unregister(key, value);
+        });
     }
 
     get ref() {

@@ -5,6 +5,7 @@ import Logger from "/deepJS/util/Logger.js";
 import "/deepJS/ui/selection/Option.js";
 import TrackerLocalState from "/script/util/LocalState.js";
 
+const EVENT_LISTENERS = new WeakMap();
 const TPL = new Template(`
     <style>
         * {
@@ -43,19 +44,34 @@ const TPL = new Template(`
     </style>
     <div id="value"></div>
 `);
-
-function updateCall(event) {
-    EventBus.mute("item-update");
+    
+function stateChanged(event) {
+    EventBus.mute("item");
     // savesatate
-    this.value = TrackerLocalState.read("items", this.ref, 0);
-    EventBus.unmute("item-update");
+    let value = parseInt(event.data.items[this.ref]);
+    if (typeof value == "undefined" || isNaN(value)) {
+        value = 0;
+    }
+    this.value = value;
+    EventBus.unmute("item");
 }
 
 function itemUpdate(event) {
     if (this.ref === event.data.name && this.value !== event.data.value) {
-        EventBus.mute("item-update");
-        this.value = event.data.value;
-        EventBus.unmute("item-update");
+        EventBus.mute("item");
+        let value = parseInt(event.data.value);
+        if (typeof value == "undefined" || isNaN(value)) {
+            value = 0;
+        }
+        this.value = value;
+        EventBus.unmute("item");
+    }
+}
+
+function dungeonTypeUpdate(event) {
+    let data = GlobalData.get("items")[this.ref];
+    if (data.hasOwnProperty("maxmq") && data.hasOwnProperty("related_dungeon") && event.data.name === data.related_dungeon) {
+        this.fillItemChoices();
     }
 }
 
@@ -68,8 +84,11 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        EventBus.register(["item-update", "net:item-update"], itemUpdate.bind(this));
-        EventBus.register("force-item-update", updateCall.bind(this));
+        let events = new Map();
+        events.set("item", itemUpdate.bind(this));
+        events.set("state", stateChanged.bind(this));
+        events.set("dungeontype", dungeonTypeUpdate.bind(this));
+        EVENT_LISTENERS.set(this, events);
     }
 
     connectedCallback() {
@@ -79,6 +98,17 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
                 this.value = all[0].value;
             }
         }
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.register(key, value);
+        });
+    }
+
+    disconnectedCallback() {
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.unregister(key, value);
+        });
     }
 
     get ref() {
@@ -115,12 +145,14 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
                 case 'ref':
                     let data = GlobalData.get("items")[newValue];
                     this.style.backgroundImage = `url("/images/${data.images}"`;
-                    updateCall.call(this);
+                    EventBus.mute("item");
+                    this.value = TrackerLocalState.read("items", this.ref, 0);
+                    EventBus.unmute("item");
                 break;
                 case 'value':
                     this.shadowRoot.getElementById("value").innerHTML = newValue;
                     TrackerLocalState.write("items", this.ref, parseInt(newValue));
-                    EventBus.trigger("item-update", {
+                    EventBus.trigger("item", {
                         name: this.ref,
                         value: newValue
                     });

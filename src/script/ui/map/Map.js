@@ -9,6 +9,7 @@ import "./POILocationSkulltula.js";
 import "./POIGossipstone.js";
 import "./POIArea.js";
 
+const EVENT_LISTENERS = new WeakMap();
 const TPL = new Template(`
     <style>
         * {
@@ -319,15 +320,6 @@ class HTMLTrackerMap extends Panel {
             event.preventDefault();
             return false;
         });
-        EventBus.register("location-mode-change", function(event) {
-            this.mode = event.data.value;
-        }.bind(this));
-        EventBus.register("location-era-change", function(event) {
-            this.era = event.data.value;
-        }.bind(this));
-        EventBus.register("force-location-update", function(event) {
-            this.attributeChangedCallback("", "");
-        }.bind(this));
         window.addEventListener("resize", function(event) {
             mapContainBoundaries(map, map.parentNode);
         });
@@ -360,10 +352,27 @@ class HTMLTrackerMap extends Panel {
             event.preventDefault();
             return false;
         });
+        /* event bus */
+        let events = new Map();
+        events.set("location_mode", event => this.mode = event.data.value);
+        events.set("location_era", event => this.era = event.data.value);
+        events.set(["state", "settings"], event => this.attributeChangedCallback("", ""));
+        EVENT_LISTENERS.set(this, events);
     }
 
     connectedCallback() {
         this.setAttribute("mode", "chests");
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.register(key, value);
+        });
+    }
+
+    disconnectedCallback() {
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.unregister(key, value);
+        });
     }
 
     get mode() {

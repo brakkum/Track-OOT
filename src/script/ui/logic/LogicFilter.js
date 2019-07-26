@@ -37,7 +37,7 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
         this.shadowRoot.append(TPL.generate());
         EventBus.register("filter", function(event) {
             if (event.data.ref == this.ref) {
-                this.update();
+                this.update(event.data.value);
             }
         }.bind(this));
         let select = this.shadowRoot.getElementById('select');
@@ -46,8 +46,10 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
         }.bind(this));
     }
 
-    update() {
-        let value = MemoryStorage.get("active_filter", this.ref, GlobalData.get("filter")[this.ref].default);
+    update(value) {
+        if (typeof value == "undefined") {
+            value = MemoryStorage.get("active_filter", this.ref, GlobalData.get("filter")[this.ref].default);
+        }
         if (SELECTOR_VALUE.has(this)) {
             value = value == SELECTOR_VALUE.get(this);
         }
@@ -99,7 +101,8 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
                         if (SELECTOR_VALUE.has(this)) {
                             el.value = SELECTOR_VALUE.get(this);
                         } else {
-                            el.value = data.default;
+                            el.value = data.default; 
+                            SELECTOR_VALUE.set(this, data.default);
                         }
                     } else {
                         slc.classList.add('hidden');

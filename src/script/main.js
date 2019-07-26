@@ -110,12 +110,8 @@ function changeView(event) {
 // TODO create module for this
 EventBus.register([
     "logic",
-    "dungeon-type-update",
-    "location-update",
-    "update-settings",
-    "net:dungeon-type-update",
-    "net:location-update",
-    "net:update-settings"
+    "state",
+    "settings"
 ], function(event) {
     updateChestStates();
     updateSkulltulasStates();

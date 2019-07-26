@@ -49,7 +49,7 @@ export default class TrackerLogicMixin extends DeepLogicAbstractElement {
         this.shadowRoot.append(TPL.generate());
         EventBus.register("logic", function(event) {
             if ("mixins" == event.data.type && this.ref == event.data.ref) {
-                this.update();
+                this.update(event.data.value);
             }
         }.bind(this));
         this.shadowRoot.getElementById("view").addEventListener("click", function(event) {
@@ -57,8 +57,11 @@ export default class TrackerLogicMixin extends DeepLogicAbstractElement {
         }.bind(this));
     }
 
-    update() {
-        this.value = Logic.getValue("mixins", this.ref);
+    update(value) {
+        if (typeof value == "undefined") {
+            value = Logic.getValue("mixins", this.ref);
+        }
+        this.value = value;
     }
 
     toJSON() {

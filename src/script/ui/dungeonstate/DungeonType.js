@@ -3,6 +3,7 @@ import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import "/deepJS/ui/selection/Option.js";
 import TrackerLocalState from "/script/util/LocalState.js";
 
+const EVENT_LISTENERS = new WeakMap();
 const TPL = new Template(`
     <style>
         * {
@@ -48,17 +49,21 @@ const TPL = new Template(`
     </slot>
 `);
 
-function updateCall(event) {
-    EventBus.mute("dungeon-type-update");
-    this.value = TrackerLocalState.read("dungeonTypes", this.ref, "n");
-    EventBus.unmute("dungeon-type-update");
+function stateChanged(event) {
+    EventBus.mute("dungeontype");
+    let value = parseInt(event.data.dungeonTypes[this.ref]);
+    if (typeof value == "undefined" || value == "") {
+        value = "n";
+    }
+    this.value = value;
+    EventBus.unmute("dungeontype");
 }
 
-function dungeonTypeUppdate(event){
+function dungeonTypeUpdate(event){
     if (this.ref === event.data.name && this.value !== event.data.value) {
-        EventBus.mute("dungeon-type-update");
+        EventBus.mute("dungeontype");
         this.value = event.data.value;
-        EventBus.unmute("dungeon-type-update");
+        EventBus.unmute("dungeontype");
     }
 }
 
@@ -71,8 +76,10 @@ class HTMLTrackerDungeonType extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        EventBus.register("force-dungeonstate-update", updateCall.bind(this));
-        EventBus.register(["dungeon-type-update","net:dungeon-type-update"], dungeonTypeUppdate.bind(this));
+        let events = new Map();
+        events.set("state", stateChanged.bind(this));
+        events.set("dungeontype", dungeonTypeUpdate.bind(this));
+        EVENT_LISTENERS.set(this, events);
     }
 
     connectedCallback() {
@@ -82,6 +89,17 @@ class HTMLTrackerDungeonType extends HTMLElement {
                 this.value = all[0].value;
             }
         }
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.register(key, value);
+        });
+    }
+
+    disconnectedCallback() {
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.unregister(key, value);
+        });
     }
 
     get ref() {
@@ -110,16 +128,16 @@ class HTMLTrackerDungeonType extends HTMLElement {
                 if (oldValue != newValue) {
                     if (newValue === "") {
                         this.innerHTML = "";
-                        EventBus.mute("dungeon-type-update");
+                        EventBus.mute("dungeontype");
                         this.value = "";
-                        EventBus.unmute("dungeon-type-update");
+                        EventBus.unmute("dungeontype");
                     } else if (oldValue === null || oldValue === undefined || oldValue === "") {
                         this.append(createOption("n", "/images/type_undefined.svg"));
                         this.append(createOption("v", "/images/type_vanilla.svg"));
                         this.append(createOption("mq", "/images/type_masterquest.svg"));
-                        EventBus.mute("dungeon-type-update");
+                        EventBus.mute("dungeontype");
                         this.value = TrackerLocalState.read("dungeonTypes", newValue, "n");
-                        EventBus.unmute("dungeon-type-update");
+                        EventBus.unmute("dungeontype");
                     }
                 }
             break;
@@ -134,7 +152,7 @@ class HTMLTrackerDungeonType extends HTMLElement {
                         ne.classList.add("active");
                     }
                     TrackerLocalState.write("dungeonTypes", this.ref, newValue);
-                    EventBus.trigger("dungeon-type-update", {
+                    EventBus.trigger("dungeontype", {
                         name: this.ref,
                         value: newValue
                     });

@@ -26,22 +26,21 @@ export default class TrackerLogicItem extends DeepLogicAbstractElement {
     constructor() {
         super();
         this.shadowRoot.append(TPL.generate());
-        EventBus.register(["item-update", "net:item-update"], function(event) {
+        EventBus.register("item", function(event) {
             if (event.data.name == this.ref) {
                 this.update(event.data.value);
             }
         }.bind(this));
-        EventBus.register("state-changed", function(event) {
-            this.update(event.data.items[this.ref]||0);
+        EventBus.register("state", function(event) {
+            this.update(event.data.items[this.ref]);
         }.bind(this));
     }
 
     update(value) {
         if (typeof value == "undefined") {
-            this.value = TrackerLocalState.read("items", this.ref, 0);
-        } else {
-            this.value = parseInt(value)||0;
+            value = TrackerLocalState.read("items", this.ref, 0);
         }
+        this.value = value;
     }
 
     toJSON() {

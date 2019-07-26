@@ -1,8 +1,13 @@
 
 import Dialog from "/deepJS/ui/Dialog.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
+import EventBusModuleGeneric from "/deepJS/util/EventBus/EventBusModuleGeneric.js";
 import DeepWebRAT from "/script/client/WebRAT.js";
 import TrackerLocalState from "/script/util/LocalState.js";
+
+const eventModule = new EventBusModuleGeneric();
+eventModule.mute("logic");
+EventBus.addModule(eventModule);
 
 let username = "";
 let clients = new Map;
@@ -35,6 +40,8 @@ function setState(state) {
             }
         }
     }
+    // TODO use eventbus plugin
+    eventModule.trigger("state_changed", TrackerLocalState.getState());
 }
 
 function getClientNameList() {
@@ -174,27 +181,11 @@ function onJoined() {
             ON_ROOMUPDATE(msg.data);
         } else if (msg.type == "state") {
             setState(msg.data);
-            EventBus.trigger("force-item-update");
-            EventBus.trigger("force-logic-update");
-            EventBus.trigger("force-location-update");
-            EventBus.trigger("force-shop-update");
-            EventBus.trigger("force-song-update");
-            EventBus.trigger("force-dungeonstate-update");
         } else if (msg.type == "event") {
-            EventBus.trigger(`net:${msg.data.name}`, msg.data.data);
+            eventModule.trigger(msg.data.name, msg.data.data);
         }
     };
-    EventBus.register([
-        "item-update",
-        "location-update",
-        "gossipstone-update",
-        "dungeon-type-update",
-        "dungeon-reward-update",
-        "song-update",
-        "shop-items-update",
-        "shop-bought-update",
-        "update-settings"
-    ], function(event) {
+    eventModule.register(function(event) {
         DeepWebRAT.send({
             type: "event",
             data: event
@@ -237,7 +228,7 @@ async function onHosting() {
         } else if (msg.type == "event") {
             if (clients.has(key)) {
                 DeepWebRAT.sendButOne(key, msg);
-                EventBus.trigger(`net:${msg.data.name}`, msg.data.data);
+                eventModule.trigger(msg.data.name, msg.data.data);
             }
         }
     };
@@ -271,23 +262,7 @@ async function onHosting() {
         });
         ON_ROOMUPDATE(data);
     };
-    EventBus.register("state-changed", function(event) {
-        DeepWebRAT.send({
-            type: "state",
-            data: getState()
-        });
-    });
-    EventBus.register([
-        "item-update",
-        "location-update",
-        "gossipstone-update",
-        "dungeon-type-update",
-        "dungeon-reward-update",
-        "song-update",
-        "shop-items-update",
-        "shop-bought-update",
-        "update-settings"
-    ], function(event) {
+    eventModule.register(function(event) {
         DeepWebRAT.send({
             type: "event",
             data: event

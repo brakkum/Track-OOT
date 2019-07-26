@@ -4,6 +4,7 @@ import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import "/deepJS/ui/selection/Option.js";
 import TrackerLocalState from "/script/util/LocalState.js";
 
+const EVENT_LISTENERS = new WeakMap();
 const TPL = new Template(`
     <style>
         * {
@@ -61,17 +62,21 @@ const REWARDS = [
     "medallion_light"
 ];
 
-function updateCall(event) {
-    EventBus.mute("dungeon-reward-update");
-    this.value = TrackerLocalState.read("dungeonRewards", this.ref, 0);
-    EventBus.unmute("dungeon-reward-update");
+function stateChanged(event) {
+    EventBus.mute("dungeonreward");
+    let value = parseInt(event.data.dungeonRewards[this.ref]);
+    if (typeof value == "undefined" || isNaN(value)) {
+        value = 0;
+    }
+    this.value = value;
+    EventBus.unmute("dungeonreward");
 }
 
-function dungeonRewardUppdate(event){
+function dungeonRewardUpdate(event){
     if (this.ref === event.data.name && this.value !== event.data.value) {
-        EventBus.mute("dungeon-reward-update");
+        EventBus.mute("dungeonreward");
         this.value = event.data.value;
-        EventBus.unmute("dungeon-reward-update");
+        EventBus.unmute("dungeonreward");
     }
 }
 
@@ -84,8 +89,10 @@ class HTMLTrackerDungeonReward extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        EventBus.register("force-dungeonstate-update", updateCall.bind(this));
-        EventBus.register(["dungeon-reward-update","net:dungeon-reward-update"], dungeonRewardUppdate.bind(this));
+        let events = new Map();
+        events.set("state", stateChanged.bind(this));
+        events.set("dungeonreward", dungeonRewardUpdate.bind(this));
+        EVENT_LISTENERS.set(this, events);
     }
 
     connectedCallback() {
@@ -95,6 +102,17 @@ class HTMLTrackerDungeonReward extends HTMLElement {
                 this.value = all[0].value;
             }
         }
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.register(key, value);
+        });
+    }
+
+    disconnectedCallback() {
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.unregister(key, value);
+        });
     }
 
     get ref() {
@@ -147,7 +165,7 @@ class HTMLTrackerDungeonReward extends HTMLElement {
                         ne.classList.add("active");
                     }
                     TrackerLocalState.write("dungeonRewards", this.ref, newValue);
-                    EventBus.trigger("dungeon-reward-update", {
+                    EventBus.trigger("dungeonreward", {
                         name: this.ref,
                         value: newValue
                     });

@@ -220,16 +220,13 @@ function onSettingsEvent(event) {
         }
     }
     applySettingsChoices();
-    EventBus.trigger("force-item-update");
-    EventBus.trigger("force-location-update");
-    EventBus.trigger("force-logic-update");
     return settings;
 }
 
 settings.addEventListener('submit', function(event) {
-    EventBus.trigger("update-settings", onSettingsEvent(event));
+    EventBus.trigger("settings", onSettingsEvent(event));
 });
-EventBus.register("net:update-settings", onSettingsEvent);
+EventBus.register("settings", onSettingsEvent);
 
 settings.addEventListener('close', function(event) {
     showUpdatePopup = true;

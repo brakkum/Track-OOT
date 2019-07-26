@@ -26,22 +26,21 @@ export default class TrackerLogicChest extends DeepLogicAbstractElement {
     constructor() {
         super();
         this.shadowRoot.append(TPL.generate());
-        EventBus.register(["location-update", "net:location-update"], function(event) {
+        EventBus.register("chest", function(event) {
             if (event.data.name == this.ref) {
                 this.update(event.data.value);
             }
         }.bind(this));
-        EventBus.register("state-changed", function(event) {
-            this.update(event.data.chests[this.ref]||0);
+        EventBus.register("state", function(event) {
+            this.update(event.data.chests[this.ref]);
         }.bind(this));
     }
 
     update(value) {
         if (typeof value == "undefined") {
-            this.value = +TrackerLocalState.read("chests", this.ref, false);
-        } else {
-            this.value = parseInt(value)||0;
+            value = TrackerLocalState.read("chests", this.ref, false);
         }
+        this.value = value;
     }
 
     toJSON() {

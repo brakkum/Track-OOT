@@ -12,6 +12,7 @@ import "./LocationChest.js";
 import "./LocationSkulltula.js";
 import "./Gossipstone.js";
 
+const EVENT_LISTENERS = new WeakMap();
 const TPL = new Template(`
     <style>
         * {
@@ -192,24 +193,19 @@ class HTMLTrackerLocationList extends Panel {
     constructor() {
         super();
         generateLocations();
-        EventBus.register("location-change", event => this.ref = event.data.name);
-        EventBus.register(["dungeon-type-update", "net:dungeon-type-update"], dungeonTypeUpdate.bind(this));
-        EventBus.register(["location-update", "net:location-update"], locationUpdate.bind(this));
-        EventBus.register(["item-update", "net:item-update"], locationUpdate.bind(this));
-        EventBus.register("force-location-update", locationUpdate.bind(this));
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         this.attributeChangedCallback("", "");
         this.shadowRoot.getElementById('location-mode').addEventListener("change", event => {
             this.mode = event.newValue;
-            EventBus.trigger("location-mode-change", {
+            EventBus.trigger("location_mode", {
                 value: this.mode
             });
         });
         this.shadowRoot.getElementById('location-era').addEventListener("change", event => {
             this.era = event.newValue;
             MemoryStorage.set("active_filter", "filter_era_active", this.era);
-            EventBus.trigger("location-era-change", {
+            EventBus.trigger("location_era", {
                 value: this.era
             });
             EventBus.fire("filter", {
@@ -217,10 +213,27 @@ class HTMLTrackerLocationList extends Panel {
                 value: this.era
             });
         });
+        /* event bus */
+        let events = new Map();
+        events.set("location_change", event => this.ref = event.data.name);
+        events.set(["chest", "skulltula", "item", "state", "settings"], locationUpdate.bind(this));
+        events.set("dungeontype", dungeonTypeUpdate.bind(this));
+        EVENT_LISTENERS.set(this, events);
     }
 
     connectedCallback() {
         this.setAttribute("mode", "chests");
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.register(key, value);
+        });
+    }
+
+    disconnectedCallback() {
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.unregister(key, value);
+        });
     }
 
     get ref() {

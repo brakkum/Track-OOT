@@ -33,22 +33,21 @@ export default class TrackerLogicSkulltula extends DeepLogicAbstractElement {
     constructor() {
         super();
         this.shadowRoot.append(TPL.generate());
-        EventBus.register(["location-update", "net:location-update"], function(event) {
+        EventBus.register("skulltula", function(event) {
             if (event.data.name == this.ref) {
                 this.update(event.data.value);
             }
         }.bind(this));
-        EventBus.register("state-changed", function(event) {
+        EventBus.register("state", function(event) {
             this.update(event.data.skulltulas[this.ref]||0);
         }.bind(this));
     }
 
     update(value) {
         if (typeof value == "undefined") {
-            this.value = +TrackerLocalState.read("skulltulas", this.ref, false);
-        } else {
-            this.value = parseInt(value)||0;
+            value = TrackerLocalState.read("skulltulas", this.ref, false);
         }
+        this.value = value;
     }
 
     toJSON() {

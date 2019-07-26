@@ -9,6 +9,7 @@ import TrackerLocalState from "/script/util/LocalState.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
 
+const EVENT_LISTENERS = new WeakMap();
 const TPL = new Template(`
     <style>
         * {
@@ -68,17 +69,21 @@ const TPL = new Template(`
 
 function locationUpdate(event) {
     if (this.ref === event.data.name && this.checked !== event.data.value) {
-        EventBus.mute("location-update");
+        EventBus.mute("chest");
         this.checked = event.data.value;
-        EventBus.unmute("location-update");
+        EventBus.unmute("chest");
     }
 }
 
-function globalUpdate(event) {
+function stateChanged(event) {
     let path = this.ref.split(".");
-    EventBus.mute("location-update");
-    this.checked = TrackerLocalState.read("chests", path[2], false);
-    EventBus.unmute("location-update");
+    EventBus.mute("chest");
+    let value = !!event.data.chests[path[2]];
+    if (typeof value == "undefined") {
+        value = false;
+    }
+    this.value = value;
+    EventBus.unmute("chest");
 }
 
 function logicUpdate(event) {
@@ -157,9 +162,25 @@ class HTMLTrackerLocationChest extends HTMLElement {
             printLogic(this.ref);
         }.bind(this));
         /* event bus */
-        EventBus.register(["location-update", "net:location-update"], locationUpdate.bind(this));
-        EventBus.register("force-location-update", globalUpdate.bind(this));
-        EventBus.register("logic", logicUpdate.bind(this));
+        let events = new Map();
+        events.set("chest", locationUpdate.bind(this));
+        events.set("state", stateChanged.bind(this));
+        events.set("logic", logicUpdate.bind(this));
+        EVENT_LISTENERS.set(this, events);
+    }
+
+    connectedCallback() {
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.register(key, value);
+        });
+    }
+
+    disconnectedCallback() {
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.unregister(key, value);
+        });
     }
 
     get ref() {
@@ -223,7 +244,7 @@ class HTMLTrackerLocationChest extends HTMLElement {
                         }
                     }
                     TrackerLocalState.write("chests", path[2], newValue === "false" ? false : !!newValue);
-                    EventBus.trigger("location-update", {
+                    EventBus.trigger("chest", {
                         name: this.ref,
                         value: newValue
                     });

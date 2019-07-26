@@ -5,6 +5,7 @@ import Logger from "/deepJS/util/Logger.js";
 import "/deepJS/ui/selection/Option.js";
 import TrackerLocalState from "/script/util/LocalState.js";
 
+const EVENT_LISTENERS = new WeakMap();
 const TPL = new Template(`
     <style>
         * {
@@ -54,32 +55,46 @@ const TPL = new Template(`
     </slot>
 `);
 
-function updateCall(event) {
-    EventBus.mute("item-update");
+function stateChanged(event) {
+    EventBus.mute("item");
     // savesatate
-    this.value = TrackerLocalState.read("items", this.ref, 0);
+    let value = parseInt(event.data.items[this.ref]);
+    if (typeof value == "undefined" || isNaN(value)) {
+        value = 0;
+    }
+    this.value = value;
     // settings
     let data = GlobalData.get("items")[this.ref];
     if (data.hasOwnProperty("start_settings")) {
         let stsp = data.start_settings.split(".");
-        this.startvalue = TrackerLocalState.read(stsp[0], stsp[1], 1);
+        let startvalue = parseInt(event.data[stsp[0]][stsp[1]]);
+        if (typeof startvalue == "undefined" || isNaN(startvalue)) {
+            startvalue = 1;
+        }
+        this.startvalue = startvalue;
     } else {
         this.fillItemChoices();
     }
-    EventBus.unmute("item-update");
+    EventBus.unmute("item");
 }
 
 function itemUpdate(event) {
     if (this.ref === event.data.name && this.value !== event.data.value) {
-        EventBus.mute("item-update");
-        console.log(`item update event: ${new Date}`);
-        this.value = event.data.value;
-        EventBus.unmute("item-update");
+        EventBus.mute("item");
+        let value = parseInt(event.data.value);
+        if (typeof value == "undefined" || isNaN(value)) {
+            value = 0;
+        }
+        this.value = value;
+        EventBus.unmute("item");
     }
 }
 
-function updateDungeon(event) {
-    // XXX WTF is this empty?
+function dungeonTypeUpdate(event) {
+    let data = GlobalData.get("items")[this.ref];
+    if (data.hasOwnProperty("maxmq") && data.hasOwnProperty("related_dungeon") && event.data.name === data.related_dungeon) {
+        this.fillItemChoices();
+    }
 }
 
 class HTMLTrackerItem extends HTMLElement {
@@ -91,9 +106,11 @@ class HTMLTrackerItem extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        EventBus.register(["item-update", "net:item-update"], itemUpdate.bind(this));
-        EventBus.register("force-item-update", updateCall.bind(this));
-        EventBus.register(["dungeon-type-update","net:dungeon-type-update"], updateDungeon.bind(this));
+        let events = new Map();
+        events.set("item", itemUpdate.bind(this));
+        events.set("state", stateChanged.bind(this));
+        events.set("dungeontype", dungeonTypeUpdate.bind(this));
+        EVENT_LISTENERS.set(this, events);
     }
 
     connectedCallback() {
@@ -103,6 +120,17 @@ class HTMLTrackerItem extends HTMLElement {
                 this.value = all[0].value;
             }
         }
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.register(key, value);
+        });
+    }
+
+    disconnectedCallback() {
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.unregister(key, value);
+        });
     }
 
     get ref() {
@@ -145,7 +173,18 @@ class HTMLTrackerItem extends HTMLElement {
         if (oldValue != newValue) {
             switch (name) {
                 case 'ref':
-                    updateCall.call(this);
+                    EventBus.mute("item");
+                    // savesatate
+                    this.value = TrackerLocalState.read("items", this.ref, 0);
+                    // settings
+                    let data = GlobalData.get("items")[this.ref];
+                    if (data.hasOwnProperty("start_settings")) {
+                        let stsp = data.start_settings.split(".");
+                        this.startvalue = TrackerLocalState.read(stsp[0], stsp[1], 1);
+                    } else {
+                        this.fillItemChoices();
+                    }
+                    EventBus.unmute("item");
                 break;
                 case 'startvalue':
                     this.fillItemChoices();
@@ -160,7 +199,7 @@ class HTMLTrackerItem extends HTMLElement {
                         ne.classList.add("active");
                     }
                     TrackerLocalState.write("items", this.ref, parseInt(newValue));
-                    EventBus.trigger("item-update", {
+                    EventBus.trigger("item", {
                         name: this.ref,
                         value: newValue
                     });

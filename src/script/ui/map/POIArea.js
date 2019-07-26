@@ -7,6 +7,7 @@ import TrackerLocalState from "/script/util/LocalState.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
 
+const EVENT_LISTENERS = new WeakMap();
 const TPL = new Template(`
     <style>
         :host {
@@ -96,17 +97,17 @@ function canGet(name, category) {
 
 function locationUpdate(event) {
     if (this.ref === event.data.name.split('.')[0]) {
-        this.attributeChangedCallback("", "");
+        this.update();
     }
 }
 
-function itemUpdate(event) {
-    this.attributeChangedCallback("", "");
+function logicUpdate(event) {
+    this.update();
 }
 
 function dungeonTypeUpdate(event) {
     if (this.ref === event.data.ref) {
-        this.attributeChangedCallback("", "");
+        this.update();
     }
 }
 
@@ -114,19 +115,33 @@ class HTMLTrackerPOIArea extends HTMLElement {
 
     constructor() {
         super();
-        this.addEventListener("click", () => EventBus.trigger("location-change", {
+        this.addEventListener("click", () => EventBus.trigger("location_change", {
             name: this.ref
         }));
-        EventBus.register(["dungeon-type-update","net:dungeon-type-update"], dungeonTypeUpdate.bind(this));
-        EventBus.register(["location-update", "net:location-update"], locationUpdate.bind(this));
-        EventBus.register(["item-update", "net:item-update"], itemUpdate.bind(this));
-        EventBus.register("location-era-change", itemUpdate.bind(this));
-        EventBus.register("force-location-update", itemUpdate.bind(this));
-        EventBus.register("location-mode-change", event => {
-            this.mode = event.data.value;
-        });
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
+        /* event bus */
+        /* event bus */
+        let events = new Map();
+        events.set(["chest", "skulltula"], locationUpdate.bind(this));
+        events.set(["state", "settings", "logic"], logicUpdate.bind(this));
+        events.set("dungeontype", dungeonTypeUpdate.bind(this));
+        events.set("location_mode", event => this.mode = event.data.value);
+        EVENT_LISTENERS.set(this, events);
+    }
+
+    connectedCallback() {
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.register(key, value);
+        });
+    }
+
+    disconnectedCallback() {
+        /* event bus */
+        EVENT_LISTENERS.get(this).forEach(function(value, key) {
+            EventBus.unregister(key, value);
+        });
     }
 
     get ref() {
@@ -148,16 +163,20 @@ class HTMLTrackerPOIArea extends HTMLElement {
     static get observedAttributes() {
         return ['ref', 'mode'];
     }
+
+    update() {
+        let val = Logic.checkLogicList(this.mode, this.ref);  // TODO maybe do this a better way
+        this.shadowRoot.getElementById("marker").className = translate(val);
+        if (val > 0b001) {
+            this.shadowRoot.getElementById("marker").innerHTML = canGet(this.ref, this.mode);
+        } else {
+            this.shadowRoot.getElementById("marker").innerHTML = "";
+        }
+    }
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
-            let val = Logic.checkLogicList(this.mode, this.ref);
-            this.shadowRoot.getElementById("marker").className = translate(val);
-            if (val > 0b001) {
-                this.shadowRoot.getElementById("marker").innerHTML = canGet(this.ref, this.mode);
-            } else {
-                this.shadowRoot.getElementById("marker").innerHTML = "";
-            }
+            this.update();
             if (name == "ref") {
                 let tooltip = this.shadowRoot.getElementById("tooltip");
                 tooltip.innerHTML = I18n.translate(this.ref);

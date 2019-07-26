@@ -17,7 +17,7 @@ const TPL = new Template(`
             min-width: min-content;
             min-height: min-content;
         }
-        :host([orientation="column"]) #container {
+        :host([orientation="column"]) {
             flex-direction: column;
         }
         div.item-row {

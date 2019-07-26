@@ -35,20 +35,19 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
     constructor() {
         super();
         this.shadowRoot.append(TPL.generate());
-        EventBus.register("settings", function(event) {
-            this.update();
-        }.bind(this));
         let select = this.shadowRoot.getElementById('select');
         select.addEventListener('change', function(event) {
             SELECTOR_VALUE.set(this, select.value);
         }.bind(this));
-        EventBus.register("state-changed", function(event) {
+        EventBus.register(["state", "settings"], function(event) {
             this.update(event.data.options[this.ref]||0);
         }.bind(this));
     }
 
-    update() {
-        let value = TrackerLocalState.read("options", this.ref, GlobalData.get("settings").options[this.ref].default);
+    update(value) {
+        if (typeof value == "undefined") {
+            value = TrackerLocalState.read("options", this.ref, GlobalData.get("settings").options[this.ref].default);
+        }
         if (SELECTOR_VALUE.has(this)) {
             value = value == SELECTOR_VALUE.get(this);
         }
@@ -101,6 +100,7 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
                             el.value = SELECTOR_VALUE.get(this);
                         } else {
                             el.value = data.default;
+                            SELECTOR_VALUE.set(this, data.default);
                         }
                     } else {
                         slc.classList.add('hidden');
