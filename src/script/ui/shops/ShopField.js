@@ -1,13 +1,14 @@
 import Template from "/deepJS/util/Template.js";
 import GlobalData from "/deepJS/storage/GlobalData.js";
 import TrackerLocalState from "/script/util/LocalState.js";
+import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import I18n from "/script/util/I18n.js";
 import "./ShopItem.js";
 import "./ShopBuilder.js";
 
-const EVENT_LISTENERS = new WeakMap();
+const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         * {
@@ -190,25 +191,9 @@ export default class HTMLTrackerShopField extends HTMLElement {
             el.addEventListener("namechange", renameSlot.bind(this));
         }
         /* event bus */
-        let events = new Map();
-        events.set("shop_items", shopItemUpdate.bind(this));
-        events.set("shop_bought", shopBoughtUpdate.bind(this));
-        events.set("state", stateChanged.bind(this));
-        EVENT_LISTENERS.set(this, events);
-    }
-
-    connectedCallback() {
-        /* event bus */
-        EVENT_LISTENERS.get(this).forEach(function(value, key) {
-            EventBus.register(key, value);
-        });
-    }
-
-    disconnectedCallback() {
-        /* event bus */
-        EVENT_LISTENERS.get(this).forEach(function(value, key) {
-            EventBus.unregister(key, value);
-        });
+        EVENT_BINDER.register("shop_items", shopItemUpdate.bind(this));
+        EVENT_BINDER.register("shop_bought", shopBoughtUpdate.bind(this));
+        EVENT_BINDER.register("state", stateChanged.bind(this));
     }
 
     get ref() {

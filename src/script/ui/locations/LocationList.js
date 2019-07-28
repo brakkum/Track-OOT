@@ -5,6 +5,7 @@ import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Panel from "/deepJS/ui/layout/Panel.js";
 import "/deepJS/ui/selection/SwitchButton.js";
 import TrackerLocalState from "/script/util/LocalState.js";
+import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import I18n from "/script/util/I18n.js";
 import Logic from "/script/util/Logic.js";
 import "../dungeonstate/DungeonType.js";
@@ -12,7 +13,7 @@ import "./LocationChest.js";
 import "./LocationSkulltula.js";
 import "./Gossipstone.js";
 
-const EVENT_LISTENERS = new WeakMap();
+const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         * {
@@ -214,26 +215,13 @@ class HTMLTrackerLocationList extends Panel {
             });
         });
         /* event bus */
-        let events = new Map();
-        events.set("location_change", event => this.ref = event.data.name);
-        events.set(["chest", "skulltula", "item", "state", "settings"], locationUpdate.bind(this));
-        events.set("dungeontype", dungeonTypeUpdate.bind(this));
-        EVENT_LISTENERS.set(this, events);
+        EVENT_BINDER.register("location_change", event => this.ref = event.data.name);
+        EVENT_BINDER.register(["chest", "skulltula", "item", "state", "settings"], locationUpdate.bind(this));
+        EVENT_BINDER.register("dungeontype", dungeonTypeUpdate.bind(this));
     }
 
     connectedCallback() {
         this.setAttribute("mode", "chests");
-        /* event bus */
-        EVENT_LISTENERS.get(this).forEach(function(value, key) {
-            EventBus.register(key, value);
-        });
-    }
-
-    disconnectedCallback() {
-        /* event bus */
-        EVENT_LISTENERS.get(this).forEach(function(value, key) {
-            EventBus.unregister(key, value);
-        });
     }
 
     get ref() {

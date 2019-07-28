@@ -5,10 +5,11 @@ import Logger from "/deepJS/util/Logger.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import "/deepJS/ui/Tooltip.js";
 import TrackerLocalState from "/script/util/LocalState.js";
+import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
 
-const EVENT_LISTENERS = new WeakMap();
+const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         :host {
@@ -140,25 +141,9 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
         this.shadowRoot.append(TPL.generate());
         this.addEventListener("click", this.check);
         /* event bus */
-        let events = new Map();
-        events.set("gossipstone", locationUpdate.bind(this));
-        events.set("state", stateChanged.bind(this));
-        events.set("logic", logicUpdate.bind(this));
-        EVENT_LISTENERS.set(this, events);
-    }
-
-    connectedCallback() {
-        /* event bus */
-        EVENT_LISTENERS.get(this).forEach(function(value, key) {
-            EventBus.register(key, value);
-        });
-    }
-
-    disconnectedCallback() {
-        /* event bus */
-        EVENT_LISTENERS.get(this).forEach(function(value, key) {
-            EventBus.unregister(key, value);
-        });
+        EVENT_BINDER.register("gossipstone", locationUpdate.bind(this));
+        EVENT_BINDER.register("state", stateChanged.bind(this));
+        EVENT_BINDER.register("logic", logicUpdate.bind(this));
     }
 
     get ref() {

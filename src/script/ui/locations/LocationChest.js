@@ -6,10 +6,11 @@ import Helper from "/deepJS/util/Helper.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import "/deepJS/ui/ContextMenu.js";
 import TrackerLocalState from "/script/util/LocalState.js";
+import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
 
-const EVENT_LISTENERS = new WeakMap();
+const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         * {
@@ -79,7 +80,7 @@ function stateChanged(event) {
     let path = this.ref.split(".");
     EventBus.mute("chest");
     let value;
-    if (!!event.data.chests) {
+    if (!!event && !!event.data.chests) {
         value = !!event.data.chests[path[2]];
     }
     if (typeof value == "undefined") {
@@ -93,11 +94,7 @@ function logicUpdate(event) {
     let path = this.ref.split(".");
     if (event.data.type == "chests" && event.data.ref == path[2]) {
         let el = this.shadowRoot.getElementById("text");
-        if (!!event.data.value) {
-            el.classList.add("avail");
-        } else {
-            el.classList.remove("avail");
-        }
+        el.classList.toggle("avail", !!event.data.value);
     }
 }
 
@@ -165,25 +162,9 @@ class HTMLTrackerLocationChest extends HTMLElement {
             printLogic(this.ref);
         }.bind(this));
         /* event bus */
-        let events = new Map();
-        events.set("chest", locationUpdate.bind(this));
-        events.set("state", stateChanged.bind(this));
-        events.set("logic", logicUpdate.bind(this));
-        EVENT_LISTENERS.set(this, events);
-    }
-
-    connectedCallback() {
-        /* event bus */
-        EVENT_LISTENERS.get(this).forEach(function(value, key) {
-            EventBus.register(key, value);
-        });
-    }
-
-    disconnectedCallback() {
-        /* event bus */
-        EVENT_LISTENERS.get(this).forEach(function(value, key) {
-            EventBus.unregister(key, value);
-        });
+        EVENT_BINDER.register("chest", locationUpdate.bind(this));
+        EVENT_BINDER.register("state", stateChanged.bind(this));
+        EVENT_BINDER.register("logic", logicUpdate.bind(this));
     }
 
     get ref() {
