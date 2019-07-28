@@ -208,7 +208,7 @@ class HTMLTrackerLocationList extends Panel {
             EventBus.trigger("location_era", {
                 value: this.era
             });
-            EventBus.fire("filter", {
+            EventBus.trigger("filter", {
                 ref: "filter_era_active",
                 value: this.era
             });
