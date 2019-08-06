@@ -5,6 +5,7 @@ import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import Toast from "/deepJS/ui/Toast.js";
 import TrackerLocalState from "./LocalState.js";
+//import DBStorage from "./DBStorage.js";
 
 let activestate = DeepSessionStorage.get('meta', 'active_state', "");
 
@@ -25,6 +26,11 @@ stateRename.addEventListener("click", state_Rename);
 stateExport.addEventListener("click", state_Export);
 stateImport.addEventListener("click", state_Import);
 stateChoice.addEventListener("change", toggleStateButtons);
+
+/*!async function() {
+    let foobar = await DBStorage.getStates();
+    console.log(foobar);
+}();*/
 
 const notePad = document.getElementById("tracker-notes");
 notePad.value = TrackerLocalState.read("extras", "notes", "");

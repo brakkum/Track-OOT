@@ -57,10 +57,6 @@ class TrackerLocalState {
         Logger.info(`state resettet`, "LocalState");
     }
 
-    categories() {
-        return Object.keys(state);
-    }
-
     names(category) {
         if (state.hasOwnProperty(category)) {
             return Object.keys(state[category]);

@@ -104,7 +104,7 @@ function stateChanged(event) {
         ref = GROUP.get(this);
     }
     let value;
-    if (!!event.data.chests) {
+    if (!!event.data.gossipstones) {
         value = event.data.gossipstones[ref];
     }
     if (typeof value == "undefined") {
