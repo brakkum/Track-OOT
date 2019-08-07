@@ -4,9 +4,10 @@
 
 Application:    Track-OOT
 
-Version:        1.4.18
+Version:        1.4.19
 
 ---
 
 ### HOTFIX
-- added beans to the shop
+- translated everything in the language file into german;
+- mostly used official sources to translate items/enemies etc

@@ -22,7 +22,8 @@ mutationObserver.observe(document.documentElement, {
 
 const LANGUAGES = {
     "en_us": "English",
-    "en_us.easy": "English (Descriptive names)"
+    "en_us.easy": "English (Descriptive names)",
+    "de_de": "Deutsch"
 };
 
 class I18n {
