@@ -1,11 +1,10 @@
 import GlobalData from "/deepJS/storage/GlobalData.js";
-import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
 import DeepSessionStorage from "/deepJS/storage/SessionStorage.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import Toast from "/deepJS/ui/Toast.js";
-import TrackerLocalState from "./LocalState.js";
-//import DBStorage from "./DBStorage.js";
+import TrackerStorage from "./TrackerStorage.js";
+import LocalState from "./LocalState.js";
 
 let activestate = DeepSessionStorage.get('meta', 'active_state', "");
 
@@ -26,11 +25,6 @@ stateRename.addEventListener("click", state_Rename);
 stateExport.addEventListener("click", state_Export);
 stateImport.addEventListener("click", state_Import);
 stateChoice.addEventListener("change", toggleStateButtons);
-
-/*!async function() {
-    let foobar = await DBStorage.getStates();
-    console.log(foobar);
-}();*/
 
 const notePad = document.getElementById("tracker-notes");
 notePad.value = TrackerLocalState.read("extras", "notes", "");
@@ -70,9 +64,9 @@ function toggleStateButtons() {
     }
 }
 
-function prepairSavegameChoice() {
+async function prepairSavegameChoice() {
     stateChoice.innerHTML = "<option disabled selected hidden value=\"\"> -- select state -- </option>";
-    let keys = DeepLocalStorage.names("save");
+    let keys = await TrackerStorage.StatesStorage.keys();
     for (let i = 0; i < keys.length; ++i) {
         stateChoice.append(createOption(keys[i]));
     }
@@ -116,7 +110,7 @@ async function state_Delete() {
     if (stateChoice.value != ""
     && await Dialog.confirm("Warning", `Do you really want to delete "${stateChoice.value}"?`)) {
         let del = stateChoice.value;
-        DeepLocalStorage.remove("save", del);
+        TrackerStorage.StatesStorage.remove(del);
         if (del == activestate) {
             activestate = "";
             TrackerLocalState.reset();
@@ -138,12 +132,12 @@ async function state_New() {
             state_New();
             return;
         }
-        if (DeepLocalStorage.has("save", name)) {
+        if (await TrackerStorage.StatesStorage.has(name)) {
             await Dialog.alert("Warning", "The name already exists.");
             state_New();
             return;
         }
-        DeepLocalStorage.set("save", name, {});
+        await TrackerStorage.StatesStorage.set(name, {});
         prepairSavegameChoice();
         stateChoice.value = name;
         if (activestate == "") {
@@ -174,17 +168,17 @@ async function state_Rename() {
                 state_New();
                 return;
             }
-            if (DeepLocalStorage.has("save", name)) {
+            if (await TrackerStorage.StatesStorage.has(name)) {
                 await Dialog.alert("Warning", "The name already exists.");
                 state_New();
                 return;
             }
-            let save = DeepLocalStorage.get("save", stateChoice.value);
+            let save = await TrackerStorage.StatesStorage.get(stateChoice.value);
             if (!!save.meta) {
                 delete save.meta;
             }
-            DeepLocalStorage.remove("save", stateChoice.value);
-            DeepLocalStorage.set("save", name, save);
+            await TrackerStorage.StatesStorage.remove(stateChoice.value);
+            await TrackerStorage.StatesStorage.set(name, save);
             if (activestate != "" && activestate == stateChoice.value) {
                 activestate = name;
                 DeepSessionStorage.set('meta', 'active_state', activestate);
@@ -205,7 +199,7 @@ async function state_Export() {
         if (!!confirm) {
             let item = {
                 name: stateChoice.value,
-                data: DeepLocalStorage.get("save", stateChoice.value)
+                data: await TrackerStorage.StatesStorage.get(stateChoice.value)
             };
             await Dialog.alert("Your export string", btoa(JSON.stringify(item)).replace(/=*$/,""));
         }
@@ -221,10 +215,10 @@ async function state_Import() {
             return;
         }
         data = JSON.parse(atob(data));
-        if (DeepLocalStorage.has("save", data.name) && !(await Dialog.confirm("Warning", "There is already a savegame with this name. Replace savegame?."))) {
+        if (await TrackerStorage.StatesStorage.has(data.name) && !(await Dialog.confirm("Warning", "There is already a savegame with this name. Replace savegame?."))) {
             return;
         }
-        DeepLocalStorage.set("save", data.name, data.data);
+        await TrackerStorage.StatesStorage.set(data.name, data.data);
         prepairSavegameChoice();
         if (!!(await Dialog.confirm(`Imported "${data.name}" successfully.`, `Do you want to load the imported state?${activestate !== "" ? "(Unsaved changes will be lost.)" : ""}`))) {
             stateChoice.value = data.name;

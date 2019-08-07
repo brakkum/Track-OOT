@@ -20,7 +20,7 @@ const LOGIC_PATCHES = [];
 
 export default async function loadData() {
     let loading = [];
-    GlobalData.set("logic_patched", LocalStorage.get("settings", "logic", {}));
+    GlobalData.set("logic_patched", LocalStorage.get("settings.logic", {}));
     FILES.forEach(file => {
         loading.push(FileLoader.json(`database/${file}.json`).then(function(data) {
             GlobalData.set(file, data);

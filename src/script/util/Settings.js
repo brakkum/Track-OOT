@@ -1,9 +1,9 @@
 import GlobalData from "/deepJS/storage/GlobalData.js";
-import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
 import SettingsWindow from "/deepJS/ui/SettingsWindow.js";
 import PopOver from "/deepJS/ui/PopOver.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
+import TrackerStorage from "./TrackerStorage.js";
 import TrackerLocalState from "./LocalState.js";
 import I18n from "./I18n.js";
 
@@ -196,7 +196,7 @@ function onSettingsEvent(event) {
     for (let i in event.data) {
         for (let j in event.data[i]) {
             if (i === "settings") {
-                DeepLocalStorage.set(i, j, event.data[i][j]);
+                TrackerStorage.SettingsStorage.set(j, event.data[i][j]);
             } else {
                 if (j === "tricks" || j === "trials") {
                     let v = event.data[i][j];
@@ -232,7 +232,7 @@ settings.addEventListener('close', function(event) {
     showUpdatePopup = true;
 });
 
-function getSettings() {
+async function getSettings() {
     let options = GlobalData.get("settings");
     let res = {};
     for (let i in options) {
@@ -244,13 +244,13 @@ function getSettings() {
                     let def = new Set(options[i][j].default);
                     let val = [];
                     options[i][j].values.forEach(el => {
-                        if (DeepLocalStorage.get(i, el, def.has(el))) {
+                        if (await TrackerStorage.SettingsStorage.get(el, def.has(el))) {
                             val.push(el);
                         }
                     });
                     res[i][j] = val.join(",");
                 } else {
-                    res[i][j] = DeepLocalStorage.get(i, j, options[i][j].default);
+                    res[i][j] = await TrackerStorage.SettingsStorage.get(j, options[i][j].default);
                 }
             } else {
                 if (options[i][j].type === "list") {
@@ -271,18 +271,18 @@ function getSettings() {
     return res;
 }
     
-function applySettingsChoices() {
+async function applySettingsChoices() {
     let viewpane = document.getElementById("main-content");
-    viewpane.setAttribute("data-font", DeepLocalStorage.get("settings", "font", ""));
-    document.querySelector("#layout-container").setAttribute("layout", DeepLocalStorage.get("settings", "layout", "map-compact"));
-    document.body.style.setProperty("--item-size", DeepLocalStorage.get("settings", "itemsize", 40));
-    if (DeepLocalStorage.get("settings", "show_hint_badges", false)) {
+    viewpane.setAttribute("data-font", await TrackerStorage.SettingsStorage.get("font", ""));
+    document.querySelector("#layout-container").setAttribute("layout", await TrackerStorage.SettingsStorage.get("layout", "map-compact"));
+    document.body.style.setProperty("--item-size", await TrackerStorage.SettingsStorage.get("itemsize", 40));
+    if (await TrackerStorage.SettingsStorage.get("show_hint_badges", false)) {
         document.body.setAttribute("data-hint-badges", "true");
     } else {
         document.body.setAttribute("data-hint-badges", "false");
     }
-    if (DeepLocalStorage.get("settings", "use_custom_logic", false)) {
-        GlobalData.set("logic_patched", DeepLocalStorage.get("settings", "logic", {}));
+    if (await TrackerStorage.SettingsStorage.get("use_custom_logic", false)) {
+        GlobalData.set("logic_patched", await TrackerStorage.SettingsStorage.get("logic", {}));
     }
 }
 

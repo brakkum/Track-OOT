@@ -1,6 +1,6 @@
 import GlobalData from "/deepJS/storage/GlobalData.js";
 import MemoryStorage from "/deepJS/storage/MemoryStorage.js";
-import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
+import TrackerStorage from "./TrackerStorage.js";
 import TrackerLocalState from "/script/util/LocalState.js";
 import LogicWrapper from "/script/util/LogicWrapper.js";
 
@@ -28,7 +28,7 @@ class TrackerLogic {
         return false;
     }
 
-    checkLogicList(category, name, mode) {
+    async checkLogicList(category, name, mode) {
         let list = GlobalData.get("locations")[name];
         if (!!mode) {
             list = GlobalData.get("locations")[name][`${category}_${mode}`];
@@ -37,7 +37,7 @@ class TrackerLogic {
             if (dType === "n") {
                 let res_v = this.checkLogicList(category, name, "v");
                 let res_m = this.checkLogicList(category, name, "mq");
-                if (DeepLocalStorage.get("settings", "unknown_dungeon_need_both", false)) {
+                if (await TrackerStorage.SettingsStorage.get("unknown_dungeon_need_both", false)) {
                     return Math.min(res_v, res_m) || res_v || res_m;
                 } else {
                     return Math.max(res_v, res_m);

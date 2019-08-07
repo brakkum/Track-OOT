@@ -1,7 +1,7 @@
-import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
 import GlobalData from "/deepJS/storage/GlobalData.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Helper from "/deepJS/util/Helper.js";
+import TrackerStorage from "./TrackerStorage.js";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
 
 import "/deepJS/ui/logic/elements/literals/LogicTrue.js";
@@ -57,11 +57,11 @@ export default class LogicWrapper {
         return false;
     }
     
-    loadLogic() {
+    async loadLogic() {
         let type = TYPE.get(this);
         let ref = REF.get(this);
         let logic = null;
-        if (DeepLocalStorage.get("settings", "use_custom_logic", false)) {
+        if (await TrackerStorage.SettingsStorage.get("use_custom_logic", false)) {
             let custom_logic = GlobalData.get("logic_patched", {});
             if (!!custom_logic[type] && !!custom_logic[type][ref]) {
                 logic = custom_logic[type][ref];
@@ -110,8 +110,8 @@ export default class LogicWrapper {
 
 }
         
-window.onfocus = function(event) {
-    if (DeepLocalStorage.get("settings", "use_custom_logic", false)) {
+window.onfocus = async function(event) {
+    if (await TrackerStorage.SettingsStorage.get("use_custom_logic", false)) {
         for (let i of Array.from(INSTANCES)) {
             i.loadLogic();
         }

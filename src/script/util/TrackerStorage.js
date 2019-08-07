@@ -4,13 +4,22 @@ function openDB() {
         let request = indexedDB.open("data");
         request.onupgradeneeded = function() {
 			let db = this.result;
-			let savestateStore = db.createObjectStore("savestates", {keyPath: "name"});
+			let savestateStore = db.createObjectStore("savestates");
 			let settingsStore = db.createObjectStore("settings");
 			for (let i of Object.keys(localStorage)) {
 				if (i.startsWith(`save\0`)) {
+					let res = {};
 					let data = JSON.parse(localStorage.getItem(i));
-					data.name = i.split("\0")[1];
-					savestateStore.add(data);
+					for (let i in data) {
+						if (i == "meta" || i == "extras") continue;
+						for (let j in data[i]) {
+							res[`${i}.${j}`] = data[i][j];
+						}
+					}
+					if (!!data.extras && !!data.extras.notes) {
+						res.notes = data.extras.notes;
+					}
+					savestateStore.add(res, i.split("\0")[1]);
 				}
 				if (i.startsWith(`settings\0`)) {
 					let data = JSON.parse(localStorage.getItem(i));
@@ -88,12 +97,18 @@ function getKeys(store) {
 	});
 }
 
-class DBStorage {
+const NAME = new WeakMap();
 
-	async writeState(key, value) {
+class TrackerStorage {
+
+	constructor(name) {
+		NAME.set(this, name);
+	}
+
+	async set(key, value) {
 		try {
 			let db = await openDB();
-			let store = getStoreWritable(db, "savestates");
+			let store = getStoreWritable(db, NAME.get(this));
 			await writeData(store, key, value);
 			db.close();
 		} catch(error) {
@@ -101,10 +116,10 @@ class DBStorage {
 		}
 	}
 
-	async readState(key, value) {
+	async get(key, value) {
 		try {
 			let db = await openDB();
-			let store = getStoreReadonly(db, "savestates");
+			let store = getStoreReadonly(db, NAME.get(this));
 			let result = await readData(store, key);
 			db.close();
 			if (typeof result == "undefined" || result == null) {
@@ -116,10 +131,22 @@ class DBStorage {
 		}
 	}
 
-	async removeState(key) {
+	async has(key) {
+		try {
+			var db = await openDB();
+			let store = getStoreReadonly(db, NAME.get(this));
+			var res = await hasKey(store, key);
+			db.close();
+			return !!res;
+		} catch(error) {
+			// error handling
+		}
+	}
+
+	async remove(key) {
 		try {
 			let db = await openDB();
-			let store = getStoreWritable(db, "savestates");
+			let store = getStoreWritable(db, NAME.get(this));
 			let result = await deleteData(store, key);
 			db.close();
 			return !!result;
@@ -128,10 +155,10 @@ class DBStorage {
 		}
 	}
 
-	async getStates() {
+	async keys() {
 		try {
 			let db = await openDB();
-			let store = getStoreReadonly(db, "savestates");
+			let store = getStoreReadonly(db, NAME.get(this));
 			let result = await getKeys(store);
 			db.close();
 			return result;
@@ -140,46 +167,11 @@ class DBStorage {
 		}
 	}
 
-	async writeSetting(key, value) {
-		try {
-			let db = await openDB();
-			let store = getStoreWritable(db, "settings");
-			await writeData(store, key, value);
-			db.close();
-		} catch(error) {
-			// error handling
-		}
-	}
-
-	async readSetting(key, value) {
-		try {
-			let db = await openDB();
-			let store = getStoreReadonly(db, "settings");
-			let result = await readData(store, key);
-			db.close();
-			if (typeof result == "undefined" || result == null) {
-				return value;
-			}
-			return result;
-		} catch(error) {
-			// error handling
-		}
-	}
-
-	async removeSetting(key) {
-		try {
-			let db = await openDB();
-			let store = getStoreWritable(db, "settings");
-			let result = await deleteData(store, key);
-			db.close();
-			return !!result;
-		} catch(error) {
-			// error handling
-		}
-	}
-
 }
 
-export default new DBStorage;
+let stores = {
+	StatesStorage: new TrackerStorage("savestates"),
+	SettingsStorage: new TrackerStorage("settings")
+}
 
-// TODO split settings and savestates into 2 subclasses using the same database
+export default stores;

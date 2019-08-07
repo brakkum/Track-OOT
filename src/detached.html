@@ -19,11 +19,11 @@
         });
     </script>
     <script type="module">
-        import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
         import GlobalData from "/deepJS/storage/GlobalData.js";
         import EventBus from "/deepJS/util/EventBus/EventBus.js";
         import EventBusModuleShare from "/deepJS/util/EventBus/EventBusModuleShare.js";
         import Panel from "/deepJS/ui/layout/Panel.js";
+        import TrackerStorage from "./TrackerStorage.js";
         import loadData from "/script/util/loader.js";
         import I18n from "/script/util/I18n.js";
         import Logic from "/script/util/Logic.js";
@@ -36,7 +36,7 @@
         (async function main() {
 
             await loadData();
-            await I18n.load(DeepLocalStorage.get("settings", "language", "en_us"));
+            await I18n.load(await TrackerStorage.SettingsStorage.get("language", "en_us"));
             Logic.loadLogic();
             EventBusModuleShare.mute("logic");
             EventBus.addModule(EventBusModuleShare);

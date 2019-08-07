@@ -1,8 +1,6 @@
 import FileLoader from "/deepJS/util/FileLoader.js";
 import Logger from "/deepJS/util/Logger.js";
 
-let lang = {};
-
 /*
 let mutationObserver = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
@@ -20,34 +18,35 @@ mutationObserver.observe(document.documentElement, {
 });
 */
 
-const LANGUAGES = {
-    "en_us": "English",
-    "en_us.easy": "English (Descriptive names)"
-};
+let languages = {};
+let active_language = {};
 
 class I18n {
+
+    async init() {
+        languages = await FileLoader.json("/i18n/_meta.json")
+    }
 
     async load(code) {
         Logger.log(`load language code "${code}"`, "I18n");
         try {
-            lang = (await FileLoader.ini(`/i18n/${code}.lang`, "I18n"))[""];
+            active_language = (await FileLoader.ini(`/i18n/${code}.lang`))[""];
             Logger.log(`lang "${code}" loaded as LANG`, "I18n");
         } catch(e) {
-            try {
-                lang = await FileLoader.json(`/i18n/${code}.json`, "I18n");
-                Logger.log(`lang "${code}" loaded as JSON`, "I18n");
-            } catch(e) {
-                Logger.error((new Error(`could not load lang ${code}`)), "I18n");
-            }
+            Logger.error((new Error(`could not load lang ${code}`)), "I18n");
         }
     }
 
+    getLanguages() {
+        return Object.keys(languages);
+    }
+
     translate(index) {
-        if (typeof LANGUAGES[index] == "string") {
-            return LANGUAGES[index].trim();
+        if (typeof languages[index] == "string") {
+            return languages[index].trim();
         }
-        if (typeof lang == "object" && typeof lang[index] == "string") {
-            return lang[index].trim();
+        if (typeof active_language == "object" && typeof active_language[index] == "string") {
+            return active_language[index].trim();
         }
         Logger.warn(`translation for "${index}" missing`, "I18n");
         return index;

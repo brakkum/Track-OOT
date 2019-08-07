@@ -15,12 +15,12 @@ class EditorLogic {
             }
         }
         GlobalData.set("logic_patched", logic);
-        LocalStorage.set("settings", "logic", logic);
+        LocalStorage.set("settings.logic", logic);
     }
 
     clear() {
         GlobalData.set("logic_patched", {});
-        LocalStorage.set("settings", "logic", {});
+        LocalStorage.set("settings.logic", {});
     }
 
     set(type, key, logic) {
@@ -30,7 +30,7 @@ class EditorLogic {
         }
         data[type][key] = logic;
         GlobalData.set("logic_patched", data);
-        LocalStorage.set("settings", "logic", data);
+        LocalStorage.set("settings.logic", data);
     }
 
     get(type, key) {
@@ -46,7 +46,7 @@ class EditorLogic {
         if (!!data[type] && !!data[type][key]) {
             delete data[type][key];
             GlobalData.set("logic_patched", data);
-            LocalStorage.set("settings", "logic", data);
+            LocalStorage.set("settings.logic", data);
         }
     }
 

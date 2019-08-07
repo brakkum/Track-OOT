@@ -1,25 +1,31 @@
 import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
-import DeepSessionStorage from "/deepJS/storage/SessionStorage.js";
 import Logger from "/deepJS/util/Logger.js";
+import TrackerStorage from "./TrackerStorage.js";
 
-let state = DeepSessionStorage.toObject();
+!function() {
+    let res = {};
+    let k = Object.keys(sessionStorage);
+    for (let i of k) {
+        let r = i.split("\0");
+        res[`${r[0]}.${r[1]}`] = JSON.parse(sessionStorage.getItem(i));
+    }
+    DeepLocalStorage.set("savestate", res);
+    DeepLocalStorage.set("activestate", sessionStorage.getItem("active_state"));
+}();
 
-class TrackerLocalState {
+let state = DeepLocalStorage.get("savestate", {});
 
-    save(name) {
-        DeepLocalStorage.set("save", name, state);
+class LocalState {
+
+    async save(name) {
+        await TrackerStorage.StatesStorage.set(name, state);
         Logger.info(`saved state as "${name}"`, "LocalState");
     }
 
-    load(name) {
-        if (DeepLocalStorage.has("save", name)) {
-            state = DeepLocalStorage.get("save", name);
-            DeepSessionStorage.purge();
-            for (let i in state) {
-                for (let j in state[i]) {
-                    DeepSessionStorage.set(i, j, state[i][j]);
-                }
-            }
+    async load(name) {
+        if (await TrackerStorage.StatesStorage.has(name)) {
+            state = await TrackerStorage.StatesStorage.get(name);
+            DeepLocalStorage.set("savestate", state);
             Logger.info(`loaded state from "${name}"`, "LocalState");
         } else {
             Logger.warn(`tried to load state "${name}" that does not exist`, "LocalState");
@@ -27,41 +33,29 @@ class TrackerLocalState {
         }
     }
 
-    write(category, key, value) {
-        state[category] = state[category] || {};
-        state[category][key] = value;
-        DeepSessionStorage.set(category, key, value);
+    write(key, value) {
+        state[key] = value;
+        DeepLocalStorage.set("savestate", state);
     }
 
-    read(category, key, def) {
-        if (state.hasOwnProperty(category) && state[category].hasOwnProperty(key)) {
-            return state[category][key];
+    read(key, def) {
+        if (state.hasOwnProperty(key)) {
+            return state[key];
         }
         return def;
     }
 
-    remove(category, key) {
-        if (!!state.hasOwnProperty(category)) {
-            if (!!state[category].hasOwnProperty(key)) {
-                delete state[category][key];
-            }
-            if (!Object.keys(state[category]).length) {
-                delete state[category];
-            }
+    remove(key) {
+        if (!!state.hasOwnProperty(key)) {
+            delete state[key];
+            DeepLocalStorage.set("savestate", state);
         }
     }
 
     reset() {
         state = {};
-        DeepSessionStorage.purge();
+        DeepLocalStorage.set("savestate", state);
         Logger.info(`state resettet`, "LocalState");
-    }
-
-    names(category) {
-        if (state.hasOwnProperty(category)) {
-            return Object.keys(state[category]);
-        }
-        return [];
     }
 
     getState() {
@@ -69,4 +63,4 @@ class TrackerLocalState {
     }
 }
 
-export default new TrackerLocalState;
+export default new LocalState;
