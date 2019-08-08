@@ -4,7 +4,7 @@ import PopOver from "/deepJS/ui/PopOver.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import TrackerStorage from "./TrackerStorage.js";
-import TrackerLocalState from "./LocalState.js";
+import LocalState from "./LocalState.js";
 import I18n from "./I18n.js";
 
 import "/deepJS/ui/Paging.js";
@@ -103,15 +103,15 @@ function onSettingsEvent(event) {
                     if (v.length > 0) {
                         v = new Set(v.split(","));
                         GlobalData.get("settings")[i][j].values.forEach(el => {
-                            TrackerLocalState.write(i, el, v.has(el));
+                            LocalState.write(`${i}.${el}`, v.has(el));
                         });
                     } else {
                         GlobalData.get("settings")[i][j].values.forEach(el => {
-                            TrackerLocalState.write(i, el, false);
+                            LocalState.write(`${i}.${el}`, false);
                         });
                     }
                 } else {
-                    TrackerLocalState.write(i, j, event.data[i][j]);
+                    LocalState.write(`${i}.${j}`, event.data[i][j]);
                 }
             }
         }
@@ -148,13 +148,13 @@ async function getSettings() {
                     let def = new Set(options[i][j].default);
                     let val = [];
                     options[i][j].values.forEach(el => {
-                        if (TrackerLocalState.read(i, el, def.has(el))) {
+                        if (LocalState.read(`${i}.${el}`, def.has(el))) {
                             val.push(el);
                         }
                     });
                     res[i][j] = val.join(",");
                 } else {
-                    res[i][j] = TrackerLocalState.read(i, j, options[i][j].default);
+                    res[i][j] = LocalState.read(`${i}.${j}`, options[i][j].default);
                 }
             }
         }

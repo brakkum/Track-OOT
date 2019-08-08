@@ -3,7 +3,7 @@ import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
 import "/deepJS/ui/selection/Option.js";
-import TrackerLocalState from "/script/util/LocalState.js";
+import LocalState from "/script/util/LocalState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
@@ -49,10 +49,7 @@ const TPL = new Template(`
 function stateChanged(event) {
     EventBus.mute("item");
     // savesatate
-    let value;
-    if (!!event.data.items) {
-        value = parseInt(event.data.items[this.ref]);
-    }
+    let value = parseInt(event.data[`items.${this.ref}`]);
     if (isNaN(value)) {
         value = 0;
     }
@@ -128,12 +125,12 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
                     let data = GlobalData.get("items")[newValue];
                     this.style.backgroundImage = `url("/images/${data.images}"`;
                     EventBus.mute("item");
-                    this.value = TrackerLocalState.read(`items.${this.ref}`, 0);
+                    this.value = LocalState.read(`items.${this.ref}`, 0);
                     EventBus.unmute("item");
                 break;
                 case 'value':
                     this.shadowRoot.getElementById("value").innerHTML = newValue;
-                    TrackerLocalState.write(`items.${this.ref}`, parseInt(newValue));
+                    LocalState.write(`items.${this.ref}`, parseInt(newValue));
                     EventBus.trigger("item", {
                         name: this.ref,
                         value: newValue

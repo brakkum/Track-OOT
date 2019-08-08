@@ -49,7 +49,7 @@ function getStoreReadonly(name) {
 }
 function writeData(store, key, value) {
 	return new Promise(function(resolve, reject) {
-		let request = store.add(value, key);
+		let request = store.put(value, key);
 		request.onsuccess = function(e) {
 			resolve();
 		};

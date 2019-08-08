@@ -4,7 +4,7 @@ import EventBusModuleShare from "/deepJS/util/EventBus/EventBusModuleShare.js";
 import Logger from "/deepJS/util/Logger.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 
-import TrackerLocalState from "/script/util/LocalState.js";
+import LocalState from "/script/util/LocalState.js";
 import Logic from "/script/util/Logic.js";
 import Settings from "/script/util/Settings.js";
 import SaveHandler from "/script/util/SaveHandler.js";
@@ -117,7 +117,8 @@ function changeView(event) {
 EventBus.register([
     "logic",
     "state",
-    "settings"
+    "settings",
+    "dungeontype"
 ], function(event) {
     updateChestStates();
     updateSkulltulasStates();
@@ -128,8 +129,8 @@ function canGet(name, category, dType) {
     let canGet = 0;
     let isOpen = 0;
     for (let i in list) {
-        if (!list[i].mode || TrackerLocalState.read(`options.${list[i].mode}`, false)) {
-            if (!TrackerLocalState.read(`${category}.${i}`, 0)) {
+        if (!list[i].mode || LocalState.read(`options.${list[i].mode}`, false)) {
+            if (!LocalState.read(`${category}.${i}`, 0)) {
                 if (Logic.getValue(category, i)) {
                     canGet++;
                 }
@@ -149,8 +150,8 @@ function updateChestStates() {
     if (!!data) {
         Object.keys(data).forEach(name => {
             let buff = GlobalData.get("locations")[name];
-            if (!buff.mode || TrackerLocalState.read(`options.${buff.mode}`, false)) {
-                let dType = TrackerLocalState.read(`dungeonTypes.${name}`, buff.hasmq ? "n" : "v");
+            if (!buff.mode || LocalState.read(`options.${buff.mode}`, false)) {
+                let dType = LocalState.read(`dungeonTypes.${name}`, buff.hasmq ? "n" : "v");
                 if (dType == "n") {
                     let cv = canGet(name, "chests", "v");
                     let cm = canGet(name, "chests", "mq");
@@ -199,7 +200,7 @@ function updateSkulltulasStates() {
     if (!!data) {
         Object.keys(data).forEach(name => {
             let buff = GlobalData.get("locations")[name];
-            let dType = TrackerLocalState.read(`dungeonTypes.${name}`, buff.hasmq ? "n" : "v");
+            let dType = LocalState.read(`dungeonTypes.${name}`, buff.hasmq ? "n" : "v");
             if (dType == "n") {
                 let cv = canGet(name, "skulltulas", "v");
                 let cm = canGet(name, "skulltulas", "mq");

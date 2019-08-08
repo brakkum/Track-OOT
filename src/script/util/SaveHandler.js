@@ -81,8 +81,8 @@ async function state_Load() {
             activestate = stateChoice.value;
             await LocalState.load(activestate);
             LocalStorage.set("activestate", activestate);
-            notePad.value = await LocalState.read("extras.notes", "");
-            EventBus.trigger("state", await LocalState.getState());
+            notePad.value = LocalState.read("notes", "");
+            EventBus.trigger("state", LocalState.getState());
             toggleStateButtons();
             Toast.show(`State "${activestate}" loaded.`);
         }
@@ -96,9 +96,9 @@ async function state_Delete() {
         TrackerStorage.StatesStorage.remove(del);
         if (del == activestate) {
             activestate = "";
-            await LocalState.reset();
+            LocalState.reset();
             LocalStorage.set("activestate", activestate);
-            EventBus.trigger("state", await LocalState.getState());
+            EventBus.trigger("state", LocalState.getState());
         }
         stateChoice.value = activestate;
         await prepairSavegameChoice();
@@ -125,18 +125,18 @@ async function state_New() {
         stateChoice.value = name;
         if (activestate == "") {
             if (await Dialog.confirm("Success", `State "${name}" created.<br>Do you want to reset the current state?`)) {
-                await LocalState.reset();
+                LocalState.reset();
                 notePad.value = "";
             }
         } else {
             Toast.show(`State "${name}" created.`);
-            await LocalState.reset();
+            LocalState.reset();
             notePad.value = "";
         }
         await LocalState.save(name);
         activestate = name;
         LocalStorage.set("activestate", activestate);
-        EventBus.trigger("state", await LocalState.getState());
+        EventBus.trigger("state", LocalState.getState());
         toggleStateButtons();
     }
 }
@@ -208,7 +208,7 @@ async function state_Import() {
             activestate = data.name;
             await LocalState.load(activestate);
             LocalStorage.set("activestate", activestate);
-            EventBus.trigger("state", await LocalState.getState());
+            EventBus.trigger("state", LocalState.getState());
             toggleStateButtons();
         }
     }

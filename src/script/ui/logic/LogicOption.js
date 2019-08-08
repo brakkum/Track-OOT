@@ -2,7 +2,7 @@ import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
 import GlobalData from "/deepJS/storage/GlobalData.js";
-import TrackerLocalState from "/script/util/LocalState.js";
+import LocalState from "/script/util/LocalState.js";
 import I18n from "/script/util/I18n.js";
 
 const TPL = new Template(`
@@ -40,17 +40,13 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
             SELECTOR_VALUE.set(this, select.value);
         }.bind(this));
         EventBus.register(["state", "settings"], function(event) {
-            let value;
-            if (!!event.data.options) {
-                value = event.data.options[this.ref];
-            }
-            this.update(value);
+            this.update(event.data[`options.${this.ref}`]);
         }.bind(this));
     }
 
     update(value) {
         if (typeof value == "undefined") {
-            value = TrackerLocalState.read(`options.${this.ref}`, GlobalData.get("settings").options[this.ref].default);
+            value = LocalState.read(`options.${this.ref}`, GlobalData.get("settings").options[this.ref].default);
         }
         if (SELECTOR_VALUE.has(this)) {
             value = value == SELECTOR_VALUE.get(this);
@@ -144,7 +140,7 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
         let hdr = el.querySelector(".header");
         if (!!logic) {
             cnt.innerHTML = I18n.translate(logic.el);
-            let value = TrackerLocalState.read(`options.${logic.el}`, GlobalData.get("settings").options[logic.el].default);
+            let value = LocalState.read(`options.${logic.el}`, GlobalData.get("settings").options[logic.el].default);
             if (SELECTOR_VALUE.has(this)) {
                 value = value == SELECTOR_VALUE.get(this);
             }

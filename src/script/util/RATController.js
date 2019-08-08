@@ -3,7 +3,7 @@ import Dialog from "/deepJS/ui/Dialog.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import EventBusModuleGeneric from "/deepJS/util/EventBus/EventBusModuleGeneric.js";
 import DeepWebRAT from "/script/client/WebRAT.js";
-import TrackerLocalState from "/script/util/LocalState.js";
+import LocalState from "/script/util/LocalState.js";
 
 const eventModule = new EventBusModuleGeneric();
 eventModule.mute("logic");
@@ -18,7 +18,7 @@ const EMPTY_FN = function() {};
 let ON_ROOMUPDATE = EMPTY_FN;
 
 function getState() {
-    let state = TrackerLocalState.getState();
+    let state = LocalState.getState();
     if (!!state.extras && !!state.extras.notes) {
         delete state.extras.notes;
     }
@@ -34,14 +34,14 @@ function setState(state) {
         for (let j in state[i]) {
             if (i === "extras" && j === "notes") continue;
             if (!!state[i] && !!state[i][j]) {
-                TrackerLocalState.write(i, j, state[i][j]);
+                LocalState.write(`${i}.${j}`, state[i][j]);
             } else {
-                TrackerLocalState.remove(i, j);
+                LocalState.remove(`${i}.${j}`);
             }
         }
     }
     // TODO use eventbus plugin
-    eventModule.trigger("state", TrackerLocalState.getState());
+    eventModule.trigger("state", LocalState.getState());
 }
 
 function getClientNameList() {

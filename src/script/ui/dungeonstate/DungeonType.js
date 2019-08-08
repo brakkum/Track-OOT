@@ -1,7 +1,7 @@
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import "/deepJS/ui/selection/Option.js";
-import TrackerLocalState from "/script/util/LocalState.js";
+import LocalState from "/script/util/LocalState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
@@ -52,10 +52,7 @@ const TPL = new Template(`
 
 function stateChanged(event) {
     EventBus.mute("dungeontype");
-    let value;
-    if (!!event && !!event.data.dungeonTypes) {
-        value = event.data.dungeonTypes[this.ref];
-    }
+    let value = event.data[`dungeonTypes.${this.ref}`];
     if (typeof value == "undefined" || value == "") {
         value = "n";
     }
@@ -118,7 +115,7 @@ class HTMLTrackerDungeonType extends HTMLElement {
                         this.append(createOption("v", "/images/type_vanilla.svg"));
                         this.append(createOption("mq", "/images/type_masterquest.svg"));
                         EventBus.mute("dungeontype");
-                        this.value = TrackerLocalState.read(`dungeonTypes.${newValue}`, "n");
+                        this.value = LocalState.read(`dungeonTypes.${newValue}`, "n");
                         EventBus.unmute("dungeontype");
                     }
                 }
@@ -133,7 +130,7 @@ class HTMLTrackerDungeonType extends HTMLElement {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
-                    TrackerLocalState.write(`dungeonTypes.${this.ref}`, newValue);
+                    LocalState.write(`dungeonTypes.${this.ref}`, newValue);
                     EventBus.trigger("dungeontype", {
                         name: this.ref,
                         value: newValue

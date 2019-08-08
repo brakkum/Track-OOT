@@ -3,7 +3,7 @@ import MemoryStorage from "/deepJS/storage/MemoryStorage.js";
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
-import TrackerLocalState from "/script/util/LocalState.js";
+import LocalState from "/script/util/LocalState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
@@ -75,17 +75,17 @@ function translate(value) {
 
 function canGet(name, category) {
     let list = GlobalData.get("locations")[name];
-    let dType = TrackerLocalState.read(`dungeonTypes.${name}`, list.hasmq ? "n" : "v");
+    let dType = LocalState.read(`dungeonTypes.${name}`, list.hasmq ? "n" : "v");
     if (dType === "n") {
         return "";
     }
     list = GlobalData.get("locations")[name][`${category}_${dType}`];
     let canGet = 0;
     for (let i in list) {
-        let filter = MemoryStorage.get("active_filter", "filter_era_active", GlobalData.get("filter")["filter_era_active"].default);
+        let filter = MemoryStorage.get("active_filter.filter_era_active", GlobalData.get("filter")["filter_era_active"].default);
         if (!list[i].era || !filter || filter === list[i].era) {
-            if (!list[i].mode || TrackerLocalState.read(`options.${list[i].mode}`, false)) {
-                if (!TrackerLocalState.read(category, i, 0)) {
+            if (!list[i].mode || LocalState.read(`options.${list[i].mode}`, false)) {
+                if (!LocalState.read(`${category}.${i}`, 0)) {
                     if (Logic.getValue(category, i)) {
                         canGet++;
                     }
@@ -107,7 +107,7 @@ function logicUpdate(event) {
 }
 
 function dungeonTypeUpdate(event) {
-    if (this.ref === event.data.ref) {
+    if (this.ref === event.data.name) {
         this.update();
     }
 }
@@ -149,8 +149,8 @@ class HTMLTrackerPOIArea extends HTMLElement {
         return ['ref', 'mode'];
     }
 
-    update() {
-        let val = Logic.checkLogicList(this.mode, this.ref);  // TODO maybe do this a better way
+    async update() {
+        let val = await Logic.checkLogicList(this.mode, this.ref);
         this.shadowRoot.getElementById("marker").className = translate(val);
         if (val > 0b001) {
             this.shadowRoot.getElementById("marker").innerHTML = canGet(this.ref, this.mode);

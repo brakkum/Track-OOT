@@ -3,7 +3,7 @@ import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
 import "/deepJS/ui/selection/Option.js";
-import TrackerLocalState from "/script/util/LocalState.js";
+import LocalState from "/script/util/LocalState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
@@ -59,10 +59,7 @@ const TPL = new Template(`
 function stateChanged(event) {
     EventBus.mute("item");
     // savesatate
-    let value;
-    if (!!event.data.items) {
-        value = parseInt(event.data.items[this.ref]);
-    }
+    let value = parseInt(event.data[`items.${this.ref}`]);
     if (isNaN(value)) {
         value = 0;
     }
@@ -160,12 +157,11 @@ class HTMLTrackerItem extends HTMLElement {
                 case 'ref':
                     EventBus.mute("item");
                     // savesatate
-                    this.value = TrackerLocalState.read(`items.${this.ref}`, 0);
+                    this.value = LocalState.read(`items.${this.ref}`, 0);
                     // settings
                     let data = GlobalData.get("items")[this.ref];
                     if (data.hasOwnProperty("start_settings")) {
-                        let stsp = data.start_settings.split(".");
-                        this.startvalue = TrackerLocalState.read(stsp[0], stsp[1], 1);
+                        this.startvalue = LocalState.read(data.start_settings, 1);
                     } else {
                         this.fillItemChoices();
                     }
@@ -183,7 +179,7 @@ class HTMLTrackerItem extends HTMLElement {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
-                    TrackerLocalState.write(`items.${this.ref}`, parseInt(newValue));
+                    LocalState.write(`items.${this.ref}`, parseInt(newValue));
                     EventBus.trigger("item", {
                         name: this.ref,
                         value: newValue
@@ -208,7 +204,7 @@ class HTMLTrackerItem extends HTMLElement {
 
         let max_value = 0;
         if (data.hasOwnProperty("related_dungeon") && data.hasOwnProperty("maxmq")) {
-            let type = TrackerLocalState.read(`dungeonTypes.${data.related_dungeon}`, "n");
+            let type = LocalState.read(`dungeonTypes.${data.related_dungeon}`, "n");
             if (type == "v") {
                 max_value = data.max;
             } else if (type == "mq") {

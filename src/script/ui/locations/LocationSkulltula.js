@@ -79,10 +79,7 @@ function locationUpdate(event) {
 function stateChanged(event) {
     let path = this.ref.split(".");
     EventBus.mute("skulltula");
-    let value;
-    if (!!event.data.skulltulas) {
-        value = !!event.data.skulltulas[path[2]];
-    }
+    let value = !!event.data[`skulltulas.${path[2]}`];
     if (typeof value == "undefined") {
         value = false;
     }

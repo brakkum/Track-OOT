@@ -48,7 +48,7 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
 
     update(value) {
         if (typeof value == "undefined") {
-            value = MemoryStorage.get("active_filter", this.ref, GlobalData.get("filter")[this.ref].default);
+            value = MemoryStorage.get(`active_filter.${this.ref}`, GlobalData.get("filter")[this.ref].default);
         }
         if (SELECTOR_VALUE.has(this)) {
             value = value == SELECTOR_VALUE.get(this);
@@ -142,7 +142,7 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
         let hdr = el.querySelector(".header");
         if (!!logic) {
             cnt.innerHTML = I18n.translate(logic.el);
-            let value = MemoryStorage.get("active_filter", logic.el, GlobalData.get("filter")[logic.el].default);
+            let value = MemoryStorage.get(`active_filter.${logic.el}`, GlobalData.get("filter")[logic.el].default);
             if (SELECTOR_VALUE.has(this)) {
                 value = value == SELECTOR_VALUE.get(this);
             }

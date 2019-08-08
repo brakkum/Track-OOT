@@ -4,7 +4,7 @@ import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Panel from "/deepJS/ui/layout/Panel.js";
 import "/deepJS/ui/selection/SwitchButton.js";
-import TrackerLocalState from "/script/util/LocalState.js";
+import LocalState from "/script/util/LocalState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import I18n from "/script/util/I18n.js";
 import Logic from "/script/util/Logic.js";
@@ -158,27 +158,27 @@ function translate(value) {
     }
 }
 
-function locationUpdate(event) {
+async function locationUpdate(event) {
     if ((!this.ref || this.ref === "") && this.mode != "gossipstones") {
         this.shadowRoot.querySelector('#title').className = "";
         let ch = Array.from(this.shadowRoot.getElementById("body").children);
-        ch.forEach(c => {
-            c.className = translate(Logic.checkLogicList(this.mode, c.dataset.ref))
+        ch.forEach(async c => {
+            c.className = translate(await Logic.checkLogicList(this.mode, c.dataset.ref))
         });
     } else {
         if (this.mode == "gossipstones") {
             this.shadowRoot.querySelector('#title').className = "";
         } else {
             let data = GlobalData.get("locations")[this.ref || "overworld"];
-            let dType = TrackerLocalState.read(`dungeonTypes.${this.ref || "overworld"}`, data.hasmq ? "n" : "v");
+            let dType = LocalState.read(`dungeonTypes.${this.ref || "overworld"}`, data.hasmq ? "n" : "v");
             if (dType === "n") {
                 let ch = Array.from(this.shadowRoot.getElementById("body").children);
-                ch.forEach(c => {
+                ch.forEach(async c => {
                     if (!c.dataset.ref || c.dataset.ref === "") return;
-                    c.className = translate(Logic.checkLogicList(this.mode, this.ref, c.dataset.ref));
+                    c.className = translate(await Logic.checkLogicList(this.mode, this.ref, c.dataset.ref));
                 });
             }
-            this.shadowRoot.querySelector('#title').className = translate(Logic.checkLogicList(this.mode, this.ref || "overworld"));
+            this.shadowRoot.querySelector('#title').className = translate(await Logic.checkLogicList(this.mode, this.ref || "overworld"));
         }
     }
 }
@@ -205,7 +205,7 @@ class HTMLTrackerLocationList extends Panel {
         });
         this.shadowRoot.getElementById('location-era').addEventListener("change", event => {
             this.era = event.newValue;
-            MemoryStorage.set("active_filter", "filter_era_active", this.era);
+            MemoryStorage.set("active_filter.filter_era_active", this.era);
             EventBus.trigger("location_era", {
                 value: this.era
             });
@@ -292,7 +292,7 @@ class HTMLTrackerLocationList extends Panel {
                     bck.addEventListener("click", () => this.ref = "");
                     cnt.append(bck);
                     data = GlobalData.get("locations")[this.ref];
-                    let dType = TrackerLocalState.read(`dungeonTypes.${this.ref}`, data.hasmq ? "n" : "v");
+                    let dType = LocalState.read(`dungeonTypes.${this.ref}`, data.hasmq ? "n" : "v");
                     if (data.hasmq) {
                         locationType.ref = this.ref;
                     } else {
@@ -320,7 +320,7 @@ class HTMLTrackerLocationList extends Panel {
                                 Object.keys(data).forEach(i => {
                                     let buf = data[i];
                                     if (!buf.era || !this.era || this.era === buf.era) {
-                                        if (!buf.mode || TrackerLocalState.read(`options.${buf.mode}`, false)) {
+                                        if (!buf.mode || LocalState.read(`options.${buf.mode}`, false)) {
                                             let el = LOCATION_ELEMENTS.get(`${this.ref}.${this.mode}_${dType}.${i}`);
                                             cnt.append(el);
                                         }

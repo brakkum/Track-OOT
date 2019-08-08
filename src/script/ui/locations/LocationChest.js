@@ -5,7 +5,7 @@ import Logger from "/deepJS/util/Logger.js";
 import Helper from "/deepJS/util/Helper.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import "/deepJS/ui/ContextMenu.js";
-import TrackerLocalState from "/script/util/LocalState.js";
+import LocalState from "/script/util/LocalState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
@@ -79,10 +79,7 @@ function locationUpdate(event) {
 function stateChanged(event) {
     let path = this.ref.split(".");
     EventBus.mute("chest");
-    let value;
-    if (!!event && !!event.data.chests) {
-        value = !!event.data.chests[path[2]];
-    }
+    let value = !!event.data[`chests.${path[2]}`];
     if (typeof value == "undefined") {
         value = false;
     }
@@ -213,7 +210,7 @@ class HTMLTrackerLocationChest extends HTMLElement {
                         txt.classList.remove("avail");
                     }
 
-                    this.checked = TrackerLocalState.read(`chests.${path[2]}`, false);
+                    this.checked = LocalState.read(`chests.${path[2]}`, false);
                 }
             break;
             case 'checked':
@@ -227,7 +224,7 @@ class HTMLTrackerLocationChest extends HTMLElement {
                             el.classList.remove("avail");
                         }
                     }
-                    TrackerLocalState.write(`chests.${path[2]}`, newValue === "false" ? false : !!newValue);
+                    LocalState.write(`chests.${path[2]}`, newValue === "false" ? false : !!newValue);
                     EventBus.trigger("chest", {
                         name: this.ref,
                         value: newValue

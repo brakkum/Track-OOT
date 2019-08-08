@@ -1,4 +1,4 @@
-import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
+import LocalStorage from "/deepJS/storage/LocalStorage.js";
 import Logger from "/deepJS/util/Logger.js";
 import TrackerStorage from "./TrackerStorage.js";
 
@@ -15,11 +15,11 @@ import TrackerStorage from "./TrackerStorage.js";
             }
         }
     }
-    DeepLocalStorage.set("savestate", res);
-    DeepLocalStorage.set("activestate", sessionStorage.getItem("meta\0active_state"));
+    LocalStorage.set("savestate", res);
+    LocalStorage.set("activestate", sessionStorage.getItem("meta\0active_state"));
 }();
 
-let state = DeepLocalStorage.get("savestate", {});
+let state = LocalStorage.get("savestate", {});
 
 class LocalState {
 
@@ -31,7 +31,7 @@ class LocalState {
     async load(name) {
         if (await TrackerStorage.StatesStorage.has(name)) {
             state = await TrackerStorage.StatesStorage.get(name);
-            DeepLocalStorage.set("savestate", state);
+            LocalStorage.set("savestate", state);
             Logger.info(`loaded state from "${name}"`, "LocalState");
         } else {
             Logger.warn(`tried to load state "${name}" that does not exist`, "LocalState");
@@ -41,7 +41,7 @@ class LocalState {
 
     write(key, value) {
         state[key] = value;
-        DeepLocalStorage.set("savestate", state);
+        LocalStorage.set("savestate", state);
     }
 
     read(key, def) {
@@ -54,13 +54,13 @@ class LocalState {
     remove(key) {
         if (!!state.hasOwnProperty(key)) {
             delete state[key];
-            DeepLocalStorage.set("savestate", state);
+            LocalStorage.set("savestate", state);
         }
     }
 
     reset() {
         state = {};
-        DeepLocalStorage.set("savestate", state);
+        LocalStorage.set("savestate", state);
         Logger.info(`state resettet`, "LocalState");
     }
 

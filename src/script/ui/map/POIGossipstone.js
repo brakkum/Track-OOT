@@ -4,7 +4,7 @@ import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import "/deepJS/ui/Tooltip.js";
-import TrackerLocalState from "/script/util/LocalState.js";
+import LocalState from "/script/util/LocalState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
@@ -103,10 +103,7 @@ function stateChanged(event) {
     if (GROUP.has(this)) {
         ref = GROUP.get(this);
     }
-    let value;
-    if (!!event.data.gossipstones) {
-        value = event.data.gossipstones[ref];
-    }
+    let value = event.data[`gossipstones.${ref}`];
     if (typeof value == "undefined") {
         value = {item: "0x01", location: "0x01"};
     }
@@ -226,8 +223,8 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
                         ref = data.ref;
                     }
 
-                    this.checked = TrackerLocalState.read(`gossipstones.${ref}`, false);
-                    this.setValue(TrackerLocalState.read(`gossipstones.${ref}`, {item: "0x01", location: "0x01"}));
+                    this.checked = LocalState.read(`gossipstones.${ref}`, false);
+                    this.setValue(LocalState.read(`gossipstones.${ref}`, {item: "0x01", location: "0x01"}));
                 }
             break;
             case 'checked':
@@ -289,7 +286,7 @@ customElements.define('ootrt-poigossipstone', HTMLTrackerPOIGossipstone);
 
 function hintstoneDialog(ref) {
     return new Promise(resolve => {
-        let value = TrackerLocalState.read(`gossipstones.${ref}`, {item: "0x01", location: "0x01"});
+        let value = LocalState.read(`gossipstones.${ref}`, {item: "0x01", location: "0x01"});
         let data = GlobalData.get('hints', {locations: [], items: []});
     
         let lbl_loc = document.createElement('label');
@@ -330,7 +327,7 @@ function hintstoneDialog(ref) {
             if (!!result) {
                 let res = {item: slt_itm.value, location: slt_loc.value};
                 let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][ref];
-                TrackerLocalState.write(`gossipstones.${data.ref || ref}`, res);
+                LocalState.write(`gossipstones.${data.ref || ref}`, res);
                 resolve(res);
             } else {
                 resolve(false);

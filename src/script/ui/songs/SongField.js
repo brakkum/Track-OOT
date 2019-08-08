@@ -1,6 +1,6 @@
 import Template from "/deepJS/util/Template.js";
 import GlobalData from "/deepJS/storage/GlobalData.js";
-import TrackerLocalState from "/script/util/LocalState.js";
+import LocalState from "/script/util/LocalState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
@@ -51,7 +51,7 @@ function editSong(event) {
     d.addEventListener("submit", function(result) {
         if (!!result) {
             let res = builder.value;
-            TrackerLocalState.write(`songs.${this.ref}`, res);
+            LocalState.write(`songs.${this.ref}`, res);
             this.shadowRoot.getElementById("stave").value = res;
             EventBus.trigger("song", {
                 name: this.ref,
@@ -64,10 +64,7 @@ function editSong(event) {
 }
 
 function stateChanged(event) {
-    let value;
-    if (!!event.data.songs) {
-        value = event.data.songs[this.ref];
-    }
+    let value = event.data[`songs.${this.ref}`];
     if (typeof value == "undefined") {
         value = GlobalData.get("songs")[this.ref].notes;
     }
@@ -76,7 +73,7 @@ function stateChanged(event) {
 
 function songUpdate(event) {
     if (this.ref === event.data.name) {
-        TrackerLocalState.write(`songs.${this.ref}`, event.data.value);
+        LocalState.write(`songs.${this.ref}`, event.data.value);
         this.shadowRoot.getElementById("stave").value = event.data.value;
     }
 }
@@ -109,7 +106,7 @@ export default class HTMLTrackerSongField extends HTMLElement {
             let data = GlobalData.get("songs")[newValue];
             let title = this.shadowRoot.getElementById("title");
             title.innerHTML = I18n.translate(newValue);
-            this.shadowRoot.getElementById("stave").value = TrackerLocalState.read(`songs.${newValue}`, data.notes);
+            this.shadowRoot.getElementById("stave").value = LocalState.read(`songs.${newValue}`, data.notes);
             if (data.editable) {
                 let edt = document.createElement('button');
                 edt.innerHTML = "✎";

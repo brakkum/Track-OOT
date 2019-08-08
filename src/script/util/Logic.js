@@ -1,7 +1,7 @@
 import GlobalData from "/deepJS/storage/GlobalData.js";
 import MemoryStorage from "/deepJS/storage/MemoryStorage.js";
 import TrackerStorage from "./TrackerStorage.js";
-import TrackerLocalState from "/script/util/LocalState.js";
+import LocalState from "/script/util/LocalState.js";
 import LogicWrapper from "/script/util/LogicWrapper.js";
 
 const LOGIC = {
@@ -33,10 +33,10 @@ class TrackerLogic {
         if (!!mode) {
             list = GlobalData.get("locations")[name][`${category}_${mode}`];
         } else {
-            let dType = TrackerLocalState.read(`dungeonTypes.${name}`, list.hasmq ? "n" : "v");
+            let dType = LocalState.read(`dungeonTypes.${name}`, list.hasmq ? "n" : "v");
             if (dType === "n") {
-                let res_v = this.checkLogicList(category, name, "v");
-                let res_m = this.checkLogicList(category, name, "mq");
+                let res_v = await this.checkLogicList(category, name, "v");
+                let res_m = await this.checkLogicList(category, name, "mq");
                 if (await TrackerStorage.SettingsStorage.get("unknown_dungeon_need_both", false)) {
                     return Math.min(res_v, res_m) || res_v || res_m;
                 } else {
@@ -49,10 +49,10 @@ class TrackerLogic {
         let canGet = 0;
         let unopened = 0;
         for (let i in list) {
-            let filter = MemoryStorage.get("active_filter", "filter_era_active", GlobalData.get("filter")["filter_era_active"].default);
+            let filter = MemoryStorage.get("active_filter.filter_era_active", GlobalData.get("filter")["filter_era_active"].default);
             if (!list[i].era || !filter || filter === list[i].era) {
-                if (!list[i].mode || TrackerLocalState.read(`options.${list[i].mode}`, false)) {
-                    if (!TrackerLocalState.read(category, i, 0)) {
+                if (!list[i].mode || LocalState.read(`options.${list[i].mode}`, false)) {
+                    if (!LocalState.read(`${category}.${i}`, 0)) {
                         unopened++;
                         if (this.getValue(category, i)) {
                             canGet++;
