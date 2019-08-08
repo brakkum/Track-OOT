@@ -118,7 +118,7 @@ class HTMLTrackerDungeonType extends HTMLElement {
                         this.append(createOption("v", "/images/type_vanilla.svg"));
                         this.append(createOption("mq", "/images/type_masterquest.svg"));
                         EventBus.mute("dungeontype");
-                        this.value = TrackerLocalState.read("dungeonTypes", newValue, "n");
+                        this.value = TrackerLocalState.read(`dungeonTypes.${newValue}`, "n");
                         EventBus.unmute("dungeontype");
                     }
                 }
@@ -133,7 +133,7 @@ class HTMLTrackerDungeonType extends HTMLElement {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
-                    TrackerLocalState.write("dungeonTypes", this.ref, newValue);
+                    TrackerLocalState.write(`dungeonTypes.${this.ref}`, newValue);
                     EventBus.trigger("dungeontype", {
                         name: this.ref,
                         value: newValue

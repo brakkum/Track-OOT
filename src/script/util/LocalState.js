@@ -7,10 +7,16 @@ import TrackerStorage from "./TrackerStorage.js";
     let k = Object.keys(sessionStorage);
     for (let i of k) {
         let r = i.split("\0");
-        res[`${r[0]}.${r[1]}`] = JSON.parse(sessionStorage.getItem(i));
+        if (r[0] != "meta") {
+            if (r[0] == "extras") {
+                res[r[1]] = JSON.parse(sessionStorage.getItem(i));
+            } else {
+                res[`${r[0]}.${r[1]}`] = JSON.parse(sessionStorage.getItem(i));
+            }
+        }
     }
     DeepLocalStorage.set("savestate", res);
-    DeepLocalStorage.set("activestate", sessionStorage.getItem("active_state"));
+    DeepLocalStorage.set("activestate", sessionStorage.getItem("meta\0active_state"));
 }();
 
 let state = DeepLocalStorage.get("savestate", {});

@@ -132,7 +132,7 @@ class HTMLTrackerDungeonReward extends HTMLElement {
                             }
                             this.append(createOption(i+1, `/images/${j}`));
                         }
-                        this.value = TrackerLocalState.read("dungeonRewards", newValue, 0);
+                        this.value = TrackerLocalState.read(`dungeonRewards.${newValue}`, 0);
                     }
                 }
             break;
@@ -146,7 +146,7 @@ class HTMLTrackerDungeonReward extends HTMLElement {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
-                    TrackerLocalState.write("dungeonRewards", this.ref, newValue);
+                    TrackerLocalState.write(`dungeonRewards.${this.ref}`, newValue);
                     EventBus.trigger("dungeonreward", {
                         name: this.ref,
                         value: newValue

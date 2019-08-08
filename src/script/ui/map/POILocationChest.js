@@ -199,7 +199,7 @@ class HTMLTrackerPOILocationChest extends HTMLElement {
                         el.classList.remove("avail");
                     }
 
-                    this.checked = TrackerLocalState.read("chests", path[2], false);
+                    this.checked = TrackerLocalState.read(`chests.${path[2]}`, false);
                 }
             break;
             case 'checked':
@@ -213,7 +213,7 @@ class HTMLTrackerPOILocationChest extends HTMLElement {
                             el.classList.remove("avail");
                         }
                     }
-                    TrackerLocalState.write("chests", path[2], newValue === "false" ? false : !!newValue);
+                    TrackerLocalState.write(`chests.${path[2]}`, newValue === "false" ? false : !!newValue);
                     EventBus.trigger("chest", {
                         name: this.ref,
                         value: newValue

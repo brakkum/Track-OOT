@@ -10,9 +10,8 @@ import I18n from "./I18n.js";
 import "/deepJS/ui/Paging.js";
 
 const settings = new SettingsWindow;
-const settingsEdit = document.getElementById("edit-settings");
 
-settings.innerHTML = `
+const SETTINGS_TPL = `
 <div style="display: flex; margin-bottom: 10px;">
     <div style="flex: 1">
         <div style="padding: 5px;">
@@ -70,7 +69,7 @@ Big thanks to:<br>
 </div>
 `;
 
-!function() {
+function initializeVersion() {
     let data = GlobalData.get("version");
     let version = settings.querySelector("#tracker-version");
     let date = settings.querySelector("#tracker-date");
@@ -90,106 +89,7 @@ Big thanks to:<br>
         s: ("00"+b.getSeconds()).slice(-2)
     };
     date.innerHTML = `${d.D}.${d.M}.${d.Y} ${d.h}:${d.m}:${d.s}`;
-}();
-
-let showUpdatePopup = true;
-
-if ('serviceWorker' in navigator) {
-    let prog = settings.querySelector("#update-progress");
-    let progtext = settings.querySelector("#update-progress-text");
-    //let checkUpdateTimeout = undefined;
-
-    function swStateRecieve(event) {
-        if (event.data.type == "state") {
-            switch(event.data.msg) {
-                case "update_available":
-                    settings.querySelector("#update-check").style.display = "none";
-                    settings.querySelector("#update-force").style.display = "block";
-                    settings.querySelector("#update-available").style.display = "block";
-                    if (showUpdatePopup) {
-                        let popover = PopOver.show("A new update is available. Click here to download!", 60);
-                        popover.addEventListener("click", function() {
-                            settings.show(getSettings(), 'about');
-                        });
-                    }
-                break;
-                case "update_unavailable":
-                    settings.querySelector("#update-check").style.display = "none";
-                    settings.querySelector("#update-force").style.display = "block";
-                    settings.querySelector("#update-unavailable").style.display = "block";
-                    //checkUpdateTimeout = setTimeout(checkUpdate, 600000);
-                break;
-                case "need_download":
-                    prog.value = 0;
-                    prog.max = event.data.value;
-                    progtext.innerHTML = `${prog.value}/${prog.max}`;
-                break;
-                case "file_downloaded":
-                    prog.value = parseInt(prog.value) + 1;
-                    progtext.innerHTML = `${prog.value}/${prog.max}`;
-                break;
-                case "update_finished":
-                    prog.value = 0;
-                    prog.max = 0;
-                    progtext.innerHTML = `0/0`;
-                    settings.querySelector("#update-running").style.display = "none";
-                    settings.querySelector("#update-finished").style.display = "block";
-                break;
-            }
-        } else if (event.data.type == "error") {
-            settings.querySelector("#update-check").style.display = "none";
-            settings.querySelector("#update-running").style.display = "none";
-            settings.querySelector("#update-finished").style.display = "none";
-            settings.querySelector("#update-force").style.display = "block";
-            settings.querySelector("#update-unavailable").style.display = "block";
-            Dialog.alert("Connection Lost", "The ServiceWorker was not able to establish or keep connection to the Server<br>Please try again later.");
-        }
-    }
-    navigator.serviceWorker.addEventListener('message', swStateRecieve);
-    function checkUpdate() {
-        settings.querySelector("#update-unavailable").style.display = "none";
-        settings.querySelector("#update-force").style.display = "none";
-        settings.querySelector("#update-check").style.display = "block";
-        navigator.serviceWorker.getRegistration().then(function(registration) {
-            registration.active.postMessage("check");
-        });
-    }
-    checkUpdate();
-    
-    settings.querySelector("#check-update").onclick = function() {
-        //clearTimeout(checkUpdateTimeout);
-        checkUpdate();
-    }
-
-    settings.querySelector("#download-update").onclick = function() {
-        settings.querySelector("#update-available").style.display = "none";
-        settings.querySelector("#update-force").style.display = "none";
-        settings.querySelector("#update-running").style.display = "block";
-        navigator.serviceWorker.getRegistration().then(function(registration) {
-            registration.active.postMessage("update");
-        });
-    }
-
-    settings.querySelector("#download-forced").onclick = function() {
-        settings.querySelector("#update-available").style.display = "none";
-        settings.querySelector("#update-force").style.display = "none";
-        settings.querySelector("#update-unavailable").style.display = "none";
-        settings.querySelector("#update-running").style.display = "block";
-        navigator.serviceWorker.getRegistration().then(function(registration) {
-            registration.active.postMessage("forceupdate");
-        });
-    }
-
 }
-
-document.getElementById("join-discord").addEventListener("click", function() {
-    window.open("https://discord.gg/wgFVtuv", "_blank");
-});
-
-settingsEdit.addEventListener("click", function() {
-    showUpdatePopup = false;
-    settings.show(getSettings(), 'settings');
-});
 
 function onSettingsEvent(event) {
     let settings = {};
@@ -223,15 +123,6 @@ function onSettingsEvent(event) {
     return settings;
 }
 
-settings.addEventListener('submit', function(event) {
-    EventBus.trigger("settings", onSettingsEvent(event));
-});
-EventBus.register("settings", onSettingsEvent);
-
-settings.addEventListener('close', function(event) {
-    showUpdatePopup = true;
-});
-
 async function getSettings() {
     let options = GlobalData.get("settings");
     let res = {};
@@ -243,11 +134,11 @@ async function getSettings() {
                 if (options[i][j].type === "list") {
                     let def = new Set(options[i][j].default);
                     let val = [];
-                    options[i][j].values.forEach(el => {
+                    for (let el of options[i][j].values) {
                         if (await TrackerStorage.SettingsStorage.get(el, def.has(el))) {
                             val.push(el);
                         }
-                    });
+                    }
                     res[i][j] = val.join(",");
                 } else {
                     res[i][j] = await TrackerStorage.SettingsStorage.get(j, options[i][j].default);
@@ -298,7 +189,7 @@ function convertValueList(values = [], names = []) {
     return opt;
 }
 
-!function() {
+function initializeSettings() {
     let options = GlobalData.get("settings");
     for (let i in options) {
         settings.addTab(I18n.translate(i), i);
@@ -343,4 +234,129 @@ function convertValueList(values = [], names = []) {
         settings.close();
     }
     applySettingsChoices();
-}();
+}
+
+let showUpdatePopup = true;
+
+class Settings {
+
+    init() {
+        settings.innerHTML = SETTINGS_TPL;
+        initializeVersion();
+
+        if ('serviceWorker' in navigator) {
+            let prog = settings.querySelector("#update-progress");
+            let progtext = settings.querySelector("#update-progress-text");
+            //let checkUpdateTimeout = undefined;
+        
+            function swStateRecieve(event) {
+                if (event.data.type == "state") {
+                    switch(event.data.msg) {
+                        case "update_available":
+                            settings.querySelector("#update-check").style.display = "none";
+                            settings.querySelector("#update-force").style.display = "block";
+                            settings.querySelector("#update-available").style.display = "block";
+                            if (showUpdatePopup) {
+                                let popover = PopOver.show("A new update is available. Click here to download!", 60);
+                                popover.addEventListener("click", function() {
+                                    settings.show(getSettings(), 'about');
+                                });
+                            }
+                        break;
+                        case "update_unavailable":
+                            settings.querySelector("#update-check").style.display = "none";
+                            settings.querySelector("#update-force").style.display = "block";
+                            settings.querySelector("#update-unavailable").style.display = "block";
+                            //checkUpdateTimeout = setTimeout(checkUpdate, 600000);
+                        break;
+                        case "need_download":
+                            prog.value = 0;
+                            prog.max = event.data.value;
+                            progtext.innerHTML = `${prog.value}/${prog.max}`;
+                        break;
+                        case "file_downloaded":
+                            prog.value = parseInt(prog.value) + 1;
+                            progtext.innerHTML = `${prog.value}/${prog.max}`;
+                        break;
+                        case "update_finished":
+                            prog.value = 0;
+                            prog.max = 0;
+                            progtext.innerHTML = `0/0`;
+                            settings.querySelector("#update-running").style.display = "none";
+                            settings.querySelector("#update-finished").style.display = "block";
+                        break;
+                    }
+                } else if (event.data.type == "error") {
+                    settings.querySelector("#update-check").style.display = "none";
+                    settings.querySelector("#update-running").style.display = "none";
+                    settings.querySelector("#update-finished").style.display = "none";
+                    settings.querySelector("#update-force").style.display = "block";
+                    settings.querySelector("#update-unavailable").style.display = "block";
+                    if (!showUpdatePopup) {
+                        Dialog.alert("Connection Lost", "The ServiceWorker was not able to establish or keep connection to the Server<br>Please try again later.");
+                    }
+                }
+            }
+            navigator.serviceWorker.addEventListener('message', swStateRecieve);
+            
+            settings.querySelector("#check-update").onclick = function() {
+                //clearTimeout(checkUpdateTimeout);
+                this.checkUpdate();
+            }.bind(this);
+        
+            settings.querySelector("#download-update").onclick = function() {
+                settings.querySelector("#update-available").style.display = "none";
+                settings.querySelector("#update-force").style.display = "none";
+                settings.querySelector("#update-running").style.display = "block";
+                navigator.serviceWorker.getRegistration().then(function(registration) {
+                    registration.active.postMessage("update");
+                });
+            }
+        
+            settings.querySelector("#download-forced").onclick = function() {
+                settings.querySelector("#update-available").style.display = "none";
+                settings.querySelector("#update-force").style.display = "none";
+                settings.querySelector("#update-unavailable").style.display = "none";
+                settings.querySelector("#update-running").style.display = "block";
+                navigator.serviceWorker.getRegistration().then(function(registration) {
+                    registration.active.postMessage("forceupdate");
+                });
+            }
+        
+        }
+
+        document.getElementById("join-discord").addEventListener("click", function() {
+            window.open("https://discord.gg/wgFVtuv", "_blank");
+        });
+        
+        document.getElementById("edit-settings").addEventListener("click", function() {
+            showUpdatePopup = false;
+            settings.show(getSettings(), 'settings');
+        });
+
+        settings.addEventListener('submit', function(event) {
+            EventBus.trigger("settings", onSettingsEvent(event));
+        });
+        EventBus.register("settings", onSettingsEvent);
+        
+        settings.addEventListener('close', function(event) {
+            showUpdatePopup = true;
+        });
+
+        initializeSettings();
+
+        this.checkUpdate();
+    }
+
+    checkUpdate() {
+        settings.querySelector("#update-unavailable").style.display = "none";
+        settings.querySelector("#update-force").style.display = "none";
+        settings.querySelector("#update-check").style.display = "block";
+        navigator.serviceWorker.getRegistration().then(function(registration) {
+            registration.active.postMessage("check");
+        });
+    }
+
+}
+
+export default new Settings;

@@ -160,7 +160,7 @@ class HTMLTrackerItem extends HTMLElement {
                 case 'ref':
                     EventBus.mute("item");
                     // savesatate
-                    this.value = TrackerLocalState.read("items", this.ref, 0);
+                    this.value = TrackerLocalState.read(`items.${this.ref}`, 0);
                     // settings
                     let data = GlobalData.get("items")[this.ref];
                     if (data.hasOwnProperty("start_settings")) {
@@ -183,7 +183,7 @@ class HTMLTrackerItem extends HTMLElement {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
-                    TrackerLocalState.write("items", this.ref, parseInt(newValue));
+                    TrackerLocalState.write(`items.${this.ref}`, parseInt(newValue));
                     EventBus.trigger("item", {
                         name: this.ref,
                         value: newValue
@@ -208,7 +208,7 @@ class HTMLTrackerItem extends HTMLElement {
 
         let max_value = 0;
         if (data.hasOwnProperty("related_dungeon") && data.hasOwnProperty("maxmq")) {
-            let type = TrackerLocalState.read("dungeonTypes", data.related_dungeon, "n");
+            let type = TrackerLocalState.read(`dungeonTypes.${data.related_dungeon}`, "n");
             if (type == "v") {
                 max_value = data.max;
             } else if (type == "mq") {

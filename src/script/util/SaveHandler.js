@@ -1,12 +1,11 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
-import DeepSessionStorage from "/deepJS/storage/SessionStorage.js";
+import LocalStorage from "/deepJS/storage/LocalStorage.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import Toast from "/deepJS/ui/Toast.js";
 import TrackerStorage from "./TrackerStorage.js";
 import LocalState from "./LocalState.js";
 
-let activestate = DeepSessionStorage.get('meta', 'active_state', "");
+let activestate = "";
 
 const stateChoice = document.getElementById("select-savegame");
 const stateSave = document.getElementById("save-savegame");
@@ -16,6 +15,7 @@ const stateDel = document.getElementById("delete-savegame");
 const stateRename = document.getElementById("rename-savegame");
 const stateExport = document.getElementById("export-savegame");
 const stateImport = document.getElementById("import-savegame");
+const notePad = document.getElementById("tracker-notes");
 
 stateSave.addEventListener("click", state_Save);
 stateLoad.addEventListener("click", state_Load);
@@ -25,24 +25,6 @@ stateRename.addEventListener("click", state_Rename);
 stateExport.addEventListener("click", state_Export);
 stateImport.addEventListener("click", state_Import);
 stateChoice.addEventListener("change", toggleStateButtons);
-
-const notePad = document.getElementById("tracker-notes");
-notePad.value = TrackerLocalState.read("extras", "notes", "");
-!function() {
-    let notePadTimer = null;
-    notePad.oninput = function() {
-        if (!!notePadTimer) {
-            clearTimeout(notePadTimer);
-        }
-        notePadTimer = setTimeout(writeNotePadValue, 1000);
-    }
-    notePad.oncontextmenu = function(event) {
-        event.stopPropagation();
-    }
-    function writeNotePadValue() {
-        TrackerLocalState.write("extras", "notes", notePad.value);
-    };
-}();
 
 function toggleStateButtons() {
     if (stateChoice.value == "") {
@@ -70,6 +52,7 @@ async function prepairSavegameChoice() {
     for (let i = 0; i < keys.length; ++i) {
         stateChoice.append(createOption(keys[i]));
     }
+    activestate = LocalStorage.get('activestate', "");
     stateChoice.value = activestate;
 }
 
@@ -83,7 +66,7 @@ function createOption(value) {
 async function state_Save() {
     if (stateChoice.value != "") {
         stateChoice.value = activestate;
-        TrackerLocalState.save(activestate);
+        await LocalState.save(activestate);
         Toast.show(`Saved "${activestate}" successfully.`);
     }
 }
@@ -96,10 +79,10 @@ async function state_Load() {
         }
         if (!!confirm) {
             activestate = stateChoice.value;
-            TrackerLocalState.load(activestate);
-            DeepSessionStorage.set('meta', 'active_state', activestate);
-            notePad.value = TrackerLocalState.read("extras", "notes", "");
-            EventBus.trigger("state", TrackerLocalState.getState());
+            await LocalState.load(activestate);
+            LocalStorage.set("activestate", activestate);
+            notePad.value = await LocalState.read("extras.notes", "");
+            EventBus.trigger("state", await LocalState.getState());
             toggleStateButtons();
             Toast.show(`State "${activestate}" loaded.`);
         }
@@ -113,12 +96,12 @@ async function state_Delete() {
         TrackerStorage.StatesStorage.remove(del);
         if (del == activestate) {
             activestate = "";
-            TrackerLocalState.reset();
-            DeepSessionStorage.set('meta', 'active_state', activestate);
-            EventBus.trigger("state", TrackerLocalState.getState());
+            await LocalState.reset();
+            LocalStorage.set("activestate", activestate);
+            EventBus.trigger("state", await LocalState.getState());
         }
         stateChoice.value = activestate;
-        prepairSavegameChoice();
+        await prepairSavegameChoice();
         toggleStateButtons();
         Toast.show(`State "${del}" removed.`);
     }
@@ -138,22 +121,22 @@ async function state_New() {
             return;
         }
         await TrackerStorage.StatesStorage.set(name, {});
-        prepairSavegameChoice();
+        await prepairSavegameChoice();
         stateChoice.value = name;
         if (activestate == "") {
             if (await Dialog.confirm("Success", `State "${name}" created.<br>Do you want to reset the current state?`)) {
-                TrackerLocalState.reset();
+                await LocalState.reset();
                 notePad.value = "";
             }
         } else {
             Toast.show(`State "${name}" created.`);
-            TrackerLocalState.reset();
+            await LocalState.reset();
             notePad.value = "";
         }
-        TrackerLocalState.save(name);
+        await LocalState.save(name);
         activestate = name;
-        DeepSessionStorage.set('meta', 'active_state', activestate);
-        EventBus.trigger("state", TrackerLocalState.getState());
+        LocalStorage.set("activestate", activestate);
+        EventBus.trigger("state", await LocalState.getState());
         toggleStateButtons();
     }
 }
@@ -181,9 +164,9 @@ async function state_Rename() {
             await TrackerStorage.StatesStorage.set(name, save);
             if (activestate != "" && activestate == stateChoice.value) {
                 activestate = name;
-                DeepSessionStorage.set('meta', 'active_state', activestate);
+                LocalStorage.set("activestate", activestate);
             }
-            prepairSavegameChoice();
+            await prepairSavegameChoice();
             stateChoice.value = name;
             toggleStateButtons();
         }
@@ -219,17 +202,39 @@ async function state_Import() {
             return;
         }
         await TrackerStorage.StatesStorage.set(data.name, data.data);
-        prepairSavegameChoice();
+        await prepairSavegameChoice();
         if (!!(await Dialog.confirm(`Imported "${data.name}" successfully.`, `Do you want to load the imported state?${activestate !== "" ? "(Unsaved changes will be lost.)" : ""}`))) {
             stateChoice.value = data.name;
             activestate = data.name;
-            TrackerLocalState.load(activestate);
-            DeepSessionStorage.set('meta', 'active_state', activestate);
-            EventBus.trigger("state", TrackerLocalState.getState());
+            await LocalState.load(activestate);
+            LocalStorage.set("activestate", activestate);
+            EventBus.trigger("state", await LocalState.getState());
             toggleStateButtons();
         }
     }
 }
 
-prepairSavegameChoice();
-toggleStateButtons();
+class SaveHandler {
+
+    async init() {
+        notePad.value = LocalState.read("notes", "");
+        let notePadTimer = null;
+        notePad.oninput = function() {
+            if (!!notePadTimer) {
+                clearTimeout(notePadTimer);
+            }
+            notePadTimer = setTimeout(writeNotePadValue, 1000);
+        }
+        notePad.oncontextmenu = function(event) {
+            event.stopPropagation();
+        }
+        async function writeNotePadValue() {
+            LocalState.write("notes", notePad.value);
+        };
+        await prepairSavegameChoice();
+        toggleStateButtons();
+    }
+
+}
+
+export default new SaveHandler;

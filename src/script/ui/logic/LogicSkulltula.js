@@ -49,7 +49,7 @@ export default class TrackerLogicSkulltula extends DeepLogicAbstractElement {
 
     update(value) {
         if (typeof value == "undefined") {
-            value = TrackerLocalState.read("skulltulas", this.ref, false);
+            value = TrackerLocalState.read(`skulltulas.${this.ref}`, false);
         }
         this.value = value;
     }
@@ -99,7 +99,7 @@ export default class TrackerLogicSkulltula extends DeepLogicAbstractElement {
         let hdr = el.querySelector(".header");
         if (!!logic) {
             cnt.innerHTML = I18n.translate(logic.el);
-            let value = +TrackerLocalState.read("skulltulas", logic.el, false);
+            let value = +TrackerLocalState.read(`skulltulas.${logic.el}`, false);
             el.dataset.value = value;
             hdr.dataset.value = value;
         }

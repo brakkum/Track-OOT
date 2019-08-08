@@ -199,7 +199,7 @@ class HTMLTrackerPOILocationSkulltula extends HTMLElement {
                         el.classList.remove("avail");
                     }
 
-                    this.checked = TrackerLocalState.read("skulltulas", path[2], false);
+                    this.checked = TrackerLocalState.read(`skulltulas.${path[2]}`, false);
                 }
             break;
             case 'checked':
@@ -213,7 +213,7 @@ class HTMLTrackerPOILocationSkulltula extends HTMLElement {
                             el.classList.remove("avail");
                         }
                     }
-                    TrackerLocalState.write("skulltulas", path[2], newValue === "false" ? false : !!newValue);
+                    TrackerLocalState.write(`skulltulas.${path[2]}`, newValue === "false" ? false : !!newValue);
                     EventBus.trigger("skulltula", {
                         name: this.ref,
                         value: newValue

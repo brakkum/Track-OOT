@@ -226,8 +226,8 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
                         ref = data.ref;
                     }
 
-                    this.checked = TrackerLocalState.read("gossipstones", ref, false);
-                    this.setValue(TrackerLocalState.read("gossipstones", ref, {item: "0x01", location: "0x01"}));
+                    this.checked = TrackerLocalState.read(`gossipstones.${ref}`, false);
+                    this.setValue(TrackerLocalState.read(`gossipstones.${ref}`, {item: "0x01", location: "0x01"}));
                 }
             break;
             case 'checked':
@@ -289,7 +289,7 @@ customElements.define('ootrt-poigossipstone', HTMLTrackerPOIGossipstone);
 
 function hintstoneDialog(ref) {
     return new Promise(resolve => {
-        let value = TrackerLocalState.read("gossipstones", ref, {item: "0x01", location: "0x01"});
+        let value = TrackerLocalState.read(`gossipstones.${ref}`, {item: "0x01", location: "0x01"});
         let data = GlobalData.get('hints', {locations: [], items: []});
     
         let lbl_loc = document.createElement('label');
@@ -330,7 +330,7 @@ function hintstoneDialog(ref) {
             if (!!result) {
                 let res = {item: slt_itm.value, location: slt_loc.value};
                 let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][ref];
-                TrackerLocalState.write("gossipstones", data.ref || ref, res);
+                TrackerLocalState.write(`gossipstones.${data.ref || ref}`, res);
                 resolve(res);
             } else {
                 resolve(false);

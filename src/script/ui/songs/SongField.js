@@ -51,7 +51,7 @@ function editSong(event) {
     d.addEventListener("submit", function(result) {
         if (!!result) {
             let res = builder.value;
-            TrackerLocalState.write("songs", this.ref, res);
+            TrackerLocalState.write(`songs.${this.ref}`, res);
             this.shadowRoot.getElementById("stave").value = res;
             EventBus.trigger("song", {
                 name: this.ref,
@@ -76,7 +76,7 @@ function stateChanged(event) {
 
 function songUpdate(event) {
     if (this.ref === event.data.name) {
-        TrackerLocalState.write("songs", this.ref, event.data.value);
+        TrackerLocalState.write(`songs.${this.ref}`, event.data.value);
         this.shadowRoot.getElementById("stave").value = event.data.value;
     }
 }
@@ -109,7 +109,7 @@ export default class HTMLTrackerSongField extends HTMLElement {
             let data = GlobalData.get("songs")[newValue];
             let title = this.shadowRoot.getElementById("title");
             title.innerHTML = I18n.translate(newValue);
-            this.shadowRoot.getElementById("stave").value = TrackerLocalState.read("songs", newValue, data.notes);
+            this.shadowRoot.getElementById("stave").value = TrackerLocalState.read(`songs.${newValue}`, data.notes);
             if (data.editable) {
                 let edt = document.createElement('button');
                 edt.innerHTML = "✎";

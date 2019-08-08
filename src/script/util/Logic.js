@@ -33,7 +33,7 @@ class TrackerLogic {
         if (!!mode) {
             list = GlobalData.get("locations")[name][`${category}_${mode}`];
         } else {
-            let dType = TrackerLocalState.read("dungeonTypes", name, list.hasmq ? "n" : "v");
+            let dType = TrackerLocalState.read(`dungeonTypes.${name}`, list.hasmq ? "n" : "v");
             if (dType === "n") {
                 let res_v = this.checkLogicList(category, name, "v");
                 let res_m = this.checkLogicList(category, name, "mq");
@@ -51,7 +51,7 @@ class TrackerLogic {
         for (let i in list) {
             let filter = MemoryStorage.get("active_filter", "filter_era_active", GlobalData.get("filter")["filter_era_active"].default);
             if (!list[i].era || !filter || filter === list[i].era) {
-                if (!list[i].mode || TrackerLocalState.read("options", list[i].mode, false)) {
+                if (!list[i].mode || TrackerLocalState.read(`options.${list[i].mode}`, false)) {
                     if (!TrackerLocalState.read(category, i, 0)) {
                         unopened++;
                         if (this.getValue(category, i)) {

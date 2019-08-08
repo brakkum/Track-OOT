@@ -1,45 +1,51 @@
+let dbInstance = null;
 
 function openDB() {
     return new Promise(function(resolve, reject) {
-        let request = indexedDB.open("data");
-        request.onupgradeneeded = function() {
-			let db = this.result;
-			let savestateStore = db.createObjectStore("savestates");
-			let settingsStore = db.createObjectStore("settings");
-			for (let i of Object.keys(localStorage)) {
-				if (i.startsWith(`save\0`)) {
-					let res = {};
-					let data = JSON.parse(localStorage.getItem(i));
-					for (let i in data) {
-						if (i == "meta" || i == "extras") continue;
-						for (let j in data[i]) {
-							res[`${i}.${j}`] = data[i][j];
+		if (dbInstance != null) {
+			resolve();
+		} else {
+			let request = indexedDB.open("data");
+			request.onupgradeneeded = function() {
+				let db = this.result;
+				let savestateStore = db.createObjectStore("savestates");
+				let settingsStore = db.createObjectStore("settings");
+				for (let i of Object.keys(localStorage)) {
+					if (i.startsWith(`save\0`)) {
+						let res = {};
+						let data = JSON.parse(localStorage.getItem(i));
+						for (let i in data) {
+							if (i == "meta" || i == "extras") continue;
+							for (let j in data[i]) {
+								res[`${i}.${j}`] = data[i][j];
+							}
 						}
+						if (!!data.extras && !!data.extras.notes) {
+							res.notes = data.extras.notes;
+						}
+						savestateStore.add(res, i.split("\0")[1]);
 					}
-					if (!!data.extras && !!data.extras.notes) {
-						res.notes = data.extras.notes;
+					if (i.startsWith(`settings\0`)) {
+						let data = JSON.parse(localStorage.getItem(i));
+						settingsStore.add(data, i.split("\0")[1]);
 					}
-					savestateStore.add(res, i.split("\0")[1]);
 				}
-				if (i.startsWith(`settings\0`)) {
-					let data = JSON.parse(localStorage.getItem(i));
-					settingsStore.add(data, i.split("\0")[1]);
-				}
+			};
+			request.onsuccess = function() {
+				dbInstance = request.result;
+				resolve(request.result);
+			};
+			request.onerror = function(e) {
+				reject(e);
 			}
-        };
-        request.onsuccess = function() {
-            resolve(request.result);
-        };
-        request.onerror = function(e) {
-            reject(e);
-        }
+		}
     });
 }
-function getStoreWritable(db, name) {
-	return db.transaction(name, "readwrite").objectStore(name);
+function getStoreWritable(name) {
+	return dbInstance.transaction(name, "readwrite").objectStore(name);
 }
-function getStoreReadonly(db, name) {
-	return db.transaction(name, "readonly").objectStore(name);
+function getStoreReadonly(name) {
+	return dbInstance.transaction(name, "readonly").objectStore(name);
 }
 function writeData(store, key, value) {
 	return new Promise(function(resolve, reject) {
@@ -107,10 +113,9 @@ class TrackerStorage {
 
 	async set(key, value) {
 		try {
-			let db = await openDB();
-			let store = getStoreWritable(db, NAME.get(this));
+			await openDB();
+			let store = getStoreWritable(NAME.get(this));
 			await writeData(store, key, value);
-			db.close();
 		} catch(error) {
 			// error handling
 		}
@@ -118,10 +123,9 @@ class TrackerStorage {
 
 	async get(key, value) {
 		try {
-			let db = await openDB();
-			let store = getStoreReadonly(db, NAME.get(this));
+			await openDB();
+			let store = getStoreReadonly(NAME.get(this));
 			let result = await readData(store, key);
-			db.close();
 			if (typeof result == "undefined" || result == null) {
 				return value;
 			}
@@ -133,10 +137,9 @@ class TrackerStorage {
 
 	async has(key) {
 		try {
-			var db = await openDB();
-			let store = getStoreReadonly(db, NAME.get(this));
+			await openDB();
+			let store = getStoreReadonly(NAME.get(this));
 			var res = await hasKey(store, key);
-			db.close();
 			return !!res;
 		} catch(error) {
 			// error handling
@@ -145,10 +148,9 @@ class TrackerStorage {
 
 	async remove(key) {
 		try {
-			let db = await openDB();
-			let store = getStoreWritable(db, NAME.get(this));
+			await openDB();
+			let store = getStoreWritable(NAME.get(this));
 			let result = await deleteData(store, key);
-			db.close();
 			return !!result;
 		} catch(error) {
 			// error handling
@@ -157,10 +159,9 @@ class TrackerStorage {
 
 	async keys() {
 		try {
-			let db = await openDB();
-			let store = getStoreReadonly(db, NAME.get(this));
+			await openDB();
+			let store = getStoreReadonly(NAME.get(this));
 			let result = await getKeys(store);
-			db.close();
 			return result;
 		} catch(error) {
 			// error handling

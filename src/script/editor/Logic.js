@@ -1,9 +1,9 @@
-import LocalStorage from "/deepJS/storage/LocalStorage.js";
 import GlobalData from "/deepJS/storage/GlobalData.js";
+import TrackerStorage from "/script/util/TrackerStorage.js";
 
 class EditorLogic {
 
-    patch(logic) {
+    async patch(logic) {
         let data = GlobalData.get("logic_patched", {});
         for (let i in logic) {
             if (!data[i]) {
@@ -15,25 +15,25 @@ class EditorLogic {
             }
         }
         GlobalData.set("logic_patched", logic);
-        LocalStorage.set("settings.logic", logic);
+        await TrackerStorage.SettingsStorage.set("logic", logic);
     }
 
-    clear() {
+    async clear() {
         GlobalData.set("logic_patched", {});
-        LocalStorage.set("settings.logic", {});
+        await TrackerStorage.SettingsStorage.set("logic", {});
     }
 
-    set(type, key, logic) {
+    async set(type, key, logic) {
         let data = GlobalData.get("logic_patched", {});
         if (!data[type]) {
             data[type] = {};
         }
         data[type][key] = logic;
         GlobalData.set("logic_patched", data);
-        LocalStorage.set("settings.logic", data);
+        await TrackerStorage.SettingsStorage.set("logic", data);
     }
 
-    get(type, key) {
+    async get(type, key) {
         let data = GlobalData.get("logic_patched", {});
         if (!!data[type] && !!data[type][key]) {
             return data[type][key];
@@ -41,12 +41,12 @@ class EditorLogic {
         return GlobalData.get("logic")[type][key];
     }
 
-    remove(type, key) {
+    async remove(type, key) {
         let data = GlobalData.get("logic_patched", {});
         if (!!data[type] && !!data[type][key]) {
             delete data[type][key];
             GlobalData.set("logic_patched", data);
-            LocalStorage.set("settings.logic", data);
+            await TrackerStorage.SettingsStorage.set("logic", data);
         }
     }
 

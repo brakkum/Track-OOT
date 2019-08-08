@@ -1,6 +1,6 @@
 import GlobalData from "/deepJS/storage/GlobalData.js";
-import LocalStorage from "/deepJS/storage/LocalStorage.js";
 import FileLoader from "/deepJS/util/FileLoader.js";
+import TrackerStorage from "/script/util/TrackerStorage.js";
 
 const FILES = [
     "items",
@@ -20,7 +20,7 @@ const LOGIC_PATCHES = [];
 
 export default async function loadData() {
     let loading = [];
-    GlobalData.set("logic_patched", LocalStorage.get("settings.logic", {}));
+    GlobalData.set("logic_patched", await TrackerStorage.SettingsStorage.get("logic", {}));
     FILES.forEach(file => {
         loading.push(FileLoader.json(`database/${file}.json`).then(function(data) {
             GlobalData.set(file, data);

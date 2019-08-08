@@ -408,7 +408,7 @@ class HTMLTrackerMap extends Panel {
                                     Object.keys(buff).forEach(j => {
                                         let buf = buff[j];
                                         if (!buf.era || !this.era || this.era === buf.era) {
-                                            if (!buf.mode || TrackerLocalState.read("options", buf.mode, false)) {
+                                            if (!buf.mode || TrackerLocalState.read(`options.${buf.mode}`, false)) {
                                                 let el = LOCATION_ELEMENTS.get(`${i}.${this.mode}_v.${j}`);
                                                 this.append(el);
                                             }

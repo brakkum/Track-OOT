@@ -6,7 +6,8 @@ import Dialog from "/deepJS/ui/Dialog.js";
 
 import TrackerLocalState from "/script/util/LocalState.js";
 import Logic from "/script/util/Logic.js";
-import "/script/util/SaveHandler.js";
+import Settings from "/script/util/Settings.js";
+import SaveHandler from "/script/util/SaveHandler.js";
 
 import "/deepJS/ui/Icon.js";
 import "/deepJS/ui/selection/ChoiceSelect.js";
@@ -38,9 +39,14 @@ import "/deepJS/ui/selection/ChoiceSelect.js";
         $import.importModule("/script/ui/shops/ShopList.js"),
         $import.importModule("/script/ui/songs/SongList.js"),
         $import.importModule("/script/ui/multiplayer/Multiplayer.js"),
-        $import.importModule("/script/ui/LayoutContainer.js"),
-        $import.importModule("/script/util/Settings.js")
+        $import.importModule("/script/ui/LayoutContainer.js")
     ]);
+
+    updateLoadingMessage("initialize savestates...");
+    await SaveHandler.init();
+
+    updateLoadingMessage("initialize settings...");
+    await Settings.init();
 
     updateChestStates();
     updateSkulltulasStates();
@@ -122,8 +128,8 @@ function canGet(name, category, dType) {
     let canGet = 0;
     let isOpen = 0;
     for (let i in list) {
-        if (!list[i].mode || TrackerLocalState.read("options", list[i].mode, false)) {
-            if (!TrackerLocalState.read(category, i, 0)) {
+        if (!list[i].mode || TrackerLocalState.read(`options.${list[i].mode}`, false)) {
+            if (!TrackerLocalState.read(`${category}.${i}`, 0)) {
                 if (Logic.getValue(category, i)) {
                     canGet++;
                 }
@@ -143,8 +149,8 @@ function updateChestStates() {
     if (!!data) {
         Object.keys(data).forEach(name => {
             let buff = GlobalData.get("locations")[name];
-            if (!buff.mode || TrackerLocalState.read("options", buff.mode, false)) {
-                let dType = TrackerLocalState.read("dungeonTypes", name, buff.hasmq ? "n" : "v");
+            if (!buff.mode || TrackerLocalState.read(`options.${buff.mode}`, false)) {
+                let dType = TrackerLocalState.read(`dungeonTypes.${name}`, buff.hasmq ? "n" : "v");
                 if (dType == "n") {
                     let cv = canGet(name, "chests", "v");
                     let cm = canGet(name, "chests", "mq");
@@ -193,7 +199,7 @@ function updateSkulltulasStates() {
     if (!!data) {
         Object.keys(data).forEach(name => {
             let buff = GlobalData.get("locations")[name];
-            let dType = TrackerLocalState.read("dungeonTypes", name, buff.hasmq ? "n" : "v");
+            let dType = TrackerLocalState.read(`dungeonTypes.${name}`, buff.hasmq ? "n" : "v");
             if (dType == "n") {
                 let cv = canGet(name, "skulltulas", "v");
                 let cm = canGet(name, "skulltulas", "mq");

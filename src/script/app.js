@@ -2,7 +2,7 @@
     starting point for application
 */
 
-import TrackerStorage from "./TrackerStorage.js";
+import TrackerStorage from "/script/util/TrackerStorage.js";
 import loadData from "/script/util/loader.js";
 import I18n from "/script/util/I18n.js";
 import Logic from "/script/util/Logic.js";

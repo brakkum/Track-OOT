@@ -196,49 +196,49 @@ const LOGIC_OPERATORS = [
         d.show();
     }
         
-    function loadChestLogic(event) {
+    async function loadChestLogic(event) {
         let ref = event.target.dataset.ref;
         workingarea.dataset.logicType = "chests";
         workingarea.dataset.logicKey = ref;
-        workingarea.loadLogic(EditorLogic.get("chests", ref));
+        workingarea.loadLogic(await EditorLogic.get("chests", ref));
         workingarea.caption = `[C] ${I18n.translate(ref)}`;
     }
         
-    function loadSkulltulaLogic(event) {
+    async function loadSkulltulaLogic(event) {
         let ref = event.target.dataset.ref;
         workingarea.dataset.logicType = "skulltulas";
         workingarea.dataset.logicKey = ref;
-        workingarea.loadLogic(EditorLogic.get("skulltulas", ref));
+        workingarea.loadLogic(await EditorLogic.get("skulltulas", ref));
         workingarea.caption = `[S] ${I18n.translate(ref)}`;
     }
         
-    function loadMixinLogic(event) {
+    async function loadMixinLogic(event) {
         let ref = event.target.dataset.ref;
         workingarea.dataset.logicType = "mixins";
         workingarea.dataset.logicKey = ref;
-        workingarea.loadLogic(EditorLogic.get("mixins", ref));
+        workingarea.loadLogic(await EditorLogic.get("mixins", ref));
         workingarea.caption = `[M] ${I18n.translate(ref)}`;
     }
 
-    function refreshLogic(event) {
+    async function refreshLogic(event) {
         let type = workingarea.dataset.logicType;
         let key = workingarea.dataset.logicKey;
-        workingarea.loadLogic(EditorLogic.get(type, key));
+        workingarea.loadLogic(await EditorLogic.get(type, key));
         event.preventDefault();
         return false;
     }
 
-    function storeLogic(event) {
+    async function storeLogic(event) {
         let type = workingarea.dataset.logicType;
         let key = workingarea.dataset.logicKey;
-        EditorLogic.set(type, key, workingarea.getLogic());
+        await EditorLogic.set(type, key, workingarea.getLogic());
         return refreshLogic(event);
     }
 
-    function removeLogic(event) {
+    async function removeLogic(event) {
         let type = workingarea.dataset.logicType;
         let key = workingarea.dataset.logicKey;
-        EditorLogic.remove(type, key);
+        await EditorLogic.remove(type, key);
         return refreshLogic(event);
     }
 

@@ -7,6 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <script>
             localStorage.clear();
+            sessionStorage.clear();
+
+            // TODO remove indexedDB
 
             if(window.navigator && navigator.serviceWorker) {
                 navigator.serviceWorker.getRegistrations().then(function(registrations) {

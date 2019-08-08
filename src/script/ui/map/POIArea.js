@@ -75,7 +75,7 @@ function translate(value) {
 
 function canGet(name, category) {
     let list = GlobalData.get("locations")[name];
-    let dType = TrackerLocalState.read("dungeonTypes", name, list.hasmq ? "n" : "v");
+    let dType = TrackerLocalState.read(`dungeonTypes.${name}`, list.hasmq ? "n" : "v");
     if (dType === "n") {
         return "";
     }
@@ -84,7 +84,7 @@ function canGet(name, category) {
     for (let i in list) {
         let filter = MemoryStorage.get("active_filter", "filter_era_active", GlobalData.get("filter")["filter_era_active"].default);
         if (!list[i].era || !filter || filter === list[i].era) {
-            if (!list[i].mode || TrackerLocalState.read("options", list[i].mode, false)) {
+            if (!list[i].mode || TrackerLocalState.read(`options.${list[i].mode}`, false)) {
                 if (!TrackerLocalState.read(category, i, 0)) {
                     if (Logic.getValue(category, i)) {
                         canGet++;

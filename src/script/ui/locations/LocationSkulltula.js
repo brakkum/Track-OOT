@@ -5,7 +5,7 @@ import Logger from "/deepJS/util/Logger.js";
 import Helper from "/deepJS/util/Helper.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import "/deepJS/ui/ContextMenu.js";
-import TrackerLocalState from "/script/util/LocalState.js";
+import LocalState from "/script/util/LocalState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
@@ -80,7 +80,7 @@ function stateChanged(event) {
     let path = this.ref.split(".");
     EventBus.mute("skulltula");
     let value;
-    if (!!event.data.chests) {
+    if (!!event.data.skulltulas) {
         value = !!event.data.skulltulas[path[2]];
     }
     if (typeof value == "undefined") {
@@ -213,7 +213,7 @@ class HTMLTrackerLocationSkulltula extends HTMLElement {
                         txt.classList.remove("avail");
                     }
 
-                    this.checked = TrackerLocalState.read("skulltulas", path[2], false);
+                    this.checked = LocalState.read(`skulltulas.${path[2]}`, false);
                 }
             break;
             case 'checked':
@@ -227,7 +227,7 @@ class HTMLTrackerLocationSkulltula extends HTMLElement {
                             el.classList.remove("avail");
                         }
                     }
-                    TrackerLocalState.write("skulltulas", path[2], newValue === "false" ? false : !!newValue);
+                    LocalState.write(`skulltulas.${path[2]}`, newValue === "false" ? false : !!newValue);
                     EventBus.trigger("skulltula", {
                         name: this.ref,
                         value: newValue

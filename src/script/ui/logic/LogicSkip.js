@@ -50,7 +50,7 @@ export default class TrackerLogicSkip extends DeepLogicAbstractElement {
 
     update(value) {
         if (typeof value == "undefined") {
-            value = TrackerLocalState.read("skips", this.ref, GlobalData.get("settings").skips[this.ref].default);
+            value = TrackerLocalState.read(`skips.${this.ref}`, GlobalData.get("settings").skips[this.ref].default);
         }
         if (SELECTOR_VALUE.has(this)) {
             value = value == SELECTOR_VALUE.get(this);
@@ -144,7 +144,7 @@ export default class TrackerLogicSkip extends DeepLogicAbstractElement {
         let hdr = el.querySelector(".header");
         if (!!logic) {
             cnt.innerHTML = I18n.translate(logic.el);
-            let value = TrackerLocalState.read("skips", logic.el, GlobalData.get("settings").skips[logic.el].default);
+            let value = TrackerLocalState.read(`skips.${logic.el}`, GlobalData.get("settings").skips[logic.el].default);
             if (SELECTOR_VALUE.has(this)) {
                 value = value == SELECTOR_VALUE.get(this);
             }

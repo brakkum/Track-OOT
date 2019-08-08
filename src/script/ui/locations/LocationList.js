@@ -170,7 +170,7 @@ function locationUpdate(event) {
             this.shadowRoot.querySelector('#title').className = "";
         } else {
             let data = GlobalData.get("locations")[this.ref || "overworld"];
-            let dType = TrackerLocalState.read("dungeonTypes", this.ref || "overworld", data.hasmq ? "n" : "v");
+            let dType = TrackerLocalState.read(`dungeonTypes.${this.ref || "overworld"}`, data.hasmq ? "n" : "v");
             if (dType === "n") {
                 let ch = Array.from(this.shadowRoot.getElementById("body").children);
                 ch.forEach(c => {
@@ -292,7 +292,7 @@ class HTMLTrackerLocationList extends Panel {
                     bck.addEventListener("click", () => this.ref = "");
                     cnt.append(bck);
                     data = GlobalData.get("locations")[this.ref];
-                    let dType = TrackerLocalState.read("dungeonTypes", this.ref, data.hasmq ? "n" : "v");
+                    let dType = TrackerLocalState.read(`dungeonTypes.${this.ref}`, data.hasmq ? "n" : "v");
                     if (data.hasmq) {
                         locationType.ref = this.ref;
                     } else {
@@ -320,7 +320,7 @@ class HTMLTrackerLocationList extends Panel {
                                 Object.keys(data).forEach(i => {
                                     let buf = data[i];
                                     if (!buf.era || !this.era || this.era === buf.era) {
-                                        if (!buf.mode || TrackerLocalState.read("options", buf.mode, false)) {
+                                        if (!buf.mode || TrackerLocalState.read(`options.${buf.mode}`, false)) {
                                             let el = LOCATION_ELEMENTS.get(`${this.ref}.${this.mode}_${dType}.${i}`);
                                             cnt.append(el);
                                         }

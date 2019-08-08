@@ -50,7 +50,7 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
 
     update(value) {
         if (typeof value == "undefined") {
-            value = TrackerLocalState.read("options", this.ref, GlobalData.get("settings").options[this.ref].default);
+            value = TrackerLocalState.read(`options.${this.ref}`, GlobalData.get("settings").options[this.ref].default);
         }
         if (SELECTOR_VALUE.has(this)) {
             value = value == SELECTOR_VALUE.get(this);
@@ -144,7 +144,7 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
         let hdr = el.querySelector(".header");
         if (!!logic) {
             cnt.innerHTML = I18n.translate(logic.el);
-            let value = TrackerLocalState.read("options", logic.el, GlobalData.get("settings").options[logic.el].default);
+            let value = TrackerLocalState.read(`options.${logic.el}`, GlobalData.get("settings").options[logic.el].default);
             if (SELECTOR_VALUE.has(this)) {
                 value = value == SELECTOR_VALUE.get(this);
             }

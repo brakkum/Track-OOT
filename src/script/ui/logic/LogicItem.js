@@ -42,7 +42,7 @@ export default class TrackerLogicItem extends DeepLogicAbstractElement {
 
     update(value) {
         if (typeof value == "undefined") {
-            value = TrackerLocalState.read("items", this.ref, 0);
+            value = TrackerLocalState.read(`items.${this.ref}`, 0);
         }
         this.value = value;
     }
@@ -92,7 +92,7 @@ export default class TrackerLogicItem extends DeepLogicAbstractElement {
         let hdr = el.querySelector(".header");
         if (!!logic) {
             cnt.innerHTML = I18n.translate(logic.el);
-            let value = +TrackerLocalState.read("items", logic.el, 0);
+            let value = +TrackerLocalState.read(`items.${logic.el}`, 0);
             el.dataset.value = value;
             hdr.dataset.value = value;
         }
