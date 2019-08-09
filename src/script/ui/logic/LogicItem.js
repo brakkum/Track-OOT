@@ -36,7 +36,7 @@ export default class TrackerLogicItem extends DeepLogicAbstractElement {
         }.bind(this));
     }
 
-    update(value) {
+    async update(value) {
         if (typeof value == "undefined") {
             value = LocalState.read(`items.${this.ref}`, 0);
         }

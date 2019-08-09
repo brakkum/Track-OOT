@@ -44,7 +44,7 @@ export default class TrackerLogicOption extends DeepLogicAbstractElement {
         }.bind(this));
     }
 
-    update(value) {
+    async update(value) {
         if (typeof value == "undefined") {
             value = LocalState.read(`options.${this.ref}`, GlobalData.get("settings").options[this.ref].default);
         }

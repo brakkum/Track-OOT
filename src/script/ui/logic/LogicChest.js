@@ -36,7 +36,7 @@ export default class TrackerLogicChest extends DeepLogicAbstractElement {
         }.bind(this));
     }
 
-    update(value) {
+    async update(value) {
         if (typeof value == "undefined") {
             value = LocalState.read(`chests.${this.ref}`, false);
         }

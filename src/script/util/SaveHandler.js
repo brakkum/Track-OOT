@@ -52,7 +52,7 @@ async function prepairSavegameChoice() {
     for (let i = 0; i < keys.length; ++i) {
         stateChoice.append(createOption(keys[i]));
     }
-    activestate = LocalStorage.get('activestate', "");
+    activestate = LocalStorage.get('name', "");
     stateChoice.value = activestate;
 }
 
@@ -80,7 +80,6 @@ async function state_Load() {
         if (!!confirm) {
             activestate = stateChoice.value;
             await LocalState.load(activestate);
-            LocalStorage.set("activestate", activestate);
             notePad.value = LocalState.read("notes", "");
             EventBus.trigger("state", LocalState.getState());
             toggleStateButtons();
@@ -97,7 +96,6 @@ async function state_Delete() {
         if (del == activestate) {
             activestate = "";
             LocalState.reset();
-            LocalStorage.set("activestate", activestate);
             EventBus.trigger("state", LocalState.getState());
         }
         stateChoice.value = activestate;
@@ -135,7 +133,6 @@ async function state_New() {
         }
         await LocalState.save(name);
         activestate = name;
-        LocalStorage.set("activestate", activestate);
         EventBus.trigger("state", LocalState.getState());
         toggleStateButtons();
     }
@@ -156,15 +153,9 @@ async function state_Rename() {
                 state_New();
                 return;
             }
-            let save = await TrackerStorage.StatesStorage.get(stateChoice.value);
-            if (!!save.meta) {
-                delete save.meta;
-            }
-            await TrackerStorage.StatesStorage.remove(stateChoice.value);
-            await TrackerStorage.StatesStorage.set(name, save);
+            await LocalState.rename(stateChoice.value, name);
             if (activestate != "" && activestate == stateChoice.value) {
                 activestate = name;
-                LocalStorage.set("activestate", activestate);
             }
             await prepairSavegameChoice();
             stateChoice.value = name;
@@ -207,7 +198,6 @@ async function state_Import() {
             stateChoice.value = data.name;
             activestate = data.name;
             await LocalState.load(activestate);
-            LocalStorage.set("activestate", activestate);
             EventBus.trigger("state", LocalState.getState());
             toggleStateButtons();
         }

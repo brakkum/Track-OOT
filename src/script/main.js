@@ -29,6 +29,12 @@ import "/deepJS/ui/selection/ChoiceSelect.js";
         document.getElementById("tab_log_bottom").style.display = "none";
     }
 
+    updateLoadingMessage("initialize savestates...");
+    await SaveHandler.init();
+
+    updateLoadingMessage("initialize settings...");
+    await Settings.init();
+
     updateLoadingMessage("add modules...");
 
     document.getElementById("view-choice-top").onchange = changeView;
@@ -41,12 +47,6 @@ import "/deepJS/ui/selection/ChoiceSelect.js";
         $import.importModule("/script/ui/multiplayer/Multiplayer.js"),
         $import.importModule("/script/ui/LayoutContainer.js")
     ]);
-
-    updateLoadingMessage("initialize savestates...");
-    await SaveHandler.init();
-
-    updateLoadingMessage("initialize settings...");
-    await Settings.init();
 
     updateChestStates();
     updateSkulltulasStates();

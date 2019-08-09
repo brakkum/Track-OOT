@@ -2,42 +2,41 @@ let dbInstance = null;
 
 function openDB() {
     return new Promise(function(resolve, reject) {
-		if (dbInstance != null) {
-			resolve();
-		} else {
-			let request = indexedDB.open("data");
-			request.onupgradeneeded = function() {
-				let db = this.result;
-				let savestateStore = db.createObjectStore("savestates");
-				let settingsStore = db.createObjectStore("settings");
-				for (let i of Object.keys(localStorage)) {
-					if (i.startsWith(`save\0`)) {
-						let res = {};
-						let data = JSON.parse(localStorage.getItem(i));
-						for (let i in data) {
-							if (i == "meta" || i == "extras") continue;
-							for (let j in data[i]) {
-								res[`${i}.${j}`] = data[i][j];
-							}
+		let request = indexedDB.open("data");
+		request.onupgradeneeded = function() {
+			let db = this.result;
+			let savestateStore = db.createObjectStore("savestates", {keyPath: "name"});
+			let settingsStore = db.createObjectStore("settings");
+			for (let i of Object.keys(localStorage)) {
+				if (i.startsWith(`save\0`)) {
+					let res = {};
+					let data = JSON.parse(localStorage.getItem(i));
+					for (let i in data) {
+						if (i == "meta" || i == "extras") continue;
+						for (let j in data[i]) {
+							res[`${i}.${j}`] = data[i][j];
 						}
-						if (!!data.extras && !!data.extras.notes) {
-							res.notes = data.extras.notes;
-						}
-						savestateStore.add(res, i.split("\0")[1]);
 					}
-					if (i.startsWith(`settings\0`)) {
-						let data = JSON.parse(localStorage.getItem(i));
-						settingsStore.add(data, i.split("\0")[1]);
+					if (!!data.extras && !!data.extras.notes) {
+						res.notes = data.extras.notes;
 					}
+					res.name = i.split("\0")[1];
+					savestateStore.add(res);
+					localStorage.removeItem(i);
 				}
-			};
-			request.onsuccess = function() {
-				dbInstance = request.result;
-				resolve(request.result);
-			};
-			request.onerror = function(e) {
-				reject(e);
+				if (i.startsWith(`settings\0`)) {
+					let data = JSON.parse(localStorage.getItem(i));
+					settingsStore.add(data, i.split("\0")[1]);
+					localStorage.removeItem(i);
+				}
 			}
+		};
+		request.onsuccess = function() {
+			dbInstance = request.result;
+			resolve(request.result);
+		};
+		request.onerror = function(e) {
+			reject(e);
 		}
     });
 }
@@ -49,7 +48,13 @@ function getStoreReadonly(name) {
 }
 function writeData(store, key, value) {
 	return new Promise(function(resolve, reject) {
-		let request = store.put(value, key);
+		let request;
+		if (!!store.keyPath) {
+			value[store.keyPath] = key;
+			request = store.put(value);
+		} else {
+			request = store.put(value, key);
+		}
 		request.onsuccess = function(e) {
 			resolve();
 		};
@@ -113,7 +118,9 @@ class TrackerStorage {
 
 	async set(key, value) {
 		try {
-			await openDB();
+			if (dbInstance == null) {
+				await openDB()
+			}
 			let store = getStoreWritable(NAME.get(this));
 			await writeData(store, key, value);
 		} catch(error) {
@@ -123,7 +130,9 @@ class TrackerStorage {
 
 	async get(key, value) {
 		try {
-			await openDB();
+			if (dbInstance == null) {
+				await openDB()
+			}
 			let store = getStoreReadonly(NAME.get(this));
 			let result = await readData(store, key);
 			if (typeof result == "undefined" || result == null) {
@@ -137,7 +146,9 @@ class TrackerStorage {
 
 	async has(key) {
 		try {
-			await openDB();
+			if (dbInstance == null) {
+				await openDB()
+			}
 			let store = getStoreReadonly(NAME.get(this));
 			var res = await hasKey(store, key);
 			return !!res;
@@ -148,7 +159,9 @@ class TrackerStorage {
 
 	async remove(key) {
 		try {
-			await openDB();
+			if (dbInstance == null) {
+				await openDB()
+			}
 			let store = getStoreWritable(NAME.get(this));
 			let result = await deleteData(store, key);
 			return !!result;
@@ -159,7 +172,9 @@ class TrackerStorage {
 
 	async keys() {
 		try {
-			await openDB();
+			if (dbInstance == null) {
+				await openDB()
+			}
 			let store = getStoreReadonly(NAME.get(this));
 			let result = await getKeys(store);
 			return result;

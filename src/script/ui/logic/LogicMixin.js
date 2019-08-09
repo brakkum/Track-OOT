@@ -57,7 +57,7 @@ export default class TrackerLogicMixin extends DeepLogicAbstractElement {
         }.bind(this));
     }
 
-    update(value) {
+    async update(value) {
         if (typeof value == "undefined") {
             value = Logic.getValue("mixins", this.ref);
         }

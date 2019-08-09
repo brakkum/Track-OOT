@@ -44,7 +44,7 @@ export default class TrackerLogicSkip extends DeepLogicAbstractElement {
         }.bind(this));
     }
 
-    update(value) {
+    async update(value) {
         if (typeof value == "undefined") {
             value = LocalState.read(`skips.${this.ref}`, GlobalData.get("settings").skips[this.ref].default);
         }

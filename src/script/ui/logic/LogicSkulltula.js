@@ -44,7 +44,7 @@ export default class TrackerLogicSkulltula extends DeepLogicAbstractElement {
         }.bind(this));
     }
 
-    update(value) {
+    async update(value) {
         if (typeof value == "undefined") {
             value = LocalState.read(`skulltulas.${this.ref}`, false);
         }
