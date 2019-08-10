@@ -70,7 +70,7 @@ function stateChanged(event) {
         let stsp = data.start_settings.split(".");
         let startvalue;
         if (!!event.data[stsp[0]]) {
-            value = parseInt(event.data[stsp[0]][stsp[1]]);
+            startvalue = parseInt(event.data[stsp[0]][stsp[1]]);
         }
         if (isNaN(startvalue)) {
             startvalue = 1;

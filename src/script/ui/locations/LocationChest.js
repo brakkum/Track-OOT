@@ -83,7 +83,7 @@ function stateChanged(event) {
     if (typeof value == "undefined") {
         value = false;
     }
-    this.value = value;
+    this.checked = value;
     EventBus.unmute("chest");
 }
 
