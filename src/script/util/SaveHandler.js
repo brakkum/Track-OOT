@@ -2,8 +2,11 @@ import LocalStorage from "/deepJS/storage/LocalStorage.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import Toast from "/deepJS/ui/Toast.js";
-import TrackerStorage from "./TrackerStorage.js";
-import LocalState from "./LocalState.js";
+import TrackerStorage from "/script/util/TrackerStorage.js";
+import LocalState from "/script/util/LocalState.js";
+import StatesWindow from "/script/ui/StatesWindow.js";
+
+const stateswindow = new StatesWindow;
 
 let activestate = "";
 
@@ -72,12 +75,14 @@ async function state_Save() {
 }
 
 async function state_Load() {
+    stateswindow.show();
     if (stateChoice.value != "") {
         let confirm = true;
         if (activestate != "") {
             confirm = await Dialog.confirm("Warning", "Do you really want to load? Unsaved changes will be lost.");
         }
         if (!!confirm) {
+
             activestate = stateChoice.value;
             await LocalState.load(activestate);
             notePad.value = LocalState.read("notes", "");
