@@ -6,8 +6,6 @@ import TrackerStorage from "/script/util/TrackerStorage.js";
 import LocalState from "/script/util/LocalState.js";
 import StatesWindow from "/script/ui/StatesWindow.js";
 
-const stateswindow = new StatesWindow;
-
 let activestate = "";
 
 const stateChoice = document.getElementById("select-savegame");
@@ -66,6 +64,22 @@ function createOption(value) {
     return opt;
 }
 
+function showStateWindow() {
+    return new Promise(function(resolve) {
+        let w = new StatesWindow();
+        w.onsubmit = function(event) {
+            resolve(event.value);
+        }
+        w.oncancel = function() {
+            resolve(false);
+        }
+        w.onclose = function() {
+            resolve();
+        }
+        w.show();
+    });
+}
+
 async function state_Save() {
     if (stateChoice.value != "") {
         stateChoice.value = activestate;
@@ -75,15 +89,14 @@ async function state_Save() {
 }
 
 async function state_Load() {
-    stateswindow.show();
-    if (stateChoice.value != "") {
-        let confirm = true;
-        if (activestate != "") {
-            confirm = await Dialog.confirm("Warning", "Do you really want to load? Unsaved changes will be lost.");
-        }
-        if (!!confirm) {
-
-            activestate = stateChoice.value;
+    let confirm = true;
+    if (!!activestate) {
+        confirm = await Dialog.confirm("Warning", "Do you really want to load? Unsaved changes will be lost.");
+    }
+    if (!!confirm) {
+        let state = await showStateWindow();
+        if (!!state) {
+            activestate = state;
             await LocalState.load(activestate);
             notePad.value = LocalState.read("notes", "");
             EventBus.trigger("state", LocalState.getState());

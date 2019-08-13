@@ -40,6 +40,7 @@ const TPL = new Template(`
         #statename {
             display: block;
             flex: 1;
+            padding: 5px;
         }
         #body {
             padding: 20px;
@@ -53,7 +54,7 @@ const TPL = new Template(`
     <deep-listselect id="statelist"></deep-listselect>
     <div id="footer">
         <input type=text" id="statename" placeholder="Please enter a name..." />
-        <button id="submit" title="load">
+        <button id="submit" title="submit">
             LOAD
         </button>
         <button id="cancel" title="cancel">
@@ -71,10 +72,6 @@ const Q_TAB = [
     '[tabindex]:not([tabindex="-1"])'
 ].join(',');
 
-function submitChoice() {
-    // TODO
-}
-
 export default class StatesWindow extends Window {
 
     constructor(title = "Load state", options = {}) {
@@ -83,17 +80,28 @@ export default class StatesWindow extends Window {
         let window = this.shadowRoot.getElementById('window');
         this.shadowRoot.getElementById('body').innerHTML = "";
         this.shadowRoot.insertBefore(els.children[0], this.shadowRoot.getElementById('focus_catcher_top'));
-        this.shadowRoot.getElementById('body').append(els.getElementById('statelist'));
+        let lst = els.getElementById('statelist');
+        this.shadowRoot.getElementById('body').append(lst);
         window.append(els.getElementById('footer'));
-
+        let snm = this.shadowRoot.getElementById('statename');
+        if (!options.edit) {
+            snm.readonly = "true";
+        }
+        lst.addEventListener("change", function(event) {
+            snm.value = event.newValue;
+        });
         let smt = this.shadowRoot.getElementById('submit');
-        smt.onclick = submitChoice.bind(this);
-
+        smt.onclick = () => {
+            let ev = new Event('submit');
+            ev.value = snm.value;
+            this.dispatchEvent(ev);
+            this.close();
+        };
         let ccl = this.shadowRoot.getElementById('cancel');
         ccl.onclick = () => {
             this.dispatchEvent(new Event('cancel'));
             this.close();
-        }
+        };
     }
 
     get active() {
