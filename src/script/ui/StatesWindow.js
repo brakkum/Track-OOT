@@ -84,9 +84,6 @@ export default class StatesWindow extends Window {
         this.shadowRoot.getElementById('body').append(lst);
         window.append(els.getElementById('footer'));
         let snm = this.shadowRoot.getElementById('statename');
-        if (!options.edit) {
-            snm.readonly = "true";
-        }
         lst.addEventListener("change", function(event) {
             snm.value = event.newValue;
         });
@@ -102,6 +99,10 @@ export default class StatesWindow extends Window {
             this.dispatchEvent(new Event('cancel'));
             this.close();
         };
+        if (!options.edit) {
+            snm.readonly = "true";
+            smt.innerHTML = "SAVE";
+        }
     }
 
     get active() {
