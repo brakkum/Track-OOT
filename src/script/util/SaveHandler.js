@@ -23,10 +23,10 @@ stateSave.addEventListener("click", state_Save);
 stateSaveAs.addEventListener("click", state_SaveAs);
 stateLoad.addEventListener("click", state_Load);
 stateNew.addEventListener("click", state_New);
-stateDel.addEventListener("click", state_Delete);
-stateRename.addEventListener("click", state_Rename);
-stateExport.addEventListener("click", state_Export);
-stateImport.addEventListener("click", state_Import);
+//stateDel.addEventListener("click", state_Delete);
+//stateRename.addEventListener("click", state_Rename);
+//stateExport.addEventListener("click", state_Export);
+//stateImport.addEventListener("click", state_Import);
 //stateChoice.addEventListener("change", toggleStateButtons);
 
 function toggleStateButtons() {
@@ -104,10 +104,15 @@ async function state_Save() {
 async function state_SaveAs() {
     let state = await showStateWindow(false);
     if (!!state) {
-        activestate = state;
-        // TODO check if already exists and ask for overwrite
-        await LocalState.save(activestate);
-        Toast.show(`Saved "${activestate}" successfully.`);
+        let confirm = true;
+        if (await TrackerStorage.StatesStorage.has(state)) {
+            confirm = await Dialog.confirm("State already exists", "Do you want to overwrite the old savestate?");
+        }
+        if (!!confirm) {
+            activestate = state;
+            await LocalState.save(activestate);
+            Toast.show(`Saved "${activestate}" successfully.`);
+        }
     }
 }
 
@@ -141,7 +146,7 @@ async function state_Delete() {
             EventBus.trigger("state", LocalState.getState());
         }
         stateChoice.value = activestate;
-        await prepairSavegameChoice();
+        // // await prepairSavegameChoice();
         // toggleStateButtons();
         Toast.show(`State "${del}" removed.`);
     }
@@ -156,6 +161,7 @@ async function state_New() {
         LocalState.reset();
         notePad.value = "";
         activestate = "";
+        EventBus.trigger("state", LocalState.getState());
     }
 }
 
@@ -178,7 +184,7 @@ async function state_Rename() {
             if (activestate != "" && activestate == stateChoice.value) {
                 activestate = name;
             }
-            await prepairSavegameChoice();
+            // await prepairSavegameChoice();
             stateChoice.value = name;
             // toggleStateButtons();
         }
@@ -214,7 +220,7 @@ async function state_Import() {
             return;
         }
         await TrackerStorage.StatesStorage.set(data.name, data.data);
-        await prepairSavegameChoice();
+        // await prepairSavegameChoice();
         if (!!(await Dialog.confirm(`Imported "${data.name}" successfully.`, `Do you want to load the imported state?${activestate !== "" ? "(Unsaved changes will be lost.)" : ""}`))) {
             stateChoice.value = data.name;
             activestate = data.name;
@@ -242,7 +248,7 @@ class SaveHandler {
         async function writeNotePadValue() {
             LocalState.write("notes", notePad.value);
         };
-        await prepairSavegameChoice();
+        // await prepairSavegameChoice();
         // toggleStateButtons();
     }
 

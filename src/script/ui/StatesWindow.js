@@ -51,10 +51,19 @@ const TPL = new Template(`
             border: solid 2px #ccc;
         }
     </style>
+    <div id="avtionbar">
+        <button id="rename" title="rename state">
+            RENAME
+        </button>
+        <button id="impexp" title="import or export state">
+            IMPORT/EXPORT
+        </button>
+        <!-- missing sub-function-panel (impexp button arrow up symbol + div containing additional buttons) for import/export as string/file -->
+    </div>
     <deep-listselect id="statelist"></deep-listselect>
     <div id="footer">
         <input type=text" id="statename" placeholder="Please enter a name..." />
-        <button id="submit" title="submit">
+        <button id="submit" title="load state">
             LOAD
         </button>
         <button id="cancel" title="cancel">
@@ -71,6 +80,13 @@ const Q_TAB = [
     'textarea:not([tabindex="-1"])',
     '[tabindex]:not([tabindex="-1"])'
 ].join(',');
+
+/*
+    TODO
+    add all functionalities: load, save, rename, import... [as string, as file], export... [as string, as file]
+    in options get name for button and visibility.
+    add more events to window.
+*/
 
 export default class StatesWindow extends Window {
 
