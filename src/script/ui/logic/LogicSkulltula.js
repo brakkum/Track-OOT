@@ -1,7 +1,7 @@
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
-import LocalState from "/script/util/LocalState.js";
+import SaveState from "/script/storage/SaveState.js";
 import I18n from "/script/util/I18n.js";
 
 const TPL = new Template(`
@@ -46,7 +46,7 @@ export default class TrackerLogicSkulltula extends DeepLogicAbstractElement {
 
     async update(value) {
         if (typeof value == "undefined") {
-            value = LocalState.read(`skulltulas.${this.ref}`, false);
+            value = SaveState.read(`skulltulas.${this.ref}`, false);
         }
         this.value = value;
     }
@@ -96,7 +96,7 @@ export default class TrackerLogicSkulltula extends DeepLogicAbstractElement {
         let hdr = el.querySelector(".header");
         if (!!logic) {
             cnt.innerHTML = I18n.translate(logic.el);
-            let value = +LocalState.read(`skulltulas.${logic.el}`, false);
+            let value = +SaveState.read(`skulltulas.${logic.el}`, false);
             el.dataset.value = value;
             hdr.dataset.value = value;
         }

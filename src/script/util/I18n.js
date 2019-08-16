@@ -18,17 +18,20 @@ mutationObserver.observe(document.documentElement, {
 });
 */
 
-let languages = {};
+let languages = null;
 let active_language = {};
 
 class I18n {
 
-    async init() {
-        languages = await FileLoader.json("/i18n/_meta.json")
-    }
-
     async load(code) {
         Logger.log(`load language code "${code}"`, "I18n");
+        if (languages == null) {
+            try {
+                languages = await FileLoader.json("/i18n/_meta.json");
+            } catch(e) {
+                Logger.error((new Error(`could not load language names`)), "I18n");
+            }
+        }
         try {
             active_language = (await FileLoader.ini(`/i18n/${code}.lang`))[""];
             Logger.log(`lang "${code}" loaded as LANG`, "I18n");

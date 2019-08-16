@@ -1,7 +1,7 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import MemoryStorage from "/deepJS/storage/MemoryStorage.js";
-import TrackerStorage from "./TrackerStorage.js";
-import LocalState from "/script/util/LocalState.js";
+import TrackerStorage from "/script/storage/TrackerStorage.js";
+import SaveState from "/script/storage/SaveState.js";
 import LogicWrapper from "/script/util/LogicWrapper.js";
 
 const LOGIC = {
@@ -33,7 +33,7 @@ class TrackerLogic {
         if (!!mode) {
             list = GlobalData.get("locations")[name][`${category}_${mode}`];
         } else {
-            let dType = LocalState.read(`dungeonTypes.${name}`, list.hasmq ? "n" : "v");
+            let dType = SaveState.read(`dungeonTypes.${name}`, list.hasmq ? "n" : "v");
             if (dType === "n") {
                 let res_v = await this.checkLogicList(category, name, "v");
                 let res_m = await this.checkLogicList(category, name, "mq");
@@ -51,8 +51,8 @@ class TrackerLogic {
         for (let i in list) {
             let filter = MemoryStorage.get("active_filter.filter_era_active", GlobalData.get("filter")["filter_era_active"].default);
             if (!list[i].era || !filter || filter === list[i].era) {
-                if (!list[i].mode || LocalState.read(`options.${list[i].mode}`, false)) {
-                    if (!LocalState.read(`${category}.${i}`, 0)) {
+                if (!list[i].mode || SaveState.read(`options.${list[i].mode}`, false)) {
+                    if (!SaveState.read(`${category}.${i}`, 0)) {
                         unopened++;
                         if (this.getValue(category, i)) {
                             canGet++;
@@ -70,7 +70,7 @@ class TrackerLogic {
         return 0b010;
     }
 
-    loadLogic() {
+    async loadLogic() {
         let locations = GlobalData.get("locations");
         for (let loc in locations) {
             for (let cat in CATEGORIES) {
@@ -83,10 +83,10 @@ class TrackerLogic {
                 }
             }
         }
-        for (let i in GlobalData.get("logic").mixins) {
+        for (let i in GlobalData.get("logic", {mixins:{}}).mixins) {
             LOGIC["mixins"][i] = new LogicWrapper("mixins", i);
         }
-        for (let i in GlobalData.get("logic_patched").mixins) {
+        for (let i in await TrackerStorage.SettingsStorage.get("logic", {mixins:{}}).mixins) {
             if (!!LOGIC["mixins"][i]) continue;
             LOGIC["mixins"][i] = new LogicWrapper("mixins", i);
         }

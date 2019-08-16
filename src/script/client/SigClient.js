@@ -1,6 +1,6 @@
 
 import Logger from "/deepJS/util/Logger.js";
-import DeepMessageBuffer from "./MessageBuffer.js";
+import DeepMessageBuffer from "/script/client/MessageBuffer.js";
 
 const SEC = window.location.protocol == "https:";
 const EMPTY_FN = function() {};

@@ -1,9 +1,9 @@
 
 import Logger from "/deepJS/util/Logger.js";
-import DeepSigClient from "./SigClient.js";
-import DeepRTCClient from "./RTCClient.js";
-import DeepRTCHost from "./RTCHost.js";
-import DeepLobbyClient from "./LobbyClient.js";
+import DeepSigClient from "/script/client/SigClient.js";
+import DeepRTCClient from "/script/client/RTCClient.js";
+import DeepRTCHost from "/script/client/RTCHost.js";
+import DeepLobbyClient from "/script/client/LobbyClient.js";
 
 const SEC = window.location.protocol == "https:";
 

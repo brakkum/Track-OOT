@@ -1,7 +1,7 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Helper from "/deepJS/util/Helper.js";
-import TrackerStorage from "./TrackerStorage.js";
+import TrackerStorage from "/script/storage/TrackerStorage.js";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
 
 import "/deepJS/ui/logic/elements/literals/LogicTrue.js";
@@ -62,7 +62,7 @@ export default class LogicWrapper {
         let ref = REF.get(this);
         let logic = null;
         if (await TrackerStorage.SettingsStorage.get("use_custom_logic", false)) {
-            let custom_logic = GlobalData.get("logic_patched", {});
+            let custom_logic = await TrackerStorage.SettingsStorage.get("logic", {});
             if (!!custom_logic[type] && !!custom_logic[type][ref]) {
                 logic = custom_logic[type][ref];
             }

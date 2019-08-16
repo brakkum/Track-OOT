@@ -1,9 +1,9 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
 import "/deepJS/ui/Tooltip.js";
-import LocalState from "/script/util/LocalState.js";
+import SaveState from "/script/storage/SaveState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
@@ -196,7 +196,7 @@ class HTMLTrackerPOILocationSkulltula extends HTMLElement {
                         el.classList.remove("avail");
                     }
 
-                    this.checked = LocalState.read(`skulltulas.${path[2]}`, false);
+                    this.checked = SaveState.read(`skulltulas.${path[2]}`, false);
                 }
             break;
             case 'checked':
@@ -210,7 +210,7 @@ class HTMLTrackerPOILocationSkulltula extends HTMLElement {
                             el.classList.remove("avail");
                         }
                     }
-                    LocalState.write(`skulltulas.${path[2]}`, newValue === "false" ? false : !!newValue);
+                    SaveState.write(`skulltulas.${path[2]}`, newValue === "false" ? false : !!newValue);
                     EventBus.trigger("skulltula", {
                         name: this.ref,
                         value: newValue

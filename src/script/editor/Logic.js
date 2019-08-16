@@ -1,10 +1,18 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
-import TrackerStorage from "/script/util/TrackerStorage.js";
+import GlobalData from "/script/storage/GlobalData.js";
+import TrackerStorage from "/script/storage/TrackerStorage.js";
+
+let logic_patched = null;
+async function loadPatchedLogic() {
+    if (logic_patched == null) {
+        logic_patched = await TrackerStorage.SettingsStorage.get("logic", {});
+    }
+    return logic_patched;
+}
 
 class EditorLogic {
 
     async patch(logic) {
-        let data = GlobalData.get("logic_patched", {});
+        let data = await loadPatchedLogic();
         for (let i in logic) {
             if (!data[i]) {
                 data[i] = logic[i];
@@ -14,27 +22,25 @@ class EditorLogic {
                 }
             }
         }
-        GlobalData.set("logic_patched", logic);
-        await TrackerStorage.SettingsStorage.set("logic", logic);
+        await TrackerStorage.SettingsStorage.set("logic", data);
     }
 
     async clear() {
-        GlobalData.set("logic_patched", {});
+        data = {};
         await TrackerStorage.SettingsStorage.set("logic", {});
     }
 
     async set(type, key, logic) {
-        let data = GlobalData.get("logic_patched", {});
+        let data = await loadPatchedLogic();
         if (!data[type]) {
             data[type] = {};
         }
         data[type][key] = logic;
-        GlobalData.set("logic_patched", data);
         await TrackerStorage.SettingsStorage.set("logic", data);
     }
 
     async get(type, key) {
-        let data = GlobalData.get("logic_patched", {});
+        let data = await loadPatchedLogic();
         if (!!data[type] && !!data[type][key]) {
             return data[type][key];
         }
@@ -42,10 +48,9 @@ class EditorLogic {
     }
 
     async remove(type, key) {
-        let data = GlobalData.get("logic_patched", {});
+        let data = await loadPatchedLogic();
         if (!!data[type] && !!data[type][key]) {
             delete data[type][key];
-            GlobalData.set("logic_patched", data);
             await TrackerStorage.SettingsStorage.set("logic", data);
         }
     }

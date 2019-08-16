@@ -1,6 +1,6 @@
 import LocalStorage from "/deepJS/storage/LocalStorage.js";
 import Logger from "/deepJS/util/Logger.js";
-import TrackerStorage from "./TrackerStorage.js";
+import TrackerStorage from "/script/storage/TrackerStorage.js";
 
 !function() {
     let k = Object.keys(sessionStorage);
@@ -21,11 +21,11 @@ import TrackerStorage from "./TrackerStorage.js";
 
 let state = LocalStorage.getAll();
 
-class LocalState {
+class SaveState {
 
     async save(name) {
         await TrackerStorage.StatesStorage.set(name, state);
-        Logger.info(`saved state as "${name}"`, "LocalState");
+        Logger.info(`saved state as "${name}"`, "SaveState");
     }
 
     async load(name) {
@@ -35,9 +35,9 @@ class LocalState {
             for (let i in state) {
                 LocalStorage.set(i, state[i]);
             }
-            Logger.info(`loaded state from "${name}"`, "LocalState");
+            Logger.info(`loaded state from "${name}"`, "SaveState");
         } else {
-            Logger.warn(`tried to load state "${name}" that does not exist`, "LocalState");
+            Logger.warn(`tried to load state "${name}" that does not exist`, "SaveState");
             this.reset();
         }
     }
@@ -70,7 +70,7 @@ class LocalState {
     reset() {
         state = {};
         LocalStorage.clear();
-        Logger.info(`state resettet`, "LocalState");
+        Logger.info(`state resettet`, "SaveState");
     }
 
     getState() {
@@ -78,4 +78,4 @@ class LocalState {
     }
 }
 
-export default new LocalState;
+export default new SaveState;

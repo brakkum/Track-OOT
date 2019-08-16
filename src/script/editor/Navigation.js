@@ -1,5 +1,5 @@
 import FileSystem from "/deepJS/util/FileSystem.js";
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import EditorLogic from "/script/editor/Logic.js";
 
 document.getElementById('editor-menu-file-savelogic').onclick = downloadPatchedLogic;
@@ -13,7 +13,7 @@ let workingarea = document.getElementById('workingarea');
 
 async function downloadPatchedLogic() {
     let logic = JSON.parse(JSON.stringify(GlobalData.get("logic")));
-    let logic_patched = GlobalData.get("logic_patched", {});
+    let logic_patched = await TrackerStorage.SettingsStorage.get("logic", {});
     for (let i in logic_patched) {
         if (!logic[i]) {
             logic[i] = logic_patched[i];
@@ -27,7 +27,7 @@ async function downloadPatchedLogic() {
 }
 
 async function downloadPatch() {
-    let logic = GlobalData.get("logic_patched", {});
+    let logic = await TrackerStorage.SettingsStorage.get("logic", {});
     FileSystem.save(JSON.stringify(logic, " ", 4), `logic.${(new Date).valueOf()}.json`);
 }
 

@@ -1,9 +1,9 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import MemoryStorage from "/deepJS/storage/MemoryStorage.js";
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
-import LocalState from "/script/util/LocalState.js";
+import SaveState from "/script/storage/SaveState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
@@ -75,7 +75,7 @@ function translate(value) {
 
 function canGet(name, category) {
     let list = GlobalData.get("locations")[name];
-    let dType = LocalState.read(`dungeonTypes.${name}`, list.hasmq ? "n" : "v");
+    let dType = SaveState.read(`dungeonTypes.${name}`, list.hasmq ? "n" : "v");
     if (dType === "n") {
         return "";
     }
@@ -84,8 +84,8 @@ function canGet(name, category) {
     for (let i in list) {
         let filter = MemoryStorage.get("active_filter.filter_era_active", GlobalData.get("filter")["filter_era_active"].default);
         if (!list[i].era || !filter || filter === list[i].era) {
-            if (!list[i].mode || LocalState.read(`options.${list[i].mode}`, false)) {
-                if (!LocalState.read(`${category}.${i}`, 0)) {
+            if (!list[i].mode || SaveState.read(`options.${list[i].mode}`, false)) {
+                if (!SaveState.read(`${category}.${i}`, 0)) {
                     if (Logic.getValue(category, i)) {
                         canGet++;
                     }

@@ -1,7 +1,7 @@
-import Template from "../../util/Template.js";
-import HBox from "./HBox.js";
-import VBox from "./VBox.js";
-import Panel from "./Panel.js";
+import Template from "/script/util/Template.js";
+import HBox from "/script/layouteditor/layout/HBox.js";
+import VBox from "/script/layouteditor/layout/VBox.js";
+import Panel from "/script/layouteditor/layout/Panel.js";
 
 const TPL = new Template(`
     <style>

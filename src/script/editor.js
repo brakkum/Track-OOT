@@ -1,4 +1,3 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
 import "/deepJS/ui/logic/LogicEditorClipboard.js";
@@ -25,6 +24,8 @@ import "/script/ui/logic/LogicFilter.js";
 import "/script/ui/logic/LogicChest.js";
 import "/script/ui/logic/LogicSkulltula.js";
 
+import TrackerStorage from "/script/storage/TrackerStorage.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import EditorLogic from "/script/editor/Logic.js";
 import "/script/editor/Navigation.js";
 import I18n from "/script/util/I18n.js";
@@ -54,7 +55,7 @@ const LOGIC_OPERATORS = [
     let mixins = {};
 
     let logic = GlobalData.get("logic");
-    let custom_logic = GlobalData.get("logic_patched");
+    let custom_logic = await TrackerStorage.SettingsStorage.get("logic", {});
 
     if (!!logic.mixins) {
         for (let i in logic.mixins) {

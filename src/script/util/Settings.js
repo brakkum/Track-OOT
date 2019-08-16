@@ -1,13 +1,15 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import SettingsWindow from "/deepJS/ui/SettingsWindow.js";
 import PopOver from "/deepJS/ui/PopOver.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
-import TrackerStorage from "./TrackerStorage.js";
-import LocalState from "./LocalState.js";
-import I18n from "./I18n.js";
+import TrackerStorage from "/script/storage/TrackerStorage.js";
+import SaveState from "/script/storage/SaveState.js";
+
+import { buildSettings } from "/script/util/settings/SettingsBuilder.js";
 
 import "/deepJS/ui/Paging.js";
+import "/script/ui/UpdateHandler.js";
 
 const settings = new SettingsWindow;
 
@@ -26,29 +28,7 @@ const SETTINGS_TPL = `
             <a href="CHANGELOG.MD" target="_BLANK">see the changelog</a>
         </div>
         <hr>
-        <div id="update-check" style="padding: 5px;">
-            checking for new version...
-        </div>
-        <div id="update-available" style="padding: 5px; display: none;">
-            newer version found <button id="download-update">download</button>
-            <br>
-            <a href="CHANGELOG.MD?nosw" target="_BLANK">see the changelog</a>
-        </div>
-        <div id="update-unavailable" style="padding: 5px; display: none;">
-            already up to date <button id="check-update">check again</button>
-        </div>
-        <div id="update-running" style="padding: 5px; display: none;">
-            <progress id="update-progress" value="0" max="0"></progress>
-            <span id="update-progress-text">0/0</span>
-        </div>
-        <div id="update-finished" style="padding: 5px; display: none;">
-            you need to reload for the new version to apply...
-            <button onclick="window.location.reload()">reload now</button>
-        </div>
-        <div id="update-force" style="padding: 5px; display: none;">
-            if files seem corrupt, you can try to 
-            <button id="download-forced">force download</button>
-        </div>
+        <ootrt-updatehandler id="updatehandler"></ootrt-updatehandler>
     </div>
     <div style="width: 200px; height: 200px; background-image: url('images/logo.svg'); background-size: contain; background-position: left; background-repeat: no-repeat;"></div>
 </div>
@@ -103,15 +83,15 @@ function onSettingsEvent(event) {
                     if (v.length > 0) {
                         v = new Set(v.split(","));
                         GlobalData.get("settings")[i][j].values.forEach(el => {
-                            LocalState.write(`${i}.${el}`, v.has(el));
+                            SaveState.write(`${i}.${el}`, v.has(el));
                         });
                     } else {
                         GlobalData.get("settings")[i][j].values.forEach(el => {
-                            LocalState.write(`${i}.${el}`, false);
+                            SaveState.write(`${i}.${el}`, false);
                         });
                     }
                 } else {
-                    LocalState.write(`${i}.${j}`, event.data[i][j]);
+                    SaveState.write(`${i}.${j}`, event.data[i][j]);
                 }
             }
         }
@@ -148,13 +128,13 @@ async function getSettings() {
                     let def = new Set(options[i][j].default);
                     let val = [];
                     options[i][j].values.forEach(el => {
-                        if (LocalState.read(`${i}.${el}`, def.has(el))) {
+                        if (SaveState.read(`${i}.${el}`, def.has(el))) {
                             val.push(el);
                         }
                     });
                     res[i][j] = val.join(",");
                 } else {
-                    res[i][j] = LocalState.read(`${i}.${j}`, options[i][j].default);
+                    res[i][j] = SaveState.read(`${i}.${j}`, options[i][j].default);
                 }
             }
         }
@@ -177,153 +157,30 @@ async function applySettingsChoices() {
     }
 }
 
-function convertValueList(values = [], names = []) {
-    let opt = {};
-    for (let k in values) {
-        if (names.hasOwnProperty(k)) {
-            opt[values[k]] = I18n.translate(names[k]);
-        } else {
-            opt[values[k]] = I18n.translate(values[k]);
-        }
-    }
-    return opt;
-}
-
-function initializeSettings() {
-    let options = GlobalData.get("settings");
-    for (let i in options) {
-        settings.addTab(I18n.translate(i), i);
-        for (let j in options[i]) {
-            let val = options[i][j];
-            let label = I18n.translate(j);
-            let min = parseFloat(val.min);
-            let max = parseFloat(val.max);
-            switch (val.type) {
-                case "string":
-                    settings.addStringInput(i, label, j, val.default);
-                break;
-                case "number":
-                    settings.addNumberInput(i, label, j, val.default, min, max);
-                break;
-                case "range":
-                    settings.addRangeInput(i, label, j, val.default, min, max);
-                break;
-                case "check":
-                    settings.addCheckInput(i, label, j, val.default);
-                break;
-                case "choice":
-                    settings.addChoiceInput(i, label, j, val.default, convertValueList(val.values, val.names));
-                break;
-                case "list":
-                    settings.addListSelectInput(i, label, j, val.default.join(","), true, convertValueList(val.values, val.names));
-                break;
-                case "button":
-                    if (!!val.view) {
-                        settings.addButton(i, label, j, I18n.translate(val.text), switchView.bind(this, val.view));
-                    } else if (!!val.url) {
-                        settings.addButton(i, label, j, I18n.translate(val.text), window.open.bind(window, val.url));
-                    } else {
-                        settings.addButton(i, label, j, I18n.translate(val.text), alert.bind(window, "not functionality bound"));
-                    }
-                break;
-            }
-        }
-    }
-    function switchView(view) {
-        document.getElementById('view-pager').setAttribute("active", view);
-        settings.close();
-    }
-    applySettingsChoices();
-}
-
-let showUpdatePopup = true;
-
 class Settings {
 
     init() {
         settings.innerHTML = SETTINGS_TPL;
-        initializeVersion();
 
-        if ('serviceWorker' in navigator) {
-            let prog = settings.querySelector("#update-progress");
-            let progtext = settings.querySelector("#update-progress-text");
-            //let checkUpdateTimeout = undefined;
-        
-            function swStateRecieve(event) {
-                if (event.data.type == "state") {
-                    switch(event.data.msg) {
-                        case "update_available":
-                            settings.querySelector("#update-check").style.display = "none";
-                            settings.querySelector("#update-force").style.display = "block";
-                            settings.querySelector("#update-available").style.display = "block";
-                            if (showUpdatePopup) {
-                                let popover = PopOver.show("A new update is available. Click here to download!", 60);
-                                popover.addEventListener("click", function() {
-                                    settings.show(getSettings(), 'about');
-                                });
-                            }
-                        break;
-                        case "update_unavailable":
-                            settings.querySelector("#update-check").style.display = "none";
-                            settings.querySelector("#update-force").style.display = "block";
-                            settings.querySelector("#update-unavailable").style.display = "block";
-                            //checkUpdateTimeout = setTimeout(checkUpdate, 600000);
-                        break;
-                        case "need_download":
-                            prog.value = 0;
-                            prog.max = event.data.value;
-                            progtext.innerHTML = `${prog.value}/${prog.max}`;
-                        break;
-                        case "file_downloaded":
-                            prog.value = parseInt(prog.value) + 1;
-                            progtext.innerHTML = `${prog.value}/${prog.max}`;
-                        break;
-                        case "update_finished":
-                            prog.value = 0;
-                            prog.max = 0;
-                            progtext.innerHTML = `0/0`;
-                            settings.querySelector("#update-running").style.display = "none";
-                            settings.querySelector("#update-finished").style.display = "block";
-                        break;
-                    }
-                } else if (event.data.type == "error") {
-                    settings.querySelector("#update-check").style.display = "none";
-                    settings.querySelector("#update-running").style.display = "none";
-                    settings.querySelector("#update-finished").style.display = "none";
-                    settings.querySelector("#update-force").style.display = "block";
-                    settings.querySelector("#update-unavailable").style.display = "block";
-                    if (!showUpdatePopup) {
-                        Dialog.alert("Connection Lost", "The ServiceWorker was not able to establish or keep connection to the Server<br>Please try again later.");
-                    }
-                }
-            }
-            navigator.serviceWorker.addEventListener('message', swStateRecieve);
-            
-            settings.querySelector("#check-update").onclick = function() {
-                //clearTimeout(checkUpdateTimeout);
-                this.checkUpdate();
-            }.bind(this);
-        
-            settings.querySelector("#download-update").onclick = function() {
-                settings.querySelector("#update-available").style.display = "none";
-                settings.querySelector("#update-force").style.display = "none";
-                settings.querySelector("#update-running").style.display = "block";
-                navigator.serviceWorker.getRegistration().then(function(registration) {
-                    registration.active.postMessage("update");
+        settings.querySelector("#tracker-version").innerHTML = GlobalData.get("version-string");
+        settings.querySelector("#tracker-date").innerHTML = GlobalData.get("version-date");
+
+        let updatehandler = settings.querySelector("#updatehandler");
+        let showUpdatePopup = false;
+        updatehandler.addEventListener("updateavailable", function() {
+            if (showUpdatePopup) {
+                showUpdatePopup = false;
+                let popover = PopOver.show("A new update is available. Click here to download!", 60);
+                popover.addEventListener("click", function() {
+                    settings.show(getSettings(), 'about');
                 });
             }
-        
-            settings.querySelector("#download-forced").onclick = function() {
-                settings.querySelector("#update-available").style.display = "none";
-                settings.querySelector("#update-force").style.display = "none";
-                settings.querySelector("#update-unavailable").style.display = "none";
-                settings.querySelector("#update-running").style.display = "block";
-                navigator.serviceWorker.getRegistration().then(function(registration) {
-                    registration.active.postMessage("forceupdate");
-                });
+        });
+        updatehandler.addEventListener("noconnection", function() {
+            if (!showUpdatePopup) {
+                Dialog.alert("Connection Lost", "The ServiceWorker was not able to establish or keep connection to the Server<br>Please try again later.");
             }
-        
-        }
+        });
 
         document.getElementById("join-discord").addEventListener("click", function() {
             window.open("https://discord.gg/wgFVtuv", "_blank");
@@ -343,18 +200,12 @@ class Settings {
             showUpdatePopup = true;
         });
 
-        initializeSettings();
+        buildSettings(settings);
 
-        this.checkUpdate();
-    }
+        applySettingsChoices();
 
-    checkUpdate() {
-        settings.querySelector("#update-unavailable").style.display = "none";
-        settings.querySelector("#update-force").style.display = "none";
-        settings.querySelector("#update-check").style.display = "block";
-        navigator.serviceWorker.getRegistration().then(function(registration) {
-            registration.active.postMessage("check");
-        });
+        showUpdatePopup = true;
+        updatehandler.checkUpdate();
     }
 
 }

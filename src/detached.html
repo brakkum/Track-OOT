@@ -20,11 +20,12 @@
         });
     </script>
     <script type="module">
-        import GlobalData from "/deepJS/storage/GlobalData.js";
         import EventBus from "/deepJS/util/EventBus/EventBus.js";
         import EventBusModuleShare from "/deepJS/util/EventBus/EventBusModuleShare.js";
         import Panel from "/deepJS/ui/layout/Panel.js";
-        import TrackerStorage from "/script/util/TrackerStorage.js";
+        import LocalStorage from "/deepJS/storage/LocalStorage.js";
+        import GlobalData from "/script/storage/GlobalData.js";
+        import TrackerStorage from "/script/storage/TrackerStorage.js";
         import loadData from "/script/util/loader.js";
         import I18n from "/script/util/I18n.js";
         import Logic from "/script/util/Logic.js";
@@ -38,7 +39,7 @@
 
             await loadData();
             await I18n.load(await TrackerStorage.SettingsStorage.get("language", "en_us"));
-            Logic.loadLogic();
+            await Logic.loadLogic();
             EventBusModuleShare.mute("logic");
             EventBus.addModule(EventBusModuleShare);
 
@@ -48,6 +49,7 @@
             if (!!layout) {
                 let el = document.getElementById("layout");
                 el.loadLayout(layout);
+                EventBus.trigger("state", LocalStorage.getAll());
                 let waw = window.outerWidth - window.innerWidth;
                 let wah = window.outerHeight - window.innerHeight;
                 window.resizeTo(waw + el.clientWidth, wah + el.clientHeight);

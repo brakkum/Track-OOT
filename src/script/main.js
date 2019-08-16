@@ -1,10 +1,10 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import EventBusModuleShare from "/deepJS/util/EventBus/EventBusModuleShare.js";
 import Logger from "/deepJS/util/Logger.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 
-import LocalState from "/script/util/LocalState.js";
+import GlobalData from "/script/storage/GlobalData.js";
+import SaveState from "/script/storage/SaveState.js";
 import Logic from "/script/util/Logic.js";
 import Settings from "/script/util/Settings.js";
 import SaveHandler from "/script/util/SaveHandler.js";
@@ -18,7 +18,7 @@ import "/deepJS/ui/selection/ChoiceSelect.js";
     EventBus.addModule(EventBusModuleShare);
 
     updateLoadingMessage("apply logger...");
-    if (!!GlobalData.get("version").dev) {
+    if (!!GlobalData.get("version-dev")) {
         Logger.addOutput(document.getElementById("tracker-log"));
         Logger.addOutput(console);
         EventBus.register(function(event) {
@@ -129,8 +129,8 @@ function canGet(name, category, dType) {
     let canGet = 0;
     let isOpen = 0;
     for (let i in list) {
-        if (!list[i].mode || LocalState.read(`options.${list[i].mode}`, false)) {
-            if (!LocalState.read(`${category}.${i}`, 0)) {
+        if (!list[i].mode || SaveState.read(`options.${list[i].mode}`, false)) {
+            if (!SaveState.read(`${category}.${i}`, 0)) {
                 if (Logic.getValue(category, i)) {
                     canGet++;
                 }
@@ -150,8 +150,8 @@ function updateChestStates() {
     if (!!data) {
         Object.keys(data).forEach(name => {
             let buff = GlobalData.get("locations")[name];
-            if (!buff.mode || LocalState.read(`options.${buff.mode}`, false)) {
-                let dType = LocalState.read(`dungeonTypes.${name}`, buff.hasmq ? "n" : "v");
+            if (!buff.mode || SaveState.read(`options.${buff.mode}`, false)) {
+                let dType = SaveState.read(`dungeonTypes.${name}`, buff.hasmq ? "n" : "v");
                 if (dType == "n") {
                     let cv = canGet(name, "chests", "v");
                     let cm = canGet(name, "chests", "mq");
@@ -200,7 +200,7 @@ function updateSkulltulasStates() {
     if (!!data) {
         Object.keys(data).forEach(name => {
             let buff = GlobalData.get("locations")[name];
-            let dType = LocalState.read(`dungeonTypes.${name}`, buff.hasmq ? "n" : "v");
+            let dType = SaveState.read(`dungeonTypes.${name}`, buff.hasmq ? "n" : "v");
             if (dType == "n") {
                 let cv = canGet(name, "skulltulas", "v");
                 let cm = canGet(name, "skulltulas", "mq");

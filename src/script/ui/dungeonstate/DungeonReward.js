@@ -1,8 +1,8 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import "/deepJS/ui/selection/Option.js";
-import LocalState from "/script/util/LocalState.js";
+import GlobalData from "/script/storage/GlobalData.js";
+import SaveState from "/script/storage/SaveState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
@@ -129,7 +129,7 @@ class HTMLTrackerDungeonReward extends HTMLElement {
                             }
                             this.append(createOption(i+1, `/images/${j}`));
                         }
-                        this.value = LocalState.read(`dungeonRewards.${newValue}`, 0);
+                        this.value = SaveState.read(`dungeonRewards.${newValue}`, 0);
                     }
                 }
             break;
@@ -143,7 +143,7 @@ class HTMLTrackerDungeonReward extends HTMLElement {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
-                    LocalState.write(`dungeonRewards.${this.ref}`, newValue);
+                    SaveState.write(`dungeonRewards.${this.ref}`, newValue);
                     EventBus.trigger("dungeonreward", {
                         name: this.ref,
                         value: newValue

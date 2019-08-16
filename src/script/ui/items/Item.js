@@ -1,9 +1,9 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
 import "/deepJS/ui/selection/Option.js";
-import LocalState from "/script/util/LocalState.js";
+import SaveState from "/script/storage/SaveState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
@@ -157,11 +157,11 @@ class HTMLTrackerItem extends HTMLElement {
                 case 'ref':
                     EventBus.mute("item");
                     // savesatate
-                    this.value = LocalState.read(`items.${this.ref}`, 0);
+                    this.value = SaveState.read(`items.${this.ref}`, 0);
                     // settings
                     let data = GlobalData.get("items")[this.ref];
                     if (data.hasOwnProperty("start_settings")) {
-                        this.startvalue = LocalState.read(data.start_settings, 1);
+                        this.startvalue = SaveState.read(data.start_settings, 1);
                     } else {
                         this.fillItemChoices();
                     }
@@ -179,7 +179,7 @@ class HTMLTrackerItem extends HTMLElement {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
-                    LocalState.write(`items.${this.ref}`, parseInt(newValue));
+                    SaveState.write(`items.${this.ref}`, parseInt(newValue));
                     EventBus.trigger("item", {
                         name: this.ref,
                         value: newValue
@@ -204,7 +204,7 @@ class HTMLTrackerItem extends HTMLElement {
 
         let max_value = 0;
         if (data.hasOwnProperty("related_dungeon") && data.hasOwnProperty("maxmq")) {
-            let type = LocalState.read(`dungeonTypes.${data.related_dungeon}`, "n");
+            let type = SaveState.read(`dungeonTypes.${data.related_dungeon}`, "n");
             if (type == "v") {
                 max_value = data.max;
             } else if (type == "mq") {

@@ -1,9 +1,9 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
 import "/deepJS/ui/selection/Option.js";
-import LocalState from "/script/util/LocalState.js";
+import SaveState from "/script/storage/SaveState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
@@ -125,12 +125,12 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
                     let data = GlobalData.get("items")[newValue];
                     this.style.backgroundImage = `url("/images/${data.images}"`;
                     EventBus.mute("item");
-                    this.value = LocalState.read(`items.${this.ref}`, 0);
+                    this.value = SaveState.read(`items.${this.ref}`, 0);
                     EventBus.unmute("item");
                 break;
                 case 'value':
                     this.shadowRoot.getElementById("value").innerHTML = newValue;
-                    LocalState.write(`items.${this.ref}`, parseInt(newValue));
+                    SaveState.write(`items.${this.ref}`, parseInt(newValue));
                     EventBus.trigger("item", {
                         name: this.ref,
                         value: newValue

@@ -3,11 +3,7 @@
         "language": {
             "type": "choice",
             "default": "en_us",
-            "values": [
-                "en_us",
-                "en_us.easy",
-                "de_de"
-            ]
+            "values": "I18n.languages"
         },
         "font": {
             "type": "choice",

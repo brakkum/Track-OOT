@@ -1,8 +1,8 @@
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
-import GlobalData from "/deepJS/storage/GlobalData.js";
-import LocalState from "/script/util/LocalState.js";
+import GlobalData from "/script/storage/GlobalData.js";
+import SaveState from "/script/storage/SaveState.js";
 import I18n from "/script/util/I18n.js";
 
 const TPL = new Template(`
@@ -46,7 +46,7 @@ export default class TrackerLogicSkip extends DeepLogicAbstractElement {
 
     async update(value) {
         if (typeof value == "undefined") {
-            value = LocalState.read(`skips.${this.ref}`, GlobalData.get("settings").skips[this.ref].default);
+            value = SaveState.read(`skips.${this.ref}`, GlobalData.get("settings").skips[this.ref].default);
         }
         if (SELECTOR_VALUE.has(this)) {
             value = value == SELECTOR_VALUE.get(this);
@@ -140,7 +140,7 @@ export default class TrackerLogicSkip extends DeepLogicAbstractElement {
         let hdr = el.querySelector(".header");
         if (!!logic) {
             cnt.innerHTML = I18n.translate(logic.el);
-            let value = LocalState.read(`skips.${logic.el}`, GlobalData.get("settings").skips[logic.el].default);
+            let value = SaveState.read(`skips.${logic.el}`, GlobalData.get("settings").skips[logic.el].default);
             if (SELECTOR_VALUE.has(this)) {
                 value = value == SELECTOR_VALUE.get(this);
             }

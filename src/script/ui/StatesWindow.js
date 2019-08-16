@@ -1,8 +1,8 @@
 import Window from "/deepJS/ui/Window.js";
 import Template from "/deepJS/util/Template.js";
 import "/deepJS/ui/selection/ListSelect.js";
-import LocalState from "/script/util/LocalState.js";
-import TrackerStorage from "/script/util/TrackerStorage.js";
+import SaveState from "/script/storage/SaveState.js";
+import TrackerStorage from "/script/storage/TrackerStorage.js";
 
 const TPL = new Template(`
     <style>
@@ -60,6 +60,28 @@ const TPL = new Template(`
         </button>
         <!-- missing sub-function-panel (impexp button arrow up symbol + div containing additional buttons) for import/export as string/file -->
     </div>
+
+    <nav class="menu">
+        <ul>
+            <li>
+                <button class="button" id="delete-savegame">DELETE</button>
+            </li>
+            <li>
+                <button class="button" id="rename-savegame">RENAME</button>
+            </li>
+            <li>
+                <button class="button hamburger-hide">IMPORT/EXPORT</button>
+                <ul>
+                    <li>
+                        <button class="button" id="export-savegame">EXPORT</button>
+                    </li>
+                    <li>
+                        <button class="button" id="import-savegame">IMPORT</button>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
     <deep-listselect id="statelist"></deep-listselect>
     <div id="footer">
         <input type=text" id="statename" placeholder="Please enter a name..." />

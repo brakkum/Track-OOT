@@ -1,11 +1,11 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
 import Helper from "/deepJS/util/Helper.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import "/deepJS/ui/ContextMenu.js";
-import LocalState from "/script/util/LocalState.js";
+import SaveState from "/script/storage/SaveState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
@@ -210,7 +210,7 @@ class HTMLTrackerLocationChest extends HTMLElement {
                         txt.classList.remove("avail");
                     }
 
-                    this.checked = LocalState.read(`chests.${path[2]}`, false);
+                    this.checked = SaveState.read(`chests.${path[2]}`, false);
                 }
             break;
             case 'checked':
@@ -224,7 +224,7 @@ class HTMLTrackerLocationChest extends HTMLElement {
                             el.classList.remove("avail");
                         }
                     }
-                    LocalState.write(`chests.${path[2]}`, newValue === "false" ? false : !!newValue);
+                    SaveState.write(`chests.${path[2]}`, newValue === "false" ? false : !!newValue);
                     EventBus.trigger("chest", {
                         name: this.ref,
                         value: newValue

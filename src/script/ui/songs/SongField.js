@@ -1,6 +1,6 @@
 import Template from "/deepJS/util/Template.js";
-import GlobalData from "/deepJS/storage/GlobalData.js";
-import LocalState from "/script/util/LocalState.js";
+import GlobalData from "/script/storage/GlobalData.js";
+import SaveState from "/script/storage/SaveState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
@@ -51,7 +51,7 @@ function editSong(event) {
     d.addEventListener("submit", function(result) {
         if (!!result) {
             let res = builder.value;
-            LocalState.write(`songs.${this.ref}`, res);
+            SaveState.write(`songs.${this.ref}`, res);
             this.shadowRoot.getElementById("stave").value = res;
             EventBus.trigger("song", {
                 name: this.ref,
@@ -73,7 +73,7 @@ function stateChanged(event) {
 
 function songUpdate(event) {
     if (this.ref === event.data.name) {
-        LocalState.write(`songs.${this.ref}`, event.data.value);
+        SaveState.write(`songs.${this.ref}`, event.data.value);
         this.shadowRoot.getElementById("stave").value = event.data.value;
     }
 }
@@ -106,7 +106,7 @@ export default class HTMLTrackerSongField extends HTMLElement {
             let data = GlobalData.get("songs")[newValue];
             let title = this.shadowRoot.getElementById("title");
             title.innerHTML = I18n.translate(newValue);
-            this.shadowRoot.getElementById("stave").value = LocalState.read(`songs.${newValue}`, data.notes);
+            this.shadowRoot.getElementById("stave").value = SaveState.read(`songs.${newValue}`, data.notes);
             if (data.editable) {
                 let edt = document.createElement('button');
                 edt.innerHTML = "✎";

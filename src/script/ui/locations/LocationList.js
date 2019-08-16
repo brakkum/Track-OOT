@@ -1,10 +1,10 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import MemoryStorage from "/deepJS/storage/MemoryStorage.js";
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Panel from "/deepJS/ui/layout/Panel.js";
 import "/deepJS/ui/selection/SwitchButton.js";
-import LocalState from "/script/util/LocalState.js";
+import SaveState from "/script/storage/SaveState.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import I18n from "/script/util/I18n.js";
 import Logic from "/script/util/Logic.js";
@@ -170,7 +170,7 @@ async function locationUpdate(event) {
             this.shadowRoot.querySelector('#title').className = "";
         } else {
             let data = GlobalData.get("locations")[this.ref || "overworld"];
-            let dType = LocalState.read(`dungeonTypes.${this.ref || "overworld"}`, data.hasmq ? "n" : "v");
+            let dType = SaveState.read(`dungeonTypes.${this.ref || "overworld"}`, data.hasmq ? "n" : "v");
             if (dType === "n") {
                 let ch = Array.from(this.shadowRoot.getElementById("body").children);
                 ch.forEach(async c => {
@@ -292,7 +292,7 @@ class HTMLTrackerLocationList extends Panel {
                     bck.addEventListener("click", () => this.ref = "");
                     cnt.append(bck);
                     data = GlobalData.get("locations")[this.ref];
-                    let dType = LocalState.read(`dungeonTypes.${this.ref}`, data.hasmq ? "n" : "v");
+                    let dType = SaveState.read(`dungeonTypes.${this.ref}`, data.hasmq ? "n" : "v");
                     if (data.hasmq) {
                         locationType.ref = this.ref;
                     } else {
@@ -320,7 +320,7 @@ class HTMLTrackerLocationList extends Panel {
                                 Object.keys(data).forEach(i => {
                                     let buf = data[i];
                                     if (!buf.era || !this.era || this.era === buf.era) {
-                                        if (!buf.mode || LocalState.read(`options.${buf.mode}`, false)) {
+                                        if (!buf.mode || SaveState.read(`options.${buf.mode}`, false)) {
                                             let el = LOCATION_ELEMENTS.get(`${this.ref}.${this.mode}_${dType}.${i}`);
                                             cnt.append(el);
                                         }

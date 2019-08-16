@@ -2,8 +2,8 @@ import LocalStorage from "/deepJS/storage/LocalStorage.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import Toast from "/deepJS/ui/Toast.js";
-import TrackerStorage from "/script/util/TrackerStorage.js";
-import LocalState from "/script/util/LocalState.js";
+import TrackerStorage from "/script/storage/TrackerStorage.js";
+import SaveState from "/script/storage/SaveState.js";
 import StatesWindow from "/script/ui/StatesWindow.js";
 
 let activestate = "";
@@ -94,7 +94,7 @@ function showStateWindow(load = true) {
 async function state_Save() {
     if (stateChoice.value != "") {
         stateChoice.value = activestate;
-        await LocalState.save(activestate);
+        await SaveState.save(activestate);
         Toast.show(`Saved "${activestate}" successfully.`);
     } else {
         state_SaveAs();
@@ -110,7 +110,7 @@ async function state_SaveAs() {
         }
         if (!!confirm) {
             activestate = state;
-            await LocalState.save(activestate);
+            await SaveState.save(activestate);
             Toast.show(`Saved "${activestate}" successfully.`);
         }
     }
@@ -126,9 +126,9 @@ async function state_Load() {
         if (!!state) {
             activestate = state;
             // TODO check if state exists
-            await LocalState.load(activestate);
-            notePad.value = LocalState.read("notes", "");
-            EventBus.trigger("state", LocalState.getState());
+            await SaveState.load(activestate);
+            notePad.value = SaveState.read("notes", "");
+            EventBus.trigger("state", SaveState.getState());
             // toggleStateButtons();
             Toast.show(`State "${activestate}" loaded.`);
         }
@@ -142,8 +142,8 @@ async function state_Delete() {
         TrackerStorage.StatesStorage.remove(del);
         if (del == activestate) {
             activestate = "";
-            LocalState.reset();
-            EventBus.trigger("state", LocalState.getState());
+            SaveState.reset();
+            EventBus.trigger("state", SaveState.getState());
         }
         stateChoice.value = activestate;
         // // await prepairSavegameChoice();
@@ -158,10 +158,10 @@ async function state_New() {
         confirm = await Dialog.confirm("Warning", "Do you really want to create a new savestate? Unsaved changes will be lost.");
     }
     if (!!confirm) {
-        LocalState.reset();
+        SaveState.reset();
         notePad.value = "";
         activestate = "";
-        EventBus.trigger("state", LocalState.getState());
+        EventBus.trigger("state", SaveState.getState());
     }
 }
 
@@ -180,7 +180,7 @@ async function state_Rename() {
                 state_New();
                 return;
             }
-            await LocalState.rename(stateChoice.value, name);
+            await SaveState.rename(stateChoice.value, name);
             if (activestate != "" && activestate == stateChoice.value) {
                 activestate = name;
             }
@@ -224,8 +224,8 @@ async function state_Import() {
         if (!!(await Dialog.confirm(`Imported "${data.name}" successfully.`, `Do you want to load the imported state?${activestate !== "" ? "(Unsaved changes will be lost.)" : ""}`))) {
             stateChoice.value = data.name;
             activestate = data.name;
-            await LocalState.load(activestate);
-            EventBus.trigger("state", LocalState.getState());
+            await SaveState.load(activestate);
+            EventBus.trigger("state", SaveState.getState());
             // toggleStateButtons();
         }
     }
@@ -234,7 +234,7 @@ async function state_Import() {
 class SaveHandler {
 
     async init() {
-        notePad.value = LocalState.read("notes", "");
+        notePad.value = SaveState.read("notes", "");
         let notePadTimer = null;
         notePad.oninput = function() {
             if (!!notePadTimer) {
@@ -246,7 +246,7 @@ class SaveHandler {
             event.stopPropagation();
         }
         async function writeNotePadValue() {
-            LocalState.write("notes", notePad.value);
+            SaveState.write("notes", notePad.value);
         };
         // await prepairSavegameChoice();
         // toggleStateButtons();
