@@ -23,3 +23,8 @@
 - remove zora letter if not used (fountain open)
     - make invisible
 - hide areas that are not reachable by child/adult
+
+
+### BUGS
+- shops not applying state after loading
+- areas not refreshing counting on dungeontype change
