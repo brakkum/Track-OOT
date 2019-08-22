@@ -26,5 +26,4 @@
 
 
 ### BUGS
-- shops not applying state after loading
-- areas not refreshing counting on dungeontype change
+- do not listen to all events on network, make location and mode change optional
