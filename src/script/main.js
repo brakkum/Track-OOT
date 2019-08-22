@@ -1,6 +1,6 @@
 import GlobalData from "/deepJS/storage/GlobalData.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
-import EventBusModuleShare from "/deepJS/util/EventBus/EventBusModuleShare.js";
+//import EventBusModuleShare from "/deepJS/util/EventBus/EventBusModuleShare.js";
 import Logger from "/deepJS/util/Logger.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 
@@ -13,8 +13,12 @@ import "/deepJS/ui/selection/ChoiceSelect.js";
 
 (async function main() {
 
-    EventBusModuleShare.mute("logic");
-    EventBus.addModule(EventBusModuleShare);
+    
+    if ("SharedWorker" in window) {
+        let EventBusModuleShare = (await import("/deepJS/util/EventBus/EventBusModuleShare.js")).default;
+        EventBusModuleShare.mute("logic");
+        EventBus.addModule(EventBusModuleShare);
+    }
 
     updateLoadingMessage("apply logger...");
     if (!!GlobalData.get("version").dev) {
