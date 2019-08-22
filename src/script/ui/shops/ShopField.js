@@ -1,14 +1,12 @@
 import Template from "/deepJS/util/Template.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import SaveState from "/script/storage/SaveState.js";
-import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import I18n from "/script/util/I18n.js";
 import "./ShopItem.js";
 import "./ShopBuilder.js";
 
-const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         * {
@@ -188,9 +186,9 @@ export default class HTMLTrackerShopField extends HTMLElement {
             el.addEventListener("namechange", renameSlot.bind(this));
         }
         /* event bus */
-        EVENT_BINDER.register("shop_items", shopItemUpdate.bind(this));
-        EVENT_BINDER.register("shop_bought", shopBoughtUpdate.bind(this));
-        EVENT_BINDER.register("state", stateChanged.bind(this));
+        EventBus.register("shop_items", shopItemUpdate.bind(this));
+        EventBus.register("shop_bought", shopBoughtUpdate.bind(this));
+        EventBus.register("state", stateChanged.bind(this));
     }
 
     get ref() {

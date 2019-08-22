@@ -1,14 +1,12 @@
 import Template from "/deepJS/util/Template.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import SaveState from "/script/storage/SaveState.js";
-import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import I18n from "/script/util/I18n.js";
 import "./SongStave.js";
 import "./SongBuilder.js";
 
-const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         * {
@@ -85,8 +83,8 @@ export default class HTMLTrackerSongField extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        EVENT_BINDER.register("song", songUpdate.bind(this));
-        EVENT_BINDER.register("state", stateChanged.bind(this));
+        EventBus.register("song", songUpdate.bind(this));
+        EventBus.register("state", stateChanged.bind(this));
     }
 
     get ref() {
