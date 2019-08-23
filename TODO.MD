@@ -23,7 +23,4 @@
 - remove zora letter if not used (fountain open)
     - make invisible
 - hide areas that are not reachable by child/adult
-
-
-### BUGS
-- do not listen to all events on network, make location and mode change optional
+- on network play make location and mode change synchronize optional
