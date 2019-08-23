@@ -89,6 +89,10 @@
             "type": "check",
             "default": false
         },
+        "beansanity": {
+            "type": "check",
+            "default": false
+        },
         "skullsanity": {
             "type": "hidden",
             "old_type": "check",
