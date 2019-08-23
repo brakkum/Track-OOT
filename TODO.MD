@@ -17,6 +17,7 @@
 ### REQUESTS
 - optionally increase skully token count with ticking off skullies
 - add tooltips to all the icons
+- autosave
 - export/import savestate file
 - better color choices
     - add theming to custom-elements
