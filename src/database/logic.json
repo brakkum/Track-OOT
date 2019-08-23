@@ -2879,6 +2879,10 @@
                         {
                             "type": "skip",
                             "el": "dm_bomb_strength"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_enter_mountain"
                         }
                     ]
                 }
@@ -15818,6 +15822,10 @@
                                 {
                                     "type": "item",
                                     "el": "hammer"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "arrow_fire"
                                 }
                             ]
                         },
@@ -16964,24 +16972,24 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "or",
+                            "type": "and",
                             "el": [
                                 {
-                                    "type": "and",
+                                    "type": "item",
+                                    "el": "bow"
+                                },
+                                {
+                                    "type": "or",
                                     "el": [
                                         {
                                             "type": "item",
-                                            "el": "bow"
+                                            "el": "boots_hover"
                                         },
                                         {
                                             "type": "item",
                                             "el": "hookshot"
                                         }
                                     ]
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "boots_hover"
                                 }
                             ]
                         },
@@ -17044,19 +17052,24 @@
                     "el": "can_see_with_lens"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_fire_source"
-                },
-                {
                     "type": "or",
                     "el": [
                         {
                             "type": "item",
-                            "el": "hookshot"
+                            "el": "boots_hover"
                         },
                         {
-                            "type": "item",
-                            "el": "boots_hover"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_fire_source"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -17070,8 +17083,17 @@
                     "el": "ganon_castle_access"
                 },
                 {
-                    "type": "item",
-                    "el": "bow"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "skip",
+                            "el": "hammer_through_wall"
+                        }
+                    ]
                 },
                 {
                     "type": "item",
@@ -17088,10 +17110,6 @@
                 },
                 {
                     "type": "item",
-                    "el": "bow"
-                },
-                {
-                    "type": "item",
                     "el": "hammer"
                 },
                 {
@@ -17101,6 +17119,19 @@
                 {
                     "type": "mixin",
                     "el": "has_bombchus"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "skip",
+                            "el": "hammer_through_wall"
+                        }
+                    ]
                 }
             ]
         },
@@ -17258,24 +17289,6 @@
                 {
                     "type": "item",
                     "el": "song_zelda"
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "key_small_ganon"
-                            },
-                            "value": "3"
-                        },
-                        {
-                            "type": "option",
-                            "el": "keysanity_small",
-                            "value": "keysanity_small_ignore"
-                        }
-                    ]
                 }
             ]
         },
@@ -20408,7 +20421,7 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "can_enter_mountain"
+                    "el": "can_child_attack"
                 }
             ]
         },
