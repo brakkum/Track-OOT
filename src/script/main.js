@@ -115,7 +115,9 @@ function changeView(event) {
 EventBus.register([
     "logic",
     "state",
-    "settings"
+    "settings",
+    "chest",
+    "skulltula"
 ], function(event) {
     updateChestStates();
     updateSkulltulasStates();
