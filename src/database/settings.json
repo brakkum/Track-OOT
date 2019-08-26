@@ -102,6 +102,25 @@
                 "keysanity_boss_keysanity"
             ]
         },
+        "starting_age": {
+            "type": "choice",
+            "default": "starting_age_child",
+            "values": [
+                "starting_age_child",
+                "starting_age_adult"
+            ]
+        },
+        "shuffle_entrances": {
+            "type": "choice",
+            "default": "shuffle_entrances_none",
+            "values": [
+                "shuffle_entrances_none",
+                "shuffle_entrances_dungeon",
+                "shuffle_entrances_interior",
+                "shuffle_entrances_special_interior",
+                "shuffle_entrances_overworld"
+            ]
+        },
         "scrubsanity": {
             "type": "check",
             "default": false
@@ -124,10 +143,6 @@
             "default": true
         },
         "doors_open_zora": {
-            "type": "check",
-            "default": false
-        },
-        "doors_open_mountain": {
             "type": "check",
             "default": false
         },
@@ -232,7 +247,11 @@
         "ganon_boss_door_open": {
            "type": "check",
            "default": false
-        }
+        },
+        "start_with_scarecrow": {
+            "type": "check",
+            "default": false
+         }
     },
     "skips": {
         "tricks": {
@@ -261,7 +280,8 @@
                 "sptmq_frozen_nofire",
                 "fitmq_bosskey_nobow",
                 "zora_cucco",
-                "zora_hover"
+                "zora_hover",
+                "mido_backflip"
             ],
             "default": [],
             "logic_editor_visible": false
@@ -374,6 +394,10 @@
             "default": false
         },
         "zora_hover": {
+            "type": "hidden",
+            "default": false
+        },
+        "mido_backflip": {
             "type": "hidden",
             "default": false
         }

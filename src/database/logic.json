@@ -1,5 +1,237 @@
 {
     "mixins": {
+        "time_travel": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_time"
+                }
+            ]
+        },
+        "is_child": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "option",
+                            "el": "starting_age",
+                            "value": "starting_age_child"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "time_travel"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_leave_forest"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "not",
+                    "el": {
+                        "type": "filter",
+                        "el": "filter_era_active",
+                        "value": "adult"
+                    }
+                }
+            ]
+        },
+        "is_adult": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "option",
+                            "el": "starting_age",
+                            "value": "starting_age_adult"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "time_travel"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_leave_forest"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "not",
+                    "el": {
+                        "type": "filter",
+                        "el": "filter_era_active",
+                        "value": "child"
+                    }
+                }
+            ]
+        },
+        "is_either": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                }
+            ]
+        },
+        "can_child_attack": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "slingshot"
+                        },
+                        {
+                            "type": "item",
+                            "el": "boomerang"
+                        },
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "item",
+                            "el": "sword_kokiri"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
+        },
+        "can_child_damage": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "slingshot"
+                        },
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "item",
+                            "el": "sword_kokiri"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
+        },
+        "can_stun_deku": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_child_attack"
+                },
+                {
+                    "type": "item",
+                    "el": "nut"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "filter",
+                                "el": "filter_era_active",
+                                "value": "adult"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "shield_kokiri"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                }
+            ]
+        },
+        "beyond_mido": {
+            "type": "true"
+        },
+        "deku_tree_clear": {
+            "type": "true"
+        },
         "gerudo_fortress_carpenter_rescue": {
             "type": "and",
             "el": [
@@ -1089,63 +1321,11 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "has_explosives"
+                    "el": "is_adult"
                 },
                 {
-                    "type": "item",
-                    "el": "scale"
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "slingshot"
-                        },
-                        {
-                            "type": "item",
-                            "el": "sword_kokiri"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "magic_din"
-                        },
-                        {
-                            "type": "item",
-                            "el": "magic_power"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "ocarina"
-                        },
-                        {
-                            "type": "or",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "warp_light"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_water"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_shadow"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "deku_tree_clear"
                 }
             ]
         },
@@ -1162,10 +1342,6 @@
                         {
                             "type": "or",
                             "el": [
-                                {
-                                    "type": "option",
-                                    "el": "doors_open_mountain"
-                                },
                                 {
                                     "type": "mixin",
                                     "el": "can_become_adult"
@@ -1241,15 +1417,43 @@
             ]
         },
         "deku_tree_access": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "option",
-                    "el": "doors_open_forest"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "show_mido_sword_and_shield"
+                        }
+                    ]
                 },
                 {
-                    "type": "item",
-                    "el": "sword_kokiri"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "is_child"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "option",
+                                    "el": "shuffle_entrances",
+                                    "value": "shuffle_entrances_dungeon"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "show_mido_sword_and_shield"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -1313,87 +1517,6 @@
                                     "el": "zora_hover"
                                 }
                             ]
-                        }
-                    ]
-                }
-            ]
-        },
-        "can_child_attack": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "is_currently_child"
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "slingshot"
-                        },
-                        {
-                            "type": "item",
-                            "el": "boomerang"
-                        },
-                        {
-                            "type": "item",
-                            "el": "stick"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        },
-                        {
-                            "type": "item",
-                            "el": "sword_kokiri"
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "magic_din"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "magic_power"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        "can_stun_deku": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "can_become_adult"
-                },
-                {
-                    "type": "mixin",
-                    "el": "can_child_attack"
-                },
-                {
-                    "type": "item",
-                    "el": "nut"
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "filter",
-                                "el": "filter_era_active",
-                                "value": "adult"
-                            }
-                        },
-                        {
-                            "type": "item",
-                            "el": "shield_kokiri"
                         }
                     ]
                 }
@@ -1522,18 +1645,41 @@
                 }
             ]
         },
-        "is_currently_child": {
-            "type": "not",
-            "el": {
-                "type": "filter",
-                "el": "filter_era_active",
-                "value": "adult"
-            }
+        "show_mido_sword_and_shield": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "option",
+                    "el": "doors_open_forest"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "is_child"
+                        },
+                        {
+                            "type": "item",
+                            "el": "sword_kokiri"
+                        },
+                        {
+                            "type": "item",
+                            "el": "shield_kokiri"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                }
+            ]
         }
     },
     "chests": {
         "kokiri_sword": {
-            "type": "true"
+            "type": "mixin",
+            "el": "is_child"
         },
         "midos_house": {
             "type": "true"
@@ -8144,10 +8290,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "option",
-                            "el": "doors_open_mountain"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -8209,10 +8351,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "option",
-                            "el": "doors_open_mountain"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -8265,19 +8403,51 @@
                 {
                     "type": "item",
                     "el": "song_saria"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
                 }
             ]
         },
         "woods_deku_salesman": {
-            "type": "true"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                }
+            ]
         },
         "woods_memory_game": {
-            "type": "item",
-            "el": "ocarina"
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
         },
         "woods_shooting": {
-            "type": "item",
-            "el": "slingshot"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                },
+                {
+                    "type": "item",
+                    "el": "slingshot"
+                }
+            ]
         },
         "woods_bomb_grotto": {
             "type": "mixin",
@@ -18876,16 +19046,16 @@
             "type": "and",
             "el": [
                 {
-                    "type": "mixin",
-                    "el": "can_become_adult"
-                },
-                {
                     "type": "item",
                     "el": "ocarina"
                 },
                 {
                     "type": "item",
                     "el": "song_epona"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
                 }
             ]
         },
@@ -19395,16 +19565,21 @@
             ]
         },
         "kokiri_know_it_all_brothers_child_night": {
-            "type": "mixin",
-            "el": "can_child_attack"
-        },
-        "kokiri_twins_adult_night": {
             "type": "and",
             "el": [
                 {
                     "type": "mixin",
-                    "el": "can_become_adult"
+                    "el": "can_child_attack"
                 },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
+        },
+        "kokiri_twins_adult_night": {
+            "type": "and",
+            "el": [
                 {
                     "type": "or",
                     "el": [
@@ -19426,6 +19601,10 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
                 }
             ]
         },
@@ -19439,6 +19618,10 @@
                 {
                     "type": "mixin",
                     "el": "can_child_attack"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
                 }
             ]
         },
@@ -19573,6 +19756,10 @@
                 {
                     "type": "item",
                     "el": "bottle"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
                 }
             ]
         },
@@ -24254,10 +24441,6 @@
                                 {
                                     "type": "mixin",
                                     "el": "has_explosives"
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "is_currently_child"
                                 }
                             ]
                         },
@@ -24498,10 +24681,6 @@
                     "type": "and",
                     "el": [
                         {
-                            "type": "mixin",
-                            "el": "is_currently_child"
-                        },
-                        {
                             "type": "or",
                             "el": [
                                 {
@@ -24574,10 +24753,6 @@
                                             "el": "has_explosives"
                                         }
                                     ]
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "is_currently_child"
                                 }
                             ]
                         },
@@ -24610,10 +24785,6 @@
                                             "el": "has_explosives"
                                         }
                                     ]
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "is_currently_child"
                                 }
                             ]
                         },
