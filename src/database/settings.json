@@ -281,7 +281,8 @@
                 "fitmq_bosskey_nobow",
                 "zora_cucco",
                 "zora_hover",
-                "mido_backflip"
+                "mido_backflip",
+                "logic_lost_woods_gs_bean"
             ],
             "default": [],
             "logic_editor_visible": false
@@ -398,6 +399,10 @@
             "default": false
         },
         "mido_backflip": {
+            "type": "hidden",
+            "default": false
+        },
+        "logic_lost_woods_gs_bean": {
             "type": "hidden",
             "default": false
         }

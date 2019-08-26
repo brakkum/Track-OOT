@@ -227,7 +227,69 @@
             ]
         },
         "beyond_mido": {
-            "type": "true"
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                },
+                {
+                    "type": "skip",
+                    "el": "mido_backflip"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "ocarina"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "song_saria"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_forest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "has_scarecrow": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_leave_forest"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_child"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "item",
+                            "el": "ocarina"
+                        }
+                    ]
+                },
+                {
+                    "type": "option",
+                    "el": "start_with_scarecrow"
+                }
+            ]
         },
         "deku_tree_clear": {
             "type": "true"
@@ -1719,6 +1781,10 @@
                 {
                     "type": "item",
                     "el": "stone_water"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
                 }
             ]
         },
@@ -8454,72 +8520,66 @@
             "el": "can_blast_or_smash"
         },
         "woods_deku_salesman_grotto": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "hammer"
-                        },
-                        {
-                            "type": "item",
-                            "el": "ocarina"
-                        },
-                        {
-                            "type": "or",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "song_saria"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_forest"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "beyond_mido"
                 },
                 {
                     "type": "mixin",
-                    "el": "has_explosives"
+                    "el": "can_blast_or_smash"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
         "woods_wolfos_grotto": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "hammer"
-                        },
-                        {
-                            "type": "item",
-                            "el": "ocarina"
-                        },
-                        {
-                            "type": "or",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "song_saria"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_forest"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "beyond_mido"
                 },
                 {
                     "type": "mixin",
-                    "el": "has_explosives"
+                    "el": "can_blast_or_smash"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "item",
+                            "el": "slingshot"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "item",
+                            "el": "sword_kokiri"
+                        }
+                    ]
                 }
             ]
         },
@@ -8532,11 +8592,49 @@
                         "type": "item",
                         "el": "egg"
                     },
-                    "value": 3
+                    "value": "3"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "item",
+                            "el": "slingshot"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "item",
+                            "el": "sword_kokiri"
+                        }
+                    ]
                 },
                 {
                     "type": "mixin",
-                    "el": "can_child_attack"
+                    "el": "is_child"
+                },
+                {
+                    "type": "mixin",
+                    "el": "beyond_mido"
                 }
             ]
         },
@@ -8544,35 +8642,62 @@
             "type": "and",
             "el": [
                 {
-                    "type": "mixin",
-                    "el": "can_become_adult"
-                },
-                {
-                    "type": "item",
-                    "el": "ocarina"
-                },
-                {
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "song_saria"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "warp_forest"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "song_saria"
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
-                            "type": "item",
-                            "el": "warp_forest"
+                            "type": "skip",
+                            "el": "mido_backflip"
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
                 }
             ]
         },
         "woods_deku_theater_1": {
-            "type": "min",
-            "el": {
-                "type": "item",
-                "el": "egg"
-            },
-            "value": 2
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "beyond_mido"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "egg"
+                    },
+                    "value": "2"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
         },
         "woods_deku_theater_2": {
             "type": "and",
@@ -8603,7 +8728,15 @@
                         "type": "item",
                         "el": "egg"
                     },
-                    "value": 2
+                    "value": "2"
+                },
+                {
+                    "type": "mixin",
+                    "el": "beyond_mido"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
                 }
             ]
         },
@@ -10093,37 +10226,19 @@
             ]
         },
         "woods_deku_salesman_grotto_2": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "hammer"
-                        },
-                        {
-                            "type": "item",
-                            "el": "ocarina"
-                        },
-                        {
-                            "type": "or",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "song_saria"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_forest"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "beyond_mido"
                 },
                 {
                     "type": "mixin",
-                    "el": "has_explosives"
+                    "el": "can_blast_or_smash"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10137,6 +10252,48 @@
                 {
                     "type": "item",
                     "el": "song_storm"
+                },
+                {
+                    "type": "mixin",
+                    "el": "beyond_mido"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "item",
+                            "el": "slingshot"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "item",
+                            "el": "sword_kokiri"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10150,6 +10307,48 @@
                 {
                     "type": "item",
                     "el": "song_storm"
+                },
+                {
+                    "type": "mixin",
+                    "el": "beyond_mido"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "item",
+                            "el": "slingshot"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "item",
+                            "el": "sword_kokiri"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10747,10 +10946,38 @@
             "el": "can_leave_forest"
         },
         "woods_deku_salesman_theater_1": {
-            "type": "true"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "beyond_mido"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                }
+            ]
         },
         "woods_deku_salesman_theater_2": {
-            "type": "true"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "beyond_mido"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                }
+            ]
         },
         "deku_lobby_mq": {
             "type": "mixin",
@@ -19737,12 +19964,28 @@
             "type": "and",
             "el": [
                 {
-                    "type": "mixin",
-                    "el": "can_child_attack"
-                },
-                {
                     "type": "item",
                     "el": "bottle"
+                },
+                {
+                    "type": "mixin",
+                    "el": "beyond_mido"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_child_attack"
+                        },
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "scrubsanity"
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -19767,29 +20010,108 @@
             "type": "and",
             "el": [
                 {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "warp_forest"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "warp_forest"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "song_saria"
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
-                            "type": "item",
-                            "el": "song_saria"
+                            "type": "skip",
+                            "el": "mido_backflip"
                         }
                     ]
                 },
                 {
-                    "type": "item",
-                    "el": "ocarina"
-                },
-                {
                     "type": "mixin",
-                    "el": "can_become_adult"
+                    "el": "beyond_mido"
                 },
                 {
-                    "type": "item",
-                    "el": "bean"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "is_child"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "bean"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "hookshot"
+                                            },
+                                            "value": "2"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_bombchus"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_din"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "magic_power"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "logic_lost_woods_gs_bean"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -19797,29 +20119,43 @@
             "type": "and",
             "el": [
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "warp_forest"
-                        },
-                        {
-                            "type": "item",
-                            "el": "song_saria"
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "el": "ocarina"
-                },
-                {
                     "type": "item",
                     "el": "hookshot"
                 },
                 {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "warp_forest"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "song_saria"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "skip",
+                            "el": "mido_backflip"
+                        }
+                    ]
+                },
+                {
                     "type": "mixin",
-                    "el": "can_become_adult"
+                    "el": "is_adult"
                 }
             ]
         },
