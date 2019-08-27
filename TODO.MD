@@ -4,6 +4,8 @@
 
 ### prio 2
 - custom layout (aka build yourself a tracker)
+- add user friendly savestate management
+    - see office applications
 - implement settings for dungeon status control
 - custom element using 2 list-select
     - add search options
