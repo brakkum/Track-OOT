@@ -56,16 +56,22 @@
             </ootrt-songlist>
         </div>
         <div id="view-notes" class="view-container text-container">
-            <div class="view-container-title">Notes</div>
-            <textarea class="view-container-fulltext" id="tracker-notes"></textarea>
+            <div class="flex-wrapper">
+                <div class="view-container-title">Notes</div>
+                <textarea class="view-container-fulltext" id="tracker-notes"></textarea>
+            </div>
         </div>
         <div id="view-multi" class="view-container text-container">
-            <ootrt-multiplayer>
-            </ootrt-multiplayer>
+            <div class="flex-wrapper">
+                <ootrt-multiplayer>
+                </ootrt-multiplayer>
+            </div>
         </div>
         <div id="view-log" class="view-container text-container">
-            <div class="view-container-title">LOG</div>
-            <div class="view-container-fulltext" id="tracker-log"></div>
+            <div class="flex-wrapper">
+                <div class="view-container-title">LOG</div>
+                <div class="view-container-fulltext" id="tracker-log"></div>
+            </div>
         </div>
     </div>
     <deep-choiceselect id="view-choice-bottom">

@@ -36,7 +36,7 @@ const SETTINGS_TPL = `
 <div>
     Please be aware, that the logic of this tracker (mostly) follows the randomizer logic.<br>
     This is due to the fact, that the logic of the randomizer is a good estimation of the logic of the game itself.<br>
-    If the tracker acts weird, please <a href="https://bitbucket.org/2deep4real/track-oot/issues" target="_blank" rel="noreferrer">report the error!</a><br><br>
+    If the tracker acts weird, please <a href="https://bitbucket.org/zidargs/track-oot/issues" target="_blank" rel="noreferrer">report the error!</a><br><br>
     You can also report via Discord ▶ <a href="https://discord.gg/wgFVtuv" target="_blank" rel="noreferrer">Join my Discord!</a><br><br>
 </div>
 <hr>
