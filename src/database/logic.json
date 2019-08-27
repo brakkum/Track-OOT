@@ -1789,20 +1789,51 @@
             ]
         },
         "hyrule_north_grotto": {
-            "type": "mixin",
-            "el": "can_blast_or_smash"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
         },
         "hyrule_forest_grotto": {
-            "type": "mixin",
-            "el": "can_blast_or_smash"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
         },
         "hyrule_south_grotto": {
             "type": "mixin",
             "el": "can_leave_forest"
         },
         "hyrule_deku_salesman_grotto": {
-            "type": "mixin",
-            "el": "can_blast_or_smash"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                }
+            ]
         },
         "diving_heart_piece_grotto": {
             "type": "and",
@@ -1820,7 +1851,7 @@
                                 "type": "item",
                                 "el": "scale"
                             },
-                            "value": 2
+                            "value": "2"
                         },
                         {
                             "type": "and",
@@ -1831,11 +1862,15 @@
                                 },
                                 {
                                     "type": "mixin",
-                                    "el": "can_become_adult"
+                                    "el": "is_adult"
                                 }
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
                 }
             ]
         },
@@ -19392,12 +19427,8 @@
             "type": "and",
             "el": [
                 {
-                    "type": "item",
-                    "el": "ocarina"
-                },
-                {
-                    "type": "item",
-                    "el": "song_epona"
+                    "type": "mixin",
+                    "el": "can_leave_forest"
                 },
                 {
                     "type": "or",
@@ -19407,15 +19438,11 @@
                             "el": [
                                 {
                                     "type": "mixin",
-                                    "el": "can_become_adult"
+                                    "el": "is_adult"
                                 },
                                 {
                                     "type": "item",
                                     "el": "hammer"
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "has_fire_source"
                                 }
                             ]
                         },
@@ -19424,19 +19451,27 @@
                             "el": [
                                 {
                                     "type": "mixin",
+                                    "el": "is_child"
+                                },
+                                {
+                                    "type": "mixin",
                                     "el": "has_explosives"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "magic_din"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "magic_power"
                                 }
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_epona"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_fire_source"
                 }
             ]
         },
@@ -21372,50 +21407,11 @@
             ]
         },
         "hyrule_north_east_grotto": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "can_leave_forest"
-                        },
-                        {
-                            "type": "item",
-                            "el": "boomerang"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "can_become_adult"
-                        },
-                        {
-                            "type": "item",
-                            "el": "hookshot"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "can_blast_or_smash"
-                        }
-                    ]
-                }
-            ]
-        },
-        "hyrule_west_grotto": {
             "type": "and",
             "el": [
                 {
-                    "type": "item",
-                    "el": "magic_power"
+                    "type": "mixin",
+                    "el": "can_leave_forest"
                 },
                 {
                     "type": "or",
@@ -21432,12 +21428,60 @@
                                     "el": "boomerang"
                                 },
                                 {
-                                    "type": "item",
-                                    "el": "magic_din"
+                                    "type": "mixin",
+                                    "el": "has_explosives"
                                 },
                                 {
                                     "type": "mixin",
-                                    "el": "has_explosives"
+                                    "el": "is_child"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_blast_or_smash"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "is_adult"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "hyrule_west_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "is_adult"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hammer"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
                                 }
                             ]
                         },
@@ -21446,41 +21490,23 @@
                             "el": [
                                 {
                                     "type": "mixin",
-                                    "el": "can_become_adult"
+                                    "el": "is_child"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
                                 },
                                 {
                                     "type": "item",
-                                    "el": "hookshot"
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "item",
-                                                    "el": "arrow_fire"
-                                                },
-                                                {
-                                                    "type": "item",
-                                                    "el": "bow"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "magic_din"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "hammer"
+                                    "el": "boomerang"
                                 }
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_fire_source"
                 }
             ]
         },
