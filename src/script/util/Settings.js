@@ -4,7 +4,7 @@ import SettingsWindow from "/deepJS/ui/SettingsWindow.js";
 import PopOver from "/deepJS/ui/PopOver.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
-import BusyIndicator from "/deepJS/ui/BusyIndicator.js";
+import BusyIndicator from "/script/ui/BusyIndicator.js";
 import TrackerLocalState from "./LocalState.js";
 import I18n from "./I18n.js";
 

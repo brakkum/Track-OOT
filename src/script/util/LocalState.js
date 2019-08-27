@@ -2,7 +2,7 @@ import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
 import DeepSessionStorage from "/deepJS/storage/SessionStorage.js";
 import Logger from "/deepJS/util/Logger.js";
 
-let state = DeepSessionStorage.getAll();
+let state = DeepSessionStorage.toObject();
 
 class TrackerLocalState {
 
