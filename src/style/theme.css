@@ -7,13 +7,35 @@
     --navigation-background-color: #cb9c3d;
     --navigation-text-color: #000000;
 
+    --scrollbar-track-color: #000000;
+    --scrollbar-thumb-color: #cb9c3d;
+    --scrollbar-thumb-color-hover: #d4ad5e;
+
     --edit-background-color: #222222;
     --edit-text-color: #ffffff;
 
-    --dungeon-status-hover-color: #cb9c3d32;
+    --main-hover-color: #cb9c3d32;
 
     --location-status-opened-color: #777777;
     --location-status-available-color: #00ff00;
     --location-status-unavailable-color: #ff0000;
     --location-status-possible-color: #ffff00;
 }
+/*
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-color, #000000);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-color, #ffffff);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-color-hover, #aaaaaa);
+}
+*/

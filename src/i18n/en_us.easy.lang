@@ -864,7 +864,8 @@ button_erase_data=erase
 ; SETTINGS - ROM OPTIONS
 consider_buyable=Consider buyable Items (Tunics / Wasteland Bombchus) in logic
 bombchu_logic=Consider Bombchus in logic
-keysanity=Keysanity
+keysanity_small=Small Key Logic
+keysanity_boss=Boss Key Logic
 scrubsanity=Scrubsanity
 cowsanity=Cowsanity
 beansanity=Beansanity
@@ -912,6 +913,14 @@ zora_hover=Zora's Domain Entry with Hover Boots
 
 ; SETTINGS - SEQUENCE BREAKS
 ; TODO
+
+; SETTINGS - KEYSANITY
+keysanity_small_ignore=Ignore Key Logic
+keysanity_small_track=Normal Key Logic
+keysanity_small_keysanity=Keysanity Logic
+keysanity_boss_ignore=Ignore Key Logic
+keysanity_boss_track=Normal Key Logic
+keysanity_boss_keysanity=Keysanity Logic
 
 ; SETTINGS - GERUDO FORTRESS
 gerudo_fortress_open_default=Default behavior

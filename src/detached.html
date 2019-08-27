@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Track-OOT - Detached</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Track items and locations in 'The Legend of Zelda - Ocarina of Time Randomizer' (OOTR)">
+    <meta name="robots" content="norobots, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#cb9c3d">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/favicons/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicons/icon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/icon-16x16.png">
+    <link rel="stylesheet" type="text/css" href="style/theme.css">
+    <script>
+        window.addEventListener('contextmenu', function() {
+            event.preventDefault();
+            return false;
+        });
+    </script>
+    <script type="module">
+        import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
+        import GlobalData from "/script/storage/GlobalData.js";
+        import EventBus from "/deepJS/util/EventBus/EventBus.js";
+        import EventBusModuleShare from "/deepJS/util/EventBus/EventBusModuleShare.js";
+        import Panel from "/deepJS/ui/layout/Panel.js";
+        import loadData from "/script/util/loader.js";
+        import I18n from "/script/util/I18n.js";
+        import Logic from "/script/util/Logic.js";
+        import "/deepJS/ui/layout/Layout.js";
+        import "/script/ui/items/ItemGrid.js";
+        import "/script/ui/dungeonstate/DungeonState.js";
+        import "/script/ui/locations/LocationList.js";
+        import "/script/ui/map/Map.js";
+
+        (async function main() {
+
+            await loadData();
+            await I18n.load(DeepLocalStorage.get("settings", "language", "en_us"));
+            Logic.loadLogic();
+            EventBusModuleShare.mute("logic");
+            EventBus.addModule(EventBusModuleShare);
+
+            let conf = decodeURI(window.location.hash.slice(1));
+            let layout = GlobalData.get("layouts")[conf];
+
+            if (!!layout) {
+                let el = document.getElementById("layout");
+                el.loadLayout(layout);
+                let waw = window.outerWidth - window.innerWidth;
+                let wah = window.outerHeight - window.innerHeight;
+                window.resizeTo(waw + el.clientWidth, wah + el.clientHeight);
+            }
+            
+            EventBus.trigger("detached-window-created", {});
+
+        }());
+
+    </script>
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <deep-layout id="layout">
+        </deep-layout>
+    </div>
+</body>
+</html>

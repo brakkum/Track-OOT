@@ -39,6 +39,11 @@
                 "flat"
             ]
         },
+        "edit_layouts": {
+            "type": "-button",
+            "text": "button_edit_layouts",
+            "view": "layouteditor"
+        },
         "item_size": {
             "type": "hidden",
             "old_type": "range",
@@ -61,11 +66,13 @@
         },
         "edit_custom_logic": {
             "type": "button",
-            "text": "button_edit_logic"
+            "text": "button_edit_logic",
+            "view": "logiceditor"
         },
         "erase_all_data": {
             "type": "button",
-            "text": "button_erase_data"
+            "text": "button_erase_data",
+            "url": "uninstall.html"
         }
     },
     "options": {
@@ -77,9 +84,23 @@
             "type": "check",
             "default": false
         },
-        "keysanity": {
-            "type": "check",
-            "default": false
+        "keysanity_small": {
+            "type": "choice",
+            "default": "keysanity_small_ignore",
+            "values": [
+                "keysanity_small_ignore",
+                "keysanity_small_track",
+                "keysanity_small_keysanity"
+            ]
+        },
+        "keysanity_boss": {
+            "type": "choice",
+            "default": "keysanity_boss_ignore",
+            "values": [
+                "keysanity_boss_ignore",
+                "keysanity_boss_track",
+                "keysanity_boss_keysanity"
+            ]
         },
         "scrubsanity": {
             "type": "check",
