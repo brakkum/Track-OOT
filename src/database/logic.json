@@ -1,5 +1,147 @@
 {
     "mixins": {
+        "can_reach_links_house": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kokiri"
+                }
+            ]
+        },
+        "can_reach_kokiri": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lost_woods_entrance"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lost_woods_bridge"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_links_house"
+                }
+            ]
+        },
+        "can_reach_midos_house": {
+            "type": "mixin",
+            "el": "can_reach_kokiri"
+        },
+        "can_reach_outside_deku": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kokiri"
+                },
+                {
+                    "type": "mixin",
+                    "el": "show_mido_sword_and_shield"
+                }
+            ]
+        },
+        "can_reach_lost_woods_entrance": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kokiri"
+                },
+                {
+                    "type": "mixin",
+                    "el": "beyond_mido"
+                }
+            ]
+        },
+        "can_reach_lost_woods_bridge": {
+            "type": "true"
+        },
+        "can_reach_meadow_entrance": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "beyond_mido"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_meadow_center"
+                }
+            ]
+        },
+        "can_reach_meadow_center": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_meadow_entrance"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "is_adult"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "stick"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "slingshot"
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "magic_din"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "magic_power"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "sword_kokiri"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "ocarina"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "warp_forest"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
         "time_travel": {
             "type": "and",
             "el": [
@@ -250,14 +392,14 @@
                                 {
                                     "type": "item",
                                     "el": "song_saria"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_forest"
                                 }
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_meadow_entrance"
                 }
             ]
         },
@@ -292,7 +434,7 @@
             ]
         },
         "deku_tree_clear": {
-            "type": "true"
+            "type": "false"
         },
         "gerudo_fortress_carpenter_rescue": {
             "type": "and",
@@ -1440,80 +1582,39 @@
             ]
         },
         "can_become_adult": {
-            "type": "and",
+            "type": "false"
+        },
+        "deku_tree_access": {
+            "type": "or",
             "el": [
                 {
-                    "type": "mixin",
-                    "el": "can_leave_forest"
-                },
-                {
-                    "type": "not",
-                    "el": {
-                        "type": "filter",
-                        "el": "filter_era_active",
-                        "value": "child"
-                    }
-                },
-                {
-                    "type": "or",
+                    "type": "and",
                     "el": [
                         {
                             "type": "option",
-                            "el": "doors_open_temple"
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "song_time"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        "deku_tree_access": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "is_adult"
+                            "el": "shuffle_entrances",
+                            "value": "shuffle_entrances_dungeon"
                         },
                         {
                             "type": "mixin",
                             "el": "show_mido_sword_and_shield"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
                         }
                     ]
                 },
                 {
-                    "type": "or",
+                    "type": "and",
                     "el": [
                         {
                             "type": "mixin",
                             "el": "is_child"
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "option",
-                                    "el": "shuffle_entrances",
-                                    "value": "shuffle_entrances_dungeon"
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "show_mido_sword_and_shield"
-                                }
-                            ]
+                            "type": "mixin",
+                            "el": "show_mido_sword_and_shield"
                         }
                     ]
                 }
