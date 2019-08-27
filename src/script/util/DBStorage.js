@@ -7,12 +7,12 @@ function openDB() {
 			let savestateStore = db.createObjectStore("savestates", {keyPath: "name"});
 			let settingsStore = db.createObjectStore("settings");
 			for (let i of Object.keys(localStorage)) {
-				if (i.startsWith(`save\0`)) {
+				if (i.startsWith("save\0")) {
 					let data = JSON.parse(localStorage.getItem(i));
 					data.name = i.split("\0")[1];
 					savestateStore.add(data);
 				}
-				if (i.startsWith(`settings\0`)) {
+				if (i.startsWith("settings\0")) {
 					let data = JSON.parse(localStorage.getItem(i));
 					settingsStore.add(data, i.split("\0")[1]);
 				}
