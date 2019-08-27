@@ -1,5 +1,4 @@
 ### WIP
-- implement layout manager
 
 ---
 
