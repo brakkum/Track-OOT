@@ -1797,15 +1797,13 @@
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "option",
-                                                "el": "keysanity"
-                                            }
-                                        },
-                                        {
                                             "type": "item",
                                             "el": "key_boss_water"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_boss",
+                                            "value": "keysanity_boss_ignore"
                                         }
                                     ]
                                 },

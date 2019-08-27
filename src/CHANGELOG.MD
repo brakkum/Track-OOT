@@ -4,6 +4,13 @@ Application:    Track-OOT
 
 ---
 
+## VERSION 1.5.1
+
+### HOTFIX
+- fixed keysanity artefact for adult fishing
+
+---
+
 ## VERSION 1.5.0
 
 ### GENERAL FIXES
