@@ -2250,8 +2250,26 @@
             "el": "deku_tree_access"
         },
         "deku_basement": {
-            "type": "mixin",
-            "el": "deku_tree_access"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "deku_tree_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_child_attack"
+                        },
+                        {
+                            "type": "item",
+                            "el": "nut"
+                        }
+                    ]
+                }
+            ]
         },
         "deku_slingshot": {
             "type": "and",
@@ -8269,7 +8287,8 @@
             ]
         },
         "woods_deku_salesman": {
-            "type": "true"
+            "type": "mixin",
+            "el": "can_stun_deku"
         },
         "woods_memory_game": {
             "type": "item",
@@ -8284,37 +8303,46 @@
             "el": "can_blast_or_smash"
         },
         "woods_deku_salesman_grotto": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "and",
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                },
+                {
+                    "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "hammer"
-                        },
-                        {
-                            "type": "item",
-                            "el": "ocarina"
-                        },
-                        {
-                            "type": "or",
+                            "type": "and",
                             "el": [
                                 {
                                     "type": "item",
-                                    "el": "song_saria"
+                                    "el": "hammer"
                                 },
                                 {
                                     "type": "item",
-                                    "el": "warp_forest"
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "song_saria"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "warp_forest"
+                                        }
+                                    ]
                                 }
                             ]
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
                         }
                     ]
-                },
-                {
-                    "type": "mixin",
-                    "el": "has_explosives"
                 }
             ]
         },
@@ -9923,37 +9951,46 @@
             ]
         },
         "woods_deku_salesman_grotto_2": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
-                    "type": "and",
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                },
+                {
+                    "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "hammer"
-                        },
-                        {
-                            "type": "item",
-                            "el": "ocarina"
-                        },
-                        {
-                            "type": "or",
+                            "type": "and",
                             "el": [
                                 {
                                     "type": "item",
-                                    "el": "song_saria"
+                                    "el": "hammer"
                                 },
                                 {
                                     "type": "item",
-                                    "el": "warp_forest"
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "song_saria"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "warp_forest"
+                                        }
+                                    ]
                                 }
                             ]
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
                         }
                     ]
-                },
-                {
-                    "type": "mixin",
-                    "el": "has_explosives"
                 }
             ]
         },
@@ -9967,6 +10004,10 @@
                 {
                     "type": "item",
                     "el": "song_storm"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -9980,12 +10021,25 @@
                 {
                     "type": "item",
                     "el": "song_storm"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
         "mountain_crater_ladder_salesman": {
-            "type": "mixin",
-            "el": "has_explosives"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                }
+            ]
         },
         "mountain_crater_grotto_salesman_1": {
             "type": "and",
@@ -9997,6 +10051,10 @@
                 {
                     "type": "item",
                     "el": "hammer"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10010,6 +10068,10 @@
                 {
                     "type": "item",
                     "el": "hammer"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10023,12 +10085,25 @@
                 {
                     "type": "item",
                     "el": "hammer"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
         "dodongo_lobby_salesman": {
-            "type": "mixin",
-            "el": "dodongo_cavern_access"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "dodongo_cavern_access"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                }
+            ]
         },
         "dodongo_east_corridor_salesman": {
             "type": "and",
@@ -10040,6 +10115,10 @@
                 {
                     "type": "mixin",
                     "el": "can_blast_or_smash"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10106,6 +10185,10 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10172,6 +10255,10 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10198,6 +10285,10 @@
                             "el": "boomerang"
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10211,6 +10302,10 @@
                 {
                     "type": "mixin",
                     "el": "can_see_with_lens"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10224,6 +10319,10 @@
                 {
                     "type": "mixin",
                     "el": "can_see_with_lens"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10237,6 +10336,10 @@
                 {
                     "type": "mixin",
                     "el": "can_see_with_lens"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10250,6 +10353,10 @@
                 {
                     "type": "mixin",
                     "el": "can_see_with_lens"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10267,6 +10374,10 @@
                 {
                     "type": "item",
                     "el": "song_storm"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10284,6 +10395,10 @@
                 {
                     "type": "item",
                     "el": "song_storm"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10300,7 +10415,11 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 2
+                    "value": "2"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10317,7 +10436,11 @@
                         "type": "item",
                         "el": "glove"
                     },
-                    "value": 2
+                    "value": "2"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10348,6 +10471,10 @@
                             "el": "scale"
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10378,6 +10505,10 @@
                             "el": "scale"
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10435,6 +10566,10 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10492,6 +10627,10 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -10549,38 +10688,98 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
         "lonlon_grotto_deku_salesman_1": {
-            "type": "mixin",
-            "el": "can_leave_forest"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                }
+            ]
         },
         "lonlon_grotto_deku_salesman_2": {
-            "type": "mixin",
-            "el": "can_leave_forest"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                }
+            ]
         },
         "lonlon_grotto_deku_salesman_3": {
-            "type": "mixin",
-            "el": "can_leave_forest"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                }
+            ]
         },
         "lake_grave_grotto_salesman_1": {
-            "type": "mixin",
-            "el": "can_leave_forest"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                }
+            ]
         },
         "lake_grave_grotto_salesman_2": {
-            "type": "mixin",
-            "el": "can_leave_forest"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                }
+            ]
         },
         "lake_grave_grotto_salesman_3": {
-            "type": "mixin",
-            "el": "can_leave_forest"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
+                }
+            ]
         },
         "woods_deku_salesman_theater_1": {
-            "type": "true"
+            "type": "mixin",
+            "el": "can_stun_deku"
         },
         "woods_deku_salesman_theater_2": {
-            "type": "true"
+            "type": "mixin",
+            "el": "can_stun_deku"
         },
         "deku_lobby_mq": {
             "type": "mixin",
@@ -10806,6 +11005,10 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -11424,6 +11627,10 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -16854,6 +17061,10 @@
                 {
                     "type": "mixin",
                     "el": "can_see_with_lens"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -16867,6 +17078,10 @@
                 {
                     "type": "mixin",
                     "el": "can_see_with_lens"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -16880,6 +17095,10 @@
                 {
                     "type": "mixin",
                     "el": "can_see_with_lens"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -16893,6 +17112,10 @@
                 {
                     "type": "mixin",
                     "el": "can_see_with_lens"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
@@ -16906,6 +17129,10 @@
                 {
                     "type": "mixin",
                     "el": "can_see_with_lens"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_stun_deku"
                 }
             ]
         },
