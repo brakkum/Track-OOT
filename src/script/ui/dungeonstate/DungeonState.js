@@ -1,4 +1,4 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import Template from "/deepJS/util/Template.js";
 import I18n from "/script/util/I18n.js";
 import Panel from "/deepJS/ui/layout/Panel.js";

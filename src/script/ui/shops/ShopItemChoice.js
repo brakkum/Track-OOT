@@ -1,7 +1,7 @@
 import DeepWindow from "/deepJS/ui/Window.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import Template from "/deepJS/util/Template.js";
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import I18n from "/script/util/I18n.js";
 import "./ShopEditItem.js";
 

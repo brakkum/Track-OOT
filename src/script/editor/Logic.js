@@ -1,5 +1,5 @@
 import LocalStorage from "/deepJS/storage/LocalStorage.js";
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 
 class EditorLogic {
 

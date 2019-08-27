@@ -8,6 +8,39 @@
 @import "utils/settings.css";
 @import "layouteditor.css";
 
+@keyframes rotate {
+    0% { transform: scale(4) rotate(0deg) }
+    50% { transform: scale(2) rotate(360deg) }
+    100% { transform: scale(4) rotate(720deg) }
+}
+
+#busy-animation {
+    animation: rotate 4s linear infinite;
+
+    * {
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        background-image: url(/images/triforce_piece.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+    }
+
+    :nth-child(1) {
+        transform: translate(-16px, -39px);
+    }
+
+    :nth-child(2) {
+        transform: translate(-31px, -13px);
+    }
+
+    :nth-child(3) {
+        transform: translate(-1px, -13px);
+    }
+
+}
+
 .viewpane {
     display: flex;
     flex-direction: column;

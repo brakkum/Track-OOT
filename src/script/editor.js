@@ -1,4 +1,4 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
 import "/deepJS/ui/logic/LogicEditorClipboard.js";

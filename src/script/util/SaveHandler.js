@@ -1,4 +1,4 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
 import DeepSessionStorage from "/deepJS/storage/SessionStorage.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";

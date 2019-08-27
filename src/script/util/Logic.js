@@ -1,4 +1,4 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import MemoryStorage from "/deepJS/storage/MemoryStorage.js";
 import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
 import TrackerLocalState from "/script/util/LocalState.js";

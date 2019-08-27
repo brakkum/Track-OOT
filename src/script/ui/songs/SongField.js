@@ -1,5 +1,5 @@
 import Template from "/deepJS/util/Template.js";
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import TrackerLocalState from "/script/util/LocalState.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";

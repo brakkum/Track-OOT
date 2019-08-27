@@ -1,9 +1,10 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import DeepLocalStorage from "/deepJS/storage/LocalStorage.js";
 import SettingsWindow from "/deepJS/ui/SettingsWindow.js";
 import PopOver from "/deepJS/ui/PopOver.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
+import BusyIndicator from "/deepJS/ui/BusyIndicator.js";
 import TrackerLocalState from "./LocalState.js";
 import I18n from "./I18n.js";
 
@@ -11,6 +12,8 @@ import "/deepJS/ui/Paging.js";
 
 const settings = new SettingsWindow;
 const settingsEdit = document.getElementById("edit-settings");
+
+BusyIndicator.setIndicator(document.getElementById("busy-animation"));
 
 settings.innerHTML = `
 <div style="display: flex; margin-bottom: 10px;">
@@ -223,8 +226,10 @@ function onSettingsEvent(event) {
     return settings;
 }
 
-settings.addEventListener('submit', function(event) {
-    EventBus.trigger("settings", onSettingsEvent(event));
+settings.addEventListener('submit', async function(event) {
+    await BusyIndicator.busy();
+    await EventBus.trigger("settings", onSettingsEvent(event));
+    await BusyIndicator.unbusy();
 });
 EventBus.register("settings", onSettingsEvent);
 

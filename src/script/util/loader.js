@@ -1,4 +1,4 @@
-import GlobalData from "/deepJS/storage/GlobalData.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import LocalStorage from "/deepJS/storage/LocalStorage.js";
 import FileLoader from "/deepJS/util/FileLoader.js";
 
