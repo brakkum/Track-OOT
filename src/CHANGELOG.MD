@@ -8,6 +8,12 @@ Version:        1.5.0
 
 ---
 
+### GENERAL FIXES
+- visuals
+- logic
+- state loading
+- event handling
+
 ### LAYOUT
 - reworked layout loading process
 - layouts now folow a configurable structure
@@ -26,3 +32,12 @@ Version:        1.5.0
 - keylogic (without keysanity) added
 - split small keys and boss keys to seperate settings
 - added beansanity option
+- generate images from logic
+- add more operato
+
+### UI
+- redesigned popover
+- redesign dungeon state panel
+- all panels now have a minimum size
+- fix location list styling
+- fix custom context menus
