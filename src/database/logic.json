@@ -1766,14 +1766,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "scale"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "has_explosives"
-                        },
-                        {
                             "type": "and",
                             "el": [
                                 {
@@ -1787,6 +1779,10 @@
                             ]
                         },
                         {
+                            "type": "item",
+                            "el": "bean"
+                        },
+                        {
                             "type": "and",
                             "el": [
                                 {
@@ -1795,11 +1791,57 @@
                                         "type": "item",
                                         "el": "hookshot"
                                     },
-                                    "value": 2
+                                    "value": "2"
                                 },
                                 {
-                                    "type": "mixin",
-                                    "el": "water_temple_access"
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "option",
+                                                "el": "keysanity"
+                                            }
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "key_boss_water"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "water_temple_access"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "skip",
+                                                    "el": "morpha_scale"
+                                                },
+                                                {
+                                                    "type": "min",
+                                                    "el": {
+                                                        "type": "item",
+                                                        "el": "scale"
+                                                    },
+                                                    "value": "2"
+                                                },
+                                                {
+                                                    "type": "min",
+                                                    "el": {
+                                                        "type": "item",
+                                                        "el": "hookshot"
+                                                    },
+                                                    "value": "2"
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 }
                             ]
                         }
