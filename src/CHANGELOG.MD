@@ -1,18 +1,17 @@
 ## CHANGELOG
 
----
-
 Application:    Track-OOT
 
-Version:        1.5.0
-
 ---
+
+## VERSION 1.5.0
 
 ### GENERAL FIXES
 - visuals
 - logic
 - state loading
 - event handling
+- adding all changes restorable to changelog
 
 ### LAYOUT
 - reworked layout loading process
@@ -41,3 +40,530 @@ Version:        1.5.0
 - all panels now have a minimum size
 - fix location list styling
 - fix custom context menus
+
+---
+
+## VERSION  1.4.23
+
+### HOTFIX
+- fixed adult fishing
+
+---
+
+## VERSION  1.4.22
+
+### HOTFIX
+- added can_stun_deku to deku salesmen
+- fixed deku basement chest which was missing can_child_attack or nuts
+
+---
+
+## VERSION  1.4.21
+
+### HOTFIX
+- added beansanity toggle
+- removed beanseller when beansanity is off
+
+---
+
+## VERSION  1.4.20
+
+### HOTFIX
+- fixed mountain bombable chest not checking for can_enter_mountain when strength skip is active
+- fixed crater bean patch checking for can_child_attack and removed can_enter_mountain
+- fixed several issues in GCMQ where items were in wrong blocks, missing tricks and a wrong keycount on lullaby chest
+
+---
+
+## VERSION  1.4.19
+
+### FEATURE
+- translated everything in the language file into german
+- mostly used official sources to translate items/enemies etc
+
+---
+
+## VERSION  1.4.18
+
+### HOTFIX
+- added beans to the shop
+
+---
+
+## VERSION  1.4.17
+
+### HOTFIX
+- huge refactor of Spirit MQ, everything that was broken should be fixed now
+- fixed WT Serpent River Skulltula, was missing an "or keysanity" block around lullaby
+
+---
+
+## VERSION  1.4.16
+
+### HOTFIX
+- fix notes not allowing context menu
+- fix notes in FF not allowing up/down button
+- fix notes not allowing text selection
+
+---
+
+## VERSION  1.4.15
+
+### HOTFIX
+- fix locationlist not triggering filter update for logic
+
+---
+
+## VERSION  1.4.14
+
+### HOTFIX
+- fixed logic for chest near boss
+- fixed logic for east tower top GS
+- added hammer rusted switches skip
+
+---
+
+## VERSION  1.4.13
+
+### HOTFIX
+- add triforce piece item
+- add bridge condition for triforce hunt
+- add triforce item to itemgrid
+
+---
+
+## VERSION  1.4.12
+
+### HOTFIX
+- fixed logic for top of gerudo fortress skulltula
+
+---
+
+## VERSION  1.4.11
+
+### HOTFIX
+- added sheik check back to ice cavern mq
+    - sheik in vanilla ice cavern was added back some time ago
+
+---
+
+## VERSION  1.4.10
+
+### HOTFIX
+- fix gossipstones on map not updated on item update
+
+---
+
+## VERSION  1.4.9
+
+### HOTFIX
+- fixed ice trap counter value display bugged
+- added domain changing dialog at startup for old domain
+
+---
+
+## VERSION  1.4.8
+
+### HOTFIX
+- moved morpha_with_gold_scale skip to morpha instead of water_temple_access
+
+---
+
+## VERSION  1.4.7
+
+### HOTFIX
+- fix infinite item cant count higher than 9999 (it would break the layout to count higher)
+- added links pocket to dungeon state
+
+---
+
+## VERSION  1.4.6
+
+### HOTFIX
+- fix infinite items should not count less than 0
+
+---
+
+## VERSION  1.4.5
+
+### HOTFIX
+- shift clicking on items without alternate counting now jump to max/min value
+
+### FEATURE
+- added ice traps (FOOL) as countable item
+    - this is just for fun
+    - counts infinite
+    - shift + right-click to reset
+- changed the fool image
+
+---
+
+## VERSION  1.4.4
+
+### HOTFIX
+- changed bean logic to require beans to be clicked instead of the bean merchant being accessible to support randomizing the bean merchant
+- fixed logic for the HF skull near Gerudo Valley which was assuming can_blast_or_smash when adult and now requires a Hammer. child logic there is unchanged
+
+---
+
+## VERSION  1.4.3
+
+### HOTFIX
+- fixed wrong lens requirement for GTG Hidden Ceiling Chest
+
+---
+
+## VERSION  1.4.2
+
+### HOTFIX
+- added fire temple basement key door back in for keysanity
+
+---
+
+## VERSION  1.4.1
+
+### HOTFIX
+- removed one key from water temple logic
+
+---
+
+## VERSION  1.4.0
+
+### MULTIPLAYER
+- added net-play for filling out the tracker in multiplayer session
+- net messages tranfered over p2p
+- multiplayer room does show connected instances
+    - host is always on top and marked differently
+    - possibility to kick peers from the room
+
+### REWORK EVENTS
+- events got generalised
+
+### ITEM MARKER FOR READABILITY
+- hookshot marker [H/L]
+- gloves marker [S/G]
+- scale marker [S/G]
+- 2nd magic marker [+]
+
+### PREFORMANCE
+- location elements will now be cached, increasing overall performance
+
+---
+
+## VERSION  1.3.8
+
+### HOTFIX
+- fixed accicentally swapped Logic between ICMQ Under Ice Block and Heart Piece Room skulls
+
+---
+
+## VERSION  1.3.7
+
+### HOTFIX
+- fixed GCMQ Ganon Fight missing entrance and trial checks
+- fixed IC Scarecrow Skulltula missing hookshot check
+- fixed a typo in normal language file
+- made a description more clear in descriptive language file: "Freestanding Key" -> "Freestanding Item"
+
+---
+
+## VERSION  1.3.6
+
+### HOTFIX
+- fixed crater wall HP missing adult checks for Link the goron crater entry
+- fixed some child skulltulas not requireing child_can_attack in lon lon ranch and kakariko
+
+---
+
+## VERSION  1.3.5
+
+### HOTFIX
+- fixed missing adult check for LW Bomb Grotto
+
+---
+
+## VERSION  1.3.4
+
+### HOTFIX
+- fixed missing trial checks for ganon fight
+
+---
+
+## VERSION  1.3.3
+
+### HOTFIX
+- make logic editor save again
+
+---
+
+## VERSION  1.3.2
+
+### HOTFIX
+- right click for selections removed choice in firefox
+
+---
+
+## VERSION  1.3.1
+
+### LOGIC REWORK
+- logic is now based on events, instead of refreshing everything
+    - logic calculation speed is now dependant to the scale of the action
+    - logic is now interpreted beforehand
+- logic editor is now on the same page as the tracker (seamless transition)
+- logic editor is now a little more refined
+- new context menu on location list
+    - check/uncheck option in context menu
+    - show logic in context menu (logic activation status of the current check)
+- quick uncheck locations now ctrl+rightclick
+
+### UI
+- better "colors" for listselection
+- add option to lock the map in place
+
+### SESSION PERSIST
+- the current session will now be copied into session storage
+- simply reloading will not remove any changes (even without saving)
+- loading another save will overwrite existing session (obviously)
+
+### SAFARI
+- added compatibility for safari
+    - safari may be missing serviceworker
+- fixed bugs ignored by firefox and chrome
+
+### KNOWN BUGS ON IOS
+- safari, chrome and firefox are currently not taking longclicks on iOS
+    - can check things, but dont uncheck
+    - context menu will not be shown
+
+### FIX BUILD ERROR
+- version 1.3.0 had a build error, preventing the go-live
+
+---
+
+## VERSION  1.3.0
+
+### FAILED BUILD
+
+---
+
+## VERSION  1.2.4
+
+### Hotfixes
+- made gossipstones save value again
+
+---
+
+## VERSION  1.2.3
+
+### Hotfixes
+- added missing bottle to ice cavern checks if zora fountain is open
+- changed default value of open zora fountain to false
+
+---
+
+## VERSION  1.2.2
+
+### Hotfixes
+- fixed missing can_become_adult check for bow usage in DC
+
+---
+
+## VERSION  1.2.1
+
+### Hotfixes
+- fixed mountain bomb alcove skulltula
+- fixed various checks in DC MQ which were missing a check for the first mud wall
+- fixed Dodongo's Cavern Gohma Larva Room; it was checking for more than needed
+
+---
+
+## VERSION  1.2.0
+
+### NEW LOCATIONS (HOWDY FELLA)
+- added cow checks
+- added cow translations
+- added cow logic
+
+---
+
+## VERSION  1.1.11
+
+### HOTFIX
+- fixed missing check for warp song on some child chests in spirit temple
+
+---
+
+## VERSION  1.1.10
+
+### HOTFIX
+- fixed various logic issues in FoTMQ including #85 and some oversights when new skips where added
+
+---
+
+## VERSION  1.1.9
+
+### FAILED BUILD
+
+---
+
+## VERSION  1.1.8
+
+### HOTFIX
+- fixed missing check for keysanity setting in Ganons Castle
+- added need for stick/kokiri sword to beat bosses in child dungeons
+
+---
+
+## VERSION  1.1.7
+
+### HOTFIX
+- fixed wring reference to language files
+- FoTMQ NE outdoors lower can be reached with 1 key from NE outdoors with longshot
+- Different paths to NE outdoors added
+- bigger font for footer on desktop
+- MQ items now updates on dungeon state change
+- remove unused function in dungeon state
+- item max value applied again
+
+---
+
+## VERSION  1.1.6
+
+### FAILED BUILD
+
+---
+
+## VERSION  1.1.5
+
+### FAILED BUILD
+
+---
+
+## VERSION  1.1.4
+
+### FAILED BUILD
+
+---
+
+## VERSION  1.1.3
+
+### FAILED BUILD
+
+---
+
+## VERSION  1.1.2
+
+### FAILED BUILD
+
+---
+
+## VERSION  1.1.1
+
+### HOTFIX
+- fixed some logic issues
+- gossipstone logic now applied on initialization
+- changed translation of multiple checks
+    - switch out names that contain item-names or sizes
+    - fixed some wrong translations on the way
+- add back old language file
+- add language selection
+- fixed reference to future update changelog
+- addeed ctrl key to jump too next marker in items supporting it (currently skulltula only)
+    - firefox bypasses event catching of right click menu on shift press, it is recommended to use ctrl on firefox
+
+---
+
+## VERSION  1.1.0
+
+### GENERAL
+- dont check for updates periodical, only on startup or button press
+- dont reload custom logic if nothing changed
+
+### TRANSLATION
+- changed map/compass/item chest names to discriptive ones (vanilla)
+
+### LOGIC EDITOR
+- add filters to editor
+- add true/false operator
+- hide elements if a flag [logic_editor_visible] is set for them
+
+### LOGIC
+- added can_child_attack to various child skulltulas
+- added can_become_adult to various adult skulltulas and situations where adult items are needed
+- added GF kitchen skip (gerudo guard 4 & gerudo fortress clear)
+- added DM bombable chest with strength skip
+- added BOTW basement chest with strength and sticks skip
+- added GTGMQ silver rupees with hookshot skip
+- fixed DC east corridor salesman; it can be reached with strength
+- added DC staircase skip
+- added FoT east vines with hookshot skip
+- added FoTMQ skip block puzzle with bombchu skip
+- added swim through FoTMQ well with hookshot skip
+- fixed FoTMQ near boss chest and phantom ganon; requires bow, din's is useless here
+- added FiT hammer rusted switches (FiT highest goron & FiTMQ maze upper)
+- added WaT boss key chest with no additional items skip
+- added SpT child side with bombchus skip
+- fixed missing logic for SpT child left and child right; attack/defense options for left, stick or din's to light torch in right
+- added SpTMQ frozen eye switch without fire skip
+- added kokiri twins skulltula with hover skip
+- added DT basement skulltula with jumpslash skip
+- added filters to logic
+
+---
+
+## VERSION  1.0.0
+
+### GENERAL
+- switching to es6-modules, classes & custom-elements with shadow-dom (drop support for edge & safari)
+- the server now builds using gulp with sass transpiler, that way im taking full advantage of es6 modules
+- added logging to trace bugs more effectively
+- better handling of savestate loading through global events
+- skulltula counter now counting in 10's again, as the rom now tells the count on collect
+- gossipstones are now added to map and locationlist
+- generic gossip stones are listed seperately, but checked together
+- trade sequence starting point added to settings
+- added switch for mq/vanilla to location list title
+- added target player to shop slots
+- added ganon castle options 3 spiritual stones and 100 skulltulas
+
+### DATA
+- changed language file to .ini but with the .lang extension (better readability & supporting comments)
+- also relocated language file to the i18n folder
+- merged dungeons.json, chests.json and skulltulas.json into one data file locations.json
+
+### UI
+- added custom elements for items
+- added custom elements for dungeon state
+    - dungeon state can now show and hide all categories
+    - dungeon state will not show empty dungeons, so it grows and shrinks respectively
+    - dungeon state can now change its orientation by itself
+- added custom elements for locations (list)
+- change menu to hamburger-format on smaller screens
+- change map-overlays to become feature-panels instead
+    - add tab-buttons to choose active feature-panel
+- added custom element for map
+    - map is now zoomable through mouse wheel
+    - map can now be dragged around
+    - a map overview was implemented to ease the use on smaller screens
+- added custom elements for poi's
+    - poi's now have different looks
+    - improved tooltips for map
+- added improved settings system
+- added custom elements for song view and editor
+- added custom elements for shop view and editor
+- added custom elements for gossipstones
+- switch for child/adult/both era added
+- added setting to decide, if an unknown dungeon type means both types are required, or just one of them
+- remaining chests / skulltulas now count min and max values if a dungeon is not defined
+
+### UTILS
+- added event bus for communication between modules
+- added module for global data storage (all tracker data goes here)
+- added module for savestates (well, save away)
+- added language handler
+- rewrite logic system to compensate for unknown states of dungeons (v/mq)
+- new serviceworker added
+
+---
+
+## START OF CHANGELOG

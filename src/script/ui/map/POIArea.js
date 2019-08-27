@@ -108,7 +108,7 @@ function logicUpdate(event) {
 }
 
 function dungeonTypeUpdate(event) {
-    if (this.ref === event.data.ref) {
+    if (this.ref === event.data.name) {
         this.update();
     }
 }
