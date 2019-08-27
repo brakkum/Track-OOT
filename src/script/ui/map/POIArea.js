@@ -33,6 +33,7 @@ const TPL = new Template(`
             border-radius: 25%;
             color: black;
             font-size: 0.8em;
+            font-weight: bold;
             cursor: pointer;
         }
         .opened {
