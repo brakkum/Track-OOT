@@ -27,12 +27,73 @@
                 {
                     "type": "mixin",
                     "el": "can_reach_links_house"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_midos_house"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_sarias_house"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_twins_house"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_know_it_all_house"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kokiri_shop"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kokiri_forest_storms_grotto"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_outside_deku"
                 }
             ]
         },
         "can_reach_midos_house": {
             "type": "mixin",
             "el": "can_reach_kokiri"
+        },
+        "can_reach_sarias_house": {
+            "type": "mixin",
+            "el": "can_reach_kokiri"
+        },
+        "can_reach_twins_house": {
+            "type": "mixin",
+            "el": "can_reach_kokiri"
+        },
+        "can_reach_know_it_all_house": {
+            "type": "mixin",
+            "el": "can_reach_kokiri"
+        },
+        "can_reach_kokiri_shop": {
+            "type": "mixin",
+            "el": "can_reach_kokiri"
+        },
+        "can_reach_kokiri_forest_storms_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kokiri"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_storm"
+                }
+            ]
         },
         "can_reach_outside_deku": {
             "type": "and",
@@ -42,8 +103,17 @@
                     "el": "can_reach_kokiri"
                 },
                 {
-                    "type": "mixin",
-                    "el": "show_mido_sword_and_shield"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "show_mido_sword_and_shield"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        }
+                    ]
                 }
             ]
         },
@@ -56,23 +126,190 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "beyond_mido"
+                    "el": "can_reach_beyond_mido"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_lost_woods_bridge"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "hookshot"
+                            },
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lost_woods_generic_grotto"
+                }
+            ]
+        },
+        "can_reach_lost_woods_generic_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lost_woods_entrance"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
                 }
             ]
         },
         "can_reach_lost_woods_bridge": {
-            "type": "true"
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kokiri"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_field"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_lost_woods_entrance"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "boots_hover"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "hookshot"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "bean"
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_child"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "logic_lost_woods_bridge"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "can_reach_beyond_mido": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                },
+                {
+                    "type": "skip",
+                    "el": "mido_backflip"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "ocarina"
+                        },
+                        {
+                            "type": "item",
+                            "el": "song_saria"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_meadow_entrance"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lost_woods_deku_theater"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lost_woods_sales_grotto"
+                }
+            ]
+        },
+        "can_reach_lost_woods_sales_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_beyond_mido"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
+        },
+        "can_reach_lost_woods_deku_theater": {
+            "type": "mixin",
+            "el": "can_reach_beyond_mido"
         },
         "can_reach_meadow_entrance": {
             "type": "or",
             "el": [
                 {
                     "type": "mixin",
-                    "el": "beyond_mido"
+                    "el": "can_reach_beyond_mido"
                 },
                 {
                     "type": "mixin",
                     "el": "can_reach_meadow_center"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_meadow_entrance_grotto"
+                }
+            ]
+        },
+        "can_reach_meadow_entrance_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_meadow_entrance"
                 }
             ]
         },
@@ -139,8 +376,460 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_meadow_center_fairy_grotto"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_meadow_center_storms_grotto"
                 }
             ]
+        },
+        "can_reach_meadow_center_storms_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_storm"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_meadow_center"
+                }
+            ]
+        },
+        "can_reach_meadow_center_fairy_grotto": {
+            "type": "mixin",
+            "el": "can_reach_meadow_center"
+        },
+        "can_reach_hyrule_field": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lost_woods_bridge"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lake_hylia"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_gerudo_valley"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town_entrance"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zora_river_front"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lon_lon_ranch"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_field_near_lake_outside_fence_grotto"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_field_near_lake_inside_fence_grotto"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_field_near_valley_grotto"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_field_west_castle_town_grotto"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_field_far_west_castle_town_grotto"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_field_kakariko_grotto"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_field_north_lon_lon_grotto"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lake_hylia_owl_flight"
+                }
+            ]
+        },
+        "can_reach_remote_southern_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_field"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
+        },
+        "can_reach_field_near_lake_outside_fence_grotto": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "can_reach_field_near_lake_inside_fence_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_field"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
+        },
+        "can_reach_field_near_valley_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_field"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "is_adult"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hammer"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "is_child"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "can_reach_field_west_castle_town_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_field"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
+        },
+        "can_reach_field_far_west_castle_town_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_field"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
+        },
+        "can_reach_field_kakariko_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_field"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
+        },
+        "can_reach_field_north_lon_lon_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_field"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
+        },
+        "can_reach_lake_hylia": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_field"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "is_child"
+                        },
+                        {
+                            "type": "item",
+                            "el": "scale"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_zoras_domain"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lake_hylia_lab"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lake_hylia_fishing_hole"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lake_hylia_grotto"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_gerudo_valley_stream"
+                }
+            ]
+        },
+        "bonooru": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lake_hylia"
+                }
+            ]
+        },
+        "pierre": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "mixin",
+                    "el": "bonooru"
+                }
+            ]
+        },
+        "has_scarecrow": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "option",
+                            "el": "start_with_scarecrow"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "pierre"
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "el": "hookshot"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                }
+            ]
+        },
+        "can_reach_lake_hylia_owl_flight": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lake_hylia"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
+        },
+        "can_reach_lake_hylia_lab": {
+            "type": "mixin",
+            "el": "can_reach_lake_hylia"
+        },
+        "can_reach_lake_hylia_fishing_hole": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lake_hylia"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "is_child"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_scarecrow"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "is_child"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "is_adult"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "bean"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "water_temple_clear"
+                        }
+                    ]
+                }
+            ]
+        },
+        "can_reach_lake_hylia_grotto": {
+            "type": "mixin",
+            "el": "can_reach_lake_hylia"
+        },
+        "can_reach_gerudo_valley": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_field"
+                }
+            ]
+        },
+        "can_reach_gerudo_valley_stream": {
+            "type": "mixin",
+            "el": "can_reach_gerudo_valley"
+        },
+        "can_reach_gerudo_valley_create_ledge": {
+            "type": "mixin",
+            "el": "can_reach_gerudo_valley"
+        },
+        "can_reach_gerudo_valley_octoroc_grotto": {
+            "type": "mixin",
+            "el": "can_reach_gerudo_valley"
+        },
+        "can_reach_gerudo_valley_far_side": {
+            "type": "mixin",
+            "el": "can_reach_gerudo_valley"
+        },
+        "can_reach_castle_town_entrance": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "can_reach_kakariko": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "can_reach_zora_river_front": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "can_reach_lon_lon_ranch": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "can_reach_zoras_domain": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_lake_hylia"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_child"
+                        },
+                        {
+                            "type": "item",
+                            "el": "scale"
+                        }
+                    ]
+                }
+            ]
+        },
+        "water_temple_clear": {
+            "type": "false"
         },
         "time_travel": {
             "type": "and",
@@ -368,71 +1057,6 @@
                 }
             ]
         },
-        "beyond_mido": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "is_child"
-                },
-                {
-                    "type": "skip",
-                    "el": "mido_backflip"
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "ocarina"
-                        },
-                        {
-                            "type": "or",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "song_saria"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "mixin",
-                    "el": "can_reach_meadow_entrance"
-                }
-            ]
-        },
-        "has_scarecrow": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "can_leave_forest"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "is_child"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "is_adult"
-                        },
-                        {
-                            "type": "item",
-                            "el": "ocarina"
-                        }
-                    ]
-                },
-                {
-                    "type": "option",
-                    "el": "start_with_scarecrow"
-                }
-            ]
-        },
         "deku_tree_clear": {
             "type": "false"
         },
@@ -548,12 +1172,12 @@
                     "type": "and",
                     "el": [
                         {
-                            "type": "mixin",
-                            "el": "can_become_adult"
-                        },
-                        {
                             "type": "item",
                             "el": "hammer"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
                         }
                     ]
                 },
@@ -912,25 +1536,12 @@
                     "el": "hookshot"
                 },
                 {
-                    "type": "item",
-                    "el": "ocarina"
+                    "type": "mixin",
+                    "el": "can_reach_meadow_center"
                 },
                 {
                     "type": "mixin",
-                    "el": "can_become_adult"
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "song_saria"
-                        },
-                        {
-                            "type": "item",
-                            "el": "warp_forest"
-                        }
-                    ]
+                    "el": "is_adult"
                 }
             ]
         },
@@ -1585,40 +2196,8 @@
             "type": "false"
         },
         "deku_tree_access": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "option",
-                            "el": "shuffle_entrances",
-                            "value": "shuffle_entrances_dungeon"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "show_mido_sword_and_shield"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "is_adult"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "is_child"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "show_mido_sword_and_shield"
-                        }
-                    ]
-                }
-            ]
+            "type": "mixin",
+            "el": "can_reach_outside_deku"
         },
         "zora_thawed": {
             "type": "and",
@@ -1831,10 +2410,6 @@
                             "el": "shield_kokiri"
                         }
                     ]
-                },
-                {
-                    "type": "mixin",
-                    "el": "is_adult"
                 }
             ]
         }
@@ -8660,7 +9235,7 @@
             "el": [
                 {
                     "type": "mixin",
-                    "el": "beyond_mido"
+                    "el": "can_reach_beyond_mido"
                 },
                 {
                     "type": "mixin",
@@ -8677,7 +9252,7 @@
             "el": [
                 {
                     "type": "mixin",
-                    "el": "beyond_mido"
+                    "el": "can_reach_beyond_mido"
                 },
                 {
                     "type": "mixin",
@@ -8770,7 +9345,7 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "beyond_mido"
+                    "el": "can_reach_beyond_mido"
                 }
             ]
         },
@@ -8819,7 +9394,7 @@
             "el": [
                 {
                     "type": "mixin",
-                    "el": "beyond_mido"
+                    "el": "can_reach_beyond_mido"
                 },
                 {
                     "type": "min",
@@ -8868,7 +9443,7 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "beyond_mido"
+                    "el": "can_reach_beyond_mido"
                 },
                 {
                     "type": "mixin",
@@ -10366,7 +10941,7 @@
             "el": [
                 {
                     "type": "mixin",
-                    "el": "beyond_mido"
+                    "el": "can_reach_beyond_mido"
                 },
                 {
                     "type": "mixin",
@@ -10391,7 +10966,7 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "beyond_mido"
+                    "el": "can_reach_beyond_mido"
                 },
                 {
                     "type": "or",
@@ -10446,7 +11021,7 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "beyond_mido"
+                    "el": "can_reach_beyond_mido"
                 },
                 {
                     "type": "or",
@@ -11086,7 +11661,7 @@
             "el": [
                 {
                     "type": "mixin",
-                    "el": "beyond_mido"
+                    "el": "can_reach_beyond_mido"
                 },
                 {
                     "type": "mixin",
@@ -11103,7 +11678,7 @@
             "el": [
                 {
                     "type": "mixin",
-                    "el": "beyond_mido"
+                    "el": "can_reach_beyond_mido"
                 },
                 {
                     "type": "mixin",
@@ -20105,7 +20680,7 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "beyond_mido"
+                    "el": "can_reach_beyond_mido"
                 },
                 {
                     "type": "or",
@@ -20182,7 +20757,7 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "beyond_mido"
+                    "el": "can_reach_beyond_mido"
                 },
                 {
                     "type": "or",

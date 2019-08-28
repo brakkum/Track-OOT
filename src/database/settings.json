@@ -282,7 +282,8 @@
                 "zora_cucco",
                 "zora_hover",
                 "mido_backflip",
-                "logic_lost_woods_gs_bean"
+                "logic_lost_woods_gs_bean",
+                "logic_lost_woods_bridge"
             ],
             "default": [],
             "logic_editor_visible": false
@@ -403,6 +404,10 @@
             "default": false
         },
         "logic_lost_woods_gs_bean": {
+            "type": "hidden",
+            "default": false
+        },
+        "logic_lost_woods_bridge": {
             "type": "hidden",
             "default": false
         }
