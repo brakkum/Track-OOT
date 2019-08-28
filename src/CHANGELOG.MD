@@ -18,7 +18,7 @@ Application:    Track-OOT
 - logic
 - state loading
 - event handling
-- adding all changes restorable to changelog
+- adding past updates restored from older changelogs to have one compiled changelog
 
 ### LAYOUT
 - reworked layout loading process
@@ -39,7 +39,7 @@ Application:    Track-OOT
 - split small keys and boss keys to seperate settings
 - added beansanity option
 - generate images from logic
-- add more operato
+- add more logic operators
 
 ### UI
 - redesigned popover
