@@ -283,7 +283,9 @@
                 "zora_hover",
                 "mido_backflip",
                 "logic_lost_woods_gs_bean",
-                "logic_lost_woods_bridge"
+                "logic_lost_woods_bridge",
+                "logic_valley_crate_hovers",
+                "logic_wasteland_crossing"
             ],
             "default": [],
             "logic_editor_visible": false
@@ -408,6 +410,14 @@
             "default": false
         },
         "logic_lost_woods_bridge": {
+            "type": "hidden",
+            "default": false
+        },
+        "logic_valley_crate_hovers": {
+            "type": "hidden",
+            "default": false
+        },
+        "logic_wasteland_crossing": {
             "type": "hidden",
             "default": false
         }

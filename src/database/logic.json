@@ -95,6 +95,32 @@
                 }
             ]
         },
+        "show_mido_sword_and_shield": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "option",
+                    "el": "doors_open_forest"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "is_child"
+                        },
+                        {
+                            "type": "item",
+                            "el": "sword_kokiri"
+                        },
+                        {
+                            "type": "item",
+                            "el": "shield_kokiri"
+                        }
+                    ]
+                }
+            ]
+        },
         "can_reach_outside_deku": {
             "type": "and",
             "el": [
@@ -771,24 +797,385 @@
                 {
                     "type": "mixin",
                     "el": "can_reach_hyrule_field"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_gerudo_valley_far_side"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "is_child"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_epona"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "gerudo_fortress_open",
+                                    "value": "gerudo_fortress_open_open"
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "hookshot"
+                                            },
+                                            "value": "2"
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "gerudo_fortress_carpenter_rescue"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
         "can_reach_gerudo_valley_stream": {
-            "type": "mixin",
-            "el": "can_reach_gerudo_valley"
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_gerudo_valley"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_gerudo_valley_far_side"
+                }
+            ]
         },
-        "can_reach_gerudo_valley_create_ledge": {
-            "type": "mixin",
-            "el": "can_reach_gerudo_valley"
+        "can_reach_gerudo_valley_crate_ledge": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_gerudo_valley"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "is_child"
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "hookshot"
+                                            },
+                                            "value": "2"
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_gerudo_valley_far_side"
+                        },
+                        {
+                            "type": "item",
+                            "el": "boots_hover"
+                        }
+                    ]
+                }
+            ]
         },
         "can_reach_gerudo_valley_octoroc_grotto": {
-            "type": "mixin",
-            "el": "can_reach_gerudo_valley"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_gerudo_valley"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    "value": "2"
+                }
+            ]
         },
         "can_reach_gerudo_valley_far_side": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_gerudo_valley"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "has_epona"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "hookshot"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "gerudo_fortress_open",
+                                    "value": "gerudo_fortress_open_open"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "gerudo_fortress_carpenter_rescue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_gerudo_valley_carpenter_tent"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_gerudo_fortress"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_gerudo_valley_storms_grotto"
+                }
+            ]
+        },
+        "can_reach_gerudo_valley_carpenter_tent": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_gerudo_valley_far_side"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                }
+            ]
+        },
+        "can_reach_gerudo_valley_storms_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_gerudo_valley_far_side"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_storm"
+                }
+            ]
+        },
+        "can_reach_gerudo_fortress": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_gerudo_valley_far_side"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_gerudo_fortress_storms_grotto"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_gerudo_fortress_outside_gate"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "is_adult"
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "gerudo_fortress_gate_open"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "shuffle_entrances",
+                                            "value": "shuffle_entrances_overworld"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "gerudo_fortress_carpenter_rescue": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "gerudo_fortress_access"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "option",
+                            "el": "gerudo_fortress_open",
+                            "value": "gerudo_fortress_open_open"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "option",
+                                    "el": "gerudo_fortress_open",
+                                    "value": "gerudo_fortress_open_one"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "key_small_gerudo"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "hookshot"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_gerudo"
+                                            },
+                                            "value": "4"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "gerudo_fortress_gate_open": {
             "type": "mixin",
-            "el": "can_reach_gerudo_valley"
+            "el": "can_reach_gerudo_fortress"
+        },
+        "can_reach_gerudo_fortress_outside_gate": {
+            "type": "mixin",
+            "el": "can_reach_gerudo_fortress"
+        },
+        "can_reach_gerudo_fortress_storms_grotto": {
+            "type": "mixin",
+            "el": "can_reach_gerudo_fortress"
+        },
+        "can_reach_haunted_Wasteland_near_fortress": {
+            "type": "mixin",
+            "el": "can_reach_gerudo_fortress_outside_gate"
+        },
+        "can_reach_haunted_Wasteland": {
+            "type": "mixin",
+            "el": "can_reach_gerudo_fortress_outside_gate"
+        },
+        "can_reach_haunted_Wasteland_near_colossus": {
+            "type": "mixin",
+            "el": "can_reach_gerudo_fortress_outside_gate"
         },
         "can_reach_castle_town_entrance": {
             "type": "mixin",
@@ -1060,89 +1447,6 @@
         "deku_tree_clear": {
             "type": "false"
         },
-        "gerudo_fortress_carpenter_rescue": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "gerudo_fortress_access"
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "option",
-                            "el": "gerudo_fortress_open",
-                            "value": "gerudo_fortress_open_open"
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "option",
-                                    "el": "gerudo_fortress_open",
-                                    "value": "gerudo_fortress_open_one"
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "key_small_gerudo"
-                                        },
-                                        {
-                                            "type": "option",
-                                            "el": "keysanity_small",
-                                            "value": "keysanity_small_ignore"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "bow"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "hookshot"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "boots_hover"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "key_small_gerudo"
-                                            },
-                                            "value": "4"
-                                        },
-                                        {
-                                            "type": "option",
-                                            "el": "keysanity_small",
-                                            "value": "keysanity_small_ignore"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
         "has_explosives": {
             "type": "or",
             "el": [
@@ -1164,6 +1468,9 @@
                     ]
                 }
             ]
+        },
+        "has_epona": {
+            "type": "false"
         },
         "can_blast_or_smash": {
             "type": "or",
@@ -2283,7 +2590,7 @@
                             "el": [
                                 {
                                     "type": "mixin",
-                                    "el": "can_become_adult"
+                                    "el": "is_adult"
                                 },
                                 {
                                     "type": "item",
@@ -2382,32 +2689,6 @@
                                     ]
                                 }
                             ]
-                        }
-                    ]
-                }
-            ]
-        },
-        "show_mido_sword_and_shield": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "option",
-                    "el": "doors_open_forest"
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "is_child"
-                        },
-                        {
-                            "type": "item",
-                            "el": "sword_kokiri"
-                        },
-                        {
-                            "type": "item",
-                            "el": "shield_kokiri"
                         }
                     ]
                 }
