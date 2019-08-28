@@ -4,6 +4,15 @@ Application:    Track-OOT
 
 ---
 
+## VERSION 1.5.2
+
+### HOTFIX
+- fixed layout issue with webkit browsers
+    - this fix is temporary and should be reworked with the next layout updates
+- fixed dragging map will not do anything
+
+---
+
 ## VERSION 1.5.1
 
 ### HOTFIX

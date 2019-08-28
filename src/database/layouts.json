@@ -92,8 +92,11 @@
                 ]
             }
         },{
-            "type": "panel",
-            "name": "location-list"
+            "type": "hbox",
+            "items": [{
+                "type": "panel",
+                "name": "location-list"
+            }]
         }]
     },
     "items-list-dt": {
@@ -117,8 +120,11 @@
                 ]
             }
         },{
-            "type": "panel",
-            "name": "location-list"
+            "type": "hbox",
+            "items": [{
+                "type": "panel",
+                "name": "location-list"
+            }]
         }]
     },
     "map-right": {
@@ -143,8 +149,11 @@
                     ]
                 }
             },{
-                "type": "panel",
-                "name": "location-list"
+                "type": "hbox",
+                "items": [{
+                    "type": "panel",
+                    "name": "location-list"
+                }]
             }]
         },{
             "type": "panel",
@@ -174,8 +183,11 @@
                     ]
                 }
             },{
-                "type": "panel",
-                "name": "location-list"
+                "type": "hbox",
+                "items": [{
+                    "type": "panel",
+                    "name": "location-list"
+                }]
             }]
         },{
             "type": "panel",
@@ -228,8 +240,11 @@
                     "itemsize": 40
                 }
             },{
-                "type": "panel",
-                "name": "location-list"
+                "type": "hbox",
+                "items": [{
+                    "type": "panel",
+                    "name": "location-list"
+                }]
             }]
         },{
             "type": "vbox",
@@ -249,8 +264,11 @@
                     ]
                 }
             },{
-                "type": "panel",
-                "name": "location-map"
+                "type": "hbox",
+                "items": [{
+                    "type": "panel",
+                    "name": "location-map"
+                }]
             }]
         }]
     },

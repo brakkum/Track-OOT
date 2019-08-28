@@ -196,9 +196,15 @@ function generateLocations() {
     }
 }
 
+let movePosX = 0;
+let movePosY = 0;
 function mapMoveBegin(event) {
     if (event.button === 0) {
         let target = event.target;
+        if (typeof event.movementX == "undefined") {
+            movePosX = event.x;
+            movePosY = event.y;
+        }
         if (target.id === "map") {
             target.classList.add("grabbed");
             target.addEventListener("mousemove", moveMap);
@@ -224,8 +230,19 @@ function moveMap(event) {
         if (target.id === "map") {
             let vrtX = parseInt(target.style.getPropertyValue("--map-offset-x") || 0);
             let vrtY = parseInt(target.style.getPropertyValue("--map-offset-y") || 0);
-            target.style.setProperty("--map-offset-x", vrtX + event.movementX);
-            target.style.setProperty("--map-offset-y", vrtY + event.movementY);
+            let forceX = 0;
+            let forceY = 0;
+            if (typeof event.movementX == "undefined") {
+                forceX = event.x - movePosX;
+                forceY = event.y - movePosY;
+                movePosX = event.x;
+                movePosY = event.y;
+            } else {
+                forceX = event.movementX;
+                forceY = event.movementY;
+            }
+            target.style.setProperty("--map-offset-x", vrtX + forceX);
+            target.style.setProperty("--map-offset-y", vrtY + forceY);
             mapContainBoundaries(target, target.parentNode);
         }
     }
