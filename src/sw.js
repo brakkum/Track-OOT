@@ -99,8 +99,9 @@ async function overwriteCachedFile(cache, request, file) {
 
 async function purgeCache(client) {
     caches.keys().then(function(names) {
-        for (let name of names)
+        for (let name of names) {
             caches.delete(name);
+        }
     });
     client.postMessage({
         type: "state",
