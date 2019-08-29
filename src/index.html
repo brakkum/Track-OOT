@@ -61,7 +61,6 @@
                 height: 50vmin;
             }
             #splash .info {
-                display: none;
                 margin-top: 20px;
                 text-align: center;
             }
@@ -72,9 +71,11 @@
             <img class="splash-image" src="/images/logo.svg">
             <span class="loading">loading...</span>
             <div class="info">
-                Depending on your connection Speed, updating can take a while.<br>
-                Sometimes the update seems to be frozen. In this case please refresh.<br>
-                If refreshing does not work, contact me on Discord (@2deep4real#6521) or leave an issue <a href="https://bitbucket.org/2deep4real/track-oot/issues">here</a>
+                After updating, the tracker can freeze on startup. In this case please refresh the page.<br>
+                You can also use this to refresh bypassing your browser cache:<br>
+                <div class="controls">
+                    <button onclick="window.location.reload(true)">REFRESH PAGE</button>
+                </div>
             </div>
         </div>
         <script>
