@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ---
 
+## VERSION 1.5.3
+
+### FEATURE
+- added refresh button to splashcreen
+- added done counter to check states
+
+---
+
 ## VERSION 1.5.2
 
 ### HOTFIX
