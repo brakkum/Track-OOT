@@ -11,7 +11,8 @@ let cmd = {
     start: install,
     check: checkUpdateAvailable,
     update: updateFiles,
-    forceupdate: updateFilesForced
+    forceupdate: updateFilesForced,
+    purge: purgeCache
 };
 
 self.addEventListener('install', function(event) {
@@ -94,6 +95,17 @@ async function fetchFile(url, method = "GET") {
 async function overwriteCachedFile(cache, request, file) {
     await cache.delete(request);
     await cache.put(request, file);
+}
+
+async function purgeCache(client) {
+    caches.keys().then(function(names) {
+        for (let name of names)
+            caches.delete(name);
+    });
+    client.postMessage({
+        type: "state",
+        msg: "purged"
+    });
 }
 
 async function install(client) {

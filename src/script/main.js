@@ -57,22 +57,6 @@ import "/script/ui/LocationStatus.js";
         spl.className = "inactive";
     }
 
-    if (window.location.host == "track-oot.2deep4real.de") {
-        setTimeout(function() {
-            Dialog.alert("Domain changing", "The domain of this application is changing to <a href=\"http://track-oot.net\">track-oot.net</a>.<br>"
-                        + "Please consider to export your savestates to the new domain.<br><br>"
-                        + "This domain will be active until 01.08.2019. After that it will be shut down."
-                        + "The same applies to <a href=\"http://track-oot-dev.2deep4real.de\">track-oot-dev.2deep4real.de</a>");
-        }, 1000);
-    } else if (window.location.host == "track-oot-dev.2deep4real.de") {
-        setTimeout(function() {
-            Dialog.alert("Domain changing", "The domain of this application is changing to <a href=\"http://dev.track-oot.net\">dev.track-oot.net</a>.<br>"
-                        + "Please consider to export your savestates to the new domain.<br><br>"
-                        + "This domain will be active until 01.08.2019. After that it will be shut down."
-                        + "The same applies to <a href=\"http://track-oot.2deep4real.de\">track-oot.2deep4real.de</a>");
-        }, 1000);
-    }
-
     window.addEventListener('keydown', function(event) {
         if (event.ctrlKey == true && event.altKey == true && event.key == "i") {
             window.open('detached.html#items', "TrackOOT", "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,titlebar=0", false);

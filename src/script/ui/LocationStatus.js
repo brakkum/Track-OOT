@@ -14,35 +14,41 @@ const TPL = new Template(`
         }
     </style>
     <div class="state">
-        chests available / missing: <span id="chests-available">#</span> / <span id="chests-missing">#</span>
+        chests <span id="chests-done">#</span> done / <span id="chests-available">#</span> avail / <span id="chests-missing">#</span> miss
     </div>
     <div class="state">
-        skulltulas available / missing: <span id="skulltulas-available">#</span> / <span id="skulltulas-missing">#</span>
+        skulltulas <span id="skulltulas-done">#</span> done / <span id="skulltulas-available">#</span> avail / <span id="skulltulas-missing">#</span> miss
     </div>
 `);
 
 function canGet(name, category, dType) {
     let list = GlobalData.get("locations")[name][`${category}_${dType}`];
-    let canGet = 0;
-    let isOpen = 0;
+    let res = {
+        done: 0,
+        access: 0,
+        open: 0
+    };
     for (let i in list) {
         if (!list[i].mode || SaveState.read(`options.${list[i].mode}`, false)) {
             if (!SaveState.read(`${category}.${i}`, 0)) {
                 if (Logic.getValue(category, i)) {
-                    canGet++;
+                    res.access++;
                 }
-                isOpen++;
+                res.open++;
+            } else {
+                res.done++;
             }
         }
     }
-    return {access: canGet, open: isOpen};
+    return res;
 }
 
-function updateStates(availEl, missEl, type) {
+function updateStates(doneEl, availEl, missEl, type) {
     let access_min = 0;
     let access_max = 0;
     let open_min = 0;
     let open_max = 0;
+    let done = 0;
     let data = GlobalData.get("locations");
     if (!!data) {
         Object.keys(data).forEach(name => {
@@ -66,12 +72,15 @@ function updateStates(availEl, missEl, type) {
                         open_min += cm.open;
                         open_max += cv.open;
                     }
+                    done += cv.done;
+                    done += cm.done;
                 } else {
                     let c = canGet(name, type, dType);
                     access_min += c.access;
                     access_max += c.access;
                     open_min += c.open;
                     open_max += c.open;
+                    done += c.done;
                 }
             }
         });
@@ -86,6 +95,7 @@ function updateStates(availEl, missEl, type) {
     } else {
         missEl.innerHTML = `(${open_min} - ${open_max})`;
     }
+    doneEl.innerHTML = done;
 }
 
 class HTMLLocationState extends HTMLElement {
@@ -94,12 +104,14 @@ class HTMLLocationState extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
+        let chestsDone = this.shadowRoot.getElementById("chests-done");
         let chestsAvail = this.shadowRoot.getElementById("chests-available");
         let chestsMiss = this.shadowRoot.getElementById("chests-missing");
+        let skulltulasDone = this.shadowRoot.getElementById("skulltulas-done");
         let skulltulasAvail = this.shadowRoot.getElementById("skulltulas-available");
         let skulltulasMiss = this.shadowRoot.getElementById("skulltulas-missing");
-        updateStates(chestsAvail, chestsMiss, "chests");
-        updateStates(skulltulasAvail, skulltulasMiss, "skulltulas");
+        updateStates(chestsDone, chestsAvail, chestsMiss, "chests");
+        updateStates(skulltulasDone, skulltulasAvail, skulltulasMiss, "skulltulas");
         /* event bus */
         EventBus.register([
             "logic",
@@ -107,14 +119,14 @@ class HTMLLocationState extends HTMLElement {
             "settings",
             "dungeontype"
         ], () => {
-            updateStates(chestsAvail, chestsMiss, "chests");
-            updateStates(skulltulasAvail, skulltulasMiss, "skulltulas");
+            updateStates(chestsDone, chestsAvail, chestsMiss, "chests");
+            updateStates(skulltulasDone, skulltulasAvail, skulltulasMiss, "skulltulas");
         });
         EventBus.register("chest", () => {
-            updateStates(chestsAvail, chestsMiss, "chests");
+            updateStates(chestsDone, chestsAvail, chestsMiss, "chests");
         });
         EventBus.register("skulltula", () => {
-            updateStates(skulltulasAvail, skulltulasMiss, "skulltulas");
+            updateStates(skulltulasDone, skulltulasAvail, skulltulasMiss, "skulltulas");
         });
     }
 
