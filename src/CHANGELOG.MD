@@ -10,6 +10,13 @@ Application:    Track-OOT
 
 ---
 
+## VERSION 1.5.4
+
+### HOTFIX
+- fix splashscreen reload for chrome
+
+---
+
 ## VERSION 1.5.3
 
 ### FEATURE

@@ -71,10 +71,10 @@
             <img class="splash-image" src="/images/logo.svg">
             <span class="loading">loading...</span>
             <div class="info">
-                After updating, the tracker can freeze on startup. In this case please refresh the page.<br>
-                You can also use this to refresh bypassing your browser cache:<br>
+                After updating, the tracker can freeze on startup.<br>
+                If this happens to you, you can try this:<br>
                 <div class="controls">
-                    <button onclick="window.location.reload(true)">REFRESH PAGE</button>
+                    <button id="splash-refresh" onclick="window.location.reload(true)">REFRESH PAGE</button>
                 </div>
             </div>
         </div>
@@ -132,6 +132,16 @@
                 }
 
                 if ('serviceWorker' in navigator) {
+                    let refBtn = document.getElementById("splash-refresh");
+                    refBtn.innerHTML = "FORCE DOWNLOAD";
+                    refBtn.onclick = function() {
+                        caches.keys().then(function(names) {
+                            for (let name of names) {
+                                caches.delete(name);
+                            }
+                            window.location.reload();
+                        });
+                    };
                     navigator.serviceWorker.register('/sw.js').then(function(registration) {
                         updateLoadingMessage("call servant...");
                         function callSW() {
