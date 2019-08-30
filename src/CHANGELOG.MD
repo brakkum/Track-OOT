@@ -4,6 +4,13 @@ Application:    Track-OOT
 
 ---
 
+## VERSION 1.5.5
+
+### HOTFIX
+- fix styling issues for webkit
+
+---
+
 ## VERSION 1.5.4
 
 ### HOTFIX

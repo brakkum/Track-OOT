@@ -21,6 +21,7 @@ const TPL = new Template(`
             display: flex;
             align-items: center;
             width: 100%;
+            cursor: pointer;
             padding: 5px;
         }
         :host(:hover) {
