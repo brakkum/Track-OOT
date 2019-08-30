@@ -294,7 +294,10 @@
                 "logic_lost_woods_bridge",
                 "logic_valley_crate_hovers",
                 "logic_wasteland_crossing",
-                "logic_reverse_wasteland"
+                "logic_reverse_wasteland",
+                "logic_visible_collisions",
+                "logic_man_on_roof",
+                "logic_kakariko_tower_gs"
             ],
             "default": [],
             "logic_editor_visible": false
@@ -431,6 +434,18 @@
             "default": false
         },
         "logic_reverse_wasteland": {
+            "type": "hidden",
+            "default": false
+        },
+        "logic_visible_collisions": {
+            "type": "hidden",
+            "default": false
+        },
+        "logic_man_on_roof": {
+            "type": "hidden",
+            "default": false
+        },
+        "logic_kakariko_tower_gs": {
             "type": "hidden",
             "default": false
         }

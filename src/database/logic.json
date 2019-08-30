@@ -455,7 +455,7 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "can_reach_kakariko"
+                    "el": "can_reach_kakariko_village"
                 },
                 {
                     "type": "mixin",
@@ -1934,17 +1934,679 @@
                 }
             ]
         },
-        "can_reach_kakariko": {
+        "can_reach_kakariko_village": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_field"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_impa_ledge"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_backyard"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_carpenter_boss_house"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_house_of_skulltula"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_impas_house"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_windmill"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_bazaar"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_shooting_gallery"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_potion_shop_front"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_graveyard"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_kakariko_village_behind_gate"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "is_adult"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "kakariko_village_gate_open"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "logic_visible_collisions"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_bombable_grotto"
+                }
+            ]
+        },
+        "cojiro_access": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "mixin",
+                    "el": "wake_up_adult_talon"
+                }
+            ]
+        },
+        "wake_up_adult_talon": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_carpenter_boss_house"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "cojiro"
+                }
+            ]
+        },
+        "kakariko_village_gate_open": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "egg"
+                    },
+                    "value": "3"
+                }
+            ]
+        },
+        "can_reach_kakariko_village_carpenter_boss_house": {
             "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_kakariko_village_house_of_skulltula": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_kakariko_village_impas_house": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_kakariko_village_impas_house_back": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village_impa_ledge"
+        },
+        "can_reach_kakariko_village_impas_house_near_cow": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_impas_house"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_impas_house_back"
+                }
+            ]
+        },
+        "can_reach_windmill": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_graveyard_dampes_grave"
+                        },
+                        {
+                            "type": "item",
+                            "el": "ocarina"
+                        },
+                        {
+                            "type": "item",
+                            "el": "song_time"
+                        }
+                    ]
+                }
+            ]
+        },
+        "drain_well": {
+            "type": "false"
+        },
+        "can_reach_kakariko_village_bazaar": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                }
+            ]
+        },
+        "can_reach_kakariko_village_shooting_gallery": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                }
+            ]
+        },
+        "can_reach_kakariko_village_potion_shop_front": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_kakariko_village"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_child"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_potion_shop_back"
+                }
+            ]
+        },
+        "can_reach_kakariko_village_potion_shop_back": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_kakariko_village_backyard"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_kakariko_village_potion_shop_front"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        }
+                    ]
+                }
+            ]
+        },
+        "can_reach_kakariko_village_bombable_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
+        },
+        "can_reach_kakariko_village_impa_ledge": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_kakariko_village"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "is_child"
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        },
+                                        {
+                                            "type": "skip",
+                                            "el": "logic_visible_collisions"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "hookshot"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_impas_house_back"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_summit_owl_flight"
+                }
+            ]
+        },
+        "can_reach_kakariko_village_rooftop": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "is_adult"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "slingshot"
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_bombchus"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "item",
+                                                            "el": "stick"
+                                                        },
+                                                        {
+                                                            "type": "item",
+                                                            "el": "sword_kokiri"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "skip",
+                                                    "el": "logic_kakariko_tower_gs"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "logic_man_on_roof"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "can_reach_kakariko_village_backyard": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_backyard"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_kakariko_village_potion_shop_back"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_odd_medicine_building"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_back_grotto"
+                }
+            ]
+        },
+        "can_reach_kakariko_village_back_grotto": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village_backyard"
+        },
+        "can_reach_kakariko_village_odd_medicine_building": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village_backyard"
+        },
+        "can_reach_graveyard": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_graveyard_shield_grave"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_graveyard_composer_grave"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_graveyard_dampes_grave"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_graveyard_dampes_house"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_shadow_temple_warp_region"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_graveyard_heart_piece_grave"
+                }
+            ]
+        },
+        "can_reach_graveyard_shield_grave": {
+            "type": "mixin",
+            "el": "can_reach_graveyard"
+        },
+        "can_reach_graveyard_composer_grave": {
+            "type": "mixin",
+            "el": "can_reach_graveyard"
+        },
+        "can_reach_graveyard_heart_piece_grave": {
+            "type": "mixin",
+            "el": "can_reach_graveyard"
+        },
+        "can_reach_graveyard_dampes_house": {
+            "type": "mixin",
+            "el": "can_reach_graveyard"
+        },
+        "can_reach_graveyard_dampes_grave": {
+            "type": "mixin",
+            "el": "can_reach_graveyard"
+        },
+        "can_reach_shadow_temple_warp_region": {
+            "type": "mixin",
+            "el": "can_reach_graveyard"
+        },
+        "can_reach_kakariko_village_behind_gate": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_kakariko_village"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "kakariko_village_gate_open"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "is_adult"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "can_reach_death_mountain": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_death_mountain_summit": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_death_mountain_storms_grotto": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "prescription_access": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_death_mountain_crater_upper_local": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_death_mountain_crater_lower_local": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_death_mountain_crater_central_local": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_death_mountain_crater_top_of_crater_grotto": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_death_mountain_crater_dmc_hammer_grotto": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_death_mountain_crater_fairy": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_death_mountain_crater_upper_nearby": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_death_mountain_crater_lower_nearby": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_death_mountain_crater_ladder_area_nearby": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_death_mountain_crater_center_nearby": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_fire_temple_entrance": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_death_mountain_summit_owl_flight": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_death_mountain_bombable_grotto": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_death_mountain_summit_fairy": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
+        },
+        "can_reach_goron_city": {
+            "type": "mixin",
+            "el": "can_reach_death_mountain"
+        },
+        "goron_city_child_fire": {
+            "type": "mixin",
+            "el": "can_reach_goron_city"
+        },
+        "goron_city_woods_warp_open": {
+            "type": "mixin",
+            "el": "can_reach_goron_city"
+        },
+        "stop_link_the_goron": {
+            "type": "mixin",
+            "el": "can_reach_goron_city"
+        },
+        "can_reach_goron_city_woods_warp": {
+            "type": "mixin",
+            "el": "can_reach_death_mountain"
+        },
+        "can_reach_goron_city_shop": {
+            "type": "mixin",
+            "el": "can_reach_death_mountain"
+        },
+        "can_reach_goron_city_darunias_chamber": {
+            "type": "mixin",
+            "el": "can_reach_death_mountain"
+        },
+        "can_reach_goron_city_grotto": {
+            "type": "mixin",
+            "el": "can_reach_death_mountain"
         },
         "can_reach_zora_river_front": {
             "type": "mixin",
             "el": "can_reach_hyrule_field"
         },
-        "can_reach_lon_lon_ranch": {
+        "can_reach_zora_river": {
             "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "el": "can_reach_zora_river_front"
+        },
+        "can_reach_zora_river_plateau_open_grotto": {
+            "type": "mixin",
+            "el": "can_reach_zora_river_front"
+        },
+        "can_reach_zora_river_plateau_bombable_grotto": {
+            "type": "mixin",
+            "el": "can_reach_zora_river_front"
+        },
+        "can_reach_zora_river_storms_grotto": {
+            "type": "mixin",
+            "el": "can_reach_zora_river_front"
+        },
+        "can_reach_zora_river_behind_waterfall": {
+            "type": "mixin",
+            "el": "can_reach_zora_river_front"
         },
         "can_reach_zoras_domain": {
             "type": "or",
@@ -1967,6 +2629,62 @@
                     ]
                 }
             ]
+        },
+        "zora_thawed": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "eyeball_frog_access": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "deliver_letter": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "can_reach_zoras_domain_behind_king_zora": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "can_reach_zoras_domain_shop": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "can_reach_zoras_domain_storms_grotto": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "can_reach_zoras_fountain": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "can_reach_zoras_fountain_fairy": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "can_reach_lon_lon_ranch": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "can_reach_lon_lon_ranch_talons_house": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "can_reach_lon_lon_ranch_ingo_barn": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "can_reach_lon_lon_ranch_corner_tower": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "can_reach_lon_lon_ranch_grotto": {
+            "type": "mixin",
+            "el": "can_reach_hyrule_field"
+        },
+        "can_reach_dodongos_cavern_entryway": {
+            "type": "mixin",
+            "el": "can_reach_kakariko_village"
         },
         "water_temple_clear": {
             "type": "false"
@@ -3258,71 +3976,6 @@
         "deku_tree_access": {
             "type": "mixin",
             "el": "can_reach_outside_deku"
-        },
-        "zora_thawed": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "item",
-                    "el": "bottle"
-                },
-                {
-                    "type": "mixin",
-                    "el": "can_become_adult"
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "wallet"
-                            },
-                            "value": 2
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "ice_cavern_access"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "ganon_castle_access"
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "song_zelda"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "boots_hover"
-                                },
-                                {
-                                    "type": "skip",
-                                    "el": "zora_hover"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
         },
         "has_fire_source": {
             "type": "and",
