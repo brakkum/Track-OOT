@@ -14,6 +14,7 @@ Application:    Track-OOT
 
 ### HOTFIX
 - fix styling issues for webkit
+- fix ice cavern skulltulas at Compass and Ice Block regions missing a bottle
 
 ---
 
