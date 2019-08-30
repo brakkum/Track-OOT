@@ -10,6 +10,7 @@ const TPL = new Template(`
         * {
             position: relative;
             box-sizing: border-box;
+            cursor: default;
         }
         :host {
             display: flex;

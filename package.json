@@ -18,12 +18,14 @@
     "through": "^2.3.8"
   },
   "browserslist": [
-    "ff >= 63",
-    "Chrome >= 61",
-    "Opera >= 48",
-    "Android >= 67",
-    "and_chr >= 71",
-    "and_ff >= 64"
+    "Chrome >= 76",
+    "Firefox >= 68",
+    "Safari >= 12",
+    "Edge >= 17",
+    "Android >= 76",
+    "ChromeAndroid >= 76",
+    "FirefoxAndroid >= 68",
+    "iOS >= 10"
   ],
   "scripts": {
     "build": "gulp build",
