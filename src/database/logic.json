@@ -1075,59 +1075,18 @@
             "el": [
                 {
                     "type": "mixin",
-                    "el": "gerudo_fortress_access"
+                    "el": "can_reach_gerudo_fortress"
                 },
                 {
                     "type": "or",
                     "el": [
-                        {
-                            "type": "option",
-                            "el": "gerudo_fortress_open",
-                            "value": "gerudo_fortress_open_open"
-                        },
                         {
                             "type": "and",
                             "el": [
                                 {
                                     "type": "option",
                                     "el": "gerudo_fortress_open",
-                                    "value": "gerudo_fortress_open_one"
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "key_small_gerudo"
-                                        },
-                                        {
-                                            "type": "option",
-                                            "el": "keysanity_small",
-                                            "value": "keysanity_small_ignore"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "bow"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "hookshot"
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "boots_hover"
-                                        }
-                                    ]
+                                    "value": "gerudo_fortress_open_default"
                                 },
                                 {
                                     "type": "or",
@@ -1146,6 +1105,244 @@
                                             "value": "keysanity_small_ignore"
                                         }
                                     ]
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "hookshot"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "membership"
+                                        },
+                                        {
+                                            "type": "skip",
+                                            "el": "gerudo_kitchen"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "sword_kokiri"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "option",
+                                    "el": "gerudo_fortress_open",
+                                    "value": "gerudo_fortress_open_one"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "key_small_gerudo"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "sword_kokiri"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "option",
+                            "el": "gerudo_fortress_open",
+                            "value": "gerudo_fortress_open_open"
+                        }
+                    ]
+                }
+            ]
+        },
+        "gerudo_fortress_gate_open": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "membership"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_gerudo_fortress"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_gerudo_fortress_outside_gate"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "option",
+                                    "el": "shuffle_entrances",
+                                    "value": "shuffle_entrances_special_interior"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "shuffle_entrances",
+                                    "value": "shuffle_entrances_overworld"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "shuffle_gerudo_card"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "item",
+                            "el": "membership"
+                        }
+                    ]
+                }
+            ]
+        },
+        "can_reach_gerudo_fortress_outside_gate": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_haunted_Wasteland_near_fortress"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "gerudo_fortress_gate_open"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_gerudo_fortress"
+                        }
+                    ]
+                }
+            ]
+        },
+        "can_reach_gerudo_fortress_storms_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_gerudo_fortress"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_storm"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                }
+            ]
+        },
+        "can_reach_haunted_Wasteland_near_fortress": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_gerudo_fortress_outside_gate"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_haunted_Wasteland"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "hookshot"
+                                            },
+                                            "value": "2"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "logic_wasteland_crossing"
                                 }
                             ]
                         }
@@ -1153,33 +1350,589 @@
                 }
             ]
         },
-        "gerudo_fortress_gate_open": {
-            "type": "mixin",
-            "el": "can_reach_gerudo_fortress"
-        },
-        "can_reach_gerudo_fortress_outside_gate": {
-            "type": "mixin",
-            "el": "can_reach_gerudo_fortress"
-        },
-        "can_reach_gerudo_fortress_storms_grotto": {
-            "type": "mixin",
-            "el": "can_reach_gerudo_fortress"
-        },
-        "can_reach_haunted_Wasteland_near_fortress": {
-            "type": "mixin",
-            "el": "can_reach_gerudo_fortress_outside_gate"
-        },
         "can_reach_haunted_Wasteland": {
-            "type": "mixin",
-            "el": "can_reach_gerudo_fortress_outside_gate"
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_haunted_Wasteland_near_fortress"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "hookshot"
+                                            },
+                                            "value": "0"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "logic_wasteland_crossing"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_haunted_Wasteland_near_colossus"
+                        },
+                        {
+                            "type": "skip",
+                            "el": "logic_reverse_wasteland"
+                        }
+                    ]
+                }
+            ]
         },
         "can_reach_haunted_Wasteland_near_colossus": {
-            "type": "mixin",
-            "el": "can_reach_gerudo_fortress_outside_gate"
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "skip",
+                                    "el": "lens_required",
+                                    "value": "lens_required_never"
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "lens"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "magic_power"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_haunted_Wasteland"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_desert_colossus"
+                }
+            ]
+        },
+        "can_reach_desert_colossus": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_haunted_Wasteland_near_colossus"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_desert_colossus_fairy"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_desert_colossus_grotto"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_leave_forest"
+                        },
+                        {
+                            "type": "item",
+                            "el": "ocarina"
+                        },
+                        {
+                            "type": "item",
+                            "el": "warp_spirit"
+                        }
+                    ]
+                }
+            ]
+        },
+        "can_reach_desert_colossus_fairy": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_desert_colossus"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                }
+            ]
+        },
+        "can_reach_desert_colossus_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_desert_colossus"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    "value": "2"
+                }
+            ]
         },
         "can_reach_castle_town_entrance": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_field"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town_rupee_room"
+                }
+            ]
+        },
+        "can_reach_castle_town_rupee_room": {
             "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "el": "can_reach_castle_town_entrance"
+        },
+        "can_reach_castle_town": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town_entrance"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_temple_of_time_exterior"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_grounds"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town_bazaar"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town_mask_shop"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town_shooting_gallery"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town_bombchu_bowling"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town_potion_shop"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town_treasure_chest_game"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town_bombchu_shop"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town_dog_lady"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town_man_in_green_house"
+                }
+            ]
+        },
+        "can_reach_temple_of_time_exterior": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_temple_of_time"
+                }
+            ]
+        },
+        "can_reach_castle_grounds": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_castle_grounds"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_castle_fairy"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_ganons_castle_grounds"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_ganons_castle_fairy"
+                }
+            ]
+        },
+        "can_reach_castle_town_bazaar": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
+        },
+        "can_reach_castle_town_mask_shop": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
+        },
+        "can_reach_castle_town_shooting_gallery": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
+        },
+        "can_reach_castle_town_bombchu_bowling": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
+        },
+        "can_reach_castle_town_potion_shop": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
+        },
+        "can_reach_castle_town_treasure_chest_game": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
+        },
+        "can_reach_castle_town_bombchu_shop": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
+        },
+        "can_reach_castle_town_dog_lady": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
+        },
+        "can_reach_castle_town_man_in_green_house": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_town"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
+        },
+        "can_reach_temple_of_time": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_beyond_door_of_time"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_temple_of_time_exterior"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_leave_forest"
+                        },
+                        {
+                            "type": "item",
+                            "el": "ocarina"
+                        },
+                        {
+                            "type": "item",
+                            "el": "warp_light"
+                        }
+                    ]
+                }
+            ]
+        },
+        "can_reach_beyond_door_of_time": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_temple_of_time"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "song_time"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "option",
+                            "el": "doors_open_temple"
+                        }
+                    ]
+                }
+            ]
+        },
+        "can_reach_hyrule_castle_grounds": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_castle_grounds"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_child"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_castle_garden"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_storms_grotto"
+                }
+            ]
+        },
+        "can_reach_ganons_castle_grounds": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_castle_grounds"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                }
+            ]
+        },
+        "can_reach_hyrule_castle_garden": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_castle_grounds"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "option",
+                                "el": "shuffle_weird_egg"
+                            }
+                        },
+                        {
+                            "type": "item",
+                            "el": "egg"
+                        }
+                    ]
+                }
+            ]
+        },
+        "can_reach_hyrule_castle_fairy": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_castle_grounds"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                }
+            ]
+        },
+        "can_reach_castle_storms_grotto": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_castle_grounds"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_storm"
+                }
+            ]
+        },
+        "can_reach_ganons_castle_fairy": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_ganons_castle_grounds"
+                },
+                {
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    "value": "3"
+                }
+            ]
         },
         "can_reach_kakariko": {
             "type": "mixin",

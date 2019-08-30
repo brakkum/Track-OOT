@@ -121,6 +121,14 @@
                 "shuffle_entrances_overworld"
             ]
         },
+        "shuffle_weird_egg": {
+            "type": "check",
+            "default": false
+        },
+        "shuffle_gerudo_card": {
+            "type": "check",
+            "default": false
+        },
         "scrubsanity": {
             "type": "check",
             "default": false
@@ -285,7 +293,8 @@
                 "logic_lost_woods_gs_bean",
                 "logic_lost_woods_bridge",
                 "logic_valley_crate_hovers",
-                "logic_wasteland_crossing"
+                "logic_wasteland_crossing",
+                "logic_reverse_wasteland"
             ],
             "default": [],
             "logic_editor_visible": false
@@ -418,6 +427,10 @@
             "default": false
         },
         "logic_wasteland_crossing": {
+            "type": "hidden",
+            "default": false
+        },
+        "logic_reverse_wasteland": {
             "type": "hidden",
             "default": false
         }
