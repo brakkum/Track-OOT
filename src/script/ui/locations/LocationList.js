@@ -19,6 +19,7 @@ const TPL = new Template(`
         * {
             position: relative;
             box-sizing: border-box;
+            cursor: default;
         }
         :host {
             display: inline-flex;
@@ -57,7 +58,8 @@ const TPL = new Template(`
             overflow-x: hidden;
         }
         #body > div,
-        #body > ootrt-listlocation,
+        #body > ootrt-listlocationchest,
+        #body > ootrt-listlocationskulltula,
         #body > ootrt-listgossipstone {
             display: flex;
             justify-content: flex-start;
@@ -67,9 +69,11 @@ const TPL = new Template(`
             padding: 2px;
             font-size: 1.2em;
             line-height: 1em;
+            cursor: pointer;
         }
         #body > div:hover,
-        #body > ootrt-listlocation:hover,
+        #body > ootrt-listlocationchest:hover,
+        #body > ootrt-listlocationskulltula:hover,
         #body > ootrt-listgossipstone:hover {
             background-color: var(--dungeon-status-hover-color, #ffffff32);
         }
