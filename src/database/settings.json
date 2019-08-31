@@ -296,8 +296,9 @@
                 "logic_wasteland_crossing",
                 "logic_reverse_wasteland",
                 "logic_visible_collisions",
-                "logic_man_on_roof",
-                "logic_kakariko_tower_gs"
+                "logic_kakariko_tower_gs",
+                "logic_link_goron_dins",
+                "logic_crater_upper_to_lower"
             ],
             "default": [],
             "logic_editor_visible": false
@@ -441,11 +442,15 @@
             "type": "hidden",
             "default": false
         },
-        "logic_man_on_roof": {
+        "logic_kakariko_tower_gs": {
             "type": "hidden",
             "default": false
         },
-        "logic_kakariko_tower_gs": {
+        "logic_link_goron_dins": {
+            "type": "hidden",
+            "default": false
+        },
+        "logic_crater_upper_to_lower": {
             "type": "hidden",
             "default": false
         }

@@ -178,6 +178,88 @@
                 {
                     "type": "mixin",
                     "el": "can_reach_lost_woods_generic_grotto"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_goron_city_woods_warp"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_zora_river"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boots_iron"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "scale"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "odd_mushroom_access": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lost_woods_entrance"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "cojiro_access"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "cojiro"
+                            },
+                            "value": "3"
+                        }
+                    ]
+                }
+            ]
+        },
+        "poachers_saw_access": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lost_woods_entrance"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "mixin",
+                    "el": "odd_potion_access"
                 }
             ]
         },
@@ -988,6 +1070,36 @@
                 {
                     "type": "mixin",
                     "el": "can_reach_gerudo_valley_storms_grotto"
+                }
+            ]
+        },
+        "broken_sword_access": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_gerudo_valley_far_side"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "poachers_saw_access"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "cojiro"
+                            },
+                            "value": "6"
+                        }
+                    ]
                 }
             ]
         },
@@ -2042,8 +2154,12 @@
                     "el": "is_adult"
                 },
                 {
-                    "type": "item",
-                    "el": "cojiro"
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "cojiro"
+                    },
+                    "value": "1"
                 }
             ]
         },
@@ -2128,7 +2244,25 @@
             ]
         },
         "drain_well": {
-            "type": "false"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_windmill"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_storm"
+                }
+            ]
         },
         "can_reach_kakariko_village_bazaar": {
             "type": "and",
@@ -2346,7 +2480,7 @@
                                 },
                                 {
                                     "type": "skip",
-                                    "el": "logic_man_on_roof"
+                                    "el": "man_on_roof"
                                 }
                             ]
                         }
@@ -2396,6 +2530,41 @@
             "type": "mixin",
             "el": "can_reach_kakariko_village_backyard"
         },
+        "odd_potion_access": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_odd_medicine_building"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "cojiro"
+                                    },
+                                    "value": "4"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "odd_mushroom_access"
+                        }
+                    ]
+                }
+            ]
+        },
         "can_reach_graveyard": {
             "type": "or",
             "el": [
@@ -2434,8 +2603,21 @@
             "el": "can_reach_graveyard"
         },
         "can_reach_graveyard_composer_grave": {
-            "type": "mixin",
-            "el": "can_reach_graveyard"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_graveyard"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_zelda"
+                }
+            ]
         },
         "can_reach_graveyard_heart_piece_grave": {
             "type": "mixin",
@@ -2446,12 +2628,34 @@
             "el": "can_reach_graveyard"
         },
         "can_reach_graveyard_dampes_grave": {
-            "type": "mixin",
-            "el": "can_reach_graveyard"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_graveyard"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                }
+            ]
         },
         "can_reach_shadow_temple_warp_region": {
-            "type": "mixin",
-            "el": "can_reach_graveyard"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_leave_forest"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "warp_shadow"
+                }
+            ]
         },
         "can_reach_kakariko_village_behind_gate": {
             "type": "or",
@@ -2477,136 +2681,1110 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain"
                 }
             ]
         },
         "can_reach_death_mountain": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_kakariko_village_behind_gate"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_summit"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_dodongos_cavern_entryway"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_goron_city"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_storms_grotto"
+                }
+            ]
         },
         "can_reach_death_mountain_summit": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_death_mountain"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "can_blast_or_smash"
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_child"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "bean"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "glove"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_crater_upper_nearby"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_summit_fairy"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_bombable_grotto"
+                }
+            ]
         },
         "can_reach_death_mountain_storms_grotto": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_storm"
+                }
+            ]
         },
         "prescription_access": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_summit"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "broken_sword_access"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "cojiro"
+                            },
+                            "value": "7"
+                        }
+                    ]
+                }
+            ]
         },
         "can_reach_death_mountain_crater_upper_local": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_summit"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_death_mountain_crater_upper_nearby"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "goron_tunic_access"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_crater_top_of_crater_grotto"
+                }
+            ]
         },
         "can_reach_death_mountain_crater_lower_local": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_goron_city_darunias_chamber"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_death_mountain_crater_lower_nearby"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "goron_tunic_access"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_crater_fairy"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_crater_dmc_hammer_grotto"
+                }
+            ]
         },
         "can_reach_death_mountain_crater_central_local": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_crater_center_nearby"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "mixin",
+                    "el": "goron_tunic_access"
+                }
+            ]
         },
         "can_reach_death_mountain_crater_top_of_crater_grotto": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_crater_upper_nearby"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
         },
         "can_reach_death_mountain_crater_dmc_hammer_grotto": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_crater_lower_nearby"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                }
+            ]
         },
         "can_reach_death_mountain_crater_fairy": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_crater_lower_nearby"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "hammer"
+                }
+            ]
         },
         "can_reach_death_mountain_crater_upper_nearby": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_crater_upper_local"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_death_mountain_crater_ladder_area_nearby"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_death_mountain_crater_central_local"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_child"
+                        },
+                        {
+                            "type": "item",
+                            "el": "bean"
+                        }
+                    ]
+                }
+            ]
         },
         "can_reach_death_mountain_crater_lower_nearby": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_death_mountain_crater_ladder_area_nearby"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "hammer"
+                                        },
+                                        {
+                                            "type": "skip",
+                                            "el": "logic_crater_upper_to_lower"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "boots_hover"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_crater_lower_local"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_death_mountain_crater_central_local"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "boots_hover"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_child"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "bean"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         "can_reach_death_mountain_crater_ladder_area_nearby": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_crater_upper_local"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_crater_lower_local"
+                }
+            ]
         },
         "can_reach_death_mountain_crater_center_nearby": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_death_mountain_crater_upper_local"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "hookshot"
+                            },
+                            "value": "2"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "goron_tunic_access"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_death_mountain_crater_lower_local"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "boots_hover"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_crater_central_local"
+                }
+            ]
         },
         "can_reach_fire_temple_entrance": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "false"
         },
         "can_reach_death_mountain_summit_owl_flight": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_summit"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
         },
         "can_reach_death_mountain_bombable_grotto": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_summit"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
         },
         "can_reach_death_mountain_summit_fairy": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_summit"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
         },
         "can_reach_goron_city": {
-            "type": "mixin",
-            "el": "can_reach_death_mountain"
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_goron_city_woods_warp"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "goron_city_woods_warp_open"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_leave_forest"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_goron_city_darunias_chamber"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_goron_city_shop"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_goron_city_grotto"
+                }
+            ]
         },
         "goron_city_child_fire": {
-            "type": "mixin",
-            "el": "can_reach_goron_city"
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_goron_city"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_child"
+                        },
+                        {
+                            "type": "item",
+                            "el": "magic_power"
+                        },
+                        {
+                            "type": "item",
+                            "el": "magic_din"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_child"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_goron_city_darunias_chamber"
+                        }
+                    ]
+                }
+            ]
         },
         "goron_city_woods_warp_open": {
-            "type": "mixin",
-            "el": "can_reach_goron_city"
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_goron_city"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "magic_power"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "magic_din"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_blast_or_smash"
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "glove"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "goron_city_child_fire"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_goron_city_woods_warp"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "magic_power"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "magic_din"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_blast_or_smash"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         "stop_link_the_goron": {
-            "type": "mixin",
-            "el": "can_reach_goron_city"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_goron_city"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "logic_link_goron_dins"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         "can_reach_goron_city_woods_warp": {
-            "type": "mixin",
-            "el": "can_reach_death_mountain"
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_goron_city"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "goron_city_woods_warp_open"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lost_woods_entrance"
+                }
+            ]
         },
         "can_reach_goron_city_shop": {
-            "type": "mixin",
-            "el": "can_reach_death_mountain"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_goron_city"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "is_adult"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "stop_link_the_goron"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "is_child"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "goron_city_child_fire"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "glove"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         "can_reach_goron_city_darunias_chamber": {
-            "type": "mixin",
-            "el": "can_reach_death_mountain"
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_goron_city"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "stop_link_the_goron"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_child"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "song_zelda"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "ocarina"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain_crater_lower_nearby"
+                }
+            ]
         },
         "can_reach_goron_city_grotto": {
-            "type": "mixin",
-            "el": "can_reach_death_mountain"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_goron_city"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "song_time"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "goron_tunic_access"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_nayru"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         "can_reach_zora_river_front": {
-            "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_field"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zora_river"
+                }
+            ]
         },
         "can_reach_zora_river": {
-            "type": "mixin",
-            "el": "can_reach_zora_river_front"
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_zora_river_front"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "is_adult"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zora_river_behind_waterfall"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_lost_woods_entrance"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boots_iron"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "scale"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_leave_forest"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zora_river_plateau_open_grotto"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zora_river_plateau_bombable_grotto"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zora_river_storms_grotto"
+                }
+            ]
         },
         "can_reach_zora_river_plateau_open_grotto": {
             "type": "mixin",
-            "el": "can_reach_zora_river_front"
+            "el": "can_reach_zora_river"
         },
         "can_reach_zora_river_plateau_bombable_grotto": {
-            "type": "mixin",
-            "el": "can_reach_zora_river_front"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zora_river"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_blast_or_smash"
+                }
+            ]
         },
         "can_reach_zora_river_storms_grotto": {
-            "type": "mixin",
-            "el": "can_reach_zora_river_front"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zora_river"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_storm"
+                }
+            ]
         },
         "can_reach_zora_river_behind_waterfall": {
-            "type": "mixin",
-            "el": "can_reach_zora_river_front"
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_zora_river"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "ocarina"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "song_zelda"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_child"
+                                        },
+                                        {
+                                            "type": "skip",
+                                            "el": "zora_cucco"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "is_adult"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boots_hover"
+                                        },
+                                        {
+                                            "type": "skip",
+                                            "el": "zora_hover"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zoras_domain"
+                }
+            ]
         },
         "can_reach_zoras_domain": {
             "type": "or",
@@ -2683,8 +3861,30 @@
             "el": "can_reach_hyrule_field"
         },
         "can_reach_dodongos_cavern_entryway": {
-            "type": "mixin",
-            "el": "can_reach_kakariko_village"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_death_mountain"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_adult"
+                        }
+                    ]
+                }
+            ]
         },
         "water_temple_clear": {
             "type": "false"
