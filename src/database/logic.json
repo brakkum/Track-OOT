@@ -3805,60 +3805,336 @@
                             "el": "scale"
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zora_river_behind_waterfall"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_zoras_domain_behind_king_zora"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "deliver_letter"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "doors_open_zora"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zoras_domain_shop"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zoras_domain_storms_grotto"
                 }
             ]
         },
         "zora_thawed": {
-            "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zoras_domain"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "bottle"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "ganon_castle_access"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "ice_cavern_access"
+                        }
+                    ]
+                }
+            ]
         },
         "eyeball_frog_access": {
-            "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zoras_domain"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "mixin",
+                    "el": "zora_thawed"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "prescription_access"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "cojiro"
+                            },
+                            "value": "8"
+                        }
+                    ]
+                }
+            ]
         },
         "deliver_letter": {
-            "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zoras_domain"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                },
+                {
+                    "type": "item",
+                    "el": "zora_letter"
+                },
+                {
+                    "type": "not",
+                    "el": {
+                        "type": "option",
+                        "el": "doors_open_zora"
+                    }
+                }
+            ]
         },
         "can_reach_zoras_domain_behind_king_zora": {
-            "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "type": "or",
+            "el": [
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "can_reach_zoras_domain"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "deliver_letter"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "doors_open_zora"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zoras_fountain"
+                }
+            ]
         },
         "can_reach_zoras_domain_shop": {
-            "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zoras_domain"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "is_child"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "bottle"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "ganon_castle_access"
+                                        },
+                                        {
+                                            "type": "mixin",
+                                            "el": "ice_cavern_access"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         "can_reach_zoras_domain_storms_grotto": {
-            "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zoras_domain"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_storm"
+                }
+            ]
         },
         "can_reach_zoras_fountain": {
-            "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zoras_fountain_fairy"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zoras_domain_behind_king_zora"
+                }
+            ]
         },
         "can_reach_zoras_fountain_fairy": {
-            "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_zoras_fountain"
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
+                }
+            ]
         },
         "can_reach_lon_lon_ranch": {
-            "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "type": "or",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_hyrule_field"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lon_lon_ranch_talons_house"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lon_lon_ranch_ingo_barn"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lon_lon_ranch_corner_tower"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lon_lon_ranch_grotto"
+                }
+            ]
+        },
+        "epona": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lon_lon_ranch"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_epona"
+                }
+            ]
+        },
+        "links_cow": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lon_lon_ranch"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_adult"
+                },
+                {
+                    "type": "item",
+                    "el": "ocarina"
+                },
+                {
+                    "type": "item",
+                    "el": "song_epona"
+                }
+            ]
         },
         "can_reach_lon_lon_ranch_talons_house": {
             "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "el": "can_reach_lon_lon_ranch"
         },
         "can_reach_lon_lon_ranch_ingo_barn": {
             "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "el": "can_reach_lon_lon_ranch"
         },
         "can_reach_lon_lon_ranch_corner_tower": {
             "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "el": "can_reach_lon_lon_ranch"
         },
         "can_reach_lon_lon_ranch_grotto": {
-            "type": "mixin",
-            "el": "can_reach_hyrule_field"
+            "type": "and",
+            "el": [
+                {
+                    "type": "mixin",
+                    "el": "can_reach_lon_lon_ranch"
+                },
+                {
+                    "type": "mixin",
+                    "el": "is_child"
+                }
+            ]
         },
         "can_reach_dodongos_cavern_entryway": {
             "type": "and",
