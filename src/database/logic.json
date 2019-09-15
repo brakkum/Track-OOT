@@ -645,6 +645,10 @@
                     "type": "and",
                     "el": [
                         {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        },
+                        {
                             "type": "item",
                             "el": "membership"
                         },
@@ -661,7 +665,7 @@
                                         "type": "item",
                                         "el": "hookshot"
                                     },
-                                    "value": 2
+                                    "value": "2"
                                 }
                             ]
                         },
@@ -2005,6 +2009,10 @@
                 {
                     "type": "item",
                     "el": "membership"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -2026,6 +2034,10 @@
                 {
                     "type": "item",
                     "el": "membership"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -2053,7 +2065,7 @@
                                 "type": "item",
                                 "el": "hookshot"
                             },
-                            "value": 2
+                            "value": "2"
                         }
                     ]
                 },
@@ -2078,6 +2090,10 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -22965,6 +22981,10 @@
                 {
                     "type": "item",
                     "el": "membership"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -22976,6 +22996,10 @@
                     "el": "membership"
                 },
                 {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
                     "type": "or",
                     "el": [
                         {
@@ -22984,7 +23008,7 @@
                                 "type": "item",
                                 "el": "hookshot"
                             },
-                            "value": 2
+                            "value": "2"
                         },
                         {
                             "type": "and",
