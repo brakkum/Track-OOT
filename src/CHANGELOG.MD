@@ -10,6 +10,15 @@ Application:    Track-OOT
 
 ---
 
+## VERSION 1.5.6
+
+### HOTFIX
+- redid most of the vanilla spirit logic
+- fixed old bean check on desert hill skulltula
+- changed gerudo archery and skull, wasteland and desert access to new gerudo behaviour(membership card instead of carpenter rescue)
+
+---
+
 ## VERSION 1.5.5
 
 ### HOTFIX
