@@ -773,11 +773,11 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "gerudo_fortress_carpenter_rescue"
+                    "el": "can_become_adult"
                 },
                 {
                     "type": "mixin",
-                    "el": "can_become_adult"
+                    "el": "gerudo_fortress_access"
                 }
             ]
         },
@@ -13020,6 +13020,10 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
                 }
             ]
         },
