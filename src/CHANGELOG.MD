@@ -4,6 +4,15 @@ Application:    Track-OOT
 
 ---
 
+## VERSION 1.5.7
+
+### HOTFIX
+- changed gerudo training access to new gerudo behaviour
+- changed DCMQ Dodongo requiring bombs for access
+- made setting for open kakariko gate invisible
+
+---
+
 ## VERSION 1.5.6
 
 ### HOTFIX
