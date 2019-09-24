@@ -1,100 +1,30 @@
-import LocalStorage from "/deepJS/storage/LocalStorage.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import Toast from "/deepJS/ui/Toast.js";
-import TrackerStorage from "/script/storage/TrackerStorage.js";
 import SaveState from "/script/storage/SaveState.js";
-import StatesWindow from "/script/ui/StatesWindow.js";
+import LoadWindow from "/script/ui/savestate/LoadWindow.js";
+import ManageWindow from "/script/ui/savestate/ManageWindow.js";
+import SaveWindow from "/script/ui/savestate/SaveWindow.js";
 
 let activestate = "";
 
-const stateChoice = document.getElementById("select-savegame");
-const stateSave = document.getElementById("save-savegame");
-const stateSaveAs = document.getElementById("saveas-savegame");
-const stateLoad = document.getElementById("load-savegame");
-const stateNew = document.getElementById("new-savegame");
-const stateDel = document.getElementById("delete-savegame");
-const stateRename = document.getElementById("rename-savegame");
-const stateExport = document.getElementById("export-savegame");
-const stateImport = document.getElementById("import-savegame");
+const stateSave = document.getElementById("save-savestate");
+const stateSaveAs = document.getElementById("saveas-savestate");
+const stateLoad = document.getElementById("load-savestate");
+const stateNew = document.getElementById("new-savestate");
+const statesManage = document.getElementById("manage-savestates");
 const notePad = document.getElementById("tracker-notes");
 
 stateSave.addEventListener("click", state_Save);
 stateSaveAs.addEventListener("click", state_SaveAs);
 stateLoad.addEventListener("click", state_Load);
 stateNew.addEventListener("click", state_New);
-//stateDel.addEventListener("click", state_Delete);
-//stateRename.addEventListener("click", state_Rename);
-//stateExport.addEventListener("click", state_Export);
-//stateImport.addEventListener("click", state_Import);
-//stateChoice.addEventListener("change", toggleStateButtons);
-
-function toggleStateButtons() {
-    if (stateChoice.value == "") {
-        stateSave.disabled = true;
-        stateLoad.disabled = true;
-        stateDel.disabled = true;
-        stateExport.disabled = true;
-        stateRename.disabled = true;
-    } else {
-        if (stateChoice.value == activestate) {
-            stateSave.disabled = false;
-        } else {
-            stateSave.disabled = true;
-        }
-        stateLoad.disabled = false;
-        stateDel.disabled = false;
-        stateExport.disabled = false;
-        stateRename.disabled = false;
-    }
-}
-
-async function prepairSavegameChoice() {
-    stateChoice.innerHTML = "<option disabled selected hidden value=\"\"> -- select state -- </option>";
-    let keys = await TrackerStorage.StatesStorage.keys();
-    for (let i = 0; i < keys.length; ++i) {
-        stateChoice.append(createOption(keys[i]));
-    }
-    activestate = LocalStorage.get('name', "");
-    stateChoice.value = activestate;
-}
-
-function createOption(value) {
-    let opt = document.createElement('option');
-    opt.value = value;
-    opt.innerHTML = value;
-    return opt;
-}
-
-function showStateWindow(load = true) {
-    return new Promise(function(resolve) {
-        let title = "Load state";
-        let options = {
-            cloase: "close",
-            edit: false
-        };
-        if (!load) {
-            title = "Save state";
-            options.edit = true;
-        }
-        let w = new StatesWindow(title, options);
-        w.onsubmit = function(event) {
-            resolve(event.value);
-        }
-        w.oncancel = function() {
-            resolve(false);
-        }
-        w.onclose = function() {
-            resolve();
-        }
-        w.show();
-    });
-}
+statesManage.addEventListener("click", states_Manage);
 
 async function state_Save() {
-    if (stateChoice.value != "") {
-        stateChoice.value = activestate;
-        await SaveState.save(activestate);
+    let activestate = await SaveState.getName()
+    if (!!activestate) {
+        await SaveState.save();
         Toast.show(`Saved "${activestate}" successfully.`);
     } else {
         state_SaveAs();
@@ -102,112 +32,36 @@ async function state_Save() {
 }
 
 async function state_SaveAs() {
-    let state = await showStateWindow(false);
-    if (!!state) {
-        let confirm = true;
-        if (await TrackerStorage.StatesStorage.has(state)) {
-            confirm = await Dialog.confirm("State already exists", "Do you want to overwrite the old savestate?");
-        }
-        if (!!confirm) {
-            activestate = state;
-            await SaveState.save(activestate);
-            Toast.show(`Saved "${activestate}" successfully.`);
-        }
-    }
+    let w = new SaveWindow();
+    w.show();
 }
 
 async function state_Load() {
-    let confirm = true;
-    if (!!activestate) {
-        confirm = await Dialog.confirm("Warning", "Do you really want to load? Unsaved changes will be lost.");
+    let w = new LoadWindow();
+    w.onsubmit = function(event) {
+        notePad.value = SaveState.read("notes", "");
+        EventBus.trigger("state", SaveState.getState());
     }
-    if (!!confirm) {
-        let state = await showStateWindow();
-        if (!!state) {
-            activestate = state;
-            // TODO check if state exists
-            await SaveState.load(activestate);
-            notePad.value = SaveState.read("notes", "");
-            EventBus.trigger("state", SaveState.getState());
-            // toggleStateButtons();
-            Toast.show(`State "${activestate}" loaded.`);
-        }
-    }
-}
-
-async function state_Delete() {
-    if (stateChoice.value != ""
-    && await Dialog.confirm("Warning", `Do you really want to delete "${stateChoice.value}"?`)) {
-        let del = stateChoice.value;
-        TrackerStorage.StatesStorage.remove(del);
-        if (del == activestate) {
-            activestate = "";
-            SaveState.reset();
-            EventBus.trigger("state", SaveState.getState());
-        }
-        stateChoice.value = activestate;
-        // // await prepairSavegameChoice();
-        // toggleStateButtons();
-        Toast.show(`State "${del}" removed.`);
-    }
+    w.show();
 }
 
 async function state_New() {
-    let confirm = true;
-    if (!!activestate) {
-        confirm = await Dialog.confirm("Warning", "Do you really want to create a new savestate? Unsaved changes will be lost.");
-    }
-    if (!!confirm) {
-        SaveState.reset();
-        notePad.value = "";
-        activestate = "";
-        EventBus.trigger("state", SaveState.getState());
-    }
-}
-
-async function state_Rename() {
-    if (stateChoice.value == "") return;
-    if (await Dialog.confirm("Warning", `Do you really want to rename "${stateChoice.value}"?`)) {
-        let name = await Dialog.prompt("New state", "Please enter a new name!");
-        if (name !== false) {
-            if (name == "") {
-                await Dialog.alert("Warning", "The name can not be empty.");
-                state_New();
-                return;
-            }
-            if (await TrackerStorage.StatesStorage.has(name)) {
-                await Dialog.alert("Warning", "The name already exists.");
-                state_New();
-                return;
-            }
-            await SaveState.rename(stateChoice.value, name);
-            if (activestate != "" && activestate == stateChoice.value) {
-                activestate = name;
-            }
-            // await prepairSavegameChoice();
-            stateChoice.value = name;
-            // toggleStateButtons();
+    if (!!await SaveState.getName()) {
+        if (!await Dialog.confirm("Warning", "Do you really want to create a new savestate? Unsaved changes will be lost.")) {
+            return;
         }
     }
+    SaveState.reset();
+    notePad.value = "";
+    EventBus.trigger("state", SaveState.getState());
 }
 
-async function state_Export() {
-    if (stateChoice.value != "") {
-        let confirm = true;
-        if (activestate != "") {
-            confirm = await Dialog.confirm("Are you shure?", "The last saved state will be exported.");
-        }
-        if (!!confirm) {
-            let item = {
-                name: stateChoice.value,
-                data: await TrackerStorage.StatesStorage.get(stateChoice.value)
-            };
-            await Dialog.alert("Your export string", btoa(JSON.stringify(item)).replace(/=*$/,""));
-        }
-    }
+async function states_Manage() {
+    let w = new ManageWindow();
+    w.show();
 }
 
-async function state_Import() {
+async function state_Import() { // TODO redo this for new state
     let data = await Dialog.prompt("Import", "Please enter export string!");
     if (data !== false) {
         if (data == "") {
@@ -248,8 +102,6 @@ class SaveHandler {
         async function writeNotePadValue() {
             SaveState.write("notes", notePad.value);
         };
-        // await prepairSavegameChoice();
-        // toggleStateButtons();
     }
 
 }

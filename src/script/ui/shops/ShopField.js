@@ -121,7 +121,7 @@ function renameSlot(event) {
 
 function stateChanged(event) {
     /* shop items */
-    let data = !!event.data[`shops.${this.ref}`];
+    let data = event.data[`shops.${this.ref}`];
     if (typeof data == "undefined") {
         data = GlobalData.get("shops")[this.ref];
     }

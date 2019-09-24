@@ -1,7 +1,5 @@
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
-//import EventBusModuleShare from "/deepJS/util/EventBus/EventBusModuleShare.js";
 import Logger from "/deepJS/util/Logger.js";
-import Dialog from "/deepJS/ui/Dialog.js";
 
 import GlobalData from "/script/storage/GlobalData.js";
 import Settings from "/script/util/Settings.js";
