@@ -15,6 +15,8 @@ CONVERTER_FN[0] = function(data) {
             }
         }
     }
+    res.lastchanged = new Date();
+    res.version = 1;
     return res;
 };
 

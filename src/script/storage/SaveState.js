@@ -37,7 +37,8 @@ const stateConv = new StateConverter(STATE_VERSION);
     }
 }();
 
-// TODO make autosave be called every X min, store last Y saves. if manual save restart timer to X. autosave to be stored to LocalStorage
+// TODO make autosave be called every X min, store last Y saves. if manual save restart timer to X
+// TODO save autosave to localstorage
 function autosave() {
     // TODO remove oldest autosave while autosave count >= Y
     // TODO store new autosave
@@ -50,6 +51,8 @@ let state = {};
 let activestate = "";
 
 class SaveState {
+    // TODO add activateAutosave(timeout, counter)
+    // TODO add deactivateAutosave()
 
     constructor() {
         state = LocalStorage.get("savestate", {});
@@ -61,7 +64,6 @@ class SaveState {
 
     async save(name = activestate) {
 		state.lastchanged = new Date();
-		state.version = STATE_VERSION;
 		state.name = name;
         await TrackerStorage.StatesStorage.set(name, state);
         LocalStorage.set("savestate", state);
@@ -73,7 +75,7 @@ class SaveState {
         if (await TrackerStorage.StatesStorage.has(name)) {
             state = await TrackerStorage.StatesStorage.get(name);
             if (state.version < STATE_VERSION) {
-                state = stateConv.convert(state, state.version);
+                state = stateConv.convert(state, state.version, name);
             }
             LocalStorage.set("savestate", state);
             activestate = name;
@@ -110,7 +112,6 @@ class SaveState {
         if (version < STATE_VERSION) {
             data = stateConv.convert(data, version);
         }
-		data.version = STATE_VERSION;
         await TrackerStorage.StatesStorage.set(name, data);
     }
 
@@ -119,11 +120,7 @@ class SaveState {
         if (data.version < STATE_VERSION) {
             data = stateConv.convert(data, data.version);
         }
-        return {
-            name: name,
-            data: data,
-            version: STATE_VERSION
-        };
+        return data;
     }
 
     getName() {
@@ -151,6 +148,7 @@ class SaveState {
 
     reset() {
         state = {};
+		state.version = STATE_VERSION;
         activestate = "";
         LocalStorage.set("savestate", state);
         Logger.info(`state resettet`, "SaveState");

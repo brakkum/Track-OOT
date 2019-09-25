@@ -2,7 +2,10 @@
 
 ---
 
-### prio 2
+### IMMEDIATES
+- add warning dialog to download update if needed
+
+### TODOS
 - custom layout (aka build yourself a tracker)
 - add user friendly savestate management
     - see office applications
@@ -25,4 +28,4 @@
 - remove zora letter if not used (fountain open)
     - make invisible
 - hide areas that are not reachable by child/adult
-- on network play make location and mode change synchronize optional
+- on network play make location- and mode change (locationlist/map) synchronize optional

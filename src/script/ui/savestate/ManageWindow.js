@@ -1,8 +1,9 @@
 import Template from "/deepJS/util/Template.js";
 import FileSystem from "/deepJS/util/FileSystem.js";
-import SaveState from "/script/storage/SaveState.js";
+import DateUtil from "/deepJS/util/DateUtil.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import Toast from "/deepJS/ui/Toast.js";
+import SaveState from "/script/storage/SaveState.js";
 
 const TPL = new Template(`
     <style>
@@ -145,6 +146,9 @@ const TPL = new Template(`
             <button id="import" class="button" title="import state">
                 IMPORT
             </button>
+            <button id="import-string" class="button" title="import state from string">
+                IMPORT STRING
+            </button>
             <button id="export" class="button" title="export state">
                 EXPORT
             </button>
@@ -204,8 +208,8 @@ export default class ManageStateWindow extends HTMLElement {
             
             let states = await SaveState.getNames();
             lst.innerHTML = "";
-            for (let name of states) {
-                lst.append(createDeepOption(name));
+            for (let n of states) {
+                lst.append(createDeepOption(n));
             }
         };
         // RENAME
@@ -239,34 +243,82 @@ export default class ManageStateWindow extends HTMLElement {
             
             let states = await SaveState.getNames();
             lst.innerHTML = "";
-            for (let name of states) {
-                lst.append(createDeepOption(name));
+            for (let n of states) {
+                lst.append(createDeepOption(n));
             }
         };
         // IMPORT
         let imp = this.shadowRoot.getElementById('import');
         imp.onclick = async () => {
             let res = await FileSystem.load(".json");
-            if (!res || !res.data || !res.data.name || !res.data.data) {
+            if (!res || !res.data || !res.data.name) {
+                await Dialog.alert("Warning", "Did not find any data to import.");
                 return;
             }
-            let name = await Dialog.prompt("Import state", `Please enter a new name for the imported state!`, res.data.name);
-            if (name === false) {
+            let name = "";
+            while (name == "") {
+                name = await Dialog.prompt("Import state", `Please enter a new name for the imported state!`, res.data.name);
+                if (name === false) {
+                    return;
+                }
+                if (await SaveState.exists(name)) {
+                    if (!await Dialog.confirm("Warning", `The name "${name}" already exists. Do you want to overwrite it?`)) {
+                        name = "";
+                    }
+                }
+            }
+            await SaveState.import(name, res.data, res.version);
+            Toast.show(`State "${name}" imported.`);
+            snm.value = "";
+            
+            let states = await SaveState.getNames();
+            lst.innerHTML = "";
+            for (let n of states) {
+                lst.append(createDeepOption(n));
+            }
+        };
+        // IMPORT STRING
+        let ist = this.shadowRoot.getElementById('import-string');
+        ist.onclick = async () => {
+            let data = await Dialog.prompt("Import", "Please enter export string!");
+            if (data === false) {
                 return;
+            }
+            try {
+                data = JSON.parse(atob(data));
+            } catch(e) {
+                await Dialog.alert("Warning", "Did not find any data to import.");
+                return;
+            }
+            if (!data || !data.data || !data.name) {
+                await Dialog.alert("Warning", "Did not find any data to import.");
+                return;
+            }
+            let name = "";
+            while (name == "") {
+                name = await Dialog.prompt("Import state", `Please enter a new name for the imported state!`, data.name);
+                if (name === false) {
+                    return;
+                }
+                if (await SaveState.exists(name)) {
+                    if (!await Dialog.confirm("Warning", `The name "${name}" already exists. Do you want to overwrite it?`)) {
+                        name = "";
+                    }
+                }
             }
             if (await SaveState.exists(name)) {
                 if (!await Dialog.confirm("Warning", `The name "${name}" already exists. Do you want to overwrite it?`)) {
                     return;
                 }
             }
-            await SaveState.import(name, res.data.data, res.data.version);
+            await SaveState.import(name, data.data, data.version);
             Toast.show(`State "${name}" imported.`);
             snm.value = "";
             
             let states = await SaveState.getNames();
             lst.innerHTML = "";
-            for (let name of states) {
-                lst.append(createDeepOption(name));
+            for (let n of states) {
+                lst.append(createDeepOption(n));
             }
         };
         // EXPORT
@@ -278,7 +330,7 @@ export default class ManageStateWindow extends HTMLElement {
                 return;
             }
             let data = await SaveState.export(stateName);
-            FileSystem.save(JSON.stringify(data, " ", 4), `track-oot-state.${stateName}.${(new Date).valueOf()}.json`);
+            FileSystem.save(JSON.stringify(data, " ", 4), `track-oot-state.${stateName}.${DateUtil.convert(new Date(data.lastchanged), "YMDhms")}.json`);
         };
     }
 

@@ -1,4 +1,5 @@
 import FileLoader from "/deepJS/util/FileLoader.js";
+import DateUtil from "/deepJS/util/DateUtil.js";
 
 const FILES = [
     "items",
@@ -27,17 +28,7 @@ function setVersion(data) {
     } else {
         STORAGE["version-string"] = data.version;
     }
-    let b = new Date(data.date);
-    let m = b.getMonth()+1;
-    let d = {
-        D: ("00"+b.getDate()).slice(-2),
-        M: ("00"+m).slice(-2),
-        Y: b.getFullYear(),
-        h: ("00"+b.getHours()).slice(-2),
-        m: ("00"+b.getMinutes()).slice(-2),
-        s: ("00"+b.getSeconds()).slice(-2)
-    };
-    STORAGE["version-date"] = `${d.D}.${d.M}.${d.Y} ${d.h}:${d.m}:${d.s}`;
+    STORAGE["version-date"] = DateUtil.convert(new Date(data.date), "D.M.Y h:m:s");
     return data;
 }
 

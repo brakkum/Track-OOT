@@ -61,30 +61,6 @@ async function states_Manage() {
     w.show();
 }
 
-async function state_Import() { // TODO redo this for new state
-    let data = await Dialog.prompt("Import", "Please enter export string!");
-    if (data !== false) {
-        if (data == "") {
-            await Dialog.alert("Warning", "The import string can not be empty.");
-            state_Import();
-            return;
-        }
-        data = JSON.parse(atob(data));
-        if (await TrackerStorage.StatesStorage.has(data.name) && !(await Dialog.confirm("Warning", "There is already a savegame with this name. Replace savegame?."))) {
-            return;
-        }
-        await TrackerStorage.StatesStorage.set(data.name, data.data);
-        // await prepairSavegameChoice();
-        if (!!(await Dialog.confirm(`Imported "${data.name}" successfully.`, `Do you want to load the imported state?${activestate !== "" ? "(Unsaved changes will be lost.)" : ""}`))) {
-            stateChoice.value = data.name;
-            activestate = data.name;
-            await SaveState.load(activestate);
-            EventBus.trigger("state", SaveState.getState());
-            // toggleStateButtons();
-        }
-    }
-}
-
 class SaveHandler {
 
     async init() {
