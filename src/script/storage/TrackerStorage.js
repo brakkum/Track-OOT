@@ -157,7 +157,7 @@ class TrackerStorage {
 		}
 	}
 
-	async remove(key) {
+	async delete(key) {
 		try {
 			if (dbInstance == null) {
 				await openDB()

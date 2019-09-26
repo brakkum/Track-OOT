@@ -1,43 +1,52 @@
+const TARGET_VERSION = 1;
 const CONVERTER_FN = [];
 
-CONVERTER_FN[0] = function(data) {
-    let res = {};
-    for (let i of Object.keys(data)) {
-        for (let j of Object.keys(data[i])) {
+CONVERTER_FN[0] = function(state) {
+    let res = {
+        data: {},
+        timestamp: new Date(),
+        version: 1,
+        name: state.name || ""
+    };
+    for (let i of Object.keys(state.data)) {
+        for (let j of Object.keys(state.data[i])) {
             if (i != "meta") {
                 if (i == "extras") {
-                    res[j] = data[i][j];
+                    res.data[j] = state.data[i][j];
                 } else {
-                    res[`${i}.${j}`] = data[i][j];
+                    res.data[`${i}.${j}`] = state.data[i][j];
                 }
             } else {
-                res.name = data["meta"]["active_state"];
+                res.name = state.data["meta"]["active_state"];
             }
         }
     }
-    res.lastchanged = new Date();
-    res.version = 1;
     return res;
 };
 
-const TARGET_VERSION = new WeakMap()
-
 class StateConverter {
 
-    constructor(targetVersion) {
-        TARGET_VERSION.set(this, targetVersion);
-    }
-
-    convert(data, version = 0) {
-        let tmp = data;
-        for (let i = version; i < TARGET_VERSION.get(this); ++i) {
-            if (typeof CONVERTER_FN[i] == "function") {
-                tmp = CONVERTER_FN[i](tmp);
+    convert(state) {
+        let version = state.version || 0;
+        if (version < TARGET_VERSION) {
+            for (let i = version; i < TARGET_VERSION; ++i) {
+                if (typeof CONVERTER_FN[i] == "function") {
+                    state = CONVERTER_FN[i](state);
+                }
             }
         }
-        return tmp;
+        return state;
+    }
+
+    createEmptyState() {
+        return {
+            name: "",
+            data: {},
+            timestamp: new Date(),
+            version: STATE_VERSION
+        };
     }
 
 }
 
-export default StateConverter;
+export default new StateConverter;

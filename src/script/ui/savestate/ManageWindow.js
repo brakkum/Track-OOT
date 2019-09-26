@@ -3,7 +3,7 @@ import FileSystem from "/deepJS/util/FileSystem.js";
 import DateUtil from "/deepJS/util/DateUtil.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import Toast from "/deepJS/ui/Toast.js";
-import SaveState from "/script/storage/SaveState.js";
+import StateManager from "/script/storage/StateManager.js";
 
 const TPL = new Template(`
     <style>
@@ -202,11 +202,11 @@ export default class ManageStateWindow extends HTMLElement {
             if (!await Dialog.confirm("Warning", `Do you really want to delete "${stateName}"? This can not be undone.`)) {
                 return;
             }
-            await SaveState.remove(stateName);
+            await StateManager.delete(stateName);
             Toast.show(`State "${stateName}" deleted.`);
             snm.value = "";
             
-            let states = await SaveState.getNames();
+            let states = await StateManager.getNames();
             lst.innerHTML = "";
             for (let n of states) {
                 lst.append(createDeepOption(n));
@@ -230,18 +230,18 @@ export default class ManageStateWindow extends HTMLElement {
                     await Dialog.alert("Warning", "The name can not be empty.");
                     continue;
                 }
-                if (await SaveState.exists(name)) {
+                if (await StateManager.exists(name)) {
                     if (!await Dialog.confirm("Warning", `The name "${name}" already exists. Do you want to overwrite it?`)) {
                         continue;
                     }
                 }
                 newName = name;
             }
-            await SaveState.rename(stateName, newName);
+            await StateManager.rename(stateName, newName);
             Toast.show(`State "${stateName}" renamed to "${newName}".`);
             snm.value = "";
             
-            let states = await SaveState.getNames();
+            let states = await StateManager.getNames();
             lst.innerHTML = "";
             for (let n of states) {
                 lst.append(createDeepOption(n));
@@ -261,17 +261,17 @@ export default class ManageStateWindow extends HTMLElement {
                 if (name === false) {
                     return;
                 }
-                if (await SaveState.exists(name)) {
+                if (await StateManager.exists(name)) {
                     if (!await Dialog.confirm("Warning", `The name "${name}" already exists. Do you want to overwrite it?`)) {
                         name = "";
                     }
                 }
             }
-            await SaveState.import(name, res.data, res.version);
+            await StateManager.import(name, res.data, res.version);
             Toast.show(`State "${name}" imported.`);
             snm.value = "";
             
-            let states = await SaveState.getNames();
+            let states = await StateManager.getNames();
             lst.innerHTML = "";
             for (let n of states) {
                 lst.append(createDeepOption(n));
@@ -300,22 +300,17 @@ export default class ManageStateWindow extends HTMLElement {
                 if (name === false) {
                     return;
                 }
-                if (await SaveState.exists(name)) {
+                if (await StateManager.exists(name)) {
                     if (!await Dialog.confirm("Warning", `The name "${name}" already exists. Do you want to overwrite it?`)) {
                         name = "";
                     }
                 }
             }
-            if (await SaveState.exists(name)) {
-                if (!await Dialog.confirm("Warning", `The name "${name}" already exists. Do you want to overwrite it?`)) {
-                    return;
-                }
-            }
-            await SaveState.import(name, data.data, data.version);
+            await StateManager.import(name, data.data, data.version);
             Toast.show(`State "${name}" imported.`);
             snm.value = "";
             
-            let states = await SaveState.getNames();
+            let states = await StateManager.getNames();
             lst.innerHTML = "";
             for (let n of states) {
                 lst.append(createDeepOption(n));
@@ -329,13 +324,13 @@ export default class ManageStateWindow extends HTMLElement {
                 await Dialog.alert("No state selected", "Please select a state to export!");
                 return;
             }
-            let data = await SaveState.export(stateName);
+            let data = await StateManager.export(stateName);
             FileSystem.save(JSON.stringify(data, " ", 4), `track-oot-state.${stateName}.${DateUtil.convert(new Date(data.lastchanged), "YMDhms")}.json`);
         };
     }
 
     async show() {
-        let states = await SaveState.getNames();
+        let states = await StateManager.getNames();
         let list = this.shadowRoot.getElementById('statelist');
         list.innerHTML = "";
         for (let name of states) {
