@@ -6,7 +6,16 @@ Application:    Track-OOT
 
 ## DEVELOPMENT
 
-### NOTHING YET
+### QOL - SAVESTATES
+- moved all savestate related nav options to "file" submenu
+- added windows for saving/loading/management
+- replaced export to string with export to file
+- added import from file
+    - import from string still possible
+- moved savestates to indexedDB
+- changed structure of savestates for future improvements
+- added state converter class for iterative savestate conversion
+- change all interface elements to adapt to new state structure
 
 ---
 
