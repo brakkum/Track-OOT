@@ -68,7 +68,8 @@
         "erase_all_data": {
             "type": "button",
             "text": "button_erase_data",
-            "url": "uninstall.html"
+            "url": "uninstall.html?nosw",
+            "target": "_self"
         }
     },
     "options": {

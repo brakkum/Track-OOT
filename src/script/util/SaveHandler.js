@@ -6,8 +6,6 @@ import LoadWindow from "/script/ui/savestate/LoadWindow.js";
 import ManageWindow from "/script/ui/savestate/ManageWindow.js";
 import SaveWindow from "/script/ui/savestate/SaveWindow.js";
 
-let activestate = "";
-
 const stateSave = document.getElementById("save-savestate");
 const stateSaveAs = document.getElementById("saveas-savestate");
 const stateLoad = document.getElementById("load-savestate");
@@ -38,22 +36,15 @@ async function state_SaveAs() {
 
 async function state_Load() {
     let w = new LoadWindow();
-    w.onsubmit = function(event) {
-        notePad.value = SaveState.read("notes", "");
-        EventBus.trigger("state", SaveState.getState());
-    }
     w.show();
 }
 
 async function state_New() {
     if (!!await SaveState.getName()) {
-        if (!await Dialog.confirm("Warning", "Do you really want to create a new savestate? Unsaved changes will be lost.")) {
-            return;
+        if (await Dialog.confirm("Warning", "Do you really want to create a new savestate? Unsaved changes will be lost.")) {
+            SaveState.reset();
         }
     }
-    SaveState.reset();
-    notePad.value = "";
-    EventBus.trigger("state", SaveState.getState());
 }
 
 async function states_Manage() {
@@ -78,6 +69,9 @@ class SaveHandler {
         async function writeNotePadValue() {
             SaveState.write("notes", notePad.value);
         };
+        EventBus.register("state", function(event) {
+            notePad.value = event.data.data["notes"] || "";
+        });
     }
 
 }

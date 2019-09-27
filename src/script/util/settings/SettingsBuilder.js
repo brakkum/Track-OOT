@@ -54,7 +54,9 @@ function buildSettings(settings) {
                     if (!!val.view) {
                         settings.addButton(i, label, j, I18n.translate(val.text), switchView.bind(this, val.view));
                     } else if (!!val.url) {
-                        settings.addButton(i, label, j, I18n.translate(val.text), window.open.bind(window, val.url));
+                        settings.addButton(i, label, j, I18n.translate(val.text), () => {
+                            window.open(val.url, val.target || "_blank");
+                        });
                     } else {
                         settings.addButton(i, label, j, I18n.translate(val.text), alert.bind(window, "not functionality bound"));
                     }

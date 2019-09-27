@@ -1,4 +1,27 @@
+import StateConverter from "/script/storage/StateConverter.js";
+
 let dbInstance = null;
+
+!function() {
+    if (sessionStorage.length > 0) {
+        let tmp = StateConverter.createEmptyState();
+        let k = Object.keys(sessionStorage);
+        for (let i of k) {
+            let r = i.split("\0");
+            if (r[0] != "meta") {
+                if (r[0] == "extras") {
+                    tmp.data[r[1]] = JSON.parse(sessionStorage.getItem(i));
+                } else {
+                    tmp.data[`${r[0]}.${r[1]}`] = JSON.parse(sessionStorage.getItem(i));
+                }
+            } else {
+                tmp.name = JSON.parse(sessionStorage.getItem("meta\0active_state"));
+            }
+        }
+        localStorage.setItem("savestate", JSON.stringify(tmp));
+        sessionStorage.clear();
+    }
+}();
 
 function openDB() {
     return new Promise(function(resolve, reject) {
@@ -9,18 +32,11 @@ function openDB() {
 			let settingsStore = db.createObjectStore("settings");
 			for (let i of Object.keys(localStorage)) {
 				if (i.startsWith("save\0")) {
-					let res = {};
 					let data = JSON.parse(localStorage.getItem(i));
-					for (let i in data) {
-						if (i == "meta" || i == "extras") continue;
-						for (let j in data[i]) {
-							res[`${i}.${j}`] = data[i][j];
-						}
-					}
-					if (!!data.extras && !!data.extras.notes) {
-						res.notes = data.extras.notes;
-					}
-					res.name = i.split("\0")[1];
+					let res = StateConverter.convert({
+						name: i.split("\0")[1],
+						data: data
+					});
 					savestateStore.add(res);
 					localStorage.removeItem(i);
 				}

@@ -1,8 +1,10 @@
+import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import LocalStorage from "/deepJS/storage/LocalStorage.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import StateConverter from "/script/storage/StateConverter.js";
 
 let state = StateConverter.createEmptyState();
+let dirty = false;
 
 // TODO make autosave be called every X min, store last Y saves. if manual save restart timer to X
 // TODO save autosave to localstorage
@@ -24,6 +26,8 @@ class SaveState {
             state = {data: state};
         }
         state = StateConverter.convert(state);
+        dirty = false;
+        EventBus.trigger("state", JSON.parse(JSON.stringify(state)));
     }
 
     async save(name = state.name) {
@@ -31,7 +35,7 @@ class SaveState {
         state.name = name;
         LocalStorage.set("savestate", state);
         await TrackerStorage.StatesStorage.set(name, state);
-        Logger.info(`saved state as "${name}"`, "SaveState");
+        dirty = false;
     }
 
     async load(name) {
@@ -41,6 +45,8 @@ class SaveState {
                 state = {data: state};
             }
             state = StateConverter.convert(state);
+            dirty = false;
+            EventBus.trigger("state", JSON.parse(JSON.stringify(state)));
         }
     }
 
@@ -48,10 +54,15 @@ class SaveState {
         return state.name;
     }
 
+    isDirty() {
+        return dirty;
+    }
+
     write(key, value) {
         if (!state.data.hasOwnProperty(key) || state.data[key] != value) {
             state.data[key] = value;
             LocalStorage.set("savestate", state);
+            dirty = true;
         }
     }
 
@@ -66,7 +77,14 @@ class SaveState {
         if (!!state.data.hasOwnProperty(key)) {
             delete state.data[key];
             LocalStorage.set("savestate", state);
+            dirty = true;
         }
+    }
+
+    reset() {
+        state = StateConverter.createEmptyState();
+        dirty = false;
+        EventBus.trigger("state", StateConverter.createEmptyState());
     }
 
 }

@@ -251,7 +251,7 @@ export default class ManageStateWindow extends HTMLElement {
         let imp = this.shadowRoot.getElementById('import');
         imp.onclick = async () => {
             let res = await FileSystem.load(".json");
-            if (!res || !res.data || !res.data.name) {
+            if (!res || !res.data || !res.data.data || !res.data.name) {
                 await Dialog.alert("Warning", "Did not find any data to import.");
                 return;
             }
@@ -267,7 +267,8 @@ export default class ManageStateWindow extends HTMLElement {
                     }
                 }
             }
-            await StateManager.import(name, res.data, res.version);
+            res.data.name = name;
+            await StateManager.import(res.data);
             Toast.show(`State "${name}" imported.`);
             snm.value = "";
             
@@ -306,7 +307,8 @@ export default class ManageStateWindow extends HTMLElement {
                     }
                 }
             }
-            await StateManager.import(name, data.data, data.version);
+            data.name = name;
+            await StateManager.import(data);
             Toast.show(`State "${name}" imported.`);
             snm.value = "";
             
@@ -325,7 +327,7 @@ export default class ManageStateWindow extends HTMLElement {
                 return;
             }
             let data = await StateManager.export(stateName);
-            FileSystem.save(JSON.stringify(data, " ", 4), `track-oot-state.${stateName}.${DateUtil.convert(new Date(data.lastchanged), "YMDhms")}.json`);
+            FileSystem.save(JSON.stringify(data, " ", 4), `track-oot-state.${stateName}.${DateUtil.convert(new Date(data.timestamp), "YMDhms")}.json`);
         };
     }
 

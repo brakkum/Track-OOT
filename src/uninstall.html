@@ -6,10 +6,27 @@
         <meta name="robots" content="nofollow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <script>
+            function deleteDB() {
+                return new Promise(function(resolve, reject) {
+                    var req = indexedDB.deleteDatabase("data");
+                    req.onerror = function(event) {
+                        reject("Error deleting database.");
+                    };
+                    req.onsuccess = function(event) {
+                        resolve();
+                    };
+                });
+            }
+
             localStorage.clear();
             sessionStorage.clear();
+            deleteDB();
 
-            // TODO remove indexedDB
+            caches.keys().then(function(names) {
+                for (let name of names) {
+                    caches.delete(name);
+                }
+            });
 
             if(window.navigator && navigator.serviceWorker) {
                 navigator.serviceWorker.getRegistrations().then(function(registrations) {
@@ -41,11 +58,15 @@
             #splash.inactive {
                 display: none;
             }
+            #splash .splash-image {
+                width: 50vmin;
+                height: 50vmin;
+            }
         </style>
     </head>
     <body>   
         <div id="splash">
-            <img src="../images/logo.png">
+            <img class="splash-image" src="/images/logo.svg">
             <span class="loading">All local data erased, please close this tab/window to proceed!</span>
         </div>
     </body>

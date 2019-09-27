@@ -1,4 +1,5 @@
 import Template from "/deepJS/util/Template.js";
+import StateManager from "/script/storage/StateManager.js";
 import SaveState from "/script/storage/SaveState.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import Toast from "/deepJS/ui/Toast.js";
@@ -205,7 +206,7 @@ export default class SaveStateWindow extends HTMLElement {
     }
 
     async show() {
-        let states = await SaveState.getNames();
+        let states = await StateManager.getNames();
         let list = this.shadowRoot.getElementById('statelist');
         list.innerHTML = "";
         for (let name of states) {

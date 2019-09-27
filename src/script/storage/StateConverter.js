@@ -43,7 +43,7 @@ class StateConverter {
             name: "",
             data: {},
             timestamp: new Date(),
-            version: STATE_VERSION
+            version: TARGET_VERSION
         };
     }
 
