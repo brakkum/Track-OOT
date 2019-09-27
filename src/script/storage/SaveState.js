@@ -45,6 +45,7 @@ class SaveState {
                 state = {data: state};
             }
             state = StateConverter.convert(state);
+            LocalStorage.set("savestate", state);
             dirty = false;
             EventBus.trigger("state", JSON.parse(JSON.stringify(state.data)));
         }
