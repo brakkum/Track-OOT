@@ -27,7 +27,7 @@ class SaveState {
         }
         state = StateConverter.convert(state);
         dirty = false;
-        EventBus.trigger("state", JSON.parse(JSON.stringify(state)));
+        EventBus.trigger("state", JSON.parse(JSON.stringify(state.data)));
     }
 
     async save(name = state.name) {
@@ -46,7 +46,7 @@ class SaveState {
             }
             state = StateConverter.convert(state);
             dirty = false;
-            EventBus.trigger("state", JSON.parse(JSON.stringify(state)));
+            EventBus.trigger("state", JSON.parse(JSON.stringify(state.data)));
         }
     }
 
@@ -84,7 +84,7 @@ class SaveState {
     reset() {
         state = StateConverter.createEmptyState();
         dirty = false;
-        EventBus.trigger("state", StateConverter.createEmptyState());
+        EventBus.trigger("state", {});
     }
 
 }

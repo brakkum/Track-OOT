@@ -70,7 +70,7 @@ class SaveHandler {
             SaveState.write("notes", notePad.value);
         };
         EventBus.register("state", function(event) {
-            notePad.value = event.data.data["notes"] || "";
+            notePad.value = event.data["notes"] || "";
         });
     }
 
