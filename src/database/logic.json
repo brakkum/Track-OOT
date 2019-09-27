@@ -646,7 +646,11 @@
                     "el": [
                         {
                             "type": "mixin",
-                            "el": "gerudo_fortress_carpenter_rescue"
+                            "el": "can_become_adult"
+                        },
+                        {
+                            "type": "item",
+                            "el": "membership"
                         },
                         {
                             "type": "or",
@@ -661,7 +665,7 @@
                                         "type": "item",
                                         "el": "hookshot"
                                     },
-                                    "value": 2
+                                    "value": "2"
                                 }
                             ]
                         },
@@ -769,11 +773,11 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "gerudo_fortress_carpenter_rescue"
+                    "el": "can_become_adult"
                 },
                 {
                     "type": "mixin",
-                    "el": "can_become_adult"
+                    "el": "gerudo_fortress_access"
                 }
             ]
         },
@@ -2003,8 +2007,12 @@
                     "el": "bow"
                 },
                 {
+                    "type": "item",
+                    "el": "membership"
+                },
+                {
                     "type": "mixin",
-                    "el": "gerudo_fortress_carpenter_rescue"
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -2024,8 +2032,12 @@
                     "el": "bow"
                 },
                 {
+                    "type": "item",
+                    "el": "membership"
+                },
+                {
                     "type": "mixin",
-                    "el": "gerudo_fortress_carpenter_rescue"
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -2033,8 +2045,8 @@
             "type": "and",
             "el": [
                 {
-                    "type": "mixin",
-                    "el": "gerudo_fortress_carpenter_rescue"
+                    "type": "item",
+                    "el": "membership"
                 },
                 {
                     "type": "item",
@@ -2053,7 +2065,7 @@
                                 "type": "item",
                                 "el": "hookshot"
                             },
-                            "value": 2
+                            "value": "2"
                         }
                     ]
                 },
@@ -2078,6 +2090,10 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -5967,11 +5983,15 @@
                 },
                 {
                     "type": "item",
-                    "el": "hookshot"
+                    "el": "song_zelda"
                 },
                 {
                     "type": "item",
-                    "el": "song_zelda"
+                    "el": "hookshot"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -6006,6 +6026,10 @@
                             "el": "has_bombchus"
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -6041,6 +6065,10 @@
                             "value": "keysanity_small_ignore"
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -6076,6 +6104,10 @@
                             "value": "keysanity_small_ignore"
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -6093,40 +6125,85 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "glove"
-                                    },
-                                    "value": "2"
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "3"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "min",
+                                                            "el": {
+                                                                "type": "item",
+                                                                "el": "key_small_spirit"
+                                                            },
+                                                            "value": "2"
+                                                        },
+                                                        {
+                                                            "type": "option",
+                                                            "el": "keysanity_small",
+                                                            "value": "keysanity_small_ignore"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "option",
+                                                    "el": "bombchu_logic"
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 },
                                 {
                                     "type": "item",
                                     "el": "magic_power"
                                 },
                                 {
-                                    "type": "mixin",
-                                    "el": "can_become_adult"
-                                },
-                                {
                                     "type": "or",
                                     "el": [
                                         {
+                                            "type": "item",
+                                            "el": "magic_din"
+                                        },
+                                        {
                                             "type": "and",
                                             "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "arrow_fire"
+                                                },
                                                 {
                                                     "type": "item",
                                                     "el": "bow"
                                                 },
                                                 {
                                                     "type": "item",
-                                                    "el": "arrow_fire"
+                                                    "el": "stick"
+                                                },
+                                                {
+                                                    "type": "mixin",
+                                                    "el": "can_become_adult"
                                                 }
                                             ]
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "magic_din"
                                         }
                                     ]
                                 }
@@ -6136,24 +6213,85 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "mixin",
-                                    "el": "has_explosives"
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "5"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "type": "not",
-                                    "el": {
-                                        "type": "filter",
-                                        "el": "filter_era_active",
-                                        "value": "adult"
-                                    }
+                                    "type": "item",
+                                    "el": "stick"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_spirit"
                                 },
                                 {
                                     "type": "item",
                                     "el": "ocarina"
                                 },
                                 {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
                                     "type": "item",
-                                    "el": "warp_spirit"
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "arrow_fire"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "bow"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "3"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
                                 }
                             ]
                         }
@@ -6163,13 +6301,74 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "key_small_spirit"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_spirit"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
-                            "type": "option",
-                            "el": "keysanity_small",
-                            "value": "keysanity_small_ignore"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
@@ -6189,6 +6388,100 @@
                             "type": "and",
                             "el": [
                                 {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "item",
+                                                            "el": "slingshot"
+                                                        },
+                                                        {
+                                                            "type": "item",
+                                                            "el": "boomerang"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "item",
+                                                            "el": "hookshot"
+                                                        },
+                                                        {
+                                                            "type": "item",
+                                                            "el": "bow"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "3"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "min",
+                                                            "el": {
+                                                                "type": "item",
+                                                                "el": "key_small_spirit"
+                                                            },
+                                                            "value": "2"
+                                                        },
+                                                        {
+                                                            "type": "option",
+                                                            "el": "keysanity_small",
+                                                            "value": "keysanity_small_ignore"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "option",
+                                                    "el": "bombchu_logic"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
                                     "type": "min",
                                     "el": {
                                         "type": "item",
@@ -6199,6 +6492,23 @@
                                 {
                                     "type": "mixin",
                                     "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "hookshot"
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -6206,16 +6516,39 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "mixin",
-                                    "el": "has_explosives"
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "5"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "type": "not",
-                                    "el": {
-                                        "type": "filter",
-                                        "el": "filter_era_active",
-                                        "value": "adult"
-                                    }
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "slingshot"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boomerang"
+                                        }
+                                    ]
                                 },
                                 {
                                     "type": "item",
@@ -6233,13 +6566,70 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "key_small_spirit"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_spirit"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                }
+                            ]
                         },
                         {
-                            "type": "option",
-                            "el": "keysanity_small",
-                            "value": "keysanity_small_ignore"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": "2"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -6259,6 +6649,100 @@
                             "type": "and",
                             "el": [
                                 {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "item",
+                                                            "el": "slingshot"
+                                                        },
+                                                        {
+                                                            "type": "item",
+                                                            "el": "boomerang"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "item",
+                                                            "el": "hookshot"
+                                                        },
+                                                        {
+                                                            "type": "item",
+                                                            "el": "bow"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "3"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "min",
+                                                            "el": {
+                                                                "type": "item",
+                                                                "el": "key_small_spirit"
+                                                            },
+                                                            "value": "2"
+                                                        },
+                                                        {
+                                                            "type": "option",
+                                                            "el": "keysanity_small",
+                                                            "value": "keysanity_small_ignore"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "option",
+                                                    "el": "bombchu_logic"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
                                     "type": "min",
                                     "el": {
                                         "type": "item",
@@ -6269,6 +6753,23 @@
                                 {
                                     "type": "mixin",
                                     "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "bow"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "hookshot"
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -6276,16 +6777,39 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "mixin",
-                                    "el": "has_explosives"
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "5"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "type": "not",
-                                    "el": {
-                                        "type": "filter",
-                                        "el": "filter_era_active",
-                                        "value": "adult"
-                                    }
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "slingshot"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boomerang"
+                                        }
+                                    ]
                                 },
                                 {
                                     "type": "item",
@@ -6303,13 +6827,70 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "key_small_spirit"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_spirit"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                }
+                            ]
                         },
                         {
-                            "type": "option",
-                            "el": "keysanity_small",
-                            "value": "keysanity_small_ignore"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": "2"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -6329,40 +6910,85 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "glove"
-                                    },
-                                    "value": "2"
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "3"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "min",
+                                                            "el": {
+                                                                "type": "item",
+                                                                "el": "key_small_spirit"
+                                                            },
+                                                            "value": "2"
+                                                        },
+                                                        {
+                                                            "type": "option",
+                                                            "el": "keysanity_small",
+                                                            "value": "keysanity_small_ignore"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "option",
+                                                    "el": "bombchu_logic"
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 },
                                 {
                                     "type": "item",
                                     "el": "magic_power"
                                 },
                                 {
-                                    "type": "mixin",
-                                    "el": "can_become_adult"
-                                },
-                                {
                                     "type": "or",
                                     "el": [
                                         {
+                                            "type": "item",
+                                            "el": "magic_din"
+                                        },
+                                        {
                                             "type": "and",
                                             "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "arrow_fire"
+                                                },
                                                 {
                                                     "type": "item",
                                                     "el": "bow"
                                                 },
                                                 {
                                                     "type": "item",
-                                                    "el": "arrow_fire"
+                                                    "el": "stick"
+                                                },
+                                                {
+                                                    "type": "mixin",
+                                                    "el": "can_become_adult"
                                                 }
                                             ]
-                                        },
-                                        {
-                                            "type": "item",
-                                            "el": "magic_din"
                                         }
                                     ]
                                 }
@@ -6372,24 +6998,85 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "mixin",
-                                    "el": "has_explosives"
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "5"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "type": "not",
-                                    "el": {
-                                        "type": "filter",
-                                        "el": "filter_era_active",
-                                        "value": "adult"
-                                    }
+                                    "type": "item",
+                                    "el": "stick"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_spirit"
                                 },
                                 {
                                     "type": "item",
                                     "el": "ocarina"
                                 },
                                 {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "3"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": "2"
+                                },
+                                {
                                     "type": "item",
-                                    "el": "warp_spirit"
+                                    "el": "bow"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "arrow_fire"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
                                 }
                             ]
                         }
@@ -6399,13 +7086,74 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "key_small_spirit"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_spirit"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                }
+                            ]
                         },
                         {
-                            "type": "option",
-                            "el": "keysanity_small",
-                            "value": "keysanity_small_ignore"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": "2"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -6451,6 +7199,85 @@
                             "value": "keysanity_small_ignore"
                         }
                     ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_spirit"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -6507,6 +7334,85 @@
                         "el": "glove"
                     },
                     "value": "2"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_spirit"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -6524,59 +7430,22 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "glove"
-                                    },
-                                    "value": "2"
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "can_become_adult"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "mixin",
-                                    "el": "has_explosives"
-                                },
-                                {
-                                    "type": "not",
-                                    "el": {
-                                        "type": "filter",
-                                        "el": "filter_era_active",
-                                        "value": "adult"
-                                    }
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_spirit"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "mixin",
-                                    "el": "has_explosives"
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "can_become_adult"
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "3"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
                                 },
                                 {
                                     "type": "min",
@@ -6587,12 +7456,12 @@
                                     "value": "2"
                                 },
                                 {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "key_small_spirit"
-                                    },
-                                    "value": "3"
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
                                 }
                             ]
                         },
@@ -6608,6 +7477,81 @@
                             "type": "option",
                             "el": "keysanity_small",
                             "value": "keysanity_small_ignore"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_spirit"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
@@ -6649,6 +7593,85 @@
                 {
                     "type": "mixin",
                     "el": "has_explosives"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_spirit"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -6660,12 +7683,12 @@
                     "el": "spirit_temple_access"
                 },
                 {
-                    "type": "min",
-                    "el": {
-                        "type": "item",
-                        "el": "glove"
-                    },
-                    "value": "2"
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "item",
+                    "el": "shield_mirror"
                 },
                 {
                     "type": "or",
@@ -6686,12 +7709,16 @@
                     ]
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    "value": "2"
                 },
                 {
-                    "type": "item",
-                    "el": "shield_mirror"
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -6703,12 +7730,12 @@
                     "el": "spirit_temple_access"
                 },
                 {
-                    "type": "min",
-                    "el": {
-                        "type": "item",
-                        "el": "glove"
-                    },
-                    "value": "2"
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_see_with_lens"
                 },
                 {
                     "type": "or",
@@ -6729,34 +7756,16 @@
                     ]
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    "value": "2"
                 },
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "skip",
-                                "el": "lens_required",
-                                "value": "lens_required_default"
-                            }
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "lens"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "magic_power"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -6768,12 +7777,12 @@
                     "el": "spirit_temple_access"
                 },
                 {
-                    "type": "min",
-                    "el": {
-                        "type": "item",
-                        "el": "glove"
-                    },
-                    "value": "2"
+                    "type": "mixin",
+                    "el": "has_explosives"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_see_with_lens"
                 },
                 {
                     "type": "or",
@@ -6794,34 +7803,16 @@
                     ]
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
+                    "type": "min",
+                    "el": {
+                        "type": "item",
+                        "el": "glove"
+                    },
+                    "value": "2"
                 },
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "skip",
-                                "el": "lens_required",
-                                "value": "lens_required_default"
-                            }
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "lens"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "magic_power"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -6831,32 +7822,6 @@
                 {
                     "type": "mixin",
                     "el": "spirit_temple_access"
-                },
-                {
-                    "type": "min",
-                    "el": {
-                        "type": "item",
-                        "el": "glove"
-                    },
-                    "value": "2"
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "key_small_spirit"
-                            },
-                            "value": "5"
-                        },
-                        {
-                            "type": "option",
-                            "el": "keysanity_small",
-                            "value": "keysanity_small_ignore"
-                        }
-                    ]
                 },
                 {
                     "type": "item",
@@ -6875,8 +7840,104 @@
                     "el": "hookshot"
                 },
                 {
-                    "type": "mixin",
-                    "el": "can_blast_or_smash"
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_spirit"
+                                    },
+                                    "value": "5"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "keysanity_small",
+                                    "value": "keysanity_small_ignore"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "glove"
+                            },
+                            "value": "2"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "hookshot"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_bombchus"
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "or",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "bombs"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "nut"
+                                                },
+                                                {
+                                                    "type": "and",
+                                                    "el": [
+                                                        {
+                                                            "type": "item",
+                                                            "el": "magic_power"
+                                                        },
+                                                        {
+                                                            "type": "item",
+                                                            "el": "magic_din"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "or",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "bow"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "hookshot"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "hammer"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -6888,49 +7949,106 @@
                     "el": "spirit_temple_access"
                 },
                 {
-                    "type": "min",
-                    "el": {
-                        "type": "item",
-                        "el": "glove"
-                    },
-                    "value": "2"
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "key_small_spirit"
-                            },
-                            "value": "5"
-                        },
-                        {
-                            "type": "option",
-                            "el": "keysanity_small",
-                            "value": "keysanity_small_ignore"
-                        }
-                    ]
-                },
-                {
                     "type": "item",
                     "el": "shield_mirror"
                 },
                 {
-                    "type": "or",
+                    "type": "and",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "hookshot"
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_spirit"
+                                    },
+                                    "value": "5"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "keysanity_small",
+                                    "value": "keysanity_small_ignore"
+                                }
+                            ]
                         },
                         {
-                            "type": "item",
-                            "el": "bow"
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "glove"
+                            },
+                            "value": "2"
                         },
                         {
                             "type": "mixin",
-                            "el": "has_explosives"
+                            "el": "can_become_adult"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "hookshot"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_bombchus"
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "or",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "bombs"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "nut"
+                                                },
+                                                {
+                                                    "type": "and",
+                                                    "el": [
+                                                        {
+                                                            "type": "item",
+                                                            "el": "magic_power"
+                                                        },
+                                                        {
+                                                            "type": "item",
+                                                            "el": "magic_din"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "or",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "bow"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "hookshot"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "hammer"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
@@ -6942,14 +8060,6 @@
                 {
                     "type": "mixin",
                     "el": "spirit_temple_access"
-                },
-                {
-                    "type": "min",
-                    "el": {
-                        "type": "item",
-                        "el": "glove"
-                    },
-                    "value": "2"
                 },
                 {
                     "type": "item",
@@ -6967,24 +8077,6 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "key_small_spirit"
-                            },
-                            "value": "5"
-                        },
-                        {
-                            "type": "option",
-                            "el": "keysanity_small",
-                            "value": "keysanity_small_ignore"
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
                             "type": "item",
                             "el": "key_boss_spirit"
                         },
@@ -6992,6 +8084,106 @@
                             "type": "option",
                             "el": "keysanity_boss",
                             "value": "keysanity_boss_ignore"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_spirit"
+                                    },
+                                    "value": "5"
+                                },
+                                {
+                                    "type": "option",
+                                    "el": "keysanity_small",
+                                    "value": "keysanity_small_ignore"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "glove"
+                            },
+                            "value": "2"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "hookshot"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_bombchus"
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "or",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "bombs"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "nut"
+                                                },
+                                                {
+                                                    "type": "and",
+                                                    "el": [
+                                                        {
+                                                            "type": "item",
+                                                            "el": "magic_power"
+                                                        },
+                                                        {
+                                                            "type": "item",
+                                                            "el": "magic_din"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "or",
+                                            "el": [
+                                                {
+                                                    "type": "item",
+                                                    "el": "bow"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "hookshot"
+                                                },
+                                                {
+                                                    "type": "item",
+                                                    "el": "hammer"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
@@ -11828,6 +13020,10 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
                 }
             ]
         },
@@ -21787,8 +22983,12 @@
                     "el": "hookshot"
                 },
                 {
+                    "type": "item",
+                    "el": "membership"
+                },
+                {
                     "type": "mixin",
-                    "el": "gerudo_fortress_carpenter_rescue"
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -21796,8 +22996,12 @@
             "type": "and",
             "el": [
                 {
+                    "type": "item",
+                    "el": "membership"
+                },
+                {
                     "type": "mixin",
-                    "el": "gerudo_fortress_carpenter_rescue"
+                    "el": "can_become_adult"
                 },
                 {
                     "type": "or",
@@ -21808,7 +23012,7 @@
                                 "type": "item",
                                 "el": "hookshot"
                             },
-                            "value": 2
+                            "value": "2"
                         },
                         {
                             "type": "and",
@@ -21862,17 +23066,8 @@
                                     "el": "warp_spirit"
                                 },
                                 {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "item",
-                                            "el": "scale"
-                                        },
-                                        {
-                                            "type": "mixin",
-                                            "el": "has_explosives"
-                                        }
-                                    ]
+                                    "type": "item",
+                                    "el": "bean"
                                 }
                             ]
                         },
@@ -21885,7 +23080,7 @@
                                         "type": "item",
                                         "el": "hookshot"
                                     },
-                                    "value": 2
+                                    "value": "2"
                                 },
                                 {
                                     "type": "mixin",
@@ -21949,8 +23144,61 @@
                             "el": "boomerang"
                         },
                         {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "has_bombchus"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "spt_child_bridge_bombchu"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "stick"
+                        },
+                        {
                             "type": "mixin",
-                            "el": "has_bombchus"
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "nut"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boomerang"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "item",
+                                            "el": "sword_kokiri"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "slingshot"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
@@ -21970,28 +23218,46 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "item",
-                                    "el": "ocarina"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "warp_spirit"
-                                },
-                                {
                                     "type": "mixin",
-                                    "el": "can_child_attack"
+                                    "el": "can_become_adult"
                                 },
                                 {
                                     "type": "or",
                                     "el": [
                                         {
-                                            "type": "item",
-                                            "el": "key_small_spirit"
+                                            "type": "mixin",
+                                            "el": "has_explosives"
                                         },
                                         {
-                                            "type": "option",
-                                            "el": "keysanity_small",
-                                            "value": "keysanity_small_ignore"
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "item",
+                                                            "el": "slingshot"
+                                                        },
+                                                        {
+                                                            "type": "item",
+                                                            "el": "boomerang"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "item",
+                                                            "el": "hookshot"
+                                                        },
+                                                        {
+                                                            "type": "item",
+                                                            "el": "bow"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
@@ -22001,20 +23267,100 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "mixin",
-                                    "el": "spirit_temple_access"
+                                    "type": "item",
+                                    "el": "magic_power"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "magic_din"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "true"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "slingshot"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boomerang"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "stick"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "sword_kokiri"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_spirit"
                                 },
                                 {
                                     "type": "min",
                                     "el": {
                                         "type": "item",
-                                        "el": "glove"
+                                        "el": "key_small_spirit"
                                     },
-                                    "value": "2"
+                                    "value": "5"
                                 },
                                 {
                                     "type": "or",
                                     "el": [
+                                        {
+                                            "type": "mixin",
+                                            "el": "has_explosives"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "slingshot"
+                                        },
+                                        {
+                                            "type": "item",
+                                            "el": "boomerang"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "3"
+                                        },
                                         {
                                             "type": "and",
                                             "el": [
@@ -22031,21 +23377,74 @@
                                                     "el": "bombchu_logic"
                                                 }
                                             ]
-                                        },
-                                        {
-                                            "type": "option",
-                                            "el": "keysanity_small",
-                                            "value": "keysanity_small_ignore"
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "key_small_spirit"
-                                            },
-                                            "value": "3"
                                         }
                                     ]
+                                },
+                                {
+                                    "type": "true"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_spirit"
+                                    },
+                                    "value": "1"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_spirit"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_spirit"
+                                    },
+                                    "value": "1"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
                                 }
                             ]
                         }
@@ -22073,6 +23472,149 @@
                                 {
                                     "type": "item",
                                     "el": "boomerang"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "boomerang"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "5"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_spirit"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "3"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "min",
+                                                    "el": {
+                                                        "type": "item",
+                                                        "el": "key_small_spirit"
+                                                    },
+                                                    "value": "2"
+                                                },
+                                                {
+                                                    "type": "option",
+                                                    "el": "bombchu_logic"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "ocarina"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "warp_spirit"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -22088,24 +23630,28 @@
                                     "value": "2"
                                 },
                                 {
-                                    "type": "item",
-                                    "el": "hookshot"
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
                                 }
                             ]
-                        }
-                    ]
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "item",
-                            "el": "key_small_spirit"
-                        },
-                        {
-                            "type": "option",
-                            "el": "keysanity_small",
-                            "value": "keysanity_small_ignore"
                         }
                     ]
                 }
@@ -22150,6 +23696,10 @@
                 {
                     "type": "item",
                     "el": "ocarina"
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
                 }
             ]
         },
@@ -22190,13 +23740,22 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "item",
-                                "el": "hookshot"
-                            },
-                            "value": "2"
+                            "type": "item",
+                            "el": "boots_hover"
                         },
+                        {
+                            "type": "item",
+                            "el": "hookshot"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "or",
+                    "el": [
                         {
                             "type": "and",
                             "el": [
@@ -22206,13 +23765,66 @@
                                 },
                                 {
                                     "type": "item",
-                                    "el": "hookshot"
+                                    "el": "warp_spirit"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
                                 }
                             ]
                         },
                         {
-                            "type": "item",
-                            "el": "boots_hover"
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "glove"
+                                    },
+                                    "value": "2"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
