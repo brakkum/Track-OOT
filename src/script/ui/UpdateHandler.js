@@ -36,6 +36,7 @@ export default class UpdateHandler extends HTMLElement {
 
             let prog = this.shadowRoot.getElementById("update-progress");
             let progtext = this.shadowRoot.getElementById("update-progress-text");
+
             let check = this.shadowRoot.getElementById("update-check");
             let force = this.shadowRoot.getElementById("update-force");
             let avail = this.shadowRoot.getElementById("update-available");
@@ -50,12 +51,18 @@ export default class UpdateHandler extends HTMLElement {
                             check.style.display = "none";
                             force.style.display = "block";
                             avail.style.display = "block";
+                            unavail.style.display = "none";
+                            running.style.display = "none";
+                            finished.style.display = "none";
                             this.dispatchEvent(new Event('updateavailable'));
                         break;
                         case "update_unavailable":
                             check.style.display = "none";
                             force.style.display = "block";
+                            avail.style.display = "none";
                             unavail.style.display = "block";
+                            running.style.display = "none";
+                            finished.style.display = "none";
                         break;
                         case "need_download":
                             prog.value = 0;
@@ -70,16 +77,21 @@ export default class UpdateHandler extends HTMLElement {
                             prog.value = 0;
                             prog.max = 0;
                             progtext.innerHTML = `0/0`;
+                            check.style.display = "none";
+                            force.style.display = "none";
+                            avail.style.display = "none";
+                            unavail.style.display = "none";
                             running.style.display = "none";
                             finished.style.display = "block";
                         break;
                     }
                 } else if (event.data.type == "error") {
                     check.style.display = "none";
+                    force.style.display = "block";
+                    avail.style.display = "none";
+                    unavail.style.display = "block";
                     running.style.display = "none";
                     finished.style.display = "none";
-                    force.style.display = "block";
-                    unavail.style.display = "block";
                     this.dispatchEvent(new Event('noconnection'));
                 }
             
@@ -88,19 +100,24 @@ export default class UpdateHandler extends HTMLElement {
                 }.bind(this);
             
                 this.shadowRoot.getElementById("download-update").onclick = function() {
-                    avail.style.display = "none";
+                    check.style.display = "none";
                     force.style.display = "none";
+                    avail.style.display = "none";
+                    unavail.style.display = "none";
                     running.style.display = "block";
+                    finished.style.display = "none";
                     navigator.serviceWorker.getRegistration().then(function(registration) {
                         registration.active.postMessage("update");
                     });
                 }
             
                 this.shadowRoot.getElementById("download-forced").onclick = function() {
-                    avail.style.display = "none";
+                    check.style.display = "none";
                     force.style.display = "none";
+                    avail.style.display = "none";
                     unavail.style.display = "none";
                     running.style.display = "block";
+                    finished.style.display = "none";
                     navigator.serviceWorker.getRegistration().then(function(registration) {
                         registration.active.postMessage("forceupdate");
                     });
