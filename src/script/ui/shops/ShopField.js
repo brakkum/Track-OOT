@@ -1,6 +1,6 @@
 import Template from "/deepJS/util/Template.js";
 import GlobalData from "/script/storage/GlobalData.js";
-import SaveState from "/script/storage/SaveState.js";
+import StateStorage from "/script/storage/StateStorage.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import I18n from "/script/util/I18n.js";
@@ -60,12 +60,12 @@ const TPL = new Template(`
 
 function editShop(event) {
     let builder = document.createElement("ootrt-shopbuilder");
-    builder.value = SaveState.read(`shops.${this.ref}`, GlobalData.get("shops")[this.ref]);
+    builder.value = StateStorage.read(`shops.${this.ref}`, GlobalData.get("shops")[this.ref]);
     let d = new Dialog({title: I18n.translate(this.ref), submit: true, cancel: true});
     d.addEventListener("submit", function(result) {
         if (!!result) {
             let res = builder.value;
-            SaveState.write(`shops.${this.ref}`, res);
+            StateStorage.write(`shops.${this.ref}`, res);
             for (let i = 0; i < 8; ++i) {
                 let el = this.shadowRoot.getElementById(`slot${i}`);
                 el.ref = res[i].item;
@@ -84,9 +84,9 @@ function editShop(event) {
 function checkSlot(event) {
     if ((!event.target.checked || event.target.checked == "false") && !GlobalData.get("shop_items")[event.target.ref].refill) {
         event.target.checked = true;
-        let ch = SaveState.read(`shops_bought.${this.ref}`, [0,0,0,0,0,0,0,0]);
+        let ch = StateStorage.read(`shops_bought.${this.ref}`, [0,0,0,0,0,0,0,0]);
         ch[parseInt(event.target.id.slice(-1))] = 1;
-        SaveState.write(`shops_bought.${this.ref}`, ch);
+        StateStorage.write(`shops_bought.${this.ref}`, ch);
         EventBus.trigger("shop_bought", {
             name: this.ref,
             value: ch
@@ -99,9 +99,9 @@ function checkSlot(event) {
 function uncheckSlot(event) {
     if (!!event.target.checked && event.target.checked == "true") {
         event.target.checked = false;
-        let ch = SaveState.read(`shops_bought.${this.ref}`, [0,0,0,0,0,0,0,0]);
+        let ch = StateStorage.read(`shops_bought.${this.ref}`, [0,0,0,0,0,0,0,0]);
         ch[parseInt(event.target.id.slice(-1))] = 0;
-        SaveState.write(`shops_bought.${this.ref}`, ch);
+        StateStorage.write(`shops_bought.${this.ref}`, ch);
         EventBus.trigger("shop_bought", {
             name: this.ref,
             value: ch
@@ -112,9 +112,9 @@ function uncheckSlot(event) {
 }
 
 function renameSlot(event) {
-    let names = SaveState.read(`shops_names.${this.ref}`, ["","","","","","","",""]);
+    let names = StateStorage.read(`shops_names.${this.ref}`, ["","","","","","","",""]);
     names[parseInt(event.target.id.slice(-1))] = event.name;
-    SaveState.write(`shops_names.${this.ref}`, names);
+    StateStorage.write(`shops_names.${this.ref}`, names);
     event.preventDefault();
     return false;
 }
@@ -153,7 +153,7 @@ function stateChanged(event) {
 
 function shopItemUpdate(event) {
     if (this.ref === event.data.name) {
-        SaveState.write(`shops.${this.ref}`, event.data.value);
+        StateStorage.write(`shops.${this.ref}`, event.data.value);
         for (let i = 0; i < 8; ++i) {
             let el = this.shadowRoot.getElementById(`slot${i}`);
             el.ref = event.data.value[i].item;
@@ -164,7 +164,7 @@ function shopItemUpdate(event) {
 
 function shopBoughtUpdate(event) {
     if (this.ref === event.data.name) {
-        SaveState.write(`shops_bought.${this.ref}`, event.data.value);
+        StateStorage.write(`shops_bought.${this.ref}`, event.data.value);
         for (let i = 0; i < 8; ++i) {
             let el = this.shadowRoot.getElementById(`slot${i}`);
             el.checked = !!event.data.value[i];
@@ -205,11 +205,11 @@ export default class HTMLTrackerShopField extends HTMLElement {
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
-            let data = SaveState.read(`shops.${newValue}`, GlobalData.get("shops")[newValue]);
+            let data = StateStorage.read(`shops.${newValue}`, GlobalData.get("shops")[newValue]);
             let title = this.shadowRoot.getElementById("title-text");
             title.innerHTML = I18n.translate(newValue);
-            let names = SaveState.read(`shops_names.${this.ref}`, ["","","","","","","",""]);
-            let checked = SaveState.read(`shops_bought.${this.ref}`, [0,0,0,0,0,0,0,0]);
+            let names = StateStorage.read(`shops_names.${this.ref}`, ["","","","","","","",""]);
+            let checked = StateStorage.read(`shops_bought.${this.ref}`, [0,0,0,0,0,0,0,0]);
             for (let i = 0; i < 8; ++i) {
                 let el = this.shadowRoot.getElementById(`slot${i}`);
                 el.ref = data[i].item;

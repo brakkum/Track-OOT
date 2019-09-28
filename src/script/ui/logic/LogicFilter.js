@@ -46,7 +46,7 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
         }.bind(this));
     }
 
-    async update(value) {
+    update(value) {
         if (typeof value == "undefined") {
             value = MemoryStorage.get(`active_filter.${this.ref}`, GlobalData.get("filter")[this.ref].default);
         }

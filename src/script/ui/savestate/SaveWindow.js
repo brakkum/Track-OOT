@@ -1,6 +1,6 @@
 import Template from "/deepJS/util/Template.js";
 import StateManager from "/script/storage/StateManager.js";
-import SaveState from "/script/storage/SaveState.js";
+import StateStorage from "/script/storage/StateStorage.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import Toast from "/deepJS/ui/Toast.js";
 
@@ -156,7 +156,7 @@ const Q_TAB = [
     '[tabindex]:not([tabindex="-1"])'
 ].join(',');
 
-export default class SaveStateWindow extends HTMLElement {
+export default class SaveWindow extends HTMLElement {
 
     constructor() {
         super();
@@ -185,15 +185,15 @@ export default class SaveStateWindow extends HTMLElement {
         smt.onclick = async () => {
             let stateName = snm.value;
             if (!snm.value) {
-                await Dialog.alert("State name is empty", "Please enter a name to save the state!");
+                await Dialog.alert("State name is empty", "Please enter a name to save the state or select an existing state to overwrite it!");
                 return;
             }
-            if (await SaveState.exists(stateName)) {
-                if (!await Dialog.confirm("State already exists", "Do you want to overwrite the old savestate?")) {
+            if (await StateManager.exists(stateName)) {
+                if (!await Dialog.confirm("State already exists", "Do you want to overwrite the selected state?")) {
                     return;
                 }
             }
-            await SaveState.save(stateName);
+            await StateStorage.save(stateName);
             Toast.show(`Saved "${stateName}" successfully.`);
             this.dispatchEvent(new Event('submit'));
             this.close();
@@ -248,4 +248,4 @@ function createDeepOption(value) {
     return opt;
 }
 
-customElements.define('tootr-state-window-save', SaveStateWindow);
+customElements.define('tootr-state-window-save', SaveWindow);

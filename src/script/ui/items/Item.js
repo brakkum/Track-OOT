@@ -1,9 +1,8 @@
 import GlobalData from "/script/storage/GlobalData.js";
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
-import Logger from "/deepJS/util/Logger.js";
 import "/deepJS/ui/selection/Option.js";
-import SaveState from "/script/storage/SaveState.js";
+import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
@@ -157,11 +156,11 @@ class HTMLTrackerItem extends HTMLElement {
                 case 'ref':
                     EventBus.mute("item");
                     // savesatate
-                    this.value = SaveState.read(`items.${this.ref}`, 0);
+                    this.value = StateStorage.read(`items.${this.ref}`, 0);
                     // settings
                     let data = GlobalData.get("items")[this.ref];
                     if (data.hasOwnProperty("start_settings")) {
-                        this.startvalue = SaveState.read(data.start_settings, 1);
+                        this.startvalue = StateStorage.read(data.start_settings, 1);
                     } else {
                         this.fillItemChoices();
                     }
@@ -179,7 +178,7 @@ class HTMLTrackerItem extends HTMLElement {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
-                    SaveState.write(`items.${this.ref}`, parseInt(newValue));
+                    StateStorage.write(`items.${this.ref}`, parseInt(newValue));
                     EventBus.trigger("item", {
                         name: this.ref,
                         value: newValue
@@ -204,7 +203,7 @@ class HTMLTrackerItem extends HTMLElement {
 
         let max_value = 0;
         if (data.hasOwnProperty("related_dungeon") && data.hasOwnProperty("maxmq")) {
-            let type = SaveState.read(`dungeonTypes.${data.related_dungeon}`, "n");
+            let type = StateStorage.read(`dungeonTypes.${data.related_dungeon}`, "n");
             if (type == "v") {
                 max_value = data.max;
             } else if (type == "mq") {
@@ -241,7 +240,6 @@ class HTMLTrackerItem extends HTMLElement {
             let data = GlobalData.get("items")[this.ref];
             if ((event.shiftKey || event.ctrlKey)) {
                 if (!!data.alternate_counting) {
-                    Logger.log(`get next alternative value for "${this.ref}"`, "Item");
                     for (let i = 0; i < data.alternate_counting.length; ++i) {
                         let alt = parseInt(data.alternate_counting[i]);
                         if (isNaN(alt)) {
@@ -256,7 +254,6 @@ class HTMLTrackerItem extends HTMLElement {
                     this.value = parseInt(data.max);
                 }
             } else {
-                Logger.log(`get next value for "${this.ref}"`, "Item");
                 let all = this.querySelectorAll("[value]");
                 if (!!all.length) {
                     let opt = this.querySelector(`[value="${this.value}"]`);
@@ -280,7 +277,6 @@ class HTMLTrackerItem extends HTMLElement {
             let data = GlobalData.get("items")[this.ref];
             if ((event.shiftKey || event.ctrlKey)) {
                 if (!!data.alternate_counting) {
-                    Logger.log(`get previous alternative value for "${this.ref}"`, "Item");
                     for (let i = data.alternate_counting.length - 1; i >= 0; --i) {
                         let alt = parseInt(data.alternate_counting[i]);
                         if (isNaN(alt)) {
@@ -295,7 +291,6 @@ class HTMLTrackerItem extends HTMLElement {
                     this.value = 0;
                 }
             } else {
-                Logger.log(`get previous value for "${this.ref}"`, "Item");
                 let all = this.querySelectorAll("[value]");
                 if (!!all.length) {
                     let opt = this.querySelector(`[value="${this.value}"]`);

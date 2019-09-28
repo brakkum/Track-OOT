@@ -3,7 +3,7 @@ import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
 import "/deepJS/ui/Tooltip.js";
-import SaveState from "/script/storage/SaveState.js";
+import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
@@ -196,7 +196,7 @@ class HTMLTrackerPOILocationChest extends HTMLElement {
                         el.classList.remove("avail");
                     }
 
-                    this.checked = SaveState.read(`chests.${path[2]}`, false);
+                    this.checked = StateStorage.read(`chests.${path[2]}`, false);
                 }
             break;
             case 'checked':
@@ -210,7 +210,7 @@ class HTMLTrackerPOILocationChest extends HTMLElement {
                             el.classList.remove("avail");
                         }
                     }
-                    SaveState.write(`chests.${path[2]}`, newValue === "false" ? false : !!newValue);
+                    StateStorage.write(`chests.${path[2]}`, newValue === "false" ? false : !!newValue);
                     EventBus.trigger("chest", {
                         name: this.ref,
                         value: newValue

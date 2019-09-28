@@ -5,7 +5,7 @@ import Logger from "/deepJS/util/Logger.js";
 import Helper from "/deepJS/util/Helper.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import "/deepJS/ui/ContextMenu.js";
-import SaveState from "/script/storage/SaveState.js";
+import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
@@ -211,7 +211,7 @@ class HTMLTrackerLocationSkulltula extends HTMLElement {
                         txt.classList.remove("avail");
                     }
 
-                    this.checked = SaveState.read(`skulltulas.${path[2]}`, false);
+                    this.checked = StateStorage.read(`skulltulas.${path[2]}`, false);
                 }
             break;
             case 'checked':
@@ -225,7 +225,7 @@ class HTMLTrackerLocationSkulltula extends HTMLElement {
                             el.classList.remove("avail");
                         }
                     }
-                    SaveState.write(`skulltulas.${path[2]}`, newValue === "false" ? false : !!newValue);
+                    StateStorage.write(`skulltulas.${path[2]}`, newValue === "false" ? false : !!newValue);
                     EventBus.trigger("skulltula", {
                         name: this.ref,
                         value: newValue

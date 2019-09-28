@@ -1,28 +1,31 @@
-import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import Toast from "/deepJS/ui/Toast.js";
-import SaveState from "/script/storage/SaveState.js";
+import StateStorage from "/script/storage/StateStorage.js";
 import LoadWindow from "/script/ui/savestate/LoadWindow.js";
 import ManageWindow from "/script/ui/savestate/ManageWindow.js";
 import SaveWindow from "/script/ui/savestate/SaveWindow.js";
+import Settings from "/script/util/Settings.js";
 
 const stateSave = document.getElementById("save-savestate");
 const stateSaveAs = document.getElementById("saveas-savestate");
 const stateLoad = document.getElementById("load-savestate");
 const stateNew = document.getElementById("new-savestate");
 const statesManage = document.getElementById("manage-savestates");
-const notePad = document.getElementById("tracker-notes");
+const joinDiscord = document.getElementById("join-discord");
+const editSettings = document.getElementById("edit-settings");
 
 stateSave.addEventListener("click", state_Save);
 stateSaveAs.addEventListener("click", state_SaveAs);
 stateLoad.addEventListener("click", state_Load);
 stateNew.addEventListener("click", state_New);
 statesManage.addEventListener("click", states_Manage);
+joinDiscord.addEventListener("click", openDiscortJoin);
+editSettings.addEventListener("click", openSettingsWindow);
 
 async function state_Save() {
-    let activestate = await SaveState.getName()
+    let activestate = await StateStorage.getName()
     if (!!activestate) {
-        await SaveState.save();
+        await StateStorage.save();
         Toast.show(`Saved "${activestate}" successfully.`);
     } else {
         state_SaveAs();
@@ -40,11 +43,12 @@ async function state_Load() {
 }
 
 async function state_New() {
-    if (!!await SaveState.getName()) {
-        if (await Dialog.confirm("Warning", "Do you really want to create a new savestate? Unsaved changes will be lost.")) {
-            SaveState.reset();
+    if (!!await StateStorage.isDirty()) {
+        if (!await Dialog.confirm("Warning, you have unsaved changes.", "Do you want to discard your changes and create a new state?")) {
+            return;
         }
     }
+    StateStorage.reset();
 }
 
 async function states_Manage() {
@@ -52,28 +56,10 @@ async function states_Manage() {
     w.show();
 }
 
-class SaveHandler {
-
-    async init() {
-        notePad.value = SaveState.read("notes", "");
-        let notePadTimer = null;
-        notePad.oninput = function() {
-            if (!!notePadTimer) {
-                clearTimeout(notePadTimer);
-            }
-            notePadTimer = setTimeout(writeNotePadValue, 1000);
-        }
-        notePad.oncontextmenu = function(event) {
-            event.stopPropagation();
-        }
-        async function writeNotePadValue() {
-            SaveState.write("notes", notePad.value);
-        };
-        EventBus.register("state", function(event) {
-            notePad.value = event.data["notes"] || "";
-        });
-    }
-
+function openDiscortJoin() {
+    window.open("https://discord.gg/wgFVtuv", "_blank");
 }
 
-export default new SaveHandler;
+function openSettingsWindow() {
+    Settings.show();
+}

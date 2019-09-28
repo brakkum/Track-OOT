@@ -1,10 +1,10 @@
 import GlobalData from "/script/storage/GlobalData.js";
-import TrackerStorage from "/script/storage/TrackerStorage.js";
+import SettingsStorage from "/script/storage/SettingsStorage.js";
 
 let logic_patched = null;
 async function loadPatchedLogic() {
     if (logic_patched == null) {
-        logic_patched = await TrackerStorage.SettingsStorage.get("logic", {});
+        logic_patched = await SettingsStorage.get("logic", {});
     }
     return logic_patched;
 }
@@ -22,12 +22,12 @@ class EditorLogic {
                 }
             }
         }
-        await TrackerStorage.SettingsStorage.set("logic", data);
+        await SettingsStorage.set("logic", data);
     }
 
     async clear() {
         data = {};
-        await TrackerStorage.SettingsStorage.set("logic", {});
+        await SettingsStorage.set("logic", {});
     }
 
     async set(type, key, logic) {
@@ -36,7 +36,7 @@ class EditorLogic {
             data[type] = {};
         }
         data[type][key] = logic;
-        await TrackerStorage.SettingsStorage.set("logic", data);
+        await SettingsStorage.set("logic", data);
     }
 
     async get(type, key) {
@@ -51,7 +51,7 @@ class EditorLogic {
         let data = await loadPatchedLogic();
         if (!!data[type] && !!data[type][key]) {
             delete data[type][key];
-            await TrackerStorage.SettingsStorage.set("logic", data);
+            await SettingsStorage.set("logic", data);
         }
     }
 

@@ -3,7 +3,7 @@ import Dialog from "/deepJS/ui/Dialog.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import EventBusModuleGeneric from "/deepJS/util/EventBus/EventBusModuleGeneric.js";
 import DeepWebRAT from "/script/client/WebRAT.js";
-import SaveState from "/script/storage/SaveState.js";
+import StateStorage from "/script/storage/StateStorage.js";
 
 const eventModule = new EventBusModuleGeneric();
 eventModule.mute("logic");
@@ -21,7 +21,7 @@ const EMPTY_FN = function() {};
 let ON_ROOMUPDATE = EMPTY_FN;
 
 function getState() {
-    let state = SaveState.getState();
+    let state = StateStorage.getState();
     if (!!state.extras && !!state.extras.notes) {
         delete state.extras.notes;
     }
@@ -37,14 +37,14 @@ function setState(state) {
         for (let j in state[i]) {
             if (i === "extras" && j === "notes") continue;
             if (!!state[i] && !!state[i][j]) {
-                SaveState.write(`${i}.${j}`, state[i][j]);
+                StateStorage.write(`${i}.${j}`, state[i][j]);
             } else {
-                SaveState.remove(`${i}.${j}`);
+                StateStorage.remove(`${i}.${j}`);
             }
         }
     }
     // TODO use eventbus plugin
-    eventModule.trigger("state", SaveState.getState());
+    eventModule.trigger("state", StateStorage.getState());
 }
 
 function getClientNameList() {

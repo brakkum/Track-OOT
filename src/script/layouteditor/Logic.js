@@ -1,4 +1,4 @@
-import TrackerStorage from "/script/storage/TrackerStorage.js";
+import SettingsStorage from "/script/storage/SettingsStorage.js";
 import GlobalData from "/script/storage/GlobalData.js";
 
 // TODO

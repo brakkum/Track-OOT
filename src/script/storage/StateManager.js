@@ -20,6 +20,10 @@ class StateManager {
     async getNames() {
         return await TrackerStorage.StatesStorage.keys();
     }
+    
+    async getStates() {
+        return await TrackerStorage.StatesStorage.keys();
+    }
 
     async import(data) {
         data = StateConverter.convert(data);

@@ -1,6 +1,6 @@
 import Template from "/deepJS/util/Template.js";
 import StateManager from "/script/storage/StateManager.js";
-import SaveState from "/script/storage/SaveState.js";
+import StateStorage from "/script/storage/StateStorage.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import Toast from "/deepJS/ui/Toast.js";
 
@@ -156,7 +156,7 @@ const Q_TAB = [
     '[tabindex]:not([tabindex="-1"])'
 ].join(',');
 
-export default class LoadStateWindow extends HTMLElement {
+export default class LoadWindow extends HTMLElement {
 
     constructor() {
         super();
@@ -188,12 +188,12 @@ export default class LoadStateWindow extends HTMLElement {
                 await Dialog.alert("No state selected", "Please select a state to load!");
                 return;
             }
-            if (!!SaveState.getName()) {
-                if (!await Dialog.confirm("Warning", "Do you really want to load? Unsaved changes will be lost.")) {
+            if (!!StateStorage.isDirty()) {
+                if (!await Dialog.confirm("Warning, you have unsaved changes.", "Do you want to discard your changes and load the selected state?")) {
                     return;
                 }
             }
-            await SaveState.load(stateName);
+            await StateStorage.load(stateName);
             Toast.show(`State "${stateName}" loaded.`);
             this.dispatchEvent(new Event('submit'));
             this.close();
@@ -248,4 +248,4 @@ function createDeepOption(value) {
     return opt;
 }
 
-customElements.define('tootr-state-window-load', LoadStateWindow);
+customElements.define('tootr-state-window-load', LoadWindow);

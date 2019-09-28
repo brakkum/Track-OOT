@@ -1,7 +1,7 @@
 import GlobalData from "/script/storage/GlobalData.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Helper from "/deepJS/util/Helper.js";
-import TrackerStorage from "/script/storage/TrackerStorage.js";
+import SettingsStorage from "/script/storage/SettingsStorage.js";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
 
 import "/deepJS/ui/logic/elements/literals/LogicTrue.js";
@@ -40,14 +40,16 @@ export default class LogicWrapper {
 
     set value(val) {
         let buf = parseInt(val) || 0;
-        VALUE.set(this, buf);
-        let type = TYPE.get(this);
-        let ref = REF.get(this);
-        EventBus.trigger("logic", {
-            type: type,
-            ref: ref,
-            value: buf
-        });
+        if (VALUE.get(this) != buf) {
+            VALUE.set(this, buf);
+            let type = TYPE.get(this);
+            let ref = REF.get(this);
+            EventBus.trigger("logic", {
+                type: type,
+                ref: ref,
+                value: buf
+            });
+        }
     }
 
     get value() {
@@ -61,8 +63,8 @@ export default class LogicWrapper {
         let type = TYPE.get(this);
         let ref = REF.get(this);
         let logic = null;
-        if (await TrackerStorage.SettingsStorage.get("use_custom_logic", false)) {
-            let custom_logic = await TrackerStorage.SettingsStorage.get("logic", {});
+        if (await SettingsStorage.get("use_custom_logic", false)) {
+            let custom_logic = await SettingsStorage.get("logic", {});
             if (!!custom_logic[type] && !!custom_logic[type][ref]) {
                 logic = custom_logic[type][ref];
             }
@@ -111,7 +113,7 @@ export default class LogicWrapper {
 }
         
 window.onfocus = async function(event) {
-    if (await TrackerStorage.SettingsStorage.get("use_custom_logic", false)) {
+    if (await SettingsStorage.get("use_custom_logic", false)) {
         for (let i of Array.from(INSTANCES)) {
             i.loadLogic();
         }

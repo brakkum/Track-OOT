@@ -47,10 +47,17 @@
             "max": 64,
             "default": 40
         },
-        "show_hint_badges": {
-            "type": "hidden",
-            "old_type": "check",
-            "default": false
+        "autosave_time": {
+            "type": "number",
+            "min": 0,
+            "max": 120,
+            "default": 10
+        },
+        "autosave_amount": {
+            "type": "number",
+            "min": 1,
+            "max": 10,
+            "default": 4
         },
         "unknown_dungeon_need_both": {
             "type": "check",

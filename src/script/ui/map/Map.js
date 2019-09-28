@@ -3,7 +3,7 @@ import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
 import Panel from "/deepJS/ui/layout/Panel.js";
-import SaveState from "/script/storage/SaveState.js";
+import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import "./POILocationChest.js";
 import "./POILocationSkulltula.js";
@@ -425,7 +425,7 @@ class HTMLTrackerMap extends Panel {
                                     Object.keys(buff).forEach(j => {
                                         let buf = buff[j];
                                         if (!buf.era || !this.era || this.era === buf.era) {
-                                            if (!buf.mode || SaveState.read(`options.${buf.mode}`, false)) {
+                                            if (!buf.mode || StateStorage.read(`options.${buf.mode}`, false)) {
                                                 let el = LOCATION_ELEMENTS.get(`${i}.${this.mode}_v.${j}`);
                                                 this.append(el);
                                             }

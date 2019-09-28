@@ -166,7 +166,7 @@ const Q_TAB = [
     '[tabindex]:not([tabindex="-1"])'
 ].join(',');
 
-export default class ManageStateWindow extends HTMLElement {
+export default class ManageWindow extends HTMLElement {
 
     constructor() {
         super();
@@ -374,4 +374,4 @@ function createDeepOption(value) {
     return opt;
 }
 
-customElements.define('tootr-state-window-manage', ManageStateWindow);
+customElements.define('tootr-state-window-manage', ManageWindow);

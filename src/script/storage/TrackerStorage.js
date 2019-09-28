@@ -62,67 +62,6 @@ function getStoreWritable(name) {
 function getStoreReadonly(name) {
 	return dbInstance.transaction(name, "readonly").objectStore(name);
 }
-function writeData(store, key, value) {
-	return new Promise(function(resolve, reject) {
-		let request;
-		if (!!store.keyPath) {
-			value[store.keyPath] = key;
-			request = store.put(value);
-		} else {
-			request = store.put(value, key);
-		}
-		request.onsuccess = function(e) {
-			resolve();
-		};
-		request.onerror = function(e) {
-			reject(e);
-		}
-	});
-}
-function readData(store, key) {
-	return new Promise(function(resolve, reject) {
-		let request = store.get(key);
-		request.onsuccess = function(e) {
-			resolve(e.target.result);
-		};
-		request.onerror = function(e) {
-			reject(e);
-		}
-	});
-}
-function deleteData(store, key) {
-	return new Promise(function(resolve, reject) {
-		let request = store.delete(key);
-		request.onsuccess = function(e) {
-			resolve(e.target.result);
-		};
-		request.onerror = function(e) {
-			reject(e);
-		}
-	});
-}
-function hasKey(store, key) {
-	return new Promise(function(resolve, reject) {
-		var request = store.getKey(key);
-		request.onsuccess = function(e) {
-			resolve(e.target.result === key);
-		};
-		request.onerror = function(e) {
-			reject(e);
-		}
-	});
-}
-function getKeys(store) {
-	return new Promise(function(resolve, reject) {
-		let request = store.getAllKeys();
-		request.onsuccess = function(e) {
-			resolve(e.target.result);
-		};
-		request.onerror = function(e) {
-			reject(e);
-		}
-	});
-}
 
 const NAME = new WeakMap();
 
@@ -131,73 +70,125 @@ class TrackerStorage {
 	constructor(name) {
 		NAME.set(this, name);
 	}
-
-	async set(key, value) {
-		try {
-			if (dbInstance == null) {
-				await openDB()
+    
+	set(key, value) {
+		return new Promise(async (resolve, reject) => {
+			await openDB();
+			let table = getStoreWritable(NAME.get(this));
+			let request;
+			if (!!table.keyPath) {
+				value[table.keyPath] = key;
+				request = table.put(value);
+			} else {
+				request = table.put(value, key);
 			}
-			let store = getStoreWritable(NAME.get(this));
-			await writeData(store, key, value);
-		} catch(error) {
-			// error handling
-		}
+			request.onsuccess = function(e) {
+				resolve();
+			};
+			request.onerror = function(e) {
+				reject(e);
+			}
+		});
 	}
 
-	async get(key, value) {
-		try {
-			if (dbInstance == null) {
-				await openDB()
+	get(key, value) {
+		return new Promise(async (resolve, reject) => {
+			await openDB();
+			let request = getStoreReadonly(NAME.get(this)).get(key);
+			request.onsuccess = function(e) {
+				let res = e.target.result;
+				if (typeof res == "undefined") {
+					resolve(value);
+				} else {
+					resolve(res);
+				}
+			};
+			request.onerror = function(e) {
+				reject(e);
 			}
-			let store = getStoreReadonly(NAME.get(this));
-			let result = await readData(store, key);
-			if (typeof result == "undefined" || result == null) {
-				return value;
-			}
-			return result;
-		} catch(error) {
-			// error handling
-		}
+		});
 	}
 
-	async has(key) {
-		try {
-			if (dbInstance == null) {
-				await openDB()
+	has(key) {
+		return new Promise(async (resolve, reject) => {
+			await openDB();
+			let request = getStoreReadonly(NAME.get(this)).getKey(key);
+			request.onsuccess = function(e) {
+				resolve(e.target.result === key);
+			};
+			request.onerror = function(e) {
+				reject(e);
 			}
-			let store = getStoreReadonly(NAME.get(this));
-			var res = await hasKey(store, key);
-			return !!res;
-		} catch(error) {
-			// error handling
-		}
+		});
 	}
 
-	async delete(key) {
-		try {
-			if (dbInstance == null) {
-				await openDB()
+	delete(key) {
+		return new Promise(async (resolve, reject) => {
+			await openDB();
+			let request = getStoreWritable(NAME.get(this)).delete(key);
+			request.onsuccess = function(e) {
+				resolve();
+			};
+			request.onerror = function(e) {
+				reject(e);
 			}
-			let store = getStoreWritable(NAME.get(this));
-			let result = await deleteData(store, key);
-			return !!result;
-		} catch(error) {
-			// error handling
-		}
+		});
 	}
 
-	async keys() {
-		try {
-			if (dbInstance == null) {
-				await openDB()
+    clear() {
+		return new Promise(async (resolve, reject) => {
+			await openDB();
+			let request = getStoreWritable(NAME.get(this)).clear();
+			request.onsuccess = function(e) {
+				resolve();
+			};
+			request.onerror = function(e) {
+				reject(e);
 			}
-			let store = getStoreReadonly(NAME.get(this));
-			let result = await getKeys(store);
-			return result;
-		} catch(error) {
-			// error handling
-		}
+		});
+    }
+
+	keys(filter) {
+		return new Promise(async (resolve, reject) => {
+			await openDB();
+			let request = getStoreReadonly(NAME.get(this)).getAllKeys();
+			request.onsuccess = function(e) {
+				let res = e.target.result;
+				if (typeof filter == "string") {
+					resolve(res.filter(key => key.startsWith(filter)));
+				} else {
+					resolve(res);
+				}
+			};
+			request.onerror = function(e) {
+				reject(e);
+			}
+		});
 	}
+
+    getAll(filter) {
+		return new Promise(async (resolve, reject) => {
+			await openDB();
+			let request = getStoreReadonly(NAME.get(this)).openCursor();
+			let res = {};
+			request.onsuccess = function(e) {
+				let el = e.target.result;
+				if (el) {
+					res[el.key] = el.value;
+					el.continue();
+				} else {
+					if (typeof filter == "string") {
+						resolve(res.filter(key => key.startsWith(filter)));
+					} else {
+						resolve(res);
+					}
+				}
+			};
+			request.onerror = function(e) {
+				reject(e);
+			}
+		});
+    }
 
 }
 

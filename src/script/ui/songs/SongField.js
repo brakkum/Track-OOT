@@ -1,6 +1,6 @@
 import Template from "/deepJS/util/Template.js";
 import GlobalData from "/script/storage/GlobalData.js";
-import SaveState from "/script/storage/SaveState.js";
+import StateStorage from "/script/storage/StateStorage.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import I18n from "/script/util/I18n.js";
@@ -49,7 +49,7 @@ function editSong(event) {
     d.addEventListener("submit", function(result) {
         if (!!result) {
             let res = builder.value;
-            SaveState.write(`songs.${this.ref}`, res);
+            StateStorage.write(`songs.${this.ref}`, res);
             this.shadowRoot.getElementById("stave").value = res;
             EventBus.trigger("song", {
                 name: this.ref,
@@ -71,7 +71,7 @@ function stateChanged(event) {
 
 function songUpdate(event) {
     if (this.ref === event.data.name) {
-        SaveState.write(`songs.${this.ref}`, event.data.value);
+        StateStorage.write(`songs.${this.ref}`, event.data.value);
         this.shadowRoot.getElementById("stave").value = event.data.value;
     }
 }
@@ -104,7 +104,7 @@ export default class HTMLTrackerSongField extends HTMLElement {
             let data = GlobalData.get("songs")[newValue];
             let title = this.shadowRoot.getElementById("title");
             title.innerHTML = I18n.translate(newValue);
-            this.shadowRoot.getElementById("stave").value = SaveState.read(`songs.${newValue}`, data.notes);
+            this.shadowRoot.getElementById("stave").value = StateStorage.read(`songs.${newValue}`, data.notes);
             if (data.editable) {
                 let edt = document.createElement('button');
                 edt.innerHTML = "✎";

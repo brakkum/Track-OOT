@@ -1,7 +1,7 @@
 import GlobalData from "/script/storage/GlobalData.js";
 import MemoryStorage from "/deepJS/storage/MemoryStorage.js";
-import TrackerStorage from "/script/storage/TrackerStorage.js";
-import SaveState from "/script/storage/SaveState.js";
+import SettingsStorage from "/script/storage/SettingsStorage.js";
+import StateStorage from "/script/storage/StateStorage.js";
 import LogicWrapper from "/script/util/LogicWrapper.js";
 
 const LOGIC = {
@@ -33,11 +33,11 @@ class TrackerLogic {
         if (!!mode) {
             list = GlobalData.get("locations")[name][`${category}_${mode}`];
         } else {
-            let dType = SaveState.read(`dungeonTypes.${name}`, list.hasmq ? "n" : "v");
+            let dType = StateStorage.read(`dungeonTypes.${name}`, list.hasmq ? "n" : "v");
             if (dType === "n") {
                 let res_v = await this.checkLogicList(category, name, "v");
                 let res_m = await this.checkLogicList(category, name, "mq");
-                if (await TrackerStorage.SettingsStorage.get("unknown_dungeon_need_both", false)) {
+                if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
                     return Math.min(res_v, res_m) || res_v || res_m;
                 } else {
                     return Math.max(res_v, res_m);
@@ -51,8 +51,8 @@ class TrackerLogic {
         for (let i in list) {
             let filter = MemoryStorage.get("active_filter.filter_era_active", GlobalData.get("filter")["filter_era_active"].default);
             if (!list[i].era || !filter || filter === list[i].era) {
-                if (!list[i].mode || SaveState.read(`options.${list[i].mode}`, false)) {
-                    if (!SaveState.read(`${category}.${i}`, 0)) {
+                if (!list[i].mode || StateStorage.read(`options.${list[i].mode}`, false)) {
+                    if (!StateStorage.read(`${category}.${i}`, 0)) {
                         unopened++;
                         if (this.getValue(category, i)) {
                             canGet++;
@@ -86,7 +86,7 @@ class TrackerLogic {
         for (let i in GlobalData.get("logic", {mixins:{}}).mixins) {
             LOGIC["mixins"][i] = new LogicWrapper("mixins", i);
         }
-        for (let i in await TrackerStorage.SettingsStorage.get("logic", {mixins:{}}).mixins) {
+        for (let i in await SettingsStorage.get("logic", {mixins:{}}).mixins) {
             if (!!LOGIC["mixins"][i]) continue;
             LOGIC["mixins"][i] = new LogicWrapper("mixins", i);
         }

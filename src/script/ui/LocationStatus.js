@@ -2,7 +2,7 @@ import GlobalData from "/script/storage/GlobalData.js";
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import "/deepJS/ui/selection/Option.js";
-import SaveState from "/script/storage/SaveState.js";
+import StateStorage from "/script/storage/StateStorage.js";
 import Logic from "/script/util/Logic.js";
 
 const TPL = new Template(`
@@ -29,8 +29,8 @@ function canGet(name, category, dType) {
         open: 0
     };
     for (let i in list) {
-        if (!list[i].mode || SaveState.read(`options.${list[i].mode}`, false)) {
-            if (!SaveState.read(`${category}.${i}`, 0)) {
+        if (!list[i].mode || StateStorage.read(`options.${list[i].mode}`, false)) {
+            if (!StateStorage.read(`${category}.${i}`, 0)) {
                 if (Logic.getValue(category, i)) {
                     res.access++;
                 }
@@ -53,8 +53,8 @@ function updateStates(doneEl, availEl, missEl, type) {
     if (!!data) {
         Object.keys(data).forEach(name => {
             let buff = GlobalData.get("locations")[name];
-            if (!buff.mode || SaveState.read(`options.${buff.mode}`, false)) {
-                let dType = SaveState.read(`dungeonTypes.${name}`, buff.hasmq ? "n" : "v");
+            if (!buff.mode || StateStorage.read(`options.${buff.mode}`, false)) {
+                let dType = StateStorage.read(`dungeonTypes.${name}`, buff.hasmq ? "n" : "v");
                 if (dType == "n") {
                     let cv = canGet(name, type, "v");
                     let cm = canGet(name, type, "mq");

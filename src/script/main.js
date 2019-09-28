@@ -3,10 +3,11 @@ import Logger from "/deepJS/util/Logger.js";
 
 import GlobalData from "/script/storage/GlobalData.js";
 import Settings from "/script/util/Settings.js";
-import SaveHandler from "/script/util/SaveHandler.js";
+import StateStorage from "/script/storage/StateStorage.js";
 
 import "/deepJS/ui/Icon.js";
 import "/deepJS/ui/selection/ChoiceSelect.js";
+import "/script/util/Navigation.js";
 import "/script/ui/LocationStatus.js";
 
 (async function main() {
@@ -21,7 +22,7 @@ import "/script/ui/LocationStatus.js";
     updateLoadingMessage("apply logger...");
     if (!!GlobalData.get("version-dev")) {
         Logger.addOutput(document.getElementById("tracker-log"));
-        Logger.addOutput(console);
+        //Logger.addOutput(console);
         EventBus.register(function(event) {
             Logger.info(JSON.stringify(event), "Event");
         });
@@ -30,8 +31,8 @@ import "/script/ui/LocationStatus.js";
         document.getElementById("tab_log_bottom").style.display = "none";
     }
 
-    updateLoadingMessage("initialize savestates...");
-    await SaveHandler.init();
+    updateLoadingMessage("initialize components...");
+    initComponents();
 
     updateLoadingMessage("initialize settings...");
     await Settings.init();
@@ -78,6 +79,27 @@ function addHTMLModule(name, target) {
     let el = document.createElement(name);
     document.getElementById(target).append(el);
     return el;
+}
+
+function initComponents() {
+    let notePad = document.getElementById("tracker-notes");
+    notePad.value = StateStorage.read("notes", "");
+    let notePadTimer = null;
+    notePad.oninput = function() {
+        if (!!notePadTimer) {
+            clearTimeout(notePadTimer);
+        }
+        notePadTimer = setTimeout(writeNotePadValue, 1000);
+    }
+    notePad.oncontextmenu = function(event) {
+        event.stopPropagation();
+    }
+    function writeNotePadValue() {
+        StateStorage.write("notes", notePad.value);
+    };
+    EventBus.register("state", function(event) {
+        notePad.value = event.data["notes"] || "";
+    });
 }
 
 function changeView(event) {

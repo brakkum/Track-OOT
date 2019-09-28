@@ -13,7 +13,7 @@ let workingarea = document.getElementById('workingarea');
 
 async function downloadPatchedLogic() {
     let logic = JSON.parse(JSON.stringify(GlobalData.get("logic")));
-    let logic_patched = await TrackerStorage.SettingsStorage.get("logic", {});
+    let logic_patched = await SettingsStorage.get("logic", {});
     for (let i in logic_patched) {
         if (!logic[i]) {
             logic[i] = logic_patched[i];
@@ -27,7 +27,7 @@ async function downloadPatchedLogic() {
 }
 
 async function downloadPatch() {
-    let logic = await TrackerStorage.SettingsStorage.get("logic", {});
+    let logic = await SettingsStorage.get("logic", {});
     FileSystem.save(JSON.stringify(logic, " ", 4), `logic.${(new Date).valueOf()}.json`);
 }
 

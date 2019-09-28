@@ -3,8 +3,9 @@ import SettingsWindow from "/deepJS/ui/SettingsWindow.js";
 import PopOver from "/deepJS/ui/PopOver.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
-import TrackerStorage from "/script/storage/TrackerStorage.js";
-import SaveState from "/script/storage/SaveState.js";
+import BusyIndicator from "/script/ui/BusyIndicator.js";
+import SettingsStorage from "/script/storage/SettingsStorage.js";
+import StateStorage from "/script/storage/StateStorage.js";
 
 import { buildSettings } from "/script/util/settings/SettingsBuilder.js";
 
@@ -12,6 +13,8 @@ import "/deepJS/ui/Paging.js";
 import "/script/ui/UpdateHandler.js";
 
 const settings = new SettingsWindow;
+
+BusyIndicator.setIndicator(document.getElementById("busy-animation"));
 
 const SETTINGS_TPL = `
 <div style="display: flex; margin-bottom: 10px;">
@@ -49,49 +52,27 @@ Big thanks to:<br>
 </div>
 `;
 
-function initializeVersion() {
-    let data = GlobalData.get("version");
-    let version = settings.querySelector("#tracker-version");
-    let date = settings.querySelector("#tracker-date");
-    if (data.dev) {
-        version.innerHTML = `DEV [${data.commit.slice(0,7)}]`;
-    } else {
-        version.innerHTML = data.version;
-    }
-    let b = new Date(data.date);
-    let m = b.getMonth()+1;
-    let d = {
-        D: ("00"+b.getDate()).slice(-2),
-        M: ("00"+m).slice(-2),
-        Y: b.getFullYear(),
-        h: ("00"+b.getHours()).slice(-2),
-        m: ("00"+b.getMinutes()).slice(-2),
-        s: ("00"+b.getSeconds()).slice(-2)
-    };
-    date.innerHTML = `${d.D}.${d.M}.${d.Y} ${d.h}:${d.m}:${d.s}`;
-}
-
 function onSettingsEvent(event) {
     let settings = {};
     for (let i in event.data) {
         for (let j in event.data[i]) {
             if (i === "settings") {
-                TrackerStorage.SettingsStorage.set(j, event.data[i][j]);
+                SettingsStorage.set(j, event.data[i][j]);
             } else {
                 if (j === "tricks" || j === "trials") {
                     let v = event.data[i][j];
                     if (v.length > 0) {
                         v = new Set(v.split(","));
                         GlobalData.get("settings")[i][j].values.forEach(el => {
-                            SaveState.write(`${i}.${el}`, v.has(el));
+                            StateStorage.write(`${i}.${el}`, v.has(el));
                         });
                     } else {
                         GlobalData.get("settings")[i][j].values.forEach(el => {
-                            SaveState.write(`${i}.${el}`, false);
+                            StateStorage.write(`${i}.${el}`, false);
                         });
                     }
                 } else {
-                    SaveState.write(`${i}.${j}`, event.data[i][j]);
+                    StateStorage.write(`${i}.${j}`, event.data[i][j]);
                 }
             }
         }
@@ -115,26 +96,26 @@ async function getSettings() {
                     let def = new Set(options[i][j].default);
                     let val = [];
                     for (let el of options[i][j].values) {
-                        if (await TrackerStorage.SettingsStorage.get(el, def.has(el))) {
+                        if (await SettingsStorage.get(el, def.has(el))) {
                             val.push(el);
                         }
                     }
                     res[i][j] = val.join(",");
                 } else {
-                    res[i][j] = await TrackerStorage.SettingsStorage.get(j, options[i][j].default);
+                    res[i][j] = await SettingsStorage.get(j, options[i][j].default);
                 }
             } else {
                 if (options[i][j].type === "list") {
                     let def = new Set(options[i][j].default);
                     let val = [];
                     options[i][j].values.forEach(el => {
-                        if (SaveState.read(`${i}.${el}`, def.has(el))) {
+                        if (StateStorage.read(`${i}.${el}`, def.has(el))) {
                             val.push(el);
                         }
                     });
                     res[i][j] = val.join(",");
                 } else {
-                    res[i][j] = SaveState.read(`${i}.${j}`, options[i][j].default);
+                    res[i][j] = StateStorage.read(`${i}.${j}`, options[i][j].default);
                 }
             }
         }
@@ -144,18 +125,23 @@ async function getSettings() {
     
 async function applySettingsChoices() {
     let viewpane = document.getElementById("main-content");
-    viewpane.setAttribute("data-font", await TrackerStorage.SettingsStorage.get("font", ""));
-    document.querySelector("#layout-container").setAttribute("layout", await TrackerStorage.SettingsStorage.get("layout", "map-compact"));
-    document.body.style.setProperty("--item-size", await TrackerStorage.SettingsStorage.get("itemsize", 40));
-    if (await TrackerStorage.SettingsStorage.get("show_hint_badges", false)) {
+    viewpane.setAttribute("data-font", await SettingsStorage.get("font", ""));
+    document.querySelector("#layout-container").setAttribute("layout", await SettingsStorage.get("layout", "map-compact"));
+    document.body.style.setProperty("--item-size", await SettingsStorage.get("itemsize", 40));
+    if (await SettingsStorage.get("show_hint_badges", false)) {
         document.body.setAttribute("data-hint-badges", "true");
     } else {
         document.body.setAttribute("data-hint-badges", "false");
     }
-    if (await TrackerStorage.SettingsStorage.get("use_custom_logic", false)) {
-        GlobalData.set("logic_patched", await TrackerStorage.SettingsStorage.get("logic", {}));
+    if (await SettingsStorage.get("use_custom_logic", false)) {
+        GlobalData.set("logic_patched", await SettingsStorage.get("logic", {}));
     }
+    let autosaveMax = await SettingsStorage.get("autosave_amount", 1);
+    let autosaveTime = await SettingsStorage.get("autosave_time", 0);
+    StateStorage.setAutosave(autosaveTime, autosaveMax);
 }
+
+let showUpdatePopup = false;
 
 class Settings {
 
@@ -166,7 +152,6 @@ class Settings {
         settings.querySelector("#tracker-date").innerHTML = GlobalData.get("version-date");
 
         let updatehandler = settings.querySelector("#updatehandler");
-        let showUpdatePopup = false;
         updatehandler.addEventListener("updateavailable", function() {
             if (showUpdatePopup) {
                 showUpdatePopup = false;
@@ -182,17 +167,10 @@ class Settings {
             }
         });
 
-        document.getElementById("join-discord").addEventListener("click", function() {
-            window.open("https://discord.gg/wgFVtuv", "_blank");
-        });
-        
-        document.getElementById("edit-settings").addEventListener("click", function() {
-            showUpdatePopup = false;
-            settings.show(getSettings(), 'settings');
-        });
-
         settings.addEventListener('submit', function(event) {
+            BusyIndicator.busy();
             EventBus.trigger("settings", onSettingsEvent(event));
+            BusyIndicator.unbusy();
         });
         EventBus.register("settings", onSettingsEvent);
         
@@ -206,6 +184,11 @@ class Settings {
 
         showUpdatePopup = true;
         updatehandler.checkUpdate();
+    }
+
+    show() {
+        showUpdatePopup = false;
+        settings.show(getSettings(), 'settings');
     }
 
 }

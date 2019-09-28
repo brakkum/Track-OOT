@@ -51,7 +51,7 @@ class BusyIndicator {
         return new Promise(function(resolve) {
             if (COUNT++ == 0) {
                 EL.style.display = "flex";
-                setTimeout(resolve, 0);
+                setTimeout(resolve, 10);
             } else {
                 resolve();
             }
@@ -62,7 +62,7 @@ class BusyIndicator {
         return new Promise(function(resolve) {
             if (COUNT > 0 && --COUNT == 0) {
                 EL.style.display = null;
-                setTimeout(resolve, 0);
+                setTimeout(resolve, 10);
             } else {
                 resolve();
             }

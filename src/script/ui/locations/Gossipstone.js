@@ -2,8 +2,7 @@ import GlobalData from "/script/storage/GlobalData.js";
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
-import Logger from "/deepJS/util/Logger.js";
-import SaveState from "/script/storage/SaveState.js";
+import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
@@ -172,8 +171,8 @@ class HTMLTrackerGossipstone extends HTMLElement {
                         ref = data.ref;
                     }
 
-                    this.checked = SaveState.read(`gossipstones.${ref}`, false);
-                    this.setValue(SaveState.read(`gossipstones.${ref}`, {item: "0x01", location: "0x01"}));
+                    this.checked = !!StateStorage.read(`gossipstones.${ref}`, false);
+                    this.setValue(StateStorage.read(`gossipstones.${ref}`, {item: "0x01", location: "0x01"}));
                 }
             break;
             case 'checked':
@@ -235,7 +234,7 @@ customElements.define('ootrt-listgossipstone', HTMLTrackerGossipstone);
 
 function hintstoneDialog(ref) {
     return new Promise(resolve => {
-        let value = SaveState.read(`gossipstones.${ref}`, {item: "0x01", location: "0x01"});
+        let value = StateStorage.read(`gossipstones.${ref}`, {item: "0x01", location: "0x01"});
         let data = GlobalData.get('hints', {locations: [], items: []});
     
         let lbl_loc = document.createElement('label');
@@ -276,7 +275,7 @@ function hintstoneDialog(ref) {
             if (!!result) {
                 let res = {item: slt_itm.value, location: slt_loc.value};
                 let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][ref];
-                SaveState.write(`gossipstones.${data.ref || ref}`, res);
+                StateStorage.write(`gossipstones.${data.ref || ref}`, res);
                 resolve(res);
             } else {
                 resolve(false);

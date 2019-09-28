@@ -24,7 +24,7 @@ import "/script/ui/logic/LogicFilter.js";
 import "/script/ui/logic/LogicChest.js";
 import "/script/ui/logic/LogicSkulltula.js";
 
-import TrackerStorage from "/script/storage/TrackerStorage.js";
+import SettingsStorage from "/script/storage/SettingsStorage.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import EditorLogic from "/script/editor/Logic.js";
 import "/script/editor/Navigation.js";
@@ -55,7 +55,7 @@ const LOGIC_OPERATORS = [
     let mixins = {};
 
     let logic = GlobalData.get("logic");
-    let custom_logic = await TrackerStorage.SettingsStorage.get("logic", {});
+    let custom_logic = await SettingsStorage.get("logic", {});
 
     if (!!logic.mixins) {
         for (let i in logic.mixins) {
