@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ---
 
+## VERSION 1.5.8
+
+### HOTFIX
+- reduced multiple events for era filter to single event
+- fixed multiplayer RemoteAccessTool to ignore filter event
+
+---
+
 ## VERSION 1.5.7
 
 ### HOTFIX

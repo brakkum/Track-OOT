@@ -7,9 +7,9 @@ import TrackerLocalState from "/script/util/LocalState.js";
 
 const eventModule = new EventBusModuleGeneric();
 eventModule.mute("logic");
+eventModule.mute("filter");
 eventModule.mute("location_change");
 eventModule.mute("location_mode");
-eventModule.mute("location_era");
 EventBus.addModule(eventModule);
 
 let username = "";
