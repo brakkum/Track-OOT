@@ -372,7 +372,11 @@ class HTMLTrackerMap extends Panel {
         });
         /* event bus */
         EVENT_BINDER.register("location_mode", event => this.mode = event.data.value);
-        EVENT_BINDER.register("location_era", event => this.era = event.data.value);
+        EVENT_BINDER.register("filter", event => {
+            if (event.data.ref == "filter_era_active") {
+                this.era = event.data.value
+            }
+        });
         EVENT_BINDER.register(["state", "settings"], event => this.attributeChangedCallback("", ""));
     }
 

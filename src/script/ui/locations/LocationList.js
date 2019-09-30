@@ -210,9 +210,6 @@ class HTMLTrackerLocationList extends Panel {
         this.shadowRoot.getElementById('location-era').addEventListener("change", event => {
             this.era = event.newValue;
             MemoryStorage.set("active_filter.filter_era_active", this.era);
-            EventBus.trigger("location_era", {
-                value: this.era
-            });
             EventBus.trigger("filter", {
                 ref: "filter_era_active",
                 value: this.era
