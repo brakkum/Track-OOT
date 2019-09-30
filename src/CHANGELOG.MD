@@ -4,7 +4,7 @@ Application:    Track-OOT
 
 ---
 
-## VERSION 1.5.8 (unreleased)
+## VERSION 1.5.8
 
 ### HOTFIX
 - reduced multiple events for era filter to single event
