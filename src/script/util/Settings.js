@@ -186,9 +186,9 @@ class Settings {
         updatehandler.checkUpdate();
     }
 
-    show() {
+    async show() {
         showUpdatePopup = false;
-        settings.show(getSettings(), 'settings');
+        settings.show(await getSettings(), 'settings');
     }
 
 }
