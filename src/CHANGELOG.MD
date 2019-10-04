@@ -17,6 +17,9 @@ Application:    Track-OOT
 - added state converter class for iterative savestate conversion
 - change all interface elements to adapt to new state structure
 
+# LANGUAGE
+- language file is now in java properties file format instead fo ini format
+
 ---
 
 ## VERSION 1.5.8
