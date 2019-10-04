@@ -33,7 +33,7 @@ class I18n {
             }
         }
         try {
-            active_language = (await FileLoader.ini(`/i18n/${code}.lang`))[""];
+            active_language = (await FileLoader.properties(`/i18n/${code}.lang`));
             Logger.log(`lang "${code}" loaded as LANG`, "I18n");
         } catch(e) {
             Logger.error((new Error(`could not load lang ${code}`)), "I18n");

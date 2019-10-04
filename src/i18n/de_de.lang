@@ -1,10 +1,10 @@
-; language file for track-oot
-; language: deutsch
-; author: 2deep4real, Fraggerman, Luigimeansme
+# language file for track-oot
+# language: deutsch
+# author: ZidArgs (2deep4real), Fraggerman, Luigimeansme
 
 language=Sprache (Neustart erforderlich)
 
-; LOCATIONS - OVERWORLD
+# LOCATIONS - OVERWORLD
 hyrule=Hyrule
 overworld=Weltkarte
 kokiri_sword=Kokiri Schwert
@@ -36,13 +36,13 @@ zora_hp_1=Zora-Fluss Herzteil 1
 zora_hp_2=Zora-Fluss Herzteil 2
 zora_river_grotto=Zora-Fluss Grotte
 
-; LOCATIONS - LONLON
+# LOCATIONS - LONLON
 lonlon=Lon Lon-Farm
 talon_chicken=Talons Hühnchen Minispiel
 maron_song=Eponas Lied
 lonlon_hp=Turm Herzteil
 
-; LOCATIONS - GERUDO
+# LOCATIONS - GERUDO
 gerudo=Gerudo Festung
 gerudo_rooftop=Gerudo Festung Truhe auf dem Dach
 gerudo_guard_1=Gerudo Wächterin 1
@@ -53,7 +53,7 @@ gerudo_fortress_clear=Handwerker Befreit
 gerudo_archer_1=Bogenschießen zu Pferd 1000pkt
 gerudo_archer_2=Bogenschießen zu Pferd 1500pkt
 
-; LOCATIONS - DEKU
+# LOCATIONS - DEKU
 deku=Dekubaum
 deku_lobby=Lobby 
 deku_compass=Kompass 
@@ -71,7 +71,7 @@ deku_before_log=Vor drehendem Baumstamm
 deku_after_log=Nach drehendem Baumstamm
 deku_gohma_mq=Gohma
 
-; LOCATIONS - DODONGO
+# LOCATIONS - DODONGO
 dodongo=Dodongos Höhle 
 dodongo_map=Karte
 dodongo_compass=Kompass
@@ -89,7 +89,7 @@ dodongo_bomb_bag_mq=Bombentasche
 dodongo_chest_above_dodongo_mq=Truhe über King Dodongo 
 dodongo_dodongo_mq=King Dodongo
 
-; LOCATIONS - JABU JABU
+# LOCATIONS - JABU JABU
 jabujabu=Jabu Jabus Bauch 
 jabujabu_boomerang=Bumerang
 jabujabu_map=Karte 
@@ -108,7 +108,7 @@ jabujabu_second_room_upper_mq=Zweiter Raum obere Truhe
 jabujabu_near_boss_mq=Nahe Boss Truhe
 jabujabu_barinade_mq=Barinade
 
-; LOCATIONS - TEMPLE FOREST
+# LOCATIONS - TEMPLE FOREST
 temple_forest=Waldtempel 
 temple_forest_entrance=Erste Truhe 
 temple_forest_behind_lobby=Truhe hinter Lobby 
@@ -138,7 +138,7 @@ temple_forest_falling_room_mq=Fallender Raum
 temple_forest_near_boss_mq=Nahe Boss Truhe 
 temple_forest_phantomganon_mq=Phantom Ganon
 
-; LOCATIONS - TEMPLE FIRE
+# LOCATIONS - TEMPLE FIRE
 temple_fire=Feuertempel 
 temple_fire_near_boss=Nahe Boss Truhe
 temple_fire_dancer=Flammenderwisch
@@ -169,7 +169,7 @@ temple_fire_freestanding_key_mq=Freistehender Schlüssel
 temple_fire_west_tower_top_mq=Westliche Turm-Spitze
 temple_fire_volvagia_mq=Volvagia
 
-; LOCATIONS - TEMPLE WATER
+# LOCATIONS - TEMPLE WATER
 temple_water=Wassertempel
 temple_water_map=Karte
 temple_water_compass=Kompass
@@ -190,7 +190,7 @@ temple_water_boss_key_mq=Boss-Schlüssel
 temple_water_freestanding_key_mq=Freistehender Schlüssel
 temple_water_morpha_mq=Morpha
 
-; LOCATIONS - TEMPLE SHADOW
+# LOCATIONS - TEMPLE SHADOW
 temple_shadow=Schattentempel
 temple_shadow_map=Karte
 temple_shadow_boots=Gleitstiefel
@@ -232,7 +232,7 @@ temple_shadow_bomb_flower_chest_mq=Donnerblumen Truhe
 temple_shadow_freestanding_key_mq=Freistehender Schlüssel
 temple_shadow_bongobongo_mq=Bongo Bongo
 
-; LOCATIONS - TEMPLE SPIRIT
+# LOCATIONS - TEMPLE SPIRIT
 temple_spirit=Geistertempel
 temple_spirit_child_left=Kind Links 
 temple_spirit_child_right=Kind Rechts 
@@ -278,7 +278,7 @@ temple_spirit_boss_key_mq=Boss-Schlüssel
 temple_spirit_mirror_puzzle_invisible_mq=Spiegel Puzzle Unsichtbare Truhe
 temple_spirit_twinrova_mq=Twinrova
 
-; LOCATIONS - GANON
+# LOCATIONS - GANON
 castle_ganon=Ganons Teufelsturm
 castle_ganon_forest_trial=Raum des Waldes
 castle_ganon_water_trial_left=Raum des Wassers Links
@@ -313,7 +313,7 @@ castle_ganon_light_trial_lullaby_mq=Raum des Lichts Wiegenlied
 castle_ganon_boss_key_mq=Boss-Schlüssel
 castle_ganon_boss_mq=Ganon
 
-; LOCATIONS - TOWN
+# LOCATIONS - TOWN
 castle_town=Stadt Hyrule
 castle_town_maron=Malons Seltsames Ei 
 castle_town_zelda=Zeldas Wiegenlied 
@@ -328,7 +328,7 @@ castle_town_ganon_fairy=Ganons Schloss Fee
 castle_town_warp=Kantate des Lichts
 castle_town_light_arrows=Lichtpfeile
 
-; LOCATIONS - KAKARIKO
+# LOCATIONS - KAKARIKO
 kakariko=Kakariko Dorf 
 kakariko_anju_adult=Anju als Erwachsen
 kakariko_anju_chickens=Anjus Hühner 
@@ -354,7 +354,7 @@ kakariko_skulltula_30=Skulltula Haus 30
 kakariko_skulltula_40=Skulltula Haus 40 
 kakariko_skulltula_50=Skulltula Haus 50 
 
-; LOCATIONS - GORON
+# LOCATIONS - GORON
 goron=Goronia
 goron_maze_left=Fels-Labyrinth Links 
 goron_maze_center=Fels-Labyrinth Mitte
@@ -364,7 +364,7 @@ goron_little_link=Link der Gorone
 goron_spinning_pot_hp=Drehender Krug Herzteil
 goron_darunia=Darunias Tanz 
 
-; LOCATIONS - MOUNTAIN
+# LOCATIONS - MOUNTAIN
 mountain=Gebirgspfad
 mountain_above_dodongo=Herzteil Über Dodongos Höhle 
 mountain_outside_goron_chest=Außerhalb Goronia Truhe 
@@ -377,7 +377,7 @@ mountain_crater_fairy=Todeskrater Fee
 mountain_summit_fairy=Bergspitze Fee
 mountain_biggoron=Biggoron-Schwert
 
-; LOCATIONS - WOODS
+# LOCATIONS - WOODS
 woods=Verlorener Wald
 woods_skull_kid=Horror-Kid 
 woods_memory_game=Ocarina Gedächtnis Minispiel 
@@ -389,7 +389,7 @@ woods_warp=Menuett des Waldes
 woods_deku_theater_1=Deku Theater Schädelmaske
 woods_deku_theater_2=Deku Theater Maske der Wahrheit 
 
-; LOCATIONS - ZORA
+# LOCATIONS - ZORA
 zoras=Zoras Reich 
 zoras_diving=Tauch Minispiel 
 zoras_torch=Zoras Reich Fackellauf 
@@ -398,7 +398,7 @@ zoras_ice=Eisberg Herzteil
 zoras_underwater=Herzteil unter Wasser 
 zoras_king_zora=Zora-König auftauen 
 
-; LOCATIONS - TRAINING
+# LOCATIONS - TRAINING
 gerudo_training=Gerudo Trainingsarena 
 gerudo_training_lobby_left=Lobby Links 
 gerudo_training_lobby_right=Lobby Rechts 
@@ -440,7 +440,7 @@ gerudo_training_maze_right_central_mq=Labyrinth Rechts Mittlere Truhe
 gerudo_training_maze_right_side_mq=Labyrinth Rechts Seitliche Truhe
 gerudo_training_ice_arrows_mq=Eispfeile
 
-; LOCATIONS - WELL
+# LOCATIONS - WELL
 well=Brunnen von Kakariko
 well_front_left_hidden_wall=Versteckter Wand-Raum Vorne Links 
 well_front_center_bombable=Bombbar Vorne Mitte 
@@ -462,7 +462,7 @@ well_lens_chest_mq=Auge der Wahrheit
 well_deadhand_freestanding_key_mq=Hirnsauger Freistehender Schlüssel
 well_east_inner_freestanding_key_mq=Osten Innerer Raum Freistehender Schlüssel 
 
-; LOCATIONS - ICE
+# LOCATIONS - ICE
 ice_cavern=Eishöhle
 ice_cavern_map=Karte
 ice_cavern_compass=Kompass
@@ -475,7 +475,7 @@ ice_cavern_hp_mq=Herzteil
 ice_cavern_boots_mq=Eisenstiefel
 ice_cavern_sheik=Serenade des Wassers
 
-; LOCATIONS - SCRUBS
+# LOCATIONS - SCRUBS
 hyrule_deku_salesman_grotto=Hylianische Steppe Händler-Deku Grotte
 woods_deku_salesman=Nahe Brücke Händler-Deku 
 woods_deku_salesman_grotto=Nahe Heiliger Lichtung Linker Händler-Deku 
@@ -524,7 +524,7 @@ castle_ganon_under_bridge_salesman_3_mq=Ganons Teufelsturm unter der Brücke dri
 castle_ganon_under_bridge_salesman_4_mq=Ganons Teufelsturm unter der Brücke vierter Händler-Deku
 castle_ganon_under_bridge_salesman_5_mq=Ganons Teufelsturm unter der Brücke fünfter Händler-Deku
 
-; COWS
+# COWS
 links_house_cow=Kuh in Links Haus
 hyrule_west_grotto_cow=Kuh in Westlicher Grotte
 gerudo_river_cow=Kuh nahe Gerudo Festung
@@ -536,7 +536,7 @@ kakariko_impas_cow=Kuh in Impas Haus
 mountain_grotto_cow=Kuh in der Berg-Grotte
 jabujabu_cow=Kuh in Jabu Jabu
 
-; SKULLTULAS
+# SKULLTULAS
 kokiri_know_it_all_brothers_child_night=Hinter Haus der allwissenden Brüder
 kokiri_beanspot_near_shop_child=Kokiri Erdbeet
 kokiri_twins_adult_night=Kokiri Haus der Zwillinge
@@ -682,7 +682,7 @@ hyrule_west_grotto=Hylianische Steppe Nahe Gerudo-Tal
 hyrule_north_east_grotto=Hylianische Steppe Nahe Kakariko
 castle_town_storm_grotto_child=Schloss Hyrule Grotte
 
-; GOSSIP STONES
+# GOSSIP STONES
 gossip_dm_crater=Todeskrater Mythen-Stein
 gossip_dm_trail=Gebirgspfad Mythen-Stein
 gossip_desert=Wüstenkoloss Mythen-Stein
@@ -724,7 +724,7 @@ gossip_grotto_near_market=Generische Nahe Markt Grotte Mythen-Stein
 gossip_grotto_near_lake=Generische Nahe See Grotte Mythen-Stein
 gossip_grotto_small_forest=Generische Kleiner Wald Grotte Mythen-Stein
 
-; ITEMS
+# ITEMS
 bow=Bogen
 hookshot=Fanghaken
 hammer=Hammer
@@ -792,7 +792,7 @@ medallion_spirit=Amulett der Geister
 medallion_shadow=Amulett des Schattens
 medallion_light=Amulett des Lichts
 
-; KEYS
+# KEYS
 key_small_forest=Waldtempel Kleiner Schlüssel
 key_boss_forest=Waldtempel Boss Schlüssel
 key_small_fire=Feuertempel Kleiner Schlüssel
@@ -809,7 +809,7 @@ key_small_gerudo=Gerudo Festung Kleiner Schlüssel
 key_small_training=Gerudo Trainingsarena Kleiner Schlüssel
 key_small_well=Brunnen von Kakariko Kleiner Schlüssel
 
-; MAPS & COMPASSES
+# MAPS & COMPASSES
 compass_deku=Dekubaum Kompass
 dungeon_map_deku=DekubaumKarte
 compass_dodongo=Dodongo Kompass
@@ -831,12 +831,12 @@ dungeon_map_well=Brunnen von Kakariko Karte
 compass_ice=Eishöhle Kompass
 dungeon_map_ice=Eishöhle Karte
 
-; SETTINGS
+# SETTINGS
 settings=Allgemeine Einstellungen
 options=Randomizer Optionen
 skips=Aktive Skips
 
-; SETTINGS - GENERAL
+# SETTINGS - GENERAL
 font=Wähle Font
 layout=Wähle Layout
 item_size=Item Größe
@@ -849,7 +849,7 @@ button_edit_logic=Ändern
 erase_all_data=Lösche alle gespeicherten Daten
 button_erase_data=Löschen
 
-; SETTINGS - ROM OPTIONS
+# SETTINGS - ROM OPTIONS
 consider_buyable=Berücksichtige kaufbare Items (Rüstungen / Gespensterwüste Bombchus) in Logik
 bombchu_logic=Berücksichtige Bombchus in Logik
 keysanity_small=Kleiner Schlüssel Logik
@@ -868,12 +868,12 @@ ganon_boss_door_open=Ganon Boss Tür
 trade_sequence_start_item=Starte Erwachsenes Tauschgeschäft bei
 trials=Siegel
 
-; SETTINGS - SKIPS
+# SETTINGS - SKIPS
 lens_required=Auge der Wahrheit Vorraussetzung
 tricks=Tricks
 known_sequence_breaks=Sequenzbrüche
 
-; SETTINGS - TRICKS
+# SETTINGS - TRICKS
 morpha_scale=Morpha mit Goldener Schuppe
 fewer_tunic=Weniger Rüstungs-Vorraussetzungen
 child_deadhand=Kind Hirnsauger ohne Kokiri Schwert
@@ -899,10 +899,10 @@ fitmq_bosskey_nobow=Feuertempel MQ Boss Schlüssel Truhe ohne Bow
 zora_cucco=Zoras Reich Zugang mit Huhn
 zora_hover=Zoras Reich Zugang mit Gleitstiefel
 
-; SETTINGS - SEQUENCE BREAKS
-; TODO
+# SETTINGS - SEQUENCE BREAKS
+# TODO
 
-; SETTINGS - KEYSANITY
+# SETTINGS - KEYSANITY
 keysanity_small_ignore=Ignoriere Schlüssel Logik
 keysanity_small_track=Normale Schlüssel Logik
 keysanity_small_keysanity=Keysanity Logik
@@ -910,12 +910,12 @@ keysanity_boss_ignore=Ignoriere Schlüssel Logik
 keysanity_boss_track=Normale Schlüssel Logik
 keysanity_boss_keysanity=Keysanity Logik
 
-; SETTINGS - GERUDO FORTRESS
+# SETTINGS - GERUDO FORTRESS
 gerudo_fortress_open_default=Normales Verhalten
 gerudo_fortress_open_one=Rette einen Handwerker
 gerudo_fortress_open_open=Starte mit Gerudo-Pass
 
-; SETTINGS - GANON
+# SETTINGS - GANON
 ganon_castle_open_default=Vanilla Vorraussetzung
 ganon_castle_open_dungeon=Alle Dungeons
 ganon_castle_open_medallion=Alle Amulette
@@ -923,12 +923,12 @@ ganon_castle_open_stones=Alle Steine
 ganon_castle_open_skulltulas=100 Skulltulas
 ganon_castle_open_open=Immer offen
 
-; SETTINGS - LENS
+# SETTINGS - LENS
 lens_required_default=Überall benötigt
 lens_required_wasteland=Nur Schatztruhen-Minispiel und Gespensterwüste
 lens_required_never=Nur Schatztruhen-Minispiel
 
-; SETTINGS - TRIALS
+# SETTINGS - TRIALS
 forest_trial=Waldsiegel Aktiv
 water_trial=Wassersiegel Aktiv
 shadow_trial=Shattensiegel Aktiv
@@ -936,7 +936,7 @@ fire_trial=Feuersiegel Aktiv
 light_trial=Lichtsiegel Aktiv
 spirit_trial=Geistersiegel Aktiv
 
-; SETTINGS - FONT
+# SETTINGS - FONT
 font_default=Standard
 font_charlemagne=Charlemagne
 font_ravenna=Ravenna
@@ -946,7 +946,7 @@ font_triforce=Triforce
 font_ancienthylian=AncientHylian
 font_sheikah=Sheikah
 
-; SETTINGS - LAYOUT
+# SETTINGS - LAYOUT
 items=Nur Items
 items-dt=Nur Items (dungeontype)
 items-list=Items und Liste
@@ -958,7 +958,7 @@ map-compact=Kompakte Map
 compact=Kompakt
 flat=Flach
 
-; SHOPS
+# SHOPS
 shop_kokiri=Kokiri Laden
 shop_goron=Goronia Laden
 shop_zora=Zora Reich Laden
@@ -968,7 +968,7 @@ shop_magic_child=Stadt Hyrule Magieladen
 shop_basar_adult=Kakariko Bazaar
 shop_magic_adult=Kakariko Magieladen
 
-; SHOPS - ITEMS
+# SHOPS - ITEMS
 heart_1=Herz
 arrows_10=Pfeile (10)
 arrows_30=Pfeile (30)
@@ -1001,7 +1001,7 @@ ice_trap=FOOL
 bomb_bag=Bombentasche
 special_deal=[SD]
 
-; SHOPS - TRADE
+# SHOPS - TRADE
 weird_egg=Seltsames Ei
 pocket_egg=Das Ei
 pocket_cucco=Kiki & Henni
@@ -1014,12 +1014,12 @@ frog=Glotzfrosch
 eyedrops=Augentropfen
 claim=Zertifikat
 
-; SHOPS - HEALTH
+# SHOPS - HEALTH
 heart_piece=Herzteil
 heart_container=Herzcontainer
 heart_double=Abwehrkräfte
 
-; SHOPS - BOTTLES
+# SHOPS - BOTTLES
 blue_fire=Blaue Flamme
 bugs=Käfer
 fairy_spirit=Rosa Fee
@@ -1031,14 +1031,14 @@ potion_red=Rotes Elixier
 potion_green=Grünes Elixier
 potion_blue=Blaues Elixier
 
-; SHOPS - RUPEES
+# SHOPS - RUPEES
 rupee_green=Grüner Rubin
 rupee_blue=Blauer Rubin
 rupee_red=Roter Rubin
 rupee_purple=Violetter Rubin
 rupee_yellow=Gelber Rubin
 
-; SHOPS - CATEGORIES
+# SHOPS - CATEGORIES
 shop_items=Items im Laden
 junk_items=Ramsch
 tracking_items=Karte & Kompass
@@ -1049,7 +1049,7 @@ trading_items=Tauschgeschäft
 equipment_items=Ausrüstung
 song_items=Lieder
 
-; OTHER
+# OTHER
 item=Item
 location=Ort
 back=Zurück
