@@ -18,7 +18,12 @@ Application:    Track-OOT
 - change all interface elements to adapt to new state structure
 
 # LANGUAGE
-- language file is now in java properties file format instead fo ini format
+- language file is now in java properties file format instead of ini format
+
+## VERSION 1.5.9
+
+### HOTFIX
+- added missing "or ignore keylogic" blocks around keys in Spirit Temple Bomb For Light Room Skulltula
 
 ---
 
