@@ -4,6 +4,13 @@ Application:    Track-OOT
 
 ---
 
+## VERSION 1.5.9
+
+### HOTFIX
+- added missing "or ignore keylogic" blocks around keys in Spirit Temple Bomb For Light Room Skulltula
+
+---
+
 ## VERSION 1.5.8
 
 ### HOTFIX

@@ -23321,14 +23321,6 @@
                                     "el": "warp_spirit"
                                 },
                                 {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "key_small_spirit"
-                                    },
-                                    "value": "5"
-                                },
-                                {
                                     "type": "or",
                                     "el": [
                                         {
@@ -23342,6 +23334,24 @@
                                         {
                                             "type": "item",
                                             "el": "boomerang"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "5"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
                                         }
                                     ]
                                 }
@@ -23377,6 +23387,11 @@
                                                     "el": "bombchu_logic"
                                                 }
                                             ]
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
                                         }
                                     ]
                                 },
@@ -23406,34 +23421,36 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "key_small_spirit"
-                                    },
-                                    "value": "1"
-                                },
-                                {
                                     "type": "item",
                                     "el": "ocarina"
                                 },
                                 {
                                     "type": "item",
                                     "el": "warp_spirit"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
                                 }
                             ]
                         },
                         {
                             "type": "and",
                             "el": [
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "key_small_spirit"
-                                    },
-                                    "value": "1"
-                                },
                                 {
                                     "type": "min",
                                     "el": {
@@ -23445,6 +23462,24 @@
                                 {
                                     "type": "mixin",
                                     "el": "can_become_adult"
+                                },
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "min",
+                                            "el": {
+                                                "type": "item",
+                                                "el": "key_small_spirit"
+                                            },
+                                            "value": "1"
+                                        },
+                                        {
+                                            "type": "option",
+                                            "el": "keysanity_small",
+                                            "value": "keysanity_small_ignore"
+                                        }
+                                    ]
                                 }
                             ]
                         }
