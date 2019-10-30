@@ -1,6 +1,6 @@
 import Template from "/deepJS/util/Template.js";
-import FileSystem from "/deepJS/util/FileSystem.js";
 import DateUtil from "/deepJS/util/DateUtil.js";
+import FileSystem from "/deepJS/util/FileSystem.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import Toast from "/deepJS/ui/Toast.js";
 import StateManager from "/script/storage/StateManager.js";
@@ -125,6 +125,16 @@ const TPL = new Template(`
             overflow-y: scroll;
             border: solid 2px #ccc;
         }
+        deep-option .date {
+            margin-left: 10px;
+            font-size: 0.8em;
+            opacity: 0.4;
+        }
+        deep-option .auto {
+            margin-right: 4px;
+            opacity: 0.4;
+            font-style: italic;
+        }
     </style>
     <div id="focus_catcher_top" tabindex="0"></div>
     <div id="window" role="dialog" aria-modal="true" aria-labelledby="title" aria-describedby="title">
@@ -136,7 +146,7 @@ const TPL = new Template(`
             <deep-listselect id="statelist"></deep-listselect>
         </div>
         <div id="footer">
-            <input type="text" id="statename" placeholder="Please select a state..." readonly />
+            <input type="hidden" id="statename" placeholder="Please select a state..." readonly />
             <button id="delete" class="button" title="delete state">
                 DELETE
             </button>
@@ -165,6 +175,14 @@ const Q_TAB = [
     'textarea:not([tabindex="-1"])',
     '[tabindex]:not([tabindex="-1"])'
 ].join(',');
+
+async function fillStates(list) {
+    list.innerHTML = "";
+    let states = await StateManager.getStates();
+    for (let state in states) {
+        list.append(createOption(states[state]));
+    }
+}
 
 export default class ManageWindow extends HTMLElement {
 
@@ -205,12 +223,7 @@ export default class ManageWindow extends HTMLElement {
             await StateManager.delete(stateName);
             Toast.show(`State "${stateName}" deleted.`);
             snm.value = "";
-            
-            let states = await StateManager.getNames();
-            lst.innerHTML = "";
-            for (let n of states) {
-                lst.append(createDeepOption(n));
-            }
+            await fillStates(lst);
         };
         // RENAME
         let rnm = this.shadowRoot.getElementById('rename');
@@ -240,12 +253,7 @@ export default class ManageWindow extends HTMLElement {
             await StateManager.rename(stateName, newName);
             Toast.show(`State "${stateName}" renamed to "${newName}".`);
             snm.value = "";
-            
-            let states = await StateManager.getNames();
-            lst.innerHTML = "";
-            for (let n of states) {
-                lst.append(createDeepOption(n));
-            }
+            await fillStates(lst);
         };
         // IMPORT
         let imp = this.shadowRoot.getElementById('import');
@@ -271,12 +279,7 @@ export default class ManageWindow extends HTMLElement {
             await StateManager.import(res.data);
             Toast.show(`State "${name}" imported.`);
             snm.value = "";
-            
-            let states = await StateManager.getNames();
-            lst.innerHTML = "";
-            for (let n of states) {
-                lst.append(createDeepOption(n));
-            }
+            await fillStates(lst);
         };
         // IMPORT STRING
         let ist = this.shadowRoot.getElementById('import-string');
@@ -311,12 +314,7 @@ export default class ManageWindow extends HTMLElement {
             await StateManager.import(data);
             Toast.show(`State "${name}" imported.`);
             snm.value = "";
-            
-            let states = await StateManager.getNames();
-            lst.innerHTML = "";
-            for (let n of states) {
-                lst.append(createDeepOption(n));
-            }
+            await fillStates(lst);
         };
         // EXPORT
         let exp = this.shadowRoot.getElementById('export');
@@ -332,12 +330,7 @@ export default class ManageWindow extends HTMLElement {
     }
 
     async show() {
-        let states = await StateManager.getNames();
-        let list = this.shadowRoot.getElementById('statelist');
-        list.innerHTML = "";
-        for (let name of states) {
-            list.append(createDeepOption(name));
-        }
+        await fillStates(this.shadowRoot.getElementById('statelist'));
         document.body.append(this);
         this.initialFocus();
     }
@@ -367,10 +360,23 @@ export default class ManageWindow extends HTMLElement {
 
 }
 
-function createDeepOption(value) {
+function createOption(state) {
     let opt = document.createElement('deep-option');
-    opt.value = value;
-    opt.innerHTML = value;
+    opt.value = state.name;
+    if (state.autosave) {
+        let ato = document.createElement("span");
+        ato.className = "auto";
+        ato.innerHTML = "[auto]";
+        opt.append(ato);
+    }
+    let nme = document.createElement("span");
+    nme.className = "name";
+    nme.innerHTML = state.name;
+    opt.append(nme);
+    let dte = document.createElement("span");
+    dte.className = "date";
+    dte.innerHTML = DateUtil.convert(new Date(state.timestamp), "D.M.Y h:m:s");
+    opt.append(dte);
     return opt;
 }
 

@@ -1,4 +1,5 @@
 import Template from "/deepJS/util/Template.js";
+import DateUtil from "/deepJS/util/DateUtil.js";
 import StateManager from "/script/storage/StateManager.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import Dialog from "/deepJS/ui/Dialog.js";
@@ -124,18 +125,28 @@ const TPL = new Template(`
             overflow-y: scroll;
             border: solid 2px #ccc;
         }
+        deep-option .date {
+            margin-left: 10px;
+            font-size: 0.8em;
+            opacity: 0.4;
+        }
+        deep-option .auto {
+            margin-right: 4px;
+            opacity: 0.4;
+            font-style: italic;
+        }
     </style>
     <div id="focus_catcher_top" tabindex="0"></div>
     <div id="window" role="dialog" aria-modal="true" aria-labelledby="title" aria-describedby="title">
         <div id="header">
-            <div id="title">Save State</div>
+            <div id="title">Load State</div>
             <button id="close" title="close">✖</button>
         </div>
         <div id="body">
             <deep-listselect id="statelist"></deep-listselect>
         </div>
         <div id="footer">
-            <input type="text" id="statename" placeholder="Please select a state..." readonly />
+            <input type="hidden" id="statename" placeholder="Please select a state..." readonly />
             <button id="submit" class="button" title="load state">
                 LOAD
             </button>
@@ -155,6 +166,14 @@ const Q_TAB = [
     'textarea:not([tabindex="-1"])',
     '[tabindex]:not([tabindex="-1"])'
 ].join(',');
+
+async function fillStates(list) {
+    list.innerHTML = "";
+    let states = await StateManager.getStates();
+    for (let state in states) {
+        list.append(createOption(states[state]));
+    }
+}
 
 export default class LoadWindow extends HTMLElement {
 
@@ -206,12 +225,7 @@ export default class LoadWindow extends HTMLElement {
     }
 
     async show() {
-        let states = await StateManager.getNames();
-        let list = this.shadowRoot.getElementById('statelist');
-        list.innerHTML = "";
-        for (let name of states) {
-            list.append(createDeepOption(name));
-        }
+        await fillStates(this.shadowRoot.getElementById('statelist'));
         document.body.append(this);
         this.initialFocus();
     }
@@ -241,10 +255,23 @@ export default class LoadWindow extends HTMLElement {
 
 }
 
-function createDeepOption(value) {
+function createOption(state) {
     let opt = document.createElement('deep-option');
-    opt.value = value;
-    opt.innerHTML = value;
+    opt.value = state.name;
+    if (state.autosave) {
+        let ato = document.createElement("span");
+        ato.className = "auto";
+        ato.innerHTML = "[auto]";
+        opt.append(ato);
+    }
+    let nme = document.createElement("span");
+    nme.className = "name";
+    nme.innerHTML = state.name;
+    opt.append(nme);
+    let dte = document.createElement("span");
+    dte.className = "date";
+    dte.innerHTML = DateUtil.convert(new Date(state.timestamp), "D.M.Y h:m:s");
+    opt.append(dte);
     return opt;
 }
 

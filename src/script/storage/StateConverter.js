@@ -4,6 +4,7 @@ const CONVERTER_FN = [];
 CONVERTER_FN[0] = function(state) {
     let res = {
         data: {},
+        autosave: false,
         timestamp: new Date(),
         version: 1,
         name: state.name || ""
@@ -42,6 +43,7 @@ class StateConverter {
         return {
             name: "",
             data: {},
+            autosave: false,
             timestamp: new Date(),
             version: TARGET_VERSION
         };

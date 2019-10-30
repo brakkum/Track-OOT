@@ -1,11 +1,11 @@
 import EventBus from "/deepJS/util/EventBus/EventBus.js";
 import DateUtil from "/deepJS/util/DateUtil.js";
+import Helper from "/deepJS/util/Helper.js";
 import LocalStorage from "/deepJS/storage/LocalStorage.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import StateConverter from "/script/storage/StateConverter.js";
 
 const PERSISTANCE_NAME = "savestate";
-const AUTOSAVE_PREFIX = "autosave_";
 const STATE_DIRTY = "state_dirty";
 const TITLE_PREFIX = "Track-OOT";
 
@@ -24,15 +24,32 @@ function sortStates(a, b) {
     }
 }
 
-async function autosave() {
-    let saves = LocalStorage.keys(AUTOSAVE_PREFIX);
-    saves.sort(sortStates);
-    while (saves.length >= autosaveMax) {
-        LocalStorage.delete(saves.pop());
+async function removeOverflowAutosaves() {
+    let saves = await TrackerStorage.StatesStorage.getAll();
+    let keys = Object.keys(saves);
+    let autoKeys = [];
+    for (let key of keys) {
+        if (saves[key].autosave) {
+            autoKeys.push(key);
+        }
     }
-    let tmp = Object.assign({}, state);
-    tmp.timestamp = new Date();
-    LocalStorage.set(`${AUTOSAVE_PREFIX}${DateUtil.convert(new Date(tmp.timestamp), "YMDhms")}`, tmp);
+    autoKeys.sort(sortStates);
+    while (autoKeys.length >= autosaveMax) {
+        let key = autoKeys.pop();
+        if (saves[key].autosave) {
+            await TrackerStorage.StatesStorage.delete(key);
+        }
+    }
+}
+
+async function autosave() {
+    if (LocalStorage.get(STATE_DIRTY, false)) {
+        await removeOverflowAutosaves();
+        let tmp = Object.assign({}, state);
+        tmp.timestamp = new Date();
+        tmp.autosave = true;
+        await TrackerStorage.StatesStorage.set(`${DateUtil.convert(new Date(tmp.timestamp), "YMDhms")}_${tmp.name}`, tmp);
+    }
     autosaveTimeout = setTimeout(autosave, autosaveTime);
 }
 
@@ -60,6 +77,7 @@ class StateStorage {
     async save(name = state.name) {
         state.timestamp = new Date();
         state.name = name;
+        state.autosave = false;
         LocalStorage.set(PERSISTANCE_NAME, state);
         await TrackerStorage.StatesStorage.set(name, state);
         if (autosaveTimeout != null) {
@@ -88,18 +106,18 @@ class StateStorage {
         }
     }
 
-    setAutosave(time, amount) {
+    async setAutosave(time, amount) {
         if (time > 0) {
             autosaveMax = amount;
             autosaveTime = time * 60000;
-            let saves = LocalStorage.keys(AUTOSAVE_PREFIX);
-            saves.sort(sortStates);
-            while (saves.length >= autosaveMax) {
-                LocalStorage.delete(saves.pop());
+            await removeOverflowAutosaves();
+            if (autosaveTimeout != null) {
+                clearTimeout(autosaveTimeout);
             }
             autosaveTimeout = setTimeout(autosave, autosaveTime);
         } else if (autosaveTimeout != null) {
             clearTimeout(autosaveTimeout);
+            autosaveTimeout = null;
         }
     }
 
