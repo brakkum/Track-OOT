@@ -14,8 +14,8 @@ const TPL = new Template(`
         :host {
             position: absolute;
             display: inline;
-            width: 16px;
-            height: 16px;
+            width: 32px;
+            height: 32px;
             box-sizing: border-box;
             -moz-user-select: none;
             user-select: none;
@@ -30,7 +30,7 @@ const TPL = new Template(`
             width: 100%;
             height: 100%;
             background-color: var(--location-status-unavailable-color, #000000);
-            border: solid 2px black;
+            border: solid 4px black;
             border-radius: 50%;
             cursor: pointer;
         }
@@ -46,8 +46,18 @@ const TPL = new Template(`
         #marker:hover + #tooltip {
             display: block;
         }
+        #tooltip {
+            padding: 5px 12px;
+            -moz-user-select: none;
+            user-select: none;
+            white-space: nowrap;
+            font-size: 30px;
+        }
         #tooltiparea {
             display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 46px;
         }
         #text {
             display: flex;
@@ -60,15 +70,15 @@ const TPL = new Template(`
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 2px;
+            padding: 0.1em;
             flex-shrink: 0;
-            margin-left: 5px;
-            border: 1px solid var(--navigation-background-color, #ffffff);
-            border-radius: 2px;
+            margin-left: 0.3em;
+            border: 0.1em solid var(--navigation-background-color, #ffffff);
+            border-radius: 0.3em;
         }
         #badge deep-icon {
-            width: 20px;
-            height: 20px;
+            width: 1em;
+            height: 1em;
         }
     </style>
     <div id="marker"></div>

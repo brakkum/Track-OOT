@@ -10,6 +10,11 @@ import "./POILocationSkulltula.js";
 import "./POIGossipstone.js";
 import "./POIArea.js";
 
+const ZOOM_MIN = 10;
+const ZOOM_MAX = 100;
+const ZOOM_DEF = 25;
+const ZOOM_SPD = 2;
+
 const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
@@ -35,8 +40,8 @@ const TPL = new Template(`
         }
         #map {
             display: block;
-            width: 820px;
-            height: 460px;
+            width: 1920px;
+            height: 1080px;
             flex-shrink: 0;
             background-repeat: no-repeat;
             background-size: 100%;
@@ -44,7 +49,7 @@ const TPL = new Template(`
             background-origin: content-box;
             background-image: url("/images/map.png");
             transform-origin: center;
-            transform: translate(calc(var(--map-offset-x, 0) * 1px), calc(var(--map-offset-y, 0) * 1px)) scale(var(--map-zoom, 1));
+            transform: translate(calc(var(--map-offset-x, 0) * 1px), calc(var(--map-offset-y, 0) * 1px)) scale(calc(var(--map-zoom, 100) / 100));
         }
         #map-settings {
             position: absolute;
@@ -134,13 +139,13 @@ const TPL = new Template(`
         }
     </style>
     <div id="map-wrapper">
-        <slot id="map" style="--map-zoom: 1;">
+        <slot id="map" style="--map-zoom: ${ZOOM_DEF};">
         </slot>
         <div id="map-settings">
             <div id="toggle-button">⇑</div>
             <div class="map-options">
                 <span class="slidetext">- / +</span>
-                <input type="range" min="50" max="300" value="100" class="slider" id="map-scale-slider">
+                <input type="range" min="${ZOOM_MIN}" max="${ZOOM_MAX}" value="${ZOOM_DEF}" class="slider" id="map-scale-slider">
             </div>
             <div class="map-options">
                 <label><input type="checkbox" id="map-fixed" /> Map fixed</label>
@@ -254,7 +259,7 @@ function mapContainBoundaries(target, parent) {
     let parW = parent.clientWidth;
     let parH = parent.clientHeight;
 
-    let zoom = parseFloat(target.style.getPropertyValue("--map-zoom") || 1);
+    let zoom = parseInt(target.style.getPropertyValue("--map-zoom") || 100) / 100;
 
     let vrtX = parseInt(target.style.getPropertyValue("--map-offset-x") || 0);
     let vrtY = parseInt(target.style.getPropertyValue("--map-offset-y") || 0);
@@ -290,7 +295,7 @@ function overviewSelect(event, map) {
     if (event.buttons === 1) {
         let evX = event.layerX;
         let evY = event.layerY;
-        let zoom = parseFloat(map.style.getPropertyValue("--map-zoom") || 1);
+        let zoom = parseInt(map.style.getPropertyValue("--map-zoom") || 100) / 100;
         let vrtW = map.clientWidth * zoom;
         let vrtH = map.clientHeight * zoom;
         map.style.setProperty("--map-offset-x", -(evX - 123) * (vrtW / 246));
@@ -313,10 +318,10 @@ class HTMLTrackerMap extends Panel {
         let mapfixed = this.shadowRoot.getElementById("map-fixed");
         this.addEventListener("wheel", function(event) {
             if (!mapfixed.checked) {
-                let zoom = parseFloat(map.style.getPropertyValue("--map-zoom") || 1);
-                const delta = Math.sign(event.deltaY) / 50;
-                zoom = Math.min(Math.max(0.5, zoom - delta), 3);
-                mapslide.value = zoom * 100;
+                let zoom = parseInt(map.style.getPropertyValue("--map-zoom") || 100);
+                const delta = Math.sign(event.deltaY) * ZOOM_SPD;
+                zoom = Math.min(Math.max(ZOOM_MIN, zoom - delta), ZOOM_MAX);
+                mapslide.value = zoom;
                 map.style.setProperty("--map-zoom", zoom);
                 mapContainBoundaries(map, map.parentNode);
             }
@@ -325,7 +330,7 @@ class HTMLTrackerMap extends Panel {
         });
         mapslide.addEventListener("input", function(event) {
             if (!mapfixed.checked) {
-                map.style.setProperty("--map-zoom", mapslide.value / 100);
+                map.style.setProperty("--map-zoom", mapslide.value);
                 mapContainBoundaries(map, map.parentNode);
             }
             event.preventDefault();

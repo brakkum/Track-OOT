@@ -14,10 +14,10 @@ const TPL = new Template(`
         :host {
             position: absolute;
             display: inline-flex;
-            width: 24px;
-            height: 24px;
+            width: 48px;
+            height: 48px;
             box-sizing: border-box;
-            transform: translate(-12px, -12px);
+            transform: translate(-24px, -24px);
         }
         :host(:hover) {
             z-index: 1000;
@@ -29,10 +29,10 @@ const TPL = new Template(`
             box-sizing: border-box;
             width: 100%;
             height: 100%;
-            border: solid 2px black;
+            border: solid 4px black;
             border-radius: 25%;
             color: black;
-            font-size: 0.8em;
+            font-size: 30px;
             font-weight: bold;
             cursor: pointer;
         }
@@ -55,14 +55,32 @@ const TPL = new Template(`
             display: block;
         }
         #tooltip {
-            padding: 10px;
+            padding: 5px 12px;
+            -moz-user-select: none;
+            user-select: none;
+            white-space: nowrap;
+            font-size: 30px;
+        }
+        #tooltiparea {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 46px;
+        }
+        #text {
+            display: flex;
+            align-items: center;
             -moz-user-select: none;
             user-select: none;
             white-space: nowrap;
         }
     </style>
     <div id="marker" class="unavailable"></div>
-    <deep-tooltip position="top" id="tooltip"></deep-tooltip>
+    <deep-tooltip position="top" id="tooltip">
+        <div id="tooltiparea">
+            <div id="text"></div>
+        </div>
+    </deep-tooltip>
 `);
 
 function translate(value) {
@@ -164,8 +182,10 @@ class HTMLTrackerPOIArea extends HTMLElement {
         if (oldValue != newValue) {
             this.update();
             if (name == "ref") {
+                let txt = this.shadowRoot.getElementById("text");
+                txt.innerHTML = I18n.translate(this.ref);
+
                 let tooltip = this.shadowRoot.getElementById("tooltip");
-                tooltip.innerHTML = I18n.translate(this.ref);
                 let left = parseFloat(this.style.left.slice(0, -1));
                 let top = parseFloat(this.style.top.slice(0, -1));
                 if (left < 30) {

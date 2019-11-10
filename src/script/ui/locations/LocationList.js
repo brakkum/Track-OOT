@@ -217,7 +217,7 @@ class HTMLTrackerLocationList extends Panel {
         });
         /* event bus */
         EVENT_BINDER.register("location_change", event => this.ref = event.data.name);
-        EVENT_BINDER.register(["chest", "skulltula", "item", "state", "settings"], locationUpdate.bind(this));
+        EVENT_BINDER.register(["chest", "skulltula", "item", "state", "settings", "logic"], locationUpdate.bind(this));
         EVENT_BINDER.register("dungeontype", dungeonTypeUpdate.bind(this));
     }
 

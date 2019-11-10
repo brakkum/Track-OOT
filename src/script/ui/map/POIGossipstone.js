@@ -15,8 +15,8 @@ const TPL = new Template(`
         :host {
             position: absolute;
             display: inline;
-            width: 16px;
-            height: 16px;
+            width: 32px;
+            height: 32px;
             box-sizing: border-box;
             -moz-user-select: none;
             user-select: none;
@@ -47,8 +47,18 @@ const TPL = new Template(`
         #marker:hover + #tooltip {
             display: block;
         }
+        #tooltip {
+            padding: 5px 12px;
+            -moz-user-select: none;
+            user-select: none;
+            white-space: nowrap;
+            font-size: 30px;
+        }
         #tooltiparea {
             display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 46px;
         }
         #text {
             display: inline-flex;
@@ -61,15 +71,15 @@ const TPL = new Template(`
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 2px;
+            padding: 4px;
             flex-shrink: 0;
-            margin-left: 5px;
-            border: 1px solid var(--navigation-background-color, #ffffff);
-            border-radius: 2px;
+            margin-left: 8px;
+            border: 4px solid var(--navigation-background-color, #ffffff);
+            border-radius: 8px;
         }
         #badge deep-icon {
-            width: 20px;
-            height: 20px;
+            width: 1em;
+            height: 1em;
         }
         #extra {
             display: inline-block;
