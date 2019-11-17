@@ -17,8 +17,13 @@ Application:    Track-OOT
 - added state converter class for iterative savestate conversion
 - change all interface elements to adapt to new state structure
 
-# LANGUAGE
+### LANGUAGE
 - language file is now in java properties file format instead of ini format
+
+### BUGFIXES
+- fixed adult Shooting Gallery to show correct time of day in badge
+
+---
 
 ## VERSION 1.5.9
 

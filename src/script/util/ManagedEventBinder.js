@@ -1,4 +1,4 @@
-import EventBus from "/deepJS/util/EventBus/EventBus.js";
+import EventBus from "/deepJS/util/events/EventBus.js";
 
 const INSTANCES = new Map;
 const ALLS = new Set;

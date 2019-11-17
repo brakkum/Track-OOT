@@ -1,7 +1,7 @@
 import Template from "/deepJS/util/Template.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import EventBus from "/deepJS/util/EventBus/EventBus.js";
+import EventBus from "/deepJS/util/events/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import I18n from "/script/util/I18n.js";
 import "./ShopItem.js";

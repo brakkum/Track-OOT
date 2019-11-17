@@ -1,7 +1,7 @@
 import GlobalData from "/script/storage/GlobalData.js";
 import MemoryStorage from "/deepJS/storage/MemoryStorage.js";
 import Template from "/deepJS/util/Template.js";
-import EventBus from "/deepJS/util/EventBus/EventBus.js";
+import EventBus from "/deepJS/util/events/EventBus.js";
 import Panel from "/deepJS/ui/layout/Panel.js";
 import "/deepJS/ui/selection/SwitchButton.js";
 import StateStorage from "/script/storage/StateStorage.js";

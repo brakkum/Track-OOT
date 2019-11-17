@@ -1,5 +1,5 @@
 import Template from "/deepJS/util/Template.js";
-import EventBus from "/deepJS/util/EventBus/EventBus.js";
+import EventBus from "/deepJS/util/events/EventBus.js";
 import "/deepJS/ui/selection/Option.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";

@@ -1,4 +1,4 @@
-import EventBus from "/deepJS/util/EventBus/EventBus.js";
+import EventBus from "/deepJS/util/events/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
 
 import GlobalData from "/script/storage/GlobalData.js";
@@ -14,7 +14,7 @@ import "/script/ui/LocationStatus.js";
 
     
     if ("SharedWorker" in window) {
-        let EventBusModuleShare = (await import("/deepJS/util/EventBus/EventBusModuleShare.js")).default;
+        let EventBusModuleShare = (await import("/deepJS/util/events/EventBusModuleShare.js")).default;
         EventBusModuleShare.mute("logic");
         EventBus.addModule(EventBusModuleShare);
     }

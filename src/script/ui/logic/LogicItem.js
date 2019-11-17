@@ -1,5 +1,5 @@
 import Template from "/deepJS/util/Template.js";
-import EventBus from "/deepJS/util/EventBus/EventBus.js";
+import EventBus from "/deepJS/util/events/EventBus.js";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import I18n from "/script/util/I18n.js";

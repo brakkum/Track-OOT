@@ -1,5 +1,5 @@
 import GlobalData from "/script/storage/GlobalData.js";
-import EventBus from "/deepJS/util/EventBus/EventBus.js";
+import EventBus from "/deepJS/util/events/EventBus.js";
 import Helper from "/deepJS/util/Helper.js";
 import SettingsStorage from "/script/storage/SettingsStorage.js";
 import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";

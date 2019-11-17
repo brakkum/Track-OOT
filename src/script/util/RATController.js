@@ -1,7 +1,7 @@
 
 import Dialog from "/deepJS/ui/Dialog.js";
-import EventBus from "/deepJS/util/EventBus/EventBus.js";
-import EventBusModuleGeneric from "/deepJS/util/EventBus/EventBusModuleGeneric.js";
+import EventBus from "/deepJS/util/events/EventBus.js";
+import EventBusModuleGeneric from "/deepJS/util/events/EventBusModuleGeneric.js";
 import DeepWebRAT from "/script/client/WebRAT.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
