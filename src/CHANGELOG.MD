@@ -4,6 +4,13 @@ Application:    Track-OOT
 
 ---
 
+## VERSION 1.5.10
+
+### HOTFIX
+- fixed biggoron logic for pre gerudo pass and pre king zora
+
+---
+
 ## VERSION 1.5.9
 
 ### HOTFIX
