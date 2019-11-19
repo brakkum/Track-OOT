@@ -4,7 +4,7 @@ Application:    Track-OOT
 
 ---
 
-## DEVELOPMENT
+## 1.6.0 (DEV)
 
 ### QOL - SAVESTATES
 - moved all savestate related nav options to "file" submenu
@@ -19,9 +19,14 @@ Application:    Track-OOT
 
 ### LANGUAGE
 - language file is now in java properties file format instead of ini format
+- rename trial setting and options
 
 ### BUGFIXES
 - fixed adult Shooting Gallery to show correct time of day in badge
+
+### UI IMPROVEMENTS
+- improvements to selection lists for better visualization of selected elements
+- switched the old version of the map with an hd version
 
 ---
 
