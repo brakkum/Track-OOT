@@ -32,17 +32,14 @@ function openDB() {
 			let settingsStore = db.createObjectStore("settings");
 			for (let i of Object.keys(localStorage)) {
 				if (i.startsWith("save\0")) {
-					let data = JSON.parse(localStorage.getItem(i));
-					let res = StateConverter.convert({
+					savestateStore.add({
 						name: i.split("\0")[1],
-						data: data
+						data: JSON.parse(localStorage.getItem(i))
 					});
-					savestateStore.add(res);
 					localStorage.removeItem(i);
 				}
 				if (i.startsWith("settings\0")) {
-					let data = JSON.parse(localStorage.getItem(i));
-					settingsStore.add(data, i.split("\0")[1]);
+					settingsStore.add(JSON.parse(localStorage.getItem(i)), i.split("\0")[1]);
 					localStorage.removeItem(i);
 				}
 			}

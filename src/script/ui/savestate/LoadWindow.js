@@ -270,7 +270,11 @@ function createOption(state) {
     opt.append(nme);
     let dte = document.createElement("span");
     dte.className = "date";
-    dte.innerHTML = DateUtil.convert(new Date(state.timestamp), "D.M.Y h:m:s");
+    if (!!state.timestamp) {
+        dte.innerHTML = DateUtil.convert(new Date(state.timestamp), "D.M.Y h:m:s");
+    } else {
+        dte.innerHTML = "no date";
+    }
     opt.append(dte);
     return opt;
 }
