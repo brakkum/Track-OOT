@@ -4,7 +4,7 @@ Application:    Track-OOT
 
 ***
 
-## 1.6.0
+## VERSION 1.6.0
 
 ### QOL - SAVESTATES
 - moved all savestate related nav options to "file" submenu
