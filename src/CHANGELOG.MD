@@ -2,7 +2,7 @@
 
 Application:    Track-OOT
 
----
+***
 
 ## 1.6.0 (DEV)
 
@@ -669,6 +669,6 @@ Application:    Track-OOT
 - rewrite logic system to compensate for unknown states of dungeons (v/mq)
 - new serviceworker added
 
----
+***
 
-## START OF CHANGELOG
+__START OF CHANGELOG__

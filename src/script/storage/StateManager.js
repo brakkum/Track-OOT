@@ -33,7 +33,7 @@ class StateManager {
     }
 
     async export(name) {
-        return StateConverter.convert(await TrackerStorage.StatesStorage.get(name, {}));
+        return await TrackerStorage.StatesStorage.get(name, {});
     }
 }
 

@@ -1,6 +1,5 @@
 import EventBus from "/deepJS/util/events/EventBus.js";
 import DateUtil from "/deepJS/util/DateUtil.js";
-import Helper from "/deepJS/util/Helper.js";
 import LocalStorage from "/deepJS/storage/LocalStorage.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import StateConverter from "/script/storage/StateConverter.js";
