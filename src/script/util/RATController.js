@@ -32,18 +32,16 @@ function getState() {
 }
 
 function setState(state) {
+    let current = StateStorage.getAll();
     for (let i in state) {
-        if (i === "shops_names") continue;
-        for (let j in state[i]) {
-            if (i === "extras" && j === "notes") continue;
-            if (!!state[i] && !!state[i][j]) {
-                StateStorage.write(`${i}.${j}`, state[i][j]);
+        if (i != "notes" && !i.startsWith("shops_names.")) {
+            if (!!current[i]) {
+                StateStorage.write(i, state[i]);
             } else {
-                StateStorage.remove(`${i}.${j}`);
+                StateStorage.remove(i);
             }
         }
     }
-    // TODO use eventbus plugin
     eventModule.trigger("state", StateStorage.getAll());
 }
 
