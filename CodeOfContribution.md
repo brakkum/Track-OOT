@@ -38,3 +38,10 @@
 12. check for the update to be build and released (can take a few minutes)
 13. if everything works, post the changelog in the discord channel `news`
 
+---
+
+### mirror all to github
+
+1. always pull first!
+2. clean branch-chache with `git remote update --prune`
+3. mirror the repository to github `git push --mirror git@github.com:ZidArgs/Track-OOT.git`
