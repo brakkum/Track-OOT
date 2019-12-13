@@ -33,13 +33,16 @@ function getState() {
 
 function setState(state) {
     let current = StateStorage.getAll();
-    for (let i in state) {
+    for (let i in current) {
         if (i != "notes" && !i.startsWith("shops_names.")) {
-            if (!!current[i]) {
-                StateStorage.write(i, state[i]);
-            } else {
+            if (!state.hasOwnProperty(i)) {
                 StateStorage.remove(i);
             }
+        }
+    }
+    for (let i in state) {
+        if (i != "notes" && !i.startsWith("shops_names.")) {
+            StateStorage.write(i, state[i]);
         }
     }
     eventModule.trigger("state", StateStorage.getAll());

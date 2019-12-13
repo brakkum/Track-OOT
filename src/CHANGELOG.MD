@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.6.3
+
+### BUGFIXES
+
+- fix how states get overwritten by RATController
+
+---
+
 ## VERSION 1.6.2
 
 ### BUGFIXES
