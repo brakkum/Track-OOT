@@ -21,14 +21,14 @@ const EMPTY_FN = function() {};
 let ON_ROOMUPDATE = EMPTY_FN;
 
 function getState() {
-    let state = StateStorage.getState();
-    if (!!state.extras && !!state.extras.notes) {
-        delete state.extras.notes;
+    let state = StateStorage.getAll();
+    let res = {};
+    for (let i in state) {
+        if (i != "notes" && !i.startsWith("shops_names.")) {
+            res[i] = state[i];
+        }
     }
-    if (!!state.shops_names) {
-        delete state.shops_names;
-    }
-    return state;
+    return res;
 }
 
 function setState(state) {
@@ -44,7 +44,7 @@ function setState(state) {
         }
     }
     // TODO use eventbus plugin
-    eventModule.trigger("state", StateStorage.getState());
+    eventModule.trigger("state", StateStorage.getAll());
 }
 
 function getClientNameList() {
