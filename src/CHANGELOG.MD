@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.6.2
+
+### BUGFIXES
+
+- fixed state recieve from RATController to adapt new state structure
+
+---
+
 ## VERSION 1.6.1
 
 ### BUGFIXES
