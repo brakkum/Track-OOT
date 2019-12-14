@@ -21,30 +21,31 @@ const EMPTY_FN = function() {};
 let ON_ROOMUPDATE = EMPTY_FN;
 
 function getState() {
-    let state = StateStorage.getState();
-    if (!!state.extras && !!state.extras.notes) {
-        delete state.extras.notes;
+    let state = StateStorage.getAll();
+    let res = {};
+    for (let i in state) {
+        if (i != "notes" && !i.startsWith("shops_names.")) {
+            res[i] = state[i];
+        }
     }
-    if (!!state.shops_names) {
-        delete state.shops_names;
-    }
-    return state;
+    return res;
 }
 
 function setState(state) {
-    for (let i in state) {
-        if (i === "shops_names") continue;
-        for (let j in state[i]) {
-            if (i === "extras" && j === "notes") continue;
-            if (!!state[i] && !!state[i][j]) {
-                StateStorage.write(`${i}.${j}`, state[i][j]);
-            } else {
-                StateStorage.remove(`${i}.${j}`);
+    let current = StateStorage.getAll();
+    for (let i in current) {
+        if (i != "notes" && !i.startsWith("shops_names.")) {
+            if (!state.hasOwnProperty(i)) {
+                StateStorage.remove(i);
             }
         }
     }
-    // TODO use eventbus plugin
-    eventModule.trigger("state", StateStorage.getState());
+    for (let i in state) {
+        if (i != "notes" && !i.startsWith("shops_names.")) {
+            StateStorage.write(i, state[i]);
+        }
+    }
+    eventModule.trigger("state", StateStorage.getAll());
 }
 
 function getClientNameList() {

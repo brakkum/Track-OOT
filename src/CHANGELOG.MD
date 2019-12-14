@@ -4,6 +4,31 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.6.3
+
+### BUGFIXES
+
+- fix how states get overwritten by RATController
+
+---
+
+## VERSION 1.6.2
+
+### BUGFIXES
+
+- fixed state recieve from RATController to adapt new state structure
+
+---
+
+## VERSION 1.6.1
+
+### BUGFIXES
+
+- added getAll function back to StateStorage
+- changed RATController to adapt new state structure
+
+---
+
 ## VERSION 1.6.0
 
 ### QOL - SAVESTATES

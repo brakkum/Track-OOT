@@ -161,6 +161,10 @@ class StateStorage {
         EventBus.trigger("state", {});
     }
 
+    getAll() {
+        return JSON.parse(JSON.stringify(state.data));
+    }
+
 }
 
 export default new StateStorage;
