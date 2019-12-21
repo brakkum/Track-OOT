@@ -242,8 +242,8 @@
         "tricks": {
             "type": "list",
             "values": [
-                "morpha_scale",
                 "fewer_tunic",
+                "one_way_pass",
                 "child_deadhand",
                 "man_on_roof",
                 "dodongo_staircase",
@@ -256,24 +256,116 @@
                 "spt_child_bridge_bombchu",
                 "windmill_hp",
                 "crater_bean_hp",
+                "zora_cucco",
                 "gtgmq_silver_hook",
                 "fot_east_vines_hook",
                 "fotmq_well_hook",
+                "fotmq_hallway_hook",
                 "dm_bomb_strength",
-                "wt_bosskey_noitem",
+                "wt_bosskey_iron_boots",
                 "forest_adult_gs_hover",
                 "sptmq_frozen_nofire",
+                "spt_shifting_wall_noitems",
+                "spt_main_room_gs_boomerang",
+                "sptmq_sunblock_gs_boomerang",
+                "jjmq_sot_boomerang",
+                "well_cage_gs_no_boomerang",
+                "wellmq_deadhand_key_boomerang",
+                "fit_fire_maze_skip",
+                "fitmq_fire_maze_skip",
+                "fitmq_climb_no_fire",
+                "fitmq_near_boss_nocrate",
+                "fitmq_boulder_side",
                 "fitmq_bosskey_nobow",
-                "zora_cucco",
-                "zora_hover"
+                "zora_1st_hp_no_hovers",
+                "wt_cracked_wall_hovers",
+                "shtmq_lower_nofire",
+                "mido_skip",
+                "fit_bossdoor_noitems",
+                "lab_hookshot",
+                "eyedrops_bolero",
+                "naked_wasteland",
+                "colossus_hill_GS_hookshot",
+                "dodongo_scarecrow_armos",
+                "kakariko_gs_with_jumpslash",
+                "lake_lab_gs_jumpslash",
+                "sptmq_lower_no_firearrows",
+                "spt_map_bow",
+                "spt_sunblock_torch_bow",
+                "shtmq_torch_bow",
+                "fotmq_ne_ledge_hovers",
+                "wt_boss_key_hovers",
+                "wt_platform_gs_hookshot",
+                "wt_serpent_gs_noirons",
+                "wt_entry_noirons",
+                "dm_upper_gs_no_hammer",
+                "dm_lower_gs_hookshot",
+                "dm_lower_gs_bean",
+                "dmc_mash_hammer",
+                "zora_hover",
+                "shadow_temple_river_statue_bombchu",
+                "linkthegoron_dins",
+                "fit_gs_nosot",
+                "fit_climb_nostrength",
+                "fitmq_lava_room_bombable_nohookshot",
+                "light_trial_mq_nohookshot",
+                "icmq_scarecrow_gs_noitems",
+                "reverse_wasteland",
+                "zora_2nd_hp_no_hovers",
+                "sht_mq_spinner_longshot",
+                "lost_woods_stage_skulltula_no_beans",
+                "graveyard_poh_boomerang",
+                "dm_soil_no_explosives",
+                "gtg_rupees_nohookshot",
+                "gtgmq_rupees_nohookshot",
+                "gtg_ledge_hovers",
+                "wt_cracked_noitems",
+                "wt_basement_jump",
+                "wt_torch_longshot",
+                "wt_bosskey_jumpdive",
+                "wt_dragon_jump_dive",
+                "wt_dragon_bombchu",
+                "goron_left_maze_hovers",
+                "deku_tree_B1_skip",
+                "spt_adult_switch_bombs",
+                "forest_temple_floormaster_strength",
+                "forest_temple_pierre_early",
+                "dodongomq_early_bombbag_child",
+                "dodongo_child_slingshot_skip",
+                "hotrodder_child_strength",
+                "goron_pot_bombchu",
+                "gerudo_crate_hovers",
+                "spirit_trial_without_hookshot",
+                "shadow_temple_stone_umbrella_skip",
+                "wt_central_bow_nothing",
+                "fit_east_noscarecrow",
+                "shadow_temple_entry_fire_arrow"
             ],
             "default": [],
             "logic_editor_visible": false
         },
         "known_sequence_breaks": {
             "type": "list",
-            "values": [],
-            "default": [],
+            "values": [
+                "ground_jump",
+                "invisible_ocarina",
+                "navi_dive",
+                "underwater_chests_openable",
+                "lost_woods_allow_pedestal_clip",
+                "well_entry_isg",
+                "shadow_temple_entry_hookshot",
+                "shadow_temple_clip",
+                "dodongo_open_bombchu",
+                "dodongo_bombchu",
+                "valley_hookshot",
+                "gtg_clip",
+                "gtg_hammer_switch_nohammer",
+                "spt_bosskey_nohookshot",
+                "lab_hovers",
+                "morpha_scale"                
+            ],
+            "default": [
+            ],
             "logic_editor_visible": false
         },
         "lens_required": {
@@ -285,101 +377,461 @@
                 "lens_required_default"
             ]
         },
-        "morpha_scale": {
-            "type": "hidden",
-            "default": false
-        },
         "fewer_tunic": {
+			"type": "hidden",
+			"default": false
+		},
+		"one_way_pass": {
+			"type": "hidden",
+			"default": false
+		},
+		"child_deadhand": {
+			"type": "hidden",
+			"default": false
+		},
+		"man_on_roof": {
+			"type": "hidden",
+			"default": false
+		},
+		"dodongo_staircase": {
+			"type": "hidden",
+			"default": false
+		},
+		"dodongo_spike": {
+			"type": "hidden",
+			"default": false
+		},
+		"gerudo_kitchen": {
+			"type": "hidden",
+			"default": false
+		},
+		"deku_vine_gs": {
+			"type": "hidden",
+			"default": false
+		},
+		"hammer_through_wall": {
+			"type": "hidden",
+			"default": false
+		},
+		"botw_strength_sticks": {
+			"type": "hidden",
+			"default": false
+		},
+		"fotmq_puzzle_bombchu": {
+			"type": "hidden",
+			"default": false
+		},
+		"spt_child_bridge_bombchu": {
+			"type": "hidden",
+			"default": false
+		},
+		"windmill_hp": {
+			"type": "hidden",
+			"default": false
+		},
+		"crater_bean_hp": {
+			"type": "hidden",
+			"default": false
+		},
+		"zora_cucco": {
+			"type": "hidden",
+			"default": false
+		},
+		"gtgmq_silver_hook": {
+			"type": "hidden",
+			"default": false
+		},
+		"fot_east_vines_hook": {
+			"type": "hidden",
+			"default": false
+		},
+		"fotmq_well_hook": {
+			"type": "hidden",
+			"default": false
+		},
+		"fotmq_hallway_hook": {
+			"type": "hidden",
+			"default": false
+		},
+		"dm_bomb_strength": {
+			"type": "hidden",
+			"default": false
+		},
+		"wt_bosskey_iron_boots": {
+			"type": "hidden",
+			"default": false
+		},
+		"forest_adult_gs_hover": {
+			"type": "hidden",
+			"default": false
+		},
+		"sptmq_frozen_nofire": {
+			"type": "hidden",
+			"default": false
+		},
+		"spt_shifting_wall_noitems": {
+			"type": "hidden",
+			"default": false
+		},
+		"spt_main_room_gs_boomerang": {
+			"type": "hidden",
+			"default": false
+		},
+		"sptmq_sunblock_gs_boomerang": {
+			"type": "hidden",
+			"default": false
+		},
+		"jjmq_sot_boomerang": {
+			"type": "hidden",
+			"default": false
+		},
+		"well_cage_gs_no_boomerang": {
+			"type": "hidden",
+			"default": false
+		},
+		"wellmq_deadhand_key_boomerang": {
+			"type": "hidden",
+			"default": false
+		},
+		"fit_fire_maze_skip": {
+			"type": "hidden",
+			"default": false
+		},
+		"fitmq_fire_maze_skip": {
+			"type": "hidden",
+			"default": false
+		},
+		"fitmq_climb_no_fire": {
+			"type": "hidden",
+			"default": false
+		},
+		"fitmq_near_boss_nocrate": {
+			"type": "hidden",
+			"default": false
+		},
+		"fitmq_boulder_side": {
+			"type": "hidden",
+			"default": false
+		},
+		"fitmq_bosskey_nobow": {
+			"type": "hidden",
+			"default": false
+		},
+		"zora_1st_hp_no_hovers": {
+			"type": "hidden",
+			"default": false
+		},
+		"wt_cracked_wall_hovers": {
+			"type": "hidden",
+			"default": false
+		},
+		"shtmq_lower_nofire": {
+			"type": "hidden",
+			"default": false
+		},
+		"mido_skip": {
+			"type": "hidden",
+			"default": false
+		},
+		"fit_bossdoor_noitems": {
+			"type": "hidden",
+			"default": false
+		},
+		"lab_hookshot": {
+			"type": "hidden",
+			"default": false
+		},
+		"eyedrops_bolero": {
+			"type": "hidden",
+			"default": false
+		},
+		"naked_wasteland": {
+			"type": "hidden",
+			"default": false
+		},
+		"colossus_hill_GS_hookshot": {
+			"type": "hidden",
+			"default": false
+		},
+		"dodongo_scarecrow_armos": {
+			"type": "hidden",
+			"default": false
+		},
+		"kakariko_gs_with_jumpslash": {
+			"type": "hidden",
+			"default": false
+		},
+		"lake_lab_gs_jumpslash": {
+			"type": "hidden",
+			"default": false
+		},
+		"sptmq_lower_no_firearrows": {
+			"type": "hidden",
+			"default": false
+		},
+		"spt_map_bow": {
+			"type": "hidden",
+			"default": false
+		},
+		"spt_sunblock_torch_bow": {
+			"type": "hidden",
+			"default": false
+		},
+		"shtmq_torch_bow": {
+			"type": "hidden",
+			"default": false
+		},
+		"fotmq_ne_ledge_hovers": {
+			"type": "hidden",
+			"default": false
+		},
+		"wt_boss_key_hovers": {
+			"type": "hidden",
+			"default": false
+		},
+		"wt_platform_gs_hookshot": {
+			"type": "hidden",
+			"default": false
+		},
+		"wt_serpent_gs_noirons": {
+			"type": "hidden",
+			"default": false
+		},
+		"wt_entry_noirons": {
+			"type": "hidden",
+			"default": false
+		},
+		"dm_upper_gs_no_hammer": {
+			"type": "hidden",
+			"default": false
+		},
+		"dm_lower_gs_hookshot": {
+			"type": "hidden",
+			"default": false
+		},
+		"dm_lower_gs_bean": {
+			"type": "hidden",
+			"default": false
+		},
+		"dmc_mash_hammer": {
+			"type": "hidden",
+			"default": false
+		},
+		"zora_hover": {
+			"type": "hidden",
+			"default": false
+		},
+		"shadow_temple_river_statue_bombchu": {
+			"type": "hidden",
+			"default": false
+		},
+		"linkthegoron_dins": {
+			"type": "hidden",
+			"default": false
+		},
+		"fit_gs_nosot": {
+			"type": "hidden",
+			"default": false
+		},
+		"fit_climb_nostrength": {
+			"type": "hidden",
+			"default": false
+		},
+		"fitmq_lava_room_bombable_nohookshot": {
+			"type": "hidden",
+			"default": false
+		},
+		"light_trial_mq_nohookshot": {
+			"type": "hidden",
+			"default": false
+		},
+		"icmq_scarecrow_gs_noitems": {
+			"type": "hidden",
+			"default": false
+		},
+		"reverse_wasteland": {
+			"type": "hidden",
+			"default": false
+		},
+		"zora_2nd_hp_no_hovers": {
+			"type": "hidden",
+			"default": false
+		},
+		"sht_mq_spinner_longshot": {
+			"type": "hidden",
+			"default": false
+		},
+		"lost_woods_stage_skulltula_no_beans": {
+			"type": "hidden",
+			"default": false
+		},
+		"graveyard_poh_boomerang": {
+			"type": "hidden",
+			"default": false
+		},
+		"dm_soil_no_explosives": {
+			"type": "hidden",
+			"default": false
+		},
+		"gtg_rupees_nohookshot": {
+			"type": "hidden",
+			"default": false
+		},
+		"gtgmq_rupees_nohookshot": {
+			"type": "hidden",
+			"default": false
+		},
+		"gtg_ledge_hovers": {
+			"type": "hidden",
+			"default": false
+		},
+		"wt_cracked_noitems": {
+			"type": "hidden",
+			"default": false
+		},
+		"wt_basement_jump": {
+			"type": "hidden",
+			"default": false
+		},
+		"wt_torch_longshot": {
+			"type": "hidden",
+			"default": false
+		},
+		"wt_bosskey_jumpdive": {
+			"type": "hidden",
+			"default": false
+		},
+		"wt_dragon_jump_dive": {
+			"type": "hidden",
+			"default": false
+		},
+		"wt_dragon_bombchu": {
+			"type": "hidden",
+			"default": false
+		},
+		"goron_left_maze_hovers": {
+			"type": "hidden",
+			"default": false
+		},
+		"deku_tree_B1_skip": {
+			"type": "hidden",
+			"default": false
+		},
+		"spt_adult_switch_bombs": {
+			"type": "hidden",
+			"default": false
+		},
+		"forest_temple_floormaster_strength": {
+			"type": "hidden",
+			"default": false
+		},
+		"forest_temple_pierre_early": {
+			"type": "hidden",
+			"default": false
+		},
+		"dodongomq_early_bombbag_child": {
+			"type": "hidden",
+			"default": false
+		},
+		"dodongo_child_slingshot_skip": {
+			"type": "hidden",
+			"default": false
+		},
+		"hotrodder_child_strength": {
+			"type": "hidden",
+			"default": false
+		},
+		"goron_pot_bombchu": {
+			"type": "hidden",
+			"default": false
+		},
+		"gerudo_crate_hovers": {
+			"type": "hidden",
+			"default": false
+		},
+		"spirit_trial_without_hookshot": {
+			"type": "hidden",
+			"default": false
+		},
+		"shadow_temple_stone_umbrella_skip": {
+			"type": "hidden",
+			"default": false
+		},
+		"wt_central_bow_nothing": {
+			"type": "hidden",
+			"default": false
+		},
+		"fit_east_noscarecrow": {
+			"type": "hidden",
+			"default": false
+		},
+		"shadow_temple_entry_fire_arrow": {
+			"type": "hidden",
+			"default": false
+        },
+        "ground_jump": {
             "type": "hidden",
             "default": false
         },
-        "child_deadhand": {
-            "type": "hidden",
-            "default": false
+		"invisible_ocarina": {
+			"type": "hidden",
+			"default": false
+		},
+		"navi_dive": {
+			"type": "hidden",
+			"default": false
+		},
+		"underwater_chests_openable": {
+			"type": "hidden",
+			"default": false
+		},
+		"lost_woods_allow_pedestal_clip": {
+			"type": "hidden",
+			"default": false
+		},
+		"well_entry_isg": {
+			"type": "hidden",
+			"default": false
+		},
+		"shadow_temple_entry_hookshot": {
+			"type": "hidden",
+			"default": false
+		},
+		"shadow_temple_clip": {
+			"type": "hidden",
+			"default": false
         },
-        "man_on_roof": {
-            "type": "hidden",
-            "default": false
+        "dodongo_open_bombchu": {
+			"type": "hidden",
+			"default": false
         },
-        "dodongo_staircase": {
-            "type": "hidden",
-            "default": false
-        },
-        "dodongo_spike": {
-            "type": "hidden",
-            "default": false
-        },
-        "gerudo_kitchen": {
-            "type": "hidden",
-            "default": false
-        },
-        "deku_vine_gs": {
-            "type": "hidden",
-            "default": false
-        },
-        "hammer_through_wall": {
-            "type": "hidden",
-            "default": false
-        },
-        "botw_strength_sticks": {
-            "type": "hidden",
-            "default": false
-        },
-        "fotmq_puzzle_bombchu": {
-            "type": "hidden",
-            "default": false
-        },
-        "spt_child_bridge_bombchu": {
-            "type": "hidden",
-            "default": false
-        },
-        "windmill_hp": {
-            "type": "hidden",
-            "default": false
-        },
-        "crater_bean_hp": {
-            "type": "hidden",
-            "default": false
-        },
-        "gtgmq_silver_hook": {
-            "type": "hidden",
-            "default": false
-        },
-        "fot_east_vines_hook": {
-            "type": "hidden",
-            "default": false
-        },
-        "fotmq_well_hook": {
-            "type": "hidden",
-            "default": false
-        },
-        "dm_bomb_strength": {
-            "type": "hidden",
-            "default": false
-        },
-        "wt_bosskey_noitem": {
-            "type": "hidden",
-            "default": false
-        },
-        "forest_adult_gs_hover": {
-            "type": "hidden",
-            "default": false
-        },
-        "sptmq_frozen_nofire": {
-            "type": "hidden",
-            "default": false
-        },
-        "fitmq_bosskey_nobow": {
-            "type": "hidden",
-            "default": false
-        },
-        "zora_cucco": {
-            "type": "hidden",
-            "default": false
-        },
-        "zora_hover": {
-            "type": "hidden",
-            "default": false
-        }
+		"dodongo_bombchu": {
+			"type": "hidden",
+			"default": false
+		},
+		"valley_hookshot": {
+			"type": "hidden",
+			"default": false
+		},
+		"gtg_clip": {
+			"type": "hidden",
+			"default": false
+		},
+		"gtg_hammer_switch_nohammer": {
+			"type": "hidden",
+			"default": false
+		},
+		"spt_bosskey_nohookshot": {
+			"type": "hidden",
+			"default": false
+		},
+		"lab_hovers": {
+			"type": "hidden",
+			"default": false
+		},
+		"morpha_scale": {
+			"type": "hidden",
+			"default": false
+		}
     }
 }
