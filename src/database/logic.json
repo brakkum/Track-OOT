@@ -7079,16 +7079,43 @@
                     "el": "boots_hover"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
-                },
-                {
-                    "type": "item",
-                    "el": "hookshot"
-                },
-                {
                     "type": "item",
                     "el": "song_zelda"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_shadow"
+                                    },
+                                    "value": "4"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "shadow_temple_clip"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "type": "mixin",
@@ -7103,7 +7130,7 @@
                                 "type": "item",
                                 "el": "key_small_shadow"
                             },
-                            "value": "4"
+                            "value": "5"
                         },
                         {
                             "type": "option",
@@ -7126,12 +7153,39 @@
                     "el": "boots_hover"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
-                },
-                {
-                    "type": "item",
-                    "el": "hookshot"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_shadow"
+                                    },
+                                    "value": "5"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "shadow_temple_clip"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "type": "item",
@@ -7173,12 +7227,39 @@
                     "el": "boots_hover"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
-                },
-                {
-                    "type": "item",
-                    "el": "hookshot"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_shadow"
+                                    },
+                                    "value": "5"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "shadow_temple_clip"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "type": "item",
@@ -7220,8 +7301,39 @@
                     "el": "boots_hover"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_shadow"
+                                    },
+                                    "value": "5"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "shadow_temple_clip"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "type": "item",
@@ -7243,17 +7355,8 @@
                             "value": "2"
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "bow"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "hookshot"
-                                }
-                            ]
+                            "type": "item",
+                            "el": "bow"
                         },
                         {
                             "type": "and",
@@ -25170,12 +25273,39 @@
                     "el": "boots_hover"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
-                },
-                {
-                    "type": "item",
-                    "el": "hookshot"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_shadow"
+                                    },
+                                    "value": "5"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "shadow_temple_clip"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "type": "or",
