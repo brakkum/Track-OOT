@@ -59,7 +59,7 @@ function onSettingsEvent(event) {
             if (i === "settings") {
                 SettingsStorage.set(j, event.data[i][j]);
             } else {
-                if (j === "tricks" || j === "trials") {
+                if (j === "tricks" || j === "trials" || j === "known_sequence_breaks") {
                     let v = event.data[i][j];
                     if (v.length > 0) {
                         v = new Set(v.split(","));
