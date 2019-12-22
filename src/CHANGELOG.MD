@@ -4,6 +4,15 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.0 (DEV)
+
+### MERGED PULL REQUEST (pidgezero_one)
+
+- sequence breaks added
+- skips extended
+
+---
+
 ## VERSION 1.6.3
 
 ### BUGFIXES

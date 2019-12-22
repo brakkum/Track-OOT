@@ -48,7 +48,8 @@ Big thanks to:<br>
 <i class="thanks-name">TestRunner</i> for creating the original tracker.<br>
 <i class="thanks-name">Scatter</i> for building a logic compendium.<br>
 <i class="thanks-name">fraggerman</i> for helping with the logic.<br>
-<i class="thanks-name">Luigimeansme</i> for helping with adding Master Quest.
+<i class="thanks-name">Luigimeansme</i> for helping with adding Master Quest.<br>
+<i class="thanks-name">pidgezero_one</i> for adding sequence breaks and extending skips.
 </div>
 `;
 
