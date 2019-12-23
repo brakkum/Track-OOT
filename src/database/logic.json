@@ -11560,19 +11560,6 @@
                             "el": "has_explosives"
                         },
                         {
-                            "type": "or",
-                            "el": [
-                                {
-                                    "type": "item",
-                                    "el": "stick"
-                                },
-                                {
-                                    "type": "item",
-                                    "el": "sword_kokiri"
-                                }
-                            ]
-                        },
-                        {
                             "type": "mixin",
                             "el": "is_currently_child"
                         }
