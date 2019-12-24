@@ -2375,8 +2375,8 @@
                     "el": "can_leave_forest"
                 },
                 {
-                    "type": "mixin",
-                    "el": "can_use_ocarina"
+                    "type": "item",
+                    "el": "ocarina"
                 },
                 {
                     "type": "min",
@@ -11503,8 +11503,21 @@
                     "type": "and",
                     "el": [
                         {
-                            "type": "item",
-                            "el": "hammer"
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hammer"
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "can_become_adult"
                         },
                         {
                             "type": "or",
@@ -11540,8 +11553,17 @@
                     ]
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "is_currently_child"
+                        }
+                    ]
                 }
             ]
         },
@@ -12641,8 +12663,8 @@
                     "el": "can_become_adult"
                 },
                 {
-                    "type": "mixin",
-                    "el": "can_use_ocarina"
+                    "type": "item",
+                    "el": "ocarina"
                 }
             ]
         },
