@@ -13,6 +13,14 @@ Application:    Track-OOT
 
 ---
 
+## VERSION 1.6.4
+
+### BUGFIXES
+
+- fixed wording for open gerudo setting
+
+---
+
 ## VERSION 1.6.3
 
 ### BUGFIXES
