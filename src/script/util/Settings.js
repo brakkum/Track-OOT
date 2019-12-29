@@ -48,7 +48,8 @@ Big thanks to:<br>
 <i class="thanks-name">TestRunner</i> for creating the original tracker.<br>
 <i class="thanks-name">Scatter</i> for building a logic compendium.<br>
 <i class="thanks-name">fraggerman</i> for helping with the logic.<br>
-<i class="thanks-name">Luigimeansme</i> for helping with adding Master Quest.
+<i class="thanks-name">Luigimeansme</i> for helping with adding Master Quest.<br>
+<i class="thanks-name">pidgezero_one</i> for adding sequence breaks and extending skips.
 </div>
 `;
 
@@ -59,7 +60,7 @@ function onSettingsEvent(event) {
             if (i === "settings") {
                 SettingsStorage.set(j, event.data[i][j]);
             } else {
-                if (j === "tricks" || j === "trials") {
+                if (j === "tricks" || j === "trials" || j === "known_sequence_breaks") {
                     let v = event.data[i][j];
                     if (v.length > 0) {
                         v = new Set(v.split(","));
