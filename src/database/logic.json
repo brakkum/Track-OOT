@@ -6996,12 +6996,39 @@
                     "el": "boots_hover"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
-                },
-                {
-                    "type": "item",
-                    "el": "hookshot"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_shadow"
+                                    },
+                                    "value": "5"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "shadow_temple_clip"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "type": "or",
@@ -7035,12 +7062,39 @@
                     "el": "boots_hover"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
-                },
-                {
-                    "type": "item",
-                    "el": "hookshot"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_shadow"
+                                    },
+                                    "value": "5"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "shadow_temple_clip"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "type": "or",
@@ -25340,8 +25394,30 @@
                     "el": "boots_hover"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_shadow"
+                                    },
+                                    "value": "5"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "shadow_temple_clip"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        }
+                    ]
                 },
                 {
                     "type": "min",
