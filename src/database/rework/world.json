@@ -1,34 +1,13 @@
 {
     "locations": {
-        "location.kokiri.kokiri_sword": {
+        "location.kokiri.sword": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.kokiri.midos_house_0": {
-            "type": "chest",
-            "time": "always",
-            "child": true,
-            "adult": true,
-            "visible": true
-        },
-        "location.kokiri.midos_house_1": {
-            "type": "chest",
-            "time": "always",
-            "child": true,
-            "adult": true,
-            "visible": true
-        },
-        "location.kokiri.midos_house_2": {
-            "type": "chest",
-            "time": "always",
-            "child": true,
-            "adult": true,
-            "visible": true
-        },
-        "location.kokiri.midos_house_3": {
+        "location.kokiri.midos_house": {
             "type": "chest",
             "time": "always",
             "child": true,
@@ -49,28 +28,28 @@
             "adult": true,
             "visible": true
         },
-        "location.kokiri.kokiri_storm_grotto": {
+        "location.kokiri.storm_grotto": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.kokiri.kokiri_know_it_all_brothers_child_night": {
+        "location.kokiri.know_it_all_brothers_child_night": {
             "type": "skulltula",
             "time": "night",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.kokiri.kokiri_twins_adult_night": {
+        "location.kokiri.twins_adult_night": {
             "type": "skulltula",
             "time": "night",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.kokiri.kokiri_beanspot_near_shop_child": {
+        "location.kokiri.beanspot_near_shop_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
@@ -105,70 +84,70 @@
             "adult": true,
             "visible": true
         },
-        "location.desert.desert_chest": {
+        "location.desert.chest": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.desert.desert_warp_spirit": {
+        "location.desert.warp_spirit": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.desert.desert_colossus_fairy": {
+        "location.desert.colossus_fairy": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.desert.desert_colossus_grotto_salesman_1": {
+        "location.desert.colossus_grotto_salesman_1": {
             "type": "scrub",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.desert.desert_colossus_grotto_salesman_2": {
+        "location.desert.colossus_grotto_salesman_2": {
             "type": "scrub",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.desert.desert_colossus_hp": {
+        "location.desert.colossus_hp": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.desert.desert_fortress_adult": {
+        "location.desert.fortress_adult": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.desert.desert_palm_tree_adult_night": {
+        "location.desert.palm_tree_adult_night": {
             "type": "skulltula",
             "time": "night",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.desert.desert_magic_bean_adult_night": {
+        "location.desert.magic_bean_adult_night": {
             "type": "skulltula",
             "time": "night",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.desert.desert_beanspot_child": {
+        "location.desert.beanspot_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
@@ -210,70 +189,70 @@
             "adult": true,
             "visible": true
         },
-        "location.river.zora_river_grotto": {
+        "location.river.zora_grotto": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.river.zora_river_grotto_salesman_1": {
+        "location.river.zora_grotto_salesman_1": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.river.zora_river_grotto_salesman_2": {
+        "location.river.zora_grotto_salesman_2": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.river.zora_river_bean_salesman": {
+        "location.river.zora_bean_salesman": {
             "type": "bean",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": "option.beansanity"
         },
-        "location.river.zora_river_tree_child": {
+        "location.river.zora_tree_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.river.zora_river_ladder_child_night": {
+        "location.river.zora_ladder_child_night": {
             "type": "skulltula",
             "time": "night",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.river.zora_river_wall1_adult_night": {
+        "location.river.zora_wall1_adult_night": {
             "type": "skulltula",
             "time": "night",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.river.zora_river_wall2_adult_night": {
+        "location.river.zora_wall2_adult_night": {
             "type": "skulltula",
             "time": "night",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.river.gossip_river_plateau": {
+        "location.river.gossip_plateau": {
             "type": "gossipstone",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.river.gossip_river_waterfall": {
+        "location.river.gossip_waterfall": {
             "type": "gossipstone",
             "time": "always",
             "child": true,
@@ -462,28 +441,28 @@
             "adult": false,
             "visible": true
         },
-        "location.lake.lake_sun": {
+        "location.lake.sun": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.lake.lake_grave_grotto_salesman_1": {
+        "location.lake.grave_grotto_salesman_1": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.lake.lake_grave_grotto_salesman_2": {
+        "location.lake.grave_grotto_salesman_2": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.lake.lake_grave_grotto_salesman_3": {
+        "location.lake.grave_grotto_salesman_3": {
             "type": "scrub",
             "time": "always",
             "child": true,
@@ -518,56 +497,56 @@
             "adult": true,
             "visible": true
         },
-        "location.lake.lake_near_firearrows_child_night": {
+        "location.lake.near_firearrows_child_night": {
             "type": "skulltula",
             "time": "night",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.lake.lake_behind_lab_child_night": {
+        "location.lake.behind_lab_child_night": {
             "type": "skulltula",
             "time": "night",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.lake.lake_beanspot_child": {
+        "location.lake.beanspot_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.lake.lake_dead_tree_adult_night": {
+        "location.lake.dead_tree_adult_night": {
             "type": "skulltula",
             "time": "night",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.lake.lake_lab_box_adult": {
+        "location.lake.lab_box_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.lake.gossip_lake_waterfall": {
+        "location.lake.gossip_waterfall": {
             "type": "gossipstone",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.lake.gossip_lake_southeast": {
+        "location.lake.gossip_southeast": {
             "type": "gossipstone",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.lake.gossip_lake_southwest": {
+        "location.lake.gossip_southwest": {
             "type": "gossipstone",
             "time": "always",
             "child": true,
@@ -588,301 +567,301 @@
             "adult": false,
             "visible": true
         },
-        "location.lonlon.lonlon_hp": {
+        "location.lonlon.hp": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.lonlon.lonlon_grotto_deku_salesman_1": {
+        "location.lonlon.grotto_deku_salesman_1": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": "option.scrubsanity"
         },
-        "location.lonlon.lonlon_grotto_deku_salesman_2": {
+        "location.lonlon.grotto_deku_salesman_2": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": "option.scrubsanity"
         },
-        "location.lonlon.lonlon_grotto_deku_salesman_3": {
+        "location.lonlon.grotto_deku_salesman_3": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": "option.scrubsanity"
         },
-        "location.lonlon.lonlon_cow_tower_1": {
+        "location.lonlon.cow_tower_1": {
             "type": "cow",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.cowsanity"
         },
-        "location.lonlon.lonlon_cow_tower_2": {
+        "location.lonlon.cow_tower_2": {
             "type": "cow",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.cowsanity"
         },
-        "location.lonlon.lonlon_cow_stables_1": {
+        "location.lonlon.cow_stables_1": {
             "type": "cow",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.cowsanity"
         },
-        "location.lonlon.lonlon_cow_stables_2": {
+        "location.lonlon.cow_stables_2": {
             "type": "cow",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.cowsanity"
         },
-        "location.lonlon.lonlon_tree_child_night": {
+        "location.lonlon.tree_child_night": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.lonlon.lonlon_paddock_fence_child_night": {
-            "type": "skulltula",
-            "time": "night",
-            "child": true,
-            "adult": false,
-            "visible": true
-        },
-        "location.lonlon.lonlon_wall_child_night": {
+        "location.lonlon.paddock_fence_child_night": {
             "type": "skulltula",
             "time": "night",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.lonlon.lonlon_window_child_night": {
+        "location.lonlon.wall_child_night": {
             "type": "skulltula",
             "time": "night",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.gerudo.gerudo_rooftop": {
+        "location.lonlon.window_child_night": {
+            "type": "skulltula",
+            "time": "night",
+            "child": true,
+            "adult": false,
+            "visible": true
+        },
+        "location.gerudo.rooftop": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo.gerudo_guard_1": {
+        "location.gerudo.guard_1": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo.gerudo_guard_2": {
+        "location.gerudo.guard_2": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo.gerudo_guard_3": {
+        "location.gerudo.guard_3": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo.gerudo_guard_4": {
+        "location.gerudo.guard_4": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo.gerudo_fortress_clear": {
+        "location.gerudo.fortress_clear": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo.gerudo_archer_1": {
+        "location.gerudo.archer_1": {
             "type": "chest",
             "time": "day",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo.gerudo_archer_2": {
+        "location.gerudo.archer_2": {
             "type": "chest",
             "time": "day",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo.gerudo_rooftop_adult_night": {
+        "location.gerudo.rooftop_adult_night": {
             "type": "skulltula",
             "time": "night",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo.gerudo_horseback_archery_target_adult_night": {
+        "location.gerudo.horseback_archery_target_adult_night": {
             "type": "skulltula",
             "time": "night",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.woods.woods_skull_kid": {
+        "location.woods.skull_kid": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.woods.woods_deku_salesman": {
+        "location.woods.deku_salesman": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.woods.woods_memory_game": {
+        "location.woods.memory_game": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.woods.woods_shooting": {
+        "location.woods.shooting": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.woods.woods_bomb_grotto": {
+        "location.woods.bomb_grotto": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.woods.woods_deku_salesman_grotto": {
+        "location.woods.deku_salesman_grotto": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.woods.woods_deku_salesman_grotto_2": {
+        "location.woods.deku_salesman_grotto_2": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.woods.woods_deku_salesman_meadow_grotto_1": {
+        "location.woods.deku_salesman_meadow_grotto_1": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.woods.woods_deku_salesman_meadow_grotto_2": {
+        "location.woods.deku_salesman_meadow_grotto_2": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.woods.woods_wolfos_grotto": {
+        "location.woods.wolfos_grotto": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.woods.woods_saria": {
+        "location.woods.saria": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.woods.woods_warp": {
+        "location.woods.warp": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.woods.woods_deku_theater_1": {
+        "location.woods.deku_theater_1": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.woods.woods_deku_theater_2": {
+        "location.woods.deku_theater_2": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.woods.woods_deku_salesman_theater_1": {
+        "location.woods.deku_salesman_theater_1": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": "option.scrubsanity"
         },
-        "location.woods.woods_deku_salesman_theater_2": {
+        "location.woods.deku_salesman_theater_2": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": "option.scrubsanity"
         },
-        "location.woods.woods_deku_salesman_beanspot_child": {
+        "location.woods.deku_salesman_beanspot_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.woods.woods_mask_theater_beanspot_child": {
+        "location.woods.mask_theater_beanspot_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.woods.woods_deku_salesman_magic_bean_adult": {
+        "location.woods.deku_salesman_magic_bean_adult": {
             "type": "skulltula",
             "time": "night",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.woods.woods_labyrinth_adult_night": {
+        "location.woods.labyrinth_adult_night": {
             "type": "skulltula",
             "time": "night",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.woods.gossip_woods_bridge": {
+        "location.woods.gossip_bridge": {
             "type": "gossipstone",
             "time": "always",
             "child": true,
@@ -917,112 +896,112 @@
             "adult": true,
             "visible": true
         },
-        "location.castle_town.castle_town_maron": {
+        "location.castle_town.maron": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.castle_town.castle_town_zelda": {
+        "location.castle_town.zelda": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.castle_town.castle_town_child_shooting": {
+        "location.castle_town.child_shooting": {
             "type": "chest",
             "time": "day",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.castle_town.castle_town_bowling_1": {
+        "location.castle_town.bowling_1": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.castle_town.castle_town_bowling_2": {
+        "location.castle_town.bowling_2": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.castle_town.castle_town_chest_game": {
+        "location.castle_town.chest_game": {
             "type": "chest",
             "time": "night",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.castle_town.castle_town_dog": {
+        "location.castle_town.dog": {
             "type": "chest",
             "time": "night",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.castle_town.castle_town_poes": {
+        "location.castle_town.poes": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_town.castle_town_hyrule_fairy": {
+        "location.castle_town.hyrule_fairy": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.castle_town.castle_town_ganon_fairy": {
+        "location.castle_town.ganon_fairy": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_town.castle_town_warp": {
+        "location.castle_town.warp": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_town.castle_town_light_arrows": {
+        "location.castle_town.light_arrows": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_town.castle_town_pot_room_child": {
+        "location.castle_town.pot_room_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.castle_town.castle_town_tree_child": {
+        "location.castle_town.tree_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.castle_town.castle_town_storm_grotto_child": {
+        "location.castle_town.storm_grotto_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.castle_town.castle_town_near_ganon_fairy_adult": {
+        "location.castle_town.near_ganon_fairy_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
@@ -1078,224 +1057,224 @@
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_anju_adult": {
+        "location.kakariko.anju_adult": {
             "type": "chest",
             "time": "day",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_anju_chickens": {
+        "location.kakariko.anju_chickens": {
             "type": "chest",
             "time": "day",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.kakariko.kakariko_grotto": {
+        "location.kakariko.grotto": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_redead_grotto": {
+        "location.kakariko.redead_grotto": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_cow_hp": {
+        "location.kakariko.cow_hp": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_man_roof": {
+        "location.kakariko.man_roof": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_adult_shooting": {
+        "location.kakariko.adult_shooting": {
             "type": "chest",
             "time": "day",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_song_storm": {
+        "location.kakariko.song_storm": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_windmill_hp": {
+        "location.kakariko.windmill_hp": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_race_1": {
+        "location.kakariko.race_1": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_race_2": {
+        "location.kakariko.race_2": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_digging": {
+        "location.kakariko.digging": {
             "type": "chest",
             "time": "night",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.kakariko.kakariko_shield_grave": {
+        "location.kakariko.shield_grave": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_redead_grave": {
+        "location.kakariko.redead_grave": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_sun_song": {
+        "location.kakariko.sun_song": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_sun_song_chest": {
+        "location.kakariko.sun_song_chest": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_bean_hp": {
+        "location.kakariko.bean_hp": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_warp": {
+        "location.kakariko.warp": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_impas_cow": {
+        "location.kakariko.impas_cow": {
             "type": "cow",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.cowsanity"
         },
-        "location.kakariko.kakariko_skulltula_10": {
+        "location.kakariko.skulltula_10": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_skulltula_20": {
+        "location.kakariko.skulltula_20": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_skulltula_30": {
+        "location.kakariko.skulltula_30": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_skulltula_40": {
+        "location.kakariko.skulltula_40": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_skulltula_50": {
+        "location.kakariko.skulltula_50": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_tree_child": {
+        "location.kakariko.tree_child": {
             "type": "skulltula",
             "time": "night",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.kakariko.kakariko_skulltula_house_child_night": {
+        "location.kakariko.skulltula_house_child_night": {
             "type": "skulltula",
             "time": "night",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.kakariko.kakariko_construction_site_child_night": {
+        "location.kakariko.construction_site_child_night": {
             "type": "skulltula",
             "time": "night",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.kakariko.kakariko_near_gate_child_night": {
+        "location.kakariko.near_gate_child_night": {
             "type": "skulltula",
             "time": "night",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.kakariko.kakariko_tower_child_night": {
+        "location.kakariko.tower_child_night": {
             "type": "skulltula",
             "time": "night",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.kakariko.kakariko_impas_house_roof_adult_night": {
+        "location.kakariko.impas_house_roof_adult_night": {
             "type": "skulltula",
             "time": "night",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.kakariko.kakariko_graveyard_royal_grave_child_night": {
+        "location.kakariko.graveyard_royal_grave_child_night": {
             "type": "skulltula",
             "time": "night",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.kakariko.kakariko_graveyard_beanspot_child_night": {
+        "location.kakariko.graveyard_beanspot_child_night": {
             "type": "skulltula",
             "time": "always",
             "child": true,
@@ -1316,147 +1295,147 @@
             "adult": true,
             "visible": true
         },
-        "location.mountain.mountain_above_dodongo": {
+        "location.mountain.above_dodongo": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.mountain.mountain_outside_goron_chest": {
+        "location.mountain.outside_goron_chest": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.mountain.mountain_outside_goron_grotto": {
+        "location.mountain.outside_goron_grotto": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.mountain.mountain_warp": {
+        "location.mountain.warp": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.mountain.mountain_crater_wall": {
+        "location.mountain.crater_wall": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.mountain.mountain_crater_ladder_salesman": {
+        "location.mountain.crater_ladder_salesman": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": "option.scrubsanity"
         },
-        "location.mountain.mountain_crater_grotto_salesman_1": {
+        "location.mountain.crater_grotto_salesman_1": {
             "type": "scrub",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.mountain.mountain_crater_grotto_salesman_2": {
+        "location.mountain.crater_grotto_salesman_2": {
             "type": "scrub",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.mountain.mountain_crater_grotto_salesman_3": {
+        "location.mountain.crater_grotto_salesman_3": {
             "type": "scrub",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.mountain.mountain_grotto_cow": {
+        "location.mountain.grotto_cow": {
             "type": "cow",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.cowsanity"
         },
-        "location.mountain.mountain_magic_bean": {
+        "location.mountain.magic_bean": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.mountain.mountain_crater_grotto": {
+        "location.mountain.crater_grotto": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.mountain.mountain_crater_fairy": {
+        "location.mountain.crater_fairy": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.mountain.mountain_summit_fairy": {
+        "location.mountain.summit_fairy": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.mountain.mountain_biggoron": {
+        "location.mountain.biggoron": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.mountain.mountain_bombable": {
+        "location.mountain.bombable": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.mountain.mountain_before_goron_hammer_rock_adult_night": {
-            "type": "skulltula",
-            "time": "night",
-            "child": false,
-            "adult": true,
-            "visible": true
-        },
-        "location.mountain.mountain_cave_entrance_beanspot_child": {
-            "type": "skulltula",
-            "time": "always",
-            "child": true,
-            "adult": false,
-            "visible": true
-        },
-        "location.mountain.mountain_wall_hammer_rock_adult_night": {
+        "location.mountain.before_goron_hammer_rock_adult_night": {
             "type": "skulltula",
             "time": "night",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.mountain.mountain_crater_beanspot_child": {
+        "location.mountain.cave_entrance_beanspot_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.mountain.mountain_crater_box_child": {
+        "location.mountain.wall_hammer_rock_adult_night": {
+            "type": "skulltula",
+            "time": "night",
+            "child": false,
+            "adult": true,
+            "visible": true
+        },
+        "location.mountain.crater_beanspot_child": {
+            "type": "skulltula",
+            "time": "always",
+            "child": true,
+            "adult": false,
+            "visible": true
+        },
+        "location.mountain.crater_box_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
@@ -1491,168 +1470,168 @@
             "adult": true,
             "visible": true
         },
-        "location.goron.goron_maze_left": {
+        "location.goron.maze_left": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.goron.goron_maze_center": {
+        "location.goron.maze_center": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.goron.goron_maze_right": {
+        "location.goron.maze_right": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.goron.goron_hot_rodder": {
-            "type": "chest",
-            "time": "always",
-            "child": true,
-            "adult": false,
-            "visible": true
-        },
-        "location.goron.goron_little_link": {
-            "type": "chest",
-            "time": "always",
-            "child": false,
-            "adult": true,
-            "visible": true
-        },
-        "location.goron.goron_spinning_pot_hp": {
+        "location.goron.hot_rodder": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.goron.goron_darunia": {
+        "location.goron.little_link": {
+            "type": "chest",
+            "time": "always",
+            "child": false,
+            "adult": true,
+            "visible": true
+        },
+        "location.goron.spinning_pot_hp": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.goron.goron_grotto_salesman_1": {
+        "location.goron.darunia": {
+            "type": "chest",
+            "time": "always",
+            "child": true,
+            "adult": false,
+            "visible": true
+        },
+        "location.goron.grotto_salesman_1": {
             "type": "scrub",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.goron.goron_grotto_salesman_2": {
+        "location.goron.grotto_salesman_2": {
             "type": "scrub",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.goron.goron_grotto_salesman_3": {
+        "location.goron.grotto_salesman_3": {
             "type": "scrub",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.goron.goron_maze_center_child": {
+        "location.goron.maze_center_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.goron.goron_center_platform_adult": {
+        "location.goron.center_platform_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.goron.gossip_goron_maze": {
+        "location.goron.gossip_maze": {
             "type": "gossipstone",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.goron.gossip_goron_medigoron": {
+        "location.goron.gossip_medigoron": {
             "type": "gossipstone",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.zoras.zoras_diving": {
+        "location.zoras.diving": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.zoras.zoras_torch": {
+        "location.zoras.torch": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.zoras.zoras_fairy": {
+        "location.zoras.fairy": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.zoras.zoras_ice": {
+        "location.zoras.ice": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.zoras.zoras_underwater": {
+        "location.zoras.underwater": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.zoras.zoras_king_zora": {
+        "location.zoras.king_zora": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.zoras.zoras_wall_ice_adult_night": {
+        "location.zoras.wall_ice_adult_night": {
             "type": "skulltula",
             "time": "night",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.zoras.zoras_tree_child": {
+        "location.zoras.tree_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.zoras.zoras_wall_child_night": {
+        "location.zoras.wall_child_night": {
             "type": "skulltula",
             "time": "night",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.zoras.zoras_fairy_hidden_cave_adult_night": {
+        "location.zoras.fairy_hidden_cave_adult_night": {
             "type": "skulltula",
             "time": "night",
             "child": false,
@@ -1680,98 +1659,98 @@
             "adult": true,
             "visible": true
         },
-        "location.well.well_front_left_hidden_wall": {
+        "location.well.front_left_hidden_wall": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.well.well_front_center_bombable": {
+        "location.well.front_center_bombable": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.well.well_right_bottom_hidden_wall": {
+        "location.well.right_bottom_hidden_wall": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.well.well__center_large": {
+        "location.well._center_large": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.well.well_center_small": {
+        "location.well.center_small": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.well.well_back_left_bombable": {
+        "location.well.back_left_bombable": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.well.well_coffin_key": {
+        "location.well.coffin_key": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.well.well_defeat_boss": {
+        "location.well.defeat_boss": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.well.well_invisible": {
+        "location.well.invisible": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.well.well_underwater_front": {
+        "location.well.underwater_front": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.well.well_underwater_left": {
+        "location.well.underwater_left": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.well.well_basement_ches": {
+        "location.well.basement_ches": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.well.well_locked_pits": {
+        "location.well.locked_pits": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.well.well_behind_right_grate": {
+        "location.well.behind_right_grate": {
             "type": "chest",
             "time": "always",
             "child": true,
@@ -1813,21 +1792,21 @@
             "adult": false,
             "visible": true
         },
-        "location.well.well_center_child": {
+        "location.well.center_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.well.well_center_locked_room_child": {
+        "location.well.center_locked_room_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.well.well_locked_pits_child": {
+        "location.well.locked_pits_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
@@ -1855,35 +1834,35 @@
             "adult": false,
             "visible": true
         },
-        "location.ice_cavern.ice_cavern_map": {
+        "location.ice_cavern.map": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.ice_cavern.ice_cavern_compass": {
+        "location.ice_cavern.compass": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.ice_cavern.ice_cavern_hp": {
+        "location.ice_cavern.hp": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.ice_cavern.ice_cavern_boots": {
+        "location.ice_cavern.boots": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.ice_cavern.ice_cavern_sheik": {
+        "location.ice_cavern.sheik": {
             "type": "chest",
             "time": "always",
             "child": false,
@@ -1925,21 +1904,21 @@
             "adult": true,
             "visible": true
         },
-        "location.ice_cavern.ice_cavern_ice_blades_adult": {
+        "location.ice_cavern.ice_blades_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.ice_cavern.ice_cavern_block_puzzle_adult": {
+        "location.ice_cavern.block_puzzle_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.ice_cavern.ice_cavern_compass_room_adult": {
+        "location.ice_cavern.compass_room_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
@@ -1967,154 +1946,154 @@
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_lobby_left": {
+        "location.gerudo_training.lobby_left": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_lobby_right": {
+        "location.gerudo_training.lobby_right": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_stalfos": {
+        "location.gerudo_training.stalfos": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_beamos": {
+        "location.gerudo_training.beamos": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_hidden_ceiling": {
+        "location.gerudo_training.hidden_ceiling": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_maze_1": {
+        "location.gerudo_training.maze_1": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_maze_2": {
+        "location.gerudo_training.maze_2": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_maze_3": {
+        "location.gerudo_training.maze_3": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_maze_final": {
+        "location.gerudo_training.maze_final": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_maze_right_central": {
+        "location.gerudo_training.maze_right_central": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_maze_right": {
+        "location.gerudo_training.maze_right": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_maze_right_key": {
+        "location.gerudo_training.maze_right_key": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_underwater_silver": {
+        "location.gerudo_training.underwater_silver": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_hammer_room_clear": {
+        "location.gerudo_training.hammer_room_clear": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_hammer_room_switch": {
+        "location.gerudo_training.hammer_room_switch": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_eye_statue": {
+        "location.gerudo_training.eye_statue": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_scarecrow": {
+        "location.gerudo_training.scarecrow": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_heavy_block_before": {
+        "location.gerudo_training.heavy_block_before": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_heavy_block_1": {
+        "location.gerudo_training.heavy_block_1": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_heavy_block_2": {
+        "location.gerudo_training.heavy_block_2": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_heavy_block_3": {
+        "location.gerudo_training.heavy_block_3": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.gerudo_training.gerudo_training_heavy_block_4": {
+        "location.gerudo_training.heavy_block_4": {
             "type": "chest",
             "time": "always",
             "child": false,
@@ -2240,49 +2219,49 @@
             "adult": true,
             "visible": true
         },
-        "location.deku.deku_lobby": {
+        "location.deku.lobby": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.deku.deku_slingshot": {
+        "location.deku.slingshot": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.deku.deku_slingshot_side": {
+        "location.deku.slingshot_side": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.deku.deku_compass": {
+        "location.deku.compass": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.deku.deku_compass_side": {
+        "location.deku.compass_side": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.deku.deku_basement": {
+        "location.deku.basement": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.deku.deku_gohma": {
+        "location.deku.gohma": {
             "type": "chest",
             "time": "always",
             "child": true,
@@ -2352,28 +2331,28 @@
             "adult": false,
             "visible": true
         },
-        "location.deku.deku_3f_compass_side_child": {
+        "location.deku.3f_compass_side_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.deku.deku_basement_vines_child": {
+        "location.deku.basement_vines_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.deku.deku_basement_metal_gate_child": {
+        "location.deku.basement_metal_gate_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.deku.deku_bombable_behind_web_child": {
+        "location.deku.bombable_behind_web_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
@@ -2408,77 +2387,77 @@
             "adult": false,
             "visible": true
         },
-        "location.dodongo.dodongo_lobby_salesman": {
+        "location.dodongo.lobby_salesman": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.dodongo.dodongo_east_corridor_salesman": {
+        "location.dodongo.east_corridor_salesman": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.dodongo.dodongo_map": {
+        "location.dodongo.map": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.dodongo.dodongo_compass": {
+        "location.dodongo.compass": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.dodongo.dodongo_bomb_flower_platform": {
+        "location.dodongo.bomb_flower_platform": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.dodongo.dodongo_bomb_bag": {
+        "location.dodongo.bomb_bag": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.dodongo.dodongo_near_bomb_bag_salesman_1": {
+        "location.dodongo.near_bomb_bag_salesman_1": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.dodongo.dodongo_near_bomb_bag_salesman_2": {
+        "location.dodongo.near_bomb_bag_salesman_2": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.dodongo.dodongo_end_bridge": {
+        "location.dodongo.end_bridge": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.dodongo.dodongo_chest_above_dodongo": {
+        "location.dodongo.chest_above_dodongo": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.dodongo.dodongo_dodongo": {
+        "location.dodongo.dodongo": {
             "type": "chest",
             "time": "always",
             "child": true,
@@ -2569,35 +2548,35 @@
             "adult": true,
             "visible": true
         },
-        "location.dodongo.dodongo_east_corridor_bombable": {
+        "location.dodongo.east_corridor_bombable": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.dodongo.dodongo_east_corridor_scarecrow_adult": {
+        "location.dodongo.east_corridor_scarecrow_adult": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.dodongo.dodongo_above_big_staircase_adult": {
+        "location.dodongo.above_big_staircase_adult": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.dodongo.dodongo_big_staircase_vines": {
+        "location.dodongo.big_staircase_vines": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.dodongo.dodongo_near_boss_bombable": {
+        "location.dodongo.near_boss_bombable": {
             "type": "skulltula",
             "time": "always",
             "child": true,
@@ -2646,35 +2625,35 @@
             "adult": true,
             "visible": true
         },
-        "location.jabujabu.jabujabu_elevator_dive_salesman": {
+        "location.jabujabu.elevator_dive_salesman": {
             "type": "scrub",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": "option.scrubsanity"
         },
-        "location.jabujabu.jabujabu_boomerang": {
+        "location.jabujabu.boomerang": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.jabujabu.jabujabu_map": {
+        "location.jabujabu.map": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.jabujabu.jabujabu_compass": {
+        "location.jabujabu.compass": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.jabujabu.jabujabu_barinade": {
+        "location.jabujabu.barinade": {
             "type": "chest",
             "time": "always",
             "child": true,
@@ -2772,28 +2751,28 @@
             "adult": false,
             "visible": true
         },
-        "location.jabujabu.jabujabu_b1_ruto1_child": {
+        "location.jabujabu.b1_ruto1_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.jabujabu.jabujabu_b1_ruto2_child": {
+        "location.jabujabu.b1_ruto2_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.jabujabu.jabujabu_b1_rising_water_child": {
+        "location.jabujabu.b1_rising_water_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.jabujabu.jabujabu_1f_near_boss_child": {
+        "location.jabujabu.1f_near_boss_child": {
             "type": "skulltula",
             "time": "always",
             "child": true,
@@ -2828,98 +2807,98 @@
             "adult": false,
             "visible": true
         },
-        "location.temple_forest.temple_forest_entrance": {
+        "location.temple_forest.entrance": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_behind_lobby": {
+        "location.temple_forest.behind_lobby": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_well": {
+        "location.temple_forest.well": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_map": {
+        "location.temple_forest.map": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_outside_hookshot": {
+        "location.temple_forest.outside_hookshot": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_block_push": {
+        "location.temple_forest.block_push": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_boss_key": {
+        "location.temple_forest.boss_key": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_floormaster": {
+        "location.temple_forest.floormaster": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_bow": {
+        "location.temple_forest.bow": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_poe_red": {
+        "location.temple_forest.poe_red": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_poe_blue": {
+        "location.temple_forest.poe_blue": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_falling_room": {
+        "location.temple_forest.falling_room": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_near_boss": {
+        "location.temple_forest.near_boss": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_phantomganon": {
+        "location.temple_forest.phantomganon": {
             "type": "chest",
             "time": "always",
             "child": false,
@@ -3017,35 +2996,35 @@
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_entrance_adult": {
+        "location.temple_forest.entrance_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_pillars_adult": {
+        "location.temple_forest.pillars_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_lobby_adult": {
+        "location.temple_forest.lobby_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_outside_hookshot_adult": {
+        "location.temple_forest.outside_hookshot_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_forest.temple_forest_near_boss_adult": {
+        "location.temple_forest.near_boss_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
@@ -3087,105 +3066,105 @@
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_near_boss": {
+        "location.temple_fire.near_boss": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_dancer": {
+        "location.temple_fire.dancer": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_boss_key": {
+        "location.temple_fire.boss_key": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_big_lava_bomb": {
+        "location.temple_fire.big_lava_bomb": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_big_lava_open": {
+        "location.temple_fire.big_lava_open": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_boulder_maze_lower": {
+        "location.temple_fire.boulder_maze_lower": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_boulder_maze_side": {
+        "location.temple_fire.boulder_maze_side": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_boulder_maze_upper": {
+        "location.temple_fire.boulder_maze_upper": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_boulder_maze_bomb": {
+        "location.temple_fire.boulder_maze_bomb": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_scarecrow": {
+        "location.temple_fire.scarecrow": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_map": {
+        "location.temple_fire.map": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_compass": {
+        "location.temple_fire.compass": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_highest_goron": {
+        "location.temple_fire.highest_goron": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_hammer": {
+        "location.temple_fire.hammer": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_volvagia": {
+        "location.temple_fire.volvagia": {
             "type": "chest",
             "time": "always",
             "child": false,
@@ -3283,35 +3262,35 @@
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_big_lava_time_block_adult": {
+        "location.temple_fire.big_lava_time_block_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_boulder_maze_bombable_adult": {
+        "location.temple_fire.boulder_maze_bombable_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_boulder_maze_scarecrow1_adult": {
+        "location.temple_fire.boulder_maze_scarecrow1_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_boulder_maze_scarecrow2_adult": {
+        "location.temple_fire.boulder_maze_scarecrow2_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_fire.temple_fire_near_boss_key_adult": {
+        "location.temple_fire.near_boss_key_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
@@ -3353,77 +3332,77 @@
             "adult": true,
             "visible": true
         },
-        "location.temple_water.temple_water_map": {
+        "location.temple_water.map": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_water.temple_water_compass": {
+        "location.temple_water.compass": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_water.temple_water_torches": {
+        "location.temple_water.torches": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_water.temple_water_chest_dragon": {
+        "location.temple_water.chest_dragon": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_water.temple_water_central_bow": {
+        "location.temple_water.central_bow": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_water.temple_water_boss_key": {
+        "location.temple_water.boss_key": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_water.temple_water_center_pillar": {
+        "location.temple_water.center_pillar": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_water.temple_water_cracked_wall": {
+        "location.temple_water.cracked_wall": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_water.temple_water_dark_link": {
+        "location.temple_water.dark_link": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_water.temple_water_river": {
+        "location.temple_water.river": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_water.temple_water_morpha": {
+        "location.temple_water.morpha": {
             "type": "chest",
             "time": "always",
             "child": false,
@@ -3479,35 +3458,35 @@
             "adult": true,
             "visible": true
         },
-        "location.temple_water.temple_water_lowest_level_south_adult": {
+        "location.temple_water.lowest_level_south_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_water.temple_water_big_waterfall_adult": {
+        "location.temple_water.big_waterfall_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_water.temple_water_near_boss_key_adult": {
+        "location.temple_water.near_boss_key_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_water.temple_water_center_pillar_adult": {
+        "location.temple_water.center_pillar_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_water.temple_water_river_adult": {
+        "location.temple_water.river_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
@@ -3549,126 +3528,126 @@
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_map": {
+        "location.temple_shadow.map": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_boots": {
+        "location.temple_shadow.boots": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_compass": {
+        "location.temple_shadow.compass": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_early_silver": {
+        "location.temple_shadow.early_silver": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_invisible_blades_visible": {
+        "location.temple_shadow.invisible_blades_visible": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_invisible_blades_invisible": {
+        "location.temple_shadow.invisible_blades_invisible": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_falling_spikes_lower": {
+        "location.temple_shadow.falling_spikes_lower": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_falling_spikes_upper": {
+        "location.temple_shadow.falling_spikes_upper": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_falling_spikes_switch": {
+        "location.temple_shadow.falling_spikes_switch": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_invisible_spikes": {
+        "location.temple_shadow.invisible_spikes": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_giant_pot": {
+        "location.temple_shadow.giant_pot": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_wind_hint": {
+        "location.temple_shadow.wind_hint": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_after_wind_enemy": {
+        "location.temple_shadow.after_wind_enemy": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_after_wind_hidden": {
+        "location.temple_shadow.after_wind_hidden": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_spike_walls": {
+        "location.temple_shadow.spike_walls": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_boss_key": {
+        "location.temple_shadow.boss_key": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_hidden_floormaster": {
+        "location.temple_shadow.hidden_floormaster": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_bongobongo": {
+        "location.temple_shadow.bongobongo": {
             "type": "chest",
             "time": "always",
             "child": false,
@@ -3822,35 +3801,35 @@
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_invisible_blade_adult": {
+        "location.temple_shadow.invisible_blade_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_falling_spikes_adult": {
+        "location.temple_shadow.falling_spikes_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_behind_giant_pot_adult": {
+        "location.temple_shadow.behind_giant_pot_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_boat_adult": {
+        "location.temple_shadow.boat_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_shadow.temple_shadow_behind_giant_pots_adult": {
+        "location.temple_shadow.behind_giant_pots_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
@@ -3892,140 +3871,140 @@
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_child_left": {
+        "location.temple_spirit.child_left": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_child_right": {
+        "location.temple_spirit.child_right": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_compass": {
+        "location.temple_spirit.compass": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_early_adult_right": {
+        "location.temple_spirit.early_adult_right": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_first_mirror_right": {
+        "location.temple_spirit.first_mirror_right": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_first_mirror_left": {
+        "location.temple_spirit.first_mirror_left": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_map": {
+        "location.temple_spirit.map": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_child_climb_east": {
+        "location.temple_spirit.child_climb_east": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_child_climb_north": {
+        "location.temple_spirit.child_climb_north": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_sun_block": {
+        "location.temple_spirit.sun_block": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_statue_hand": {
+        "location.temple_spirit.statue_hand": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_main_room_NE": {
+        "location.temple_spirit.main_room_NE": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_gauntlets": {
+        "location.temple_spirit.gauntlets": {
             "type": "chest",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_shield": {
+        "location.temple_spirit.shield": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_near_four_armos": {
+        "location.temple_spirit.near_four_armos": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_hallway_left_invisible": {
+        "location.temple_spirit.hallway_left_invisible": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_hallway_right_invisible": {
+        "location.temple_spirit.hallway_right_invisible": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_boss_key": {
+        "location.temple_spirit.boss_key": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_topmost": {
+        "location.temple_spirit.topmost": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_twinrova": {
+        "location.temple_spirit.twinrova": {
             "type": "chest",
             "time": "always",
             "child": false,
@@ -4193,35 +4172,35 @@
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_childsegment_left": {
+        "location.temple_spirit.childsegment_left": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": false,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_childsegment_sun_room": {
+        "location.temple_spirit.childsegment_sun_room": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_childsegment_before_iron_knight": {
+        "location.temple_spirit.childsegment_before_iron_knight": {
             "type": "skulltula",
             "time": "always",
             "child": true,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_rolling_boulders_time_block_adult": {
+        "location.temple_spirit.rolling_boulders_time_block_adult": {
             "type": "skulltula",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.temple_spirit.temple_spirit_coloss_room_adult": {
+        "location.temple_spirit.coloss_room_adult": {
             "type": "skulltula",
             "time": "always",
             "child": true,
@@ -4263,147 +4242,147 @@
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_under_bridge_salesman_1": {
+        "location.castle_ganon.under_bridge_salesman_1": {
             "type": "scrub",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.castle_ganon.castle_ganon_under_bridge_salesman_2": {
+        "location.castle_ganon.under_bridge_salesman_2": {
             "type": "scrub",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.castle_ganon.castle_ganon_under_bridge_salesman_3": {
+        "location.castle_ganon.under_bridge_salesman_3": {
             "type": "scrub",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.castle_ganon.castle_ganon_under_bridge_salesman_4": {
+        "location.castle_ganon.under_bridge_salesman_4": {
             "type": "scrub",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": "option.scrubsanity"
         },
-        "location.castle_ganon.castle_ganon_forest_trial": {
+        "location.castle_ganon.forest_trial": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_water_trial_left": {
+        "location.castle_ganon.water_trial_left": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_water_trial_right": {
+        "location.castle_ganon.water_trial_right": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_shadow_trial_first": {
+        "location.castle_ganon.shadow_trial_first": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_shadow_trial_second": {
+        "location.castle_ganon.shadow_trial_second": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_spirit_trial_first": {
+        "location.castle_ganon.spirit_trial_first": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_spirit_trial_second": {
+        "location.castle_ganon.spirit_trial_second": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_light_trial_first_left": {
+        "location.castle_ganon.light_trial_first_left": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_light_trial_second_left": {
+        "location.castle_ganon.light_trial_second_left": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_light_trial_third_left": {
+        "location.castle_ganon.light_trial_third_left": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_light_trial_first_right": {
+        "location.castle_ganon.light_trial_first_right": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_light_trial_second_right": {
+        "location.castle_ganon.light_trial_second_right": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_light_trial_third_right": {
+        "location.castle_ganon.light_trial_third_right": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_light_trail_invisible_enemies": {
+        "location.castle_ganon.light_trail_invisible_enemies": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_light_trial_lullaby": {
+        "location.castle_ganon.light_trial_lullaby": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_boss_key": {
+        "location.castle_ganon.boss_key": {
             "type": "chest",
             "time": "always",
             "child": false,
             "adult": true,
             "visible": true
         },
-        "location.castle_ganon.castle_ganon_boss": {
+        "location.castle_ganon.boss": {
             "type": "chest",
             "time": "always",
             "child": false,
@@ -4554,39 +4533,48 @@
     "areas": {
         "area.kokiri": {
             "locations": [
-                "location.kokiri.kokiri_sword",
-                "location.kokiri.midos_house_0",
-                "location.kokiri.midos_house_1",
-                "location.kokiri.midos_house_2",
-                "location.kokiri.midos_house_3",
+                "location.kokiri.sword",
+                "location.kokiri.midos_house",
                 "location.kokiri.links_house_cow",
                 "location.kokiri.saria_ocarina",
-                "location.kokiri.kokiri_storm_grotto",
-                "location.kokiri.kokiri_know_it_all_brothers_child_night",
-                "location.kokiri.kokiri_twins_adult_night",
-                "location.kokiri.kokiri_beanspot_near_shop_child",
+                "location.kokiri.storm_grotto",
+                "location.kokiri.know_it_all_brothers_child_night",
+                "location.kokiri.twins_adult_night",
+                "location.kokiri.beanspot_near_shop_child",
                 "location.kokiri.gossip_kokiri",
                 "location.kokiri.gossip_grotto_kokiri",
                 "location.kokiri.gossip_deku_left",
                 "location.kokiri.gossip_deku_right"
             ],
-            "entrances": []
+            "entrances": [
+                "entrance.kokiri.midos_house",
+                "entrance.kokiri.know_it_house",
+                "entrance.kokiri.saria_house",
+                "entrance.kokiri.twins_house",
+                "entrance.kokiri.shop",
+                "entrance.kokiri.storm_grotto",
+                "entrance.kokiri.deku"
+            ]
         },
         "area.desert": {
             "locations": [
-                "location.desert.desert_chest",
-                "location.desert.desert_warp_spirit",
-                "location.desert.desert_colossus_fairy",
-                "location.desert.desert_colossus_grotto_salesman_1",
-                "location.desert.desert_colossus_grotto_salesman_2",
-                "location.desert.desert_colossus_hp",
-                "location.desert.desert_fortress_adult",
-                "location.desert.desert_palm_tree_adult_night",
-                "location.desert.desert_magic_bean_adult_night",
-                "location.desert.desert_beanspot_child",
+                "location.desert.chest",
+                "location.desert.warp_spirit",
+                "location.desert.colossus_fairy",
+                "location.desert.colossus_grotto_salesman_1",
+                "location.desert.colossus_grotto_salesman_2",
+                "location.desert.colossus_hp",
+                "location.desert.fortress_adult",
+                "location.desert.palm_tree_adult_night",
+                "location.desert.magic_bean_adult_night",
+                "location.desert.beanspot_child",
                 "location.desert.gossip_desert"
             ],
-            "entrances": []
+            "entrances": [
+                "entrance.desert.fairy_colossus",
+                "entrance.desert.strength_grotto",
+                "entrance.desert.temple_spirit"
+            ]
         },
         "area.river": {
             "locations": [
@@ -4594,19 +4582,23 @@
                 "location.river.frog_rain",
                 "location.river.zora_hp_1",
                 "location.river.zora_hp_2",
-                "location.river.zora_river_grotto",
-                "location.river.zora_river_grotto_salesman_1",
-                "location.river.zora_river_grotto_salesman_2",
-                "location.river.zora_river_bean_salesman",
-                "location.river.zora_river_tree_child",
-                "location.river.zora_river_ladder_child_night",
-                "location.river.zora_river_wall1_adult_night",
-                "location.river.zora_river_wall2_adult_night",
-                "location.river.gossip_river_plateau",
-                "location.river.gossip_river_waterfall",
+                "location.river.zora_grotto",
+                "location.river.zora_grotto_salesman_1",
+                "location.river.zora_grotto_salesman_2",
+                "location.river.zora_bean_salesman",
+                "location.river.zora_tree_child",
+                "location.river.zora_ladder_child_night",
+                "location.river.zora_wall1_adult_night",
+                "location.river.zora_wall2_adult_night",
+                "location.river.gossip_plateau",
+                "location.river.gossip_waterfall",
                 "location.river.gossip_grotto_river"
             ],
-            "entrances": []
+            "entrances": [
+                "entrance.river.bomb_grotto",
+                "entrance.river.open_grotto",
+                "entrance.river.storms_grotto"
+            ]
         },
         "area.hyrule_field": {
             "locations": [
@@ -4624,7 +4616,16 @@
                 "location.hyrule_field.gossip_grotto_small_forest",
                 "location.hyrule_field.gossip_field_valley"
             ],
-            "entrances": []
+            "entrances": [
+                "entrance.hyrule_field.castle_river_grotto",
+                "entrance.hyrule_field.kakariko_grotto",
+                "entrance.hyrule_field.lake_fence_grotto",
+                "entrance.hyrule_field.lake_open_grotto",
+                "entrance.hyrule_field.dive_grotto",
+                "entrance.hyrule_field.valley_grotto",
+                "entrance.hyrule_field.castle_entrance_grotto",
+                "entrance.hyrule_field.little_forest_grotto"
+            ]
         },
         "area.gerudo_valley": {
             "locations": [
@@ -4640,112 +4641,137 @@
                 "location.gerudo_valley.gerudo_river_beanspot_child",
                 "location.gerudo_valley.gossip_gerudo_valley"
             ],
-            "entrances": []
+            "entrances": [
+                "entrance.gerudo_valley.tend",
+                "entrance.gerudo_valley.octorock_grotto",
+                "entrance.gerudo_valley.storms_grotto"
+            ]
         },
         "area.lake": {
             "locations": [
                 "location.lake.bottle_zora",
-                "location.lake.lake_sun",
-                "location.lake.lake_grave_grotto_salesman_1",
-                "location.lake.lake_grave_grotto_salesman_2",
-                "location.lake.lake_grave_grotto_salesman_3",
+                "location.lake.sun",
+                "location.lake.grave_grotto_salesman_1",
+                "location.lake.grave_grotto_salesman_2",
+                "location.lake.grave_grotto_salesman_3",
                 "location.lake.lab_dive",
                 "location.lake.lab_roof",
                 "location.lake.fishing_child",
                 "location.lake.fishing_adult",
-                "location.lake.lake_near_firearrows_child_night",
-                "location.lake.lake_behind_lab_child_night",
-                "location.lake.lake_beanspot_child",
-                "location.lake.lake_dead_tree_adult_night",
-                "location.lake.lake_lab_box_adult",
-                "location.lake.gossip_lake_waterfall",
-                "location.lake.gossip_lake_southeast",
-                "location.lake.gossip_lake_southwest"
+                "location.lake.near_firearrows_child_night",
+                "location.lake.behind_lab_child_night",
+                "location.lake.beanspot_child",
+                "location.lake.dead_tree_adult_night",
+                "location.lake.lab_box_adult",
+                "location.lake.gossip_waterfall",
+                "location.lake.gossip_southeast",
+                "location.lake.gossip_southwest"
             ],
-            "entrances": []
+            "entrances": [
+                "entrance.lake.laboratory",
+                "entrance.lake.fishing",
+                "entrance.lake.grave_grotto",
+                "entrance.lake.temple_water"
+            ]
         },
         "area.lonlon": {
             "locations": [
                 "location.lonlon.talon_chicken",
                 "location.lonlon.maron_song",
-                "location.lonlon.lonlon_hp",
-                "location.lonlon.lonlon_grotto_deku_salesman_1",
-                "location.lonlon.lonlon_grotto_deku_salesman_2",
-                "location.lonlon.lonlon_grotto_deku_salesman_3",
-                "location.lonlon.lonlon_cow_tower_1",
-                "location.lonlon.lonlon_cow_tower_2",
-                "location.lonlon.lonlon_cow_stables_1",
-                "location.lonlon.lonlon_cow_stables_2",
-                "location.lonlon.lonlon_tree_child_night",
-                "location.lonlon.lonlon_paddock_fence_child_night",
-                "location.lonlon.lonlon_wall_child_night",
-                "location.lonlon.lonlon_window_child_night"
+                "location.lonlon.hp",
+                "location.lonlon.grotto_deku_salesman_1",
+                "location.lonlon.grotto_deku_salesman_2",
+                "location.lonlon.grotto_deku_salesman_3",
+                "location.lonlon.cow_tower_1",
+                "location.lonlon.cow_tower_2",
+                "location.lonlon.cow_stables_1",
+                "location.lonlon.cow_stables_2",
+                "location.lonlon.tree_child_night",
+                "location.lonlon.paddock_fence_child_night",
+                "location.lonlon.wall_child_night",
+                "location.lonlon.window_child_night"
             ],
-            "entrances": []
+            "entrances": [
+                "entrance.lonlon.house",
+                "entrance.lonlon.stables",
+                "entrance.lonlon.silo",
+                "entrance.lonlon.open_grotto"
+            ]
         },
         "area.gerudo": {
             "locations": [
-                "location.gerudo.gerudo_rooftop",
-                "location.gerudo.gerudo_guard_1",
-                "location.gerudo.gerudo_guard_2",
-                "location.gerudo.gerudo_guard_3",
-                "location.gerudo.gerudo_guard_4",
-                "location.gerudo.gerudo_fortress_clear",
-                "location.gerudo.gerudo_archer_1",
-                "location.gerudo.gerudo_archer_2",
-                "location.gerudo.gerudo_rooftop_adult_night",
-                "location.gerudo.gerudo_horseback_archery_target_adult_night"
+                "location.gerudo.rooftop",
+                "location.gerudo.guard_1",
+                "location.gerudo.guard_2",
+                "location.gerudo.guard_3",
+                "location.gerudo.guard_4",
+                "location.gerudo.fortress_clear",
+                "location.gerudo.archer_1",
+                "location.gerudo.archer_2",
+                "location.gerudo.rooftop_adult_night",
+                "location.gerudo.horseback_archery_target_adult_night"
             ],
-            "entrances": []
+            "entrances": [
+                "entrance.gerudo.storms_grotto",
+                "entrance.gerudo.training_grounds"
+            ]
         },
         "area.woods": {
             "locations": [
-                "location.woods.woods_skull_kid",
-                "location.woods.woods_deku_salesman",
-                "location.woods.woods_memory_game",
-                "location.woods.woods_shooting",
-                "location.woods.woods_bomb_grotto",
-                "location.woods.woods_deku_salesman_grotto",
-                "location.woods.woods_deku_salesman_grotto_2",
-                "location.woods.woods_deku_salesman_meadow_grotto_1",
-                "location.woods.woods_deku_salesman_meadow_grotto_2",
-                "location.woods.woods_wolfos_grotto",
-                "location.woods.woods_saria",
-                "location.woods.woods_warp",
-                "location.woods.woods_deku_theater_1",
-                "location.woods.woods_deku_theater_2",
-                "location.woods.woods_deku_salesman_theater_1",
-                "location.woods.woods_deku_salesman_theater_2",
-                "location.woods.woods_deku_salesman_beanspot_child",
-                "location.woods.woods_mask_theater_beanspot_child",
-                "location.woods.woods_deku_salesman_magic_bean_adult",
-                "location.woods.woods_labyrinth_adult_night",
-                "location.woods.gossip_woods_bridge",
+                "location.woods.skull_kid",
+                "location.woods.deku_salesman",
+                "location.woods.memory_game",
+                "location.woods.shooting",
+                "location.woods.bomb_grotto",
+                "location.woods.deku_salesman_grotto",
+                "location.woods.deku_salesman_grotto_2",
+                "location.woods.deku_salesman_meadow_grotto_1",
+                "location.woods.deku_salesman_meadow_grotto_2",
+                "location.woods.wolfos_grotto",
+                "location.woods.saria",
+                "location.woods.warp",
+                "location.woods.deku_theater_1",
+                "location.woods.deku_theater_2",
+                "location.woods.deku_salesman_theater_1",
+                "location.woods.deku_salesman_theater_2",
+                "location.woods.deku_salesman_beanspot_child",
+                "location.woods.mask_theater_beanspot_child",
+                "location.woods.deku_salesman_magic_bean_adult",
+                "location.woods.labyrinth_adult_night",
+                "location.woods.gossip_bridge",
                 "location.woods.gossip_meadow_left",
                 "location.woods.gossip_meadow_right",
                 "location.woods.gossip_meadow_saria",
                 "location.woods.gossip_grotto_woods"
             ],
-            "entrances": []
+            "entrances": [
+                "entrance.woods.near_goron_grotto",
+                "entrance.woods.theatre_grotto",
+                "entrance.woods.near_meadow_grotto",
+                "entrance.woods.wolfos_grotto",
+                "entrance.woods.fairy_grotto",
+                "entrance.woods.storms_grotto",
+                "entrance.woods.temple_forest"
+            ]
         },
         "area.castle_town": {
             "locations": [
-                "location.castle_town.castle_town_maron",
-                "location.castle_town.castle_town_zelda",
-                "location.castle_town.castle_town_child_shooting",
-                "location.castle_town.castle_town_bowling_1",
-                "location.castle_town.castle_town_bowling_2",
-                "location.castle_town.castle_town_chest_game",
-                "location.castle_town.castle_town_dog",
-                "location.castle_town.castle_town_poes",
-                "location.castle_town.castle_town_hyrule_fairy",
-                "location.castle_town.castle_town_ganon_fairy",
-                "location.castle_town.castle_town_warp",
-                "location.castle_town.castle_town_light_arrows",
-                "location.castle_town.castle_town_pot_room_child",
-                "location.castle_town.castle_town_tree_child",
-                "location.castle_town.castle_town_storm_grotto_child",
-                "location.castle_town.castle_town_near_ganon_fairy_adult",
+                "location.castle_town.maron",
+                "location.castle_town.zelda",
+                "location.castle_town.child_shooting",
+                "location.castle_town.bowling_1",
+                "location.castle_town.bowling_2",
+                "location.castle_town.chest_game",
+                "location.castle_town.dog",
+                "location.castle_town.poes",
+                "location.castle_town.hyrule_fairy",
+                "location.castle_town.ganon_fairy",
+                "location.castle_town.warp",
+                "location.castle_town.light_arrows",
+                "location.castle_town.pot_room_child",
+                "location.castle_town.tree_child",
+                "location.castle_town.storm_grotto_child",
+                "location.castle_town.near_ganon_fairy_adult",
                 "location.castle_town.gossip_castle_malon",
                 "location.castle_town.gossip_castle_climb",
                 "location.castle_town.gossip_castle_grotto",
@@ -4754,133 +4780,181 @@
                 "location.castle_town.gossip_tot_3",
                 "location.castle_town.gossip_tot_4"
             ],
-            "entrances": []
+            "entrances": [
+                "entrance.castle_town.shop_bombchu",
+                "entrance.castle_town.shop_bazaar",
+                "entrance.castle_town.shop_magic",
+                "entrance.castle_town.shop_mask",
+                "entrance.castle_town.minigame_bombchu",
+                "entrance.castle_town.minigame_shooting",
+                "entrance.castle_town.minigame_treasure",
+                "entrance.castle_town.guard_tower",
+                "entrance.castle_town.temple_of_time",
+                "entrance.castle_town.dog_lady",
+                "entrance.castle_town.back_house",
+                "entrance.castle_town.fairy_young",
+                "entrance.castle_town.fairy_adult",
+                "entrance.castle_town.storm_grotto"
+            ]
         },
         "area.kakariko": {
             "locations": [
-                "location.kakariko.kakariko_anju_adult",
-                "location.kakariko.kakariko_anju_chickens",
-                "location.kakariko.kakariko_grotto",
-                "location.kakariko.kakariko_redead_grotto",
-                "location.kakariko.kakariko_cow_hp",
-                "location.kakariko.kakariko_man_roof",
-                "location.kakariko.kakariko_adult_shooting",
-                "location.kakariko.kakariko_song_storm",
-                "location.kakariko.kakariko_windmill_hp",
-                "location.kakariko.kakariko_race_1",
-                "location.kakariko.kakariko_race_2",
-                "location.kakariko.kakariko_digging",
-                "location.kakariko.kakariko_shield_grave",
-                "location.kakariko.kakariko_redead_grave",
-                "location.kakariko.kakariko_sun_song",
-                "location.kakariko.kakariko_sun_song_chest",
-                "location.kakariko.kakariko_bean_hp",
-                "location.kakariko.kakariko_warp",
-                "location.kakariko.kakariko_impas_cow",
-                "location.kakariko.kakariko_skulltula_10",
-                "location.kakariko.kakariko_skulltula_20",
-                "location.kakariko.kakariko_skulltula_30",
-                "location.kakariko.kakariko_skulltula_40",
-                "location.kakariko.kakariko_skulltula_50",
-                "location.kakariko.kakariko_tree_child",
-                "location.kakariko.kakariko_skulltula_house_child_night",
-                "location.kakariko.kakariko_construction_site_child_night",
-                "location.kakariko.kakariko_near_gate_child_night",
-                "location.kakariko.kakariko_tower_child_night",
-                "location.kakariko.kakariko_impas_house_roof_adult_night",
-                "location.kakariko.kakariko_graveyard_royal_grave_child_night",
-                "location.kakariko.kakariko_graveyard_beanspot_child_night",
+                "location.kakariko.anju_adult",
+                "location.kakariko.anju_chickens",
+                "location.kakariko.grotto",
+                "location.kakariko.redead_grotto",
+                "location.kakariko.cow_hp",
+                "location.kakariko.man_roof",
+                "location.kakariko.adult_shooting",
+                "location.kakariko.song_storm",
+                "location.kakariko.windmill_hp",
+                "location.kakariko.race_1",
+                "location.kakariko.race_2",
+                "location.kakariko.digging",
+                "location.kakariko.shield_grave",
+                "location.kakariko.redead_grave",
+                "location.kakariko.sun_song",
+                "location.kakariko.sun_song_chest",
+                "location.kakariko.bean_hp",
+                "location.kakariko.warp",
+                "location.kakariko.impas_cow",
+                "location.kakariko.skulltula_10",
+                "location.kakariko.skulltula_20",
+                "location.kakariko.skulltula_30",
+                "location.kakariko.skulltula_40",
+                "location.kakariko.skulltula_50",
+                "location.kakariko.tree_child",
+                "location.kakariko.skulltula_house_child_night",
+                "location.kakariko.construction_site_child_night",
+                "location.kakariko.near_gate_child_night",
+                "location.kakariko.tower_child_night",
+                "location.kakariko.impas_house_roof_adult_night",
+                "location.kakariko.graveyard_royal_grave_child_night",
+                "location.kakariko.graveyard_beanspot_child_night",
                 "location.kakariko.gossip_graveyard",
                 "location.kakariko.gossip_grotto_kakariko"
             ],
-            "entrances": []
+            "entrances": [
+                "entrance.kakariko.shop_bazaar",
+                "entrance.kakariko.shop_magic",
+                "entrance.kakariko.minigame_shooting",
+                "entrance.kakariko.impas_house",
+                "entrance.kakariko.impa_back",
+                "entrance.kakariko.windmill",
+                "entrance.kakariko.skulltula_house",
+                "entrance.kakariko.kakariko_witch",
+                "entrance.kakariko.carpenter_house",
+                "entrance.kakariko.dampes_hut",
+                "entrance.kakariko.open_grotto",
+                "entrance.kakariko.redead_grotto",
+                "entrance.kakariko.well",
+                "entrance.kakariko.temple_shadow"
+            ]
         },
         "area.mountain": {
             "locations": [
-                "location.mountain.mountain_above_dodongo",
-                "location.mountain.mountain_outside_goron_chest",
-                "location.mountain.mountain_outside_goron_grotto",
-                "location.mountain.mountain_warp",
-                "location.mountain.mountain_crater_wall",
-                "location.mountain.mountain_crater_ladder_salesman",
-                "location.mountain.mountain_crater_grotto_salesman_1",
-                "location.mountain.mountain_crater_grotto_salesman_2",
-                "location.mountain.mountain_crater_grotto_salesman_3",
-                "location.mountain.mountain_grotto_cow",
-                "location.mountain.mountain_magic_bean",
-                "location.mountain.mountain_crater_grotto",
-                "location.mountain.mountain_crater_fairy",
-                "location.mountain.mountain_summit_fairy",
-                "location.mountain.mountain_biggoron",
-                "location.mountain.mountain_bombable",
-                "location.mountain.mountain_before_goron_hammer_rock_adult_night",
-                "location.mountain.mountain_cave_entrance_beanspot_child",
-                "location.mountain.mountain_wall_hammer_rock_adult_night",
-                "location.mountain.mountain_crater_beanspot_child",
-                "location.mountain.mountain_crater_box_child",
+                "location.mountain.above_dodongo",
+                "location.mountain.outside_goron_chest",
+                "location.mountain.outside_goron_grotto",
+                "location.mountain.warp",
+                "location.mountain.crater_wall",
+                "location.mountain.crater_ladder_salesman",
+                "location.mountain.crater_grotto_salesman_1",
+                "location.mountain.crater_grotto_salesman_2",
+                "location.mountain.crater_grotto_salesman_3",
+                "location.mountain.grotto_cow",
+                "location.mountain.magic_bean",
+                "location.mountain.crater_grotto",
+                "location.mountain.crater_fairy",
+                "location.mountain.summit_fairy",
+                "location.mountain.biggoron",
+                "location.mountain.bombable",
+                "location.mountain.before_goron_hammer_rock_adult_night",
+                "location.mountain.cave_entrance_beanspot_child",
+                "location.mountain.wall_hammer_rock_adult_night",
+                "location.mountain.crater_beanspot_child",
+                "location.mountain.crater_box_child",
                 "location.mountain.gossip_dm_crater",
                 "location.mountain.gossip_dm_trail",
                 "location.mountain.gossip_grotto_crater",
                 "location.mountain.gossip_grotto_mountain"
             ],
-            "entrances": []
+            "entrances": [
+                "entrance.mountain.mountain_fairy",
+                "entrance.mountain.crater_fairy",
+                "entrance.mountain.bomb_grotto",
+                "entrance.mountain.storms_grotto",
+                "entrance.mountain.crater_hammer_grotto",
+                "entrance.mountain.crater_bomb_grotto",
+                "entrance.mountain.dodongo",
+                "entrance.mountain.temple_fire"
+            ]
         },
         "area.goron": {
             "locations": [
-                "location.goron.goron_maze_left",
-                "location.goron.goron_maze_center",
-                "location.goron.goron_maze_right",
-                "location.goron.goron_hot_rodder",
-                "location.goron.goron_little_link",
-                "location.goron.goron_spinning_pot_hp",
-                "location.goron.goron_darunia",
-                "location.goron.goron_grotto_salesman_1",
-                "location.goron.goron_grotto_salesman_2",
-                "location.goron.goron_grotto_salesman_3",
-                "location.goron.goron_maze_center_child",
-                "location.goron.goron_center_platform_adult",
-                "location.goron.gossip_goron_maze",
-                "location.goron.gossip_goron_medigoron"
+                "location.goron.maze_left",
+                "location.goron.maze_center",
+                "location.goron.maze_right",
+                "location.goron.hot_rodder",
+                "location.goron.little_link",
+                "location.goron.spinning_pot_hp",
+                "location.goron.darunia",
+                "location.goron.grotto_salesman_1",
+                "location.goron.grotto_salesman_2",
+                "location.goron.grotto_salesman_3",
+                "location.goron.maze_center_child",
+                "location.goron.center_platform_adult",
+                "location.goron.gossip_maze",
+                "location.goron.gossip_medigoron"
             ],
-            "entrances": []
+            "entrances": [
+                "entrance.goron.shop",
+                "entrance.goron.grotto"
+            ]
         },
         "area.zoras": {
             "locations": [
-                "location.zoras.zoras_diving",
-                "location.zoras.zoras_torch",
-                "location.zoras.zoras_fairy",
-                "location.zoras.zoras_ice",
-                "location.zoras.zoras_underwater",
-                "location.zoras.zoras_king_zora",
-                "location.zoras.zoras_wall_ice_adult_night",
-                "location.zoras.zoras_tree_child",
-                "location.zoras.zoras_wall_child_night",
-                "location.zoras.zoras_fairy_hidden_cave_adult_night",
+                "location.zoras.diving",
+                "location.zoras.torch",
+                "location.zoras.fairy",
+                "location.zoras.ice",
+                "location.zoras.underwater",
+                "location.zoras.king_zora",
+                "location.zoras.wall_ice_adult_night",
+                "location.zoras.tree_child",
+                "location.zoras.wall_child_night",
+                "location.zoras.fairy_hidden_cave_adult_night",
                 "location.zoras.gossip_zora_king",
                 "location.zoras.gossip_zora_fairy",
                 "location.zoras.gossip_zora_jabu"
             ],
-            "entrances": []
+            "entrances": [
+                "entrance.zoras.shop",
+                "entrance.zoras.fairy",
+                "entrance.zoras.storms_grotto",
+                "entrance.zoras.jabujabu",
+                "entrance.zoras.ice_cavern"
+            ]
         },
         "area.well": {
             "locations": [
-                "location.well.well_front_left_hidden_wall",
-                "location.well.well_front_center_bombable",
-                "location.well.well_right_bottom_hidden_wall",
-                "location.well.well__center_large",
-                "location.well.well_center_small",
-                "location.well.well_back_left_bombable",
-                "location.well.well_coffin_key",
-                "location.well.well_defeat_boss",
-                "location.well.well_invisible",
-                "location.well.well_underwater_front",
-                "location.well.well_underwater_left",
-                "location.well.well_basement_ches",
-                "location.well.well_locked_pits",
-                "location.well.well_behind_right_grate",
-                "location.well.well_center_child",
-                "location.well.well_center_locked_room_child",
-                "location.well.well_locked_pits_child"
+                "location.well.front_left_hidden_wall",
+                "location.well.front_center_bombable",
+                "location.well.right_bottom_hidden_wall",
+                "location.well._center_large",
+                "location.well.center_small",
+                "location.well.back_left_bombable",
+                "location.well.coffin_key",
+                "location.well.defeat_boss",
+                "location.well.invisible",
+                "location.well.underwater_front",
+                "location.well.underwater_left",
+                "location.well.basement_ches",
+                "location.well.locked_pits",
+                "location.well.behind_right_grate",
+                "location.well.center_child",
+                "location.well.center_locked_room_child",
+                "location.well.locked_pits_child"
             ],
             "entrances": []
         },
@@ -4899,14 +4973,14 @@
         },
         "area.ice_cavern": {
             "locations": [
-                "location.ice_cavern.ice_cavern_map",
-                "location.ice_cavern.ice_cavern_compass",
-                "location.ice_cavern.ice_cavern_hp",
-                "location.ice_cavern.ice_cavern_boots",
-                "location.ice_cavern.ice_cavern_sheik",
-                "location.ice_cavern.ice_cavern_ice_blades_adult",
-                "location.ice_cavern.ice_cavern_block_puzzle_adult",
-                "location.ice_cavern.ice_cavern_compass_room_adult"
+                "location.ice_cavern.map",
+                "location.ice_cavern.compass",
+                "location.ice_cavern.hp",
+                "location.ice_cavern.boots",
+                "location.ice_cavern.sheik",
+                "location.ice_cavern.ice_blades_adult",
+                "location.ice_cavern.block_puzzle_adult",
+                "location.ice_cavern.compass_room_adult"
             ],
             "entrances": []
         },
@@ -4925,28 +4999,28 @@
         },
         "area.gerudo_training": {
             "locations": [
-                "location.gerudo_training.gerudo_training_lobby_left",
-                "location.gerudo_training.gerudo_training_lobby_right",
-                "location.gerudo_training.gerudo_training_stalfos",
-                "location.gerudo_training.gerudo_training_beamos",
-                "location.gerudo_training.gerudo_training_hidden_ceiling",
-                "location.gerudo_training.gerudo_training_maze_1",
-                "location.gerudo_training.gerudo_training_maze_2",
-                "location.gerudo_training.gerudo_training_maze_3",
-                "location.gerudo_training.gerudo_training_maze_final",
-                "location.gerudo_training.gerudo_training_maze_right_central",
-                "location.gerudo_training.gerudo_training_maze_right",
-                "location.gerudo_training.gerudo_training_maze_right_key",
-                "location.gerudo_training.gerudo_training_underwater_silver",
-                "location.gerudo_training.gerudo_training_hammer_room_clear",
-                "location.gerudo_training.gerudo_training_hammer_room_switch",
-                "location.gerudo_training.gerudo_training_eye_statue",
-                "location.gerudo_training.gerudo_training_scarecrow",
-                "location.gerudo_training.gerudo_training_heavy_block_before",
-                "location.gerudo_training.gerudo_training_heavy_block_1",
-                "location.gerudo_training.gerudo_training_heavy_block_2",
-                "location.gerudo_training.gerudo_training_heavy_block_3",
-                "location.gerudo_training.gerudo_training_heavy_block_4"
+                "location.gerudo_training.lobby_left",
+                "location.gerudo_training.lobby_right",
+                "location.gerudo_training.stalfos",
+                "location.gerudo_training.beamos",
+                "location.gerudo_training.hidden_ceiling",
+                "location.gerudo_training.maze_1",
+                "location.gerudo_training.maze_2",
+                "location.gerudo_training.maze_3",
+                "location.gerudo_training.maze_final",
+                "location.gerudo_training.maze_right_central",
+                "location.gerudo_training.maze_right",
+                "location.gerudo_training.maze_right_key",
+                "location.gerudo_training.underwater_silver",
+                "location.gerudo_training.hammer_room_clear",
+                "location.gerudo_training.hammer_room_switch",
+                "location.gerudo_training.eye_statue",
+                "location.gerudo_training.scarecrow",
+                "location.gerudo_training.heavy_block_before",
+                "location.gerudo_training.heavy_block_1",
+                "location.gerudo_training.heavy_block_2",
+                "location.gerudo_training.heavy_block_3",
+                "location.gerudo_training.heavy_block_4"
             ],
             "entrances": []
         },
@@ -4974,17 +5048,17 @@
         },
         "area.deku": {
             "locations": [
-                "location.deku.deku_lobby",
-                "location.deku.deku_slingshot",
-                "location.deku.deku_slingshot_side",
-                "location.deku.deku_compass",
-                "location.deku.deku_compass_side",
-                "location.deku.deku_basement",
-                "location.deku.deku_gohma",
-                "location.deku.deku_3f_compass_side_child",
-                "location.deku.deku_basement_vines_child",
-                "location.deku.deku_basement_metal_gate_child",
-                "location.deku.deku_bombable_behind_web_child"
+                "location.deku.lobby",
+                "location.deku.slingshot",
+                "location.deku.slingshot_side",
+                "location.deku.compass",
+                "location.deku.compass_side",
+                "location.deku.basement",
+                "location.deku.gohma",
+                "location.deku.3f_compass_side_child",
+                "location.deku.basement_vines_child",
+                "location.deku.basement_metal_gate_child",
+                "location.deku.bombable_behind_web_child"
             ],
             "entrances": []
         },
@@ -5008,22 +5082,22 @@
         },
         "area.dodongo": {
             "locations": [
-                "location.dodongo.dodongo_lobby_salesman",
-                "location.dodongo.dodongo_east_corridor_salesman",
-                "location.dodongo.dodongo_map",
-                "location.dodongo.dodongo_compass",
-                "location.dodongo.dodongo_bomb_flower_platform",
-                "location.dodongo.dodongo_bomb_bag",
-                "location.dodongo.dodongo_near_bomb_bag_salesman_1",
-                "location.dodongo.dodongo_near_bomb_bag_salesman_2",
-                "location.dodongo.dodongo_end_bridge",
-                "location.dodongo.dodongo_chest_above_dodongo",
-                "location.dodongo.dodongo_dodongo",
-                "location.dodongo.dodongo_east_corridor_bombable",
-                "location.dodongo.dodongo_east_corridor_scarecrow_adult",
-                "location.dodongo.dodongo_above_big_staircase_adult",
-                "location.dodongo.dodongo_big_staircase_vines",
-                "location.dodongo.dodongo_near_boss_bombable",
+                "location.dodongo.lobby_salesman",
+                "location.dodongo.east_corridor_salesman",
+                "location.dodongo.map",
+                "location.dodongo.compass",
+                "location.dodongo.bomb_flower_platform",
+                "location.dodongo.bomb_bag",
+                "location.dodongo.near_bomb_bag_salesman_1",
+                "location.dodongo.near_bomb_bag_salesman_2",
+                "location.dodongo.end_bridge",
+                "location.dodongo.chest_above_dodongo",
+                "location.dodongo.dodongo",
+                "location.dodongo.east_corridor_bombable",
+                "location.dodongo.east_corridor_scarecrow_adult",
+                "location.dodongo.above_big_staircase_adult",
+                "location.dodongo.big_staircase_vines",
+                "location.dodongo.near_boss_bombable",
                 "location.dodongo.gossip_dodongo"
             ],
             "entrances": []
@@ -5052,15 +5126,15 @@
         },
         "area.jabujabu": {
             "locations": [
-                "location.jabujabu.jabujabu_elevator_dive_salesman",
-                "location.jabujabu.jabujabu_boomerang",
-                "location.jabujabu.jabujabu_map",
-                "location.jabujabu.jabujabu_compass",
-                "location.jabujabu.jabujabu_barinade",
-                "location.jabujabu.jabujabu_b1_ruto1_child",
-                "location.jabujabu.jabujabu_b1_ruto2_child",
-                "location.jabujabu.jabujabu_b1_rising_water_child",
-                "location.jabujabu.jabujabu_1f_near_boss_child"
+                "location.jabujabu.elevator_dive_salesman",
+                "location.jabujabu.boomerang",
+                "location.jabujabu.map",
+                "location.jabujabu.compass",
+                "location.jabujabu.barinade",
+                "location.jabujabu.b1_ruto1_child",
+                "location.jabujabu.b1_ruto2_child",
+                "location.jabujabu.b1_rising_water_child",
+                "location.jabujabu.1f_near_boss_child"
             ],
             "entrances": []
         },
@@ -5088,25 +5162,25 @@
         },
         "area.temple_forest": {
             "locations": [
-                "location.temple_forest.temple_forest_entrance",
-                "location.temple_forest.temple_forest_behind_lobby",
-                "location.temple_forest.temple_forest_well",
-                "location.temple_forest.temple_forest_map",
-                "location.temple_forest.temple_forest_outside_hookshot",
-                "location.temple_forest.temple_forest_block_push",
-                "location.temple_forest.temple_forest_boss_key",
-                "location.temple_forest.temple_forest_floormaster",
-                "location.temple_forest.temple_forest_bow",
-                "location.temple_forest.temple_forest_poe_red",
-                "location.temple_forest.temple_forest_poe_blue",
-                "location.temple_forest.temple_forest_falling_room",
-                "location.temple_forest.temple_forest_near_boss",
-                "location.temple_forest.temple_forest_phantomganon",
-                "location.temple_forest.temple_forest_entrance_adult",
-                "location.temple_forest.temple_forest_pillars_adult",
-                "location.temple_forest.temple_forest_lobby_adult",
-                "location.temple_forest.temple_forest_outside_hookshot_adult",
-                "location.temple_forest.temple_forest_near_boss_adult"
+                "location.temple_forest.entrance",
+                "location.temple_forest.behind_lobby",
+                "location.temple_forest.well",
+                "location.temple_forest.map",
+                "location.temple_forest.outside_hookshot",
+                "location.temple_forest.block_push",
+                "location.temple_forest.boss_key",
+                "location.temple_forest.floormaster",
+                "location.temple_forest.bow",
+                "location.temple_forest.poe_red",
+                "location.temple_forest.poe_blue",
+                "location.temple_forest.falling_room",
+                "location.temple_forest.near_boss",
+                "location.temple_forest.phantomganon",
+                "location.temple_forest.entrance_adult",
+                "location.temple_forest.pillars_adult",
+                "location.temple_forest.lobby_adult",
+                "location.temple_forest.outside_hookshot_adult",
+                "location.temple_forest.near_boss_adult"
             ],
             "entrances": []
         },
@@ -5135,26 +5209,26 @@
         },
         "area.temple_fire": {
             "locations": [
-                "location.temple_fire.temple_fire_near_boss",
-                "location.temple_fire.temple_fire_dancer",
-                "location.temple_fire.temple_fire_boss_key",
-                "location.temple_fire.temple_fire_big_lava_bomb",
-                "location.temple_fire.temple_fire_big_lava_open",
-                "location.temple_fire.temple_fire_boulder_maze_lower",
-                "location.temple_fire.temple_fire_boulder_maze_side",
-                "location.temple_fire.temple_fire_boulder_maze_upper",
-                "location.temple_fire.temple_fire_boulder_maze_bomb",
-                "location.temple_fire.temple_fire_scarecrow",
-                "location.temple_fire.temple_fire_map",
-                "location.temple_fire.temple_fire_compass",
-                "location.temple_fire.temple_fire_highest_goron",
-                "location.temple_fire.temple_fire_hammer",
-                "location.temple_fire.temple_fire_volvagia",
-                "location.temple_fire.temple_fire_big_lava_time_block_adult",
-                "location.temple_fire.temple_fire_boulder_maze_bombable_adult",
-                "location.temple_fire.temple_fire_boulder_maze_scarecrow1_adult",
-                "location.temple_fire.temple_fire_boulder_maze_scarecrow2_adult",
-                "location.temple_fire.temple_fire_near_boss_key_adult"
+                "location.temple_fire.near_boss",
+                "location.temple_fire.dancer",
+                "location.temple_fire.boss_key",
+                "location.temple_fire.big_lava_bomb",
+                "location.temple_fire.big_lava_open",
+                "location.temple_fire.boulder_maze_lower",
+                "location.temple_fire.boulder_maze_side",
+                "location.temple_fire.boulder_maze_upper",
+                "location.temple_fire.boulder_maze_bomb",
+                "location.temple_fire.scarecrow",
+                "location.temple_fire.map",
+                "location.temple_fire.compass",
+                "location.temple_fire.highest_goron",
+                "location.temple_fire.hammer",
+                "location.temple_fire.volvagia",
+                "location.temple_fire.big_lava_time_block_adult",
+                "location.temple_fire.boulder_maze_bombable_adult",
+                "location.temple_fire.boulder_maze_scarecrow1_adult",
+                "location.temple_fire.boulder_maze_scarecrow2_adult",
+                "location.temple_fire.near_boss_key_adult"
             ],
             "entrances": []
         },
@@ -5183,22 +5257,22 @@
         },
         "area.temple_water": {
             "locations": [
-                "location.temple_water.temple_water_map",
-                "location.temple_water.temple_water_compass",
-                "location.temple_water.temple_water_torches",
-                "location.temple_water.temple_water_chest_dragon",
-                "location.temple_water.temple_water_central_bow",
-                "location.temple_water.temple_water_boss_key",
-                "location.temple_water.temple_water_center_pillar",
-                "location.temple_water.temple_water_cracked_wall",
-                "location.temple_water.temple_water_dark_link",
-                "location.temple_water.temple_water_river",
-                "location.temple_water.temple_water_morpha",
-                "location.temple_water.temple_water_lowest_level_south_adult",
-                "location.temple_water.temple_water_big_waterfall_adult",
-                "location.temple_water.temple_water_near_boss_key_adult",
-                "location.temple_water.temple_water_center_pillar_adult",
-                "location.temple_water.temple_water_river_adult"
+                "location.temple_water.map",
+                "location.temple_water.compass",
+                "location.temple_water.torches",
+                "location.temple_water.chest_dragon",
+                "location.temple_water.central_bow",
+                "location.temple_water.boss_key",
+                "location.temple_water.center_pillar",
+                "location.temple_water.cracked_wall",
+                "location.temple_water.dark_link",
+                "location.temple_water.river",
+                "location.temple_water.morpha",
+                "location.temple_water.lowest_level_south_adult",
+                "location.temple_water.big_waterfall_adult",
+                "location.temple_water.near_boss_key_adult",
+                "location.temple_water.center_pillar_adult",
+                "location.temple_water.river_adult"
             ],
             "entrances": []
         },
@@ -5221,29 +5295,29 @@
         },
         "area.temple_shadow": {
             "locations": [
-                "location.temple_shadow.temple_shadow_map",
-                "location.temple_shadow.temple_shadow_boots",
-                "location.temple_shadow.temple_shadow_compass",
-                "location.temple_shadow.temple_shadow_early_silver",
-                "location.temple_shadow.temple_shadow_invisible_blades_visible",
-                "location.temple_shadow.temple_shadow_invisible_blades_invisible",
-                "location.temple_shadow.temple_shadow_falling_spikes_lower",
-                "location.temple_shadow.temple_shadow_falling_spikes_upper",
-                "location.temple_shadow.temple_shadow_falling_spikes_switch",
-                "location.temple_shadow.temple_shadow_invisible_spikes",
-                "location.temple_shadow.temple_shadow_giant_pot",
-                "location.temple_shadow.temple_shadow_wind_hint",
-                "location.temple_shadow.temple_shadow_after_wind_enemy",
-                "location.temple_shadow.temple_shadow_after_wind_hidden",
-                "location.temple_shadow.temple_shadow_spike_walls",
-                "location.temple_shadow.temple_shadow_boss_key",
-                "location.temple_shadow.temple_shadow_hidden_floormaster",
-                "location.temple_shadow.temple_shadow_bongobongo",
-                "location.temple_shadow.temple_shadow_invisible_blade_adult",
-                "location.temple_shadow.temple_shadow_falling_spikes_adult",
-                "location.temple_shadow.temple_shadow_behind_giant_pot_adult",
-                "location.temple_shadow.temple_shadow_boat_adult",
-                "location.temple_shadow.temple_shadow_behind_giant_pots_adult"
+                "location.temple_shadow.map",
+                "location.temple_shadow.boots",
+                "location.temple_shadow.compass",
+                "location.temple_shadow.early_silver",
+                "location.temple_shadow.invisible_blades_visible",
+                "location.temple_shadow.invisible_blades_invisible",
+                "location.temple_shadow.falling_spikes_lower",
+                "location.temple_shadow.falling_spikes_upper",
+                "location.temple_shadow.falling_spikes_switch",
+                "location.temple_shadow.invisible_spikes",
+                "location.temple_shadow.giant_pot",
+                "location.temple_shadow.wind_hint",
+                "location.temple_shadow.after_wind_enemy",
+                "location.temple_shadow.after_wind_hidden",
+                "location.temple_shadow.spike_walls",
+                "location.temple_shadow.boss_key",
+                "location.temple_shadow.hidden_floormaster",
+                "location.temple_shadow.bongobongo",
+                "location.temple_shadow.invisible_blade_adult",
+                "location.temple_shadow.falling_spikes_adult",
+                "location.temple_shadow.behind_giant_pot_adult",
+                "location.temple_shadow.boat_adult",
+                "location.temple_shadow.behind_giant_pots_adult"
             ],
             "entrances": []
         },
@@ -5280,31 +5354,31 @@
         },
         "area.temple_spirit": {
             "locations": [
-                "location.temple_spirit.temple_spirit_child_left",
-                "location.temple_spirit.temple_spirit_child_right",
-                "location.temple_spirit.temple_spirit_compass",
-                "location.temple_spirit.temple_spirit_early_adult_right",
-                "location.temple_spirit.temple_spirit_first_mirror_right",
-                "location.temple_spirit.temple_spirit_first_mirror_left",
-                "location.temple_spirit.temple_spirit_map",
-                "location.temple_spirit.temple_spirit_child_climb_east",
-                "location.temple_spirit.temple_spirit_child_climb_north",
-                "location.temple_spirit.temple_spirit_sun_block",
-                "location.temple_spirit.temple_spirit_statue_hand",
-                "location.temple_spirit.temple_spirit_main_room_NE",
-                "location.temple_spirit.temple_spirit_gauntlets",
-                "location.temple_spirit.temple_spirit_shield",
-                "location.temple_spirit.temple_spirit_near_four_armos",
-                "location.temple_spirit.temple_spirit_hallway_left_invisible",
-                "location.temple_spirit.temple_spirit_hallway_right_invisible",
-                "location.temple_spirit.temple_spirit_boss_key",
-                "location.temple_spirit.temple_spirit_topmost",
-                "location.temple_spirit.temple_spirit_twinrova",
-                "location.temple_spirit.temple_spirit_childsegment_left",
-                "location.temple_spirit.temple_spirit_childsegment_sun_room",
-                "location.temple_spirit.temple_spirit_childsegment_before_iron_knight",
-                "location.temple_spirit.temple_spirit_rolling_boulders_time_block_adult",
-                "location.temple_spirit.temple_spirit_coloss_room_adult"
+                "location.temple_spirit.child_left",
+                "location.temple_spirit.child_right",
+                "location.temple_spirit.compass",
+                "location.temple_spirit.early_adult_right",
+                "location.temple_spirit.first_mirror_right",
+                "location.temple_spirit.first_mirror_left",
+                "location.temple_spirit.map",
+                "location.temple_spirit.child_climb_east",
+                "location.temple_spirit.child_climb_north",
+                "location.temple_spirit.sun_block",
+                "location.temple_spirit.statue_hand",
+                "location.temple_spirit.main_room_NE",
+                "location.temple_spirit.gauntlets",
+                "location.temple_spirit.shield",
+                "location.temple_spirit.near_four_armos",
+                "location.temple_spirit.hallway_left_invisible",
+                "location.temple_spirit.hallway_right_invisible",
+                "location.temple_spirit.boss_key",
+                "location.temple_spirit.topmost",
+                "location.temple_spirit.twinrova",
+                "location.temple_spirit.childsegment_left",
+                "location.temple_spirit.childsegment_sun_room",
+                "location.temple_spirit.childsegment_before_iron_knight",
+                "location.temple_spirit.rolling_boulders_time_block_adult",
+                "location.temple_spirit.coloss_room_adult"
             ],
             "entrances": []
         },
@@ -5343,27 +5417,27 @@
         },
         "area.castle_ganon": {
             "locations": [
-                "location.castle_ganon.castle_ganon_under_bridge_salesman_1",
-                "location.castle_ganon.castle_ganon_under_bridge_salesman_2",
-                "location.castle_ganon.castle_ganon_under_bridge_salesman_3",
-                "location.castle_ganon.castle_ganon_under_bridge_salesman_4",
-                "location.castle_ganon.castle_ganon_forest_trial",
-                "location.castle_ganon.castle_ganon_water_trial_left",
-                "location.castle_ganon.castle_ganon_water_trial_right",
-                "location.castle_ganon.castle_ganon_shadow_trial_first",
-                "location.castle_ganon.castle_ganon_shadow_trial_second",
-                "location.castle_ganon.castle_ganon_spirit_trial_first",
-                "location.castle_ganon.castle_ganon_spirit_trial_second",
-                "location.castle_ganon.castle_ganon_light_trial_first_left",
-                "location.castle_ganon.castle_ganon_light_trial_second_left",
-                "location.castle_ganon.castle_ganon_light_trial_third_left",
-                "location.castle_ganon.castle_ganon_light_trial_first_right",
-                "location.castle_ganon.castle_ganon_light_trial_second_right",
-                "location.castle_ganon.castle_ganon_light_trial_third_right",
-                "location.castle_ganon.castle_ganon_light_trail_invisible_enemies",
-                "location.castle_ganon.castle_ganon_light_trial_lullaby",
-                "location.castle_ganon.castle_ganon_boss_key",
-                "location.castle_ganon.castle_ganon_boss"
+                "location.castle_ganon.under_bridge_salesman_1",
+                "location.castle_ganon.under_bridge_salesman_2",
+                "location.castle_ganon.under_bridge_salesman_3",
+                "location.castle_ganon.under_bridge_salesman_4",
+                "location.castle_ganon.forest_trial",
+                "location.castle_ganon.water_trial_left",
+                "location.castle_ganon.water_trial_right",
+                "location.castle_ganon.shadow_trial_first",
+                "location.castle_ganon.shadow_trial_second",
+                "location.castle_ganon.spirit_trial_first",
+                "location.castle_ganon.spirit_trial_second",
+                "location.castle_ganon.light_trial_first_left",
+                "location.castle_ganon.light_trial_second_left",
+                "location.castle_ganon.light_trial_third_left",
+                "location.castle_ganon.light_trial_first_right",
+                "location.castle_ganon.light_trial_second_right",
+                "location.castle_ganon.light_trial_third_right",
+                "location.castle_ganon.light_trail_invisible_enemies",
+                "location.castle_ganon.light_trial_lullaby",
+                "location.castle_ganon.boss_key",
+                "location.castle_ganon.boss"
             ],
             "entrances": []
         },
@@ -5393,5 +5467,594 @@
             "entrances": []
         }
     },
-    "entrances": {}
+    "entrances": {
+        "entrance.kokiri.midos_house": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kokiri.know_it_house": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kokiri.saria_house": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kokiri.twins_house": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kokiri.shop": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kokiri.storm_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kokiri.deku": {
+            "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.desert.fairy_colossus": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.desert.strength_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.desert.temple_spirit": {
+            "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.river.bomb_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.river.open_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.river.storms_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.hyrule_field.castle_river_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.hyrule_field.kakariko_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.hyrule_field.lake_fence_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.hyrule_field.lake_open_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.hyrule_field.dive_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.hyrule_field.valley_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.hyrule_field.castle_entrance_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.hyrule_field.little_forest_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.gerudo_valley.tend": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.gerudo_valley.octorock_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.gerudo_valley.storms_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.lake.laboratory": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.lake.fishing": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.lake.grave_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.lake.temple_water": {
+            "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.lonlon.house": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.lonlon.stables": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.lonlon.silo": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.lonlon.open_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.gerudo.storms_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.gerudo.training_grounds": {
+            "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.woods.near_goron_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.woods.theatre_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.woods.near_meadow_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.woods.wolfos_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.woods.fairy_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.woods.storms_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.woods.temple_forest": {
+            "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.castle_town.shop_bombchu": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.castle_town.shop_bazaar": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.castle_town.shop_magic": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.castle_town.shop_mask": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.castle_town.minigame_bombchu": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.castle_town.minigame_shooting": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.castle_town.minigame_treasure": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.castle_town.guard_tower": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.castle_town.temple_of_time": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.castle_town.dog_lady": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.castle_town.back_house": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.castle_town.fairy_young": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.castle_town.fairy_adult": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.castle_town.storm_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kakariko.shop_bazaar": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kakariko.shop_magic": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kakariko.minigame_shooting": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kakariko.impas_house": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kakariko.impa_back": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kakariko.windmill": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kakariko.skulltula_house": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kakariko.kakariko_witch": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kakariko.carpenter_house": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kakariko.dampes_hut": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kakariko.open_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kakariko.redead_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kakariko.well": {
+            "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.kakariko.temple_shadow": {
+            "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.mountain.mountain_fairy": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.mountain.crater_fairy": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.mountain.bomb_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.mountain.storms_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.mountain.crater_hammer_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.mountain.crater_bomb_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.mountain.dodongo": {
+            "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.mountain.temple_fire": {
+            "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.goron.shop": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.goron.grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.zoras.shop": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.zoras.fairy": {
+            "type": "interior",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.zoras.storms_grotto": {
+            "type": "grotto",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.zoras.jabujabu": {
+            "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        },
+        "entrance.zoras.ice_cavern": {
+            "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true
+        }
+    }
 }

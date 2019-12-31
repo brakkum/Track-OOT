@@ -1,4 +1,4 @@
-{
+const translation = {
     "kokiri": "area.kokiri",
     "chests.kokiri_sword": "location.kokiri.sword",
     "chests.midos_house": "location.kokiri.midos_house",
@@ -959,4 +959,18 @@
     "songs.song_scarecrow": "song.scarecrow",
     "songs.song_frogs": "song.frogs",
     "songs.song_woods": "song.woods"
-}
+};
+
+export default function(state) {
+    let res = {
+        data: {},
+        autosave: state.autosave,
+        timestamp: state.timestamp,
+        version: 2,
+        name: state.name
+    };
+    for (let i of Object.keys(state.data)) {
+        res.data[translation[i]] = state.data[i];
+    }
+    return res;
+};

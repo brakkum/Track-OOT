@@ -8,6 +8,14 @@ const LOCATION_STRUCT = {
     "visible": true
 }
 
+const ENTRANCE_STRUCT = {
+    "type": "interior",
+    "time": "always",
+    "child": true,
+    "adult": true,
+    "visible": true
+}
+
 let translation = JSON.parse(fs.readFileSync("./src/database/buffer/translation.json"));
 let locations = JSON.parse(fs.readFileSync("./src/database/buffer/locations.json"));
 let items = JSON.parse(fs.readFileSync("./src/database/items.json"));
@@ -35,7 +43,7 @@ let csettings = {
 };
 let cshops = {};
 let csongs = {};
-
+let clogic = {};
 
 function convert_locations(area, name, type, data) {
     let area_name = translation[area];
@@ -61,53 +69,62 @@ function convert_locations(area, name, type, data) {
     if (!!data.time) {
         record.time = data.time;
     }
-    if (!!data.counts && data.counts > 1) {
-        for (let l = 0; l < data.counts; ++l) {
-            let trans = translation[`${type}.${name}`][l];
-            if (world.locations.hasOwnProperty(trans)) {
-                console.error(`name duplication: ${trans}`);
-            }
-            world.locations[trans] = record;
-            world.areas[area_name].locations.push(trans);
+    let trans = translation[`${type}.${name}`];
+    if (world.locations.hasOwnProperty(trans)) {
+        console.error(`name duplication: ${trans}`);
+    }
+    world.locations[trans] = record;
+    world.areas[area_name].locations.push(trans);
 
-            if (!!data.x && !!data.y) {
-                maps.main.locations.push({
-                    "type": type.replace(/s$/, ""),
-                    "id": trans,
-                    "x": Math.round(19.2 * parseFloat(data.x)),
-                    "y": Math.round(10.8 * parseFloat(data.y))
-                });
-            }
-            maps[area_name].locations.push({
-                "type": type.replace(/s$/, ""),
-                "id": trans,
-                "x": 0,
-                "y": 0
-            });
-        }
-    } else {
-        let trans = translation[`${type}.${name}`];
-        if (world.locations.hasOwnProperty(trans)) {
-            console.error(`name duplication: ${trans}`);
-        }
-        world.locations[trans] = record;
-        world.areas[area_name].locations.push(trans);
-
-        if (!!data.x && !!data.y) {
-            maps.main.locations.push({
-                "type": type.replace(/s$/, ""),
-                "id": trans,
-                "x": Math.round(19.2 * parseFloat(data.x)),
-                "y": Math.round(10.8 * parseFloat(data.y))
-            });
-        }
-        maps[area_name].locations.push({
+    if (!!data.x && !!data.y) {
+        maps.main.locations.push({
             "type": type.replace(/s$/, ""),
             "id": trans,
-            "x": 0,
-            "y": 0
+            "x": Math.round(19.2 * parseFloat(data.x)),
+            "y": Math.round(10.8 * parseFloat(data.y))
         });
     }
+    maps[area_name].locations.push({
+        "type": type.replace(/s$/, ""),
+        "id": trans,
+        "x": 0,
+        "y": 0
+    });
+}
+
+function convert_etrance(area, name, type, data) {
+    let area_name = translation[area];
+    world.areas[area_name] = world.areas[area_name] || {
+        "locations": [],
+        "entrances": []
+    };
+    maps[area_name] = maps[area_name] || {
+        "background": "",
+        "locations": [],
+        "entrances": []
+    };
+    let record = Object.assign({}, ENTRANCE_STRUCT);
+    record.type = data.type;
+    if (!!data.era) {
+        record.child = data.era=="child"||data.era=="both";
+        record.adult = data.era=="adult"||data.era=="both";
+    }
+    if (!!data.time) {
+        record.time = data.time;
+    }
+    let trans = `entrance.${area}.${name}`;
+    if (world.entrances.hasOwnProperty(trans)) {
+        console.error(`name duplication: ${trans}`);
+    }
+    world.entrances[trans] = record;
+    world.areas[area_name].entrances.push(trans);
+
+    maps[area_name].entrances.push({
+        "type": type.replace(/s$/, ""),
+        "id": trans,
+        "x": 0,
+        "y": 0
+    });
 }
 
 for (let i in locations) {
@@ -146,6 +163,11 @@ for (let i in locations) {
             convert_locations(i, k, "gossipstones", locations[i].gossipstones_v[k]);
         }
     }
+    if (locations[i].hasOwnProperty("entrances")) {
+        for (let k in locations[i].entrances) {
+            convert_etrance(i, k, "gossipstones", locations[i].entrances[k]);
+        }
+    }
 }
 
 for (let i in items) {
@@ -172,11 +194,69 @@ for (let i in songs) {
     csongs[trans] = songs[i];
 }
 
-// TODO translate logic
-// logic additionals
-// translation['filter_era_active'] = 'filter.era_active';
+const CUSTOM_LOGIC_TYPES = [
+    "chest",
+    "item",
+    "skip",
+    "option",
+    "skulltula"
+];
+function recursive_logic_translation(tree) {
+    if (CUSTOM_LOGIC_TYPES.indexOf(tree.type) > 0) {
+        if (!!tree.value) {
+            return {
+                type: "value",
+                el: translation[`${tree.type}s.${tree.el}`],
+                value: tree.value
+            };
+        } else {
+            return {
+                type: "number",
+                el: translation[`${tree.type}s.${tree.el}`]
+            };
+        }
+    } else if (tree.type == "filter") {
+        return {
+            type: "number",
+            el: `filter.${tree.el.replace(/^filter_/, "")}`
+        };
+    } else if (tree.type == "mixin") {
+        return {
+            type: "number",
+            el: `mixin.${tree.el}`
+        };
+    } else {
+        if (tree.type == "not" || tree.type == "min" || tree.type == "max") {
+            return {
+                type: tree.type,
+                el: recursive_logic_translation(tree.el)
+            };
+        } else if (tree.type == "false" || tree.type == "true") {
+            return {
+                type: tree.type
+            };
+        } else {
+            return {
+                type: tree.type,
+                el: tree.el.map(recursive_logic_translation)
+            };
+        }
+    }
+}
 
-// TODO generate savestate translator (JS)
+for (let i in logic.chests) {
+    clogic[translation[`chests.${i}`]] = recursive_logic_translation(logic.chests[i]);
+}
+for (let i in logic.skulltulas) {
+    clogic[translation[`skulltulas.${i}`]] = recursive_logic_translation(logic.skulltulas[i]);
+}
+for (let i in logic.gossipstones) {
+    clogic[translation[`gossipstones.${i}`]] = recursive_logic_translation(logic.gossipstones[i]);
+}
+for (let i in logic.mixins) {
+    clogic[`mixin.${i}`] = recursive_logic_translation(logic.mixins[i]);
+}
+
 // TODO translate language keys
 
 fs.writeFileSync("./src/database/rework/world.json", JSON.stringify(world, null, 4));
@@ -185,4 +265,20 @@ fs.writeFileSync("./src/database/rework/items.json", JSON.stringify(citems, null
 fs.writeFileSync("./src/database/rework/settings.json", JSON.stringify(csettings, null, 4));
 fs.writeFileSync("./src/database/rework/shops.json", JSON.stringify(cshops, null, 4));
 fs.writeFileSync("./src/database/rework/songs.json", JSON.stringify(csongs, null, 4));
-//fs.writeFileSync("./src/database/rework/logic.json", JSON.stringify(clogic, null, 4)));
+fs.writeFileSync("./src/database/rework/logic.json", JSON.stringify(clogic, null, 4));
+
+fs.writeFileSync("./src/script/storage/converters/StateConverter1.js", `const translation = ${JSON.stringify(translation, null, 4)};
+
+export default function(state) {
+    let res = {
+        data: {},
+        autosave: state.autosave,
+        timestamp: state.timestamp,
+        version: 2,
+        name: state.name
+    };
+    for (let i of Object.keys(state.data)) {
+        res.data[translation[i]] = state.data[i];
+    }
+    return res;
+};`);

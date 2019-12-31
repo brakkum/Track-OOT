@@ -26,16 +26,8 @@ let settings = JSON.parse(fs.readFileSync("./src/database/settings.json"));
 let shops = JSON.parse(fs.readFileSync("./src/database/shops.json"));
 let songs = JSON.parse(fs.readFileSync("./src/database/songs.json"));
 
-function convert_locations(area, name, type, data) {
-    if (!!data.counts && data.counts > 1) {
-        let trans = [];
-        for (let l = 0; l < data.counts; ++l) {
-            trans.push(`location.${area}.${name}_${l}`);
-        }
-        translation[`${type}.${name}`] = trans;
-    } else {
-        translation[`${type}.${name}`] = `location.${area}.${name}`;
-    }
+function convert_locations(area, name, type) {
+    translation[`${type}.${name}`] = `location.${area}.${name.replace(`${area}_`, "")}`;
 }
 
 for (let i in locations) {
@@ -74,10 +66,22 @@ for (let i in items) {
 }
 
 for (let i in settings.options) {
-    translation[`options.${i}`] = `option.${i}`;
+    if (settings.options[i].type == "list") {
+        for (let j of settings.options[i].values) {
+            translation[`options.${j}`] = `option.${j}`;
+        }
+    } else {
+        translation[`options.${i}`] = `option.${i}`;
+    }
 }
 for (let i in settings.skips) {
-    translation[`skips.${i}`] = `skip.${i}`;
+    if (settings.skips[i].type == "list") {
+        for (let j of settings.skips[i].values) {
+            translation[`skips.${j}`] = `skip.${j}`;
+        }
+    } else {
+        translation[`skips.${i}`] = `skip.${i}`;
+    }
 }
 
 for (let i in shops) {
