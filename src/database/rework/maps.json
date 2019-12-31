@@ -1,0 +1,4903 @@
+{
+    "main": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.kokiri.kokiri_sword",
+                "x": 1459,
+                "y": 686
+            },
+            {
+                "type": "chest",
+                "id": "location.kokiri.midos_house_0",
+                "x": 1507,
+                "y": 626
+            },
+            {
+                "type": "chest",
+                "id": "location.kokiri.midos_house_1",
+                "x": 1507,
+                "y": 626
+            },
+            {
+                "type": "chest",
+                "id": "location.kokiri.midos_house_2",
+                "x": 1507,
+                "y": 626
+            },
+            {
+                "type": "chest",
+                "id": "location.kokiri.midos_house_3",
+                "x": 1507,
+                "y": 626
+            },
+            {
+                "type": "chest",
+                "id": "location.kokiri.links_house_cow",
+                "x": 1517,
+                "y": 691
+            },
+            {
+                "type": "chest",
+                "id": "location.kokiri.saria_ocarina",
+                "x": 1382,
+                "y": 626
+            },
+            {
+                "type": "chest",
+                "id": "location.kokiri.kokiri_storm_grotto",
+                "x": 1488,
+                "y": 589
+            },
+            {
+                "type": "skulltula",
+                "id": "location.kokiri.kokiri_know_it_all_brothers_child_night",
+                "x": 1448,
+                "y": 662
+            },
+            {
+                "type": "skulltula",
+                "id": "location.kokiri.kokiri_twins_adult_night",
+                "x": 1565,
+                "y": 675
+            },
+            {
+                "type": "skulltula",
+                "id": "location.kokiri.kokiri_beanspot_near_shop_child",
+                "x": 1565,
+                "y": 626
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.kokiri.gossip_kokiri",
+                "x": 1448,
+                "y": 589
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.kokiri.gossip_grotto_kokiri",
+                "x": 1488,
+                "y": 589
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.kokiri.gossip_deku_left",
+                "x": 1711,
+                "y": 563
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.kokiri.gossip_deku_right",
+                "x": 1751,
+                "y": 617
+            },
+            {
+                "type": "chest",
+                "id": "location.desert.desert_chest",
+                "x": 269,
+                "y": 270
+            },
+            {
+                "type": "chest",
+                "id": "location.desert.desert_warp_spirit",
+                "x": 86,
+                "y": 232
+            },
+            {
+                "type": "chest",
+                "id": "location.desert.desert_colossus_fairy",
+                "x": 173,
+                "y": 205
+            },
+            {
+                "type": "chest",
+                "id": "location.desert.desert_colossus_grotto_salesman_1",
+                "x": 134,
+                "y": 167
+            },
+            {
+                "type": "chest",
+                "id": "location.desert.desert_colossus_grotto_salesman_2",
+                "x": 134,
+                "y": 205
+            },
+            {
+                "type": "chest",
+                "id": "location.desert.desert_colossus_hp",
+                "x": 123,
+                "y": 254
+            },
+            {
+                "type": "skulltula",
+                "id": "location.desert.desert_fortress_adult",
+                "x": 269,
+                "y": 270
+            },
+            {
+                "type": "skulltula",
+                "id": "location.desert.desert_palm_tree_adult_night",
+                "x": 123,
+                "y": 308
+            },
+            {
+                "type": "skulltula",
+                "id": "location.desert.desert_magic_bean_adult_night",
+                "x": 123,
+                "y": 254
+            },
+            {
+                "type": "skulltula",
+                "id": "location.desert.desert_beanspot_child",
+                "x": 86,
+                "y": 232
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.desert.gossip_desert",
+                "x": 29,
+                "y": 253
+            },
+            {
+                "type": "chest",
+                "id": "location.river.frog_game",
+                "x": 1532,
+                "y": 346
+            },
+            {
+                "type": "chest",
+                "id": "location.river.frog_rain",
+                "x": 1498,
+                "y": 346
+            },
+            {
+                "type": "chest",
+                "id": "location.river.zora_hp_1",
+                "x": 1440,
+                "y": 324
+            },
+            {
+                "type": "chest",
+                "id": "location.river.zora_hp_2",
+                "x": 1651,
+                "y": 315
+            },
+            {
+                "type": "chest",
+                "id": "location.river.zora_river_grotto",
+                "x": 1450,
+                "y": 373
+            },
+            {
+                "type": "chest",
+                "id": "location.river.zora_river_grotto_salesman_1",
+                "x": 1313,
+                "y": 373
+            },
+            {
+                "type": "chest",
+                "id": "location.river.zora_river_grotto_salesman_2",
+                "x": 1352,
+                "y": 373
+            },
+            {
+                "type": "chest",
+                "id": "location.river.zora_river_bean_salesman",
+                "x": 1390,
+                "y": 373
+            },
+            {
+                "type": "skulltula",
+                "id": "location.river.zora_river_tree_child",
+                "x": 1352,
+                "y": 373
+            },
+            {
+                "type": "skulltula",
+                "id": "location.river.zora_river_ladder_child_night",
+                "x": 1651,
+                "y": 315
+            },
+            {
+                "type": "skulltula",
+                "id": "location.river.zora_river_wall1_adult_night",
+                "x": 1450,
+                "y": 373
+            },
+            {
+                "type": "skulltula",
+                "id": "location.river.zora_river_wall2_adult_night",
+                "x": 1603,
+                "y": 315
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.river.gossip_river_plateau",
+                "x": 1461,
+                "y": 327
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.river.gossip_river_waterfall",
+                "x": 1668,
+                "y": 308
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.river.gossip_grotto_river",
+                "x": 1459,
+                "y": 376
+            },
+            {
+                "type": "chest",
+                "id": "location.hyrule_field.song_of_time",
+                "x": 1004,
+                "y": 329
+            },
+            {
+                "type": "chest",
+                "id": "location.hyrule_field.hyrule_north_grotto",
+                "x": 960,
+                "y": 302
+            },
+            {
+                "type": "chest",
+                "id": "location.hyrule_field.hyrule_forest_grotto",
+                "x": 1152,
+                "y": 637
+            },
+            {
+                "type": "chest",
+                "id": "location.hyrule_field.hyrule_south_grotto",
+                "x": 854,
+                "y": 691
+            },
+            {
+                "type": "chest",
+                "id": "location.hyrule_field.hyrule_deku_salesman_grotto",
+                "x": 806,
+                "y": 691
+            },
+            {
+                "type": "chest",
+                "id": "location.hyrule_field.diving_heart_piece_grotto",
+                "x": 845,
+                "y": 346
+            },
+            {
+                "type": "chest",
+                "id": "location.hyrule_field.hyrule_west_grotto_cow",
+                "x": 676,
+                "y": 448
+            },
+            {
+                "type": "skulltula",
+                "id": "location.hyrule_field.hyrule_north_east_grotto",
+                "x": 1094,
+                "y": 270
+            },
+            {
+                "type": "skulltula",
+                "id": "location.hyrule_field.hyrule_west_grotto",
+                "x": 676,
+                "y": 448
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.hyrule_field.gossip_grotto_near_market",
+                "x": 960,
+                "y": 302
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.hyrule_field.gossip_grotto_near_lake",
+                "x": 854,
+                "y": 691
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.hyrule_field.gossip_grotto_small_forest",
+                "x": 1152,
+                "y": 637
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.hyrule_field.gossip_field_valley",
+                "x": 676,
+                "y": 448
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_valley.gerudo_river_cow",
+                "x": 461,
+                "y": 383
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_valley.gerudo_hammer_rock",
+                "x": 422,
+                "y": 410
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_valley.gerudo_crate",
+                "x": 461,
+                "y": 448
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_valley.gerudo_behind_carpenter_tent_grotto_salesman_1",
+                "x": 384,
+                "y": 356
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_valley.gerudo_behind_carpenter_tent_grotto_salesman_2",
+                "x": 422,
+                "y": 356
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_valley.gerudo_waterfall",
+                "x": 490,
+                "y": 346
+            },
+            {
+                "type": "skulltula",
+                "id": "location.gerudo_valley.gerudo_wood_plank_child_night",
+                "x": 566,
+                "y": 405
+            },
+            {
+                "type": "skulltula",
+                "id": "location.gerudo_valley.gerudo_behind_carpenter_tent_adult_night",
+                "x": 422,
+                "y": 356
+            },
+            {
+                "type": "skulltula",
+                "id": "location.gerudo_valley.gerudo_rock_near_carpenter_tent_adult_night",
+                "x": 422,
+                "y": 410
+            },
+            {
+                "type": "skulltula",
+                "id": "location.gerudo_valley.gerudo_river_beanspot_child",
+                "x": 461,
+                "y": 383
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.gerudo_valley.gossip_gerudo_valley",
+                "x": 457,
+                "y": 422
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.bottle_zora",
+                "x": 741,
+                "y": 864
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.lake_sun",
+                "x": 797,
+                "y": 983
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.lake_grave_grotto_salesman_1",
+                "x": 580,
+                "y": 901
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.lake_grave_grotto_salesman_2",
+                "x": 618,
+                "y": 901
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.lake_grave_grotto_salesman_3",
+                "x": 599,
+                "y": 940
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.lab_dive",
+                "x": 676,
+                "y": 836
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.lab_roof",
+                "x": 676,
+                "y": 799
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.fishing_child",
+                "x": 864,
+                "y": 842
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.fishing_adult",
+                "x": 900,
+                "y": 842
+            },
+            {
+                "type": "skulltula",
+                "id": "location.lake.lake_near_firearrows_child_night",
+                "x": 797,
+                "y": 983
+            },
+            {
+                "type": "skulltula",
+                "id": "location.lake.lake_behind_lab_child_night",
+                "x": 676,
+                "y": 836
+            },
+            {
+                "type": "skulltula",
+                "id": "location.lake.lake_beanspot_child",
+                "x": 712,
+                "y": 799
+            },
+            {
+                "type": "skulltula",
+                "id": "location.lake.lake_dead_tree_adult_night",
+                "x": 647,
+                "y": 983
+            },
+            {
+                "type": "skulltula",
+                "id": "location.lake.lake_lab_box_adult",
+                "x": 676,
+                "y": 799
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.lake.gossip_lake_waterfall",
+                "x": 636,
+                "y": 827
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.lake.gossip_lake_southeast",
+                "x": 866,
+                "y": 1027
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.lake.gossip_lake_southwest",
+                "x": 595,
+                "y": 1027
+            },
+            {
+                "type": "area",
+                "id": "area.lonlon",
+                "x": 902,
+                "y": 448
+            },
+            {
+                "type": "area",
+                "id": "area.gerudo",
+                "x": 361,
+                "y": 205
+            },
+            {
+                "type": "skulltula",
+                "id": "location.gerudo.gerudo_rooftop_adult_night",
+                "x": 361,
+                "y": 257
+            },
+            {
+                "type": "skulltula",
+                "id": "location.gerudo.gerudo_horseback_archery_target_adult_night",
+                "x": 417,
+                "y": 302
+            },
+            {
+                "type": "area",
+                "id": "area.woods",
+                "x": 1498,
+                "y": 518
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.woods.gossip_woods_bridge",
+                "x": 1386,
+                "y": 665
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.woods.gossip_meadow_left",
+                "x": 1507,
+                "y": 469
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.woods.gossip_meadow_right",
+                "x": 1548,
+                "y": 469
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.woods.gossip_meadow_saria",
+                "x": 1484,
+                "y": 422
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.woods.gossip_grotto_woods",
+                "x": 1492,
+                "y": 514
+            },
+            {
+                "type": "area",
+                "id": "area.castle_town",
+                "x": 998,
+                "y": 216
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.castle_town.gossip_castle_malon",
+                "x": 1010,
+                "y": 180
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.castle_town.gossip_castle_climb",
+                "x": 964,
+                "y": 144
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.castle_town.gossip_castle_grotto",
+                "x": 1044,
+                "y": 132
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.castle_town.gossip_tot_1",
+                "x": 1062,
+                "y": 194
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.castle_town.gossip_tot_2",
+                "x": 1062,
+                "y": 233
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.castle_town.gossip_tot_3",
+                "x": 1102,
+                "y": 194
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.castle_town.gossip_tot_4",
+                "x": 1102,
+                "y": 233
+            },
+            {
+                "type": "area",
+                "id": "area.kakariko",
+                "x": 1248,
+                "y": 259
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.kakariko.gossip_graveyard",
+                "x": 1478,
+                "y": 232
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.kakariko.gossip_grotto_kakariko",
+                "x": 1265,
+                "y": 243
+            },
+            {
+                "type": "area",
+                "id": "area.mountain",
+                "x": 1229,
+                "y": 97
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.mountain.gossip_dm_crater",
+                "x": 1298,
+                "y": 23
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.mountain.gossip_dm_trail",
+                "x": 1219,
+                "y": 83
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.mountain.gossip_grotto_crater",
+                "x": 1258,
+                "y": 23
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.mountain.gossip_grotto_mountain",
+                "x": 1183,
+                "y": 111
+            },
+            {
+                "type": "area",
+                "id": "area.goron",
+                "x": 1152,
+                "y": 70
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.goron.gossip_goron_maze",
+                "x": 1165,
+                "y": 51
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.goron.gossip_goron_medigoron",
+                "x": 1129,
+                "y": 79
+            },
+            {
+                "type": "area",
+                "id": "area.zoras",
+                "x": 1795,
+                "y": 313
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.zoras.gossip_zora_king",
+                "x": 1788,
+                "y": 292
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.zoras.gossip_zora_fairy",
+                "x": 1789,
+                "y": 204
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.zoras.gossip_zora_jabu",
+                "x": 1741,
+                "y": 216
+            },
+            {
+                "type": "area",
+                "id": "area.well",
+                "x": 1306,
+                "y": 248
+            },
+            {
+                "type": "area",
+                "id": "area.ice_cavern",
+                "x": 1738,
+                "y": 173
+            },
+            {
+                "type": "area",
+                "id": "area.gerudo_training",
+                "x": 361,
+                "y": 302
+            },
+            {
+                "type": "area",
+                "id": "area.deku",
+                "x": 1690,
+                "y": 605
+            },
+            {
+                "type": "area",
+                "id": "area.dodongo",
+                "x": 1133,
+                "y": 146
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.dodongo.gossip_dodongo",
+                "x": 1133,
+                "y": 146
+            },
+            {
+                "type": "area",
+                "id": "area.jabujabu",
+                "x": 1757,
+                "y": 227
+            },
+            {
+                "type": "area",
+                "id": "area.temple_forest",
+                "x": 1507,
+                "y": 421
+            },
+            {
+                "type": "area",
+                "id": "area.temple_fire",
+                "x": 1306,
+                "y": 70
+            },
+            {
+                "type": "area",
+                "id": "area.temple_water",
+                "x": 693,
+                "y": 983
+            },
+            {
+                "type": "area",
+                "id": "area.temple_shadow",
+                "x": 1459,
+                "y": 227
+            },
+            {
+                "type": "area",
+                "id": "area.temple_spirit",
+                "x": 48,
+                "y": 184
+            },
+            {
+                "type": "area",
+                "id": "area.castle_ganon",
+                "x": 998,
+                "y": 108
+            }
+        ]
+    },
+    "area.kokiri": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.kokiri.kokiri_sword",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kokiri.midos_house_0",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kokiri.midos_house_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kokiri.midos_house_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kokiri.midos_house_3",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kokiri.links_house_cow",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kokiri.saria_ocarina",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kokiri.kokiri_storm_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.kokiri.kokiri_know_it_all_brothers_child_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.kokiri.kokiri_twins_adult_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.kokiri.kokiri_beanspot_near_shop_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.kokiri.gossip_kokiri",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.kokiri.gossip_grotto_kokiri",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.kokiri.gossip_deku_left",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.kokiri.gossip_deku_right",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.desert": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.desert.desert_chest",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.desert.desert_warp_spirit",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.desert.desert_colossus_fairy",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.desert.desert_colossus_grotto_salesman_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.desert.desert_colossus_grotto_salesman_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.desert.desert_colossus_hp",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.desert.desert_fortress_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.desert.desert_palm_tree_adult_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.desert.desert_magic_bean_adult_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.desert.desert_beanspot_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.desert.gossip_desert",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.river": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.river.frog_game",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.river.frog_rain",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.river.zora_hp_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.river.zora_hp_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.river.zora_river_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.river.zora_river_grotto_salesman_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.river.zora_river_grotto_salesman_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.river.zora_river_bean_salesman",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.river.zora_river_tree_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.river.zora_river_ladder_child_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.river.zora_river_wall1_adult_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.river.zora_river_wall2_adult_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.river.gossip_river_plateau",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.river.gossip_river_waterfall",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.river.gossip_grotto_river",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.hyrule_field": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.hyrule_field.song_of_time",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.hyrule_field.hyrule_north_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.hyrule_field.hyrule_forest_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.hyrule_field.hyrule_south_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.hyrule_field.hyrule_deku_salesman_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.hyrule_field.diving_heart_piece_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.hyrule_field.hyrule_west_grotto_cow",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.hyrule_field.hyrule_north_east_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.hyrule_field.hyrule_west_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.hyrule_field.gossip_grotto_near_market",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.hyrule_field.gossip_grotto_near_lake",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.hyrule_field.gossip_grotto_small_forest",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.hyrule_field.gossip_field_valley",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.gerudo_valley": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.gerudo_valley.gerudo_river_cow",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_valley.gerudo_hammer_rock",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_valley.gerudo_crate",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_valley.gerudo_behind_carpenter_tent_grotto_salesman_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_valley.gerudo_behind_carpenter_tent_grotto_salesman_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_valley.gerudo_waterfall",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.gerudo_valley.gerudo_wood_plank_child_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.gerudo_valley.gerudo_behind_carpenter_tent_adult_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.gerudo_valley.gerudo_rock_near_carpenter_tent_adult_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.gerudo_valley.gerudo_river_beanspot_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.gerudo_valley.gossip_gerudo_valley",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.lake": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.lake.bottle_zora",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.lake_sun",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.lake_grave_grotto_salesman_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.lake_grave_grotto_salesman_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.lake_grave_grotto_salesman_3",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.lab_dive",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.lab_roof",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.fishing_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lake.fishing_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.lake.lake_near_firearrows_child_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.lake.lake_behind_lab_child_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.lake.lake_beanspot_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.lake.lake_dead_tree_adult_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.lake.lake_lab_box_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.lake.gossip_lake_waterfall",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.lake.gossip_lake_southeast",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.lake.gossip_lake_southwest",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.lonlon": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.lonlon.talon_chicken",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lonlon.maron_song",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lonlon.lonlon_hp",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lonlon.lonlon_grotto_deku_salesman_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lonlon.lonlon_grotto_deku_salesman_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lonlon.lonlon_grotto_deku_salesman_3",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lonlon.lonlon_cow_tower_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lonlon.lonlon_cow_tower_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lonlon.lonlon_cow_stables_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.lonlon.lonlon_cow_stables_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.lonlon.lonlon_tree_child_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.lonlon.lonlon_paddock_fence_child_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.lonlon.lonlon_wall_child_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.lonlon.lonlon_window_child_night",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.gerudo": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.gerudo.gerudo_rooftop",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo.gerudo_guard_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo.gerudo_guard_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo.gerudo_guard_3",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo.gerudo_guard_4",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo.gerudo_fortress_clear",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo.gerudo_archer_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo.gerudo_archer_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.gerudo.gerudo_rooftop_adult_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.gerudo.gerudo_horseback_archery_target_adult_night",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.woods": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.woods.woods_skull_kid",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.woods.woods_deku_salesman",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.woods.woods_memory_game",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.woods.woods_shooting",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.woods.woods_bomb_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.woods.woods_deku_salesman_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.woods.woods_deku_salesman_grotto_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.woods.woods_deku_salesman_meadow_grotto_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.woods.woods_deku_salesman_meadow_grotto_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.woods.woods_wolfos_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.woods.woods_saria",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.woods.woods_warp",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.woods.woods_deku_theater_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.woods.woods_deku_theater_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.woods.woods_deku_salesman_theater_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.woods.woods_deku_salesman_theater_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.woods.woods_deku_salesman_beanspot_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.woods.woods_mask_theater_beanspot_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.woods.woods_deku_salesman_magic_bean_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.woods.woods_labyrinth_adult_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.woods.gossip_woods_bridge",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.woods.gossip_meadow_left",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.woods.gossip_meadow_right",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.woods.gossip_meadow_saria",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.woods.gossip_grotto_woods",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.castle_town": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.castle_town.castle_town_maron",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_town.castle_town_zelda",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_town.castle_town_child_shooting",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_town.castle_town_bowling_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_town.castle_town_bowling_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_town.castle_town_chest_game",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_town.castle_town_dog",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_town.castle_town_poes",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_town.castle_town_hyrule_fairy",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_town.castle_town_ganon_fairy",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_town.castle_town_warp",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_town.castle_town_light_arrows",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.castle_town.castle_town_pot_room_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.castle_town.castle_town_tree_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.castle_town.castle_town_storm_grotto_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.castle_town.castle_town_near_ganon_fairy_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.castle_town.gossip_castle_malon",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.castle_town.gossip_castle_climb",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.castle_town.gossip_castle_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.castle_town.gossip_tot_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.castle_town.gossip_tot_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.castle_town.gossip_tot_3",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.castle_town.gossip_tot_4",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.kakariko": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_anju_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_anju_chickens",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_redead_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_cow_hp",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_man_roof",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_adult_shooting",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_song_storm",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_windmill_hp",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_race_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_race_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_digging",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_shield_grave",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_redead_grave",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_sun_song",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_sun_song_chest",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_bean_hp",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_warp",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_impas_cow",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_skulltula_10",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_skulltula_20",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_skulltula_30",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_skulltula_40",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.kakariko.kakariko_skulltula_50",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.kakariko.kakariko_tree_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.kakariko.kakariko_skulltula_house_child_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.kakariko.kakariko_construction_site_child_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.kakariko.kakariko_near_gate_child_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.kakariko.kakariko_tower_child_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.kakariko.kakariko_impas_house_roof_adult_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.kakariko.kakariko_graveyard_royal_grave_child_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.kakariko.kakariko_graveyard_beanspot_child_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.kakariko.gossip_graveyard",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.kakariko.gossip_grotto_kakariko",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.mountain": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.mountain.mountain_above_dodongo",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.mountain.mountain_outside_goron_chest",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.mountain.mountain_outside_goron_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.mountain.mountain_warp",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.mountain.mountain_crater_wall",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.mountain.mountain_crater_ladder_salesman",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.mountain.mountain_crater_grotto_salesman_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.mountain.mountain_crater_grotto_salesman_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.mountain.mountain_crater_grotto_salesman_3",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.mountain.mountain_grotto_cow",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.mountain.mountain_magic_bean",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.mountain.mountain_crater_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.mountain.mountain_crater_fairy",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.mountain.mountain_summit_fairy",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.mountain.mountain_biggoron",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.mountain.mountain_bombable",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.mountain.mountain_before_goron_hammer_rock_adult_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.mountain.mountain_cave_entrance_beanspot_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.mountain.mountain_wall_hammer_rock_adult_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.mountain.mountain_crater_beanspot_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.mountain.mountain_crater_box_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.mountain.gossip_dm_crater",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.mountain.gossip_dm_trail",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.mountain.gossip_grotto_crater",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.mountain.gossip_grotto_mountain",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.goron": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.goron.goron_maze_left",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.goron.goron_maze_center",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.goron.goron_maze_right",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.goron.goron_hot_rodder",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.goron.goron_little_link",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.goron.goron_spinning_pot_hp",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.goron.goron_darunia",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.goron.goron_grotto_salesman_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.goron.goron_grotto_salesman_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.goron.goron_grotto_salesman_3",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.goron.goron_maze_center_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.goron.goron_center_platform_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.goron.gossip_goron_maze",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.goron.gossip_goron_medigoron",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.zoras": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.zoras.zoras_diving",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.zoras.zoras_torch",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.zoras.zoras_fairy",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.zoras.zoras_ice",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.zoras.zoras_underwater",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.zoras.zoras_king_zora",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.zoras.zoras_wall_ice_adult_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.zoras.zoras_tree_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.zoras.zoras_wall_child_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.zoras.zoras_fairy_hidden_cave_adult_night",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.zoras.gossip_zora_king",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.zoras.gossip_zora_fairy",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.zoras.gossip_zora_jabu",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.well": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.well.well_front_left_hidden_wall",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well.well_front_center_bombable",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well.well_right_bottom_hidden_wall",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well.well__center_large",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well.well_center_small",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well.well_back_left_bombable",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well.well_coffin_key",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well.well_defeat_boss",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well.well_invisible",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well.well_underwater_front",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well.well_underwater_left",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well.well_basement_ches",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well.well_locked_pits",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well.well_behind_right_grate",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.well.well_center_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.well.well_center_locked_room_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.well.well_locked_pits_child",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.well_mq": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.well_mq.well_compass_chest_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well_mq.well_map_chest_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well_mq.well_lens_chest_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well_mq.well_deadhand_freestanding_key_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.well_mq.well_east_inner_freestanding_key_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.well_mq.well_west_inner_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.well_mq.well_basement_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.well_mq.well_coffin_room_mq",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.ice_cavern": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.ice_cavern.ice_cavern_map",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.ice_cavern.ice_cavern_compass",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.ice_cavern.ice_cavern_hp",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.ice_cavern.ice_cavern_boots",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.ice_cavern.ice_cavern_sheik",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.ice_cavern.ice_cavern_ice_blades_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.ice_cavern.ice_cavern_block_puzzle_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.ice_cavern.ice_cavern_compass_room_adult",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.ice_cavern_mq": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.ice_cavern_mq.ice_cavern_map_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.ice_cavern_mq.ice_cavern_compass_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.ice_cavern_mq.ice_cavern_hp_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.ice_cavern_mq.ice_cavern_boots_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.ice_cavern_mq.ice_cavern_sheik_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.ice_cavern_mq.ice_cavern_hp_room",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.ice_cavern_mq.ice_cavern_scarecrow",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.ice_cavern_mq.ice_cavern_under_ice_block",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.gerudo_training": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_lobby_left",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_lobby_right",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_stalfos",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_beamos",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_hidden_ceiling",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_maze_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_maze_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_maze_3",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_maze_final",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_maze_right_central",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_maze_right",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_maze_right_key",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_underwater_silver",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_hammer_room_clear",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_hammer_room_switch",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_eye_statue",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_scarecrow",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_heavy_block_before",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_heavy_block_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_heavy_block_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_heavy_block_3",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training.gerudo_training_heavy_block_4",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.gerudo_training_mq": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_lobby_left_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_lobby_right_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_hidden_ceiling_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_maze_1_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_maze_2_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_maze_3_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_dinolfos_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_underwater_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_first_iron_knuckle_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_before_heavy_block_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_heavy_block_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_eye_statue_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_second_iron_knuckle_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_flame_circle_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_maze_right_central_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_maze_right_side_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.gerudo_training_mq.gerudo_training_ice_arrows_mq",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.deku": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.deku.deku_lobby",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.deku.deku_slingshot",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.deku.deku_slingshot_side",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.deku.deku_compass",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.deku.deku_compass_side",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.deku.deku_basement",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.deku.deku_gohma",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.deku.deku_3f_compass_side_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.deku.deku_basement_vines_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.deku.deku_basement_metal_gate_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.deku.deku_bombable_behind_web_child",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.deku_mq": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.deku_mq.deku_lobby_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.deku_mq.deku_slingshot_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.deku_mq.deku_slingshot_back_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.deku_mq.deku_compass_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.deku_mq.deku_basement_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.deku_mq.deku_before_log",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.deku_mq.deku_after_log",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.deku_mq.deku_basement_salesman",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.deku_mq.deku_gohma_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.deku_mq.deku_crate_near_map_child_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.deku_mq.deku_2f_compass_side_child_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.deku_mq.deku_basement_grave_ceiling_child_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.deku_mq.deku_basement_back_room_child_mq",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.dodongo": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.dodongo.dodongo_lobby_salesman",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo.dodongo_east_corridor_salesman",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo.dodongo_map",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo.dodongo_compass",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo.dodongo_bomb_flower_platform",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo.dodongo_bomb_bag",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo.dodongo_near_bomb_bag_salesman_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo.dodongo_near_bomb_bag_salesman_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo.dodongo_end_bridge",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo.dodongo_chest_above_dodongo",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo.dodongo_dodongo",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.dodongo.dodongo_east_corridor_bombable",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.dodongo.dodongo_east_corridor_scarecrow_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.dodongo.dodongo_above_big_staircase_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.dodongo.dodongo_big_staircase_vines",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.dodongo.dodongo_near_boss_bombable",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "gossipstone",
+                "id": "location.dodongo.gossip_dodongo",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.dodongo_mq": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.dodongo_mq.dodongo_map_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo_mq.dodongo_compass_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo_mq.dodongo_gohma_larva_room_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo_mq.dodongo_torch_puzzle_room_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo_mq.dodongo_under_grave_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo_mq.dodongo_bomb_bag_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo_mq.dodongo_main_room_salesman_1_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo_mq.dodongo_main_room_salesman_2_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo_mq.dodongo_1f_right_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo_mq.dodongo_above_stairs_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo_mq.dodongo_chest_above_dodongo_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.dodongo_mq.dodongo_dodongo_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.dodongo_mq.dodongo_time_block_room_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.dodongo_mq.dodongo_gohma_larva_skulltula_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.dodongo_mq.dodongo_upper_lizalfos_room_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.dodongo_mq.dodongo_scrub_poe_room_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.dodongo_mq.dodongo_back_area_mq",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.jabujabu": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.jabujabu.jabujabu_elevator_dive_salesman",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.jabujabu.jabujabu_boomerang",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.jabujabu.jabujabu_map",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.jabujabu.jabujabu_compass",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.jabujabu.jabujabu_barinade",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.jabujabu.jabujabu_b1_ruto1_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.jabujabu.jabujabu_b1_ruto2_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.jabujabu.jabujabu_b1_rising_water_child",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.jabujabu.jabujabu_1f_near_boss_child",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.jabujabu_mq": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.jabujabu_mq.jabujabu_map_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.jabujabu_mq.jabujabu_entry_side_chest_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.jabujabu_mq.jabujabu_second_room_lower_chest_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.jabujabu_mq.jabujabu_compass_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.jabujabu_mq.jabujabu_basement_south_chest_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.jabujabu_mq.jabujabu_basement_north_chest_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.jabujabu_mq.jabujabu_boomerang_room_small_chest_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.jabujabu_mq.jabujabu_boomerang_chest_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.jabujabu_mq.jabujabu_like_like_chest_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.jabujabu_mq.jabujabu_cow",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.jabujabu_mq.jabujabu_second_room_upper_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.jabujabu_mq.jabujabu_near_boss_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.jabujabu_mq.jabujabu_barinade_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.jabujabu_mq.jabujabu_boomerang_room_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.jabujabu_mq.jabujabu_electric_worm_room_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.jabujabu_mq.jabujabu_near_boss_gs_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.jabujabu_mq.jabujabu_invisible_enemies_room_mq",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.temple_forest": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.temple_forest.temple_forest_entrance",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest.temple_forest_behind_lobby",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest.temple_forest_well",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest.temple_forest_map",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest.temple_forest_outside_hookshot",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest.temple_forest_block_push",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest.temple_forest_boss_key",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest.temple_forest_floormaster",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest.temple_forest_bow",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest.temple_forest_poe_red",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest.temple_forest_poe_blue",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest.temple_forest_falling_room",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest.temple_forest_near_boss",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest.temple_forest_phantomganon",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_forest.temple_forest_entrance_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_forest.temple_forest_pillars_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_forest.temple_forest_lobby_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_forest.temple_forest_outside_hookshot_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_forest.temple_forest_near_boss_adult",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.temple_forest_mq": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.temple_forest_mq.temple_forest_entrance_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest_mq.temple_forest_behind_lobby_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest_mq.temple_forest_boss_key_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest_mq.temple_forest_redead_chest_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest_mq.temple_forest_well_chest_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest_mq.temple_forest_ne_outdoors_upper_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest_mq.temple_forest_ne_outdoors_lower_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest_mq.temple_forest_bow_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest_mq.temple_forest_map_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest_mq.temple_forest_compass_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest_mq.temple_forest_falling_room_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest_mq.temple_forest_near_boss_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_forest_mq.temple_forest_phantomganon_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_forest_mq.temple_forest_first_hallway_adult_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_forest_mq.temple_forest_block_push_room_adult_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_forest_mq.temple_forest_outdoor_west_adult_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_forest_mq.temple_forest_outdoor_east_adult_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_forest_mq.temple_forest_well_adult_mq",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.temple_fire": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.temple_fire.temple_fire_near_boss",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire.temple_fire_dancer",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire.temple_fire_boss_key",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire.temple_fire_big_lava_bomb",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire.temple_fire_big_lava_open",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire.temple_fire_boulder_maze_lower",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire.temple_fire_boulder_maze_side",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire.temple_fire_boulder_maze_upper",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire.temple_fire_boulder_maze_bomb",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire.temple_fire_scarecrow",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire.temple_fire_map",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire.temple_fire_compass",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire.temple_fire_highest_goron",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire.temple_fire_hammer",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire.temple_fire_volvagia",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_fire.temple_fire_big_lava_time_block_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_fire.temple_fire_boulder_maze_bombable_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_fire.temple_fire_boulder_maze_scarecrow1_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_fire.temple_fire_boulder_maze_scarecrow2_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_fire.temple_fire_near_boss_key_adult",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.temple_fire_mq": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.temple_fire_mq.temple_fire_chest_near_boss_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire_mq.temple_fire_megaton_hammer_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire_mq.temple_fire_map_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire_mq.temple_fire_map_room_small_chest_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire_mq.temple_fire_boss_key_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire_mq.temple_fire_big_lava_bomb_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire_mq.temple_fire_boulder_maze_lower_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire_mq.temple_fire_boulder_maze_upper_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire_mq.temple_fire_boulder_maze_side_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire_mq.temple_fire_compass_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire_mq.temple_fire_freestanding_key_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire_mq.temple_fire_west_tower_top_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_fire_mq.temple_fire_volvagia_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_fire_mq.temple_fire_big_lava_adult_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_fire_mq.temple_fire_east_tower_top_adult_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_fire_mq.temple_fire_fire_wall_maze_side_adult_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_fire_mq.temple_fire_above_fire_wall_maze_adult_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_fire_mq.temple_fire_fire_wall_maze_center_adult_mq",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.temple_water": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.temple_water.temple_water_map",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_water.temple_water_compass",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_water.temple_water_torches",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_water.temple_water_chest_dragon",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_water.temple_water_central_bow",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_water.temple_water_boss_key",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_water.temple_water_center_pillar",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_water.temple_water_cracked_wall",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_water.temple_water_dark_link",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_water.temple_water_river",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_water.temple_water_morpha",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_water.temple_water_lowest_level_south_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_water.temple_water_big_waterfall_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_water.temple_water_near_boss_key_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_water.temple_water_center_pillar_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_water.temple_water_river_adult",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.temple_water_mq": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.temple_water_mq.temple_water_map_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_water_mq.temple_water_central_pillar_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_water_mq.temple_water_compass_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_water_mq.temple_water_longshot_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_water_mq.temple_water_boss_key_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_water_mq.temple_water_freestanding_key_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_water_mq.temple_water_morpha_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_water_mq.temple_water_south_basement_adult_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_water_mq.temple_water_north_basement_adult_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_water_mq.temple_water_serpent_river_adult_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_water_mq.temple_water_lizalfos_hallway_adult_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_water_mq.temple_water_before_upper_water_switch_mq",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.temple_shadow": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_map",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_boots",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_compass",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_early_silver",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_invisible_blades_visible",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_invisible_blades_invisible",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_falling_spikes_lower",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_falling_spikes_upper",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_falling_spikes_switch",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_invisible_spikes",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_giant_pot",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_wind_hint",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_after_wind_enemy",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_after_wind_hidden",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_spike_walls",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_boss_key",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_hidden_floormaster",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow.temple_shadow_bongobongo",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_shadow.temple_shadow_invisible_blade_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_shadow.temple_shadow_falling_spikes_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_shadow.temple_shadow_behind_giant_pot_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_shadow.temple_shadow_boat_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_shadow.temple_shadow_behind_giant_pots_adult",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.temple_shadow_mq": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_compass_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_boots_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_map_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_early_gibdos_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_near_ship_invisible_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_invisible_blades_visible_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_invisible_blades_invisible_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_beamos_silver_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_falling_spikes_lower_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_falling_spikes_upper_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_falling_spikes_switch_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_invisible_spikes_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_stalfos_room_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_wind_hint_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_after_wind_enemy_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_after_wind_hidden_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_spike_walls_left_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_boss_key_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_bomb_flower_chest_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_freestanding_key_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_shadow_mq.temple_shadow_bongobongo_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_shadow_mq.temple_shadow_crusher_room_adult_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_shadow_mq.temple_shadow_wind_hint_adult_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_shadow_mq.temple_shadow_after_wind_adult_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_shadow_mq.temple_shadow_after_ship_adult_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_shadow_mq.temple_shadow_near_boss_adult_mq",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.temple_spirit": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_child_left",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_child_right",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_compass",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_early_adult_right",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_first_mirror_right",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_first_mirror_left",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_map",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_child_climb_east",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_child_climb_north",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_sun_block",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_statue_hand",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_main_room_NE",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_gauntlets",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_shield",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_near_four_armos",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_hallway_left_invisible",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_hallway_right_invisible",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_boss_key",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_topmost",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit.temple_spirit_twinrova",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_spirit.temple_spirit_childsegment_left",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_spirit.temple_spirit_childsegment_sun_room",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_spirit.temple_spirit_childsegment_before_iron_knight",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_spirit.temple_spirit_rolling_boulders_time_block_adult",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_spirit.temple_spirit_coloss_room_adult",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.temple_spirit_mq": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_entrance_front_left_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_entrance_back_left_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_entrance_back_right_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_child_left_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_map_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_child_climb_north_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_compass_chest_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_silver_block_hallway_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_sun_block_room_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_gauntlets_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_child_center_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_child_climb_south_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_lower_ne_main_room_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_upper_ne_main_room_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_lower_adult_left_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_lower_adult_right_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_entrance_front_right_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_beamos_room_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_dinolfos_ice_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_mirror_shield_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_boss_key_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_mirror_puzzle_invisible_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.temple_spirit_mq.temple_spirit_twinrova_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_spirit_mq.temple_spirit_sun_block_room",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_spirit_mq.temple_spirit_lower_adult_left",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_spirit_mq.temple_spirit_lower_adult_right",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_spirit_mq.temple_spirit_iron_knuckles_north",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "skulltula",
+                "id": "location.temple_spirit_mq.temple_spirit_iron_knuckles_west",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.castle_ganon": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_under_bridge_salesman_1",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_under_bridge_salesman_2",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_under_bridge_salesman_3",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_under_bridge_salesman_4",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_forest_trial",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_water_trial_left",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_water_trial_right",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_shadow_trial_first",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_shadow_trial_second",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_spirit_trial_first",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_spirit_trial_second",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_light_trial_first_left",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_light_trial_second_left",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_light_trial_third_left",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_light_trial_first_right",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_light_trial_second_right",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_light_trial_third_right",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_light_trail_invisible_enemies",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_light_trial_lullaby",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_boss_key",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon.castle_ganon_boss",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    },
+    "area.castle_ganon_mq": {
+        "background": "",
+        "locations": [
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_under_bridge_salesman_1_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_under_bridge_salesman_2_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_under_bridge_salesman_3_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_under_bridge_salesman_4_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_under_bridge_salesman_5_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_forest_trial_first_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_forest_trial_second_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_forest_trial_key_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_water_trial_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_shadow_trial_first_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_shadow_trial_second_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_spirit_trial_first_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_spirit_trial_second_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_spirit_sun_front_left_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_spirit_sun_back_left_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_spirit_golden_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_spirit_sun_back_right_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_light_trial_lullaby_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_boss_key_mq",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "chest",
+                "id": "location.castle_ganon_mq.castle_ganon_boss_mq",
+                "x": 0,
+                "y": 0
+            }
+        ],
+        "entrances": []
+    }
+}

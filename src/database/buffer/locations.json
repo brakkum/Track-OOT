@@ -64,6 +64,29 @@
                 "x": "91.2%",
                 "y": "57.1%"
             }
+        },
+        "entrances": {
+            "midos_house": {
+                "type": "interior"
+            },
+            "know_it_house": {
+                "type": "interior"
+            },
+            "saria_house": {
+                "type": "interior"
+            },
+            "twins_house": {
+                "type": "interior"
+            },
+            "shop": {
+                "type": "interior"
+            },
+            "storm_grotto": {
+                "type": "grotto"
+            },
+            "deku": {
+                "type": "dungeon"
+            }
         }
     },
     "desert": {
@@ -126,6 +149,17 @@
             "gossip_desert": {
                 "x": "01.5%",
                 "y": "23.4%"
+            }
+        },
+        "entrances": {
+            "fairy_colossus": {
+                "type": "interior"
+            },
+            "strength_grotto": {
+                "type": "grotto"
+            },
+            "temple_spirit": {
+                "type": "dungeon"
             }
         }
     },
@@ -210,6 +244,17 @@
                 "y": "34.8%",
                 "ref": "gossip_grotto"
             }
+        },
+        "entrances": {
+            "bomb_grotto": {
+                "type": "grotto"
+            },
+            "open_grotto": {
+                "type": "grotto"
+            },
+            "storms_grotto": {
+                "type": "grotto"
+            }
         }
     },
     "hyrule_field": {
@@ -275,6 +320,32 @@
             "gossip_field_valley": {
                 "x": "35.2%",
                 "y": "41.5%"
+            }
+        },
+        "entrances": {
+            "castle_river_grotto": {
+                "type": "grotto"
+            },
+            "kakariko_grotto": {
+                "type": "grotto"
+            },
+            "lake_fence_grotto": {
+                "type": "grotto"
+            },
+            "lake_open_grotto": {
+                "type": "grotto"
+            },
+            "dive_grotto": {
+                "type": "grotto"
+            },
+            "valley_grotto": {
+                "type": "grotto"
+            },
+            "castle_entrance_grotto": {
+                "type": "grotto"
+            },
+            "little_forest_grotto": {
+                "type": "grotto"
             }
         }
     },
@@ -342,6 +413,17 @@
             "gossip_gerudo_valley": {
                 "x": "23.8%",
                 "y": "39.1%"
+            }
+        },
+        "entrances": {
+            "tend": {
+                "type": "interior"
+            },
+            "octorock_grotto": {
+                "type": "grotto"
+            },
+            "storms_grotto": {
+                "type": "grotto"
             }
         }
     },
@@ -436,6 +518,20 @@
                 "x": "31.0%",
                 "y": "95.1%"
             }
+        },
+        "entrances": {
+            "laboratory": {
+                "type": "interior"
+            },
+            "fishing": {
+                "type": "interior"
+            },
+            "grave_grotto": {
+                "type": "grotto"
+            },
+            "temple_water": {
+                "type": "dungeon"
+            }
         }
     },
     "lonlon": {
@@ -494,6 +590,20 @@
                 "era": "child",
                 "time": "night"
             }
+        },
+        "entrances": {
+            "house": {
+                "type": "interior"
+            },
+            "stables": {
+                "type": "interior"
+            },
+            "silo": {
+                "type": "interior"
+            },
+            "open_grotto": {
+                "type": "grotto"
+            }
         }
     },
     "gerudo": {
@@ -540,6 +650,14 @@
                 "y": "28.0%",
                 "era": "adult",
                 "time": "night"
+            }
+        },
+        "entrances": {
+            "storms_grotto": {
+                "type": "grotto"
+            },
+            "training_grounds": {
+                "type": "dungeon"
             }
         }
     },
@@ -629,6 +747,29 @@
                 "x": "77.7%",
                 "y": "47.6%",
                 "ref": "gossip_grotto"
+            }
+        },
+        "entrances": {
+            "near_goron_grotto": {
+                "type": "grotto"
+            },
+            "theatre_grotto": {
+                "type": "grotto"
+            },
+            "near_meadow_grotto": {
+                "type": "grotto"
+            },
+            "wolfos_grotto": {
+                "type": "grotto"
+            },
+            "fairy_grotto": {
+                "type": "grotto"
+            },
+            "storms_grotto": {
+                "type": "grotto"
+            },
+            "temple_forest": {
+                "type": "dungeon"
             }
         }
     },
@@ -721,6 +862,50 @@
             "gossip_tot_4": {
                 "x": "57.4%",
                 "y": "21.6%"
+            }
+        },
+        "entrances": {
+            "shop_bombchu": {
+                "type": "interior"
+            },
+            "shop_bazaar": {
+                "type": "interior"
+            },
+            "shop_magic": {
+                "type": "interior"
+            },
+            "shop_mask": {
+                "type": "interior"
+            },
+            "minigame_bombchu": {
+                "type": "interior"
+            },
+            "minigame_shooting": {
+                "type": "interior"
+            },
+            "minigame_treasure": {
+                "type": "interior"
+            },
+            "guard_tower": {
+                "type": "interior"
+            },
+            "temple_of_time": {
+                "type": "interior"
+            },
+            "dog_lady": {
+                "type": "interior"
+            },
+            "back_house": {
+                "type": "interior"
+            },
+            "fairy_young": {
+                "type": "interior"
+            },
+            "fairy_adult": {
+                "type": "interior"
+            },
+            "storm_grotto": {
+                "type": "grotto"
             }
         }
     },
@@ -818,6 +1003,50 @@
                 "y": "22.5%",
                 "ref": "gossip_grotto"
             }
+        },
+        "entrances": {
+            "shop_bazaar": {
+                "type": "interior"
+            },
+            "shop_magic": {
+                "type": "interior"
+            },
+            "minigame_shooting": {
+                "type": "interior"
+            },
+            "impas_house": {
+                "type": "interior"
+            },
+            "impa_back": {
+                "type": "interior"
+            },
+            "windmill": {
+                "type": "interior"
+            },
+            "skulltula_house": {
+                "type": "interior"
+            },
+            "kakariko_witch": {
+                "type": "interior"
+            },
+            "carpenter_house": {
+                "type": "interior"
+            },
+            "dampes_hut": {
+                "type": "interior"
+            },
+            "open_grotto": {
+                "type": "grotto"
+            },
+            "redead_grotto": {
+                "type": "grotto"
+            },
+            "well": {
+                "type": "dungeon"
+            },
+            "temple_shadow": {
+                "type": "dungeon"
+            }
         }
     },
     "mountain": {
@@ -901,6 +1130,32 @@
                 "y": "10.3%",
                 "ref": "gossip_grotto"
             }
+        },
+        "entrances": {
+            "mountain_fairy": {
+                "type": "interior"
+            },
+            "crater_fairy": {
+                "type": "interior"
+            },
+            "bomb_grotto": {
+                "type": "grotto"
+            },
+            "storms_grotto": {
+                "type": "grotto"
+            },
+            "crater_hammer_grotto": {
+                "type": "grotto"
+            },
+            "crater_bomb_grotto": {
+                "type": "grotto"
+            },
+            "dodongo": {
+                "type": "dungeon"
+            },
+            "temple_fire": {
+                "type": "dungeon"
+            }
         }
     },
     "goron": {
@@ -954,6 +1209,14 @@
                 "x": "58.8%",
                 "y": "07.3%"
             }
+        },
+        "entrances": {
+            "shop": {
+                "type": "interior"
+            },
+            "grotto": {
+                "type": "grotto"
+            }
         }
     },
     "zoras": {
@@ -1006,6 +1269,23 @@
             "gossip_zora_jabu": {
                 "x": "90.7%",
                 "y": "20.0%"
+            }
+        },
+        "entrances": {
+            "shop": {
+                "type": "interior"
+            },
+            "fairy": {
+                "type": "interior"
+            },
+            "storms_grotto": {
+                "type": "grotto"
+            },
+            "jabujabu": {
+                "type": "dungeon"
+            },
+            "ice_cavern": {
+                "type": "dungeon"
             }
         }
     },
