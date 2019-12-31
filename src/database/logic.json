@@ -539,8 +539,8 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "mixin",
-                                    "el": "can_use_ocarina"
+                                    "type": "item",
+                                    "el": "ocarina"
                                 },
                                 {
                                     "type": "item",
@@ -1114,8 +1114,30 @@
                     "el": "can_become_adult"
                 },
                 {
-                    "type": "item",
-                    "el": "hookshot"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "wt_entry_noirons"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "hookshot"
+                            },
+                            "value": "2"
+                        }
+                    ]
                 },
                 {
                     "type": "or",
@@ -1128,29 +1150,37 @@
                             "type": "and",
                             "el": [
                                 {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "skip",
-                                            "el": "wt_entry_noirons"
-                                        },
-                                        {
-                                            "type": "min",
-                                            "el": {
-                                                "type": "item",
-                                                "el": "hookshot"
-                                            },
-                                            "value": "2"
-                                        }
-                                    ]
-                                },
-                                {
                                     "type": "min",
                                     "el": {
                                         "type": "item",
                                         "el": "scale"
                                     },
                                     "value": 2
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "wt_entry_noirons"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "skip",
+                            "el": "navi_dive"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "boots_hover"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "bottle"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "lab_hovers"
                                 }
                             ]
                         }
@@ -2375,8 +2405,8 @@
                     "el": "can_leave_forest"
                 },
                 {
-                    "type": "item",
-                    "el": "ocarina"
+                    "type": "mixin",
+                    "el": "can_use_ocarina"
                 },
                 {
                     "type": "min",
@@ -3777,6 +3807,10 @@
                 {
                     "type": "mixin",
                     "el": "zora_tunic_access"
+                },
+                {
+                    "type": "item",
+                    "el": "boots_iron"
                 },
                 {
                     "type": "or",
@@ -6962,12 +6996,39 @@
                     "el": "boots_hover"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
-                },
-                {
-                    "type": "item",
-                    "el": "hookshot"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_shadow"
+                                    },
+                                    "value": "5"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "shadow_temple_clip"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "type": "or",
@@ -7001,12 +7062,39 @@
                     "el": "boots_hover"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
-                },
-                {
-                    "type": "item",
-                    "el": "hookshot"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_shadow"
+                                    },
+                                    "value": "5"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "shadow_temple_clip"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "has_explosives"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "type": "or",
@@ -7099,21 +7187,8 @@
                             ]
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "key_small_shadow"
-                                    },
-                                    "value": "4"
-                                },
-                                {
-                                    "type": "skip",
-                                    "el": "shadow_temple_clip"
-                                }
-                            ]
+                            "type": "skip",
+                            "el": "shadow_temple_clip"
                         }
                     ]
                 },
@@ -7169,21 +7244,8 @@
                             ]
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "key_small_shadow"
-                                    },
-                                    "value": "5"
-                                },
-                                {
-                                    "type": "skip",
-                                    "el": "shadow_temple_clip"
-                                }
-                            ]
+                            "type": "skip",
+                            "el": "shadow_temple_clip"
                         }
                     ]
                 },
@@ -7243,21 +7305,8 @@
                             ]
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "key_small_shadow"
-                                    },
-                                    "value": "5"
-                                },
-                                {
-                                    "type": "skip",
-                                    "el": "shadow_temple_clip"
-                                }
-                            ]
+                            "type": "skip",
+                            "el": "shadow_temple_clip"
                         }
                     ]
                 },
@@ -12663,8 +12712,8 @@
                     "el": "can_become_adult"
                 },
                 {
-                    "type": "item",
-                    "el": "ocarina"
+                    "type": "mixin",
+                    "el": "can_use_ocarina"
                 }
             ]
         },
@@ -13304,12 +13353,9 @@
                     "type": "or",
                     "el": [
                         {
-                            "type": "not",
-                            "el": {
-                                "type": "skip",
-                                "el": "lens_required",
-                                "value": "lens_required_never"
-                            }
+                            "type": "skip",
+                            "el": "lens_required",
+                            "value": "lens_required_never"
                         },
                         {
                             "type": "and",
@@ -23765,8 +23811,8 @@
                     "el": "can_become_adult"
                 },
                 {
-                    "type": "mixin",
-                    "el": "can_use_ocarina"
+                    "type": "item",
+                    "el": "ocarina"
                 },
                 {
                     "type": "item",
@@ -25311,21 +25357,8 @@
                             ]
                         },
                         {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "min",
-                                    "el": {
-                                        "type": "item",
-                                        "el": "key_small_shadow"
-                                    },
-                                    "value": "5"
-                                },
-                                {
-                                    "type": "skip",
-                                    "el": "shadow_temple_clip"
-                                }
-                            ]
+                            "type": "skip",
+                            "el": "shadow_temple_clip"
                         }
                     ]
                 },
@@ -25361,8 +25394,30 @@
                     "el": "boots_hover"
                 },
                 {
-                    "type": "mixin",
-                    "el": "has_explosives"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "item",
+                                        "el": "key_small_shadow"
+                                    },
+                                    "value": "5"
+                                },
+                                {
+                                    "type": "skip",
+                                    "el": "shadow_temple_clip"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        }
+                    ]
                 },
                 {
                     "type": "min",
