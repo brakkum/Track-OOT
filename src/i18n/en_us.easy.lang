@@ -305,7 +305,6 @@ castle_ganon_light_trail_invisible_enemies=Light Trail Invisible Enemies Chest
 castle_ganon_light_trial_lullaby=Light Trial Lullaby Chest
 castle_ganon_boss_key=Stalfos Chest
 castle_ganon_boss=Ganon Fight
-# LOCATIONS - GANON MQ
 castle_ganon_forest_trial_first_mq=Forest Trial First Chest
 castle_ganon_forest_trial_second_mq=Forest Trial Second Chest
 castle_ganon_forest_trial_key_mq=Forest Trial Freestanding Key
@@ -430,8 +429,7 @@ gerudo_training_heavy_block_before=Before Heavy Block Chest
 gerudo_training_heavy_block_1=Heavy Block First Chest 
 gerudo_training_heavy_block_2=Heavy Block Second Chest 
 gerudo_training_heavy_block_3=Heavy Block Third Chest 
-gerudo_training_heavy_block_4=Heavy Block Fourth Chest 
-# LOCATIONS - TRAINING MQ
+gerudo_training_heavy_block_4=Heavy Block Fourth Chest
 gerudo_training_lobby_left_mq=Lobby Left Chest
 gerudo_training_lobby_right_mq=Lobby Right Chest
 gerudo_training_hidden_ceiling_mq=Hidden Ceiling Chest
@@ -928,7 +926,6 @@ shtmq_lower_nofire=Shadow Temple MQ Lower Huge Pit without Fire Source
 mido_skip=Backflip over Mido as Adult
 fit_bossdoor_noitems=Fire Temple Boss Door without Hover Boots or Pillar
 lab_hookshot=Diving in the Lab with Iron Boots and Hookshot
-eyedrops_bolero=Deliver Eye Drops with Bolero of Fire
 naked_wasteland=Wasteland Crossing without Hover Boots or Longshot
 colossus_hill_GS_hookshot=Desert Colossus Hill GS with Hookshot
 dodongo_scarecrow_armos=Dodongo's Cavern Scarecrow GS with Armos Statue
@@ -988,12 +985,13 @@ shadow_temple_entry_fire_arrow=Shadow Temple Entry with Fire Arrows
 
 # SETTINGS - SEQUENCE BREAKS
 ground_jump=Enable Bomb Bag Ground Jumping
-invisible_ocarina=Enable Invisible Ocarina Glitch
+invisible_ocarina=Enable Invisible Ocarina Glitch (Put Away or Backflip)
 navi_dive=Enable Navi Diving
+lab_hovers=Enable Bottle Diving with Hover Boots
 underwater_chests_openable=Underwater Chests openable with Iron Boots and Hookshot
 lost_woods_allow_pedestal_clip=Clip into Lost Woods Pedestal to Zora's River
 well_entry_isg=Infinite Sword Glitch Entry into Well
-shadow_temple_entry_hookshot=Enter Shadow Temple with Hookshot
+shadow_temple_entry_hookshot=Enter Shadow Temple with Hookshot, No Nocturne or Fire Source
 shadow_temple_clip=Clip Through Cage to Shadow Temple Boat
 dodongo_open_bombchu=Open Dodongo Cavern Boss Area with Bombchus from Lobby
 dodongo_bombchu=Defeat King Dodongo with Bombchus
@@ -1001,7 +999,6 @@ valley_hookshot=Cross Gerudo Valley Bridge with Hookshot
 gtg_clip=Clip Into Gerudo Training Grounds with Hover Boots
 gtg_hammer_switch_nohammer=Gerudo Training Grounds Hammer Switch Chest Without Hammer
 spt_bosskey_nohookshot=Spirit Temple Boss Key Without Hookshot or Arrows
-lab_hovers=Diving in the Lab with Hover Boots and Bottle
 morpha_scale=Morpha with Gold Scale
 
 # SETTINGS - KEYSANITY

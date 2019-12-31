@@ -16,13 +16,17 @@ const ENTRANCE_STRUCT = {
     "visible": true
 }
 
-let translation = JSON.parse(fs.readFileSync("./src/database/buffer/translation.json"));
-let locations = JSON.parse(fs.readFileSync("./src/database/buffer/locations.json"));
+let translation = JSON.parse(fs.readFileSync("./src/_rework/buffer/translation.json"));
+let locations = JSON.parse(fs.readFileSync("./src/_rework/buffer/locations.json"));
 let items = JSON.parse(fs.readFileSync("./src/database/items.json"));
 let settings = JSON.parse(fs.readFileSync("./src/database/settings.json"));
 let shops = JSON.parse(fs.readFileSync("./src/database/shops.json"));
 let songs = JSON.parse(fs.readFileSync("./src/database/songs.json"));
 let logic = JSON.parse(fs.readFileSync("./src/database/logic.json"));
+
+let lang_en = fs.readFileSync("./src/i18n/en_us.lang", "utf8");
+let lang_en2 = fs.readFileSync("./src/i18n/en_us.easy.lang", "utf8");
+let lang_de = fs.readFileSync("./src/i18n/de_de.lang", "utf8");
 
 let world = {
     "locations": {},
@@ -258,14 +262,49 @@ for (let i in logic.mixins) {
 }
 
 // TODO translate language keys
+const LNBR_SEQ = /(?:\r\n|\n|\r)/g;
+const COMMENT = /^(?:!|#).*$/;
 
-fs.writeFileSync("./src/database/rework/world.json", JSON.stringify(world, null, 4));
-fs.writeFileSync("./src/database/rework/maps.json", JSON.stringify(maps, null, 4));
-fs.writeFileSync("./src/database/rework/items.json", JSON.stringify(citems, null, 4));
-fs.writeFileSync("./src/database/rework/settings.json", JSON.stringify(csettings, null, 4));
-fs.writeFileSync("./src/database/rework/shops.json", JSON.stringify(cshops, null, 4));
-fs.writeFileSync("./src/database/rework/songs.json", JSON.stringify(csongs, null, 4));
-fs.writeFileSync("./src/database/rework/logic.json", JSON.stringify(clogic, null, 4));
+function translate_language(input) {
+    let lines = input.split(LNBR_SEQ);
+    for(let i = 0; i < lines.length; ++i) {
+        let line = lines[i];
+        if(!line.length || COMMENT.test(line)) {
+            continue;
+        }
+        let data = line.split("=");
+        if(!!data) {
+            let key = data[0].trim();
+            let value = data[1].trim();
+            let trans = translation[key]
+                    ||  translation[`chests.${key}`]
+                    ||  translation[`skulltulas.${key}`]
+                    ||  translation[`gossipstones.${key}`]
+                    ||  translation[`skips.${key}`]
+                    ||  translation[`options.${key}`]
+                    ||  translation[`items.${key}`]
+                    ||  key;
+            lines[i] = `${trans}=${value}`;
+        }
+    }
+    return lines.join("\n");
+}
+
+clang_en = translate_language(lang_en);
+clang_en2 = translate_language(lang_en2);
+clang_de = translate_language(lang_de);
+
+fs.writeFileSync("./src/_rework/database/world.json", JSON.stringify(world, null, 4));
+fs.writeFileSync("./src/_rework/database/maps.json", JSON.stringify(maps, null, 4));
+fs.writeFileSync("./src/_rework/database/items.json", JSON.stringify(citems, null, 4));
+fs.writeFileSync("./src/_rework/database/settings.json", JSON.stringify(csettings, null, 4));
+fs.writeFileSync("./src/_rework/database/shops.json", JSON.stringify(cshops, null, 4));
+fs.writeFileSync("./src/_rework/database/songs.json", JSON.stringify(csongs, null, 4));
+fs.writeFileSync("./src/_rework/database/logic.json", JSON.stringify(clogic, null, 4));
+
+fs.writeFileSync("./src/_rework/i18n/en_us.lang", clang_en);
+fs.writeFileSync("./src/_rework/i18n/en_us.easy.lang", clang_en2);
+fs.writeFileSync("./src/_rework/i18n/de_de.lang", clang_de);
 
 fs.writeFileSync("./src/script/storage/converters/StateConverter1.js", `const translation = ${JSON.stringify(translation, null, 4)};
 

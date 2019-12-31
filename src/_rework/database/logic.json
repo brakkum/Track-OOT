@@ -118,7 +118,7 @@
             },
             {
                 "type": "number",
-                "el": "item.ocarina"
+                "el": "mixin.can_use_ocarina"
             },
             {
                 "type": "min",
@@ -1506,6 +1506,10 @@
             {
                 "type": "number",
                 "el": "mixin.zora_tunic_access"
+            },
+            {
+                "type": "number",
+                "el": "item.boots_iron"
             },
             {
                 "type": "or",
@@ -4643,12 +4647,38 @@
                 "el": "item.boots_hover"
             },
             {
-                "type": "number",
-                "el": "mixin.has_explosives"
-            },
-            {
-                "type": "number",
-                "el": "item.hookshot"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "number",
+                                    "el": "item.key_small_shadow"
+                                }
+                            },
+                            {
+                                "type": "number",
+                                "el": "skip.shadow_temple_clip"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "mixin.has_explosives"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.hookshot"
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "type": "or",
@@ -4681,12 +4711,38 @@
                 "el": "item.boots_hover"
             },
             {
-                "type": "number",
-                "el": "mixin.has_explosives"
-            },
-            {
-                "type": "number",
-                "el": "item.hookshot"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "number",
+                                    "el": "item.key_small_shadow"
+                                }
+                            },
+                            {
+                                "type": "number",
+                                "el": "skip.shadow_temple_clip"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "mixin.has_explosives"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.hookshot"
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "type": "or",
@@ -4777,20 +4833,8 @@
                         ]
                     },
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.key_small_shadow"
-                                }
-                            },
-                            {
-                                "type": "number",
-                                "el": "skip.shadow_temple_clip"
-                            }
-                        ]
+                        "type": "number",
+                        "el": "skip.shadow_temple_clip"
                     }
                 ]
             },
@@ -4845,20 +4889,8 @@
                         ]
                     },
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.key_small_shadow"
-                                }
-                            },
-                            {
-                                "type": "number",
-                                "el": "skip.shadow_temple_clip"
-                            }
-                        ]
+                        "type": "number",
+                        "el": "skip.shadow_temple_clip"
                     }
                 ]
             },
@@ -4917,20 +4949,8 @@
                         ]
                     },
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.key_small_shadow"
-                                }
-                            },
-                            {
-                                "type": "number",
-                                "el": "skip.shadow_temple_clip"
-                            }
-                        ]
+                        "type": "number",
+                        "el": "skip.shadow_temple_clip"
                     }
                 ]
             },
@@ -10228,7 +10248,7 @@
             },
             {
                 "type": "number",
-                "el": "item.ocarina"
+                "el": "mixin.can_use_ocarina"
             }
         ]
     },
@@ -10850,12 +10870,9 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "not",
-                        "el": {
-                            "type": "value",
-                            "el": "skip.lens_required",
-                            "value": "lens_required_never"
-                        }
+                        "type": "value",
+                        "el": "skip.lens_required",
+                        "value": "lens_required_never"
                     },
                     {
                         "type": "and",
@@ -21137,7 +21154,7 @@
             },
             {
                 "type": "number",
-                "el": "mixin.can_use_ocarina"
+                "el": "item.ocarina"
             },
             {
                 "type": "number",
@@ -22671,20 +22688,8 @@
                         ]
                     },
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.key_small_shadow"
-                                }
-                            },
-                            {
-                                "type": "number",
-                                "el": "skip.shadow_temple_clip"
-                            }
-                        ]
+                        "type": "number",
+                        "el": "skip.shadow_temple_clip"
                     }
                 ]
             },
@@ -22719,8 +22724,29 @@
                 "el": "item.boots_hover"
             },
             {
-                "type": "number",
-                "el": "mixin.has_explosives"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "number",
+                                    "el": "item.key_small_shadow"
+                                }
+                            },
+                            {
+                                "type": "number",
+                                "el": "skip.shadow_temple_clip"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "number",
+                        "el": "mixin.has_explosives"
+                    }
+                ]
             },
             {
                 "type": "min",
@@ -28864,7 +28890,7 @@
                         "el": [
                             {
                                 "type": "number",
-                                "el": "mixin.can_use_ocarina"
+                                "el": "item.ocarina"
                             },
                             {
                                 "type": "number",
@@ -29433,8 +29459,29 @@
                 "el": "mixin.can_become_adult"
             },
             {
-                "type": "number",
-                "el": "item.hookshot"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "item.hookshot"
+                            },
+                            {
+                                "type": "number",
+                                "el": "skip.wt_entry_noirons"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "min",
+                        "el": {
+                            "type": "number",
+                            "el": "item.hookshot"
+                        }
+                    }
+                ]
             },
             {
                 "type": "or",
@@ -29447,27 +29494,36 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "number",
-                                        "el": "skip.wt_entry_noirons"
-                                    },
-                                    {
-                                        "type": "min",
-                                        "el": {
-                                            "type": "number",
-                                            "el": "item.hookshot"
-                                        }
-                                    }
-                                ]
-                            },
-                            {
                                 "type": "min",
                                 "el": {
                                     "type": "number",
                                     "el": "item.scale"
                                 }
+                            },
+                            {
+                                "type": "number",
+                                "el": "skip.wt_entry_noirons"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "number",
+                        "el": "skip.navi_dive"
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "item.boots_hover"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.bottle"
+                            },
+                            {
+                                "type": "number",
+                                "el": "skip.lab_hovers"
                             }
                         ]
                     }

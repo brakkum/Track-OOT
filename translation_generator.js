@@ -20,7 +20,7 @@ const PROPERTY_FILES = [
 
 let translation = {};
 
-let locations = JSON.parse(fs.readFileSync("./src/database/buffer/locations.json"));
+let locations = JSON.parse(fs.readFileSync("./src/_rework/buffer/locations.json"));
 let items = JSON.parse(fs.readFileSync("./src/database/items.json"));
 let settings = JSON.parse(fs.readFileSync("./src/database/settings.json"));
 let shops = JSON.parse(fs.readFileSync("./src/database/shops.json"));
@@ -92,4 +92,4 @@ for (let i in songs) {
     translation[`songs.${i}`] = `song.${i.replace(/^song_/, "")}`;
 }
 
-fs.writeFileSync("./src/database/buffer/translation.json", JSON.stringify(translation, null, 4));
+fs.writeFileSync("./src/_rework/buffer/translation.json", JSON.stringify(translation, null, 4));
