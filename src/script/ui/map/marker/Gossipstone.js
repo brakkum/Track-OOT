@@ -31,7 +31,7 @@ const TPL = new Template(`
             width: 100%;
             height: 100%;
             background-color: var(--location-status-unavailable-color, #000000);
-            border: solid 2px black;
+            border: solid 4px black;
             border-radius: 50%;
             cursor: pointer;
         }
@@ -98,9 +98,8 @@ const TPL = new Template(`
 
 const GROUP = new WeakMap();
 
-function locationUpdate(event) {
-    let ref = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref].ref || this.ref;
-    if (ref === event.data.name) {
+function gossipstoneUpdate(event) {
+    if (this.ref === event.data.name) {
         EventBus.mute("gossipstone");
         this.setValue(event.data.value);
         EventBus.unmute("gossipstone");
@@ -109,18 +108,14 @@ function locationUpdate(event) {
 
 function stateChanged(event) {
     EventBus.mute("gossipstone");
-    let ref = this.ref;
-    if (GROUP.has(this)) {
-        ref = GROUP.get(this);
-    }
-    let value = event.data[`gossipstones.${ref}`];
+    let value = event.data[this.ref];
     if (typeof value == "undefined") {
         value = {item: "0x01", location: "0x01"};
     }
     this.setValue(value);
     let el = this.shadowRoot.getElementById("text");
     if (!el.classList.contains("checked")) {
-        if (Logic.getValue("gossipstones", this.ref)) {
+        if (Logic.getValue(this.access)) {
             el.classList.add("avail");
         } else {
             el.classList.remove("avail");
@@ -130,17 +125,13 @@ function stateChanged(event) {
 }
 
 function logicUpdate(event) {
-    if ("gossipstones" == event.data.type && this.ref == event.data.ref) {
+    if (event.data.hasOwnProperty(this.access)) {
         let el = this.shadowRoot.getElementById("marker");
-        if (!!event.data.value) {
-            el.classList.add("avail");
-        } else {
-            el.classList.remove("avail");
-        }
+        el.classList.toggle("avail", !!event.data[this.access]);
     }
 }
 
-class HTMLTrackerPOIGossipstone extends HTMLElement {
+class HTMLMarkerGossipstone extends HTMLElement {
 
     constructor() {
         super();
@@ -148,7 +139,7 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
         this.shadowRoot.append(TPL.generate());
         this.addEventListener("click", this.check);
         /* event bus */
-        EVENT_BINDER.register("gossipstone", locationUpdate.bind(this));
+        EVENT_BINDER.register("gossipstone", gossipstoneUpdate.bind(this));
         EVENT_BINDER.register("state", stateChanged.bind(this));
         EVENT_BINDER.register("logic", logicUpdate.bind(this));
     }
@@ -173,6 +164,22 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
         this.setAttribute('checked', val);
     }
 
+    get access() {
+        return this.getAttribute('access');
+    }
+
+    set access(val) {
+        this.setAttribute('access', val);
+    }
+
+    get visible() {
+        return this.getAttribute('visible');
+    }
+
+    set visible(val) {
+        this.setAttribute('visible', val);
+    }
+
     static get observedAttributes() {
         return ['ref', 'checked'];
     }
@@ -181,9 +188,12 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
+                    let data = GlobalData.get(`world/locations/${this.ref}`);
                     let txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = I18n.translate(this.ref);
+
+                    this.access = data.access;
+                    this.visible = data.visible;
                     
                     let tooltip = this.shadowRoot.getElementById("tooltip");
                     let left = parseFloat(this.style.left.slice(0, -1));
@@ -212,40 +222,38 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
 
                     this.shadowRoot.getElementById("badge").innerHTML = "";
 
+                    let el_type = document.createElement("deep-icon");
+                    el_type.src = `images/gossipstone.svg`;
+                    this.shadowRoot.getElementById("badge").append(el_type);
+
                     let el_time = document.createElement("deep-icon");
                     el_time.src = `images/time_${data.time || "both"}.svg`;
                     this.shadowRoot.getElementById("badge").append(el_time);
 
                     let el_era = document.createElement("deep-icon");
-                    el_era.src = `images/era_${data.era ||"both"}.svg`;
+                    if (!!data.child && !!data.adult) {
+                        el_era.src = "images/era_both.svg";
+                    } else if (!!data.child) {
+                        el_era.src = "images/era_child.svg";
+                    } else if (!!data.adult) {
+                        el_era.src = "images/era_adult.svg";
+                    } else {
+                        el_era.src = "images/era_none.svg";
+                    }
                     this.shadowRoot.getElementById("badge").append(el_era);
                     
                     let el = this.shadowRoot.getElementById("marker");
-                    if (Logic.getValue("gossipstones", this.ref)) {
-                        el.classList.add("avail");
-                    } else {
-                        el.classList.remove("avail");
-                    }
+                    el.classList.toggle("avail", Logic.getValue(this.access));
 
-                    let ref = this.ref;
-                    if (!!data.ref) {
-                        GROUP.set(this, data.ref);
-                        ref = data.ref;
-                    }
-
-                    this.checked = StateStorage.read(`gossipstones.${ref}`, false);
-                    this.setValue(StateStorage.read(`gossipstones.${ref}`, {item: "0x01", location: "0x01"}));
+                    this.checked = !!StateStorage.read(this.ref, false);
+                    this.setValue(StateStorage.read(this.ref, {item: "0x01", location: "0x01"}));
                 }
             break;
             case 'checked':
                 if (oldValue != newValue) {
                     if (!newValue || newValue === "false") {
                         let el = this.shadowRoot.getElementById("marker");
-                        if (Logic.getValue("gossipstones", this.ref)) {
-                            el.classList.add("avail");
-                        } else {
-                            el.classList.remove("avail");
-                        }
+                        el.classList.toggle("avail", Logic.getValue(this.access));
                     }
                 }
             break;
@@ -283,20 +291,19 @@ class HTMLTrackerPOIGossipstone extends HTMLElement {
                 }
             }
         }
-        let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
         EventBus.trigger("gossipstone", {
-            name: data.ref || this.ref,
+            name: this.ref,
             value: value
         });
     }
 
 }
 
-customElements.define('ootrt-poigossipstone', HTMLTrackerPOIGossipstone);
+customElements.define('ootrt-marker-gossipstone', HTMLMarkerGossipstone);
 
 function hintstoneDialog(ref) {
     return new Promise(resolve => {
-        let value = StateStorage.read(`gossipstones.${ref}`, {item: "0x01", location: "0x01"});
+        let value = StateStorage.read(ref, {item: "0x01", location: "0x01"});
         let data = GlobalData.get('hints', {locations: [], items: []});
     
         let lbl_loc = document.createElement('label');
@@ -336,8 +343,7 @@ function hintstoneDialog(ref) {
         d.onsubmit = function(ref, result) {
             if (!!result) {
                 let res = {item: slt_itm.value, location: slt_loc.value};
-                let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][ref];
-                StateStorage.write(`gossipstones.${data.ref || ref}`, res);
+                StateStorage.write(ref, res);
                 resolve(res);
             } else {
                 resolve(false);

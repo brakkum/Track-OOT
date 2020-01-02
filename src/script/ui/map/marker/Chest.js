@@ -92,36 +92,30 @@ const TPL = new Template(`
 
 function locationUpdate(event) {
     if (this.ref === event.data.name && this.checked !== event.data.value) {
-        EventBus.mute("skulltula");
+        EventBus.mute("chest");
         this.checked = event.data.value;
-        EventBus.unmute("skulltula");
+        EventBus.unmute("chest");
     }
 }
 
 function stateChanged(event) {
-    let path = this.ref.split(".");
-    EventBus.mute("skulltula");
-    let value = !!event.data[`skulltulas.${path[2]}`];
+    EventBus.mute("chest");
+    let value = !!event.data[this.ref];
     if (typeof value == "undefined") {
         value = false;
     }
     this.checked = value;
-    EventBus.unmute("skulltula");
+    EventBus.unmute("chest");
 }
 
 function logicUpdate(event) {
-    let path = this.ref.split(".");
-    if (event.data.type == "skulltulas" && event.data.ref == path[2]) {
+    if (event.data.hasOwnProperty(this.access)) {
         let el = this.shadowRoot.getElementById("marker");
-        if (!!event.data.value) {
-            el.classList.add("avail");
-        } else {
-            el.classList.remove("avail");
-        }
+        el.classList.toggle("avail", !!event.data[this.access]);
     }
 }
 
-class HTMLTrackerPOILocationSkulltula extends HTMLElement {
+class HTMLMarkerChest extends HTMLElement {
 
     constructor() {
         super();
@@ -130,7 +124,7 @@ class HTMLTrackerPOILocationSkulltula extends HTMLElement {
         this.addEventListener("click", this.check);
         this.addEventListener("contextmenu", this.uncheck);
         /* event bus */
-        EVENT_BINDER.register("skulltula", locationUpdate.bind(this));
+        EVENT_BINDER.register("chest", locationUpdate.bind(this));
         EVENT_BINDER.register("state", stateChanged.bind(this));
         EVENT_BINDER.register("logic", logicUpdate.bind(this));
     }
@@ -151,6 +145,22 @@ class HTMLTrackerPOILocationSkulltula extends HTMLElement {
         this.setAttribute('checked', val);
     }
 
+    get access() {
+        return this.getAttribute('access');
+    }
+
+    set access(val) {
+        this.setAttribute('access', val);
+    }
+
+    get visible() {
+        return this.getAttribute('visible');
+    }
+
+    set visible(val) {
+        this.setAttribute('visible', val);
+    }
+
     static get observedAttributes() {
         return ['ref', 'checked'];
     }
@@ -159,14 +169,17 @@ class HTMLTrackerPOILocationSkulltula extends HTMLElement {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    let path = newValue.split('.');
-                    let data = GlobalData.get("locations")["overworld"][path[1]][path[2]];
+                    let data = GlobalData.get(`world/locations/${this.ref}`);
                     let txt = this.shadowRoot.getElementById("text");
-                    txt.innerHTML = I18n.translate(path[2]);
+                    txt.innerHTML = I18n.translate(this.ref);
+
+                    this.access = data.access;
+                    this.visible = data.visible;
                     
                     let tooltip = this.shadowRoot.getElementById("tooltip");
                     let left = parseFloat(this.style.left.slice(0, -1));
                     let top = parseFloat(this.style.top.slice(0, -1));
+                    // TODO get map boundaries and clip to that
                     if (left < 30) {
                         if (top < 30) {
                             tooltip.position = "bottomright";
@@ -191,37 +204,40 @@ class HTMLTrackerPOILocationSkulltula extends HTMLElement {
 
                     this.shadowRoot.getElementById("badge").innerHTML = "";
 
+                    let el_type = document.createElement("deep-icon");
+                    el_type.src = `images/chest.svg`;
+                    this.shadowRoot.getElementById("badge").append(el_type);
+
                     let el_time = document.createElement("deep-icon");
                     el_time.src = `images/time_${data.time || "both"}.svg`;
                     this.shadowRoot.getElementById("badge").append(el_time);
 
                     let el_era = document.createElement("deep-icon");
-                    el_era.src = `images/era_${data.era ||"both"}.svg`;
+                    if (!!data.child && !!data.adult) {
+                        el_era.src = "images/era_both.svg";
+                    } else if (!!data.child) {
+                        el_era.src = "images/era_child.svg";
+                    } else if (!!data.adult) {
+                        el_era.src = "images/era_adult.svg";
+                    } else {
+                        el_era.src = "images/era_none.svg";
+                    }
                     this.shadowRoot.getElementById("badge").append(el_era);
                     
                     let el = this.shadowRoot.getElementById("marker");
-                    if (Logic.getValue("skulltulas", path[2])) {
-                        el.classList.add("avail");
-                    } else {
-                        el.classList.remove("avail");
-                    }
+                    el.classList.toggle("avail", Logic.getValue(this.access));
 
-                    this.checked = StateStorage.read(`skulltulas.${path[2]}`, false);
+                    this.checked = StateStorage.read(this.ref, false);
                 }
             break;
             case 'checked':
                 if (oldValue != newValue) {
-                    let path = this.ref.split(".");
                     if (!newValue || newValue === "false") {
                         let el = this.shadowRoot.getElementById("marker");
-                        if (Logic.getValue("skulltulas", path[2])) {
-                            el.classList.add("avail");
-                        } else {
-                            el.classList.remove("avail");
-                        }
+                        el.classList.toggle("avail", Logic.getValue(this.access));
                     }
-                    StateStorage.write(`skulltulas.${path[2]}`, newValue === "false" ? false : !!newValue);
-                    EventBus.trigger("skulltula", {
+                    StateStorage.write(this.ref, newValue === "false" ? false : !!newValue);
+                    EventBus.trigger("chest", {
                         name: this.ref,
                         value: newValue
                     });
@@ -248,4 +264,4 @@ class HTMLTrackerPOILocationSkulltula extends HTMLElement {
 
 }
 
-customElements.define('ootrt-poilocationskulltula', HTMLTrackerPOILocationSkulltula);
+customElements.define('ootrt-marker-chest', HTMLMarkerChest);

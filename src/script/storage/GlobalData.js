@@ -4,7 +4,8 @@ import DateUtil from "/deepJS/util/DateUtil.js";
 const FILES = [
     "items",
     "grids",
-    "locations",
+    "world",
+    "maps",
     "layouts",
     "songs",
     "hints",
@@ -37,7 +38,7 @@ class GlobalData {
     async init() {
         let loading = [];
         FILES.forEach(file => {
-            loading.push(FileLoader.json(`database/${file}.json`).then(function(data) {
+            loading.push(FileLoader.json(`/_rework/database/${file}.json`).then(function(data) {
                 STORAGE[file] = data;
             }));
         });
@@ -46,10 +47,20 @@ class GlobalData {
     }
 
     get(name, def = null) {
-        if (!!STORAGE[name]) {
-            return STORAGE[name];
+        let path = name.split("/");
+        let data = STORAGE;
+        while (!!path.length) {
+            let ref = path.shift();
+            if (data.hasOwnProperty(ref)) {
+                data = data[ref];
+            } else {
+                return def;
+            }
         }
-        return def;
+        if (typeof data == "undefined") {
+            return def;
+        }
+        return data;
     }
 
 }

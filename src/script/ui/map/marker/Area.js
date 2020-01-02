@@ -92,29 +92,6 @@ function translate(value) {
     }
 }
 
-function canGet(name, category) {
-    let list = GlobalData.get("locations")[name];
-    let dType = StateStorage.read(`dungeonTypes.${name}`, list.hasmq ? "n" : "v");
-    if (dType === "n") {
-        return "";
-    }
-    list = GlobalData.get("locations")[name][`${category}_${dType}`];
-    let canGet = 0;
-    for (let i in list) {
-        let filter = MemoryStorage.get("active_filter.filter_era_active", GlobalData.get("filter")["filter_era_active"].default);
-        if (!list[i].era || !filter || filter === list[i].era) {
-            if (!list[i].mode || StateStorage.read(`options.${list[i].mode}`, false)) {
-                if (!StateStorage.read(`${category}.${i}`, 0)) {
-                    if (Logic.getValue(category, i)) {
-                        canGet++;
-                    }
-                }
-            }
-        }
-    }
-    return canGet;
-}
-
 function locationUpdate(event) {
     if (this.ref === event.data.name.split('.')[0]) {
         this.update();
@@ -131,7 +108,7 @@ function dungeonTypeUpdate(event) {
     }
 }
 
-class HTMLTrackerPOIArea extends HTMLElement {
+class HTMLMarkerArea extends HTMLElement {
 
     constructor() {
         super();
@@ -169,10 +146,10 @@ class HTMLTrackerPOIArea extends HTMLElement {
     }
 
     async update() {
-        let val = await Logic.checkLogicList(this.mode, this.ref);
+        let val = await Logic.checkLogicList(this.ref);
         this.shadowRoot.getElementById("marker").className = translate(val);
         if (val > 0b001) {
-            this.shadowRoot.getElementById("marker").innerHTML = canGet(this.ref, this.mode);
+            this.shadowRoot.getElementById("marker").innerHTML = await Logic.getAccessibleNumber(this.ref);
         } else {
             this.shadowRoot.getElementById("marker").innerHTML = "";
         }
@@ -215,4 +192,4 @@ class HTMLTrackerPOIArea extends HTMLElement {
 
 }
 
-customElements.define('ootrt-poiarea', HTMLTrackerPOIArea);
+customElements.define('ootrt-marker-area', HTMLMarkerArea);

@@ -10,6 +10,7 @@ eventModule.mute("logic");
 eventModule.mute("filter");
 eventModule.mute("location_change");
 eventModule.mute("location_mode");
+eventModule.mute("state_change");
 EventBus.addModule(eventModule);
 
 let username = "";

@@ -52,15 +52,15 @@ const TPL = new Template(`
 `);
 
 const REWARDS = [
-    "stone_forest",
-    "stone_fire",
-    "stone_water",
-    "medallion_forest",
-    "medallion_fire",
-    "medallion_water",
-    "medallion_spirit",
-    "medallion_shadow",
-    "medallion_light"
+    "item.stone_forest",
+    "item.stone_fire",
+    "item.stone_water",
+    "item.medallion_forest",
+    "item.medallion_fire",
+    "item.medallion_water",
+    "item.medallion_spirit",
+    "item.medallion_shadow",
+    "item.medallion_light"
 ];
 
 function stateChanged(event) {
@@ -122,8 +122,9 @@ class HTMLTrackerDungeonReward extends HTMLElement {
                         this.innerHTML = "";
                     } else if (oldValue === null || oldValue === undefined || oldValue === "") {
                         this.append(createOption(0, "/images/unknown.svg"));
+                        let items = GlobalData.get("items");
                         for (let i = 0; i < REWARDS.length; ++i) {
-                            let j = GlobalData.get("items")[REWARDS[i]].images;
+                            let j = items[REWARDS[i]].images;
                             if (Array.isArray(j)) {
                                 j = j[0];
                             }

@@ -9,9 +9,9 @@ import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import I18n from "/script/util/I18n.js";
 import Logic from "/script/util/Logic.js";
 import "../dungeonstate/DungeonType.js";
-import "./LocationChest.js";
-import "./LocationSkulltula.js";
-import "./Gossipstone.js";
+import "./listitems/Chest.js";
+import "./listitems/Skulltula.js";
+import "./listitems/Gossipstone.js";
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
@@ -57,24 +57,17 @@ const TPL = new Template(`
             overflow-y: auto;
             overflow-x: hidden;
         }
-        #body > div,
-        #body > ootrt-listlocationchest,
-        #body > ootrt-listlocationskulltula,
-        #body > ootrt-listgossipstone {
+        #body > * {
             display: flex;
             justify-content: flex-start;
             align-items: center;
             min-height: 30px;
             width: 100%;
             padding: 2px;
-            font-size: 1.2em;
             line-height: 1em;
             cursor: pointer;
         }
-        #body > div:hover,
-        #body > ootrt-listlocationchest:hover,
-        #body > ootrt-listlocationskulltula:hover,
-        #body > ootrt-listgossipstone:hover {
+        #body > *:hover {
             background-color: var(--dungeon-status-hover-color, #ffffff32);
         }
         .opened {
@@ -102,7 +95,7 @@ const TPL = new Template(`
         <deep-switchbutton value="chests" id="location-mode">
             <deep-option value="chests" style="background-image: url('images/chest.svg')"></deep-option>
             <deep-option value="skulltulas" style="background-image: url('images/skulltula.svg')"></deep-option>
-            <deep-option value="gossipstones" style="background-image: url('images/gossips.svg')"></deep-option>
+            <deep-option value="gossipstones" style="background-image: url('images/gossipstone.svg')"></deep-option>
         </deep-switchbutton>
     </div>
     <div id="body">
@@ -113,43 +106,26 @@ const TPL = new Template(`
 const LOCATION_ELEMENTS = new Map();
 
 function generateLocations() {
-    let data = GlobalData.get("locations");
-    if (!!data.overworld && !!data.overworld.gossipstones_v) {
-        for (let i in data.overworld.gossipstones_v) {
-            let el = document.createElement('ootrt-listgossipstone');
-            el.ref = i;
-            LOCATION_ELEMENTS.set(`G:${i}`, el);
-        }
-    }
+    let data = GlobalData.get("world/locations");
     for (let i in data) {
-        if (!!data[i].chests_v) {
-            for (let j in data[i].chests_v) {
-                let el = document.createElement('ootrt-listlocationchest');
-                el.ref = `${i}.chests_v.${j}`;
-                LOCATION_ELEMENTS.set(`${i}.chests_v.${j}`, el);
-            }
+        let el;
+        switch (data[i].type) {
+            default: continue;
+            case "chest":
+            case "cow":
+            case "scrub":
+            case "bean":
+                el = document.createElement('ootrt-listchest');
+                break;
+            case "skulltula":
+                el = document.createElement('ootrt-listskulltula');
+                break;
+            case "gossipstone":
+                el = document.createElement('ootrt-listgossipstone');
+                break;
         }
-        if (!!data[i].skulltulas_v) {
-            for (let j in data[i].skulltulas_v) {
-                let el = document.createElement('ootrt-listlocationskulltula');
-                el.ref = `${i}.skulltulas_v.${j}`;
-                LOCATION_ELEMENTS.set(`${i}.skulltulas_v.${j}`, el);
-            }
-        }
-        if (!!data[i].chests_mq) {
-            for (let j in data[i].chests_mq) {
-                let el = document.createElement('ootrt-listlocationchest');
-                el.ref = `${i}.chests_mq.${j}`;
-                LOCATION_ELEMENTS.set(`${i}.chests_mq.${j}`, el);
-            }
-        }
-        if (!!data[i].skulltulas_mq) {
-            for (let j in data[i].skulltulas_mq) {
-                let el = document.createElement('ootrt-listlocationskulltula');
-                el.ref = `${i}.skulltulas_mq.${j}`;
-                LOCATION_ELEMENTS.set(`${i}.skulltulas_mq.${j}`, el);
-            }
-        }
+        el.ref = i;
+        LOCATION_ELEMENTS.set(i, el);
     }
 }
 
@@ -163,27 +139,23 @@ function translate(value) {
 }
 
 async function locationUpdate(event) {
-    if ((!this.ref || this.ref === "") && this.mode != "gossipstones") {
+    if ((!this.ref || this.ref === "")) {
         this.shadowRoot.querySelector('#title').className = "";
         let ch = Array.from(this.shadowRoot.getElementById("body").children);
         ch.forEach(async c => {
-            c.className = translate(await Logic.checkLogicList(this.mode, c.dataset.ref))
+            c.className = translate(await Logic.checkLogicList(c.dataset.ref))
         });
     } else {
-        if (this.mode == "gossipstones") {
-            this.shadowRoot.querySelector('#title').className = "";
-        } else {
-            let data = GlobalData.get("locations")[this.ref || "overworld"];
-            let dType = StateStorage.read(`dungeonTypes.${this.ref || "overworld"}`, data.hasmq ? "n" : "v");
-            if (dType === "n") {
-                let ch = Array.from(this.shadowRoot.getElementById("body").children);
-                ch.forEach(async c => {
-                    if (!c.dataset.ref || c.dataset.ref === "") return;
-                    c.className = translate(await Logic.checkLogicList(this.mode, this.ref, c.dataset.ref));
-                });
-            }
-            this.shadowRoot.querySelector('#title').className = translate(await Logic.checkLogicList(this.mode, this.ref || "overworld"));
-        }
+        let data = GlobalData.get(`world/areas/${this.ref}`);
+        /*let dType = StateStorage.read(`dungeonTypes.${this.ref || "overworld"}`, data.hasmq ? "n" : "v");
+        if (dType === "n") {
+            let ch = Array.from(this.shadowRoot.getElementById("body").children);
+            ch.forEach(async c => {
+                if (!c.dataset.ref || c.dataset.ref === "") return;
+                c.className = translate(await Logic.checkLogicList(this.mode, this.ref, c.dataset.ref));
+            });
+        }*/
+        this.shadowRoot.querySelector('#title').className = translate(await Logic.checkLogicList(this.ref || "overworld"));
     }
 }
 
@@ -209,9 +181,9 @@ class HTMLTrackerLocationList extends Panel {
         });
         this.shadowRoot.getElementById('location-era').addEventListener("change", event => {
             this.era = event.newValue;
-            MemoryStorage.set("active_filter.filter_era_active", this.era);
+            MemoryStorage.set("filter.era_active", this.era);
             EventBus.trigger("filter", {
-                ref: "filter_era_active",
+                ref: "filter.era_active",
                 value: this.era
             });
         });
@@ -258,80 +230,60 @@ class HTMLTrackerLocationList extends Panel {
             let cnt = this.shadowRoot.getElementById("body");
             let locationType = this.shadowRoot.getElementById("location-type");
             cnt.innerHTML = "";
-            if (this.mode === "gossipstones") {
+            
+            if (!this.ref || this.ref === "") {
+                let data = GlobalData.get("world/areas");
                 locationType.ref = "";
                 this.shadowRoot.getElementById("title-text").innerHTML = I18n.translate("hyrule");
-                let data = GlobalData.get("locations")["overworld"][`gossipstones_v`];
+                this.shadowRoot.getElementById("title").className = "";
                 if (!!data) {
                     Object.keys(data).forEach(i => {
-                        let buf = data[i];
-                        if (!buf.era || !this.era || this.era === buf.era) {
-                            let el = LOCATION_ELEMENTS.get(`G:${i}`);
-                            cnt.append(el);
-                        }
+                        let el = document.createElement('div');
+                        el.dataset.ref = i;
+                        el.addEventListener("click", () => this.ref = i);
+                        el.innerHTML = I18n.translate(i);
+                        cnt.append(el);
                     });
                 }
             } else {
-                let data = GlobalData.get("locations");
-                if (!this.ref || this.ref === "") {
-                    locationType.ref = "";
-                    this.shadowRoot.getElementById("title-text").innerHTML = I18n.translate("hyrule");
-                    this.shadowRoot.getElementById("title").className = "";
-                    if (!!data) {
-                        Object.keys(data).forEach(i => {
-                            let el = document.createElement('div');
-                            el.dataset.ref = i;
-                            el.addEventListener("click", () => this.ref = i);
-                            el.innerHTML = I18n.translate(i);
-                            cnt.append(el);
-                        });
-                    }
+                this.shadowRoot.getElementById("title-text").innerHTML = I18n.translate(this.ref);
+                let bck = document.createElement('div');
+                bck.innerHTML = `(${I18n.translate("back")})`;
+                bck.addEventListener("click", () => this.ref = "");
+                cnt.append(bck);
+                let data = GlobalData.get(`world/areas/${this.ref}`);
+                /*let dType = StateStorage.read(`dungeonTypes.${this.ref}`, data.hasmq ? "n" : "v");
+                if (data.hasmq) {
+                    locationType.ref = this.ref;
                 } else {
-                    this.shadowRoot.getElementById("title-text").innerHTML = I18n.translate(this.ref);
-                    let bck = document.createElement('div');
-                    bck.innerHTML = `(${I18n.translate("back")})`;
-                    bck.addEventListener("click", () => this.ref = "");
-                    cnt.append(bck);
-                    data = GlobalData.get("locations")[this.ref];
-                    let dType = StateStorage.read(`dungeonTypes.${this.ref}`, data.hasmq ? "n" : "v");
-                    if (data.hasmq) {
-                        locationType.ref = this.ref;
-                    } else {
-                        locationType.ref = "";
-                    }
-                    if (dType === "n") {
-                        let v = document.createElement('div');
-                        v.dataset.ref = "v";
-                        v.innerHTML = I18n.translate("vanilla");
-                        v.addEventListener("click", () => {
-                            locationType.value = "v";
-                        });
-                        cnt.append(v);
-                        let mq = document.createElement('div');
-                        mq.dataset.ref = "mq";
-                        mq.innerHTML = I18n.translate("masterquest");
-                        mq.addEventListener("click", () => {
-                            locationType.value = "mq";
-                        });
-                        cnt.append(mq);
-                    } else {    
-                        if (!!this.mode && this.mode !== "") {
-                            data = data[`${this.mode}_${dType}`];
-                            if (!!data) {
-                                Object.keys(data).forEach(i => {
-                                    let buf = data[i];
-                                    if (!buf.era || !this.era || this.era === buf.era) {
-                                        if (!buf.mode || StateStorage.read(`options.${buf.mode}`, false)) {
-                                            let el = LOCATION_ELEMENTS.get(`${this.ref}.${this.mode}_${dType}.${i}`);
-                                            cnt.append(el);
-                                        }
-                                    }
-                                });
+                    locationType.ref = "";
+                }
+                if (dType === "n") {
+                    let v = document.createElement('div');
+                    v.dataset.ref = "v";
+                    v.innerHTML = I18n.translate("vanilla");
+                    v.addEventListener("click", () => {
+                        locationType.value = "v";
+                    });
+                    cnt.append(v);
+                    let mq = document.createElement('div');
+                    mq.dataset.ref = "mq";
+                    mq.innerHTML = I18n.translate("masterquest");
+                    mq.addEventListener("click", () => {
+                        locationType.value = "mq";
+                    });
+                    cnt.append(mq);
+                } else {  */  
+                    // if (!!this.mode && this.mode !== "") {
+                        if (!!data.locations) {
+                            for (let i = 0; i < data.locations.length; ++i) {
+                                cnt.append(LOCATION_ELEMENTS.get(data.locations[i]));
                             }
                         }
-                    }
-                }
+                    //  }
+                // }
             }
+
             locationUpdate.apply(this);
         }
     }

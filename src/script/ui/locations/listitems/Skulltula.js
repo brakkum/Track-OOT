@@ -71,37 +71,34 @@ const TPL = new Template(`
 
 function locationUpdate(event) {
     if (this.ref === event.data.name && this.checked !== event.data.value) {
-        EventBus.mute("chest");
+        EventBus.mute("skulltula");
         this.checked = event.data.value;
-        EventBus.unmute("chest");
+        EventBus.unmute("skulltula");
     }
 }
 
 function stateChanged(event) {
-    let path = this.ref.split(".");
-    EventBus.mute("chest");
-    let value = !!event.data[`chests.${path[2]}`];
+    EventBus.mute("skulltula");
+    let value = !!event.data[this.ref];
     if (typeof value == "undefined") {
         value = false;
     }
     this.checked = value;
-    EventBus.unmute("chest");
+    EventBus.unmute("skulltula");
 }
 
 function logicUpdate(event) {
-    let path = this.ref.split(".");
-    if (event.data.type == "chests" && event.data.ref == path[2]) {
+    if (event.data.hasOwnProperty(this.access)) {
         let el = this.shadowRoot.getElementById("text");
-        el.classList.toggle("avail", !!event.data.value);
+        el.classList.toggle("avail", !!event.data[this.access]);
     }
 }
 
-function showLogic(ref) {
-    let path = ref.split(".");
-    let l = Logic.getLogicView("chests", path[2]);
+function showLogic(ref, title) {
+    let l = Logic.getLogicView(ref);
     if (!!l) {
         let d = new Dialog({
-            title: I18n.translate(path[2]),
+            title: I18n.translate(title),
             submit: "OK"
         });
         d.value = ref;
@@ -111,8 +108,7 @@ function showLogic(ref) {
 }
 
 async function printLogic(ref) {
-    let path = ref.split(".");
-    let svg = Logic.getLogicSVG("chests", path[2]);
+    let svg = Logic.getLogicSVG(ref);
     let png = await Helper.svg2png(svg);
     let svg_win = window.open("", "_blank", "menubar=no,location=no,resizable=yes,scrollbars=yes,status=no");
     let img = document.createElement("img");
@@ -142,7 +138,7 @@ function contextMenu(event) {
     return false;
 }
 
-class HTMLTrackerLocationChest extends HTMLElement {
+class HTMLTrackerSkulltula extends HTMLElement {
 
     constructor() {
         super();
@@ -154,13 +150,13 @@ class HTMLTrackerLocationChest extends HTMLElement {
         this.shadowRoot.getElementById("menu-check").addEventListener("click", click.bind(this));
         this.shadowRoot.getElementById("menu-uncheck").addEventListener("click", unclick.bind(this));
         this.shadowRoot.getElementById("menu-logic").addEventListener("click", function(event) {
-            showLogic(this.ref);
+            showLogic(this.access, this.ref);
         }.bind(this));
         this.shadowRoot.getElementById("menu-logic-image").addEventListener("click", function(event) {
-            printLogic(this.ref);
+            printLogic(this.access);
         }.bind(this));
         /* event bus */
-        EVENT_BINDER.register("chest", locationUpdate.bind(this));
+        EVENT_BINDER.register("skulltula", locationUpdate.bind(this));
         EVENT_BINDER.register("state", stateChanged.bind(this));
         EVENT_BINDER.register("logic", logicUpdate.bind(this));
     }
@@ -189,44 +185,47 @@ class HTMLTrackerLocationChest extends HTMLElement {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    let path = newValue.split('.');
-                    let data = GlobalData.get("locations")[path[0]];
-                    data = data[path[1]][path[2]];
+                    let data = GlobalData.get(`world/locations/${this.ref}`);
                     let txt = this.shadowRoot.getElementById("text");
-                    txt.innerHTML = I18n.translate(path[2]);
+                    txt.innerHTML = I18n.translate(this.ref);
+                    txt.classList.toggle("avail", Logic.getValue(this.access));
+
+                    this.access = data.access;
+                    this.visible = data.visible;
 
                     this.shadowRoot.getElementById("badge").innerHTML = "";
+
+                    let el_type = document.createElement("deep-icon");
+                    el_type.src = `images/skulltula.svg`;
+                    this.shadowRoot.getElementById("badge").append(el_type);
 
                     let el_time = document.createElement("deep-icon");
                     el_time.src = `images/time_${data.time || "both"}.svg`;
                     this.shadowRoot.getElementById("badge").append(el_time);
 
                     let el_era = document.createElement("deep-icon");
-                    el_era.src = `images/era_${data.era || "both"}.svg`;
+                    if (!!data.child && !!data.adult) {
+                        el_era.src = "images/era_both.svg";
+                    } else if (!!data.child) {
+                        el_era.src = "images/era_child.svg";
+                    } else if (!!data.adult) {
+                        el_era.src = "images/era_adult.svg";
+                    } else {
+                        el_era.src = "images/era_none.svg";
+                    }
                     this.shadowRoot.getElementById("badge").append(el_era);
 
-                    if (Logic.getValue("chests", path[2])) {
-                        txt.classList.add("avail");
-                    } else {
-                        txt.classList.remove("avail");
-                    }
-
-                    this.checked = StateStorage.read(`chests.${path[2]}`, false);
+                    this.checked = StateStorage.read(this.ref, false);
                 }
             break;
             case 'checked':
                 if (oldValue != newValue) {
-                    let path = this.ref.split(".");
                     if (!newValue || newValue === "false") {
                         let el = this.shadowRoot.getElementById("text");
-                        if (Logic.getValue("chests", path[2])) {
-                            el.classList.add("avail");
-                        } else {
-                            el.classList.remove("avail");
-                        }
+                        el.classList.toggle("avail", Logic.getValue(this.access));
                     }
-                    StateStorage.write(`chests.${path[2]}`, newValue === "false" ? false : !!newValue);
-                    EventBus.trigger("chest", {
+                    StateStorage.write(this.ref, newValue === "false" ? false : !!newValue);
+                    EventBus.trigger("skulltula", {
                         name: this.ref,
                         value: newValue
                     });
@@ -247,4 +246,4 @@ class HTMLTrackerLocationChest extends HTMLElement {
 
 }
 
-customElements.define('ootrt-listlocationchest', HTMLTrackerLocationChest);
+customElements.define('ootrt-listskulltula', HTMLTrackerSkulltula);

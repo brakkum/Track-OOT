@@ -5,10 +5,10 @@ import Logger from "/deepJS/util/Logger.js";
 import Panel from "/deepJS/ui/layout/Panel.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
-import "./POILocationChest.js";
-import "./POILocationSkulltula.js";
-import "./POIGossipstone.js";
-import "./POIArea.js";
+import "./marker/Chest.js";
+import "./marker/Skulltula.js";
+import "./marker/Gossipstone.js";
+import "./marker/Area.js";
 
 const ZOOM_MIN = 10;
 const ZOOM_MAX = 100;
@@ -47,7 +47,7 @@ const TPL = new Template(`
             background-size: 100%;
             background-position: center;
             background-origin: content-box;
-            background-image: url("/images/map.png");
+            background-image: url("/images/maps/main.png");
             transform-origin: center;
             transform: translate(calc(var(--map-offset-x, 0) * 1px), calc(var(--map-offset-y, 0) * 1px)) scale(calc(var(--map-zoom, 100) / 100));
         }
@@ -55,7 +55,7 @@ const TPL = new Template(`
             position: absolute;
             display: flex;
             flex-direction: column;
-            right: 0;
+            left: 0;
             bottom: -180px;
             width: 250px;
             height: 180px;
@@ -99,7 +99,7 @@ const TPL = new Template(`
             background-size: 100%;
             background-position: center;
             background-origin: content-box;
-            background-image: url("/images/map.png");
+            background-image: url("/images/maps/main.png");
             overflow: hidden;
         }
         #map-viewport {
@@ -161,43 +161,33 @@ const TPL = new Template(`
 const LOCATION_ELEMENTS = new Map();
 
 function generateLocations() {
-    let data = GlobalData.get("locations");
-    if (!!data.overworld && !!data.overworld.gossipstones_v) {
-        for (let i in data.overworld.gossipstones_v) {
-            let el = document.createElement('ootrt-poigossipstone');
-            el.style.left = data.overworld.gossipstones_v[i].x;
-            el.style.top = data.overworld.gossipstones_v[i].y;
-            el.ref = i;
-            LOCATION_ELEMENTS.set(`G:${i}`, el);
+    let data = GlobalData.get("world");
+    
+    for (let i in data.locations) {
+        let el;
+        switch (data.locations[i].type) {
+            default: continue;
+            case "chest":
+            case "cow":
+            case "scrub":
+            case "bean":
+                el = document.createElement('ootrt-marker-chest');
+                break;
+            case "skulltula":
+                el = document.createElement('ootrt-marker-skulltula');
+                break;
+            case "gossipstone":
+                el = document.createElement('ootrt-marker-gossipstone');
+                break;
         }
+        el.ref = i;
+        LOCATION_ELEMENTS.set(i, el);
     }
-    for (let i in data) {
-        if (data[i].spread) {
-            if (!!data[i].chests_v) {
-                for (let j in data[i].chests_v) {
-                    let el = document.createElement('ootrt-poilocationchest');
-                    el.style.left = data[i].chests_v[j].x;
-                    el.style.top = data[i].chests_v[j].y;
-                    el.ref = `${i}.chests_v.${j}`;
-                    LOCATION_ELEMENTS.set(`${i}.chests_v.${j}`, el);
-                }
-            }
-            if (!!data[i].skulltulas_v) {
-                for (let j in data[i].skulltulas_v) {
-                    let el = document.createElement('ootrt-poilocationskulltula');
-                    el.style.left = data[i].skulltulas_v[j].x;
-                    el.style.top = data[i].skulltulas_v[j].y;
-                    el.ref = `${i}.skulltulas_v.${j}`;
-                    LOCATION_ELEMENTS.set(`${i}.skulltulas_v.${j}`, el);
-                }
-            }
-        } else {
-            let el = document.createElement('ootrt-poiarea');
-            el.style.left = data[i].x;
-            el.style.top = data[i].y;
-            el.ref = i;
-            LOCATION_ELEMENTS.set(`A:${i}`, el);
-        }
+    
+    for (let i in data.areas) {
+        let el = document.createElement('ootrt-marker-area');
+        el.ref = i;
+        LOCATION_ELEMENTS.set(i, el);
     }
 }
 
@@ -389,6 +379,16 @@ class HTMLTrackerMap extends Panel {
         this.setAttribute("mode", "chests");
     }
 
+    get ref() {
+        //return this.getAttribute('ref');
+        return "main";
+    }
+
+    set ref(val) {
+        //this.setAttribute('ref', val);
+        this.setAttribute('ref', "main");
+    }
+
     get mode() {
         return this.getAttribute('mode');
     }
@@ -406,50 +406,24 @@ class HTMLTrackerMap extends Panel {
     }
 
     static get observedAttributes() {
-        return ['mode', 'era'];
+        return ['ref', 'mode', 'era'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
             this.innerHTML = "";
-            if (!!this.mode && this.mode !== "") {
-                if (this.mode === "gossipstones") {
-                    let data = GlobalData.get("locations")["overworld"][`gossipstones_v`];
-                    if (!!data) {
-                        Object.keys(data).forEach(i => {
-                            let buf = data[i];
-                            if (!buf.era || !this.era || this.era === buf.era) {
-                                let el = LOCATION_ELEMENTS.get(`G:${i}`);
-                                this.append(el);
-                            }
-                        });
-                    }
-                } else {
-                    let data = GlobalData.get("locations");
-                    if (!!data) {
-                        Object.keys(data).forEach(i => {
-                            if (!!data[i].spread) {
-                                let buff = GlobalData.get("locations")[i][`${this.mode}_v`];
-                                if (!!buff) {
-                                    Object.keys(buff).forEach(j => {
-                                        let buf = buff[j];
-                                        if (!buf.era || !this.era || this.era === buf.era) {
-                                            if (!buf.mode || StateStorage.read(`options.${buf.mode}`, false)) {
-                                                let el = LOCATION_ELEMENTS.get(`${i}.${this.mode}_v.${j}`);
-                                                this.append(el);
-                                            }
-                                        }
-                                    });
-                                }
-                            } else {
-                                let el = LOCATION_ELEMENTS.get(`A:${i}`);
-                                el.mode = this.mode;
-                                this.append(el);
-                            }
-                        });
-                    }
+            //if (!!this.mode && this.mode !== "") {
+                let data = GlobalData.get(`maps/${this.ref}`);
+                if (!!data) {
+                    // TODO switch map/minimap background
+                    data.locations.forEach(record => {
+                        let el = LOCATION_ELEMENTS.get(record.id);
+                        el.style.left = `${record.x}px`;
+                        el.style.top = `${record.y}px`;
+                        this.append(el);
+                    });
                 }
-            }
+            //}
         }
     }
 

@@ -248,5 +248,6 @@ const LOGIC_OPERATORS = [
     workingarea.addEventListener('clear', removeLogic);
     //window.addEventListener('focus', refreshLogic);
 
-    logicContainer.querySelector('.logic-location').click();
+    //TODO
+    //logicContainer.querySelector('.logic-location').click();
 }());

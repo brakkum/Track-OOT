@@ -1,0 +1,320 @@
+{
+    "turnament": [
+        [
+            "item.bombs",
+            "item.bow",
+            "item.medalion_forest"
+        ],
+        [
+            "item.boomerang",
+            "item.hammer",
+            "item.medalion_fire"
+        ],
+        [
+            "item.hookshot",
+            "item.magic_din",
+            "item.medalion_water"
+        ],
+        [
+            "item.zora_letter",
+            "item.arrows",
+            "item.medalion_spirit"
+        ],
+        [
+            "item.shield_mirror",
+            "item.glove",
+            "item.medalion_shadow"
+        ],
+        [
+            "item.boots",
+            "item.scale",
+            "item.medalion_light"
+        ],
+        [
+            "item.stone_forest",
+            "item.stone_fire",
+            "item.stone_water"
+        ]
+    ],
+    "items": [
+        [
+            "item.stick",
+            "item.nut",
+            "item.bombs",
+            "item.bow",
+            "item.arrow_fire",
+            "item.magic_din",
+            "item.sword_kokiri",
+            "item.sword_master",
+            "item.sword_biggoron"
+        ],
+        [
+            "item.slingshot",
+            "item.ocarina",
+            "item.bombchu",
+            "item.hookshot",
+            "item.arrow_ice",
+            "item.magic_farore",
+            "item.shield_kokiri",
+            "item.shield_hylia",
+            "item.shield_mirror"
+        ],
+        [
+            "item.boomerang",
+            "item.lens",
+            "item.bean",
+            "item.hammer",
+            "item.arrow_light",
+            "item.magic_nayru",
+            "item.tunic_forest",
+            "item.tunic_fire",
+            "item.tunic_water"
+        ],
+        [
+            "item.wallet",
+            "item.skulltula",
+            "item.bottle",
+            "item.zora_letter",
+            "item.egg",
+            "item.cojiro",
+            "item.boots_normal",
+            "item.boots_iron",
+            "item.boots_hover"
+        ],
+        [
+            "item.scale",
+            "item.magic_power",
+            "item.glove",
+            "item.membership",
+            "item.stone_of_agony",
+            "item.heart_piece",
+            "item.heart_container",
+            "item.heart_double",
+            "item.ice_trap"
+        ],
+        [
+            "item.song_zelda",
+            "item.song_epona",
+            "item.song_saria",
+            "item.song_sun",
+            "item.song_time",
+            "item.song_storm",
+            "text:",
+            "text:",
+            "item.triforce_piece"
+        ],
+        [
+            "item.warp_forest",
+            "item.warp_fire",
+            "item.warp_water",
+            "item.warp_spirit",
+            "item.warp_shadow",
+            "item.warp_light",
+            "text:",
+            "text:",
+            "text:"
+        ],
+        [
+            "item.stone_forest",
+            "item.stone_fire",
+            "item.stone_water",
+            "item.medallion_forest",
+            "item.medallion_fire",
+            "item.medallion_water",
+            "item.medallion_spirit",
+            "item.medallion_shadow",
+            "item.medallion_light"
+        ]
+    ],
+    "keys": [
+        [
+            "icon:medallion_forest.png",
+            "icon:medallion_fire.png",
+            "icon:medallion_water.png",
+            "icon:medallion_shadow.png",
+            "icon:medallion_spirit.png",
+            "icon:ganon.png",
+            "icon:saw.png",
+            "icon:arrow_ice.png",
+            "icon:lens.png"
+        ],
+        [
+            "item.key_small_forest",
+            "item.key_small_fire",
+            "item.key_small_water",
+            "item.key_small_shadow",
+            "item.key_small_spirit",
+            "item.key_small_ganon",
+            "item.key_small_gerudo",
+            "item.key_small_training",
+            "item.key_small_well"
+        ],
+        [
+            "item.key_boss_forest",
+            "item.key_boss_fire",
+            "item.key_boss_water",
+            "item.key_boss_shadow",
+            "item.key_boss_spirit",
+            "item.key_boss_ganon",
+            "item.membership",
+            "text:",
+            "text:"
+        ]
+    ],
+    "dungeons": [
+        {
+            "ref": "pocket",
+            "title": "LINK",
+            "color": "#ffffff",
+            "keys": false,
+            "bosskey": false,
+            "map": false,
+            "compass": false,
+            "hasmq": false,
+            "boss_reward": true
+        },
+        {
+            "ref": "deku",
+            "title": "DT",
+            "color": "#92ff92",
+            "keys": false,
+            "bosskey": false,
+            "map": "item.dungeon_map_deku",
+            "compass": "item.compass_deku",
+            "hasmq": true,
+            "boss_reward": true
+        },
+        {
+            "ref": "dodongo",
+            "title": "DC",
+            "color": "#ff6a6a",
+            "keys": false,
+            "bosskey": false,
+            "map": "item.dungeon_map_dodongo",
+            "compass": "item.compass_dodongo",
+            "hasmq": true,
+            "boss_reward": true
+        },
+        {
+            "ref": "jabujabu",
+            "title": "JB",
+            "color": "#8be4f3",
+            "keys": false,
+            "bosskey": false,
+            "map": "item.dungeon_map_jabujabu",
+            "compass": "item.compass_jabujabu",
+            "hasmq": true,
+            "boss_reward": true
+        },
+        {
+            "ref": "temple_forest",
+            "title": "FoT",
+            "color": "#1bf11b",
+            "keys": "item.key_small_forest",
+            "bosskey": "item.key_boss_forest",
+            "map": "item.dungeon_map_temple_forest",
+            "compass": "item.compass_temple_forest",
+            "hasmq": true,
+            "boss_reward": true
+        },
+        {
+            "ref": "temple_fire",
+            "title": "FiT",
+            "color": "#ff3c3c",
+            "keys": "item.key_small_fire",
+            "bosskey": "item.key_boss_fire",
+            "map": "item.dungeon_map_temple_fire",
+            "compass": "item.compass_temple_fire",
+            "hasmq": true,
+            "boss_reward": true
+        },
+        {
+            "ref": "temple_water",
+            "title": "WT",
+            "color": "#7cb6ff",
+            "keys": "item.key_small_water",
+            "bosskey": "item.key_boss_water",
+            "map": "item.dungeon_map_temple_water",
+            "compass": "item.compass_temple_water",
+            "hasmq": true,
+            "boss_reward": true
+        },
+        {
+            "ref": "temple_shadow",
+            "title": "ShT",
+            "color": "#d967fd",
+            "keys": "item.key_small_shadow",
+            "bosskey": "item.key_boss_shadow",
+            "map": "item.dungeon_map_temple_shadow",
+            "compass": "item.compass_temple_shadow",
+            "hasmq": true,
+            "boss_reward": true
+        },
+        {
+            "ref": "temple_spirit",
+            "title": "SpT",
+            "color": "#ffcd71",
+            "keys": "item.key_small_spirit",
+            "bosskey": "item.key_boss_spirit",
+            "map": "item.dungeon_map_temple_spirit",
+            "compass": "item.compass_temple_spirit",
+            "hasmq": true,
+            "boss_reward": true
+        },
+        {
+            "ref": "well",
+            "title": "BotW",
+            "color": "#ff99ff",
+            "keys": "item.key_small_well",
+            "bosskey": false,
+            "map": "item.dungeon_map_well",
+            "compass": "item.compass_well",
+            "hasmq": true,
+            "boss_reward": false
+        },
+        {
+            "ref": "ice_cavern",
+            "title": "IC",
+            "color": "#abfdf5",
+            "keys": false,
+            "bosskey": false,
+            "map": "item.dungeon_map_ice",
+            "compass": "item.compass_ice",
+            "hasmq": true,
+            "boss_reward": false
+        },
+        {
+            "ref": "gerudo_fortress",
+            "title": "GF",
+            "color": "#ffb47d",
+            "keys": "item.key_small_gerudo",
+            "bosskey": "item.membership",
+            "map": false,
+            "compass": false,
+            "hasmq": false,
+            "boss_reward": false
+        },
+        {
+            "ref": "gerudo_training",
+            "title": "GTG",
+            "color": "#ffffa4",
+            "keys": "item.key_small_training",
+            "bosskey": false,
+            "map": false,
+            "compass": false,
+            "hasmq": true,
+            "boss_reward": false
+        },
+        {
+            "ref": "castle_ganon",
+            "title": "GC",
+            "color": "#969696",
+            "keys": "item.key_small_ganon",
+            "bosskey": "item.key_boss_ganon",
+            "map": false,
+            "compass": false,
+            "hasmq": true,
+            "boss_reward": false
+        }
+    ]
+}

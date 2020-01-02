@@ -68,11 +68,7 @@ const TPL = new Template(`
 const GROUP = new WeakMap();
 
 function gossipstoneUpdate(event) {
-    let ref = this.ref;
-    if (GROUP.has(this)) {
-        ref = GROUP.get(this);
-    }
-    if (ref === event.data.name) {
+    if (this.ref === event.data.name) {
         EventBus.mute("gossipstone");
         this.setValue(event.data.value);
         EventBus.unmute("gossipstone");
@@ -81,18 +77,14 @@ function gossipstoneUpdate(event) {
 
 function stateChanged(event) {
     EventBus.mute("gossipstone");
-    let ref = this.ref;
-    if (GROUP.has(this)) {
-        ref = GROUP.get(this);
-    }
-    let value = event.data[`gossipstones.${ref}`];
+    let value = event.data[this.ref];
     if (typeof value == "undefined") {
         value = {item: "0x01", location: "0x01"};
     }
     this.setValue(value);
     let el = this.shadowRoot.getElementById("text");
     if (!el.classList.contains("checked")) {
-        if (Logic.getValue("gossipstones", ref)) {
+        if (Logic.getValue(this.access)) {
             el.classList.add("avail");
         } else {
             el.classList.remove("avail");
@@ -102,10 +94,32 @@ function stateChanged(event) {
 }
 
 function logicUpdate(event) {
-    if ("gossipstones" == event.data.type && this.ref == event.data.ref) {
+    if (event.data.hasOwnProperty(this.access)) {
         let el = this.shadowRoot.getElementById("text");
-        el.classList.toggle("avail", !!event.data.value);
+        el.classList.toggle("avail", !!event.data[this.access]);
     }
+}
+
+function showLogic(ref, title) {
+    let l = Logic.getLogicView(ref);
+    if (!!l) {
+        let d = new Dialog({
+            title: I18n.translate(title),
+            submit: "OK"
+        });
+        d.value = ref;
+        d.append(l);
+        d.show();
+    }
+}
+
+async function printLogic(ref) {
+    let svg = Logic.getLogicSVG("chests", ref);
+    let png = await Helper.svg2png(svg);
+    let svg_win = window.open("", "_blank", "menubar=no,location=no,resizable=yes,scrollbars=yes,status=no");
+    let img = document.createElement("img");
+    img.src = png;
+    svg_win.document.body.append(img);
 }
 
 class HTMLTrackerGossipstone extends HTMLElement {
@@ -145,45 +159,45 @@ class HTMLTrackerGossipstone extends HTMLElement {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
+                    let data = GlobalData.get(`world/locations/${this.ref}`);
                     let txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = I18n.translate(this.ref);
+                    txt.classList.toggle("avail", Logic.getValue(this.access));
+
+                    this.access = data.access;
+                    this.visible = data.visible;
 
                     this.shadowRoot.getElementById("badge").innerHTML = "";
+
+                    let el_type = document.createElement("deep-icon");
+                    el_type.src = `images/gossipstone.svg`;
+                    this.shadowRoot.getElementById("badge").append(el_type);
 
                     let el_time = document.createElement("deep-icon");
                     el_time.src = `images/time_${data.time || "both"}.svg`;
                     this.shadowRoot.getElementById("badge").append(el_time);
 
                     let el_era = document.createElement("deep-icon");
-                    el_era.src = `images/era_${data.era ||"both"}.svg`;
+                    if (!!data.child && !!data.adult) {
+                        el_era.src = "images/era_both.svg";
+                    } else if (!!data.child) {
+                        el_era.src = "images/era_child.svg";
+                    } else if (!!data.adult) {
+                        el_era.src = "images/era_adult.svg";
+                    } else {
+                        el_era.src = "images/era_none.svg";
+                    }
                     this.shadowRoot.getElementById("badge").append(el_era);
 
-                    if (Logic.getValue("gossipstones", this.ref)) {
-                        txt.classList.add("avail");
-                    } else {
-                        txt.classList.remove("avail");
-                    }
-
-                    let ref = this.ref;
-                    if (!!data.ref) {
-                        GROUP.set(this, data.ref);
-                        ref = data.ref;
-                    }
-
-                    this.checked = !!StateStorage.read(`gossipstones.${ref}`, false);
-                    this.setValue(StateStorage.read(`gossipstones.${ref}`, {item: "0x01", location: "0x01"}));
+                    this.checked = !!StateStorage.read(this.ref, false);
+                    this.setValue(StateStorage.read(this.ref, {item: "0x01", location: "0x01"}));
                 }
             break;
             case 'checked':
                 if (oldValue != newValue) {
                     if (!newValue || newValue === "false") {
                         let el = this.shadowRoot.getElementById("text");
-                        if (Logic.getValue("gossipstones", this.ref)) {
-                            el.classList.add("avail");
-                        } else {
-                            el.classList.remove("avail");
-                        }
+                        el.classList.toggle("avail", Logic.getValue(this.access));
                     }
                 }
             break;
@@ -221,9 +235,8 @@ class HTMLTrackerGossipstone extends HTMLElement {
                 }
             }
         }
-        let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][this.ref];
         EventBus.trigger("gossipstone", {
-            name: data.ref || this.ref,
+            name: this.ref,
             value: value
         });
     }
@@ -274,8 +287,7 @@ function hintstoneDialog(ref) {
         d.onsubmit = function(ref, result) {
             if (!!result) {
                 let res = {item: slt_itm.value, location: slt_loc.value};
-                let data = GlobalData.get("locations")["overworld"][`gossipstones_v`][ref];
-                StateStorage.write(`gossipstones.${data.ref || ref}`, res);
+                StateStorage.write(ref, res);
                 resolve(res);
             } else {
                 resolve(false);

@@ -5,7 +5,8 @@ const LOCATION_STRUCT = {
     "time": "always",
     "child": true,
     "adult": true,
-    "visible": true
+    "visible": true,
+    "access": false
 }
 
 const ENTRANCE_STRUCT = {
@@ -13,9 +14,11 @@ const ENTRANCE_STRUCT = {
     "time": "always",
     "child": true,
     "adult": true,
-    "visible": true
+    "visible": true,
+    "access": false
 }
 
+// transformed database
 let translation = JSON.parse(fs.readFileSync("./src/_rework/buffer/translation.json"));
 let locations = JSON.parse(fs.readFileSync("./src/_rework/buffer/locations.json"));
 let items = JSON.parse(fs.readFileSync("./src/database/items.json"));
@@ -24,6 +27,14 @@ let shops = JSON.parse(fs.readFileSync("./src/database/shops.json"));
 let songs = JSON.parse(fs.readFileSync("./src/database/songs.json"));
 let logic = JSON.parse(fs.readFileSync("./src/database/logic.json"));
 
+// copied database
+fs.writeFileSync("./src/_rework/database/filter.json", fs.readFileSync("./src/database/filter.json"));
+fs.writeFileSync("./src/_rework/database/grids.json", fs.readFileSync("./src/database/grids.json"));
+fs.writeFileSync("./src/_rework/database/hints.json", fs.readFileSync("./src/database/hints.json"));
+fs.writeFileSync("./src/_rework/database/layouts.json", fs.readFileSync("./src/database/layouts.json"));
+fs.writeFileSync("./src/_rework/database/shop_items.json", fs.readFileSync("./src/database/shop_items.json"));
+
+// language
 let lang_en = fs.readFileSync("./src/i18n/en_us.lang", "utf8");
 let lang_en2 = fs.readFileSync("./src/i18n/en_us.easy.lang", "utf8");
 let lang_de = fs.readFileSync("./src/i18n/de_de.lang", "utf8");
@@ -35,7 +46,7 @@ let world = {
 };
 let maps = {
     "main": {
-        "background": "",
+        "background": "main.png",
         "locations": [],
     }
 }
@@ -60,8 +71,10 @@ function convert_locations(area, name, type, data) {
         "locations": [],
         "entrances": []
     };
+    let trans = translation[`${type}.${name}`];
     let record = Object.assign({}, LOCATION_STRUCT);
     record.type = type.replace(/s$/, "");
+    record.access = `logic.${trans}`;
     if (!!data.mode) {
         record.type = data.mode.slice(0, -6);
         record.visible = `option.${data.mode}`
@@ -73,7 +86,6 @@ function convert_locations(area, name, type, data) {
     if (!!data.time) {
         record.time = data.time;
     }
-    let trans = translation[`${type}.${name}`];
     if (world.locations.hasOwnProperty(trans)) {
         console.error(`name duplication: ${trans}`);
     }
@@ -96,7 +108,7 @@ function convert_locations(area, name, type, data) {
     });
 }
 
-function convert_etrance(area, name, type, data) {
+function convert_entrance(area, name, type, data) {
     let area_name = translation[area];
     world.areas[area_name] = world.areas[area_name] || {
         "locations": [],
@@ -107,8 +119,10 @@ function convert_etrance(area, name, type, data) {
         "locations": [],
         "entrances": []
     };
+    let trans = `entrance.${area}.${name}`;
     let record = Object.assign({}, ENTRANCE_STRUCT);
     record.type = data.type;
+    record.access = `logic.${trans}`;
     if (!!data.era) {
         record.child = data.era=="child"||data.era=="both";
         record.adult = data.era=="adult"||data.era=="both";
@@ -116,7 +130,6 @@ function convert_etrance(area, name, type, data) {
     if (!!data.time) {
         record.time = data.time;
     }
-    let trans = `entrance.${area}.${name}`;
     if (world.entrances.hasOwnProperty(trans)) {
         console.error(`name duplication: ${trans}`);
     }
@@ -169,7 +182,7 @@ for (let i in locations) {
     }
     if (locations[i].hasOwnProperty("entrances")) {
         for (let k in locations[i].entrances) {
-            convert_etrance(i, k, "gossipstones", locations[i].entrances[k]);
+            convert_entrance(i, k, "gossipstones", locations[i].entrances[k]);
         }
     }
 }
@@ -177,6 +190,9 @@ for (let i in locations) {
 for (let i in items) {
     let trans = translation[`items.${i}`];
     citems[trans] = items[i];
+    if (!!citems[trans].start_settings) {
+        citems[trans].start_settings = translation[citems[trans].start_settings];
+    }
 }
 
 for (let i in settings.options) {
@@ -220,10 +236,18 @@ function recursive_logic_translation(tree) {
             };
         }
     } else if (tree.type == "filter") {
-        return {
-            type: "number",
-            el: `filter.${tree.el.replace(/^filter_/, "")}`
-        };
+        if (!!tree.value) {
+            return {
+                type: "value",
+                el: `filter.${tree.el.replace(/^filter_/, "")}`,
+                value: tree.value
+            };
+        } else {
+            return {
+                type: "number",
+                el: `filter.${tree.el.replace(/^filter_/, "")}`
+            };
+        }
     } else if (tree.type == "mixin") {
         return {
             type: "number",
@@ -249,19 +273,18 @@ function recursive_logic_translation(tree) {
 }
 
 for (let i in logic.chests) {
-    clogic[translation[`chests.${i}`]] = recursive_logic_translation(logic.chests[i]);
+    clogic[`logic.${translation[`chests.${i}`]}`] = recursive_logic_translation(logic.chests[i]);
 }
 for (let i in logic.skulltulas) {
-    clogic[translation[`skulltulas.${i}`]] = recursive_logic_translation(logic.skulltulas[i]);
+    clogic[`logic.${translation[`skulltulas.${i}`]}`] = recursive_logic_translation(logic.skulltulas[i]);
 }
 for (let i in logic.gossipstones) {
-    clogic[translation[`gossipstones.${i}`]] = recursive_logic_translation(logic.gossipstones[i]);
+    clogic[`logic.${translation[`gossipstones.${i}`]}`] = recursive_logic_translation(logic.gossipstones[i]);
 }
 for (let i in logic.mixins) {
     clogic[`mixin.${i}`] = recursive_logic_translation(logic.mixins[i]);
 }
 
-// TODO translate language keys
 const LNBR_SEQ = /(?:\r\n|\n|\r)/g;
 const COMMENT = /^(?:!|#).*$/;
 

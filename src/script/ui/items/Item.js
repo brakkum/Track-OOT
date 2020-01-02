@@ -58,7 +58,7 @@ const TPL = new Template(`
 function stateChanged(event) {
     EventBus.mute("item");
     // savesatate
-    let value = parseInt(event.data[`items.${this.ref}`]);
+    let value = parseInt(event.data[this.ref]);
     if (isNaN(value)) {
         value = 0;
     }
@@ -69,7 +69,7 @@ function stateChanged(event) {
         let stsp = data.start_settings.split(".");
         let startvalue;
         if (!!event.data[stsp[0]]) {
-            startvalue = parseInt(event.data[stsp[0]][stsp[1]]);
+            startvalue = parseInt(event.data[data.start_settings]);
         }
         if (isNaN(startvalue)) {
             startvalue = 1;
@@ -156,7 +156,7 @@ class HTMLTrackerItem extends HTMLElement {
                 case 'ref':
                     EventBus.mute("item");
                     // savesatate
-                    this.value = StateStorage.read(`items.${this.ref}`, 0);
+                    this.value = StateStorage.read(this.ref, 0);
                     // settings
                     let data = GlobalData.get("items")[this.ref];
                     if (data.hasOwnProperty("start_settings")) {
@@ -178,7 +178,7 @@ class HTMLTrackerItem extends HTMLElement {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
-                    StateStorage.write(`items.${this.ref}`, parseInt(newValue));
+                    StateStorage.write(this.ref, parseInt(newValue));
                     EventBus.trigger("item", {
                         name: this.ref,
                         value: newValue

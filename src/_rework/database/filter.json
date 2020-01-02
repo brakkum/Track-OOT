@@ -1,0 +1,11 @@
+{
+    "filter.era_active": {
+        "type": "choice",
+        "default": "",
+        "values": [
+            "",
+            "child",
+            "adult"
+        ]
+    }
+}

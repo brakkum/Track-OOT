@@ -1,36 +1,35 @@
-import GlobalData from "/script/storage/GlobalData.js";
 import MemoryStorage from "/deepJS/storage/MemoryStorage.js";
+import LogicProcessor from "/deepJS/util/logic/Processor.js";
+import EventBus from "/deepJS/util/events/EventBus.js";
+import GlobalData from "/script/storage/GlobalData.js";
 import SettingsStorage from "/script/storage/SettingsStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import LogicWrapper from "/script/util/LogicWrapper.js";
 
-const LOGIC = {
-    chests: {},
-    skulltulas: {},
-    gossipstones: {},
-    mixins: {}
-};
-
-const CATEGORIES = {
-    "chests_v": "chests",
-    "chests_mq": "chests",
-    "skulltulas_v": "skulltulas",
-    "skulltulas_mq": "skulltulas",
-    "gossipstones_v": "gossipstones"
-};
+const LOGIC = new LogicProcessor();
 
 class TrackerLogic {
 
-    getValue(type, ref) {
-        if (!!LOGIC[type] && !!LOGIC[type][ref]) {
-            return LOGIC[type][ref].value;
-        }
-        return false;
+    constructor() {
+        EventBus.register("state_change", event => {
+            let data = Object.assign({
+                "filter.era_active": MemoryStorage.get('filter.era_active', GlobalData.get("filter/filter.era_active/default"))
+            }, event.data);
+            let res = LOGIC.execute(data);
+            EventBus.trigger("logic", res);
+        });
     }
 
-    async checkLogicList(category, name, mode) {
-        let list = GlobalData.get("locations")[name];
-        if (!!mode) {
+    getValue(ref) {
+        return LOGIC.getValue(ref);
+    }
+
+    async checkLogicList(name) {
+        if (name == "") {
+            return 0b001; // no reachable
+        }
+        let list = GlobalData.get(`world/areas/${name}/locations`);
+        let locations = GlobalData.get(`world/locations`);
+        /*if (!!mode) {
             list = GlobalData.get("locations")[name][`${category}_${mode}`];
         } else {
             let dType = StateStorage.read(`dungeonTypes.${name}`, list.hasmq ? "n" : "v");
@@ -44,34 +43,56 @@ class TrackerLogic {
                 }
             }
             list = GlobalData.get("locations")[name][`${category}_${dType}`];
-        }
+        }*/
     
         let canGet = 0;
         let unopened = 0;
-        for (let i in list) {
-            let filter = MemoryStorage.get("active_filter.filter_era_active", GlobalData.get("filter")["filter_era_active"].default);
-            if (!list[i].era || !filter || filter === list[i].era) {
-                if (!list[i].mode || StateStorage.read(`options.${list[i].mode}`, false)) {
-                    if (!StateStorage.read(`${category}.${i}`, 0)) {
+        for (let i = 0; i < list.length; ++i) {
+            let data = locations[list[i]];
+            let filter = MemoryStorage.get("filter.era_active", GlobalData.get("filter/filter.era_active/default"));
+            if (!data.era || !filter || filter === data.era) {
+                //if (!data.mode || StateStorage.read(`options.${data.mode}`, false)) {
+                    if (!StateStorage.read(list[i], 0)) {
                         unopened++;
-                        if (this.getValue(category, i)) {
+                        if (this.getValue(data.access)) {
                             canGet++;
                         }
                     }
-                }
+                //}
             }
         }
         if (unopened == 0)
-            return 0b000;
+            return 0b000; // all open
         if (canGet == unopened)
-            return 0b100;
+            return 0b100; // all reachable
         if (canGet == 0)
-            return 0b001;
-        return 0b010;
+            return 0b001; // no reachable
+        return 0b010; // partly reachable
+    }
+
+    async getAccessibleNumber(name) {
+        if (name != "") return 0;
+        let list = GlobalData.get(`world/areas/${name}/locations`);
+        let locations = GlobalData.get(`world/locations`);
+        let canGet = 0;
+        for (let i = 0; i < list.length; ++i) {
+            let data = locations[list[i]];
+            let filter = MemoryStorage.get("filter.era_active", GlobalData.get("filter/filter.era_active/default"));
+            if (!data.era || !filter || filter === data.era) {
+                //if (!data.mode || StateStorage.read(`options.${data.mode}`, false)) {
+                    if (!StateStorage.read(list[i], 0)) {
+                        if (this.getValue(data.access)) {
+                            canGet++;
+                        }
+                    }
+                //}
+            }
+        }
+        return canGet;
     }
 
     async loadLogic() {
-        let locations = GlobalData.get("locations");
+        /*let locations = GlobalData.get("locations");
         for (let loc in locations) {
             for (let cat in CATEGORIES) {
                 let category = CATEGORIES[cat];
@@ -89,24 +110,25 @@ class TrackerLogic {
         for (let i in await SettingsStorage.get("logic", {mixins:{}}).mixins) {
             if (!!LOGIC["mixins"][i]) continue;
             LOGIC["mixins"][i] = new LogicWrapper("mixins", i);
-        }
+        }*/
+        LOGIC.loadLogic(GlobalData.get("logic", {}));
     }
 
     updateLogic() {
-        for (let i in LOGIC) {
+        /*for (let i in LOGIC) {
             for (let j in LOGIC[i]) {
                 LOGIC[i][j].loadLogic();
             }
-        }
+        }*/
     }
 
     getLogicSVG(type, ref) {
-        return LOGIC[type][ref].buildSVG();
+        //return LOGIC[type][ref].buildSVG();
     }
 
     getLogicView(type, ref) {
         let el = document.createElement("div");
-        el.append(LOGIC[type][ref].getLogic());
+        //el.append(LOGIC[type][ref].getLogic());
         return el;
     }
 

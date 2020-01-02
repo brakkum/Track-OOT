@@ -56,7 +56,7 @@ class HTMLTrackerItemGrid extends Panel {
 
     connectedCallback() {
         if (!this.items) {
-            this.items = GlobalData.get("grids")["items"].map(e=>e.join(" ")).join(",");
+            this.items = GlobalData.get("grids/items").map(e=>e.join(" ")).join(",");
         }
     }
 
@@ -80,11 +80,12 @@ class HTMLTrackerItemGrid extends Panel {
                     for (let i of els) {
                         let cnt = document.createElement('div');
                         cnt.classList.add("item-row");
+                        let items = GlobalData.get("items");
                         for (let j of i) {
                             if (j.startsWith("text:")) {
                                 cnt.append(createItemText(j.slice(5)));
                             } else {
-                                let data = GlobalData.get("items")[j];
+                                let data = items[j];
                                 if (data.max === false) {
                                     let itm = document.createElement('ootrt-infiniteitem');
                                     itm.title = I18n.translate(j);

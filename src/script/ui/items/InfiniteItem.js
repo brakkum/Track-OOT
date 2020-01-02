@@ -48,7 +48,7 @@ const TPL = new Template(`
 function stateChanged(event) {
     EventBus.mute("item");
     // savesatate
-    let value = parseInt(event.data[`items.${this.ref}`]);
+    let value = parseInt(event.data[this.ref]);
     if (isNaN(value)) {
         value = 0;
     }
@@ -124,12 +124,12 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
                     let data = GlobalData.get("items")[newValue];
                     this.style.backgroundImage = `url("/images/${data.images}"`;
                     EventBus.mute("item");
-                    this.value = StateStorage.read(`items.${this.ref}`, 0);
+                    this.value = StateStorage.read(this.ref, 0);
                     EventBus.unmute("item");
                 break;
                 case 'value':
                     this.shadowRoot.getElementById("value").innerHTML = newValue;
-                    StateStorage.write(`items.${this.ref}`, parseInt(newValue));
+                    StateStorage.write(this.ref, parseInt(newValue));
                     EventBus.trigger("item", {
                         name: this.ref,
                         value: newValue

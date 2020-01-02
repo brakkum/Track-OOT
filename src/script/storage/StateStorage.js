@@ -71,6 +71,7 @@ class StateStorage {
         state = StateConverter.convert(state);
         updateTitle();
         EventBus.trigger("state", JSON.parse(JSON.stringify(state.data)));
+        EventBus.trigger("state_change", JSON.parse(JSON.stringify(state.data)));
     }
 
     async save(name = state.name) {
@@ -102,6 +103,7 @@ class StateStorage {
             LocalStorage.set(STATE_DIRTY, false);
             updateTitle();
             EventBus.trigger("state", JSON.parse(JSON.stringify(state.data)));
+            EventBus.trigger("state_change", JSON.parse(JSON.stringify(state.data)));
         }
     }
 
@@ -133,6 +135,7 @@ class StateStorage {
             state.data[key] = value;
             LocalStorage.set(PERSISTANCE_NAME, state);
             LocalStorage.set(STATE_DIRTY, true);
+            EventBus.trigger("state_change", JSON.parse(JSON.stringify(state.data)));
             updateTitle();
         }
     }
@@ -149,6 +152,7 @@ class StateStorage {
             delete state.data[key];
             LocalStorage.set(PERSISTANCE_NAME, state);
             LocalStorage.set(STATE_DIRTY, true);
+            EventBus.trigger("state_change", JSON.parse(JSON.stringify(state.data)));
             updateTitle();
         }
     }
