@@ -1,6 +1,7 @@
 import MemoryStorage from "/deepJS/storage/MemoryStorage.js";
 import LogicProcessor from "/deepJS/util/logic/Processor.js";
 import EventBus from "/deepJS/util/events/EventBus.js";
+import AbstractElement from "/deepJS/ui/logic/elements/AbstractElement.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import SettingsStorage from "/script/storage/SettingsStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
@@ -128,9 +129,20 @@ class TrackerLogic {
         //return LOGIC[type][ref].buildSVG();
     }
 
-    getLogicView(type, ref) {
+    getLogicView(ref) {
         let el = document.createElement("div");
-        //el.append(LOGIC[type][ref].getLogic());
+        let logic = GlobalData.get(`logic/${ref}`);
+        if (!!logic) {
+            let data = {
+                "filter.era_active": MemoryStorage.get('filter.era_active', GlobalData.get("filter/filter.era_active/default"))
+            };
+            data = Object.assign(data, StateStorage.getAll());
+            data = Object.assign(data, LOGIC.getValues());
+            let l = AbstractElement.buildLogic(logic);
+            l.calculate(data);
+            l.readonly = true;
+            el.append(l);
+        }
         return el;
     }
 

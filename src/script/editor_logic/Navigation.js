@@ -1,6 +1,6 @@
 import FileSystem from "/deepJS/util/FileSystem.js";
 import GlobalData from "/script/storage/GlobalData.js";
-import EditorLogic from "/script/editor/Logic.js";
+import EditorLogic from "./Logic.js";
 
 document.getElementById('editor-menu-file-savelogic').onclick = downloadPatchedLogic;
 document.getElementById('editor-menu-file-savepatch').onclick = downloadPatch;

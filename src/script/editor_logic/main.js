@@ -8,27 +8,30 @@ import "/deepJS/ui/CollapsePanel.js";
 
 import "/deepJS/ui/logic/elements/LiteralFalse.js";
 import "/deepJS/ui/logic/elements/LiteralTrue.js";
-import "/deepJS/ui/logic/elements/operators/LogicAnd.js";
-import "/deepJS/ui/logic/elements/operators/LogicNand.js";
-import "/deepJS/ui/logic/elements/operators/LogicOr.js";
-import "/deepJS/ui/logic/elements/operators/LogicNor.js";
-import "/deepJS/ui/logic/elements/operators/LogicXor.js";
-import "/deepJS/ui/logic/elements/operators/LogicNot.js";
-import "/deepJS/ui/logic/elements/restrictors/LogicMin.js";
-import "/deepJS/ui/logic/elements/restrictors/LogicMax.js";
-import "/script/ui/logic/LogicItem.js";
-import "/script/ui/logic/LogicMixin.js";
-import "/script/ui/logic/LogicOption.js";
-import "/script/ui/logic/LogicSkip.js";
-import "/script/ui/logic/LogicFilter.js";
-import "/script/ui/logic/LogicChest.js";
-import "/script/ui/logic/LogicSkulltula.js";
+import "/deepJS/ui/logic/elements/LiteralNumber.js";
+import "/deepJS/ui/logic/elements/LiteralValue.js";
+import "/deepJS/ui/logic/elements/OperatorAnd.js";
+import "/deepJS/ui/logic/elements/OperatorNand.js";
+import "/deepJS/ui/logic/elements/OperatorOr.js";
+import "/deepJS/ui/logic/elements/OperatorNor.js";
+import "/deepJS/ui/logic/elements/OperatorXor.js";
+import "/deepJS/ui/logic/elements/OperatorNot.js";
+import "/deepJS/ui/logic/elements/OperatorMin.js";
+import "/deepJS/ui/logic/elements/OperatorMax.js"; 
+//import "/script/ui/logic/LogicItem.js";
+//import "/script/ui/logic/LogicMixin.js";
+//import "/script/ui/logic/LogicOption.js";
+//import "/script/ui/logic/LogicSkip.js";
+//import "/script/ui/logic/LogicFilter.js";
+//import "/script/ui/logic/LogicChest.js";
+//import "/script/ui/logic/LogicSkulltula.js";
 
 import SettingsStorage from "/script/storage/SettingsStorage.js";
 import GlobalData from "/script/storage/GlobalData.js";
-import EditorLogic from "/script/editor/Logic.js";
-import "/script/editor/Navigation.js";
 import I18n from "/script/util/I18n.js";
+
+import EditorLogic from "./Logic.js";
+import "./Navigation.js";
 
 const LOGIC_OPERATORS = [
     "deep-logic-false",
