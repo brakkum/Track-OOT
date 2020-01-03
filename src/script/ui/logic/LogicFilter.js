@@ -1,6 +1,6 @@
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/events/EventBus.js";
-import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
+import LogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import MemoryStorage from "/deepJS/storage/MemoryStorage.js";
 import I18n from "/script/util/I18n.js";
@@ -30,7 +30,7 @@ const SVG = new Template(`
 
 const SELECTOR_VALUE = new WeakMap;
 
-export default class TrackerLogicFilter extends DeepLogicAbstractElement {
+export default class TrackerLogicFilter extends LogicAbstractElement {
 
     constructor() {
         super();
@@ -77,7 +77,7 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
     }
 
     static get observedAttributes() {
-        let attr = DeepLogicAbstractElement.observedAttributes;
+        let attr = LogicAbstractElement.observedAttributes;
         attr.push('ref');
         return attr;
     }
@@ -154,7 +154,7 @@ export default class TrackerLogicFilter extends DeepLogicAbstractElement {
 
 }
 
-DeepLogicAbstractElement.registerReference("filter", TrackerLogicFilter);
+LogicAbstractElement.registerReference("filter", TrackerLogicFilter);
 customElements.define('tracker-logic-filter', TrackerLogicFilter);
 
 function createOption(value, content) {

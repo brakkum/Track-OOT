@@ -12,7 +12,6 @@ import "/script/ui/LocationStatus.js";
 
 (async function main() {
 
-    
     if ("SharedWorker" in window) {
         let EventBusModuleShare = (await import("/deepJS/util/events/EventBusModuleShare.js")).default;
         EventBusModuleShare.mute("logic");

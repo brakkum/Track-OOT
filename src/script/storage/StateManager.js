@@ -1,5 +1,5 @@
 import TrackerStorage from "/script/storage/TrackerStorage.js";
-import StateConverter from "/script/storage/StateConverter.js";
+import StateConverter from "/script/storage/converters/StateConverter.js";
 
 class StateManager {
 

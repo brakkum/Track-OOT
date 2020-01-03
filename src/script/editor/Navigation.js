@@ -50,6 +50,6 @@ async function removePatch() {
 
 function exitEditor() {
     logicContainer.querySelector('.logic-location').click();
-    document.getElementById('view-pager').setAttribute("active", "main");
+    document.getElementById('view-pager').setAttribute("active", "editors");
 }
 

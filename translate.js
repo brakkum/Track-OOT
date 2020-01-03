@@ -39,6 +39,21 @@ let lang_en = fs.readFileSync("./src/i18n/en_us.lang", "utf8");
 let lang_en2 = fs.readFileSync("./src/i18n/en_us.easy.lang", "utf8");
 let lang_de = fs.readFileSync("./src/i18n/de_de.lang", "utf8");
 
+function translateValue(val) {
+    if (Array.isArray(val)) {
+        for (let i in val) {
+            if (translation.hasOwnProperty(val[i])) {
+                return translation[val[i]];
+            }
+        }
+    } else {
+        if (translation.hasOwnProperty(val)) {
+            return translation[val];
+        }
+        return val;
+    }
+}
+
 let world = {
     "locations": {},
     "areas": {},
@@ -61,7 +76,7 @@ let csongs = {};
 let clogic = {};
 
 function convert_locations(area, name, type, data) {
-    let area_name = translation[area];
+    let area_name = translateValue(area);
     world.areas[area_name] = world.areas[area_name] || {
         "locations": [],
         "entrances": []
@@ -71,7 +86,7 @@ function convert_locations(area, name, type, data) {
         "locations": [],
         "entrances": []
     };
-    let trans = translation[`${type}.${name}`];
+    let trans = translateValue(`${type}.${name}`);
     let record = Object.assign({}, LOCATION_STRUCT);
     record.type = type.replace(/s$/, "");
     record.access = `logic.${trans}`;
@@ -109,7 +124,7 @@ function convert_locations(area, name, type, data) {
 }
 
 function convert_entrance(area, name, type, data) {
-    let area_name = translation[area];
+    let area_name = translateValue(area);
     world.areas[area_name] = world.areas[area_name] || {
         "locations": [],
         "entrances": []
@@ -145,7 +160,7 @@ function convert_entrance(area, name, type, data) {
 }
 
 for (let i in locations) {
-    let trans = translation[i];
+    let trans = translateValue(i);
     let data = locations[i];
     if (!!data.x && !!data.y) {
         maps.main.locations.push({
@@ -188,29 +203,45 @@ for (let i in locations) {
 }
 
 for (let i in items) {
-    let trans = translation[`items.${i}`];
+    let trans = translateValue(`items.${i}`);
     citems[trans] = items[i];
     if (!!citems[trans].start_settings) {
-        citems[trans].start_settings = translation[citems[trans].start_settings];
+        citems[trans].start_settings = translateValue(citems[trans].start_settings);
     }
 }
 
 for (let i in settings.options) {
-    let trans = translation[`options.${i}`];
-    csettings.options[trans] = settings.options[i];
+    if (settings.options[i].type == "list") {
+        csettings.options[i] = {
+            "type": "list",
+            "values": settings.options[i].values.map(n=>`options.${n}`).map(translateValue),
+            "default": settings.options[i].default.map(n=>`options.${n}`).map(translateValue)
+        };
+    } else {
+        let trans = translateValue(`options.${i}`);
+        csettings.options[trans] = settings.options[i];
+    }
 }
 for (let i in settings.skips) {
-    let trans = translation[`skips.${i}`];
-    csettings.skips[trans] = settings.skips[i];
+    if (settings.skips[i].type == "list") {
+        csettings.skips[i] = {
+            "type": "list",
+            "values": settings.skips[i].values.map(n=>`skips.${n}`).map(translateValue),
+            "default": settings.skips[i].default.map(n=>`skips.${n}`).map(translateValue)
+        };
+    } else {
+        let trans = translateValue(`skips.${i}`);
+        csettings.skips[trans] = settings.skips[i];
+    }
 }
 
 for (let i in shops) {
-    let trans = translation[`shops.${i}`];
+    let trans = translateValue(`shops.${i}`);
     cshops[trans] = shops[i];
 }
 
 for (let i in songs) {
-    let trans = translation[`songs.${i}`];
+    let trans = translateValue(`songs.${i}`);
     csongs[trans] = songs[i];
 }
 
@@ -226,13 +257,15 @@ function recursive_logic_translation(tree) {
         if (!!tree.value) {
             return {
                 type: "value",
-                el: translation[`${tree.type}s.${tree.el}`],
-                value: tree.value
+                el: translateValue(`${tree.type}s.${tree.el}`),
+                value: tree.value,
+                category: tree.type
             };
         } else {
             return {
                 type: "number",
-                el: translation[`${tree.type}s.${tree.el}`]
+                el: translateValue(`${tree.type}s.${tree.el}`),
+                category: tree.type
             };
         }
     } else if (tree.type == "filter") {
@@ -240,24 +273,33 @@ function recursive_logic_translation(tree) {
             return {
                 type: "value",
                 el: `filter.${tree.el.replace(/^filter_/, "")}`,
-                value: tree.value
+                value: tree.value,
+                category: "filter"
             };
         } else {
             return {
                 type: "number",
-                el: `filter.${tree.el.replace(/^filter_/, "")}`
+                el: `filter.${tree.el.replace(/^filter_/, "")}`,
+                category: "filter"
             };
         }
     } else if (tree.type == "mixin") {
         return {
             type: "number",
-            el: `mixin.${tree.el}`
+            el: `mixin.${tree.el}`,
+            category: "mixin"
         };
     } else {
-        if (tree.type == "not" || tree.type == "min" || tree.type == "max") {
+        if (tree.type == "not") {
             return {
                 type: tree.type,
                 el: recursive_logic_translation(tree.el)
+            };
+        } else if (tree.type == "min" || tree.type == "max") {
+            return {
+                type: tree.type,
+                el: recursive_logic_translation(tree.el),
+                value: tree.value
             };
         } else if (tree.type == "false" || tree.type == "true") {
             return {
@@ -273,13 +315,13 @@ function recursive_logic_translation(tree) {
 }
 
 for (let i in logic.chests) {
-    clogic[`logic.${translation[`chests.${i}`]}`] = recursive_logic_translation(logic.chests[i]);
+    clogic[`logic.${translateValue(`chests.${i}`)}`] = recursive_logic_translation(logic.chests[i]);
 }
 for (let i in logic.skulltulas) {
-    clogic[`logic.${translation[`skulltulas.${i}`]}`] = recursive_logic_translation(logic.skulltulas[i]);
+    clogic[`logic.${translateValue(`skulltulas.${i}`)}`] = recursive_logic_translation(logic.skulltulas[i]);
 }
 for (let i in logic.gossipstones) {
-    clogic[`logic.${translation[`gossipstones.${i}`]}`] = recursive_logic_translation(logic.gossipstones[i]);
+    clogic[`logic.${translateValue(`gossipstones.${i}`)}`] = recursive_logic_translation(logic.gossipstones[i]);
 }
 for (let i in logic.mixins) {
     clogic[`mixin.${i}`] = recursive_logic_translation(logic.mixins[i]);
@@ -299,14 +341,15 @@ function translate_language(input) {
         if(!!data) {
             let key = data[0].trim();
             let value = data[1].trim();
-            let trans = translation[key]
-                    ||  translation[`chests.${key}`]
-                    ||  translation[`skulltulas.${key}`]
-                    ||  translation[`gossipstones.${key}`]
-                    ||  translation[`skips.${key}`]
-                    ||  translation[`options.${key}`]
-                    ||  translation[`items.${key}`]
-                    ||  key;
+            let trans = translateValue([
+                key,
+                `chests.${key}`,
+                `skulltulas.${key}`,
+                `gossipstones.${key}`,
+                `skips.${key}`,
+                `options.${key}`,
+                `items.${key}`
+            ]) ||  key;
             lines[i] = `${trans}=${value}`;
         }
     }
@@ -340,7 +383,7 @@ export default function(state) {
         name: state.name
     };
     for (let i of Object.keys(state.data)) {
-        res.data[translation[i]] = state.data[i];
+        res.data[translateValue(i)] = state.data[i];
     }
     return res;
 };`);

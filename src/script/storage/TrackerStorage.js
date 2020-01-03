@@ -1,4 +1,4 @@
-import StateConverter from "/script/storage/StateConverter.js";
+import StateConverter from "/script/storage/converters/StateConverter.js";
 
 let dbInstance = null;
 

@@ -48,7 +48,7 @@ function buildSettings(settings) {
                     settings.addChoiceInput(i, label, j, val.default, convertValueList(val.values, val.names));
                 break;
                 case "list":
-                    settings.addListSelectInput(i, label, j, val.default.join(","), true, convertValueList(val.values, val.names));
+                    settings.addListSelectInput(i, label, j, val.default, true, convertValueList(val.values, val.names));
                 break;
                 case "button":
                     if (!!val.view) {

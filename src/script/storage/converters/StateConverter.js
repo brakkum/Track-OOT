@@ -1,5 +1,5 @@
-import Converter0 from "./converters/StateConverter0.js";
-import Converter1 from "./converters/StateConverter1.js";
+import Converter0 from "./StateConverter0.js";
+import Converter1 from "./StateConverter1.js";
 
 const TARGET_VERSION = 2;
 const CONVERTER_FN = [

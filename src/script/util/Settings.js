@@ -85,39 +85,32 @@ function onSettingsEvent(event) {
     return settings;
 }
 
+async function getSetting(cat, name, def) {
+    if (cat == "settings") {
+        return await SettingsStorage.get(name, def);
+    } else {
+        return StateStorage.read(`${cat}.${name}`, def);
+    }
+}
+
 async function getSettings() {
     let options = GlobalData.get("settings");
     let res = {};
     for (let i in options) {
         res[i] = res[i] || {};
         for (let j in options[i]) {
-            if (options[i][j].type === "hidden") continue;
-            if (i === "settings") {
-                if (options[i][j].type === "list") {
-                    let def = new Set(options[i][j].default);
-                    let val = [];
-                    for (let el of options[i][j].values) {
-                        if (await SettingsStorage.get(el, def.has(el))) {
-                            val.push(el);
-                        }
+            let opt = options[i][j];
+            if (opt.type === "list") {
+                let def = new Set(opt.default);
+                let val = [];
+                for (let el of opt.values) {
+                    if (await getSetting(i, el, def.has(el))) {
+                        val.push(el);
                     }
-                    res[i][j] = val.join(",");
-                } else {
-                    res[i][j] = await SettingsStorage.get(j, options[i][j].default);
                 }
+                res[i][j] = val;
             } else {
-                if (options[i][j].type === "list") {
-                    let def = new Set(options[i][j].default);
-                    let val = [];
-                    options[i][j].values.forEach(el => {
-                        if (StateStorage.read(`${i}.${el}`, def.has(el))) {
-                            val.push(el);
-                        }
-                    });
-                    res[i][j] = val.join(",");
-                } else {
-                    res[i][j] = StateStorage.read(`${i}.${j}`, options[i][j].default);
-                }
+                res[i][j] = await getSetting(i, j, opt.default);
             }
         }
     }
@@ -157,8 +150,8 @@ class Settings {
             if (showUpdatePopup) {
                 showUpdatePopup = false;
                 let popover = PopOver.show("A new update is available. Click here to download!", 60);
-                popover.addEventListener("click", function() {
-                    settings.show(getSettings(), 'about');
+                popover.addEventListener("click", async function() {
+                    settings.show(await getSettings(), 'about');
                 });
             }
         });

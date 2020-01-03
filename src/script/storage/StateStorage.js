@@ -1,8 +1,8 @@
 import EventBus from "/deepJS/util/events/EventBus.js";
 import DateUtil from "/deepJS/util/DateUtil.js";
 import LocalStorage from "/deepJS/storage/LocalStorage.js";
-import TrackerStorage from "/script/storage/TrackerStorage.js";
-import StateConverter from "/script/storage/StateConverter.js";
+import TrackerStorage from "./TrackerStorage.js";
+import StateConverter from "./converters/StateConverter.js";
 
 const PERSISTANCE_NAME = "savestate";
 const STATE_DIRTY = "state_dirty";

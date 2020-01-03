@@ -181,7 +181,7 @@ function copyFonts_dev() {
 }
 
 function copyScript_prod() {
-    return gulp.src([PATHS.appBase + "/script/**/*.js", PATHS.appBase + "/script/**/*.js"])
+    return gulp.src(PATHS.appBase + "/script/**/*.js")
         .pipe(deleted.register(PATHS.appBase + "/script", PATHS.targetProd + "/script"))
         .pipe(newer(PATHS.targetProd + "/script"))
         .pipe(terser())
@@ -189,10 +189,25 @@ function copyScript_prod() {
 }
 
 function copyScript_dev() {
-    return gulp.src([PATHS.appBase + "/script/**/*.js", PATHS.appBase + "/script/**/*.js"])
+    return gulp.src(PATHS.appBase + "/script/**/*.js")
         .pipe(deleted.register(PATHS.appBase + "/script", PATHS.targetDev + "/script"))
         .pipe(newer(PATHS.targetDev + "/script"))
         .pipe(gulp.dest(PATHS.targetDev + "/script"));
+}
+
+function copyContentJS_prod() {
+    return gulp.src(PATHS.appBase + "/content/**/*.js")
+        .pipe(deleted.register(PATHS.appBase + "/content", PATHS.targetProd + "/content"))
+        .pipe(newer(PATHS.targetProd + "/content"))
+        .pipe(terser())
+        .pipe(gulp.dest(PATHS.targetProd + "/content"));
+}
+
+function copyContentJS_dev() {
+    return gulp.src(PATHS.appBase + "/content/**/*.js")
+        .pipe(deleted.register(PATHS.appBase + "/content", PATHS.targetDev + "/content"))
+        .pipe(newer(PATHS.targetDev + "/content"))
+        .pipe(gulp.dest(PATHS.targetDev + "/content"));
 }
 
 function copyDeepJS_prod() {
@@ -257,6 +272,7 @@ exports.build = gulp.series(
         copyCSS_prod,
         copyFonts_prod,
         copyScript_prod,
+        copyContentJS_prod,
         copyDeepJS_prod,
         copySW_prod,
         copyChangelog_prod
@@ -276,6 +292,7 @@ exports.buildDev = gulp.series(
         copyCSS_dev,
         copyFonts_dev,
         copyScript_dev,
+        copyContentJS_dev,
         copyDeepJS_dev,
         copySW_dev,
         copyChangelog_dev

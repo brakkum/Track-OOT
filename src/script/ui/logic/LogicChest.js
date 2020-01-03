@@ -1,6 +1,6 @@
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/events/EventBus.js";
-import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
+import LogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import I18n from "/script/util/I18n.js";
 
@@ -21,7 +21,7 @@ const SVG = new Template(`
     </div>
 `);
 
-export default class TrackerLogicChest extends DeepLogicAbstractElement {
+export default class TrackerLogicChest extends LogicAbstractElement {
 
     constructor() {
         super();
@@ -59,7 +59,7 @@ export default class TrackerLogicChest extends DeepLogicAbstractElement {
     }
 
     static get observedAttributes() {
-        let attr = DeepLogicAbstractElement.observedAttributes;
+        let attr = LogicAbstractElement.observedAttributes;
         attr.push('ref');
         return attr;
     }
@@ -97,5 +97,5 @@ export default class TrackerLogicChest extends DeepLogicAbstractElement {
 
 }
 
-DeepLogicAbstractElement.registerReference("chest", TrackerLogicChest);
+LogicAbstractElement.registerReference("chest", TrackerLogicChest);
 customElements.define('tracker-logic-chest', TrackerLogicChest);

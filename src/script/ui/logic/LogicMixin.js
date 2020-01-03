@@ -1,6 +1,6 @@
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/events/EventBus.js";
-import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
+import LogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
@@ -42,7 +42,7 @@ function showLogic(ref) {
     d.show();
 }
 
-export default class TrackerLogicMixin extends DeepLogicAbstractElement {
+export default class TrackerLogicMixin extends LogicAbstractElement {
 
     constructor() {
         super();
@@ -80,7 +80,7 @@ export default class TrackerLogicMixin extends DeepLogicAbstractElement {
     }
 
     static get observedAttributes() {
-        let attr = DeepLogicAbstractElement.observedAttributes;
+        let attr = LogicAbstractElement.observedAttributes;
         attr.push('ref');
         return attr;
     }
@@ -120,5 +120,5 @@ export default class TrackerLogicMixin extends DeepLogicAbstractElement {
 
 }
 
-DeepLogicAbstractElement.registerReference("mixin", TrackerLogicMixin);
+LogicAbstractElement.registerReference("mixin", TrackerLogicMixin);
 customElements.define('tracker-logic-mixin', TrackerLogicMixin);

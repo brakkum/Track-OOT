@@ -13,6 +13,7 @@ const stateNew = document.getElementById("new-savestate");
 const statesManage = document.getElementById("manage-savestates");
 const joinDiscord = document.getElementById("join-discord");
 const editSettings = document.getElementById("edit-settings");
+const editors = document.getElementById("show-editors");
 
 stateSave.addEventListener("click", state_Save);
 stateSaveAs.addEventListener("click", state_SaveAs);
@@ -21,6 +22,7 @@ stateNew.addEventListener("click", state_New);
 statesManage.addEventListener("click", states_Manage);
 joinDiscord.addEventListener("click", openDiscortJoin);
 editSettings.addEventListener("click", openSettingsWindow);
+editors.addEventListener("click", showEditors);
 
 async function state_Save() {
     let activestate = await StateStorage.getName()
@@ -62,4 +64,8 @@ function openDiscortJoin() {
 
 function openSettingsWindow() {
     Settings.show();
+}
+
+function showEditors() {
+    document.getElementById('view-pager').setAttribute("active", "editors");
 }

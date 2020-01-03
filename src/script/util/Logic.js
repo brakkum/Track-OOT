@@ -11,9 +11,11 @@ class TrackerLogic {
 
     constructor() {
         EventBus.register("state_change", event => {
-            let data = Object.assign({
+            let data = {
                 "filter.era_active": MemoryStorage.get('filter.era_active', GlobalData.get("filter/filter.era_active/default"))
-            }, event.data);
+            };
+            data = Object.assign(data, event.data);
+            //data = Object.assign(data, await SettingsStorage.getAll());
             let res = LOGIC.execute(data);
             EventBus.trigger("logic", res);
         });

@@ -2,7 +2,7 @@ import GlobalData from "/script/storage/GlobalData.js";
 import EventBus from "/deepJS/util/events/EventBus.js";
 import Helper from "/deepJS/util/Helper.js";
 import SettingsStorage from "/script/storage/SettingsStorage.js";
-import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
+import LogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
 
 import "/deepJS/ui/logic/elements/literals/LogicTrue.js";
 import "/deepJS/ui/logic/elements/operators/LogicAnd.js";
@@ -77,7 +77,7 @@ export default class LogicWrapper {
         }
         if (!!logic) {
             if (!LOGIC_SOURCE.has(this) || !Helper.deepEquals(LOGIC_SOURCE.get(this), logic)) {
-                let build = DeepLogicAbstractElement.buildLogic(logic);
+                let build = LogicAbstractElement.buildLogic(logic);
                 if (!!build) {
                     build.addEventListener('update', function(event) {
                         this.value = event.value;
@@ -98,9 +98,9 @@ export default class LogicWrapper {
 
     buildSVG() {
         if (LOGIC_SOURCE.has(this)) {
-            return DeepLogicAbstractElement.buildSVG(LOGIC_SOURCE.get(this));
+            return LogicAbstractElement.buildSVG(LOGIC_SOURCE.get(this));
         } else {
-            return DeepLogicAbstractElement.buildSVG();
+            return LogicAbstractElement.buildSVG();
         }
     }
 

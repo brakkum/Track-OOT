@@ -1,13 +1,13 @@
 import Dialog from "/deepJS/ui/Dialog.js";
-import DeepLogicAbstractElement from "/deepJS/ui/logic/elements/LogicAbstractElement.js";
-import "/deepJS/ui/logic/LogicEditorClipboard.js";
-import "/deepJS/ui/logic/LogicEditorTrashcan.js";
-import "/deepJS/ui/logic/LogicEditorWorkingarea.js";
+import LogicAbstractElement from "/deepJS/ui/logic/elements/AbstractElement.js";
+import "/deepJS/ui/logic/EditorClipboard.js";
+import "/deepJS/ui/logic/EditorTrashcan.js";
+import "/deepJS/ui/logic/EditorWorkingarea.js";
 import "/deepJS/ui/CaptionPanel.js";
 import "/deepJS/ui/CollapsePanel.js";
 
-import "/deepJS/ui/logic/elements/literals/LogicFalse.js";
-import "/deepJS/ui/logic/elements/literals/LogicTrue.js";
+import "/deepJS/ui/logic/elements/LiteralFalse.js";
+import "/deepJS/ui/logic/elements/LiteralTrue.js";
 import "/deepJS/ui/logic/elements/operators/LogicAnd.js";
 import "/deepJS/ui/logic/elements/operators/LogicNand.js";
 import "/deepJS/ui/logic/elements/operators/LogicOr.js";
@@ -176,7 +176,7 @@ const LOGIC_OPERATORS = [
             if (!!result) {
                 let res = dialogElement.dataset.choice;
                 if (!!res) {
-                    let el = DeepLogicAbstractElement.buildLogic(JSON.parse(res));
+                    let el = LogicAbstractElement.buildLogic(JSON.parse(res));
                     if (!!slot) {
                         el.slot = slot;
                     }
