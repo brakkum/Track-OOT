@@ -180,6 +180,14 @@ class HTMLMarkerGossipstone extends HTMLElement {
         this.setAttribute('visible', val);
     }
 
+    get mode() {
+        return this.getAttribute('mode');
+    }
+
+    set mode(val) {
+        this.setAttribute('mode', val);
+    }
+
     static get observedAttributes() {
         return ['ref', 'checked'];
     }

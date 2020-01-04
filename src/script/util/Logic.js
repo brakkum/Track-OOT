@@ -6,7 +6,9 @@ import GlobalData from "/script/storage/GlobalData.js";
 import SettingsStorage from "/script/storage/SettingsStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
-const LOGIC = new LogicProcessor();
+const RANDO_LOGIC_PROCESSOR = new LogicProcessor();
+
+let randoLogic = {};
 
 class TrackerLogic {
 
@@ -16,14 +18,23 @@ class TrackerLogic {
                 "filter.era_active": MemoryStorage.get('filter.era_active', GlobalData.get("filter/filter.era_active/default"))
             };
             data = Object.assign(data, event.data);
-            //data = Object.assign(data, await SettingsStorage.getAll());
-            let res = LOGIC.execute(data);
-            EventBus.trigger("logic", res);
+            this.execute(data);
         });
     }
 
+    execute(data) {
+        if (!data) {
+            data = {
+                "filter.era_active": MemoryStorage.get('filter.era_active', GlobalData.get("filter/filter.era_active/default"))
+            };
+            data = Object.assign(data, StateStorage.getAll());
+        }
+        let res = RANDO_LOGIC_PROCESSOR.execute(data);
+        EventBus.trigger("logic", res);
+    }
+
     getValue(ref) {
-        return LOGIC.getValue(ref);
+        return RANDO_LOGIC_PROCESSOR.getValue(ref);
     }
 
     async checkLogicList(name) {
@@ -74,7 +85,7 @@ class TrackerLogic {
     }
 
     async getAccessibleNumber(name) {
-        if (name != "") return 0;
+        if (name == "") return 0;
         let list = GlobalData.get(`world/areas/${name}/locations`);
         let locations = GlobalData.get(`world/locations`);
         let canGet = 0;
@@ -95,51 +106,34 @@ class TrackerLogic {
     }
 
     async loadLogic() {
-        /*let locations = GlobalData.get("locations");
-        for (let loc in locations) {
-            for (let cat in CATEGORIES) {
-                let category = CATEGORIES[cat];
-                let checks = locations[loc][cat];
-                if (!!checks) {
-                    for (let check in checks) {
-                        LOGIC[category][check] = new LogicWrapper(category, check);
-                    }
-                }
-            }
+        randoLogic = GlobalData.get("logic", {});
+        if (await SettingsStorage.get("use_custom_logic", false)) {
+            Object.assign(randoLogic, await SettingsStorage.get("logic", {}));
         }
-        for (let i in GlobalData.get("logic", {mixins:{}}).mixins) {
-            LOGIC["mixins"][i] = new LogicWrapper("mixins", i);
-        }
-        for (let i in await SettingsStorage.get("logic", {mixins:{}}).mixins) {
-            if (!!LOGIC["mixins"][i]) continue;
-            LOGIC["mixins"][i] = new LogicWrapper("mixins", i);
-        }*/
-        LOGIC.loadLogic(GlobalData.get("logic", {}));
+        RANDO_LOGIC_PROCESSOR.loadLogic(randoLogic);
+        this.execute();
     }
 
-    updateLogic() {
-        /*for (let i in LOGIC) {
-            for (let j in LOGIC[i]) {
-                LOGIC[i][j].loadLogic();
-            }
-        }*/
-    }
-
-    getLogicSVG(type, ref) {
-        //return LOGIC[type][ref].buildSVG();
-    }
-
-    getLogicView(ref) {
-        let el = document.createElement("div");
-        let logic = GlobalData.get(`logic/${ref}`);
+    getLogicSVG(ref) {
+        let logic = randoLogic[ref];
         if (!!logic) {
-            let data = {
-                "filter.era_active": MemoryStorage.get('filter.era_active', GlobalData.get("filter/filter.era_active/default"))
-            };
-            data = Object.assign(data, StateStorage.getAll());
-            data = Object.assign(data, LOGIC.getValues());
+            return AbstractElement.buildSVG(logic);
+        }
+    }
+
+    getLogicView(ref, calc = true) {
+        let el = document.createElement("div");
+        let logic = randoLogic[ref];
+        if (!!logic) {
             let l = AbstractElement.buildLogic(logic);
-            l.calculate(data);
+            if (!!calc) {
+                let data = {
+                    "filter.era_active": MemoryStorage.get('filter.era_active', GlobalData.get("filter/filter.era_active/default"))
+                };
+                data = Object.assign(data, StateStorage.getAll());
+                data = Object.assign(data, RANDO_LOGIC_PROCESSOR.getValues());
+                l.calculate(data);
+            }
             l.readonly = true;
             el.append(l);
         }

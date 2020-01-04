@@ -205,9 +205,13 @@ deep-choiceselect {
         border: solid 2px #222;
         border-color: #777;
     }
-    #workingarea {
+    #workingarea-panel {
         grid-area: workingarea;
         background-color: #222;
+
+        #workingarea {
+            display: contents;
+        }
     }
     #clipboard-panel {
         grid-area: clipboard;
@@ -240,4 +244,22 @@ deep-choiceselect {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+}
+
+.application-choice-panel {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+
+    .card-panel {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 100px;
+        margin: 5px;
+        color: white;
+        background-color: #222;
+        cursor: pointer;
+    }
 }

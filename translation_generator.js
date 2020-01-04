@@ -20,11 +20,11 @@ const PROPERTY_FILES = [
 
 let translation = {};
 
-let locations = JSON.parse(fs.readFileSync("./src/_rework/buffer/locations.json"));
-let items = JSON.parse(fs.readFileSync("./src/database/items.json"));
-let settings = JSON.parse(fs.readFileSync("./src/database/settings.json"));
-let shops = JSON.parse(fs.readFileSync("./src/database/shops.json"));
-let songs = JSON.parse(fs.readFileSync("./src/database/songs.json"));
+let locations = JSON.parse(fs.readFileSync("./_old/buffer/locations.json"));
+let items = JSON.parse(fs.readFileSync("./_old/database/items.json"));
+let settings = JSON.parse(fs.readFileSync("./_old/database/settings.json"));
+let shops = JSON.parse(fs.readFileSync("./_old/database/shops.json"));
+let songs = JSON.parse(fs.readFileSync("./_old/database/songs.json"));
 
 function convert_locations(area, name, type) {
     translation[`${type}.${name}`] = `location.${area}.${name.replace(`${area}_`, "")}`;
@@ -92,4 +92,4 @@ for (let i in songs) {
     translation[`songs.${i}`] = `song.${i.replace(/^song_/, "")}`;
 }
 
-fs.writeFileSync("./src/_rework/buffer/translation.json", JSON.stringify(translation, null, 4));
+fs.writeFileSync("./_old/buffer/translation.json", JSON.stringify(translation, null, 4));

@@ -38,7 +38,7 @@ class GlobalData {
     async init() {
         let loading = [];
         FILES.forEach(file => {
-            loading.push(FileLoader.json(`/_rework/database/${file}.json`).then(function(data) {
+            loading.push(FileLoader.json(`/database/${file}.json`).then(function(data) {
                 STORAGE[file] = data;
             }));
         });

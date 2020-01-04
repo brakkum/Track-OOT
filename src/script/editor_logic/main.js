@@ -17,13 +17,14 @@ import "/deepJS/ui/logic/elements/OperatorNor.js";
 import "/deepJS/ui/logic/elements/OperatorXor.js";
 import "/deepJS/ui/logic/elements/OperatorNot.js";
 import "/deepJS/ui/logic/elements/OperatorMin.js";
-import "/deepJS/ui/logic/elements/OperatorMax.js"; 
+import "/deepJS/ui/logic/elements/OperatorMax.js";
+import "./LiteralMixin.js";
+import "./LiteralCustom.js";
 //import "/script/ui/logic/LogicItem.js";
 //import "/script/ui/logic/LogicMixin.js";
 //import "/script/ui/logic/LogicOption.js";
 //import "/script/ui/logic/LogicSkip.js";
 //import "/script/ui/logic/LogicFilter.js";
-//import "/script/ui/logic/LogicChest.js";
 //import "/script/ui/logic/LogicSkulltula.js";
 
 import SettingsStorage from "/script/storage/SettingsStorage.js";
@@ -47,8 +48,8 @@ const LOGIC_OPERATORS = [
 ];
 
 (async function main() {
-    
-    let locations = GlobalData.get("locations");
+
+    let world = GlobalData.get("world");
     let logicContainer = document.getElementById("logics");
 
     let items = GlobalData.get("items");
@@ -77,20 +78,19 @@ const LOGIC_OPERATORS = [
         createAddLogicDialog();
     });
 
-    fillLogics(locations, logic);
-    fillOperators(document.getElementById("elements"), items, settings, filter, logic);
+    fillLogics(world, logic);
+    fillOperators(document.getElementById("elements"), items, settings, filter, world, logic);
 
-    function fillOperators(container, items, settings, filter, logic, onclick) {
+    function fillOperators(container, items, settings, filter, world, logic, onclick) {
         container.append(createDefaultOperatorCategory(onclick));
 
-        container.append(createOperatorCategory(items, "tracker-logic-item", "items", onclick));
-        container.append(createOperatorCategory(settings.options, "tracker-logic-option", "options", onclick));
-        container.append(createOperatorCategory(settings.skips, "tracker-logic-skip", "skips", onclick));
-        container.append(createOperatorCategory(filter, "tracker-logic-filter", "filter", onclick));
-        // TODO create location operator factory
-        // container.append(createOperatorCategory(chests, "tracker-logic-chest", "chests", onclick));
+        container.append(createOperatorCategory(items, "item", onclick));
+        container.append(createOperatorCategory(settings.options, "option", onclick));
+        container.append(createOperatorCategory(settings.skips, "skip", onclick));
+        container.append(createOperatorCategory(filter, "filter", onclick));
+        container.append(createOperatorCategory(world.locations, "location", onclick));
         // container.append(createOperatorCategory(skulltulas, "tracker-logic-skulltula", "skulltulas", onclick));
-        container.append(createOperatorCategory(logic.mixins, "tracker-logic-mixin", "mixins", onclick));
+        container.append(createOperatorMixins(logic, onclick));
     }
 
     function createDefaultOperatorCategory(onclick) {
@@ -108,13 +108,58 @@ const LOGIC_OPERATORS = [
         return ocnt;
     }
 
-    function createOperatorCategory(data, type, ref, onclick) {
+    function createOperatorMixins(data, onclick) {
+        let ocnt = document.createElement("deep-collapsepanel");
+        ocnt.caption = "mixin";
+        for (let ref in data) {
+            if (!ref.startsWith("mixin.")) continue;
+            let el = document.createElement("tracker-logic-mixin");
+            el.ref = ref;
+            el.category = "mixin";
+            el.template = "true";
+            if (typeof onclick == "function") {
+                el.onclick = onclick;
+                el.readonly = "true";
+            }
+            ocnt.append(el);
+        }
+        return ocnt;
+    }
+
+    function createOperatorCategory(data, ref, onclick) {
         let ocnt = document.createElement("deep-collapsepanel");
         ocnt.caption = ref;
         for (let i in data) {
-            if (typeof data[i].logic_editor_visible != "boolean" || data[i].logic_editor_visible) {
-                let el = document.createElement(type);
+            let opt = data[i];
+            if (opt.type === "list") {
+                for (let j of opt.values) {
+                    let el = document.createElement("tracker-logic-custom");
+                    el.ref = j;
+                    el.category = ref;
+                    el.template = "true";
+                    if (typeof onclick == "function") {
+                        el.onclick = onclick;
+                        el.readonly = "true";
+                    }
+                    ocnt.append(el);
+                }
+            } else if (opt.type === "choice") {
+                for (let j of opt.values) {
+                    let el = document.createElement("tracker-logic-custom");
+                    el.ref = i;
+                    el.value = j;
+                    el.category = ref;
+                    el.template = "true";
+                    if (typeof onclick == "function") {
+                        el.onclick = onclick;
+                        el.readonly = "true";
+                    }
+                    ocnt.append(el);
+                }
+            } else {
+                let el = document.createElement("tracker-logic-custom");
                 el.ref = i;
+                el.category = ref;
                 el.template = "true";
                 if (typeof onclick == "function") {
                     el.onclick = onclick;
@@ -126,22 +171,20 @@ const LOGIC_OPERATORS = [
         return ocnt;
     }
 
-    function fillLogics(locations, logic) {
+    function fillLogics(world, logic) {
 
-        logicContainer.append(createLogicCategory(locations, "chests_v"));
-        logicContainer.append(createLogicCategory(locations, "chests_mq"));
-        logicContainer.append(createLogicCategory(locations, "skulltulas_v"));
-        logicContainer.append(createLogicCategory(locations, "skulltulas_mq"));
+        logicContainer.append(createLogicCategory(world, "locations"));
 
         let cnt = document.createElement("deep-collapsepanel");
         cnt.caption = "mixins";
-        for (let j in logic.mixins) {
+        for (let ref in logic) {
+            if (!ref.startsWith("mixin.")) continue;
             let el = document.createElement("div");
-            el.dataset.ref = j;
+            el.dataset.ref = ref;
+            el.dataset.cat = "mixin";
             el.className = "logic-location";
-            el.onclick = loadMixinLogic;
-            el.innerHTML = I18n.translate(j);
-            el.title = j;
+            el.onclick = loadLogic;
+            el.innerHTML = ref;
             cnt.append(el);
         }
         logicContainer.append(cnt);
@@ -150,18 +193,18 @@ const LOGIC_OPERATORS = [
     function createLogicCategory(data, ref) {
         let ocnt = document.createElement("deep-collapsepanel");
         ocnt.caption = ref;
-        for (let i in data) {
-            let loc = data[i][ref];
+        for (let i in data.areas) {
+            let loc = data.areas[i][ref];
             if (!loc) continue;
             let cnt = document.createElement("deep-collapsepanel");
-            cnt.caption = i;
-            for (let j in loc) {
+            cnt.caption = I18n.translate(i);
+            for (let j of loc) {
                 let el = document.createElement("div");
-                el.dataset.ref = j;
+                el.dataset.ref = data.locations[j].access;
+                el.dataset.cat = data.locations[j].type;
                 el.className = "logic-location";
-                el.onclick = ref.startsWith("chest") ? loadChestLogic : loadSkulltulaLogic;
+                el.onclick = loadLogic;
                 el.innerHTML = I18n.translate(j);
-                el.title = j;
                 cnt.append(el);
             }
             ocnt.append(cnt);
@@ -200,34 +243,18 @@ const LOGIC_OPERATORS = [
         d.show();
     }
         
-    async function loadChestLogic(event) {
+    async function loadLogic(event) {
         let ref = event.target.dataset.ref;
-        workingarea.dataset.logicType = "chests";
+        let cat = event.target.dataset.cat;
+        workingarea.dataset.logicType = cat;
         workingarea.dataset.logicKey = ref;
-        workingarea.loadLogic(await EditorLogic.get("chests", ref));
-        workingarea.caption = `[C] ${I18n.translate(ref)}`;
-    }
-        
-    async function loadSkulltulaLogic(event) {
-        let ref = event.target.dataset.ref;
-        workingarea.dataset.logicType = "skulltulas";
-        workingarea.dataset.logicKey = ref;
-        workingarea.loadLogic(await EditorLogic.get("skulltulas", ref));
-        workingarea.caption = `[S] ${I18n.translate(ref)}`;
-    }
-        
-    async function loadMixinLogic(event) {
-        let ref = event.target.dataset.ref;
-        workingarea.dataset.logicType = "mixins";
-        workingarea.dataset.logicKey = ref;
-        workingarea.loadLogic(await EditorLogic.get("mixins", ref));
-        workingarea.caption = `[M] ${I18n.translate(ref)}`;
+        workingarea.loadLogic(await getLogic(ref));
+        document.getElementById("workingarea-panel").caption = `${event.target.innerHTML} [${cat}]`;
     }
 
     async function refreshLogic(event) {
-        let type = workingarea.dataset.logicType;
-        let key = workingarea.dataset.logicKey;
-        workingarea.loadLogic(await EditorLogic.get(type, key));
+        let ref = workingarea.dataset.logicKey;
+        workingarea.loadLogic(await getLogic(ref));
         event.preventDefault();
         return false;
     }
@@ -244,6 +271,16 @@ const LOGIC_OPERATORS = [
         let key = workingarea.dataset.logicKey;
         await EditorLogic.remove(type, key);
         return refreshLogic(event);
+    }
+
+    async function getLogic(ref) {
+        if (await SettingsStorage.get("use_custom_logic", false)) {
+            let logic = (await SettingsStorage.get("logic", {}))[ref];
+            if (!!logic) {
+                return logic;
+            }
+        }
+        return GlobalData.get(`logic/${ref}`);
     }
 
     workingarea.addEventListener('save', storeLogic);

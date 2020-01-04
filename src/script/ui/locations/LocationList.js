@@ -44,10 +44,10 @@ const TPL = new Template(`
             justify-content: flex-start;
             align-items: center;
         }
-        #location-mode,
         #location-era {
-            width: 30px;
-            height: 30px;
+            width: 34px;
+            height: 34px;
+            padding: 2px;
             margin-left: 5px;
             border: solid 2px var(--navigation-background-color, #ffffff);
             border-radius: 10px;
@@ -91,11 +91,6 @@ const TPL = new Template(`
             <deep-option value="" style="background-image: url('images/era_both.svg')"></deep-option>
             <deep-option value="child" style="background-image: url('images/era_child.svg')"></deep-option>
             <deep-option value="adult" style="background-image: url('images/era_adult.svg')"></deep-option>
-        </deep-switchbutton>
-        <deep-switchbutton value="chests" id="location-mode">
-            <deep-option value="chests" style="background-image: url('images/chest.svg')"></deep-option>
-            <deep-option value="skulltulas" style="background-image: url('images/skulltula.svg')"></deep-option>
-            <deep-option value="gossipstones" style="background-image: url('images/gossipstone.svg')"></deep-option>
         </deep-switchbutton>
     </div>
     <div id="body">
@@ -173,12 +168,6 @@ class HTMLTrackerLocationList extends Panel {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         this.attributeChangedCallback("", "");
-        this.shadowRoot.getElementById('location-mode').addEventListener("change", event => {
-            this.mode = event.newValue;
-            EventBus.trigger("location_mode", {
-                value: this.mode
-            });
-        });
         this.shadowRoot.getElementById('location-era').addEventListener("change", event => {
             this.era = event.newValue;
             MemoryStorage.set("filter.era_active", this.era);
@@ -191,6 +180,12 @@ class HTMLTrackerLocationList extends Panel {
         EVENT_BINDER.register("location_change", event => this.ref = event.data.name);
         EVENT_BINDER.register(["chest", "skulltula", "item", "state", "settings", "logic"], locationUpdate.bind(this));
         EVENT_BINDER.register("dungeontype", dungeonTypeUpdate.bind(this));
+        EVENT_BINDER.register("filter", event => {
+            if (event.data.ref == "filter.era_active") {
+                this.era = event.data.value;
+                this.shadowRoot.getElementById('location-era').value = this.era;
+            }
+        });
     }
 
     connectedCallback() {

@@ -1,4 +1,5 @@
 import GlobalData from "/script/storage/GlobalData.js";
+import MemoryStorage from "/deepJS/storage/MemoryStorage.js";
 import Template from "/deepJS/util/Template.js";
 import EventBus from "/deepJS/util/events/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
@@ -11,8 +12,8 @@ import "./marker/Gossipstone.js";
 import "./marker/Area.js";
 
 const ZOOM_MIN = 10;
-const ZOOM_MAX = 100;
-const ZOOM_DEF = 25;
+const ZOOM_MAX = 200;
+const ZOOM_DEF = 60;
 const ZOOM_SPD = 2;
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
@@ -69,12 +70,14 @@ const TPL = new Template(`
         #map-settings.active {
             bottom: 0;
         }
-        #toggle-button {
+        #toggle-button,
+        #mode-button,
+        #era-button {
             position: absolute;
             display: flex;
             align-items: center;
             justify-content: center;
-            right: 0;
+            left: 0;
             top: -42px;
             width: 40px;
             height: 40px;
@@ -83,6 +86,20 @@ const TPL = new Template(`
             color: var(--navigation-text-color, #000000);
             background: var(--navigation-background-color, #ffffff);
             cursor: pointer;
+        }
+        #mode-button {
+            left: 50px;
+        }
+        #era-button {
+            left: 100px;
+        }
+        #location-mode,
+        #location-era {
+            width: 36px;
+            height: 36px;
+            padding: 4px;
+            background-color: black;
+            border-radius: 10px;
         }
         .map-options {
             display: flex;
@@ -143,6 +160,20 @@ const TPL = new Template(`
         </slot>
         <div id="map-settings">
             <div id="toggle-button">⇑</div>
+            <div id="mode-button">
+                <deep-switchbutton value="chests" id="location-mode">
+                    <deep-option value="chests" style="background-image: url('images/chest.svg')"></deep-option>
+                    <deep-option value="skulltulas" style="background-image: url('images/skulltula.svg')"></deep-option>
+                    <deep-option value="gossipstones" style="background-image: url('images/gossipstone.svg')"></deep-option>
+                </deep-switchbutton>
+            </div>
+            <div id="era-button">
+                <deep-switchbutton value="" id="location-era">
+                    <deep-option value="" style="background-image: url('images/era_both.svg')"></deep-option>
+                    <deep-option value="child" style="background-image: url('images/era_child.svg')"></deep-option>
+                    <deep-option value="adult" style="background-image: url('images/era_adult.svg')"></deep-option>
+                </deep-switchbutton>
+            </div>
             <div class="map-options">
                 <span class="slidetext">- / +</span>
                 <input type="range" min="${ZOOM_MIN}" max="${ZOOM_MAX}" value="${ZOOM_DEF}" class="slider" id="map-scale-slider">
@@ -172,12 +203,15 @@ function generateLocations() {
             case "scrub":
             case "bean":
                 el = document.createElement('ootrt-marker-chest');
+                el.mode = "chests";
                 break;
             case "skulltula":
                 el = document.createElement('ootrt-marker-skulltula');
+                el.mode = "skulltulas";
                 break;
             case "gossipstone":
                 el = document.createElement('ootrt-marker-gossipstone');
+                el.mode = "gossipstones";
                 break;
         }
         el.ref = i;
@@ -303,6 +337,21 @@ class HTMLTrackerMap extends Panel {
         generateLocations();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
+        this.shadowRoot.getElementById('location-mode').addEventListener("change", event => {
+            this.mode = event.newValue;
+            EventBus.trigger("location_mode", {
+                value: this.mode
+            });
+        });
+        this.shadowRoot.getElementById('location-era').addEventListener("change", event => {
+            this.era = event.newValue;
+            MemoryStorage.set("filter.era_active", this.era);
+            EventBus.trigger("filter", {
+                ref: "filter.era_active",
+                value: this.era
+            });
+        });
+        // map specifics
         let map = this.shadowRoot.getElementById("map");
         let mapslide = this.shadowRoot.getElementById("map-scale-slider");
         let mapfixed = this.shadowRoot.getElementById("map-fixed");
@@ -366,10 +415,14 @@ class HTMLTrackerMap extends Panel {
             return false;
         });
         /* event bus */
-        EVENT_BINDER.register("location_mode", event => this.mode = event.data.value);
+        EVENT_BINDER.register("location_mode", event => {
+            this.mode = event.data.value;
+            this.shadowRoot.getElementById('location-mode').value = this.mode;
+        });
         EVENT_BINDER.register("filter", event => {
-            if (event.data.ref == "filter_era_active") {
-                this.era = event.data.value
+            if (event.data.ref == "filter.era_active") {
+                this.era = event.data.value;
+                this.shadowRoot.getElementById('location-era').value = this.era;
             }
         });
         EVENT_BINDER.register(["state", "settings"], event => this.attributeChangedCallback("", ""));
@@ -412,18 +465,19 @@ class HTMLTrackerMap extends Panel {
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
             this.innerHTML = "";
-            //if (!!this.mode && this.mode !== "") {
+            if (!!this.mode && this.mode !== "") {
                 let data = GlobalData.get(`maps/${this.ref}`);
                 if (!!data) {
                     // TODO switch map/minimap background
                     data.locations.forEach(record => {
                         let el = LOCATION_ELEMENTS.get(record.id);
+                        if (!!el.mode && el.mode.indexOf(this.mode) < 0) return;
                         el.style.left = `${record.x}px`;
                         el.style.top = `${record.y}px`;
                         this.append(el);
                     });
                 }
-            //}
+            }
         }
     }
 

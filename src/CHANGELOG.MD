@@ -7,16 +7,28 @@ Application:    Track-OOT
 ## VERSION 1.7.0 (DEV)
 
 ### MERGED PULL REQUEST (pidgezero_one)
-
 - sequence breaks added
 - skips extended
+
+### REWORKED DATA STRUCTURE
+- almost everything inside the data structure has changed
+- allows for some ui improvements like mixed lists
+
+### IMPROVED LOGIC
+- logic is now way faster than before
+    - use jit optimizations to achieve minimum execution time
+- additionally limit the logic executions somewhat
+
+### UI CHANGES
+- moved map options to the left
+- temporary added map mode button
+- increase default map zoom
 
 ---
 
 ## VERSION 1.6.4
 
 ### BUGFIXES
-
 - fixed wording for open gerudo setting
 
 ---
@@ -24,7 +36,6 @@ Application:    Track-OOT
 ## VERSION 1.6.3
 
 ### BUGFIXES
-
 - fix how states get overwritten by RATController
 
 ---
@@ -32,7 +43,6 @@ Application:    Track-OOT
 ## VERSION 1.6.2
 
 ### BUGFIXES
-
 - fixed state recieve from RATController to adapt new state structure
 
 ---
@@ -40,7 +50,6 @@ Application:    Track-OOT
 ## VERSION 1.6.1
 
 ### BUGFIXES
-
 - added getAll function back to StateStorage
 - changed RATController to adapt new state structure
 

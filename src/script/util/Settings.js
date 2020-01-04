@@ -53,36 +53,29 @@ Big thanks to:<br>
 </div>
 `;
 
-function onSettingsEvent(event) {
-    let settings = {};
+function onSettingsSubmitted(event) {
+    let rom_settings = {};
     for (let i in event.data) {
-        for (let j in event.data[i]) {
-            if (i === "settings") {
+        if (i === "settings") {
+            for (let j in event.data[i]) {
                 SettingsStorage.set(j, event.data[i][j]);
-            } else {
-                if (j === "tricks" || j === "trials" || j === "known_sequence_breaks") {
-                    let v = event.data[i][j];
-                    if (v.length > 0) {
-                        v = new Set(v.split(","));
-                        GlobalData.get("settings")[i][j].values.forEach(el => {
-                            StateStorage.write(`${i}.${el}`, v.has(el));
-                        });
-                    } else {
-                        GlobalData.get("settings")[i][j].values.forEach(el => {
-                            StateStorage.write(`${i}.${el}`, false);
-                        });
-                    }
+            }
+        } else {
+            for (let j in event.data[i]) {
+                let v = event.data[i][j];
+                if (Array.isArray(v)) {
+                    v = new Set(v);
+                    GlobalData.get(`settings/${i}/${j}`).values.forEach(el => {
+                        rom_settings[el] = v.has(el);
+                    });
                 } else {
-                    StateStorage.write(`${i}.${j}`, event.data[i][j]);
+                    rom_settings[j] = v;
                 }
             }
         }
-        if (i !== "settings") {
-            settings[i] = event.data[i];
-        }
     }
     applySettingsChoices();
-    return settings;
+    return rom_settings;
 }
 
 async function getSetting(cat, name, def) {
@@ -122,11 +115,6 @@ async function applySettingsChoices() {
     viewpane.setAttribute("data-font", await SettingsStorage.get("font", ""));
     document.querySelector("#layout-container").setAttribute("layout", await SettingsStorage.get("layout", "map-compact"));
     document.body.style.setProperty("--item-size", await SettingsStorage.get("itemsize", 40));
-    if (await SettingsStorage.get("show_hint_badges", false)) {
-        document.body.setAttribute("data-hint-badges", "true");
-    } else {
-        document.body.setAttribute("data-hint-badges", "false");
-    }
     if (await SettingsStorage.get("use_custom_logic", false)) {
         GlobalData.set("logic_patched", await SettingsStorage.get("logic", {}));
     }
@@ -163,10 +151,10 @@ class Settings {
 
         settings.addEventListener('submit', function(event) {
             BusyIndicator.busy();
-            EventBus.trigger("settings", onSettingsEvent(event));
+            EventBus.trigger("settings", onSettingsSubmitted(event));
             BusyIndicator.unbusy();
         });
-        EventBus.register("settings", onSettingsEvent);
+        EventBus.register("settings", event => StateStorage.write(event.data));
         
         settings.addEventListener('close', function(event) {
             showUpdatePopup = true;

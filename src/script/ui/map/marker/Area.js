@@ -134,15 +134,13 @@ class HTMLMarkerArea extends HTMLElement {
     }
 
     get mode() {
-        return this.getAttribute('mode');
+        return "chests,skulltulas";
     }
 
-    set mode(val) {
-        this.setAttribute('mode', val);
-    }
+    set mode(val) {}
 
     static get observedAttributes() {
-        return ['ref', 'mode'];
+        return ['ref'];
     }
 
     async update() {

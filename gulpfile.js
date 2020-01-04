@@ -82,13 +82,6 @@ function copyI18N_dev() {
         .pipe(gulp.dest(PATHS.targetDev + "/i18n"));
 }
 
-function copyI18N_dev2() {
-    return gulp.src(PATHS.appBase + "/_rework/i18n/*.lang")
-        .pipe(deleted.register(PATHS.appBase + "/_rework/i18n", PATHS.targetDev + "/_rework/i18n"))
-        .pipe(newer(PATHS.targetDev + "/_rework/i18n"))
-        .pipe(gulp.dest(PATHS.targetDev + "/_rework/i18n"));
-}
-
 function copyImg_prod() {
     return gulp.src([PATHS.appBase + "/images/**/*.svg", PATHS.appBase + "/images/**/*.png"])
         .pipe(deleted.register(PATHS.appBase + "/images", PATHS.targetProd + "/images"))
@@ -270,7 +263,6 @@ exports.buildDev = gulp.series(
         copyHTML_dev,
         copyJSON_dev,
         copyI18N_dev,
-        copyI18N_dev2,
         copyImg_dev,
         copySCSS_dev,
         copyCSS_dev,

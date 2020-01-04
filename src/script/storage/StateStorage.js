@@ -131,12 +131,28 @@ class StateStorage {
     }
 
     write(key, value) {
-        if (!state.data.hasOwnProperty(key) || state.data[key] != value) {
-            state.data[key] = value;
-            LocalStorage.set(PERSISTANCE_NAME, state);
-            LocalStorage.set(STATE_DIRTY, true);
-            EventBus.trigger("state_change", JSON.parse(JSON.stringify(state.data)));
-            updateTitle();
+        if (typeof key == "object") {
+            let changed = false;
+            for (let i in key) {
+                if (!state.data.hasOwnProperty(i) || state.data[i] != key[i]) {
+                    state.data[i] = key[i];
+                    changed = true;
+                }
+            }
+            if (changed) {
+                LocalStorage.set(PERSISTANCE_NAME, state);
+                LocalStorage.set(STATE_DIRTY, true);
+                EventBus.trigger("state_change", JSON.parse(JSON.stringify(state.data)));
+                updateTitle();
+            }
+        } else {
+            if (!state.data.hasOwnProperty(key) || state.data[key] != value) {
+                state.data[key] = value;
+                LocalStorage.set(PERSISTANCE_NAME, state);
+                LocalStorage.set(STATE_DIRTY, true);
+                EventBus.trigger("state_change", JSON.parse(JSON.stringify(state.data)));
+                updateTitle();
+            }
         }
     }
 

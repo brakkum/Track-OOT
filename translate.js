@@ -19,25 +19,25 @@ const ENTRANCE_STRUCT = {
 }
 
 // transformed database
-let translation = JSON.parse(fs.readFileSync("./src/_rework/buffer/translation.json"));
-let locations = JSON.parse(fs.readFileSync("./src/_rework/buffer/locations.json"));
-let items = JSON.parse(fs.readFileSync("./src/database/items.json"));
-let settings = JSON.parse(fs.readFileSync("./src/database/settings.json"));
-let shops = JSON.parse(fs.readFileSync("./src/database/shops.json"));
-let songs = JSON.parse(fs.readFileSync("./src/database/songs.json"));
-let logic = JSON.parse(fs.readFileSync("./src/database/logic.json"));
+let translation = JSON.parse(fs.readFileSync("./_old/buffer/translation.json"));
+let locations = JSON.parse(fs.readFileSync("./_old/buffer/locations.json"));
+let items = JSON.parse(fs.readFileSync("./_old/database/items.json"));
+let settings = JSON.parse(fs.readFileSync("./_old/database/settings.json"));
+let shops = JSON.parse(fs.readFileSync("./_old/database/shops.json"));
+let songs = JSON.parse(fs.readFileSync("./_old/database/songs.json"));
+let logic = JSON.parse(fs.readFileSync("./_old/database/logic.json"));
 
 // copied database
-fs.writeFileSync("./src/_rework/database/filter.json", fs.readFileSync("./src/database/filter.json"));
-fs.writeFileSync("./src/_rework/database/grids.json", fs.readFileSync("./src/database/grids.json"));
-fs.writeFileSync("./src/_rework/database/hints.json", fs.readFileSync("./src/database/hints.json"));
-fs.writeFileSync("./src/_rework/database/layouts.json", fs.readFileSync("./src/database/layouts.json"));
-fs.writeFileSync("./src/_rework/database/shop_items.json", fs.readFileSync("./src/database/shop_items.json"));
+fs.writeFileSync("./src/database/filter.json", fs.readFileSync("./_old/database/filter.json"));
+fs.writeFileSync("./src/database/grids.json", fs.readFileSync("./_old/database/grids.json"));
+fs.writeFileSync("./src/database/hints.json", fs.readFileSync("./_old/database/hints.json"));
+fs.writeFileSync("./src/database/layouts.json", fs.readFileSync("./_old/database/layouts.json"));
+fs.writeFileSync("./src/database/shop_items.json", fs.readFileSync("./_old/database/shop_items.json"));
 
 // language
-let lang_en = fs.readFileSync("./src/i18n/en_us.lang", "utf8");
-let lang_en2 = fs.readFileSync("./src/i18n/en_us.easy.lang", "utf8");
-let lang_de = fs.readFileSync("./src/i18n/de_de.lang", "utf8");
+let lang_en = fs.readFileSync("./_old/i18n/en_us.lang", "utf8");
+let lang_en2 = fs.readFileSync("./_old/i18n/en_us.easy.lang", "utf8");
+let lang_de = fs.readFileSync("./_old/i18n/de_de.lang", "utf8");
 
 function translateValue(val) {
     if (Array.isArray(val)) {
@@ -299,7 +299,7 @@ function recursive_logic_translation(tree) {
             return {
                 type: tree.type,
                 el: recursive_logic_translation(tree.el),
-                value: tree.value
+                value: parseInt(tree.value)||0
             };
         } else if (tree.type == "false" || tree.type == "true") {
             return {
@@ -360,17 +360,17 @@ clang_en = translate_language(lang_en);
 clang_en2 = translate_language(lang_en2);
 clang_de = translate_language(lang_de);
 
-fs.writeFileSync("./src/_rework/database/world.json", JSON.stringify(world, null, 4));
-fs.writeFileSync("./src/_rework/database/maps.json", JSON.stringify(maps, null, 4));
-fs.writeFileSync("./src/_rework/database/items.json", JSON.stringify(citems, null, 4));
-fs.writeFileSync("./src/_rework/database/settings.json", JSON.stringify(csettings, null, 4));
-fs.writeFileSync("./src/_rework/database/shops.json", JSON.stringify(cshops, null, 4));
-fs.writeFileSync("./src/_rework/database/songs.json", JSON.stringify(csongs, null, 4));
-fs.writeFileSync("./src/_rework/database/logic.json", JSON.stringify(clogic, null, 4));
+fs.writeFileSync("./src/database/world.json", JSON.stringify(world, null, 4));
+fs.writeFileSync("./src/database/maps.json", JSON.stringify(maps, null, 4));
+fs.writeFileSync("./src/database/items.json", JSON.stringify(citems, null, 4));
+fs.writeFileSync("./src/database/settings.json", JSON.stringify(csettings, null, 4));
+fs.writeFileSync("./src/database/shops.json", JSON.stringify(cshops, null, 4));
+fs.writeFileSync("./src/database/songs.json", JSON.stringify(csongs, null, 4));
+fs.writeFileSync("./src/database/logic.json", JSON.stringify(clogic, null, 4));
 
-fs.writeFileSync("./src/_rework/i18n/en_us.lang", clang_en);
-fs.writeFileSync("./src/_rework/i18n/en_us.easy.lang", clang_en2);
-fs.writeFileSync("./src/_rework/i18n/de_de.lang", clang_de);
+fs.writeFileSync("./src/i18n/en_us.lang", clang_en);
+fs.writeFileSync("./src/i18n/en_us.easy.lang", clang_en2);
+fs.writeFileSync("./src/i18n/de_de.lang", clang_de);
 
 fs.writeFileSync("./src/script/storage/converters/StateConverter1.js", `const translation = ${JSON.stringify(translation, null, 4)};
 
