@@ -118,7 +118,6 @@ class HTMLMarkerArea extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        /* event bus */
         EVENT_BINDER.register(["chest", "skulltula"], locationUpdate.bind(this));
         EVENT_BINDER.register(["state", "settings", "logic"], logicUpdate.bind(this));
         EVENT_BINDER.register("dungeontype", dungeonTypeUpdate.bind(this));

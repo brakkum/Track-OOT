@@ -27,12 +27,14 @@ import "./LiteralCustom.js";
 //import "/script/ui/logic/LogicFilter.js";
 //import "/script/ui/logic/LogicSkulltula.js";
 
-import SettingsStorage from "/script/storage/SettingsStorage.js";
+import TrackerStorage from "/script/storage/TrackerStorage.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import I18n from "/script/util/I18n.js";
 
 import EditorLogic from "./Logic.js";
 import "./Navigation.js";
+
+const SettingsStorage = new TrackerStorage('settings');
 
 const LOGIC_OPERATORS = [
     "deep-logic-false",

@@ -2,13 +2,14 @@
     starting point for application
 */
 
-import SettingsStorage from "/script/storage/SettingsStorage.js";
+import TrackerStorage from "/script/storage/TrackerStorage.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import I18n from "/script/util/I18n.js";
 import Logic from "/script/util/Logic.js";
 
 import "/deepJS/ui/Paging.js";
 
+const SettingsStorage = new TrackerStorage('settings');
 
 (async function main() {
 

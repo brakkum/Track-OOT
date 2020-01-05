@@ -21,7 +21,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.cowsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.cowsanity"
+            },
             "access": "logic.location.kokiri.links_house_cow"
         },
         "location.kokiri.saria_ocarina": {
@@ -125,7 +128,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.desert.colossus_grotto_salesman_1"
         },
         "location.desert.colossus_grotto_salesman_2": {
@@ -133,7 +139,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.desert.colossus_grotto_salesman_2"
         },
         "location.desert.colossus_hp": {
@@ -229,7 +238,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.river.zora_grotto_salesman_1"
         },
         "location.river.zora_grotto_salesman_2": {
@@ -237,7 +249,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.river.zora_grotto_salesman_2"
         },
         "location.river.zora_bean_salesman": {
@@ -245,7 +260,10 @@
             "time": "always",
             "child": true,
             "adult": false,
-            "visible": "option.beansanity",
+            "visible": {
+                "type": "number",
+                "el": "option.beansanity"
+            },
             "access": "logic.location.river.zora_bean_salesman"
         },
         "location.river.zora_tree_child": {
@@ -357,7 +375,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.cowsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.cowsanity"
+            },
             "access": "logic.location.hyrule_field.hyrule_west_grotto_cow"
         },
         "location.hyrule_field.hyrule_north_east_grotto": {
@@ -413,7 +434,10 @@
             "time": "always",
             "child": true,
             "adult": false,
-            "visible": "option.cowsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.cowsanity"
+            },
             "access": "logic.location.gerudo_valley.gerudo_river_cow"
         },
         "location.gerudo_valley.gerudo_hammer_rock": {
@@ -437,7 +461,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.gerudo_valley.gerudo_behind_carpenter_tent_grotto_salesman_1"
         },
         "location.gerudo_valley.gerudo_behind_carpenter_tent_grotto_salesman_2": {
@@ -445,7 +472,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.gerudo_valley.gerudo_behind_carpenter_tent_grotto_salesman_2"
         },
         "location.gerudo_valley.gerudo_waterfall": {
@@ -517,7 +547,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.lake.grave_grotto_salesman_1"
         },
         "location.lake.grave_grotto_salesman_2": {
@@ -525,7 +558,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.lake.grave_grotto_salesman_2"
         },
         "location.lake.grave_grotto_salesman_3": {
@@ -533,7 +569,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.lake.grave_grotto_salesman_3"
         },
         "location.lake.lab_dive": {
@@ -661,7 +700,10 @@
             "time": "always",
             "child": true,
             "adult": false,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.lonlon.grotto_deku_salesman_1"
         },
         "location.lonlon.grotto_deku_salesman_2": {
@@ -669,7 +711,10 @@
             "time": "always",
             "child": true,
             "adult": false,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.lonlon.grotto_deku_salesman_2"
         },
         "location.lonlon.grotto_deku_salesman_3": {
@@ -677,7 +722,10 @@
             "time": "always",
             "child": true,
             "adult": false,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.lonlon.grotto_deku_salesman_3"
         },
         "location.lonlon.cow_tower_1": {
@@ -685,7 +733,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.cowsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.cowsanity"
+            },
             "access": "logic.location.lonlon.cow_tower_1"
         },
         "location.lonlon.cow_tower_2": {
@@ -693,7 +744,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.cowsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.cowsanity"
+            },
             "access": "logic.location.lonlon.cow_tower_2"
         },
         "location.lonlon.cow_stables_1": {
@@ -701,7 +755,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.cowsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.cowsanity"
+            },
             "access": "logic.location.lonlon.cow_stables_1"
         },
         "location.lonlon.cow_stables_2": {
@@ -709,7 +766,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.cowsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.cowsanity"
+            },
             "access": "logic.location.lonlon.cow_stables_2"
         },
         "location.lonlon.tree_child_night": {
@@ -877,7 +937,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.woods.deku_salesman_grotto_2"
         },
         "location.woods.deku_salesman_meadow_grotto_1": {
@@ -885,7 +948,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.woods.deku_salesman_meadow_grotto_1"
         },
         "location.woods.deku_salesman_meadow_grotto_2": {
@@ -893,7 +959,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.woods.deku_salesman_meadow_grotto_2"
         },
         "location.woods.wolfos_grotto": {
@@ -941,7 +1010,10 @@
             "time": "always",
             "child": true,
             "adult": false,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.woods.deku_salesman_theater_1"
         },
         "location.woods.deku_salesman_theater_2": {
@@ -949,7 +1021,10 @@
             "time": "always",
             "child": true,
             "adult": false,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.woods.deku_salesman_theater_2"
         },
         "location.woods.deku_salesman_beanspot_child": {
@@ -1357,7 +1432,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.cowsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.cowsanity"
+            },
             "access": "logic.location.kakariko.impas_cow"
         },
         "location.kakariko.skulltula_10": {
@@ -1525,7 +1603,10 @@
             "time": "always",
             "child": true,
             "adult": false,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.mountain.crater_ladder_salesman"
         },
         "location.mountain.crater_grotto_salesman_1": {
@@ -1533,7 +1614,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.mountain.crater_grotto_salesman_1"
         },
         "location.mountain.crater_grotto_salesman_2": {
@@ -1541,7 +1625,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.mountain.crater_grotto_salesman_2"
         },
         "location.mountain.crater_grotto_salesman_3": {
@@ -1549,7 +1636,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.mountain.crater_grotto_salesman_3"
         },
         "location.mountain.grotto_cow": {
@@ -1557,7 +1647,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.cowsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.cowsanity"
+            },
             "access": "logic.location.mountain.grotto_cow"
         },
         "location.mountain.magic_bean": {
@@ -1741,7 +1834,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.goron.grotto_salesman_1"
         },
         "location.goron.grotto_salesman_2": {
@@ -1749,7 +1845,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.goron.grotto_salesman_2"
         },
         "location.goron.grotto_salesman_3": {
@@ -1757,7 +1856,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.goron.grotto_salesman_3"
         },
         "location.goron.maze_center_child": {
@@ -2653,7 +2755,10 @@
             "time": "always",
             "child": true,
             "adult": false,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.deku_mq.deku_basement_salesman"
         },
         "location.deku_mq.deku_gohma_mq": {
@@ -2733,7 +2838,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.dodongo.lobby_salesman"
         },
         "location.dodongo.east_corridor_salesman": {
@@ -2741,7 +2849,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.dodongo.east_corridor_salesman"
         },
         "location.dodongo.map": {
@@ -2781,7 +2892,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.dodongo.near_bomb_bag_salesman_1"
         },
         "location.dodongo.near_bomb_bag_salesman_2": {
@@ -2789,7 +2903,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.dodongo.near_bomb_bag_salesman_2"
         },
         "location.dodongo.end_bridge": {
@@ -2869,7 +2986,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.dodongo_mq.dodongo_main_room_salesman_1_mq"
         },
         "location.dodongo_mq.dodongo_main_room_salesman_2_mq": {
@@ -2877,7 +2997,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.dodongo_mq.dodongo_main_room_salesman_2_mq"
         },
         "location.dodongo_mq.dodongo_1f_right_mq": {
@@ -2885,7 +3008,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.dodongo_mq.dodongo_1f_right_mq"
         },
         "location.dodongo_mq.dodongo_above_stairs_mq": {
@@ -2893,7 +3019,10 @@
             "time": "always",
             "child": true,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.dodongo_mq.dodongo_above_stairs_mq"
         },
         "location.dodongo_mq.dodongo_chest_above_dodongo_mq": {
@@ -3005,7 +3134,10 @@
             "time": "always",
             "child": true,
             "adult": false,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.jabujabu.elevator_dive_salesman"
         },
         "location.jabujabu.boomerang": {
@@ -3117,7 +3249,10 @@
             "time": "always",
             "child": true,
             "adult": false,
-            "visible": "option.cowsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.cowsanity"
+            },
             "access": "logic.location.jabujabu_mq.jabujabu_cow"
         },
         "location.jabujabu_mq.jabujabu_second_room_upper_mq": {
@@ -4853,7 +4988,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.castle_ganon.under_bridge_salesman_1"
         },
         "location.castle_ganon.under_bridge_salesman_2": {
@@ -4861,7 +4999,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.castle_ganon.under_bridge_salesman_2"
         },
         "location.castle_ganon.under_bridge_salesman_3": {
@@ -4869,7 +5010,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.castle_ganon.under_bridge_salesman_3"
         },
         "location.castle_ganon.under_bridge_salesman_4": {
@@ -4877,7 +5021,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.castle_ganon.under_bridge_salesman_4"
         },
         "location.castle_ganon.forest_trial": {
@@ -5021,7 +5168,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.castle_ganon_mq.castle_ganon_under_bridge_salesman_1_mq"
         },
         "location.castle_ganon_mq.castle_ganon_under_bridge_salesman_2_mq": {
@@ -5029,7 +5179,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.castle_ganon_mq.castle_ganon_under_bridge_salesman_2_mq"
         },
         "location.castle_ganon_mq.castle_ganon_under_bridge_salesman_3_mq": {
@@ -5037,7 +5190,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.castle_ganon_mq.castle_ganon_under_bridge_salesman_3_mq"
         },
         "location.castle_ganon_mq.castle_ganon_under_bridge_salesman_4_mq": {
@@ -5045,7 +5201,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.castle_ganon_mq.castle_ganon_under_bridge_salesman_4_mq"
         },
         "location.castle_ganon_mq.castle_ganon_under_bridge_salesman_5_mq": {
@@ -5053,7 +5212,10 @@
             "time": "always",
             "child": false,
             "adult": true,
-            "visible": "option.scrubsanity",
+            "visible": {
+                "type": "number",
+                "el": "option.scrubsanity"
+            },
             "access": "logic.location.castle_ganon_mq.castle_ganon_under_bridge_salesman_5_mq"
         },
         "location.castle_ganon_mq.castle_ganon_forest_trial_first_mq": {

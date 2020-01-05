@@ -3,8 +3,10 @@ import LogicProcessor from "/deepJS/util/logic/Processor.js";
 import EventBus from "/deepJS/util/events/EventBus.js";
 import AbstractElement from "/deepJS/ui/logic/elements/AbstractElement.js";
 import GlobalData from "/script/storage/GlobalData.js";
-import SettingsStorage from "/script/storage/SettingsStorage.js";
+import TrackerStorage from "/script/storage/TrackerStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
+
+const SettingsStorage = new TrackerStorage('settings');
 
 const RANDO_LOGIC_PROCESSOR = new LogicProcessor();
 

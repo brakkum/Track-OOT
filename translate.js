@@ -90,14 +90,22 @@ function convert_locations(area, name, type, data) {
     let record = Object.assign({}, LOCATION_STRUCT);
     record.type = type.replace(/s$/, "");
     record.access = `logic.${trans}`;
+
     if (!!data.mode) {
         record.type = data.mode.slice(0, -6);
-        record.visible = `option.${data.mode}`
+        record.visible = {
+            "type": "number",
+            "el": `option.${data.mode}`
+        };
     }
     if (!!data.era) {
-        record.child = data.era=="child"||data.era=="both";
-        record.adult = data.era=="adult"||data.era=="both";
+        if (data.era == "child") {
+            record.adult = false;
+        } else if (data.era == "adult") {
+            record.child = false;
+        }
     }
+
     if (!!data.time) {
         record.time = data.time;
     }
@@ -138,10 +146,22 @@ function convert_entrance(area, name, type, data) {
     let record = Object.assign({}, ENTRANCE_STRUCT);
     record.type = data.type;
     record.access = `logic.${trans}`;
-    if (!!data.era) {
-        record.child = data.era=="child"||data.era=="both";
-        record.adult = data.era=="adult"||data.era=="both";
+
+    if (!!data.mode) {
+        record.type = data.mode.slice(0, -6);
+        record.visible = {
+            "type": "number",
+            "el": `option.${data.mode}`
+        };
     }
+    if (!!data.era) {
+        if (data.era == "child") {
+            record.adult = false;
+        } else if (data.era == "adult") {
+            record.child = false;
+        }
+    }
+
     if (!!data.time) {
         record.time = data.time;
     }
@@ -383,7 +403,7 @@ export default function(state) {
         name: state.name
     };
     for (let i of Object.keys(state.data)) {
-        res.data[translateValue(i)] = state.data[i];
+        res.data[translation[i]||i] = state.data[i];
     }
     return res;
 };`);

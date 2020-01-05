@@ -6,6 +6,7 @@ import Logger from "/deepJS/util/Logger.js";
 import Panel from "/deepJS/ui/layout/Panel.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
+import Locations from "/script/util/Locations.js";
 import "./marker/Chest.js";
 import "./marker/Skulltula.js";
 import "./marker/Gossipstone.js";
@@ -189,41 +190,7 @@ const TPL = new Template(`
     </div>
 `);
 
-const LOCATION_ELEMENTS = new Map();
-
-function generateLocations() {
-    let data = GlobalData.get("world");
-    
-    for (let i in data.locations) {
-        let el;
-        switch (data.locations[i].type) {
-            default: continue;
-            case "chest":
-            case "cow":
-            case "scrub":
-            case "bean":
-                el = document.createElement('ootrt-marker-chest');
-                el.mode = "chests";
-                break;
-            case "skulltula":
-                el = document.createElement('ootrt-marker-skulltula');
-                el.mode = "skulltulas";
-                break;
-            case "gossipstone":
-                el = document.createElement('ootrt-marker-gossipstone');
-                el.mode = "gossipstones";
-                break;
-        }
-        el.ref = i;
-        LOCATION_ELEMENTS.set(i, el);
-    }
-    
-    for (let i in data.areas) {
-        let el = document.createElement('ootrt-marker-area');
-        el.ref = i;
-        LOCATION_ELEMENTS.set(i, el);
-    }
-}
+const AREAS = new Map();
 
 let movePosX = 0;
 let movePosY = 0;
@@ -334,7 +301,13 @@ class HTMLTrackerMap extends Panel {
 
     constructor() {
         super();
-        generateLocations();
+
+        for (let i in GlobalData.get(`world/areas`)) {
+            let el = document.createElement('ootrt-marker-area');
+            el.ref = i;
+            AREAS.set(i, el);
+        }
+
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         this.shadowRoot.getElementById('location-mode').addEventListener("change", event => {
@@ -469,12 +442,25 @@ class HTMLTrackerMap extends Panel {
                 let data = GlobalData.get(`maps/${this.ref}`);
                 if (!!data) {
                     // TODO switch map/minimap background
+                    let values = new Map(Object.entries(StateStorage.getAll()));
                     data.locations.forEach(record => {
-                        let el = LOCATION_ELEMENTS.get(record.id);
-                        if (!!el.mode && el.mode.indexOf(this.mode) < 0) return;
-                        el.style.left = `${record.x}px`;
-                        el.style.top = `${record.y}px`;
-                        this.append(el);
+                        if (record.type == "area") {
+                            if (this.mode != "gossipstones") {
+                                let el = AREAS.get(record.id);
+                                el.style.left = `${record.x}px`;
+                                el.style.top = `${record.y}px`;
+                                this.append(el);
+                            }
+                        } else {
+                            let loc = Locations.get(record.id);
+                            if (loc.visible(values) && (!this.era || loc[this.era](values))) {
+                                let el = loc.mapMarker;
+                                if (!!el.mode && el.mode.indexOf(this.mode) < 0) return;
+                                el.style.left = `${record.x}px`;
+                                el.style.top = `${record.y}px`;
+                                this.append(el);
+                            }
+                        }
                     });
                 }
             }

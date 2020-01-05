@@ -1,5 +1,7 @@
-import SettingsStorage from "/script/storage/SettingsStorage.js";
+import TrackerStorage from "/script/storage/TrackerStorage.js";
 import GlobalData from "/script/storage/GlobalData.js";
+
+const SettingsStorage = new TrackerStorage('settings');
 
 // TODO
 class EditorLayout {

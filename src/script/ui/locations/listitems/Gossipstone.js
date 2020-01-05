@@ -1,5 +1,6 @@
 import GlobalData from "/script/storage/GlobalData.js";
 import Template from "/deepJS/util/Template.js";
+import AbstractElement from "/deepJS/util/logic/elements/AbstractElement.js";
 import EventBus from "/deepJS/util/events/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import StateStorage from "/script/storage/StateStorage.js";
@@ -60,12 +61,14 @@ const TPL = new Template(`
     </style>
     <div id="textarea">
         <div id="text"></div>
-        <div id="badge"></div>
+        <div id="badge">
+            <deep-icon src="images/gossipstone.svg"></deep-icon>
+            <deep-icon id="badge-time" src="images/time_both.svg"></deep-icon>
+            <deep-icon id="badge-era" src="images/era_none.svg"></deep-icon>
+        </div>
     </div>
     <div id="extra"></div>
 `);
-
-const GROUP = new WeakMap();
 
 function gossipstoneUpdate(event) {
     if (this.ref === event.data.name) {
@@ -129,6 +132,7 @@ class HTMLTrackerGossipstone extends HTMLElement {
         this.addEventListener("click", this.check);
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
+        this.visible = function (){return true};
         /* event bus */
         EVENT_BINDER.register("gossipstone", gossipstoneUpdate.bind(this));
         EVENT_BINDER.register("state", stateChanged.bind(this));
@@ -151,44 +155,32 @@ class HTMLTrackerGossipstone extends HTMLElement {
         this.setAttribute('checked', val);
     }
 
+    get era() {
+        return this.getAttribute('era');
+    }
+
+    set era(val) {
+        this.setAttribute('era', val);
+    }
+
+    get time() {
+        return this.getAttribute('time');
+    }
+
+    set time(val) {
+        this.setAttribute('time', val);
+    }
+
     static get observedAttributes() {
-        return ['ref', 'checked'];
+        return ['ref', 'checked', 'era', 'time', 'access'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    let data = GlobalData.get(`world/locations/${this.ref}`);
                     let txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = I18n.translate(this.ref);
-                    txt.classList.toggle("avail", Logic.getValue(this.access));
-
-                    this.access = data.access;
-                    this.visible = data.visible;
-
-                    this.shadowRoot.getElementById("badge").innerHTML = "";
-
-                    let el_type = document.createElement("deep-icon");
-                    el_type.src = `images/gossipstone.svg`;
-                    this.shadowRoot.getElementById("badge").append(el_type);
-
-                    let el_time = document.createElement("deep-icon");
-                    el_time.src = `images/time_${data.time || "both"}.svg`;
-                    this.shadowRoot.getElementById("badge").append(el_time);
-
-                    let el_era = document.createElement("deep-icon");
-                    if (!!data.child && !!data.adult) {
-                        el_era.src = "images/era_both.svg";
-                    } else if (!!data.child) {
-                        el_era.src = "images/era_child.svg";
-                    } else if (!!data.adult) {
-                        el_era.src = "images/era_adult.svg";
-                    } else {
-                        el_era.src = "images/era_none.svg";
-                    }
-                    this.shadowRoot.getElementById("badge").append(el_era);
-
                     this.checked = !!StateStorage.read(this.ref, false);
                     this.setValue(StateStorage.read(this.ref, {item: "0x01", location: "0x01"}));
                 }
@@ -199,6 +191,24 @@ class HTMLTrackerGossipstone extends HTMLElement {
                         let el = this.shadowRoot.getElementById("text");
                         el.classList.toggle("avail", Logic.getValue(this.access));
                     }
+                }
+            break;
+            case 'era':
+                if (oldValue != newValue) {
+                    let el_era = this.shadowRoot.getElementById("badge-era");
+                    el_era.src = `images/era_${newValue}.svg`;
+                }
+            break;
+            case 'time':
+                if (oldValue != newValue) {
+                    let el_time = this.shadowRoot.getElementById("badge-time");
+                    el_time.src = `images/time_${newValue}.svg`;
+                }
+            break;
+            case 'access':
+                if (oldValue != newValue) {
+                    let txt = this.shadowRoot.getElementById("text");
+                    txt.classList.toggle("avail", Logic.getValue(newValue));
                 }
             break;
         }

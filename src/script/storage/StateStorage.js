@@ -8,6 +8,8 @@ const PERSISTANCE_NAME = "savestate";
 const STATE_DIRTY = "state_dirty";
 const TITLE_PREFIX = "Track-OOT";
 
+const STORAGE = new TrackerStorage("savestates");
+
 let state = StateConverter.createEmptyState();
 let autosaveMax = 0;
 let autosaveTime = 0;
@@ -24,7 +26,7 @@ function sortStates(a, b) {
 }
 
 async function removeOverflowAutosaves() {
-    let saves = await TrackerStorage.StatesStorage.getAll();
+    let saves = await STORAGE.getAll();
     let keys = Object.keys(saves);
     let autoKeys = [];
     for (let key of keys) {
@@ -36,7 +38,7 @@ async function removeOverflowAutosaves() {
     while (autoKeys.length >= autosaveMax) {
         let key = autoKeys.pop();
         if (saves[key].autosave) {
-            await TrackerStorage.StatesStorage.delete(key);
+            await STORAGE.delete(key);
         }
     }
 }
@@ -47,7 +49,7 @@ async function autosave() {
         let tmp = Object.assign({}, state);
         tmp.timestamp = new Date();
         tmp.autosave = true;
-        await TrackerStorage.StatesStorage.set(`${DateUtil.convert(new Date(tmp.timestamp), "YMDhms")}_${tmp.name}`, tmp);
+        await STORAGE.set(`${DateUtil.convert(new Date(tmp.timestamp), "YMDhms")}_${tmp.name}`, tmp);
     }
     autosaveTimeout = setTimeout(autosave, autosaveTime);
 }
@@ -79,7 +81,7 @@ class StateStorage {
         state.name = name;
         state.autosave = false;
         LocalStorage.set(PERSISTANCE_NAME, state);
-        await TrackerStorage.StatesStorage.set(name, state);
+        await STORAGE.set(name, state);
         if (autosaveTimeout != null) {
             clearTimeout(autosaveTimeout);
             autosaveTimeout = setTimeout(autosave, autosaveTime);
@@ -89,8 +91,8 @@ class StateStorage {
     }
 
     async load(name) {
-        if (await TrackerStorage.StatesStorage.has(name)) {
-            state = await TrackerStorage.StatesStorage.get(name);
+        if (await STORAGE.has(name)) {
+            state = await STORAGE.get(name);
             if (!state.hasOwnProperty("data")) {
                 state = {data: state};
             }

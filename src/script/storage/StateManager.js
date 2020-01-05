@@ -1,39 +1,41 @@
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import StateConverter from "/script/storage/converters/StateConverter.js";
 
+const STORAGE = new TrackerStorage("savestates");
+
 class StateManager {
 
     async rename(current, target) {
-        let save = await TrackerStorage.StatesStorage.get(current);
+        let save = await STORAGE.get(current);
         save.autosave = false;
-        await TrackerStorage.StatesStorage.delete(current);
-        await TrackerStorage.StatesStorage.set(target, save);
+        await STORAGE.delete(current);
+        await STORAGE.set(target, save);
     }
 
     async delete(name) {
-        await TrackerStorage.StatesStorage.delete(name);
+        await STORAGE.delete(name);
     }
 
     async exists(name) {
-        return await TrackerStorage.StatesStorage.has(name);
+        return await STORAGE.has(name);
     }
     
     async getNames() {
-        return await TrackerStorage.StatesStorage.keys();
+        return await STORAGE.keys();
     }
     
     async getStates() {
-        return await TrackerStorage.StatesStorage.getAll();
+        return await STORAGE.getAll();
     }
 
     async import(data) {
         data = StateConverter.convert(data);
         data.autosave = false;
-        await TrackerStorage.StatesStorage.set(data.name, data);
+        await STORAGE.set(data.name, data);
     }
 
     async export(name) {
-        return await TrackerStorage.StatesStorage.get(name, {});
+        return await STORAGE.get(name, {});
     }
 }
 

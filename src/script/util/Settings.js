@@ -4,8 +4,10 @@ import PopOver from "/deepJS/ui/PopOver.js";
 import EventBus from "/deepJS/util/events/EventBus.js";
 import Dialog from "/deepJS/ui/Dialog.js";
 import BusyIndicator from "/script/ui/BusyIndicator.js";
-import SettingsStorage from "/script/storage/SettingsStorage.js";
+import TrackerStorage from "/script/storage/TrackerStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
+
+const SettingsStorage = new TrackerStorage('settings');
 
 import { buildSettings } from "/script/util/settings/SettingsBuilder.js";
 

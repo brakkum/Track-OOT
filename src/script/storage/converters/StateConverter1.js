@@ -970,7 +970,7 @@ export default function(state) {
         name: state.name
     };
     for (let i of Object.keys(state.data)) {
-        res.data[translateValue(i)] = state.data[i];
+        res.data[translation[i]||i] = state.data[i];
     }
     return res;
 };

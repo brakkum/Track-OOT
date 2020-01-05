@@ -25,24 +25,32 @@ let dbInstance = null;
 
 function openDB() {
     return new Promise(function(resolve, reject) {
-		let request = indexedDB.open("data");
-		request.onupgradeneeded = function() {
+		let request = indexedDB.open("data", 2);
+		request.onupgradeneeded = function(event) {
 			let db = this.result;
-			let savestateStore = db.createObjectStore("savestates", {keyPath: "name"});
-			let settingsStore = db.createObjectStore("settings");
-			for (let i of Object.keys(localStorage)) {
-				if (i.startsWith("save\0")) {
-					savestateStore.add({
-						name: i.split("\0")[1],
-						data: JSON.parse(localStorage.getItem(i))
-					});
-					localStorage.removeItem(i);
-				}
-				if (i.startsWith("settings\0")) {
-					settingsStore.add(JSON.parse(localStorage.getItem(i)), i.split("\0")[1]);
-					localStorage.removeItem(i);
+			if (event.oldVersion < 1) {
+				let savestateStore = db.createObjectStore("savestates", {keyPath: "name"});
+				let settingsStore = db.createObjectStore("settings");
+				for (let i of Object.keys(localStorage)) {
+					if (i.startsWith("save\0")) {
+						savestateStore.add({
+							name: i.split("\0")[1],
+							data: JSON.parse(localStorage.getItem(i))
+						});
+						localStorage.removeItem(i);
+					}
+					if (i.startsWith("settings\0")) {
+						settingsStore.add(JSON.parse(localStorage.getItem(i)), i.split("\0")[1]);
+						localStorage.removeItem(i);
+					}
 				}
 			}
+			if (event.oldVersion < 2) {
+				db.createObjectStore("logics");
+				db.createObjectStore("translations");
+				db.createObjectStore("layouts");
+			}
+
 		};
 		request.onsuccess = function() {
 			dbInstance = request.result;
@@ -62,7 +70,7 @@ function getStoreReadonly(name) {
 
 const NAME = new WeakMap();
 
-class TrackerStorage {
+export default class TrackerStorage {
 
 	constructor(name) {
 		NAME.set(this, name);
@@ -188,10 +196,3 @@ class TrackerStorage {
     }
 
 }
-
-let stores = {
-	StatesStorage: new TrackerStorage("savestates"),
-	SettingsStorage: new TrackerStorage("settings")
-}
-
-export default stores;

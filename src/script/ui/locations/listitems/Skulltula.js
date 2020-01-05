@@ -1,5 +1,6 @@
 import GlobalData from "/script/storage/GlobalData.js";
 import Template from "/deepJS/util/Template.js";
+import AbstractElement from "/deepJS/util/logic/elements/AbstractElement.js";
 import EventBus from "/deepJS/util/events/EventBus.js";
 import Logger from "/deepJS/util/Logger.js";
 import Helper from "/deepJS/util/Helper.js";
@@ -59,7 +60,11 @@ const TPL = new Template(`
         }
     </style>
     <div id="text"></div>
-    <div id="badge"></div>
+    <div id="badge">
+        <deep-icon src="images/skulltula.svg"></deep-icon>
+        <deep-icon id="badge-time" src="images/time_both.svg"></deep-icon>
+        <deep-icon id="badge-era" src="images/era_none.svg"></deep-icon>
+    </div>
     <deep-contextmenu id="menu">
         <div id="menu-check" class="item">Check<span class="menu-tip">(leftclick)</span></div>
         <div id="menu-uncheck" class="item">Uncheck<span class="menu-tip">(ctrl + rightclick)</span></div>
@@ -68,6 +73,13 @@ const TPL = new Template(`
         <div id="menu-logic-image" class="item">Create Logic Image</div>
     </deep-contextmenu>
 `);
+
+function fnTrue() {
+    return true;
+}
+function fnFalse() {
+    return false;
+}
 
 function locationUpdate(event) {
     if (this.ref === event.data.name && this.checked !== event.data.value) {
@@ -146,6 +158,7 @@ class HTMLTrackerSkulltula extends HTMLElement {
         this.addEventListener("contextmenu", contextMenu.bind(this));
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
+        this.visible = function (){return true};
         /* context menu */
         this.shadowRoot.getElementById("menu-check").addEventListener("click", click.bind(this));
         this.shadowRoot.getElementById("menu-uncheck").addEventListener("click", unclick.bind(this));
@@ -177,44 +190,32 @@ class HTMLTrackerSkulltula extends HTMLElement {
         this.setAttribute('checked', val);
     }
 
+    get era() {
+        return this.getAttribute('era');
+    }
+
+    set era(val) {
+        this.setAttribute('era', val);
+    }
+
+    get time() {
+        return this.getAttribute('time');
+    }
+
+    set time(val) {
+        this.setAttribute('time', val);
+    }
+
     static get observedAttributes() {
-        return ['ref', 'checked'];
+        return ['ref', 'checked', 'era', 'time', 'access'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    let data = GlobalData.get(`world/locations/${this.ref}`);
                     let txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = I18n.translate(this.ref);
-                    txt.classList.toggle("avail", Logic.getValue(this.access));
-
-                    this.access = data.access;
-                    this.visible = data.visible;
-
-                    this.shadowRoot.getElementById("badge").innerHTML = "";
-
-                    let el_type = document.createElement("deep-icon");
-                    el_type.src = `images/skulltula.svg`;
-                    this.shadowRoot.getElementById("badge").append(el_type);
-
-                    let el_time = document.createElement("deep-icon");
-                    el_time.src = `images/time_${data.time || "both"}.svg`;
-                    this.shadowRoot.getElementById("badge").append(el_time);
-
-                    let el_era = document.createElement("deep-icon");
-                    if (!!data.child && !!data.adult) {
-                        el_era.src = "images/era_both.svg";
-                    } else if (!!data.child) {
-                        el_era.src = "images/era_child.svg";
-                    } else if (!!data.adult) {
-                        el_era.src = "images/era_adult.svg";
-                    } else {
-                        el_era.src = "images/era_none.svg";
-                    }
-                    this.shadowRoot.getElementById("badge").append(el_era);
-
                     this.checked = StateStorage.read(this.ref, false);
                 }
             break;
@@ -229,6 +230,24 @@ class HTMLTrackerSkulltula extends HTMLElement {
                         name: this.ref,
                         value: newValue
                     });
+                }
+            break;
+            case 'era':
+                if (oldValue != newValue) {
+                    let el_era = this.shadowRoot.getElementById("badge-era");
+                    el_era.src = `images/era_${newValue}.svg`;
+                }
+            break;
+            case 'time':
+                if (oldValue != newValue) {
+                    let el_time = this.shadowRoot.getElementById("badge-time");
+                    el_time.src = `images/time_${newValue}.svg`;
+                }
+            break;
+            case 'access':
+                if (oldValue != newValue) {
+                    let txt = this.shadowRoot.getElementById("text");
+                    txt.classList.toggle("avail", Logic.getValue(newValue));
                 }
             break;
         }

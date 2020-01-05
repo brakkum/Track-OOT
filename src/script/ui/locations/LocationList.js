@@ -8,6 +8,7 @@ import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import I18n from "/script/util/I18n.js";
 import Logic from "/script/util/Logic.js";
+import Locations from "/script/util/Locations.js";
 import "../dungeonstate/DungeonType.js";
 import "./listitems/Chest.js";
 import "./listitems/Skulltula.js";
@@ -98,32 +99,6 @@ const TPL = new Template(`
     </div>
 `);
 
-const LOCATION_ELEMENTS = new Map();
-
-function generateLocations() {
-    let data = GlobalData.get("world/locations");
-    for (let i in data) {
-        let el;
-        switch (data[i].type) {
-            default: continue;
-            case "chest":
-            case "cow":
-            case "scrub":
-            case "bean":
-                el = document.createElement('ootrt-listchest');
-                break;
-            case "skulltula":
-                el = document.createElement('ootrt-listskulltula');
-                break;
-            case "gossipstone":
-                el = document.createElement('ootrt-listgossipstone');
-                break;
-        }
-        el.ref = i;
-        LOCATION_ELEMENTS.set(i, el);
-    }
-}
-
 function translate(value) {
     switch (value) {
         case 0b100: return "available";
@@ -164,7 +139,6 @@ class HTMLTrackerLocationList extends Panel {
 
     constructor() {
         super();
-        generateLocations();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         this.attributeChangedCallback("", "");
@@ -200,14 +174,6 @@ class HTMLTrackerLocationList extends Panel {
         this.setAttribute('ref', val);
     }
 
-    get mode() {
-        return this.getAttribute('mode');
-    }
-
-    set mode(val) {
-        this.setAttribute('mode', val);
-    }
-
     get era() {
         return this.getAttribute('era');
     }
@@ -217,7 +183,7 @@ class HTMLTrackerLocationList extends Panel {
     }
 
     static get observedAttributes() {
-        return ['ref', 'mode', 'era'];
+        return ['ref', 'era'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -247,6 +213,16 @@ class HTMLTrackerLocationList extends Panel {
                 bck.addEventListener("click", () => this.ref = "");
                 cnt.append(bck);
                 let data = GlobalData.get(`world/areas/${this.ref}`);
+                if (!!data.locations) {
+                    let values = new Map(Object.entries(StateStorage.getAll()));
+                    for (let i = 0; i < data.locations.length; ++i) {
+                        let loc = Locations.get(data.locations[i]);
+                        if (loc.visible(values) && (!this.era || loc[this.era](values))) {
+                            cnt.append(loc.listItem);
+                        }
+                    }
+                }
+
                 /*let dType = StateStorage.read(`dungeonTypes.${this.ref}`, data.hasmq ? "n" : "v");
                 if (data.hasmq) {
                     locationType.ref = this.ref;
@@ -270,11 +246,7 @@ class HTMLTrackerLocationList extends Panel {
                     cnt.append(mq);
                 } else {  */  
                     // if (!!this.mode && this.mode !== "") {
-                        if (!!data.locations) {
-                            for (let i = 0; i < data.locations.length; ++i) {
-                                cnt.append(LOCATION_ELEMENTS.get(data.locations[i]));
-                            }
-                        }
+                        // HERE
                     //  }
                 // }
             }

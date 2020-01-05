@@ -35,6 +35,11 @@
                 "flat"
             ]
         },
+        "edit_layouts": {
+            "type": "-button",
+            "text": "button_edit_layouts",
+            "view": "layouteditor"
+        },
         "item_size": {
             "type": "-range",
             "min": 32,
