@@ -216,7 +216,7 @@ class HTMLTrackerLocationList extends Panel {
                     }
                 } else {
                     let loc = Locations.get(record.id);
-                    if (loc.visible(values)) {
+                    if (loc.visible(values) && (!this.era || loc[this.era](values))) {
                         let el = loc.listItem;
                         if (!!el.mode && el.mode.indexOf(this.mode) < 0) return;
                         cnt.append(el);
