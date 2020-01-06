@@ -29,33 +29,41 @@ const TPL = new Template(`
         :host(:hover) {
             background-color: var(--main-hover-color, #ffffff32);
         }
+        #value,
         .textarea {
             display: flex;
             align-items: center;
             width: 100%;
             height: 30px;
         }
+        #value:empty,
         .textarea:empty {
             display: none;
         }
         #text {
             display: flex;
             flex: 1;
-            color: #ffffff;
+            color: var(--location-status-unavailable-color, #000000);
             align-items: center;
             -moz-user-select: none;
             user-select: none;
         }
-        #text.opened {
-            color: var(--location-status-opened-color, #000000);
-        }
-        #text.available {
+        #text.avail {
             color: var(--location-status-available-color, #000000);
         }
-        #text.unavailable {
+        :host([value]:not([value=""])) #text {
+            color: var(--location-status-opened-color, #000000);
+        }
+        #value.opened {
+            color: var(--location-status-opened-color, #000000);
+        }
+        #value.available {
+            color: var(--location-status-available-color, #000000);
+        }
+        #value.unavailable {
             color: var(--location-status-unavailable-color, #000000);
         }
-        #text.possible {
+        #value.possible {
             color: var(--location-status-possible-color, #000000);
         }
         #badge {
@@ -87,7 +95,8 @@ const TPL = new Template(`
             <deep-icon id="badge-era" src="images/era_none.svg"></deep-icon>
         </div>
     </div>
-    <div id="value" class="textarea"></div>
+    <div id="value">
+    </div>
 `);
 
 function translate(value) {
@@ -154,12 +163,12 @@ class HTMLTrackerChest extends HTMLElement {
     async update() {
         if (!!this.value) {
             let val = await Logic.checkLogicList(this.value);
-            this.shadowRoot.getElementById("text").className = translate(val);
-        } else if (!!this.ref) {
-            let val = await Logic.checkLogicList(this.ref);
-            this.shadowRoot.getElementById("text").className = translate(val);
-        } else {
+            this.shadowRoot.getElementById("value").className = translate(val);
             this.shadowRoot.getElementById("text").className = "unavailable";
+        } else if (!!this.ref) {
+            this.shadowRoot.getElementById("text").classList.toggle("avail", !!Logic.getValue(this.access));
+        } else {
+            this.shadowRoot.getElementById("text").classList.remove("avail");
         }
     }
 
@@ -195,8 +204,16 @@ class HTMLTrackerChest extends HTMLElement {
         this.setAttribute('time', val);
     }
 
+    get access() {
+        return this.getAttribute('access');
+    }
+
+    set access(val) {
+        this.setAttribute('access', val);
+    }
+
     static get observedAttributes() {
-        return ['ref', 'value', 'era', 'time'];
+        return ['ref', 'value', 'era', 'time', 'access'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -231,6 +248,11 @@ class HTMLTrackerChest extends HTMLElement {
                     el_time.src = `images/time_${newValue}.svg`;
                 }
             break;
+            case 'access':
+                if (oldValue != newValue) {
+                    this.update();
+                }
+            break;
         }
     }
 
@@ -240,7 +262,7 @@ customElements.define('ootrt-list-entrance', HTMLTrackerChest);
 
 function entranceDialog(ref) {
     return new Promise(resolve => {
-        let value = StateStorage.read(`gossipstones.${ref}`, {item: "0x01", location: "0x01"});
+        let value = StateStorage.read(`entrance.${ref}`, "");
         let type = GlobalData.get(`world/entrances/${ref}/type`);
         let data = GlobalData.get('world/areas');
     
@@ -259,7 +281,7 @@ function entranceDialog(ref) {
             }
         }
         slt.style.width = "200px";
-        slt.value = value.location;
+        slt.value = value;
         loc.append(slt);
         
         let d = new Dialog({title: I18n.translate(ref), submit: true, cancel: true});

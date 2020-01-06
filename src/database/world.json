@@ -5340,6 +5340,23 @@
         }
     },
     "areas": {
+        "area.overworld": {
+            "type": "",
+            "entrances": [
+                "entrance.deku",
+                "entrance.dodongo",
+                "entrance.jabujabu",
+                "entrance.temple_forest",
+                "entrance.temple_fire",
+                "entrance.temple_water",
+                "entrance.temple_shadow",
+                "entrance.temple_spirit",
+                "entrance.well",
+                "entrance.ice_cavern",
+                "entrance.training_grounds",
+                "entrance.castle_ganon"
+            ]
+        },
         "area.kokiri": {
             "type": "area",
             "locations": [
@@ -5362,8 +5379,7 @@
                 "entrance.kokiri.saria_house",
                 "entrance.kokiri.twins_house",
                 "entrance.kokiri.shop",
-                "entrance.kokiri.storm_grotto",
-                "entrance.deku"
+                "entrance.kokiri.storm_grotto"
             ]
         },
         "area.desert": {
@@ -5383,8 +5399,7 @@
             ],
             "entrances": [
                 "entrance.desert.fairy_colossus",
-                "entrance.desert.strength_grotto",
-                "entrance.temple_spirit"
+                "entrance.desert.strength_grotto"
             ]
         },
         "area.river": {
@@ -5485,8 +5500,7 @@
             "entrances": [
                 "entrance.lake.laboratory",
                 "entrance.lake.fishing",
-                "entrance.lake.grave_grotto",
-                "entrance.temple_water"
+                "entrance.lake.grave_grotto"
             ]
         },
         "area.lonlon": {
@@ -5529,8 +5543,7 @@
                 "location.gerudo.horseback_archery_target_adult_night"
             ],
             "entrances": [
-                "entrance.gerudo.storms_grotto",
-                "entrance.training_grounds"
+                "entrance.gerudo.storms_grotto"
             ]
         },
         "area.woods": {
@@ -5568,8 +5581,7 @@
                 "entrance.woods.near_meadow_grotto",
                 "entrance.woods.wolfos_grotto",
                 "entrance.woods.fairy_grotto",
-                "entrance.woods.storms_grotto",
-                "entrance.temple_forest"
+                "entrance.woods.storms_grotto"
             ]
         },
         "area.castle_town": {
@@ -5613,8 +5625,7 @@
                 "entrance.castle_town.back_house",
                 "entrance.castle_town.fairy_young",
                 "entrance.castle_town.fairy_adult",
-                "entrance.castle_town.storm_grotto",
-                "entrance.castle_ganon"
+                "entrance.castle_town.storm_grotto"
             ]
         },
         "area.kakariko": {
@@ -5667,9 +5678,7 @@
                 "entrance.kakariko.carpenter_house",
                 "entrance.kakariko.dampes_hut",
                 "entrance.kakariko.open_grotto",
-                "entrance.kakariko.redead_grotto",
-                "entrance.well",
-                "entrance.temple_shadow"
+                "entrance.kakariko.redead_grotto"
             ]
         },
         "area.mountain": {
@@ -5707,9 +5716,7 @@
                 "entrance.mountain.bomb_grotto",
                 "entrance.mountain.storms_grotto",
                 "entrance.mountain.crater_hammer_grotto",
-                "entrance.mountain.crater_bomb_grotto",
-                "entrance.dodongo",
-                "entrance.temple_fire"
+                "entrance.mountain.crater_bomb_grotto"
             ]
         },
         "area.goron": {
@@ -5755,9 +5762,7 @@
             "entrances": [
                 "entrance.zoras.shop",
                 "entrance.zoras.fairy",
-                "entrance.zoras.storms_grotto",
-                "entrance.jabujabu",
-                "entrance.ice_cavern"
+                "entrance.zoras.storms_grotto"
             ]
         },
         "area.well": {
@@ -5781,11 +5786,7 @@
                 "location.well.center_locked_room_child",
                 "location.well.locked_pits_child"
             ],
-            "entrances": []
-        },
-        "area.well_mq": {
-            "type": "dungeon",
-            "locations": [
+            "locations_mq": [
                 "location.well_mq.well_compass_chest_mq",
                 "location.well_mq.well_map_chest_mq",
                 "location.well_mq.well_lens_chest_mq",
@@ -5794,8 +5795,7 @@
                 "location.well_mq.well_west_inner_mq",
                 "location.well_mq.well_basement_mq",
                 "location.well_mq.well_coffin_room_mq"
-            ],
-            "entrances": []
+            ]
         },
         "area.ice_cavern": {
             "type": "dungeon",
@@ -5809,11 +5809,7 @@
                 "location.ice_cavern.block_puzzle_adult",
                 "location.ice_cavern.compass_room_adult"
             ],
-            "entrances": []
-        },
-        "area.ice_cavern_mq": {
-            "type": "dungeon",
-            "locations": [
+            "locations_mq": [
                 "location.ice_cavern_mq.ice_cavern_map_mq",
                 "location.ice_cavern_mq.ice_cavern_compass_mq",
                 "location.ice_cavern_mq.ice_cavern_hp_mq",
@@ -5822,8 +5818,7 @@
                 "location.ice_cavern_mq.ice_cavern_hp_room",
                 "location.ice_cavern_mq.ice_cavern_scarecrow",
                 "location.ice_cavern_mq.ice_cavern_under_ice_block"
-            ],
-            "entrances": []
+            ]
         },
         "area.training_grounds": {
             "type": "dungeon",
@@ -5851,11 +5846,7 @@
                 "location.training_grounds.heavy_block_3",
                 "location.training_grounds.heavy_block_4"
             ],
-            "entrances": []
-        },
-        "area.gerudo_training_mq": {
-            "type": "dungeon",
-            "locations": [
+            "locations_mq": [
                 "location.training_grounds_mq.gerudo_training_lobby_left_mq",
                 "location.training_grounds_mq.gerudo_training_lobby_right_mq",
                 "location.training_grounds_mq.gerudo_training_hidden_ceiling_mq",
@@ -5873,8 +5864,7 @@
                 "location.training_grounds_mq.gerudo_training_maze_right_central_mq",
                 "location.training_grounds_mq.gerudo_training_maze_right_side_mq",
                 "location.training_grounds_mq.gerudo_training_ice_arrows_mq"
-            ],
-            "entrances": []
+            ]
         },
         "area.deku": {
             "type": "dungeon",
@@ -5891,11 +5881,7 @@
                 "location.deku.basement_metal_gate_child",
                 "location.deku.bombable_behind_web_child"
             ],
-            "entrances": []
-        },
-        "area.deku_mq": {
-            "type": "dungeon",
-            "locations": [
+            "locations_mq": [
                 "location.deku_mq.deku_lobby_mq",
                 "location.deku_mq.deku_slingshot_mq",
                 "location.deku_mq.deku_slingshot_back_mq",
@@ -5909,8 +5895,7 @@
                 "location.deku_mq.deku_2f_compass_side_child_mq",
                 "location.deku_mq.deku_basement_grave_ceiling_child_mq",
                 "location.deku_mq.deku_basement_back_room_child_mq"
-            ],
-            "entrances": []
+            ]
         },
         "area.dodongo": {
             "type": "dungeon",
@@ -5933,11 +5918,7 @@
                 "location.dodongo.near_boss_bombable",
                 "location.dodongo.gossip_dodongo"
             ],
-            "entrances": []
-        },
-        "area.dodongo_mq": {
-            "type": "dungeon",
-            "locations": [
+            "locations_mq": [
                 "location.dodongo_mq.dodongo_map_mq",
                 "location.dodongo_mq.dodongo_compass_mq",
                 "location.dodongo_mq.dodongo_gohma_larva_room_mq",
@@ -5955,8 +5936,7 @@
                 "location.dodongo_mq.dodongo_upper_lizalfos_room_mq",
                 "location.dodongo_mq.dodongo_scrub_poe_room_mq",
                 "location.dodongo_mq.dodongo_back_area_mq"
-            ],
-            "entrances": []
+            ]
         },
         "area.jabujabu": {
             "type": "dungeon",
@@ -5971,11 +5951,7 @@
                 "location.jabujabu.b1_rising_water_child",
                 "location.jabujabu.1f_near_boss_child"
             ],
-            "entrances": []
-        },
-        "area.jabujabu_mq": {
-            "type": "dungeon",
-            "locations": [
+            "locations_mq": [
                 "location.jabujabu_mq.jabujabu_map_mq",
                 "location.jabujabu_mq.jabujabu_entry_side_chest_mq",
                 "location.jabujabu_mq.jabujabu_second_room_lower_chest_mq",
@@ -5993,8 +5969,7 @@
                 "location.jabujabu_mq.jabujabu_electric_worm_room_mq",
                 "location.jabujabu_mq.jabujabu_near_boss_gs_mq",
                 "location.jabujabu_mq.jabujabu_invisible_enemies_room_mq"
-            ],
-            "entrances": []
+            ]
         },
         "area.temple_forest": {
             "type": "dungeon",
@@ -6019,11 +5994,7 @@
                 "location.temple_forest.outside_hookshot_adult",
                 "location.temple_forest.near_boss_adult"
             ],
-            "entrances": []
-        },
-        "area.temple_forest_mq": {
-            "type": "dungeon",
-            "locations": [
+            "locations_mq": [
                 "location.temple_forest_mq.temple_forest_entrance_mq",
                 "location.temple_forest_mq.temple_forest_behind_lobby_mq",
                 "location.temple_forest_mq.temple_forest_boss_key_mq",
@@ -6042,8 +6013,7 @@
                 "location.temple_forest_mq.temple_forest_outdoor_west_adult_mq",
                 "location.temple_forest_mq.temple_forest_outdoor_east_adult_mq",
                 "location.temple_forest_mq.temple_forest_well_adult_mq"
-            ],
-            "entrances": []
+            ]
         },
         "area.temple_fire": {
             "type": "dungeon",
@@ -6069,11 +6039,7 @@
                 "location.temple_fire.boulder_maze_scarecrow2_adult",
                 "location.temple_fire.near_boss_key_adult"
             ],
-            "entrances": []
-        },
-        "area.temple_fire_mq": {
-            "type": "dungeon",
-            "locations": [
+            "locations_mq": [
                 "location.temple_fire_mq.temple_fire_chest_near_boss_mq",
                 "location.temple_fire_mq.temple_fire_megaton_hammer_mq",
                 "location.temple_fire_mq.temple_fire_map_mq",
@@ -6092,8 +6058,7 @@
                 "location.temple_fire_mq.temple_fire_fire_wall_maze_side_adult_mq",
                 "location.temple_fire_mq.temple_fire_above_fire_wall_maze_adult_mq",
                 "location.temple_fire_mq.temple_fire_fire_wall_maze_center_adult_mq"
-            ],
-            "entrances": []
+            ]
         },
         "area.temple_water": {
             "type": "dungeon",
@@ -6115,11 +6080,7 @@
                 "location.temple_water.center_pillar_adult",
                 "location.temple_water.river_adult"
             ],
-            "entrances": []
-        },
-        "area.temple_water_mq": {
-            "type": "dungeon",
-            "locations": [
+            "locations_mq": [
                 "location.temple_water_mq.temple_water_map_mq",
                 "location.temple_water_mq.temple_water_central_pillar_mq",
                 "location.temple_water_mq.temple_water_compass_mq",
@@ -6132,8 +6093,7 @@
                 "location.temple_water_mq.temple_water_serpent_river_adult_mq",
                 "location.temple_water_mq.temple_water_lizalfos_hallway_adult_mq",
                 "location.temple_water_mq.temple_water_before_upper_water_switch_mq"
-            ],
-            "entrances": []
+            ]
         },
         "area.temple_shadow": {
             "type": "dungeon",
@@ -6162,11 +6122,7 @@
                 "location.temple_shadow.boat_adult",
                 "location.temple_shadow.behind_giant_pots_adult"
             ],
-            "entrances": []
-        },
-        "area.temple_shadow_mq": {
-            "type": "dungeon",
-            "locations": [
+            "locations_mq": [
                 "location.temple_shadow_mq.temple_shadow_compass_mq",
                 "location.temple_shadow_mq.temple_shadow_boots_mq",
                 "location.temple_shadow_mq.temple_shadow_map_mq",
@@ -6193,8 +6149,7 @@
                 "location.temple_shadow_mq.temple_shadow_after_wind_adult_mq",
                 "location.temple_shadow_mq.temple_shadow_after_ship_adult_mq",
                 "location.temple_shadow_mq.temple_shadow_near_boss_adult_mq"
-            ],
-            "entrances": []
+            ]
         },
         "area.temple_spirit": {
             "type": "dungeon",
@@ -6225,11 +6180,7 @@
                 "location.temple_spirit.rolling_boulders_time_block_adult",
                 "location.temple_spirit.coloss_room_adult"
             ],
-            "entrances": []
-        },
-        "area.temple_spirit_mq": {
-            "type": "dungeon",
-            "locations": [
+            "locations_mq": [
                 "location.temple_spirit_mq.temple_spirit_entrance_front_left_mq",
                 "location.temple_spirit_mq.temple_spirit_entrance_back_left_mq",
                 "location.temple_spirit_mq.temple_spirit_entrance_back_right_mq",
@@ -6258,8 +6209,7 @@
                 "location.temple_spirit_mq.temple_spirit_lower_adult_right",
                 "location.temple_spirit_mq.temple_spirit_iron_knuckles_north",
                 "location.temple_spirit_mq.temple_spirit_iron_knuckles_west"
-            ],
-            "entrances": []
+            ]
         },
         "area.castle_ganon": {
             "type": "dungeon",
@@ -6286,11 +6236,7 @@
                 "location.castle_ganon.boss_key",
                 "location.castle_ganon.boss"
             ],
-            "entrances": []
-        },
-        "area.castle_ganon_mq": {
-            "type": "dungeon",
-            "locations": [
+            "locations_mq": [
                 "location.castle_ganon_mq.castle_ganon_under_bridge_salesman_1_mq",
                 "location.castle_ganon_mq.castle_ganon_under_bridge_salesman_2_mq",
                 "location.castle_ganon_mq.castle_ganon_under_bridge_salesman_3_mq",
@@ -6311,8 +6257,7 @@
                 "location.castle_ganon_mq.castle_ganon_light_trial_lullaby_mq",
                 "location.castle_ganon_mq.castle_ganon_boss_key_mq",
                 "location.castle_ganon_mq.castle_ganon_boss_mq"
-            ],
-            "entrances": []
+            ]
         }
     },
     "entrances": {
@@ -6368,7 +6313,7 @@
             "type": "dungeon",
             "time": "always",
             "child": true,
-            "adult": true,
+            "adult": false,
             "visible": true,
             "access": "logic.entrance.deku"
         },
@@ -6535,7 +6480,7 @@
         "entrance.temple_water": {
             "type": "dungeon",
             "time": "always",
-            "child": true,
+            "child": false,
             "adult": true,
             "visible": true,
             "access": "logic.entrance.temple_water"
@@ -6583,7 +6528,7 @@
         "entrance.training_grounds": {
             "type": "dungeon",
             "time": "always",
-            "child": true,
+            "child": false,
             "adult": true,
             "visible": true,
             "access": "logic.entrance.training_grounds"
@@ -6639,7 +6584,7 @@
         "entrance.temple_forest": {
             "type": "dungeon",
             "time": "always",
-            "child": true,
+            "child": false,
             "adult": true,
             "visible": true,
             "access": "logic.entrance.temple_forest"
@@ -6759,7 +6704,7 @@
         "entrance.castle_ganon": {
             "type": "dungeon",
             "time": "always",
-            "child": true,
+            "child": false,
             "adult": true,
             "visible": true,
             "access": "logic.entrance.castle_ganon"
@@ -6864,7 +6809,7 @@
             "type": "dungeon",
             "time": "always",
             "child": true,
-            "adult": true,
+            "adult": false,
             "visible": true,
             "access": "logic.entrance.well"
         },
@@ -6935,7 +6880,7 @@
         "entrance.temple_fire": {
             "type": "dungeon",
             "time": "always",
-            "child": true,
+            "child": false,
             "adult": true,
             "visible": true,
             "access": "logic.entrance.temple_fire"
@@ -6984,14 +6929,14 @@
             "type": "dungeon",
             "time": "always",
             "child": true,
-            "adult": true,
+            "adult": false,
             "visible": true,
             "access": "logic.entrance.jabujabu"
         },
         "entrance.ice_cavern": {
             "type": "dungeon",
             "time": "always",
-            "child": true,
+            "child": false,
             "adult": true,
             "visible": true,
             "access": "logic.entrance.ice_cavern"

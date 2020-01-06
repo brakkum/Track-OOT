@@ -74,36 +74,34 @@ const TPL = new Template(`
         #map-settings.active {
             bottom: 0;
         }
-        #toggle-button,
-        #mode-button,
-        #era-button {
+        .buttons {
             position: absolute;
+            display: flex;
+            left: 0;
+            top: -42px;
+            height: 40px;
+        }
+        .buttons > .button {
             display: flex;
             align-items: center;
             justify-content: center;
-            left: 0;
-            top: -42px;
             width: 40px;
             height: 40px;
+            margin-right: 8px;
             font-size: 30px;
             font-weight: bold;
             color: var(--navigation-text-color, #000000);
             background: var(--navigation-background-color, #ffffff);
-            cursor: pointer;
         }
-        #mode-button {
-            left: 50px;
-        }
-        #era-button {
-            left: 100px;
-        }
-        #location-mode,
-        #location-era {
+        .buttons > .button > deep-switchbutton {
             width: 36px;
             height: 36px;
             padding: 4px;
             background-color: black;
             border-radius: 10px;
+        }
+        #toggle-button {
+            cursor: pointer;
         }
         .map-options {
             display: flex;
@@ -163,20 +161,29 @@ const TPL = new Template(`
         <slot id="map" style="--map-zoom: ${ZOOM_DEF};">
         </slot>
         <div id="map-settings">
-            <div id="toggle-button">⇑</div>
-            <div id="mode-button">
-                <deep-switchbutton value="chests" id="location-mode">
-                    <deep-option value="chests" style="background-image: url('images/chest.svg')"></deep-option>
-                    <deep-option value="skulltulas" style="background-image: url('images/skulltula.svg')"></deep-option>
-                    <deep-option value="gossipstones" style="background-image: url('images/gossipstone.svg')"></deep-option>
-                </deep-switchbutton>
-            </div>
-            <div id="era-button">
-                <deep-switchbutton value="" id="location-era">
-                    <deep-option value="" style="background-image: url('images/era_both.svg')"></deep-option>
-                    <deep-option value="child" style="background-image: url('images/era_child.svg')"></deep-option>
-                    <deep-option value="adult" style="background-image: url('images/era_adult.svg')"></deep-option>
-                </deep-switchbutton>
+            <div class="buttons">
+                <div id="toggle-button" class="button">⇑</div>
+                <div class="button">
+                    <deep-switchbutton value="chests" id="location-mode">
+                        <deep-option value="chests" style="background-image: url('images/chest.svg')"></deep-option>
+                        <deep-option value="skulltulas" style="background-image: url('images/skulltula.svg')"></deep-option>
+                        <deep-option value="gossipstones" style="background-image: url('images/gossipstone.svg')"></deep-option>
+                    </deep-switchbutton>
+                </div>
+                <div class="button">
+                    <deep-switchbutton value="v" id="location-version" readonly="true">
+                        <deep-option value="n" style="background-image: url('images/type_undefined.svg')"></deep-option>
+                        <deep-option value="v" style="background-image: url('images/type_vanilla.svg')"></deep-option>
+                        <deep-option value="mq" style="background-image: url('images/type_masterquest.svg')"></deep-option>
+                    </deep-switchbutton>
+                </div>
+                <div class="button">
+                    <deep-switchbutton value="" id="location-era">
+                        <deep-option value="" style="background-image: url('images/era_both.svg')"></deep-option>
+                        <deep-option value="child" style="background-image: url('images/era_child.svg')"></deep-option>
+                        <deep-option value="adult" style="background-image: url('images/era_adult.svg')"></deep-option>
+                    </deep-switchbutton>
+                </div>
             </div>
             <div class="map-options">
                 <span class="slidetext">- / +</span>

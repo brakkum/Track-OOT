@@ -1,11 +1,8 @@
 import FileSystem from "/deepJS/util/FileSystem.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
-import EditorLogic from "./Logic.js";
 
-const LogicStorage = new TrackerStorage('logic');
-
-// TODO patching logic
+const LogicsStorage = new TrackerStorage('logics');
 
 document.getElementById('editor-menu-file-savelogic').onclick = downloadPatchedLogic;
 document.getElementById('editor-menu-file-savepatch').onclick = downloadPatch;
@@ -19,16 +16,24 @@ let workingarea = document.getElementById('workingarea');
 async function patchLogic(logic) {
     for (let i in logic) {
         if (logic[i] != null) {
-            await LogicStorage.set(i, logic[i]);
+            await LogicsStorage.set(i, logic[i]);
         } else {
-            await LogicStorage.delete(i);
+            await LogicsStorage.delete(i);
         }
     }
 }
 
+async function getLogic(ref) {
+    let logic = (await LogicsStorage.get(ref, null));
+    if (!!logic) {
+        return logic;
+    }
+    return GlobalData.get(`logic/${ref}`);
+}
+
 async function downloadPatchedLogic() {
     let logic = JSON.parse(JSON.stringify(GlobalData.get("logic")));
-    let logic_patched = await LogicStorage.getAll();
+    let logic_patched = await LogicsStorage.getAll();
     for (let i in logic_patched) {
         if (!logic[i]) {
             logic[i] = logic_patched[i];
@@ -42,25 +47,23 @@ async function downloadPatchedLogic() {
 }
 
 async function downloadPatch() {
-    let logic = await LogicStorage.getAll();
+    let logic = await LogicsStorage.getAll();
     FileSystem.save(JSON.stringify(logic, " ", 4), `logic.${(new Date).valueOf()}.json`);
 }
 
 async function uploadPatch() {
     let res = await FileSystem.load(".json");
     if (!!res && !!res.data) {
-        EditorLogic.patch(res.data);
-        let type = workingarea.dataset.logicType;
+        patchLogic(res.data);
         let key = workingarea.dataset.logicKey;
-        workingarea.loadLogic(EditorLogic.get(type, key));
+        workingarea.loadLogic(await getLogic(key));
     }
 }
 
 async function removePatch() {
-    EditorLogic.clear();
-    let type = workingarea.dataset.logicType;
+    await LogicsStorage.clear();
     let key = workingarea.dataset.logicKey;
-    workingarea.loadLogic(EditorLogic.get(type, key));
+    workingarea.loadLogic(await getLogic(key));
 }
 
 function exitEditor() {

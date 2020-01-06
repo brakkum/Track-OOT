@@ -10,13 +10,6 @@ const ADULT = new WeakMap();
 const LIST_ITEMS = new WeakMap();
 const MAP_MARKERS = new WeakMap();
 
-function fnTrue() {
-    return true;
-}
-function fnFalse() {
-    return false;
-}
-
 class Area {
 
     constructor(ref, data) {
@@ -31,15 +24,15 @@ class Area {
         MAP_MARKERS.set(this, mapItem);
     }
 
-    visible(data) {
+    visible() {
         return true;
     }
 
-    child(data) {
+    child() {
         return true;
     }
 
-    adult(data) {
+    adult() {
         return true;
     }
 
@@ -60,7 +53,9 @@ class Areas {
     constructor() {
         let data = GlobalData.get(`world/areas`);
         for (let i in data) {
-            AREAS.set(i, new Area(i, data[i]));
+            if (data[i].type != "") {
+                AREAS.set(i, new Area(i, data[i]));
+            }
         }
     }
 

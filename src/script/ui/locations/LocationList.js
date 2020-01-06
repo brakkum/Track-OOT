@@ -11,7 +11,6 @@ import Logic from "/script/util/Logic.js";
 import Areas from "/script/util/world/Areas.js";
 import Entrances from "/script/util/world/Entrances.js";
 import Locations from "/script/util/world/Locations.js";
-import "../dungeonstate/DungeonType.js";
 import "./listitems/Area.js";
 import "./listitems/Entrance.js";
 import "./listitems/Chest.js";
@@ -24,7 +23,6 @@ const TPL = new Template(`
         * {
             position: relative;
             box-sizing: border-box;
-            cursor: default;
         }
         :host {
             display: inline-flex;
@@ -49,11 +47,11 @@ const TPL = new Template(`
             justify-content: flex-start;
             align-items: center;
         }
-        #location-era {
-            width: 34px;
-            height: 34px;
-            padding: 2px;
-            margin-left: 5px;
+        #title > deep-switchbutton {
+            width: 38px;
+            height: 38px;
+            padding: 4px;
+            margin-left: 8px;
             border: solid 2px var(--navigation-background-color, #ffffff);
             border-radius: 10px;
         }
@@ -99,8 +97,11 @@ const TPL = new Template(`
     </style>
     <div id="title">
         <div id="title-text">${I18n.translate("hyrule")}</div>
-        <ootrt-dungeontype id="location-type">
-        </ootrt-dungeontype>
+        <deep-switchbutton value="v" id="location-version" readonly="true">
+            <deep-option value="n" style="background-image: url('images/type_undefined.svg')"></deep-option>
+            <deep-option value="v" style="background-image: url('images/type_vanilla.svg')"></deep-option>
+            <deep-option value="mq" style="background-image: url('images/type_masterquest.svg')"></deep-option>
+        </deep-switchbutton>
         <deep-switchbutton value="" id="location-era">
             <deep-option value="" style="background-image: url('images/era_both.svg')"></deep-option>
             <deep-option value="child" style="background-image: url('images/era_child.svg')"></deep-option>

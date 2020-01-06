@@ -117,9 +117,6 @@ async function applySettingsChoices() {
     viewpane.setAttribute("data-font", await SettingsStorage.get("font", ""));
     document.querySelector("#layout-container").setAttribute("layout", await SettingsStorage.get("layout", "map-compact"));
     document.body.style.setProperty("--item-size", await SettingsStorage.get("itemsize", 40));
-    if (await SettingsStorage.get("use_custom_logic", false)) {
-        GlobalData.set("logic_patched", await SettingsStorage.get("logic", {}));
-    }
     let autosaveMax = await SettingsStorage.get("autosave_amount", 1);
     let autosaveTime = await SettingsStorage.get("autosave_time", 0);
     StateStorage.setAutosave(autosaveTime, autosaveMax);

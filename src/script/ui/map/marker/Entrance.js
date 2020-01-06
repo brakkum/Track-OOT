@@ -62,11 +62,13 @@ const TPL = new Template(`
             white-space: nowrap;
             font-size: 30px;
         }
+        #value,
         .textarea {
             display: flex;
             align-items: center;
             height: 46px;
         }
+        #value:empty,
         .textarea:empty {
             display: none;
         }
@@ -102,7 +104,7 @@ const TPL = new Template(`
                 <deep-icon id="badge-era" src="images/era_none.svg"></deep-icon>
             </div>
         </div>
-        <div id="value" class="textarea"></div>
+        <div id="value"></div>
     </deep-tooltip>
 `);
 
@@ -177,14 +179,14 @@ class HTMLMarkerArea extends HTMLElement {
                 this.shadowRoot.getElementById("marker").innerHTML = "";
             }
         } else if (!!this.ref) {
-            let val = await Logic.checkLogicList(this.ref);
-            this.shadowRoot.getElementById("marker").className = translate(val);
-            if (val > 0b001) {
-                this.shadowRoot.getElementById("marker").innerHTML = await Logic.getAccessibleNumber(this.ref);
+            this.shadowRoot.getElementById("marker").innerHTML = "";
+            if (Logic.getValue(this.access)) {
+                this.shadowRoot.getElementById("marker").className = "available";
             } else {
-                this.shadowRoot.getElementById("marker").innerHTML = "";
+                this.shadowRoot.getElementById("marker").className = "unavailable";
             }
         } else {
+            this.shadowRoot.getElementById("marker").className = "unavailable";
             this.shadowRoot.getElementById("marker").innerHTML = "";
         }
     }
@@ -205,6 +207,30 @@ class HTMLMarkerArea extends HTMLElement {
         this.setAttribute('value', val);
     }
 
+    get era() {
+        return this.getAttribute('era');
+    }
+
+    set era(val) {
+        this.setAttribute('era', val);
+    }
+
+    get time() {
+        return this.getAttribute('time');
+    }
+
+    set time(val) {
+        this.setAttribute('time', val);
+    }
+
+    get access() {
+        return this.getAttribute('access');
+    }
+
+    set access(val) {
+        this.setAttribute('access', val);
+    }
+
     get left() {
         return this.getAttribute('left');
     }
@@ -222,7 +248,7 @@ class HTMLMarkerArea extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['ref', 'value', 'era', 'time', 'left', 'top'];
+        return ['ref', 'value', 'era', 'time', 'access', 'left', 'top'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -255,6 +281,11 @@ class HTMLMarkerArea extends HTMLElement {
                 if (oldValue != newValue) {
                     let el_time = this.shadowRoot.getElementById("badge-time");
                     el_time.src = `images/time_${newValue}.svg`;
+                }
+            break;
+            case 'access':
+                if (oldValue != newValue) {
+                    this.update();
                 }
             break;
             case 'top':
@@ -297,7 +328,7 @@ customElements.define('ootrt-marker-entrance', HTMLMarkerArea);
 
 function entranceDialog(ref) {
     return new Promise(resolve => {
-        let value = StateStorage.read(`gossipstones.${ref}`, {item: "0x01", location: "0x01"});
+        let value = StateStorage.read(`entrance.${ref}`, "");
         let type = GlobalData.get(`world/entrances/${ref}/type`);
         let data = GlobalData.get('world/areas');
     
@@ -316,7 +347,7 @@ function entranceDialog(ref) {
             }
         }
         slt.style.width = "200px";
-        slt.value = value.location;
+        slt.value = value;
         loc.append(slt);
         
         let d = new Dialog({title: I18n.translate(ref), submit: true, cancel: true});

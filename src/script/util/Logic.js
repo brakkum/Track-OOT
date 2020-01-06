@@ -9,6 +9,7 @@ import "/script/editor_logic/LiteralMixin.js";
 import "/script/editor_logic/LiteralCustom.js";
 
 const SettingsStorage = new TrackerStorage('settings');
+const LogicsStorage = new TrackerStorage('logics');
 
 const RANDO_LOGIC_PROCESSOR = new LogicProcessor();
 
@@ -23,6 +24,9 @@ class TrackerLogic {
             };
             data = Object.assign(data, event.data);
             this.execute(data);
+        });
+        EventBus.register("settings", async event => {
+            this.loadLogic();
         });
     }
 
@@ -120,7 +124,7 @@ class TrackerLogic {
     async loadLogic() {
         randoLogic = GlobalData.get("logic", {});
         if (await SettingsStorage.get("use_custom_logic", false)) {
-            Object.assign(randoLogic, await SettingsStorage.get("logic", {}));
+            Object.assign(randoLogic, await LogicsStorage.getAll());
         }
         RANDO_LOGIC_PROCESSOR.loadLogic(randoLogic);
         this.execute();
