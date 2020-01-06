@@ -2784,7 +2784,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.lobby_left": {
+    "logic.location.training_grounds.lobby_left": {
         "type": "and",
         "el": [
             {
@@ -2799,7 +2799,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.lobby_right": {
+    "logic.location.training_grounds.lobby_right": {
         "type": "and",
         "el": [
             {
@@ -2814,7 +2814,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.stalfos": {
+    "logic.location.training_grounds.stalfos": {
         "type": "and",
         "el": [
             {
@@ -2824,7 +2824,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.beamos": {
+    "logic.location.training_grounds.beamos": {
         "type": "and",
         "el": [
             {
@@ -2839,7 +2839,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.hidden_ceiling": {
+    "logic.location.training_grounds.hidden_ceiling": {
         "type": "and",
         "el": [
             {
@@ -2898,7 +2898,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.maze_1": {
+    "logic.location.training_grounds.maze_1": {
         "type": "and",
         "el": [
             {
@@ -2928,7 +2928,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.maze_2": {
+    "logic.location.training_grounds.maze_2": {
         "type": "and",
         "el": [
             {
@@ -2958,7 +2958,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.maze_3": {
+    "logic.location.training_grounds.maze_3": {
         "type": "and",
         "el": [
             {
@@ -2988,7 +2988,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.maze_final": {
+    "logic.location.training_grounds.maze_final": {
         "type": "and",
         "el": [
             {
@@ -3018,7 +3018,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.maze_right_central": {
+    "logic.location.training_grounds.maze_right_central": {
         "type": "and",
         "el": [
             {
@@ -3076,7 +3076,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.maze_right": {
+    "logic.location.training_grounds.maze_right": {
         "type": "and",
         "el": [
             {
@@ -3134,7 +3134,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.maze_right_key": {
+    "logic.location.training_grounds.maze_right_key": {
         "type": "and",
         "el": [
             {
@@ -3192,7 +3192,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.underwater_silver": {
+    "logic.location.training_grounds.underwater_silver": {
         "type": "and",
         "el": [
             {
@@ -3294,7 +3294,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.hammer_room_clear": {
+    "logic.location.training_grounds.hammer_room_clear": {
         "type": "and",
         "el": [
             {
@@ -3366,7 +3366,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.hammer_room_switch": {
+    "logic.location.training_grounds.hammer_room_switch": {
         "type": "and",
         "el": [
             {
@@ -3453,7 +3453,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.eye_statue": {
+    "logic.location.training_grounds.eye_statue": {
         "type": "and",
         "el": [
             {
@@ -3570,7 +3570,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.scarecrow": {
+    "logic.location.training_grounds.scarecrow": {
         "type": "and",
         "el": [
             {
@@ -3644,7 +3644,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.heavy_block_before": {
+    "logic.location.training_grounds.heavy_block_before": {
         "type": "and",
         "el": [
             {
@@ -3659,7 +3659,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.heavy_block_1": {
+    "logic.location.training_grounds.heavy_block_1": {
         "type": "and",
         "el": [
             {
@@ -3737,7 +3737,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.heavy_block_2": {
+    "logic.location.training_grounds.heavy_block_2": {
         "type": "and",
         "el": [
             {
@@ -3815,7 +3815,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.heavy_block_3": {
+    "logic.location.training_grounds.heavy_block_3": {
         "type": "and",
         "el": [
             {
@@ -3893,7 +3893,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training.heavy_block_4": {
+    "logic.location.training_grounds.heavy_block_4": {
         "type": "and",
         "el": [
             {
@@ -20787,17 +20787,17 @@
             }
         ]
     },
-    "logic.location.gerudo_training_mq.gerudo_training_lobby_left_mq": {
+    "logic.location.training_grounds_mq.gerudo_training_lobby_left_mq": {
         "type": "number",
         "el": "mixin.training_grounds_access",
         "category": "mixin"
     },
-    "logic.location.gerudo_training_mq.gerudo_training_lobby_right_mq": {
+    "logic.location.training_grounds_mq.gerudo_training_lobby_right_mq": {
         "type": "number",
         "el": "mixin.training_grounds_access",
         "category": "mixin"
     },
-    "logic.location.gerudo_training_mq.gerudo_training_hidden_ceiling_mq": {
+    "logic.location.training_grounds_mq.gerudo_training_hidden_ceiling_mq": {
         "type": "and",
         "el": [
             {
@@ -20812,17 +20812,17 @@
             }
         ]
     },
-    "logic.location.gerudo_training_mq.gerudo_training_maze_1_mq": {
+    "logic.location.training_grounds_mq.gerudo_training_maze_1_mq": {
         "type": "number",
         "el": "mixin.training_grounds_access",
         "category": "mixin"
     },
-    "logic.location.gerudo_training_mq.gerudo_training_maze_2_mq": {
+    "logic.location.training_grounds_mq.gerudo_training_maze_2_mq": {
         "type": "number",
         "el": "mixin.training_grounds_access",
         "category": "mixin"
     },
-    "logic.location.gerudo_training_mq.gerudo_training_maze_3_mq": {
+    "logic.location.training_grounds_mq.gerudo_training_maze_3_mq": {
         "type": "and",
         "el": [
             {
@@ -20848,7 +20848,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training_mq.gerudo_training_dinolfos_mq": {
+    "logic.location.training_grounds_mq.gerudo_training_dinolfos_mq": {
         "type": "and",
         "el": [
             {
@@ -20863,7 +20863,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training_mq.gerudo_training_underwater_mq": {
+    "logic.location.training_grounds_mq.gerudo_training_underwater_mq": {
         "type": "and",
         "el": [
             {
@@ -20942,7 +20942,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training_mq.gerudo_training_first_iron_knuckle_mq": {
+    "logic.location.training_grounds_mq.gerudo_training_first_iron_knuckle_mq": {
         "type": "and",
         "el": [
             {
@@ -20957,7 +20957,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training_mq.gerudo_training_before_heavy_block_mq": {
+    "logic.location.training_grounds_mq.gerudo_training_before_heavy_block_mq": {
         "type": "and",
         "el": [
             {
@@ -21006,7 +21006,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training_mq.gerudo_training_heavy_block_mq": {
+    "logic.location.training_grounds_mq.gerudo_training_heavy_block_mq": {
         "type": "and",
         "el": [
             {
@@ -21064,7 +21064,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training_mq.gerudo_training_eye_statue_mq": {
+    "logic.location.training_grounds_mq.gerudo_training_eye_statue_mq": {
         "type": "and",
         "el": [
             {
@@ -21163,7 +21163,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training_mq.gerudo_training_second_iron_knuckle_mq": {
+    "logic.location.training_grounds_mq.gerudo_training_second_iron_knuckle_mq": {
         "type": "and",
         "el": [
             {
@@ -21257,7 +21257,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training_mq.gerudo_training_flame_circle_mq": {
+    "logic.location.training_grounds_mq.gerudo_training_flame_circle_mq": {
         "type": "and",
         "el": [
             {
@@ -21351,106 +21351,7 @@
             }
         ]
     },
-    "logic.location.gerudo_training_mq.gerudo_training_maze_right_central_mq": {
-        "type": "and",
-        "el": [
-            {
-                "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
-            },
-            {
-                "type": "number",
-                "el": "mixin.has_fire_source",
-                "category": "mixin"
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.song_time",
-                                "category": "item"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "item.boots_hover",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "skip.gtg_ledge_hovers",
-                                "category": "skip"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "number",
-                "el": "item.bottle",
-                "category": "item"
-            },
-            {
-                "type": "number",
-                "el": "mixin.can_see_with_lens",
-                "category": "mixin"
-            },
-            {
-                "type": "number",
-                "el": "item.hammer",
-                "category": "item"
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "min",
-                        "el": {
-                            "type": "number",
-                            "el": "item.hookshot",
-                            "category": "item"
-                        },
-                        "value": 2
-                    },
-                    {
-                        "type": "number",
-                        "el": "skip.gtgmq_rupees_nohookshot",
-                        "category": "skip"
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "item.hookshot",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "skip.gtgmq_silver_hook",
-                                "category": "skip"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    "logic.location.gerudo_training_mq.gerudo_training_maze_right_side_mq": {
+    "logic.location.training_grounds_mq.gerudo_training_maze_right_central_mq": {
         "type": "and",
         "el": [
             {
@@ -21549,7 +21450,106 @@
             }
         ]
     },
-    "logic.location.gerudo_training_mq.gerudo_training_ice_arrows_mq": {
+    "logic.location.training_grounds_mq.gerudo_training_maze_right_side_mq": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.training_grounds_access",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "mixin.has_fire_source",
+                "category": "mixin"
+            },
+            {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "mixin.can_use_ocarina",
+                                "category": "mixin"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.song_time",
+                                "category": "item"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "item.boots_hover",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "skip.gtg_ledge_hovers",
+                                "category": "skip"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "number",
+                "el": "item.bottle",
+                "category": "item"
+            },
+            {
+                "type": "number",
+                "el": "mixin.can_see_with_lens",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "item.hammer",
+                "category": "item"
+            },
+            {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "min",
+                        "el": {
+                            "type": "number",
+                            "el": "item.hookshot",
+                            "category": "item"
+                        },
+                        "value": 2
+                    },
+                    {
+                        "type": "number",
+                        "el": "skip.gtgmq_rupees_nohookshot",
+                        "category": "skip"
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "item.hookshot",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "skip.gtgmq_silver_hook",
+                                "category": "skip"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "logic.location.training_grounds_mq.gerudo_training_ice_arrows_mq": {
         "type": "and",
         "el": [
             {

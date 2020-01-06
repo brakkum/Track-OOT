@@ -20,12 +20,6 @@ import "/deepJS/ui/logic/elements/OperatorMin.js";
 import "/deepJS/ui/logic/elements/OperatorMax.js";
 import "./LiteralMixin.js";
 import "./LiteralCustom.js";
-//import "/script/ui/logic/LogicItem.js";
-//import "/script/ui/logic/LogicMixin.js";
-//import "/script/ui/logic/LogicOption.js";
-//import "/script/ui/logic/LogicSkip.js";
-//import "/script/ui/logic/LogicFilter.js";
-//import "/script/ui/logic/LogicSkulltula.js";
 
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import GlobalData from "/script/storage/GlobalData.js";
@@ -176,6 +170,7 @@ const LOGIC_OPERATORS = [
     function fillLogics(world, logic) {
 
         logicContainer.append(createLogicCategory(world, "locations"));
+        logicContainer.append(createLogicCategory(world, "entrances"));
 
         let cnt = document.createElement("deep-collapsepanel");
         cnt.caption = "mixins";
@@ -196,14 +191,14 @@ const LOGIC_OPERATORS = [
         let ocnt = document.createElement("deep-collapsepanel");
         ocnt.caption = ref;
         for (let i in data.areas) {
-            let loc = data.areas[i][ref];
+            let loc = data.areas[i];
             if (!loc) continue;
             let cnt = document.createElement("deep-collapsepanel");
             cnt.caption = I18n.translate(i);
-            for (let j of loc) {
+            for (let j of loc[ref]) {
                 let el = document.createElement("div");
-                el.dataset.ref = data.locations[j].access;
-                el.dataset.cat = data.locations[j].type;
+                el.dataset.ref = data[ref][j].access;
+                el.dataset.cat = data[ref][j].type;
                 el.className = "logic-location";
                 el.onclick = loadLogic;
                 el.innerHTML = I18n.translate(j);

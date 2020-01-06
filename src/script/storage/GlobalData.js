@@ -5,6 +5,7 @@ const FILES = [
     "items",
     "grids",
     "world",
+    "locationlists",
     "maps",
     "layouts",
     "songs",

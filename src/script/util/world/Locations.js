@@ -50,7 +50,7 @@ class Location {
             case "scrub":
             case "bean":
                 // LIST
-                listItem = document.createElement('ootrt-listchest');
+                listItem = document.createElement('ootrt-list-chest');
                 listItem.ref = ref;
                 // MAP
                 mapItem = document.createElement('ootrt-marker-chest');
@@ -59,7 +59,7 @@ class Location {
                 break;
             case "skulltula":
                 // LIST
-                listItem = document.createElement('ootrt-listskulltula');
+                listItem = document.createElement('ootrt-list-skulltula');
                 listItem.ref = ref;
                 // MAP
                 mapItem = document.createElement('ootrt-marker-skulltula');
@@ -68,7 +68,7 @@ class Location {
                 break;
             case "gossipstone":
                 // LIST
-                listItem = document.createElement('ootrt-listgossipstone');
+                listItem = document.createElement('ootrt-list-gossipstone');
                 // MAP
                 mapItem = document.createElement('ootrt-marker-gossipstone');
                 mapItem.mode = "gossipstones";
@@ -155,6 +155,9 @@ class Locations {
     }
 
     get(ref) {
+        if (!LOCATIONS.has(ref)) {
+            debugger;
+        }
         return LOCATIONS.get(ref);
     }
 

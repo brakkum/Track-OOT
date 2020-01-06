@@ -18,13 +18,18 @@ const TPL = new Template(`
         :host {
             display: flex;
             flex-direction: column;
+            align-items: center;
             width: 100%;
             cursor: pointer;
         }
-        #textarea {
+        .textarea {
             display: flex;
             align-items: center;
             width: 100%;
+            height: 30px;
+        }
+        .textarea:empty {
+            display: none;
         }
         #text {
             display: flex;
@@ -54,20 +59,17 @@ const TPL = new Template(`
             width: 20px;
             height: 20px;
         }
-        #extra {
-            display: inline-block;
-            width: 100%;
-        }
     </style>
-    <div id="textarea">
+    <div class="textarea">
         <div id="text"></div>
         <div id="badge">
             <deep-icon src="images/gossipstone.svg"></deep-icon>
-            <deep-icon id="badge-time" src="images/time_both.svg"></deep-icon>
+            <deep-icon id="badge-time" src="images/time_always.svg"></deep-icon>
             <deep-icon id="badge-era" src="images/era_none.svg"></deep-icon>
         </div>
     </div>
-    <div id="extra"></div>
+    <div id="location" class="textarea"></div>
+    <div id="item" class="textarea"></div>
 `);
 
 function gossipstoneUpdate(event) {
@@ -171,6 +173,14 @@ class HTMLTrackerGossipstone extends HTMLElement {
         this.setAttribute('time', val);
     }
 
+    get access() {
+        return this.getAttribute('access');
+    }
+
+    set access(val) {
+        this.setAttribute('access', val);
+    }
+
     static get observedAttributes() {
         return ['ref', 'checked', 'era', 'time', 'access'];
     }
@@ -228,20 +238,20 @@ class HTMLTrackerGossipstone extends HTMLElement {
         if (!!value) {
             if (value.location == "0x01") {
                 this.shadowRoot.getElementById("text").classList.remove("checked");
-                this.shadowRoot.getElementById("extra").innerHTML = "";
+                this.shadowRoot.getElementById("location").innerHTML = "";
+                this.shadowRoot.getElementById("item").innerHTML = "";
             } else {
                 this.shadowRoot.getElementById("text").classList.add("checked");
                 if (value.location == "0x02") {
-                    this.shadowRoot.getElementById("extra").innerHTML = `<hr>${I18n.translate("junk")}`;
+                    this.shadowRoot.getElementById("location").innerHTML = I18n.translate("junk");
+                    this.shadowRoot.getElementById("item").innerHTML = "";
                 } else {
-                    let loc = I18n.translate(value.location);
-                    let itm = "";
+                    this.shadowRoot.getElementById("location").innerHTML = I18n.translate(value.location);
                     if (value.item == "0x01") {
-                        itm = I18n.translate("empty");
+                        this.shadowRoot.getElementById("item").innerHTML = I18n.translate("empty");
                     } else {
-                        itm = I18n.translate(value.item);
+                        this.shadowRoot.getElementById("item").innerHTML = I18n.translate(value.item);
                     }
-                    this.shadowRoot.getElementById("extra").innerHTML = `<hr>${loc}<hr>${itm}`;
                 }
             }
         }
@@ -253,7 +263,7 @@ class HTMLTrackerGossipstone extends HTMLElement {
 
 }
 
-customElements.define('ootrt-listgossipstone', HTMLTrackerGossipstone);
+customElements.define('ootrt-list-gossipstone', HTMLTrackerGossipstone);
 
 function hintstoneDialog(ref) {
     return new Promise(resolve => {

@@ -60,10 +60,13 @@ let world = {
     "entrances": {}
 };
 let maps = {
-    "main": {
+    "": {
         "background": "main.png",
         "locations": [],
     }
+}
+let locationlists = {
+    "": []
 }
 let citems = {};
 let csettings = {
@@ -77,15 +80,6 @@ let clogic = {};
 
 function convert_locations(area, name, type, data) {
     let area_name = translateValue(area);
-    world.areas[area_name] = world.areas[area_name] || {
-        "locations": [],
-        "entrances": []
-    };
-    maps[area_name] = maps[area_name] || {
-        "background": "",
-        "locations": [],
-        "entrances": []
-    };
     let trans = translateValue(`${type}.${name}`);
     let record = Object.assign({}, LOCATION_STRUCT);
     record.type = type.replace(/s$/, "");
@@ -116,13 +110,17 @@ function convert_locations(area, name, type, data) {
     world.areas[area_name].locations.push(trans);
 
     if (!!data.x && !!data.y) {
-        maps.main.locations.push({
+        maps[""].locations.push({
             "type": type.replace(/s$/, ""),
             "id": trans,
             "x": Math.round(19.2 * parseFloat(data.x)),
             "y": Math.round(10.8 * parseFloat(data.y))
         });
     }
+    locationlists[area_name].push({
+        "type": type.replace(/s$/, ""),
+        "id": trans
+    });
     maps[area_name].locations.push({
         "type": type.replace(/s$/, ""),
         "id": trans,
@@ -131,40 +129,18 @@ function convert_locations(area, name, type, data) {
     });
 }
 
-function convert_entrance(area, name, type, data) {
+function convert_entrance(area, name, data) {
     let area_name = translateValue(area);
-    world.areas[area_name] = world.areas[area_name] || {
-        "locations": [],
-        "entrances": []
-    };
-    maps[area_name] = maps[area_name] || {
-        "background": "",
-        "locations": [],
-        "entrances": []
-    };
-    let trans = `entrance.${area}.${name}`;
+    let trans = "";
+    if (data.type == "dungeon") {
+        trans = `entrance.${name}`;
+    } else {
+        trans = `entrance.${area}.${name}`;
+    }
     let record = Object.assign({}, ENTRANCE_STRUCT);
-    record.type = data.type;
     record.access = `logic.${trans}`;
+    record.type = data.type;
 
-    if (!!data.mode) {
-        record.type = data.mode.slice(0, -6);
-        record.visible = {
-            "type": "number",
-            "el": `option.${data.mode}`
-        };
-    }
-    if (!!data.era) {
-        if (data.era == "child") {
-            record.adult = false;
-        } else if (data.era == "adult") {
-            record.child = false;
-        }
-    }
-
-    if (!!data.time) {
-        record.time = data.time;
-    }
     if (world.entrances.hasOwnProperty(trans)) {
         console.error(`name duplication: ${trans}`);
     }
@@ -172,7 +148,7 @@ function convert_entrance(area, name, type, data) {
     world.areas[area_name].entrances.push(trans);
 
     maps[area_name].entrances.push({
-        "type": type.replace(/s$/, ""),
+        "type": "entrance",
         "id": trans,
         "x": 0,
         "y": 0
@@ -182,14 +158,59 @@ function convert_entrance(area, name, type, data) {
 for (let i in locations) {
     let trans = translateValue(i);
     let data = locations[i];
-    if (!!data.x && !!data.y) {
-        maps.main.locations.push({
+
+    world.areas[trans] = {
+        "type": locations[i].type,
+        "locations": [],
+        "entrances": []
+    };
+    locationlists[trans] = [];
+    maps[trans] = {
+        "background": "",
+        "locations": [],
+        "entrances": []
+    };
+    if (!!locations[i].hasmq) {
+        let trans_mq = translateValue(`${i}_mq`);
+        world.areas[trans_mq] = {
+            "type": locations[i].type,
+            "locations": [],
+            "entrances": []
+        };
+        locationlists[trans_mq] = [];
+        maps[trans_mq] = {
+            "background": "",
+            "locations": [],
+            "entrances": []
+        };
+        
+        if (!!data.x && !!data.y) {
+            maps[""].locations.push({
+                "type": "entrance",
+                "id": `entrance.${trans.replace("area.", "")}`,
+                "x": Math.round(19.2 * parseFloat(data.x)),
+                "y": Math.round(10.8 * parseFloat(data.y))
+            });
+        }
+        locationlists[""].push({
+            "type": "entrance",
+            "id": `entrance.${trans.replace("area.", "")}`
+        });
+    } else {
+        if (!!data.x && !!data.y) {
+            maps[""].locations.push({
+                "type": "area",
+                "id": trans,
+                "x": Math.round(19.2 * parseFloat(data.x)),
+                "y": Math.round(10.8 * parseFloat(data.y))
+            });
+        }
+        locationlists[""].push({
             "type": "area",
-            "id": trans,
-            "x": Math.round(19.2 * parseFloat(data.x)),
-            "y": Math.round(10.8 * parseFloat(data.y))
+            "id": trans
         });
     }
+
     if (locations[i].hasOwnProperty("chests_v")) {
         for (let k in locations[i].chests_v) {
             convert_locations(i, k, "chests", locations[i].chests_v[k]);
@@ -217,7 +238,7 @@ for (let i in locations) {
     }
     if (locations[i].hasOwnProperty("entrances")) {
         for (let k in locations[i].entrances) {
-            convert_entrance(i, k, "gossipstones", locations[i].entrances[k]);
+            convert_entrance(i, k, locations[i].entrances[k]);
         }
     }
 }
@@ -382,6 +403,7 @@ clang_de = translate_language(lang_de);
 
 fs.writeFileSync("./src/database/world.json", JSON.stringify(world, null, 4));
 fs.writeFileSync("./src/database/maps.json", JSON.stringify(maps, null, 4));
+fs.writeFileSync("./src/database/locationlists.json", JSON.stringify(locationlists, null, 4));
 fs.writeFileSync("./src/database/items.json", JSON.stringify(citems, null, 4));
 fs.writeFileSync("./src/database/settings.json", JSON.stringify(csettings, null, 4));
 fs.writeFileSync("./src/database/shops.json", JSON.stringify(cshops, null, 4));

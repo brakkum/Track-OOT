@@ -1,5 +1,5 @@
 {
-    "main": {
+    "": {
         "background": "main.png",
         "locations": [
             {
@@ -675,32 +675,32 @@
                 "y": 216
             },
             {
-                "type": "area",
-                "id": "area.well",
+                "type": "entrance",
+                "id": "entrance.well",
                 "x": 1306,
                 "y": 248
             },
             {
-                "type": "area",
-                "id": "area.ice_cavern",
+                "type": "entrance",
+                "id": "entrance.ice_cavern",
                 "x": 1738,
                 "y": 173
             },
             {
-                "type": "area",
-                "id": "area.gerudo_training",
+                "type": "entrance",
+                "id": "entrance.training_grounds",
                 "x": 361,
                 "y": 302
             },
             {
-                "type": "area",
-                "id": "area.deku",
+                "type": "entrance",
+                "id": "entrance.deku",
                 "x": 1690,
                 "y": 605
             },
             {
-                "type": "area",
-                "id": "area.dodongo",
+                "type": "entrance",
+                "id": "entrance.dodongo",
                 "x": 1133,
                 "y": 146
             },
@@ -711,44 +711,44 @@
                 "y": 146
             },
             {
-                "type": "area",
-                "id": "area.jabujabu",
+                "type": "entrance",
+                "id": "entrance.jabujabu",
                 "x": 1757,
                 "y": 227
             },
             {
-                "type": "area",
-                "id": "area.temple_forest",
+                "type": "entrance",
+                "id": "entrance.temple_forest",
                 "x": 1507,
                 "y": 421
             },
             {
-                "type": "area",
-                "id": "area.temple_fire",
+                "type": "entrance",
+                "id": "entrance.temple_fire",
                 "x": 1306,
                 "y": 70
             },
             {
-                "type": "area",
-                "id": "area.temple_water",
+                "type": "entrance",
+                "id": "entrance.temple_water",
                 "x": 693,
                 "y": 983
             },
             {
-                "type": "area",
-                "id": "area.temple_shadow",
+                "type": "entrance",
+                "id": "entrance.temple_shadow",
                 "x": 1459,
                 "y": 227
             },
             {
-                "type": "area",
-                "id": "area.temple_spirit",
+                "type": "entrance",
+                "id": "entrance.temple_spirit",
                 "x": 48,
                 "y": 184
             },
             {
-                "type": "area",
-                "id": "area.castle_ganon",
+                "type": "entrance",
+                "id": "entrance.castle_ganon",
                 "x": 998,
                 "y": 108
             }
@@ -832,44 +832,44 @@
         ],
         "entrances": [
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kokiri.midos_house",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kokiri.know_it_house",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kokiri.saria_house",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kokiri.twins_house",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kokiri.shop",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kokiri.storm_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
-                "id": "entrance.kokiri.deku",
+                "type": "entrance",
+                "id": "entrance.deku",
                 "x": 0,
                 "y": 0
             }
@@ -947,20 +947,20 @@
         ],
         "entrances": [
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.desert.fairy_colossus",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.desert.strength_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
-                "id": "entrance.desert.temple_spirit",
+                "type": "entrance",
+                "id": "entrance.temple_spirit",
                 "x": 0,
                 "y": 0
             }
@@ -1062,19 +1062,19 @@
         ],
         "entrances": [
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.river.bomb_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.river.open_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.river.storms_grotto",
                 "x": 0,
                 "y": 0
@@ -1165,49 +1165,49 @@
         ],
         "entrances": [
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.hyrule_field.castle_river_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.hyrule_field.kakariko_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.hyrule_field.lake_fence_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.hyrule_field.lake_open_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.hyrule_field.dive_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.hyrule_field.valley_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.hyrule_field.castle_entrance_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.hyrule_field.little_forest_grotto",
                 "x": 0,
                 "y": 0
@@ -1286,19 +1286,19 @@
         ],
         "entrances": [
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.gerudo_valley.tend",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.gerudo_valley.octorock_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.gerudo_valley.storms_grotto",
                 "x": 0,
                 "y": 0
@@ -1413,26 +1413,26 @@
         ],
         "entrances": [
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.lake.laboratory",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.lake.fishing",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.lake.grave_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
-                "id": "entrance.lake.temple_water",
+                "type": "entrance",
+                "id": "entrance.temple_water",
                 "x": 0,
                 "y": 0
             }
@@ -1528,25 +1528,25 @@
         ],
         "entrances": [
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.lonlon.house",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.lonlon.stables",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.lonlon.silo",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.lonlon.open_grotto",
                 "x": 0,
                 "y": 0
@@ -1619,14 +1619,14 @@
         ],
         "entrances": [
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.gerudo.storms_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
-                "id": "entrance.gerudo.training_grounds",
+                "type": "entrance",
+                "id": "entrance.training_grounds",
                 "x": 0,
                 "y": 0
             }
@@ -1788,44 +1788,44 @@
         ],
         "entrances": [
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.woods.near_goron_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.woods.theatre_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.woods.near_meadow_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.woods.wolfos_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.woods.fairy_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.woods.storms_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
-                "id": "entrance.woods.temple_forest",
+                "type": "entrance",
+                "id": "entrance.temple_forest",
                 "x": 0,
                 "y": 0
             }
@@ -1975,86 +1975,92 @@
         ],
         "entrances": [
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.castle_town.shop_bombchu",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.castle_town.shop_bazaar",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.castle_town.shop_magic",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.castle_town.shop_mask",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.castle_town.minigame_bombchu",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.castle_town.minigame_shooting",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.castle_town.minigame_treasure",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.castle_town.guard_tower",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.castle_town.temple_of_time",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.castle_town.dog_lady",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.castle_town.back_house",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.castle_town.fairy_young",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.castle_town.fairy_adult",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.castle_town.storm_grotto",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "type": "entrance",
+                "id": "entrance.castle_ganon",
                 "x": 0,
                 "y": 0
             }
@@ -2270,86 +2276,86 @@
         ],
         "entrances": [
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kakariko.shop_bazaar",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kakariko.shop_magic",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kakariko.minigame_shooting",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kakariko.impas_house",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kakariko.impa_back",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kakariko.windmill",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kakariko.skulltula_house",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kakariko.kakariko_witch",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kakariko.carpenter_house",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kakariko.dampes_hut",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kakariko.open_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.kakariko.redead_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
-                "id": "entrance.kakariko.well",
+                "type": "entrance",
+                "id": "entrance.well",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
-                "id": "entrance.kakariko.temple_shadow",
+                "type": "entrance",
+                "id": "entrance.temple_shadow",
                 "x": 0,
                 "y": 0
             }
@@ -2511,50 +2517,50 @@
         ],
         "entrances": [
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.mountain.mountain_fairy",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.mountain.crater_fairy",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.mountain.bomb_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.mountain.storms_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.mountain.crater_hammer_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.mountain.crater_bomb_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
-                "id": "entrance.mountain.dodongo",
+                "type": "entrance",
+                "id": "entrance.dodongo",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
-                "id": "entrance.mountain.temple_fire",
+                "type": "entrance",
+                "id": "entrance.temple_fire",
                 "x": 0,
                 "y": 0
             }
@@ -2650,13 +2656,13 @@
         ],
         "entrances": [
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.goron.shop",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.goron.grotto",
                 "x": 0,
                 "y": 0
@@ -2747,32 +2753,32 @@
         ],
         "entrances": [
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.zoras.shop",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.zoras.fairy",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
+                "type": "entrance",
                 "id": "entrance.zoras.storms_grotto",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
-                "id": "entrance.zoras.jabujabu",
+                "type": "entrance",
+                "id": "entrance.jabujabu",
                 "x": 0,
                 "y": 0
             },
             {
-                "type": "gossipstone",
-                "id": "entrance.zoras.ice_cavern",
+                "type": "entrance",
+                "id": "entrance.ice_cavern",
                 "x": 0,
                 "y": 0
             }
@@ -3048,138 +3054,138 @@
         ],
         "entrances": []
     },
-    "area.gerudo_training": {
+    "area.training_grounds": {
         "background": "",
         "locations": [
             {
                 "type": "chest",
-                "id": "location.gerudo_training.lobby_left",
+                "id": "location.training_grounds.lobby_left",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.lobby_right",
+                "id": "location.training_grounds.lobby_right",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.stalfos",
+                "id": "location.training_grounds.stalfos",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.beamos",
+                "id": "location.training_grounds.beamos",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.hidden_ceiling",
+                "id": "location.training_grounds.hidden_ceiling",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.maze_1",
+                "id": "location.training_grounds.maze_1",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.maze_2",
+                "id": "location.training_grounds.maze_2",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.maze_3",
+                "id": "location.training_grounds.maze_3",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.maze_final",
+                "id": "location.training_grounds.maze_final",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.maze_right_central",
+                "id": "location.training_grounds.maze_right_central",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.maze_right",
+                "id": "location.training_grounds.maze_right",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.maze_right_key",
+                "id": "location.training_grounds.maze_right_key",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.underwater_silver",
+                "id": "location.training_grounds.underwater_silver",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.hammer_room_clear",
+                "id": "location.training_grounds.hammer_room_clear",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.hammer_room_switch",
+                "id": "location.training_grounds.hammer_room_switch",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.eye_statue",
+                "id": "location.training_grounds.eye_statue",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.scarecrow",
+                "id": "location.training_grounds.scarecrow",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.heavy_block_before",
+                "id": "location.training_grounds.heavy_block_before",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.heavy_block_1",
+                "id": "location.training_grounds.heavy_block_1",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.heavy_block_2",
+                "id": "location.training_grounds.heavy_block_2",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.heavy_block_3",
+                "id": "location.training_grounds.heavy_block_3",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training.heavy_block_4",
+                "id": "location.training_grounds.heavy_block_4",
                 "x": 0,
                 "y": 0
             }
@@ -3191,103 +3197,103 @@
         "locations": [
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_lobby_left_mq",
+                "id": "location.training_grounds_mq.gerudo_training_lobby_left_mq",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_lobby_right_mq",
+                "id": "location.training_grounds_mq.gerudo_training_lobby_right_mq",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_hidden_ceiling_mq",
+                "id": "location.training_grounds_mq.gerudo_training_hidden_ceiling_mq",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_maze_1_mq",
+                "id": "location.training_grounds_mq.gerudo_training_maze_1_mq",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_maze_2_mq",
+                "id": "location.training_grounds_mq.gerudo_training_maze_2_mq",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_maze_3_mq",
+                "id": "location.training_grounds_mq.gerudo_training_maze_3_mq",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_dinolfos_mq",
+                "id": "location.training_grounds_mq.gerudo_training_dinolfos_mq",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_underwater_mq",
+                "id": "location.training_grounds_mq.gerudo_training_underwater_mq",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_first_iron_knuckle_mq",
+                "id": "location.training_grounds_mq.gerudo_training_first_iron_knuckle_mq",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_before_heavy_block_mq",
+                "id": "location.training_grounds_mq.gerudo_training_before_heavy_block_mq",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_heavy_block_mq",
+                "id": "location.training_grounds_mq.gerudo_training_heavy_block_mq",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_eye_statue_mq",
+                "id": "location.training_grounds_mq.gerudo_training_eye_statue_mq",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_second_iron_knuckle_mq",
+                "id": "location.training_grounds_mq.gerudo_training_second_iron_knuckle_mq",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_flame_circle_mq",
+                "id": "location.training_grounds_mq.gerudo_training_flame_circle_mq",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_maze_right_central_mq",
+                "id": "location.training_grounds_mq.gerudo_training_maze_right_central_mq",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_maze_right_side_mq",
+                "id": "location.training_grounds_mq.gerudo_training_maze_right_side_mq",
                 "x": 0,
                 "y": 0
             },
             {
                 "type": "chest",
-                "id": "location.gerudo_training_mq.gerudo_training_ice_arrows_mq",
+                "id": "location.training_grounds_mq.gerudo_training_ice_arrows_mq",
                 "x": 0,
                 "y": 0
             }

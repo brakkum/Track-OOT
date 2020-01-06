@@ -62,7 +62,7 @@ const TPL = new Template(`
     <div id="text"></div>
     <div id="badge">
         <deep-icon src="images/chest.svg"></deep-icon>
-        <deep-icon id="badge-time" src="images/time_both.svg"></deep-icon>
+        <deep-icon id="badge-time" src="images/time_always.svg"></deep-icon>
         <deep-icon id="badge-era" src="images/era_none.svg"></deep-icon>
     </div>
     <deep-contextmenu id="menu">
@@ -143,10 +143,6 @@ function contextMenu(event) {
     return false;
 }
 
-function getBadgeSource() {
-
-}
-
 class HTMLTrackerChest extends HTMLElement {
 
     constructor() {
@@ -187,14 +183,6 @@ class HTMLTrackerChest extends HTMLElement {
         this.setAttribute('checked', val);
     }
 
-    get access() {
-        return this.getAttribute('access');
-    }
-
-    set access(val) {
-        this.setAttribute('access', val);
-    }
-
     get era() {
         return this.getAttribute('era');
     }
@@ -209,6 +197,14 @@ class HTMLTrackerChest extends HTMLElement {
 
     set time(val) {
         this.setAttribute('time', val);
+    }
+
+    get access() {
+        return this.getAttribute('access');
+    }
+
+    set access(val) {
+        this.setAttribute('access', val);
     }
 
     static get observedAttributes() {
@@ -258,20 +254,6 @@ class HTMLTrackerChest extends HTMLElement {
         }
     }
 
-    updateIcons() {
-        let el_era = this.shadowRoot.getElementById("badge-era");
-        if (!!data.child && !!data.adult) {
-            el_era.src = "images/era_both.svg";
-        } else if (!!data.child) {
-            el_era.src = "images/era_child.svg";
-        } else if (!!data.adult) {
-            el_era.src = "images/era_adult.svg";
-        } else {
-            el_era.src = "images/era_none.svg";
-        }
-        this.shadowRoot.getElementById("badge").append(el_era);
-    }
-
     check() {
         Logger.log(`check location "${this.ref}"`, "Location");
         this.checked = true;
@@ -284,4 +266,4 @@ class HTMLTrackerChest extends HTMLElement {
 
 }
 
-customElements.define('ootrt-listchest', HTMLTrackerChest);
+customElements.define('ootrt-list-chest', HTMLTrackerChest);

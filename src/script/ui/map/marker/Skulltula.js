@@ -85,7 +85,11 @@ const TPL = new Template(`
     <deep-tooltip position="top" id="tooltip">
         <div id="tooltiparea">
             <div id="text"></div>
-            <div id="badge"></div>
+            <div id="badge">
+                <deep-icon src="images/skulltula.svg"></deep-icon>
+                <deep-icon id="badge-time" src="images/time_always.svg"></deep-icon>
+                <deep-icon id="badge-era" src="images/era_none.svg"></deep-icon>
+            </div>
         </div>
     </deep-tooltip>
 `);
@@ -145,6 +149,22 @@ class HTMLMarkerSkulltula extends HTMLElement {
         this.setAttribute('checked', val);
     }
 
+    get era() {
+        return this.getAttribute('era');
+    }
+
+    set era(val) {
+        this.setAttribute('era', val);
+    }
+
+    get time() {
+        return this.getAttribute('time');
+    }
+
+    set time(val) {
+        this.setAttribute('time', val);
+    }
+
     get access() {
         return this.getAttribute('access');
     }
@@ -153,12 +173,20 @@ class HTMLMarkerSkulltula extends HTMLElement {
         this.setAttribute('access', val);
     }
 
-    get visible() {
-        return this.getAttribute('visible');
+    get left() {
+        return this.getAttribute('left');
     }
 
-    set visible(val) {
-        this.setAttribute('visible', val);
+    set left(val) {
+        this.setAttribute('left', val);
+    }
+
+    get top() {
+        return this.getAttribute('top');
+    }
+
+    set top(val) {
+        this.setAttribute('top', val);
     }
 
     get mode() {
@@ -170,70 +198,15 @@ class HTMLMarkerSkulltula extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['ref', 'checked'];
+        return ['ref', 'checked', 'era', 'time', 'access', 'left', 'top'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    let data = GlobalData.get(`world/locations/${this.ref}`);
                     let txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = I18n.translate(this.ref);
-
-                    this.access = data.access;
-                    this.visible = data.visible;
-                    
-                    let tooltip = this.shadowRoot.getElementById("tooltip");
-                    let left = parseFloat(this.style.left.slice(0, -1));
-                    let top = parseFloat(this.style.top.slice(0, -1));
-                    if (left < 30) {
-                        if (top < 30) {
-                            tooltip.position = "bottomright";
-                        } else if (top > 70) {
-                            tooltip.position = "topright";
-                        } else {
-                            tooltip.position = "right";
-                        }
-                    } else if (left > 70) {
-                        if (top < 30) {
-                            tooltip.position = "bottomleft";
-                        } else if (top > 70) {
-                            tooltip.position = "topleft";
-                        } else {
-                            tooltip.position = "left";
-                        }
-                    } else {
-                        if (top < 30) {
-                            tooltip.position = "bottom";
-                        } 
-                    }
-
-                    this.shadowRoot.getElementById("badge").innerHTML = "";
-
-                    let el_type = document.createElement("deep-icon");
-                    el_type.src = `images/skulltula.svg`;
-                    this.shadowRoot.getElementById("badge").append(el_type);
-
-                    let el_time = document.createElement("deep-icon");
-                    el_time.src = `images/time_${data.time || "both"}.svg`;
-                    this.shadowRoot.getElementById("badge").append(el_time);
-
-                    let el_era = document.createElement("deep-icon");
-                    if (!!data.child && !!data.adult) {
-                        el_era.src = "images/era_both.svg";
-                    } else if (!!data.child) {
-                        el_era.src = "images/era_child.svg";
-                    } else if (!!data.adult) {
-                        el_era.src = "images/era_adult.svg";
-                    } else {
-                        el_era.src = "images/era_none.svg";
-                    }
-                    this.shadowRoot.getElementById("badge").append(el_era);
-                    
-                    let el = this.shadowRoot.getElementById("marker");
-                    el.classList.toggle("avail", Logic.getValue(this.access));
-
                     this.checked = StateStorage.read(this.ref, false);
                 }
             break;
@@ -248,6 +221,55 @@ class HTMLMarkerSkulltula extends HTMLElement {
                         name: this.ref,
                         value: newValue
                     });
+                }
+            break;
+            case 'era':
+                if (oldValue != newValue) {
+                    let el_era = this.shadowRoot.getElementById("badge-era");
+                    el_era.src = `images/era_${newValue}.svg`;
+                }
+            break;
+            case 'time':
+                if (oldValue != newValue) {
+                    let el_time = this.shadowRoot.getElementById("badge-time");
+                    el_time.src = `images/time_${newValue}.svg`;
+                }
+            break;
+            case 'access':
+                if (oldValue != newValue) {
+                    let txt = this.shadowRoot.getElementById("marker");
+                    txt.classList.toggle("avail", Logic.getValue(newValue));
+                }
+            break;
+            case 'top':
+            case 'left':
+                if (oldValue != newValue) {
+                    this.style.left = `${this.left}px`;
+                    this.style.top = `${this.top}px`;
+                    let tooltip = this.shadowRoot.getElementById("tooltip");
+                    if (this.left < 30) {
+                        if (this.top < 30) {
+                            tooltip = "bottomright";
+                        } else if (this.top > 70) {
+                            tooltip = "topright";
+                        } else {
+                            tooltip = "right";
+                        }
+                    } else if (this.left > 70) {
+                        if (this.top < 30) {
+                            tooltip = "bottomleft";
+                        } else if (this.top > 70) {
+                            tooltip = "topleft";
+                        } else {
+                            tooltip = "left";
+                        }
+                    } else {
+                        if (this.top < 30) {
+                            tooltip = "bottom";
+                        } else {
+                            tooltip = "top";
+                        }
+                    }
                 }
             break;
         }

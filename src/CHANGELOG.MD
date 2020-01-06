@@ -19,10 +19,20 @@ Application:    Track-OOT
     - use jit optimizations to achieve minimum execution time
 - additionally limit the logic executions somewhat
 
-### UI CHANGES
+### MAP CHANGES
 - moved map options to the left
 - temporary added map mode button
 - increase default map zoom
+
+### INTRODUCING ENTRANCES
+- entrances have their own logic
+- the configuration works like the gossipstones
+- clicking on an activated entrance jumps to the linked area
+- right-clicking resets the entrance
+
+### UI ENHANCEMENTS
+- added entrance icons
+- added area icons
 
 ---
 

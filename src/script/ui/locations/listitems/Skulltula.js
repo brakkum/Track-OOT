@@ -62,7 +62,7 @@ const TPL = new Template(`
     <div id="text"></div>
     <div id="badge">
         <deep-icon src="images/skulltula.svg"></deep-icon>
-        <deep-icon id="badge-time" src="images/time_both.svg"></deep-icon>
+        <deep-icon id="badge-time" src="images/time_always.svg"></deep-icon>
         <deep-icon id="badge-era" src="images/era_none.svg"></deep-icon>
     </div>
     <deep-contextmenu id="menu">
@@ -73,13 +73,6 @@ const TPL = new Template(`
         <div id="menu-logic-image" class="item">Create Logic Image</div>
     </deep-contextmenu>
 `);
-
-function fnTrue() {
-    return true;
-}
-function fnFalse() {
-    return false;
-}
 
 function locationUpdate(event) {
     if (this.ref === event.data.name && this.checked !== event.data.value) {
@@ -206,6 +199,14 @@ class HTMLTrackerSkulltula extends HTMLElement {
         this.setAttribute('time', val);
     }
 
+    get access() {
+        return this.getAttribute('access');
+    }
+
+    set access(val) {
+        this.setAttribute('access', val);
+    }
+
     static get observedAttributes() {
         return ['ref', 'checked', 'era', 'time', 'access'];
     }
@@ -265,4 +266,4 @@ class HTMLTrackerSkulltula extends HTMLElement {
 
 }
 
-customElements.define('ootrt-listskulltula', HTMLTrackerSkulltula);
+customElements.define('ootrt-list-skulltula', HTMLTrackerSkulltula);

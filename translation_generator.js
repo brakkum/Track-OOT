@@ -26,37 +26,42 @@ let settings = JSON.parse(fs.readFileSync("./_old/database/settings.json"));
 let shops = JSON.parse(fs.readFileSync("./_old/database/shops.json"));
 let songs = JSON.parse(fs.readFileSync("./_old/database/songs.json"));
 
-function convert_locations(area, name, type) {
-    translation[`${type}.${name}`] = `location.${area}.${name.replace(`${area}_`, "")}`;
+function convert_locations(old, area, name, type) {
+    translation[`${type}.${name}`] = `location.${area}.${name.replace(`${old}_`, "")}`;
 }
 
 for (let i in locations) {
-    translation[i] = `area.${i}`;
+    let name = i;
+    if (i == "gerudo_training") {
+        name = "training_grounds";
+    } else {
+    }
+    translation[i] = `area.${name}`;
     if (locations[i].hasOwnProperty("chests_v")) {
         for (let k in locations[i].chests_v) {
-            convert_locations(i, k, "chests", locations[i].chests_v[k]);
+            convert_locations(i, name, k, "chests");
         }
     }
     if (locations[i].hasOwnProperty("chests_mq")) {
         translation[`${i}_mq`] = `area.${i}_mq`;
         for (let k in locations[i].chests_mq) {
-            convert_locations(`${i}_mq`, k, "chests", locations[i].chests_mq[k]);
+            convert_locations(`${i}_mq`, `${name}_mq`, k, "chests");
         }
     }
     if (locations[i].hasOwnProperty("skulltulas_v")) {
         for (let k in locations[i].skulltulas_v) {
-            convert_locations(i, k, "skulltulas", locations[i].skulltulas_v[k]);
+            convert_locations(i, name, k, "skulltulas");
         }
     }
     if (locations[i].hasOwnProperty("skulltulas_mq")) {
         translation[`${i}_mq`] = `area.${i}_mq`;
         for (let k in locations[i].skulltulas_mq) {
-            convert_locations(`${i}_mq`, k, "skulltulas", locations[i].skulltulas_mq[k]);
+            convert_locations(`${i}_mq`, `${name}_mq`, k, "skulltulas");
         }
     }
     if (locations[i].hasOwnProperty("gossipstones_v")) {
         for (let k in locations[i].gossipstones_v) {
-            convert_locations(i, k, "gossipstones", locations[i].gossipstones_v[k]);
+            convert_locations(i, name, k, "gossipstones");
         }
     }
 }

@@ -5,6 +5,8 @@ import AbstractElement from "/deepJS/ui/logic/elements/AbstractElement.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
+import "/script/editor_logic/LiteralMixin.js";
+import "/script/editor_logic/LiteralCustom.js";
 
 const SettingsStorage = new TrackerStorage('settings');
 
@@ -44,6 +46,9 @@ class TrackerLogic {
             return 0b001; // no reachable
         }
         let list = GlobalData.get(`world/areas/${name}/locations`);
+        if (!list) {
+            return 0b001; // no reachable
+        }
         let locations = GlobalData.get(`world/locations`);
         /*if (!!mode) {
             list = GlobalData.get("locations")[name][`${category}_${mode}`];
@@ -87,8 +92,13 @@ class TrackerLogic {
     }
 
     async getAccessibleNumber(name) {
-        if (name == "") return 0;
+        if (name == "") {
+            return 0;
+        }
         let list = GlobalData.get(`world/areas/${name}/locations`);
+        if (!list) {
+            return 0;
+        }
         let locations = GlobalData.get(`world/locations`);
         let canGet = 0;
         for (let i = 0; i < list.length; ++i) {

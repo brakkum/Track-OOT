@@ -8,8 +8,12 @@ import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import I18n from "/script/util/I18n.js";
 import Logic from "/script/util/Logic.js";
-import Locations from "/script/util/Locations.js";
+import Areas from "/script/util/world/Areas.js";
+import Entrances from "/script/util/world/Entrances.js";
+import Locations from "/script/util/world/Locations.js";
 import "../dungeonstate/DungeonType.js";
+import "./listitems/Area.js";
+import "./listitems/Entrance.js";
 import "./listitems/Chest.js";
 import "./listitems/Skulltula.js";
 import "./listitems/Gossipstone.js";
@@ -58,19 +62,6 @@ const TPL = new Template(`
             overflow-y: auto;
             overflow-x: hidden;
         }
-        #body > * {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            min-height: 30px;
-            width: 100%;
-            padding: 2px;
-            line-height: 1em;
-            cursor: pointer;
-        }
-        #body > *:hover {
-            background-color: var(--dungeon-status-hover-color, #ffffff32);
-        }
         .opened {
             color: var(--location-status-opened-color, #000000);
         }
@@ -83,9 +74,31 @@ const TPL = new Template(`
         .possible {
             color: var(--location-status-possible-color, #000000);
         }
+        #list {
+            display: content;
+        }
+        #back,
+        #list > * {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 30px;
+            width: 100%;
+            padding: 2px;
+            line-height: 1em;
+            cursor: pointer;
+        }
+        #back:hover,
+        #list > *:hover {
+            background-color: var(--dungeon-status-hover-color, #ffffff32);
+        }
+        :host(:not([ref])) #back,
+        :host([ref=""]) #back {
+            display: none;
+        }
     </style>
     <div id="title">
-        <div id="title-text"></div>
+        <div id="title-text">${I18n.translate("hyrule")}</div>
         <ootrt-dungeontype id="location-type">
         </ootrt-dungeontype>
         <deep-switchbutton value="" id="location-era">
@@ -95,7 +108,8 @@ const TPL = new Template(`
         </deep-switchbutton>
     </div>
     <div id="body">
-        
+        <div id="back">(${I18n.translate("back")})</div>
+        <div id="list"></div>
     </div>
 `);
 
@@ -108,23 +122,10 @@ function translate(value) {
     }
 }
 
-async function locationUpdate(event) {
+async function updateHeader() {
     if ((!this.ref || this.ref === "")) {
         this.shadowRoot.querySelector('#title').className = "";
-        let ch = Array.from(this.shadowRoot.getElementById("body").children);
-        ch.forEach(async c => {
-            c.className = translate(await Logic.checkLogicList(c.dataset.ref))
-        });
     } else {
-        let data = GlobalData.get(`world/areas/${this.ref}`);
-        /*let dType = StateStorage.read(`dungeonTypes.${this.ref || "overworld"}`, data.hasmq ? "n" : "v");
-        if (dType === "n") {
-            let ch = Array.from(this.shadowRoot.getElementById("body").children);
-            ch.forEach(async c => {
-                if (!c.dataset.ref || c.dataset.ref === "") return;
-                c.className = translate(await Logic.checkLogicList(this.mode, this.ref, c.dataset.ref));
-            });
-        }*/
         this.shadowRoot.querySelector('#title').className = translate(await Logic.checkLogicList(this.ref || "overworld"));
     }
 }
@@ -150,9 +151,10 @@ class HTMLTrackerLocationList extends Panel {
                 value: this.era
             });
         });
+        this.shadowRoot.getElementById('back').addEventListener("click", () => this.ref = "");
         /* event bus */
         EVENT_BINDER.register("location_change", event => this.ref = event.data.name);
-        EVENT_BINDER.register(["chest", "skulltula", "item", "state", "settings", "logic"], locationUpdate.bind(this));
+        EVENT_BINDER.register(["chest", "skulltula", "item", "state", "settings", "logic"], updateHeader.bind(this));
         EVENT_BINDER.register("dungeontype", dungeonTypeUpdate.bind(this));
         EVENT_BINDER.register("filter", event => {
             if (event.data.ref == "filter.era_active") {
@@ -163,11 +165,11 @@ class HTMLTrackerLocationList extends Panel {
     }
 
     connectedCallback() {
-        this.setAttribute("mode", "chests");
+        this.refresh();
     }
 
     get ref() {
-        return this.getAttribute('ref');
+        return this.getAttribute('ref') || "";
     }
 
     set ref(val) {
@@ -188,73 +190,43 @@ class HTMLTrackerLocationList extends Panel {
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
-            let cnt = this.shadowRoot.getElementById("body");
-            let locationType = this.shadowRoot.getElementById("location-type");
-            cnt.innerHTML = "";
-            
-            if (!this.ref || this.ref === "") {
-                let data = GlobalData.get("world/areas");
-                locationType.ref = "";
-                this.shadowRoot.getElementById("title-text").innerHTML = I18n.translate("hyrule");
-                this.shadowRoot.getElementById("title").className = "";
-                if (!!data) {
-                    Object.keys(data).forEach(i => {
-                        let el = document.createElement('div');
-                        el.dataset.ref = i;
-                        el.addEventListener("click", () => this.ref = i);
-                        el.innerHTML = I18n.translate(i);
-                        cnt.append(el);
-                    });
-                }
-            } else {
-                this.shadowRoot.getElementById("title-text").innerHTML = I18n.translate(this.ref);
-                let bck = document.createElement('div');
-                bck.innerHTML = `(${I18n.translate("back")})`;
-                bck.addEventListener("click", () => this.ref = "");
-                cnt.append(bck);
-                let data = GlobalData.get(`world/areas/${this.ref}`);
-                if (!!data.locations) {
-                    let values = new Map(Object.entries(StateStorage.getAll()));
-                    for (let i = 0; i < data.locations.length; ++i) {
-                        let loc = Locations.get(data.locations[i]);
-                        if (loc.visible(values) && (!this.era || loc[this.era](values))) {
-                            cnt.append(loc.listItem);
-                        }
-                    }
-                }
-
-                /*let dType = StateStorage.read(`dungeonTypes.${this.ref}`, data.hasmq ? "n" : "v");
-                if (data.hasmq) {
-                    locationType.ref = this.ref;
-                } else {
-                    locationType.ref = "";
-                }
-                if (dType === "n") {
-                    let v = document.createElement('div');
-                    v.dataset.ref = "v";
-                    v.innerHTML = I18n.translate("vanilla");
-                    v.addEventListener("click", () => {
-                        locationType.value = "v";
-                    });
-                    cnt.append(v);
-                    let mq = document.createElement('div');
-                    mq.dataset.ref = "mq";
-                    mq.innerHTML = I18n.translate("masterquest");
-                    mq.addEventListener("click", () => {
-                        locationType.value = "mq";
-                    });
-                    cnt.append(mq);
-                } else {  */  
-                    // if (!!this.mode && this.mode !== "") {
-                        // HERE
-                    //  }
-                // }
+            if (name == "ref") {
+                this.shadowRoot.getElementById("title-text").innerHTML = I18n.translate(newValue || "hyrule");
             }
-
-            locationUpdate.apply(this);
+            this.refresh();
         }
     }
 
+    refresh() {
+        let cnt = this.shadowRoot.getElementById("list");
+        cnt.innerHTML = "";
+        let data = GlobalData.get(`locationlists/${this.ref}`);
+        if (!!data) {
+            let values = new Map(Object.entries(StateStorage.getAll()));
+            data.forEach(record => {
+                if (record.type == "area") {
+                    let loc = Areas.get(record.id);
+                    let el = loc.listItem;
+                    cnt.append(el);
+                } else if (record.type == "entrance") {
+                    let loc = Entrances.get(record.id);
+                    if (loc.visible(values) && (!this.era || loc[this.era](values))) {
+                        let el = loc.listItem;
+                        cnt.append(el);
+                    }
+                } else {
+                    let loc = Locations.get(record.id);
+                    if (loc.visible(values)) {
+                        let el = loc.listItem;
+                        if (!!el.mode && el.mode.indexOf(this.mode) < 0) return;
+                        cnt.append(el);
+                    }
+                }
+            });
+        }
+        updateHeader.apply(this);
+    }
+    
 }
 
 Panel.registerReference("location-list", HTMLTrackerLocationList);

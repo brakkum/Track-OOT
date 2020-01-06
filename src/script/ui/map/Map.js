@@ -6,11 +6,14 @@ import Logger from "/deepJS/util/Logger.js";
 import Panel from "/deepJS/ui/layout/Panel.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
-import Locations from "/script/util/Locations.js";
+import Areas from "/script/util/world/Areas.js";
+import Entrances from "/script/util/world/Entrances.js";
+import Locations from "/script/util/world/Locations.js";
+import "./marker/Area.js";
+import "./marker/Entrance.js";
 import "./marker/Chest.js";
 import "./marker/Skulltula.js";
 import "./marker/Gossipstone.js";
-import "./marker/Area.js";
 
 const ZOOM_MIN = 10;
 const ZOOM_MAX = 200;
@@ -190,8 +193,6 @@ const TPL = new Template(`
     </div>
 `);
 
-const AREAS = new Map();
-
 let movePosX = 0;
 let movePosY = 0;
 function mapMoveBegin(event) {
@@ -301,13 +302,6 @@ class HTMLTrackerMap extends Panel {
 
     constructor() {
         super();
-
-        for (let i in GlobalData.get(`world/areas`)) {
-            let el = document.createElement('ootrt-marker-area');
-            el.ref = i;
-            AREAS.set(i, el);
-        }
-
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         this.shadowRoot.getElementById('location-mode').addEventListener("change", event => {
@@ -402,25 +396,17 @@ class HTMLTrackerMap extends Panel {
     }
 
     connectedCallback() {
-        this.setAttribute("mode", "chests");
+        this.refresh();
     }
 
     get ref() {
-        //return this.getAttribute('ref');
-        return "main";
+        //return this.getAttribute('ref') || "";
+        return "";
     }
 
     set ref(val) {
         //this.setAttribute('ref', val);
-        this.setAttribute('ref', "main");
-    }
-
-    get mode() {
-        return this.getAttribute('mode');
-    }
-
-    set mode(val) {
-        this.setAttribute('mode', val);
+        this.setAttribute('ref', "");
     }
 
     get era() {
@@ -431,39 +417,60 @@ class HTMLTrackerMap extends Panel {
         this.setAttribute('era', val);
     }
 
+    get mode() {
+        return this.getAttribute('mode') || "chests";
+    }
+
+    set mode(val) {
+        this.setAttribute('mode', val);
+    }
+
     static get observedAttributes() {
-        return ['ref', 'mode', 'era'];
+        return ['ref', 'era', 'mode'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
-            this.innerHTML = "";
-            if (!!this.mode && this.mode !== "") {
-                let data = GlobalData.get(`maps/${this.ref}`);
-                if (!!data) {
-                    // TODO switch map/minimap background
-                    let values = new Map(Object.entries(StateStorage.getAll()));
-                    data.locations.forEach(record => {
-                        if (record.type == "area") {
-                            if (this.mode != "gossipstones") {
-                                let el = AREAS.get(record.id);
-                                el.style.left = `${record.x}px`;
-                                el.style.top = `${record.y}px`;
-                                this.append(el);
-                            }
-                        } else {
-                            let loc = Locations.get(record.id);
-                            if (loc.visible(values) && (!this.era || loc[this.era](values))) {
-                                let el = loc.mapMarker;
-                                if (!!el.mode && el.mode.indexOf(this.mode) < 0) return;
-                                el.style.left = `${record.x}px`;
-                                el.style.top = `${record.y}px`;
-                                this.append(el);
-                            }
+            this.refresh();
+        }
+    }
+
+    refresh() {
+        this.innerHTML = "";
+        let data = GlobalData.get(`maps/${this.ref}`);
+        if (!!data) {
+            // TODO switch map/minimap background
+            let values = new Map(Object.entries(StateStorage.getAll()));
+            data.locations.forEach(record => {
+                if (record.type == "area") {
+                    if (this.mode != "gossipstones") {
+                        let loc = Areas.get(record.id);
+                        let el = loc.mapMarker;
+                        el.left = record.x;
+                        el.top = record.y;
+                        this.append(el);
+                    }
+                } else if (record.type == "entrance") {
+                    if (this.mode != "gossipstones") {
+                        let loc = Entrances.get(record.id);
+                        if (loc.visible(values) && (!this.era || loc[this.era](values))) {
+                            let el = loc.mapMarker;
+                            el.left = record.x;
+                            el.top = record.y;
+                            this.append(el);
                         }
-                    });
+                    }
+                } else {
+                    let loc = Locations.get(record.id);
+                    if (loc.visible(values) && (!this.era || loc[this.era](values))) {
+                        let el = loc.mapMarker;
+                        if (!!el.mode && el.mode.indexOf(this.mode) < 0) return;
+                        el.left = record.x;
+                        el.top = record.y;
+                        this.append(el);
+                    }
                 }
-            }
+            });
         }
     }
 

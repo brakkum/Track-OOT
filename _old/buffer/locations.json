@@ -1,5 +1,6 @@
 {
     "kokiri": {
+        "type": "area",
         "spread": true,
         "chests_v": {
             "kokiri_sword": {
@@ -90,6 +91,7 @@
         }
     },
     "desert": {
+        "type": "area",
         "spread": true,
         "chests_v": {
             "desert_chest": {
@@ -164,6 +166,7 @@
         }
     },
     "river": {
+        "type": "area",
         "spread": true,
         "chests_v": {
             "frog_game": {
@@ -258,6 +261,7 @@
         }
     },
     "hyrule_field": {
+        "type": "area",
         "spread": true,
         "chests_v": {
             "song_of_time": {
@@ -350,6 +354,7 @@
         }
     },
     "gerudo_valley": {
+        "type": "area",
         "spread": true,
         "chests_v": {
             "gerudo_river_cow": {
@@ -428,6 +433,7 @@
         }
     },
     "lake": {
+        "type": "area",
         "spread": true,
         "chests_v": {
             "bottle_zora": {
@@ -535,6 +541,7 @@
         }
     },
     "lonlon": {
+        "type": "area",
         "x": "47.0%",
         "y": "41.5%",
         "chests_v": {
@@ -607,6 +614,7 @@
         }
     },
     "gerudo": {
+        "type": "area",
         "x": "18.8%",
         "y": "19.0%",
         "era": "adult",
@@ -662,6 +670,7 @@
         }
     },
     "woods": {
+        "type": "area",
         "x": "78.0%",
         "y": "48.0%",
         "chests_v": {
@@ -774,6 +783,7 @@
         }
     },
     "castle_town": {
+        "type": "area",
         "x": "52.0%",
         "y": "20.0%",
         "chests_v": {
@@ -906,10 +916,14 @@
             },
             "storm_grotto": {
                 "type": "grotto"
+            },
+            "castle_ganon": {
+                "type": "dungeon"
             }
         }
     },
     "kakariko": {
+        "type": "area",
         "x": "65.0%",
         "y": "24.0%",
         "chests_v": {
@@ -1050,6 +1064,7 @@
         }
     },
     "mountain": {
+        "type": "area",
         "x": "64.0%",
         "y": "09.0%",
         "chests_v": {
@@ -1159,6 +1174,7 @@
         }
     },
     "goron": {
+        "type": "area",
         "x": "60.0%",
         "y": "06.5%",
         "chests_v": {
@@ -1220,6 +1236,7 @@
         }
     },
     "zoras": {
+        "type": "area",
         "x": "93.5%",
         "y": "29.0%",
         "chests_v": {
@@ -1291,6 +1308,7 @@
     },
 
     "well": {
+        "type": "dungeon",
         "x": "68.0%",
         "y": "23.0%",
         "hasmq": true,
@@ -1380,6 +1398,7 @@
         }
     },
     "ice_cavern": {
+        "type": "dungeon",
         "x": "90.5%",
         "y": "16.0%",
         "hasmq": true,
@@ -1441,6 +1460,7 @@
         }
     },
     "gerudo_training": {
+        "type": "dungeon",
         "x": "18.8%",
         "y": "28.0%",
         "hasmq": true,
@@ -1569,6 +1589,7 @@
     },
 
     "deku": {
+        "type": "dungeon",
         "x": "88.0%",
         "y": "56.0%",
         "hasmq": true,
@@ -1655,6 +1676,7 @@
         }
     },
     "dodongo": {
+        "type": "dungeon",
         "x": "59.0%",
         "y": "13.5%",
         "hasmq": true,
@@ -1723,6 +1745,7 @@
         }
     },
     "jabujabu": {
+        "type": "dungeon",
         "x": "91.5%",
         "y": "21.0%",
         "hasmq": true,
@@ -1816,6 +1839,7 @@
         }
     },
     "temple_forest": {
+        "type": "dungeon",
         "x": "78.5%",
         "y": "39.0%",
         "hasmq": true,
@@ -1941,6 +1965,7 @@
         }
     },
     "temple_fire": {
+        "type": "dungeon",
         "x": "68.0%",
         "y": "06.5%",
         "hasmq": true,
@@ -2069,6 +2094,7 @@
         }
     },
     "temple_water": {
+        "type": "dungeon",
         "x": "36.1%",
         "y": "91.0%",
         "hasmq": true,
@@ -2167,6 +2193,7 @@
         }
     },
     "temple_shadow": {
+        "type": "dungeon",
         "x": "76.0%",
         "y": "21.0%",
         "hasmq": true,
@@ -2328,6 +2355,7 @@
         }
     },
     "temple_spirit": {
+        "type": "dungeon",
         "x": "02.5%",
         "y": "17.0%",
         "hasmq": true,
@@ -2467,6 +2495,7 @@
         }
     },
     "castle_ganon": {
+        "type": "dungeon",
         "x": "52.0%",
         "y": "10.0%",
         "hasmq": true,
