@@ -9,7 +9,7 @@ const PRD_PATH = path.resolve(__dirname, "./prod");
 
 const MODULE_PATHS = {
     emcJS: path.resolve(__dirname, "node_modules/emcjs"),
-    RTCClient: path.resolve(__dirname, "node_modules/RTCClient")
+    RTCClient: path.resolve(__dirname, "node_modules/rtcclient")
 };
 
 function fileExists(filename) {
