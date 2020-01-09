@@ -1,6 +1,6 @@
-import Template from "/deepJS/util/Template.js";
-import AbstractElement from "/deepJS/ui/logic/elements/AbstractElement.js";
-import Dialog from "/deepJS/ui/Dialog.js";
+import Template from "/emcJS/util/Template.js";
+import AbstractElement from "/emcJS/ui/logic/elements/AbstractElement.js";
+import Dialog from "/emcJS/ui/Dialog.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
 

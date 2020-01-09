@@ -1,4 +1,4 @@
-import EventBus from "/deepJS/util/events/EventBus.js";
+import EventBus from "/emcJS/util/events/EventBus.js";
 
 const IDS = new WeakMap();
 const ALLS = new Map();

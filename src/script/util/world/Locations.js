@@ -1,6 +1,6 @@
 import GlobalData from "/script/storage/GlobalData.js";
-import AbstractElement from "/deepJS/util/logic/elements/AbstractElement.js";
-import EventBus from "/deepJS/util/events/EventBus.js";
+import AbstractElement from "/emcJS/util/logic/elements/AbstractElement.js";
+import EventBus from "/emcJS/util/events/EventBus.js";
 
 import "/script/ui/locations/listitems/Chest.js";
 import "/script/ui/locations/listitems/Skulltula.js";

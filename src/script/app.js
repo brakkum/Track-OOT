@@ -7,7 +7,7 @@ import GlobalData from "/script/storage/GlobalData.js";
 import I18n from "/script/util/I18n.js";
 import Logic from "/script/util/Logic.js";
 
-import "/deepJS/ui/Paging.js";
+import "/emcJS/ui/Paging.js";
 
 const SettingsStorage = new TrackerStorage('settings');
 
@@ -20,6 +20,6 @@ const SettingsStorage = new TrackerStorage('settings');
     updateLoadingMessage("build logic data...");
     await Logic.loadLogic();
     updateLoadingMessage("poke application...");
-    await $import.importModule("/deepJS/ui/Import.js");
+    await $import.importModule("/emcJS/ui/Import.js");
 
 }());

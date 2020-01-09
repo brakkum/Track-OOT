@@ -1,6 +1,6 @@
-import EventBus from "/deepJS/util/events/EventBus.js";
-import DateUtil from "/deepJS/util/DateUtil.js";
-import LocalStorage from "/deepJS/storage/LocalStorage.js";
+import EventBus from "/emcJS/util/events/EventBus.js";
+import DateUtil from "/emcJS/util/DateUtil.js";
+import LocalStorage from "/emcJS/storage/LocalStorage.js";
 import TrackerStorage from "./TrackerStorage.js";
 import StateConverter from "./converters/StateConverter.js";
 

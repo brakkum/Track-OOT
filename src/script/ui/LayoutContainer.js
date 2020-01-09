@@ -1,8 +1,8 @@
 import GlobalData from "/script/storage/GlobalData.js";
-import Template from "/deepJS/util/Template.js";
+import Template from "/emcJS/util/Template.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 
-import "/deepJS/ui/layout/Layout.js";
+import "/emcJS/ui/layout/Layout.js";
 import "/script/ui/items/ItemGrid.js";
 import "/script/ui/dungeonstate/DungeonState.js";
 import "/script/ui/locations/LocationList.js";

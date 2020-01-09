@@ -1,5 +1,5 @@
-import FileLoader from "/deepJS/util/FileLoader.js";
-import DateUtil from "/deepJS/util/DateUtil.js";
+import FileLoader from "/emcJS/util/FileLoader.js";
+import DateUtil from "/emcJS/util/DateUtil.js";
 
 const FILES = [
     "items",

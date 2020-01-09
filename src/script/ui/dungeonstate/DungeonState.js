@@ -1,7 +1,7 @@
-import Template from "/deepJS/util/Template.js";
+import Template from "/emcJS/util/Template.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import I18n from "/script/util/I18n.js";
-import Panel from "/deepJS/ui/layout/Panel.js";
+import Panel from "/emcJS/ui/layout/Panel.js";
 import "./DungeonReward.js";
 import "./DungeonType.js";
 

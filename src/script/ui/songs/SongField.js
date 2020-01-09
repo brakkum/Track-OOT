@@ -1,8 +1,8 @@
-import Template from "/deepJS/util/Template.js";
+import Template from "/emcJS/util/Template.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import EventBus from "/deepJS/util/events/EventBus.js";
-import Dialog from "/deepJS/ui/Dialog.js";
+import EventBus from "/emcJS/util/events/EventBus.js";
+import Dialog from "/emcJS/ui/Dialog.js";
 import I18n from "/script/util/I18n.js";
 import "./SongStave.js";
 import "./SongBuilder.js";

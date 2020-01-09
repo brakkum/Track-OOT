@@ -1,8 +1,8 @@
 import GlobalData from "/script/storage/GlobalData.js";
-import Template from "/deepJS/util/Template.js";
-import EventBus from "/deepJS/util/events/EventBus.js";
-import Logger from "/deepJS/util/Logger.js";
-import "/deepJS/ui/Tooltip.js";
+import Template from "/emcJS/util/Template.js";
+import EventBus from "/emcJS/util/events/EventBus.js";
+import Logger from "/emcJS/util/Logger.js";
+import "/emcJS/ui/Tooltip.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";

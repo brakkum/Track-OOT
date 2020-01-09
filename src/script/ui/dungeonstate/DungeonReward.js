@@ -1,6 +1,6 @@
-import Template from "/deepJS/util/Template.js";
-import EventBus from "/deepJS/util/events/EventBus.js";
-import "/deepJS/ui/selection/Option.js";
+import Template from "/emcJS/util/Template.js";
+import EventBus from "/emcJS/util/events/EventBus.js";
+import "/emcJS/ui/selection/Option.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";

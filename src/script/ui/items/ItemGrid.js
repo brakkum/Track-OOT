@@ -1,6 +1,6 @@
 import GlobalData from "/script/storage/GlobalData.js";
-import Template from "/deepJS/util/Template.js";
-import Panel from "/deepJS/ui/layout/Panel.js";
+import Template from "/emcJS/util/Template.js";
+import Panel from "/emcJS/ui/layout/Panel.js";
 import I18n from "/script/util/I18n.js";
 import "./Item.js";
 import "./InfiniteItem.js";

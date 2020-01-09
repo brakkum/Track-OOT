@@ -1,5 +1,5 @@
-import Template from "/deepJS/util/Template.js";
-import RATController from "/script/util/RATController.js";
+import Template from "/emcJS/util/Template.js";
+import RTCController from "/script/util/RTCController.js";
 import "./MPUser.js";
 
 const TPL = new Template(`
@@ -44,7 +44,7 @@ class HTMLMultiplayerRoomClient extends HTMLElement {
         let leave_button = this.shadowRoot.getElementById("leave_button");
 
         leave_button.addEventListener("click", async function() {
-            await RATController.disconnect();
+            await RTCController.disconnect();
             this.dispatchEvent(new Event('leave'));
         }.bind(this));
     }
@@ -62,7 +62,7 @@ class HTMLMultiplayerRoomClient extends HTMLElement {
                 let el = document.createElement("ootrt-mpuser");
                 el.name = inst;
                 el.role = 'client';
-                if (inst == RATController.getUsername()) {
+                if (inst == RTCController.getUsername()) {
                     this.prepend(el);
                 } else {
                     this.append(el);
@@ -74,7 +74,7 @@ class HTMLMultiplayerRoomClient extends HTMLElement {
                 let el = document.createElement("ootrt-mpuser");
                 el.name = inst;
                 el.role = 'spectator';
-                if (inst == RATController.getUsername()) {
+                if (inst == RTCController.getUsername()) {
                     this.prepend(el);
                 } else {
                     this.append(el);

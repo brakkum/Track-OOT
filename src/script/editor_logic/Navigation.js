@@ -1,4 +1,4 @@
-import FileSystem from "/deepJS/util/FileSystem.js";
+import FileSystem from "/emcJS/util/FileSystem.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 

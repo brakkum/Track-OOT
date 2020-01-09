@@ -1,11 +1,11 @@
 import GlobalData from "/script/storage/GlobalData.js";
-import MemoryStorage from "/deepJS/storage/MemoryStorage.js";
-import Template from "/deepJS/util/Template.js";
-import EventBus from "/deepJS/util/events/EventBus.js";
-import Logger from "/deepJS/util/Logger.js";
-import Helper from "/deepJS/util/Helper.js";
-import Dialog from "/deepJS/ui/Dialog.js";
-import "/deepJS/ui/ContextMenu.js";
+import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
+import Template from "/emcJS/util/Template.js";
+import EventBus from "/emcJS/util/events/EventBus.js";
+import Logger from "/emcJS/util/Logger.js";
+import Helper from "/emcJS/util/Helper.js";
+import Dialog from "/emcJS/ui/Dialog.js";
+import "/emcJS/ui/ContextMenu.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";

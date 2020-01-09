@@ -1,9 +1,9 @@
-import Template from "/deepJS/util/Template.js";
-import DateUtil from "/deepJS/util/DateUtil.js";
+import Template from "/emcJS/util/Template.js";
+import DateUtil from "/emcJS/util/DateUtil.js";
 import StateManager from "/script/storage/StateManager.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import Dialog from "/deepJS/ui/Dialog.js";
-import Toast from "/deepJS/ui/Toast.js";
+import Dialog from "/emcJS/ui/Dialog.js";
+import Toast from "/emcJS/ui/Toast.js";
 
 const TPL = new Template(`
     <style>

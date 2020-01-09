@@ -1,10 +1,11 @@
 
-import Dialog from "/deepJS/ui/Dialog.js";
-import EventBus from "/deepJS/util/events/EventBus.js";
-import EventBusModuleGeneric from "/deepJS/util/events/EventBusModuleGeneric.js";
-import DeepWebRAT from "/script/client/WebRAT.js";
+import Dialog from "/emcJS/ui/Dialog.js";
+import EventBus from "/emcJS/util/events/EventBus.js";
+import EventBusModuleGeneric from "/emcJS/util/events/EventBusModuleGeneric.js";
+import RTCClient from "/rtc/RTCClient.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
+const rtcClient = new RTCClient(location.hostname == "localhost" ? 8001 : 80);
 const eventModule = new EventBusModuleGeneric();
 eventModule.mute("logic");
 eventModule.mute("filter");
@@ -57,10 +58,10 @@ function getClientNameList() {
     };
 }
 
-class RATController {
+class RTCController {
     
     getInstances() {
-        return DeepWebRAT.getInstances();
+        return rtcClient.getInstances();
     }
 
     getUsername() {
@@ -77,7 +78,7 @@ class RATController {
 
     async host(name, pass, desc) {
         if (!!name) {
-            let res = await DeepWebRAT.register(name, pass, desc);
+            let res = await rtcClient.register(name, pass, desc);
             if (res.success === true) {
                 username = name;
                 if (!await promtName()) {
@@ -98,14 +99,14 @@ class RATController {
     }
 
     async close() {
-        await DeepWebRAT.unregister();
+        await rtcClient.unregister();
     }
 
     connect(name, pass) {
         return new Promise(async function(resolve) {
-            let res = await DeepWebRAT.connect(name, pass);
+            let res = await rtcClient.connect(name, pass);
             if (res.success === true) {
-                DeepWebRAT.onmessage = async function(key, msg) {
+                rtcClient.onmessage = async function(key, msg) {
                     if (msg.type == "name") {
                         if (!!msg.data) {
                             onJoined.call(this);
@@ -133,22 +134,22 @@ class RATController {
             let reason = await Dialog.prompt("Please provide a reason", "Please provide a reason for kicking the client.");
             if (typeof reason == "string") {
                 let key = reverseLookup.get(name);
-                DeepWebRAT.sendOne(key, {
+                rtcClient.sendOne(key, {
                     type: "kick",
                     data: reason
                 });
-                await DeepWebRAT.cut(key);
+                await rtcClient.cut(key);
             }
         }
     }
 
     async disconnect() {
-        await DeepWebRAT.disconnect();
+        await rtcClient.disconnect();
     }
 
 }
 
-export default new RATController;
+export default new RTCController;
 
 async function promtName() {
     username = await Dialog.prompt("Please select a username", "Please enter a name (at least 3 characters).", username);
@@ -167,7 +168,7 @@ async function promptPeerName() {
     if (!name) {
         return false;
     }
-    DeepWebRAT.send({
+    rtcClient.send({
         type: "name",
         data: name
     });
@@ -175,7 +176,7 @@ async function promptPeerName() {
 }
 
 function onJoined() {
-    DeepWebRAT.onmessage = async function(key, msg) {
+    rtcClient.onmessage = async function(key, msg) {
         if (msg.type == "join") {
             // TODO toast a join message
         } else if (msg.type == "leave") {
@@ -191,7 +192,7 @@ function onJoined() {
         }
     };
     eventModule.register(function(event) {
-        DeepWebRAT.send({
+        rtcClient.send({
             type: "event",
             data: event
         });
@@ -199,19 +200,19 @@ function onJoined() {
 }
 
 async function onHosting() {
-    DeepWebRAT.onmessage = function(key, msg) {
+    rtcClient.onmessage = function(key, msg) {
         if (msg.type == "name") {
             if (msg.data == username || reverseLookup.has(msg.data)) {
-                DeepWebRAT.sendOne(key, {
+                rtcClient.sendOne(key, {
                     type: "name",
                     data: false
                 });
             } else {
-                DeepWebRAT.sendOne(key, {
+                rtcClient.sendOne(key, {
                     type: "name",
                     data: true
                 });
-                DeepWebRAT.sendOne(key, {
+                rtcClient.sendOne(key, {
                     type: "state",
                     data: getState()
                 });
@@ -219,12 +220,12 @@ async function onHosting() {
                 // or spectators.set(key, msg.data);
                 reverseLookup.set(msg.data, key);
                 // TODO toast a join message
-                DeepWebRAT.sendButOne(key, {
+                rtcClient.sendButOne(key, {
                     type: "join",
                     data: msg.data
                 });
                 let data = getClientNameList();
-                DeepWebRAT.send({
+                rtcClient.send({
                     type: "room",
                     data: data
                 });
@@ -232,18 +233,18 @@ async function onHosting() {
             }
         } else if (msg.type == "event") {
             if (clients.has(key)) {
-                DeepWebRAT.sendButOne(key, msg);
+                rtcClient.sendButOne(key, msg);
                 eventModule.trigger(msg.data.name, msg.data.data);
             }
         }
     };
-    DeepWebRAT.onconnect = function(key) {
-        DeepWebRAT.sendOne(key, {
+    rtcClient.onconnect = function(key) {
+        rtcClient.sendOne(key, {
             type: "state",
             data: getState()
         });
     };
-    DeepWebRAT.ondisconnect = function(key) {
+    rtcClient.ondisconnect = function(key) {
         let name = "";
         if (clients.has(key)) {
             name = clients.get(key);
@@ -255,20 +256,20 @@ async function onHosting() {
             return;
         }
         // TODO toast a leave message
-        DeepWebRAT.send({
+        rtcClient.send({
             type: "leave",
             data: name
         });
         reverseLookup.delete(name);
         let data = getClientNameList();
-        DeepWebRAT.send({
+        rtcClient.send({
             type: "room",
             data: data
         });
         ON_ROOMUPDATE(data);
     };
     eventModule.register(function(event) {
-        DeepWebRAT.send({
+        rtcClient.send({
             type: "event",
             data: event
         });

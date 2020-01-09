@@ -1,5 +1,5 @@
-import Dialog from "/deepJS/ui/Dialog.js";
-import Toast from "/deepJS/ui/Toast.js";
+import Dialog from "/emcJS/ui/Dialog.js";
+import Toast from "/emcJS/ui/Toast.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import LoadWindow from "/script/ui/savestate/LoadWindow.js";
 import ManageWindow from "/script/ui/savestate/ManageWindow.js";

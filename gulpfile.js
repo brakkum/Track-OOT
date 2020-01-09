@@ -3,11 +3,13 @@
 const fs = require('fs');
 const path = require("path");
 
-const PATHS = {
-    appBase: path.resolve(__dirname, "./src"),
-    deepJS: path.resolve(__dirname, "node_modules/deepjs-modules"),
-    targetDev: path.resolve(__dirname, "./dev"),
-    targetProd: path.resolve(__dirname, "./prod")
+const SRC_PATH = path.resolve(__dirname, "./src");
+const DEV_PATH = path.resolve(__dirname, "./dev");
+const PRD_PATH = path.resolve(__dirname, "./prod");
+
+const MODULE_PATHS = {
+    emcJS: path.resolve(__dirname, "node_modules/emcjs"),
+    RTCClient: path.resolve(__dirname, "node_modules/RTCClient")
 };
 
 function fileExists(filename) {
@@ -20,14 +22,19 @@ function fileExists(filename) {
 }
 
 if (process.argv.indexOf('-nolocal') < 0) {
-    let deepJS = path.resolve(__dirname, '../deepJS');
-    if (fileExists(deepJS)) {
-        PATHS.deepJS = deepJS;
+    let emcJS = path.resolve(__dirname, '../emcJS');
+    if (fileExists(emcJS)) {
+        MODULE_PATHS.emcJS = emcJS;
+    }
+    let RTCClient = path.resolve(__dirname, '../RTCClient');
+    if (fileExists(RTCClient)) {
+        MODULE_PATHS.RTCClient = RTCClient;
     }
 }
 
 const gulp = require("gulp");
 const terser = require('gulp-terser');
+const sourcemaps = require('gulp-sourcemaps');
 const htmlmin = require('gulp-htmlmin');
 const jsonminify = require('gulp-jsonminify');
 const svgo = require('gulp-svgo');
@@ -38,253 +45,161 @@ const autoprefixer = require('gulp-autoprefixer');
 const eslint = require('gulp-eslint');
 const deleted = require("./deleted");
 
-function copyHTML_prod() {
-    return gulp.src(PATHS.appBase + "/**/*.html")
-        .pipe(deleted.register(PATHS.appBase, PATHS.targetProd))
-        .pipe(newer(PATHS.targetProd))
+function copyHTML(dest = DEV_PATH) {
+    return gulp.src(`${SRC_PATH}/**/*.html`)
+        .pipe(deleted.register(SRC_PATH, dest))
+        .pipe(newer(dest))
         .pipe(htmlmin({ collapseWhitespace: true }))
-        .pipe(gulp.dest(PATHS.targetProd));
+        .pipe(gulp.dest(dest));
 }
 
-function copyHTML_dev() {
-    return gulp.src(PATHS.appBase + "/**/*.html")
-        .pipe(deleted.register(PATHS.appBase, PATHS.targetDev))
-        .pipe(newer(PATHS.targetDev))
-        .pipe(gulp.dest(PATHS.targetDev));
-}
-
-function copyJSON_prod() {
-    return gulp.src(PATHS.appBase + "/**/*.json")
-        .pipe(deleted.register(PATHS.appBase, PATHS.targetProd))
-        .pipe(newer(PATHS.targetProd))
+function copyJSON(dest = DEV_PATH) {
+    return gulp.src(`${SRC_PATH}/**/*.json`)
+        .pipe(deleted.register(SRC_PATH, dest))
+        .pipe(newer(dest))
         .pipe(jsonminify())
-        .pipe(gulp.dest(PATHS.targetProd));
+        .pipe(gulp.dest(dest));
 }
 
-function copyJSON_dev() {
-    return gulp.src(PATHS.appBase + "/**/*.json")
-        .pipe(deleted.register(PATHS.appBase, PATHS.targetDev))
-        .pipe(newer(PATHS.targetDev))
-        .pipe(gulp.dest(PATHS.targetDev));
+function copyI18N(dest = DEV_PATH) {
+    return gulp.src(`${SRC_PATH}/i18n/*.lang`)
+        .pipe(deleted.register(`${SRC_PATH}/i18n`, `${dest}/i18n`))
+        .pipe(newer(`${dest}/i18n`))
+        .pipe(gulp.dest(`${dest}/i18n`));
 }
 
-function copyI18N_prod() {
-    return gulp.src(PATHS.appBase + "/i18n/*.lang")
-        .pipe(deleted.register(PATHS.appBase + "/i18n", PATHS.targetProd + "/i18n"))
-        .pipe(newer(PATHS.targetProd + "/i18n"))
-        .pipe(gulp.dest(PATHS.targetProd + "/i18n"));
-}
-
-function copyI18N_dev() {
-    return gulp.src(PATHS.appBase + "/i18n/*.lang")
-        .pipe(deleted.register(PATHS.appBase + "/i18n", PATHS.targetDev + "/i18n"))
-        .pipe(newer(PATHS.targetDev + "/i18n"))
-        .pipe(gulp.dest(PATHS.targetDev + "/i18n"));
-}
-
-function copyImg_prod() {
-    return gulp.src([PATHS.appBase + "/images/**/*.svg", PATHS.appBase + "/images/**/*.png"])
-        .pipe(deleted.register(PATHS.appBase + "/images", PATHS.targetProd + "/images"))
-        .pipe(newer(PATHS.targetProd + "/images"))
+function copyImg(dest = DEV_PATH) {
+    return gulp.src([`${SRC_PATH}/images/**/*.svg`, `${SRC_PATH}/images/**/*.png`])
+        .pipe(deleted.register(`${SRC_PATH}/images`, `${dest}/images`))
+        .pipe(newer(`${dest}/images`))
         .pipe(svgo())
-        .pipe(gulp.dest(PATHS.targetProd + "/images"));
+        .pipe(gulp.dest(`${dest}/images`));
 }
 
-function copyImg_dev() {
-    return gulp.src([PATHS.appBase + "/images/**/*.svg", PATHS.appBase + "/images/**/*.png"])
-        .pipe(deleted.register(PATHS.appBase + "/images", PATHS.targetDev + "/images"))
-        .pipe(newer(PATHS.targetDev + "/images"))
-        .pipe(gulp.dest(PATHS.targetDev + "/images"));
+function copyChangelog(dest = DEV_PATH) {
+    return gulp.src(`${SRC_PATH}/CHANGELOG.MD`)
+        .pipe(deleted.register(SRC_PATH, dest))
+        .pipe(newer(dest))
+        .pipe(gulp.dest(dest));
 }
 
-function copyChangelog_prod() {
-    return gulp.src(PATHS.appBase + "/CHANGELOG.MD")
-        .pipe(deleted.register(PATHS.appBase, PATHS.targetProd))
-        .pipe(newer(PATHS.targetProd))
-        .pipe(gulp.dest(PATHS.targetProd));
-}
-
-function copyChangelog_dev() {
-    return gulp.src(PATHS.appBase + "/CHANGELOG.MD")
-        .pipe(deleted.register(PATHS.appBase, PATHS.targetDev))
-        .pipe(newer(PATHS.targetDev))
-        .pipe(gulp.dest(PATHS.targetDev));
-}
-
-function copySCSS_prod() {
-    return gulp.src(PATHS.appBase + "/style/**/*.scss")
+function copySCSS(dest = DEV_PATH) {
+    return gulp.src(`${SRC_PATH}/style/app.scss`, {sourcemaps: true})
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-        .pipe(deleted.register(PATHS.appBase + "/style", PATHS.targetProd + "/style"))
-        .pipe(newer(PATHS.targetProd + "/style"))
+        .pipe(deleted.register(`${SRC_PATH}/style`, `${dest}/style`, true))
+        .pipe(newer(`${dest}/style`))
         .pipe(autoprefixer())
-        .pipe(gulp.dest(PATHS.targetProd + "/style"));
+        .pipe(gulp.dest(`${dest}/style`, {sourcemaps: true}));
 }
 
-function copySCSS_dev() {
-    return gulp.src(PATHS.appBase + "/style/**/*.scss", { sourcemaps: true })
-        .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
-        .pipe(deleted.register(PATHS.appBase + "/style", PATHS.targetDev + "/style"))
-        .pipe(newer(PATHS.targetDev + "/style"))
+function copyCSS(dest = DEV_PATH) {
+    return gulp.src(`${SRC_PATH}/style/**/*.css`)
+        .pipe(deleted.register(`${SRC_PATH}/style`, `${dest}/style`))
+        .pipe(newer(`${dest}/style`))
         .pipe(autoprefixer())
-        .pipe(gulp.dest(PATHS.targetDev + "/style", { sourcemaps: true }));
+        .pipe(gulp.dest(`${dest}/style`));
 }
 
-function copyCSS_prod() {
-    return gulp.src(PATHS.appBase + "/style/**/*.css")
-        .pipe(deleted.register(PATHS.appBase + "/style", PATHS.targetProd + "/style"))
-        .pipe(newer(PATHS.targetProd + "/style"))
-        .pipe(autoprefixer())
-        .pipe(gulp.dest(PATHS.targetProd + "/style"));
-}
-
-function copyCSS_dev() {
-    return gulp.src(PATHS.appBase + "/style/**/*.css")
-        .pipe(deleted.register(PATHS.appBase + "/style", PATHS.targetDev + "/style"))
-        .pipe(newer(PATHS.targetDev + "/style"))
-        .pipe(autoprefixer())
-        .pipe(gulp.dest(PATHS.targetDev + "/style"));
-}
-
-function copyFonts_prod() {
+function copyFonts(dest = DEV_PATH) {
     return gulp.src([
-        PATHS.appBase + "/fonts/**/*.ttf",
-        PATHS.appBase + "/fonts/**/*.eot",
-        PATHS.appBase + "/fonts/**/*.otf",
-        PATHS.appBase + "/fonts/**/*.woff",
-        PATHS.appBase + "/fonts/**/*.woff2",
-        PATHS.appBase + "/fonts/**/*.svg"
+        `${SRC_PATH}/fonts/**/*.ttf`,
+        `${SRC_PATH}/fonts/**/*.eot`,
+        `${SRC_PATH}/fonts/**/*.otf`,
+        `${SRC_PATH}/fonts/**/*.woff`,
+        `${SRC_PATH}/fonts/**/*.woff2`,
+        `${SRC_PATH}/fonts/**/*.svg`
     ])
-        .pipe(deleted.register(PATHS.appBase + "/fonts", PATHS.targetProd + "/fonts"))
-        .pipe(newer(PATHS.targetProd + "/fonts"))
-        .pipe(gulp.dest(PATHS.targetProd + "/fonts"));
+        .pipe(deleted.register(`${SRC_PATH}/fonts`, `${dest}/fonts`))
+        .pipe(newer(`${dest}/fonts`))
+        .pipe(gulp.dest(`${dest}/fonts`));
 }
 
-function copyFonts_dev() {
-    return gulp.src([
-        PATHS.appBase + "/fonts/**/*.ttf",
-        PATHS.appBase + "/fonts/**/*.eot",
-        PATHS.appBase + "/fonts/**/*.otf",
-        PATHS.appBase + "/fonts/**/*.woff",
-        PATHS.appBase + "/fonts/**/*.woff2",
-        PATHS.appBase + "/fonts/**/*.svg"
-    ])
-        .pipe(deleted.register(PATHS.appBase + "/fonts", PATHS.targetDev + "/fonts"))
-        .pipe(newer(PATHS.targetDev + "/fonts"))
-        .pipe(gulp.dest(PATHS.targetDev + "/fonts"));
+function copyScript(dest = DEV_PATH) {
+    return gulp.src(`${SRC_PATH}/script/**/*.js`)
+        .pipe(deleted.register(`${SRC_PATH}/script`, `${dest}/script`))
+        .pipe(newer(`${dest}/script`))
+        .pipe(gulp.dest(`${dest}/script`));
 }
 
-function copyScript_prod() {
-    return gulp.src(PATHS.appBase + "/script/**/*.js")
-        .pipe(deleted.register(PATHS.appBase + "/script", PATHS.targetProd + "/script"))
-        .pipe(newer(PATHS.targetProd + "/script"))
-        .pipe(terser())
-        .pipe(gulp.dest(PATHS.targetProd + "/script"));
+function copyEmcJS(dest = DEV_PATH) {
+    return gulp.src([MODULE_PATHS.emcJS + "/**/*.js", `!${MODULE_PATHS.emcJS}/*.js`])
+        .pipe(deleted.register(MODULE_PATHS.emcJS, `${dest}/emcJS`))
+        .pipe(newer(`${dest}/emcJS`))
+        .pipe(gulp.dest(`${dest}/emcJS`));
 }
 
-function copyScript_dev() {
-    return gulp.src(PATHS.appBase + "/script/**/*.js")
-        .pipe(deleted.register(PATHS.appBase + "/script", PATHS.targetDev + "/script"))
-        .pipe(newer(PATHS.targetDev + "/script"))
-        .pipe(gulp.dest(PATHS.targetDev + "/script"));
+function copyRTCClient(dest = DEV_PATH) {
+    return gulp.src(MODULE_PATHS.RTCClient + "/**/*.js")
+        .pipe(deleted.register(MODULE_PATHS.RTCClient, `${dest}/rtc`))
+        .pipe(newer(`${dest}/rtc`))
+        .pipe(gulp.dest(`${dest}/rtc`));
 }
 
-function copyDeepJS_prod() {
-    return gulp.src(PATHS.deepJS + "/**/*.js")
-        .pipe(deleted.register(PATHS.deepJS, PATHS.targetProd + "/deepJS"))
-        .pipe(newer(PATHS.targetProd + "/deepJS"))
-        .pipe(terser())
-        .pipe(gulp.dest(PATHS.targetProd + "/deepJS"));
+function copySW(dest = DEV_PATH) {
+    return gulp.src(`${SRC_PATH}/sw.js`)
+        .pipe(deleted.register(SRC_PATH, dest))
+        .pipe(newer(dest))
+        .pipe(gulp.dest(dest));
 }
 
-function copyDeepJS_dev() {
-    return gulp.src(PATHS.deepJS + "/**/*.js")
-        .pipe(deleted.register(PATHS.deepJS, PATHS.targetDev + "/deepJS"))
-        .pipe(newer(PATHS.targetDev + "/deepJS"))
-        .pipe(gulp.dest(PATHS.targetDev + "/deepJS"));
-}
-
-function copySW_prod() {
-    return gulp.src(PATHS.appBase + "/sw.js")
-        .pipe(deleted.register(PATHS.appBase, PATHS.targetProd))
-        .pipe(newer(PATHS.targetProd))
-        .pipe(terser())
-        .pipe(gulp.dest(PATHS.targetProd));
-}
-
-function copySW_dev() {
-    return gulp.src(PATHS.appBase + "/sw.js")
-        .pipe(deleted.register(PATHS.appBase, PATHS.targetDev))
-        .pipe(newer(PATHS.targetDev))
-        .pipe(gulp.dest(PATHS.targetDev));
-}
-
-function writeTOC_prod() {
-    return gulp.src([PATHS.targetProd + "/**/*", "!" + PATHS.targetProd + "/index.json"])
+function writeTOC(dest = DEV_PATH) {
+    return gulp.src([`${dest}/**/*`, `!${dest}/index.json`])
         .pipe(filelist("index.json", { relative: true }))
-        .pipe(gulp.dest(PATHS.targetProd));
+        .pipe(gulp.dest(dest));
 }
 
-function writeTOC_dev() {
-    return gulp.src([PATHS.targetDev + "/**/*", "!" + PATHS.targetDev + "/index.json"])
-        .pipe(filelist("index.json", { relative: true }))
-        .pipe(gulp.dest(PATHS.targetDev));
-}
-
-function cleanup_prod(done) {
-    deleted.cleanup(PATHS.targetProd);
-    done();
-}
-
-function cleanup_dev(done) {
-    deleted.cleanup(PATHS.targetDev);
+function cleanup(dest = DEV_PATH, done) {
+    deleted.cleanup(dest);
     done();
 }
 
 exports.build = gulp.series(
     gulp.parallel(
-        copyHTML_prod,
-        copyJSON_prod,
-        copyI18N_prod,
-        copyImg_prod,
-        copySCSS_prod,
-        copyCSS_prod,
-        copyFonts_prod,
-        copyScript_prod,
-        copyDeepJS_prod,
-        copySW_prod,
-        copyChangelog_prod
+        copyHTML.bind(this, PRD_PATH),
+        copyJSON.bind(this, PRD_PATH),
+        copyI18N.bind(this, PRD_PATH),
+        copyImg.bind(this, PRD_PATH),
+        copySCSS.bind(this, PRD_PATH),
+        copyCSS.bind(this, PRD_PATH),
+        copyFonts.bind(this, PRD_PATH),
+        copyScript.bind(this, PRD_PATH),
+        copyEmcJS.bind(this, PRD_PATH),
+        copyRTCClient.bind(this, PRD_PATH),
+        copySW.bind(this, PRD_PATH),
+        copyChangelog.bind(this, PRD_PATH)
     ),
-    cleanup_prod,
-    writeTOC_prod
+    cleanup.bind(this, PRD_PATH),
+    writeTOC.bind(this, PRD_PATH)
 );
 
 exports.buildDev = gulp.series(
     gulp.parallel(
-        copyHTML_dev,
-        copyJSON_dev,
-        copyI18N_dev,
-        copyImg_dev,
-        copySCSS_dev,
-        copyCSS_dev,
-        copyFonts_dev,
-        copyScript_dev,
-        copyDeepJS_dev,
-        copySW_dev,
-        copyChangelog_dev
+        copyHTML.bind(this, DEV_PATH),
+        copyJSON.bind(this, DEV_PATH),
+        copyI18N.bind(this, DEV_PATH),
+        copyImg.bind(this, DEV_PATH),
+        copySCSS.bind(this, DEV_PATH),
+        copyCSS.bind(this, DEV_PATH),
+        copyFonts.bind(this, DEV_PATH),
+        copyScript.bind(this, DEV_PATH),
+        copyEmcJS.bind(this, DEV_PATH),
+        copyRTCClient.bind(this, DEV_PATH),
+        copySW.bind(this, DEV_PATH),
+        copyChangelog.bind(this, DEV_PATH)
     ),
-    cleanup_dev,
-    writeTOC_dev
+    cleanup.bind(this, DEV_PATH),
+    writeTOC.bind(this, DEV_PATH)
 );
 
 exports.watch = function () {
     return gulp.watch(
-        PATHS.appBase + "/**/*",
+        `${SRC_PATH}/**/*`,
         exports.build
     );
 }
 
 exports.eslint = function () {
-    return gulp.src([PATHS.appBase + "/script/**/*.js", PATHS.deepJS + "/**/*.js"])
+    return gulp.src([`${SRC_PATH}/script/**/*.js`, `${MODULE_PATHS.emcJS}/**/*.js`])
         .pipe(eslint({
             "parserOptions": {
               "ecmaVersion": 2018,

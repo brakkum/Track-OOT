@@ -1,5 +1,5 @@
-import Template from "/deepJS/util/Template.js";
-import RATController from "/script/util/RATController.js";
+import Template from "/emcJS/util/Template.js";
+import RTCController from "/script/util/RTCController.js";
 import "./MultiplayerLobby.js";
 import "./MultiplayerRoomClient.js";
 import "./MultiplayerRoomMaster.js";
@@ -33,7 +33,7 @@ class HTMLMultiplayer extends HTMLElement {
         let room_master = this.shadowRoot.getElementById("room_master");
         let room_client = this.shadowRoot.getElementById("room_client");
 
-        RATController.onroomupdate = function(data) {
+        RTCController.onroomupdate = function(data) {
             room_master.updateRoom(data);
             room_client.updateRoom(data);
         }

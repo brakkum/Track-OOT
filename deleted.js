@@ -14,10 +14,13 @@
 
     class Deleted {
 
-        register(src = "/", dest = "/") {
+        register(src = "/", dest = "/", sourcemaps = false) {
             let files = [];
             return through(function(file) {
                 FILES.add(normalizePath(path.resolve(dest, path.relative(src, file.path))));
+                if (!!sourcemaps) {
+                    FILES.add(normalizePath(path.resolve(dest, path.relative(src, `${file.path}.map`))));
+                }
                 this.push(file);
                 return files.push(file);
             }, function() {

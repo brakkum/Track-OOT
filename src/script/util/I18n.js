@@ -1,5 +1,5 @@
-import FileLoader from "/deepJS/util/FileLoader.js";
-import Logger from "/deepJS/util/Logger.js";
+import FileLoader from "/emcJS/util/FileLoader.js";
+import Logger from "/emcJS/util/Logger.js";
 
 /*
 let mutationObserver = new MutationObserver(function(mutations) {

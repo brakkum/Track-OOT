@@ -1,8 +1,8 @@
 import GlobalData from "/script/storage/GlobalData.js";
-import SettingsWindow from "/deepJS/ui/SettingsWindow.js";
-import PopOver from "/deepJS/ui/PopOver.js";
-import EventBus from "/deepJS/util/events/EventBus.js";
-import Dialog from "/deepJS/ui/Dialog.js";
+import SettingsWindow from "/emcJS/ui/SettingsWindow.js";
+import PopOver from "/emcJS/ui/PopOver.js";
+import EventBus from "/emcJS/util/events/EventBus.js";
+import Dialog from "/emcJS/ui/Dialog.js";
 import BusyIndicator from "/script/ui/BusyIndicator.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
@@ -11,7 +11,7 @@ const SettingsStorage = new TrackerStorage('settings');
 
 import { buildSettings } from "/script/util/settings/SettingsBuilder.js";
 
-import "/deepJS/ui/Paging.js";
+import "/emcJS/ui/Paging.js";
 import "/script/ui/UpdateHandler.js";
 
 const settings = new SettingsWindow;

@@ -1,19 +1,19 @@
-import EventBus from "/deepJS/util/events/EventBus.js";
-import Logger from "/deepJS/util/Logger.js";
+import EventBus from "/emcJS/util/events/EventBus.js";
+import Logger from "/emcJS/util/Logger.js";
 
 import GlobalData from "/script/storage/GlobalData.js";
 import Settings from "/script/util/Settings.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
-import "/deepJS/ui/Icon.js";
-import "/deepJS/ui/selection/ChoiceSelect.js";
+import "/emcJS/ui/Icon.js";
+import "/emcJS/ui/selection/ChoiceSelect.js";
 import "/script/util/Navigation.js";
 import "/script/ui/LocationStatus.js";
 
 (async function main() {
 
     if ("SharedWorker" in window) {
-        let EventBusModuleShare = (await import("/deepJS/util/events/EventBusModuleShare.js")).default;
+        let EventBusModuleShare = (await import("/emcJS/util/events/EventBusModuleShare.js")).default;
         EventBusModuleShare.mute("logic");
         EventBus.addModule(EventBusModuleShare);
     }

@@ -1,6 +1,6 @@
-import DeepWindow from "/deepJS/ui/Window.js";
-import Dialog from "/deepJS/ui/Dialog.js";
-import Template from "/deepJS/util/Template.js";
+import DeepWindow from "/emcJS/ui/Window.js";
+import Dialog from "/emcJS/ui/Dialog.js";
+import Template from "/emcJS/util/Template.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import I18n from "/script/util/I18n.js";
 import "./ShopEditItem.js";

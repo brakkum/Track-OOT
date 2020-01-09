@@ -1,7 +1,7 @@
 import GlobalData from "/script/storage/GlobalData.js";
-import Template from "/deepJS/util/Template.js";
-import EventBus from "/deepJS/util/events/EventBus.js";
-import "/deepJS/ui/selection/Option.js";
+import Template from "/emcJS/util/Template.js";
+import EventBus from "/emcJS/util/events/EventBus.js";
+import "/emcJS/ui/selection/Option.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import Logic from "/script/util/Logic.js";
 

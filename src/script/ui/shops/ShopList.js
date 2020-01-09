@@ -1,5 +1,5 @@
 import GlobalData from "/script/storage/GlobalData.js";
-import Template from "/deepJS/util/Template.js";
+import Template from "/emcJS/util/Template.js";
 import "./ShopField.js";
 
 const TPL = new Template(`

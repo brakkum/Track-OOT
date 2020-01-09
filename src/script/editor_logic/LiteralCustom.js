@@ -1,5 +1,5 @@
-import Template from "/deepJS/util/Template.js";
-import AbstractElement from "/deepJS/ui/logic/elements/AbstractElement.js";
+import Template from "/emcJS/util/Template.js";
+import AbstractElement from "/emcJS/ui/logic/elements/AbstractElement.js";
 import I18n from "/script/util/I18n.js";
 
 const TPL_CAPTION = "CUSTOM";

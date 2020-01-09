@@ -1,12 +1,12 @@
 @import "variables";
 
 @import "theme.css";
-@import "tracker/navigation.css";
-@import "tracker/fonts.css";
-@import "inputs.css";
-@import "utils/dialog.css";
-@import "utils/settings.css";
-@import "layouteditor.css";
+@import "tracker/navigation.scss";
+@import "tracker/fonts.scss";
+@import "inputs.scss";
+@import "utils/dialog.scss";
+@import "utils/settings.scss";
+@import "layouteditor.scss";
 
 @keyframes rotate {
     0% { transform: scale(4) rotate(0deg) }

@@ -1,6 +1,6 @@
-import Template from "/deepJS/util/Template.js";
-import Dialog from "/deepJS/ui/Dialog.js";
-import RATController from "/script/util/RATController.js";
+import Template from "/emcJS/util/Template.js";
+import Dialog from "/emcJS/ui/Dialog.js";
+import RTCController from "/script/util/RTCController.js";
 import "./MPRoom.js";
 
 const TPL = new Template(`
@@ -91,7 +91,7 @@ class HTMLMultiplayerLobby extends HTMLElement {
 
         host_button.addEventListener("click", async function() {
             if (!!host_name.value) {
-                let res = await RATController.host(host_name.value, host_pass.value, host_desc.value);
+                let res = await RTCController.host(host_name.value, host_pass.value, host_desc.value);
                 if (!!res) {
                     this.dispatchEvent(new Event('host'));
                 }
@@ -103,9 +103,9 @@ class HTMLMultiplayerLobby extends HTMLElement {
             let res;
             if (!!el.pass && el.pass != "false") {
                 let pass = await Dialog.prompt("pasword required", "please enter password");
-                res = await RATController.connect(el.name, pass);
+                res = await RTCController.connect(el.name, pass);
             } else {
-                res = await RATController.connect(el.name);
+                res = await RTCController.connect(el.name);
             }
             if (!!res) {
                 this.dispatchEvent(new Event('join'));
@@ -113,7 +113,7 @@ class HTMLMultiplayerLobby extends HTMLElement {
         }.bind(this);
 
         let refresh = async function() {
-            let res = await RATController.getInstances();
+            let res = await RTCController.getInstances();
             this.innerHTML = "";
             if (!!res) {
                 res.forEach(function(inst) {

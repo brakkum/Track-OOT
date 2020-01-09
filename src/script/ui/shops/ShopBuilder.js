@@ -1,4 +1,4 @@
-import Template from "/deepJS/util/Template.js";
+import Template from "/emcJS/util/Template.js";
 import Dialog from "/script/ui/shops/ShopItemChoice.js";
 import I18n from "/script/util/I18n.js";
 import "./ShopEditItem.js";

@@ -1,5 +1,5 @@
-import Template from "/deepJS/util/Template.js";
-import RATController from "/script/util/RATController.js";
+import Template from "/emcJS/util/Template.js";
+import RTCController from "/script/util/RTCController.js";
 import "./MPUser.js";
 import "./MPManagedUser.js";
 
@@ -47,17 +47,17 @@ class HTMLMultiplayerRoomMaster extends HTMLElement {
         let leave_button = this.shadowRoot.getElementById("leave_button");
 
         close_button.addEventListener("click", async function() {
-            await RATController.close();
+            await RTCController.close();
             close_button.style.display = "none";
         }.bind(this));
 
         leave_button.addEventListener("click", async function() {
             if (close_button.style.display != "none") {
-                await RATController.close();
+                await RTCController.close();
             } else {
                 close_button.style.display = undefined;
             }
-            await RATController.disconnect();
+            await RTCController.disconnect();
             this.dispatchEvent(new Event('close'));
         }.bind(this));
     }
@@ -93,7 +93,7 @@ class HTMLMultiplayerRoomMaster extends HTMLElement {
 }
 
 function kickUser(event) {
-    RATController.kick(event.target.name);
+    RTCController.kick(event.target.name);
 }
 
 customElements.define('ootrt-multiplayerroommaster', HTMLMultiplayerRoomMaster);
