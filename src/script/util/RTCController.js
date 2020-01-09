@@ -5,7 +5,7 @@ import EventBusModuleGeneric from "/emcJS/util/events/EventBusModuleGeneric.js";
 import RTCClient from "/rtc/RTCClient.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
-const rtcClient = new RTCClient(location.hostname == "localhost" ? 8001 : 80);
+const rtcClient = new RTCClient();
 const eventModule = new EventBusModuleGeneric();
 eventModule.mute("logic");
 eventModule.mute("filter");
