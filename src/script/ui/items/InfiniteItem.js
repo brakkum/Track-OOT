@@ -122,7 +122,7 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
             switch (name) {
                 case 'ref':
                     let data = GlobalData.get("items")[newValue];
-                    this.style.backgroundImage = `url("/images/${data.images}"`;
+                    this.style.backgroundImage = `url("/images/items/${data.images}"`;
                     EventBus.mute("item");
                     this.value = StateStorage.read(this.ref, 0);
                     EventBus.unmute("item");

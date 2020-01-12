@@ -16,7 +16,7 @@
     flex-shrink: 0;
     z-index: 1000;
 
-    deep-choiceselect {
+    emc-choiceselect {
         display: none;
 
         @media (max-width: $mobile-switch) {

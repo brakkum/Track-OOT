@@ -46,7 +46,7 @@ function loadLayout(cache, layout) {
             }
             return el;
         } else {
-            let el = document.createElement(`deep-${layout.type}`);
+            let el = document.createElement(`emc-${layout.type}`);
             for (let item of layout.items) {
                 el.append(loadLayout(cache, item));
             }

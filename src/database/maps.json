@@ -1,6 +1,8 @@
 {
     "": {
         "background": "main.png",
+        "width": 1920,
+        "height": 1080,
         "locations": [
             {
                 "type": "chest",
@@ -747,8 +749,8 @@
                 "y": 184
             },
             {
-                "type": "entrance",
-                "id": "entrance.castle_ganon",
+                "type": "area",
+                "id": "area.castle_ganon",
                 "x": 998,
                 "y": 108
             }
@@ -828,9 +830,7 @@
                 "id": "location.kokiri.gossip_deku_right",
                 "x": 0,
                 "y": 0
-            }
-        ],
-        "entrances": [
+            },
             {
                 "type": "entrance",
                 "id": "entrance.kokiri.midos_house",
@@ -943,9 +943,7 @@
                 "id": "location.desert.gossip_desert",
                 "x": 0,
                 "y": 0
-            }
-        ],
-        "entrances": [
+            },
             {
                 "type": "entrance",
                 "id": "entrance.desert.fairy_colossus",
@@ -1058,9 +1056,7 @@
                 "id": "location.river.gossip_grotto_river",
                 "x": 0,
                 "y": 0
-            }
-        ],
-        "entrances": [
+            },
             {
                 "type": "entrance",
                 "id": "entrance.river.bomb_grotto",
@@ -1161,9 +1157,7 @@
                 "id": "location.hyrule_field.gossip_field_valley",
                 "x": 0,
                 "y": 0
-            }
-        ],
-        "entrances": [
+            },
             {
                 "type": "entrance",
                 "id": "entrance.hyrule_field.castle_river_grotto",
@@ -1282,9 +1276,7 @@
                 "id": "location.gerudo_valley.gossip_gerudo_valley",
                 "x": 0,
                 "y": 0
-            }
-        ],
-        "entrances": [
+            },
             {
                 "type": "entrance",
                 "id": "entrance.gerudo_valley.tend",
@@ -1409,9 +1401,7 @@
                 "id": "location.lake.gossip_southwest",
                 "x": 0,
                 "y": 0
-            }
-        ],
-        "entrances": [
+            },
             {
                 "type": "entrance",
                 "id": "entrance.lake.laboratory",
@@ -1524,9 +1514,7 @@
                 "id": "location.lonlon.window_child_night",
                 "x": 0,
                 "y": 0
-            }
-        ],
-        "entrances": [
+            },
             {
                 "type": "entrance",
                 "id": "entrance.lonlon.house",
@@ -1615,9 +1603,7 @@
                 "id": "location.gerudo.horseback_archery_target_adult_night",
                 "x": 0,
                 "y": 0
-            }
-        ],
-        "entrances": [
+            },
             {
                 "type": "entrance",
                 "id": "entrance.gerudo.storms_grotto",
@@ -1784,9 +1770,7 @@
                 "id": "location.woods.gossip_grotto_woods",
                 "x": 0,
                 "y": 0
-            }
-        ],
-        "entrances": [
+            },
             {
                 "type": "entrance",
                 "id": "entrance.woods.near_goron_grotto",
@@ -1971,9 +1955,7 @@
                 "id": "location.castle_town.gossip_tot_4",
                 "x": 0,
                 "y": 0
-            }
-        ],
-        "entrances": [
+            },
             {
                 "type": "entrance",
                 "id": "entrance.castle_town.shop_bombchu",
@@ -2059,8 +2041,8 @@
                 "y": 0
             },
             {
-                "type": "entrance",
-                "id": "entrance.castle_ganon",
+                "type": "area",
+                "id": "area.castle_ganon",
                 "x": 0,
                 "y": 0
             }
@@ -2272,9 +2254,7 @@
                 "id": "location.kakariko.gossip_grotto_kakariko",
                 "x": 0,
                 "y": 0
-            }
-        ],
-        "entrances": [
+            },
             {
                 "type": "entrance",
                 "id": "entrance.kakariko.shop_bazaar",
@@ -2513,9 +2493,7 @@
                 "id": "location.mountain.gossip_grotto_mountain",
                 "x": 0,
                 "y": 0
-            }
-        ],
-        "entrances": [
+            },
             {
                 "type": "entrance",
                 "id": "entrance.mountain.mountain_fairy",
@@ -2652,9 +2630,7 @@
                 "id": "location.goron.gossip_medigoron",
                 "x": 0,
                 "y": 0
-            }
-        ],
-        "entrances": [
+            },
             {
                 "type": "entrance",
                 "id": "entrance.goron.shop",
@@ -2749,9 +2725,7 @@
                 "id": "location.zoras.gossip_zora_jabu",
                 "x": 0,
                 "y": 0
-            }
-        ],
-        "entrances": [
+            },
             {
                 "type": "entrance",
                 "id": "entrance.zoras.shop",
@@ -2890,11 +2864,7 @@
                 "y": 0
             }
         ],
-        "entrances": []
-    },
-    "area.well_mq": {
-        "background": "",
-        "locations": [
+        "locations_mq": [
             {
                 "type": "chest",
                 "id": "location.well_mq.well_compass_chest_mq",
@@ -2943,8 +2913,7 @@
                 "x": 0,
                 "y": 0
             }
-        ],
-        "entrances": []
+        ]
     },
     "area.ice_cavern": {
         "background": "",
@@ -2998,11 +2967,7 @@
                 "y": 0
             }
         ],
-        "entrances": []
-    },
-    "area.ice_cavern_mq": {
-        "background": "",
-        "locations": [
+        "locations_mq": [
             {
                 "type": "chest",
                 "id": "location.ice_cavern_mq.ice_cavern_map_mq",
@@ -3051,8 +3016,7 @@
                 "x": 0,
                 "y": 0
             }
-        ],
-        "entrances": []
+        ]
     },
     "area.training_grounds": {
         "background": "",
@@ -3190,11 +3154,7 @@
                 "y": 0
             }
         ],
-        "entrances": []
-    },
-    "area.gerudo_training_mq": {
-        "background": "",
-        "locations": [
+        "locations_mq": [
             {
                 "type": "chest",
                 "id": "location.training_grounds_mq.gerudo_training_lobby_left_mq",
@@ -3297,8 +3257,7 @@
                 "x": 0,
                 "y": 0
             }
-        ],
-        "entrances": []
+        ]
     },
     "area.deku": {
         "background": "",
@@ -3370,11 +3329,7 @@
                 "y": 0
             }
         ],
-        "entrances": []
-    },
-    "area.deku_mq": {
-        "background": "",
-        "locations": [
+        "locations_mq": [
             {
                 "type": "chest",
                 "id": "location.deku_mq.deku_lobby_mq",
@@ -3453,8 +3408,7 @@
                 "x": 0,
                 "y": 0
             }
-        ],
-        "entrances": []
+        ]
     },
     "area.dodongo": {
         "background": "",
@@ -3562,11 +3516,7 @@
                 "y": 0
             }
         ],
-        "entrances": []
-    },
-    "area.dodongo_mq": {
-        "background": "",
-        "locations": [
+        "locations_mq": [
             {
                 "type": "chest",
                 "id": "location.dodongo_mq.dodongo_map_mq",
@@ -3669,8 +3619,7 @@
                 "x": 0,
                 "y": 0
             }
-        ],
-        "entrances": []
+        ]
     },
     "area.jabujabu": {
         "background": "",
@@ -3730,11 +3679,7 @@
                 "y": 0
             }
         ],
-        "entrances": []
-    },
-    "area.jabujabu_mq": {
-        "background": "",
-        "locations": [
+        "locations_mq": [
             {
                 "type": "chest",
                 "id": "location.jabujabu_mq.jabujabu_map_mq",
@@ -3837,8 +3782,7 @@
                 "x": 0,
                 "y": 0
             }
-        ],
-        "entrances": []
+        ]
     },
     "area.temple_forest": {
         "background": "",
@@ -3958,11 +3902,7 @@
                 "y": 0
             }
         ],
-        "entrances": []
-    },
-    "area.temple_forest_mq": {
-        "background": "",
-        "locations": [
+        "locations_mq": [
             {
                 "type": "chest",
                 "id": "location.temple_forest_mq.temple_forest_entrance_mq",
@@ -4071,8 +4011,7 @@
                 "x": 0,
                 "y": 0
             }
-        ],
-        "entrances": []
+        ]
     },
     "area.temple_fire": {
         "background": "",
@@ -4198,11 +4137,7 @@
                 "y": 0
             }
         ],
-        "entrances": []
-    },
-    "area.temple_fire_mq": {
-        "background": "",
-        "locations": [
+        "locations_mq": [
             {
                 "type": "chest",
                 "id": "location.temple_fire_mq.temple_fire_chest_near_boss_mq",
@@ -4311,8 +4246,7 @@
                 "x": 0,
                 "y": 0
             }
-        ],
-        "entrances": []
+        ]
     },
     "area.temple_water": {
         "background": "",
@@ -4414,11 +4348,7 @@
                 "y": 0
             }
         ],
-        "entrances": []
-    },
-    "area.temple_water_mq": {
-        "background": "",
-        "locations": [
+        "locations_mq": [
             {
                 "type": "chest",
                 "id": "location.temple_water_mq.temple_water_map_mq",
@@ -4491,8 +4421,7 @@
                 "x": 0,
                 "y": 0
             }
-        ],
-        "entrances": []
+        ]
     },
     "area.temple_shadow": {
         "background": "",
@@ -4636,11 +4565,7 @@
                 "y": 0
             }
         ],
-        "entrances": []
-    },
-    "area.temple_shadow_mq": {
-        "background": "",
-        "locations": [
+        "locations_mq": [
             {
                 "type": "chest",
                 "id": "location.temple_shadow_mq.temple_shadow_compass_mq",
@@ -4797,8 +4722,7 @@
                 "x": 0,
                 "y": 0
             }
-        ],
-        "entrances": []
+        ]
     },
     "area.temple_spirit": {
         "background": "",
@@ -4954,11 +4878,7 @@
                 "y": 0
             }
         ],
-        "entrances": []
-    },
-    "area.temple_spirit_mq": {
-        "background": "",
-        "locations": [
+        "locations_mq": [
             {
                 "type": "chest",
                 "id": "location.temple_spirit_mq.temple_spirit_entrance_front_left_mq",
@@ -5127,8 +5047,7 @@
                 "x": 0,
                 "y": 0
             }
-        ],
-        "entrances": []
+        ]
     },
     "area.castle_ganon": {
         "background": "",
@@ -5260,11 +5179,7 @@
                 "y": 0
             }
         ],
-        "entrances": []
-    },
-    "area.castle_ganon_mq": {
-        "background": "",
-        "locations": [
+        "locations_mq": [
             {
                 "type": "chest",
                 "id": "location.castle_ganon_mq.castle_ganon_under_bridge_salesman_1_mq",
@@ -5385,7 +5300,6 @@
                 "x": 0,
                 "y": 0
             }
-        ],
-        "entrances": []
+        ]
     }
 }

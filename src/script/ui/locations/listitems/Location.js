@@ -1,6 +1,6 @@
 import GlobalData from "/script/storage/GlobalData.js";
+import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import Template from "/emcJS/util/Template.js";
-import AbstractElement from "/emcJS/util/logic/elements/AbstractElement.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import Logger from "/emcJS/util/Logger.js";
 import Helper from "/emcJS/util/Helper.js";
@@ -11,6 +11,7 @@ import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
 
+const REG = new Map();
 const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
@@ -28,8 +29,21 @@ const TPL = new Template(`
         :host(:hover) {
             background-color: var(--main-hover-color, #ffffff32);
         }
+        .textarea {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 30px;
+        }
+        .textarea:empty {
+            display: none;
+        }
         #text {
+            display: flex;
             flex: 1;
+            align-items: center;
+            -moz-user-select: none;
+            user-select: none;
             color: var(--location-status-unavailable-color, #000000);
         }
         #text.avail {
@@ -59,12 +73,15 @@ const TPL = new Template(`
             float: right;
         }
     </style>
-    <div id="text"></div>
-    <div id="badge">
-        <emc-icon src="images/world/icons/skulltula.svg"></emc-icon>
-        <emc-icon id="badge-time" src="images/world/time/always.svg"></emc-icon>
-        <emc-icon id="badge-era" src="images/world/era/none.svg"></emc-icon>
+    <div class="textarea">
+        <div id="text"></div>
+        <div id="badge">
+            <emc-icon id="badge-type" src="images/world/icons/location.svg"></emc-icon>
+            <emc-icon id="badge-time" src="images/world/time/always.svg"></emc-icon>
+            <emc-icon id="badge-era" src="images/world/era/none.svg"></emc-icon>
+        </div>
     </div>
+    <div id="extra" class="textarea"></div>
     <emc-contextmenu id="menu">
         <div id="menu-check" class="item">Check<span class="menu-tip">(leftclick)</span></div>
         <div id="menu-uncheck" class="item">Uncheck<span class="menu-tip">(ctrl + rightclick)</span></div>
@@ -76,20 +93,20 @@ const TPL = new Template(`
 
 function locationUpdate(event) {
     if (this.ref === event.data.name && this.checked !== event.data.value) {
-        EventBus.mute("skulltula");
+        EventBus.mute("location");
         this.checked = event.data.value;
-        EventBus.unmute("skulltula");
+        EventBus.unmute("location");
     }
 }
 
 function stateChanged(event) {
-    EventBus.mute("skulltula");
-    let value = !!event.data[this.ref];
+    EventBus.mute("location");
+    let value = event.data[this.ref];
     if (typeof value == "undefined") {
         value = false;
     }
     this.checked = value;
-    EventBus.unmute("skulltula");
+    EventBus.unmute("location");
 }
 
 function logicUpdate(event) {
@@ -143,7 +160,7 @@ function contextMenu(event) {
     return false;
 }
 
-class HTMLTrackerSkulltula extends HTMLElement {
+export default class ListLocation extends HTMLElement {
 
     constructor() {
         super();
@@ -162,7 +179,7 @@ class HTMLTrackerSkulltula extends HTMLElement {
             printLogic(this.access);
         }.bind(this));
         /* event bus */
-        EVENT_BINDER.register("skulltula", locationUpdate.bind(this));
+        EVENT_BINDER.register("location", locationUpdate.bind(this));
         EVENT_BINDER.register("state", stateChanged.bind(this));
         EVENT_BINDER.register("logic", logicUpdate.bind(this));
     }
@@ -181,6 +198,14 @@ class HTMLTrackerSkulltula extends HTMLElement {
 
     set checked(val) {
         this.setAttribute('checked', val);
+    }
+
+    get type() {
+        return this.getAttribute('type');
+    }
+
+    set type(val) {
+        this.setAttribute('type', val);
     }
 
     get era() {
@@ -208,7 +233,7 @@ class HTMLTrackerSkulltula extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['ref', 'checked', 'era', 'time', 'access'];
+        return ['ref', 'checked', 'type', 'era', 'time', 'access'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -227,10 +252,12 @@ class HTMLTrackerSkulltula extends HTMLElement {
                         el.classList.toggle("avail", Logic.getValue(this.access));
                     }
                     StateStorage.write(this.ref, newValue === "false" ? false : !!newValue);
-                    EventBus.trigger("skulltula", {
-                        name: this.ref,
-                        value: newValue
-                    });
+                }
+            break;
+            case 'type':
+                if (oldValue != newValue) {
+                    let el_type = this.shadowRoot.getElementById("badge-type");
+                    el_type.src = `images/world/icons/${newValue}.svg`;
                 }
             break;
             case 'era':
@@ -257,13 +284,22 @@ class HTMLTrackerSkulltula extends HTMLElement {
     check() {
         Logger.log(`check location "${this.ref}"`, "Location");
         this.checked = true;
+        EventBus.trigger("location", {
+            name: this.ref,
+            value: true
+        });
     }
     
     uncheck() {
         Logger.log(`uncheck location "${this.ref}"`, "Location");
         this.checked = false;
+        EventBus.trigger("location", {
+            name: this.ref,
+            value: false
+        });
     }
 
 }
 
-customElements.define('ootrt-list-skulltula', HTMLTrackerSkulltula);
+//Location.registerLocationType('location', 'ootrt-list-location');
+customElements.define('ootrt-list-location', ListLocation);

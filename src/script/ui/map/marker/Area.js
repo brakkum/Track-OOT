@@ -85,22 +85,22 @@ const TPL = new Template(`
             border: 0.1em solid var(--navigation-background-color, #ffffff);
             border-radius: 0.3em;
         }
-        #badge deep-icon {
+        #badge emc-icon {
             width: 1em;
             height: 1em;
         }
     </style>
     <div id="marker" class="unavailable"></div>
-    <deep-tooltip position="top" id="tooltip">
+    <emc-tooltip position="top" id="tooltip">
         <div id="tooltiparea">
             <div id="text"></div>
             <div id="badge">
-                <deep-icon src="images/area.svg"></deep-icon>
-                <deep-icon id="badge-time" src="images/time_always.svg"></deep-icon>
-                <deep-icon id="badge-era" src="images/era_both.svg"></deep-icon>
+                <emc-icon src="images/world/icons/area.svg"></emc-icon>
+                <emc-icon id="badge-time" src="images/world/time/always.svg"></emc-icon>
+                <emc-icon id="badge-era" src="images/world/era/both.svg"></emc-icon>
             </div>
         </div>
-    </deep-tooltip>
+    </emc-tooltip>
 `);
 
 function translate(value) {
@@ -112,7 +112,7 @@ function translate(value) {
     }
 }
 
-class HTMLMarkerArea extends HTMLElement {
+export default class HTMLMarkerArea extends HTMLElement {
 
     constructor() {
         super();

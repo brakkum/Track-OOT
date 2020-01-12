@@ -50,7 +50,7 @@ const TPL = new Template(`
             width: 10px;
             height: 10px;
             margin-left: 5px;
-            background-image: url('../images/rupees.png');
+            background-image: url('/images/items/rupees.png');
             background-size: 14px;
             background-position: center;
             background-repeat: no-repeat;
@@ -126,13 +126,13 @@ export default class HTMLTrackerShopItem extends HTMLElement {
                 if (oldValue != newValue) {
                     this.shadowRoot.getElementById("title").innerHTML = I18n.translate(newValue);
                     if (!!this.checked && this.checked == "true") {
-                        this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/sold_out.png")`;
+                        this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/sold_out.png")`;
                     } else {
                         let dta = GlobalData.get("shop_items")[this.ref];
                         if (!!dta) {
-                            this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/${dta.image}")`;
+                            this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/${dta.image}")`;
                         } else {
-                            this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/unknown.svg")`;
+                            this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/unknown.svg")`;
                         }
                     }
                 }
@@ -145,10 +145,10 @@ export default class HTMLTrackerShopItem extends HTMLElement {
             case 'checked':
                 if (oldValue != newValue) {
                     if (!!this.checked && this.checked == "true") {
-                        this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/sold_out.png")`;
+                        this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/sold_out.png")`;
                     } else {
                         let img = GlobalData.get("shop_items")[this.ref].image;
-                        this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/${img}")`;
+                        this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/${img}")`;
                     }
                 }
             break;

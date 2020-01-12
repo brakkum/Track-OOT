@@ -7,6 +7,7 @@ import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
+import Location from "./Location.js";
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
@@ -55,7 +56,7 @@ const TPL = new Template(`
             border: 1px solid var(--navigation-background-color, #ffffff);
             border-radius: 2px;
         }
-        #badge deep-icon {
+        #badge emc-icon {
             width: 20px;
             height: 20px;
         }
@@ -63,9 +64,9 @@ const TPL = new Template(`
     <div class="textarea">
         <div id="text"></div>
         <div id="badge">
-            <deep-icon src="images/gossipstone.svg"></deep-icon>
-            <deep-icon id="badge-time" src="images/time_always.svg"></deep-icon>
-            <deep-icon id="badge-era" src="images/era_none.svg"></deep-icon>
+            <emc-icon src="images/world/icons/gossipstone.svg"></emc-icon>
+            <emc-icon id="badge-time" src="images/world/time/always.svg"></emc-icon>
+            <emc-icon id="badge-era" src="images/world/era/none.svg"></emc-icon>
         </div>
     </div>
     <div id="location" class="textarea"></div>
@@ -127,7 +128,7 @@ async function printLogic(ref) {
     svg_win.document.body.append(img);
 }
 
-class HTMLTrackerGossipstone extends HTMLElement {
+export default class ListGossipstone extends HTMLElement {
 
     constructor() {
         super();
@@ -263,7 +264,7 @@ class HTMLTrackerGossipstone extends HTMLElement {
 
 }
 
-customElements.define('ootrt-list-gossipstone', HTMLTrackerGossipstone);
+customElements.define('ootrt-list-gossipstone', ListGossipstone);
 
 function hintstoneDialog(ref) {
     return new Promise(resolve => {

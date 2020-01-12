@@ -11,7 +11,7 @@ const TPL = new Template(`
             height: 100px;
             background-repeat: repeat-x;
             background-size: contain;
-            background-image: url("/images/stave_lines.svg");
+            background-image: url("/images/songs/lines.svg");
         }
         :host:before {
             width: 50px;
@@ -19,7 +19,7 @@ const TPL = new Template(`
             background-repeat: no-repeat;
             background-size: auto 100%;
             background-position: center;
-            background-image: url("/images/stave_key.svg");
+            background-image: url("/images/songs/key.svg");
             content: " ";
         }
         #notes {
@@ -35,27 +35,27 @@ const TPL = new Template(`
         }
     
         .note.note_A {
-            background-image: url("/images/note_A.svg");
+            background-image: url("/images/songs/note_A.svg");
             background-position-y: 90%;
         }
 
         .note.note_D {
-            background-image: url("/images/note_D.svg");
+            background-image: url("/images/songs/note_D.svg");
             background-position-y: 75%;
         }
 
         .note.note_R {
-            background-image: url("/images/note_R.svg");
+            background-image: url("/images/songs/note_R.svg");
             background-position-y: 60%;
         }
 
         .note.note_L {
-            background-image: url("/images/note_L.svg");
+            background-image: url("/images/songs/note_L.svg");
             background-position-y: 45%;
         }
 
         .note.note_U {
-            background-image: url("/images/note_U.svg");
+            background-image: url("/images/songs/note_U.svg");
             background-position-y: 30%;
         }
     </style>

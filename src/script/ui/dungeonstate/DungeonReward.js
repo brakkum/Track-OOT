@@ -121,14 +121,14 @@ class HTMLTrackerDungeonReward extends HTMLElement {
                     if (newValue === "") {
                         this.innerHTML = "";
                     } else if (oldValue === null || oldValue === undefined || oldValue === "") {
-                        this.append(createOption(0, "/images/unknown.svg"));
+                        this.append(createOption(0, "/images/items/unknown.png"));
                         let items = GlobalData.get("items");
                         for (let i = 0; i < REWARDS.length; ++i) {
                             let j = items[REWARDS[i]].images;
                             if (Array.isArray(j)) {
                                 j = j[0];
                             }
-                            this.append(createOption(i+1, `/images/${j}`));
+                            this.append(createOption(i+1, `/images/items/${j}`));
                         }
                         this.value = StateStorage.read(`dungeonRewards.${newValue}`, 0);
                     }
@@ -181,7 +181,7 @@ class HTMLTrackerDungeonReward extends HTMLElement {
 customElements.define('ootrt-dungeonreward', HTMLTrackerDungeonReward);
 
 function createOption(value, img) {
-    let opt = document.createElement('deep-option');
+    let opt = document.createElement('emc-option');
     opt.value = value;
     opt.style.backgroundImage = `url("${img}"`;
     return opt;

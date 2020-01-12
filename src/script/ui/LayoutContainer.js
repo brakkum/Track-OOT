@@ -22,8 +22,8 @@ const TPL = new Template(`
             flex: 1;
         }
     </style>
-    <deep-layout id="layout">
-    </deep-layout>
+    <emc-layout id="layout">
+    </emc-layout>
 `);
 
 class HTMLTrackerLayoutContainer extends HTMLElement {

@@ -31,22 +31,22 @@ const TPL = new Template(`
             box-shadow: 0 0 3px 2px #cb9c3d, inset 0 0 3px 0px #cb9c3d;
         }
         #buttons #A {
-            background-image: url("/images/note_A.svg");
+            background-image: url("/images/songs/note_A.svg");
         }
         #buttons #D {
-            background-image: url("/images/note_D.svg");
+            background-image: url("/images/songs/note_D.svg");
         }
         #buttons #R {
-            background-image: url("/images/note_R.svg");
+            background-image: url("/images/songs/note_R.svg");
         }
         #buttons #L {
-            background-image: url("/images/note_L.svg");
+            background-image: url("/images/songs/note_L.svg");
         }
         #buttons #U {
-            background-image: url("/images/note_U.svg");
+            background-image: url("/images/songs/note_U.svg");
         }
         #buttons #X {
-            background-image: url("/images/note_X.svg");
+            background-image: url("/images/songs/note_X.svg");
         }
     </style>
     <div id="title"></div>

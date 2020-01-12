@@ -111,9 +111,9 @@ class HTMLTrackerDungeonType extends HTMLElement {
                         this.value = "";
                         EventBus.unmute("dungeontype");
                     } else if (oldValue === null || oldValue === undefined || oldValue === "") {
-                        this.append(createOption("n", "/images/type_undefined.svg"));
-                        this.append(createOption("v", "/images/type_vanilla.svg"));
-                        this.append(createOption("mq", "/images/type_masterquest.svg"));
+                        this.append(createOption("n", "/images/dungeontype/undefined.svg"));
+                        this.append(createOption("v", "/images/dungeontype/vanilla.svg"));
+                        this.append(createOption("mq", "/images/dungeontype/masterquest.svg"));
                         EventBus.mute("dungeontype");
                         this.value = StateStorage.read(`dungeonTypes.${newValue}`, "n");
                         EventBus.unmute("dungeontype");
@@ -167,7 +167,7 @@ class HTMLTrackerDungeonType extends HTMLElement {
 customElements.define('ootrt-dungeontype', HTMLTrackerDungeonType);
 
 function createOption(value, img) {
-    let opt = document.createElement('deep-option');
+    let opt = document.createElement('emc-option');
     opt.value = value;
     opt.style.backgroundImage = `url("${img}"`;
     return opt;

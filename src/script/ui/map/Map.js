@@ -9,6 +9,7 @@ import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Areas from "/script/util/world/Areas.js";
 import Entrances from "/script/util/world/Entrances.js";
 import Locations from "/script/util/world/Locations.js";
+import World from "/script/util/World.js";
 import "./marker/Area.js";
 import "./marker/Entrance.js";
 import "./marker/Chest.js";
@@ -45,14 +46,13 @@ const TPL = new Template(`
         }
         #map {
             display: block;
-            width: 1920px;
-            height: 1080px;
+            width: 1000px;
+            height: 1000px;
             flex-shrink: 0;
             background-repeat: no-repeat;
             background-size: 100%;
             background-position: center;
             background-origin: content-box;
-            background-image: url("/images/maps/main.png");
             transform-origin: center;
             transform: translate(calc(var(--map-offset-x, 0) * 1px), calc(var(--map-offset-y, 0) * 1px)) scale(calc(var(--map-zoom, 100) / 100));
         }
@@ -93,7 +93,7 @@ const TPL = new Template(`
             color: var(--navigation-text-color, #000000);
             background: var(--navigation-background-color, #ffffff);
         }
-        .buttons > .button > deep-switchbutton {
+        .buttons > .button > emc-switchbutton {
             width: 36px;
             height: 36px;
             padding: 4px;
@@ -118,7 +118,6 @@ const TPL = new Template(`
             background-size: 100%;
             background-position: center;
             background-origin: content-box;
-            background-image: url("/images/maps/main.png");
             overflow: hidden;
         }
         #map-viewport {
@@ -164,25 +163,25 @@ const TPL = new Template(`
             <div class="buttons">
                 <div id="toggle-button" class="button">⇑</div>
                 <div class="button">
-                    <deep-switchbutton value="chests" id="location-mode">
-                        <deep-option value="chests" style="background-image: url('images/chest.svg')"></deep-option>
-                        <deep-option value="skulltulas" style="background-image: url('images/skulltula.svg')"></deep-option>
-                        <deep-option value="gossipstones" style="background-image: url('images/gossipstone.svg')"></deep-option>
-                    </deep-switchbutton>
+                    <emc-switchbutton value="chests" id="location-mode">
+                        <emc-option value="chests" style="background-image: url('images/world/icons/chest.svg')"></emc-option>
+                        <emc-option value="skulltulas" style="background-image: url('images/world/icons/skulltula.svg')"></emc-option>
+                        <emc-option value="gossipstones" style="background-image: url('images/world/icons/gossipstone.svg')"></emc-option>
+                    </emc-switchbutton>
                 </div>
                 <div class="button">
-                    <deep-switchbutton value="v" id="location-version" readonly="true">
-                        <deep-option value="n" style="background-image: url('images/type_undefined.svg')"></deep-option>
-                        <deep-option value="v" style="background-image: url('images/type_vanilla.svg')"></deep-option>
-                        <deep-option value="mq" style="background-image: url('images/type_masterquest.svg')"></deep-option>
-                    </deep-switchbutton>
+                    <emc-switchbutton value="v" id="location-version" readonly="true">
+                        <emc-option value="n" style="background-image: url('images/dungeontype/undefined.svg')"></emc-option>
+                        <emc-option value="v" style="background-image: url('images/dungeontype/vanilla.svg')"></emc-option>
+                        <emc-option value="mq" style="background-image: url('images/dungeontype/masterquest.svg')"></emc-option>
+                    </emc-switchbutton>
                 </div>
                 <div class="button">
-                    <deep-switchbutton value="" id="location-era">
-                        <deep-option value="" style="background-image: url('images/era_both.svg')"></deep-option>
-                        <deep-option value="child" style="background-image: url('images/era_child.svg')"></deep-option>
-                        <deep-option value="adult" style="background-image: url('images/era_adult.svg')"></deep-option>
-                    </deep-switchbutton>
+                    <emc-switchbutton value="" id="location-era">
+                        <emc-option value="" style="background-image: url('images/world/era/both.svg')"></emc-option>
+                        <emc-option value="child" style="background-image: url('images/world/era/child.svg')"></emc-option>
+                        <emc-option value="adult" style="background-image: url('images/world/era/adult.svg')"></emc-option>
+                    </emc-switchbutton>
                 </div>
             </div>
             <div class="map-options">
@@ -446,7 +445,14 @@ class HTMLTrackerMap extends Panel {
         this.innerHTML = "";
         let data = GlobalData.get(`maps/${this.ref}`);
         if (!!data) {
-            // TODO switch map/minimap background
+            // switch map/minimap background
+            let map = this.shadowRoot.getElementById('map');
+            map.style.backgroundImage = `url("/images/world/maps/${data.background}")`;
+            map.style.width = `${data.width}px`;
+            map.style.height = `${data.height}px`;
+            let minimap = this.shadowRoot.getElementById('map-overview');
+            minimap.style.backgroundImage = `url("/images/world/maps/${data.background}")`;
+            // fill map
             let values = new Map(Object.entries(StateStorage.getAll()));
             data.locations.forEach(record => {
                 if (record.type == "area") {
@@ -478,6 +484,27 @@ class HTMLTrackerMap extends Panel {
                     }
                 }
             });
+            /*
+            data.locations.forEach(record => {
+                if (this.mode == "gossipstones") {
+                    // LEGACY
+                    if (record.type == "area" || record.type == "entrance") {
+                        return;
+                    }
+                }
+                let loc = World.get(record.id);
+                if (loc.visible(values) && (!this.era || loc[this.era](values))) {
+                    let el = loc.mapMarker;
+                    if (!!el.dataset.mode && el.dataset.mode != this.mode) {
+                        // LEGACY
+                        return;
+                    }
+                    el.left = record.x;
+                    el.top = record.y;
+                    this.append(el);
+                }
+            });
+            */
         }
     }
 

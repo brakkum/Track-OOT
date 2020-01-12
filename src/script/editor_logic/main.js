@@ -31,16 +31,16 @@ const SettingsStorage = new TrackerStorage('settings');
 const LogicsStorage = new TrackerStorage('logics');
 
 const LOGIC_OPERATORS = [
-    "deep-logic-false",
-    "deep-logic-true",
-    "deep-logic-not",
-    "deep-logic-and",
-    "deep-logic-nand",
-    "deep-logic-or",
-    "deep-logic-nor",
-    "deep-logic-xor",
-    "deep-logic-min",
-    "deep-logic-max"
+    "emc-logic-false",
+    "emc-logic-true",
+    "emc-logic-not",
+    "emc-logic-and",
+    "emc-logic-nand",
+    "emc-logic-or",
+    "emc-logic-nor",
+    "emc-logic-xor",
+    "emc-logic-min",
+    "emc-logic-max"
 ];
 
 (async function main() {
@@ -92,7 +92,7 @@ const LOGIC_OPERATORS = [
 
 
     function createDefaultOperatorCategory() {
-        let ocnt = document.createElement("deep-collapsepanel");
+        let ocnt = document.createElement("emc-collapsepanel");
         ocnt.caption = I18n.translate("operators_default");
         for (let i in LOGIC_OPERATORS) {
             let el = document.createElement(LOGIC_OPERATORS[i]);
@@ -103,7 +103,7 @@ const LOGIC_OPERATORS = [
     }
 
     function createOperatorCategory(data, ref) {
-        let ocnt = document.createElement("deep-collapsepanel");
+        let ocnt = document.createElement("emc-collapsepanel");
         ocnt.caption = I18n.translate(`operators_${ref}`);
         for (let i in data) {
             let opt = data[i];
@@ -136,7 +136,7 @@ const LOGIC_OPERATORS = [
     }
 
     function createOperatorMixins(data) {
-        let ocnt = document.createElement("deep-collapsepanel");
+        let ocnt = document.createElement("emc-collapsepanel");
         ocnt.caption = I18n.translate("operators_mixin");
         for (let ref in data) {
             if (!ref.startsWith("mixin.")) continue;
@@ -149,14 +149,32 @@ const LOGIC_OPERATORS = [
         elementContainer.append(ocnt);
     }
 
+    function createaAreaLogicCategory(data) {
+        let ocnt = document.createElement("emc-collapsepanel");
+        ocnt.caption = I18n.translate("logics_area");
+        for (let i in data.areas) {
+            let loc = data.areas[i];
+            if (!!loc.no_entrance) {
+                let el = document.createElement("div");
+                el.dataset.ref = loc.access;
+                el.dataset.cat = loc.type;
+                el.className = "logic-area";
+                el.onclick = loadLogic;
+                el.innerHTML = I18n.translate(i);
+                ocnt.append(el);
+            }
+        }
+        logicContainer.append(ocnt);
+    }
+
     function createLocationLogicCategory(data) {
-        let ocnt = document.createElement("deep-collapsepanel");
+        let ocnt = document.createElement("emc-collapsepanel");
         ocnt.caption = I18n.translate("logics_location");
         for (let i in data.areas) {
             let loc = data.areas[i];
             if (!!loc) {
                 if (!!loc.locations) {
-                    let cnt = document.createElement("deep-collapsepanel");
+                    let cnt = document.createElement("emc-collapsepanel");
                     cnt.caption = I18n.translate(i);
                     for (let j of loc.locations) {
                         let el = document.createElement("div");
@@ -170,7 +188,7 @@ const LOGIC_OPERATORS = [
                     ocnt.append(cnt);
                 }
                 if (!!loc.locations_mq) {
-                    let cnt = document.createElement("deep-collapsepanel");
+                    let cnt = document.createElement("emc-collapsepanel");
                     cnt.caption = `${I18n.translate(i)} (MQ)`;
                     for (let j of loc.locations_mq) {
                         let el = document.createElement("div");
@@ -189,12 +207,12 @@ const LOGIC_OPERATORS = [
     }
 
     function createEntranceLogicCategory(data) {
-        let ocnt = document.createElement("deep-collapsepanel");
+        let ocnt = document.createElement("emc-collapsepanel");
         ocnt.caption = I18n.translate("logics_entrance");
         for (let i in data.areas) {
             let loc = data.areas[i];
             if (!!loc && !!loc.entrances) {
-                let cnt = document.createElement("deep-collapsepanel");
+                let cnt = document.createElement("emc-collapsepanel");
                 cnt.caption = I18n.translate(i);
                 for (let j of loc.entrances) {
                     let el = document.createElement("div");
@@ -212,7 +230,7 @@ const LOGIC_OPERATORS = [
     }
 
     function createMixinLogicCategory(logic) {
-        let cnt = document.createElement("deep-collapsepanel");
+        let cnt = document.createElement("emc-collapsepanel");
         cnt.caption = I18n.translate("logics_mixin");
         for (let ref in logic) {
             if (!ref.startsWith("mixin.")) continue;

@@ -225,7 +225,7 @@ class HTMLTrackerItem extends HTMLElement {
             if (Array.isArray(img)) {
                 img = img[i];
             }
-            let opt = createOption(i, `/images/${img}`, data, max_value);
+            let opt = createOption(i, `/images/items/${img}`, data, max_value);
             if (i == current_value) {
                 opt.classList.add("active");
             }
@@ -314,7 +314,7 @@ class HTMLTrackerItem extends HTMLElement {
 customElements.define('ootrt-item', HTMLTrackerItem);
 
 function createOption(value, img, data, max_value) {
-    let opt = document.createElement('deep-option');
+    let opt = document.createElement('emc-option');
     opt.value = value;
     opt.style.backgroundImage = `url("${img}"`;
     if (value == 0 && !data.always_active) {

@@ -48,7 +48,7 @@ const TPL = new Template(`
             border: 1px solid var(--navigation-background-color, #ffffff);
             border-radius: 2px;
         }
-        #badge deep-icon {
+        #badge emc-icon {
             width: 20px;
             height: 20px;
         }
@@ -61,17 +61,17 @@ const TPL = new Template(`
     </style>
     <div id="text"></div>
     <div id="badge">
-        <deep-icon src="images/chest.svg"></deep-icon>
-        <deep-icon id="badge-time" src="images/time_always.svg"></deep-icon>
-        <deep-icon id="badge-era" src="images/era_none.svg"></deep-icon>
+        <emc-icon src="images/world/icons/chest.svg"></emc-icon>
+        <emc-icon id="badge-time" src="images/world/time/always.svg"></emc-icon>
+        <emc-icon id="badge-era" src="images/world/era/none.svg"></emc-icon>
     </div>
-    <deep-contextmenu id="menu">
+    <emc-contextmenu id="menu">
         <div id="menu-check" class="item">Check<span class="menu-tip">(leftclick)</span></div>
         <div id="menu-uncheck" class="item">Uncheck<span class="menu-tip">(ctrl + rightclick)</span></div>
         <div class="splitter"></div>
         <div id="menu-logic" class="item">Show Logic</div>
         <div id="menu-logic-image" class="item">Create Logic Image</div>
-    </deep-contextmenu>
+    </emc-contextmenu>
 `);
 
 function locationUpdate(event) {
@@ -236,13 +236,13 @@ class HTMLTrackerChest extends HTMLElement {
             case 'era':
                 if (oldValue != newValue) {
                     let el_era = this.shadowRoot.getElementById("badge-era");
-                    el_era.src = `images/era_${newValue}.svg`;
+                    el_era.src = `images/world/era/${newValue}.svg`;
                 }
             break;
             case 'time':
                 if (oldValue != newValue) {
                     let el_time = this.shadowRoot.getElementById("badge-time");
-                    el_time.src = `images/time_${newValue}.svg`;
+                    el_time.src = `images/world/time/${newValue}.svg`;
                 }
             break;
             case 'access':

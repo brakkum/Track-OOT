@@ -125,12 +125,12 @@ const TPL = new Template(`
             overflow-y: scroll;
             border: solid 2px #ccc;
         }
-        deep-option .date {
+        emc-option .date {
             margin-left: 10px;
             font-size: 0.8em;
             opacity: 0.4;
         }
-        deep-option .auto {
+        emc-option .auto {
             margin-right: 4px;
             opacity: 0.4;
             font-style: italic;
@@ -143,7 +143,7 @@ const TPL = new Template(`
             <button id="close" title="close">✖</button>
         </div>
         <div id="body">
-            <deep-listselect id="statelist"></deep-listselect>
+            <emc-listselect id="statelist"></emc-listselect>
         </div>
         <div id="footer">
             <input type="hidden" id="statename" placeholder="Please select a state..." readonly />
@@ -361,7 +361,7 @@ export default class ManageWindow extends HTMLElement {
 }
 
 function createOption(state) {
-    let opt = document.createElement('deep-option');
+    let opt = document.createElement('emc-option');
     opt.value = state.name;
     if (state.autosave) {
         let ato = document.createElement("span");

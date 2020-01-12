@@ -54,7 +54,7 @@ const TPL = new Template(`
             border: 1px solid var(--navigation-background-color, #ffffff);
             border-radius: 2px;
         }
-        #badge deep-icon {
+        #badge emc-icon {
             width: 20px;
             height: 20px;
         }
@@ -67,9 +67,9 @@ const TPL = new Template(`
     </style>
     <div id="text"></div>
     <div id="badge">
-        <deep-icon src="images/area.svg"></deep-icon>
-        <deep-icon id="badge-time" src="images/time_always.svg"></deep-icon>
-        <deep-icon id="badge-era" src="images/era_both.svg"></deep-icon>
+        <emc-icon src="images/world/icons/area.svg"></emc-icon>
+        <emc-icon id="badge-time" src="images/world/time/always.svg"></emc-icon>
+        <emc-icon id="badge-era" src="images/world/era/both.svg"></emc-icon>
     </div>
 `);
 
@@ -82,7 +82,7 @@ function translate(value) {
     }
 }
 
-class HTMLTrackerChest extends HTMLElement {
+export default class HTMLTrackerChest extends HTMLElement {
 
     constructor() {
         super();

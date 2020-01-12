@@ -5342,6 +5342,11 @@
     "areas": {
         "area.overworld": {
             "type": "",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": false,
             "entrances": [
                 "entrance.deku",
                 "entrance.dodongo",
@@ -5353,12 +5358,16 @@
                 "entrance.temple_spirit",
                 "entrance.well",
                 "entrance.ice_cavern",
-                "entrance.training_grounds",
-                "entrance.castle_ganon"
+                "entrance.training_grounds"
             ]
         },
         "area.kokiri": {
             "type": "area",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": false,
             "locations": [
                 "location.kokiri.sword",
                 "location.kokiri.midos_house",
@@ -5384,6 +5393,11 @@
         },
         "area.desert": {
             "type": "area",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": false,
             "locations": [
                 "location.desert.chest",
                 "location.desert.warp_spirit",
@@ -5404,6 +5418,11 @@
         },
         "area.river": {
             "type": "area",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": false,
             "locations": [
                 "location.river.frog_game",
                 "location.river.frog_rain",
@@ -5429,6 +5448,11 @@
         },
         "area.hyrule_field": {
             "type": "area",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": false,
             "locations": [
                 "location.hyrule_field.song_of_time",
                 "location.hyrule_field.hyrule_north_grotto",
@@ -5457,6 +5481,11 @@
         },
         "area.gerudo_valley": {
             "type": "area",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": false,
             "locations": [
                 "location.gerudo_valley.gerudo_river_cow",
                 "location.gerudo_valley.gerudo_hammer_rock",
@@ -5478,6 +5507,11 @@
         },
         "area.lake": {
             "type": "area",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": false,
             "locations": [
                 "location.lake.bottle_zora",
                 "location.lake.sun",
@@ -5505,6 +5539,11 @@
         },
         "area.lonlon": {
             "type": "area",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": false,
             "locations": [
                 "location.lonlon.talon_chicken",
                 "location.lonlon.maron_song",
@@ -5530,6 +5569,11 @@
         },
         "area.gerudo": {
             "type": "area",
+            "time": "always",
+            "child": false,
+            "adult": true,
+            "visible": true,
+            "use_entrance": false,
             "locations": [
                 "location.gerudo.rooftop",
                 "location.gerudo.guard_1",
@@ -5548,6 +5592,11 @@
         },
         "area.woods": {
             "type": "area",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": false,
             "locations": [
                 "location.woods.skull_kid",
                 "location.woods.deku_salesman",
@@ -5586,6 +5635,11 @@
         },
         "area.castle_town": {
             "type": "area",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": false,
             "locations": [
                 "location.castle_town.maron",
                 "location.castle_town.zelda",
@@ -5630,6 +5684,11 @@
         },
         "area.kakariko": {
             "type": "area",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": false,
             "locations": [
                 "location.kakariko.anju_adult",
                 "location.kakariko.anju_chickens",
@@ -5683,6 +5742,11 @@
         },
         "area.mountain": {
             "type": "area",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": false,
             "locations": [
                 "location.mountain.above_dodongo",
                 "location.mountain.outside_goron_chest",
@@ -5721,6 +5785,11 @@
         },
         "area.goron": {
             "type": "area",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": false,
             "locations": [
                 "location.goron.maze_left",
                 "location.goron.maze_center",
@@ -5744,6 +5813,11 @@
         },
         "area.zoras": {
             "type": "area",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": false,
             "locations": [
                 "location.zoras.diving",
                 "location.zoras.torch",
@@ -5767,6 +5841,11 @@
         },
         "area.well": {
             "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": false,
+            "visible": true,
+            "use_entrance": true,
             "locations": [
                 "location.well.front_left_hidden_wall",
                 "location.well.front_center_bombable",
@@ -5799,6 +5878,11 @@
         },
         "area.ice_cavern": {
             "type": "dungeon",
+            "time": "always",
+            "child": false,
+            "adult": true,
+            "visible": true,
+            "use_entrance": true,
             "locations": [
                 "location.ice_cavern.map",
                 "location.ice_cavern.compass",
@@ -5822,6 +5906,11 @@
         },
         "area.training_grounds": {
             "type": "dungeon",
+            "time": "always",
+            "child": false,
+            "adult": true,
+            "visible": true,
+            "use_entrance": true,
             "locations": [
                 "location.training_grounds.lobby_left",
                 "location.training_grounds.lobby_right",
@@ -5868,6 +5957,11 @@
         },
         "area.deku": {
             "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": false,
+            "visible": true,
+            "use_entrance": true,
             "locations": [
                 "location.deku.lobby",
                 "location.deku.slingshot",
@@ -5899,6 +5993,11 @@
         },
         "area.dodongo": {
             "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": true,
             "locations": [
                 "location.dodongo.lobby_salesman",
                 "location.dodongo.east_corridor_salesman",
@@ -5940,6 +6039,11 @@
         },
         "area.jabujabu": {
             "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": false,
+            "visible": true,
+            "use_entrance": true,
             "locations": [
                 "location.jabujabu.elevator_dive_salesman",
                 "location.jabujabu.boomerang",
@@ -5973,6 +6077,11 @@
         },
         "area.temple_forest": {
             "type": "dungeon",
+            "time": "always",
+            "child": false,
+            "adult": true,
+            "visible": true,
+            "use_entrance": true,
             "locations": [
                 "location.temple_forest.entrance",
                 "location.temple_forest.behind_lobby",
@@ -6017,6 +6126,11 @@
         },
         "area.temple_fire": {
             "type": "dungeon",
+            "time": "always",
+            "child": false,
+            "adult": true,
+            "visible": true,
+            "use_entrance": true,
             "locations": [
                 "location.temple_fire.near_boss",
                 "location.temple_fire.dancer",
@@ -6062,6 +6176,11 @@
         },
         "area.temple_water": {
             "type": "dungeon",
+            "time": "always",
+            "child": false,
+            "adult": true,
+            "visible": true,
+            "use_entrance": true,
             "locations": [
                 "location.temple_water.map",
                 "location.temple_water.compass",
@@ -6097,6 +6216,11 @@
         },
         "area.temple_shadow": {
             "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": true,
             "locations": [
                 "location.temple_shadow.map",
                 "location.temple_shadow.boots",
@@ -6153,6 +6277,11 @@
         },
         "area.temple_spirit": {
             "type": "dungeon",
+            "time": "always",
+            "child": true,
+            "adult": true,
+            "visible": true,
+            "use_entrance": true,
             "locations": [
                 "location.temple_spirit.child_left",
                 "location.temple_spirit.child_right",
@@ -6213,6 +6342,11 @@
         },
         "area.castle_ganon": {
             "type": "dungeon",
+            "time": "always",
+            "child": false,
+            "adult": true,
+            "visible": true,
+            "use_entrance": false,
             "locations": [
                 "location.castle_ganon.under_bridge_salesman_1",
                 "location.castle_ganon.under_bridge_salesman_2",
@@ -6264,7 +6398,7 @@
         "entrance.kokiri.midos_house": {
             "type": "interior",
             "time": "always",
-            "child": true,
+            "child": true,  
             "adult": true,
             "visible": true,
             "access": "logic.entrance.kokiri.midos_house"
@@ -6700,14 +6834,6 @@
             "adult": true,
             "visible": true,
             "access": "logic.entrance.castle_town.storm_grotto"
-        },
-        "entrance.castle_ganon": {
-            "type": "dungeon",
-            "time": "always",
-            "child": false,
-            "adult": true,
-            "visible": true,
-            "access": "logic.entrance.castle_ganon"
         },
         "entrance.kakariko.shop_bazaar": {
             "type": "interior",

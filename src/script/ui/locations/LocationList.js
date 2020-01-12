@@ -11,6 +11,7 @@ import Logic from "/script/util/Logic.js";
 import Areas from "/script/util/world/Areas.js";
 import Entrances from "/script/util/world/Entrances.js";
 import Locations from "/script/util/world/Locations.js";
+import World from "/script/util/World.js";
 import "./listitems/Area.js";
 import "./listitems/Entrance.js";
 import "./listitems/Chest.js";
@@ -47,7 +48,7 @@ const TPL = new Template(`
             justify-content: flex-start;
             align-items: center;
         }
-        #title > deep-switchbutton {
+        #title > emc-switchbutton {
             width: 38px;
             height: 38px;
             padding: 4px;
@@ -97,16 +98,16 @@ const TPL = new Template(`
     </style>
     <div id="title">
         <div id="title-text">${I18n.translate("hyrule")}</div>
-        <deep-switchbutton value="v" id="location-version" readonly="true">
-            <deep-option value="n" style="background-image: url('images/type_undefined.svg')"></deep-option>
-            <deep-option value="v" style="background-image: url('images/type_vanilla.svg')"></deep-option>
-            <deep-option value="mq" style="background-image: url('images/type_masterquest.svg')"></deep-option>
-        </deep-switchbutton>
-        <deep-switchbutton value="" id="location-era">
-            <deep-option value="" style="background-image: url('images/era_both.svg')"></deep-option>
-            <deep-option value="child" style="background-image: url('images/era_child.svg')"></deep-option>
-            <deep-option value="adult" style="background-image: url('images/era_adult.svg')"></deep-option>
-        </deep-switchbutton>
+        <emc-switchbutton value="v" id="location-version" readonly="true">
+            <emc-option value="n" style="background-image: url('images/dungeontype/undefined.svg')"></emc-option>
+            <emc-option value="v" style="background-image: url('images/dungeontype/vanilla.svg')"></emc-option>
+            <emc-option value="mq" style="background-image: url('images/dungeontype/masterquest.svg')"></emc-option>
+        </emc-switchbutton>
+        <emc-switchbutton value="" id="location-era">
+            <emc-option value="" style="background-image: url('images/world/era/both.svg')"></emc-option>
+            <emc-option value="child" style="background-image: url('images/world/era/child.svg')"></emc-option>
+            <emc-option value="adult" style="background-image: url('images/world/era/adult.svg')"></emc-option>
+        </emc-switchbutton>
     </div>
     <div id="body">
         <div id="back">(${I18n.translate("back")})</div>
@@ -224,6 +225,15 @@ class HTMLTrackerLocationList extends Panel {
                     }
                 }
             });
+            /*
+            data.forEach(record => {
+                let loc = World.get(record.id);
+                if (loc.visible(values) && (!this.era || loc[this.era](values))) {
+                    let el = loc.listItem;
+                    this.append(el);
+                }
+            });
+            */
         }
         updateHeader.apply(this);
     }
