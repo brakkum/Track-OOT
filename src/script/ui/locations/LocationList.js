@@ -81,7 +81,7 @@ const TPL = new Template(`
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            min-height: 30px;
+            min-height: 45px;
             width: 100%;
             padding: 2px;
             line-height: 1em;

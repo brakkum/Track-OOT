@@ -77,8 +77,8 @@ const TPL = new Template(`
             border-radius: 2px;
         }
         #badge emc-icon {
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
         }
         .menu-tip {
             font-size: 0.7em;

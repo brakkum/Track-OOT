@@ -77,8 +77,8 @@ const TPL = new Template(`
             border-radius: 0.3em;
         }
         #badge emc-icon {
-            width: 1em;
-            height: 1em;
+            width: 30px;
+            height: 30px;
         }
     </style>
     <div id="marker"></div>

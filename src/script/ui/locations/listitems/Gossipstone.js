@@ -57,8 +57,8 @@ const TPL = new Template(`
             border-radius: 2px;
         }
         #badge emc-icon {
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
         }
     </style>
     <div class="textarea">
@@ -207,13 +207,13 @@ export default class ListGossipstone extends HTMLElement {
             case 'era':
                 if (oldValue != newValue) {
                     let el_era = this.shadowRoot.getElementById("badge-era");
-                    el_era.src = `images/era_${newValue}.svg`;
+                    el_era.src = `images/era/${newValue}.svg`;
                 }
             break;
             case 'time':
                 if (oldValue != newValue) {
                     let el_time = this.shadowRoot.getElementById("badge-time");
-                    el_time.src = `images/time_${newValue}.svg`;
+                    el_time.src = `images/time/${newValue}.svg`;
                 }
             break;
             case 'access':
