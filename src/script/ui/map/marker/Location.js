@@ -1,4 +1,3 @@
-import GlobalData from "/script/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import Logger from "/emcJS/util/Logger.js";
@@ -61,6 +60,10 @@ const TPL = new Template(`
             align-items: center;
             justify-content: flex-start;
             height: 46px;
+            word-break: break-word;
+        }
+        .textarea:empty {
+            display: none;
         }
         #text {
             display: flex;
@@ -100,31 +103,6 @@ const TPL = new Template(`
 const REG = new Map();
 const TYPE = new WeakMap();
 
-function locationUpdate(event) {
-    if (this.ref === event.data.name && this.checked !== event.data.value) {
-        EventBus.mute(TYPE.get(this));
-        this.checked = event.data.value;
-        EventBus.unmute(TYPE.get(this));
-    }
-}
-
-function stateChanged(event) {
-    EventBus.mute(TYPE.get(this));
-    let value = !!event.data[this.ref];
-    if (typeof value == "undefined") {
-        value = false;
-    }
-    this.checked = value;
-    EventBus.unmute(TYPE.get(this));
-}
-
-function logicUpdate(event) {
-    if (event.data.hasOwnProperty(this.access)) {
-        let el = this.shadowRoot.getElementById("marker");
-        el.classList.toggle("avail", !!event.data[this.access]);
-    }
-}
-
 export default class MapLocation extends HTMLElement {
 
     constructor(type) {
@@ -139,6 +117,7 @@ export default class MapLocation extends HTMLElement {
             type = "location";
         }
         TYPE.set(this, type);
+        
         /* mouse events */
         this.addEventListener("click", event => {
             this.check();
@@ -150,12 +129,37 @@ export default class MapLocation extends HTMLElement {
             event.preventDefault();
             return false;
         });
+
         /* context menu */
         // TODO
+
         /* event bus */
-        EVENT_BINDER.register(type, locationUpdate.bind(this));
-        EVENT_BINDER.register("state", stateChanged.bind(this));
-        EVENT_BINDER.register("logic", logicUpdate.bind(this));
+        EVENT_BINDER.register(type, event => {
+            if (this.ref === event.data.name && this.checked !== event.data.value) {
+                EventBus.mute(TYPE.get(this));
+                this.checked = event.data.value;
+                EventBus.unmute(TYPE.get(this));
+            }
+        });
+        EVENT_BINDER.register("state", event => {
+            EventBus.mute(TYPE.get(this));
+            let value = !!event.data[this.ref];
+            if (typeof value == "undefined") {
+                value = false;
+            }
+            this.checked = value;
+            EventBus.unmute(TYPE.get(this));
+        });
+        EVENT_BINDER.register("logic", event => {
+            if (event.data.hasOwnProperty(this.access)) {
+                let el = this.shadowRoot.getElementById("marker");
+                if (!!this.access && !!event.data[this.access]) {
+                    el.dataset.state = "available";
+                } else {
+                    el.dataset.state = "unavailable";
+                }
+            }
+        });
     }
 
     async update() {
@@ -279,8 +283,8 @@ export default class MapLocation extends HTMLElement {
 
     check() {
         Logger.log(`check location "${this.ref}"`, "Location");
-        this.checked = true;
         StateStorage.write(this.ref, true);
+        this.checked = true;
         EventBus.trigger(TYPE.get(this), {
             name: this.ref,
             value: true

@@ -35,6 +35,7 @@ const TPL = new Template(`
             justify-content: flex-start;
             width: 100%;
             min-height: 35px;
+            word-break: break-word;
         }
         .textarea:empty {
             display: none;
@@ -95,17 +96,26 @@ function translate(value) {
     }
 }
 
-export default class HTMLTrackerChest extends HTMLElement {
+export default class ListArea extends HTMLElement {
 
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-        this.addEventListener("click", () => EventBus.trigger("location_change", {
-            name: this.ref
-        }));
+
+        /* mouse events */
+        this.addEventListener("click", event => {
+            EventBus.trigger("location_change", {
+                name: this.ref
+            });
+            event.preventDefault();
+            return false;
+        });
+        
         /* event bus */
-        EVENT_BINDER.register(["state", "settings", "logic"], event => this.update());
+        EVENT_BINDER.register(["state", "settings", "logic"], event => {
+            this.update()
+        });
     }
 
     async update() {
@@ -143,4 +153,4 @@ export default class HTMLTrackerChest extends HTMLElement {
 
 }
 
-customElements.define('ootrt-list-area', HTMLTrackerChest);
+customElements.define('ootrt-list-area', ListArea);

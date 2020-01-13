@@ -63,14 +63,13 @@ const TPL = new Template(`
             white-space: nowrap;
             font-size: 30px;
         }
-        #value,
         .textarea {
             display: flex;
             align-items: center;
             justify-content: flex-start;
             height: 46px;
+            word-break: break-word;
         }
-        #value:empty,
         .textarea:empty {
             display: none;
         }
@@ -119,31 +118,15 @@ function translate(value) {
     }
 }
 
-function stateChanged(event) {
-    EventBus.mute("entrance");
-    let value = event.data[this.ref];
-    if (typeof value == "undefined") {
-        value = "";
-    }
-    this.value = value;
-    EventBus.unmute("entrance");
-}
-
-function entranceUpdate(event) {
-    if (this.ref === event.data.name && this.value !== event.data.value) {
-        EventBus.mute("entrance");
-        this.value = event.data.value;
-        EventBus.unmute("entrance");
-    }
-}
-
-export default class HTMLMarkerArea extends HTMLElement {
+export default class MapEntrance extends HTMLElement {
 
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-        this.addEventListener("click", () => {
+
+        /* mouse events */
+        this.addEventListener("click", event => {
             if (!!this.value) {
                 EventBus.trigger("location_change", {
                     name: this.value
@@ -157,18 +140,39 @@ export default class HTMLMarkerArea extends HTMLElement {
                     });
                 });
             }
+            event.preventDefault();
+            return false;
         });
-        this.addEventListener("contextmenu", () => {
+        this.addEventListener("contextmenu", event => {
             this.value = "";
             EventBus.trigger("entrance", {
                 name: this.ref,
                 value: ""
             });
+            event.preventDefault();
+            return false;
         });
+
         /* event bus */
-        EVENT_BINDER.register("state", stateChanged.bind(this));
-        EVENT_BINDER.register(["settings", "logic"], event => this.update());
-        EVENT_BINDER.register("entrance", entranceUpdate.bind(this));
+        EVENT_BINDER.register("state", event => {
+            EventBus.mute("entrance");
+            let value = event.data[this.ref];
+            if (typeof value == "undefined") {
+                value = "";
+            }
+            this.value = value;
+            EventBus.unmute("entrance");
+        });
+        EVENT_BINDER.register(["settings", "logic"], event => {
+            this.update()
+        });
+        EVENT_BINDER.register("entrance", event => {
+            if (this.ref === event.data.name && this.value !== event.data.value) {
+                EventBus.mute("entrance");
+                this.value = event.data.value;
+                EventBus.unmute("entrance");
+            }
+        });
     }
 
     async update() {
@@ -312,7 +316,7 @@ export default class HTMLMarkerArea extends HTMLElement {
 
 }
 
-customElements.define('ootrt-marker-entrance', HTMLMarkerArea);
+customElements.define('ootrt-marker-entrance', MapEntrance);
 
 function entranceDialog(ref) {
     return new Promise(resolve => {

@@ -118,20 +118,6 @@ function translate(value) {
     }
 }
 
-async function updateHeader() {
-    if ((!this.ref || this.ref === "")) {
-        this.shadowRoot.querySelector('#title').className = "";
-    } else {
-        this.shadowRoot.querySelector('#title').className = translate(await Logic.checkLogicList(this.ref || "overworld"));
-    }
-}
-
-function dungeonTypeUpdate(event) {
-    if (this.ref === event.data.name) {
-        this.attributeChangedCallback("", "");
-    }
-}
-
 class HTMLTrackerLocationList extends Panel {
 
     constructor() {
@@ -147,11 +133,24 @@ class HTMLTrackerLocationList extends Panel {
                 value: this.era
             });
         });
-        this.shadowRoot.getElementById('back').addEventListener("click", () => this.ref = "");
+        this.shadowRoot.getElementById('back').addEventListener("click", event => {
+            this.ref = ""
+        });
         /* event bus */
-        EVENT_BINDER.register("location_change", event => this.ref = event.data.name);
-        EVENT_BINDER.register(["chest", "skulltula", "item", "state", "settings", "logic"], updateHeader.bind(this));
-        EVENT_BINDER.register("dungeontype", dungeonTypeUpdate.bind(this));
+        EVENT_BINDER.register("location_change", event => {
+            this.ref = event.data.name;
+        });
+        EVENT_BINDER.register(["chest", "skulltula", "item", "logic"], event => {
+            this.updateHeader();
+        });
+        EVENT_BINDER.register(["state", "settings"], event => {
+            this.refresh();
+        });
+        EVENT_BINDER.register("dungeontype", event => {
+            if (this.ref === event.data.name) {
+                this.refresh();
+            }
+        });
         EVENT_BINDER.register("filter", event => {
             if (event.data.ref == "filter.era_active") {
                 this.era = event.data.value;
@@ -194,6 +193,16 @@ class HTMLTrackerLocationList extends Panel {
     }
 
     refresh() {
+        /* TODO
+        let dType = StateStorage.read(`dungeonTypes.${this.ref || "overworld"}`, data.hasmq ? "n" : "v");
+        if (dType === "n") {
+            let ch = Array.from(this.shadowRoot.getElementById("body").children);
+            ch.forEach(async c => {
+                if (!c.dataset.ref || c.dataset.ref === "") return;
+                c.className = translate(await Logic.checkLogicList(this.mode, this.ref, c.dataset.ref));
+            });
+        }
+        */
         let cnt = this.shadowRoot.getElementById("list");
         cnt.innerHTML = "";
         let data = GlobalData.get(`locationlists/${this.ref}`);
@@ -207,7 +216,15 @@ class HTMLTrackerLocationList extends Panel {
                 }
             });
         }
-        updateHeader.apply(this);
+        this.updateHeader();
+    }
+
+    async updateHeader() {
+        if ((!this.ref || this.ref === "")) {
+            this.shadowRoot.querySelector('#title').className = "";
+        } else {
+            this.shadowRoot.querySelector('#title').className = translate(await Logic.checkLogicList(this.ref || "overworld"));
+        }
     }
     
 }

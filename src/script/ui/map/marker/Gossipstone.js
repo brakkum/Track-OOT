@@ -1,5 +1,6 @@
 import GlobalData from "/script/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
+import EventBus from "/emcJS/util/events/EventBus.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import I18n from "/script/util/I18n.js";
@@ -17,12 +18,8 @@ export default class MapGossipstone extends MapLocation {
         this.shadowRoot.getElementById('tooltip').append(TPL.generate());
     }
 
-    get checked() {
-        return this.getAttribute('checked');
-    }
-
     set checked(val) {
-        this.setAttribute('checked', val);
+        super.checked = val;
         if (!!val) {
             let location = StateStorage.read(`${this.ref}.location`, "");
             let item = StateStorage.read(`${this.ref}.item`, "");
@@ -34,7 +31,7 @@ export default class MapGossipstone extends MapLocation {
         }
     }
 
-    check(event) {
+    check() {
         hintstoneDialog(this.ref).then(r => {
             if (!!r) {
                 let data = {};
@@ -42,12 +39,9 @@ export default class MapGossipstone extends MapLocation {
                 data[`${this.ref}.location`] = r.location;
                 data[`${this.ref}.item`] = r.item;
                 StateStorage.write(data);
-                this.checked = true;
+                super.check();
             }
         });
-        if (!event) return;
-        event.preventDefault();
-        return false;
     }
 
 }

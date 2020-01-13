@@ -36,6 +36,7 @@ const TPL = new Template(`
             justify-content: flex-start;
             width: 100%;
             min-height: 35px;
+            word-break: break-word;
         }
         .textarea:empty {
             display: none;
@@ -111,31 +112,15 @@ function translate(value) {
     }
 }
 
-function stateChanged(event) {
-    EventBus.mute("entrance");
-    let value = event.data[this.ref];
-    if (typeof value == "undefined") {
-        value = "";
-    }
-    this.value = value;
-    EventBus.unmute("entrance");
-}
-
-function entranceUpdate(event) {
-    if (this.ref === event.data.name && this.value !== event.data.value) {
-        EventBus.mute("entrance");
-        this.value = event.data.value;
-        EventBus.unmute("entrance");
-    }
-}
-
-export default class HTMLTrackerChest extends HTMLElement {
+export default class ListEntrance extends HTMLElement {
 
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-        this.addEventListener("click", () => {
+
+        /* mouse events */
+        this.addEventListener("click", event => {
             if (!!this.value) {
                 EventBus.trigger("location_change", {
                     name: this.value
@@ -149,18 +134,39 @@ export default class HTMLTrackerChest extends HTMLElement {
                     });
                 });
             }
+            event.preventDefault();
+            return false;
         });
-        this.addEventListener("contextmenu", () => {
+        this.addEventListener("contextmenu", event => {
             this.value = "";
             EventBus.trigger("entrance", {
                 name: this.ref,
                 value: ""
             });
+            event.preventDefault();
+            return false;
         });
+
         /* event bus */
-        EVENT_BINDER.register("state", stateChanged.bind(this));
-        EVENT_BINDER.register(["settings", "logic"], event => this.update());
-        EVENT_BINDER.register("entrance", entranceUpdate.bind(this));
+        EVENT_BINDER.register("state", event => {
+            EventBus.mute("entrance");
+            let value = event.data[this.ref];
+            if (typeof value == "undefined") {
+                value = "";
+            }
+            this.value = value;
+            EventBus.unmute("entrance");
+        });
+        EVENT_BINDER.register(["settings", "logic"], event => {
+            this.update()
+        });
+        EVENT_BINDER.register("entrance", event => {
+            if (this.ref === event.data.name && this.value !== event.data.value) {
+                EventBus.mute("entrance");
+                this.value = event.data.value;
+                EventBus.unmute("entrance");
+            }
+        });
     }
 
     async update() {
@@ -261,7 +267,7 @@ export default class HTMLTrackerChest extends HTMLElement {
 
 }
 
-customElements.define('ootrt-list-entrance', HTMLTrackerChest);
+customElements.define('ootrt-list-entrance', ListEntrance);
 
 function entranceDialog(ref) {
     return new Promise(resolve => {

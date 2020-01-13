@@ -5,6 +5,7 @@ import EventBus from "/emcJS/util/events/EventBus.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
+import I18n from "/script/util/I18n.js";
 import World from "/script/util/World.js";
 import "./marker/Area.js";
 import "./marker/Entrance.js";
@@ -60,7 +61,7 @@ const TPL = new Template(`
             width: 250px;
             height: 180px;
             font-family: Arial, sans-serif;
-            background-color: black;
+            background-color: #000000;
             border-style: solid;
             border-width: 2px;
             border-color: var(--page-border-color-inverted, #ffffff);
@@ -146,14 +147,40 @@ const TPL = new Template(`
             width: 10px;
             cursor: pointer;
             margin-top: 0px;
-            background: #000000;
+            background-color: #000000;
             border: none;
             border-radius: 0px;
+        }
+        #back {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            left: 10px;
+            top: 10px;
+            min-width: 200px;
+            min-height: 45px;
+            padding: 5px;
+            color: #ffffff;
+            background-color: #000000;
+            border-style: solid;
+            border-width: 2px;
+            border-color: var(--page-border-color-inverted, #ffffff);
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+        }
+        #back:hover {
+            background-color: var(--dungeon-status-hover-color, #ffffff32);
+        }
+        :host(:not([ref])) #back,
+        :host([ref=""]) #back {
+            display: none;
         }
     </style>
     <div id="map-wrapper">
         <slot id="map" style="--map-zoom: ${ZOOM_DEF};">
         </slot>
+        <div id="back">(${I18n.translate("back")})</div>
         <div id="map-settings">
             <div class="buttons">
                 <div id="toggle-button" class="button">⇑</div>
@@ -196,6 +223,7 @@ const TPL = new Template(`
 
 let movePosX = 0;
 let movePosY = 0;
+
 function mapMoveBegin(event) {
     if (event.button === 0) {
         let target = event.target;
@@ -319,6 +347,9 @@ class HTMLTrackerMap extends Panel {
                 value: this.era
             });
         });
+        this.shadowRoot.getElementById('back').addEventListener("click", event => {
+            this.ref = ""
+        });
         // map specifics
         let map = this.shadowRoot.getElementById("map");
         let mapslide = this.shadowRoot.getElementById("map-scale-slider");
@@ -383,9 +414,20 @@ class HTMLTrackerMap extends Panel {
             return false;
         });
         /* event bus */
+        EVENT_BINDER.register("location_change", event => {
+            this.ref = event.data.name;
+        });
         EVENT_BINDER.register("location_mode", event => {
             this.mode = event.data.value;
             this.shadowRoot.getElementById('location-mode').value = this.mode;
+        });
+        EVENT_BINDER.register(["state", "settings"], event => {
+            this.refresh();
+        });
+        EVENT_BINDER.register("dungeontype", event => {
+            if (this.ref === event.data.name) {
+                this.refresh();
+            }
         });
         EVENT_BINDER.register("filter", event => {
             if (event.data.ref == "filter.era_active") {
@@ -393,7 +435,6 @@ class HTMLTrackerMap extends Panel {
                 this.shadowRoot.getElementById('location-era').value = this.era;
             }
         });
-        EVENT_BINDER.register(["state", "settings"], event => this.attributeChangedCallback("", ""));
     }
 
     connectedCallback() {
@@ -465,23 +506,7 @@ class HTMLTrackerMap extends Panel {
                     }
                     el.left = record.x;
                     el.top = record.y;
-
-                    let leftP = record.x / data.width;
-                    let topP = record.y / data.height;
-
-                    let tooltip = "";
-                    if (topP < 0.3) {
-                        tooltip = "bottom";
-                    } else if (topP > 0.7) {
-                        tooltip = "top";
-                    }
-                    if (leftP < 0.3) {
-                        tooltip += "right";
-                    } else if (leftP > 0.7) {
-                        tooltip += "left";
-                    }
-                    el.tooltip = tooltip || "top";
-
+                    el.tooltip = calculateTooltipPosition(record.x, record.y, data.width, data.height);
                     this.append(el);
                 }
             });
@@ -492,3 +517,20 @@ class HTMLTrackerMap extends Panel {
 
 Panel.registerReference("location-map", HTMLTrackerMap);
 customElements.define('ootrt-map', HTMLTrackerMap);
+
+function calculateTooltipPosition(posX, posY, mapW, mapH) {
+    let leftP = posX / mapW;
+    let topP = posY / mapH;
+    let tooltip = "";
+    if (topP < 0.3) {
+        tooltip = "bottom";
+    } else if (topP > 0.7) {
+        tooltip = "top";
+    }
+    if (leftP < 0.3) {
+        tooltip += "right";
+    } else if (leftP > 0.7) {
+        tooltip += "left";
+    }
+    return tooltip || "top";
+}

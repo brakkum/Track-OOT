@@ -159,3 +159,27 @@ class TrackerLogic {
 }
 
 export default new TrackerLogic;
+
+
+// TODO
+function showLogic(ref, title) {
+    let l = Logic.getLogicView(ref);
+    if (!!l) {
+        let d = new Dialog({
+            title: I18n.translate(title),
+            submit: "OK"
+        });
+        d.value = ref;
+        d.append(l);
+        d.show();
+    }
+}
+
+async function printLogic(ref) {
+    let svg = Logic.getLogicSVG(ref);
+    let png = await Helper.svg2png(svg);
+    let svg_win = window.open("", "_blank", "menubar=no,location=no,resizable=yes,scrollbars=yes,status=no");
+    let img = document.createElement("img");
+    img.src = png;
+    svg_win.document.body.append(img);
+}

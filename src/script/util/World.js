@@ -92,15 +92,18 @@ class WorldEntry {
     }
 
     visible(data) {
-        return VISIBLE.get(this)(new Map(Object.entries(data)));
+        let visible = VISIBLE.get(this);
+        return visible(data);
     }
 
     child(data) {
-        return CHILD.get(this)(new Map(Object.entries(data)));
+        let child = CHILD.get(this);
+        return child(data);
     }
 
     adult(data) {
-        return ADULT.get(this)(new Map(Object.entries(data)));
+        let adult = ADULT.get(this);
+        return adult(data);
     }
 
     get listItem() {

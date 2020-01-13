@@ -67,6 +67,10 @@ const TPL = new Template(`
             align-items: center;
             justify-content: flex-start;
             height: 46px;
+            word-break: break-word;
+        }
+        .textarea:empty {
+            display: none;
         }
         #text {
             display: flex;
@@ -112,17 +116,26 @@ function translate(value) {
     }
 }
 
-export default class HTMLMarkerArea extends HTMLElement {
+export default class MapArea extends HTMLElement {
 
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-        this.addEventListener("click", () => EventBus.trigger("location_change", {
-            name: this.ref
-        }));
+
+        /* mouse events */
+        this.addEventListener("click", event => {
+            EventBus.trigger("location_change", {
+                name: this.ref
+            });
+            event.preventDefault();
+            return false;
+        });
+
         /* event bus */
-        EVENT_BINDER.register(["state", "settings", "logic"], event => this.update());
+        EVENT_BINDER.register(["state", "settings", "logic"], event => {
+            this.update()
+        });
     }
 
     async update() {
@@ -203,4 +216,4 @@ export default class HTMLMarkerArea extends HTMLElement {
 
 }
 
-customElements.define('ootrt-marker-area', HTMLMarkerArea);
+customElements.define('ootrt-marker-area', MapArea);
