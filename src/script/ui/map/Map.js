@@ -2,18 +2,13 @@ import GlobalData from "/script/storage/GlobalData.js";
 import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
-import Logger from "/emcJS/util/Logger.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
-import Areas from "/script/util/world/Areas.js";
-import Entrances from "/script/util/world/Entrances.js";
-import Locations from "/script/util/world/Locations.js";
 import World from "/script/util/World.js";
 import "./marker/Area.js";
 import "./marker/Entrance.js";
-import "./marker/Chest.js";
-import "./marker/Skulltula.js";
+import "./marker/Location.js";
 import "./marker/Gossipstone.js";
 
 const ZOOM_MIN = 10;
@@ -455,37 +450,6 @@ class HTMLTrackerMap extends Panel {
             // fill map
             let values = new Map(Object.entries(StateStorage.getAll()));
             data.locations.forEach(record => {
-                if (record.type == "area") {
-                    if (this.mode != "gossipstones") {
-                        let loc = Areas.get(record.id);
-                        let el = loc.mapMarker;
-                        el.left = record.x;
-                        el.top = record.y;
-                        this.append(el);
-                    }
-                } else if (record.type == "entrance") {
-                    if (this.mode != "gossipstones") {
-                        let loc = Entrances.get(record.id);
-                        if (loc.visible(values) && (!this.era || loc[this.era](values))) {
-                            let el = loc.mapMarker;
-                            el.left = record.x;
-                            el.top = record.y;
-                            this.append(el);
-                        }
-                    }
-                } else {
-                    let loc = Locations.get(record.id);
-                    if (loc.visible(values) && (!this.era || loc[this.era](values))) {
-                        let el = loc.mapMarker;
-                        if (!!el.mode && el.mode.indexOf(this.mode) < 0) return;
-                        el.left = record.x;
-                        el.top = record.y;
-                        this.append(el);
-                    }
-                }
-            });
-            /*
-            data.locations.forEach(record => {
                 if (this.mode == "gossipstones") {
                     // LEGACY
                     if (record.type == "area" || record.type == "entrance") {
@@ -501,10 +465,26 @@ class HTMLTrackerMap extends Panel {
                     }
                     el.left = record.x;
                     el.top = record.y;
+
+                    let leftP = record.x / data.width;
+                    let topP = record.y / data.height;
+
+                    let tooltip = "";
+                    if (topP < 0.3) {
+                        tooltip = "bottom";
+                    } else if (topP > 0.7) {
+                        tooltip = "top";
+                    }
+                    if (leftP < 0.3) {
+                        tooltip += "right";
+                    } else if (leftP > 0.7) {
+                        tooltip += "left";
+                    }
+                    el.tooltip = tooltip || "top";
+
                     this.append(el);
                 }
             });
-            */
         }
     }
 

@@ -2,18 +2,14 @@ import GlobalData from "/script/storage/GlobalData.js";
 import AbstractElement from "/emcJS/util/logic/elements/AbstractElement.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 
-import "/script/ui/locations/listitems/Area.js";
-import "/script/ui/locations/listitems/Entrance.js";
-import "/script/ui/locations/listitems/Location.js";
-import "/script/ui/locations/listitems/Chest.js";
-import "/script/ui/locations/listitems/Skulltula.js";
+import ListArea from "/script/ui/locations/listitems/Area.js";
+import ListEntrance from "/script/ui/locations/listitems/Entrance.js";
+import ListLocation from "/script/ui/locations/listitems/Location.js";
 import "/script/ui/locations/listitems/Gossipstone.js";
 
-import "/script/ui/map/marker/Area.js";
-import "/script/ui/map/marker/Entrance.js";
-import "/script/ui/map/marker/Location.js";
-import "/script/ui/map/marker/Chest.js";
-import "/script/ui/map/marker/Skulltula.js";
+import MapArea from "/script/ui/map/marker/Area.js";
+import MapEntrance from "/script/ui/map/marker/Entrance.js";
+import MapLocation from "/script/ui/map/marker/Location.js";
 import "/script/ui/map/marker/Gossipstone.js";
 
 const VISIBLE = new WeakMap();
@@ -31,10 +27,7 @@ function fnFalse() {
 
 class WorldEntry {
 
-    constructor(type, ref, data) {
-        if (type == "location") {
-            
-        }
+    constructor(listItem, mapItem, ref, data) {
         // LOGIC
         if (typeof data.visible == "object") {
             VISIBLE.set(this, new Function('values', `return ${AbstractElement.buildLogic(data.visible)}`));
@@ -52,16 +45,12 @@ class WorldEntry {
             ADULT.set(this, !!data.adult ? fnTrue : fnFalse);
         }
         // UI
-        let listItem = document.createElement(`ootrt-list-${type}`);
         listItem.access = data.access;
         listItem.time = data.time;
         listItem.ref = ref;
-
-        let mapItem = document.createElement(`ootrt-marker-${type}`);
         mapItem.access = data.access;
         mapItem.time = data.time;
         mapItem.ref = ref;
-
         if (!!data.child && !!data.adult) {
             listItem.era = "both";
             mapItem.era = "both";
@@ -124,25 +113,45 @@ class WorldEntry {
 
 }
 
-const REG = new Map();
 const WORLD = new Map();
 
-export default class World {
+class World {
 
     constructor() {
         let area = GlobalData.get(`world/areas`);
         for (let i in area) {
             if (area[i].type != "") {
-                WORLD.set(i, new WorldEntry("area", i, area[i]));
+                let listItem = new ListArea();
+                let mapItem = new MapArea();
+                WORLD.set(i, new WorldEntry(listItem, mapItem, i, area[i]));
             }
         }
         let entrance = GlobalData.get(`world/entrances`);
         for (let i in entrance) {
-            WORLD.set(i, new WorldEntry("entrance", i, entrance[i]));
+            let listItem = new ListEntrance();
+            let mapItem = new MapEntrance();
+            WORLD.set(i, new WorldEntry(listItem, mapItem, i, entrance[i]));
         }
         let locations = GlobalData.get(`world/locations`);
         for (let i in locations) {
-            WORLD.set(i, new WorldEntry("location", i, locations[i]));
+            let listItem = ListLocation.createType(locations[i].type);
+            let mapItem = MapLocation.createType(locations[i].type);
+            switch (locations[i].type) {
+                // LEGACY
+                case "chest":
+                case "cow":
+                case "scrub":
+                case "bean":
+                    mapItem.dataset.mode = "chests";
+                    break;
+                case "skulltula":
+                    mapItem.dataset.mode = "skulltulas";
+                    break;
+                case "gossipstone":
+                    mapItem.dataset.mode = "gossipstones";
+                    break;
+            }
+            WORLD.set(i, new WorldEntry(listItem, mapItem, i, locations[i]));
         }
     }
 
@@ -150,22 +159,6 @@ export default class World {
         return WORLD.get(ref);
     }
 
-    static registerType(ref, clazz) {
-        if (REG.has(ref)) {
-            throw new Error(`location type ${ref} already exists`);
-        }
-        REG.set(ref, clazz);
-    }
-
-    static getType(...refs) {
-        for (let ref of refs) {
-            if (REG.has(ref)) {
-                return REG.get(ref);
-            }
-        }
-        return "";
-    }
-
 }
 
-new World();
+export default new World();

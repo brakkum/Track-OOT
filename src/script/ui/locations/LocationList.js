@@ -8,14 +8,10 @@ import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import I18n from "/script/util/I18n.js";
 import Logic from "/script/util/Logic.js";
-import Areas from "/script/util/world/Areas.js";
-import Entrances from "/script/util/world/Entrances.js";
-import Locations from "/script/util/world/Locations.js";
 import World from "/script/util/World.js";
 import "./listitems/Area.js";
 import "./listitems/Entrance.js";
-import "./listitems/Chest.js";
-import "./listitems/Skulltula.js";
+import "./listitems/Location.js";
 import "./listitems/Gossipstone.js";
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
@@ -76,16 +72,14 @@ const TPL = new Template(`
         #list {
             display: content;
         }
-        #back,
-        #list > * {
+        #back {
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            min-height: 45px;
             width: 100%;
-            padding: 2px;
-            line-height: 1em;
+            height: 45px;
             cursor: pointer;
+            padding: 5px;
         }
         #back:hover,
         #list > *:hover {
@@ -206,34 +200,12 @@ class HTMLTrackerLocationList extends Panel {
         if (!!data) {
             let values = new Map(Object.entries(StateStorage.getAll()));
             data.forEach(record => {
-                if (record.type == "area") {
-                    let loc = Areas.get(record.id);
-                    let el = loc.listItem;
-                    cnt.append(el);
-                } else if (record.type == "entrance") {
-                    let loc = Entrances.get(record.id);
-                    if (loc.visible(values) && (!this.era || loc[this.era](values))) {
-                        let el = loc.listItem;
-                        cnt.append(el);
-                    }
-                } else {
-                    let loc = Locations.get(record.id);
-                    if (loc.visible(values) && (!this.era || loc[this.era](values))) {
-                        let el = loc.listItem;
-                        if (!!el.mode && el.mode.indexOf(this.mode) < 0) return;
-                        cnt.append(el);
-                    }
-                }
-            });
-            /*
-            data.forEach(record => {
                 let loc = World.get(record.id);
                 if (loc.visible(values) && (!this.era || loc[this.era](values))) {
                     let el = loc.listItem;
-                    this.append(el);
+                    cnt.append(el);
                 }
             });
-            */
         }
         updateHeader.apply(this);
     }

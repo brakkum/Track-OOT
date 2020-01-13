@@ -21,6 +21,7 @@ const TPL = new Template(`
         :host {
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
             width: 100%;
             cursor: pointer;
@@ -29,41 +30,43 @@ const TPL = new Template(`
         :host(:hover) {
             background-color: var(--main-hover-color, #ffffff32);
         }
-        #value,
         .textarea {
             display: flex;
             align-items: center;
+            justify-content: flex-start;
             width: 100%;
-            height: 30px;
+            min-height: 35px;
         }
-        #value:empty,
         .textarea:empty {
             display: none;
         }
         #text {
             display: flex;
             flex: 1;
-            color: var(--location-status-unavailable-color, #000000);
+            color: #ffffff;
             align-items: center;
             -moz-user-select: none;
             user-select: none;
         }
-        #text.avail {
+        #text[data-state="available"] {
             color: var(--location-status-available-color, #000000);
+        }
+        #text[data-state="unavailable"] {
+            color: var(--location-status-unavailable-color, #000000);
         }
         :host([value]:not([value=""])) #text {
             color: var(--location-status-opened-color, #000000);
         }
-        #value.opened {
+        #value[data-state="opened"] {
             color: var(--location-status-opened-color, #000000);
         }
-        #value.available {
+        #value[data-state="available"] {
             color: var(--location-status-available-color, #000000);
         }
-        #value.unavailable {
+        #value[data-state="unavailable"] {
             color: var(--location-status-unavailable-color, #000000);
         }
-        #value.possible {
+        #value[data-state="possible"] {
             color: var(--location-status-possible-color, #000000);
         }
         #badge {
@@ -77,8 +80,8 @@ const TPL = new Template(`
             border-radius: 2px;
         }
         #badge emc-icon {
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
         }
         .menu-tip {
             font-size: 0.7em;
@@ -95,7 +98,7 @@ const TPL = new Template(`
             <emc-icon id="badge-era" src="images/world/era/none.svg"></emc-icon>
         </div>
     </div>
-    <div id="value">
+    <div id="value" class="textarea">
     </div>
 `);
 
@@ -163,12 +166,12 @@ export default class HTMLTrackerChest extends HTMLElement {
     async update() {
         if (!!this.value) {
             let val = await Logic.checkLogicList(this.value);
-            this.shadowRoot.getElementById("value").className = translate(val);
-            this.shadowRoot.getElementById("text").className = "unavailable";
-        } else if (!!this.ref) {
-            this.shadowRoot.getElementById("text").classList.toggle("avail", !!Logic.getValue(this.access));
+            this.shadowRoot.getElementById("value").dataset.state = translate(val);
+            this.shadowRoot.getElementById("text").dataset.state = "unavailable";
+        } else if (!!this.access && !!Logic.getValue(this.access)) {
+            this.shadowRoot.getElementById("text").dataset.state = "available";
         } else {
-            this.shadowRoot.getElementById("text").classList.remove("avail");
+            this.shadowRoot.getElementById("text").dataset.state = "unavailable";
         }
     }
 

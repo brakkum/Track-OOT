@@ -34,8 +34,11 @@ const TPL = new Template(`
             border-radius: 50%;
             cursor: pointer;
         }
-        #marker.avail {
+        #marker[data-state="available"] {
             background-color: var(--location-status-available-color, #000000);
+        }
+        #marker[data-state="unavailable"] {
+            background-color: var(--location-status-unavailable-color, #000000);
         }
         :host([checked="true"]) #marker {
             background-color: var(--location-status-opened-color, #000000);
@@ -53,10 +56,10 @@ const TPL = new Template(`
             white-space: nowrap;
             font-size: 30px;
         }
-        #tooltiparea {
+        .textarea {
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: flex-start;
             height: 46px;
         }
         #text {
@@ -83,7 +86,7 @@ const TPL = new Template(`
     </style>
     <div id="marker"></div>
     <emc-tooltip position="top" id="tooltip">
-        <div id="tooltiparea">
+        <div class="textarea">
             <div id="text"></div>
             <div id="badge">
                 <emc-icon id="badge-type" src="images/world/icons/location.svg"></emc-icon>
@@ -94,22 +97,25 @@ const TPL = new Template(`
     </emc-tooltip>
 `);
 
+const REG = new Map();
+const TYPE = new WeakMap();
+
 function locationUpdate(event) {
     if (this.ref === event.data.name && this.checked !== event.data.value) {
-        EventBus.mute("location");
+        EventBus.mute(TYPE.get(this));
         this.checked = event.data.value;
-        EventBus.unmute("location");
+        EventBus.unmute(TYPE.get(this));
     }
 }
 
 function stateChanged(event) {
-    EventBus.mute("location");
+    EventBus.mute(TYPE.get(this));
     let value = !!event.data[this.ref];
     if (typeof value == "undefined") {
         value = false;
     }
     this.checked = value;
-    EventBus.unmute("location");
+    EventBus.unmute(TYPE.get(this));
 }
 
 function logicUpdate(event) {
@@ -119,18 +125,45 @@ function logicUpdate(event) {
     }
 }
 
-export default class HTMLMarkerLocation extends HTMLElement {
+export default class MapLocation extends HTMLElement {
 
-    constructor() {
+    constructor(type) {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-        this.addEventListener("click", this.check);
-        this.addEventListener("contextmenu", this.uncheck);
+        if (!!type) {
+            let el_type = this.shadowRoot.getElementById("badge-type");
+            el_type.src = `images/world/icons/${type}.svg`;
+            type = `location_${type}`;
+        } else {
+            type = "location";
+        }
+        TYPE.set(this, type);
+        /* mouse events */
+        this.addEventListener("click", event => {
+            this.check();
+            event.preventDefault();
+            return false;
+        });
+        this.addEventListener("contextmenu", event => {
+            this.uncheck();
+            event.preventDefault();
+            return false;
+        });
+        /* context menu */
+        // TODO
         /* event bus */
-        EVENT_BINDER.register("location", locationUpdate.bind(this));
+        EVENT_BINDER.register(type, locationUpdate.bind(this));
         EVENT_BINDER.register("state", stateChanged.bind(this));
         EVENT_BINDER.register("logic", logicUpdate.bind(this));
+    }
+
+    async update() {
+        if (!!this.access && !!Logic.getValue(this.access)) {
+            this.shadowRoot.getElementById("marker").dataset.state = "available";
+        } else {
+            this.shadowRoot.getElementById("marker").dataset.state = "unavailable";
+        }
     }
 
     get ref() {
@@ -147,14 +180,6 @@ export default class HTMLMarkerLocation extends HTMLElement {
 
     set checked(val) {
         this.setAttribute('checked', val);
-    }
-
-    get type() {
-        return this.getAttribute('type');
-    }
-
-    set type(val) {
-        this.setAttribute('type', val);
     }
 
     get era() {
@@ -197,8 +222,16 @@ export default class HTMLMarkerLocation extends HTMLElement {
         this.setAttribute('top', val);
     }
 
+    get tooltip() {
+        return this.getAttribute('tooltip');
+    }
+
+    set tooltip(val) {
+        this.setAttribute('tooltip', val);
+    }
+
     static get observedAttributes() {
-        return ['ref', 'checked', 'type', 'era', 'time', 'access', 'left', 'top'];
+        return ['ref', 'checked', 'era', 'time', 'access', 'left', 'top', 'tooltip'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -211,22 +244,9 @@ export default class HTMLMarkerLocation extends HTMLElement {
                 }
             break;
             case 'checked':
+            case 'access':
                 if (oldValue != newValue) {
-                    if (!newValue || newValue === "false") {
-                        let el = this.shadowRoot.getElementById("marker");
-                        el.classList.toggle("avail", Logic.getValue(this.access));
-                    }
-                    StateStorage.write(this.ref, newValue === "false" ? false : !!newValue);
-                    EventBus.trigger("location", {
-                        name: this.ref,
-                        value: newValue
-                    });
-                }
-            break;
-            case 'type':
-                if (oldValue != newValue) {
-                    let el_type = this.shadowRoot.getElementById("badge-type");
-                    el_type.src = `images/world/icons/${newValue}.svg`;
+                    this.update();
                 }
             break;
             case 'era':
@@ -241,62 +261,58 @@ export default class HTMLMarkerLocation extends HTMLElement {
                     el_time.src = `images/world/time/${newValue}.svg`;
                 }
             break;
-            case 'access':
-                if (oldValue != newValue) {
-                    let txt = this.shadowRoot.getElementById("marker");
-                    txt.classList.toggle("avail", Logic.getValue(newValue));
-                }
-            break;
             case 'top':
             case 'left':
                 if (oldValue != newValue) {
                     this.style.left = `${this.left}px`;
                     this.style.top = `${this.top}px`;
+                }
+            break;
+            case 'tooltip':
+                if (oldValue != newValue) {
                     let tooltip = this.shadowRoot.getElementById("tooltip");
-                    if (this.left < 30) {
-                        if (this.top < 30) {
-                            tooltip = "bottomright";
-                        } else if (this.top > 70) {
-                            tooltip = "topright";
-                        } else {
-                            tooltip = "right";
-                        }
-                    } else if (this.left > 70) {
-                        if (this.top < 30) {
-                            tooltip = "bottomleft";
-                        } else if (this.top > 70) {
-                            tooltip = "topleft";
-                        } else {
-                            tooltip = "left";
-                        }
-                    } else {
-                        if (this.top < 30) {
-                            tooltip = "bottom";
-                        } else {
-                            tooltip = "top";
-                        }
-                    }
+                    tooltip.position = newValue;
                 }
             break;
         }
     }
 
-    check(event) {
+    check() {
         Logger.log(`check location "${this.ref}"`, "Location");
         this.checked = true;
-        if (!event) return;
-        event.preventDefault();
-        return false;
+        StateStorage.write(this.ref, true);
+        EventBus.trigger(TYPE.get(this), {
+            name: this.ref,
+            value: true
+        });
     }
     
-    uncheck(event) {
+    uncheck() {
         Logger.log(`uncheck location "${this.ref}"`, "Location");
         this.checked = false;
-        if (!event) return;
-        event.preventDefault();
-        return false;
+        StateStorage.write(this.ref, false);
+        EventBus.trigger(TYPE.get(this), {
+            name: this.ref,
+            value: false
+        });
+    }
+
+    static registerType(ref, clazz) {
+        if (REG.has(ref)) {
+            throw new Error(`location type ${ref} already exists`);
+        }
+        REG.set(ref, clazz);
+    }
+
+    static createType(ref) {
+        if (REG.has(ref)) {
+            let MapType = REG.get(ref);
+            return new MapType();
+        }
+        return new MapLocation(ref);
     }
 
 }
 
-customElements.define('ootrt-marker-location', HTMLMarkerLocation);
+MapLocation.registerType('location', MapLocation);
+customElements.define('ootrt-map-location', MapLocation);

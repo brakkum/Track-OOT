@@ -6,7 +6,6 @@ import Logger from "/emcJS/util/Logger.js";
 import Helper from "/emcJS/util/Helper.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import "/emcJS/ui/ContextMenu.js";
-import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
@@ -20,6 +19,8 @@ const TPL = new Template(`
         }
         :host {
             display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
             width: 100%;
             cursor: pointer;
@@ -28,20 +29,30 @@ const TPL = new Template(`
         :host(:hover) {
             background-color: var(--main-hover-color, #ffffff32);
         }
+        .textarea {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            min-height: 35px;
+        }
+        .textarea:empty {
+            display: none;
+        }
         #text {
             flex: 1;
             color: #ffffff;
         }
-        #text.opened {
+        #text[data-state="opened"] {
             color: var(--location-status-opened-color, #000000);
         }
-        #text.available {
+        #text[data-state="available"] {
             color: var(--location-status-available-color, #000000);
         }
-        #text.unavailable {
+        #text[data-state="unavailable"] {
             color: var(--location-status-unavailable-color, #000000);
         }
-        #text.possible {
+        #text[data-state="possible"] {
             color: var(--location-status-possible-color, #000000);
         }
         #badge {
@@ -55,8 +66,8 @@ const TPL = new Template(`
             border-radius: 2px;
         }
         #badge emc-icon {
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
         }
         .menu-tip {
             font-size: 0.7em;
@@ -65,11 +76,13 @@ const TPL = new Template(`
             float: right;
         }
     </style>
-    <div id="text"></div>
-    <div id="badge">
-        <emc-icon src="images/world/icons/area.svg"></emc-icon>
-        <emc-icon id="badge-time" src="images/world/time/always.svg"></emc-icon>
-        <emc-icon id="badge-era" src="images/world/era/both.svg"></emc-icon>
+    <div class="textarea">
+        <div id="text"></div>
+        <div id="badge">
+            <emc-icon src="images/world/icons/area.svg"></emc-icon>
+            <emc-icon id="badge-time" src="images/world/time/always.svg"></emc-icon>
+            <emc-icon id="badge-era" src="images/world/era/both.svg"></emc-icon>
+        </div>
     </div>
 `);
 
@@ -98,9 +111,9 @@ export default class HTMLTrackerChest extends HTMLElement {
     async update() {
         if (!!this.ref) {
             let val = await Logic.checkLogicList(this.ref);
-            this.shadowRoot.getElementById("text").className = translate(val);
+            this.shadowRoot.getElementById("text").dataset.state = translate(val);
         } else {
-            this.shadowRoot.getElementById("text").className = "unavailable";
+            this.shadowRoot.getElementById("text").dataset.state = "unavailable";
         }
     }
 

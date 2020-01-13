@@ -37,16 +37,16 @@ const TPL = new Template(`
             font-weight: bold;
             cursor: pointer;
         }
-        #marker.opened {
+        #marker[data-state="opened"] {
             background-color: var(--location-status-opened-color, #000000);
         }
-        #marker.available {
+        #marker[data-state="available"] {
             background-color: var(--location-status-available-color, #000000);
         }
-        #marker.unavailable {
+        #marker[data-state="unavailable"] {
             background-color: var(--location-status-unavailable-color, #000000);
         }
-        #marker.possible {
+        #marker[data-state="possible"] {
             background-color: var(--location-status-possible-color, #000000);
         }
         #marker:hover {
@@ -62,10 +62,10 @@ const TPL = new Template(`
             white-space: nowrap;
             font-size: 30px;
         }
-        #tooltiparea {
+        .textarea {
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: flex-start;
             height: 46px;
         }
         #text {
@@ -92,7 +92,7 @@ const TPL = new Template(`
     </style>
     <div id="marker" class="unavailable"></div>
     <emc-tooltip position="top" id="tooltip">
-        <div id="tooltiparea">
+        <div class="textarea">
             <div id="text"></div>
             <div id="badge">
                 <emc-icon src="images/world/icons/area.svg"></emc-icon>
@@ -128,14 +128,14 @@ export default class HTMLMarkerArea extends HTMLElement {
     async update() {
         if (!!this.ref) {
             let val = await Logic.checkLogicList(this.ref);
-            this.shadowRoot.getElementById("marker").className = translate(val);
+            this.shadowRoot.getElementById("marker").dataset.state = translate(val);
             if (val > 0b001) {
                 this.shadowRoot.getElementById("marker").innerHTML = await Logic.getAccessibleNumber(this.ref);
             } else {
                 this.shadowRoot.getElementById("marker").innerHTML = "";
             }
         } else {
-            this.shadowRoot.getElementById("marker").className = "unavailable";
+            this.shadowRoot.getElementById("marker").dataset.state = "unavailable";
             this.shadowRoot.getElementById("marker").innerHTML = "";
         }
     }
@@ -164,8 +164,16 @@ export default class HTMLMarkerArea extends HTMLElement {
         this.setAttribute('top', val);
     }
 
+    get tooltip() {
+        return this.getAttribute('tooltip');
+    }
+
+    set tooltip(val) {
+        this.setAttribute('tooltip', val);
+    }
+
     static get observedAttributes() {
-        return ['ref', 'left', 'top'];
+        return ['ref', 'left', 'top', 'tooltip'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -182,30 +190,12 @@ export default class HTMLMarkerArea extends HTMLElement {
                 if (oldValue != newValue) {
                     this.style.left = `${this.left}px`;
                     this.style.top = `${this.top}px`;
+                }
+            break;
+            case 'tooltip':
+                if (oldValue != newValue) {
                     let tooltip = this.shadowRoot.getElementById("tooltip");
-                    if (this.left < 30) {
-                        if (this.top < 30) {
-                            tooltip = "bottomright";
-                        } else if (this.top > 70) {
-                            tooltip = "topright";
-                        } else {
-                            tooltip = "right";
-                        }
-                    } else if (this.left > 70) {
-                        if (this.top < 30) {
-                            tooltip = "bottomleft";
-                        } else if (this.top > 70) {
-                            tooltip = "topleft";
-                        } else {
-                            tooltip = "left";
-                        }
-                    } else {
-                        if (this.top < 30) {
-                            tooltip = "bottom";
-                        } else {
-                            tooltip = "top";
-                        }
-                    }
+                    tooltip.position = newValue;
                 }
             break;
         }

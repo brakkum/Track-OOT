@@ -11,7 +11,6 @@ import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
 
-const REG = new Map();
 const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
@@ -21,6 +20,8 @@ const TPL = new Template(`
         }
         :host {
             display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
             width: 100%;
             cursor: pointer;
@@ -32,8 +33,9 @@ const TPL = new Template(`
         .textarea {
             display: flex;
             align-items: center;
+            justify-content: flex-start;
             width: 100%;
-            height: 30px;
+            min-height: 35px;
         }
         .textarea:empty {
             display: none;
@@ -44,10 +46,13 @@ const TPL = new Template(`
             align-items: center;
             -moz-user-select: none;
             user-select: none;
-            color: var(--location-status-unavailable-color, #000000);
+            color: #ffffff;
         }
-        #text.avail {
+        #text[data-state="available"] {
             color: var(--location-status-available-color, #000000);
+        }
+        #text[data-state="unavailable"] {
+            color: var(--location-status-unavailable-color, #000000);
         }
         :host([checked="true"]) #text {
             color: var(--location-status-opened-color, #000000);
@@ -63,8 +68,8 @@ const TPL = new Template(`
             border-radius: 2px;
         }
         #badge emc-icon {
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
         }
         .menu-tip {
             font-size: 0.7em;
@@ -73,6 +78,13 @@ const TPL = new Template(`
             float: right;
         }
     </style>
+    <emc-contextmenu id="menu">
+        <div id="menu-check" class="item">Check<span class="menu-tip">(leftclick)</span></div>
+        <div id="menu-uncheck" class="item">Uncheck<span class="menu-tip">(ctrl + rightclick)</span></div>
+        <div class="splitter"></div>
+        <div id="menu-logic" class="item">Show Logic</div>
+        <div id="menu-logic-image" class="item">Create Logic Image</div>
+    </emc-contextmenu>
     <div class="textarea">
         <div id="text"></div>
         <div id="badge">
@@ -81,32 +93,27 @@ const TPL = new Template(`
             <emc-icon id="badge-era" src="images/world/era/none.svg"></emc-icon>
         </div>
     </div>
-    <div id="extra" class="textarea"></div>
-    <emc-contextmenu id="menu">
-        <div id="menu-check" class="item">Check<span class="menu-tip">(leftclick)</span></div>
-        <div id="menu-uncheck" class="item">Uncheck<span class="menu-tip">(ctrl + rightclick)</span></div>
-        <div class="splitter"></div>
-        <div id="menu-logic" class="item">Show Logic</div>
-        <div id="menu-logic-image" class="item">Create Logic Image</div>
-    </emc-contextmenu>
 `);
+
+const REG = new Map();
+const TYPE = new WeakMap();
 
 function locationUpdate(event) {
     if (this.ref === event.data.name && this.checked !== event.data.value) {
-        EventBus.mute("location");
+        EventBus.mute(TYPE.get(this));
         this.checked = event.data.value;
-        EventBus.unmute("location");
+        EventBus.unmute(TYPE.get(this));
     }
 }
 
 function stateChanged(event) {
-    EventBus.mute("location");
+    EventBus.mute(TYPE.get(this));
     let value = event.data[this.ref];
     if (typeof value == "undefined") {
         value = false;
     }
     this.checked = value;
-    EventBus.unmute("location");
+    EventBus.unmute(TYPE.get(this));
 }
 
 function logicUpdate(event) {
@@ -138,50 +145,64 @@ async function printLogic(ref) {
     svg_win.document.body.append(img);
 }
 
-function click(event) {
-    this.check();
-    event.preventDefault();
-    return false;
-}
-
-function unclick(event) {
-    this.uncheck();
-    event.preventDefault();
-    return false;
-}
-
-function contextMenu(event) {
-    if (event.ctrlKey) {
-        this.uncheck();
-    } else {
-        this.shadowRoot.getElementById("menu").show(event.clientX, event.clientY);
-    }
-    event.preventDefault();
-    return false;
-}
-
 export default class ListLocation extends HTMLElement {
 
-    constructor() {
+    constructor(type) {
         super();
-        this.addEventListener("click", click.bind(this));
-        this.addEventListener("contextmenu", contextMenu.bind(this));
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-        this.visible = function (){return true};
+        if (!!type) {
+            let el_type = this.shadowRoot.getElementById("badge-type");
+            el_type.src = `images/world/icons/${type}.svg`;
+            type = `location_${type}`;
+        } else {
+            type = "location";
+        }
+        TYPE.set(this, type);
+        /* mouse events */
+        this.addEventListener("click", event => {
+            this.check();
+            event.preventDefault();
+            return false;
+        });
+        this.addEventListener("contextmenu", event => {
+            if (event.ctrlKey) {
+                this.uncheck();
+            } else {
+                this.showContextMenu(event.clientX, event.clientY);
+            }
+            event.preventDefault();
+            return false;
+        });
         /* context menu */
-        this.shadowRoot.getElementById("menu-check").addEventListener("click", click.bind(this));
-        this.shadowRoot.getElementById("menu-uncheck").addEventListener("click", unclick.bind(this));
-        this.shadowRoot.getElementById("menu-logic").addEventListener("click", function(event) {
+        this.shadowRoot.getElementById("menu-check").addEventListener("click", event => {
+            this.check();
+            event.preventDefault();
+            return false;
+        });
+        this.shadowRoot.getElementById("menu-uncheck").addEventListener("click", event => {
+            this.uncheck();
+            event.preventDefault();
+            return false;
+        });
+        this.shadowRoot.getElementById("menu-logic").addEventListener("click", event => {
             showLogic(this.access, this.ref);
-        }.bind(this));
-        this.shadowRoot.getElementById("menu-logic-image").addEventListener("click", function(event) {
+        });
+        this.shadowRoot.getElementById("menu-logic-image").addEventListener("click", event => {
             printLogic(this.access);
-        }.bind(this));
+        });
         /* event bus */
-        EVENT_BINDER.register("location", locationUpdate.bind(this));
+        EVENT_BINDER.register(type, locationUpdate.bind(this));
         EVENT_BINDER.register("state", stateChanged.bind(this));
         EVENT_BINDER.register("logic", logicUpdate.bind(this));
+    }
+
+    async update() {
+        if (!!this.access && !!Logic.getValue(this.access)) {
+            this.shadowRoot.getElementById("text").dataset.state = "available";
+        } else {
+            this.shadowRoot.getElementById("text").dataset.state = "unavailable";
+        }
     }
 
     get ref() {
@@ -198,14 +219,6 @@ export default class ListLocation extends HTMLElement {
 
     set checked(val) {
         this.setAttribute('checked', val);
-    }
-
-    get type() {
-        return this.getAttribute('type');
-    }
-
-    set type(val) {
-        this.setAttribute('type', val);
     }
 
     get era() {
@@ -233,7 +246,7 @@ export default class ListLocation extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['ref', 'checked', 'type', 'era', 'time', 'access'];
+        return ['ref', 'checked', 'era', 'time', 'access'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -246,18 +259,9 @@ export default class ListLocation extends HTMLElement {
                 }
             break;
             case 'checked':
+            case 'access':
                 if (oldValue != newValue) {
-                    if (!newValue || newValue === "false") {
-                        let el = this.shadowRoot.getElementById("text");
-                        el.classList.toggle("avail", Logic.getValue(this.access));
-                    }
-                    StateStorage.write(this.ref, newValue === "false" ? false : !!newValue);
-                }
-            break;
-            case 'type':
-                if (oldValue != newValue) {
-                    let el_type = this.shadowRoot.getElementById("badge-type");
-                    el_type.src = `images/world/icons/${newValue}.svg`;
+                    this.update();
                 }
             break;
             case 'era':
@@ -272,19 +276,18 @@ export default class ListLocation extends HTMLElement {
                     el_time.src = `images/world/time/${newValue}.svg`;
                 }
             break;
-            case 'access':
-                if (oldValue != newValue) {
-                    let txt = this.shadowRoot.getElementById("text");
-                    txt.classList.toggle("avail", Logic.getValue(newValue));
-                }
-            break;
         }
+    }
+
+    showContextMenu(x, y) {
+        this.shadowRoot.getElementById("menu").show(x, y);
     }
 
     check() {
         Logger.log(`check location "${this.ref}"`, "Location");
         this.checked = true;
-        EventBus.trigger("location", {
+        StateStorage.write(this.ref, true);
+        EventBus.trigger(TYPE.get(this), {
             name: this.ref,
             value: true
         });
@@ -293,13 +296,29 @@ export default class ListLocation extends HTMLElement {
     uncheck() {
         Logger.log(`uncheck location "${this.ref}"`, "Location");
         this.checked = false;
-        EventBus.trigger("location", {
+        StateStorage.write(this.ref, false);
+        EventBus.trigger(TYPE.get(this), {
             name: this.ref,
             value: false
         });
     }
 
+    static registerType(ref, clazz) {
+        if (REG.has(ref)) {
+            throw new Error(`location type ${ref} already exists`);
+        }
+        REG.set(ref, clazz);
+    }
+
+    static createType(ref) {
+        if (REG.has(ref)) {
+            let ListType = REG.get(ref);
+            return new ListType();
+        }
+        return new ListLocation(ref);
+    }
+
 }
 
-//Location.registerLocationType('location', 'ootrt-list-location');
+ListLocation.registerType('location', ListLocation);
 customElements.define('ootrt-list-location', ListLocation);
