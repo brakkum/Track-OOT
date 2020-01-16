@@ -1,4 +1,5 @@
 import GlobalData from "/script/storage/GlobalData.js";
+import LogicProcessor from "/emcJS/util/logic/Processor.js";
 import AbstractElement from "/emcJS/util/logic/elements/AbstractElement.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 
@@ -30,17 +31,17 @@ class WorldEntry {
     constructor(listItem, mapItem, ref, data) {
         // LOGIC
         if (typeof data.visible == "object") {
-            VISIBLE.set(this, new Function('values', `return ${AbstractElement.buildLogic(data.visible)}`));
+            VISIBLE.set(this, new Function('val', `return ${AbstractElement.buildLogic(data.visible)}`));
         } else {
             VISIBLE.set(this, !!data.visible ? fnTrue : fnFalse);
         }
         if (typeof data.child == "object") {
-            CHILD.set(this, new Function('values', `return ${AbstractElement.buildLogic(data.child)}`));
+            CHILD.set(this, new Function('val', `return ${AbstractElement.buildLogic(data.child)}`));
         } else {
             CHILD.set(this, !!data.child ? fnTrue : fnFalse);
         }
         if (typeof data.adult == "object") {
-            ADULT.set(this, new Function('values', `return ${AbstractElement.buildLogic(data.adult)}`));
+            ADULT.set(this, new Function('val', `return ${AbstractElement.buildLogic(data.adult)}`));
         } else {
             ADULT.set(this, !!data.adult ? fnTrue : fnFalse);
         }
@@ -91,19 +92,19 @@ class WorldEntry {
         });
     }
 
-    visible(data) {
+    visible(state) {
         let visible = VISIBLE.get(this);
-        return visible(data);
+        return visible(LogicProcessor.valueEscaper.bind(state));
     }
 
-    child(data) {
+    child(state) {
         let child = CHILD.get(this);
-        return child(data);
+        return child(LogicProcessor.valueEscaper.bind(state));
     }
 
-    adult(data) {
+    adult(state) {
         let adult = ADULT.get(this);
-        return adult(data);
+        return adult(LogicProcessor.valueEscaper.bind(state));
     }
 
     get listItem() {

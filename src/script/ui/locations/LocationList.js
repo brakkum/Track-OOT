@@ -9,10 +9,12 @@ import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import I18n from "/script/util/I18n.js";
 import Logic from "/script/util/Logic.js";
 import World from "/script/util/World.js";
+import "./listitems/Button.js";
 import "./listitems/Area.js";
 import "./listitems/Entrance.js";
 import "./listitems/Location.js";
 import "./listitems/Gossipstone.js";
+import "/script/ui/dungeonstate/DungeonType.js";
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
@@ -72,7 +74,7 @@ const TPL = new Template(`
         #list {
             display: content;
         }
-        #back {
+        ootrt-list-button {
             display: flex;
             justify-content: flex-start;
             align-items: center;
@@ -81,10 +83,11 @@ const TPL = new Template(`
             cursor: pointer;
             padding: 5px;
         }
-        #back:hover,
+        ootrt-list-button:hover,
         #list > *:hover {
             background-color: var(--dungeon-status-hover-color, #ffffff32);
         }
+        ootrt-list-button.hidden,
         :host(:not([ref])) #back,
         :host([ref=""]) #back {
             display: none;
@@ -92,11 +95,8 @@ const TPL = new Template(`
     </style>
     <div id="title">
         <div id="title-text">${I18n.translate("hyrule")}</div>
-        <emc-switchbutton value="v" id="location-version" readonly="true">
-            <emc-option value="n" style="background-image: url('images/dungeontype/undefined.svg')"></emc-option>
-            <emc-option value="v" style="background-image: url('images/dungeontype/vanilla.svg')"></emc-option>
-            <emc-option value="mq" style="background-image: url('images/dungeontype/masterquest.svg')"></emc-option>
-        </emc-switchbutton>
+        <ootrt-dungeontype value="v" id="location-version" readonly="true" ref="">
+        </ootrt-dungeontype>
         <emc-switchbutton value="" id="location-era">
             <emc-option value="" style="background-image: url('images/world/era/both.svg')"></emc-option>
             <emc-option value="child" style="background-image: url('images/world/era/child.svg')"></emc-option>
@@ -104,7 +104,9 @@ const TPL = new Template(`
         </emc-switchbutton>
     </div>
     <div id="body">
-        <div id="back">(${I18n.translate("back")})</div>
+        <ootrt-list-button id="back">(${I18n.translate("back")})</ootrt-list-button>
+        <ootrt-list-button id="vanilla" class="hidden">${I18n.translate("vanilla")}</ootrt-list-button>
+        <ootrt-list-button id="masterquest" class="hidden">${I18n.translate("masterquest")}</ootrt-list-button>
         <div id="list"></div>
     </div>
 `);
@@ -135,6 +137,20 @@ class HTMLTrackerLocationList extends Panel {
         });
         this.shadowRoot.getElementById('back').addEventListener("click", event => {
             this.ref = ""
+        });
+        this.shadowRoot.getElementById('vanilla').addEventListener("click", event => {
+            StateStorage.write(`dungeonTypes.${this.ref}`, 'v');
+            EventBus.trigger("dungeontype", {
+                name: this.ref,
+                value: 'v'
+            });
+        });
+        this.shadowRoot.getElementById('masterquest').addEventListener("click", event => {
+            StateStorage.write(`dungeonTypes.${this.ref}`, 'mq');
+            EventBus.trigger("dungeontype", {
+                name: this.ref,
+                value: 'mq'
+            });
         });
         /* event bus */
         EVENT_BINDER.register("location_change", event => {
@@ -187,34 +203,40 @@ class HTMLTrackerLocationList extends Panel {
         if (oldValue != newValue) {
             if (name == "ref") {
                 this.shadowRoot.getElementById("title-text").innerHTML = I18n.translate(newValue || "hyrule");
+                this.shadowRoot.getElementById("location-version").ref = newValue;
+                this.shadowRoot.getElementById('vanilla').ref = newValue;
+                this.shadowRoot.getElementById('masterquest').ref = newValue;
             }
             this.refresh();
         }
     }
 
     refresh() {
-        /* TODO
-        let dType = StateStorage.read(`dungeonTypes.${this.ref || "overworld"}`, data.hasmq ? "n" : "v");
-        if (dType === "n") {
-            let ch = Array.from(this.shadowRoot.getElementById("body").children);
-            ch.forEach(async c => {
-                if (!c.dataset.ref || c.dataset.ref === "") return;
-                c.className = translate(await Logic.checkLogicList(this.mode, this.ref, c.dataset.ref));
-            });
-        }
-        */
         let cnt = this.shadowRoot.getElementById("list");
+        let postfix = "";
+        let dType = this.shadowRoot.getElementById("location-version").value;
         cnt.innerHTML = "";
-        let data = GlobalData.get(`locationlists/${this.ref}`);
-        if (!!data) {
-            let values = new Map(Object.entries(StateStorage.getAll()));
-            data.forEach(record => {
-                let loc = World.get(record.id);
-                if (loc.visible(values) && (!this.era || loc[this.era](values))) {
-                    let el = loc.listItem;
-                    cnt.append(el);
-                }
-            });
+        if (dType == "n") {
+            this.shadowRoot.getElementById('vanilla').classList.remove("hidden");
+            this.shadowRoot.getElementById('masterquest').classList.remove("hidden");
+        } else {
+            this.shadowRoot.getElementById('vanilla').classList.add("hidden");
+            this.shadowRoot.getElementById('masterquest').classList.add("hidden");
+            if (dType == "mq") {
+                postfix = "_mq";
+            }
+            cnt.innerHTML = "";
+            let data = GlobalData.get(`locationlists/${this.ref}${postfix}`);
+            if (!!data) {
+                let values = new Map(Object.entries(StateStorage.getAll()));
+                data.forEach(record => {
+                    let loc = World.get(record.id);
+                    if (loc.visible(values) && (!this.era || loc[this.era](values))) {
+                        let el = loc.listItem;
+                        cnt.append(el);
+                    }
+                });
+            }
         }
         this.updateHeader();
     }
@@ -223,6 +245,7 @@ class HTMLTrackerLocationList extends Panel {
         if ((!this.ref || this.ref === "")) {
             this.shadowRoot.querySelector('#title').className = "";
         } else {
+            // TODO check all dungeontypes possibilities
             this.shadowRoot.querySelector('#title').className = translate(await Logic.checkLogicList(this.ref || "overworld"));
         }
     }

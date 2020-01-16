@@ -11,6 +11,7 @@ import "./marker/Area.js";
 import "./marker/Entrance.js";
 import "./marker/Location.js";
 import "./marker/Gossipstone.js";
+import "/script/ui/dungeonstate/DungeonType.js";
 
 const ZOOM_MIN = 10;
 const ZOOM_MAX = 200;
@@ -191,13 +192,12 @@ const TPL = new Template(`
                         <emc-option value="gossipstones" style="background-image: url('images/world/icons/gossipstone.svg')"></emc-option>
                     </emc-switchbutton>
                 </div>
+                <!-- dungeon type button
                 <div class="button">
-                    <emc-switchbutton value="v" id="location-version" readonly="true">
-                        <emc-option value="n" style="background-image: url('images/dungeontype/undefined.svg')"></emc-option>
-                        <emc-option value="v" style="background-image: url('images/dungeontype/vanilla.svg')"></emc-option>
-                        <emc-option value="mq" style="background-image: url('images/dungeontype/masterquest.svg')"></emc-option>
-                    </emc-switchbutton>
+                    <ootrt-dungeontype value="v" id="location-version" readonly="true" ref="">
+                    </ootrt-dungeontype>
                 </div>
+                -->
                 <div class="button">
                     <emc-switchbutton value="" id="location-era">
                         <emc-option value="" style="background-image: url('images/world/era/both.svg')"></emc-option>
@@ -473,43 +473,57 @@ class HTMLTrackerMap extends Panel {
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
+            if (name == "ref") {
+                //this.shadowRoot.getElementById("location-version").ref = newValue;
+            }
             this.refresh();
         }
     }
 
-    refresh() {
+    async refresh() {
+        let postfix = "";
+        let dType = "v";//this.shadowRoot.getElementById("location-version").value;
         this.innerHTML = "";
-        let data = GlobalData.get(`maps/${this.ref}`);
-        if (!!data) {
-            // switch map/minimap background
-            let map = this.shadowRoot.getElementById('map');
-            map.style.backgroundImage = `url("/images/world/maps/${data.background}")`;
-            map.style.width = `${data.width}px`;
-            map.style.height = `${data.height}px`;
-            let minimap = this.shadowRoot.getElementById('map-overview');
-            minimap.style.backgroundImage = `url("/images/world/maps/${data.background}")`;
-            // fill map
-            let values = new Map(Object.entries(StateStorage.getAll()));
-            data.locations.forEach(record => {
-                if (this.mode == "gossipstones") {
-                    // LEGACY
-                    if (record.type == "area" || record.type == "entrance") {
-                        return;
-                    }
-                }
-                let loc = World.get(record.id);
-                if (loc.visible(values) && (!this.era || loc[this.era](values))) {
-                    let el = loc.mapMarker;
-                    if (!!el.dataset.mode && el.dataset.mode != this.mode) {
+        if (dType == "n") {
+
+            // TODO
+
+        } else {
+            if (dType == "mq") {
+                postfix = "_mq";
+            }
+            let data = GlobalData.get(`maps/${this.ref}${postfix}`);
+            if (!!data) {
+                // switch map/minimap background
+                let map = this.shadowRoot.getElementById('map');
+                map.style.backgroundImage = `url("/images/world/maps/${data.background}")`;
+                map.style.width = `${data.width}px`;
+                map.style.height = `${data.height}px`;
+                let minimap = this.shadowRoot.getElementById('map-overview');
+                minimap.style.backgroundImage = `url("/images/world/maps/${data.background}")`;
+                // fill map
+                let values = new Map(Object.entries(StateStorage.getAll()));
+                data.locations.forEach(record => {
+                    if (this.mode == "gossipstones") {
                         // LEGACY
-                        return;
+                        if (record.type == "area" || record.type == "entrance") {
+                            return;
+                        }
                     }
-                    el.left = record.x;
-                    el.top = record.y;
-                    el.tooltip = calculateTooltipPosition(record.x, record.y, data.width, data.height);
-                    this.append(el);
-                }
-            });
+                    let loc = World.get(record.id);
+                    if (loc.visible(values) && (!this.era || loc[this.era](values))) {
+                        let el = loc.mapMarker;
+                        if (!!el.dataset.mode && el.dataset.mode != this.mode) {
+                            // LEGACY
+                            return;
+                        }
+                        el.left = record.x;
+                        el.top = record.y;
+                        el.tooltip = calculateTooltipPosition(record.x, record.y, data.width, data.height);
+                        this.append(el);
+                    }
+                });
+            }
         }
     }
 

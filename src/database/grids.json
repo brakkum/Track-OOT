@@ -174,7 +174,7 @@
             "boss_reward": true
         },
         {
-            "ref": "deku",
+            "ref": "area.deku",
             "title": "DT",
             "color": "#92ff92",
             "keys": false,
@@ -185,7 +185,7 @@
             "boss_reward": true
         },
         {
-            "ref": "dodongo",
+            "ref": "area.dodongo",
             "title": "DC",
             "color": "#ff6a6a",
             "keys": false,
@@ -196,7 +196,7 @@
             "boss_reward": true
         },
         {
-            "ref": "jabujabu",
+            "ref": "area.jabujabu",
             "title": "JB",
             "color": "#8be4f3",
             "keys": false,
@@ -207,7 +207,7 @@
             "boss_reward": true
         },
         {
-            "ref": "temple_forest",
+            "ref": "area.temple_forest",
             "title": "FoT",
             "color": "#1bf11b",
             "keys": "item.key_small_forest",
@@ -218,7 +218,7 @@
             "boss_reward": true
         },
         {
-            "ref": "temple_fire",
+            "ref": "area.temple_fire",
             "title": "FiT",
             "color": "#ff3c3c",
             "keys": "item.key_small_fire",
@@ -229,7 +229,7 @@
             "boss_reward": true
         },
         {
-            "ref": "temple_water",
+            "ref": "area.temple_water",
             "title": "WT",
             "color": "#7cb6ff",
             "keys": "item.key_small_water",
@@ -240,7 +240,7 @@
             "boss_reward": true
         },
         {
-            "ref": "temple_shadow",
+            "ref": "area.temple_shadow",
             "title": "ShT",
             "color": "#d967fd",
             "keys": "item.key_small_shadow",
@@ -251,7 +251,7 @@
             "boss_reward": true
         },
         {
-            "ref": "temple_spirit",
+            "ref": "area.temple_spirit",
             "title": "SpT",
             "color": "#ffcd71",
             "keys": "item.key_small_spirit",
@@ -262,7 +262,7 @@
             "boss_reward": true
         },
         {
-            "ref": "well",
+            "ref": "area.well",
             "title": "BotW",
             "color": "#ff99ff",
             "keys": "item.key_small_well",
@@ -273,7 +273,7 @@
             "boss_reward": false
         },
         {
-            "ref": "ice_cavern",
+            "ref": "area.ice_cavern",
             "title": "IC",
             "color": "#abfdf5",
             "keys": false,
@@ -284,7 +284,7 @@
             "boss_reward": false
         },
         {
-            "ref": "gerudo_fortress",
+            "ref": "area.gerudo_fortress",
             "title": "GF",
             "color": "#ffb47d",
             "keys": "item.key_small_gerudo",
@@ -295,7 +295,7 @@
             "boss_reward": false
         },
         {
-            "ref": "gerudo_training",
+            "ref": "area.training_grounds",
             "title": "GTG",
             "color": "#ffffa4",
             "keys": "item.key_small_training",
@@ -306,7 +306,7 @@
             "boss_reward": false
         },
         {
-            "ref": "castle_ganon",
+            "ref": "area.castle_ganon",
             "title": "GC",
             "color": "#969696",
             "keys": "item.key_small_ganon",

@@ -285,7 +285,7 @@ function entranceDialog(ref) {
 
         for (let i in data) {
             let loc = data[i];
-            if (loc.type == type) {
+            if (loc.type == type && !!loc.use_entrance) {
                 slt.append(createOption(i, I18n.translate(i)));
             }
         }

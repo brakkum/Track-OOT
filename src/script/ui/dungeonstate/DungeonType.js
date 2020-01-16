@@ -1,3 +1,4 @@
+import GlobalData from "/script/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import "/emcJS/ui/selection/Option.js";
@@ -21,11 +22,11 @@ const TPL = new Template(`
             width: 100%;
             height: 100%;
         }
-        ::slotted(:not([value])),
-        ::slotted([value]:not(.active)) {
+        :not([value]),
+        [value]:not(.active) {
             display: none !important;
         }
-        ::slotted([value]) {
+        [value] {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -46,25 +47,22 @@ const TPL = new Template(`
             line-height: 0.7em;
         }
     </style>
-    <slot>
-    </slot>
+    <emc-option value="n" style="background-image: url('images/dungeontype/undefined.svg')"></emc-option>
+    <emc-option value="v" style="background-image: url('images/dungeontype/vanilla.svg')"></emc-option>
+    <emc-option value="mq" style="background-image: url('images/dungeontype/masterquest.svg')"></emc-option>
 `);
 
 function stateChanged(event) {
-    EventBus.mute("dungeontype");
     let value = event.data[`dungeonTypes.${this.ref}`];
     if (typeof value == "undefined" || value == "") {
         value = "n";
     }
     this.value = value;
-    EventBus.unmute("dungeontype");
 }
 
 function dungeonTypeUpdate(event){
     if (this.ref === event.data.name && this.value !== event.data.value) {
-        EventBus.mute("dungeontype");
         this.value = event.data.value;
-        EventBus.unmute("dungeontype");
     }
 }
 
@@ -105,70 +103,60 @@ class HTMLTrackerDungeonType extends HTMLElement {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    if (newValue === "") {
-                        this.innerHTML = "";
-                        EventBus.mute("dungeontype");
-                        this.value = "";
-                        EventBus.unmute("dungeontype");
-                    } else if (oldValue === null || oldValue === undefined || oldValue === "") {
-                        this.append(createOption("n", "/images/dungeontype/undefined.svg"));
-                        this.append(createOption("v", "/images/dungeontype/vanilla.svg"));
-                        this.append(createOption("mq", "/images/dungeontype/masterquest.svg"));
-                        EventBus.mute("dungeontype");
-                        this.value = StateStorage.read(`dungeonTypes.${newValue}`, "n");
-                        EventBus.unmute("dungeontype");
+                    let value = "v";
+                    let readonly = true;
+                    if (!!newValue) {
+                        let area = GlobalData.get(`world/areas/${newValue}`);
+                        if (area.hasOwnProperty("locations_mq")) {
+                            value = StateStorage.read(`dungeonTypes.${newValue}`, "n");
+                            readonly = false;
+                        }
                     }
+                    this.value = value;
+                    this.readonly = readonly;
                 }
             break;
             case 'value':
                 if (oldValue != newValue) {
-                    let oe = this.querySelector(`.active`);
+                    let oe = this.shadowRoot.querySelector(`.active`);
                     if (!!oe) {
                         oe.classList.remove("active");
                     }
-                    let ne = this.querySelector(`[value="${newValue}"]`);
+                    let ne = this.shadowRoot.querySelector(`[value="${newValue}"]`);
                     if (!!ne) {
                         ne.classList.add("active");
                     }
-                    StateStorage.write(`dungeonTypes.${this.ref}`, newValue);
-                    EventBus.trigger("dungeontype", {
-                        name: this.ref,
-                        value: newValue
-                    });
                 }
             break;
         }
     }
 
-    next(ev) {
-        let all = this.querySelectorAll("[value]");
-        if (!!all.length) {
-            let opt = this.querySelector(`[value="${this.value}"]`);
-            if (!!opt) {
-                if (!!opt.nextElementSibling) {
-                    this.value = opt.nextElementSibling.getAttribute("value");
-                } else {
-                    this.value = all[1].getAttribute("value");
-                }
-            }
+    next(event) {
+        if (this.value == 'v') {
+            this.value = 'mq';
+        } else {
+            this.value = 'v';
         }
-        ev.preventDefault();
+        StateStorage.write(`dungeonTypes.${this.ref}`, this.value);
+        EventBus.trigger("dungeontype", {
+            name: this.ref,
+            value: this.value
+        });
+        event.preventDefault();
         return false;
     }
 
-    revert(ev) {
+    revert(event) {
         this.value = "n";
-        ev.preventDefault();
+        StateStorage.write(`dungeonTypes.${this.ref}`, 'n');
+        EventBus.trigger("dungeontype", {
+            name: this.ref,
+            value: 'n'
+        });
+        event.preventDefault();
         return false;
     }
 
 }
 
 customElements.define('ootrt-dungeontype', HTMLTrackerDungeonType);
-
-function createOption(value, img) {
-    let opt = document.createElement('emc-option');
-    opt.value = value;
-    opt.style.backgroundImage = `url("${img}"`;
-    return opt;
-}
