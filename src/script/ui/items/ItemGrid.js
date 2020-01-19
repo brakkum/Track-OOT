@@ -30,7 +30,9 @@ const TPL = new Template(`
         ootrt-infiniteitem:hover {
             padding: 2px;
         }
-        div.text {
+        div.text,
+        div.icon,
+        div.empty {
             display: inline-block;
             width: 40px;
             height: 40px;
@@ -39,10 +41,37 @@ const TPL = new Template(`
     </style>
 `);
 
-function createItemText(text) {
+function createItem(value, data) {
+    if (data.max === false) {
+        let el = document.createElement('ootrt-infiniteitem');
+        el.title = I18n.translate(value);
+        el.setAttribute('ref', value);
+        return el;
+    } else {
+        let el = document.createElement('ootrt-item');
+        el.title = I18n.translate(value);
+        el.setAttribute('ref', value);
+        return el;
+    }
+}
+
+function createText(value) {
     let el = document.createElement('DIV');
     el.classList.add("text");
-    el.innerHTML = text;
+    el.innerHTML = value;
+    return el;
+}
+
+function createIcon(value) {
+    let el = document.createElement('DIV');
+    el.classList.add("icon");
+    el.dataset.icon = value;
+    return el;
+}
+
+function createEmpty() {
+    let el = document.createElement('DIV');
+    el.classList.add("empty");
     return el;
 }
 
@@ -56,7 +85,7 @@ class HTMLTrackerItemGrid extends Panel {
 
     connectedCallback() {
         if (!this.items) {
-            this.items = GlobalData.get("grids/items").map(e=>e.join(" ")).join(",");
+            this.items = JSON.stringify(GlobalData.get("grids/items"));
         }
     }
 
@@ -76,27 +105,21 @@ class HTMLTrackerItemGrid extends Panel {
         switch (name) {
             case 'items':
                 if (oldValue != newValue) {
-                    let els = newValue.split(",").map(e=>e.split(" "));
-                    for (let i of els) {
+                    let config = JSON.parse(newValue);
+                    for (let row of config) {
                         let cnt = document.createElement('div');
                         cnt.classList.add("item-row");
                         let items = GlobalData.get("items");
-                        for (let j of i) {
-                            if (j.startsWith("text:")) {
-                                cnt.append(createItemText(j.slice(5)));
+                        for (let element of row) {
+                            if (element.type == "item") {
+                                let data = items[element.value];
+                                cnt.append(createItem(element.value, data));
+                            } else if (element.type == "text") {
+                                cnt.append(createText(element.value));
+                            } else if (element.type == "icon") {
+                                cnt.append(createIcon(element.value));
                             } else {
-                                let data = items[j];
-                                if (data.max === false) {
-                                    let itm = document.createElement('ootrt-infiniteitem');
-                                    itm.title = I18n.translate(j);
-                                    itm.setAttribute('ref', j);
-                                    cnt.append(itm);
-                                } else {
-                                    let itm = document.createElement('ootrt-item');
-                                    itm.title = I18n.translate(j);
-                                    itm.setAttribute('ref', j);
-                                    cnt.append(itm);
-                                }
+                                cnt.append(createEmpty());
                             }
                         }
                         this.shadowRoot.append(cnt);

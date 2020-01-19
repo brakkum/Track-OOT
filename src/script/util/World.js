@@ -19,6 +19,10 @@ const ADULT = new WeakMap();
 const LIST_ITEMS = new WeakMap();
 const MAP_MARKERS = new WeakMap();
 
+function valueGetter(key) {
+    return this.get(key);
+}
+
 function fnTrue() {
     return true;
 }
@@ -94,17 +98,17 @@ class WorldEntry {
 
     visible(state) {
         let visible = VISIBLE.get(this);
-        return visible(LogicProcessor.valueEscaper.bind(state));
+        return visible(valueGetter.bind(state));
     }
 
     child(state) {
         let child = CHILD.get(this);
-        return child(LogicProcessor.valueEscaper.bind(state));
+        return child(valueGetter.bind(state));
     }
 
     adult(state) {
         let adult = ADULT.get(this);
-        return adult(LogicProcessor.valueEscaper.bind(state));
+        return adult(valueGetter.bind(state));
     }
 
     get listItem() {

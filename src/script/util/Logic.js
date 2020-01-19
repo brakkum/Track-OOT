@@ -1,7 +1,7 @@
 import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import LogicProcessor from "/emcJS/util/logic/Processor.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
-import AbstractElement from "/emcJS/ui/logic/elements/AbstractElement.js";
+import LogicUIAbstractElement from "/emcJS/ui/logic/elements/AbstractElement.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
@@ -18,6 +18,7 @@ let randoLogic = {};
 class TrackerLogic {
 
     constructor() {
+        // TODO clean this
         EventBus.register("state_change", event => {
             let data = {
                 "filter.era_active": MemoryStorage.get('filter.era_active', GlobalData.get("filter/filter.era_active/default"))
@@ -31,18 +32,20 @@ class TrackerLogic {
     }
 
     execute(data) {
+        // TODO clean this
         if (!data) {
             data = {
                 "filter.era_active": MemoryStorage.get('filter.era_active', GlobalData.get("filter/filter.era_active/default"))
             };
             data = Object.assign(data, StateStorage.getAll());
         }
-        let res = RANDO_LOGIC_PROCESSOR.execute(data);
+        RANDO_LOGIC_PROCESSOR.setAll(data);
+        let res = RANDO_LOGIC_PROCESSOR.execute();
         EventBus.trigger("logic", res);
     }
 
     getValue(ref) {
-        return RANDO_LOGIC_PROCESSOR.getValue(ref);
+        return RANDO_LOGIC_PROCESSOR.get(ref);
     }
 
     async checkLogicList(name) {
@@ -54,6 +57,7 @@ class TrackerLogic {
             return 0b001; // no reachable
         }
         let locations = GlobalData.get(`world/locations`);
+        // TODO implement master quest
         /*if (!!mode) {
             list = GlobalData.get("locations")[name][`${category}_${mode}`];
         } else {
@@ -104,6 +108,7 @@ class TrackerLogic {
             return 0;
         }
         let locations = GlobalData.get(`world/locations`);
+        // TODO implement master quest
         let canGet = 0;
         for (let i = 0; i < list.length; ++i) {
             let data = locations[list[i]];
@@ -133,7 +138,7 @@ class TrackerLogic {
     getLogicSVG(ref) {
         let logic = randoLogic[ref];
         if (!!logic) {
-            return AbstractElement.buildSVG(logic);
+            return LogicUIAbstractElement.buildSVG(logic);
         }
     }
 
@@ -141,13 +146,13 @@ class TrackerLogic {
         let el = document.createElement("div");
         let logic = randoLogic[ref];
         if (!!logic) {
-            let l = AbstractElement.buildLogic(logic);
+            let l = LogicUIAbstractElement.buildLogic(logic);
             if (!!calc) {
                 let data = {
                     "filter.era_active": MemoryStorage.get('filter.era_active', GlobalData.get("filter/filter.era_active/default"))
                 };
                 data = Object.assign(data, StateStorage.getAll());
-                data = Object.assign(data, RANDO_LOGIC_PROCESSOR.getValues());
+                data = Object.assign(data, RANDO_LOGIC_PROCESSOR.getAll());
                 l.calculate(data);
             }
             l.readonly = true;

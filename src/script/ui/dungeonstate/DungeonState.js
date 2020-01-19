@@ -88,7 +88,7 @@ class HTMLTrackerDungeonState extends Panel {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
 
-        let data = GlobalData.get("grids")["dungeons"];
+        let data = GlobalData.get("dungeonstate/entries");
         for (let i = 0; i < data.length; ++i) {
             this.shadowRoot.append(createRow(data[i]));
         }

@@ -1,320 +1,644 @@
 {
     "turnament": [
         [
-            "item.bombs",
-            "item.bow",
-            "item.medalion_forest"
+            {
+                "type": "item",
+                "value": "item.bombs",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.bow",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.medalion_forest",
+                "visible": true
+            }
         ],
         [
-            "item.boomerang",
-            "item.hammer",
-            "item.medalion_fire"
+            {
+                "type": "item",
+                "value": "item.boomerang",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.hammer",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.medalion_fire",
+                "visible": true
+            }
         ],
         [
-            "item.hookshot",
-            "item.magic_din",
-            "item.medalion_water"
+            {
+                "type": "item",
+                "value": "item.hookshot",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.magic_din",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.medalion_water",
+                "visible": true
+            }
         ],
         [
-            "item.zora_letter",
-            "item.arrows",
-            "item.medalion_spirit"
+            {
+                "type": "item",
+                "value": "item.zora_letter",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.arrows",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.medalion_spirit",
+                "visible": true
+            }
         ],
         [
-            "item.shield_mirror",
-            "item.glove",
-            "item.medalion_shadow"
+            {
+                "type": "item",
+                "value": "item.shield_mirror",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.glove",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.medalion_shadow",
+                "visible": true
+            }
         ],
         [
-            "item.boots",
-            "item.scale",
-            "item.medalion_light"
+            {
+                "type": "item",
+                "value": "item.boots",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.scale",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.medalion_light",
+                "visible": true
+            }
         ],
         [
-            "item.stone_forest",
-            "item.stone_fire",
-            "item.stone_water"
+            {
+                "type": "item",
+                "value": "item.stone_forest",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.stone_fire",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.stone_water",
+                "visible": true
+            }
         ]
     ],
     "items": [
         [
-            "item.stick",
-            "item.nut",
-            "item.bombs",
-            "item.bow",
-            "item.arrow_fire",
-            "item.magic_din",
-            "item.sword_kokiri",
-            "item.sword_master",
-            "item.sword_biggoron"
+            {
+                "type": "item",
+                "value": "item.stick",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.nut",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.bombs",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.bow",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.arrow_fire",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.magic_din",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.sword_kokiri",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.sword_master",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.sword_biggoron",
+                "visible": true
+            }
         ],
         [
-            "item.slingshot",
-            "item.ocarina",
-            "item.bombchu",
-            "item.hookshot",
-            "item.arrow_ice",
-            "item.magic_farore",
-            "item.shield_kokiri",
-            "item.shield_hylia",
-            "item.shield_mirror"
+            {
+                "type": "item",
+                "value": "item.slingshot",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.ocarina",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.bombchu",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.hookshot",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.arrow_ice",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.magic_farore",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.shield_kokiri",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.shield_hylia",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.shield_mirror",
+                "visible": true
+            }
         ],
         [
-            "item.boomerang",
-            "item.lens",
-            "item.bean",
-            "item.hammer",
-            "item.arrow_light",
-            "item.magic_nayru",
-            "item.tunic_forest",
-            "item.tunic_fire",
-            "item.tunic_water"
+            {
+                "type": "item",
+                "value": "item.boomerang",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.lens",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.bean",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.hammer",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.arrow_light",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.magic_nayru",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.tunic_forest",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.tunic_fire",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.tunic_water",
+                "visible": true
+            }
         ],
         [
-            "item.wallet",
-            "item.skulltula",
-            "item.bottle",
-            "item.zora_letter",
-            "item.egg",
-            "item.cojiro",
-            "item.boots_normal",
-            "item.boots_iron",
-            "item.boots_hover"
+            {
+                "type": "item",
+                "value": "item.wallet",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.skulltula",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.bottle",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.zora_letter",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.egg",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.cojiro",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.boots_normal",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.boots_iron",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.boots_hover",
+                "visible": true
+            }
         ],
         [
-            "item.scale",
-            "item.magic_power",
-            "item.glove",
-            "item.membership",
-            "item.stone_of_agony",
-            "item.heart_piece",
-            "item.heart_container",
-            "item.heart_double",
-            "item.ice_trap"
+            {
+                "type": "item",
+                "value": "item.scale",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.magic_power",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.glove",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.membership",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.stone_of_agony",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.heart_piece",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.heart_container",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.heart_double",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.ice_trap",
+                "visible": true
+            }
         ],
         [
-            "item.song_zelda",
-            "item.song_epona",
-            "item.song_saria",
-            "item.song_sun",
-            "item.song_time",
-            "item.song_storm",
-            "text:",
-            "text:",
-            "item.triforce_piece"
+            {
+                "type": "item",
+                "value": "item.song_zelda",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.song_epona",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.song_saria",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.song_sun",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.song_time",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.song_storm",
+                "visible": true
+            },
+            {
+                "type": "empty",
+                "value": "",
+                "visible": true
+            },
+            {
+                "type": "empty",
+                "value": "",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.triforce_piece",
+                "visible": true
+            }
         ],
         [
-            "item.warp_forest",
-            "item.warp_fire",
-            "item.warp_water",
-            "item.warp_spirit",
-            "item.warp_shadow",
-            "item.warp_light",
-            "text:",
-            "text:",
-            "text:"
+            {
+                "type": "item",
+                "value": "item.warp_forest",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.warp_fire",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.warp_water",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.warp_spirit",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.warp_shadow",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.warp_light",
+                "visible": true
+            },
+            {
+                "type": "empty",
+                "value": "",
+                "visible": true
+            },
+            {
+                "type": "empty",
+                "value": "",
+                "visible": true
+            },
+            {
+                "type": "empty",
+                "value": "",
+                "visible": true
+            }
         ],
         [
-            "item.stone_forest",
-            "item.stone_fire",
-            "item.stone_water",
-            "item.medallion_forest",
-            "item.medallion_fire",
-            "item.medallion_water",
-            "item.medallion_spirit",
-            "item.medallion_shadow",
-            "item.medallion_light"
+            {
+                "type": "item",
+                "value": "item.stone_forest",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.stone_fire",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.stone_water",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.medallion_forest",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.medallion_fire",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.medallion_water",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.medallion_spirit",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.medallion_shadow",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.medallion_light",
+                "visible": true
+            }
         ]
     ],
     "keys": [
         [
-            "icon:medallion_forest.png",
-            "icon:medallion_fire.png",
-            "icon:medallion_water.png",
-            "icon:medallion_shadow.png",
-            "icon:medallion_spirit.png",
-            "icon:ganon.png",
-            "icon:saw.png",
-            "icon:arrow_ice.png",
-            "icon:lens.png"
+            {
+                "type": "icon",
+                "value": "icon:medallion_forest.png",
+                "visible": true
+            },
+            {
+                "type": "icon",
+                "value": "icon:medallion_fire.png",
+                "visible": true
+            },
+            {
+                "type": "icon",
+                "value": "icon:medallion_water.png",
+                "visible": true
+            },
+            {
+                "type": "icon",
+                "value": "icon:medallion_shadow.png",
+                "visible": true
+            },
+            {
+                "type": "icon",
+                "value": "icon:medallion_spirit.png",
+                "visible": true
+            },
+            {
+                "type": "icon",
+                "value": "icon:ganon.png",
+                "visible": true
+            },
+            {
+                "type": "icon",
+                "value": "icon:saw.png",
+                "visible": true
+            },
+            {
+                "type": "icon",
+                "value": "icon:arrow_ice.png",
+                "visible": true
+            },
+            {
+                "type": "icon",
+                "value": "icon:lens.png",
+                "visible": true
+            }
         ],
         [
-            "item.key_small_forest",
-            "item.key_small_fire",
-            "item.key_small_water",
-            "item.key_small_shadow",
-            "item.key_small_spirit",
-            "item.key_small_ganon",
-            "item.key_small_gerudo",
-            "item.key_small_training",
-            "item.key_small_well"
+            {
+                "type": "item",
+                "value": "item.key_small_forest",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.key_small_fire",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.key_small_water",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.key_small_shadow",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.key_small_spirit",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.key_small_ganon",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.key_small_gerudo",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.key_small_training",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.key_small_well",
+                "visible": true
+            }
         ],
         [
-            "item.key_boss_forest",
-            "item.key_boss_fire",
-            "item.key_boss_water",
-            "item.key_boss_shadow",
-            "item.key_boss_spirit",
-            "item.key_boss_ganon",
-            "item.membership",
-            "text:",
-            "text:"
+            {
+                "type": "item",
+                "value": "item.key_boss_forest",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.key_boss_fire",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.key_boss_water",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.key_boss_shadow",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.key_boss_spirit",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.key_boss_ganon",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.membership",
+                "visible": true
+            },
+            {
+                "type": "empty",
+                "value": "",
+                "visible": true
+            },
+            {
+                "type": "empty",
+                "value": "",
+                "visible": true
+            }
         ]
-    ],
-    "dungeons": [
-        {
-            "ref": "pocket",
-            "title": "LINK",
-            "color": "#ffffff",
-            "keys": false,
-            "bosskey": false,
-            "map": false,
-            "compass": false,
-            "hasmq": false,
-            "boss_reward": true
-        },
-        {
-            "ref": "area.deku",
-            "title": "DT",
-            "color": "#92ff92",
-            "keys": false,
-            "bosskey": false,
-            "map": "item.dungeon_map_deku",
-            "compass": "item.compass_deku",
-            "hasmq": true,
-            "boss_reward": true
-        },
-        {
-            "ref": "area.dodongo",
-            "title": "DC",
-            "color": "#ff6a6a",
-            "keys": false,
-            "bosskey": false,
-            "map": "item.dungeon_map_dodongo",
-            "compass": "item.compass_dodongo",
-            "hasmq": true,
-            "boss_reward": true
-        },
-        {
-            "ref": "area.jabujabu",
-            "title": "JB",
-            "color": "#8be4f3",
-            "keys": false,
-            "bosskey": false,
-            "map": "item.dungeon_map_jabujabu",
-            "compass": "item.compass_jabujabu",
-            "hasmq": true,
-            "boss_reward": true
-        },
-        {
-            "ref": "area.temple_forest",
-            "title": "FoT",
-            "color": "#1bf11b",
-            "keys": "item.key_small_forest",
-            "bosskey": "item.key_boss_forest",
-            "map": "item.dungeon_map_temple_forest",
-            "compass": "item.compass_temple_forest",
-            "hasmq": true,
-            "boss_reward": true
-        },
-        {
-            "ref": "area.temple_fire",
-            "title": "FiT",
-            "color": "#ff3c3c",
-            "keys": "item.key_small_fire",
-            "bosskey": "item.key_boss_fire",
-            "map": "item.dungeon_map_temple_fire",
-            "compass": "item.compass_temple_fire",
-            "hasmq": true,
-            "boss_reward": true
-        },
-        {
-            "ref": "area.temple_water",
-            "title": "WT",
-            "color": "#7cb6ff",
-            "keys": "item.key_small_water",
-            "bosskey": "item.key_boss_water",
-            "map": "item.dungeon_map_temple_water",
-            "compass": "item.compass_temple_water",
-            "hasmq": true,
-            "boss_reward": true
-        },
-        {
-            "ref": "area.temple_shadow",
-            "title": "ShT",
-            "color": "#d967fd",
-            "keys": "item.key_small_shadow",
-            "bosskey": "item.key_boss_shadow",
-            "map": "item.dungeon_map_temple_shadow",
-            "compass": "item.compass_temple_shadow",
-            "hasmq": true,
-            "boss_reward": true
-        },
-        {
-            "ref": "area.temple_spirit",
-            "title": "SpT",
-            "color": "#ffcd71",
-            "keys": "item.key_small_spirit",
-            "bosskey": "item.key_boss_spirit",
-            "map": "item.dungeon_map_temple_spirit",
-            "compass": "item.compass_temple_spirit",
-            "hasmq": true,
-            "boss_reward": true
-        },
-        {
-            "ref": "area.well",
-            "title": "BotW",
-            "color": "#ff99ff",
-            "keys": "item.key_small_well",
-            "bosskey": false,
-            "map": "item.dungeon_map_well",
-            "compass": "item.compass_well",
-            "hasmq": true,
-            "boss_reward": false
-        },
-        {
-            "ref": "area.ice_cavern",
-            "title": "IC",
-            "color": "#abfdf5",
-            "keys": false,
-            "bosskey": false,
-            "map": "item.dungeon_map_ice",
-            "compass": "item.compass_ice",
-            "hasmq": true,
-            "boss_reward": false
-        },
-        {
-            "ref": "area.gerudo_fortress",
-            "title": "GF",
-            "color": "#ffb47d",
-            "keys": "item.key_small_gerudo",
-            "bosskey": "item.membership",
-            "map": false,
-            "compass": false,
-            "hasmq": false,
-            "boss_reward": false
-        },
-        {
-            "ref": "area.training_grounds",
-            "title": "GTG",
-            "color": "#ffffa4",
-            "keys": "item.key_small_training",
-            "bosskey": false,
-            "map": false,
-            "compass": false,
-            "hasmq": true,
-            "boss_reward": false
-        },
-        {
-            "ref": "area.castle_ganon",
-            "title": "GC",
-            "color": "#969696",
-            "keys": "item.key_small_ganon",
-            "bosskey": "item.key_boss_ganon",
-            "map": false,
-            "compass": false,
-            "hasmq": true,
-            "boss_reward": false
-        }
     ]
 }

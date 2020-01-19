@@ -4,6 +4,7 @@ import DateUtil from "/emcJS/util/DateUtil.js";
 const FILES = [
     "items",
     "grids",
+    "dungeonstate",
     "world",
     "locationlists",
     "maps",
