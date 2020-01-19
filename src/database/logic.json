@@ -11277,16 +11277,54 @@
             "type": "and",
             "el": [
                 {
-                    "type": "mixin",
-                    "el": "can_become_adult"
-                },
-                {
                     "type": "item",
                     "el": "hammer"
                 },
                 {
                     "type": "mixin",
-                    "el": "can_stun_deku"
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        {
+                            "type": "item",
+                            "el": "boots_hover"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "warp_fire"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "hookshot"
+                            },
+                            "value": "2"
+                        }
+                    ]
                 }
             ]
         },
@@ -11294,16 +11332,54 @@
             "type": "and",
             "el": [
                 {
-                    "type": "mixin",
-                    "el": "can_become_adult"
-                },
-                {
                     "type": "item",
                     "el": "hammer"
                 },
                 {
                     "type": "mixin",
-                    "el": "can_stun_deku"
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        {
+                            "type": "item",
+                            "el": "boots_hover"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "warp_fire"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "hookshot"
+                            },
+                            "value": "2"
+                        }
+                    ]
                 }
             ]
         },
@@ -11311,16 +11387,54 @@
             "type": "and",
             "el": [
                 {
-                    "type": "mixin",
-                    "el": "can_become_adult"
-                },
-                {
                     "type": "item",
                     "el": "hammer"
                 },
                 {
                     "type": "mixin",
-                    "el": "can_stun_deku"
+                    "el": "can_become_adult"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "bow"
+                        },
+                        {
+                            "type": "item",
+                            "el": "glove"
+                        },
+                        {
+                            "type": "item",
+                            "el": "boots_hover"
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "item",
+                                    "el": "warp_fire"
+                                },
+                                {
+                                    "type": "item",
+                                    "el": "hookshot"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "has_explosives"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "item",
+                                "el": "hookshot"
+                            },
+                            "value": "2"
+                        }
+                    ]
                 }
             ]
         },
@@ -22989,6 +23103,10 @@
                 {
                     "type": "mixin",
                     "el": "can_become_adult"
+                },
+                {
+                    "type": "mixin",
+                    "el": "gerudo_fortress_access"
                 }
             ]
         },

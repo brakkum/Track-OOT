@@ -4,6 +4,15 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.6.6
+
+### BUGFIXES
+
+- fixed gerudo archery skull missing gerudo_access
+- fixed dmc salesmen missing dmc access
+
+---
+
 ## VERSION 1.6.5
 
 ### BUGFIXES
