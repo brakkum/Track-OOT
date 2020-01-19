@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.6.5
+
+### BUGFIXES
+
+- fix logic editor not importing SettingsStorage
+
+---
+
 ## VERSION 1.6.4
 
 ### BUGFIXES
