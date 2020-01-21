@@ -145,6 +145,7 @@ export default class MapEntrance extends HTMLElement {
         });
         this.addEventListener("contextmenu", event => {
             this.value = "";
+            StateStorage.write(this.ref, "");
             EventBus.trigger("entrance", {
                 name: this.ref,
                 value: ""

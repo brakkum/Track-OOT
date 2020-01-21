@@ -22,6 +22,7 @@ class StateConverter {
     }
 
     createEmptyState() {
+        // TODO full init the savestate with default values
         return {
             name: "",
             data: {},

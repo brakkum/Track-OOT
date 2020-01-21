@@ -139,6 +139,7 @@ export default class ListEntrance extends HTMLElement {
         });
         this.addEventListener("contextmenu", event => {
             this.value = "";
+            StateStorage.write(this.ref, "");
             EventBus.trigger("entrance", {
                 name: this.ref,
                 value: ""
