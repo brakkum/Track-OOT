@@ -14,6 +14,8 @@ const LogicsStorage = new TrackerStorage('logics');
 const RANDO_LOGIC_PROCESSOR = new LogicProcessor();
 const CUSTOM_LOGIC_PROCESSOR = new LogicProcessor();
 
+let randoLogic = {};
+let customLogic = {};
 let use_custom_logic = false;
 
 class TrackerLogic {
@@ -51,6 +53,13 @@ class TrackerLogic {
         EventBus.register("custom_logic", async event => {
             // TODO make logic editor fire this event on logic changed if you exit editor
             CUSTOM_LOGIC_PROCESSOR.loadLogic(event.data);
+            for (let name in event.data) {
+                if (event.data[name] == null) {
+                    delete customLogic[name];
+                } else {
+                    customLogic[name] = event.data[name];
+                }
+            }
             if (!!use_custom_logic) {
                 let data = RANDO_LOGIC_PROCESSOR.getAll();
                 CUSTOM_LOGIC_PROCESSOR.setAll(data);
@@ -63,9 +72,9 @@ class TrackerLogic {
     }
 
     async init() {
-        let randoLogic = GlobalData.get("logic", {});
+        randoLogic = GlobalData.get("logic", {});
         RANDO_LOGIC_PROCESSOR.loadLogic(randoLogic);
-        let customLogic = await LogicsStorage.getAll();
+        customLogic = await LogicsStorage.getAll();
         CUSTOM_LOGIC_PROCESSOR.loadLogic(customLogic);
         use_custom_logic = await SettingsStorage.get("use_custom_logic", false);
         let data = StateStorage.getAll();
@@ -175,6 +184,9 @@ class TrackerLogic {
 
     getLogicSVG(ref) {
         let logic = randoLogic[ref];
+        if (!!use_custom_logic && customLogic.hasOwnProperty(ref)) {
+            logic = customLogic[ref];
+        }
         if (!!logic) {
             return LogicUIAbstractElement.buildSVG(logic);
         }
@@ -183,6 +195,9 @@ class TrackerLogic {
     getLogicView(ref, calc = true) {
         let el = document.createElement("div");
         let logic = randoLogic[ref];
+        if (!!use_custom_logic && customLogic.hasOwnProperty(ref)) {
+            logic = customLogic[ref];
+        }
         if (!!logic) {
             let l = LogicUIAbstractElement.buildLogic(logic);
             if (!!calc) {
