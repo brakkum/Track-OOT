@@ -34,7 +34,6 @@ if (process.argv.indexOf('-nolocal') < 0) {
 
 const gulp = require("gulp");
 const terser = require('gulp-terser');
-const sourcemaps = require('gulp-sourcemaps');
 const htmlmin = require('gulp-htmlmin');
 const jsonminify = require('gulp-jsonminify');
 const svgo = require('gulp-svgo');

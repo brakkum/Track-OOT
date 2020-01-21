@@ -42,6 +42,9 @@ class GlobalData {
         FILES.forEach(file => {
             loading.push(FileLoader.json(`/database/${file}.json`).then(function(data) {
                 STORAGE[file] = data;
+            }).catch(function(err) {
+                console.error(`error getting contents of file - ${path}`);
+                throw err;
             }));
         });
         loading.push(FileLoader.json("version.json").then(setVersion));
