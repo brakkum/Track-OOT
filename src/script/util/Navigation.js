@@ -4,7 +4,6 @@ import StateStorage from "/script/storage/StateStorage.js";
 import LoadWindow from "/script/ui/savestate/LoadWindow.js";
 import ManageWindow from "/script/ui/savestate/ManageWindow.js";
 import SaveWindow from "/script/ui/savestate/SaveWindow.js";
-import Settings from "/script/util/Settings.js";
 
 const stateSave = document.getElementById("save-savestate");
 const stateSaveAs = document.getElementById("saveas-savestate");
@@ -13,6 +12,7 @@ const stateNew = document.getElementById("new-savestate");
 const statesManage = document.getElementById("manage-savestates");
 const joinDiscord = document.getElementById("join-discord");
 const editSettings = document.getElementById("edit-settings");
+const editRomSettings = document.getElementById("edit-romsettings");
 const editors = document.getElementById("show-editors");
 
 stateSave.addEventListener("click", state_Save);
@@ -22,6 +22,7 @@ stateNew.addEventListener("click", state_New);
 statesManage.addEventListener("click", states_Manage);
 joinDiscord.addEventListener("click", openDiscortJoin);
 editSettings.addEventListener("click", openSettingsWindow);
+editRomSettings.addEventListener("click", openRomSettingsWindow);
 editors.addEventListener("click", showEditors);
 
 async function state_Save() {
@@ -63,7 +64,15 @@ function openDiscortJoin() {
 }
 
 function openSettingsWindow() {
-    Settings.show();
+    if (!!window.SettingsDialog) {
+        window.SettingsDialog.show();
+    }
+}
+
+function openRomSettingsWindow() {
+    if (!!window.RomSettingsDialog) {
+        window.RomSettingsDialog.show();
+    }
 }
 
 function showEditors() {

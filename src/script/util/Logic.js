@@ -12,39 +12,86 @@ const SettingsStorage = new TrackerStorage('settings');
 const LogicsStorage = new TrackerStorage('logics');
 
 const RANDO_LOGIC_PROCESSOR = new LogicProcessor();
+const CUSTOM_LOGIC_PROCESSOR = new LogicProcessor();
 
-let randoLogic = {};
+let use_custom_logic = false;
 
 class TrackerLogic {
 
     constructor() {
-        // TODO clean this
         EventBus.register("state_change", event => {
-            let data = {
-                "filter.era_active": MemoryStorage.get('filter.era_active', GlobalData.get("filter/filter.era_active/default"))
-            };
-            data = Object.assign(data, event.data);
-            this.execute(data);
+            RANDO_LOGIC_PROCESSOR.setAll(event.data);
+            let res = RANDO_LOGIC_PROCESSOR.execute();
+            if (Object.keys(res).length > 0) {
+                EventBus.trigger("logic", res);
+            }
+        });
+        EventBus.register("filter", event => {
+            RANDO_LOGIC_PROCESSOR.set(event.data.ref, event.data.value);
+            let res = RANDO_LOGIC_PROCESSOR.execute();
+            if (Object.keys(res).length > 0) {
+                EventBus.trigger("logic", res);
+            }
         });
         EventBus.register("settings", async event => {
-            this.loadLogic();
+            if (event.data.hasOwnProperty('use_custom_logic') && event.data.use_custom_logic != use_custom_logic) {
+                use_custom_logic = event.data.use_custom_logic;
+                if (use_custom_logic) {
+                    let data = StateStorage.getAll();
+                    let ldata = RANDO_LOGIC_PROCESSOR.getAll();
+                    CUSTOM_LOGIC_PROCESSOR.setAll(data);
+                    CUSTOM_LOGIC_PROCESSOR.setAll(ldata);
+                    let res = CUSTOM_LOGIC_PROCESSOR.execute();
+                    if (Object.keys(res).length > 0) {
+                        EventBus.trigger("logic", res);
+                    }
+                }
+            }
         });
+        EventBus.register("custom_logic", async event => {
+            // TODO make logic editor fire this event on logic changed if you exit editor
+            CUSTOM_LOGIC_PROCESSOR.loadLogic(event.data);
+            if (!!use_custom_logic) {
+                let data = RANDO_LOGIC_PROCESSOR.getAll();
+                CUSTOM_LOGIC_PROCESSOR.setAll(data);
+                let res = CUSTOM_LOGIC_PROCESSOR.execute();
+                if (Object.keys(res).length > 0) {
+                    EventBus.trigger("logic", res);
+                }
+            }
+        });
+    }
+
+    async init() {
+        let randoLogic = GlobalData.get("logic", {});
+        RANDO_LOGIC_PROCESSOR.loadLogic(randoLogic);
+        let customLogic = await LogicsStorage.getAll();
+        CUSTOM_LOGIC_PROCESSOR.loadLogic(customLogic);
+        use_custom_logic = await SettingsStorage.get("use_custom_logic", false);
+        let data = StateStorage.getAll();
+        this.execute(data);
     }
 
     execute(data) {
-        // TODO clean this
-        if (!data) {
-            data = {
-                "filter.era_active": MemoryStorage.get('filter.era_active', GlobalData.get("filter/filter.era_active/default"))
-            };
-            data = Object.assign(data, StateStorage.getAll());
+        if (!!data) {
+            RANDO_LOGIC_PROCESSOR.setAll(data);
+            let res = RANDO_LOGIC_PROCESSOR.execute();
+            if (!!use_custom_logic) {
+                CUSTOM_LOGIC_PROCESSOR.setAll(data);
+                CUSTOM_LOGIC_PROCESSOR.setAll(res);
+                let cRes = CUSTOM_LOGIC_PROCESSOR.execute();
+                res = Object.assign(res, cRes);
+            }
+            if (Object.keys(res).length > 0) {
+                EventBus.trigger("logic", res);
+            }
         }
-        RANDO_LOGIC_PROCESSOR.setAll(data);
-        let res = RANDO_LOGIC_PROCESSOR.execute();
-        EventBus.trigger("logic", res);
     }
 
     getValue(ref) {
+        if (!!use_custom_logic && CUSTOM_LOGIC_PROCESSOR.has(ref)) {
+            return CUSTOM_LOGIC_PROCESSOR.get(ref);
+        }
         return RANDO_LOGIC_PROCESSOR.get(ref);
     }
 
@@ -124,15 +171,6 @@ class TrackerLogic {
             }
         }
         return canGet;
-    }
-
-    async loadLogic() {
-        randoLogic = GlobalData.get("logic", {});
-        if (await SettingsStorage.get("use_custom_logic", false)) {
-            Object.assign(randoLogic, await LogicsStorage.getAll());
-        }
-        RANDO_LOGIC_PROCESSOR.loadLogic(randoLogic);
-        this.execute();
     }
 
     getLogicSVG(ref) {

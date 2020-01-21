@@ -55,7 +55,13 @@ const TPL = new Template(`
 function stateChanged(event) {
     let value = event.data[`dungeonTypes.${this.ref}`];
     if (typeof value == "undefined" || value == "") {
-        value = "n";
+        value = "v";
+        if (!!this.ref) {
+            let area = GlobalData.get(`world/areas/${this.ref}`);
+            if (area.hasOwnProperty("locations_mq")) {
+                value = "n";
+            }
+        }
     }
     this.value = value;
 }
@@ -132,27 +138,31 @@ class HTMLTrackerDungeonType extends HTMLElement {
     }
 
     next(event) {
-        if (this.value == 'v') {
-            this.value = 'mq';
-        } else {
-            this.value = 'v';
+        if (!this.readonly) {
+            if (this.value == 'v') {
+                this.value = 'mq';
+            } else {
+                this.value = 'v';
+            }
+            StateStorage.write(`dungeonTypes.${this.ref}`, this.value);
+            EventBus.trigger("dungeontype", {
+                name: this.ref,
+                value: this.value
+            });
         }
-        StateStorage.write(`dungeonTypes.${this.ref}`, this.value);
-        EventBus.trigger("dungeontype", {
-            name: this.ref,
-            value: this.value
-        });
         event.preventDefault();
         return false;
     }
 
     revert(event) {
-        this.value = "n";
-        StateStorage.write(`dungeonTypes.${this.ref}`, 'n');
-        EventBus.trigger("dungeontype", {
-            name: this.ref,
-            value: 'n'
-        });
+        if (!this.readonly) {
+            this.value = "n";
+            StateStorage.write(`dungeonTypes.${this.ref}`, 'n');
+            EventBus.trigger("dungeontype", {
+                name: this.ref,
+                value: 'n'
+            });
+        }
         event.preventDefault();
         return false;
     }

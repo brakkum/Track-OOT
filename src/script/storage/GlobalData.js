@@ -13,6 +13,7 @@ const FILES = [
     "hints",
     "logic",
     "settings",
+    "rom_settings",
     "filter",
     "shops",
     "shop_items"

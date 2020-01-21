@@ -1,346 +1,74 @@
 {
-    "settings": {
-        "language": {
-            "type": "choice",
-            "default": "en_us",
-            "values": "I18n.languages"
-        },
-        "font": {
-            "type": "choice",
-            "default": "font_default",
-            "values": [
-                "font_default",
-                "font_charlemagne",
-                "font_ravenna",
-                "font_returnofganon",
-                "font_zeldadx",
-                "font_triforce",
-                "font_ancienthylian",
-                "font_sheikah"
-            ]
-        },
-        "layout": {
-            "type": "choice",
-            "default": "map-compact",
-            "values": [
-                "items",
-                "items-list",
-                "map-right",
-                "items-dt",
-                "items-list-dt",
-                "map-right-dt",
-                "map-center",
-                "map-compact",
-                "compact",
-                "flat"
-            ]
-        },
-        "edit_layouts": {
-            "type": "-button",
-            "text": "button_edit_layouts",
-            "view": "layouteditor"
-        },
-        "item_size": {
-            "type": "-range",
-            "min": 32,
-            "max": 64,
-            "default": 40
-        },
-        "autosave_time": {
-            "type": "number",
-            "min": 0,
-            "max": 120,
-            "default": 10
-        },
-        "autosave_amount": {
-            "type": "number",
-            "min": 1,
-            "max": 10,
-            "default": 4
-        },
-        "unknown_dungeon_need_both": {
-            "type": "check",
-            "default": false
-        },
-        "use_custom_logic": {
-            "type": "check",
-            "default": false
-        },
-        "erase_all_data": {
-            "type": "button",
-            "text": "button_erase_data",
-            "url": "uninstall.html?nosw",
-            "target": "_self"
-        }
+    "language": {
+        "type": "choice",
+        "default": "en_us",
+        "values": "I18n.languages"
     },
-    "options": {
-        "option.consider_buyable": {
-            "type": "check",
-            "default": false
-        },
-        "option.bombchu_logic": {
-            "type": "check",
-            "default": false
-        },
-        "option.keysanity_small": {
-            "type": "choice",
-            "default": "keysanity_small_ignore",
-            "values": [
-                "keysanity_small_ignore",
-                "keysanity_small_track",
-                "keysanity_small_keysanity"
-            ]
-        },
-        "option.keysanity_boss": {
-            "type": "choice",
-            "default": "keysanity_boss_ignore",
-            "values": [
-                "keysanity_boss_ignore",
-                "keysanity_boss_track",
-                "keysanity_boss_keysanity"
-            ]
-        },
-        "option.scrubsanity": {
-            "type": "check",
-            "default": false
-        },
-        "option.cowsanity": {
-            "type": "check",
-            "default": false
-        },
-        "option.beansanity": {
-            "type": "check",
-            "default": false
-        },
-        "option.skullsanity": {
-            "type": "hidden",
-            "old_type": "check",
-            "default": false
-        },
-        "option.doors_open_forest": {
-            "type": "check",
-            "default": true
-        },
-        "option.doors_open_zora": {
-            "type": "check",
-            "default": false
-        },
-        "option.doors_open_mountain": {
-            "type": "hidden",
-            "default": false
-        },
-        "option.doors_open_temple": {
-            "type": "check",
-            "default": false
-        },
-        "option.gerudo_fortress_open": {
-            "type": "choice",
-            "default": "gerudo_fortress_open_default",
-            "values": [
-                "gerudo_fortress_open_default",
-                "gerudo_fortress_open_one",
-                "gerudo_fortress_open_open"
-            ]
-        },
-        "option.ganon_castle_open": {
-            "type": "choice",
-            "default": "ganon_castle_open_default",
-            "values": [
-                "ganon_castle_open_dungeon",
-                "ganon_castle_open_medallion",
-                "ganon_castle_open_stones",
-                "ganon_castle_open_skulltulas",
-                "ganon_castle_open_triforce",
-                "ganon_castle_open_default",
-                "ganon_castle_open_open"
-            ]
-        },
-        "option.trade_sequence_start_item": {
-            "type": "choice",
-            "default": 1,
-            "values": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10
-            ],
-            "names": [
-                "pocket_egg",
-                "pocket_cucco",
-                "mushroom",
-                "medicine",
-                "saw",
-                "broken_sword",
-                "prescription",
-                "frog",
-                "eyedrops",
-                "claim"
-            ]
-        },
-        "trials": {
-            "type": "list",
-            "values": [
-                "option.forest_trial",
-                "option.water_trial",
-                "option.shadow_trial",
-                "option.fire_trial",
-                "option.light_trial",
-                "option.spirit_trial"
-            ],
-            "default": [
-                "option.forest_trial",
-                "option.water_trial",
-                "option.shadow_trial",
-                "option.fire_trial",
-                "option.light_trial",
-                "option.spirit_trial"
-            ]
-        },
-        "option.ganon_boss_door_open": {
-            "type": "check",
-            "default": false
-        }
+    "font": {
+        "type": "choice",
+        "default": "font_default",
+        "values": [
+            "font_default",
+            "font_charlemagne",
+            "font_ravenna",
+            "font_returnofganon",
+            "font_zeldadx",
+            "font_triforce",
+            "font_ancienthylian",
+            "font_sheikah"
+        ]
     },
-    "skips": {
-        "tricks": {
-            "type": "list",
-            "values": [
-                "skip.fewer_tunic",
-                "skip.one_way_pass",
-                "skip.child_deadhand",
-                "skip.man_on_roof",
-                "skip.dodongo_staircase",
-                "skip.dodongo_spike",
-                "skip.gerudo_kitchen",
-                "skip.deku_vine_gs",
-                "skip.hammer_through_wall",
-                "skip.botw_strength_sticks",
-                "skip.fotmq_puzzle_bombchu",
-                "skip.spt_child_bridge_bombchu",
-                "skip.windmill_hp",
-                "skip.crater_bean_hp",
-                "skip.zora_cucco",
-                "skip.gtgmq_silver_hook",
-                "skip.fot_east_vines_hook",
-                "skip.fotmq_well_hook",
-                "skip.fotmq_hallway_hook",
-                "skip.dm_bomb_strength",
-                "skip.wt_bosskey_iron_boots",
-                "skip.forest_adult_gs_hover",
-                "skip.sptmq_frozen_nofire",
-                "skip.spt_shifting_wall_noitems",
-                "skip.spt_main_room_gs_boomerang",
-                "skip.sptmq_sunblock_gs_boomerang",
-                "skip.jjmq_sot_boomerang",
-                "skip.well_cage_gs_no_boomerang",
-                "skip.wellmq_deadhand_key_boomerang",
-                "skip.fit_fire_maze_skip",
-                "skip.fitmq_fire_maze_skip",
-                "skip.fitmq_climb_no_fire",
-                "skip.fitmq_near_boss_nocrate",
-                "skip.fitmq_boulder_side",
-                "skip.fitmq_bosskey_nobow",
-                "skip.zora_1st_hp_no_hovers",
-                "skip.wt_cracked_wall_hovers",
-                "skip.shtmq_lower_nofire",
-                "skip.mido_skip",
-                "skip.fit_bossdoor_noitems",
-                "skip.lab_hookshot",
-                "skip.naked_wasteland",
-                "skip.colossus_hill_GS_hookshot",
-                "skip.dodongo_scarecrow_armos",
-                "skip.kakariko_gs_with_jumpslash",
-                "skip.lake_lab_gs_jumpslash",
-                "skip.sptmq_lower_no_firearrows",
-                "skip.spt_map_bow",
-                "skip.spt_sunblock_torch_bow",
-                "skip.shtmq_torch_bow",
-                "skip.fotmq_ne_ledge_hovers",
-                "skip.wt_boss_key_hovers",
-                "skip.wt_platform_gs_hookshot",
-                "skip.wt_serpent_gs_noirons",
-                "skip.wt_entry_noirons",
-                "skip.dm_upper_gs_no_hammer",
-                "skip.dm_lower_gs_hookshot",
-                "skip.dm_lower_gs_bean",
-                "skip.dmc_mash_hammer",
-                "skip.zora_hover",
-                "skip.shadow_temple_river_statue_bombchu",
-                "skip.linkthegoron_dins",
-                "skip.fit_gs_nosot",
-                "skip.fit_climb_nostrength",
-                "skip.fitmq_lava_room_bombable_nohookshot",
-                "skip.light_trial_mq_nohookshot",
-                "skip.icmq_scarecrow_gs_noitems",
-                "skip.reverse_wasteland",
-                "skip.zora_2nd_hp_no_hovers",
-                "skip.sht_mq_spinner_longshot",
-                "skip.lost_woods_stage_skulltula_no_beans",
-                "skip.graveyard_poh_boomerang",
-                "skip.dm_soil_no_explosives",
-                "skip.gtg_rupees_nohookshot",
-                "skip.gtgmq_rupees_nohookshot",
-                "skip.gtg_ledge_hovers",
-                "skip.wt_cracked_noitems",
-                "skip.wt_basement_jump",
-                "skip.wt_torch_longshot",
-                "skip.wt_bosskey_jumpdive",
-                "skip.wt_dragon_jump_dive",
-                "skip.wt_dragon_bombchu",
-                "skip.goron_left_maze_hovers",
-                "skip.deku_tree_B1_skip",
-                "skip.spt_adult_switch_bombs",
-                "skip.forest_temple_floormaster_strength",
-                "skip.forest_temple_pierre_early",
-                "skip.dodongomq_early_bombbag_child",
-                "skip.dodongo_child_slingshot_skip",
-                "skip.hotrodder_child_strength",
-                "skip.goron_pot_bombchu",
-                "skip.gerudo_crate_hovers",
-                "skip.spirit_trial_without_hookshot",
-                "skip.shadow_temple_stone_umbrella_skip",
-                "skip.wt_central_bow_nothing",
-                "skip.fit_east_noscarecrow",
-                "skip.shadow_temple_entry_fire_arrow"
-            ],
-            "default": []
-        },
-        "known_sequence_breaks": {
-            "type": "list",
-            "values": [
-                "skip.ground_jump",
-                "skip.invisible_ocarina",
-                "skip.navi_dive",
-                "skip.underwater_chests_openable",
-                "skip.lost_woods_allow_pedestal_clip",
-                "skip.well_entry_isg",
-                "skip.shadow_temple_entry_hookshot",
-                "skip.shadow_temple_clip",
-                "skip.dodongo_open_bombchu",
-                "skip.dodongo_bombchu",
-                "skip.valley_hookshot",
-                "skip.gtg_clip",
-                "skip.gtg_hammer_switch_nohammer",
-                "skip.spt_bosskey_nohookshot",
-                "skip.lab_hovers",
-                "skip.morpha_scale"
-            ],
-            "default": []
-        },
-        "skip.lens_required": {
-            "type": "choice",
-            "default": "lens_required_default",
-            "values": [
-                "lens_required_never",
-                "lens_required_wasteland",
-                "lens_required_default"
-            ]
-        }
+    "layout": {
+        "type": "choice",
+        "default": "map-compact",
+        "values": [
+            "items",
+            "items-list",
+            "map-right",
+            "items-dt",
+            "items-list-dt",
+            "map-right-dt",
+            "map-center",
+            "map-compact",
+            "compact",
+            "flat"
+        ]
+    },
+    "edit_layouts": {
+        "type": "-button",
+        "text": "button_edit_layouts",
+        "view": "layouteditor"
+    },
+    "item_size": {
+        "type": "-range",
+        "min": 32,
+        "max": 64,
+        "default": 40
+    },
+    "autosave_time": {
+        "type": "number",
+        "min": 0,
+        "max": 120,
+        "default": 10
+    },
+    "autosave_amount": {
+        "type": "number",
+        "min": 1,
+        "max": 10,
+        "default": 4
+    },
+    "unknown_dungeon_need_both": {
+        "type": "check",
+        "default": false
+    },
+    "use_custom_logic": {
+        "type": "check",
+        "default": false
+    },
+    "erase_all_data": {
+        "type": "button",
+        "text": "button_erase_data",
+        "url": "uninstall.html?nosw",
+        "target": "_self"
     }
 }

@@ -2,7 +2,8 @@ import EventBus from "/emcJS/util/events/EventBus.js";
 import Logger from "/emcJS/util/Logger.js";
 
 import GlobalData from "/script/storage/GlobalData.js";
-import Settings from "/script/util/Settings.js";
+import Settings from "/script/ui/Settings.js";
+import RomSettings from "/script/ui/RomSettings.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
 import "/emcJS/ui/Icon.js";
@@ -34,7 +35,10 @@ import "/script/ui/LocationStatus.js";
     initComponents();
 
     updateLoadingMessage("initialize settings...");
-    await Settings.init();
+    // TODO create navigation component class
+    // TODO make better use of navigation component once it is declared
+    window.SettingsDialog = new Settings();
+    window.RomSettingsDialog = new RomSettings();
 
     updateLoadingMessage("add modules...");
 

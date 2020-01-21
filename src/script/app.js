@@ -18,7 +18,7 @@ const SettingsStorage = new TrackerStorage('settings');
     updateLoadingMessage("learn languages...");
     await I18n.load(await SettingsStorage.get("language", "en_us"));
     updateLoadingMessage("build logic data...");
-    await Logic.loadLogic();
+    await Logic.init();
     updateLoadingMessage("poke application...");
     await $import.importModule("/emcJS/ui/Import.js");
 

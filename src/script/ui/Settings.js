@@ -1,3 +1,4 @@
+import Template from "/emcJS/util/Template.js";
 import GlobalData from "/script/storage/GlobalData.js";
 import SettingsWindow from "/emcJS/ui/SettingsWindow.js";
 import PopOver from "/emcJS/ui/PopOver.js";
@@ -9,7 +10,7 @@ import StateStorage from "/script/storage/StateStorage.js";
 
 const SettingsStorage = new TrackerStorage('settings');
 
-import { buildSettings } from "/script/util/settings/SettingsBuilder.js";
+import SettingsBuilder from "/script/util/SettingsBuilder.js";
 
 import "/emcJS/ui/Paging.js";
 import "/script/ui/UpdateHandler.js";
@@ -18,7 +19,7 @@ const settings = new SettingsWindow;
 
 BusyIndicator.setIndicator(document.getElementById("busy-animation"));
 
-const SETTINGS_TPL = `
+const ABOUT_TPL = new Template(`
 <div style="display: flex; margin-bottom: 10px;">
     <div style="flex: 1">
         <div style="padding: 5px;">
@@ -53,93 +54,60 @@ Big thanks to:<br>
 <i class="thanks-name">Luigimeansme</i> for helping with adding Master Quest.<br>
 <i class="thanks-name">pidgezero_one</i> for adding sequence breaks and extending skips.
 </div>
-`;
-
-function onSettingsSubmitted(event) {
-    let rom_settings = {};
-    for (let i in event.data) {
-        if (i === "settings") {
-            for (let j in event.data[i]) {
-                SettingsStorage.set(j, event.data[i][j]);
-            }
-        } else {
-            for (let j in event.data[i]) {
-                let v = event.data[i][j];
-                if (Array.isArray(v)) {
-                    v = new Set(v);
-                    GlobalData.get(`settings/${i}/${j}`).values.forEach(el => {
-                        rom_settings[el] = v.has(el);
-                    });
-                } else {
-                    rom_settings[j] = v;
-                }
-            }
-        }
-    }
-    applySettingsChoices();
-    return rom_settings;
-}
-
-async function getSetting(cat, name, def) {
-    if (cat == "settings") {
-        return await SettingsStorage.get(name, def);
-    } else {
-        return StateStorage.read(`${cat}.${name}`, def);
-    }
-}
+`);
 
 async function getSettings() {
     let options = GlobalData.get("settings");
     let res = {};
     for (let i in options) {
-        res[i] = res[i] || {};
-        for (let j in options[i]) {
-            let opt = options[i][j];
-            if (opt.type === "list") {
-                let def = new Set(opt.default);
-                let val = [];
-                for (let el of opt.values) {
-                    if (await getSetting(i, el, def.has(el))) {
-                        val.push(el);
-                    }
+        let opt = options[i];
+        if (opt.type === "list" || opt.type === "-list") {
+            let def = new Set(opt.default);
+            let val = [];
+            for (let el of opt.values) {
+                if (await SettingsStorage.get(i, def.has(el))) {
+                    val.push(el);
                 }
-                res[i][j] = val;
-            } else {
-                res[i][j] = await getSetting(i, j, opt.default);
             }
+            res[i] = val;
+        } else {
+            res[i] = await SettingsStorage.get(i, opt.default);
         }
     }
     return res;
 }
     
-async function applySettingsChoices() {
+async function applySettingsChoices(settings) {
     let viewpane = document.getElementById("main-content");
-    viewpane.setAttribute("data-font", await SettingsStorage.get("font", ""));
-    document.querySelector("#layout-container").setAttribute("layout", await SettingsStorage.get("layout", "map-compact"));
-    document.body.style.setProperty("--item-size", await SettingsStorage.get("itemsize", 40));
-    let autosaveMax = await SettingsStorage.get("autosave_amount", 1);
-    let autosaveTime = await SettingsStorage.get("autosave_time", 0);
-    StateStorage.setAutosave(autosaveTime, autosaveMax);
+    viewpane.setAttribute("data-font", settings.font);
+    document.querySelector("#layout-container").setAttribute("layout", settings.layout);
+    document.body.style.setProperty("--item-size", settings.itemsize);
+    StateStorage.setAutosave(settings.autosave_amount, settings.autosave_time);
+}
+
+async function showAbout() {
+    settings.show({settings: await getSettings()}, 'about');
 }
 
 let showUpdatePopup = false;
 
-class Settings {
+export default class Settings {
 
-    init() {
-        settings.innerHTML = SETTINGS_TPL;
-
-        settings.querySelector("#tracker-version").innerHTML = GlobalData.get("version-string");
-        settings.querySelector("#tracker-date").innerHTML = GlobalData.get("version-date");
-
-        let updatehandler = settings.querySelector("#updatehandler");
+    constructor() {
+        let options = {
+            settings: GlobalData.get("settings")
+        };
+        SettingsBuilder.build(settings, options);
+        
+        let settings_about = ABOUT_TPL.generate();
+        settings_about.getElementById("tracker-version").innerHTML = GlobalData.get("version-string");
+        settings_about.getElementById("tracker-date").innerHTML = GlobalData.get("version-date");
+        let updatehandler = settings_about.getElementById("updatehandler");
         updatehandler.addEventListener("updateavailable", function() {
             if (showUpdatePopup) {
                 showUpdatePopup = false;
                 let popover = PopOver.show("A new update is available. Click here to download!", 60);
-                popover.addEventListener("click", async function() {
-                    settings.show(await getSettings(), 'about');
-                });
+                popover.addEventListener("click", showAbout);
             }
         });
         updatehandler.addEventListener("noconnection", function() {
@@ -147,21 +115,36 @@ class Settings {
                 Dialog.alert("Connection Lost", "The ServiceWorker was not able to establish or keep connection to the Server<br>Please try again later.");
             }
         });
+        settings.addTab("About", "about");
+        settings.addElements("about", settings_about);
 
         settings.addEventListener('submit', function(event) {
             BusyIndicator.busy();
-            EventBus.trigger("settings", onSettingsSubmitted(event));
+            let settings = {};
+            let options = GlobalData.get("settings");
+            for (let i in event.data.settings) {
+                let v = event.data.settings[i];
+                if (Array.isArray(v)) {
+                    v = new Set(v);
+                    options[i].values.forEach(el => {
+                        settings[el] = v.has(el);
+                        SettingsStorage.set(el, v.has(el));
+                    });
+                } else {
+                    settings[i] = v;
+                    SettingsStorage.set(i, v);
+                }
+            }
+            applySettingsChoices(settings);
+            EventBus.trigger("settings", settings);
             BusyIndicator.unbusy();
         });
-        EventBus.register("settings", event => StateStorage.write(event.data));
         
         settings.addEventListener('close', function(event) {
             showUpdatePopup = true;
         });
 
-        buildSettings(settings);
-
-        applySettingsChoices();
+        getSettings().then(applySettingsChoices);
 
         showUpdatePopup = true;
         updatehandler.checkUpdate();
@@ -169,9 +152,7 @@ class Settings {
 
     async show() {
         showUpdatePopup = false;
-        settings.show(await getSettings(), 'settings');
+        settings.show({settings: await getSettings()}, 'settings');
     }
 
 }
-
-export default new Settings;

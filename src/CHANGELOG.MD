@@ -33,6 +33,7 @@ Application:    Track-OOT
 ### UI ENHANCEMENTS
 - added entrance icons
 - added area icons
+- split rom-settings and tracker-settings into seperate dialogs
 
 ---
 

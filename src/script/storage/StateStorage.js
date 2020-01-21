@@ -133,28 +133,25 @@ class StateStorage {
     }
 
     write(key, value) {
+        let changed = {};
         if (typeof key == "object") {
-            let changed = false;
             for (let i in key) {
                 if (!state.data.hasOwnProperty(i) || state.data[i] != key[i]) {
                     state.data[i] = key[i];
-                    changed = true;
+                    changed[i] = key[i];
                 }
-            }
-            if (changed) {
-                LocalStorage.set(PERSISTANCE_NAME, state);
-                LocalStorage.set(STATE_DIRTY, true);
-                EventBus.trigger("state_change", JSON.parse(JSON.stringify(state.data)));
-                updateTitle();
             }
         } else {
             if (!state.data.hasOwnProperty(key) || state.data[key] != value) {
                 state.data[key] = value;
-                LocalStorage.set(PERSISTANCE_NAME, state);
-                LocalStorage.set(STATE_DIRTY, true);
-                EventBus.trigger("state_change", JSON.parse(JSON.stringify(state.data)));
-                updateTitle();
+                changed[key] = value;
             }
+        }
+        if (!!Object.keys(changed).length) {
+            LocalStorage.set(PERSISTANCE_NAME, state);
+            LocalStorage.set(STATE_DIRTY, true);
+            EventBus.trigger("state_change", changed);
+            updateTitle();
         }
     }
 
@@ -170,17 +167,24 @@ class StateStorage {
             delete state.data[key];
             LocalStorage.set(PERSISTANCE_NAME, state);
             LocalStorage.set(STATE_DIRTY, true);
-            EventBus.trigger("state_change", JSON.parse(JSON.stringify(state.data)));
+            let change = {};
+            change[key] = undefined;
+            EventBus.trigger("state_change", change);
             updateTitle();
         }
     }
 
     reset() {
+        let changed = {};
+        for (let i in state.data) {
+            changed[i] = undefined;
+        }
         state = StateConverter.createEmptyState();
         LocalStorage.set(PERSISTANCE_NAME, state);
         LocalStorage.set(STATE_DIRTY, false);
         document.title = "Track-OOT - new state";
         EventBus.trigger("state", {});
+        EventBus.trigger("state_change", changed);
     }
 
     getAll() {
