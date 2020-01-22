@@ -2,8 +2,8 @@ import EventBus from "/emcJS/util/events/EventBus.js";
 import Logger from "/emcJS/util/Logger.js";
 
 import GlobalData from "/script/storage/GlobalData.js";
-import Settings from "/script/ui/Settings.js";
-import RomSettings from "/script/ui/RomSettings.js";
+import TrackerSettingsWindow from "/script/ui/TrackerSettingsWindow.js";
+import RandomizerOptionsWindow from "/script/ui/RandomizerOptionsWindow.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
 import "/emcJS/ui/Icon.js";
@@ -37,8 +37,8 @@ import "/script/ui/LocationStatus.js";
     updateLoadingMessage("initialize settings...");
     // TODO create navigation component class
     // TODO make better use of navigation component once it is declared
-    window.SettingsDialog = new Settings();
-    window.RomSettingsDialog = new RomSettings();
+    window.TrackerSettingsWindow = new TrackerSettingsWindow();
+    window.RandomizerOptionsWindow = new RandomizerOptionsWindow();
 
     updateLoadingMessage("add modules...");
 

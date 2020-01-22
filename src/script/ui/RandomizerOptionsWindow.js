@@ -16,7 +16,7 @@ export default class RomSettings {
         settings.addEventListener('submit', function(event) {
             BusyIndicator.busy();
             let settings = {};
-            let options = GlobalData.get("rom_settings");
+            let options = GlobalData.get("randomizer_options");
             for (let i in event.data) {
                 for (let j in event.data[i]) {
                     let v = event.data[i][j];
@@ -31,14 +31,15 @@ export default class RomSettings {
                 }
             }
             StateStorage.write(settings);
+            EventBus.trigger("randomizer_options", settings);
             BusyIndicator.unbusy();
         });
-        let options = GlobalData.get("rom_settings");
+        let options = GlobalData.get("randomizer_options");
         SettingsBuilder.build(settings, options);
     }
 
     show() {
-        let options = GlobalData.get("rom_settings");
+        let options = GlobalData.get("randomizer_options");
         let res = {};
         for (let i in options) {
             res[i] = res[i] || {};

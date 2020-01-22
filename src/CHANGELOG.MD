@@ -34,6 +34,7 @@ Application:    Track-OOT
 - added entrance icons
 - added area icons
 - split rom-settings and tracker-settings into seperate dialogs
+- added filters and bulk select to lists in settngs
 
 ---
 

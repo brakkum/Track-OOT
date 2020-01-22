@@ -159,7 +159,7 @@ class HTMLTrackerLocationList extends Panel {
         EVENT_BINDER.register(["chest", "skulltula", "item", "logic"], event => {
             this.updateHeader();
         });
-        EVENT_BINDER.register(["state", "settings"], event => {
+        EVENT_BINDER.register(["state", "randomizer_options"], event => {
             this.refresh();
         });
         EVENT_BINDER.register("dungeontype", event => {

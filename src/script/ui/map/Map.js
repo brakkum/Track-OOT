@@ -421,7 +421,7 @@ class HTMLTrackerMap extends Panel {
             this.mode = event.data.value;
             this.shadowRoot.getElementById('location-mode').value = this.mode;
         });
-        EVENT_BINDER.register(["state", "settings"], event => {
+        EVENT_BINDER.register(["state", "randomizer_options"], event => {
             this.refresh();
         });
         EVENT_BINDER.register("dungeontype", event => {

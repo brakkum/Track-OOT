@@ -64,14 +64,14 @@ function openDiscortJoin() {
 }
 
 function openSettingsWindow() {
-    if (!!window.SettingsDialog) {
-        window.SettingsDialog.show();
+    if (!!window.TrackerSettingsWindow) {
+        window.TrackerSettingsWindow.show();
     }
 }
 
 function openRomSettingsWindow() {
-    if (!!window.RomSettingsDialog) {
-        window.RomSettingsDialog.show();
+    if (!!window.RandomizerOptionsWindow) {
+        window.RandomizerOptionsWindow.show();
     }
 }
 

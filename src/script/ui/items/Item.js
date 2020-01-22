@@ -112,6 +112,7 @@ class HTMLTrackerItem extends HTMLElement {
         EVENT_BINDER.register("item", itemUpdate.bind(this));
         EVENT_BINDER.register("state", stateChanged.bind(this));
         EVENT_BINDER.register("dungeontype", dungeonTypeUpdate.bind(this));
+        // TODO react to rom settings
     }
 
     get ref() {
