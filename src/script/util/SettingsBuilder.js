@@ -53,7 +53,7 @@ class SettingsBuilder {
                         window.addChoiceInput(i, label, j, val.default, convertValueList(val.values, val.names));
                     break;
                     case "list":
-                        window.addListSelectInput(i, label, j, val.default, true, !!val.header, convertValueList(val.values, val.names));
+                        window.addListSelectInput(i, label, j, val.default, true, convertValueList(val.values, val.names));
                     break;
                     case "button":
                         if (!!val.view) {

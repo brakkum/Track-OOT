@@ -1,6 +1,5 @@
 import GlobalData from "/script/storage/GlobalData.js";
-import LogicProcessor from "/emcJS/util/logic/Processor.js";
-import AbstractElement from "/emcJS/util/logic/elements/AbstractElement.js";
+import LogicCompiler from "/emcJS/util/logic/Compiler.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 
 import ListArea from "/script/ui/locations/listitems/Area.js";
@@ -35,17 +34,17 @@ class WorldEntry {
     constructor(listItem, mapItem, ref, data) {
         // LOGIC
         if (typeof data.visible == "object") {
-            VISIBLE.set(this, new Function('val', `return ${AbstractElement.buildLogic(data.visible)}`));
+            VISIBLE.set(this, LogicCompiler.compile(data.visible));
         } else {
             VISIBLE.set(this, !!data.visible ? fnTrue : fnFalse);
         }
         if (typeof data.child == "object") {
-            CHILD.set(this, new Function('val', `return ${AbstractElement.buildLogic(data.child)}`));
+            CHILD.set(this, LogicCompiler.compile(data.child));
         } else {
             CHILD.set(this, !!data.child ? fnTrue : fnFalse);
         }
         if (typeof data.adult == "object") {
-            ADULT.set(this, new Function('val', `return ${AbstractElement.buildLogic(data.adult)}`));
+            ADULT.set(this, LogicCompiler.compile(data.adult));
         } else {
             ADULT.set(this, !!data.adult ? fnTrue : fnFalse);
         }

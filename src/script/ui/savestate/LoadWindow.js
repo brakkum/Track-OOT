@@ -122,7 +122,6 @@ const TPL = new Template(`
         }
         #statelist {
             height: 40vh;
-            overflow-y: scroll;
             border: solid 2px #ccc;
         }
         emc-option .date {

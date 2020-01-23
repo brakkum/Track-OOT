@@ -136,7 +136,6 @@
     "skips": {
         "tricks": {
             "type": "list",
-            "header": true,
             "values": [
                 "skip.fewer_tunic",
                 "skip.one_way_pass",
@@ -240,7 +239,6 @@
         },
         "known_sequence_breaks": {
             "type": "list",
-            "header": true,
             "values": [
                 "skip.ground_jump",
                 "skip.invisible_ocarina",

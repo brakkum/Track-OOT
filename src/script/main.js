@@ -44,7 +44,10 @@ import "/script/ui/LocationStatus.js";
 
     document.getElementById("view-choice-top").onchange = changeView;
     document.getElementById("view-choice-bottom").onchange = changeView;
-    changeView({oldValue:"",newValue:document.getElementById("view-choice-bottom").value});
+    changeView({
+        oldValue:"",
+        newValue:document.getElementById("view-choice-bottom").value
+    });
 
     await Promise.all([
         $import.importModule("/script/ui/shops/ShopList.js"),
