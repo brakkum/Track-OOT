@@ -69,6 +69,18 @@ import "/script/ui/LocationStatus.js";
             event.stopPropagation();
             return false;
         }
+        if (event.ctrlKey == true && event.key == "z") {
+            StateStorage.undo();
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        }
+        if (event.ctrlKey == true && event.key == "y") {
+            StateStorage.redo();
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        }
     });
 
 }());

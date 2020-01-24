@@ -1,6 +1,8 @@
 import FileLoader from "/emcJS/util/FileLoader.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
 
+let initialized = false;
+
 const FILES = [
     "items",
     "grids",
@@ -39,17 +41,19 @@ function setVersion(data) {
 class GlobalData {
 
     async init() {
-        let loading = [];
-        FILES.forEach(file => {
-            loading.push(FileLoader.json(`/database/${file}.json`).then(function(data) {
-                STORAGE[file] = data;
-            }).catch(function(err) {
-                console.error(`error getting contents of file - ${path}`);
-                throw err;
-            }));
-        });
-        loading.push(FileLoader.json("version.json").then(setVersion));
-        await Promise.all(loading);
+        if (!initialized) {
+            let loading = [];
+            FILES.forEach(file => {
+                loading.push(FileLoader.json(`/database/${file}.json`).then(function(data) {
+                    STORAGE[file] = data;
+                }).catch(function(err) {
+                    console.error(`error getting contents of file - ${path}`);
+                    throw err;
+                }));
+            });
+            loading.push(FileLoader.json("version.json").then(setVersion));
+            await Promise.all(loading);
+        }
     }
 
     get(name, def = null) {

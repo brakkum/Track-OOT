@@ -10,14 +10,18 @@ Application:    Track-OOT
 - sequence breaks added
 - skips extended
 
-### REWORKED DATA STRUCTURE
-- almost everything inside the data structure has changed
-- allows for some ui improvements like mixed lists
+### USABILITY ENHANCEMENTS
+- added filters and bulk select to lists in settngs
+- added undo (ctrl+z) / redo (ctrl+y) functionality
 
 ### IMPROVED LOGIC
 - logic is now way faster than before
     - use jit optimizations to achieve minimum execution time
 - additionally limit the logic executions somewhat
+
+### REWORKED DATA STRUCTURE
+- almost everything inside the data structure has changed
+- allows for some ui improvements like mixed lists
 
 ### MAP CHANGES
 - moved map options to the left
@@ -27,14 +31,14 @@ Application:    Track-OOT
 ### INTRODUCING ENTRANCES
 - entrances have their own logic
 - the configuration works like the gossipstones
+    - clicking opens a entrance linking dialog
+    - right-clicking resets the entrance
 - clicking on an activated entrance jumps to the linked area
-- right-clicking resets the entrance
 
-### UI ENHANCEMENTS
+### UI CHANGES
 - added entrance icons
 - added area icons
 - split rom-settings and tracker-settings into seperate dialogs
-- added filters and bulk select to lists in settngs
 
 ---
 

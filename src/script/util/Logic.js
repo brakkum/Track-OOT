@@ -21,8 +21,19 @@ let use_custom_logic = false;
 class TrackerLogic {
 
     constructor() {
-        EventBus.register("state_change", event => {
+        EventBus.register("state", event => {
             RANDO_LOGIC_PROCESSOR.setAll(event.data);
+            let res = RANDO_LOGIC_PROCESSOR.execute();
+            if (Object.keys(res).length > 0) {
+                EventBus.trigger("logic", res);
+            }
+        });
+        EventBus.register("state_change", event => {
+            let changed = {};
+            for (let i in event.data) {
+                changed[i] = event.data[i].newValue;
+            }
+            RANDO_LOGIC_PROCESSOR.setAll(changed);
             let res = RANDO_LOGIC_PROCESSOR.execute();
             if (Object.keys(res).length > 0) {
                 EventBus.trigger("logic", res);

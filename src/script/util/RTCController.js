@@ -27,7 +27,7 @@ function getState() {
     let state = StateStorage.getAll();
     let res = {};
     for (let i in state) {
-        if (i != "notes" && !i.startsWith("shops_names.")) {
+        if (i != "notes" && !i.endsWith(".names")) {
             res[i] = state[i];
         }
     }
@@ -35,20 +35,13 @@ function getState() {
 }
 
 function setState(state) {
-    let current = StateStorage.getAll();
-    for (let i in current) {
-        if (i != "notes" && !i.startsWith("shops_names.")) {
-            if (!state.hasOwnProperty(i)) {
-                StateStorage.remove(i);
-            }
-        }
-    }
+    let buffer = {};
     for (let i in state) {
-        if (i != "notes" && !i.startsWith("shops_names.")) {
-            StateStorage.write(i, state[i]);
+        if (i != "notes" && !i.endsWith(".names")) {
+            buffer[i] =  state[i];
         }
     }
-    eventModule.trigger("state", StateStorage.getAll());
+    StateStorage.write(buffer);
 }
 
 function getClientNameList() {
