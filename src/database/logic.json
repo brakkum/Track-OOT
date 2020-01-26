@@ -137,9 +137,59 @@
                 "category": "mixin"
             },
             {
-                "type": "number",
-                "el": "mixin.can_use_ocarina",
-                "category": "mixin"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "number",
+                        "el": "item.ocarina",
+                        "category": "item"
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "skip.invisible_ocarina_midair",
+                                "category": "skip"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.bottle",
+                                "category": "item"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "number",
+                                        "el": "item.slingshot",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "item.boomerang",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "item.stick",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "mixin.has_explosives",
+                                        "category": "mixin"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "item.sword_kokiri",
+                                        "category": "item"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "type": "min",
@@ -4242,6 +4292,47 @@
                         "el": "item.stick",
                         "category": "item"
                     }
+                ]
+            },
+            {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "skip.king_zora_child",
+                                "category": "skip"
+                            },
+                            {
+                                "type": "number",
+                                "el": "skip.king_zora_adult",
+                                "category": "skip"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "not",
+                                "el": {
+                                    "type": "number",
+                                    "el": "skip.king_zora_child",
+                                    "category": "skip"
+                                }
+                            },
+                            {
+                                "type": "not",
+                                "el": {
+                                    "type": "number",
+                                    "el": "skip.king_zora_adult",
+                                    "category": "skip"
+                                }
+                            }
+                        ]
+                    },
                 ]
             }
         ]
@@ -11862,9 +11953,29 @@
                 "category": "mixin"
             },
             {
-                "type": "number",
-                "el": "mixin.can_use_ocarina",
-                "category": "mixin"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "number",
+                        "el": "item.ocarina",
+                        "category": "item"
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "skip.invisible_ocarina_midair",
+                                "category": "skip"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.bottle",
+                                "category": "item"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     },
@@ -32996,9 +33107,74 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "number",
-                        "el": "skip.invisible_ocarina",
-                        "category": "skip"
+                        "type": "or",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "skip.invisible_ocarina",
+                                "category": "skip"
+                            },
+                            {
+                                "type": "and",
+                                "el": [
+                                    {
+                                        "type": "number",
+                                        "el": "skip.invisible_ocarina_midair",
+                                        "category": "skip"
+                                    },
+                                    {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "number",
+                                                        "el": "mixin.is_currently_child",
+                                                        "category": "mixin"
+                                                    },
+                                                    {
+                                                        "type": "or",
+                                                        "el": [
+                                                            {
+                                                                "type": "number",
+                                                                "el": "item.slingshot",
+                                                                "category": "item"
+                                                            },
+                                                            {
+                                                                "type": "number",
+                                                                "el": "item.boomerang",
+                                                                "category": "item"
+                                                            },
+                                                            {
+                                                                "type": "number",
+                                                                "el": "item.stick",
+                                                                "category": "item"
+                                                            },
+                                                            {
+                                                                "type": "number",
+                                                                "el": "mixin.has_explosives",
+                                                                "category": "mixin"
+                                                            },
+                                                            {
+                                                                "type": "number",
+                                                                "el": "item.sword_kokiri",
+                                                                "category": "item"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "number",
+                                                "el": "mixin.can_become_adult",
+                                                "category": "mixin"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
                     },
                     {
                         "type": "number",
@@ -35509,6 +35685,46 @@
                         "type": "number",
                         "el": "option.doors_open_zora",
                         "category": "option"
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "mixin.is_currently_child",
+                                "category": "mixin"
+                            },
+                            {
+                                "type": "number",
+                                "el": "skip.king_zora_child",
+                                "category": "skip"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.shield_kokiri",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.has_explosives",
+                                "category": "mixin"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "mixin.can_become_adult",
+                                "category": "mixin"
+                            },
+                            {
+                                "type": "number",
+                                "el": "skip.king_zora_adult",
+                                "category": "skip"
+                            }
+                        ]
                     }
                 ]
             },
