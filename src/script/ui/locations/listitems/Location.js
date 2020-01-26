@@ -1,15 +1,18 @@
+import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
+import EventBusSubset from "/emcJS/util/events/EventBusSubset.js";
 import Logger from "/emcJS/util/Logger.js";
 import Helper from "/emcJS/util/Helper.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import "/emcJS/ui/ContextMenu.js";
+import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
 
-const EVENT_BINDER = new ManagedEventBinder("layout");
+const EventBus = new EventBusSubset();
+
 const TPL = new Template(`
     <style>
         * {
@@ -53,7 +56,7 @@ const TPL = new Template(`
         #text[data-state="unavailable"] {
             color: var(--location-status-unavailable-color, #000000);
         }
-        :host([checked="true"]) #text {
+        #text[data-checked="true"] {
             color: var(--location-status-opened-color, #000000);
         }
         #badge {
@@ -168,41 +171,44 @@ export default class ListLocation extends HTMLElement {
             printLogic(this.access);
         });
 
+    }
+
+    connectedCallback() {
+        let textEl = this.shadowRoot.getElementById("text");
+        let value = StateStorage.read(this.ref, false);
+        textEl.dataset.checked = value;
+        this.setCheckValue(value);
+        if (!!this.access && !!Logic.getValue(this.access)) {
+            textEl.dataset.state = "available";
+        } else {
+            textEl.dataset.state = "unavailable";
+        }
         /* event bus */
-        EVENT_BINDER.register(type, event => {
+        EventBus.register(TYPE.get(this), event => {
             if (this.ref === event.data.name && this.checked !== event.data.value) {
-                EventBus.mute(TYPE.get(this));
-                this.checked = event.data.value;
-                EventBus.unmute(TYPE.get(this));
+                textEl.dataset.checked = event.data.value;
+                this.setCheckValue(event.data.value);
             }
         });
-        EVENT_BINDER.register("state", event => {
-            EventBus.mute(TYPE.get(this));
+        EventBus.register("state", event => {
             let value = !!event.data[this.ref];
-            if (typeof value == "undefined") {
-                value = false;
-            }
-            this.checked = value;
-            EventBus.unmute(TYPE.get(this));
+            textEl.dataset.checked = value;
+            this.setCheckValue(value);
         });
-        EVENT_BINDER.register("logic", event => {
+        EventBus.register("logic", event => {
             if (event.data.hasOwnProperty(this.access)) {
-                let el = this.shadowRoot.getElementById("text");
                 if (!!this.access && !!event.data[this.access]) {
-                    el.dataset.state = "available";
+                    textEl.dataset.state = "available";
                 } else {
-                    el.dataset.state = "unavailable";
+                    textEl.dataset.state = "unavailable";
                 }
             }
         });
     }
 
-    async update() {
-        if (!!this.access && !!Logic.getValue(this.access)) {
-            this.shadowRoot.getElementById("text").dataset.state = "available";
-        } else {
-            this.shadowRoot.getElementById("text").dataset.state = "unavailable";
-        }
+    disconnectedCallback() {
+        /* event bus */
+        EventBus.clear();
     }
 
     get ref() {
@@ -211,30 +217,6 @@ export default class ListLocation extends HTMLElement {
 
     set ref(val) {
         this.setAttribute('ref', val);
-    }
-
-    get checked() {
-        return this.getAttribute('checked');
-    }
-
-    set checked(val) {
-        this.setAttribute('checked', val);
-    }
-
-    get era() {
-        return this.getAttribute('era');
-    }
-
-    set era(val) {
-        this.setAttribute('era', val);
-    }
-
-    get time() {
-        return this.getAttribute('time');
-    }
-
-    set time(val) {
-        this.setAttribute('time', val);
     }
 
     get access() {
@@ -246,34 +228,25 @@ export default class ListLocation extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['ref', 'checked', 'era', 'time', 'access'];
+        return ['ref', 'access'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
+        let textEl = this.shadowRoot.getElementById("text");
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    let txt = this.shadowRoot.getElementById("text");
-                    txt.innerHTML = I18n.translate(this.ref);
-                    this.checked = StateStorage.read(this.ref, false);
+                    textEl.innerHTML = I18n.translate(this.ref);
+                    textEl.dataset.checked = StateStorage.read(this.ref, false);
                 }
             break;
-            case 'checked':
             case 'access':
                 if (oldValue != newValue) {
-                    this.update();
-                }
-            break;
-            case 'era':
-                if (oldValue != newValue) {
-                    let el_era = this.shadowRoot.getElementById("badge-era");
-                    el_era.src = `images/world/era/${newValue}.svg`;
-                }
-            break;
-            case 'time':
-                if (oldValue != newValue) {
-                    let el_time = this.shadowRoot.getElementById("badge-time");
-                    el_time.src = `images/world/time/${newValue}.svg`;
+                    if (!!newValue && !!Logic.getValue(newValue)) {
+                        textEl.dataset.state = "available";
+                    } else {
+                        textEl.dataset.state = "unavailable";
+                    }
                 }
             break;
         }
@@ -284,23 +257,43 @@ export default class ListLocation extends HTMLElement {
     }
 
     check() {
-        Logger.log(`check location "${this.ref}"`, "Location");
-        StateStorage.write(this.ref, true);
-        this.checked = true;
-        EventBus.trigger(TYPE.get(this), {
-            name: this.ref,
-            value: true
-        });
+        this.setCheckValue(true);
     }
     
     uncheck() {
-        Logger.log(`uncheck location "${this.ref}"`, "Location");
-        this.checked = false;
-        StateStorage.write(this.ref, false);
-        EventBus.trigger(TYPE.get(this), {
-            name: this.ref,
-            value: false
-        });
+        this.setCheckValue(false);
+    }
+
+    setCheckValue(value) {
+        let textEl = this.shadowRoot.getElementById("text");
+        let oldValue = textEl.dataset.checked == "true";
+        if (value != oldValue) {
+            StateStorage.write(this.ref, value);
+            textEl.dataset.checked = value;
+            EventBus.trigger(TYPE.get(this), {
+                name: this.ref,
+                value: value
+            });
+        }
+    }
+
+    setFilterData(data) {
+        let el_era = this.shadowRoot.getElementById("badge-era");
+        if (!data["filter.era/child"]) {
+            el_era.src = "images/world/era/adult.svg";
+        } else if (!data["filter.era/adult"]) {
+            el_era.src = "images/world/era/child.svg";
+        } else {
+            el_era.src = "images/world/era/both.svg";
+        }
+        let el_time = this.shadowRoot.getElementById("badge-time");
+        if (!data["filter.time/day"]) {
+            el_time.src = "images/world/time/night.svg";
+        } else if (!data["filter.time/night"]) {
+            el_time.src = "images/world/time/day.svg";
+        } else {
+            el_time.src = "images/world/time/always.svg";
+        }
     }
 
     static registerType(ref, clazz) {

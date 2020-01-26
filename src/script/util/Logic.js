@@ -2,7 +2,7 @@ import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import LogicProcessor from "/emcJS/util/logic/Processor.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import LogicUIAbstractElement from "/emcJS/ui/logic/elements/AbstractElement.js";
-import GlobalData from "/script/storage/GlobalData.js";
+import GlobalData from "/emcJS/storage/GlobalData.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import "/script/editor_logic/LiteralMixin.js";
@@ -113,84 +113,6 @@ class TrackerLogic {
             return CUSTOM_LOGIC_PROCESSOR.get(ref);
         }
         return RANDO_LOGIC_PROCESSOR.get(ref);
-    }
-
-    async checkLogicList(name) {
-        if (name == "") {
-            return 0b001; // no reachable
-        }
-        let list = GlobalData.get(`world/areas/${name}/locations`);
-        if (!list) {
-            return 0b001; // no reachable
-        }
-        let locations = GlobalData.get(`world/locations`);
-        // TODO implement master quest
-        /*if (!!mode) {
-            list = GlobalData.get("locations")[name][`${category}_${mode}`];
-        } else {
-            let dType = StateStorage.read(`dungeonTypes.${name}`, list.hasmq ? "n" : "v");
-            if (dType === "n") {
-                let res_v = await this.checkLogicList(category, name, "v");
-                let res_m = await this.checkLogicList(category, name, "mq");
-                if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
-                    return Math.min(res_v, res_m) || res_v || res_m;
-                } else {
-                    return Math.max(res_v, res_m);
-                }
-            }
-            list = GlobalData.get("locations")[name][`${category}_${dType}`];
-        }*/
-    
-        let canGet = 0;
-        let unopened = 0;
-        for (let i = 0; i < list.length; ++i) {
-            let data = locations[list[i]];
-            let filter = MemoryStorage.get("filter.era_active", GlobalData.get("filter/filter.era_active/default"));
-            if (!data.era || !filter || filter === data.era) {
-                //if (!data.mode || StateStorage.read(`options.${data.mode}`, false)) {
-                    if (!StateStorage.read(list[i], 0)) {
-                        unopened++;
-                        if (this.getValue(data.access)) {
-                            canGet++;
-                        }
-                    }
-                //}
-            }
-        }
-        if (unopened == 0)
-            return 0b000; // all open
-        if (canGet == unopened)
-            return 0b100; // all reachable
-        if (canGet == 0)
-            return 0b001; // no reachable
-        return 0b010; // partly reachable
-    }
-
-    async getAccessibleNumber(name) {
-        if (name == "") {
-            return 0;
-        }
-        let list = GlobalData.get(`world/areas/${name}/locations`);
-        if (!list) {
-            return 0;
-        }
-        let locations = GlobalData.get(`world/locations`);
-        // TODO implement master quest
-        let canGet = 0;
-        for (let i = 0; i < list.length; ++i) {
-            let data = locations[list[i]];
-            let filter = MemoryStorage.get("filter.era_active", GlobalData.get("filter/filter.era_active/default"));
-            if (!data.era || !filter || filter === data.era) {
-                //if (!data.mode || StateStorage.read(`options.${data.mode}`, false)) {
-                    if (!StateStorage.read(list[i], 0)) {
-                        if (this.getValue(data.access)) {
-                            canGet++;
-                        }
-                    }
-                //}
-            }
-        }
-        return canGet;
     }
 
     getLogicSVG(ref) {

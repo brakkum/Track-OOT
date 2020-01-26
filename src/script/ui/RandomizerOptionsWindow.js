@@ -2,7 +2,7 @@ import SettingsWindow from "/emcJS/ui/SettingsWindow.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import "/emcJS/ui/Paging.js";
 
-import GlobalData from "/script/storage/GlobalData.js";
+import GlobalData from "/emcJS/storage/GlobalData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import BusyIndicator from "/script/ui/BusyIndicator.js";
 import SettingsBuilder from "/script/util/SettingsBuilder.js";

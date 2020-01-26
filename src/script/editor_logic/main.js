@@ -22,7 +22,7 @@ import "./LiteralMixin.js";
 import "./LiteralCustom.js";
 
 import TrackerStorage from "/script/storage/TrackerStorage.js";
-import GlobalData from "/script/storage/GlobalData.js";
+import GlobalData from "/emcJS/storage/GlobalData.js";
 import I18n from "/script/util/I18n.js";
 
 import "./Navigation.js";
@@ -56,7 +56,7 @@ const LOGIC_OPERATORS = [
     let mixins = {};
 
     let logic = GlobalData.get("logic");
-    let custom_logic = await SettingsStorage.get("logic", {});
+    let custom_logic = await LogicsStorage.getAll();
 
     if (!!logic.mixins) {
         for (let i in logic.mixins) {
@@ -300,7 +300,7 @@ const LOGIC_OPERATORS = [
 
     async function removeLogic(event) {
         let key = workingarea.dataset.logicKey;
-        await LogicsStorage.remove(key);
+        await LogicsStorage.delete(key);
         return refreshLogic(event);
     }
 

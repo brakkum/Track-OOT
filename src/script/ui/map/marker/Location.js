@@ -2,6 +2,7 @@ import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import Logger from "/emcJS/util/Logger.js";
 import "/emcJS/ui/Tooltip.js";
+import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
@@ -186,22 +187,6 @@ export default class MapLocation extends HTMLElement {
         this.setAttribute('checked', val);
     }
 
-    get era() {
-        return this.getAttribute('era');
-    }
-
-    set era(val) {
-        this.setAttribute('era', val);
-    }
-
-    get time() {
-        return this.getAttribute('time');
-    }
-
-    set time(val) {
-        this.setAttribute('time', val);
-    }
-
     get access() {
         return this.getAttribute('access');
     }
@@ -235,7 +220,7 @@ export default class MapLocation extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['ref', 'checked', 'era', 'time', 'access', 'left', 'top', 'tooltip'];
+        return ['ref', 'checked', 'access', 'left', 'top', 'tooltip'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -251,18 +236,6 @@ export default class MapLocation extends HTMLElement {
             case 'access':
                 if (oldValue != newValue) {
                     this.update();
-                }
-            break;
-            case 'era':
-                if (oldValue != newValue) {
-                    let el_era = this.shadowRoot.getElementById("badge-era");
-                    el_era.src = `images/world/era/${newValue}.svg`;
-                }
-            break;
-            case 'time':
-                if (oldValue != newValue) {
-                    let el_time = this.shadowRoot.getElementById("badge-time");
-                    el_time.src = `images/world/time/${newValue}.svg`;
                 }
             break;
             case 'top':
@@ -299,6 +272,25 @@ export default class MapLocation extends HTMLElement {
             name: this.ref,
             value: false
         });
+    }
+
+    setFilterData(data) {
+        let el_era = this.shadowRoot.getElementById("badge-era");
+        if (!data["filter.era/child"]) {
+            el_era.src = "images/world/era/adult.svg";
+        } else if (!data["filter.era/adult"]) {
+            el_era.src = "images/world/era/child.svg";
+        } else {
+            el_era.src = "images/world/era/both.svg";
+        }
+        let el_time = this.shadowRoot.getElementById("badge-time");
+        if (!data["filter.time/day"]) {
+            el_time.src = "images/world/time/night.svg";
+        } else if (!data["filter.time/night"]) {
+            el_time.src = "images/world/time/day.svg";
+        } else {
+            el_time.src = "images/world/time/always.svg";
+        }
     }
 
     static registerType(ref, clazz) {

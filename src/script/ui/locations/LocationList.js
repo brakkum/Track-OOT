@@ -1,20 +1,23 @@
-import GlobalData from "/script/storage/GlobalData.js";
+import GlobalData from "/emcJS/storage/GlobalData.js";
 import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
 import "/emcJS/ui/selection/SwitchButton.js";
 import StateStorage from "/script/storage/StateStorage.js";
+import TrackerStorage from "/script/storage/TrackerStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import I18n from "/script/util/I18n.js";
-import Logic from "/script/util/Logic.js";
 import World from "/script/util/World.js";
+import ListLogic from "/script/util/ListLogic.js";
 import "./listitems/Button.js";
 import "./listitems/Area.js";
 import "./listitems/Entrance.js";
 import "./listitems/Location.js";
 import "./listitems/Gossipstone.js";
 import "/script/ui/dungeonstate/DungeonType.js";
+
+const SettingsStorage = new TrackerStorage('settings');
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
@@ -111,14 +114,12 @@ const TPL = new Template(`
     </div>
 `);
 
-function translate(value) {
-    switch (value) {
-        case 0b100: return "available";
-        case 0b010: return "possible";
-        case 0b001: return "unavailable";
-        default: return "opened";
-    }
-}
+const VALUE_STATES = [
+    "opened",
+    "unavailable",
+    "possible",
+    "available"
+];
 
 class HTMLTrackerLocationList extends Panel {
 
@@ -129,9 +130,9 @@ class HTMLTrackerLocationList extends Panel {
         this.attributeChangedCallback("", "");
         this.shadowRoot.getElementById('location-era').addEventListener("change", event => {
             this.era = event.newValue;
-            MemoryStorage.set("filter.era_active", this.era);
+            MemoryStorage.set("filter.era", this.era);
             EventBus.trigger("filter", {
-                ref: "filter.era_active",
+                ref: "filter.era",
                 value: this.era
             });
         });
@@ -159,7 +160,7 @@ class HTMLTrackerLocationList extends Panel {
         EVENT_BINDER.register(["chest", "skulltula", "item", "logic"], event => {
             this.updateHeader();
         });
-        EVENT_BINDER.register(["state", "randomizer_options"], event => {
+        EVENT_BINDER.register(["state", "settings", "randomizer_options"], event => {
             this.refresh();
         });
         EVENT_BINDER.register("dungeontype", event => {
@@ -213,25 +214,26 @@ class HTMLTrackerLocationList extends Panel {
 
     refresh() {
         let cnt = this.shadowRoot.getElementById("list");
-        let postfix = "";
         let dType = this.shadowRoot.getElementById("location-version").value;
+        let btn_vanilla = this.shadowRoot.getElementById('vanilla');
+        let btn_masterquest = this.shadowRoot.getElementById('masterquest');
         cnt.innerHTML = "";
         if (dType == "n") {
-            this.shadowRoot.getElementById('vanilla').classList.remove("hidden");
-            this.shadowRoot.getElementById('masterquest').classList.remove("hidden");
+            let data_v = GlobalData.get(`world_lists/${this.ref}/lists/v`);
+            let data_m = GlobalData.get(`world_lists/${this.ref}/lists/mq`);
+            let res_v = ListLogic.check(data_v.map(v=>v.id).filter(filterUnusedChecks));
+            let res_m = ListLogic.check(data_m.map(v=>v.id).filter(filterUnusedChecks));
+            btn_vanilla.className = VALUE_STATES[res_v.value];
+            btn_masterquest.className = VALUE_STATES[res_m.value];
         } else {
-            this.shadowRoot.getElementById('vanilla').classList.add("hidden");
-            this.shadowRoot.getElementById('masterquest').classList.add("hidden");
-            if (dType == "mq") {
-                postfix = "_mq";
-            }
+            btn_vanilla.className = "hidden";
+            btn_masterquest.className = "hidden";
             cnt.innerHTML = "";
-            let data = GlobalData.get(`locationlists/${this.ref}${postfix}`);
+            let data = GlobalData.get(`world_lists/${this.ref}/lists/${dType}`);
             if (!!data) {
-                let values = new Map(Object.entries(StateStorage.getAll()));
                 data.forEach(record => {
-                    let loc = World.get(record.id);
-                    if (loc.visible(values) && (!this.era || loc[this.era](values))) {
+                    let loc = World.getLocation(record.id);
+                    if (!!loc && loc.visible()) {
                         let el = loc.listItem;
                         cnt.append(el);
                     }
@@ -245,8 +247,24 @@ class HTMLTrackerLocationList extends Panel {
         if ((!this.ref || this.ref === "")) {
             this.shadowRoot.querySelector('#title').className = "";
         } else {
-            // TODO check all dungeontypes possibilities
-            this.shadowRoot.querySelector('#title').className = translate(await Logic.checkLogicList(this.ref || "overworld"));
+            let dType = this.shadowRoot.getElementById("location-version").value;
+            let header_value = 1;
+            if (dType == "n") {
+                let data_v = GlobalData.get(`world_lists/${this.ref}/lists/v`);
+                let data_m = GlobalData.get(`world_lists/${this.ref}/lists/mq`);
+                let res_v = ListLogic.check(data_v.map(v=>v.id).filter(filterUnusedChecks));
+                let res_m = ListLogic.check(data_m.map(v=>v.id).filter(filterUnusedChecks));
+                if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
+                    header_value = Math.min(res_v.value, res_m.value);
+                } else {
+                    header_value = Math.max(res_v.value, res_m.value);
+                }
+            } else {
+                let data = GlobalData.get(`world_lists/${this.ref}/lists/${dType}`);
+                let res = ListLogic.check(data.map(v=>v.id).filter(filterUnusedChecks));
+                header_value = res.value;
+            }
+            this.shadowRoot.querySelector('#title').className = VALUE_STATES[header_value];
         }
     }
     
@@ -254,3 +272,8 @@ class HTMLTrackerLocationList extends Panel {
 
 Panel.registerReference("location-list", HTMLTrackerLocationList);
 customElements.define('ootrt-locationlist', HTMLTrackerLocationList);
+
+function filterUnusedChecks(check) {
+    let loc = World.getLocation(check);
+    return !!loc && loc.visible();
+}

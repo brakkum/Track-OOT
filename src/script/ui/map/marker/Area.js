@@ -1,12 +1,19 @@
-import GlobalData from "/script/storage/GlobalData.js";
+import GlobalData from "/emcJS/storage/GlobalData.js";
 import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import Logger from "/emcJS/util/Logger.js";
+import "/emcJS/ui/Tooltip.js";
+import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
+import TrackerStorage from "/script/storage/TrackerStorage.js";
+import ListLogic from "/script/util/ListLogic.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
+import World from "/script/util/World.js";
+
+const SettingsStorage = new TrackerStorage('settings');
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
@@ -107,14 +114,12 @@ const TPL = new Template(`
     </emc-tooltip>
 `);
 
-function translate(value) {
-    switch (value) {
-        case 0b100: return "available";
-        case 0b010: return "possible";
-        case 0b001: return "unavailable";
-        default: return "opened";
-    }
-}
+const VALUE_STATES = [
+    "opened",
+    "unavailable",
+    "possible",
+    "available"
+];
 
 export default class MapArea extends HTMLElement {
 
@@ -133,19 +138,35 @@ export default class MapArea extends HTMLElement {
         });
 
         /* event bus */
-        EVENT_BINDER.register(["state", "settings", "logic"], event => {
+        EVENT_BINDER.register(["state", "settings", "randomizer_options", "logic"], event => {
             this.update()
         });
+        //EVENT_BINDER.register("dungeontype", dungeonTypeUpdate.bind(this));
     }
 
     async update() {
         if (!!this.ref) {
-            let val = await Logic.checkLogicList(this.ref);
-            this.shadowRoot.getElementById("marker").dataset.state = translate(val);
-            if (val > 0b001) {
-                this.shadowRoot.getElementById("marker").innerHTML = await Logic.getAccessibleNumber(this.ref);
-            } else {
+            let dType = StateStorage.read(`dungeonTypes.${this.ref}`, 'v'); // TODO
+            if (dType == "n") {
+                let data_v = GlobalData.get(`world_lists/${this.ref}/lists/v`);
+                let data_m = GlobalData.get(`world_lists/${this.ref}/lists/mq`);
+                let res_v = ListLogic.check(data_v.map(v=>v.id).filter(filterUnusedChecks));
+                let res_m = ListLogic.check(data_m.map(v=>v.id).filter(filterUnusedChecks));
+                if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
+                    this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[Math.min(res_v.value, res_m.value)];
+                } else {
+                    this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[Math.max(res_v.value, res_m.value)];
+                }
                 this.shadowRoot.getElementById("marker").innerHTML = "";
+            } else {
+                let data = GlobalData.get(`world_lists/${this.ref}/lists/${dType}`);
+                let res = ListLogic.check(data.map(v=>v.id).filter(filterUnusedChecks));
+                this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[res.value];
+                if (res.value > 1) {
+                    this.shadowRoot.getElementById("marker").innerHTML = res.reachable;
+                } else {
+                    this.shadowRoot.getElementById("marker").innerHTML = "";
+                }
             }
         } else {
             this.shadowRoot.getElementById("marker").dataset.state = "unavailable";
@@ -214,6 +235,30 @@ export default class MapArea extends HTMLElement {
         }
     }
 
+    setFilterData(data) {
+        let el_era = this.shadowRoot.getElementById("badge-era");
+        if (!data["filter.era/child"]) {
+            el_era.src = "images/world/era/adult.svg";
+        } else if (!data["filter.era/adult"]) {
+            el_era.src = "images/world/era/child.svg";
+        } else {
+            el_era.src = "images/world/era/both.svg";
+        }
+        let el_time = this.shadowRoot.getElementById("badge-time");
+        if (!data["filter.time/day"]) {
+            el_time.src = "images/world/time/night.svg";
+        } else if (!data["filter.time/night"]) {
+            el_time.src = "images/world/time/day.svg";
+        } else {
+            el_time.src = "images/world/time/always.svg";
+        }
+    }
+
 }
 
 customElements.define('ootrt-marker-area', MapArea);
+
+function filterUnusedChecks(check) {
+    let loc = World.getLocation(check);
+    return !!loc && loc.visible();
+}

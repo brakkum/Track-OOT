@@ -1,5 +1,5 @@
 import FileSystem from "/emcJS/util/FileSystem.js";
-import GlobalData from "/script/storage/GlobalData.js";
+import GlobalData from "/emcJS/storage/GlobalData.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 
 const LogicsStorage = new TrackerStorage('logics');

@@ -1,13 +1,20 @@
-import GlobalData from "/script/storage/GlobalData.js";
+import GlobalData from "/emcJS/storage/GlobalData.js";
 import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import Logger from "/emcJS/util/Logger.js";
 import Dialog from "/emcJS/ui/Dialog.js";
+import "/emcJS/ui/Tooltip.js";
+import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
+import TrackerStorage from "/script/storage/TrackerStorage.js";
+import ListLogic from "/script/util/ListLogic.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
+import World from "/script/util/World.js";
+
+const SettingsStorage = new TrackerStorage('settings');
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
@@ -109,14 +116,12 @@ const TPL = new Template(`
     </emc-tooltip>
 `);
 
-function translate(value) {
-    switch (value) {
-        case 0b100: return "available";
-        case 0b010: return "possible";
-        case 0b001: return "unavailable";
-        default: return "opened";
-    }
-}
+const VALUE_STATES = [
+    "opened",
+    "unavailable",
+    "possible",
+    "available"
+];
 
 export default class MapEntrance extends HTMLElement {
 
@@ -164,7 +169,7 @@ export default class MapEntrance extends HTMLElement {
             this.value = value;
             EventBus.unmute("entrance");
         });
-        EVENT_BINDER.register(["settings", "logic"], event => {
+        EVENT_BINDER.register(["settings", "randomizer_options", "logic"], event => {
             this.update()
         });
         EVENT_BINDER.register("entrance", event => {
@@ -178,12 +183,27 @@ export default class MapEntrance extends HTMLElement {
 
     async update() {
         if (!!this.value) {
-            let val = await Logic.checkLogicList(this.value);
-            this.shadowRoot.getElementById("marker").dataset.state = translate(val);
-            if (val > 0b001) {
-                this.shadowRoot.getElementById("marker").innerHTML = await Logic.getAccessibleNumber(this.value);
-            } else {
+            let dType = StateStorage.read(`dungeonTypes.${this.value}`, 'v'); // TODO
+            if (dType == "n") {
+                let data_v = GlobalData.get(`world_lists/${this.value}/lists/v`);
+                let data_m = GlobalData.get(`world_lists/${this.value}/lists/mq`);
+                let res_v = ListLogic.check(data_v.map(v=>v.id).filter(filterUnusedChecks));
+                let res_m = ListLogic.check(data_m.map(v=>v.id).filter(filterUnusedChecks));
+                if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
+                    this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[Math.min(res_v.value, res_m.value)];
+                } else {
+                    this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[Math.max(res_v.value, res_m.value)];
+                }
                 this.shadowRoot.getElementById("marker").innerHTML = "";
+            } else {
+                let data = GlobalData.get(`world_lists/${this.value}/lists/${dType}`);
+                let res = ListLogic.check(data.map(v=>v.id).filter(filterUnusedChecks));
+                this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[res.value];
+                if (res.value > 1) {
+                    this.shadowRoot.getElementById("marker").innerHTML = res.reachable;
+                } else {
+                    this.shadowRoot.getElementById("marker").innerHTML = "";
+                }
             }
         } else if (!!this.access && !!Logic.getValue(this.access)) {
             this.shadowRoot.getElementById("marker").dataset.state = "available";
@@ -208,22 +228,6 @@ export default class MapEntrance extends HTMLElement {
 
     set value(val) {
         this.setAttribute('value', val);
-    }
-
-    get era() {
-        return this.getAttribute('era');
-    }
-
-    set era(val) {
-        this.setAttribute('era', val);
-    }
-
-    get time() {
-        return this.getAttribute('time');
-    }
-
-    set time(val) {
-        this.setAttribute('time', val);
     }
 
     get access() {
@@ -259,7 +263,7 @@ export default class MapEntrance extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['ref', 'value', 'era', 'time', 'access', 'left', 'top', 'tooltip'];
+        return ['ref', 'value', 'access', 'left', 'top', 'tooltip'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -280,18 +284,6 @@ export default class MapEntrance extends HTMLElement {
                         this.shadowRoot.getElementById("value").innerHTML = "";
                     }
                     this.update();
-                }
-            break;
-            case 'era':
-                if (oldValue != newValue) {
-                    let el_era = this.shadowRoot.getElementById("badge-era");
-                    el_era.src = `images/world/era/${newValue}.svg`;
-                }
-            break;
-            case 'time':
-                if (oldValue != newValue) {
-                    let el_time = this.shadowRoot.getElementById("badge-time");
-                    el_time.src = `images/world/time/${newValue}.svg`;
                 }
             break;
             case 'access':
@@ -315,15 +307,39 @@ export default class MapEntrance extends HTMLElement {
         }
     }
 
+    setFilterData(data) {
+        let el_era = this.shadowRoot.getElementById("badge-era");
+        if (!data["filter.era/child"]) {
+            el_era.src = "images/world/era/adult.svg";
+        } else if (!data["filter.era/adult"]) {
+            el_era.src = "images/world/era/child.svg";
+        } else {
+            el_era.src = "images/world/era/both.svg";
+        }
+        let el_time = this.shadowRoot.getElementById("badge-time");
+        if (!data["filter.time/day"]) {
+            el_time.src = "images/world/time/night.svg";
+        } else if (!data["filter.time/night"]) {
+            el_time.src = "images/world/time/day.svg";
+        } else {
+            el_time.src = "images/world/time/always.svg";
+        }
+    }
+
 }
 
 customElements.define('ootrt-marker-entrance', MapEntrance);
 
+function filterUnusedChecks(check) {
+    let loc = World.getLocation(check);
+    return !!loc && loc.visible();
+}
+
 function entranceDialog(ref) {
     return new Promise(resolve => {
-        let value = StateStorage.read(`entrance.${ref}`, "");
-        let type = GlobalData.get(`world/entrances/${ref}/type`);
-        let data = GlobalData.get('world/areas');
+        let value = StateStorage.read(ref, "");
+        let world = GlobalData.get('world');
+        let type = world[ref].type;
     
         let loc = document.createElement('label');
         loc.style.display = "flex";
@@ -332,12 +348,27 @@ function entranceDialog(ref) {
         loc.style.padding = "5px";
         loc.innerHTML = I18n.translate("location");
         let slt = document.createElement("select");
-        
-        for (let i in data) {
-            let loc = data[i];
-            if (loc.type == type) {
-                slt.append(createOption(i, I18n.translate(i)));
+
+        let unbound = new Set();
+        for (let i in world) {
+            let entry = world[i];
+            if (entry.category == "area" && entry.type == type) {
+                unbound.add(i);
             }
+        }
+        for (let i in world) {
+            let entry = world[i];
+            if (entry.category == "entrance" && entry.type == type) {
+                let bound = StateStorage.read(i, "");
+                if (i != ref && !!bound) {
+                    unbound.delete(bound);
+                }
+            }
+        }
+        unbound = Array.from(unbound);
+        
+        for (let i of unbound) {
+            slt.append(createOption(i, I18n.translate(i)));
         }
         slt.style.width = "200px";
         slt.value = value;
