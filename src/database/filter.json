@@ -1,11 +1,20 @@
 {
-    "filter.era_active": {
+    "filter.era": {
         "type": "choice",
-        "default": "",
+        "default": "both",
         "values": [
-            "",
+            "both",
             "child",
             "adult"
+        ]
+    },
+    "filter.time": {
+        "type": "-choice",
+        "default": "always",
+        "values": [
+            "always",
+            "day",
+            "night"
         ]
     }
 }

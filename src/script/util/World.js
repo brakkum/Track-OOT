@@ -1,4 +1,5 @@
-import GlobalData from "/script/storage/GlobalData.js";
+import GlobalData from "/emcJS/storage/GlobalData.js";
+import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import LogicCompiler from "/emcJS/util/logic/Compiler.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 
@@ -12,9 +13,12 @@ import MapEntrance from "/script/ui/map/marker/Entrance.js";
 import MapLocation from "/script/ui/map/marker/Location.js";
 import "/script/ui/map/marker/Gossipstone.js";
 
+const REF = new WeakMap();
+const ACCESS = new WeakMap();
+const CATEGORY = new WeakMap();
+const TYPE = new WeakMap();
 const VISIBLE = new WeakMap();
-const CHILD = new WeakMap();
-const ADULT = new WeakMap();
+const FILTER = new WeakMap();
 const LIST_ITEMS = new WeakMap();
 const MAP_MARKERS = new WeakMap();
 
@@ -22,147 +26,159 @@ function valueGetter(key) {
     return this.get(key);
 }
 
-function fnTrue() {
-    return true;
-}
-function fnFalse() {
-    return false;
+function mapToObj(map) {
+    let res = {};
+    map.forEach((v, k) => {
+        res[k] = v;
+    });
+    return res;
 }
 
 class WorldEntry {
 
-    constructor(listItem, mapItem, ref, data) {
-        // LOGIC
+    constructor(ref, data) {
+        let visible_logic = null;
+        let filter_logics = new Map();
+        let filter_values = new Map();
+        REF.set(this, ref);
+        ACCESS.set(this, data.access);
+        FILTER.set(this, filter_values);
+        CATEGORY.set(this, data.category);
+        TYPE.set(this, data.type);
+
+        /* LOGIC */
         if (typeof data.visible == "object") {
-            VISIBLE.set(this, LogicCompiler.compile(data.visible));
+            visible_logic = LogicCompiler.compile(data.visible);
+            VISIBLE.set(this, false);
         } else {
-            VISIBLE.set(this, !!data.visible ? fnTrue : fnFalse);
+            VISIBLE.set(this, !!data.visible);
         }
-        if (typeof data.child == "object") {
-            CHILD.set(this, LogicCompiler.compile(data.child));
-        } else {
-            CHILD.set(this, !!data.child ? fnTrue : fnFalse);
-        }
-        if (typeof data.adult == "object") {
-            ADULT.set(this, LogicCompiler.compile(data.adult));
-        } else {
-            ADULT.set(this, !!data.adult ? fnTrue : fnFalse);
-        }
-        // UI
-        listItem.access = data.access;
-        listItem.time = data.time;
-        listItem.ref = ref;
-        mapItem.access = data.access;
-        mapItem.time = data.time;
-        mapItem.ref = ref;
-        if (!!data.child && !!data.adult) {
-            listItem.era = "both";
-            mapItem.era = "both";
-        } else if (!!data.child) {
-            listItem.era = "child";
-            mapItem.era = "child";
-        } else if (!!data.adult) {
-            listItem.era = "adult";
-            mapItem.era = "adult";
-        } else {
-            listItem.era = "none";
-            mapItem.era = "none";
-        }
-
-        LIST_ITEMS.set(this, listItem);
-        MAP_MARKERS.set(this, mapItem);
-
-        EventBus.register("settings", event => {
-            let values = new Map(Object.entries(event.data));
-
-            let child = this.child(values);
-            let adult = this.adult(values);
-
-            if (!!child && !!adult) {
-                listItem.era = "both";
-                mapItem.era = "both";
-            } else if (!!child) {
-                listItem.era = "child";
-                mapItem.era = "child";
-            } else if (!!adult) {
-                listItem.era = "adult";
-                mapItem.era = "adult";
-            } else {
-                listItem.era = "none";
-                mapItem.era = "none";
+        if (!!data.filter) {
+            for (let i in data.filter) {
+                for (let j in data.filter[i]) {
+                    if (typeof data.filter[i][j] == "object") {
+                        filter_logics.set(`${i}/${j}`, LogicCompiler.compile(data.filter[i][j]));
+                        filter_values.set(`${i}/${j}`, false);
+                    } else {
+                        filter_values.set(`${i}/${j}`, !!data.filter[i][j]);
+                    }
+                }
             }
+        }
 
+        /* EVENTS */
+        EventBus.register(["state", "randomizer_options"], event => {
+            let data = new Map(Object.entries(event.data));
+            if (typeof visible_logic == "function") {
+                VISIBLE.set(this, !!visible_logic(valueGetter.bind(data)));
+            }
+            filter_logics.forEach((logicFn, key) => {
+                if (typeof logicFn == "function") {
+                    let res = !!logicFn(valueGetter.bind(data));
+                    filter_values.set(key, res);
+                }
+            });
+            if (LIST_ITEMS.has(this)) {
+                LIST_ITEMS.get(this).setFilterData(mapToObj(filter_values));
+            }
+            if (MAP_MARKERS.has(this)) {
+                MAP_MARKERS.get(this).setFilterData(mapToObj(filter_values));
+            }
         });
     }
 
-    visible(state) {
-        let visible = VISIBLE.get(this);
-        return visible(valueGetter.bind(state));
+    visible() {
+        let visible = !!VISIBLE.get(this);
+        return visible && this.filtered();
     }
 
-    child(state) {
-        let child = CHILD.get(this);
-        return child(valueGetter.bind(state));
+    access() {
+        return ACCESS.get(this);
     }
 
-    adult(state) {
-        let adult = ADULT.get(this);
-        return adult(valueGetter.bind(state));
+    filtered() {
+        let activeFilter = MemoryStorage.get("active_filter", {});
+        let values = FILTER.get(this);
+        for (let filter in activeFilter) {
+            let value = activeFilter[filter];
+            if (!!value && !values.get(`${filter}/${value}`)) {
+                return false; 
+            }
+        }
+        return true;
     }
 
     get listItem() {
+        if (!LIST_ITEMS.has(this)) {
+            let values = FILTER.get(this);
+            let listItem = null;
+            let category = CATEGORY.get(this);
+            let type = TYPE.get(this);
+            if (category == "area" && type != "") {
+                listItem = new ListArea();
+            } else if (category == "entrance") {
+                listItem = new ListEntrance();
+            } else {
+                listItem = ListLocation.createType(type);
+            }
+            listItem.access = ACCESS.get(this);
+            listItem.ref = REF.get(this);
+            listItem.setFilterData(mapToObj(values));
+            LIST_ITEMS.set(this, listItem);
+            return listItem;
+        }
         return LIST_ITEMS.get(this);
     }
 
     get mapMarker() {
+        if (!MAP_MARKERS.has(this)) {
+            let values = FILTER.get(this);
+            let mapItem = null;
+            let category = CATEGORY.get(this);
+            let type = TYPE.get(this);
+            if (category == "area" && type != "") {
+                mapItem = new MapArea();
+            } else if (category == "entrance") {
+                mapItem = new MapEntrance();
+            } else {
+                mapItem = MapLocation.createType(type);
+                // LEGACY
+                if (type == "skulltula") {
+                    mapItem.dataset.mode = "skulltulas";
+                } else if (type == "gossipstone") {
+                    mapItem.dataset.mode = "gossipstones";
+                } else {
+                    mapItem.dataset.mode = "chests";
+                }
+            }
+            mapItem.access = ACCESS.get(this);
+            mapItem.ref = REF.get(this);
+            mapItem.setFilterData(mapToObj(values));
+            MAP_MARKERS.set(this, mapItem);
+            return mapItem;
+        }
         return MAP_MARKERS.get(this);
     }
 
 }
 
 const WORLD = new Map();
+let initialized = false;
 
 class World {
 
-    constructor() {
-        let area = GlobalData.get(`world/areas`);
-        for (let i in area) {
-            if (area[i].type != "") {
-                let listItem = new ListArea();
-                let mapItem = new MapArea();
-                WORLD.set(i, new WorldEntry(listItem, mapItem, i, area[i]));
+    init() {
+        if (!initialized) {
+            initialized = true;
+            let world = GlobalData.get("world");
+            for (let ref in world) {
+                let entry = world[ref];
+                WORLD.set(ref, new WorldEntry(ref, entry));
             }
-        }
-        let entrance = GlobalData.get(`world/entrances`);
-        for (let i in entrance) {
-            let listItem = new ListEntrance();
-            let mapItem = new MapEntrance();
-            WORLD.set(i, new WorldEntry(listItem, mapItem, i, entrance[i]));
-        }
-        let locations = GlobalData.get(`world/locations`);
-        for (let i in locations) {
-            let listItem = ListLocation.createType(locations[i].type);
-            let mapItem = MapLocation.createType(locations[i].type);
-            switch (locations[i].type) {
-                // LEGACY
-                case "chest":
-                case "cow":
-                case "scrub":
-                case "bean":
-                    mapItem.dataset.mode = "chests";
-                    break;
-                case "skulltula":
-                    mapItem.dataset.mode = "skulltulas";
-                    break;
-                case "gossipstone":
-                    mapItem.dataset.mode = "gossipstones";
-                    break;
-            }
-            WORLD.set(i, new WorldEntry(listItem, mapItem, i, locations[i]));
         }
     }
 
-    get(ref) {
+    getLocation(ref) {
         return WORLD.get(ref);
     }
 

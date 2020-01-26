@@ -1,4 +1,4 @@
-import GlobalData from "/script/storage/GlobalData.js";
+import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import "/emcJS/ui/selection/Option.js";
@@ -57,8 +57,8 @@ function stateChanged(event) {
     if (typeof value == "undefined" || value == "") {
         value = "v";
         if (!!this.ref) {
-            let area = GlobalData.get(`world/areas/${this.ref}`);
-            if (area.hasOwnProperty("locations_mq")) {
+            let area = GlobalData.get(`world_lists/${newValue}/lists`);
+            if (area.hasOwnProperty("mq")) {
                 value = "n";
             }
         }
@@ -112,8 +112,8 @@ class HTMLTrackerDungeonType extends HTMLElement {
                     let value = "v";
                     let readonly = true;
                     if (!!newValue) {
-                        let area = GlobalData.get(`world/areas/${newValue}`);
-                        if (area.hasOwnProperty("locations_mq")) {
+                        let area = GlobalData.get(`world_lists/${newValue}/lists`);
+                        if (area.hasOwnProperty("mq")) {
                             value = StateStorage.read(`dungeonTypes.${newValue}`, "n");
                             readonly = false;
                         }

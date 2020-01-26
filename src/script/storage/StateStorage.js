@@ -1,10 +1,10 @@
+import GlobalData from "/emcJS/storage/GlobalData.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import ActionPath from "/emcJS/util/ActionPath.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
 import LocalStorage from "/emcJS/storage/LocalStorage.js";
 import TrackerStorage from "./TrackerStorage.js";
 import StateConverter from "./converters/StateConverter.js";
-import GlobalData from "./GlobalData.js";
 
 const PERSISTANCE_NAME = "savestate";
 const STATE_DIRTY = "state_dirty";

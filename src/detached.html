@@ -24,7 +24,7 @@
         import EventBusModuleShare from "/emcJS/util/events/EventBusModuleShare.js";
         import Panel from "/emcJS/ui/layout/Panel.js";
         import LocalStorage from "/emcJS/storage/LocalStorage.js";
-        import GlobalData from "/script/storage/GlobalData.js";
+        import GlobalData from "/emcJS/storage/GlobalData.js";
         import TrackerStorage from "/script/storage/TrackerStorage.js";
         import I18n from "/script/util/I18n.js";
         import Logic from "/script/util/Logic.js";
@@ -36,9 +36,26 @@
 
         const SettingsStorage = new TrackerStorage('settings');
 
+        const FILES = {
+            "items": "/database/items.json",
+            "grids": "/database/grids.json",
+            "dungeonstate": "/database/dungeonstate.json",
+            "world": "/database/world.json",
+            "world_lists": "/database/world_lists.json",
+            "layouts": "/database/layouts.json",
+            "songs": "/database/songs.json",
+            "hints": "/database/hints.json",
+            "logic": "/database/logic.json",
+            "settings": "/database/settings.json",
+            "randomizer_options": "/database/randomizer_options.json",
+            "filter": "/database/filter.json",
+            "shops": "/database/shops.json",
+            "shop_items": "/database/shop_items.json"
+        };
+
         (async function main() {
 
-            await GlobalData.init();
+            await GlobalData.load(FILES);
             await I18n.load(await SettingsStorage.get("language", "en_us"));
             await Logic.loadLogic();
             EventBusModuleShare.mute("logic");

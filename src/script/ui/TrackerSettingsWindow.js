@@ -1,5 +1,6 @@
+import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import Template from "/emcJS/util/Template.js";
-import GlobalData from "/script/storage/GlobalData.js";
+import GlobalData from "/emcJS/storage/GlobalData.js";
 import SettingsWindow from "/emcJS/ui/SettingsWindow.js";
 import PopOver from "/emcJS/ui/PopOver.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
@@ -100,8 +101,8 @@ export default class Settings {
         SettingsBuilder.build(settings, options);
         
         let settings_about = ABOUT_TPL.generate();
-        settings_about.getElementById("tracker-version").innerHTML = GlobalData.get("version-string");
-        settings_about.getElementById("tracker-date").innerHTML = GlobalData.get("version-date");
+        settings_about.getElementById("tracker-version").innerHTML = MemoryStorage.get("version-string");
+        settings_about.getElementById("tracker-date").innerHTML = MemoryStorage.get("version-date");
         let updatehandler = settings_about.getElementById("updatehandler");
         updatehandler.addEventListener("updateavailable", function() {
             if (showUpdatePopup) {

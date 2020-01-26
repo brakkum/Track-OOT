@@ -1,4 +1,4 @@
-import GlobalData from "/script/storage/GlobalData.js";
+import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import "/emcJS/ui/selection/Option.js";

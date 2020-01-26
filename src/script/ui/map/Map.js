@@ -1,4 +1,4 @@
-import GlobalData from "/script/storage/GlobalData.js";
+import GlobalData from "/emcJS/storage/GlobalData.js";
 import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
@@ -174,7 +174,8 @@ const TPL = new Template(`
             background-color: var(--dungeon-status-hover-color, #ffffff32);
         }
         :host(:not([ref])) #back,
-        :host([ref=""]) #back {
+        :host([ref=""]) #back,
+        :host([ref="#"]) #back {
             display: none;
         }
     </style>
@@ -421,7 +422,7 @@ class HTMLTrackerMap extends Panel {
             this.mode = event.data.value;
             this.shadowRoot.getElementById('location-mode').value = this.mode;
         });
-        EVENT_BINDER.register(["state", "randomizer_options"], event => {
+        EVENT_BINDER.register(["state", "settings", "randomizer_options"], event => {
             this.refresh();
         });
         EVENT_BINDER.register("dungeontype", event => {
@@ -443,12 +444,12 @@ class HTMLTrackerMap extends Panel {
 
     get ref() {
         //return this.getAttribute('ref') || "";
-        return "";
+        return "#";
     }
 
     set ref(val) {
         //this.setAttribute('ref', val);
-        this.setAttribute('ref', "");
+        this.setAttribute('ref', "#");
     }
 
     get era() {
@@ -481,7 +482,6 @@ class HTMLTrackerMap extends Panel {
     }
 
     async refresh() {
-        let postfix = "";
         let dType = "v";//this.shadowRoot.getElementById("location-version").value;
         this.innerHTML = "";
         if (dType == "n") {
@@ -489,10 +489,7 @@ class HTMLTrackerMap extends Panel {
             // TODO
 
         } else {
-            if (dType == "mq") {
-                postfix = "_mq";
-            }
-            let data = GlobalData.get(`maps/${this.ref}${postfix}`);
+            let data = GlobalData.get(`world_lists/${this.ref}`);
             if (!!data) {
                 // switch map/minimap background
                 let map = this.shadowRoot.getElementById('map');
@@ -502,16 +499,15 @@ class HTMLTrackerMap extends Panel {
                 let minimap = this.shadowRoot.getElementById('map-overview');
                 minimap.style.backgroundImage = `url("/images/world/maps/${data.background}")`;
                 // fill map
-                let values = new Map(Object.entries(StateStorage.getAll()));
-                data.locations.forEach(record => {
+                data.lists[dType].forEach(record => {
                     if (this.mode == "gossipstones") {
                         // LEGACY
                         if (record.type == "area" || record.type == "entrance") {
                             return;
                         }
                     }
-                    let loc = World.get(record.id);
-                    if (loc.visible(values) && (!this.era || loc[this.era](values))) {
+                    let loc = World.getLocation(record.id);
+                    if (!!loc && loc.visible()) {
                         let el = loc.mapMarker;
                         if (!!el.dataset.mode && el.dataset.mode != this.mode) {
                             // LEGACY
@@ -531,6 +527,11 @@ class HTMLTrackerMap extends Panel {
 
 Panel.registerReference("location-map", HTMLTrackerMap);
 customElements.define('ootrt-map', HTMLTrackerMap);
+
+function filterUnusedChecks(check) {
+    let loc = World.getLocation(check);
+    return !!loc && loc.visible();
+}
 
 function calculateTooltipPosition(posX, posY, mapW, mapH) {
     let leftP = posX / mapW;

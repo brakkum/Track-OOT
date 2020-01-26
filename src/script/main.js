@@ -1,7 +1,7 @@
+import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import Logger from "/emcJS/util/Logger.js";
 
-import GlobalData from "/script/storage/GlobalData.js";
 import TrackerSettingsWindow from "/script/ui/TrackerSettingsWindow.js";
 import RandomizerOptionsWindow from "/script/ui/RandomizerOptionsWindow.js";
 import StateStorage from "/script/storage/StateStorage.js";
@@ -20,7 +20,7 @@ import "/script/ui/LocationStatus.js";
     }
 
     updateLoadingMessage("apply logger...");
-    if (!!GlobalData.get("version-dev")) {
+    if (!!MemoryStorage.get("version-dev")) {
         Logger.addOutput(document.getElementById("tracker-log"));
         //Logger.addOutput(console);
         EventBus.register(function(event) {

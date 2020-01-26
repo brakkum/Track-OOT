@@ -17,6 +17,7 @@ const TPL = new Template(`
             width: 100%;
             cursor: pointer;
             padding: 5px;
+            color: #ffffff;
         }
         :host(:hover) {
             background-color: var(--main-hover-color, #ffffff32);
@@ -34,19 +35,6 @@ const TPL = new Template(`
         }
         #text {
             flex: 1;
-            color: #ffffff;
-        }
-        #text[data-state="opened"] {
-            color: var(--location-status-opened-color, #000000);
-        }
-        #text[data-state="available"] {
-            color: var(--location-status-available-color, #000000);
-        }
-        #text[data-state="unavailable"] {
-            color: var(--location-status-unavailable-color, #000000);
-        }
-        #text[data-state="possible"] {
-            color: var(--location-status-possible-color, #000000);
         }
         #badge {
             display: inline-flex;
@@ -74,57 +62,12 @@ const TPL = new Template(`
     </div>
 `);
 
-function translate(value) {
-    switch (value) {
-        case 0b100: return "available";
-        case 0b010: return "possible";
-        case 0b001: return "unavailable";
-        default: return "opened";
-    }
-}
-
 export default class ListButton extends HTMLElement {
 
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-        
-        /* event bus */
-        EVENT_BINDER.register(["state", "settings", "logic"], event => {
-            this.update()
-        });
-    }
-
-    async update() {
-        if (!!this.ref) {
-            let val = await Logic.checkLogicList(this.ref);
-            this.shadowRoot.getElementById("text").dataset.state = translate(val);
-        } else {
-            this.shadowRoot.getElementById("text").dataset.state = "";
-        }
-    }
-
-    get ref() {
-        return this.getAttribute('ref');
-    }
-
-    set ref(val) {
-        this.setAttribute('ref', val);
-    }
-
-    static get observedAttributes() {
-        return ['ref'];
-    }
-    
-    attributeChangedCallback(name, oldValue, newValue) {
-        switch (name) {
-            case 'ref':
-                if (oldValue != newValue) {
-                    this.update();
-                }
-            break;
-        }
     }
 
 }
