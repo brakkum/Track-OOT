@@ -128,12 +128,15 @@ class HTMLTrackerLocationList extends Panel {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         this.attributeChangedCallback("", "");
-        this.shadowRoot.getElementById('location-era').addEventListener("change", event => {
-            this.era = event.newValue;
-            MemoryStorage.set("filter.era", this.era);
+        let eraEl = this.shadowRoot.getElementById('location-era');
+        eraEl.addEventListener("change", event => {
+            let active_filter = MemoryStorage.get("active_filter", {});
+            active_filter["filter.era"] = event.newValue;
+            MemoryStorage.set("active_filter", active_filter);
+            this.refresh();
             EventBus.trigger("filter", {
                 ref: "filter.era",
-                value: this.era
+                value: event.newValue
             });
         });
         this.shadowRoot.getElementById('back').addEventListener("click", event => {
@@ -170,8 +173,10 @@ class HTMLTrackerLocationList extends Panel {
         });
         EVENT_BINDER.register("filter", event => {
             if (event.data.ref == "filter.era_active") {
-                this.era = event.data.value;
-                this.shadowRoot.getElementById('location-era').value = this.era;
+                if (eraEl.value != event.data.value) {
+                    eraEl.value = event.data.value;
+                    this.refresh();
+                }
             }
         });
     }
@@ -188,16 +193,8 @@ class HTMLTrackerLocationList extends Panel {
         this.setAttribute('ref', val);
     }
 
-    get era() {
-        return this.getAttribute('era');
-    }
-
-    set era(val) {
-        this.setAttribute('era', val);
-    }
-
     static get observedAttributes() {
-        return ['ref', 'era'];
+        return ['ref'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {

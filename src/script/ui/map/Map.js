@@ -340,12 +340,15 @@ class HTMLTrackerMap extends Panel {
                 value: this.mode
             });
         });
-        this.shadowRoot.getElementById('location-era').addEventListener("change", event => {
-            this.era = event.newValue;
-            MemoryStorage.set("filter.era_active", this.era);
+        let eraEl = this.shadowRoot.getElementById('location-era');
+        eraEl.addEventListener("change", event => {
+            let active_filter = MemoryStorage.get("active_filter", {});
+            active_filter["filter.era"] = event.newValue;
+            MemoryStorage.set("active_filter", active_filter);
+            this.refresh();
             EventBus.trigger("filter", {
-                ref: "filter.era_active",
-                value: this.era
+                ref: "filter.era",
+                value: event.newValue
             });
         });
         this.shadowRoot.getElementById('back').addEventListener("click", event => {
@@ -432,8 +435,10 @@ class HTMLTrackerMap extends Panel {
         });
         EVENT_BINDER.register("filter", event => {
             if (event.data.ref == "filter.era_active") {
-                this.era = event.data.value;
-                this.shadowRoot.getElementById('location-era').value = this.era;
+                if (eraEl.value != event.data.value) {
+                    eraEl.value = event.data.value;
+                    this.refresh();
+                }
             }
         });
     }
@@ -452,14 +457,6 @@ class HTMLTrackerMap extends Panel {
         this.setAttribute('ref', "#");
     }
 
-    get era() {
-        return this.getAttribute('era');
-    }
-
-    set era(val) {
-        this.setAttribute('era', val);
-    }
-
     get mode() {
         return this.getAttribute('mode') || "chests";
     }
@@ -469,7 +466,7 @@ class HTMLTrackerMap extends Panel {
     }
 
     static get observedAttributes() {
-        return ['ref', 'era', 'mode'];
+        return ['ref', 'mode'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
