@@ -33166,9 +33166,12 @@
                                                 ]
                                             },
                                             {
-                                                "type": "number",
-                                                "el": "mixin.can_become_adult",
-                                                "category": "mixin"
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "number",
+                                                    "el": "mixin.is_currently_child",
+                                                    "category": "mixin"
+                                                }
                                             }
                                         ]
                                     }
@@ -35715,9 +35718,12 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "number",
-                                "el": "mixin.can_become_adult",
-                                "category": "mixin"
+                                "type": "not",
+                                "el": {
+                                    "type": "number",
+                                    "el": "mixin.is_currently_child",
+                                    "category": "mixin"
+                                }
                             },
                             {
                                 "type": "number",
