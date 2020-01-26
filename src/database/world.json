@@ -3,7 +3,7 @@
         "category": "entrance",
         "type": "dungeon",
         "access": "logic.entrance.deku",
-        "visible": false,
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -19,7 +19,7 @@
         "category": "entrance",
         "type": "dungeon",
         "access": "logic.entrance.dodongo",
-        "visible": false,
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -35,7 +35,7 @@
         "category": "entrance",
         "type": "dungeon",
         "access": "logic.entrance.jabujabu",
-        "visible": false,
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -51,7 +51,7 @@
         "category": "entrance",
         "type": "dungeon",
         "access": "logic.entrance.temple_forest",
-        "visible": false,
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -67,7 +67,7 @@
         "category": "entrance",
         "type": "dungeon",
         "access": "logic.entrance.temple_fire",
-        "visible": false,
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -83,7 +83,7 @@
         "category": "entrance",
         "type": "dungeon",
         "access": "logic.entrance.temple_water",
-        "visible": false,
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -99,7 +99,7 @@
         "category": "entrance",
         "type": "dungeon",
         "access": "logic.entrance.temple_spirit",
-        "visible": false,
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -115,7 +115,7 @@
         "category": "entrance",
         "type": "dungeon",
         "access": "logic.entrance.temple_shadow",
-        "visible": false,
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -131,7 +131,7 @@
         "category": "entrance",
         "type": "dungeon",
         "access": "logic.entrance.well",
-        "visible": false,
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -147,7 +147,7 @@
         "category": "entrance",
         "type": "dungeon",
         "access": "logic.entrance.ice_cavern",
-        "visible": false,
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -163,7 +163,7 @@
         "category": "entrance",
         "type": "dungeon",
         "access": "logic.entrance.training_grounds",
-        "visible": false,
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
