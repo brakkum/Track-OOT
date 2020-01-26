@@ -57,7 +57,7 @@ function stateChanged(event) {
     if (typeof value == "undefined" || value == "") {
         value = "v";
         if (!!this.ref) {
-            let area = GlobalData.get(`world_lists/${newValue}/lists`);
+            let area = GlobalData.get(`world_lists/${this.ref}/lists`);
             if (area.hasOwnProperty("mq")) {
                 value = "n";
             }

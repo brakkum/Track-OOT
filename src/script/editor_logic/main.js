@@ -300,7 +300,7 @@ const LOGIC_OPERATORS = [
 
     async function removeLogic(event) {
         let key = workingarea.dataset.logicKey;
-        await LogicsStorage.remove(key);
+        await LogicsStorage.delete(key);
         return refreshLogic(event);
     }
 

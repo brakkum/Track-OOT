@@ -44,16 +44,25 @@ function setVersion(data) {
 
 (async function main() {
 
-    updateLoadingMessage("load data...");
-    await GlobalData.load(FILES);
-    setVersion(await FileLoader.json("version.json"));
-    updateLoadingMessage("learn languages...");
-    await I18n.load(await SettingsStorage.get("language", "en_us"));
-    updateLoadingMessage("build logic data...");
-    await Logic.init();
-    updateLoadingMessage("build world data...");
-    await World.init();
-    updateLoadingMessage("poke application...");
-    await $import.importModule("/emcJS/ui/Import.js");
+    try {
+        updateLoadingMessage("load data...");
+        await GlobalData.load(FILES);
+        setVersion(await FileLoader.json("version.json"));
+        updateLoadingMessage("learn languages...");
+        await I18n.load(await SettingsStorage.get("language", "en_us"));
+        updateLoadingMessage("build logic data...");
+        try {
+            await Logic.init();
+        } catch(err) {
+            console.error(err);
+            window.alert(err.message);
+        }
+        updateLoadingMessage("build world data...");
+        await World.init();
+        updateLoadingMessage("poke application...");
+        await $import.importModule("/emcJS/ui/Import.js");
+    } catch(err) {
+        updateLoadingMessage(err.message.replace(/\n/g, "<br>"));
+    }
 
 }());
