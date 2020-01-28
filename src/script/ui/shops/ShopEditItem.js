@@ -96,7 +96,7 @@ export default class HTMLTrackerShopEditItem extends HTMLElement {
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/sold_out.png")`;
                     } else {
                         let img = GlobalData.get("shop_items")[this.ref].image;
-                        this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/${img}")`;
+                        this.shadowRoot.getElementById("image").style.backgroundImage = `url("${img}")`;
                     }
                 }
             break;
@@ -111,7 +111,7 @@ export default class HTMLTrackerShopEditItem extends HTMLElement {
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/sold_out.png")`;
                     } else {
                         let img = GlobalData.get("shop_items")[this.ref].image;
-                        this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/${img}")`;
+                        this.shadowRoot.getElementById("image").style.backgroundImage = `url("${img}")`;
                     }
                 }
             break;

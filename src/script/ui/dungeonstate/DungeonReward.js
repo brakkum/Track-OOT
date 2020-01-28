@@ -128,7 +128,7 @@ class HTMLTrackerDungeonReward extends HTMLElement {
                             if (Array.isArray(j)) {
                                 j = j[0];
                             }
-                            this.append(createOption(i+1, `/images/items/${j}`));
+                            this.append(createOption(i+1, j));
                         }
                         this.value = StateStorage.read(`dungeonRewards.${newValue}`, 0);
                     }

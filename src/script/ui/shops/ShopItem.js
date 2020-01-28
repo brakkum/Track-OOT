@@ -130,7 +130,7 @@ export default class HTMLTrackerShopItem extends HTMLElement {
                     } else {
                         let dta = GlobalData.get("shop_items")[this.ref];
                         if (!!dta) {
-                            this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/${dta.image}")`;
+                            this.shadowRoot.getElementById("image").style.backgroundImage = `url("${dta.image}")`;
                         } else {
                             this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/unknown.svg")`;
                         }
@@ -148,7 +148,7 @@ export default class HTMLTrackerShopItem extends HTMLElement {
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/sold_out.png")`;
                     } else {
                         let img = GlobalData.get("shop_items")[this.ref].image;
-                        this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/${img}")`;
+                        this.shadowRoot.getElementById("image").style.backgroundImage = `url("${img}")`;
                     }
                 }
             break;

@@ -7,11 +7,8 @@ import Dialog from "/emcJS/ui/Dialog.js";
 import "/emcJS/ui/ContextMenu.js";
 import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
-
-const EventBus = new EventBusSubset();
 
 const TPL = new Template(`
     <style>
@@ -99,6 +96,7 @@ const TPL = new Template(`
 
 const REG = new Map();
 const TYPE = new WeakMap();
+const EVENTS = new WeakMap();
 
 function showLogic(ref, title) {
     let l = Logic.getLogicView(ref);
@@ -126,6 +124,7 @@ export default class ListLocation extends HTMLElement {
 
     constructor(type) {
         super();
+        EVENTS.set(this, new EventBusSubset());
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         if (!!type) {
@@ -184,18 +183,19 @@ export default class ListLocation extends HTMLElement {
             textEl.dataset.state = "unavailable";
         }
         /* event bus */
-        EventBus.register(TYPE.get(this), event => {
+        let events = EVENTS.get(this);
+        events.register(TYPE.get(this), event => {
             if (this.ref === event.data.name && this.checked !== event.data.value) {
                 textEl.dataset.checked = event.data.value;
                 this.setCheckValue(event.data.value);
             }
         });
-        EventBus.register("state", event => {
+        events.register("state", event => {
             let value = !!event.data[this.ref];
             textEl.dataset.checked = value;
             this.setCheckValue(value);
         });
-        EventBus.register("logic", event => {
+        events.register("logic", event => {
             if (event.data.hasOwnProperty(this.access)) {
                 if (!!this.access && !!event.data[this.access]) {
                     textEl.dataset.state = "available";
@@ -208,7 +208,7 @@ export default class ListLocation extends HTMLElement {
 
     disconnectedCallback() {
         /* event bus */
-        EventBus.clear();
+        EVENTS.get(this).clear();
     }
 
     get ref() {
@@ -270,7 +270,7 @@ export default class ListLocation extends HTMLElement {
         if (value != oldValue) {
             StateStorage.write(this.ref, value);
             textEl.dataset.checked = value;
-            EventBus.trigger(TYPE.get(this), {
+            EVENTS.get(this).trigger(TYPE.get(this), {
                 name: this.ref,
                 value: value
             });

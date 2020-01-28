@@ -6,6 +6,11 @@
             "both",
             "child",
             "adult"
+        ],
+        "images": [
+            "/images/world/era/both.svg",
+            "/images/world/era/child.svg",
+            "/images/world/era/adult.svg"
         ]
     },
     "filter.time": {
@@ -15,6 +20,11 @@
             "always",
             "day",
             "night"
+        ],
+        "images": [
+            "/images/world/time/always.svg",
+            "/images/world/time/day.svg",
+            "/images/world/time/night.svg"
         ]
     }
 }

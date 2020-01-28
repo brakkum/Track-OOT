@@ -2,10 +2,8 @@ import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import "/emcJS/ui/selection/Option.js";
-import StateStorage from "/script/storage/StateStorage.js";
-import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
+import FilterStorage from "/script/storage/FilterStorage.js";
 
-const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         * {
@@ -14,45 +12,40 @@ const TPL = new Template(`
         }
         :host {
             display: inline-block;
-            width: 40px;
-            height: 40px;
+            width: 20px;
+            height: 20px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+        :host(:not([readonly])),
+        :host([readonly="false"]) {
             cursor: pointer;
         }
         slot {
             width: 100%;
             height: 100%;
         }
-        :not([value]),
-        [value]:not(.active) {
+        ::slotted(:not([value])),
+        ::slotted([value]:not(.active)) {
             display: none !important;
         }
-        [value] {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+        ::slotted([value]) {
             width: 100%;
             height: 100%;
-            color: white;
-            font-size: 1em;
-            text-shadow: -1px 0 1px black, 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black;
-            background-size: contain;
+            min-height: auto;
             background-repeat: no-repeat;
+            background-size: contain;
             background-position: center;
             background-origin: content-box;
-            flex-grow: 0;
-            flex-shrink: 0;
-            min-height: 0;
-            white-space: normal;
-            padding: 0;
-            line-height: 0.7em;
         }
     </style>
-    <emc-option value="n" style="background-image: url('images/dungeontype/undefined.svg')"></emc-option>
-    <emc-option value="v" style="background-image: url('images/dungeontype/vanilla.svg')"></emc-option>
-    <emc-option value="mq" style="background-image: url('images/dungeontype/masterquest.svg')"></emc-option>
+    <slot>
+    </slot>
 `);
 
 function stateChanged(event) {
+    /*
     let value = event.data[`dungeonTypes.${this.ref}`];
     if (typeof value == "undefined" || value == "") {
         value = "v";
@@ -64,15 +57,10 @@ function stateChanged(event) {
         }
     }
     this.value = value;
+    */
 }
 
-function dungeonTypeUpdate(event){
-    if (this.ref === event.data.name && this.value !== event.data.value) {
-        this.value = event.data.value;
-    }
-}
-
-class HTMLTrackerDungeonType extends HTMLElement {
+class FilterButton extends HTMLElement {
 
     constructor() {
         super();
@@ -81,8 +69,7 @@ class HTMLTrackerDungeonType extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        EVENT_BINDER.register("state", stateChanged.bind(this));
-        EVENT_BINDER.register("dungeontype", dungeonTypeUpdate.bind(this));
+        EventBus.register("filter", stateChanged.bind(this));
     }
 
     get ref() {
@@ -118,17 +105,18 @@ class HTMLTrackerDungeonType extends HTMLElement {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    let value = "v";
-                    let readonly = true;
-                    if (!!newValue) {
-                        let area = GlobalData.get(`world_lists/${newValue}/lists`);
-                        if (area.hasOwnProperty("mq")) {
-                            value = StateStorage.read(`dungeonTypes.${newValue}`, "n");
-                            readonly = false;
+                    let data = GlobalData.get(`filter/${this.ref}`);
+                    for (let i in data.values) {
+                        let img = data.images;
+                        if (Array.isArray(img)) {
+                            img = img[i];
                         }
+                        let opt = createOption(i, img, data);
+                        if (data.values[i] == this.value) {
+                            opt.classList.add("active");
+                        }
+                        this.append(opt);
                     }
-                    this.value = value;
-                    this.readonly = readonly;
                 }
             break;
             case 'value':
@@ -148,13 +136,17 @@ class HTMLTrackerDungeonType extends HTMLElement {
 
     next(event) {
         if (!this.readonly) {
-            if (this.value == 'v') {
-                this.value = 'mq';
-            } else {
-                this.value = 'v';
+            let all = this.querySelectorAll("[value]");
+            if (!!all.length) {
+                let opt = this.querySelector(`[value="${this.value}"]`);
+                if (!!opt && !!opt.nextElementSibling) {
+                    this.value = opt.nextElementSibling.getAttribute("value");
+                } else {
+                    this.value = all[0].getAttribute("value");
+                }
             }
-            StateStorage.write(`dungeonTypes.${this.ref}`, this.value);
-            EventBus.trigger("dungeontype", {
+            FilterStorage.write(this.ref, this.value);
+            EventBus.trigger("filter", {
                 name: this.ref,
                 value: this.value
             });
@@ -165,11 +157,19 @@ class HTMLTrackerDungeonType extends HTMLElement {
 
     revert(event) {
         if (!this.readonly) {
-            this.value = "n";
-            StateStorage.write(`dungeonTypes.${this.ref}`, 'n');
-            EventBus.trigger("dungeontype", {
+            let all = this.querySelectorAll("[value]");
+            if (!!all.length) {
+                let opt = this.querySelector(`[value="${this.value}"]`);
+                if (!!opt && !!opt.previousElementSibling) {
+                    this.value = opt.previousElementSibling.getAttribute("value");
+                } else {
+                    this.value = all[all.length-1].getAttribute("value");
+                }
+            }
+            FilterStorage.write(this.ref, this.value);
+            EventBus.trigger("filter", {
                 name: this.ref,
-                value: 'n'
+                value: this.value
             });
         }
         event.preventDefault();
@@ -178,4 +178,4 @@ class HTMLTrackerDungeonType extends HTMLElement {
 
 }
 
-customElements.define('ootrt-dungeontype', HTMLTrackerDungeonType);
+customElements.define('ootrt-filterbutton', FilterButton);

@@ -226,7 +226,7 @@ class HTMLTrackerItem extends HTMLElement {
             if (Array.isArray(img)) {
                 img = img[i];
             }
-            let opt = createOption(i, `/images/items/${img}`, data, max_value);
+            let opt = createOption(i, img, data, max_value);
             if (i == current_value) {
                 opt.classList.add("active");
             }

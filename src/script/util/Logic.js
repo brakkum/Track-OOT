@@ -22,6 +22,8 @@ class TrackerLogic {
 
     constructor() {
         EventBus.register("state", event => {
+            RANDO_LOGIC_PROCESSOR.reset();
+            // TODO add filter back
             RANDO_LOGIC_PROCESSOR.setAll(event.data);
             let res = RANDO_LOGIC_PROCESSOR.execute();
             if (Object.keys(res).length > 0) {
