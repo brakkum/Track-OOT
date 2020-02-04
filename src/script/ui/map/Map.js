@@ -1,5 +1,4 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
-import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
@@ -12,11 +11,14 @@ import "./marker/Entrance.js";
 import "./marker/Location.js";
 import "./marker/Gossipstone.js";
 import "/script/ui/dungeonstate/DungeonType.js";
+import "/script/ui/FilterButton.js";
 
 const ZOOM_MIN = 10;
 const ZOOM_MAX = 200;
 const ZOOM_DEF = 60;
 const ZOOM_SPD = 2;
+
+//TODO save map settings per map
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
@@ -78,7 +80,7 @@ const TPL = new Template(`
             top: -42px;
             height: 40px;
         }
-        .buttons > .button {
+        .buttons > .button-wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -90,7 +92,7 @@ const TPL = new Template(`
             color: var(--navigation-text-color, #000000);
             background: var(--navigation-background-color, #ffffff);
         }
-        .buttons > .button > emc-switchbutton {
+        .buttons > .button-wrapper > .button {
             width: 36px;
             height: 36px;
             padding: 4px;
@@ -185,26 +187,23 @@ const TPL = new Template(`
         <div id="back">(${I18n.translate("back")})</div>
         <div id="map-settings">
             <div class="buttons">
-                <div id="toggle-button" class="button">⇑</div>
-                <div class="button">
-                    <emc-switchbutton value="chests" id="location-mode">
+                <div id="toggle-button" class="button-wrapper">⇑</div>
+                <div class="button-wrapper">
+                    <emc-switchbutton id="location-mode" class="button" value="chests">
                         <emc-option value="chests" style="background-image: url('images/world/icons/chest.svg')"></emc-option>
                         <emc-option value="skulltulas" style="background-image: url('images/world/icons/skulltula.svg')"></emc-option>
                         <emc-option value="gossipstones" style="background-image: url('images/world/icons/gossipstone.svg')"></emc-option>
                     </emc-switchbutton>
                 </div>
                 <!-- dungeon type button
-                <div class="button">
-                    <ootrt-dungeontype value="v" id="location-version" readonly="true" ref="">
+                <div class="button-wrapper">
+                    <ootrt-dungeontype id="location-version" class="button" ref="" value="v" readonly="true">
                     </ootrt-dungeontype>
                 </div>
                 -->
-                <div class="button">
-                    <emc-switchbutton value="" id="location-era">
-                        <emc-option value="" style="background-image: url('images/world/era/both.svg')"></emc-option>
-                        <emc-option value="child" style="background-image: url('images/world/era/child.svg')"></emc-option>
-                        <emc-option value="adult" style="background-image: url('images/world/era/adult.svg')"></emc-option>
-                    </emc-switchbutton>
+                <div class="button-wrapper">
+                    <ootrt-filterbutton id="filter-era" class="button" ref="filter.era">
+                    </ootrt-filterbutton>
                 </div>
             </div>
             <div class="map-options">
@@ -340,16 +339,9 @@ class HTMLTrackerMap extends Panel {
                 value: this.mode
             });
         });
-        let eraEl = this.shadowRoot.getElementById('location-era');
+        let eraEl = this.shadowRoot.getElementById('filter-era');
         eraEl.addEventListener("change", event => {
-            let active_filter = MemoryStorage.get("active_filter", {});
-            active_filter["filter.era"] = event.newValue;
-            MemoryStorage.set("active_filter", active_filter);
             this.refresh();
-            EventBus.trigger("filter", {
-                ref: "filter.era",
-                value: event.newValue
-            });
         });
         this.shadowRoot.getElementById('back').addEventListener("click", event => {
             this.ref = ""
@@ -431,14 +423,6 @@ class HTMLTrackerMap extends Panel {
         EVENT_BINDER.register("dungeontype", event => {
             if (this.ref === event.data.name) {
                 this.refresh();
-            }
-        });
-        EVENT_BINDER.register("filter", event => {
-            if (event.data.ref == "filter.era_active") {
-                if (eraEl.value != event.data.value) {
-                    eraEl.value = event.data.value;
-                    this.refresh();
-                }
             }
         });
     }

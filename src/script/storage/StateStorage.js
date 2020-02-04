@@ -173,6 +173,22 @@ class StateStorage {
 
     reset() {
         state = StateConverter.createEmptyState();
+
+        let options = GlobalData.get("randomizer_options");
+        for (let i in options) {
+            for (let j in options[i]) {
+                let v = options[i][j].default;
+                if (Array.isArray(v)) {
+                    v = new Set(v);
+                    options[i][j].values.forEach(el => {
+                        state.data[el] = v.has(el);
+                    });
+                } else {
+                    state.data[j] = v;
+                }
+            }
+        }
+
         LocalStorage.set(PERSISTANCE_NAME, state);
         LocalStorage.set(STATE_DIRTY, false);
         document.title = "Track-OOT - new state";

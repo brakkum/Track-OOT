@@ -1,5 +1,4 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
-import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
@@ -16,6 +15,7 @@ import "./listitems/Entrance.js";
 import "./listitems/Location.js";
 import "./listitems/Gossipstone.js";
 import "/script/ui/dungeonstate/DungeonType.js";
+import "/script/ui/FilterButton.js";
 
 const SettingsStorage = new TrackerStorage('settings');
 
@@ -49,7 +49,7 @@ const TPL = new Template(`
             justify-content: flex-start;
             align-items: center;
         }
-        #title > emc-switchbutton {
+        #title > .button {
             width: 38px;
             height: 38px;
             padding: 4px;
@@ -98,13 +98,10 @@ const TPL = new Template(`
     </style>
     <div id="title">
         <div id="title-text">${I18n.translate("hyrule")}</div>
-        <ootrt-dungeontype value="v" id="location-version" readonly="true" ref="">
+        <ootrt-dungeontype id="location-version" class="button" ref="" value="v" readonly="true">
         </ootrt-dungeontype>
-        <emc-switchbutton value="" id="location-era">
-            <emc-option value="" style="background-image: url('images/world/era/both.svg')"></emc-option>
-            <emc-option value="child" style="background-image: url('images/world/era/child.svg')"></emc-option>
-            <emc-option value="adult" style="background-image: url('images/world/era/adult.svg')"></emc-option>
-        </emc-switchbutton>
+        <ootrt-filterbutton id="filter-era" class="button" ref="filter.era">
+        </ootrt-filterbutton>
     </div>
     <div id="body">
         <ootrt-list-button id="back">(${I18n.translate("back")})</ootrt-list-button>
@@ -128,16 +125,9 @@ class HTMLTrackerLocationList extends Panel {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         this.attributeChangedCallback("", "");
-        let eraEl = this.shadowRoot.getElementById('location-era');
+        let eraEl = this.shadowRoot.getElementById('filter-era');
         eraEl.addEventListener("change", event => {
-            let active_filter = MemoryStorage.get("active_filter", {});
-            active_filter["filter.era"] = event.newValue;
-            MemoryStorage.set("active_filter", active_filter);
             this.refresh();
-            EventBus.trigger("filter", {
-                ref: "filter.era",
-                value: event.newValue
-            });
         });
         this.shadowRoot.getElementById('back').addEventListener("click", event => {
             this.ref = ""
@@ -169,14 +159,6 @@ class HTMLTrackerLocationList extends Panel {
         EVENT_BINDER.register("dungeontype", event => {
             if (this.ref === event.data.name) {
                 this.refresh();
-            }
-        });
-        EVENT_BINDER.register("filter", event => {
-            if (event.data.ref == "filter.era_active") {
-                if (eraEl.value != event.data.value) {
-                    eraEl.value = event.data.value;
-                    this.refresh();
-                }
             }
         });
     }

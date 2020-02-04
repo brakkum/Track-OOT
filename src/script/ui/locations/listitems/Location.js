@@ -7,6 +7,7 @@ import Dialog from "/emcJS/ui/Dialog.js";
 import "/emcJS/ui/ContextMenu.js";
 import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
+import LogicViewer from "/script/ui/LogicViewer.js";
 import Logic from "/script/util/Logic.js";
 import I18n from "/script/util/I18n.js";
 
@@ -98,28 +99,6 @@ const REG = new Map();
 const TYPE = new WeakMap();
 const EVENTS = new WeakMap();
 
-function showLogic(ref, title) {
-    let l = Logic.getLogicView(ref);
-    if (!!l) {
-        let d = new Dialog({
-            title: I18n.translate(title),
-            submit: "OK"
-        });
-        d.value = ref;
-        d.append(l);
-        d.show();
-    }
-}
-
-async function printLogic(ref) {
-    let svg = Logic.getLogicSVG(ref);
-    let png = await Helper.svg2png(svg);
-    let svg_win = window.open("", "_blank", "menubar=no,location=no,resizable=yes,scrollbars=yes,status=no");
-    let img = document.createElement("img");
-    img.src = png;
-    svg_win.document.body.append(img);
-}
-
 export default class ListLocation extends HTMLElement {
 
     constructor(type) {
@@ -164,10 +143,11 @@ export default class ListLocation extends HTMLElement {
             return false;
         });
         this.shadowRoot.getElementById("menu-logic").addEventListener("click", event => {
-            showLogic(this.access, this.ref);
+            let title = I18n.translate(this.ref);
+            LogicViewer.show(this.access, title);
         });
         this.shadowRoot.getElementById("menu-logic-image").addEventListener("click", event => {
-            printLogic(this.access);
+            LogicViewer.printSVG(this.access);
         });
 
     }

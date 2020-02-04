@@ -2,6 +2,7 @@ import GlobalData from "/emcJS/storage/GlobalData.js";
 import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import LogicCompiler from "/emcJS/util/logic/Compiler.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
+import FilterStorage from "/script/storage/FilterStorage.js";
 
 import ListArea from "/script/ui/locations/listitems/Area.js";
 import ListEntrance from "/script/ui/locations/listitems/Entrance.js";
@@ -97,7 +98,7 @@ class WorldEntry {
     }
 
     filtered() {
-        let activeFilter = MemoryStorage.get("active_filter", {});
+        let activeFilter = FilterStorage.getAll();
         let values = FILTER.get(this);
         for (let filter in activeFilter) {
             let value = activeFilter[filter];

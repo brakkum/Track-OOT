@@ -44,22 +44,6 @@ const TPL = new Template(`
     </slot>
 `);
 
-function stateChanged(event) {
-    /*
-    let value = event.data[`dungeonTypes.${this.ref}`];
-    if (typeof value == "undefined" || value == "") {
-        value = "v";
-        if (!!this.ref) {
-            let area = GlobalData.get(`world_lists/${this.ref}/lists`);
-            if (area.hasOwnProperty("mq")) {
-                value = "n";
-            }
-        }
-    }
-    this.value = value;
-    */
-}
-
 class FilterButton extends HTMLElement {
 
     constructor() {
@@ -69,7 +53,11 @@ class FilterButton extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        EventBus.register("filter", stateChanged.bind(this));
+        EventBus.register("filter", event => {
+            if (event.data.name == this.ref) {
+                this.value = event.data.value;
+            }
+        });
     }
 
     get ref() {
@@ -106,12 +94,13 @@ class FilterButton extends HTMLElement {
             case 'ref':
                 if (oldValue != newValue) {
                     let data = GlobalData.get(`filter/${this.ref}`);
+                    this.value = FilterStorage.get(this.ref, data.default);
                     for (let i in data.values) {
                         let img = data.images;
                         if (Array.isArray(img)) {
                             img = img[i];
                         }
-                        let opt = createOption(i, img, data);
+                        let opt = createOption(data.values[i], img);
                         if (data.values[i] == this.value) {
                             opt.classList.add("active");
                         }
@@ -121,14 +110,18 @@ class FilterButton extends HTMLElement {
             break;
             case 'value':
                 if (oldValue != newValue) {
-                    let oe = this.shadowRoot.querySelector(`.active`);
+                    let oe = this.querySelector(`.active`);
                     if (!!oe) {
                         oe.classList.remove("active");
                     }
-                    let ne = this.shadowRoot.querySelector(`[value="${newValue}"]`);
+                    let ne = this.querySelector(`[value="${newValue}"]`);
                     if (!!ne) {
                         ne.classList.add("active");
                     }
+                    let event = new Event('change');
+                    event.oldValue = oldValue;
+                    event.value = newValue;
+                    this.dispatchEvent(event);
                 }
             break;
         }
@@ -137,15 +130,17 @@ class FilterButton extends HTMLElement {
     next(event) {
         if (!this.readonly) {
             let all = this.querySelectorAll("[value]");
+            let value = this.value;
             if (!!all.length) {
                 let opt = this.querySelector(`[value="${this.value}"]`);
                 if (!!opt && !!opt.nextElementSibling) {
-                    this.value = opt.nextElementSibling.getAttribute("value");
+                    value = opt.nextElementSibling.getAttribute("value");
                 } else {
-                    this.value = all[0].getAttribute("value");
+                    value = all[0].getAttribute("value");
                 }
             }
-            FilterStorage.write(this.ref, this.value);
+            FilterStorage.set(this.ref, value);
+            this.value = value;
             EventBus.trigger("filter", {
                 name: this.ref,
                 value: this.value
@@ -158,15 +153,17 @@ class FilterButton extends HTMLElement {
     revert(event) {
         if (!this.readonly) {
             let all = this.querySelectorAll("[value]");
+            let value = this.value;
             if (!!all.length) {
                 let opt = this.querySelector(`[value="${this.value}"]`);
                 if (!!opt && !!opt.previousElementSibling) {
-                    this.value = opt.previousElementSibling.getAttribute("value");
+                    value = opt.previousElementSibling.getAttribute("value");
                 } else {
-                    this.value = all[all.length-1].getAttribute("value");
+                    value = all[all.length-1].getAttribute("value");
                 }
             }
-            FilterStorage.write(this.ref, this.value);
+            FilterStorage.set(this.ref, this.value);
+            this.value = value;
             EventBus.trigger("filter", {
                 name: this.ref,
                 value: this.value
@@ -179,3 +176,10 @@ class FilterButton extends HTMLElement {
 }
 
 customElements.define('ootrt-filterbutton', FilterButton);
+
+function createOption(value, img) {
+    let opt = document.createElement('emc-option');
+    opt.value = value;
+    opt.style.backgroundImage = `url("${img}"`;
+    return opt;
+}
