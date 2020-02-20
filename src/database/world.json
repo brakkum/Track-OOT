@@ -178,6 +178,7 @@
     "area.kokiri": {
         "category": "area",
         "type": "area",
+        "access": "logic.area.kokiri",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -484,6 +485,7 @@
     "area.desert": {
         "category": "area",
         "type": "area",
+        "access": "logic.area.desert",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -713,6 +715,7 @@
     "area.river": {
         "category": "area",
         "type": "area",
+        "access": "logic.area.river",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -1025,6 +1028,7 @@
     "area.hyrule_field": {
         "category": "area",
         "type": "area",
+        "access": "logic.area.hyrule_field",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -1379,6 +1383,7 @@
     "area.gerudo_valley": {
         "category": "area",
         "type": "area",
+        "access": "logic.area.gerudo_valley",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -1627,6 +1632,7 @@
     "area.lake": {
         "category": "area",
         "type": "area",
+        "access": "logic.area.lake",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -1971,6 +1977,7 @@
     "area.lonlon": {
         "category": "area",
         "type": "area",
+        "access": "logic.area.lonlon",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -2295,6 +2302,7 @@
     "area.gerudo": {
         "category": "area",
         "type": "area",
+        "access": "logic.area.gerudo",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -2535,6 +2543,7 @@
     "area.woods": {
         "category": "area",
         "type": "area",
+        "access": "logic.area.woods",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -3061,6 +3070,7 @@
     "area.castle_town": {
         "category": "area",
         "type": "area",
+        "access": "logic.area.castle_town",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -3668,6 +3678,7 @@
     "area.kakariko": {
         "category": "area",
         "type": "area",
+        "access": "logic.area.kakariko",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -4422,6 +4433,7 @@
     "area.mountain": {
         "category": "area",
         "type": "area",
+        "access": "logic.area.mountain",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -4948,6 +4960,7 @@
     "area.goron": {
         "category": "area",
         "type": "area",
+        "access": "logic.area.goron",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -5228,6 +5241,7 @@
     "area.zoras": {
         "category": "area",
         "type": "area",
+        "access": "logic.area.zoras",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -5499,6 +5513,7 @@
     "area.well": {
         "category": "area",
         "type": "dungeon",
+        "access": "logic.area.well",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -5914,6 +5929,7 @@
     "area.ice_cavern": {
         "category": "area",
         "type": "dungeon",
+        "access": "logic.area.ice_cavern",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -6185,6 +6201,7 @@
     "area.training_grounds": {
         "category": "area",
         "type": "dungeon",
+        "access": "logic.area.training_grounds",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -6824,6 +6841,7 @@
     "area.deku": {
         "category": "area",
         "type": "dungeon",
+        "access": "logic.area.deku",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -7226,6 +7244,7 @@
     "area.dodongo": {
         "category": "area",
         "type": "dungeon",
+        "access": "logic.area.dodongo",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -7809,6 +7828,7 @@
     "area.jabujabu": {
         "category": "area",
         "type": "dungeon",
+        "access": "logic.area.jabujabu",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -8246,6 +8266,7 @@
     "area.temple_forest": {
         "category": "area",
         "type": "dungeon",
+        "access": "logic.area.temple_forest",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -8853,6 +8874,7 @@
     "area.temple_fire": {
         "category": "area",
         "type": "dungeon",
+        "access": "logic.area.temple_fire",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -9476,6 +9498,7 @@
     "area.temple_water": {
         "category": "area",
         "type": "dungeon",
+        "access": "logic.area.temple_water",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -9939,6 +9962,7 @@
     "area.temple_shadow": {
         "category": "area",
         "type": "dungeon",
+        "access": "logic.area.temple_shadow",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -10738,6 +10762,7 @@
     "area.temple_spirit": {
         "category": "area",
         "type": "dungeon",
+        "access": "logic.area.temple_spirit",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -11601,6 +11626,7 @@
     "area.castle_ganon": {
         "category": "area",
         "type": "dungeon",
+        "access": "logic.area.castle_ganon",
         "visible": true,
         "filter": {
             "filter.era": {

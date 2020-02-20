@@ -465,11 +465,8 @@ class HTMLTrackerMap extends Panel {
     async refresh() {
         let dType = "v";//this.shadowRoot.getElementById("location-version").value;
         this.innerHTML = "";
-        if (dType == "n") {
-
-            // TODO
-
-        } else {
+        let area = World.getLocation(this.ref);
+        if (!area || area.visible()) {
             let data = GlobalData.get(`world_lists/${this.ref}`);
             if (!!data) {
                 // switch map/minimap background
@@ -480,26 +477,38 @@ class HTMLTrackerMap extends Panel {
                 let minimap = this.shadowRoot.getElementById('map-overview');
                 minimap.style.backgroundImage = `url("/images/world/maps/${data.background}")`;
                 // fill map
-                data.lists[dType].forEach(record => {
-                    if (this.mode == "gossipstones") {
-                        // LEGACY
-                        if (record.type == "area" || record.type == "entrance") {
-                            return;
-                        }
-                    }
-                    let loc = World.getLocation(record.id);
-                    if (!!loc && loc.visible()) {
-                        let el = loc.mapMarker;
-                        if (!!el.dataset.mode && el.dataset.mode != this.mode) {
+                if (dType == "n") {
+
+                    let data_v = data.lists.v;
+                    let data_m = data.lists.mq;
+                    let res_v = ListLogic.check(data_v.map(v=>v.id).filter(filterUnusedChecks));
+                    let res_m = ListLogic.check(data_m.map(v=>v.id).filter(filterUnusedChecks));
+                    // TODO
+                    //btn_vanilla.className = VALUE_STATES[res_v.value];
+                    //btn_masterquest.className = VALUE_STATES[res_m.value];
+
+                } else {
+                    data.lists[dType].forEach(record => {
+                        if (this.mode == "gossipstones") {
                             // LEGACY
-                            return;
+                            if (record.type == "area" || record.type == "entrance") {
+                                return;
+                            }
                         }
-                        el.left = record.x;
-                        el.top = record.y;
-                        el.tooltip = calculateTooltipPosition(record.x, record.y, data.width, data.height);
-                        this.append(el);
-                    }
-                });
+                        let loc = World.getLocation(record.id);
+                        if (!!loc && loc.visible()) {
+                            let el = loc.mapMarker;
+                            if (!!el.dataset.mode && el.dataset.mode != this.mode) {
+                                // LEGACY
+                                return;
+                            }
+                            el.left = record.x;
+                            el.top = record.y;
+                            el.tooltip = calculateTooltipPosition(record.x, record.y, data.width, data.height);
+                            this.append(el);
+                        }
+                    });
+                }
             }
         }
     }

@@ -17,7 +17,8 @@ Application:    Track-OOT
 ### IMPROVED LOGIC
 - logic is now way faster than before
     - use jit optimizations to achieve minimum execution time
-- additionally limit the logic executions somewhat
+- additionally limit the logic executions somewhat (prevent ace)
+- make everything usable in logic
 
 ### REWORKED DATA STRUCTURE
 - almost everything inside the data structure has changed
