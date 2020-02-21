@@ -16,6 +16,9 @@ const TPL = new Template(`
         #value:empty {
             display: none;
         }
+        .body.blank {
+            font-style: italic;
+        }
     </style>
     <div id="header" class="header">${TPL_CAPTION}</div>
     <div id="ref" class="body"></div>
@@ -55,7 +58,11 @@ export default class LiteralCustom extends AbstractElement {
     }
 
     set value(val) {
-        this.setAttribute('value', val);
+        if (typeof val != "undefined" && val != null) {
+            this.setAttribute('value', val);
+        } else {
+            this.removeAttribute('value');
+        }
     }
 
     calculate(state = {}) {
@@ -71,7 +78,7 @@ export default class LiteralCustom extends AbstractElement {
 
     loadLogic(logic) {
         this.ref = logic.el;
-        this.value = logic.value || "";
+        this.value = logic.value;
         this.category = logic.category;
     }
 
@@ -108,8 +115,14 @@ export default class LiteralCustom extends AbstractElement {
             case 'ref':
             case 'value':
                 if (oldValue != newValue) {
-                    if (!!newValue) {
-                        this.shadowRoot.getElementById(name).innerHTML = I18n.translate(newValue);
+                    if (typeof newValue == "string") {
+                        if (!!newValue) {
+                            this.shadowRoot.getElementById(name).innerHTML = I18n.translate(newValue);
+                            this.shadowRoot.getElementById(name).classList.remove("blank");
+                        } else {
+                            this.shadowRoot.getElementById(name).innerHTML = I18n.translate("[blank]");
+                            this.shadowRoot.getElementById(name).classList.add("blank");
+                        }
                     } else {
                         this.shadowRoot.getElementById(name).innerHTML = "";
                     }

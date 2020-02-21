@@ -27,7 +27,7 @@ class ListUtil {
         let world = GlobalData.get("world");
         let world_lists = GlobalData.get("world_lists");
         let items = GlobalData.get("items");
-        let settings = GlobalData.get("settings");
+        let randomizer_options = GlobalData.get("randomizer_options");
         let filter = GlobalData.get("filter");
         let logic = GlobalData.get("logic");
         let custom_logic = await LogicsStorage.getAll();
@@ -52,8 +52,8 @@ class ListUtil {
         // OPERATORS
         operatorContainer.append(createDefaultOperatorCategory());
         operatorContainer.append(createOperatorCategory(items, "item"));
-        operatorContainer.append(createOperatorCategory(settings.options, "option"));
-        operatorContainer.append(createOperatorCategory(settings.skips, "skip"));
+        operatorContainer.append(createOperatorCategory(randomizer_options.options, "option"));
+        operatorContainer.append(createOperatorCategory(randomizer_options.skips, "skip"));
         operatorContainer.append(createOperatorCategory(filter, "filter"));
         for (let cat of createOperatorWorldCategories(world)) {
             operatorContainer.append(cat);
@@ -74,33 +74,6 @@ export default new ListUtil();
 
 // OPERATORS
 // -------------------
-function createGenericOperator(name, data, category) {
-    if (data.type === "list") {
-        for (let j of data.values) {
-            let el = document.createElement("tracker-logic-custom");
-            el.ref = j;
-            el.category = category;
-            el.template = "true";
-            return el;
-        }
-    } else if (data.type === "choice") {
-        for (let j of data.values) {
-            let el = document.createElement("tracker-logic-custom");
-            el.ref = name;
-            el.value = j;
-            el.category = category;
-            el.template = "true";
-            return el;
-        }
-    } else {
-        let el = document.createElement("tracker-logic-custom");
-        el.ref = name;
-        el.category = category;
-        el.template = "true";
-        return el;
-    }
-}
-
 function createDefaultOperatorCategory() {
     let cnt = document.createElement("emc-collapsepanel");
     cnt.caption = I18n.translate("default");
@@ -117,7 +90,31 @@ function createOperatorCategory(data, ref) {
     cnt.caption = I18n.translate(`${ref}`);
     for (let i in data) {
         let opt = data[i];
-        cnt.append(createGenericOperator(i, opt, ref));
+        if (!!opt.type && opt.type.startsWith("-")) continue;
+        if (opt.type === "list") {
+            for (let j of opt.values) {
+                let el = document.createElement("tracker-logic-custom");
+                el.ref = j;
+                el.category = ref;
+                el.template = "true";
+                cnt.append(el);
+            }
+        } else if (opt.type === "choice") {
+            for (let j of opt.values) {
+                let el = document.createElement("tracker-logic-custom");
+                el.ref = i;
+                el.value = j;
+                el.category = ref;
+                el.template = "true";
+                cnt.append(el);
+            }
+        } else {
+            let el = document.createElement("tracker-logic-custom");
+            el.ref = i;
+            el.category = ref;
+            el.template = "true";
+            cnt.append(el);
+        }
     }
     return cnt;
 }
@@ -134,7 +131,7 @@ function createOperatorWorldCategories(world) {
     for (let name in world) {
         let ref = world[name];
         let el = document.createElement("tracker-logic-custom");
-        el.ref = ref.access;
+        el.ref = ref.category == "location" ? name : ref.access;
         el.category = ref.category;
         el.template = "true";
         els[ref.category].push(el);
