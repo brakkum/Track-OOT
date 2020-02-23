@@ -204,8 +204,8 @@ class HTMLTrackerLocationList extends Panel {
                 if (dType == "n") {
                     let data_v = data.lists.v;
                     let data_m = data.lists.mq;
-                    let res_v = ListLogic.check(data_v.map(v=>v.id).filter(filterUnusedChecks));
-                    let res_m = ListLogic.check(data_m.map(v=>v.id).filter(filterUnusedChecks));
+                    let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
+                    let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                     btn_vanilla.className = VALUE_STATES[res_v.value];
                     btn_masterquest.className = VALUE_STATES[res_m.value];
                 } else {
@@ -233,8 +233,8 @@ class HTMLTrackerLocationList extends Panel {
             if (dType == "n") {
                 let data_v = GlobalData.get(`world_lists/${this.ref}/lists/v`);
                 let data_m = GlobalData.get(`world_lists/${this.ref}/lists/mq`);
-                let res_v = ListLogic.check(data_v.map(v=>v.id).filter(filterUnusedChecks));
-                let res_m = ListLogic.check(data_m.map(v=>v.id).filter(filterUnusedChecks));
+                let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
+                let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
                     header_value = Math.min(res_v.value, res_m.value);
                 } else {
@@ -242,7 +242,7 @@ class HTMLTrackerLocationList extends Panel {
                 }
             } else {
                 let data = GlobalData.get(`world_lists/${this.ref}/lists/${dType}`);
-                let res = ListLogic.check(data.map(v=>v.id).filter(filterUnusedChecks));
+                let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 header_value = res.value;
             }
             this.shadowRoot.querySelector('#title').className = VALUE_STATES[header_value];
@@ -253,8 +253,3 @@ class HTMLTrackerLocationList extends Panel {
 
 Panel.registerReference("location-list", HTMLTrackerLocationList);
 customElements.define('ootrt-locationlist', HTMLTrackerLocationList);
-
-function filterUnusedChecks(check) {
-    let loc = World.getLocation(check);
-    return !!loc && loc.visible();
-}

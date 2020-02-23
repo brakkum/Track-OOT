@@ -40,6 +40,7 @@ Application:    Track-OOT
 - added entrance icons
 - added area icons
 - split rom-settings and tracker-settings into seperate dialogs
+- logic editor now supports filter by search value
 
 ---
 

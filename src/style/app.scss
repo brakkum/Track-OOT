@@ -184,34 +184,52 @@ emc-choiceselect {
     grid-column-gap: 5px;
     grid-row-gap: 5px;
 
-    #logics {
-        position: relative;
+    #logics-panel {
         grid-area: logics;
-        border: solid 2px #222;
-        border-color: #777;
-    }
-    #workingarea-panel {
-        grid-area: workingarea;
-        background-color: #222;
 
-        #workingarea {
-            display: contents;
+        #logics {
+            border: none;
+            height: 100%;
+            --list-color-back: #000;
+            --list-color-border: #777;
+            --list-color-hover: #000;
+            --list-color-front: #fff;
         }
     }
+
+    #workingarea-panel {
+        grid-area: workingarea;
+
+        #workingarea {
+            height: 100%;
+        }
+    }
+
     #clipboard-panel {
         grid-area: clipboard;
-        background-color: #222;
 
         #clipboard {
             display: contents;
         }
     }
+
     #trashcan {
         grid-area: trashcan;
     }
-    #elements {
+
+    #elements-panel {
         grid-area: elements;
+
+        #elements {
+            border: none;
+            height: 100%;
+            --list-color-back: #000;
+            --list-color-border: #777;
+            --list-color-hover: #000;
+            --list-color-front: #fff;
+        }
     }
+
     .logic-location {
         border: solid 1px #fff;
         background-color: #000;

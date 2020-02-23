@@ -3,7 +3,7 @@ import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import "/emcJS/ui/selection/Option.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import Logic from "/script/util/Logic.js";
+import ListLogic from "/script/util/ListLogic.js";
 
 const TPL = new Template(`
     <style>
@@ -14,86 +14,64 @@ const TPL = new Template(`
         }
     </style>
     <div class="state">
-        chests <span id="chests-done">#</span> done / <span id="chests-available">#</span> avail / <span id="chests-missing">#</span> miss
-    </div>
-    <div class="state">
-        skulltulas <span id="skulltulas-done">#</span> done / <span id="skulltulas-available">#</span> avail / <span id="skulltulas-missing">#</span> miss
+        <span id="locations-done">#</span> done / <span id="locations-available">#</span> avail / <span id="locations-missing">#</span> miss
     </div>
 `);
 
-function canGet(name, category, dType) {
-    let list = GlobalData.get("locations")[name][`${category}_${dType}`];
-    let res = {
-        done: 0,
-        access: 0,
-        open: 0
-    };
-    for (let i in list) {
-        if (!list[i].mode || StateStorage.read(`options.${list[i].mode}`, false)) {
-            if (!StateStorage.read(`${category}.${i}`, 0)) {
-                if (Logic.getValue(category, i)) {
-                    res.access++;
-                }
-                res.open++;
-            } else {
-                res.done++;
-            }
-        }
-    }
-    return res;
+function filterGossipstones(check) {
+    return GlobalData.get(`world/${check.id}/type`) != "gossipstone";
 }
 
-function updateStates(doneEl, availEl, missEl, type) {
+function updateStates(doneEl, availEl, missEl) {
     let access_min = 0;
     let access_max = 0;
-    let open_min = 0;
-    let open_max = 0;
+    let todo_min = 0;
+    let todo_max = 0;
     let done = 0;
-    let data = GlobalData.get("locations");
+    let data = GlobalData.get("world_lists");
     if (!!data) {
         Object.keys(data).forEach(name => {
-            let buff = GlobalData.get("locations")[name];
-            if (!buff.mode || StateStorage.read(`options.${buff.mode}`, false)) {
-                let dType = StateStorage.read(`dungeonTypes.${name}`, buff.hasmq ? "n" : "v");
-                if (dType == "n") {
-                    let cv = canGet(name, type, "v");
-                    let cm = canGet(name, type, "mq");
-                    if (cv.access < cm.access) {
-                        access_min += cv.access;
-                        access_max += cm.access;
-                    } else {
-                        access_min += cm.access;
-                        access_max += cv.access;
-                    }
-                    if (cv.open < cm.open) {
-                        open_min += cv.open;
-                        open_max += cm.open;
-                    } else {
-                        open_min += cm.open;
-                        open_max += cv.open;
-                    }
-                    done += cv.done;
-                    done += cm.done;
+            if (name == "#") return;
+            let buff = data[name];
+            let dType = StateStorage.read(`dungeonTypes.${name}`, buff.lists.hasOwnProperty("mq") ? "n" : "v");
+            if (dType == "n") {
+                let cv = ListLogic.check(buff.lists.v.filter(filterGossipstones).filter(ListLogic.filterUnusedChecks));
+                let cm = ListLogic.check(buff.lists.mq.filter(filterGossipstones).filter(ListLogic.filterUnusedChecks));
+                if (cv.reachable < cm.reachable) {
+                    access_min += cv.reachable;
+                    access_max += cm.reachable;
                 } else {
-                    let c = canGet(name, type, dType);
-                    access_min += c.access;
-                    access_max += c.access;
-                    open_min += c.open;
-                    open_max += c.open;
-                    done += c.done;
+                    access_min += cm.reachable;
+                    access_max += cv.reachable;
                 }
+                if (cv.unopened < cm.unopened) {
+                    todo_min += cv.unopened;
+                    todo_max += cm.unopened;
+                } else {
+                    todo_min += cm.unopened;
+                    todo_max += cv.unopened;
+                }
+                done += cv.done;
+                done += cm.done;
+            } else {
+                let c = ListLogic.check(buff.lists[dType].filter(filterGossipstones).filter(ListLogic.filterUnusedChecks));
+                access_min += c.reachable;
+                access_max += c.reachable;
+                todo_min += c.unopened;
+                todo_max += c.unopened;
+                done += c.done;
             }
         });
     }
     if (access_min == access_max) {
         availEl.innerHTML = access_min;
     } else {
-        availEl.innerHTML = `(${access_min} - ${access_max})`;
+        availEl.innerHTML = `[${access_min}..${access_max}]`;
     }
-    if (open_min == open_max) {
-        missEl.innerHTML = open_min;
+    if (todo_min == todo_max) {
+        missEl.innerHTML = todo_min;
     } else {
-        missEl.innerHTML = `(${open_min} - ${open_max})`;
+        missEl.innerHTML = `[${todo_min}..${todo_max}]`;
     }
     doneEl.innerHTML = done;
 }
@@ -104,29 +82,17 @@ class HTMLLocationState extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-        let chestsDone = this.shadowRoot.getElementById("chests-done");
-        let chestsAvail = this.shadowRoot.getElementById("chests-available");
-        let chestsMiss = this.shadowRoot.getElementById("chests-missing");
-        let skulltulasDone = this.shadowRoot.getElementById("skulltulas-done");
-        let skulltulasAvail = this.shadowRoot.getElementById("skulltulas-available");
-        let skulltulasMiss = this.shadowRoot.getElementById("skulltulas-missing");
-        updateStates(chestsDone, chestsAvail, chestsMiss, "chests");
-        updateStates(skulltulasDone, skulltulasAvail, skulltulasMiss, "skulltulas");
+        let locationsDone = this.shadowRoot.getElementById("locations-done");
+        let locationsAvail = this.shadowRoot.getElementById("locations-available");
+        let locationsMiss = this.shadowRoot.getElementById("locations-missing");
+        updateStates(locationsDone, locationsAvail, locationsMiss, "locations");
         /* event bus */
         EventBus.register([
             "logic",
-            "state",
-            "settings",
-            "dungeontype"
+            "state_change",
+            "settings"
         ], () => {
-            updateStates(chestsDone, chestsAvail, chestsMiss, "chests");
-            updateStates(skulltulasDone, skulltulasAvail, skulltulasMiss, "skulltulas");
-        });
-        EventBus.register("chest", () => {
-            updateStates(chestsDone, chestsAvail, chestsMiss, "chests");
-        });
-        EventBus.register("skulltula", () => {
-            updateStates(skulltulasDone, skulltulasAvail, skulltulasMiss, "skulltulas");
+            updateStates(locationsDone, locationsAvail, locationsMiss);
         });
     }
 

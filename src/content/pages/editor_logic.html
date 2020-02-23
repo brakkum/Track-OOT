@@ -39,15 +39,21 @@
     </nav>
     <div id="editor-content" class="content">
         <div id="logic-board">
-            <emc-captionpanel caption="logics" id="logics"></emc-captionpanel>
+            <emc-captionpanel id="logics-panel" caption="logics">
+                <emc-filteredlist id="logics"></emc-filteredlist>
+            </emc-captionpanel>
             <emc-captionpanel caption="logic editor" id="workingarea-panel">
-                <emc-logiceditor-workingarea id="workingarea" visualize="true"></emc-logiceditor-workingarea>
+                <emc-logiceditor-workingarea id="workingarea" visualize="true">
+                </emc-logiceditor-workingarea>
             </emc-captionpanel>
             <emc-captionpanel caption="clipboard" id="clipboard-panel">
-                <emc-logiceditor-clipboard id="clipboard"></emc-logiceditor-clipboard>
+                <emc-logiceditor-clipboard id="clipboard">
+                </emc-logiceditor-clipboard>
             </emc-captionpanel>
-            <emc-logiceditor-trashcan id="trashcan"></emc-logiceditor-trashcan>
-            <emc-captionpanel caption="elements" id="elements">
+            <emc-logiceditor-trashcan id="trashcan">
+            </emc-logiceditor-trashcan>
+            <emc-captionpanel caption="elements" id="elements-panel">
+                <emc-filteredlist id="elements"></emc-filteredlist>
             </emc-captionpanel>
         </div>
     </div>

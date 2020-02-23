@@ -150,8 +150,8 @@ export default class MapArea extends HTMLElement {
             if (dType == "n") {
                 let data_v = GlobalData.get(`world_lists/${this.ref}/lists/v`);
                 let data_m = GlobalData.get(`world_lists/${this.ref}/lists/mq`);
-                let res_v = ListLogic.check(data_v.map(v=>v.id).filter(filterUnusedChecks));
-                let res_m = ListLogic.check(data_m.map(v=>v.id).filter(filterUnusedChecks));
+                let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
+                let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
                     this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[Math.min(res_v.value, res_m.value)];
                 } else {
@@ -160,7 +160,7 @@ export default class MapArea extends HTMLElement {
                 this.shadowRoot.getElementById("marker").innerHTML = "";
             } else {
                 let data = GlobalData.get(`world_lists/${this.ref}/lists/${dType}`);
-                let res = ListLogic.check(data.map(v=>v.id).filter(filterUnusedChecks));
+                let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[res.value];
                 if (res.value > 1) {
                     this.shadowRoot.getElementById("marker").innerHTML = res.reachable;
@@ -257,8 +257,3 @@ export default class MapArea extends HTMLElement {
 }
 
 customElements.define('ootrt-marker-area', MapArea);
-
-function filterUnusedChecks(check) {
-    let loc = World.getLocation(check);
-    return !!loc && loc.visible();
-}

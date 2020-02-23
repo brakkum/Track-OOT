@@ -5,6 +5,7 @@ import "/emcJS/ui/logic/EditorTrashcan.js";
 import "/emcJS/ui/logic/EditorWorkingarea.js";
 import "/emcJS/ui/CaptionPanel.js";
 import "/emcJS/ui/CollapsePanel.js";
+import "/emcJS/ui/FilteredList.js";
 
 import "/emcJS/ui/logic/elements/LiteralFalse.js";
 import "/emcJS/ui/logic/elements/LiteralTrue.js";

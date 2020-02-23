@@ -11,6 +11,8 @@ const LogicsStorage = new TrackerStorage('logics');
 
 const LOGIC_PROCESSOR = new LogicProcessor();
 
+let use_custom_logic = false;
+
 class TrackerLogic {
 
     constructor() {
@@ -42,24 +44,28 @@ class TrackerLogic {
             }
         });
         EventBus.register("settings", async event => {
-            if (event.data.hasOwnProperty('use_custom_logic') && event.data.use_custom_logic != use_custom_logic) {
-                if (event.data.use_custom_logic) {
-                    let customLogic = await LogicsStorage.getAll();
-                    LOGIC_PROCESSOR.loadLogic(customLogic);
-                } else {
+            if (event.data.hasOwnProperty('use_custom_logic')) {
+                if (use_custom_logic != event.data.use_custom_logic) {
+                    use_custom_logic = event.data.use_custom_logic;
                     let randoLogic = GlobalData.get("logic", {});
+                    LOGIC_PROCESSOR.clearLogic();
                     LOGIC_PROCESSOR.loadLogic(randoLogic);
-                }
-                let res = LOGIC_PROCESSOR.execute();
-                if (Object.keys(res).length > 0) {
-                    EventBus.trigger("logic", res);
+                    if (use_custom_logic) {
+                        let customLogic = await LogicsStorage.getAll();
+                        LOGIC_PROCESSOR.loadLogic(customLogic);
+                    }
+                    let res = LOGIC_PROCESSOR.execute();
+                    if (Object.keys(res).length > 0) {
+                        EventBus.trigger("logic", res);
+                    }
                 }
             }
         });
         EventBus.register("custom_logic", async event => {
             // TODO make logic editor fire this event on logic changed if you exit editor
-            if (await SettingsStorage.get("use_custom_logic", false)) {
+            if (use_custom_logic) {
                 let randoLogic = GlobalData.get("logic", {});
+                LOGIC_PROCESSOR.clearLogic();
                 LOGIC_PROCESSOR.loadLogic(randoLogic);
                 LOGIC_PROCESSOR.loadLogic(event.data);
                 let res = LOGIC_PROCESSOR.execute();
@@ -71,15 +77,28 @@ class TrackerLogic {
     }
 
     async init() {
+        let settings = GlobalData.get("settings", {});
         let randoLogic = GlobalData.get("logic", {});
+        LOGIC_PROCESSOR.clearLogic();
         LOGIC_PROCESSOR.loadLogic(randoLogic);
-        if (await SettingsStorage.get("use_custom_logic", false)) {
+        use_custom_logic = await SettingsStorage.get("use_custom_logic", settings["use_custom_logic"].default);
+        if (use_custom_logic) {
             let customLogic = await LogicsStorage.getAll();
             LOGIC_PROCESSOR.loadLogic(customLogic);
         }
         let data = StateStorage.getAll();
         LOGIC_PROCESSOR.setAll(data);
         LOGIC_PROCESSOR.execute();
+    }
+
+    setLogic(logic) {
+        if (!!logic) {
+            LOGIC_PROCESSOR.loadLogic(logic);
+            let res = LOGIC_PROCESSOR.execute();
+            if (Object.keys(res).length > 0) {
+                EventBus.trigger("logic", res);
+            }
+        }
     }
 
     execute(data) {

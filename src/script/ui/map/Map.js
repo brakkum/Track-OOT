@@ -481,8 +481,8 @@ class HTMLTrackerMap extends Panel {
 
                     let data_v = data.lists.v;
                     let data_m = data.lists.mq;
-                    let res_v = ListLogic.check(data_v.map(v=>v.id).filter(filterUnusedChecks));
-                    let res_m = ListLogic.check(data_m.map(v=>v.id).filter(filterUnusedChecks));
+                    let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
+                    let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                     // TODO
                     //btn_vanilla.className = VALUE_STATES[res_v.value];
                     //btn_masterquest.className = VALUE_STATES[res_m.value];
@@ -517,11 +517,6 @@ class HTMLTrackerMap extends Panel {
 
 Panel.registerReference("location-map", HTMLTrackerMap);
 customElements.define('ootrt-map', HTMLTrackerMap);
-
-function filterUnusedChecks(check) {
-    let loc = World.getLocation(check);
-    return !!loc && loc.visible();
-}
 
 function calculateTooltipPosition(posX, posY, mapW, mapH) {
     let leftP = posX / mapW;

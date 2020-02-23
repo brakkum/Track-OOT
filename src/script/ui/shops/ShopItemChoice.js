@@ -1,4 +1,4 @@
-import DeepWindow from "/emcJS/ui/Window.js";
+import Window from "/emcJS/ui/Window.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import Template from "/emcJS/util/Template.js";
 import GlobalData from "/emcJS/storage/GlobalData.js";
@@ -129,7 +129,7 @@ function clickItem(event) {
     this.value = event.target.ref;
 }
 
-export default class HTMLTrackerShopItemChoice extends DeepWindow {
+export default class HTMLTrackerShopItemChoice extends Window {
     
     constructor(title = "Item Choice", options = {}) {
         super(title, options.close);

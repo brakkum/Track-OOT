@@ -2,11 +2,9 @@
 
 ---
 
-### IMMEDIATES
+### TODOS
 
 - add warning dialog to download update if needed
-
-### TODOS
 
 - change grids to new format
     {

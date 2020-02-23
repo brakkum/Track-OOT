@@ -130,12 +130,27 @@ export default class ListEntrance extends HTMLElement {
                     name: this.value
                 });
             } else {
-                entranceDialog(this.ref).then(r => {
-                    this.value = r;
-                    EventBus.trigger("entrance", {
-                        name: this.ref,
-                        value: r
-                    });
+                entranceDialog(this.ref).then(area => {
+                    if (this.value != area) {
+                        let logic = {};
+                        if (!!area) {
+                            let ref = GlobalData.get(`world/${area}/access`);
+                            logic[ref] = {
+                                "type": "number",
+                                "el": this.access,
+                                "category": "entrance"
+                            }
+                        } else {
+                            let ref = GlobalData.get(`world/${this.value}/access`);
+                            logic[ref] = null;
+                        }
+                        Logic.setLogic(logic);
+                        this.value = area;
+                        EventBus.trigger("entrance", {
+                            name: this.ref,
+                            value: area
+                        });
+                    }
                 });
             }
             event.preventDefault();
@@ -180,8 +195,8 @@ export default class ListEntrance extends HTMLElement {
             if (dType == "n") {
                 let data_v = GlobalData.get(`world_lists/${this.value}/lists/v`);
                 let data_m = GlobalData.get(`world_lists/${this.value}/lists/mq`);
-                let res_v = ListLogic.check(data_v.map(v=>v.id).filter(filterUnusedChecks));
-                let res_m = ListLogic.check(data_m.map(v=>v.id).filter(filterUnusedChecks));
+                let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
+                let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
                     this.shadowRoot.getElementById("value").dataset.state = VALUE_STATES[Math.min(res_v.value, res_m.value)];
                 } else {
@@ -189,7 +204,7 @@ export default class ListEntrance extends HTMLElement {
                 }
             } else {
                 let data = GlobalData.get(`world_lists/${this.value}/lists/${dType}`);
-                let res = ListLogic.check(data.map(v=>v.id).filter(filterUnusedChecks));
+                let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 this.shadowRoot.getElementById("value").dataset.state = VALUE_STATES[res.value];
             }
         } else if (!!this.access && !!Logic.getValue(this.access)) {
@@ -277,11 +292,6 @@ export default class ListEntrance extends HTMLElement {
 }
 
 customElements.define('ootrt-list-entrance', ListEntrance);
-
-function filterUnusedChecks(check) {
-    let loc = World.getLocation(check);
-    return !!loc && loc.visible();
-}
 
 function entranceDialog(ref) {
     return new Promise(resolve => {

@@ -98,11 +98,13 @@ const TPL = new Template(`
 const REG = new Map();
 const TYPE = new WeakMap();
 const EVENTS = new WeakMap();
+const LOGIC_ACTIVE = new WeakMap();
 
 export default class ListLocation extends HTMLElement {
 
     constructor(type) {
         super();
+        LOGIC_ACTIVE.set(this, true);
         EVENTS.set(this, new EventBusSubset());
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
@@ -176,7 +178,7 @@ export default class ListLocation extends HTMLElement {
             this.setCheckValue(value);
         });
         events.register("logic", event => {
-            if (event.data.hasOwnProperty(this.access)) {
+            if (LOGIC_ACTIVE.get(this) && event.data.hasOwnProperty(this.access)) {
                 if (!!this.access && !!event.data[this.access]) {
                     textEl.dataset.state = "available";
                 } else {

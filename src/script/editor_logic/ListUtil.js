@@ -5,8 +5,6 @@ import I18n from "/script/util/I18n.js";
 
 const LogicsStorage = new TrackerStorage('logics');
 
-const L_CATEGORIES = ["location", "area", "entrance", "mixin"];
-
 const LOGIC_OPERATORS = [
     "emc-logic-false",
     "emc-logic-true",
@@ -97,6 +95,7 @@ function createOperatorCategory(data, ref) {
                 el.ref = j;
                 el.category = ref;
                 el.template = "true";
+                el.dataset.filtervalue = I18n.translate(el.ref);
                 cnt.append(el);
             }
         } else if (opt.type === "choice") {
@@ -106,6 +105,7 @@ function createOperatorCategory(data, ref) {
                 el.value = j;
                 el.category = ref;
                 el.template = "true";
+                el.dataset.filtervalue = I18n.translate(el.ref);
                 cnt.append(el);
             }
         } else {
@@ -113,6 +113,7 @@ function createOperatorCategory(data, ref) {
             el.ref = i;
             el.category = ref;
             el.template = "true";
+            el.dataset.filtervalue = I18n.translate(el.ref);
             cnt.append(el);
         }
     }
@@ -134,6 +135,7 @@ function createOperatorWorldCategories(world) {
         el.ref = ref.category == "location" ? name : ref.access;
         el.category = ref.category;
         el.template = "true";
+        el.dataset.filtervalue = I18n.translate(el.ref);
         els[ref.category].push(el);
     }
 
@@ -175,6 +177,7 @@ function createOperatorMixins(data) {
         el.ref = ref;
         el.category = "mixin";
         el.template = "true";
+        el.dataset.filtervalue = I18n.translate(el.ref);
         cnt.append(el);
     }
     return cnt;
@@ -207,6 +210,7 @@ function createLogicWorldCategories(data, world, loadLogic) {
                 el.className = "logic-location";
                 el.onclick = loadLogic;
                 el.innerHTML = I18n.translate(record.id);
+                el.dataset.filtervalue = el.innerHTML;
                 els[ref.category].push(el);
             }
 
@@ -257,6 +261,7 @@ function createLogicWorldCategories(data, world, loadLogic) {
                 el.className = "logic-location";
                 el.onclick = loadLogic;
                 el.innerHTML = I18n.translate(record.id);
+                el.dataset.filtervalue = el.innerHTML;
                 els[ref.category].push(el);
             }
 
@@ -303,6 +308,7 @@ function createLogicMixinCategory(data, loadLogic) {
         el.className = "logic-location";
         el.onclick = loadLogic;
         el.innerHTML = ref;
+        el.dataset.filtervalue = el.innerHTML;
         cnt.append(el);
     }
     return cnt;
