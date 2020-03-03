@@ -978,7 +978,29 @@ const translation = {
     "songs.warp_light": "song.warp_light",
     "songs.song_scarecrow": "song.scarecrow",
     "songs.song_frogs": "song.frogs",
-    "songs.song_woods": "song.woods"
+    "songs.song_woods": "song.woods",
+    "dungeonTypes.deku": "dungeonTypes.area.deku",
+    "dungeonTypes.jabujabu": "dungeonTypes.area.jabujabu",
+    "dungeonTypes.temple_forest": "dungeonTypes.area.temple_forest",
+    "dungeonTypes.temple_fire": "dungeonTypes.area.temple_fire",
+    "dungeonTypes.temple_water": "dungeonTypes.area.temple_water",
+    "dungeonTypes.temple_shadow": "dungeonTypes.area.temple_shadow",
+    "dungeonTypes.temple_spirit": "dungeonTypes.area.temple_spirit",
+    "dungeonTypes.well": "dungeonTypes.area.well",
+    "dungeonTypes.ice_cavern": "dungeonTypes.area.ice_cavern",
+    "dungeonTypes.training_grounds": "dungeonTypes.area.training_grounds",
+    "dungeonTypes.castle_ganon": "dungeonTypes.area.castle_ganon",
+    "dungeonRewards.deku": "dungeonRewards.area.deku",
+    "dungeonRewards.jabujabu": "dungeonRewards.area.jabujabu",
+    "dungeonRewards.temple_forest": "dungeonRewards.area.temple_forest",
+    "dungeonRewards.temple_fire": "dungeonRewards.area.temple_fire",
+    "dungeonRewards.temple_water": "dungeonRewards.area.temple_water",
+    "dungeonRewards.temple_shadow": "dungeonRewards.area.temple_shadow",
+    "dungeonRewards.temple_spirit": "dungeonRewards.area.temple_spirit",
+    "dungeonRewards.well": "dungeonRewards.area.well",
+    "dungeonRewards.ice_cavern": "dungeonRewards.area.ice_cavern",
+    "dungeonRewards.training_grounds": "dungeonRewards.area.training_grounds",
+    "dungeonRewards.castle_ganon": "dungeonRewards.area.castle_ganon"
 };
 
 export default function(state) {

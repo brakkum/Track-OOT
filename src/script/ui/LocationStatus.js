@@ -31,7 +31,7 @@ function updateStates(doneEl, availEl, missEl) {
     let data = GlobalData.get("world_lists");
     if (!!data) {
         Object.keys(data).forEach(name => {
-            if (name == "#") return;
+            if (name == "#" || name == "") return;
             let buff = data[name];
             let dType = StateStorage.read(`dungeonTypes.${name}`, buff.lists.hasOwnProperty("mq") ? "n" : "v");
             if (dType == "n") {

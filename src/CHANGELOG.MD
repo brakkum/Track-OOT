@@ -35,6 +35,7 @@ Application:    Track-OOT
     - clicking opens a entrance linking dialog
     - right-clicking resets the entrance
 - clicking on an activated entrance jumps to the linked area
+- entrance shuffle is toggleable in randomizer options
 
 ### UI CHANGES
 - added entrance icons

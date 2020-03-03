@@ -26,6 +26,10 @@
                 "keysanity_boss_keysanity"
             ]
         },
+        "option.entrance_shuffle_dungeons": {
+            "type": "check",
+            "default": false
+        },
         "option.scrubsanity": {
             "type": "check",
             "default": false
