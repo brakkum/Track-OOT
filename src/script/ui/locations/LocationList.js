@@ -197,28 +197,25 @@ class HTMLTrackerLocationList extends Panel {
         let btn_vanilla = this.shadowRoot.getElementById('vanilla');
         let btn_masterquest = this.shadowRoot.getElementById('masterquest');
         cnt.innerHTML = "";
-        let area = World.getLocation(this.ref);
-        if (!area || area.visible()) {
-            let data = GlobalData.get(`world_lists/${this.ref}`);
-            if (!!data) {
-                if (dType == "n") {
-                    let data_v = data.lists.v;
-                    let data_m = data.lists.mq;
-                    let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
-                    let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
-                    btn_vanilla.className = VALUE_STATES[res_v.value];
-                    btn_masterquest.className = VALUE_STATES[res_m.value];
-                } else {
-                    btn_vanilla.className = "hidden";
-                    btn_masterquest.className = "hidden";
-                    data.lists[dType].forEach(record => {
-                        let loc = World.getLocation(record.id);
-                        if (!!loc && loc.visible()) {
-                            let el = loc.listItem;
-                            cnt.append(el);
-                        }
-                    });
-                }
+        let data = GlobalData.get(`world_lists/${this.ref}`);
+        if (!!data) {
+            if (dType == "n") {
+                let data_v = data.lists.v;
+                let data_m = data.lists.mq;
+                let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
+                let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
+                btn_vanilla.className = VALUE_STATES[res_v.value];
+                btn_masterquest.className = VALUE_STATES[res_m.value];
+            } else {
+                btn_vanilla.className = "hidden";
+                btn_masterquest.className = "hidden";
+                data.lists[dType].forEach(record => {
+                    let loc = World.getLocation(record.id);
+                    if (!!loc && loc.visible()) {
+                        let el = loc.listItem;
+                        cnt.append(el);
+                    }
+                });
             }
         }
         this.updateHeader();

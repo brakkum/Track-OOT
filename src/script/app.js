@@ -9,6 +9,7 @@ import DateUtil from "/emcJS/util/DateUtil.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import I18n from "/script/util/I18n.js";
 import Logic from "/script/util/Logic.js";
+import LogicAlternator from "/script/util/LogicAlternator.js";
 import World from "/script/util/World.js";
 
 import "/emcJS/ui/Paging.js";
@@ -53,6 +54,7 @@ function setVersion(data) {
         updateLoadingMessage("build logic data...");
         try {
             await Logic.init();
+            await LogicAlternator.init();
         } catch(err) {
             console.error(err);
             window.alert(err.message);
