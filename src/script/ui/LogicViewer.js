@@ -1,5 +1,6 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import LogicUIAbstractElement from "/emcJS/ui/logic/elements/AbstractElement.js";
+import Dialog from "/emcJS/ui/Dialog.js";
 import Helper from "/emcJS/util/Helper.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import FilterStorage from "/script/storage/FilterStorage.js";
@@ -30,9 +31,9 @@ class LogicViewer {
         let filter_data = FilterStorage.getAll();
         let state_data  = StateStorage.getAll();
         let logic_data  = Logic.getAll();
-        logic.calculate(Object.assign(filter_data, state_data, logic_data));
         if (!!logic) {
             let l = LogicUIAbstractElement.buildLogic(logic);
+            l.calculate(Object.assign(filter_data, state_data, logic_data));
             l.readonly = true;
             el.append(l);
         }

@@ -1,8 +1,8 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
-import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import LogicCompiler from "/emcJS/util/logic/Compiler.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import FilterStorage from "/script/storage/FilterStorage.js";
+import StateStorage from "/script/storage/StateStorage.js";
 
 import ListArea from "/script/ui/locations/listitems/Area.js";
 import ListEntrance from "/script/ui/locations/listitems/Entrance.js";
@@ -47,10 +47,12 @@ class WorldEntry {
         CATEGORY.set(this, data.category);
         TYPE.set(this, data.type);
 
+        let stored_data = new Map(Object.entries(StateStorage.getAll()));
+
         /* LOGIC */
         if (typeof data.visible == "object") {
             visible_logic = LogicCompiler.compile(data.visible);
-            VISIBLE.set(this, false);
+            VISIBLE.set(this, !!visible_logic(valueGetter.bind(stored_data)));
         } else {
             VISIBLE.set(this, !!data.visible);
         }
@@ -58,8 +60,10 @@ class WorldEntry {
             for (let i in data.filter) {
                 for (let j in data.filter[i]) {
                     if (typeof data.filter[i][j] == "object") {
-                        filter_logics.set(`${i}/${j}`, LogicCompiler.compile(data.filter[i][j]));
-                        filter_values.set(`${i}/${j}`, false);
+                        let logicFn = LogicCompiler.compile(data.filter[i][j]);
+                        filter_logics.set(`${i}/${j}`, logicFn);
+                        let res = !!logicFn(valueGetter.bind(stored_data));
+                        filter_values.set(`${i}/${j}`, res);
                     } else {
                         filter_values.set(`${i}/${j}`, !!data.filter[i][j]);
                     }

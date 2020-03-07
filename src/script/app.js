@@ -8,7 +8,6 @@ import FileLoader from "/emcJS/util/FileLoader.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import I18n from "/script/util/I18n.js";
-import Logic from "/script/util/Logic.js";
 import LogicAlternator from "/script/util/LogicAlternator.js";
 import World from "/script/util/World.js";
 
@@ -52,15 +51,9 @@ function setVersion(data) {
         updateLoadingMessage("learn languages...");
         await I18n.load(await SettingsStorage.get("language", "en_us"));
         updateLoadingMessage("build logic data...");
-        try {
-            await Logic.init();
-            await LogicAlternator.init();
-        } catch(err) {
-            console.error(err);
-            window.alert(err.message);
-        }
+        await LogicAlternator.init();
         updateLoadingMessage("build world data...");
-        await World.init();
+        World.init();
         updateLoadingMessage("poke application...");
         await $import.importModule("/emcJS/ui/Import.js");
     } catch(err) {

@@ -429,8 +429,8 @@
                                 "el": [
                                     {
                                         "type": "number",
-                                        "el": "mixin.water_temple_access",
-                                        "category": "mixin"
+                                        "el": "logic.area.temple_water",
+                                        "category": "area"
                                     },
                                     {
                                         "type": "and",
@@ -879,8 +879,8 @@
     },
     "logic.location.desert.c_warp_spirit": {
         "type": "number",
-        "el": "mixin.spirit_temple_access",
-        "category": "mixin"
+        "el": "logic.area.temple_spirit",
+        "category": "area"
     },
     "logic.location.desert.c_colossus_hp": {
         "type": "and",
@@ -917,8 +917,8 @@
             },
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -1169,26 +1169,26 @@
     },
     "logic.location.deku.c_lobby": {
         "type": "number",
-        "el": "mixin.deku_tree_access",
-        "category": "mixin"
+        "el": "logic.area.deku",
+        "category": "area"
     },
     "logic.location.deku.c_compass": {
         "type": "number",
-        "el": "mixin.deku_tree_access",
-        "category": "mixin"
+        "el": "logic.area.deku",
+        "category": "area"
     },
     "logic.location.deku.c_compass_side": {
         "type": "number",
-        "el": "mixin.deku_tree_access",
-        "category": "mixin"
+        "el": "logic.area.deku",
+        "category": "area"
     },
     "logic.location.deku.c_basement": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -1212,8 +1212,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -1227,8 +1227,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -1242,8 +1242,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -1287,8 +1287,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -1302,8 +1302,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -1342,8 +1342,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -1392,8 +1392,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -1568,8 +1568,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -1627,8 +1627,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -1782,8 +1782,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -1868,8 +1868,8 @@
                 "el": [
                     {
                         "type": "number",
-                        "el": "mixin.water_temple_access",
-                        "category": "mixin"
+                        "el": "logic.area.temple_water",
+                        "category": "area"
                     },
                     {
                         "type": "number",
@@ -2023,8 +2023,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -2084,8 +2084,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -2173,8 +2173,8 @@
                 "el": [
                     {
                         "type": "number",
-                        "el": "mixin.water_temple_access",
-                        "category": "mixin"
+                        "el": "logic.area.temple_water",
+                        "category": "area"
                     },
                     {
                         "type": "and",
@@ -2839,8 +2839,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -2854,8 +2854,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -2869,8 +2869,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             }
         ]
     },
@@ -2879,8 +2879,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -2894,8 +2894,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -2953,8 +2953,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -2983,8 +2983,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -3013,8 +3013,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -3043,8 +3043,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -3073,8 +3073,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -3131,8 +3131,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -3189,8 +3189,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -3247,8 +3247,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -3349,8 +3349,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -3421,8 +3421,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -3508,8 +3508,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -3625,8 +3625,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -3699,8 +3699,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -3714,8 +3714,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -3792,8 +3792,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -3870,8 +3870,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -3948,8 +3948,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -4168,16 +4168,16 @@
     },
     "logic.location.zoras.c_ice": {
         "type": "number",
-        "el": "mixin.ice_cavern_access",
-        "category": "mixin"
+        "el": "logic.area.ice_cavern",
+        "category": "area"
     },
     "logic.location.zoras.c_underwater": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -4211,8 +4211,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -4241,8 +4241,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -4256,8 +4256,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -4271,8 +4271,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -4342,8 +4342,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -4357,8 +4357,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -4372,8 +4372,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -4387,8 +4387,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -4402,8 +4402,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -4419,16 +4419,16 @@
     },
     "logic.location.temple_fire.c_near_boss": {
         "type": "number",
-        "el": "mixin.fire_temple_access",
-        "category": "mixin"
+        "el": "logic.area.temple_fire",
+        "category": "area"
     },
     "logic.location.temple_fire.c_dancer": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -4479,8 +4479,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -4531,8 +4531,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -4566,8 +4566,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -4686,8 +4686,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -5057,8 +5057,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -5164,21 +5164,21 @@
     },
     "logic.location.temple_shadow.c_map": {
         "type": "number",
-        "el": "mixin.shadow_temple_access",
-        "category": "mixin"
+        "el": "logic.area.temple_shadow",
+        "category": "area"
     },
     "logic.location.temple_shadow.c_boots": {
         "type": "number",
-        "el": "mixin.shadow_temple_access",
-        "category": "mixin"
+        "el": "logic.area.temple_shadow",
+        "category": "area"
     },
     "logic.location.temple_shadow.c_compass": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -5192,8 +5192,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -5207,8 +5207,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -5222,8 +5222,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -5237,8 +5237,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -5273,8 +5273,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -5324,8 +5324,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -5375,8 +5375,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -5415,8 +5415,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -5460,8 +5460,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -5534,8 +5534,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -5608,8 +5608,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -5653,8 +5653,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -5723,8 +5723,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -5793,8 +5793,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -5863,8 +5863,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -6212,8 +6212,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -6251,8 +6251,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -6310,8 +6310,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -6354,8 +6354,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -6398,8 +6398,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -6706,8 +6706,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -6999,8 +6999,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -7292,8 +7292,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -7600,8 +7600,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -7738,8 +7738,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -7891,8 +7891,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -8049,8 +8049,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -8182,8 +8182,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -8236,8 +8236,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -8290,8 +8290,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -8344,8 +8344,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -8507,8 +8507,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -8640,8 +8640,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -8799,8 +8799,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -8838,8 +8838,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -8853,8 +8853,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -8892,8 +8892,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -8931,8 +8931,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -8970,8 +8970,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -8982,8 +8982,8 @@
     },
     "logic.location.well.c_coffin_key": {
         "type": "number",
-        "el": "mixin.bottom_well_access",
-        "category": "mixin"
+        "el": "logic.area.well",
+        "category": "area"
     },
     "logic.location.well.c_defeat_boss": {
         "type": "and",
@@ -9000,8 +9000,8 @@
             },
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -9045,8 +9045,8 @@
             },
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -9094,8 +9094,8 @@
             },
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             }
         ]
     },
@@ -9114,8 +9114,8 @@
             },
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             }
         ]
     },
@@ -9124,8 +9124,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -9243,8 +9243,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -9302,8 +9302,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -9358,13 +9358,13 @@
     },
     "logic.location.dodongo.c_map": {
         "type": "number",
-        "el": "mixin.dodongo_cavern_access",
-        "category": "mixin"
+        "el": "logic.area.dodongo",
+        "category": "area"
     },
     "logic.location.dodongo.c_compass": {
         "type": "number",
-        "el": "mixin.dodongo_cavern_access",
-        "category": "mixin"
+        "el": "logic.area.dodongo",
+        "category": "area"
     },
     "logic.location.dodongo.c_bomb_flower_platform": {
         "type": "and",
@@ -9688,8 +9688,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -10825,21 +10825,21 @@
     },
     "logic.location.temple_forest.c_entrance": {
         "type": "number",
-        "el": "mixin.forest_temple_access",
-        "category": "mixin"
+        "el": "logic.area.temple_forest",
+        "category": "area"
     },
     "logic.location.temple_forest.c_behind_lobby": {
         "type": "number",
-        "el": "mixin.forest_temple_access",
-        "category": "mixin"
+        "el": "logic.area.temple_forest",
+        "category": "area"
     },
     "logic.location.temple_forest.c_well": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -11002,8 +11002,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -11166,8 +11166,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -11262,8 +11262,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -11426,8 +11426,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -11462,8 +11462,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -11502,8 +11502,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -11598,8 +11598,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -11668,8 +11668,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -11708,8 +11708,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -11748,8 +11748,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -11788,8 +11788,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -12334,26 +12334,26 @@
     },
     "logic.location.castle_ganon.c_forest_trial": {
         "type": "number",
-        "el": "mixin.ganon_castle_access",
-        "category": "mixin"
+        "el": "logic.area.castle_ganon",
+        "category": "area"
     },
     "logic.location.castle_ganon.c_water_trial_left": {
         "type": "number",
-        "el": "mixin.ganon_castle_access",
-        "category": "mixin"
+        "el": "logic.area.castle_ganon",
+        "category": "area"
     },
     "logic.location.castle_ganon.c_water_trial_right": {
         "type": "number",
-        "el": "mixin.ganon_castle_access",
-        "category": "mixin"
+        "el": "logic.area.castle_ganon",
+        "category": "area"
     },
     "logic.location.castle_ganon.c_shadow_trial_first": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -12412,8 +12412,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -12486,8 +12486,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -12511,8 +12511,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -12570,8 +12570,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -12589,8 +12589,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -12608,8 +12608,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -12627,8 +12627,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -12646,8 +12646,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -12665,8 +12665,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -12684,8 +12684,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -12729,8 +12729,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -13216,8 +13216,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -13231,8 +13231,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -13291,8 +13291,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -13326,8 +13326,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -13346,8 +13346,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -13366,8 +13366,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -13386,8 +13386,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -13456,8 +13456,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -13480,8 +13480,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -13911,16 +13911,16 @@
     },
     "logic.location.deku_mq.c_lobby": {
         "type": "number",
-        "el": "mixin.deku_tree_access",
-        "category": "mixin"
+        "el": "logic.area.deku",
+        "category": "area"
     },
     "logic.location.deku_mq.c_compass": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -13959,8 +13959,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -13974,8 +13974,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -14009,8 +14009,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -14044,8 +14044,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -14084,8 +14084,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -14134,8 +14134,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -14179,8 +14179,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -14249,8 +14249,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -14284,8 +14284,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -14309,8 +14309,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -14344,8 +14344,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -14379,8 +14379,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -14502,8 +14502,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -14517,8 +14517,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -14532,8 +14532,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -14547,8 +14547,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -14562,8 +14562,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -14582,8 +14582,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -14612,8 +14612,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -14639,16 +14639,16 @@
     },
     "logic.location.dodongo_mq.c_map": {
         "type": "number",
-        "el": "mixin.dodongo_cavern_access",
-        "category": "mixin"
+        "el": "logic.area.dodongo",
+        "category": "area"
     },
     "logic.location.dodongo_mq.c_above_stairs": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -14677,8 +14677,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -14707,8 +14707,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -14761,8 +14761,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -14855,8 +14855,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -14919,8 +14919,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -15043,8 +15043,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -15058,8 +15058,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -15073,8 +15073,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -15162,8 +15162,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -15177,8 +15177,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -15192,8 +15192,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -15207,8 +15207,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -15222,8 +15222,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -15237,8 +15237,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -15252,8 +15252,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -15267,8 +15267,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -15282,8 +15282,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -15302,8 +15302,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -15352,8 +15352,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -15402,8 +15402,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -15449,16 +15449,16 @@
     },
     "logic.location.temple_forest_mq.c_entrance": {
         "type": "number",
-        "el": "mixin.forest_temple_access",
-        "category": "mixin"
+        "el": "logic.area.temple_forest",
+        "category": "area"
     },
     "logic.location.temple_forest_mq.c_behind_lobby": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -15493,8 +15493,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -15553,8 +15553,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -15619,8 +15619,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -15787,8 +15787,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -15847,8 +15847,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -15912,8 +15912,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -15977,8 +15977,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -16008,8 +16008,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -16093,8 +16093,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -16282,8 +16282,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -16347,8 +16347,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -16428,8 +16428,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -16549,16 +16549,16 @@
     },
     "logic.location.temple_fire_mq.c_map_room_small_chest": {
         "type": "number",
-        "el": "mixin.fire_temple_access",
-        "category": "mixin"
+        "el": "logic.area.temple_fire",
+        "category": "area"
     },
     "logic.location.temple_fire_mq.c_megaton_hammer": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -16607,8 +16607,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -16642,8 +16642,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -16682,8 +16682,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -16722,8 +16722,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -16787,8 +16787,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -16872,8 +16872,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -16957,8 +16957,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -17032,8 +17032,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -17122,8 +17122,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -17212,8 +17212,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -17341,8 +17341,8 @@
                 "el": [
                     {
                         "type": "number",
-                        "el": "mixin.spirit_temple_access",
-                        "category": "mixin"
+                        "el": "logic.area.temple_spirit",
+                        "category": "area"
                     },
                     {
                         "type": "or",
@@ -17409,16 +17409,16 @@
     },
     "logic.location.temple_spirit_mq.c_entrance_front_left": {
         "type": "number",
-        "el": "mixin.spirit_temple_access",
-        "category": "mixin"
+        "el": "logic.area.temple_spirit",
+        "category": "area"
     },
     "logic.location.temple_spirit_mq.c_entrance_back_right": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -17477,8 +17477,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -17532,8 +17532,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -17572,8 +17572,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -17675,8 +17675,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -17856,8 +17856,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -18003,8 +18003,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -18144,8 +18144,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -18345,8 +18345,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -18418,8 +18418,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -18476,8 +18476,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -18524,8 +18524,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -18567,8 +18567,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -18650,8 +18650,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -18788,8 +18788,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -18876,8 +18876,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -18934,8 +18934,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -19002,8 +19002,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -19075,8 +19075,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -19148,8 +19148,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -19226,8 +19226,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -19310,8 +19310,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -19699,8 +19699,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -20113,8 +20113,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -20503,8 +20503,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -20900,21 +20900,21 @@
     },
     "logic.location.training_grounds_mq.c_lobby_left": {
         "type": "number",
-        "el": "mixin.training_grounds_access",
-        "category": "mixin"
+        "el": "logic.area.training_grounds",
+        "category": "area"
     },
     "logic.location.training_grounds_mq.c_lobby_right": {
         "type": "number",
-        "el": "mixin.training_grounds_access",
-        "category": "mixin"
+        "el": "logic.area.training_grounds",
+        "category": "area"
     },
     "logic.location.training_grounds_mq.c_hidden_ceiling": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -20925,21 +20925,21 @@
     },
     "logic.location.training_grounds_mq.c_maze_1": {
         "type": "number",
-        "el": "mixin.training_grounds_access",
-        "category": "mixin"
+        "el": "logic.area.training_grounds",
+        "category": "area"
     },
     "logic.location.training_grounds_mq.c_maze_2": {
         "type": "number",
-        "el": "mixin.training_grounds_access",
-        "category": "mixin"
+        "el": "logic.area.training_grounds",
+        "category": "area"
     },
     "logic.location.training_grounds_mq.c_maze_3": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -20964,8 +20964,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -20979,8 +20979,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21058,8 +21058,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21073,8 +21073,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21122,8 +21122,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21180,8 +21180,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21279,8 +21279,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21373,8 +21373,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21467,8 +21467,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21566,8 +21566,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21665,8 +21665,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.training_grounds_access",
-                "category": "mixin"
+                "el": "logic.area.training_grounds",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21759,8 +21759,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21779,8 +21779,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21799,8 +21799,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21819,8 +21819,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21839,8 +21839,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21859,8 +21859,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21874,8 +21874,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21889,8 +21889,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21904,8 +21904,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -21919,8 +21919,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -22004,8 +22004,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -22049,8 +22049,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -22079,8 +22079,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -22119,8 +22119,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -22159,8 +22159,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -22199,8 +22199,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -22239,8 +22239,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -22279,8 +22279,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ganon_castle_access",
-                "category": "mixin"
+                "el": "logic.area.castle_ganon",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -22308,8 +22308,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -22328,8 +22328,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -22398,8 +22398,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -22433,8 +22433,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -22483,8 +22483,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -22508,8 +22508,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -22558,8 +22558,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -22623,8 +22623,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -22658,8 +22658,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -22708,8 +22708,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -22767,8 +22767,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -22826,8 +22826,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -22885,8 +22885,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -22979,8 +22979,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -23073,8 +23073,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -23181,8 +23181,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -23280,8 +23280,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -23394,8 +23394,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -23513,8 +23513,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -23617,8 +23617,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -23730,8 +23730,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -23839,8 +23839,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -23948,8 +23948,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -24057,8 +24057,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -24197,8 +24197,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -24330,8 +24330,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -24463,8 +24463,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -24596,8 +24596,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -24949,8 +24949,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -25189,8 +25189,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -25223,8 +25223,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -25238,8 +25238,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -25253,8 +25253,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -25283,8 +25283,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -25298,8 +25298,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -25313,8 +25313,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -25333,8 +25333,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -25408,8 +25408,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -25423,8 +25423,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -25493,8 +25493,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -25533,8 +25533,8 @@
             },
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             }
         ]
     },
@@ -25739,16 +25739,16 @@
     },
     "logic.location.temple_forest.s_entrance_adult": {
         "type": "number",
-        "el": "mixin.forest_temple_access",
-        "category": "mixin"
+        "el": "logic.area.temple_forest",
+        "category": "area"
     },
     "logic.location.temple_forest.s_pillars_adult": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -25899,16 +25899,16 @@
     },
     "logic.location.temple_forest.s_lobby_adult": {
         "type": "number",
-        "el": "mixin.forest_temple_access",
-        "category": "mixin"
+        "el": "logic.area.temple_forest",
+        "category": "area"
     },
     "logic.location.temple_forest.s_outside_hookshot_adult": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -26023,8 +26023,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -26213,8 +26213,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -26277,8 +26277,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -26341,8 +26341,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -26415,8 +26415,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -26435,8 +26435,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -26476,8 +26476,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -26536,8 +26536,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -26609,8 +26609,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -26854,8 +26854,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -26899,8 +26899,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -27072,8 +27072,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -27211,8 +27211,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -27439,8 +27439,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -27840,8 +27840,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -27889,8 +27889,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -27964,8 +27964,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -28059,8 +28059,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -28166,8 +28166,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -28485,8 +28485,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -28560,8 +28560,8 @@
                             },
                             {
                                 "type": "number",
-                                "el": "mixin.spirit_temple_access",
-                                "category": "mixin"
+                                "el": "logic.area.temple_spirit",
+                                "category": "area"
                             }
                         ]
                     }
@@ -28704,8 +28704,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -29022,8 +29022,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -29254,8 +29254,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -29323,8 +29323,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -29516,8 +29516,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -29531,8 +29531,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -29606,8 +29606,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -29661,8 +29661,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.deku_tree_access",
-                "category": "mixin"
+                "el": "logic.area.deku",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -29706,8 +29706,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -29731,8 +29731,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -29746,8 +29746,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.ice_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.ice_cavern",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -29805,8 +29805,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -29840,8 +29840,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -29855,8 +29855,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.bottom_well_access",
-                "category": "mixin"
+                "el": "logic.area.well",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -29890,8 +29890,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -29940,8 +29940,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -29994,8 +29994,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -30009,8 +30009,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -30024,8 +30024,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -30228,8 +30228,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -30278,8 +30278,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -30323,8 +30323,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -30348,8 +30348,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.jabu_jabu_access",
-                "category": "mixin"
+                "el": "logic.area.jabujabu",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -30395,16 +30395,16 @@
     },
     "logic.location.temple_forest_mq.s_first_hallway_adult": {
         "type": "number",
-        "el": "mixin.forest_temple_access",
-        "category": "mixin"
+        "el": "logic.area.temple_forest",
+        "category": "area"
     },
     "logic.location.temple_forest_mq.s_block_push_room_adult": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -30429,8 +30429,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -30495,8 +30495,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -30614,8 +30614,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.forest_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_forest",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -30733,8 +30733,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -30748,8 +30748,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -30868,8 +30868,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -30982,8 +30982,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -31062,8 +31062,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -31152,8 +31152,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -31190,8 +31190,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -31248,8 +31248,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -31306,8 +31306,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -31389,8 +31389,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.spirit_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_spirit",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -31527,8 +31527,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -31562,8 +31562,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -31596,8 +31596,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -31636,8 +31636,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -31711,8 +31711,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.water_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_water",
+                "category": "area"
             },
             {
                 "type": "min",
@@ -31780,8 +31780,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -31884,8 +31884,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -31993,8 +31993,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -32102,8 +32102,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -32221,8 +32221,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.shadow_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_shadow",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -32392,16 +32392,16 @@
     },
     "logic.location.desert.g_gossip_desert": {
         "type": "number",
-        "el": "mixin.spirit_temple_access",
-        "category": "mixin"
+        "el": "logic.area.temple_spirit",
+        "category": "area"
     },
     "logic.location.dodongo.g_gossip_dodongo": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -32601,13 +32601,13 @@
     },
     "logic.location.kokiri.g_gossip_deku_left": {
         "type": "number",
-        "el": "mixin.deku_tree_access",
-        "category": "mixin"
+        "el": "logic.area.deku",
+        "category": "area"
     },
     "logic.location.kokiri.g_gossip_deku_right": {
         "type": "number",
-        "el": "mixin.deku_tree_access",
-        "category": "mixin"
+        "el": "logic.area.deku",
+        "category": "area"
     },
     "logic.location.kokiri.g_gossip_grotto_kokiri": {
         "type": "and",
@@ -33261,8 +33261,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.dodongo_cavern_access",
-                "category": "mixin"
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -33868,1017 +33868,13 @@
             }
         ]
     },
-    "mixin.ice_cavern_access": {
-        "type": "and",
-        "el": [
-            {
-                "type": "number",
-                "el": "mixin.can_become_adult",
-                "category": "mixin"
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "number",
-                        "el": "option.doors_open_zora",
-                        "category": "option"
-                    },
-                    {
-                        "type": "number",
-                        "el": "mixin.zora_fountain_access",
-                        "category": "mixin"
-                    }
-                ]
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.song_zelda",
-                                "category": "item"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "skip.zora_hover",
-                                "category": "skip"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.boots_hover",
-                                "category": "item"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    "mixin.ganon_castle_access": {
-        "type": "and",
-        "el": [
-            {
-                "type": "number",
-                "el": "mixin.can_become_adult",
-                "category": "mixin"
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "value",
-                        "el": "option.ganon_castle_open",
-                        "value": "ganon_castle_open_open",
-                        "category": "option"
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "value",
-                                "el": "option.ganon_castle_open",
-                                "value": "ganon_castle_open_default",
-                                "category": "option"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.arrow_light",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.medallion_spirit",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.medallion_shadow",
-                                "category": "item"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "value",
-                                "el": "option.ganon_castle_open",
-                                "value": "ganon_castle_open_medallion",
-                                "category": "option"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.medallion_forest",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.medallion_fire",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.medallion_water",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.medallion_spirit",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.medallion_shadow",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.medallion_light",
-                                "category": "item"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "value",
-                                "el": "option.ganon_castle_open",
-                                "value": "ganon_castle_open_dungeon",
-                                "category": "option"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.stone_forest",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.stone_fire",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.stone_water",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.medallion_forest",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.medallion_fire",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.medallion_water",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.medallion_spirit",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.medallion_shadow",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.medallion_light",
-                                "category": "item"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "value",
-                                "el": "option.ganon_castle_open",
-                                "value": "ganon_castle_open_stones",
-                                "category": "option"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.stone_forest",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.stone_fire",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.stone_water",
-                                "category": "item"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "value",
-                                "el": "option.ganon_castle_open",
-                                "value": "ganon_castle_open_skulltulas",
-                                "category": "option"
-                            },
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.skulltula",
-                                    "category": "item"
-                                },
-                                "value": 100
-                            }
-                        ]
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "value",
-                                "el": "option.ganon_castle_open",
-                                "value": "ganon_castle_open_triforce",
-                                "category": "option"
-                            },
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.triforce_piece",
-                                    "category": "item"
-                                },
-                                "value": 20
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    "mixin.dodongo_cavern_access": {
-        "type": "and",
-        "el": [
-            {
-                "type": "number",
-                "el": "mixin.can_enter_mountain",
-                "category": "mixin"
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "number",
-                        "el": "item.glove",
-                        "category": "item"
-                    },
-                    {
-                        "type": "number",
-                        "el": "item.bombs",
-                        "category": "item"
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "item.bombchu",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "option.bombchu_logic",
-                                "category": "option"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "mixin.can_become_adult",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.hammer",
-                                "category": "item"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    "mixin.jabu_jabu_access": {
-        "type": "and",
-        "el": [
-            {
-                "type": "number",
-                "el": "mixin.zora_fountain_access",
-                "category": "mixin"
-            },
-            {
-                "type": "number",
-                "el": "item.bottle",
-                "category": "item"
-            },
-            {
-                "type": "not",
-                "el": {
-                    "type": "value",
-                    "el": "filter.era",
-                    "value": "adult",
-                    "category": "filter"
-                }
-            }
-        ]
-    },
-    "mixin.forest_temple_access": {
-        "type": "and",
-        "el": [
-            {
-                "type": "number",
-                "el": "item.hookshot",
-                "category": "item"
-            },
-            {
-                "type": "number",
-                "el": "mixin.can_become_adult",
-                "category": "mixin"
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "number",
-                                        "el": "item.song_saria",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.warp_forest",
-                                        "category": "item"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "type": "number",
-                        "el": "skip.mido_skip",
-                        "category": "skip"
-                    }
-                ]
-            }
-        ]
-    },
-    "mixin.fire_temple_access": {
-        "type": "and",
-        "el": [
-            {
-                "type": "number",
-                "el": "mixin.can_become_adult",
-                "category": "mixin"
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "number",
-                        "el": "skip.fewer_tunic",
-                        "category": "skip"
-                    },
-                    {
-                        "type": "number",
-                        "el": "mixin.goron_tunic_access",
-                        "category": "mixin"
-                    }
-                ]
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_fire",
-                                "category": "item"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "number",
-                                        "el": "item.hookshot",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.boots_hover",
-                                        "category": "item"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "number",
-                                        "el": "item.glove",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.bow",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "mixin.has_explosives",
-                                        "category": "mixin"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "number",
-                                                "el": "item.magic_din",
-                                                "category": "item"
-                                            },
-                                            {
-                                                "type": "number",
-                                                "el": "item.magic_power",
-                                                "category": "item"
-                                            },
-                                            {
-                                                "type": "number",
-                                                "el": "skip.linkthegoron_dins",
-                                                "category": "skip"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "number",
-                                                "el": "item.hammer",
-                                                "category": "item"
-                                            },
-                                            {
-                                                "type": "number",
-                                                "el": "skip.dmc_mash_hammer",
-                                                "category": "skip"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "number",
-                                        "el": "item.boots_hover",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "number",
-                                                "el": "mixin.can_use_ocarina",
-                                                "category": "mixin"
-                                            },
-                                            {
-                                                "type": "min",
-                                                "el": {
-                                                    "type": "number",
-                                                    "el": "item.hookshot",
-                                                    "category": "item"
-                                                },
-                                                "value": 2
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "number",
-                                "el": "mixin.can_blast_or_smash",
-                                "category": "mixin"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    "mixin.water_temple_access": {
-        "type": "and",
-        "el": [
-            {
-                "type": "number",
-                "el": "mixin.can_become_adult",
-                "category": "mixin"
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "item.hookshot",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "skip.wt_entry_noirons",
-                                "category": "skip"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "min",
-                        "el": {
-                            "type": "number",
-                            "el": "item.hookshot",
-                            "category": "item"
-                        },
-                        "value": 2
-                    }
-                ]
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "number",
-                        "el": "item.boots_iron",
-                        "category": "item"
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.scale",
-                                    "category": "item"
-                                },
-                                "value": 2
-                            },
-                            {
-                                "type": "number",
-                                "el": "skip.wt_entry_noirons",
-                                "category": "skip"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "number",
-                        "el": "skip.navi_dive",
-                        "category": "skip"
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "item.boots_hover",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.bottle",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "skip.lab_hovers",
-                                "category": "skip"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "number",
-                        "el": "skip.fewer_tunic",
-                        "category": "skip"
-                    },
-                    {
-                        "type": "number",
-                        "el": "mixin.zora_tunic_access",
-                        "category": "mixin"
-                    }
-                ]
-            }
-        ]
-    },
-    "mixin.spirit_temple_access": {
-        "type": "or",
-        "el": [
-            {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "number",
-                        "el": "mixin.gerudo_fortress_access",
-                        "category": "mixin"
-                    },
-                    {
-                        "type": "number",
-                        "el": "item.membership",
-                        "category": "item"
-                    },
-                    {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "item.boots_hover",
-                                "category": "item"
-                            },
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.hookshot",
-                                    "category": "item"
-                                },
-                                "value": 2
-                            },
-                            {
-                                "type": "number",
-                                "el": "skip.naked_wasteland",
-                                "category": "skip"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "number",
-                                        "el": "item.lens",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.magic_power",
-                                        "category": "item"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "value",
-                                "el": "skip.lens_required",
-                                "value": "lens_required_never",
-                                "category": "skip"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "number",
-                        "el": "mixin.can_use_ocarina",
-                        "category": "mixin"
-                    },
-                    {
-                        "type": "number",
-                        "el": "item.warp_spirit",
-                        "category": "item"
-                    }
-                ]
-            }
-        ]
-    },
-    "mixin.shadow_temple_access": {
-        "type": "or",
-        "el": [
-            {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "number",
-                                                "el": "item.magic_din",
-                                                "category": "item"
-                                            },
-                                            {
-                                                "type": "and",
-                                                "el": [
-                                                    {
-                                                        "type": "number",
-                                                        "el": "item.bow",
-                                                        "category": "item"
-                                                    },
-                                                    {
-                                                        "type": "number",
-                                                        "el": "item.arrow_fire",
-                                                        "category": "item"
-                                                    },
-                                                    {
-                                                        "type": "number",
-                                                        "el": "skip.shadow_temple_entry_fire_arrow",
-                                                        "category": "skip"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.magic_power",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "mixin.can_use_ocarina",
-                                        "category": "mixin"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.warp_shadow",
-                                        "category": "item"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "number",
-                                        "el": "skip.shadow_temple_entry_hookshot",
-                                        "category": "skip"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.hookshot",
-                                        "category": "item"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "type": "number",
-                        "el": "mixin.can_become_adult",
-                        "category": "mixin"
-                    },
-                    {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "item.hookshot",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.boots_hover",
-                                "category": "item"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "item.lens",
-                                "category": "item"
-                            },
-                            {
-                                "type": "not",
-                                "el": {
-                                    "type": "value",
-                                    "el": "skip.lens_required",
-                                    "value": "lens_required_default",
-                                    "category": "skip"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    "mixin.training_grounds_access": {
-        "type": "and",
-        "el": [
-            {
-                "type": "number",
-                "el": "mixin.can_become_adult",
-                "category": "mixin"
-            },
-            {
-                "type": "number",
-                "el": "mixin.gerudo_fortress_access",
-                "category": "mixin"
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "number",
-                        "el": "item.membership",
-                        "category": "item"
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "item.boots_hover",
-                                "category": "item"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "number",
-                                        "el": "item.shield_hylia",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.shield_mirror",
-                                        "category": "item"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "number",
-                                "el": "skip.gtg_clip",
-                                "category": "skip"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    "mixin.bottom_well_access": {
-        "type": "and",
-        "el": [
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.song_storm",
-                                "category": "item"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "skip.well_entry_isg",
-                                "category": "skip"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.shield_kokiri",
-                                "category": "item"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "number",
-                                        "el": "item.sword_kokiri",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.stick",
-                                        "category": "item"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "mixin.can_navi_dive",
-                                "category": "mixin"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "number",
-                "el": "mixin.can_leave_forest",
-                "category": "mixin"
-            },
-            {
-                "type": "not",
-                "el": {
-                    "type": "value",
-                    "el": "filter.era",
-                    "value": "adult",
-                    "category": "filter"
-                }
-            }
-        ]
-    },
     "mixin.fire_temple_early_climb": {
         "type": "and",
         "el": [
             {
                 "type": "number",
-                "el": "mixin.fire_temple_access",
-                "category": "mixin"
+                "el": "logic.area.temple_fire",
+                "category": "area"
             },
             {
                 "type": "number",
@@ -35416,21 +34412,6 @@
             }
         ]
     },
-    "mixin.deku_tree_access": {
-        "type": "or",
-        "el": [
-            {
-                "type": "number",
-                "el": "option.doors_open_forest",
-                "category": "option"
-            },
-            {
-                "type": "number",
-                "el": "item.sword_kokiri",
-                "category": "item"
-            }
-        ]
-    },
     "mixin.zora_thawed": {
         "type": "and",
         "el": [
@@ -35458,13 +34439,13 @@
                     },
                     {
                         "type": "number",
-                        "el": "mixin.ice_cavern_access",
-                        "category": "mixin"
+                        "el": "logic.area.ice_cavern",
+                        "category": "area"
                     },
                     {
                         "type": "number",
-                        "el": "mixin.ganon_castle_access",
-                        "category": "mixin"
+                        "el": "logic.area.castle_ganon",
+                        "category": "area"
                     }
                 ]
             },
@@ -36611,6 +35592,271 @@
                     "value": "adult",
                     "category": "filter"
                 }
+            }
+        ]
+    },
+    "logic.area.well": {
+        "type": "number",
+        "el": "logic.entrance.well",
+        "category": "entrance"
+    },
+    "logic.area.ice_cavern": {
+        "type": "number",
+        "el": "logic.entrance.ice_cavern",
+        "category": "entrance"
+    },
+    "logic.area.training_grounds": {
+        "type": "number",
+        "el": "logic.entrance.training_grounds",
+        "category": "entrance"
+    },
+    "logic.area.deku": {
+        "type": "number",
+        "el": "logic.entrance.deku",
+        "category": "entrance"
+    },
+    "logic.area.dodongo": {
+        "type": "number",
+        "el": "logic.entrance.dodongo",
+        "category": "entrance"
+    },
+    "logic.area.jabujabu": {
+        "type": "number",
+        "el": "logic.entrance.jabujabu",
+        "category": "entrance"
+    },
+    "logic.area.temple_forest": {
+        "type": "number",
+        "el": "logic.entrance.temple_forest",
+        "category": "entrance"
+    },
+    "logic.area.temple_fire": {
+        "type": "number",
+        "el": "logic.entrance.temple_fire",
+        "category": "entrance"
+    },
+    "logic.area.temple_water": {
+        "type": "number",
+        "el": "logic.entrance.temple_water",
+        "category": "entrance"
+    },
+    "logic.area.temple_shadow": {
+        "type": "number",
+        "el": "logic.entrance.temple_shadow",
+        "category": "entrance"
+    },
+    "logic.area.temple_spirit": {
+        "type": "number",
+        "el": "logic.entrance.temple_spirit",
+        "category": "entrance"
+    },
+    "logic.area.castle_ganon": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_adult",
+                "category": "mixin"
+            },
+            {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": "option.ganon_castle_open",
+                        "value": "ganon_castle_open_open",
+                        "category": "option"
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "option.ganon_castle_open",
+                                "value": "ganon_castle_open_default",
+                                "category": "option"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.arrow_light",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.medallion_spirit",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.medallion_shadow",
+                                "category": "item"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "option.ganon_castle_open",
+                                "value": "ganon_castle_open_medallion",
+                                "category": "option"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.medallion_forest",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.medallion_fire",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.medallion_water",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.medallion_spirit",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.medallion_shadow",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.medallion_light",
+                                "category": "item"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "option.ganon_castle_open",
+                                "value": "ganon_castle_open_dungeon",
+                                "category": "option"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.stone_forest",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.stone_fire",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.stone_water",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.medallion_forest",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.medallion_fire",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.medallion_water",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.medallion_spirit",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.medallion_shadow",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.medallion_light",
+                                "category": "item"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "option.ganon_castle_open",
+                                "value": "ganon_castle_open_stones",
+                                "category": "option"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.stone_forest",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.stone_fire",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.stone_water",
+                                "category": "item"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "option.ganon_castle_open",
+                                "value": "ganon_castle_open_skulltulas",
+                                "category": "option"
+                            },
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "number",
+                                    "el": "item.skulltula",
+                                    "category": "item"
+                                },
+                                "value": 100
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "option.ganon_castle_open",
+                                "value": "ganon_castle_open_triforce",
+                                "category": "option"
+                            },
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "number",
+                                    "el": "item.triforce_piece",
+                                    "category": "item"
+                                },
+                                "value": 20
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }
