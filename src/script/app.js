@@ -7,7 +7,7 @@ import GlobalData from "/emcJS/storage/GlobalData.js";
 import FileLoader from "/emcJS/util/FileLoader.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 import LogicAlternator from "/script/util/LogicAlternator.js";
 import World from "/script/util/World.js";
 
@@ -49,7 +49,7 @@ function setVersion(data) {
         await GlobalData.load(FILES);
         setVersion(await FileLoader.json("version.json"));
         updateLoadingMessage("learn languages...");
-        await I18n.load(await SettingsStorage.get("language", "en_us"));
+        await Language.load(await SettingsStorage.get("language", "en_us"));
         updateLoadingMessage("build logic data...");
         await LogicAlternator.init();
         updateLoadingMessage("build world data...");

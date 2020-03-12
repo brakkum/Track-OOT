@@ -1,6 +1,6 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 
 const TPL = new Template(`
     <style>
@@ -91,7 +91,7 @@ export default class HTMLTrackerShopEditItem extends HTMLElement {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    this.shadowRoot.getElementById("title").innerHTML = I18n.translate(newValue);
+                    this.shadowRoot.getElementById("title").innerHTML = Language.translate(newValue);
                     if (!!this.checked && this.checked == "true") {
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/sold_out.png")`;
                     } else {

@@ -6,7 +6,7 @@ import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 
 const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
@@ -228,7 +228,7 @@ export default class MapLocation extends HTMLElement {
             case 'ref':
                 if (oldValue != newValue) {
                     let txt = this.shadowRoot.getElementById("text");
-                    txt.innerHTML = I18n.translate(this.ref);
+                    txt.innerHTML = Language.translate(this.ref);
                     this.checked = StateStorage.read(this.ref, false);
                 }
             break;

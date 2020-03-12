@@ -1,7 +1,7 @@
 
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 
 const LogicsStorage = new TrackerStorage('logics');
 
@@ -74,7 +74,7 @@ export default new ListUtil();
 // -------------------
 function createDefaultOperatorCategory() {
     let cnt = document.createElement("emc-collapsepanel");
-    cnt.caption = I18n.translate("default");
+    cnt.caption = Language.translate("default");
     for (let i in LOGIC_OPERATORS) {
         let el = document.createElement(LOGIC_OPERATORS[i]);
         el.template = "true";
@@ -85,7 +85,7 @@ function createDefaultOperatorCategory() {
 
 function createOperatorCategory(data, ref) {
     let cnt = document.createElement("emc-collapsepanel");
-    cnt.caption = I18n.translate(`${ref}`);
+    cnt.caption = Language.translate(`${ref}`);
     for (let i in data) {
         let opt = data[i];
         if (!!opt.type && opt.type.startsWith("-")) continue;
@@ -95,7 +95,7 @@ function createOperatorCategory(data, ref) {
                 el.ref = j;
                 el.category = ref;
                 el.template = "true";
-                el.dataset.filtervalue = I18n.translate(el.ref);
+                el.dataset.filtervalue = Language.translate(el.ref);
                 cnt.append(el);
             }
         } else if (opt.type === "choice") {
@@ -105,7 +105,7 @@ function createOperatorCategory(data, ref) {
                 el.value = j;
                 el.category = ref;
                 el.template = "true";
-                el.dataset.filtervalue = I18n.translate(el.ref);
+                el.dataset.filtervalue = Language.translate(el.ref);
                 cnt.append(el);
             }
         } else {
@@ -113,7 +113,7 @@ function createOperatorCategory(data, ref) {
             el.ref = i;
             el.category = ref;
             el.template = "true";
-            el.dataset.filtervalue = I18n.translate(el.ref);
+            el.dataset.filtervalue = Language.translate(el.ref);
             cnt.append(el);
         }
     }
@@ -135,7 +135,7 @@ function createOperatorWorldCategories(world) {
         el.ref = ref.category == "location" ? name : ref.access;
         el.category = ref.category;
         el.template = "true";
-        el.dataset.filtervalue = I18n.translate(el.ref);
+        el.dataset.filtervalue = Language.translate(el.ref);
         els[ref.category].push(el);
     }
 
@@ -171,13 +171,13 @@ function createOperatorWorldCategories(world) {
 
 function createOperatorMixins(data) {
     let cnt = document.createElement("emc-collapsepanel");
-    cnt.caption = I18n.translate("mixin");
+    cnt.caption = Language.translate("mixin");
     for (let ref in data) {
         let el = document.createElement("tracker-logic-mixin");
         el.ref = ref;
         el.category = "mixin";
         el.template = "true";
-        el.dataset.filtervalue = I18n.translate(el.ref);
+        el.dataset.filtervalue = Language.translate(el.ref);
         cnt.append(el);
     }
     return cnt;
@@ -191,7 +191,7 @@ function createLogicWorldCategories(data, world, loadLogic) {
         if (name == "#") continue; 
         let lists = data[name].lists;
         if (name == "") name = "area.overworld";
-        let caption = I18n.translate(name);
+        let caption = Language.translate(name);
         if (lists.hasOwnProperty("v")) {
             let cnt = document.createElement("emc-collapsepanel");
             cnt.caption = caption;
@@ -209,7 +209,7 @@ function createLogicWorldCategories(data, world, loadLogic) {
                 el.dataset.cat = ref.category;
                 el.className = "logic-location";
                 el.onclick = loadLogic;
-                el.innerHTML = I18n.translate(record.id);
+                el.innerHTML = Language.translate(record.id);
                 el.dataset.filtervalue = el.innerHTML;
                 els[ref.category].push(el);
             }
@@ -260,7 +260,7 @@ function createLogicWorldCategories(data, world, loadLogic) {
                 el.dataset.cat = ref.category;
                 el.className = "logic-location";
                 el.onclick = loadLogic;
-                el.innerHTML = I18n.translate(record.id);
+                el.innerHTML = Language.translate(record.id);
                 el.dataset.filtervalue = el.innerHTML;
                 els[ref.category].push(el);
             }
@@ -300,7 +300,7 @@ function createLogicWorldCategories(data, world, loadLogic) {
 
 function createLogicMixinCategory(data, loadLogic) {
     let cnt = document.createElement("emc-collapsepanel");
-    cnt.caption = I18n.translate("mixin");
+    cnt.caption = Language.translate("mixin");
     for (let ref in data) {
         let el = document.createElement("div");
         el.dataset.ref = ref;

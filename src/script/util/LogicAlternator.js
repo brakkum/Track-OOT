@@ -83,7 +83,7 @@ async function updateLogic() {
     let logic = GlobalData.get("logic", {});
     if (use_custom_logic) {
         let customLogic = await LogicsStorage.getAll();
-        for (let l of customLogic) {
+        for (let l in customLogic) {
             logic[l] = customLogic[l];
         }
     }

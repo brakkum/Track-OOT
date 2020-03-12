@@ -25,7 +25,7 @@ import ListUtil from "./ListUtil.js";
 
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import GlobalData from "/emcJS/storage/GlobalData.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 
 import "./Navigation.js";
 

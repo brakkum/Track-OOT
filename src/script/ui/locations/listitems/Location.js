@@ -9,7 +9,7 @@ import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import LogicViewer from "/script/ui/LogicViewer.js";
 import Logic from "/script/util/Logic.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 
 const TPL = new Template(`
     <style>
@@ -145,7 +145,7 @@ export default class ListLocation extends HTMLElement {
             return false;
         });
         this.shadowRoot.getElementById("menu-logic").addEventListener("click", event => {
-            let title = I18n.translate(this.ref);
+            let title = Language.translate(this.ref);
             LogicViewer.show(this.access, title);
         });
         this.shadowRoot.getElementById("menu-logic-image").addEventListener("click", event => {
@@ -218,7 +218,7 @@ export default class ListLocation extends HTMLElement {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    textEl.innerHTML = I18n.translate(this.ref);
+                    textEl.innerHTML = Language.translate(this.ref);
                     textEl.dataset.checked = StateStorage.read(this.ref, false);
                 }
             break;

@@ -12,7 +12,7 @@ import TrackerStorage from "/script/storage/TrackerStorage.js";
 import ListLogic from "/script/util/ListLogic.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 import World from "/script/util/World.js";
 
 const SettingsStorage = new TrackerStorage('settings');
@@ -247,7 +247,7 @@ export default class ListEntrance extends HTMLElement {
             case 'ref':
                 if (oldValue != newValue) {
                     let txt = this.shadowRoot.getElementById("text");
-                    txt.innerHTML = I18n.translate(newValue);
+                    txt.innerHTML = Language.translate(newValue);
                     this.value = StateStorage.read(newValue, "");
                     this.update();
                 }
@@ -255,7 +255,7 @@ export default class ListEntrance extends HTMLElement {
             case 'value':
                 if (oldValue != newValue) {
                     if (!!newValue) {
-                        this.shadowRoot.getElementById("value").innerHTML = I18n.translate(newValue);
+                        this.shadowRoot.getElementById("value").innerHTML = Language.translate(newValue);
                     } else {
                         this.shadowRoot.getElementById("value").innerHTML = "";
                     }
@@ -304,7 +304,7 @@ function entranceDialog(ref) {
         loc.style.justifyContent = "space-between";
         loc.style.alignItems = "center";
         loc.style.padding = "5px";
-        loc.innerHTML = I18n.translate("location");
+        loc.innerHTML = Language.translate("location");
         let slt = document.createElement("select");
 
         let unbound = new Set();
@@ -326,13 +326,13 @@ function entranceDialog(ref) {
         unbound = Array.from(unbound);
         
         for (let i of unbound) {
-            slt.append(createOption(i, I18n.translate(i)));
+            slt.append(createOption(i, Language.translate(i)));
         }
         slt.style.width = "200px";
         slt.value = value;
         loc.append(slt);
         
-        let d = new Dialog({title: I18n.translate(ref), submit: true, cancel: true});
+        let d = new Dialog({title: Language.translate(ref), submit: true, cancel: true});
         d.onsubmit = function(ref, result) {
             if (!!result) {
                 let res = slt.value;

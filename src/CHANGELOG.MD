@@ -12,7 +12,8 @@ Application:    Track-OOT
 
 ### USABILITY ENHANCEMENTS
 - added filters and bulk select to lists in settngs
-- added undo (ctrl+z) / redo (ctrl+y) functionality
+- added undo (ctrl+z) / redo (ctrl+y) 
+- redo i18n system to dynamically switch language without the need to restart the application (WIP)
 
 ### IMPROVED LOGIC
 - logic is now way faster than before

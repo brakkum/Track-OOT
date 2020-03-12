@@ -6,7 +6,7 @@ import "/emcJS/ui/selection/SwitchButton.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 import World from "/script/util/World.js";
 import ListLogic from "/script/util/ListLogic.js";
 import "./listitems/Button.js";
@@ -97,16 +97,16 @@ const TPL = new Template(`
         }
     </style>
     <div id="title">
-        <div id="title-text">${I18n.translate("hyrule")}</div>
+        <div id="title-text">${Language.translate("hyrule")}</div>
         <ootrt-dungeontype id="location-version" class="button" ref="" value="v" readonly="true">
         </ootrt-dungeontype>
         <ootrt-filterbutton id="filter-era" class="button" ref="filter.era">
         </ootrt-filterbutton>
     </div>
     <div id="body">
-        <ootrt-list-button id="back">(${I18n.translate("back")})</ootrt-list-button>
-        <ootrt-list-button id="vanilla" class="hidden">${I18n.translate("vanilla")}</ootrt-list-button>
-        <ootrt-list-button id="masterquest" class="hidden">${I18n.translate("masterquest")}</ootrt-list-button>
+        <ootrt-list-button id="back">(${Language.translate("back")})</ootrt-list-button>
+        <ootrt-list-button id="vanilla" class="hidden">${Language.translate("vanilla")}</ootrt-list-button>
+        <ootrt-list-button id="masterquest" class="hidden">${Language.translate("masterquest")}</ootrt-list-button>
         <div id="list"></div>
     </div>
 `);
@@ -182,7 +182,7 @@ class HTMLTrackerLocationList extends Panel {
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
             if (name == "ref") {
-                this.shadowRoot.getElementById("title-text").innerHTML = I18n.translate(newValue || "hyrule");
+                this.shadowRoot.getElementById("title-text").innerHTML = Language.translate(newValue || "hyrule");
                 this.shadowRoot.getElementById("location-version").ref = newValue;
                 this.shadowRoot.getElementById('vanilla').ref = newValue;
                 this.shadowRoot.getElementById('masterquest').ref = newValue;

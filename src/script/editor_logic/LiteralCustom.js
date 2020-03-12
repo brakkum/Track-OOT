@@ -1,6 +1,6 @@
 import Template from "/emcJS/util/Template.js";
 import AbstractElement from "/emcJS/ui/logic/elements/AbstractElement.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 
 const TPL_CAPTION = "CUSTOM";
 const TPL_BACKGROUND = "#ffffff";
@@ -117,10 +117,10 @@ export default class LiteralCustom extends AbstractElement {
                 if (oldValue != newValue) {
                     if (typeof newValue == "string") {
                         if (!!newValue) {
-                            this.shadowRoot.getElementById(name).innerHTML = I18n.translate(newValue);
+                            this.shadowRoot.getElementById(name).innerHTML = Language.translate(newValue);
                             this.shadowRoot.getElementById(name).classList.remove("blank");
                         } else {
-                            this.shadowRoot.getElementById(name).innerHTML = I18n.translate("[blank]");
+                            this.shadowRoot.getElementById(name).innerHTML = Language.translate("[blank]");
                             this.shadowRoot.getElementById(name).classList.add("blank");
                         }
                     } else {

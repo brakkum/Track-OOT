@@ -10,7 +10,7 @@ import TrackerStorage from "/script/storage/TrackerStorage.js";
 import ListLogic from "/script/util/ListLogic.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 import World from "/script/util/World.js";
 
 const SettingsStorage = new TrackerStorage('settings');
@@ -216,7 +216,7 @@ export default class MapArea extends HTMLElement {
                 if (oldValue != newValue) {
                     this.update();
                     let txt = this.shadowRoot.getElementById("text");
-                    txt.innerHTML = I18n.translate(this.ref);
+                    txt.innerHTML = Language.translate(this.ref);
                 }
             break;
             case 'top':

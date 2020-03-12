@@ -4,7 +4,7 @@ import EventBus from "/emcJS/util/events/EventBus.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 import World from "/script/util/World.js";
 import "./marker/Area.js";
 import "./marker/Entrance.js";
@@ -184,7 +184,7 @@ const TPL = new Template(`
     <div id="map-wrapper">
         <slot id="map" style="--map-zoom: ${ZOOM_DEF};">
         </slot>
-        <div id="back">(${I18n.translate("back")})</div>
+        <div id="back">(${Language.translate("back")})</div>
         <div id="map-settings">
             <div class="buttons">
                 <div id="toggle-button" class="button-wrapper">⇑</div>

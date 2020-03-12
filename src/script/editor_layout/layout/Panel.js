@@ -1,5 +1,5 @@
 import Template from "/script/util/Template.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 
 const TPL = new Template(`
     <style>
@@ -38,7 +38,7 @@ export default class HTMLTrackerPanel extends HTMLElement {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    let title = I18n.translate(newValue);
+                    let title = Language.translate(newValue);
                     let el = this.shadowRoot.getElementById("name");
                     el.innerHTML = title;
                     el.setAttribute("title", title);

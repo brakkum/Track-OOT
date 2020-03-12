@@ -3,7 +3,7 @@ import GlobalData from "/emcJS/storage/GlobalData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import Dialog from "/emcJS/ui/Dialog.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 import "./ShopItem.js";
 import "./ShopBuilder.js";
 
@@ -61,7 +61,7 @@ const TPL = new Template(`
 function editShop(event) {
     let builder = document.createElement("ootrt-shopbuilder");
     builder.value = StateStorage.read(this.ref, GlobalData.get("shops")[this.ref]);
-    let d = new Dialog({title: I18n.translate(this.ref), submit: true, cancel: true});
+    let d = new Dialog({title: Language.translate(this.ref), submit: true, cancel: true});
     d.addEventListener("submit", function(result) {
         if (!!result) {
             let res = builder.value;
@@ -206,7 +206,7 @@ export default class HTMLTrackerShopField extends HTMLElement {
         if (oldValue != newValue) {
             let data = StateStorage.read(newValue, GlobalData.get("shops")[newValue]);
             let title = this.shadowRoot.getElementById("title-text");
-            title.innerHTML = I18n.translate(newValue);
+            title.innerHTML = Language.translate(newValue);
             let names = StateStorage.read(`${this.ref}.names`, ["","","","","","","",""]);
             let checked = StateStorage.read(`${this.ref}.bought`, [0,0,0,0,0,0,0,0]);
             for (let i = 0; i < 8; ++i) {

@@ -2,7 +2,7 @@ import Window from "/emcJS/ui/Window.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import Template from "/emcJS/util/Template.js";
 import GlobalData from "/emcJS/storage/GlobalData.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 import "./ShopEditItem.js";
 
 const TPL = new Template(`
@@ -168,7 +168,7 @@ export default class HTMLTrackerShopItemChoice extends Window {
         let items = GlobalData.get("shop_items");
         for (let item in items) {
             let values = items[item];
-            this.addTab(I18n.translate(values.category), values.category);
+            this.addTab(Language.translate(values.category), values.category);
             this.addItem(values.category, item, values.price || "???");
         }
     }

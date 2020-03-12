@@ -2,7 +2,7 @@ import Template from "/emcJS/util/Template.js";
 import AbstractElement from "/emcJS/ui/logic/elements/AbstractElement.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import Logic from "/script/util/Logic.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 
 const TPL_CAPTION = "MIXIN";
 const TPL_BACKGROUND = "#ffffff";
@@ -72,7 +72,7 @@ export default class LiteralMixin extends AbstractElement {
 
     loadLogic(logic) {
         this.ref = logic.el;
-        this.shadowRoot.getElementById("ref").innerHTML = I18n.translate(this.ref);
+        this.shadowRoot.getElementById("ref").innerHTML = Language.translate(this.ref);
     }
 
     toJSON() {
@@ -98,7 +98,7 @@ export default class LiteralMixin extends AbstractElement {
         if (name == "ref") {
             if (oldValue != newValue) {
                 if (!!newValue) {
-                    this.shadowRoot.getElementById('ref').innerHTML = I18n.translate(newValue);
+                    this.shadowRoot.getElementById('ref').innerHTML = Language.translate(newValue);
                 } else {
                     this.shadowRoot.getElementById('ref').innerHTML = "";
                 }
