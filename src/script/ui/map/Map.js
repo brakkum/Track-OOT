@@ -336,10 +336,6 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
                 value: this.mode
             });
         });
-        let eraEl = this.shadowRoot.getElementById('filter-era');
-        eraEl.addEventListener("change", event => {
-            this.refresh();
-        });
         this.shadowRoot.getElementById('back').addEventListener("click", event => {
             this.ref = ""
         });
@@ -414,7 +410,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
             this.mode = event.data.value;
             this.shadowRoot.getElementById('location-mode').value = this.mode;
         });
-        this.registerGlobal(["state", "settings", "randomizer_options"], event => {
+        this.registerGlobal(["state", "settings", "randomizer_options", "filter"], event => {
             this.refresh();
         });
         this.registerGlobal("dungeontype", event => {

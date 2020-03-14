@@ -123,10 +123,6 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         this.attributeChangedCallback("", "");
-        let eraEl = this.shadowRoot.getElementById('filter-era');
-        eraEl.addEventListener("change", event => {
-            this.refresh();
-        });
         this.shadowRoot.getElementById('back').addEventListener("click", event => {
             this.ref = ""
         });
@@ -151,7 +147,7 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
         this.registerGlobal(["chest", "skulltula", "item", "logic"], event => {
             this.updateHeader();
         });
-        this.registerGlobal(["state", "settings", "randomizer_options"], event => {
+        this.registerGlobal(["state", "settings", "randomizer_options", "filter"], event => {
             this.refresh();
         });
         this.registerGlobal("dungeontype", event => {

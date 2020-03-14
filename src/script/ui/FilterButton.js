@@ -118,10 +118,10 @@ class FilterButton extends EventBusSubsetMixin(HTMLElement) {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
-                    let event = new Event('change');
-                    event.oldValue = oldValue;
-                    event.value = newValue;
-                    this.dispatchEvent(event);
+                    let ev = new Event('change');
+                    ev.oldValue = oldValue;
+                    ev.value = newValue;
+                    this.dispatchEvent(ev);
                 }
             break;
         }
@@ -130,21 +130,24 @@ class FilterButton extends EventBusSubsetMixin(HTMLElement) {
     next(event) {
         if (!this.readonly) {
             let all = this.querySelectorAll("[value]");
-            let value = this.value;
+            let oldValue = this.value;
+            let value = oldValue;
             if (!!all.length) {
-                let opt = this.querySelector(`[value="${this.value}"]`);
+                let opt = this.querySelector(`[value="${oldValue}"]`);
                 if (!!opt && !!opt.nextElementSibling) {
                     value = opt.nextElementSibling.getAttribute("value");
                 } else {
                     value = all[0].getAttribute("value");
                 }
             }
-            FilterStorage.set(this.ref, value);
-            this.value = value;
-            this.triggerGlobal("filter", {
-                name: this.ref,
-                value: this.value
-            });
+            if (value != oldValue) {
+                this.value = value;
+                FilterStorage.set(this.ref, value);
+                this.triggerGlobal("filter", {
+                    name: this.ref,
+                    value: value
+                });
+            }
         }
         event.preventDefault();
         return false;
@@ -153,21 +156,24 @@ class FilterButton extends EventBusSubsetMixin(HTMLElement) {
     revert(event) {
         if (!this.readonly) {
             let all = this.querySelectorAll("[value]");
-            let value = this.value;
+            let oldValue = this.value;
+            let value = oldValue;
             if (!!all.length) {
-                let opt = this.querySelector(`[value="${this.value}"]`);
+                let opt = this.querySelector(`[value="${oldValue}"]`);
                 if (!!opt && !!opt.previousElementSibling) {
                     value = opt.previousElementSibling.getAttribute("value");
                 } else {
                     value = all[all.length-1].getAttribute("value");
                 }
             }
-            FilterStorage.set(this.ref, this.value);
-            this.value = value;
-            this.triggerGlobal("filter", {
-                name: this.ref,
-                value: this.value
-            });
+            if (value != oldValue) {
+                this.value = value;
+                FilterStorage.set(this.ref, value);
+                this.triggerGlobal("filter", {
+                    name: this.ref,
+                    value: value
+                });
+            }
         }
         event.preventDefault();
         return false;
