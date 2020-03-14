@@ -1,8 +1,5 @@
 import Template from "/emcJS/util/Template.js";
-import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
-import Logic from "/script/util/Logic.js";
 
-const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         * {

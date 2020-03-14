@@ -1,11 +1,9 @@
 import Template from "/emcJS/util/Template.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/Option.js";
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 
-const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         * {
@@ -64,24 +62,20 @@ const REWARDS = [
 ];
 
 function stateChanged(event) {
-    EventBus.mute("dungeonreward");
     let value = parseInt(event.data[`dungeonRewards.${this.ref}`]);
     if (isNaN(value)) {
         value = 0;
     }
     this.value = value;
-    EventBus.unmute("dungeonreward");
 }
 
 function dungeonRewardUpdate(event){
     if (this.ref === event.data.name && this.value !== event.data.value) {
-        EventBus.mute("dungeonreward");
         this.value = event.data.value;
-        EventBus.unmute("dungeonreward");
     }
 }
 
-class HTMLTrackerDungeonReward extends HTMLElement {
+class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
@@ -90,8 +84,13 @@ class HTMLTrackerDungeonReward extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        EVENT_BINDER.register("state", stateChanged.bind(this));
-        EVENT_BINDER.register("dungeonreward", dungeonRewardUpdate.bind(this));
+        this.registerGlobal("state", stateChanged.bind(this));
+        this.registerGlobal("dungeonreward", dungeonRewardUpdate.bind(this));
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        this.value = StateStorage.read(`dungeonRewards.${this.ref}`, "0");
     }
 
     get ref() {
@@ -130,7 +129,7 @@ class HTMLTrackerDungeonReward extends HTMLElement {
                             }
                             this.append(createOption(i+1, j));
                         }
-                        this.value = StateStorage.read(`dungeonRewards.${newValue}`, 0);
+                        this.value = StateStorage.read(`dungeonRewards.${newValue}`, "0");
                     }
                 }
             break;
@@ -144,34 +143,46 @@ class HTMLTrackerDungeonReward extends HTMLElement {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
-                    StateStorage.write(`dungeonRewards.${this.ref}`, newValue);
-                    EventBus.trigger("dungeonreward", {
-                        name: this.ref,
-                        value: newValue
-                    });
                 }
             break;
         }
     }
 
     next(ev) {
+        let oldValue = this.value;
+        let value = oldValue;
         let all = this.querySelectorAll("[value]");
         if (!!all.length) {
-            let opt = this.querySelector(`[value="${this.value}"]`);
+            let opt = this.querySelector(`[value="${oldValue}"]`);
             if (!!opt) {
                 if (!!opt.nextElementSibling) {
-                    this.value = opt.nextElementSibling.getAttribute("value");
+                    value = opt.nextElementSibling.getAttribute("value");
                 } else {
-                    this.value = all[1].getAttribute("value");
+                    value = all[1].getAttribute("value");
                 }
             }
+        }
+        if (value != oldValue) {
+            this.value = value;
+            StateStorage.write(`dungeonRewards.${this.ref}`, parseInt(value));
+            this.triggerGlobal("dungeonreward", {
+                name: this.ref,
+                value: value
+            });
         }
         ev.preventDefault();
         return false;
     }
 
     revert(ev) {
-        this.value = 0;
+        if (this.value != "0") {
+            this.value = "0";
+            StateStorage.write(`dungeonRewards.${this.ref}`, "0");
+            this.triggerGlobal("dungeonreward", {
+                name: this.ref,
+                value: "0"
+            });
+        }
         ev.preventDefault();
         return false;
     }

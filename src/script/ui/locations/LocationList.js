@@ -1,11 +1,10 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
 import "/emcJS/ui/selection/SwitchButton.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
-import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Language from "/script/util/Language.js";
 import World from "/script/util/World.js";
 import ListLogic from "/script/util/ListLogic.js";
@@ -19,7 +18,6 @@ import "/script/ui/FilterButton.js";
 
 const SettingsStorage = new TrackerStorage('settings');
 
-const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         * {
@@ -118,7 +116,7 @@ const VALUE_STATES = [
     "available"
 ];
 
-class HTMLTrackerLocationList extends Panel {
+class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
 
     constructor() {
         super();
@@ -134,36 +132,38 @@ class HTMLTrackerLocationList extends Panel {
         });
         this.shadowRoot.getElementById('vanilla').addEventListener("click", event => {
             StateStorage.write(`dungeonTypes.${this.ref}`, 'v');
-            EventBus.trigger("dungeontype", {
+            this.triggerGlobal("dungeontype", {
                 name: this.ref,
                 value: 'v'
             });
         });
         this.shadowRoot.getElementById('masterquest').addEventListener("click", event => {
             StateStorage.write(`dungeonTypes.${this.ref}`, 'mq');
-            EventBus.trigger("dungeontype", {
+            this.triggerGlobal("dungeontype", {
                 name: this.ref,
                 value: 'mq'
             });
         });
         /* event bus */
-        EVENT_BINDER.register("location_change", event => {
+        this.registerGlobal("location_change", event => {
             this.ref = event.data.name;
         });
-        EVENT_BINDER.register(["chest", "skulltula", "item", "logic"], event => {
+        this.registerGlobal(["chest", "skulltula", "item", "logic"], event => {
             this.updateHeader();
         });
-        EVENT_BINDER.register(["state", "settings", "randomizer_options"], event => {
+        this.registerGlobal(["state", "settings", "randomizer_options"], event => {
             this.refresh();
         });
-        EVENT_BINDER.register("dungeontype", event => {
+        this.registerGlobal("dungeontype", event => {
             if (this.ref === event.data.name) {
+                this.shadowRoot.getElementById("location-version").value = event.data.value;
                 this.refresh();
             }
         });
     }
 
     connectedCallback() {
+        super.connectedCallback();
         this.refresh();
     }
 

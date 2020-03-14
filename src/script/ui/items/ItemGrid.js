@@ -14,7 +14,7 @@ const TPL = new Template(`
             box-sizing: border-box;
         }
         :host {
-            display: inline-block;
+            display: block;
             min-width: min-content;
             min-height: min-content;
         }

@@ -1,14 +1,11 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
-import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 
 import "/emcJS/ui/layout/Layout.js";
 import "/script/ui/items/ItemGrid.js";
 import "/script/ui/dungeonstate/DungeonState.js";
 import "/script/ui/locations/LocationList.js";
 import "/script/ui/map/Map.js";
-
-const EVENT_BINDER = new ManagedEventBinder("layout");
 
 const TPL = new Template(`
     <style>
@@ -52,7 +49,6 @@ class HTMLTrackerLayoutContainer extends HTMLElement {
                 if (oldValue != newValue) {
                     let layout = GlobalData.get("layouts")[newValue];
                     if (!!layout) {
-                        EVENT_BINDER.reset();
                         this.shadowRoot.getElementById("layout").loadLayout(layout);
                     }
                 }

@@ -77,6 +77,4 @@ const LogicsStorage = new TrackerStorage('logics');
 
     ListUtil.fillLists(loadLogic);
 
-    //TODO
-    //logicContainer.querySelector('.logic-location').click();
 }());

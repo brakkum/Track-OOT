@@ -7,8 +7,6 @@ import Logic from "/script/util/Logic.js";
 const SettingsStorage = new TrackerStorage('settings');
 const LogicsStorage = new TrackerStorage('logics');
 
-// TODO add custom logic
-
 let entrance_active = {
     "dungeon": false
 };

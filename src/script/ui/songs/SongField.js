@@ -1,7 +1,7 @@
 import Template from "/emcJS/util/Template.js";
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import Language from "/script/util/Language.js";
 import "./SongStave.js";
@@ -51,7 +51,7 @@ function editSong(event) {
             let res = builder.value;
             StateStorage.write(this.ref, res);
             this.shadowRoot.getElementById("stave").value = res;
-            EventBus.trigger("song", {
+            this.triggerGlobal("song", {
                 name: this.ref,
                 value: res
             });
@@ -76,15 +76,15 @@ function songUpdate(event) {
     }
 }
 
-export default class HTMLTrackerSongField extends HTMLElement {
+export default class HTMLTrackerSongField extends EventBusSubsetMixin(HTMLElement) {
     
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        EventBus.register("song", songUpdate.bind(this));
-        EventBus.register("state", stateChanged.bind(this));
+        this.registerGlobal("song", songUpdate.bind(this));
+        this.registerGlobal("state", stateChanged.bind(this));
     }
 
     get ref() {

@@ -1,7 +1,7 @@
 import Template from "/emcJS/util/Template.js";
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import Language from "/script/util/Language.js";
 import "./ShopItem.js";
@@ -71,7 +71,7 @@ function editShop(event) {
                 el.ref = res[i].item;
                 el.price = res[i].price;
             }
-            EventBus.trigger("shop-items-update", {
+            this.triggerGlobal("shop-items-update", {
                 name: this.ref,
                 value: res
             });
@@ -87,7 +87,7 @@ function checkSlot(event) {
         let ch = StateStorage.read(`${this.ref}.bought`, [0,0,0,0,0,0,0,0]);
         ch[parseInt(event.target.id.slice(-1))] = 1;
         StateStorage.write(`${this.ref}.bought`, ch);
-        EventBus.trigger("shop_bought", {
+        this.triggerGlobal("shop_bought", {
             name: this.ref,
             value: ch
         });
@@ -102,7 +102,7 @@ function uncheckSlot(event) {
         let ch = StateStorage.read(`${this.ref}.bought`, [0,0,0,0,0,0,0,0]);
         ch[parseInt(event.target.id.slice(-1))] = 0;
         StateStorage.write(`${this.ref}.bought`, ch);
-        EventBus.trigger("shop_bought", {
+        this.triggerGlobal("shop_bought", {
             name: this.ref,
             value: ch
         });
@@ -171,7 +171,7 @@ function shopBoughtUpdate(event) {
     }
 }
 
-export default class HTMLTrackerShopField extends HTMLElement {
+export default class HTMLTrackerShopField extends EventBusSubsetMixin(HTMLElement) {
     
     constructor() {
         super();
@@ -185,9 +185,9 @@ export default class HTMLTrackerShopField extends HTMLElement {
             el.addEventListener("namechange", renameSlot.bind(this));
         }
         /* event bus */
-        EventBus.register("shop_items", shopItemUpdate.bind(this));
-        EventBus.register("shop_bought", shopBoughtUpdate.bind(this));
-        EventBus.register("state", stateChanged.bind(this));
+        this.registerGlobal("shop_items", shopItemUpdate.bind(this));
+        this.registerGlobal("shop_bought", shopBoughtUpdate.bind(this));
+        this.registerGlobal("state", stateChanged.bind(this));
     }
 
     get ref() {

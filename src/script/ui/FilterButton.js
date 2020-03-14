@@ -1,6 +1,6 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/Option.js";
 import FilterStorage from "/script/storage/FilterStorage.js";
 
@@ -44,7 +44,7 @@ const TPL = new Template(`
     </slot>
 `);
 
-class FilterButton extends HTMLElement {
+class FilterButton extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
@@ -53,7 +53,7 @@ class FilterButton extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        EventBus.register("filter", event => {
+        this.registerGlobal("filter", event => {
             if (event.data.name == this.ref) {
                 this.value = event.data.value;
             }
@@ -141,7 +141,7 @@ class FilterButton extends HTMLElement {
             }
             FilterStorage.set(this.ref, value);
             this.value = value;
-            EventBus.trigger("filter", {
+            this.triggerGlobal("filter", {
                 name: this.ref,
                 value: this.value
             });
@@ -164,7 +164,7 @@ class FilterButton extends HTMLElement {
             }
             FilterStorage.set(this.ref, this.value);
             this.value = value;
-            EventBus.trigger("filter", {
+            this.triggerGlobal("filter", {
                 name: this.ref,
                 value: this.value
             });

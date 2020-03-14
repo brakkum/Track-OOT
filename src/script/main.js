@@ -15,8 +15,7 @@ import "/script/ui/LocationStatus.js";
 
     if ("SharedWorker" in window) {
         let EventBusModuleShare = (await import("/emcJS/util/events/EventBusModuleShare.js")).default;
-        EventBusModuleShare.mute("logic");
-        EventBus.addModule(EventBusModuleShare);
+        EventBus.addModule(EventBusModuleShare, {blacklist:["logic"]});
     }
 
     updateLoadingMessage("apply logger...");

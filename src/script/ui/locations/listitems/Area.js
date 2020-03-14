@@ -1,23 +1,15 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
-import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import Template from "/emcJS/util/Template.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
-import Logger from "/emcJS/util/Logger.js";
-import Helper from "/emcJS/util/Helper.js";
-import Dialog from "/emcJS/ui/Dialog.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/ContextMenu.js";
 import "/emcJS/ui/Icon.js";
-import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import ListLogic from "/script/util/ListLogic.js";
-import Logic from "/script/util/Logic.js";
 import Language from "/script/util/Language.js";
-import World from "/script/util/World.js";
 
 const SettingsStorage = new TrackerStorage('settings');
 
-const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         * {
@@ -101,32 +93,30 @@ const VALUE_STATES = [
     "available"
 ];
 
-export default class ListArea extends HTMLElement {
+export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-
         /* mouse events */
         this.addEventListener("click", event => {
-            EventBus.trigger("location_change", {
+            this.triggerGlobal("location_change", {
                 name: this.ref
             });
             event.preventDefault();
             return false;
         });
-        
         /* event bus */
-        EVENT_BINDER.register(["state", "settings", "randomizer_options", "logic"], event => {
+        this.registerGlobal(["state", "settings", "randomizer_options", "logic"], event => {
             this.update()
         });
-        //EVENT_BINDER.register("dungeontype", dungeonTypeUpdate.bind(this));
+        //this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));
     }
 
     async update() {
         if (!!this.ref) {
-            let dType = StateStorage.read(`dungeonTypes.${this.ref}`, 'v'); // TODO
+            let dType = StateStorage.read(`dungeonTypes.${this.ref}`, 'v');
             if (dType == "n") {
                 let data_v = GlobalData.get(`world_lists/${this.ref}/lists/v`);
                 let data_m = GlobalData.get(`world_lists/${this.ref}/lists/mq`);

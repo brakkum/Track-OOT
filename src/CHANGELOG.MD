@@ -44,6 +44,10 @@ Application:    Track-OOT
 - split rom-settings and tracker-settings into seperate dialogs
 - logic editor now supports filter by search value
 
+### SYSTEM STABILITY
+- reworked global event system and removed crappy mechanics
+- use self contained event subsystems to reduce memory leaks and unwanted behaviour
+
 ---
 
 ## VERSION 1.6.4
