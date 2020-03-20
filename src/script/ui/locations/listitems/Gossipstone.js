@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import StateStorage from "/script/storage/StateStorage.js";
@@ -52,7 +52,7 @@ function hintstoneDialog(ref) {
     return new Promise(resolve => {
         let location = StateStorage.read(`${ref}.location`, "");
         let item = StateStorage.read(`${ref}.item`, "");
-        let data = GlobalData.get('hints', {locations: [], items: []});
+        let data = FileData.get('hints', {locations: [], items: []});
     
         let lbl_loc = document.createElement('label');
         lbl_loc.style.display = "flex";

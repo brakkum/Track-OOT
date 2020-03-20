@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import Logic from "/script/util/Logic.js";
 import World from "/script/util/World.js";
@@ -6,7 +6,7 @@ import World from "/script/util/World.js";
 class ListLogic {
     
     check(list) {
-        let world = GlobalData.get("world");
+        let world = FileData.get("world");
         let res = {
             done: 0,
             unopened: 0,

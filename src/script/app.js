@@ -3,7 +3,7 @@
 */
 
 import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import FileLoader from "/emcJS/util/FileLoader.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
@@ -46,7 +46,7 @@ function setVersion(data) {
 
     try {
         updateLoadingMessage("load data...");
-        await GlobalData.load(FILES);
+        await FileData.load(FILES);
         setVersion(await FileLoader.json("version.json"));
         updateLoadingMessage("learn languages...");
         await Language.load(await SettingsStorage.get("language", "en_us"));

@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
@@ -62,7 +62,7 @@ function stateChanged(event) {
     }
     this.value = value;
     // settings
-    let data = GlobalData.get("items")[this.ref];
+    let data = FileData.get("items")[this.ref];
     if (data.hasOwnProperty("start_settings")) {
         let stsp = data.start_settings.split(".");
         let startvalue;
@@ -89,7 +89,7 @@ function itemUpdate(event) {
 }
 
 function dungeonTypeUpdate(event) {
-    let data = GlobalData.get("items")[this.ref];
+    let data = FileData.get("items")[this.ref];
     if (data.hasOwnProperty("maxmq") && data.hasOwnProperty("related_dungeon") && event.data.name === data.related_dungeon) {
         this.fillItemChoices();
     }
@@ -153,7 +153,7 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
                     // savesatate
                     this.value = StateStorage.read(this.ref, 0);
                     // settings
-                    let data = GlobalData.get("items")[this.ref];
+                    let data = FileData.get("items")[this.ref];
                     if (data.hasOwnProperty("start_settings")) {
                         this.startvalue = StateStorage.read(data.start_settings, 1);
                     } else {
@@ -179,7 +179,7 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
 
     fillItemChoices() {
         this.innerHTML = "";
-        let data = GlobalData.get("items")[this.ref];
+        let data = FileData.get("items")[this.ref];
         if (!data) return;
         let start_value = parseInt(this.startvalue);
         if (isNaN(start_value) || start_value < 0) {
@@ -228,7 +228,7 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
         if (!this.readonly) {
             let oldValue = this.value;
             let value = oldValue;
-            let data = GlobalData.get("items")[this.ref];
+            let data = FileData.get("items")[this.ref];
             if ((event.shiftKey || event.ctrlKey)) {
                 if (!!data.alternate_counting) {
                     for (let i = 0; i < data.alternate_counting.length; ++i) {
@@ -275,7 +275,7 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
         if (!this.readonly) {
             let oldValue = this.value;
             let value = oldValue;
-            let data = GlobalData.get("items")[this.ref];
+            let data = FileData.get("items")[this.ref];
             if ((event.shiftKey || event.ctrlKey)) {
                 if (!!data.alternate_counting) {
                     for (let i = data.alternate_counting.length - 1; i >= 0; --i) {

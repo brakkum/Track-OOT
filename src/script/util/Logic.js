@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import LogicProcessor from "/emcJS/util/logic/Processor.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import StateStorage from "/script/storage/StateStorage.js";
@@ -41,7 +41,7 @@ class TrackerLogic {
 
     constructor() {
         try {
-            let randoLogic = GlobalData.get("logic", {});
+            let randoLogic = FileData.get("logic", {});
             LOGIC_PROCESSOR.clearLogic();
             LOGIC_PROCESSOR.loadLogic(randoLogic);
             let data = StateStorage.getAll();

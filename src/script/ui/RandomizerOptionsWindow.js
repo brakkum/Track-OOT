@@ -2,7 +2,7 @@ import SettingsWindow from "/emcJS/ui/SettingsWindow.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import "/emcJS/ui/Paging.js";
 
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import BusyIndicator from "/script/ui/BusyIndicator.js";
 import SettingsBuilder from "/script/util/SettingsBuilder.js";
@@ -17,7 +17,7 @@ export default class RomSettings {
         settings.addEventListener('submit', function(event) {
             BusyIndicator.busy();
             let settings = {};
-            let options = GlobalData.get("randomizer_options");
+            let options = FileData.get("randomizer_options");
             for (let i in event.data) {
                 for (let j in event.data[i]) {
                     let v = event.data[i][j];
@@ -35,12 +35,12 @@ export default class RomSettings {
             EventBus.trigger("randomizer_options", settings);
             BusyIndicator.unbusy();
         });
-        let options = GlobalData.get("randomizer_options");
+        let options = FileData.get("randomizer_options");
         SettingsBuilder.build(settings, options);
     }
 
     show() {
-        let options = GlobalData.get("randomizer_options");
+        let options = FileData.get("randomizer_options");
         let res = {};
         for (let i in options) {
             res[i] = res[i] || {};

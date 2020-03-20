@@ -1,5 +1,5 @@
 import FileSystem from "/emcJS/util/FileSystem.js";
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 
 const LogicsStorage = new TrackerStorage('logics');
@@ -28,11 +28,11 @@ async function getLogic(ref) {
     if (!!logic) {
         return logic;
     }
-    return GlobalData.get(`logic/${ref}`);
+    return FileData.get(`logic/${ref}`);
 }
 
 async function downloadPatchedLogic() {
-    let logic = JSON.parse(JSON.stringify(GlobalData.get("logic")));
+    let logic = JSON.parse(JSON.stringify(FileData.get("logic")));
     let logic_patched = await LogicsStorage.getAll();
     for (let i in logic_patched) {
         if (!logic[i]) {

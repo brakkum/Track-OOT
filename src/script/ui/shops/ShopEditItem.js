@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import Language from "/script/util/Language.js";
 
@@ -95,7 +95,7 @@ export default class HTMLTrackerShopEditItem extends HTMLElement {
                     if (!!this.checked && this.checked == "true") {
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/sold_out.png")`;
                     } else {
-                        let img = GlobalData.get("shop_items")[this.ref].image;
+                        let img = FileData.get("shop_items")[this.ref].image;
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("${img}")`;
                     }
                 }
@@ -110,7 +110,7 @@ export default class HTMLTrackerShopEditItem extends HTMLElement {
                     if (!!this.checked && this.checked == "true") {
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/sold_out.png")`;
                     } else {
-                        let img = GlobalData.get("shop_items")[this.ref].image;
+                        let img = FileData.get("shop_items")[this.ref].image;
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("${img}")`;
                     }
                 }

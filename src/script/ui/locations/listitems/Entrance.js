@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Dialog from "/emcJS/ui/Dialog.js";
@@ -128,14 +128,14 @@ export default class ListEntrance extends EventBusSubsetMixin(HTMLElement) {
                     if (this.value != area) {
                         let logic = {};
                         if (!!area) {
-                            let ref = GlobalData.get(`world/${area}/access`);
+                            let ref = FileData.get(`world/${area}/access`);
                             logic[ref] = {
                                 "type": "number",
                                 "el": this.access,
                                 "category": "entrance"
                             }
                         } else {
-                            let ref = GlobalData.get(`world/${this.value}/access`);
+                            let ref = FileData.get(`world/${this.value}/access`);
                             logic[ref] = null;
                         }
                         Logic.setLogic(logic);
@@ -187,8 +187,8 @@ export default class ListEntrance extends EventBusSubsetMixin(HTMLElement) {
         if (!!this.value) {
             let dType = StateStorage.read(`dungeonTypes.${this.value}`, 'v');
             if (dType == "n") {
-                let data_v = GlobalData.get(`world_lists/${this.value}/lists/v`);
-                let data_m = GlobalData.get(`world_lists/${this.value}/lists/mq`);
+                let data_v = FileData.get(`world_lists/${this.value}/lists/v`);
+                let data_m = FileData.get(`world_lists/${this.value}/lists/mq`);
                 let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
                 let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
@@ -197,7 +197,7 @@ export default class ListEntrance extends EventBusSubsetMixin(HTMLElement) {
                     this.shadowRoot.getElementById("value").dataset.state = VALUE_STATES[Math.max(res_v.value, res_m.value)];
                 }
             } else {
-                let data = GlobalData.get(`world_lists/${this.value}/lists/${dType}`);
+                let data = FileData.get(`world_lists/${this.value}/lists/${dType}`);
                 let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 this.shadowRoot.getElementById("value").dataset.state = VALUE_STATES[res.value];
             }
@@ -289,7 +289,7 @@ customElements.define('ootrt-list-entrance', ListEntrance);
 function entranceDialog(ref) {
     return new Promise(resolve => {
         let value = StateStorage.read(ref, "");
-        let world = GlobalData.get('world');
+        let world = FileData.get('world');
         let type = world[ref].type;
     
         let loc = document.createElement('label');

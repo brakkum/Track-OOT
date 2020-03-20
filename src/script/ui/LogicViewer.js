@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import LogicUIAbstractElement from "/emcJS/ui/logic/elements/AbstractElement.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import Helper from "/emcJS/util/Helper.js";
@@ -11,7 +11,7 @@ const SettingsStorage = new TrackerStorage('settings');
 const LogicsStorage = new TrackerStorage('logics');
 
 async function getLogic(ref) {
-    let logic = GlobalData.get(`logic/${ref}`, {});
+    let logic = FileData.get(`logic/${ref}`, {});
     if (await SettingsStorage.get('use_custom_logic', false)) {
         logic = await LogicsStorage.get(ref, logic);
     }

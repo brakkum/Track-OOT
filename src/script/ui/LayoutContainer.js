@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 
 import "/emcJS/ui/layout/Layout.js";
@@ -47,7 +47,7 @@ class HTMLTrackerLayoutContainer extends HTMLElement {
         switch (name) {
             case 'layout':
                 if (oldValue != newValue) {
-                    let layout = GlobalData.get("layouts")[newValue];
+                    let layout = FileData.get("layouts")[newValue];
                     if (!!layout) {
                         this.shadowRoot.getElementById("layout").loadLayout(layout);
                     }

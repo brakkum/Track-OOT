@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/ContextMenu.js";
@@ -118,8 +118,8 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
         if (!!this.ref) {
             let dType = StateStorage.read(`dungeonTypes.${this.ref}`, 'v');
             if (dType == "n") {
-                let data_v = GlobalData.get(`world_lists/${this.ref}/lists/v`);
-                let data_m = GlobalData.get(`world_lists/${this.ref}/lists/mq`);
+                let data_v = FileData.get(`world_lists/${this.ref}/lists/v`);
+                let data_m = FileData.get(`world_lists/${this.ref}/lists/mq`);
                 let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
                 let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
@@ -128,7 +128,7 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
                     this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[Math.max(res_v.value, res_m.value)];
                 }
             } else {
-                let data = GlobalData.get(`world_lists/${this.ref}/lists/${dType}`);
+                let data = FileData.get(`world_lists/${this.ref}/lists/${dType}`);
                 let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[res.value];
             }

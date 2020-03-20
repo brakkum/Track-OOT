@@ -1,7 +1,7 @@
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/Option.js";
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
 const TPL = new Template(`
@@ -121,7 +121,7 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
                         this.innerHTML = "";
                     } else if (oldValue === null || oldValue === undefined || oldValue === "") {
                         this.append(createOption(0, "/images/items/unknown.png"));
-                        let items = GlobalData.get("items");
+                        let items = FileData.get("items");
                         for (let i = 0; i < REWARDS.length; ++i) {
                             let j = items[REWARDS[i]].images;
                             if (Array.isArray(j)) {

@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
@@ -193,7 +193,7 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
         let btn_vanilla = this.shadowRoot.getElementById('vanilla');
         let btn_masterquest = this.shadowRoot.getElementById('masterquest');
         cnt.innerHTML = "";
-        let data = GlobalData.get(`world_lists/${this.ref}`);
+        let data = FileData.get(`world_lists/${this.ref}`);
         if (!!data) {
             if (dType == "n") {
                 let data_v = data.lists.v;
@@ -224,8 +224,8 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
             let dType = this.shadowRoot.getElementById("location-version").value;
             let header_value = 1;
             if (dType == "n") {
-                let data_v = GlobalData.get(`world_lists/${this.ref}/lists/v`);
-                let data_m = GlobalData.get(`world_lists/${this.ref}/lists/mq`);
+                let data_v = FileData.get(`world_lists/${this.ref}/lists/v`);
+                let data_m = FileData.get(`world_lists/${this.ref}/lists/mq`);
                 let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
                 let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
@@ -234,7 +234,7 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
                     header_value = Math.max(res_v.value, res_m.value);
                 }
             } else {
-                let data = GlobalData.get(`world_lists/${this.ref}/lists/${dType}`);
+                let data = FileData.get(`world_lists/${this.ref}/lists/${dType}`);
                 let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 header_value = res.value;
             }

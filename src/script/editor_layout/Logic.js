@@ -1,5 +1,5 @@
 import TrackerStorage from "/script/storage/TrackerStorage.js";
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 
 const SettingsStorage = new TrackerStorage('settings');
 

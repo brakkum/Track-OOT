@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/Option.js";
@@ -19,7 +19,7 @@ const TPL = new Template(`
 `);
 
 function filterGossipstones(check) {
-    return GlobalData.get(`world/${check.id}/type`) != "gossipstone";
+    return FileData.get(`world/${check.id}/type`) != "gossipstone";
 }
 
 function updateStates(doneEl, availEl, missEl) {
@@ -28,7 +28,7 @@ function updateStates(doneEl, availEl, missEl) {
     let todo_min = 0;
     let todo_max = 0;
     let done = 0;
-    let data = GlobalData.get("world_lists");
+    let data = FileData.get("world_lists");
     if (!!data) {
         Object.keys(data).forEach(name => {
             if (name == "#" || name == "") return;

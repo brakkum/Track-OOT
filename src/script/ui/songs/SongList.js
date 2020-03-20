@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import "./SongField.js";
 
@@ -20,7 +20,7 @@ export default class HTMLTrackerSongList extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-        let songs = GlobalData.get("songs");
+        let songs = FileData.get("songs");
         for (let i in songs) {
             let el = document.createElement("ootrt-songfield");
             el.ref = i;

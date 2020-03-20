@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/Option.js";
@@ -93,7 +93,7 @@ class FilterButton extends EventBusSubsetMixin(HTMLElement) {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    let data = GlobalData.get(`filter/${this.ref}`);
+                    let data = FileData.get(`filter/${this.ref}`);
                     this.value = FilterStorage.get(this.ref, data.default);
                     for (let i in data.values) {
                         let img = data.images;

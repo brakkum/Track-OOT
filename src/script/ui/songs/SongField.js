@@ -1,5 +1,5 @@
 import Template from "/emcJS/util/Template.js";
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Dialog from "/emcJS/ui/Dialog.js";
@@ -64,7 +64,7 @@ function editSong(event) {
 function stateChanged(event) {
     let value = event.data[this.ref];
     if (typeof value == "undefined") {
-        value = GlobalData.get("songs")[this.ref].notes;
+        value = FileData.get("songs")[this.ref].notes;
     }
     this.shadowRoot.getElementById("stave").value = value;
 }
@@ -101,7 +101,7 @@ export default class HTMLTrackerSongField extends EventBusSubsetMixin(HTMLElemen
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
-            let data = GlobalData.get("songs")[newValue];
+            let data = FileData.get("songs")[newValue];
             let title = this.shadowRoot.getElementById("title");
             title.innerHTML = Language.translate(newValue);
             this.shadowRoot.getElementById("stave").value = StateStorage.read(newValue, data.notes);

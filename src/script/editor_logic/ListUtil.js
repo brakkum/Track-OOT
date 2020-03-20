@@ -1,5 +1,5 @@
 
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import Language from "/script/util/Language.js";
 
@@ -22,12 +22,12 @@ class ListUtil {
 
     async fillLists(loadLogic) {
 
-        let world = GlobalData.get("world");
-        let world_lists = GlobalData.get("world_lists");
-        let items = GlobalData.get("items");
-        let randomizer_options = GlobalData.get("randomizer_options");
-        let filter = GlobalData.get("filter");
-        let logic = GlobalData.get("logic");
+        let world = FileData.get("world");
+        let world_lists = FileData.get("world_lists");
+        let items = FileData.get("items");
+        let randomizer_options = FileData.get("randomizer_options");
+        let filter = FileData.get("filter");
+        let logic = FileData.get("logic");
         let custom_logic = await LogicsStorage.getAll();
         let mixins = {};
         

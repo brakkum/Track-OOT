@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/Option.js";
@@ -55,7 +55,7 @@ function stateChanged(event) {
     if (typeof value == "undefined" || value == "") {
         value = "v";
         if (!!this.ref) {
-            let area = GlobalData.get(`world_lists/${this.ref}/lists`);
+            let area = FileData.get(`world_lists/${this.ref}/lists`);
             if (area.hasOwnProperty("mq")) {
                 value = "n";
             }
@@ -119,7 +119,7 @@ class HTMLTrackerDungeonType extends EventBusSubsetMixin(HTMLElement) {
                     let value = "v";
                     let readonly = true;
                     if (!!newValue) {
-                        let area = GlobalData.get(`world_lists/${newValue}/lists`);
+                        let area = FileData.get(`world_lists/${newValue}/lists`);
                         if (area.hasOwnProperty("mq")) {
                             value = StateStorage.read(`dungeonTypes.${newValue}`, "n");
                             readonly = false;

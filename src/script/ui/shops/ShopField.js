@@ -1,5 +1,5 @@
 import Template from "/emcJS/util/Template.js";
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Dialog from "/emcJS/ui/Dialog.js";
@@ -60,7 +60,7 @@ const TPL = new Template(`
 
 function editShop(event) {
     let builder = document.createElement("ootrt-shopbuilder");
-    builder.value = StateStorage.read(this.ref, GlobalData.get("shops")[this.ref]);
+    builder.value = StateStorage.read(this.ref, FileData.get("shops")[this.ref]);
     let d = new Dialog({title: Language.translate(this.ref), submit: true, cancel: true});
     d.addEventListener("submit", function(result) {
         if (!!result) {
@@ -82,7 +82,7 @@ function editShop(event) {
 }
 
 function checkSlot(event) {
-    if ((!event.target.checked || event.target.checked == "false") && !GlobalData.get("shop_items")[event.target.ref].refill) {
+    if ((!event.target.checked || event.target.checked == "false") && !FileData.get("shop_items")[event.target.ref].refill) {
         event.target.checked = true;
         let ch = StateStorage.read(`${this.ref}.bought`, [0,0,0,0,0,0,0,0]);
         ch[parseInt(event.target.id.slice(-1))] = 1;
@@ -130,7 +130,7 @@ function stateChanged(event) {
     }
     /* shop items */
     if (typeof data == "undefined") {
-        data = GlobalData.get("shops")[this.ref];
+        data = FileData.get("shops")[this.ref];
     }
     /* shop bought */
     if (typeof bought == "undefined") {
@@ -204,7 +204,7 @@ export default class HTMLTrackerShopField extends EventBusSubsetMixin(HTMLElemen
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
-            let data = StateStorage.read(newValue, GlobalData.get("shops")[newValue]);
+            let data = StateStorage.read(newValue, FileData.get("shops")[newValue]);
             let title = this.shadowRoot.getElementById("title-text");
             title.innerHTML = Language.translate(newValue);
             let names = StateStorage.read(`${this.ref}.names`, ["","","","","","","",""]);

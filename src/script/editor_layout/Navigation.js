@@ -1,5 +1,5 @@
 import FileSystem from "/emcJS/util/FileSystem.js";
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 
 document.getElementById("layouteditor-menu-file-exit").onclick = exitEditor;
 

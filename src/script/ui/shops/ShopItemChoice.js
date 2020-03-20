@@ -1,7 +1,7 @@
 import Window from "/emcJS/ui/Window.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import Template from "/emcJS/util/Template.js";
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Language from "/script/util/Language.js";
 import "./ShopEditItem.js";
 
@@ -165,7 +165,7 @@ export default class HTMLTrackerShopItemChoice extends Window {
         }
         ccl.onclick = () => this.close();
         
-        let items = GlobalData.get("shop_items");
+        let items = FileData.get("shop_items");
         for (let item in items) {
             let values = items[item];
             this.addTab(Language.translate(values.category), values.category);

@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import LogicCompiler from "/emcJS/util/logic/Compiler.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import FilterStorage from "/script/storage/FilterStorage.js";
@@ -175,7 +175,7 @@ class World {
     init() {
         if (!initialized) {
             initialized = true;
-            let world = GlobalData.get("world");
+            let world = FileData.get("world");
             for (let ref in world) {
                 let entry = world[ref];
                 WORLD.set(ref, new WorldEntry(ref, entry));

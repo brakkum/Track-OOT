@@ -24,7 +24,7 @@ import "./LiteralCustom.js";
 import ListUtil from "./ListUtil.js";
 
 import TrackerStorage from "/script/storage/TrackerStorage.js";
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Language from "/script/util/Language.js";
 
 import "./Navigation.js";
@@ -67,7 +67,7 @@ const LogicsStorage = new TrackerStorage('logics');
         if (!!logic) {
             return logic;
         }
-        return GlobalData.get(`logic/${ref}`);
+        return FileData.get(`logic/${ref}`);
     }
 
     workingarea.addEventListener('save', storeLogic);

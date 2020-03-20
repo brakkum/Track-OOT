@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Dialog from "/emcJS/ui/Dialog.js";
@@ -134,7 +134,7 @@ export default class MapEntrance extends EventBusSubsetMixin(HTMLElement) {
             } else {
                 entranceDialog(this.ref).then(r => {
                     this.value = r;
-                    let ref = GlobalData.get(`world/${r}/access`);
+                    let ref = FileData.get(`world/${r}/access`);
                     let l = {};
                     l[ref] = {
                         "type": "number",
@@ -184,8 +184,8 @@ export default class MapEntrance extends EventBusSubsetMixin(HTMLElement) {
         if (!!this.value) {
             let dType = StateStorage.read(`dungeonTypes.${this.value}`, 'v'); // TODO
             if (dType == "n") {
-                let data_v = GlobalData.get(`world_lists/${this.value}/lists/v`);
-                let data_m = GlobalData.get(`world_lists/${this.value}/lists/mq`);
+                let data_v = FileData.get(`world_lists/${this.value}/lists/v`);
+                let data_m = FileData.get(`world_lists/${this.value}/lists/mq`);
                 let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
                 let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
@@ -195,7 +195,7 @@ export default class MapEntrance extends EventBusSubsetMixin(HTMLElement) {
                 }
                 this.shadowRoot.getElementById("marker").innerHTML = "";
             } else {
-                let data = GlobalData.get(`world_lists/${this.value}/lists/${dType}`);
+                let data = FileData.get(`world_lists/${this.value}/lists/${dType}`);
                 let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[res.value];
                 if (res.value > 1) {
@@ -332,7 +332,7 @@ customElements.define('ootrt-marker-entrance', MapEntrance);
 function entranceDialog(ref) {
     return new Promise(resolve => {
         let value = StateStorage.read(ref, "");
-        let world = GlobalData.get('world');
+        let world = FileData.get('world');
         let type = world[ref].type;
     
         let loc = document.createElement('label');

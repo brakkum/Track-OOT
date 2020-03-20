@@ -3,6 +3,7 @@ import AbstractElement from "/emcJS/ui/logic/elements/AbstractElement.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import Logic from "/script/util/Logic.js";
 import Language from "/script/util/Language.js";
+import LogicViewer from "/script/ui/LogicViewer.js";
 
 const TPL_CAPTION = "MIXIN";
 const TPL_BACKGROUND = "#ffffff";
@@ -46,8 +47,8 @@ export default class LiteralMixin extends AbstractElement {
         super();
         this.shadowRoot.append(TPL.generate());
         this.shadowRoot.getElementById("view").addEventListener("click", function(event) {
-            let calc = !!this.shadowRoot.getElementById('header').getAttribute('value');
-            showLogic(this.ref, calc);
+            let title = Language.translate(this.ref);
+            LogicViewer.show(this.ref, title);
         }.bind(this));
     }
 

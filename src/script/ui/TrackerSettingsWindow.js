@@ -1,6 +1,6 @@
 import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import Template from "/emcJS/util/Template.js";
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import SettingsWindow from "/emcJS/ui/SettingsWindow.js";
 import PopOver from "/emcJS/ui/PopOver.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
@@ -58,7 +58,7 @@ Big thanks to:<br>
 `);
 
 async function getSettings() {
-    let options = GlobalData.get("settings");
+    let options = FileData.get("settings");
     let res = {};
     for (let i in options) {
         let opt = options[i];
@@ -96,7 +96,7 @@ export default class Settings {
 
     constructor() {
         let options = {
-            settings: GlobalData.get("settings")
+            settings: FileData.get("settings")
         };
         SettingsBuilder.build(settings, options);
         
@@ -122,7 +122,7 @@ export default class Settings {
         settings.addEventListener('submit', function(event) {
             BusyIndicator.busy();
             let settings = {};
-            let options = GlobalData.get("settings");
+            let options = FileData.get("settings");
             for (let i in event.data.settings) {
                 let v = event.data.settings[i];
                 if (Array.isArray(v)) {

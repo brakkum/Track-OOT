@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import "./ShopField.js";
 
@@ -21,7 +21,7 @@ export default class HTMLTrackerShopList extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-        let shops = GlobalData.get("shops");
+        let shops = FileData.get("shops");
         for (let i in shops) {
             let el = document.createElement("ootrt-shopfield");
             el.ref = i;

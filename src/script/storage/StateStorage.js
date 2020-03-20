@@ -1,4 +1,3 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import ActionPath from "/emcJS/util/ActionPath.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
@@ -171,21 +170,13 @@ class StateStorage {
         return def;
     }
 
-    reset() {
+    reset(def) {
         state = StateConverter.createEmptyState();
 
-        let options = GlobalData.get("randomizer_options");
-        for (let i in options) {
-            for (let j in options[i]) {
-                let v = options[i][j].default;
-                if (Array.isArray(v)) {
-                    v = new Set(v);
-                    options[i][j].values.forEach(el => {
-                        state.data[el] = v.has(el);
-                    });
-                } else {
-                    state.data[j] = v;
-                }
+        if (typeof def == "object") {
+            def = JSON.parse(JSON.stringify(def));
+            for (let i in def) {
+                state.data[i] = key[i];
             }
         }
 
@@ -223,69 +214,3 @@ class StateStorage {
 }
 
 export default new StateStorage;
-
-
-/* TODO
-** use this to create unified states
-** currently ugly (hence not used) but we keep an eye on async modules for now
-*/
-function getDefaultState() {
-    let DEFAULT_STATE = {
-        notes: ""
-    };
-    let shops = GlobalData.get("shops");
-    for (let i in shops) {
-        DEFAULT_STATE[i] = shops[i];
-        DEFAULT_STATE[`${i}.names`] = ["", "", "", "", "", "", "", ""];
-        DEFAULT_STATE[`${i}.bought`] = [0, 0, 0, 0, 0, 0, 0, 0]
-    }
-    let songs = GlobalData.get("songs");
-    for (let i in songs) {
-        if (songs[i].editable) {
-            DEFAULT_STATE[i] = songs[i].notes;
-        }
-    }
-    let items = GlobalData.get("items");
-    for (let i in items) {
-        DEFAULT_STATE[i] = 0;
-    }
-    let locations = GlobalData.get("world/locations");
-    for (let i in locations) {
-        DEFAULT_STATE[i] = false;
-        if (locations[i].type == "gossipstone") {
-            DEFAULT_STATE[`${i}.item`] = "";
-            DEFAULT_STATE[`${i}.location`] = "";
-        }
-    }
-    let entrances = GlobalData.get("world/entrances");
-    for (let i in entrances) {
-        DEFAULT_STATE[i] = "";
-    }
-    let dungeonstate = GlobalData.get("dungeonstate");
-    for (let i in dungeonstate) {
-        if (dungeonstate[i].hasmq) {
-            DEFAULT_STATE[`dungeonTypes.${i}`] = "n";
-        }
-        if (dungeonstate[i].boss_reward) {
-            DEFAULT_STATE[`dungeonRewards.${i}`] = 0;
-        }
-    }
-    let options = GlobalData.get("randomizer_options");
-    for (let i in options) {
-        for (let j in options[i]) {
-            if (options[i][j].type == "list") {
-                let def = new Set(options[i][j].default);
-                for (let k of options[i][j].values) {
-                    if (def.has(k)) {
-                        DEFAULT_STATE[k] = true;
-                    } else {
-                        DEFAULT_STATE[k] = false;
-                    }
-                }
-            } else {
-                DEFAULT_STATE[j] = options[i][j].default;
-            }
-        }
-    }
-    return DEFAULT_STATE;
-}

@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
@@ -459,7 +459,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
     async refresh() {
         let dType = "v";//this.shadowRoot.getElementById("location-version").value;
         this.innerHTML = "";
-        let data = GlobalData.get(`world_lists/${this.ref}`);
+        let data = FileData.get(`world_lists/${this.ref}`);
         if (!!data) {
             // switch map/minimap background
             let map = this.shadowRoot.getElementById('map');

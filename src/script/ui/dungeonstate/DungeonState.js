@@ -1,5 +1,5 @@
 import Template from "/emcJS/util/Template.js";
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Language from "/script/util/Language.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
 import "./DungeonReward.js";
@@ -88,7 +88,7 @@ class HTMLTrackerDungeonState extends Panel {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
 
-        let data = GlobalData.get("dungeonstate/entries");
+        let data = FileData.get("dungeonstate/entries");
         for (let i = 0; i < data.length; ++i) {
             this.shadowRoot.append(createRow(data[i]));
         }

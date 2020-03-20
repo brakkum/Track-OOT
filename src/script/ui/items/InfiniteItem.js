@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
@@ -63,7 +63,7 @@ function itemUpdate(event) {
 }
 
 function dungeonTypeUpdate(event) {
-    let data = GlobalData.get("items")[this.ref];
+    let data = FileData.get("items")[this.ref];
     if (data.hasOwnProperty("maxmq") && data.hasOwnProperty("related_dungeon") && event.data.name === data.related_dungeon) {
         this.fillItemChoices();
     }
@@ -115,7 +115,7 @@ class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
         if (oldValue != newValue) {
             switch (name) {
                 case 'ref':
-                    let data = GlobalData.get("items")[newValue];
+                    let data = FileData.get("items")[newValue];
                     this.style.backgroundImage = `url("${data.images}")`;
                     this.value = StateStorage.read(this.ref, 0);
                 break;

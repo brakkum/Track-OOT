@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
@@ -21,7 +21,7 @@ let use_custom_logic = false;
 
 // register event on entrances change
 EventBus.register("entrance", event => {
-    let world = GlobalData.get("world", {});
+    let world = FileData.get("world", {});
     let entrance = world[event.data.name];
     let logic = {};
     if (entrance_binding[event.data.name] != "") {
@@ -78,7 +78,7 @@ EventBus.register("custom_logic", async event => {
 });
 
 async function updateLogic() {
-    let logic = GlobalData.get("logic", {});
+    let logic = FileData.get("logic", {});
     if (use_custom_logic) {
         let customLogic = await LogicsStorage.getAll();
         for (let l in customLogic) {
@@ -99,8 +99,8 @@ async function updateLogic() {
 class LogicAlternator {
 
     async init() {
-        let settings = GlobalData.get("settings", {});
-        let world = GlobalData.get("world", {});
+        let settings = FileData.get("settings", {});
+        let world = FileData.get("world", {});
         for (let type in entrance_types) {
             let name = entrance_types[type];
             entrance_active[name] = StateStorage.read(type, "");

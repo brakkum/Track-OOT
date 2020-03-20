@@ -1,4 +1,4 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
+import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
 import Language from "/script/util/Language.js";
@@ -87,7 +87,7 @@ class HTMLTrackerItemGrid extends Panel {
 
     connectedCallback() {
         if (!this.items) {
-            this.items = JSON.stringify(GlobalData.get("grids/items"));
+            this.items = JSON.stringify(FileData.get("grids/items"));
         }
     }
 
@@ -111,7 +111,7 @@ class HTMLTrackerItemGrid extends Panel {
                     for (let row of config) {
                         let cnt = document.createElement('div');
                         cnt.classList.add("item-row");
-                        let items = GlobalData.get("items");
+                        let items = FileData.get("items");
                         for (let element of row) {
                             if (element.type == "item") {
                                 let data = items[element.value];
