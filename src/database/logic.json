@@ -1861,125 +1861,130 @@
         ]
     },
     "logic.location.temple_water.c_cracked_wall": {
-        "type": "or",
+        "type": "and",
         "el": [
             {
-                "type": "and",
+                "type": "number",
+                "el": "logic.area.temple_water",
+                "category": "area"
+            },
+            {
+                "type": "or",
                 "el": [
                     {
-                        "type": "number",
-                        "el": "logic.area.temple_water",
-                        "category": "area"
-                    },
-                    {
-                        "type": "number",
-                        "el": "mixin.can_water_temple_dive",
-                        "category": "mixin"
-                    },
-                    {
-                        "type": "or",
+                        "type": "and",
                         "el": [
                             {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "number",
-                                        "el": "mixin.has_bombchus",
-                                        "category": "mixin"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "skip.underwater_chests_openable",
-                                        "category": "skip"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.boots_iron",
-                                        "category": "item"
-                                    }
-                                ]
+                                "type": "number",
+                                "el": "mixin.can_water_temple_dive",
+                                "category": "mixin"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
-                                        "type": "number",
-                                        "el": "mixin.can_use_ocarina",
-                                        "category": "mixin"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.song_zelda",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "mixin.has_explosives",
-                                        "category": "mixin"
-                                    },
-                                    {
-                                        "type": "or",
+                                        "type": "and",
                                         "el": [
                                             {
                                                 "type": "number",
-                                                "el": "item.bow",
-                                                "category": "item"
-                                            },
-                                            {
-                                                "type": "and",
-                                                "el": [
-                                                    {
-                                                        "type": "number",
-                                                        "el": "item.magic_power",
-                                                        "category": "item"
-                                                    },
-                                                    {
-                                                        "type": "number",
-                                                        "el": "item.magic_din",
-                                                        "category": "item"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "type": "and",
-                                                "el": [
-                                                    {
-                                                        "type": "min",
-                                                        "el": {
-                                                            "type": "number",
-                                                            "el": "item.key_small_water",
-                                                            "category": "item"
-                                                        },
-                                                        "value": 4
-                                                    },
-                                                    {
-                                                        "type": "not",
-                                                        "el": {
-                                                            "type": "value",
-                                                            "el": "option.keysanity_small",
-                                                            "value": "keysanity_small_ignore",
-                                                            "category": "option"
-                                                        }
-                                                    }
-                                                ]
+                                                "el": "mixin.has_bombchus",
+                                                "category": "mixin"
                                             },
                                             {
                                                 "type": "number",
-                                                "el": "skip.wt_cracked_noitems",
+                                                "el": "skip.underwater_chests_openable",
                                                 "category": "skip"
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "number",
+                                                "el": "item.boots_iron",
+                                                "category": "item"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "and",
+                                        "el": [
+                                            {
+                                                "type": "number",
+                                                "el": "mixin.can_use_ocarina",
+                                                "category": "mixin"
+                                            },
+                                            {
+                                                "type": "number",
+                                                "el": "item.song_zelda",
+                                                "category": "item"
+                                            },
+                                            {
+                                                "type": "number",
+                                                "el": "mixin.has_explosives",
+                                                "category": "mixin"
+                                            },
+                                            {
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "number",
-                                                        "el": "item.boots_hover",
+                                                        "el": "item.bow",
                                                         "category": "item"
                                                     },
                                                     {
+                                                        "type": "and",
+                                                        "el": [
+                                                            {
+                                                                "type": "number",
+                                                                "el": "item.magic_power",
+                                                                "category": "item"
+                                                            },
+                                                            {
+                                                                "type": "number",
+                                                                "el": "item.magic_din",
+                                                                "category": "item"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "and",
+                                                        "el": [
+                                                            {
+                                                                "type": "min",
+                                                                "el": {
+                                                                    "type": "number",
+                                                                    "el": "item.key_small_water",
+                                                                    "category": "item"
+                                                                },
+                                                                "value": 4
+                                                            },
+                                                            {
+                                                                "type": "not",
+                                                                "el": {
+                                                                    "type": "value",
+                                                                    "el": "option.keysanity_small",
+                                                                    "value": "keysanity_small_ignore",
+                                                                    "category": "option"
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
                                                         "type": "number",
-                                                        "el": "skip.wt_cracked_wall_hovers",
+                                                        "el": "skip.wt_cracked_noitems",
                                                         "category": "skip"
+                                                    },
+                                                    {
+                                                        "type": "and",
+                                                        "el": [
+                                                            {
+                                                                "type": "number",
+                                                                "el": "item.boots_hover",
+                                                                "category": "item"
+                                                            },
+                                                            {
+                                                                "type": "number",
+                                                                "el": "skip.wt_cracked_wall_hovers",
+                                                                "category": "skip"
+                                                            }
+                                                        ]
                                                     }
                                                 ]
                                             }
@@ -1988,31 +1993,31 @@
                                 ]
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "number",
-                        "el": "skip.underwater_chests_openable",
-                        "category": "skip"
                     },
                     {
-                        "type": "number",
-                        "el": "item.hookshot",
-                        "category": "item"
-                    },
-                    {
-                        "type": "number",
-                        "el": "item.boots_iron",
-                        "category": "item"
-                    },
-                    {
-                        "type": "number",
-                        "el": "item.bombchu",
-                        "category": "item"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "skip.underwater_chests_openable",
+                                "category": "skip"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.hookshot",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.boots_iron",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.bombchu",
+                                "category": "item"
+                            }
+                        ]
                     }
                 ]
             }
@@ -2172,11 +2177,6 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "number",
-                        "el": "logic.area.temple_water",
-                        "category": "area"
-                    },
-                    {
                         "type": "and",
                         "el": [
                             {
@@ -2205,6 +2205,11 @@
                         ]
                     }
                 ]
+            },
+            {
+                "type": "number",
+                "el": "logic.area.temple_water",
+                "category": "area"
             }
         ]
     },
@@ -5996,16 +6001,6 @@
         "type": "and",
         "el": [
             {
-                "type": "number",
-                "el": "mixin.can_use_ocarina",
-                "category": "mixin"
-            },
-            {
-                "type": "number",
-                "el": "item.warp_spirit",
-                "category": "item"
-            },
-            {
                 "type": "or",
                 "el": [
                     {
@@ -6084,22 +6079,17 @@
                         ]
                     }
                 ]
+            },
+            {
+                "type": "number",
+                "el": "mixin.spirit_access_child",
+                "category": "mixin"
             }
         ]
     },
     "logic.location.temple_spirit.c_child_right": {
         "type": "and",
         "el": [
-            {
-                "type": "number",
-                "el": "mixin.can_use_ocarina",
-                "category": "mixin"
-            },
-            {
-                "type": "number",
-                "el": "item.warp_spirit",
-                "category": "item"
-            },
             {
                 "type": "or",
                 "el": [
@@ -6204,6 +6194,11 @@
                         ]
                     }
                 ]
+            },
+            {
+                "type": "number",
+                "el": "mixin.spirit_access_child",
+                "category": "mixin"
             }
         ]
     },
@@ -6457,6 +6452,14 @@
                                                 "type": "number",
                                                 "el": "option.bombchu_logic",
                                                 "category": "option"
+                                            },
+                                            {
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "number",
+                                                    "el": "option.entrance_shuffle_dungeons",
+                                                    "category": "option"
+                                                }
                                             }
                                         ]
                                     }
@@ -6544,16 +6547,6 @@
                             },
                             {
                                 "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
                                 "el": "mixin.has_explosives",
                                 "category": "mixin"
                             }
@@ -6565,11 +6558,6 @@
                             {
                                 "type": "number",
                                 "el": "item.magic_power",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.arrow_fire",
                                 "category": "item"
                             },
                             {
@@ -6610,6 +6598,21 @@
                                 "type": "number",
                                 "el": "mixin.can_become_adult",
                                 "category": "mixin"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "number",
+                                        "el": "item.arrow_fire",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "skip.spt_map_bow",
+                                        "category": "skip"
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -6621,16 +6624,6 @@
                     {
                         "type": "and",
                         "el": [
-                            {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
                             {
                                 "type": "number",
                                 "el": "mixin.has_explosives",
@@ -6655,6 +6648,11 @@
                                         "category": "option"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
                             }
                         ]
                     },
@@ -6815,6 +6813,14 @@
                                                 "type": "number",
                                                 "el": "option.bombchu_logic",
                                                 "category": "option"
+                                            },
+                                            {
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "number",
+                                                    "el": "option.entrance_shuffle_dungeons",
+                                                    "category": "option"
+                                                }
                                             }
                                         ]
                                     }
@@ -6901,13 +6907,8 @@
                             },
                             {
                                 "type": "number",
-                                "el": "mixin.can_use_ocarina",
+                                "el": "mixin.spirit_access_child",
                                 "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
                             }
                         ]
                     }
@@ -6941,12 +6942,7 @@
                             },
                             {
                                 "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
+                                "el": "mixin.spirit_access_child",
                                 "category": "mixin"
                             }
                         ]
@@ -7108,6 +7104,14 @@
                                                 "type": "number",
                                                 "el": "option.bombchu_logic",
                                                 "category": "option"
+                                            },
+                                            {
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "number",
+                                                    "el": "option.entrance_shuffle_dungeons",
+                                                    "category": "option"
+                                                }
                                             }
                                         ]
                                     }
@@ -7194,13 +7198,8 @@
                             },
                             {
                                 "type": "number",
-                                "el": "mixin.can_use_ocarina",
+                                "el": "mixin.spirit_access_child",
                                 "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
                             }
                         ]
                     }
@@ -7234,12 +7233,7 @@
                             },
                             {
                                 "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
+                                "el": "mixin.spirit_access_child",
                                 "category": "mixin"
                             }
                         ]
@@ -7351,6 +7345,14 @@
                                                 "type": "number",
                                                 "el": "option.bombchu_logic",
                                                 "category": "option"
+                                            },
+                                            {
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "number",
+                                                    "el": "option.entrance_shuffle_dungeons",
+                                                    "category": "option"
+                                                }
                                             }
                                         ]
                                     }
@@ -7438,16 +7440,6 @@
                             },
                             {
                                 "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
                                 "el": "mixin.has_explosives",
                                 "category": "mixin"
                             }
@@ -7492,11 +7484,6 @@
                             },
                             {
                                 "type": "number",
-                                "el": "item.arrow_fire",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
                                 "el": "item.magic_power",
                                 "category": "item"
                             },
@@ -7504,6 +7491,21 @@
                                 "type": "number",
                                 "el": "mixin.can_become_adult",
                                 "category": "mixin"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "number",
+                                        "el": "item.arrow_fire",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "skip.spt_sunblock_torch_bow",
+                                        "category": "skip"
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -7542,12 +7544,7 @@
                             },
                             {
                                 "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
+                                "el": "mixin.spirit_access_child",
                                 "category": "mixin"
                             }
                         ]
@@ -7650,16 +7647,6 @@
                         "el": [
                             {
                                 "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
                                 "el": "mixin.has_explosives",
                                 "category": "mixin"
                             },
@@ -7682,6 +7669,11 @@
                                         "category": "option"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
                             }
                         ]
                     },
@@ -7803,16 +7795,6 @@
                         "el": [
                             {
                                 "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
                                 "el": "mixin.has_explosives",
                                 "category": "mixin"
                             },
@@ -7835,6 +7817,11 @@
                                         "category": "option"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
                             }
                         ]
                     },
@@ -7966,16 +7953,6 @@
                         "el": [
                             {
                                 "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
                                 "el": "mixin.has_explosives",
                                 "category": "mixin"
                             },
@@ -7998,6 +7975,11 @@
                                         "category": "option"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
                             }
                         ]
                     },
@@ -8099,16 +8081,6 @@
                         "el": [
                             {
                                 "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
                                 "el": "mixin.has_explosives",
                                 "category": "mixin"
                             },
@@ -8131,6 +8103,11 @@
                                         "category": "option"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
                             }
                         ]
                     },
@@ -8383,116 +8360,111 @@
                 ]
             },
             {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.key_small_spirit",
-                                    "category": "item"
-                                },
-                                "value": 5
-                            },
-                            {
-                                "type": "value",
-                                "el": "option.keysanity_small",
-                                "value": "keysanity_small_ignore",
-                                "category": "option"
-                            }
-                        ]
+                        "type": "min",
+                        "el": {
+                            "type": "number",
+                            "el": "item.key_small_spirit",
+                            "category": "item"
+                        },
+                        "value": 5
+                    },
+                    {
+                        "type": "value",
+                        "el": "option.keysanity_small",
+                        "value": "keysanity_small_ignore",
+                        "category": "option"
+                    }
+                ]
+            },
+            {
+                "type": "min",
+                "el": {
+                    "type": "number",
+                    "el": "item.glove",
+                    "category": "item"
+                },
+                "value": 2
+            },
+            {
+                "type": "number",
+                "el": "mixin.can_become_adult",
+                "category": "mixin"
+            },
+            {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "number",
+                        "el": "skip.spt_shifting_wall_noitems",
+                        "category": "skip"
                     },
                     {
                         "type": "min",
                         "el": {
                             "type": "number",
-                            "el": "item.glove",
+                            "el": "item.hookshot",
                             "category": "item"
                         },
                         "value": 2
                     },
                     {
                         "type": "number",
-                        "el": "mixin.can_become_adult",
+                        "el": "mixin.has_bombchus",
                         "category": "mixin"
                     },
                     {
-                        "type": "or",
+                        "type": "and",
                         "el": [
                             {
-                                "type": "number",
-                                "el": "skip.spt_shifting_wall_noitems",
-                                "category": "skip"
-                            },
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.hookshot",
-                                    "category": "item"
-                                },
-                                "value": 2
-                            },
-                            {
-                                "type": "number",
-                                "el": "mixin.has_bombchus",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "number",
-                                                "el": "item.bombs",
-                                                "category": "item"
-                                            },
-                                            {
-                                                "type": "number",
-                                                "el": "item.nut",
-                                                "category": "item"
-                                            },
-                                            {
-                                                "type": "and",
-                                                "el": [
-                                                    {
-                                                        "type": "number",
-                                                        "el": "item.magic_power",
-                                                        "category": "item"
-                                                    },
-                                                    {
-                                                        "type": "number",
-                                                        "el": "item.magic_din",
-                                                        "category": "item"
-                                                    }
-                                                ]
-                                            }
-                                        ]
+                                        "type": "number",
+                                        "el": "item.bombs",
+                                        "category": "item"
                                     },
                                     {
-                                        "type": "or",
+                                        "type": "number",
+                                        "el": "item.nut",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "and",
                                         "el": [
                                             {
                                                 "type": "number",
-                                                "el": "item.bow",
+                                                "el": "item.magic_power",
                                                 "category": "item"
                                             },
                                             {
                                                 "type": "number",
-                                                "el": "item.hookshot",
-                                                "category": "item"
-                                            },
-                                            {
-                                                "type": "number",
-                                                "el": "item.hammer",
+                                                "el": "item.magic_din",
                                                 "category": "item"
                                             }
                                         ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "number",
+                                        "el": "item.bow",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "item.hookshot",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "item.hammer",
+                                        "category": "item"
                                     }
                                 ]
                             }
@@ -8516,116 +8488,111 @@
                 "category": "item"
             },
             {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.key_small_spirit",
-                                    "category": "item"
-                                },
-                                "value": 5
-                            },
-                            {
-                                "type": "value",
-                                "el": "option.keysanity_small",
-                                "value": "keysanity_small_ignore",
-                                "category": "option"
-                            }
-                        ]
+                        "type": "min",
+                        "el": {
+                            "type": "number",
+                            "el": "item.key_small_spirit",
+                            "category": "item"
+                        },
+                        "value": 5
+                    },
+                    {
+                        "type": "value",
+                        "el": "option.keysanity_small",
+                        "value": "keysanity_small_ignore",
+                        "category": "option"
+                    }
+                ]
+            },
+            {
+                "type": "min",
+                "el": {
+                    "type": "number",
+                    "el": "item.glove",
+                    "category": "item"
+                },
+                "value": 2
+            },
+            {
+                "type": "number",
+                "el": "mixin.can_become_adult",
+                "category": "mixin"
+            },
+            {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "number",
+                        "el": "skip.spt_shifting_wall_noitems",
+                        "category": "skip"
                     },
                     {
                         "type": "min",
                         "el": {
                             "type": "number",
-                            "el": "item.glove",
+                            "el": "item.hookshot",
                             "category": "item"
                         },
                         "value": 2
                     },
                     {
                         "type": "number",
-                        "el": "mixin.can_become_adult",
+                        "el": "mixin.has_bombchus",
                         "category": "mixin"
                     },
                     {
-                        "type": "or",
+                        "type": "and",
                         "el": [
                             {
-                                "type": "number",
-                                "el": "skip.spt_shifting_wall_noitems",
-                                "category": "skip"
-                            },
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.hookshot",
-                                    "category": "item"
-                                },
-                                "value": 2
-                            },
-                            {
-                                "type": "number",
-                                "el": "mixin.has_bombchus",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "number",
-                                                "el": "item.bombs",
-                                                "category": "item"
-                                            },
-                                            {
-                                                "type": "number",
-                                                "el": "item.nut",
-                                                "category": "item"
-                                            },
-                                            {
-                                                "type": "and",
-                                                "el": [
-                                                    {
-                                                        "type": "number",
-                                                        "el": "item.magic_power",
-                                                        "category": "item"
-                                                    },
-                                                    {
-                                                        "type": "number",
-                                                        "el": "item.magic_din",
-                                                        "category": "item"
-                                                    }
-                                                ]
-                                            }
-                                        ]
+                                        "type": "number",
+                                        "el": "item.bombs",
+                                        "category": "item"
                                     },
                                     {
-                                        "type": "or",
+                                        "type": "number",
+                                        "el": "item.nut",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "and",
                                         "el": [
                                             {
                                                 "type": "number",
-                                                "el": "item.bow",
+                                                "el": "item.magic_power",
                                                 "category": "item"
                                             },
                                             {
                                                 "type": "number",
-                                                "el": "item.hookshot",
-                                                "category": "item"
-                                            },
-                                            {
-                                                "type": "number",
-                                                "el": "item.hammer",
+                                                "el": "item.magic_din",
                                                 "category": "item"
                                             }
                                         ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "number",
+                                        "el": "item.bow",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "item.hookshot",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "item.hammer",
+                                        "category": "item"
                                     }
                                 ]
                             }
@@ -8675,116 +8642,111 @@
                 ]
             },
             {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.key_small_spirit",
-                                    "category": "item"
-                                },
-                                "value": 5
-                            },
-                            {
-                                "type": "value",
-                                "el": "option.keysanity_small",
-                                "value": "keysanity_small_ignore",
-                                "category": "option"
-                            }
-                        ]
+                        "type": "min",
+                        "el": {
+                            "type": "number",
+                            "el": "item.key_small_spirit",
+                            "category": "item"
+                        },
+                        "value": 5
+                    },
+                    {
+                        "type": "value",
+                        "el": "option.keysanity_small",
+                        "value": "keysanity_small_ignore",
+                        "category": "option"
+                    }
+                ]
+            },
+            {
+                "type": "min",
+                "el": {
+                    "type": "number",
+                    "el": "item.glove",
+                    "category": "item"
+                },
+                "value": 2
+            },
+            {
+                "type": "number",
+                "el": "mixin.can_become_adult",
+                "category": "mixin"
+            },
+            {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "number",
+                        "el": "skip.spt_shifting_wall_noitems",
+                        "category": "skip"
                     },
                     {
                         "type": "min",
                         "el": {
                             "type": "number",
-                            "el": "item.glove",
+                            "el": "item.hookshot",
                             "category": "item"
                         },
                         "value": 2
                     },
                     {
                         "type": "number",
-                        "el": "mixin.can_become_adult",
+                        "el": "mixin.has_bombchus",
                         "category": "mixin"
                     },
                     {
-                        "type": "or",
+                        "type": "and",
                         "el": [
                             {
-                                "type": "number",
-                                "el": "skip.spt_shifting_wall_noitems",
-                                "category": "skip"
-                            },
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.hookshot",
-                                    "category": "item"
-                                },
-                                "value": 2
-                            },
-                            {
-                                "type": "number",
-                                "el": "mixin.has_bombchus",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "number",
-                                                "el": "item.bombs",
-                                                "category": "item"
-                                            },
-                                            {
-                                                "type": "number",
-                                                "el": "item.nut",
-                                                "category": "item"
-                                            },
-                                            {
-                                                "type": "and",
-                                                "el": [
-                                                    {
-                                                        "type": "number",
-                                                        "el": "item.magic_power",
-                                                        "category": "item"
-                                                    },
-                                                    {
-                                                        "type": "number",
-                                                        "el": "item.magic_din",
-                                                        "category": "item"
-                                                    }
-                                                ]
-                                            }
-                                        ]
+                                        "type": "number",
+                                        "el": "item.bombs",
+                                        "category": "item"
                                     },
                                     {
-                                        "type": "or",
+                                        "type": "number",
+                                        "el": "item.nut",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "and",
                                         "el": [
                                             {
                                                 "type": "number",
-                                                "el": "item.bow",
+                                                "el": "item.magic_power",
                                                 "category": "item"
                                             },
                                             {
                                                 "type": "number",
-                                                "el": "item.hookshot",
-                                                "category": "item"
-                                            },
-                                            {
-                                                "type": "number",
-                                                "el": "item.hammer",
+                                                "el": "item.magic_din",
                                                 "category": "item"
                                             }
                                         ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "number",
+                                        "el": "item.bow",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "item.hookshot",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "item.hammer",
+                                        "category": "item"
                                     }
                                 ]
                             }
@@ -9560,116 +9522,126 @@
         ]
     },
     "logic.location.dodongo.c_chest_above_dodongo": {
-        "type": "or",
+        "type": "and",
         "el": [
             {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "number",
-                        "el": "mixin.has_bombchus",
-                        "category": "mixin"
-                    },
-                    {
-                        "type": "number",
-                        "el": "skip.dodongo_open_bombchu",
-                        "category": "skip"
-                    }
-                ]
+                "type": "number",
+                "el": "logic.area.dodongo",
+                "category": "area"
             },
             {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
-                        "type": "number",
-                        "el": "mixin.has_explosives",
-                        "category": "mixin"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "mixin.has_bombchus",
+                                "category": "mixin"
+                            },
+                            {
+                                "type": "number",
+                                "el": "skip.dodongo_open_bombchu",
+                                "category": "skip"
+                            }
+                        ]
                     },
                     {
                         "type": "and",
                         "el": [
                             {
                                 "type": "number",
-                                "el": "mixin.can_climb_dodongo",
+                                "el": "mixin.has_explosives",
                                 "category": "mixin"
                             },
                             {
-                                "type": "or",
+                                "type": "and",
                                 "el": [
                                     {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "number",
-                                                "el": "mixin.is_currently_child",
-                                                "category": "mixin"
-                                            },
-                                            {
-                                                "type": "number",
-                                                "el": "mixin.has_explosives",
-                                                "category": "mixin"
-                                            },
-                                            {
-                                                "type": "or",
-                                                "el": [
-                                                    {
-                                                        "type": "number",
-                                                        "el": "item.slingshot",
-                                                        "category": "item"
-                                                    },
-                                                    {
-                                                        "type": "number",
-                                                        "el": "skip.dodongo_child_slingshot_skip",
-                                                        "category": "skip"
-                                                    }
-                                                ]
-                                            }
-                                        ]
+                                        "type": "number",
+                                        "el": "mixin.can_climb_dodongo",
+                                        "category": "mixin"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
-                                                "type": "number",
-                                                "el": "mixin.can_become_adult",
-                                                "category": "mixin"
-                                            },
-                                            {
-                                                "type": "or",
+                                                "type": "and",
                                                 "el": [
                                                     {
                                                         "type": "number",
-                                                        "el": "item.boots_hover",
-                                                        "category": "item"
+                                                        "el": "mixin.is_currently_child",
+                                                        "category": "mixin"
                                                     },
                                                     {
-                                                        "type": "min",
-                                                        "el": {
-                                                            "type": "number",
-                                                            "el": "item.hookshot",
-                                                            "category": "item"
-                                                        },
-                                                        "value": 2
+                                                        "type": "number",
+                                                        "el": "mixin.has_explosives",
+                                                        "category": "mixin"
                                                     },
                                                     {
-                                                        "type": "and",
+                                                        "type": "or",
                                                         "el": [
                                                             {
                                                                 "type": "number",
-                                                                "el": "item.bow",
+                                                                "el": "item.slingshot",
                                                                 "category": "item"
                                                             },
                                                             {
                                                                 "type": "number",
-                                                                "el": "mixin.can_blast_or_smash",
-                                                                "category": "mixin"
+                                                                "el": "skip.dodongo_child_slingshot_skip",
+                                                                "category": "skip"
                                                             }
                                                         ]
-                                                    },
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "and",
+                                                "el": [
                                                     {
                                                         "type": "number",
-                                                        "el": "skip.dodongo_spike",
-                                                        "category": "skip"
+                                                        "el": "mixin.can_become_adult",
+                                                        "category": "mixin"
+                                                    },
+                                                    {
+                                                        "type": "or",
+                                                        "el": [
+                                                            {
+                                                                "type": "number",
+                                                                "el": "item.boots_hover",
+                                                                "category": "item"
+                                                            },
+                                                            {
+                                                                "type": "min",
+                                                                "el": {
+                                                                    "type": "number",
+                                                                    "el": "item.hookshot",
+                                                                    "category": "item"
+                                                                },
+                                                                "value": 2
+                                                            },
+                                                            {
+                                                                "type": "and",
+                                                                "el": [
+                                                                    {
+                                                                        "type": "number",
+                                                                        "el": "item.bow",
+                                                                        "category": "item"
+                                                                    },
+                                                                    {
+                                                                        "type": "number",
+                                                                        "el": "mixin.can_blast_or_smash",
+                                                                        "category": "mixin"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "number",
+                                                                "el": "skip.dodongo_spike",
+                                                                "category": "skip"
+                                                            }
+                                                        ]
                                                     }
                                                 ]
                                             }
@@ -17334,76 +17306,52 @@
         ]
     },
     "logic.location.temple_spirit_mq.c_entrance_back_left": {
-        "type": "or",
+        "type": "and",
         "el": [
             {
-                "type": "and",
+                "type": "number",
+                "el": "logic.area.temple_spirit",
+                "category": "area"
+            },
+            {
+                "type": "or",
                 "el": [
                     {
-                        "type": "number",
-                        "el": "logic.area.temple_spirit",
-                        "category": "area"
-                    },
-                    {
-                        "type": "or",
+                        "type": "and",
                         "el": [
                             {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "number",
-                                        "el": "item.slingshot",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "mixin.has_explosives",
-                                        "category": "mixin"
-                                    },
-                                    {
-                                        "type": "not",
-                                        "el": {
-                                            "type": "value",
-                                            "el": "filter.era",
-                                            "value": "adult",
-                                            "category": "filter"
-                                        }
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.warp_spirit",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "mixin.can_use_ocarina",
-                                        "category": "mixin"
-                                    }
-                                ]
+                                "type": "number",
+                                "el": "item.bow",
+                                "category": "item"
                             },
                             {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "number",
-                                        "el": "item.bow",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "mixin.can_become_adult",
-                                        "category": "mixin"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "mixin.can_blast_or_smash",
-                                        "category": "mixin"
-                                    }
-                                ]
+                                "type": "number",
+                                "el": "mixin.can_become_adult",
+                                "category": "mixin"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.slingshot",
+                                "category": "item"
                             }
                         ]
                     }
                 ]
+            },
+            {
+                "type": "number",
+                "el": "mixin.can_blast_or_smash",
+                "category": "mixin"
             }
         ]
     },
@@ -17429,28 +17377,33 @@
                         "category": "item"
                     },
                     {
-                        "type": "number",
-                        "el": "item.bow",
-                        "category": "item"
-                    },
-                    {
-                        "type": "number",
-                        "el": "item.hookshot",
-                        "category": "item"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "number",
+                                        "el": "item.hookshot",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "item.bow",
+                                        "category": "item"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.can_become_adult",
+                                "category": "mixin"
+                            }
+                        ]
                     },
                     {
                         "type": "and",
                         "el": [
-                            {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
                             {
                                 "type": "or",
                                 "el": [
@@ -17465,6 +17418,11 @@
                                         "category": "item"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
                             }
                         ]
                     }
@@ -17482,11 +17440,6 @@
             },
             {
                 "type": "number",
-                "el": "item.bombchu",
-                "category": "item"
-            },
-            {
-                "type": "number",
                 "el": "item.slingshot",
                 "category": "item"
             },
@@ -17498,16 +17451,6 @@
             {
                 "type": "number",
                 "el": "item.magic_power",
-                "category": "item"
-            },
-            {
-                "type": "number",
-                "el": "mixin.can_use_ocarina",
-                "category": "mixin"
-            },
-            {
-                "type": "number",
-                "el": "item.warp_spirit",
                 "category": "item"
             },
             {
@@ -17524,6 +17467,16 @@
                         "category": "item"
                     }
                 ]
+            },
+            {
+                "type": "number",
+                "el": "mixin.has_bombchus",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "mixin.spirit_access_child",
+                "category": "mixin"
             }
         ]
     },
@@ -17557,13 +17510,8 @@
             },
             {
                 "type": "number",
-                "el": "mixin.can_use_ocarina",
+                "el": "mixin.spirit_access_child",
                 "category": "mixin"
-            },
-            {
-                "type": "number",
-                "el": "item.warp_spirit",
-                "category": "item"
             }
         ]
     },
@@ -17607,16 +17555,6 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
-                            {
                                 "type": "or",
                                 "el": [
                                     {
@@ -17635,6 +17573,11 @@
                                         "category": "option"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
                             }
                         ]
                     },
@@ -17690,16 +17633,6 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
-                            {
                                 "type": "or",
                                 "el": [
                                     {
@@ -17718,6 +17651,11 @@
                                         "category": "option"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
                             }
                         ]
                     },
@@ -17758,16 +17696,6 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
-                            {
                                 "type": "or",
                                 "el": [
                                     {
@@ -17791,30 +17719,17 @@
                                 "type": "number",
                                 "el": "item.slingshot",
                                 "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
                             }
                         ]
                     },
                     {
                         "type": "and",
                         "el": [
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.hookshot",
-                                    "category": "item"
-                                },
-                                "value": 2
-                            },
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.glove",
-                                    "category": "item"
-                                },
-                                "value": 2
-                            },
                             {
                                 "type": "number",
                                 "el": "item.bow",
@@ -17839,11 +17754,6 @@
                                 "type": "number",
                                 "el": "item.slingshot",
                                 "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "mixin.can_become_adult",
-                                "category": "mixin"
                             }
                         ]
                     }
@@ -17868,15 +17778,6 @@
                 "type": "number",
                 "el": "item.slingshot",
                 "category": "item"
-            },
-            {
-                "type": "not",
-                "el": {
-                    "type": "value",
-                    "el": "filter.era",
-                    "value": "adult",
-                    "category": "filter"
-                }
             },
             {
                 "type": "or",
@@ -17946,6 +17847,11 @@
                                 "type": "number",
                                 "el": "item.bow",
                                 "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.can_become_adult",
+                                "category": "mixin"
                             }
                         ]
                     },
@@ -17988,12 +17894,7 @@
             },
             {
                 "type": "number",
-                "el": "item.warp_spirit",
-                "category": "item"
-            },
-            {
-                "type": "number",
-                "el": "mixin.can_use_ocarina",
+                "el": "mixin.spirit_access_child",
                 "category": "mixin"
             }
         ]
@@ -18018,16 +17919,6 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
-                            {
                                 "type": "or",
                                 "el": [
                                     {
@@ -18046,6 +17937,11 @@
                                         "category": "option"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
                             }
                         ]
                     },
@@ -18094,40 +17990,12 @@
                                 "type": "number",
                                 "el": "item.song_time",
                                 "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.boomerang",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "skip.sptmq_sunblock_gs_boomerang",
-                                "category": "skip"
                             }
                         ]
                     },
                     {
                         "type": "and",
                         "el": [
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.hookshot",
-                                    "category": "item"
-                                },
-                                "value": 2
-                            },
-                            {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.glove",
-                                    "category": "item"
-                                },
-                                "value": 2
-                            },
                             {
                                 "type": "number",
                                 "el": "mixin.can_become_adult",
@@ -18159,16 +18027,6 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
-                            {
                                 "type": "or",
                                 "el": [
                                     {
@@ -18187,6 +18045,11 @@
                                         "category": "option"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
                             }
                         ]
                     },
@@ -18265,32 +18128,9 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "min",
-                                                "el": {
-                                                    "type": "number",
-                                                    "el": "item.glove",
-                                                    "category": "item"
-                                                },
-                                                "value": 2
-                                            },
-                                            {
-                                                "type": "min",
-                                                "el": {
-                                                    "type": "number",
-                                                    "el": "item.hookshot",
-                                                    "category": "item"
-                                                },
-                                                "value": 2
-                                            },
-                                            {
-                                                "type": "number",
-                                                "el": "mixin.can_become_adult",
-                                                "category": "mixin"
-                                            }
-                                        ]
+                                        "type": "number",
+                                        "el": "mixin.can_become_adult",
+                                        "category": "mixin"
                                     }
                                 ]
                             }
@@ -18398,17 +18238,12 @@
             },
             {
                 "type": "number",
-                "el": "mixin.can_use_ocarina",
+                "el": "mixin.can_become_adult",
                 "category": "mixin"
             },
             {
                 "type": "number",
-                "el": "item.warp_spirit",
-                "category": "item"
-            },
-            {
-                "type": "number",
-                "el": "mixin.can_become_adult",
+                "el": "mixin.spirit_access_child",
                 "category": "mixin"
             }
         ]
@@ -19302,6 +19137,11 @@
                         "category": "option"
                     }
                 ]
+            },
+            {
+                "type": "number",
+                "el": "item.shield_mirror",
+                "category": "item"
             }
         ]
     },
@@ -28608,16 +28448,6 @@
         "type": "and",
         "el": [
             {
-                "type": "number",
-                "el": "mixin.can_use_ocarina",
-                "category": "mixin"
-            },
-            {
-                "type": "number",
-                "el": "item.warp_spirit",
-                "category": "item"
-            },
-            {
                 "type": "or",
                 "el": [
                     {
@@ -28696,6 +28526,11 @@
                         ]
                     }
                 ]
+            },
+            {
+                "type": "number",
+                "el": "mixin.spirit_access_child",
+                "category": "mixin"
             }
         ]
     },
@@ -28822,16 +28657,6 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
-                            {
                                 "type": "or",
                                 "el": [
                                     {
@@ -28870,6 +28695,11 @@
                                         "category": "option"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
                             }
                         ]
                     },
@@ -28904,6 +28734,14 @@
                                                 "type": "number",
                                                 "el": "option.bombchu_logic",
                                                 "category": "option"
+                                            },
+                                            {
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "number",
+                                                    "el": "option.entrance_shuffle_dungeons",
+                                                    "category": "option"
+                                                }
                                             }
                                         ]
                                     },
@@ -28943,16 +28781,6 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
-                            {
                                 "type": "or",
                                 "el": [
                                     {
@@ -28971,6 +28799,11 @@
                                         "category": "option"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
                             }
                         ]
                     },
@@ -29085,16 +28918,6 @@
                                 "type": "number",
                                 "el": "mixin.has_explosives",
                                 "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
                             }
                         ]
                     },
@@ -29154,6 +28977,14 @@
                                                 "type": "number",
                                                 "el": "option.bombchu_logic",
                                                 "category": "option"
+                                            },
+                                            {
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "number",
+                                                    "el": "option.entrance_shuffle_dungeons",
+                                                    "category": "option"
+                                                }
                                             }
                                         ]
                                     }
@@ -29169,16 +29000,6 @@
                     {
                         "type": "and",
                         "el": [
-                            {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_spirit",
-                                "category": "item"
-                            },
                             {
                                 "type": "number",
                                 "el": "mixin.has_explosives",
@@ -29203,6 +29024,11 @@
                                         "category": "option"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
                             }
                         ]
                     },
@@ -29330,77 +29156,33 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "or",
+                        "type": "and",
                         "el": [
                             {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.key_small_spirit",
-                                    "category": "item"
-                                },
-                                "value": 3
-                            },
-                            {
-                                "type": "value",
-                                "el": "option.keysanity_small",
-                                "value": "keysanity_small_ignore",
-                                "category": "option"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "min",
-                        "el": {
-                            "type": "number",
-                            "el": "item.glove",
-                            "category": "item"
-                        },
-                        "value": 2
-                    },
-                    {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "item.boots_hover",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.hookshot",
-                                "category": "item"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "number",
-                        "el": "mixin.can_become_adult",
-                        "category": "mixin"
-                    },
-                    {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
-                                    {
-                                        "type": "number",
-                                        "el": "mixin.can_use_ocarina",
-                                        "category": "mixin"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.warp_spirit",
-                                        "category": "item"
-                                    },
                                     {
                                         "type": "number",
                                         "el": "mixin.has_explosives",
                                         "category": "mixin"
                                     },
                                     {
-                                        "type": "or",
+                                        "type": "min",
+                                        "el": {
+                                            "type": "number",
+                                            "el": "item.key_small_spirit",
+                                            "category": "item"
+                                        },
+                                        "value": 3
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "option.keysanity_small",
+                                        "value": "keysanity_small_ignore",
+                                        "category": "option"
+                                    },
+                                    {
+                                        "type": "and",
                                         "el": [
                                             {
                                                 "type": "min",
@@ -29409,12 +29191,19 @@
                                                     "el": "item.key_small_spirit",
                                                     "category": "item"
                                                 },
-                                                "value": 1
+                                                "value": 2
                                             },
                                             {
-                                                "type": "value",
-                                                "el": "option.keysanity_small",
-                                                "value": "keysanity_small_ignore",
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "number",
+                                                    "el": "option.entrance_shuffle_dungeons",
+                                                    "category": "option"
+                                                }
+                                            },
+                                            {
+                                                "type": "number",
+                                                "el": "option.bombchu_logic",
                                                 "category": "option"
                                             }
                                         ]
@@ -29422,41 +29211,27 @@
                                 ]
                             },
                             {
-                                "type": "and",
+                                "type": "number",
+                                "el": "skip.spt_main_room_gs_boomerang",
+                                "category": "skip"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.boomerang",
+                                "category": "item"
+                            },
+                            {
+                                "type": "or",
                                 "el": [
                                     {
-                                        "type": "min",
-                                        "el": {
-                                            "type": "number",
-                                            "el": "item.glove",
-                                            "category": "item"
-                                        },
-                                        "value": 2
+                                        "type": "number",
+                                        "el": "item.boots_hover",
+                                        "category": "item"
                                     },
                                     {
                                         "type": "number",
-                                        "el": "mixin.can_become_adult",
-                                        "category": "mixin"
-                                    },
-                                    {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "min",
-                                                "el": {
-                                                    "type": "number",
-                                                    "el": "item.key_small_spirit",
-                                                    "category": "item"
-                                                },
-                                                "value": 1
-                                            },
-                                            {
-                                                "type": "value",
-                                                "el": "option.keysanity_small",
-                                                "value": "keysanity_small_ignore",
-                                                "category": "option"
-                                            }
-                                        ]
+                                        "el": "item.hookshot",
+                                        "category": "item"
                                     }
                                 ]
                             }
@@ -29467,13 +29242,28 @@
                         "el": [
                             {
                                 "type": "number",
-                                "el": "mixin.is_currently_child",
-                                "category": "mixin"
+                                "el": "skip.spt_main_room_gs_boomerang",
+                                "category": "skip"
                             },
                             {
-                                "type": "number",
-                                "el": "item.boomerang",
-                                "category": "item"
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "min",
+                                        "el": {
+                                            "type": "number",
+                                            "el": "item.key_small_spirit",
+                                            "category": "item"
+                                        },
+                                        "value": 5
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "option.keysanity_small",
+                                        "value": "keysanity_small_ignore",
+                                        "category": "option"
+                                    }
+                                ]
                             },
                             {
                                 "type": "number",
@@ -29482,8 +29272,126 @@
                             },
                             {
                                 "type": "number",
-                                "el": "skip.spt_main_room_gs_boomerang",
-                                "category": "skip"
+                                "el": "mixin.is_currently_child",
+                                "category": "mixin"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.boomerang",
+                                "category": "item"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "min",
+                                        "el": {
+                                            "type": "number",
+                                            "el": "item.key_small_spirit",
+                                            "category": "item"
+                                        },
+                                        "value": 3
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "option.keysanity_small",
+                                        "value": "keysanity_small_ignore",
+                                        "category": "option"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "number",
+                                    "el": "item.glove",
+                                    "category": "item"
+                                },
+                                "value": 2
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.can_become_adult",
+                                "category": "mixin"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "number",
+                                        "el": "item.boots_hover",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "item.hookshot",
+                                        "category": "item"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "mixin.has_explosives",
+                                "category": "mixin"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "min",
+                                        "el": {
+                                            "type": "number",
+                                            "el": "item.key_small_spirit",
+                                            "category": "item"
+                                        },
+                                        "value": 1
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "option.keysanity_small",
+                                        "value": "keysanity_small_ignore",
+                                        "category": "option"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "number",
+                                    "el": "item.glove",
+                                    "category": "item"
+                                },
+                                "value": 2
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.can_become_adult",
+                                "category": "mixin"
                             },
                             {
                                 "type": "or",
@@ -31161,27 +31069,107 @@
                 "category": "mixin"
             },
             {
-                "type": "min",
-                "el": {
-                    "type": "number",
-                    "el": "item.hookshot",
-                    "category": "item"
-                },
-                "value": 2
+                "type": "or",
+                "el": [
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "min",
+                                        "el": {
+                                            "type": "number",
+                                            "el": "item.key_small_spirit",
+                                            "category": "item"
+                                        },
+                                        "value": 2
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "option.keysanity_small",
+                                        "value": "keysanity_small_ignore",
+                                        "category": "option"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.spirit_access_child",
+                                "category": "mixin"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "number",
+                                    "el": "item.hookshot",
+                                    "category": "item"
+                                },
+                                "value": 2
+                            },
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "number",
+                                    "el": "item.glove",
+                                    "category": "item"
+                                },
+                                "value": 2
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.can_become_adult",
+                                "category": "mixin"
+                            }
+                        ]
+                    }
+                ]
             },
             {
-                "type": "min",
-                "el": {
-                    "type": "number",
-                    "el": "item.glove",
-                    "category": "item"
-                },
-                "value": 2
-            },
-            {
-                "type": "number",
-                "el": "mixin.can_become_adult",
-                "category": "mixin"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "mixin.can_use_ocarina",
+                                "category": "mixin"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.song_time",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.boomerang",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "skip.sptmq_sunblock_gs_boomerang",
+                                "category": "skip"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "mixin.can_become_adult",
+                                "category": "mixin"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     },
@@ -34649,6 +34637,59 @@
             }
         ]
     },
+    "mixin.spirit_access_child": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.is_currently_child",
+                "category": "mixin"
+            },
+            {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "not",
+                                "el": {
+                                    "type": "number",
+                                    "el": "option.entrance_shuffle_dungeons",
+                                    "category": "option"
+                                }
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.ocarina",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.warp_spirit",
+                                "category": "item"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "option.entrance_shuffle_dungeons",
+                                "category": "option"
+                            },
+                            {
+                                "type": "number",
+                                "el": "logic.area.temple_spirit",
+                                "category": "area"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
     "mixin.zora_fountain_access": {
         "type": "and",
         "el": [
@@ -35596,59 +35637,37 @@
         ]
     },
     "logic.area.well": {
-        "type": "number",
-        "el": "logic.entrance.well",
-        "category": "entrance"
+        "type": "false"
     },
     "logic.area.ice_cavern": {
-        "type": "number",
-        "el": "logic.entrance.ice_cavern",
-        "category": "entrance"
+        "type": "false"
     },
     "logic.area.training_grounds": {
-        "type": "number",
-        "el": "logic.entrance.training_grounds",
-        "category": "entrance"
+        "type": "false"
     },
     "logic.area.deku": {
-        "type": "number",
-        "el": "logic.entrance.deku",
-        "category": "entrance"
+        "type": "false"
     },
     "logic.area.dodongo": {
-        "type": "number",
-        "el": "logic.entrance.dodongo",
-        "category": "entrance"
+        "type": "false"
     },
     "logic.area.jabujabu": {
-        "type": "number",
-        "el": "logic.entrance.jabujabu",
-        "category": "entrance"
+        "type": "false"
     },
     "logic.area.temple_forest": {
-        "type": "number",
-        "el": "logic.entrance.temple_forest",
-        "category": "entrance"
+        "type": "false"
     },
     "logic.area.temple_fire": {
-        "type": "number",
-        "el": "logic.entrance.temple_fire",
-        "category": "entrance"
+        "type": "false"
     },
     "logic.area.temple_water": {
-        "type": "number",
-        "el": "logic.entrance.temple_water",
-        "category": "entrance"
+        "type": "false"
     },
     "logic.area.temple_shadow": {
-        "type": "number",
-        "el": "logic.entrance.temple_shadow",
-        "category": "entrance"
+        "type": "false"
     },
     "logic.area.temple_spirit": {
-        "type": "number",
-        "el": "logic.entrance.temple_spirit",
-        "category": "entrance"
+        "type": "false"
     },
     "logic.area.castle_ganon": {
         "type": "and",
