@@ -1,11 +1,10 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/Option.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 
-const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         * {
@@ -46,25 +45,20 @@ const TPL = new Template(`
 `);
     
 function stateChanged(event) {
-    EventBus.mute("item");
-    // savesatate
     let value = parseInt(event.data[this.ref]);
     if (isNaN(value)) {
         value = 0;
     }
     this.value = value;
-    EventBus.unmute("item");
 }
 
 function itemUpdate(event) {
     if (this.ref === event.data.name && this.value !== event.data.value) {
-        EventBus.mute("item");
         let value = parseInt(event.data.value);
         if (typeof value == "undefined" || isNaN(value)) {
             value = 0;
         }
         this.value = value;
-        EventBus.unmute("item");
     }
 }
 
@@ -75,7 +69,7 @@ function dungeonTypeUpdate(event) {
     }
 }
 
-class HTMLTrackerInfiniteItem extends HTMLElement {
+class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
@@ -84,9 +78,9 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        EVENT_BINDER.register("item", itemUpdate.bind(this));
-        EVENT_BINDER.register("state", stateChanged.bind(this));
-        EVENT_BINDER.register("dungeontype", dungeonTypeUpdate.bind(this));
+        this.registerGlobal("item", itemUpdate.bind(this));
+        this.registerGlobal("state", stateChanged.bind(this));
+        this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));
     }
 
     get ref() {
@@ -123,17 +117,10 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
                 case 'ref':
                     let data = GlobalData.get("items")[newValue];
                     this.style.backgroundImage = `url("${data.images}")`;
-                    EventBus.mute("item");
                     this.value = StateStorage.read(this.ref, 0);
-                    EventBus.unmute("item");
                 break;
                 case 'value':
                     this.shadowRoot.getElementById("value").innerHTML = newValue;
-                    StateStorage.write(this.ref, parseInt(newValue));
-                    EventBus.trigger("item", {
-                        name: this.ref,
-                        value: newValue
-                    });
                 break;
             }
         }
@@ -141,9 +128,17 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
 
     next(event) {
         if (!this.readonly) {
-            let val = parseInt(this.value);
-            if (val < 9999) this.value = val + 1;
-            else this.value = 9999;
+            let val = parseInt(this.value) + 1;
+            if (val <= 9999) {
+                this.value = val;
+                StateStorage.write(this.ref, val);
+                this.triggerGlobal("item", {
+                    name: this.ref,
+                    value: val
+                });
+            } else {
+                this.value = 9999;
+            }
         }
         if (!event) return;
         event.preventDefault();
@@ -152,12 +147,19 @@ class HTMLTrackerInfiniteItem extends HTMLElement {
 
     prev(event) {
         if (!this.readonly) {
-            if ((event.shiftKey || event.ctrlKey)) {
-                this.value = 0;
+            let val = parseInt(this.value) - 1;
+            if (val >= 0) {
+                if ((event.shiftKey || event.ctrlKey)) {
+                    val = 0;
+                }
+                this.value = val;
+                StateStorage.write(this.ref, val);
+                this.triggerGlobal("item", {
+                    name: this.ref,
+                    value: val
+                });
             } else {
-                let val = parseInt(this.value);
-                if (val > 0) this.value = val - 1;
-                else this.value = 0;
+                this.value = 0;
             }
         }
         if (!event) return;

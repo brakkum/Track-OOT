@@ -1,23 +1,17 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
-import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import Template from "/emcJS/util/Template.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
-import Logger from "/emcJS/util/Logger.js";
-import Helper from "/emcJS/util/Helper.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import "/emcJS/ui/ContextMenu.js";
 import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import ListLogic from "/script/util/ListLogic.js";
-import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
-import I18n from "/script/util/I18n.js";
-import World from "/script/util/World.js";
+import Language from "/script/util/Language.js";
 
 const SettingsStorage = new TrackerStorage('settings');
 
-const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         * {
@@ -116,7 +110,7 @@ const VALUE_STATES = [
     "available"
 ];
 
-export default class ListEntrance extends HTMLElement {
+export default class ListEntrance extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
@@ -126,7 +120,7 @@ export default class ListEntrance extends HTMLElement {
         /* mouse events */
         this.addEventListener("click", event => {
             if (!!this.value) {
-                EventBus.trigger("location_change", {
+                this.triggerGlobal("location_change", {
                     name: this.value
                 });
             } else {
@@ -146,7 +140,7 @@ export default class ListEntrance extends HTMLElement {
                         }
                         Logic.setLogic(logic);
                         this.value = area;
-                        EventBus.trigger("entrance", {
+                        this.triggerGlobal("entrance", {
                             name: this.ref,
                             value: area
                         });
@@ -159,39 +153,39 @@ export default class ListEntrance extends HTMLElement {
         this.addEventListener("contextmenu", event => {
             this.value = "";
             StateStorage.write(this.ref, "");
-            EventBus.trigger("entrance", {
+            this.triggerGlobal("entrance", {
                 name: this.ref,
                 value: ""
             });
             event.preventDefault();
             return false;
         });
-
         /* event bus */
-        EVENT_BINDER.register("state", event => {
-            EventBus.mute("entrance");
+        this.registerGlobal("state", event => {
             let value = event.data[this.ref];
             if (typeof value == "undefined") {
                 value = "";
             }
             this.value = value;
-            EventBus.unmute("entrance");
         });
-        EVENT_BINDER.register(["settings", "randomizer_options", "logic"], event => {
+        this.registerGlobal(["settings", "randomizer_options", "logic"], event => {
             this.update()
         });
-        EVENT_BINDER.register("entrance", event => {
+        this.registerGlobal("entrance", event => {
             if (this.ref === event.data.name && this.value !== event.data.value) {
-                EventBus.mute("entrance");
                 this.value = event.data.value;
-                EventBus.unmute("entrance");
             }
         });
     }
 
+    connectedCallback() {
+        super.connectedCallback();
+        this.update();
+    }
+
     async update() {
         if (!!this.value) {
-            let dType = StateStorage.read(`dungeonTypes.${this.value}`, 'v'); // TODO
+            let dType = StateStorage.read(`dungeonTypes.${this.value}`, 'v');
             if (dType == "n") {
                 let data_v = GlobalData.get(`world_lists/${this.value}/lists/v`);
                 let data_m = GlobalData.get(`world_lists/${this.value}/lists/mq`);
@@ -247,15 +241,14 @@ export default class ListEntrance extends HTMLElement {
             case 'ref':
                 if (oldValue != newValue) {
                     let txt = this.shadowRoot.getElementById("text");
-                    txt.innerHTML = I18n.translate(newValue);
+                    txt.innerHTML = Language.translate(newValue);
                     this.value = StateStorage.read(newValue, "");
-                    this.update();
                 }
             break;
             case 'value':
                 if (oldValue != newValue) {
                     if (!!newValue) {
-                        this.shadowRoot.getElementById("value").innerHTML = I18n.translate(newValue);
+                        this.shadowRoot.getElementById("value").innerHTML = Language.translate(newValue);
                     } else {
                         this.shadowRoot.getElementById("value").innerHTML = "";
                     }
@@ -304,7 +297,7 @@ function entranceDialog(ref) {
         loc.style.justifyContent = "space-between";
         loc.style.alignItems = "center";
         loc.style.padding = "5px";
-        loc.innerHTML = I18n.translate("location");
+        loc.innerHTML = Language.translate("location");
         let slt = document.createElement("select");
 
         let unbound = new Set();
@@ -326,13 +319,13 @@ function entranceDialog(ref) {
         unbound = Array.from(unbound);
         
         for (let i of unbound) {
-            slt.append(createOption(i, I18n.translate(i)));
+            slt.append(createOption(i, Language.translate(i)));
         }
         slt.style.width = "200px";
         slt.value = value;
         loc.append(slt);
         
-        let d = new Dialog({title: I18n.translate(ref), submit: true, cancel: true});
+        let d = new Dialog({title: Language.translate(ref), submit: true, cancel: true});
         d.onsubmit = function(ref, result) {
             if (!!result) {
                 let res = slt.value;

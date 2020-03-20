@@ -26,8 +26,8 @@
         import LocalStorage from "/emcJS/storage/LocalStorage.js";
         import GlobalData from "/emcJS/storage/GlobalData.js";
         import TrackerStorage from "/script/storage/TrackerStorage.js";
-        import I18n from "/script/util/I18n.js";
-        import Logic from "/script/util/Logic.js";
+        import Language from "/script/util/Language.js";
+        import LogicAlternator from "/script/util/LogicAlternator.js";
         import "/emcJS/ui/layout/Layout.js";
         import "/script/ui/items/ItemGrid.js";
         import "/script/ui/dungeonstate/DungeonState.js";
@@ -56,10 +56,9 @@
         (async function main() {
 
             await GlobalData.load(FILES);
-            await I18n.load(await SettingsStorage.get("language", "en_us"));
-            await Logic.loadLogic();
-            EventBusModuleShare.mute("logic");
-            EventBus.addModule(EventBusModuleShare);
+            await Language.load(await SettingsStorage.get("language", "en_us"));
+            await LogicAlternator.init();
+            EventBus.addModule(EventBusModuleShare, {blacklist:["logic"]});
 
             let conf = decodeURI(window.location.hash.slice(1));
             let layout = GlobalData.get("layouts")[conf];

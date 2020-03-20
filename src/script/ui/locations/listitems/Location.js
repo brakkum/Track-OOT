@@ -1,15 +1,11 @@
-import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
-import EventBusSubset from "/emcJS/util/events/EventBusSubset.js";
-import Logger from "/emcJS/util/Logger.js";
-import Helper from "/emcJS/util/Helper.js";
-import Dialog from "/emcJS/ui/Dialog.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/ContextMenu.js";
 import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import LogicViewer from "/script/ui/LogicViewer.js";
 import Logic from "/script/util/Logic.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 
 const TPL = new Template(`
     <style>
@@ -97,15 +93,13 @@ const TPL = new Template(`
 
 const REG = new Map();
 const TYPE = new WeakMap();
-const EVENTS = new WeakMap();
 const LOGIC_ACTIVE = new WeakMap();
 
-export default class ListLocation extends HTMLElement {
+export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
 
     constructor(type) {
         super();
         LOGIC_ACTIVE.set(this, true);
-        EVENTS.set(this, new EventBusSubset());
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         if (!!type) {
@@ -145,40 +139,29 @@ export default class ListLocation extends HTMLElement {
             return false;
         });
         this.shadowRoot.getElementById("menu-logic").addEventListener("click", event => {
-            let title = I18n.translate(this.ref);
+            let title = Language.translate(this.ref);
             LogicViewer.show(this.access, title);
         });
         this.shadowRoot.getElementById("menu-logic-image").addEventListener("click", event => {
             LogicViewer.printSVG(this.access);
         });
-
-    }
-
-    connectedCallback() {
-        let textEl = this.shadowRoot.getElementById("text");
-        let value = StateStorage.read(this.ref, false);
-        textEl.dataset.checked = value;
-        this.setCheckValue(value);
-        if (!!this.access && !!Logic.getValue(this.access)) {
-            textEl.dataset.state = "available";
-        } else {
-            textEl.dataset.state = "unavailable";
-        }
         /* event bus */
-        let events = EVENTS.get(this);
-        events.register(TYPE.get(this), event => {
+        this.registerGlobal(TYPE.get(this), event => {
             if (this.ref === event.data.name && this.checked !== event.data.value) {
+                let textEl = this.shadowRoot.getElementById("text");
                 textEl.dataset.checked = event.data.value;
                 this.setCheckValue(event.data.value);
             }
         });
-        events.register("state", event => {
+        this.registerGlobal("state", event => {
             let value = !!event.data[this.ref];
+            let textEl = this.shadowRoot.getElementById("text");
             textEl.dataset.checked = value;
             this.setCheckValue(value);
         });
-        events.register("logic", event => {
+        this.registerGlobal("logic", event => {
             if (LOGIC_ACTIVE.get(this) && event.data.hasOwnProperty(this.access)) {
+                let textEl = this.shadowRoot.getElementById("text");
                 if (!!this.access && !!event.data[this.access]) {
                     textEl.dataset.state = "available";
                 } else {
@@ -188,9 +171,16 @@ export default class ListLocation extends HTMLElement {
         });
     }
 
-    disconnectedCallback() {
-        /* event bus */
-        EVENTS.get(this).clear();
+    connectedCallback() {
+        super.connectedCallback();
+        let textEl = this.shadowRoot.getElementById("text");
+        let value = StateStorage.read(this.ref, false);
+        textEl.dataset.checked = value;
+        if (!!this.access && !!Logic.getValue(this.access)) {
+            textEl.dataset.state = "available";
+        } else {
+            textEl.dataset.state = "unavailable";
+        }
     }
 
     get ref() {
@@ -218,7 +208,7 @@ export default class ListLocation extends HTMLElement {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    textEl.innerHTML = I18n.translate(this.ref);
+                    textEl.innerHTML = Language.translate(this.ref);
                     textEl.dataset.checked = StateStorage.read(this.ref, false);
                 }
             break;
@@ -252,7 +242,7 @@ export default class ListLocation extends HTMLElement {
         if (value != oldValue) {
             StateStorage.write(this.ref, value);
             textEl.dataset.checked = value;
-            EVENTS.get(this).trigger(TYPE.get(this), {
+            this.triggerGlobal(TYPE.get(this), {
                 name: this.ref,
                 value: value
             });

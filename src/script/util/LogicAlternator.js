@@ -7,8 +7,6 @@ import Logic from "/script/util/Logic.js";
 const SettingsStorage = new TrackerStorage('settings');
 const LogicsStorage = new TrackerStorage('logics');
 
-// TODO add custom logic
-
 let entrance_active = {
     "dungeon": false
 };
@@ -83,7 +81,7 @@ async function updateLogic() {
     let logic = GlobalData.get("logic", {});
     if (use_custom_logic) {
         let customLogic = await LogicsStorage.getAll();
-        for (let l of customLogic) {
+        for (let l in customLogic) {
             logic[l] = customLogic[l];
         }
     }

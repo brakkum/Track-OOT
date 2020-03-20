@@ -12,7 +12,8 @@ Application:    Track-OOT
 
 ### USABILITY ENHANCEMENTS
 - added filters and bulk select to lists in settngs
-- added undo (ctrl+z) / redo (ctrl+y) functionality
+- added undo (ctrl+z) / redo (ctrl+y) 
+- redo i18n system to dynamically switch language without the need to restart the application (WIP)
 
 ### IMPROVED LOGIC
 - logic is now way faster than before
@@ -42,6 +43,10 @@ Application:    Track-OOT
 - added area icons
 - split rom-settings and tracker-settings into seperate dialogs
 - logic editor now supports filter by search value
+
+### SYSTEM STABILITY
+- reworked global event system and removed crappy mechanics
+- use self contained event subsystems to reduce memory leaks and unwanted behaviour
 
 ---
 

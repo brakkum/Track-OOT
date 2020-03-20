@@ -1,9 +1,9 @@
 import Template from "/emcJS/util/Template.js";
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Dialog from "/emcJS/ui/Dialog.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 import "./SongStave.js";
 import "./SongBuilder.js";
 
@@ -45,13 +45,13 @@ const TPL = new Template(`
 function editSong(event) {
     let builder = document.createElement("ootrt-songbuilder");
     builder.value = this.shadowRoot.getElementById("stave").value;
-    let d = new Dialog({title: I18n.translate(this.ref), submit: true, cancel: true});
+    let d = new Dialog({title: Language.translate(this.ref), submit: true, cancel: true});
     d.addEventListener("submit", function(result) {
         if (!!result) {
             let res = builder.value;
             StateStorage.write(this.ref, res);
             this.shadowRoot.getElementById("stave").value = res;
-            EventBus.trigger("song", {
+            this.triggerGlobal("song", {
                 name: this.ref,
                 value: res
             });
@@ -76,15 +76,15 @@ function songUpdate(event) {
     }
 }
 
-export default class HTMLTrackerSongField extends HTMLElement {
+export default class HTMLTrackerSongField extends EventBusSubsetMixin(HTMLElement) {
     
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        EventBus.register("song", songUpdate.bind(this));
-        EventBus.register("state", stateChanged.bind(this));
+        this.registerGlobal("song", songUpdate.bind(this));
+        this.registerGlobal("state", stateChanged.bind(this));
     }
 
     get ref() {
@@ -103,7 +103,7 @@ export default class HTMLTrackerSongField extends HTMLElement {
         if (oldValue != newValue) {
             let data = GlobalData.get("songs")[newValue];
             let title = this.shadowRoot.getElementById("title");
-            title.innerHTML = I18n.translate(newValue);
+            title.innerHTML = Language.translate(newValue);
             this.shadowRoot.getElementById("stave").value = StateStorage.read(newValue, data.notes);
             if (data.editable) {
                 let edt = document.createElement('button');

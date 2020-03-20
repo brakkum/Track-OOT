@@ -1,10 +1,8 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
-import StateStorage from "/script/storage/StateStorage.js";
-import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 import World from "/script/util/World.js";
 import "./marker/Area.js";
 import "./marker/Entrance.js";
@@ -20,7 +18,6 @@ const ZOOM_SPD = 2;
 
 //TODO save map settings per map
 
-const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         * {
@@ -184,7 +181,7 @@ const TPL = new Template(`
     <div id="map-wrapper">
         <slot id="map" style="--map-zoom: ${ZOOM_DEF};">
         </slot>
-        <div id="back">(${I18n.translate("back")})</div>
+        <div id="back">(${Language.translate("back")})</div>
         <div id="map-settings">
             <div class="buttons">
                 <div id="toggle-button" class="button-wrapper">⇑</div>
@@ -327,7 +324,7 @@ function overviewSelect(event, map) {
     return false;
 };
 
-class HTMLTrackerMap extends Panel {
+class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
 
     constructor() {
         super();
@@ -335,13 +332,9 @@ class HTMLTrackerMap extends Panel {
         this.shadowRoot.append(TPL.generate());
         this.shadowRoot.getElementById('location-mode').addEventListener("change", event => {
             this.mode = event.newValue;
-            EventBus.trigger("location_mode", {
+            this.triggerGlobal("location_mode", {
                 value: this.mode
             });
-        });
-        let eraEl = this.shadowRoot.getElementById('filter-era');
-        eraEl.addEventListener("change", event => {
-            this.refresh();
         });
         this.shadowRoot.getElementById('back').addEventListener("click", event => {
             this.ref = ""
@@ -410,17 +403,17 @@ class HTMLTrackerMap extends Panel {
             return false;
         });
         /* event bus */
-        EVENT_BINDER.register("location_change", event => {
+        this.registerGlobal("location_change", event => {
             this.ref = event.data.name;
         });
-        EVENT_BINDER.register("location_mode", event => {
+        this.registerGlobal("location_mode", event => {
             this.mode = event.data.value;
             this.shadowRoot.getElementById('location-mode').value = this.mode;
         });
-        EVENT_BINDER.register(["state", "settings", "randomizer_options"], event => {
+        this.registerGlobal(["state", "settings", "randomizer_options", "filter"], event => {
             this.refresh();
         });
-        EVENT_BINDER.register("dungeontype", event => {
+        this.registerGlobal("dungeontype", event => {
             if (this.ref === event.data.name) {
                 this.refresh();
             }
@@ -428,6 +421,7 @@ class HTMLTrackerMap extends Panel {
     }
 
     connectedCallback() {
+        super.connectedCallback();
         this.refresh();
     }
 
@@ -481,7 +475,7 @@ class HTMLTrackerMap extends Panel {
                 let data_m = data.lists.mq;
                 let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
                 let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
-                // TODO
+                // TODO add dungeonType initialization choice
                 //btn_vanilla.className = VALUE_STATES[res_v.value];
                 //btn_masterquest.className = VALUE_STATES[res_m.value];
 

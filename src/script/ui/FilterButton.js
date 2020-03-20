@@ -1,6 +1,6 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/Option.js";
 import FilterStorage from "/script/storage/FilterStorage.js";
 
@@ -44,7 +44,7 @@ const TPL = new Template(`
     </slot>
 `);
 
-class FilterButton extends HTMLElement {
+class FilterButton extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
@@ -53,7 +53,7 @@ class FilterButton extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        EventBus.register("filter", event => {
+        this.registerGlobal("filter", event => {
             if (event.data.name == this.ref) {
                 this.value = event.data.value;
             }
@@ -118,10 +118,10 @@ class FilterButton extends HTMLElement {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
-                    let event = new Event('change');
-                    event.oldValue = oldValue;
-                    event.value = newValue;
-                    this.dispatchEvent(event);
+                    let ev = new Event('change');
+                    ev.oldValue = oldValue;
+                    ev.value = newValue;
+                    this.dispatchEvent(ev);
                 }
             break;
         }
@@ -130,21 +130,24 @@ class FilterButton extends HTMLElement {
     next(event) {
         if (!this.readonly) {
             let all = this.querySelectorAll("[value]");
-            let value = this.value;
+            let oldValue = this.value;
+            let value = oldValue;
             if (!!all.length) {
-                let opt = this.querySelector(`[value="${this.value}"]`);
+                let opt = this.querySelector(`[value="${oldValue}"]`);
                 if (!!opt && !!opt.nextElementSibling) {
                     value = opt.nextElementSibling.getAttribute("value");
                 } else {
                     value = all[0].getAttribute("value");
                 }
             }
-            FilterStorage.set(this.ref, value);
-            this.value = value;
-            EventBus.trigger("filter", {
-                name: this.ref,
-                value: this.value
-            });
+            if (value != oldValue) {
+                this.value = value;
+                FilterStorage.set(this.ref, value);
+                this.triggerGlobal("filter", {
+                    name: this.ref,
+                    value: value
+                });
+            }
         }
         event.preventDefault();
         return false;
@@ -153,21 +156,24 @@ class FilterButton extends HTMLElement {
     revert(event) {
         if (!this.readonly) {
             let all = this.querySelectorAll("[value]");
-            let value = this.value;
+            let oldValue = this.value;
+            let value = oldValue;
             if (!!all.length) {
-                let opt = this.querySelector(`[value="${this.value}"]`);
+                let opt = this.querySelector(`[value="${oldValue}"]`);
                 if (!!opt && !!opt.previousElementSibling) {
                     value = opt.previousElementSibling.getAttribute("value");
                 } else {
                     value = all[all.length-1].getAttribute("value");
                 }
             }
-            FilterStorage.set(this.ref, this.value);
-            this.value = value;
-            EventBus.trigger("filter", {
-                name: this.ref,
-                value: this.value
-            });
+            if (value != oldValue) {
+                this.value = value;
+                FilterStorage.set(this.ref, value);
+                this.triggerGlobal("filter", {
+                    name: this.ref,
+                    value: value
+                });
+            }
         }
         event.preventDefault();
         return false;

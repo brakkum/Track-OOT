@@ -1,6 +1,6 @@
 import Template from "/emcJS/util/Template.js";
 import Dialog from "/script/ui/shops/ShopItemChoice.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 import "./ShopEditItem.js";
 
 const TPL = new Template(`
@@ -30,7 +30,7 @@ const TPL = new Template(`
 `);
 
 function editSlot(event) {
-    let d = new Dialog(I18n.translate(this.ref));
+    let d = new Dialog(Language.translate(this.ref));
     d.value = event.target.ref;
     d.addEventListener("submit", function(target, result) {
         if (!!result) {

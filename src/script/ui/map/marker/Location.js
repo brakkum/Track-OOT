@@ -1,14 +1,13 @@
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Logger from "/emcJS/util/Logger.js";
 import "/emcJS/ui/Tooltip.js";
 import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 import Logic from "/script/util/Logic.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 
-const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         :host {
@@ -104,7 +103,7 @@ const TPL = new Template(`
 const REG = new Map();
 const TYPE = new WeakMap();
 
-export default class MapLocation extends HTMLElement {
+export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
 
     constructor(type) {
         super();
@@ -135,23 +134,19 @@ export default class MapLocation extends HTMLElement {
         // TODO
 
         /* event bus */
-        EVENT_BINDER.register(type, event => {
+        this.registerGlobal(type, event => {
             if (this.ref === event.data.name && this.checked !== event.data.value) {
-                EventBus.mute(TYPE.get(this));
                 this.checked = event.data.value;
-                EventBus.unmute(TYPE.get(this));
             }
         });
-        EVENT_BINDER.register("state", event => {
-            EventBus.mute(TYPE.get(this));
+        this.registerGlobal("state", event => {
             let value = !!event.data[this.ref];
             if (typeof value == "undefined") {
                 value = false;
             }
             this.checked = value;
-            EventBus.unmute(TYPE.get(this));
         });
-        EVENT_BINDER.register("logic", event => {
+        this.registerGlobal("logic", event => {
             if (event.data.hasOwnProperty(this.access)) {
                 let el = this.shadowRoot.getElementById("marker");
                 if (!!this.access && !!event.data[this.access]) {
@@ -228,7 +223,7 @@ export default class MapLocation extends HTMLElement {
             case 'ref':
                 if (oldValue != newValue) {
                     let txt = this.shadowRoot.getElementById("text");
-                    txt.innerHTML = I18n.translate(this.ref);
+                    txt.innerHTML = Language.translate(this.ref);
                     this.checked = StateStorage.read(this.ref, false);
                 }
             break;

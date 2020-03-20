@@ -1,7 +1,7 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 import "./Item.js";
 import "./InfiniteItem.js";
 
@@ -14,7 +14,7 @@ const TPL = new Template(`
             box-sizing: border-box;
         }
         :host {
-            display: inline-block;
+            display: block;
             min-width: min-content;
             min-height: min-content;
         }
@@ -44,12 +44,14 @@ const TPL = new Template(`
 function createItem(value, data) {
     if (data.max === false) {
         let el = document.createElement('ootrt-infiniteitem');
-        el.title = I18n.translate(value);
+        el.title = Language.translate(value);
+        el.setAttribute('i18n-tooltip', value);
         el.setAttribute('ref', value);
         return el;
     } else {
         let el = document.createElement('ootrt-item');
-        el.title = I18n.translate(value);
+        el.title = Language.translate(value);
+        el.setAttribute('i18n-tooltip', value);
         el.setAttribute('ref', value);
         return el;
     }

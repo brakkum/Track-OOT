@@ -1,11 +1,10 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/Option.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 
-const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         * {
@@ -56,7 +55,6 @@ const TPL = new Template(`
 `);
 
 function stateChanged(event) {
-    EventBus.mute("item");
     // savesatate
     let value = parseInt(event.data[this.ref]);
     if (isNaN(value)) {
@@ -78,18 +76,15 @@ function stateChanged(event) {
     } else {
         this.fillItemChoices();
     }
-    EventBus.unmute("item");
 }
 
 function itemUpdate(event) {
     if (this.ref === event.data.name && this.value !== event.data.value) {
-        EventBus.mute("item");
         let value = parseInt(event.data.value);
         if (typeof value == "undefined" || isNaN(value)) {
             value = 0;
         }
         this.value = value;
-        EventBus.unmute("item");
     }
 }
 
@@ -100,7 +95,7 @@ function dungeonTypeUpdate(event) {
     }
 }
 
-class HTMLTrackerItem extends HTMLElement {
+class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
@@ -109,9 +104,9 @@ class HTMLTrackerItem extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        EVENT_BINDER.register("item", itemUpdate.bind(this));
-        EVENT_BINDER.register("state", stateChanged.bind(this));
-        EVENT_BINDER.register("dungeontype", dungeonTypeUpdate.bind(this));
+        this.registerGlobal("item", itemUpdate.bind(this));
+        this.registerGlobal("state", stateChanged.bind(this));
+        this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));
         // TODO react to rom settings
     }
 
@@ -155,7 +150,6 @@ class HTMLTrackerItem extends HTMLElement {
         if (oldValue != newValue) {
             switch (name) {
                 case 'ref':
-                    EventBus.mute("item");
                     // savesatate
                     this.value = StateStorage.read(this.ref, 0);
                     // settings
@@ -165,7 +159,6 @@ class HTMLTrackerItem extends HTMLElement {
                     } else {
                         this.fillItemChoices();
                     }
-                    EventBus.unmute("item");
                 break;
                 case 'startvalue':
                     this.fillItemChoices();
@@ -179,11 +172,6 @@ class HTMLTrackerItem extends HTMLElement {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
-                    StateStorage.write(this.ref, parseInt(newValue));
-                    EventBus.trigger("item", {
-                        name: this.ref,
-                        value: newValue
-                    });
                 break;
             }
         }
@@ -238,6 +226,8 @@ class HTMLTrackerItem extends HTMLElement {
 
     next(event) {
         if (!this.readonly) {
+            let oldValue = this.value;
+            let value = oldValue;
             let data = GlobalData.get("items")[this.ref];
             if ((event.shiftKey || event.ctrlKey)) {
                 if (!!data.alternate_counting) {
@@ -246,26 +236,34 @@ class HTMLTrackerItem extends HTMLElement {
                         if (isNaN(alt)) {
                             alt = 0;
                         }
-                        if (alt > parseInt(this.value)) {
-                            this.value = data.alternate_counting[i];
+                        if (alt > parseInt(oldValue)) {
+                            value = data.alternate_counting[i];
                             break;
                         }
                     }
                 } else {
-                    this.value = parseInt(data.max);
+                    value = parseInt(data.max);
                 }
             } else {
                 let all = this.querySelectorAll("[value]");
                 if (!!all.length) {
-                    let opt = this.querySelector(`[value="${this.value}"]`);
+                    let opt = this.querySelector(`[value="${oldValue}"]`);
                     if (!!opt) {
                         if (!!opt.nextElementSibling) {
-                            this.value = opt.nextElementSibling.getAttribute("value");
+                            value = opt.nextElementSibling.getAttribute("value");
                         }
                     } else {
-                        this.value = all[0].getAttribute("value");
+                        value = all[0].getAttribute("value");
                     }
                 }
+            }
+            if (value != oldValue) {
+                this.value = value;
+                StateStorage.write(this.ref, parseInt(value));
+                this.triggerGlobal("item", {
+                    name: this.ref,
+                    value: value
+                });
             }
         }
         if (!event) return;
@@ -275,6 +273,8 @@ class HTMLTrackerItem extends HTMLElement {
 
     prev(event) {
         if (!this.readonly) {
+            let oldValue = this.value;
+            let value = oldValue;
             let data = GlobalData.get("items")[this.ref];
             if ((event.shiftKey || event.ctrlKey)) {
                 if (!!data.alternate_counting) {
@@ -283,26 +283,34 @@ class HTMLTrackerItem extends HTMLElement {
                         if (isNaN(alt)) {
                             alt = parseInt(data.max);
                         }
-                        if (alt < parseInt(this.value)) {
-                            this.value = data.alternate_counting[i];
+                        if (alt < parseInt(oldValue)) {
+                            value = data.alternate_counting[i];
                             break;
                         }
                     }
                 } else {
-                    this.value = 0;
+                    value = 0;
                 }
             } else {
                 let all = this.querySelectorAll("[value]");
                 if (!!all.length) {
-                    let opt = this.querySelector(`[value="${this.value}"]`);
+                    let opt = this.querySelector(`[value="${oldValue}"]`);
                     if (!!opt) {
                         if (!!opt.previousElementSibling) {
-                            this.value = opt.previousElementSibling.getAttribute("value");
+                            value = opt.previousElementSibling.getAttribute("value");
                         }
                     } else {
-                        this.value = all[0].value;
+                        value = all[0].value;
                     }
                 }
+            }
+            if (value != oldValue) {
+                this.value = value;
+                StateStorage.write(this.ref, parseInt(value));
+                this.triggerGlobal("item", {
+                    name: this.ref,
+                    value: value
+                });
             }
         }
         if (!event) return;

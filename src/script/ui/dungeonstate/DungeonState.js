@@ -1,6 +1,6 @@
 import Template from "/emcJS/util/Template.js";
 import GlobalData from "/emcJS/storage/GlobalData.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
 import "./DungeonReward.js";
 import "./DungeonType.js";
@@ -167,7 +167,7 @@ function createRow(data) {
         itm.setAttribute("type", "key");
         types.push("key");
         itm.setAttribute('ref', data.keys);
-        itm.title = I18n.translate(data.keys);
+        itm.title = Language.translate(data.keys);
         el.append(itm);
     } else {
         let itm = createItemPlaceholder();
@@ -183,7 +183,7 @@ function createRow(data) {
         itm.setAttribute("type", "bosskey");
         types.push("bosskey");
         itm.setAttribute('ref', data.bosskey);
-        itm.title = I18n.translate(data.bosskey);
+        itm.title = Language.translate(data.bosskey);
         el.append(itm);
     } else {
         let itm = createItemPlaceholder();
@@ -199,7 +199,7 @@ function createRow(data) {
         itm.setAttribute("type", "map");
         types.push("map");
         itm.setAttribute('ref', data.map);
-        itm.title = I18n.translate(data.map);
+        itm.title = Language.translate(data.map);
         el.append(itm);
     } else {
         let itm = createItemPlaceholder();
@@ -215,7 +215,7 @@ function createRow(data) {
         itm.setAttribute("type", "compass");
         types.push("compass");
         itm.setAttribute('ref', data.compass);
-        itm.title = I18n.translate(data.compass);
+        itm.title = Language.translate(data.compass);
         el.append(itm);
     } else {
         let itm = createItemPlaceholder();
@@ -231,7 +231,7 @@ function createRow(data) {
         itm.setAttribute("type", "reward");
         types.push("reward");
         itm.setAttribute('ref', data.ref);
-        itm.title = I18n.translate(data.ref) + " " + I18n.translate("dun_reward");
+        itm.title = Language.translate(data.ref) + " " + Language.translate("dun_reward");
         el.append(itm);
     } else {
         let itm = createItemPlaceholder();
@@ -247,7 +247,7 @@ function createRow(data) {
         itm.setAttribute("type", "type");
         types.push("type");
         itm.setAttribute('ref', data.ref);
-        itm.title = I18n.translate(data.ref) + " " + I18n.translate("dun_type");
+        itm.title = Language.translate(data.ref) + " " + Language.translate("dun_type");
         el.append(itm);
     } else {
         let itm = createItemPlaceholder();

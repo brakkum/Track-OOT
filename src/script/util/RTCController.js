@@ -8,12 +8,15 @@ import StateStorage from "/script/storage/StateStorage.js";
 const rtcClient = new RTCClient(window.location.hostname == "localhost" ? 8001 : "");
 
 const eventModule = new EventBusModuleGeneric();
-eventModule.mute("logic");
-eventModule.mute("filter");
-eventModule.mute("location_change");
-eventModule.mute("location_mode");
-eventModule.mute("state_change");
-EventBus.addModule(eventModule);
+EventBus.addModule(eventModule, {
+    blacklist: [
+        "logic",
+        "filter",
+        "location_change",
+        "location_mode",
+        "state_change"
+    ]
+});
 
 let username = "";
 let clients = new Map;

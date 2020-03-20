@@ -1,6 +1,6 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/Option.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import ListLogic from "/script/util/ListLogic.js";
@@ -76,7 +76,7 @@ function updateStates(doneEl, availEl, missEl) {
     doneEl.innerHTML = done;
 }
 
-class HTMLLocationState extends HTMLElement {
+class HTMLLocationState extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
@@ -87,7 +87,7 @@ class HTMLLocationState extends HTMLElement {
         let locationsMiss = this.shadowRoot.getElementById("locations-missing");
         updateStates(locationsDone, locationsAvail, locationsMiss, "locations");
         /* event bus */
-        EventBus.register([
+        this.registerGlobal([
             "logic",
             "state_change",
             "settings"

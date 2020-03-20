@@ -1,12 +1,11 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
 import "/emcJS/ui/selection/SwitchButton.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import TrackerStorage from "/script/storage/TrackerStorage.js";
-import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 import World from "/script/util/World.js";
 import ListLogic from "/script/util/ListLogic.js";
 import "./listitems/Button.js";
@@ -19,7 +18,6 @@ import "/script/ui/FilterButton.js";
 
 const SettingsStorage = new TrackerStorage('settings');
 
-const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         * {
@@ -97,16 +95,16 @@ const TPL = new Template(`
         }
     </style>
     <div id="title">
-        <div id="title-text">${I18n.translate("hyrule")}</div>
+        <div id="title-text">${Language.translate("hyrule")}</div>
         <ootrt-dungeontype id="location-version" class="button" ref="" value="v" readonly="true">
         </ootrt-dungeontype>
         <ootrt-filterbutton id="filter-era" class="button" ref="filter.era">
         </ootrt-filterbutton>
     </div>
     <div id="body">
-        <ootrt-list-button id="back">(${I18n.translate("back")})</ootrt-list-button>
-        <ootrt-list-button id="vanilla" class="hidden">${I18n.translate("vanilla")}</ootrt-list-button>
-        <ootrt-list-button id="masterquest" class="hidden">${I18n.translate("masterquest")}</ootrt-list-button>
+        <ootrt-list-button id="back">(${Language.translate("back")})</ootrt-list-button>
+        <ootrt-list-button id="vanilla" class="hidden">${Language.translate("vanilla")}</ootrt-list-button>
+        <ootrt-list-button id="masterquest" class="hidden">${Language.translate("masterquest")}</ootrt-list-button>
         <div id="list"></div>
     </div>
 `);
@@ -118,52 +116,50 @@ const VALUE_STATES = [
     "available"
 ];
 
-class HTMLTrackerLocationList extends Panel {
+class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
 
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         this.attributeChangedCallback("", "");
-        let eraEl = this.shadowRoot.getElementById('filter-era');
-        eraEl.addEventListener("change", event => {
-            this.refresh();
-        });
         this.shadowRoot.getElementById('back').addEventListener("click", event => {
             this.ref = ""
         });
         this.shadowRoot.getElementById('vanilla').addEventListener("click", event => {
             StateStorage.write(`dungeonTypes.${this.ref}`, 'v');
-            EventBus.trigger("dungeontype", {
+            this.triggerGlobal("dungeontype", {
                 name: this.ref,
                 value: 'v'
             });
         });
         this.shadowRoot.getElementById('masterquest').addEventListener("click", event => {
             StateStorage.write(`dungeonTypes.${this.ref}`, 'mq');
-            EventBus.trigger("dungeontype", {
+            this.triggerGlobal("dungeontype", {
                 name: this.ref,
                 value: 'mq'
             });
         });
         /* event bus */
-        EVENT_BINDER.register("location_change", event => {
+        this.registerGlobal("location_change", event => {
             this.ref = event.data.name;
         });
-        EVENT_BINDER.register(["chest", "skulltula", "item", "logic"], event => {
+        this.registerGlobal(["chest", "skulltula", "item", "logic"], event => {
             this.updateHeader();
         });
-        EVENT_BINDER.register(["state", "settings", "randomizer_options"], event => {
+        this.registerGlobal(["state", "settings", "randomizer_options", "filter"], event => {
             this.refresh();
         });
-        EVENT_BINDER.register("dungeontype", event => {
+        this.registerGlobal("dungeontype", event => {
             if (this.ref === event.data.name) {
+                this.shadowRoot.getElementById("location-version").value = event.data.value;
                 this.refresh();
             }
         });
     }
 
     connectedCallback() {
+        super.connectedCallback();
         this.refresh();
     }
 
@@ -182,7 +178,7 @@ class HTMLTrackerLocationList extends Panel {
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
             if (name == "ref") {
-                this.shadowRoot.getElementById("title-text").innerHTML = I18n.translate(newValue || "hyrule");
+                this.shadowRoot.getElementById("title-text").innerHTML = Language.translate(newValue || "hyrule");
                 this.shadowRoot.getElementById("location-version").ref = newValue;
                 this.shadowRoot.getElementById('vanilla').ref = newValue;
                 this.shadowRoot.getElementById('masterquest').ref = newValue;

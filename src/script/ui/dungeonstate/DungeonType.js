@@ -1,11 +1,9 @@
 import GlobalData from "/emcJS/storage/GlobalData.js";
 import Template from "/emcJS/util/Template.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/Option.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import ManagedEventBinder from "/script/util/ManagedEventBinder.js";
 
-const EVENT_BINDER = new ManagedEventBinder("layout");
 const TPL = new Template(`
     <style>
         * {
@@ -72,7 +70,7 @@ function dungeonTypeUpdate(event){
     }
 }
 
-class HTMLTrackerDungeonType extends HTMLElement {
+class HTMLTrackerDungeonType extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
@@ -81,8 +79,8 @@ class HTMLTrackerDungeonType extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        EVENT_BINDER.register("state", stateChanged.bind(this));
-        EVENT_BINDER.register("dungeontype", dungeonTypeUpdate.bind(this));
+        this.registerGlobal("state", stateChanged.bind(this));
+        this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));
     }
 
     get ref() {
@@ -154,7 +152,7 @@ class HTMLTrackerDungeonType extends HTMLElement {
                 this.value = 'v';
             }
             StateStorage.write(`dungeonTypes.${this.ref}`, this.value);
-            EventBus.trigger("dungeontype", {
+            this.triggerGlobal("dungeontype", {
                 name: this.ref,
                 value: this.value
             });
@@ -167,7 +165,7 @@ class HTMLTrackerDungeonType extends HTMLElement {
         if (!this.readonly) {
             this.value = "n";
             StateStorage.write(`dungeonTypes.${this.ref}`, 'n');
-            EventBus.trigger("dungeontype", {
+            this.triggerGlobal("dungeontype", {
                 name: this.ref,
                 value: 'n'
             });

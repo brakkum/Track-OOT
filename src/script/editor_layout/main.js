@@ -3,7 +3,7 @@ import "/emcJS/ui/CaptionPanel.js";
 import "/emcJS/ui/CollapsePanel.js";
 
 import GlobalData from "/emcJS/storage/GlobalData.js";
-import I18n from "/script/util/I18n.js";
+import Language from "/script/util/Language.js";
 
 import "./Navigation.js";
 
