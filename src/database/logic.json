@@ -35637,37 +35637,59 @@
         ]
     },
     "logic.area.well": {
-        "type": "false"
+        "type": "number",
+        "el": "logic.entrance.well",
+        "category": "entrance"
     },
     "logic.area.ice_cavern": {
-        "type": "false"
+        "type": "number",
+        "el": "logic.entrance.ice_cavern",
+        "category": "entrance"
     },
     "logic.area.training_grounds": {
-        "type": "false"
+        "type": "number",
+        "el": "logic.entrance.training_grounds",
+        "category": "entrance"
     },
     "logic.area.deku": {
-        "type": "false"
+        "type": "number",
+        "el": "logic.entrance.deku",
+        "category": "entrance"
     },
     "logic.area.dodongo": {
-        "type": "false"
+        "type": "number",
+        "el": "logic.entrance.dodongo",
+        "category": "entrance"
     },
     "logic.area.jabujabu": {
-        "type": "false"
+        "type": "number",
+        "el": "logic.entrance.jabujabu",
+        "category": "entrance"
     },
     "logic.area.temple_forest": {
-        "type": "false"
+        "type": "number",
+        "el": "logic.entrance.temple_forest",
+        "category": "entrance"
     },
     "logic.area.temple_fire": {
-        "type": "false"
+        "type": "number",
+        "el": "logic.entrance.temple_fire",
+        "category": "entrance"
     },
     "logic.area.temple_water": {
-        "type": "false"
+        "type": "number",
+        "el": "logic.entrance.temple_water",
+        "category": "entrance"
     },
     "logic.area.temple_shadow": {
-        "type": "false"
+        "type": "number",
+        "el": "logic.entrance.temple_shadow",
+        "category": "entrance"
     },
     "logic.area.temple_spirit": {
-        "type": "false"
+        "type": "number",
+        "el": "logic.entrance.temple_spirit",
+        "category": "entrance"
     },
     "logic.area.castle_ganon": {
         "type": "and",
