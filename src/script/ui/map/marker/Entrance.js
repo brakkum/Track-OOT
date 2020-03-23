@@ -170,7 +170,7 @@ export default class MapEntrance extends EventBusSubsetMixin(HTMLElement) {
             }
             this.value = value;
         });
-        this.registerGlobal(["settings", "randomizer_options", "logic"], event => {
+        this.registerGlobal(["state_change", "settings", "randomizer_options", "logic"], event => {
             this.update()
         });
         this.registerGlobal("entrance", event => {
