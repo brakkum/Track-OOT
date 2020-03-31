@@ -41,12 +41,38 @@ Application:    Track-OOT
 ### UI CHANGES
 - added entrance icons
 - added area icons
+- added more location icons
 - split rom-settings and tracker-settings into seperate dialogs
 - logic editor now supports filter by search value
 
 ### SYSTEM STABILITY
 - reworked global event system and removed crappy mechanics
 - use self contained event subsystems to reduce memory leaks and unwanted behaviour
+
+---
+
+## VERSION 1.6.7
+
+### BUGFIXES
+
+- fixed wrong lens check for like like skulltula in well
+
+---
+
+## VERSION 1.6.6
+
+### BUGFIXES
+
+- fixed gerudo archery skull missing gerudo_access
+- fixed dmc salesmen missing dmc access
+
+---
+
+## VERSION 1.6.5
+
+### BUGFIXES
+
+- fix logic editor not importing SettingsStorage
 
 ---
 

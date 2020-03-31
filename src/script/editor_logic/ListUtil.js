@@ -207,10 +207,17 @@ function createLogicWorldCategories(data, world, loadLogic) {
                 let el = document.createElement("div");
                 el.dataset.ref = ref.access;
                 el.dataset.cat = ref.category;
+                el.dataset.type = ref.type;
                 el.className = "logic-location";
                 el.onclick = loadLogic;
                 el.innerHTML = Language.translate(record.id);
                 el.dataset.filtervalue = el.innerHTML;
+                let img = document.createElement("img");
+                img.src = `images/world/icons/${ref.type}.svg`;
+                img.style.height = "16px";
+                img.style.marginLeft = "8px";
+                img.style.verticalAlign = "bottom";
+                el.append(img);
                 els[ref.category].push(el);
             }
 
@@ -258,10 +265,17 @@ function createLogicWorldCategories(data, world, loadLogic) {
                 let el = document.createElement("div");
                 el.dataset.ref = ref.access;
                 el.dataset.cat = ref.category;
+                el.dataset.type = ref.type;
                 el.className = "logic-location";
                 el.onclick = loadLogic;
                 el.innerHTML = Language.translate(record.id);
                 el.dataset.filtervalue = el.innerHTML;
+                let img = document.createElement("img");
+                img.src = `images/world/icons/${ref.type}.svg`;
+                img.style.height = "16px";
+                img.style.marginLeft = "8px";
+                img.style.verticalAlign = "bottom";
+                el.append(img);
                 els[ref.category].push(el);
             }
 

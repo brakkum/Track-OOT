@@ -26192,7 +26192,7 @@
                         "el": {
                             "type": "value",
                             "el": "skip.lens_required",
-                            "value": "lens_required_never",
+                            "value": "lens_required_default",
                             "category": "skip"
                         }
                     },
@@ -28212,6 +28212,11 @@
             {
                 "type": "number",
                 "el": "mixin.can_become_adult",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "mixin.gerudo_fortress_access",
                 "category": "mixin"
             }
         ]
