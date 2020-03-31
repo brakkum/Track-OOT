@@ -3,6 +3,13 @@
 Application:    Track-OOT
 
 ***
+## VERSION 1.6.7
+
+### BUGFIXES
+
+- fixed wrong lens check for like like skulltula in well
+
+---
 
 ## VERSION 1.6.6
 
