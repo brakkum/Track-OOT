@@ -176,7 +176,7 @@ class StateStorage {
         if (typeof def == "object") {
             def = JSON.parse(JSON.stringify(def));
             for (let i in def) {
-                state.data[i] = key[i];
+                state.data[i] = def[i];
             }
         }
 
