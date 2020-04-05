@@ -7,15 +7,16 @@ import StateStorage from "/script/storage/StateStorage.js";
 
 const rtcClient = new RTCClient(window.location.hostname == "localhost" ? 8001 : "");
 
+const EVENT_BLACKLIST = [
+    "logic",
+    "filter",
+    "location_change",
+    "location_mode",
+    "state_change"
+];
 const eventModule = new EventBusModuleGeneric();
 EventBus.addModule(eventModule, {
-    blacklist: [
-        "logic",
-        "filter",
-        "location_change",
-        "location_mode",
-        "state_change"
-    ]
+    blacklist: EVENT_BLACKLIST
 });
 
 let username = "";
@@ -45,6 +46,7 @@ function setState(state) {
         }
     }
     StateStorage.write(buffer);
+    EventBus.trigger("state", StateStorage.getAll());
 }
 
 function getClientNameList() {
@@ -185,7 +187,10 @@ function onJoined() {
         } else if (msg.type == "state") {
             setState(msg.data);
         } else if (msg.type == "event") {
-            eventModule.trigger(msg.data.name, msg.data.data);
+            if (EVENT_BLACKLIST.indexOf(msg.data.name) < 0) {
+                eventModule.trigger(msg.data.name, msg.data.data);
+                StateStorage.write(msg.data.data.name, msg.data.data.value);
+            }
         }
     };
     eventModule.register(function(event) {
@@ -230,8 +235,11 @@ async function onHosting() {
             }
         } else if (msg.type == "event") {
             if (clients.has(key)) {
-                rtcClient.sendButOne(key, msg);
-                eventModule.trigger(msg.data.name, msg.data.data);
+                if (EVENT_BLACKLIST.indexOf(msg.data.name) < 0) {
+                    rtcClient.sendButOne(key, msg);
+                    eventModule.trigger(msg.data.name, msg.data.data);
+                    StateStorage.write(msg.data.data.name, msg.data.data.value);
+                }
             }
         }
     };
