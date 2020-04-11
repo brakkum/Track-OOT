@@ -31,7 +31,7 @@ Application:    Track-OOT
 - temporary added map mode button
 - increase default map zoom
 - gossipstones are now hidden by default
-    - gossipstones can be enabled by rom option
+    - gossipstones can be enabled by randomizer option
 
 ### INTRODUCING ENTRANCES
 - entrances have their own logic
