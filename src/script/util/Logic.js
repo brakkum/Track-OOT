@@ -30,7 +30,7 @@ EventBus.register("state_change", event => {
 });
 
 EventBus.register("filter", event => {
-    LOGIC_PROCESSOR.set(event.data.ref, event.data.value);
+    LOGIC_PROCESSOR.set(event.data.name, event.data.value);
     let res = LOGIC_PROCESSOR.execute();
     if (Object.keys(res).length > 0) {
         EventBus.trigger("logic", res);

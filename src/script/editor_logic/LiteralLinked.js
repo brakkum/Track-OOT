@@ -128,7 +128,6 @@ export default class LiteralLinked extends AbstractElement {
 
 AbstractElement.registerReference("mixin", LiteralLinked);
 AbstractElement.registerReference("entrance", LiteralLinked);
-AbstractElement.registerReference("location", LiteralLinked);
 AbstractElement.registerReference("area", LiteralLinked);
 
-customElements.define(`tracker-logic-link`, LiteralLinked);
+customElements.define(`tracker-logic-linked`, LiteralLinked);

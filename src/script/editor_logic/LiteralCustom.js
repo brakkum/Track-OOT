@@ -148,5 +148,6 @@ AbstractElement.registerReference("item", LiteralCustom);
 AbstractElement.registerReference("skip", LiteralCustom);
 AbstractElement.registerReference("option", LiteralCustom);
 AbstractElement.registerReference("filter", LiteralCustom);
+AbstractElement.registerReference("location", LiteralCustom);
 
 customElements.define(`tracker-logic-custom`, LiteralCustom);

@@ -131,7 +131,11 @@ function createOperatorWorldCategories(world) {
 
     for (let name in world) {
         let ref = world[name];
-        let el = document.createElement("tracker-logic-custom");
+        let elName = "tracker-logic-linked";
+        if (ref.category == "location") {
+            elName = "tracker-logic-custom";
+        }
+        let el = document.createElement(elName);
         el.ref = ref.category == "location" ? name : ref.access;
         el.category = ref.category;
         el.template = "true";
@@ -173,7 +177,7 @@ function createOperatorMixins(data) {
     let cnt = document.createElement("emc-collapsepanel");
     cnt.caption = Language.translate("mixin");
     for (let ref in data) {
-        let el = document.createElement("tracker-logic-mixin");
+        let el = document.createElement("tracker-logic-linked");
         el.ref = ref;
         el.category = "mixin";
         el.template = "true";
