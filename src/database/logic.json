@@ -35061,13 +35061,17 @@
                 "el": [
                     {
                         "type": "number",
-                        "el": "option.doors_open_zora",
-                        "category": "option"
-                    },
-                    {
-                        "type": "number",
                         "el": "mixin.zora_fountain_access",
                         "category": "mixin"
+                    },
+                    {
+                        "type": "not",
+                        "el": {
+                            "type": "value",
+                            "el": "option.doors_open_zora",
+                            "value": "doors_open_zora_closed",
+                            "category": "option"
+                        }
                     }
                 ]
             },
