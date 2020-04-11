@@ -55,10 +55,6 @@
             "type": "check",
             "default": true
         },
-        "option.doors_open_zora": {
-            "type": "check",
-            "default": false
-        },
         "option.doors_open_mountain": {
             "type": "hidden",
             "default": false
@@ -66,6 +62,15 @@
         "option.doors_open_temple": {
             "type": "check",
             "default": false
+        },
+        "option.doors_open_zora": {
+            "type": "choice",
+            "default": "doors_open_zora_closed",
+            "values": [
+                "doors_open_zora_closed",
+                "doors_open_zora_adult",
+                "doors_open_zora_both"
+            ]
         },
         "option.gerudo_fortress_open": {
             "type": "choice",
@@ -146,6 +151,7 @@
             "type": "list",
             "values": [
                 "skip.hidden_grotto_no_agony",
+                "skip.goron_spinning_pot_strength",
                 "skip.fewer_tunic",
                 "skip.one_way_pass",
                 "skip.child_deadhand",

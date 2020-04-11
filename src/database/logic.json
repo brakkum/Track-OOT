@@ -11,19 +11,9 @@
         "category": "mixin"
     },
     "logic.location.kokiri.c_storm_grotto": {
-        "type": "and",
-        "el": [
-            {
-                "type": "number",
-                "el": "mixin.can_use_ocarina",
-                "category": "mixin"
-            },
-            {
-                "type": "number",
-                "el": "item.song_storm",
-                "category": "item"
-            }
-        ]
+        "type": "number",
+        "el": "mixin.can_open_storm_grotto",
+        "category": "mixin"
     },
     "logic.location.hyrule_field.c_song_of_time": {
         "type": "and",
@@ -67,17 +57,12 @@
     },
     "logic.location.hyrule_field.c_hyrule_deku_salesman_grotto": {
         "type": "number",
-        "el": "mixin.can_blast_or_smash",
+        "el": "mixin.can_open_bomb_grotto",
         "category": "mixin"
     },
     "logic.location.hyrule_field.c_diving_heart_piece_grotto": {
         "type": "and",
         "el": [
-            {
-                "type": "number",
-                "el": "mixin.can_blast_or_smash",
-                "category": "mixin"
-            },
             {
                 "type": "or",
                 "el": [
@@ -106,6 +91,11 @@
                         ]
                     }
                 ]
+            },
+            {
+                "type": "number",
+                "el": "mixin.can_open_bomb_grotto",
+                "category": "mixin"
             }
         ]
     },
@@ -2253,17 +2243,12 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.can_use_ocarina",
+                "el": "mixin.can_enter_mountain",
                 "category": "mixin"
             },
             {
                 "type": "number",
-                "el": "item.song_storm",
-                "category": "item"
-            },
-            {
-                "type": "number",
-                "el": "mixin.can_enter_mountain",
+                "el": "mixin.can_open_storm_grotto",
                 "category": "mixin"
             }
         ]
@@ -4173,17 +4158,12 @@
     },
     "logic.location.zoras.c_ice": {
         "type": "number",
-        "el": "logic.area.ice_cavern",
-        "category": "area"
+        "el": "logic.entrance.ice_cavern",
+        "category": "entrance"
     },
     "logic.location.zoras.c_underwater": {
         "type": "and",
         "el": [
-            {
-                "type": "number",
-                "el": "logic.area.ice_cavern",
-                "category": "area"
-            },
             {
                 "type": "number",
                 "el": "item.boots_iron",
@@ -4203,6 +4183,11 @@
                         "category": "skip"
                     }
                 ]
+            },
+            {
+                "type": "number",
+                "el": "logic.entrance.ice_cavern",
+                "category": "entrance"
             }
         ]
     },
@@ -10323,11 +10308,6 @@
                 "el": [
                     {
                         "type": "number",
-                        "el": "item.glove",
-                        "category": "item"
-                    },
-                    {
-                        "type": "number",
                         "el": "item.bombs",
                         "category": "item"
                     },
@@ -10342,6 +10322,21 @@
                             {
                                 "type": "number",
                                 "el": "skip.goron_pot_bombchu",
+                                "category": "skip"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "item.glove",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "skip.goron_spinning_pot_strength",
                                 "category": "skip"
                             }
                         ]
@@ -10663,6 +10658,11 @@
                                 "category": "skip"
                             }
                         ]
+                    },
+                    {
+                        "type": "number",
+                        "el": "mixin.can_open_bomb_grotto",
+                        "category": "mixin"
                     }
                 ]
             },
@@ -10677,6 +10677,11 @@
                     {
                         "type": "number",
                         "el": "mixin.is_currently_child",
+                        "category": "mixin"
+                    },
+                    {
+                        "type": "number",
+                        "el": "mixin.can_open_bomb_grotto",
                         "category": "mixin"
                     }
                 ]
@@ -11827,8 +11832,49 @@
         "category": "mixin"
     },
     "logic.location.kakariko.c_redead_grotto": {
-        "type": "number",
-        "el": "mixin.can_blast_or_smash",
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_open_bomb_grotto",
+                "category": "mixin"
+            },
+            {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "number",
+                        "el": "mixin.can_become_adult",
+                        "category": "mixin"
+                    },
+                    {
+                        "type": "number",
+                        "el": "item.stick",
+                        "category": "item"
+                    },
+                    {
+                        "type": "number",
+                        "el": "item.sword_kokiri",
+                        "category": "item"
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "item.magic_din",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.magic_power",
+                                "category": "item"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
         "category": "mixin"
     },
     "logic.location.kakariko.c_cow_hp": {
@@ -12836,17 +12882,12 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.can_use_ocarina",
+                "el": "mixin.can_stun_deku",
                 "category": "mixin"
             },
             {
                 "type": "number",
-                "el": "item.song_storm",
-                "category": "item"
-            },
-            {
-                "type": "number",
-                "el": "mixin.can_stun_deku",
+                "el": "mixin.can_open_storm_grotto",
                 "category": "mixin"
             }
         ]
@@ -12856,17 +12897,12 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.can_use_ocarina",
+                "el": "mixin.can_stun_deku",
                 "category": "mixin"
             },
             {
                 "type": "number",
-                "el": "item.song_storm",
-                "category": "item"
-            },
-            {
-                "type": "number",
-                "el": "mixin.can_stun_deku",
+                "el": "mixin.can_open_storm_grotto",
                 "category": "mixin"
             }
         ]
@@ -13383,17 +13419,17 @@
             },
             {
                 "type": "number",
-                "el": "mixin.can_use_ocarina",
+                "el": "mixin.can_stun_deku",
                 "category": "mixin"
             },
             {
                 "type": "number",
-                "el": "item.song_storm",
-                "category": "item"
+                "el": "mixin.can_open_storm_grotto",
+                "category": "mixin"
             },
             {
                 "type": "number",
-                "el": "mixin.can_stun_deku",
+                "el": "mixin.can_become_adult",
                 "category": "mixin"
             }
         ]
@@ -13408,17 +13444,17 @@
             },
             {
                 "type": "number",
-                "el": "mixin.can_use_ocarina",
+                "el": "mixin.can_stun_deku",
                 "category": "mixin"
             },
             {
                 "type": "number",
-                "el": "item.song_storm",
-                "category": "item"
+                "el": "mixin.can_open_storm_grotto",
+                "category": "mixin"
             },
             {
                 "type": "number",
-                "el": "mixin.can_stun_deku",
+                "el": "mixin.can_become_adult",
                 "category": "mixin"
             }
         ]
@@ -13475,16 +13511,6 @@
         "type": "and",
         "el": [
             {
-                "type": "number",
-                "el": "mixin.can_use_ocarina",
-                "category": "mixin"
-            },
-            {
-                "type": "number",
-                "el": "item.song_storm",
-                "category": "item"
-            },
-            {
                 "type": "or",
                 "el": [
                     {
@@ -13517,6 +13543,11 @@
             {
                 "type": "number",
                 "el": "mixin.can_stun_deku",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "mixin.can_open_storm_grotto",
                 "category": "mixin"
             }
         ]
@@ -13525,16 +13556,6 @@
         "type": "and",
         "el": [
             {
-                "type": "number",
-                "el": "mixin.can_use_ocarina",
-                "category": "mixin"
-            },
-            {
-                "type": "number",
-                "el": "item.song_storm",
-                "category": "item"
-            },
-            {
                 "type": "or",
                 "el": [
                     {
@@ -13567,6 +13588,11 @@
             {
                 "type": "number",
                 "el": "mixin.can_stun_deku",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "mixin.can_open_storm_grotto",
                 "category": "mixin"
             }
         ]
@@ -24737,6 +24763,11 @@
                                 "type": "number",
                                 "el": "mixin.has_fire_source",
                                 "category": "mixin"
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.can_open_bomb_grotto",
+                                "category": "mixin"
                             }
                         ]
                     },
@@ -24757,6 +24788,11 @@
                                 "type": "number",
                                 "el": "item.magic_power",
                                 "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.can_open_bomb_grotto",
+                                "category": "mixin"
                             }
                         ]
                     }
@@ -25006,6 +25042,11 @@
                 "type": "number",
                 "el": "mixin.zora_fountain_access",
                 "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "mixin.is_currently_child",
+                "category": "mixin"
             }
         ]
     },
@@ -25021,17 +25062,17 @@
                 "type": "number",
                 "el": "item.boomerang",
                 "category": "item"
+            },
+            {
+                "type": "number",
+                "el": "mixin.is_currently_child",
+                "category": "mixin"
             }
         ]
     },
     "logic.location.zoras.s_fairy_hidden_cave_adult_night": {
         "type": "and",
         "el": [
-            {
-                "type": "number",
-                "el": "logic.area.ice_cavern",
-                "category": "area"
-            },
             {
                 "type": "number",
                 "el": "item.hookshot",
@@ -25055,6 +25096,11 @@
                 "type": "number",
                 "el": "mixin.can_become_adult",
                 "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "logic.entrance.ice_cavern",
+                "category": "entrance"
             }
         ]
     },
@@ -27346,6 +27392,11 @@
                         "type": "number",
                         "el": "mixin.has_explosives",
                         "category": "mixin"
+                    },
+                    {
+                        "type": "number",
+                        "el": "mixin.can_open_bomb_grotto",
+                        "category": "mixin"
                     }
                 ]
             },
@@ -27365,6 +27416,11 @@
                     {
                         "type": "number",
                         "el": "mixin.can_blast_or_smash",
+                        "category": "mixin"
+                    },
+                    {
+                        "type": "number",
+                        "el": "mixin.can_open_bomb_grotto",
                         "category": "mixin"
                     }
                 ]
@@ -27403,6 +27459,11 @@
                             {
                                 "type": "number",
                                 "el": "mixin.has_explosives",
+                                "category": "mixin"
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.can_open_bomb_grotto",
                                 "category": "mixin"
                             }
                         ]
@@ -27449,6 +27510,11 @@
                                 "type": "number",
                                 "el": "item.hammer",
                                 "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.can_open_bomb_grotto",
+                                "category": "mixin"
                             }
                         ]
                     }
@@ -27481,22 +27547,17 @@
         "el": [
             {
                 "type": "number",
-                "el": "item.song_storm",
-                "category": "item"
-            },
-            {
-                "type": "number",
-                "el": "mixin.can_use_ocarina",
-                "category": "mixin"
-            },
-            {
-                "type": "number",
                 "el": "item.boomerang",
                 "category": "item"
             },
             {
                 "type": "number",
                 "el": "mixin.has_explosives",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "mixin.can_open_storm_grotto",
                 "category": "mixin"
             }
         ]
@@ -34712,11 +34773,6 @@
                         "category": "item"
                     },
                     {
-                        "type": "number",
-                        "el": "option.doors_open_zora",
-                        "category": "option"
-                    },
-                    {
                         "type": "and",
                         "el": [
                             {
@@ -34756,8 +34812,43 @@
                                 "type": "number",
                                 "el": "skip.king_zora_adult",
                                 "category": "skip"
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.can_become_adult",
+                                "category": "mixin"
                             }
                         ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "not",
+                                "el": {
+                                    "type": "number",
+                                    "el": "mixin.is_currently_child",
+                                    "category": "mixin"
+                                }
+                            },
+                            {
+                                "type": "value",
+                                "el": "option.doors_open_zora",
+                                "value": "doors_open_zora_adult",
+                                "category": "option"
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.can_become_adult",
+                                "category": "mixin"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "value",
+                        "el": "option.doors_open_zora",
+                        "value": "doors_open_zora_both",
+                        "category": "option"
                     }
                 ]
             },
@@ -34831,6 +34922,61 @@
             "value": "adult",
             "category": "filter"
         }
+    },
+    "mixin.can_open_bomb_grotto": {
+        "type": "and",
+        "el": [
+            {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "number",
+                        "el": "skip.hidden_grotto_no_agony",
+                        "category": "skip"
+                    },
+                    {
+                        "type": "number",
+                        "el": "item.stone_of_agony",
+                        "category": "item"
+                    }
+                ]
+            },
+            {
+                "type": "number",
+                "el": "mixin.can_blast_or_smash",
+                "category": "mixin"
+            }
+        ]
+    },
+    "mixin.can_open_storm_grotto": {
+        "type": "and",
+        "el": [
+            {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "number",
+                        "el": "skip.hidden_grotto_no_agony",
+                        "category": "skip"
+                    },
+                    {
+                        "type": "number",
+                        "el": "item.stone_of_agony",
+                        "category": "item"
+                    }
+                ]
+            },
+            {
+                "type": "number",
+                "el": "item.ocarina",
+                "category": "item"
+            },
+            {
+                "type": "number",
+                "el": "item.song_storm",
+                "category": "item"
+            }
+        ]
     },
     "logic.entrance.deku": {
         "type": "or",
@@ -34976,13 +35122,9 @@
                 "category": "item"
             },
             {
-                "type": "not",
-                "el": {
-                    "type": "value",
-                    "el": "filter.era",
-                    "value": "adult",
-                    "category": "filter"
-                }
+                "type": "number",
+                "el": "mixin.is_currently_child",
+                "category": "mixin"
             }
         ]
     },
