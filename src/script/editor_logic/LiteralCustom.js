@@ -67,7 +67,7 @@ export default class LiteralCustom extends AbstractElement {
 
     calculate(state = {}) {
         if (state.hasOwnProperty(this.ref)) {
-            let val = !!this.expects ? +(state[this.ref] == this.expects) : +!!state[this.ref];
+            let val = !!this.value ? +(state[this.ref] == this.value) : +!!state[this.ref];
             this.shadowRoot.getElementById('header').setAttribute('value', val);
             return val;
         } else {
