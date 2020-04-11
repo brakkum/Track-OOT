@@ -359,7 +359,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.kokiri.g_gossip_kokiri",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -375,7 +378,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.kokiri.g_gossip_grotto_kokiri",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -391,7 +397,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.kokiri.g_gossip_deku_left",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -407,7 +416,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.kokiri.g_gossip_deku_right",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -701,7 +713,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.desert.g_gossip_desert",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -966,7 +981,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.river.g_gossip_plateau",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -982,7 +1000,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.river.g_gossip_waterfall",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -998,7 +1019,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.river.g_gossip_grotto_river",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1225,7 +1249,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.hyrule_field.g_gossip_grotto_near_market",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1241,7 +1268,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.hyrule_field.g_gossip_grotto_near_lake",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1257,7 +1287,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.hyrule_field.g_gossip_grotto_small_forest",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1273,7 +1306,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.hyrule_field.g_gossip_field_valley",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1602,7 +1638,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.gerudo_valley.g_gossip_gerudo_valley",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1915,7 +1954,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.lake.g_gossip_waterfall",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1931,7 +1973,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.lake.g_gossip_southeast",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1947,7 +1992,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.lake.g_gossip_southwest",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -2928,7 +2976,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.woods.g_gossip_bridge",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -2944,7 +2995,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.woods.g_gossip_meadow_left",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -2960,7 +3014,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.woods.g_gossip_meadow_right",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -2976,7 +3033,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.woods.g_gossip_meadow_saria",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -2992,7 +3052,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.woods.g_gossip_grotto_woods",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3376,7 +3439,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_castle_malon",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3392,7 +3458,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_castle_climb",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3408,7 +3477,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_castle_grotto",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3424,7 +3496,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_tot_1",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3440,7 +3515,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_tot_2",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3456,7 +3534,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_tot_3",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3472,7 +3553,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_tot_4",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -4243,7 +4327,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.kakariko.g_gossip_graveyard",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -4259,7 +4346,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.kakariko.g_gossip_grotto_kakariko",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -4834,7 +4924,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.mountain.g_gossip_dm_crater",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -4850,7 +4943,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.mountain.g_gossip_dm_trail",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -4866,7 +4962,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.mountain.g_gossip_grotto_crater",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -4882,7 +4981,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.mountain.g_gossip_grotto_mountain",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -5211,7 +5313,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.goron.g_gossip_maze",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -5227,7 +5332,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.goron.g_gossip_medigoron",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -5451,7 +5559,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.zoras.g_gossip_zora_king",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -5467,7 +5578,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.zoras.g_gossip_zora_fairy",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -5483,7 +5597,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.zoras.g_gossip_zora_jabu",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -7876,7 +7993,10 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.dodongo.g_gossip_dodongo",
-        "visible": true,
+        "visible": {
+            "type": "number",
+            "el": "option.gossipstones_active"
+        },
         "filter": {
             "filter.era": {
                 "child": true,

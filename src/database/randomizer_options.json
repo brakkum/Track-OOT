@@ -26,6 +26,10 @@
                 "keysanity_boss_keysanity"
             ]
         },
+        "option.gossipstones_active": {
+            "type": "check",
+            "default": false
+        },
         "option.entrance_shuffle_dungeons": {
             "type": "check",
             "default": false
@@ -141,6 +145,7 @@
         "tricks": {
             "type": "list",
             "values": [
+                "skip.hidden_grotto_no_agony",
                 "skip.fewer_tunic",
                 "skip.one_way_pass",
                 "skip.child_deadhand",

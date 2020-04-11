@@ -6,9 +6,10 @@ Application:    Track-OOT
 
 ## VERSION 1.7.0 (DEV)
 
-### MERGED PULL REQUEST (pidgezero_one)
-- sequence breaks added
-- skips extended
+### ADDED RANDOMIZER OPTIONS
+- sequence breaks added (PR: pidgezero_one)
+- skips extended (PR: pidgezero_one)
+- skip: hidden grottos without stone of agony
 
 ### USABILITY ENHANCEMENTS
 - added filters and bulk select to lists in settngs
@@ -25,10 +26,12 @@ Application:    Track-OOT
 - almost everything inside the data structure has changed
 - allows for some ui improvements like mixed lists
 
-### MAP CHANGES
+### MAP/LOCATIONLIST CHANGES
 - moved map options to the left
 - temporary added map mode button
 - increase default map zoom
+- gossipstones are now hidden by default
+    - gossipstones can be enabled by rom option
 
 ### INTRODUCING ENTRANCES
 - entrances have their own logic
@@ -48,6 +51,9 @@ Application:    Track-OOT
 ### SYSTEM STABILITY
 - reworked global event system and removed crappy mechanics
 - use self contained event subsystems to reduce memory leaks and unwanted behaviour
+
+### BUGFIXES
+- fixed typo for malon's egg translations
 
 ---
 

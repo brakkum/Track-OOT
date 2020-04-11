@@ -18,10 +18,6 @@ const TPL = new Template(`
     </div>
 `);
 
-function filterGossipstones(check) {
-    return FileData.get(`world/${check.id}/type`) != "gossipstone";
-}
-
 function updateStates(doneEl, availEl, missEl) {
     let access_min = 0;
     let access_max = 0;
@@ -35,8 +31,8 @@ function updateStates(doneEl, availEl, missEl) {
             let buff = data[name];
             let dType = StateStorage.read(`dungeonTypes.${name}`, buff.lists.hasOwnProperty("mq") ? "n" : "v");
             if (dType == "n") {
-                let cv = ListLogic.check(buff.lists.v.filter(filterGossipstones).filter(ListLogic.filterUnusedChecks));
-                let cm = ListLogic.check(buff.lists.mq.filter(filterGossipstones).filter(ListLogic.filterUnusedChecks));
+                let cv = ListLogic.check(buff.lists.v.filter(ListLogic.filterUnusedChecks));
+                let cm = ListLogic.check(buff.lists.mq.filter(ListLogic.filterUnusedChecks));
                 if (cv.reachable < cm.reachable) {
                     access_min += cv.reachable;
                     access_max += cm.reachable;
@@ -54,7 +50,7 @@ function updateStates(doneEl, availEl, missEl) {
                 done += cv.done;
                 done += cm.done;
             } else {
-                let c = ListLogic.check(buff.lists[dType].filter(filterGossipstones).filter(ListLogic.filterUnusedChecks));
+                let c = ListLogic.check(buff.lists[dType].filter(ListLogic.filterUnusedChecks));
                 access_min += c.reachable;
                 access_max += c.reachable;
                 todo_min += c.unopened;

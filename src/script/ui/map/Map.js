@@ -2,6 +2,7 @@ import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
+import StateStorage from "/script/storage/StateStorage.js";
 import Language from "/script/util/Language.js";
 import World from "/script/util/World.js";
 import "./marker/Area.js";
@@ -460,6 +461,20 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
         let dType = "v";//this.shadowRoot.getElementById("location-version").value;
         this.innerHTML = "";
         let data = FileData.get(`world_lists/${this.ref}`);
+        if (this.ref == "#") {
+            let modeEl = this.shadowRoot.getElementById('location-mode');
+            if (StateStorage.read("option.gossipstones_active", FileData.get("randomizer_options/option/option.gossipstones_active/default", false))) {
+                // LEGACY
+                modeEl.querySelector('[value="gossipstones"]').visible = true;
+            } else {
+                // LEGACY
+                modeEl.querySelector('[value="gossipstones"]').visible = false;
+                if (this.mode == "gossipstones") {
+                    modeEl.value = "chests";
+                    this.setAttribute('mode', "chests");
+                }
+            }
+        }
         if (!!data) {
             // switch map/minimap background
             let map = this.shadowRoot.getElementById('map');
@@ -481,7 +496,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
 
             } else {
                 data.lists[dType].forEach(record => {
-                    if (this.mode == "gossipstones") {
+                    if (this.ref == "#" && this.mode == "gossipstones") {
                         // LEGACY
                         if (record.type == "area" || record.type == "entrance") {
                             return;
@@ -490,7 +505,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
                     let loc = World.getLocation(record.id);
                     if (!!loc && loc.visible()) {
                         let el = loc.mapMarker;
-                        if (!!el.dataset.mode && el.dataset.mode != this.mode) {
+                        if (this.ref == "#" && !!el.dataset.mode && el.dataset.mode != this.mode) {
                             // LEGACY
                             return;
                         }
