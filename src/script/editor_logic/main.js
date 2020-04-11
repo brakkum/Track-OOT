@@ -19,8 +19,8 @@ import "/emcJS/ui/logic/elements/OperatorXor.js";
 import "/emcJS/ui/logic/elements/OperatorNot.js";
 import "/emcJS/ui/logic/elements/OperatorMin.js";
 import "/emcJS/ui/logic/elements/OperatorMax.js";
-import "./LiteralMixin.js";
 import "./LiteralCustom.js";
+import "./LiteralLinked.js";
 import ListUtil from "./ListUtil.js";
 
 import TrackerStorage from "/script/storage/TrackerStorage.js";
