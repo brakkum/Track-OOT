@@ -63,7 +63,9 @@ async function uploadPatch() {
 async function removePatch() {
     await LogicsStorage.clear();
     let key = workingarea.dataset.logicKey;
-    workingarea.loadLogic(await getLogic(key));
+    if (!!key) {
+        workingarea.loadLogic(await getLogic(key));
+    }
 }
 
 function exitEditor() {
