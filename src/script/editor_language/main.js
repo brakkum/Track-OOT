@@ -7,24 +7,11 @@ import "/emcJS/ui/CaptionPanel.js";
 import "/emcJS/ui/CollapsePanel.js";
 import "/emcJS/ui/FilteredList.js";
 
-import "/emcJS/ui/logic/elements/LiteralFalse.js";
-import "/emcJS/ui/logic/elements/LiteralTrue.js";
-import "/emcJS/ui/logic/elements/LiteralNumber.js";
-import "/emcJS/ui/logic/elements/LiteralValue.js";
-import "/emcJS/ui/logic/elements/OperatorAnd.js";
-import "/emcJS/ui/logic/elements/OperatorNand.js";
-import "/emcJS/ui/logic/elements/OperatorOr.js";
-import "/emcJS/ui/logic/elements/OperatorNor.js";
-import "/emcJS/ui/logic/elements/OperatorXor.js";
-import "/emcJS/ui/logic/elements/OperatorNot.js";
-import "/emcJS/ui/logic/elements/OperatorMin.js";
-import "/emcJS/ui/logic/elements/OperatorMax.js";
-import "./LiteralCustom.js";
-import "./LiteralLinked.js";
 import ListUtil from "./ListUtil.js";
 
 import TrackerStorage from "/script/storage/TrackerStorage.js";
 import FileData from "/emcJS/storage/FileData.js";
+import Language from "/script/util/Language.js";
 
 import "./Navigation.js";
 

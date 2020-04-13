@@ -57,11 +57,13 @@ async function autosave() {
 }
 
 function updateTitle() {
-    name = state.name || "new state";
-    if (LocalStorage.get(STATE_DIRTY)) {
-        document.title = `${TITLE_PREFIX} - ${name} *`;
-    } else {
-        document.title = `${TITLE_PREFIX} - ${name}`;
+    if (document.title != "Track-OOT [Detached]") {
+        name = state.name || "new state";
+        if (LocalStorage.get(STATE_DIRTY)) {
+            document.title = `${TITLE_PREFIX} - ${name} *`;
+        } else {
+            document.title = `${TITLE_PREFIX} - ${name}`;
+        }
     }
 }
 

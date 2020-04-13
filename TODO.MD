@@ -1,5 +1,7 @@
 ### WIP
 
+- fix navigation bar on small screens
+
 ---
 
 ### TODOS

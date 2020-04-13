@@ -1,11 +1,12 @@
 import FileData from "/emcJS/storage/FileData.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import Toast from "/emcJS/ui/Toast.js";
+import "/emcJS/ui/NavBar.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import LoadWindow from "/script/ui/savestate/LoadWindow.js";
 import ManageWindow from "/script/ui/savestate/ManageWindow.js";
 import SaveWindow from "/script/ui/savestate/SaveWindow.js";
-
+/*
 const stateSave = document.getElementById("save-savestate");
 const stateSaveAs = document.getElementById("saveas-savestate");
 const stateLoad = document.getElementById("load-savestate");
@@ -25,6 +26,41 @@ joinDiscord.addEventListener("click", openDiscortJoin);
 editSettings.addEventListener("click", openSettingsWindow);
 editRomSettings.addEventListener("click", openRomSettingsWindow);
 editors.addEventListener("click", showEditors);
+*/
+
+let navbar = document.querySelector('emc-navbar');
+
+navbar.loadNavigation([{
+    "content": "FILE",
+    "submenu": [{
+        "content": "NEW",
+        "handler": state_New
+    },{
+        "content": "LOAD",
+        "handler": state_Load
+    },{
+        "content": "SAVE",
+        "handler": state_Save
+    },{
+        "content": "SAVE AS",
+        "handler": state_SaveAs
+    },{
+        "content": "MANAGE",
+        "handler": states_Manage
+    }]
+},{
+    "content": "DISCORD",
+    "handler": openDiscortJoin
+},{
+    "content": "EDITORS",
+    "handler": showEditors
+},{
+    "content": "RANDOMIZER OPTIONS",
+    "handler": openRomSettingsWindow
+},{
+    "content": "TRACKER SETTINGS",
+    "handler": openSettingsWindow
+}]);
 
 async function state_Save() {
     let activestate = await StateStorage.getName()

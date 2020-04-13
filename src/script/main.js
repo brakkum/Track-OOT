@@ -41,7 +41,7 @@ import "/script/ui/LocationStatus.js";
 
     updateLoadingMessage("add modules...");
 
-    document.getElementById("view-choice-top").onchange = changeView;
+    //document.getElementById("view-choice-top").onchange = changeView;
     document.getElementById("view-choice-bottom").onchange = changeView;
     changeView({
         oldValue:"",
@@ -87,11 +87,11 @@ import "/script/ui/LocationStatus.js";
 window.onbeforeunload = function() {
     return "Are you sure you want to close the tracker?\nUnsafed progress will be lost.";
 }
-
+/*
 document.getElementById("hamburger-button").onclick = function(event) {
     document.getElementById("menu").classList.toggle("open");
 }
-
+*/
 function addHTMLModule(name, target) {
     let el = document.createElement(name);
     document.getElementById(target).append(el);
@@ -128,6 +128,6 @@ function changeView(event) {
     if (!!n) {
         n.classList.add('active');
     }
-    document.getElementById("view-choice-top").value = event.newValue;
+    //document.getElementById("view-choice-top").value = event.newValue;
     document.getElementById("view-choice-bottom").value = event.newValue;
 }

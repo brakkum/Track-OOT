@@ -5666,10 +5666,10 @@
         "access": "logic.area.well",
         "visible": {
             "type": "not",
-            "el": [{
+            "el": {
                 "type": "number",
                 "el": "option.entrance_shuffle_dungeons"
-            }]
+            }
         },
         "filter": {
             "filter.era": {
@@ -6088,10 +6088,10 @@
         "access": "logic.area.ice_cavern",
         "visible": {
             "type": "not",
-            "el": [{
+            "el": {
                 "type": "number",
                 "el": "option.entrance_shuffle_dungeons"
-            }]
+            }
         },
         "filter": {
             "filter.era": {
@@ -6366,10 +6366,10 @@
         "access": "logic.area.training_grounds",
         "visible": {
             "type": "not",
-            "el": [{
+            "el": {
                 "type": "number",
                 "el": "option.entrance_shuffle_dungeons"
-            }]
+            }
         },
         "filter": {
             "filter.era": {
@@ -7012,10 +7012,10 @@
         "access": "logic.area.deku",
         "visible": {
             "type": "not",
-            "el": [{
+            "el": {
                 "type": "number",
                 "el": "option.entrance_shuffle_dungeons"
-            }]
+            }
         },
         "filter": {
             "filter.era": {
@@ -7421,10 +7421,10 @@
         "access": "logic.area.dodongo",
         "visible": {
             "type": "not",
-            "el": [{
+            "el": {
                 "type": "number",
                 "el": "option.entrance_shuffle_dungeons"
-            }]
+            }
         },
         "filter": {
             "filter.era": {
@@ -8014,10 +8014,10 @@
         "access": "logic.area.jabujabu",
         "visible": {
             "type": "not",
-            "el": [{
+            "el": {
                 "type": "number",
                 "el": "option.entrance_shuffle_dungeons"
-            }]
+            }
         },
         "filter": {
             "filter.era": {
@@ -8458,10 +8458,10 @@
         "access": "logic.area.temple_forest",
         "visible": {
             "type": "not",
-            "el": [{
+            "el": {
                 "type": "number",
                 "el": "option.entrance_shuffle_dungeons"
-            }]
+            }
         },
         "filter": {
             "filter.era": {
@@ -9072,10 +9072,10 @@
         "access": "logic.area.temple_fire",
         "visible": {
             "type": "not",
-            "el": [{
+            "el": {
                 "type": "number",
                 "el": "option.entrance_shuffle_dungeons"
-            }]
+            }
         },
         "filter": {
             "filter.era": {
@@ -9702,10 +9702,10 @@
         "access": "logic.area.temple_water",
         "visible": {
             "type": "not",
-            "el": [{
+            "el": {
                 "type": "number",
                 "el": "option.entrance_shuffle_dungeons"
-            }]
+            }
         },
         "filter": {
             "filter.era": {
@@ -10172,10 +10172,10 @@
         "access": "logic.area.temple_shadow",
         "visible": {
             "type": "not",
-            "el": [{
+            "el": {
                 "type": "number",
                 "el": "option.entrance_shuffle_dungeons"
-            }]
+            }
         },
         "filter": {
             "filter.era": {
@@ -10978,10 +10978,10 @@
         "access": "logic.area.temple_spirit",
         "visible": {
             "type": "not",
-            "el": [{
+            "el": {
                 "type": "number",
                 "el": "option.entrance_shuffle_dungeons"
-            }]
+            }
         },
         "filter": {
             "filter.era": {
