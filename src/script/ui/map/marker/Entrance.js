@@ -141,7 +141,7 @@ export default class MapEntrance extends EventBusSubsetMixin(HTMLElement) {
                         "el": this.access,
                         "category": "entrance"
                     }
-                    Logic.setLogic(l);
+                    //Logic.setLogic(l);
                     this.triggerGlobal("entrance", {
                         name: this.ref,
                         value: r

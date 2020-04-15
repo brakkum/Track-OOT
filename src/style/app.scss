@@ -129,13 +129,15 @@ emc-choiceselect {
     padding: 4px;
     background-color: var(--navigation-background-color, #ffffff);
 
-    &#view-choice-bottom {
+/*
+    @media (max-width: $mobile-switch) {
 
-        @media (max-width: $mobile-switch) {
+        &#view-choice {
             display: none;
         }
-    }
 
+    }
+*/
     emc-option {
         display: inline-block;
         width: 40px;

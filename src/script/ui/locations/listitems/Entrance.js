@@ -138,7 +138,7 @@ export default class ListEntrance extends EventBusSubsetMixin(HTMLElement) {
                             let ref = FileData.get(`world/${this.value}/access`);
                             logic[ref] = null;
                         }
-                        Logic.setLogic(logic);
+                        //Logic.setLogic(logic);
                         this.value = area;
                         this.triggerGlobal("entrance", {
                             name: this.ref,

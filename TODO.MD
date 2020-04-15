@@ -1,6 +1,9 @@
 ### WIP
 
 - fix navigation bar on small screens
+- entrance marker not updated for area
+- add tooltips to location badges
+- detached window resets all checks/items (only visually)
 
 ---
 
@@ -29,6 +32,8 @@
 - optionally increase skully token count with ticking off skullies
 
 - add tooltips to all the icons
+- context menu for areas/entrances
+- context menu on map icons
 
 - better color choices
     - add theming to custom-elements
@@ -39,3 +44,5 @@
 - on network play make location- and mode change (locationlist/map) synchronize optional
 
 - add shops to map / list
+
+- add notes to each location/area

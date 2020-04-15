@@ -108,20 +108,8 @@
         "images": "/images/items/ice_trap.png"
     },
     "item.triforce_piece": {
-        "max": 35,
-        "mark": 20,
-        "images": "/images/items/triforce_piece.png",
-        "counting": true,
-        "alternate_counting": [
-            0,
-            5,
-            10,
-            15,
-            20,
-            25,
-            30,
-            35
-        ]
+        "max": false,
+        "images": "/images/items/triforce_piece.png"
     },
     "item.arrows": {
         "max": 3,
