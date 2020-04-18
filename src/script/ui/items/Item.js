@@ -50,10 +50,27 @@ const TPL = new Template(`
         ::slotted([value].mark) {
             color: #54ff54;
         }
+        ::slotted([value].dungeon_reward) {
+            font-size: 0.6em;
+            align-items: flex-end;
+            justify-content: flex-center;
+        }
     </style>
     <slot>
     </slot>
 `);
+
+const ALL_DUNGEONS = {
+    pocket: "FREE",
+    deku: "DEKU",
+    dodongo: "DCVN",
+    jabujabu: "JABU",
+    temple_forest: "FRST",
+    temple_fire: "FIRE",
+    temple_shadow: "SHDW",
+    temple_water: "WATR",
+    temple_spirit: "SPRT"
+}
 
 function stateChanged(event) {
     EventBus.mute("item");
@@ -100,6 +117,23 @@ function dungeonTypeUpdate(event) {
     }
 }
 
+function dungeonRewardUpdate(event) {
+    let data = GlobalData.get("items")[this.ref];
+    if (!!data.dungeon_reward_id) {
+        let defined = false;
+        for (let dungeon of Object.keys(ALL_DUNGEONS)) {
+            let reward = StateStorage.read(`dungeonRewards.${dungeon}`, 0);
+            if (reward == data.dungeon_reward_id) {
+                this.dungeonReward = dungeon;
+                defined = true;
+            }
+        }
+        if (!defined) {
+            this.dungeonReward = "";
+        }
+    }
+}
+
 class HTMLTrackerItem extends HTMLElement {
 
     constructor() {
@@ -112,6 +146,7 @@ class HTMLTrackerItem extends HTMLElement {
         EVENT_BINDER.register("item", itemUpdate.bind(this));
         EVENT_BINDER.register("state", stateChanged.bind(this));
         EVENT_BINDER.register("dungeontype", dungeonTypeUpdate.bind(this));
+        EVENT_BINDER.register("dungeonreward", dungeonRewardUpdate.bind(this));
     }
 
     get ref() {
@@ -128,6 +163,14 @@ class HTMLTrackerItem extends HTMLElement {
 
     set value(val) {
         this.setAttribute('value', val);
+    }
+
+    get dungeonReward() {
+        return this.getAttribute('dungeonreward');
+    }
+
+    set dungeonReward(val) {
+        this.setAttribute('dungeonreward', val);
     }
 
     get startvalue() {
@@ -147,7 +190,7 @@ class HTMLTrackerItem extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['ref', 'value', 'startvalue'];
+        return ['ref', 'value', 'startvalue', 'dungeonreward'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -168,6 +211,9 @@ class HTMLTrackerItem extends HTMLElement {
                 break;
                 case 'startvalue':
                     this.fillItemChoices();
+                break;
+                case 'dungeonreward':
+                    this.setDungeonReward(newValue);
                 break;
                 case 'value':
                     let oe = this.querySelector(`.active`);
@@ -309,6 +355,14 @@ class HTMLTrackerItem extends HTMLElement {
         return false;
     }
 
+    setDungeonReward(newValue) {
+        let all = this.querySelectorAll("[value]");
+        if (!!all.length) {
+            let opt = this.querySelector(`[value="${this.value}"]`);
+            opt.innerHTML = ALL_DUNGEONS[newValue] || "";
+        }
+    }
+
 }
 
 customElements.define('ootrt-item', HTMLTrackerItem);
@@ -335,6 +389,9 @@ function createOption(value, img, data, max_value) {
                 opt.classList.add("mark");
             }
         }
+    }
+    if (!!data.dungeon_reward_id) {
+        opt.classList.add("dungeon_reward");
     }
     // radial-gradient(ellipse at center, rgb(24, 241, 21) 0%,rgb(24, 241, 21) 45%,rgba(0,255,255,0) 72%,rgba(0,255,255,0) 87%)
     return opt;
