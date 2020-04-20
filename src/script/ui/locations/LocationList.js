@@ -4,7 +4,7 @@ import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
 import "/emcJS/ui/selection/SwitchButton.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import TrackerStorage from "/script/storage/TrackerStorage.js";
+import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import Language from "/script/util/Language.js";
 import World from "/script/util/World.js";
 import ListLogic from "/script/util/ListLogic.js";
@@ -16,7 +16,7 @@ import "./listitems/Gossipstone.js";
 import "/script/ui/dungeonstate/DungeonType.js";
 import "/script/ui/FilterButton.js";
 
-const SettingsStorage = new TrackerStorage('settings');
+const SettingsStorage = new IDBStorage('settings');
 
 const TPL = new Template(`
     <style>

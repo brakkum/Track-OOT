@@ -8,8 +8,11 @@ import StateStorage from "/script/storage/StateStorage.js";
 
 import "/emcJS/ui/Icon.js";
 import "/emcJS/ui/selection/ChoiceSelect.js";
-import "/script/util/Navigation.js";
 import "/script/ui/LocationStatus.js";
+
+import "/script/content/Tracker.js";
+import "/script/content/EditorChoice.js";
+import "/script/content/EditorLogic.js";
 
 (async function main() {
 

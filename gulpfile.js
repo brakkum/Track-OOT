@@ -9,6 +9,7 @@ const PRD_PATH = path.resolve(__dirname, "./prod");
 
 const MODULE_PATHS = {
     emcJS: path.resolve(__dirname, "node_modules/emcjs"),
+    trackerEditor: path.resolve(__dirname, "node_modules/JSEditors"),
     RTCClient: path.resolve(__dirname, "node_modules/rtcclient")
 };
 
@@ -25,6 +26,10 @@ if (process.argv.indexOf('-nolocal') < 0) {
     let emcJS = path.resolve(__dirname, '../emcJS');
     if (fileExists(emcJS)) {
         MODULE_PATHS.emcJS = emcJS;
+    }
+    let trackerEditor = path.resolve(__dirname, '../JSEditors');
+    if (fileExists(trackerEditor)) {
+        MODULE_PATHS.trackerEditor = trackerEditor;
     }
     let RTCClient = path.resolve(__dirname, '../RTCClient');
     if (fileExists(RTCClient)) {
@@ -127,6 +132,13 @@ function copyEmcJS(dest = DEV_PATH) {
         .pipe(gulp.dest(`${dest}/emcJS`));
 }
 
+function copyTrackerEditor(dest = DEV_PATH) {
+    return gulp.src(MODULE_PATHS.trackerEditor + "/**/*.js")
+        .pipe(deleted.register(MODULE_PATHS.trackerEditor, `${dest}/editors`))
+        .pipe(newer(`${dest}/editors`))
+        .pipe(gulp.dest(`${dest}/editors`));
+}
+
 function copyRTCClient(dest = DEV_PATH) {
     return gulp.src(MODULE_PATHS.RTCClient + "/**/*.js")
         .pipe(deleted.register(MODULE_PATHS.RTCClient, `${dest}/rtc`))
@@ -163,6 +175,7 @@ exports.build = gulp.series(
         copyFonts.bind(this, PRD_PATH),
         copyScript.bind(this, PRD_PATH),
         copyEmcJS.bind(this, PRD_PATH),
+        copyTrackerEditor.bind(this, PRD_PATH),
         copyRTCClient.bind(this, PRD_PATH),
         copySW.bind(this, PRD_PATH),
         copyChangelog.bind(this, PRD_PATH)
@@ -182,6 +195,7 @@ exports.buildDev = gulp.series(
         copyFonts.bind(this, DEV_PATH),
         copyScript.bind(this, DEV_PATH),
         copyEmcJS.bind(this, DEV_PATH),
+        copyTrackerEditor.bind(this, DEV_PATH),
         copyRTCClient.bind(this, DEV_PATH),
         copySW.bind(this, DEV_PATH),
         copyChangelog.bind(this, DEV_PATH)

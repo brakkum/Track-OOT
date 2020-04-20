@@ -3,7 +3,9 @@
   "author": "Denis Peters (ZidArgs)",
   "dependencies": {
     "del": "^5.1.0",
-    "emcjs": "git+https://bitbucket.org/zidargs/emcjs.git/@0.1.24",
+    "emcjs": "git+https://bitbucket.org/zidargs/emcjs.git/@0.1.25",
+    "jseditors": "git+https://bitbucket.org/zidargs/jseditors.git/@0.0.1",
+    "rtcclient": "git+https://bitbucket.org/zidargs/rtcclient.git/@1.0.6",
     "glob-all": "^3.1.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
@@ -15,8 +17,10 @@
     "gulp-sass": "^4.0.2",
     "gulp-svgo": "^2.1.0",
     "gulp-terser": "^1.2.0",
-    "rtcclient": "git+https://bitbucket.org/zidargs/rtcclient.git/@1.0.6",
     "through": "^2.3.8"
+  },
+  "devDependencies": {
+    "electron": "^8.2.3"
   },
   "browserslist": [
     "Chrome >= 76",
@@ -32,6 +36,7 @@
     "build": "gulp build",
     "buildDev": "gulp buildDev",
     "watch": "gulp watch",
-    "serve": "serve dev"
+    "serve": "serve dev",
+    "edit": "electron  --inspect=7777 ./editor --no-sandbox"
   }
 }

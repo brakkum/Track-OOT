@@ -1,3 +1,5 @@
+
+import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import StateConverter from "/script/storage/converters/StateConverter.js";
 
 let dbInstance = null;
@@ -70,7 +72,7 @@ function getStoreReadonly(name) {
 
 const NAME = new WeakMap();
 
-export default class TrackerStorage {
+class TrackerStorage {
 
 	constructor(name) {
 		NAME.set(this, name);
@@ -196,3 +198,17 @@ export default class TrackerStorage {
     }
 
 }
+
+const OldSaveStorage = new TrackerStorage('savestates');
+const OldSettingsStorage = new TrackerStorage('settings');
+const OldLogicStorage = new TrackerStorage('logics');
+
+const NewSaveStorage = new IDBStorage('savestates');
+const NewSettingsStorage = new IDBStorage('settings');
+const NewLogicStorage = new IDBStorage('logics');
+
+!async function() {
+	NewSaveStorage.setAll(await OldSaveStorage.getAll());
+	NewSettingsStorage.setAll(await OldSettingsStorage.getAll());
+	NewLogicStorage.setAll(await OldLogicStorage.getAll());
+}();

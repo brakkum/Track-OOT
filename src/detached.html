@@ -25,7 +25,7 @@
         import Panel from "/emcJS/ui/layout/Panel.js";
         import LocalStorage from "/emcJS/storage/LocalStorage.js";
         import FileData from "/emcJS/storage/FileData.js";
-        import TrackerStorage from "/script/storage/TrackerStorage.js";
+        import IDBStorage from "/emcJS/storage/IDBStorage.js";
         import Language from "/script/util/Language.js";
         import LogicAlternator from "/script/util/LogicAlternator.js";
         import "/emcJS/ui/layout/Layout.js";
@@ -34,7 +34,7 @@
         import "/script/ui/locations/LocationList.js";
         import "/script/ui/map/Map.js";
 
-        const SettingsStorage = new TrackerStorage('settings');
+        const SettingsStorage = new IDBStorage('settings');
 
         const FILES = {
             "items": "/database/items.json",

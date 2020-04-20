@@ -1,11 +1,11 @@
 import FileData from "/emcJS/storage/FileData.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import TrackerStorage from "/script/storage/TrackerStorage.js";
+import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import Logic from "/script/util/Logic.js";
 
-const SettingsStorage = new TrackerStorage('settings');
-const LogicsStorage = new TrackerStorage('logics');
+const SettingsStorage = new IDBStorage('settings');
+const LogicsStorage = new IDBStorage('logics');
 
 let entrance_active = {
     "dungeon": false

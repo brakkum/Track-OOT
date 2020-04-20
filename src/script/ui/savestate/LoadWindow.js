@@ -170,7 +170,7 @@ async function fillStates(list) {
     list.innerHTML = "";
     let states = await StateManager.getStates();
     for (let state in states) {
-        list.append(createOption(states[state]));
+        list.append(createOption(state, states[state]));
     }
 }
 
@@ -254,9 +254,9 @@ export default class LoadWindow extends HTMLElement {
 
 }
 
-function createOption(state) {
+function createOption(key, state) {
     let opt = document.createElement('emc-option');
-    opt.value = state.name;
+    opt.value = key;
     if (state.autosave) {
         let ato = document.createElement("span");
         ato.className = "auto";

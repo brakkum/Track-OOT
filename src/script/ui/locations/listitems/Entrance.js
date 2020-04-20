@@ -5,12 +5,12 @@ import Dialog from "/emcJS/ui/Dialog.js";
 import "/emcJS/ui/ContextMenu.js";
 import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import TrackerStorage from "/script/storage/TrackerStorage.js";
+import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import ListLogic from "/script/util/ListLogic.js";
 import Logic from "/script/util/Logic.js";
 import Language from "/script/util/Language.js";
 
-const SettingsStorage = new TrackerStorage('settings');
+const SettingsStorage = new IDBStorage('settings');
 
 const TPL = new Template(`
     <style>

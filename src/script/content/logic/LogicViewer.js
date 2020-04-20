@@ -1,14 +1,14 @@
 import FileData from "/emcJS/storage/FileData.js";
-import LogicUIAbstractElement from "/emcJS/ui/logic/elements/AbstractElement.js";
+import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import Helper from "/emcJS/util/Helper.js";
+import Logic from "/script/util/Logic.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import FilterStorage from "/script/storage/FilterStorage.js";
-import TrackerStorage from "/script/storage/TrackerStorage.js";
-import Logic from "/script/util/Logic.js";
+import LogicUIAbstractElement from "/editors/logic/elements/AbstractElement.js";
 
-const SettingsStorage = new TrackerStorage('settings');
-const LogicsStorage = new TrackerStorage('logics');
+const SettingsStorage = new IDBStorage('settings');
+const LogicsStorage = new IDBStorage('logics');
 
 async function getLogic(ref) {
     let logic = FileData.get(`logic/${ref}`, {});

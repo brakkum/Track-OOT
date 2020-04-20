@@ -1,7 +1,6 @@
 import Template from "/emcJS/util/Template.js";
-import AbstractElement from "/emcJS/ui/logic/elements/AbstractElement.js";
-import Language from "/script/util/Language.js";
-import LogicViewer from "/script/ui/LogicViewer.js";
+import AbstractElement from "/editors/logic/elements/AbstractElement.js";
+import LogicViewer from "/script/content/logic/LogicViewer.js";
 
 const TPL_CAPTION = "LINKED";
 const TPL_BACKGROUND = "#ffffff";
@@ -39,7 +38,7 @@ export default class LiteralLinked extends AbstractElement {
         super();
         this.shadowRoot.append(TPL.generate());
         this.shadowRoot.getElementById("view").addEventListener("click", function(event) {
-            let title = Language.translate(this.ref);
+            let title = this.ref;
             LogicViewer.show(this.ref, title);
         }.bind(this));
     }
@@ -101,10 +100,10 @@ export default class LiteralLinked extends AbstractElement {
                 if (oldValue != newValue) {
                     if (typeof newValue == "string") {
                         if (!!newValue) {
-                            this.shadowRoot.getElementById('ref').innerHTML = Language.translate(newValue);
+                            this.shadowRoot.getElementById('ref').innerHTML = newValue;
                             this.shadowRoot.getElementById('ref').classList.remove("blank");
                         } else {
-                            this.shadowRoot.getElementById('ref').innerHTML = Language.translate("[blank]");
+                            this.shadowRoot.getElementById('ref').innerHTML = "[blank]";
                             this.shadowRoot.getElementById('ref').classList.add("blank");
                         }
                     } else {

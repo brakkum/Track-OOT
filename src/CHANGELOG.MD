@@ -13,6 +13,7 @@ Application:    Track-OOT
 
 ### USABILITY ENHANCEMENTS
 - added filters and bulk select to lists in settngs
+- show actual savestate name in state load/save/management instead of id
 - added undo (ctrl+z) / redo (ctrl+y) 
 - redo i18n system to dynamically switch language without the need to restart the application (WIP)
 
@@ -46,7 +47,7 @@ Application:    Track-OOT
 - added area icons
 - added more location icons
 - split rom-settings and tracker-settings into seperate dialogs
-- logic editor now supports filter by search value
+- better navbar (finally)
 
 ### SYSTEM STABILITY
 - reworked global event system and removed crappy mechanics
@@ -54,6 +55,11 @@ Application:    Track-OOT
 
 ### BUGFIXES
 - fixed typo for malon's egg translations
+
+### EDITOR CHANGES
+- moved the editors to their own repository
+- added standalone editor (for developement only)
+- logic editor now supports filter by search value
 
 ---
 

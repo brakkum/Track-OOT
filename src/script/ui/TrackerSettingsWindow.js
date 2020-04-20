@@ -6,10 +6,10 @@ import PopOver from "/emcJS/ui/PopOver.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import BusyIndicator from "/script/ui/BusyIndicator.js";
-import TrackerStorage from "/script/storage/TrackerStorage.js";
+import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
-const SettingsStorage = new TrackerStorage('settings');
+const SettingsStorage = new IDBStorage('settings');
 
 import SettingsBuilder from "/script/util/SettingsBuilder.js";
 

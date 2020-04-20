@@ -1,7 +1,7 @@
-import TrackerStorage from "/script/storage/TrackerStorage.js";
+import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import StateConverter from "/script/storage/converters/StateConverter.js";
 
-const STORAGE = new TrackerStorage("savestates");
+const STORAGE = new IDBStorage("savestates");
 
 class StateManager {
 

@@ -1,8 +1,9 @@
-<emc-paging id="view-pager" active="main">
+
+<emc-navbar id="navbar"></emc-navbar>
+<emc-paging id="view-pager" active="">
     <emc-import slot="main" html="/content/pages/main.html" module="/script/main.js"></emc-import>
-    <emc-import slot="editors" html="/content/pages/editors.html" module="/script/editors.js"></emc-import>
-    <emc-import slot="editor_logic" html="/content/pages/editor_logic.html" module="/script/editor_logic/main.js"></emc-import>
-    <emc-import slot="editor_layout" html="/content/pages/editor_layout.html" module="/script/editor_layout/main.js"></emc-import>
+    <ted-editorchoice id="editor-choice" slot="editor_choice"></ted-editorchoice>
+    <ted-logiceditor id="editor-logic" slot="editor_logic"></ted-logiceditor>
 </emc-paging>
 
 <div id="busy-animation"></div>

@@ -6,14 +6,15 @@ import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import FileData from "/emcJS/storage/FileData.js";
 import FileLoader from "/emcJS/util/FileLoader.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
-import TrackerStorage from "/script/storage/TrackerStorage.js";
+import IDBStorage from "/emcJS/storage/IDBStorage.js";
+import "/script/storage/TrackerStorage.js";
 import Language from "/script/util/Language.js";
 import LogicAlternator from "/script/util/LogicAlternator.js";
 import World from "/script/util/World.js";
 
 import "/emcJS/ui/Paging.js";
 
-const SettingsStorage = new TrackerStorage('settings');
+const SettingsStorage = new IDBStorage('settings');
 
 const FILES = {
     "items": "/database/items.json",

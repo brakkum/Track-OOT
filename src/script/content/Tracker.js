@@ -6,31 +6,9 @@ import StateStorage from "/script/storage/StateStorage.js";
 import LoadWindow from "/script/ui/savestate/LoadWindow.js";
 import ManageWindow from "/script/ui/savestate/ManageWindow.js";
 import SaveWindow from "/script/ui/savestate/SaveWindow.js";
-/*
-const stateSave = document.getElementById("save-savestate");
-const stateSaveAs = document.getElementById("saveas-savestate");
-const stateLoad = document.getElementById("load-savestate");
-const stateNew = document.getElementById("new-savestate");
-const statesManage = document.getElementById("manage-savestates");
-const joinDiscord = document.getElementById("join-discord");
-const editSettings = document.getElementById("edit-settings");
-const editRomSettings = document.getElementById("edit-romsettings");
-const editors = document.getElementById("show-editors");
+import PageSwitcher from "/script/util/PageSwitcher.js";
 
-stateSave.addEventListener("click", state_Save);
-stateSaveAs.addEventListener("click", state_SaveAs);
-stateLoad.addEventListener("click", state_Load);
-stateNew.addEventListener("click", state_New);
-statesManage.addEventListener("click", states_Manage);
-joinDiscord.addEventListener("click", openDiscortJoin);
-editSettings.addEventListener("click", openSettingsWindow);
-editRomSettings.addEventListener("click", openRomSettingsWindow);
-editors.addEventListener("click", showEditors);
-*/
-
-let navbar = document.querySelector('emc-navbar');
-
-navbar.loadNavigation([{
+PageSwitcher.register("main", [{
     "content": "FILE",
     "submenu": [{
         "content": "NEW",
@@ -61,6 +39,7 @@ navbar.loadNavigation([{
     "content": "TRACKER SETTINGS",
     "handler": openSettingsWindow
 }]);
+PageSwitcher.switch("main");
 
 async function state_Save() {
     let activestate = await StateStorage.getName()
@@ -130,7 +109,7 @@ function openRomSettingsWindow() {
 }
 
 function showEditors() {
-    document.getElementById('view-pager').setAttribute("active", "editors");
+    PageSwitcher.switch("editor_choice");
 }
 
 

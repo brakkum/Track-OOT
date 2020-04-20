@@ -3,7 +3,7 @@ import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/ContextMenu.js";
 import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import LogicViewer from "/script/ui/LogicViewer.js";
+import LogicViewer from "/script/content/logic/LogicViewer.js";
 import Logic from "/script/util/Logic.js";
 import Language from "/script/util/Language.js";
 
