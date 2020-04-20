@@ -9,7 +9,7 @@ const PRD_PATH = path.resolve(__dirname, "./prod");
 
 const MODULE_PATHS = {
     emcJS: path.resolve(__dirname, "node_modules/emcjs"),
-    trackerEditor: path.resolve(__dirname, "node_modules/JSEditors"),
+    trackerEditor: path.resolve(__dirname, "node_modules/jseditors"),
     RTCClient: path.resolve(__dirname, "node_modules/rtcclient")
 };
 
