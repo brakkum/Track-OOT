@@ -224,7 +224,9 @@ class HTMLTrackerItem extends HTMLElement {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
-                    this.displayDungeonReward(this.dungeonReward)
+                    if (!!this.dungeonReward) {
+                        this.displayDungeonReward(this.dungeonReward);
+                    }
                     StateStorage.write(`items.${this.ref}`, parseInt(newValue));
                     EventBus.trigger("item", {
                         name: this.ref,
