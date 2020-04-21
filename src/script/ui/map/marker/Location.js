@@ -158,6 +158,13 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
         });
     }
 
+    connectedCallback() {
+        super.connectedCallback();
+        let value = StateStorage.read(this.ref, false);
+        this.checked = value;
+        this.update();
+    }
+
     async update() {
         if (!!this.access && !!Logic.getValue(this.access)) {
             this.shadowRoot.getElementById("marker").dataset.state = "available";

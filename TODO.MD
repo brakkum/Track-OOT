@@ -1,19 +1,10 @@
 ### WIP
 
-- fix navigation bar on small screens
-- entrance marker not updated for area
-- add tooltips to location badges
-- detached window resets all checks/items (only visually)
-
 ---
 
 ### TODOS
 
 - add warning dialog to download update if needed
-
-- move dungeon state to own file
-    - dungeon state has nothing to do with the general item lists
-    - data moved, code has to follow suit
 
 - custom layout (aka build yourself a tracker)
 
@@ -24,6 +15,11 @@
     - 1 list with deactivated elements
     - 1 list with activated elements
     - buttons for (de-)activating elements
+
+- make unified list/map marker abstract class
+    - make overwritable update state/aviability function (called on connected callback)
+    
+- add tooltips to location badges
 
 ---
 

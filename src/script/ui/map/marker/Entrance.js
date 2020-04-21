@@ -180,6 +180,11 @@ export default class MapEntrance extends EventBusSubsetMixin(HTMLElement) {
         });
     }
 
+    connectedCallback() {
+        super.connectedCallback();
+        this.update();
+    }
+
     async update() {
         if (!!this.value) {
             let dType = StateStorage.read(`dungeonTypes.${this.value}`, 'v'); // TODO
