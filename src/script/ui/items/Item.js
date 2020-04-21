@@ -213,7 +213,7 @@ class HTMLTrackerItem extends HTMLElement {
                     this.fillItemChoices();
                 break;
                 case 'dungeonreward':
-                    this.setDungeonReward(newValue);
+                    this.displayDungeonReward(newValue);
                 break;
                 case 'value':
                     let oe = this.querySelector(`.active`);
@@ -224,6 +224,7 @@ class HTMLTrackerItem extends HTMLElement {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
+                    this.displayDungeonReward(this.dungeonReward)
                     StateStorage.write(`items.${this.ref}`, parseInt(newValue));
                     EventBus.trigger("item", {
                         name: this.ref,
@@ -355,7 +356,7 @@ class HTMLTrackerItem extends HTMLElement {
         return false;
     }
 
-    setDungeonReward(newValue) {
+    displayDungeonReward(newValue) {
         let all = this.querySelectorAll("[value]");
         if (!!all.length) {
             let opt = this.querySelector(`[value="${this.value}"]`);
