@@ -1,9 +1,10 @@
 
-import FileData from "/emcjs/storage/FileData.js";
-import IDBStorage from "/emcjs/storage/IDBStorage.js";
-import "/emcjs/ui/Paging.js";
-import "/emcjs/ui/NavBar.js";
-import FileSystem from "/emcjs/util/FileSystem.js";
+import FileData from "/emcJS/storage/FileData.js";
+import IDBStorage from "/emcJS/storage/IDBStorage.js";
+import Dialog from "/emcJS/ui/Dialog.js";
+import "/emcJS/ui/Paging.js";
+import "/emcJS/ui/NavBar.js";
+import FileSystem from "/emcJS/util/FileSystem.js";
 
 import "/editors/EditorChoice.js";
 import "/editors/logic/LogicEditor.js";
@@ -68,6 +69,11 @@ let editorChoice = document.getElementById("editor-choice");
         logicEditor.addEventListener("clear", async event => {
             await LogicsStorage.delete(event.key);
         });
+        let lists = await LogicListsCreator.createLists();
+        logicEditor.loadOperatorList(lists.operators);
+        logicEditor.loadLogicList(lists.logics);
+        logicEditor.setLogic(FileData.get("logic", {}));
+        logicEditor.setPatch(await LogicsStorage.getAll());
         NAVIGATION.set("logic-editor", [{
             "content": "FILE",
             "submenu": [{
@@ -116,12 +122,26 @@ let editorChoice = document.getElementById("editor-choice");
                     nav.loadNavigation(NAVIGATION.get("main"));
                 }
             }]
+        },{
+            "content": "CREATE MIXIN",
+            "handler": async () => {
+                let name = await Dialog.prompt("Create Mixin", "please enter a name");
+                if (typeof name == "string") {
+                    let el = {
+                        "access": `mixin.${name}`,
+                        "category": "mixin",
+                        "content": `mixin.${name}`
+                    };
+                    for (let i of lists.logics) {
+                        if (i.type == "group" && i.caption == "mixin") {
+                            i.children.push(el);
+                            break;
+                        }
+                    }
+                    logicEditor.loadLogicList(lists.logics);
+                }
+            }
         }]);
-        let lists = await LogicListsCreator.createLists();
-        logicEditor.loadOperatorList(lists.operators);
-        logicEditor.loadLogicList(lists.logics);
-        logicEditor.setLogic(FileData.get("logic", {}));
-        logicEditor.setPatch(await LogicsStorage.getAll());
         // register
         editorChoice.register("logic-editor", "LOGIC");
     }();
