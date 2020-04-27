@@ -33149,6 +33149,77 @@
         "el": "mixin.can_blast_or_smash",
         "category": "mixin"
     },
+    "mixin.time_travel": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "logic.entrance.castle_town.temple_of_time",
+                "category": "entrance"
+            },
+            {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "mixin.can_use_ocarina",
+                                "category": "mixin"
+                            },
+                            {
+                                "type": "number",
+                                "el": "item.song_time",
+                                "category": "item"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "number",
+                        "el": "option.doors_open_temple",
+                        "category": "option"
+                    }
+                ]
+            }
+        ]
+    },
+    "mixin.can_become_child": {
+        "type": "or",
+        "el": [
+            {
+                "type": "value",
+                "el": "option.starting_age",
+                "value": "starting_age_child",
+                "category": "option"
+            },
+            {
+                "type": "number",
+                "el": "mixin.time_travel",
+                "category": "mixin"
+            }
+        ]
+    },
+    "mixin.can_become_adult": {
+        "type": "or",
+        "el": [
+            {
+                "type": "value",
+                "el": "option.starting_age",
+                "value": "starting_age_adult",
+                "category": "option"
+            },
+            {
+                "type": "number",
+                "el": "mixin.time_travel",
+                "category": "mixin"
+            }
+        ]
+    },
+    "mixin.can_use_scarecrow": {
+    },
+    "mixin.can_use_distant_scarecrow": {
+    },
     "mixin.can_use_ocarina": {
         "type": "or",
         "el": [
@@ -34422,50 +34493,6 @@
             }
         ]
     },
-    "mixin.can_become_adult": {
-        "type": "and",
-        "el": [
-            {
-                "type": "number",
-                "el": "mixin.can_leave_forest",
-                "category": "mixin"
-            },
-            {
-                "type": "not",
-                "el": {
-                    "type": "value",
-                    "el": "filter.era",
-                    "value": "child",
-                    "category": "filter"
-                }
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "number",
-                        "el": "option.doors_open_temple",
-                        "category": "option"
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.song_time",
-                                "category": "item"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
     "mixin.zora_thawed": {
         "type": "and",
         "el": [
@@ -34539,6 +34566,16 @@
                 ]
             }
         ]
+    },
+    "mixin.can_child_damage": {
+    },
+    "mixin.can_cut_shrubs": {
+    },
+    "mixin.can_use_projectile": {
+    },
+    "mixin.has_projectile_child": {
+    },
+    "mixin.has_projectile_adult": {
     },
     "mixin.can_child_attack": {
         "type": "and",

@@ -431,6 +431,22 @@
             }
         }
     },
+    "entrance.kokiri.links_house": {
+        "category": "entrance",
+        "type": "special_interior",
+        "access": "logic.entrance.kokiri.links_house",
+        "visible": false,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
     "entrance.kokiri.midos_house": {
         "category": "entrance",
         "type": "interior",

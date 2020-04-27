@@ -1,5 +1,13 @@
 {
     "options": {
+        "option.starting_age": {
+            "type": "choice",
+            "default": "starting_age_child",
+            "values": [
+                "starting_age_child",
+                "starting_age_adult"
+            ]
+        },
         "option.consider_buyable": {
             "type": "check",
             "default": false
@@ -30,9 +38,16 @@
             "type": "check",
             "default": false
         },
-        "option.entrance_shuffle_dungeons": {
-            "type": "check",
-            "default": false
+        "option.entrance_shuffle": {
+            "type": "choice",
+            "default": "entrance_shuffle_nothing",
+            "values": [
+                "entrance_shuffle_nothing",
+                "entrance_shuffle_dungeons",
+                "entrance_shuffle_interiors",
+                "entrance_shuffle_interiors_all",
+                "entrance_shuffle_interiors_all_and_overworld"
+            ]
         },
         "option.scrubsanity": {
             "type": "check",
@@ -51,10 +66,6 @@
             "old_type": "check",
             "default": false
         },
-        "option.doors_open_forest": {
-            "type": "check",
-            "default": true
-        },
         "option.doors_open_mountain": {
             "type": "hidden",
             "default": false
@@ -62,6 +73,15 @@
         "option.doors_open_temple": {
             "type": "check",
             "default": false
+        },
+        "option.doors_open_forest": {
+            "type": "doors_open_forest_closed",
+            "default": true,
+            "values": [
+                "doors_open_forest_closed",
+                "doors_open_forest_deku",
+                "doors_open_forest_open"
+            ]
         },
         "option.doors_open_zora": {
             "type": "choice",
