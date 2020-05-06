@@ -5,7 +5,23 @@ import EventBusModuleGeneric from "/emcJS/util/events/EventBusModuleGeneric.js";
 import RTCClient from "/rtc/RTCClient.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
-const rtcClient = new RTCClient(window.location.hostname == "localhost" ? 8001 : "");
+const CONFIG = [{
+    urls: 'stun:stun.zidargs.net:18001'
+},{
+    urls: [
+        'stun.l.google.com:19302',
+        'stun1.l.google.com:19302',
+        'stun2.l.google.com:19302',
+        'stun3.l.google.com:19302',
+        'stun4.l.google.com:19302'
+    ]
+},{
+    urls: 'turn:turn.zidargs.net:18001',
+    credential: 'fHNsIeqdgVcUAypvaxDVE6tywaMlP1fA',
+    username: 'iamgroot'
+}];
+
+const rtcClient = new RTCClient(window.location.hostname == "localhost" ? 8001 : "", CONFIG, ["data"]);
 
 const EVENT_BLACKLIST = [
     "logic",
@@ -84,7 +100,7 @@ class RTCController {
                     await Dialog.alert("Aborted Lobby creation", "Lobby will be closed now.");
                     await this.close();
                 } else {
-                    onHosting.call(this);
+                    onHosting(this);
                     return true;
                 }
             } else {
@@ -103,26 +119,37 @@ class RTCController {
 
     connect(name, pass) {
         return new Promise(async function(resolve) {
+            rtcClient.onfailed = async function() {
+                await Dialog.alert("Connection failed", "Something went wrong connecting to the host.\nPlease try again later!");
+                rtcClient.onfailed = undefined;
+                resolve(false);
+            };
             let res = await rtcClient.connect(name, pass);
             if (res.success === true) {
-                rtcClient.onmessage = async function(key, msg) {
+                rtcClient.setMessageHandler("data", async function(key, msg) {
                     if (msg.type == "name") {
                         if (!!msg.data) {
-                            onJoined.call(this);
+                            rtcClient.onfailed = undefined;
+                            onJoined(this);
                             resolve(true);
                         } else {
                             await Dialog.alert("Username taken", `The username "${username}" is already taken.\nPlease choose another one!`);
-                            if (!promptPeerName()) {
+                            if (!await promptPeerName()) {
+                                rtcClient.onfailed = undefined;
                                 resolve(false);
                             }
                         }
                     }
+                });
+                rtcClient.onconnect = async function(key) {
+                    if (!await promptPeerName()) {
+                        rtcClient.onfailed = undefined;
+                        resolve(false);
+                    }
                 };
-                if (!promptPeerName()) {
-                    resolve(false);
-                }
             } else {
                 await Dialog.alert("Connection refused", "You have no permission to enter the room.\nDid you enter the correct password?");
+                rtcClient.onfailed = undefined;
                 resolve(false);
             }
         });
@@ -133,7 +160,7 @@ class RTCController {
             let reason = await Dialog.prompt("Please provide a reason", "Please provide a reason for kicking the client.");
             if (typeof reason == "string") {
                 let key = reverseLookup.get(name);
-                rtcClient.sendOne(key, {
+                rtcClient.sendOne("data", key, {
                     type: "kick",
                     data: reason
                 });
@@ -167,7 +194,7 @@ async function promptPeerName() {
     if (!name) {
         return false;
     }
-    rtcClient.send({
+    rtcClient.send("data", {
         type: "name",
         data: name
     });
@@ -175,7 +202,7 @@ async function promptPeerName() {
 }
 
 function onJoined() {
-    rtcClient.onmessage = async function(key, msg) {
+    rtcClient.setMessageHandler("data", async function(key, msg) {
         if (msg.type == "join") {
             // TODO toast a join message
         } else if (msg.type == "leave") {
@@ -192,9 +219,9 @@ function onJoined() {
                 StateStorage.write(msg.data.data.name, msg.data.data.value);
             }
         }
-    };
+    });
     eventModule.register(function(event) {
-        rtcClient.send({
+        rtcClient.send("data", {
             type: "event",
             data: event
         });
@@ -202,19 +229,19 @@ function onJoined() {
 }
 
 async function onHosting() {
-    rtcClient.onmessage = function(key, msg) {
+    rtcClient.setMessageHandler("data", function(key, msg) {
         if (msg.type == "name") {
             if (msg.data == username || reverseLookup.has(msg.data)) {
-                rtcClient.sendOne(key, {
+                rtcClient.sendOne("data", key, {
                     type: "name",
                     data: false
                 });
             } else {
-                rtcClient.sendOne(key, {
+                rtcClient.sendOne("data", key, {
                     type: "name",
                     data: true
                 });
-                rtcClient.sendOne(key, {
+                rtcClient.sendOne("data", key, {
                     type: "state",
                     data: getState()
                 });
@@ -222,12 +249,12 @@ async function onHosting() {
                 // or spectators.set(key, msg.data);
                 reverseLookup.set(msg.data, key);
                 // TODO toast a join message
-                rtcClient.sendButOne(key, {
+                rtcClient.sendButOne("data", key, {
                     type: "join",
                     data: msg.data
                 });
                 let data = getClientNameList();
-                rtcClient.send({
+                rtcClient.send("data", {
                     type: "room",
                     data: data
                 });
@@ -236,18 +263,18 @@ async function onHosting() {
         } else if (msg.type == "event") {
             if (clients.has(key)) {
                 if (EVENT_BLACKLIST.indexOf(msg.data.name) < 0) {
-                    rtcClient.sendButOne(key, msg);
+                    rtcClient.sendButOne("data", key, msg);
                     eventModule.trigger(msg.data.name, msg.data.data);
                     StateStorage.write(msg.data.data.name, msg.data.data.value);
                 }
             }
         }
-    };
+    });
     rtcClient.onconnect = function(key) {
-        rtcClient.sendOne(key, {
+        /*rtcClient.sendOne("data", key, {
             type: "state",
             data: getState()
-        });
+        });*/
     };
     rtcClient.ondisconnect = function(key) {
         let name = "";
@@ -261,20 +288,20 @@ async function onHosting() {
             return;
         }
         // TODO toast a leave message
-        rtcClient.send({
+        rtcClient.send("data", {
             type: "leave",
             data: name
         });
         reverseLookup.delete(name);
         let data = getClientNameList();
-        rtcClient.send({
+        rtcClient.send("data", {
             type: "room",
             data: data
         });
         ON_ROOMUPDATE(data);
     };
     eventModule.register(function(event) {
-        rtcClient.send({
+        rtcClient.send("data", {
             type: "event",
             data: event
         });

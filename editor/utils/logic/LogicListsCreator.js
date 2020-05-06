@@ -1,6 +1,6 @@
 
-import FileData from "/emcjs/storage/FileData.js";
-import IDBStorage from "/emcjs/storage/IDBStorage.js";
+import FileData from "/emcJS/storage/FileData.js";
+import IDBStorage from "/emcJS/storage/IDBStorage.js";
 
 const LogicsStorage = new IDBStorage('logics');
 

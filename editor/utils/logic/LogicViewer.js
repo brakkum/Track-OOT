@@ -1,7 +1,7 @@
-import FileData from "/emcjs/storage/FileData.js";
-import IDBStorage from "/emcjs/storage/IDBStorage.js";
-import Dialog from "/emcjs/ui/Dialog.js";
-import Helper from "/emcjs/util/Helper.js";
+import FileData from "/emcJS/storage/FileData.js";
+import IDBStorage from "/emcJS/storage/IDBStorage.js";
+import Dialog from "/emcJS/ui/Dialog.js";
+import Helper from "/emcJS/util/Helper.js";
 import LogicUIAbstractElement from "/editors/logic/elements/AbstractElement.js";
 
 const LogicsStorage = new IDBStorage('logics');
