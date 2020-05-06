@@ -33185,40 +33185,104 @@
         ]
     },
     "mixin.can_become_child": {
-        "type": "or",
+        "type": "and",
         "el": [
             {
-                "type": "value",
-                "el": "option.starting_age",
-                "value": "starting_age_child",
-                "category": "option"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": "option.starting_age",
+                        "value": "starting_age_child",
+                        "category": "option"
+                    },
+                    {
+                        "type": "number",
+                        "el": "mixin.time_travel",
+                        "category": "mixin"
+                    }
+                ]
             },
             {
-                "type": "number",
-                "el": "mixin.time_travel",
-                "category": "mixin"
+                "type": "not",
+                "el": {
+                    "type": "value",
+                    "el": "filter.era",
+                    "value": "adult",
+                    "category": "filter"
+                }
             }
         ]
     },
     "mixin.can_become_adult": {
-        "type": "or",
+        "type": "and",
         "el": [
             {
-                "type": "value",
-                "el": "option.starting_age",
-                "value": "starting_age_adult",
-                "category": "option"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": "option.starting_age",
+                        "value": "starting_age_adult",
+                        "category": "option"
+                    },
+                    {
+                        "type": "number",
+                        "el": "mixin.time_travel",
+                        "category": "mixin"
+                    }
+                ]
             },
             {
-                "type": "number",
-                "el": "mixin.time_travel",
-                "category": "mixin"
+                "type": "not",
+                "el": {
+                    "type": "value",
+                    "el": "filter.era",
+                    "value": "child",
+                    "category": "filter"
+                }
             }
         ]
     },
     "mixin.can_use_scarecrow": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "item.song_scarecrow",
+                "category": "item"
+            },
+            {
+                "type": "number",
+                "el": "mixin.use_hookshot",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "mixin.can_use_ocarina",
+                "category": "mixin"
+            }
+        ]
     },
     "mixin.can_use_distant_scarecrow": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "item.song_scarecrow",
+                "category": "item"
+            },
+            {
+                "type": "number",
+                "el": "mixin.use_longshot",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "mixin.can_use_ocarina",
+                "category": "mixin"
+            }
+        ]
     },
     "mixin.can_use_ocarina": {
         "type": "or",
@@ -33251,52 +33315,34 @@
                                         "type": "or",
                                         "el": [
                                             {
-                                                "type": "and",
-                                                "el": [
-                                                    {
-                                                        "type": "number",
-                                                        "el": "mixin.is_currently_child",
-                                                        "category": "mixin"
-                                                    },
-                                                    {
-                                                        "type": "or",
-                                                        "el": [
-                                                            {
-                                                                "type": "number",
-                                                                "el": "item.slingshot",
-                                                                "category": "item"
-                                                            },
-                                                            {
-                                                                "type": "number",
-                                                                "el": "item.boomerang",
-                                                                "category": "item"
-                                                            },
-                                                            {
-                                                                "type": "number",
-                                                                "el": "item.stick",
-                                                                "category": "item"
-                                                            },
-                                                            {
-                                                                "type": "number",
-                                                                "el": "mixin.has_explosives",
-                                                                "category": "mixin"
-                                                            },
-                                                            {
-                                                                "type": "number",
-                                                                "el": "item.sword_kokiri",
-                                                                "category": "item"
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
+                                                "type": "number",
+                                                "el": "mixin.can_become_adult",
+                                                "category": "mixin"
                                             },
                                             {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "number",
-                                                    "el": "mixin.is_currently_child",
-                                                    "category": "mixin"
-                                                }
+                                                "type": "number",
+                                                "el": "mixin.has_explosives",
+                                                "category": "mixin"
+                                            },
+                                            {
+                                                "type": "number",
+                                                "el": "mixin.use_slingshot",
+                                                "category": "mixin"
+                                            },
+                                            {
+                                                "type": "number",
+                                                "el": "mixin.use_boomerang",
+                                                "category": "mixin"
+                                            },
+                                            {
+                                                "type": "number",
+                                                "el": "mixin.use_stick",
+                                                "category": "mixin"
+                                            },
+                                            {
+                                                "type": "number",
+                                                "el": "mixin.use_kokiri_sword",
+                                                "category": "mixin"
                                             }
                                         ]
                                     }
@@ -33318,18 +33364,13 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.is_currently_child",
-                "category": "mixin"
-            },
-            {
-                "type": "number",
-                "el": "item.sword_kokiri",
-                "category": "item"
-            },
-            {
-                "type": "number",
                 "el": "skip.lost_woods_allow_pedestal_clip",
                 "category": "skip"
+            },
+            {
+                "type": "number",
+                "el": "mixin.use_kokiri_sword",
+                "category": "mixin"
             }
         ]
     },
@@ -33345,37 +33386,19 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "mixin.is_currently_child",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "number",
-                                        "el": "item.sword_kokiri",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.stick",
-                                        "category": "item"
-                                    }
-                                ]
-                            }
-                        ]
+                        "type": "number",
+                        "el": "mixin.use_kokiri_sword",
+                        "category": "mixin"
                     },
                     {
-                        "type": "not",
-                        "el": {
-                            "type": "number",
-                            "el": "mixin.is_currently_child",
-                            "category": "mixin"
-                        }
+                        "type": "number",
+                        "el": "mixin.use_stick",
+                        "category": "mixin"
+                    },
+                    {
+                        "type": "number",
+                        "el": "mixin.can_become_adult",
+                        "category": "mixin"
                     }
                 ]
             }
@@ -33396,11 +33419,6 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "number",
-                                "el": "mixin.is_currently_child",
-                                "category": "mixin"
-                            },
-                            {
                                 "type": "or",
                                 "el": [
                                     {
@@ -33415,11 +33433,6 @@
                                                 "type": "or",
                                                 "el": [
                                                     {
-                                                        "type": "number",
-                                                        "el": "item.stick",
-                                                        "category": "item"
-                                                    },
-                                                    {
                                                         "type": "and",
                                                         "el": [
                                                             {
@@ -33433,6 +33446,11 @@
                                                                 "category": "item"
                                                             }
                                                         ]
+                                                    },
+                                                    {
+                                                        "type": "number",
+                                                        "el": "mixin.use_stick",
+                                                        "category": "mixin"
                                                     }
                                                 ]
                                             },
@@ -33441,23 +33459,23 @@
                                                 "el": [
                                                     {
                                                         "type": "number",
-                                                        "el": "item.stick",
-                                                        "category": "item"
-                                                    },
-                                                    {
-                                                        "type": "number",
                                                         "el": "mixin.has_explosives",
                                                         "category": "mixin"
                                                     },
                                                     {
                                                         "type": "number",
-                                                        "el": "item.slingshot",
-                                                        "category": "item"
+                                                        "el": "mixin.use_stick",
+                                                        "category": "mixin"
                                                     },
                                                     {
                                                         "type": "number",
-                                                        "el": "item.sword_kokiri",
-                                                        "category": "item"
+                                                        "el": "mixin.use_slingshot",
+                                                        "category": "mixin"
+                                                    },
+                                                    {
+                                                        "type": "number",
+                                                        "el": "mixin.use_kokiri_sword",
+                                                        "category": "mixin"
                                                     }
                                                 ]
                                             }
@@ -33494,20 +33512,17 @@
                                         ]
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.can_become_child",
+                                "category": "mixin"
                             }
                         ]
                     },
                     {
                         "type": "and",
                         "el": [
-                            {
-                                "type": "not",
-                                "el": {
-                                    "type": "number",
-                                    "el": "mixin.is_currently_child",
-                                    "category": "mixin"
-                                }
-                            },
                             {
                                 "type": "or",
                                 "el": [
@@ -33541,17 +33556,22 @@
                                         "el": [
                                             {
                                                 "type": "number",
-                                                "el": "item.bow",
-                                                "category": "item"
+                                                "el": "skip.dodongo_staircase",
+                                                "category": "skip"
                                             },
                                             {
                                                 "type": "number",
-                                                "el": "skip.dodongo_staircase",
-                                                "category": "skip"
+                                                "el": "mixin.use_bow",
+                                                "category": "mixin"
                                             }
                                         ]
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.can_become_adult",
+                                "category": "mixin"
                             }
                         ]
                     }
@@ -33564,11 +33584,6 @@
         "el": [
             {
                 "type": "number",
-                "el": "mixin.is_currently_child",
-                "category": "mixin"
-            },
-            {
-                "type": "number",
                 "el": "skip.dodongo_child_slingshot_skip",
                 "category": "skip"
             },
@@ -33577,13 +33592,13 @@
                 "el": [
                     {
                         "type": "number",
-                        "el": "item.stick",
-                        "category": "item"
+                        "el": "mixin.use_stick",
+                        "category": "mixin"
                     },
                     {
                         "type": "number",
-                        "el": "item.sword_kokiri",
-                        "category": "item"
+                        "el": "mixin.use_kokiri_sword",
+                        "category": "mixin"
                     }
                 ]
             }
@@ -33609,33 +33624,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "number",
-                                "el": "mixin.is_currently_child",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.shield_kokiri",
-                                "category": "item"
-                            },
-                            {
                                 "type": "or",
                                 "el": [
-                                    {
-                                        "type": "number",
-                                        "el": "item.slingshot",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.boomerang",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.stick",
-                                        "category": "item"
-                                    },
                                     {
                                         "type": "number",
                                         "el": "item.bottle",
@@ -33643,24 +33633,41 @@
                                     },
                                     {
                                         "type": "number",
-                                        "el": "item.sword_kokiri",
-                                        "category": "item"
+                                        "el": "mixin.use_slingshot",
+                                        "category": "mixin"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "mixin.use_boomerang",
+                                        "category": "mixin"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "mixin.use_stick",
+                                        "category": "mixin"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "mixin.use_kokiri_sword",
+                                        "category": "mixin"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.use_deku_shield",
+                                "category": "mixin"
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.can_become_child",
+                                "category": "mixin"
                             }
                         ]
                     },
                     {
                         "type": "and",
                         "el": [
-                            {
-                                "type": "not",
-                                "el": {
-                                    "type": "number",
-                                    "el": "mixin.is_currently_child",
-                                    "category": "mixin"
-                                }
-                            },
                             {
                                 "type": "or",
                                 "el": [
@@ -33675,6 +33682,11 @@
                                         "category": "item"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.can_become_adult",
+                                "category": "mixin"
                             }
                         ]
                     }
@@ -33689,26 +33701,6 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "number",
-                        "el": "item.tunic_water",
-                        "category": "item"
-                    },
-                    {
-                        "type": "number",
-                        "el": "skip.fewer_tunic",
-                        "category": "skip"
-                    }
-                ]
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "number",
-                        "el": "item.boots_iron",
-                        "category": "item"
-                    },
-                    {
                         "type": "and",
                         "el": [
                             {
@@ -33717,17 +33709,23 @@
                                 "category": "skip"
                             },
                             {
-                                "type": "min",
-                                "el": {
-                                    "type": "number",
-                                    "el": "item.hookshot",
-                                    "category": "item"
-                                },
-                                "value": 2
+                                "type": "number",
+                                "el": "mixin.use_longshot",
+                                "category": "mixin"
                             }
                         ]
+                    },
+                    {
+                        "type": "number",
+                        "el": "mixin.use_iron_boots",
+                        "category": "mixin"
                     }
                 ]
+            },
+            {
+                "type": "number",
+                "el": "mixin.use_zora_tunic",
+                "category": "mixin"
             }
         ]
     },
@@ -33783,18 +33781,18 @@
                                 "el": [
                                     {
                                         "type": "number",
-                                        "el": "item.bow",
-                                        "category": "item"
+                                        "el": "mixin.use_bow",
+                                        "category": "mixin"
                                     },
                                     {
                                         "type": "number",
-                                        "el": "item.hookshot",
-                                        "category": "item"
+                                        "el": "mixin.use_hookshot",
+                                        "category": "mixin"
                                     },
                                     {
                                         "type": "number",
-                                        "el": "item.boots_hover",
-                                        "category": "item"
+                                        "el": "mixin.use_hover_boots",
+                                        "category": "mixin"
                                     }
                                 ]
                             },
@@ -33853,23 +33851,13 @@
         "type": "or",
         "el": [
             {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "number",
-                        "el": "mixin.can_become_adult",
-                        "category": "mixin"
-                    },
-                    {
-                        "type": "number",
-                        "el": "item.hammer",
-                        "category": "item"
-                    }
-                ]
+                "type": "number",
+                "el": "mixin.has_explosives",
+                "category": "mixin"
             },
             {
                 "type": "number",
-                "el": "mixin.has_explosives",
+                "el": "mixin.use_hammer",
                 "category": "mixin"
             }
         ]
@@ -33886,26 +33874,17 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "min",
-                        "el": {
-                            "type": "number",
-                            "el": "item.hookshot",
-                            "category": "item"
-                        },
-                        "value": 2
-                    },
-                    {
                         "type": "and",
                         "el": [
                             {
                                 "type": "number",
-                                "el": "item.ocarina",
+                                "el": "item.song_epona",
                                 "category": "item"
                             },
                             {
                                 "type": "number",
-                                "el": "item.song_epona",
-                                "category": "item"
+                                "el": "mixin.can_use_ocarina",
+                                "category": "mixin"
                             }
                         ]
                     },
@@ -33925,8 +33904,8 @@
                             },
                             {
                                 "type": "number",
-                                "el": "item.hookshot",
-                                "category": "item"
+                                "el": "mixin.use_hookshot",
+                                "category": "mixin"
                             }
                         ]
                     },
@@ -33953,22 +33932,18 @@
                                 "el": [
                                     {
                                         "type": "number",
-                                        "el": "item.boots_hover",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "min",
-                                        "el": {
-                                            "type": "number",
-                                            "el": "item.hookshot",
-                                            "category": "item"
-                                        },
-                                        "value": 2
+                                        "el": "skip.naked_wasteland",
+                                        "category": "skip"
                                     },
                                     {
                                         "type": "number",
-                                        "el": "skip.naked_wasteland",
-                                        "category": "skip"
+                                        "el": "mixin.use_hover_boots",
+                                        "category": "mixin"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "mixin.use_longshot",
+                                        "category": "mixin"
                                     }
                                 ]
                             },
@@ -33982,12 +33957,17 @@
                                     },
                                     {
                                         "type": "number",
-                                        "el": "item.hookshot",
-                                        "category": "item"
+                                        "el": "mixin.use_hookshot",
+                                        "category": "mixin"
                                     }
                                 ]
                             }
                         ]
+                    },
+                    {
+                        "type": "number",
+                        "el": "mixin.use_longshot",
+                        "category": "mixin"
                     }
                 ]
             }
@@ -34022,17 +34002,17 @@
                                 "el": [
                                     {
                                         "type": "number",
-                                        "el": "item.bow",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
-                                        "el": "item.hookshot",
-                                        "category": "item"
-                                    },
-                                    {
-                                        "type": "number",
                                         "el": "mixin.has_explosives",
+                                        "category": "mixin"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "mixin.use_hookshot",
+                                        "category": "mixin"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "mixin.use_bow",
                                         "category": "mixin"
                                     }
                                 ]
@@ -34095,17 +34075,17 @@
                                         "el": [
                                             {
                                                 "type": "number",
-                                                "el": "item.bow",
-                                                "category": "item"
-                                            },
-                                            {
-                                                "type": "number",
                                                 "el": "item.glove",
                                                 "category": "item"
                                             },
                                             {
                                                 "type": "number",
                                                 "el": "mixin.has_explosives",
+                                                "category": "mixin"
+                                            },
+                                            {
+                                                "type": "number",
+                                                "el": "mixin.use_bow",
                                                 "category": "mixin"
                                             }
                                         ]
@@ -34266,18 +34246,13 @@
                                 "el": [
                                     {
                                         "type": "number",
-                                        "el": "mixin.can_become_adult",
-                                        "category": "mixin"
-                                    },
-                                    {
-                                        "type": "number",
                                         "el": "skip.zora_hover",
                                         "category": "skip"
                                     },
                                     {
                                         "type": "number",
-                                        "el": "item.boots_hover",
-                                        "category": "item"
+                                        "el": "mixin.use_hover_boots",
+                                        "category": "mixin"
                                     }
                                 ]
                             }
@@ -34377,13 +34352,13 @@
                 "el": [
                     {
                         "type": "number",
-                        "el": "item.slingshot",
-                        "category": "item"
+                        "el": "mixin.use_slingshot",
+                        "category": "mixin"
                     },
                     {
                         "type": "number",
-                        "el": "item.sword_kokiri",
-                        "category": "item"
+                        "el": "mixin.use_kokiri_sword",
+                        "category": "mixin"
                     }
                 ]
             },
@@ -34553,13 +34528,13 @@
                         "el": [
                             {
                                 "type": "number",
-                                "el": "item.boots_hover",
-                                "category": "item"
+                                "el": "skip.zora_hover",
+                                "category": "skip"
                             },
                             {
                                 "type": "number",
-                                "el": "skip.zora_hover",
-                                "category": "skip"
+                                "el": "mixin.use_hover_boots",
+                                "category": "mixin"
                             }
                         ]
                     }
@@ -34567,16 +34542,11 @@
             }
         ]
     },
-    "mixin.can_child_damage": {
-    },
-    "mixin.can_cut_shrubs": {
-    },
-    "mixin.can_use_projectile": {
-    },
-    "mixin.has_projectile_child": {
-    },
-    "mixin.has_projectile_adult": {
-    },
+    "mixin.can_child_damage": {},
+    "mixin.can_cut_shrubs": {},
+    "mixin.can_use_projectile": {},
+    "mixin.has_projectile_child": {},
+    "mixin.has_projectile_adult": {},
     "mixin.can_child_attack": {
         "type": "and",
         "el": [
@@ -34590,28 +34560,8 @@
                 "el": [
                     {
                         "type": "number",
-                        "el": "item.slingshot",
-                        "category": "item"
-                    },
-                    {
-                        "type": "number",
-                        "el": "item.boomerang",
-                        "category": "item"
-                    },
-                    {
-                        "type": "number",
-                        "el": "item.stick",
-                        "category": "item"
-                    },
-                    {
-                        "type": "number",
                         "el": "mixin.has_explosives",
                         "category": "mixin"
-                    },
-                    {
-                        "type": "number",
-                        "el": "item.sword_kokiri",
-                        "category": "item"
                     },
                     {
                         "type": "and",
@@ -34627,6 +34577,26 @@
                                 "category": "item"
                             }
                         ]
+                    },
+                    {
+                        "type": "number",
+                        "el": "mixin.use_slingshot",
+                        "category": "mixin"
+                    },
+                    {
+                        "type": "number",
+                        "el": "mixin.use_boomerang",
+                        "category": "mixin"
+                    },
+                    {
+                        "type": "number",
+                        "el": "mixin.use_stick",
+                        "category": "mixin"
+                    },
+                    {
+                        "type": "number",
+                        "el": "mixin.use_kokiri_sword",
+                        "category": "mixin"
                     }
                 ]
             }
@@ -34651,23 +34621,9 @@
                 "category": "item"
             },
             {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "not",
-                        "el": {
-                            "type": "value",
-                            "el": "filter.era",
-                            "value": "adult",
-                            "category": "filter"
-                        }
-                    },
-                    {
-                        "type": "number",
-                        "el": "item.shield_kokiri",
-                        "category": "item"
-                    }
-                ]
+                "type": "number",
+                "el": "mixin.use_deku_shield",
+                "category": "mixin"
             }
         ]
     },
@@ -34692,18 +34648,13 @@
                         "el": [
                             {
                                 "type": "number",
-                                "el": "mixin.can_become_adult",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.bow",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
                                 "el": "item.arrow_fire",
                                 "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.use_bow",
+                                "category": "mixin"
                             }
                         ]
                     }
@@ -34814,45 +34765,17 @@
                         "el": [
                             {
                                 "type": "number",
-                                "el": "mixin.is_currently_child",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
                                 "el": "skip.king_zora_child",
                                 "category": "skip"
                             },
                             {
                                 "type": "number",
-                                "el": "item.shield_kokiri",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
                                 "el": "mixin.has_explosives",
                                 "category": "mixin"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "not",
-                                "el": {
-                                    "type": "number",
-                                    "el": "mixin.is_currently_child",
-                                    "category": "mixin"
-                                }
                             },
                             {
                                 "type": "number",
-                                "el": "skip.king_zora_adult",
-                                "category": "skip"
-                            },
-                            {
-                                "type": "number",
-                                "el": "mixin.can_become_adult",
+                                "el": "mixin.use_deku_shield",
                                 "category": "mixin"
                             }
                         ]
@@ -34861,23 +34784,25 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "number",
-                                    "el": "mixin.is_currently_child",
-                                    "category": "mixin"
-                                }
-                            },
-                            {
-                                "type": "value",
-                                "el": "option.doors_open_zora",
-                                "value": "doors_open_zora_adult",
-                                "category": "option"
-                            },
-                            {
                                 "type": "number",
                                 "el": "mixin.can_become_adult",
                                 "category": "mixin"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "value",
+                                        "el": "option.doors_open_zora",
+                                        "value": "doors_open_zora_adult",
+                                        "category": "option"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "skip.king_zora_adult",
+                                        "category": "skip"
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -34892,11 +34817,6 @@
             {
                 "type": "or",
                 "el": [
-                    {
-                        "type": "number",
-                        "el": "item.scale",
-                        "category": "item"
-                    },
                     {
                         "type": "and",
                         "el": [
@@ -34939,11 +34859,36 @@
                                         ]
                                     },
                                     {
-                                        "type": "number",
-                                        "el": "skip.zora_cucco",
-                                        "category": "skip"
+                                        "type": "and",
+                                        "el": [
+                                            {
+                                                "type": "number",
+                                                "el": "mixin.can_become_child",
+                                                "category": "mixin"
+                                            },
+                                            {
+                                                "type": "number",
+                                                "el": "skip.zora_cucco",
+                                                "category": "skip"
+                                            }
+                                        ]
                                     }
                                 ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "item.scale",
+                                "category": "item"
+                            },
+                            {
+                                "type": "number",
+                                "el": "mixin.can_become_child",
+                                "category": "mixin"
                             }
                         ]
                     }
@@ -36086,6 +36031,258 @@
                         ]
                     }
                 ]
+            }
+        ]
+    },
+    "mixin.plant_bean": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_child",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "item.bean",
+                "category": "item"
+            }
+        ]
+    },
+    "mixin.use_boomerang": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_child",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "item.boomerang",
+                "category": "item"
+            }
+        ]
+    },
+    "mixin.use_bow": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_adult",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "item.bow",
+                "category": "item"
+            }
+        ]
+    },
+    "mixin.use_deku_shield": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_child",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "item.shield_kokiri",
+                "category": "item"
+            }
+        ]
+    },
+    "mixin.use_gold_gauntlets": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_adult",
+                "category": "mixin"
+            },
+            {
+                "type": "min",
+                "el": {
+                    "type": "number",
+                    "el": "item.glove",
+                    "category": "item"
+                },
+                "value": 3
+            }
+        ]
+    },
+    "mixin.use_goron_tunic": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_adult",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "mixin.goron_tunic_access",
+                "category": "mixin"
+            }
+        ]
+    },
+    "mixin.use_hammer": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_adult",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "item.hammer",
+                "category": "item"
+            }
+        ]
+    },
+    "mixin.use_hookshot": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "item.hookshot",
+                "category": "item"
+            },
+            {
+                "type": "number",
+                "el": "mixin.can_become_adult",
+                "category": "mixin"
+            }
+        ]
+    },
+    "mixin.use_hover_boots": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_adult",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "item.boots_hover",
+                "category": "item"
+            }
+        ]
+    },
+    "mixin.use_iron_boots": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_adult",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "item.boots_iron",
+                "category": "item"
+            }
+        ]
+    },
+    "mixin.use_kokiri_sword": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_child",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "item.sword_kokiri",
+                "category": "item"
+            }
+        ]
+    },
+    "mixin.use_silver_gauntlets": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_adult",
+                "category": "mixin"
+            },
+            {
+                "type": "min",
+                "el": {
+                    "type": "number",
+                    "el": "item.glove",
+                    "category": "item"
+                },
+                "value": 2
+            }
+        ]
+    },
+    "mixin.use_slingshot": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_child",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "item.slingshot",
+                "category": "item"
+            }
+        ]
+    },
+    "mixin.use_stick": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_child",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "item.stick",
+                "category": "item"
+            }
+        ]
+    },
+    "mixin.use_zora_tunic": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_adult",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "mixin.zora_tunic_access",
+                "category": "mixin"
+            }
+        ]
+    },
+    "mixin.use_longshot": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_adult",
+                "category": "mixin"
+            },
+            {
+                "type": "min",
+                "el": {
+                    "type": "number",
+                    "el": "item.hookshot",
+                    "category": "item"
+                },
+                "value": 2
             }
         ]
     }
