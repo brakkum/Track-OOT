@@ -1,6 +1,7 @@
 
 import FileData from "/emcJS/storage/FileData.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
+import Dialog from "/emcJS/ui/Dialog.js";
 
 const LogicsStorage = new IDBStorage('logics');
 
@@ -218,13 +219,17 @@ function createLogicWorldCategories(data, world) {
 
             for (let record of lists.v) {
                 let ref = world[record.id];
-                els[ref.category].push({
-                    "type": ref.type,
-                    "access": ref.access,
-                    "category": ref.category,
-                    "content": record.id,
-                    "icon": `/src/images/world/icons/${ref.type}.svg`
-                });
+                if (!!ref) {
+                    els[ref.category].push({
+                        "type": ref.type,
+                        "access": ref.access,
+                        "category": ref.category,
+                        "content": record.id,
+                        "icon": `/src/images/world/icons/${ref.type}.svg`
+                    });
+                } else {
+                    Dialog.alert("Error!", `creating world logics encountered missing id in world.json file: ${record.id}`);
+                }
             }
 
             if (els.location.length > 0) {
@@ -268,13 +273,17 @@ function createLogicWorldCategories(data, world) {
 
             for (let record of lists.mq) {
                 let ref = world[record.id];
-                els[ref.category].push({
-                    "type": ref.type,
-                    "access": ref.access,
-                    "category": ref.category,
-                    "content": record.id,
-                    "icon": `/src/images/world/icons/${ref.type}.svg`
-                });
+                if (!!ref) {
+                    els[ref.category].push({
+                        "type": ref.type,
+                        "access": ref.access,
+                        "category": ref.category,
+                        "content": record.id,
+                        "icon": `/src/images/world/icons/${ref.type}.svg`
+                    });
+                } else {
+                    Dialog.alert("Error!", `creating world logics encountered missing id in world.json file: ${record.id}`);
+                }
             }
 
             if (els.location.length > 0) {
