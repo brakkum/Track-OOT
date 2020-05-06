@@ -36285,5 +36285,58 @@
                 "value": 2
             }
         ]
+    },
+    "logic.entrance.castle_town.temple_of_time": {
+        "type": "or",
+        "el": [
+            {
+                "type": "value",
+                "el": "option.starting_age",
+                "value": "starting_age_adult",
+                "category": "option"
+            },
+            {
+                "type": "number",
+                "el": "logic.area.temple_of_time_exterior",
+                "category": "area"
+            },
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "number",
+                        "el": "mixin.can_use_ocarina",
+                        "category": "mixin"
+                    },
+                    {
+                        "type": "number",
+                        "el": "item.warp_light",
+                        "category": "item"
+                    }
+                ]
+            }
+        ]
+    },
+    "logic.entrance.castle_town.temple_of_time_exterior": {
+        
+        "type": "number",
+        "el": "logic.area.castle_town",
+        "category": "area"
+    },
+    "logic.entrance.kokiri.links_house": {
+        "type": "or",
+        "el": [
+            {
+                "type": "value",
+                "el": "option.starting_age",
+                "value": "starting_age_child",
+                "category": "option"
+            },
+            {
+                "type": "number",
+                "el": "logic.area.kokiri",
+                "category": "area"
+            }
+        ]
     }
 }

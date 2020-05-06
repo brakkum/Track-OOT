@@ -3712,6 +3712,22 @@
             }
         }
     },
+    "entrance.castle_town.temple_of_time_exterior": {
+        "category": "entrance",
+        "type": "interior",
+        "access": "logic.entrance.castle_town.temple_of_time_exterior",
+        "visible": false,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
     "entrance.castle_town.temple_of_time": {
         "category": "entrance",
         "type": "interior",
