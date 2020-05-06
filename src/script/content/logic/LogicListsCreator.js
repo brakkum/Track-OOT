@@ -218,13 +218,15 @@ function createLogicWorldCategories(data, world) {
 
             for (let record of lists.v) {
                 let ref = world[record.id];
-                els[ref.category].push({
-                    "type": ref.type,
-                    "access": ref.access,
-                    "category": ref.category,
-                    "content": record.id,
-                    "icon": `images/world/icons/${ref.type}.svg`
-                });
+                if (!!ref) {
+                    els[ref.category].push({
+                        "type": ref.type,
+                        "access": ref.access,
+                        "category": ref.category,
+                        "content": record.id,
+                        "icon": `images/world/icons/${ref.type}.svg`
+                    });
+                }
             }
 
             if (els.location.length > 0) {
@@ -268,13 +270,15 @@ function createLogicWorldCategories(data, world) {
 
             for (let record of lists.mq) {
                 let ref = world[record.id];
-                els[ref.category].push({
-                    "type": ref.type,
-                    "access": ref.access,
-                    "category": ref.category,
-                    "content": record.id,
-                    "icon": `images/world/icons/${ref.type}.svg`
-                });
+                if (!!ref) {
+                    els[ref.category].push({
+                        "type": ref.type,
+                        "access": ref.access,
+                        "category": ref.category,
+                        "content": record.id,
+                        "icon": `images/world/icons/${ref.type}.svg`
+                    });
+                }
             }
 
             if (els.location.length > 0) {
