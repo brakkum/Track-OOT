@@ -33154,8 +33154,8 @@
         "el": [
             {
                 "type": "number",
-                "el": "logic.entrance.castle_town.temple_of_time",
-                "category": "entrance"
+                "el": "logic.area.castle_town.temple_of_time",
+                "category": "area"
             },
             {
                 "type": "or",
@@ -33165,13 +33165,123 @@
                         "el": [
                             {
                                 "type": "number",
-                                "el": "mixin.can_use_ocarina",
-                                "category": "mixin"
-                            },
-                            {
-                                "type": "number",
                                 "el": "item.song_time",
                                 "category": "item"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "number",
+                                        "el": "item.ocarina",
+                                        "category": "item"
+                                    },
+                                    {
+                                        "type": "and",
+                                        "el": [
+                                            {
+                                                "type": "or",
+                                                "el": [
+                                                    {
+                                                        "type": "number",
+                                                        "el": "skip.invisible_ocarina",
+                                                        "category": "skip"
+                                                    },
+                                                    {
+                                                        "type": "and",
+                                                        "el": [
+                                                            {
+                                                                "type": "number",
+                                                                "el": "skip.invisible_ocarina_midair",
+                                                                "category": "skip"
+                                                            },
+                                                            {
+                                                                "type": "or",
+                                                                "el": [
+                                                                    {
+                                                                        "type": "number",
+                                                                        "el": "mixin.has_explosives",
+                                                                        "category": "mixin"
+                                                                    },
+                                                                    {
+                                                                        "type": "and",
+                                                                        "el": [
+                                                                            {
+                                                                                "type": "not",
+                                                                                "el": {
+                                                                                    "type": "value",
+                                                                                    "el": "filter.era",
+                                                                                    "value": "child",
+                                                                                    "category": "filter"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "type": "value",
+                                                                                "el": "option.starting_age",
+                                                                                "value": "starting_age_adult",
+                                                                                "category": "option"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "and",
+                                                                        "el": [
+                                                                            {
+                                                                                "type": "value",
+                                                                                "el": "option.starting_age",
+                                                                                "value": "starting_age_child",
+                                                                                "category": "option"
+                                                                            },
+                                                                            {
+                                                                                "type": "not",
+                                                                                "el": {
+                                                                                    "type": "value",
+                                                                                    "el": "filter.era",
+                                                                                    "value": "adult",
+                                                                                    "category": "filter"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "type": "or",
+                                                                                "el": [
+                                                                                    {
+                                                                                        "type": "number",
+                                                                                        "el": "item.slingshot",
+                                                                                        "category": "item"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "number",
+                                                                                        "el": "item.sword_kokiri",
+                                                                                        "category": "item"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "number",
+                                                                                        "el": "item.stick",
+                                                                                        "category": "item"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "number",
+                                                                                        "el": "item.boomerang",
+                                                                                        "category": "item"
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "number",
+                                                "el": "item.bottle",
+                                                "category": "item"
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -34333,79 +34443,23 @@
         "type": "or",
         "el": [
             {
-                "type": "number",
-                "el": "option.doors_open_forest",
-                "category": "option"
+                "type": "not",
+                "el": {
+                    "type": "value",
+                    "el": "option.doors_open_forest",
+                    "value": "doors_open_forest_closed",
+                    "category": "option"
+                }
             },
             {
                 "type": "number",
-                "el": "mixin.has_explosives",
+                "el": "mixin.can_become_adult",
                 "category": "mixin"
             },
             {
                 "type": "number",
-                "el": "item.scale",
-                "category": "item"
-            },
-            {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "number",
-                        "el": "mixin.use_slingshot",
-                        "category": "mixin"
-                    },
-                    {
-                        "type": "number",
-                        "el": "mixin.use_kokiri_sword",
-                        "category": "mixin"
-                    }
-                ]
-            },
-            {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "number",
-                        "el": "item.magic_din",
-                        "category": "item"
-                    },
-                    {
-                        "type": "number",
-                        "el": "item.magic_power",
-                        "category": "item"
-                    }
-                ]
-            },
-            {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "number",
-                        "el": "mixin.can_use_ocarina",
-                        "category": "mixin"
-                    },
-                    {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "number",
-                                "el": "item.warp_light",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_water",
-                                "category": "item"
-                            },
-                            {
-                                "type": "number",
-                                "el": "item.warp_shadow",
-                                "category": "item"
-                            }
-                        ]
-                    }
-                ]
+                "el": "mixin.deku_tree_clear",
+                "category": "mixin"
             }
         ]
     },
@@ -36296,11 +36350,6 @@
                 "category": "option"
             },
             {
-                "type": "number",
-                "el": "logic.area.temple_of_time_exterior",
-                "category": "area"
-            },
-            {
                 "type": "and",
                 "el": [
                     {
@@ -36312,13 +36361,22 @@
                         "type": "number",
                         "el": "item.warp_light",
                         "category": "item"
+                    },
+                    {
+                        "type": "number",
+                        "el": "mixin.can_leave_forest",
+                        "category": "mixin"
                     }
                 ]
+            },
+            {
+                "type": "number",
+                "el": "logic.area.temple_of_time_exterior",
+                "category": "area"
             }
         ]
     },
     "logic.entrance.castle_town.temple_of_time_exterior": {
-        
         "type": "number",
         "el": "logic.area.castle_town",
         "category": "area"
@@ -36336,6 +36394,131 @@
                 "type": "number",
                 "el": "logic.area.kokiri",
                 "category": "area"
+            }
+        ]
+    },
+    "logic.entrance.mountain.death_mountain_crater_central_local": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "number",
+                        "el": "mixin.can_use_ocarina",
+                        "category": "mixin"
+                    },
+                    {
+                        "type": "number",
+                        "el": "item.warp_fire",
+                        "category": "item"
+                    },
+                    {
+                        "type": "number",
+                        "el": "mixin.can_leave_forest",
+                        "category": "mixin"
+                    }
+                ]
+            }
+        ]
+    },
+    "logic.entrance.woods.sacred_forest_meadow": {
+        "type": "or",
+        "el": [
+            {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "number",
+                        "el": "mixin.can_use_ocarina",
+                        "category": "mixin"
+                    },
+                    {
+                        "type": "number",
+                        "el": "item.warp_forest",
+                        "category": "item"
+                    }
+                ]
+            }
+        ]
+    },
+    "mixin.deku_tree_clear": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "logic.area.deku.deku_tree_boss_room",
+                "category": "area"
+            },
+            {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "mixin.use_hylia_shield",
+                                "category": "mixin"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "number",
+                                "el": "mixin.use_deku_shield",
+                                "category": "mixin"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "number",
+                                        "el": "mixin.use_kokiri_sword",
+                                        "category": "mixin"
+                                    },
+                                    {
+                                        "type": "number",
+                                        "el": "mixin.use_stick",
+                                        "category": "mixin"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "mixin.has_shield": {
+        "type": "or",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.use_deku_shield",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "mixin.use_hylia_shield",
+                "category": "mixin"
+            }
+        ]
+    },
+    "mixin.use_hylia_shield": {
+        "type": "and",
+        "el": [
+            {
+                "type": "number",
+                "el": "mixin.can_become_adult",
+                "category": "mixin"
+            },
+            {
+                "type": "number",
+                "el": "item.shield_hylia",
+                "category": "item"
             }
         ]
     }

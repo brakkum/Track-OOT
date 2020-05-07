@@ -1938,6 +1938,18 @@
         "lists": {
             "v": [
                 {
+                    "type": "area",
+                    "id": "area.woods.sacred_forest_meadow",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "entrance",
+                    "id": "entrance.woods.sacred_forest_meadow",
+                    "x": 0,
+                    "y": 0
+                },
+                {
                     "type": "chest",
                     "id": "location.woods.c_skull_kid",
                     "x": 0,
@@ -2134,7 +2146,19 @@
             "v": [
                 {
                     "type": "entrance",
-                    "id": "entrance.temple_of_time_exterior",
+                    "id": "entrance.castle_town.temple_of_time_exterior",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "area",
+                    "id": "area.castle_town.temple_of_time",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "area",
+                    "id": "area.castle_town.temple_of_time_exterior",
                     "x": 0,
                     "y": 0
                 },
@@ -2654,6 +2678,18 @@
         "height": 0,
         "lists": {
             "v": [
+                {
+                    "type": "area",
+                    "id": "area.mountain.death_mountain_crater_central_local",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "entrance",
+                    "id": "entrance.mountain.death_mountain_crater_central_local",
+                    "x": 0,
+                    "y": 0
+                },
                 {
                     "type": "chest",
                     "id": "location.mountain.c_above_dodongo",
@@ -3572,6 +3608,18 @@
         "height": 0,
         "lists": {
             "v": [
+                {
+                    "type": "area",
+                    "id": "area.deku.deku_tree_boss_room",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "entrance",
+                    "id": "entrance.deku.deku_tree_boss_room",
+                    "x": 0,
+                    "y": 0
+                },
                 {
                     "type": "chest",
                     "id": "location.deku.c_lobby",
