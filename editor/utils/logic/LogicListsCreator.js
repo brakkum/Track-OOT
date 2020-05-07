@@ -17,6 +17,9 @@ const LOGIC_OPERATORS = [
     "ted-logic-min",
     "ted-logic-max"
 ];
+const CUSTOM_OPERATOR_GROUP = [
+    "location"
+];
 
 class LogicListsCreator {
 
@@ -129,19 +132,18 @@ function createOperatorCategory(data, ref) {
 function createOperatorWorldCategories(world) {
     let res = [];
 
-    let els = {
-        location: [],
-        entrance: [],
-        area: []
-    };
+    let els = {};
 
     for (let name in world) {
         let ref = world[name];
-        if (ref.category == "location") {
-            els["location"].push({
+        if (els[ref.category] == null) {
+            els[ref.category] = [];
+        }
+        if (CUSTOM_OPERATOR_GROUP.indexOf(ref.category) >= 0) {
+            els[ref.category].push({
                 "type": "tracker-logic-custom",
                 "ref": name,
-                "category": "location"
+                "category": ref.category
             });
         } else {
             els[ref.category].push({
@@ -152,28 +154,14 @@ function createOperatorWorldCategories(world) {
         }
     }
 
-    if (els.location.length > 0) {
-        res.push({
-            "type": "group",
-            "caption": "locations",
-            "children": els.location
-        });
-    }
-
-    if (els.area.length > 0) {
-        res.push({
-            "type": "group",
-            "caption": "areas",
-            "children": els.area
-        });
-    }
-
-    if (els.entrance.length > 0) {
-        res.push({
-            "type": "group",
-            "caption": "entrances",
-            "children": els.entrance
-        });
+    for (let cat in els) {
+        if (els[cat].length > 0) {
+            res.push({
+                "type": "group",
+                "caption": cat,
+                "children": els[cat]
+            });
+        }
     }
 
     return res;
@@ -211,15 +199,14 @@ function createLogicWorldCategories(data, world) {
                 "children": []
             };
 
-            let els = {
-                location: [],
-                entrance: [],
-                area: []
-            };
+            let els = {};
 
             for (let record of lists.v) {
                 let ref = world[record.id];
                 if (!!ref) {
+                    if (els[ref.category] == null) {
+                        els[ref.category] = [];
+                    }
                     els[ref.category].push({
                         "type": ref.type,
                         "access": ref.access,
@@ -232,28 +219,14 @@ function createLogicWorldCategories(data, world) {
                 }
             }
 
-            if (els.location.length > 0) {
-                res.children.push({
-                    "type": "group",
-                    "caption": "locations",
-                    "children": els.location
-                });
-            }
-        
-            if (els.area.length > 0) {
-                res.children.push({
-                    "type": "group",
-                    "caption": "areas",
-                    "children": els.area
-                });
-            }
-        
-            if (els.entrance.length > 0) {
-                res.children.push({
-                    "type": "group",
-                    "caption": "entrances",
-                    "children": els.entrance
-                });
+            for (let cat in els) {
+                if (els[cat].length > 0) {
+                    res.children.push({
+                        "type": "group",
+                        "caption": cat,
+                        "children": els[cat]
+                    });
+                }
             }
 
             ress.push(res);
@@ -265,15 +238,14 @@ function createLogicWorldCategories(data, world) {
                 "children": []
             };
 
-            let els = {
-                location: [],
-                entrance: [],
-                area: []
-            };
+            let els = {};
 
             for (let record of lists.mq) {
                 let ref = world[record.id];
                 if (!!ref) {
+                    if (els[ref.category] == null) {
+                        els[ref.category] = [];
+                    }
                     els[ref.category].push({
                         "type": ref.type,
                         "access": ref.access,
@@ -286,28 +258,14 @@ function createLogicWorldCategories(data, world) {
                 }
             }
 
-            if (els.location.length > 0) {
-                res.children.push({
-                    "type": "group",
-                    "caption": "locations",
-                    "children": els.location
-                });
-            }
-        
-            if (els.area.length > 0) {
-                res.children.push({
-                    "type": "group",
-                    "caption": "areas",
-                    "children": els.area
-                });
-            }
-        
-            if (els.entrance.length > 0) {
-                res.children.push({
-                    "type": "group",
-                    "caption": "entrances",
-                    "children": els.entrance
-                });
+            for (let cat in els) {
+                if (els[cat].length > 0) {
+                    res.children.push({
+                        "type": "group",
+                        "caption": cat,
+                        "children": els[cat]
+                    });
+                }
             }
 
             ress.push(res);
