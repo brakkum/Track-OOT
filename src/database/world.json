@@ -224,6 +224,118 @@
             }
         }
     },
+    "area.kokiri.links_house": {
+        "category": "area",
+        "type": "area",
+        "access": "logic.area.kokiri.links_house",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "area.kokiri.midos_house": {
+        "category": "area",
+        "type": "area",
+        "access": "logic.area.kokiri.midos_house",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "area.kokiri.know_it_house": {
+        "category": "area",
+        "type": "area",
+        "access": "logic.area.kokiri.know_it_house",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "area.kokiri.saria_house": {
+        "category": "area",
+        "type": "area",
+        "access": "logic.area.kokiri.saria_house",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "area.kokiri.twins_house": {
+        "category": "area",
+        "type": "area",
+        "access": "logic.area.kokiri.twins_house",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "area.kokiri.shop": {
+        "category": "area",
+        "type": "area",
+        "access": "logic.area.kokiri.shop",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "area.kokiri.storm_grotto": {
+        "category": "area",
+        "type": "area",
+        "access": "logic.area.kokiri.storm_grotto",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
     "entrance.kokiri": {
         "category": "entrance",
         "type": "overworld",
@@ -1821,6 +1933,26 @@
             }
         }
     },
+    
+    "entrance.lake": {
+        "category": "entrance",
+        "type": "overworld",
+        "access": "logic.entrance.lake",
+        "visible": {
+            "type": "number",
+            "el": "option.entrance_shuffle_interiors_all_and_overworld"
+        },
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
     "location.lake.c_bottle_zora": {
         "category": "location",
         "type": "chest",
@@ -3349,6 +3481,25 @@
         "type": "area",
         "access": "logic.area.castle_town",
         "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "entrance.castle_town": {
+        "category": "entrance",
+        "type": "overworld",
+        "access": "logic.entrance.castle_town",
+        "visible": {
+            "type": "number",
+            "el": "option.entrance_shuffle_interiors_all_and_overworld"
+        },
         "filter": {
             "filter.era": {
                 "child": true,

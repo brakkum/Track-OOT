@@ -1062,6 +1062,54 @@
         "lists": {
             "v": [
                 {
+                    "type": "entrance",
+                    "id": "entrance.kokiri",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "area",
+                    "id": "area.kokiri.links_house",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "area",
+                    "id": "area.kokiri.midos_house",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "area",
+                    "id": "area.kokiri.know_it_house",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "area",
+                    "id": "area.kokiri.saria_house",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "area",
+                    "id": "area.kokiri.twins_house",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "area",
+                    "id": "area.kokiri.shop",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "area",
+                    "id": "area.kokiri.storm_grotto",
+                    "x": 0,
+                    "y": 0
+                },
+                {
                     "type": "chest",
                     "id": "location.kokiri.c_sword",
                     "x": 0,
@@ -1617,6 +1665,12 @@
         "lists": {
             "v": [
                 {
+                    "type": "entrance",
+                    "id": "entrance.lake",
+                    "x": 0,
+                    "y": 0
+                },
+                {
                     "type": "chest",
                     "id": "location.lake.c_bottle_zora",
                     "x": 0,
@@ -2144,6 +2198,12 @@
         "height": 0,
         "lists": {
             "v": [
+                {
+                    "type": "entrance",
+                    "id": "entrance.castle_town",
+                    "x": 0,
+                    "y": 0
+                },
                 {
                     "type": "entrance",
                     "id": "entrance.castle_town.temple_of_time_exterior",
@@ -2678,6 +2738,12 @@
         "height": 0,
         "lists": {
             "v": [
+                {
+                    "type": "entrance",
+                    "id": "entrance.mountain",
+                    "x": 0,
+                    "y": 0
+                },
                 {
                     "type": "area",
                     "id": "area.mountain.death_mountain_crater_central_local",

@@ -36521,5 +36521,75 @@
                 "category": "item"
             }
         ]
+    },
+    "logic.entrance.kokiri": {
+        "type": "or",
+        "el": [
+            {
+                "type": "number",
+                "el": "logic.area.kokiri.links_house",
+                "category": "area"
+            },
+            {
+                "type": "number",
+                "el": "logic.area.kokiri.midos_house",
+                "category": "area"
+            },
+            {
+                "type": "number",
+                "el": "logic.area.kokiri.know_it_house",
+                "category": "area"
+            },
+            {
+                "type": "number",
+                "el": "logic.area.kokiri.saria_house",
+                "category": "area"
+            },
+            {
+                "type": "number",
+                "el": "logic.area.kokiri.twins_house",
+                "category": "area"
+            },
+            {
+                "type": "number",
+                "el": "logic.area.kokiri.shop",
+                "category": "area"
+            },
+            {
+                "type": "number",
+                "el": "logic.area.kokiri.storm_grotto",
+                "category": "area"
+            }
+        ]
+    },
+    "logic.entrance.kokiri.know_it_house": {
+        "type": "number",
+        "el": "logic.area.kokiri",
+        "category": "area"
+    },
+    "logic.entrance.kokiri.midos_house": {
+        "type": "number",
+        "el": "logic.area.kokiri",
+        "category": "area"
+    },
+    "logic.entrance.kokiri.saria_house": {
+        "type": "number",
+        "el": "logic.area.kokiri",
+        "category": "area"
+    },
+    "logic.entrance.kokiri.shop": {
+        "type": "number",
+        "el": "logic.area.kokiri",
+        "category": "area"
+    },
+    "logic.entrance.kokiri.storm_grotto": {
+        "type": "number",
+        "el": "logic.area.kokiri",
+        "category": "area"
+    },
+    "logic.entrance.kokiri.twins_house": {
+        "type": "number",
+        "el": "logic.area.kokiri",
+        "category": "area"
     }
 }
