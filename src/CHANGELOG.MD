@@ -63,6 +63,26 @@ Application:    Track-OOT
 
 ---
 
+## VERSION 1.6.9
+
+### BUGFIXES
+
+- fix stun server configuration
+
+---
+
+## VERSION 1.6.8
+
+### NETWORK
+
+- added turn server configuration
+
+### NAVBAR
+
+- make submenu toggle on click
+
+---
+
 ## VERSION 1.6.7
 
 ### BUGFIXES

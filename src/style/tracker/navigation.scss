@@ -166,7 +166,7 @@
 
             @media (min-width: $mobile-switch + 1px) {
 
-                &:hover > ul {
+                &.open > ul {
                     display: table;
                 }
             }
