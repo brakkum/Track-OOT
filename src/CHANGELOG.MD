@@ -3,6 +3,15 @@
 Application:    Track-OOT
 
 ***
+## VERSION 1.6.8
+
+### BUGFIXES
+
+- added turn server configuration
+
+---
+
+***
 ## VERSION 1.6.7
 
 ### BUGFIXES
