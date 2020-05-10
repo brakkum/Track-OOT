@@ -14,7 +14,19 @@ const ON_DISCONNECTED = new WeakMap();
 
 const configuration = {
     iceServers: [{
-        urls: 'stun:stun.l.google.com:19302'
+        urls: 'stun:stun.zidargs.net:18001'
+    },{
+        urls: [
+            'stun.l.google.com:19302',
+            'stun1.l.google.com:19302',
+            'stun2.l.google.com:19302',
+            'stun3.l.google.com:19302',
+            'stun4.l.google.com:19302'
+        ]
+    },{
+        urls: 'turn:turn.zidargs.net:18001',
+        credential: 'fHNsIeqdgVcUAypvaxDVE6tywaMlP1fA',
+        username: 'iamgroot'
     }]
 };
 
