@@ -3,6 +3,15 @@
 Application:    Track-OOT
 
 ***
+
+## VERSION 1.6.9
+
+### BUGFIXES
+
+- fix stun server configuration
+
+---
+
 ## VERSION 1.6.8
 
 ### NETWORK
@@ -15,7 +24,6 @@ Application:    Track-OOT
 
 ---
 
-***
 ## VERSION 1.6.7
 
 ### BUGFIXES
