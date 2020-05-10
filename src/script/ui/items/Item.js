@@ -309,7 +309,7 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
                 StateStorage.write(this.ref, parseInt(value));
                 this.triggerGlobal("item", {
                     name: this.ref,
-                    value: value
+                    value: parseInt(value)
                 });
             }
         }

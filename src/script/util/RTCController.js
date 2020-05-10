@@ -36,9 +36,9 @@ EventBus.addModule(eventModule, {
 });
 
 let username = "";
-let clients = new Map;
-let spectators = new Map;
-let reverseLookup = new Map;
+let clients = new Map();
+let spectators = new Map();
+let reverseLookup = new Map();
 
 const EMPTY_FN = function() {};
 let ON_ROOMUPDATE = EMPTY_FN;
