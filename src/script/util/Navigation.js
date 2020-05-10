@@ -6,6 +6,7 @@ import ManageWindow from "/script/ui/savestate/ManageWindow.js";
 import SaveWindow from "/script/ui/savestate/SaveWindow.js";
 import Settings from "/script/util/Settings.js";
 
+const file = document.getElementById("file");
 const stateSave = document.getElementById("save-savestate");
 const stateSaveAs = document.getElementById("saveas-savestate");
 const stateLoad = document.getElementById("load-savestate");
@@ -14,6 +15,7 @@ const statesManage = document.getElementById("manage-savestates");
 const joinDiscord = document.getElementById("join-discord");
 const editSettings = document.getElementById("edit-settings");
 
+file.addEventListener("click", toggle_file_menu);
 stateSave.addEventListener("click", state_Save);
 stateSaveAs.addEventListener("click", state_SaveAs);
 stateLoad.addEventListener("click", state_Load);
@@ -21,6 +23,10 @@ stateNew.addEventListener("click", state_New);
 statesManage.addEventListener("click", states_Manage);
 joinDiscord.addEventListener("click", openDiscortJoin);
 editSettings.addEventListener("click", openSettingsWindow);
+
+function toggle_file_menu() {
+    file.parentElement.classList.toggle("open");
+}
 
 async function state_Save() {
     let activestate = await StateStorage.getName()

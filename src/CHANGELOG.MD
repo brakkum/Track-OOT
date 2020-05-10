@@ -5,9 +5,13 @@ Application:    Track-OOT
 ***
 ## VERSION 1.6.8
 
-### BUGFIXES
+### NETWORK
 
 - added turn server configuration
+
+### NAVBAR
+
+- make submenu toggle on click
 
 ---
 
