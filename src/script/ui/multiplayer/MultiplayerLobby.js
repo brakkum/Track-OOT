@@ -114,8 +114,8 @@ class HTMLMultiplayerLobby extends HTMLElement {
 
         let refresh = async function() {
             let res = await RTCController.getInstances();
-            this.innerHTML = "";
-            if (!!res) {
+            if (res != null) {
+                this.innerHTML = "";
                 res.forEach(function(inst) {
                     let el = document.createElement("ootrt-mproom");
                     el.name = inst.name;
