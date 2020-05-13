@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.6.10
+
+### BUGFIXES
+
+- fixed missing explosives and key at beamos intersection in shadow temple
+
+---
+
 ## VERSION 1.6.9
 
 ### BUGFIXES

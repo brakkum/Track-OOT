@@ -5258,6 +5258,24 @@
                 {
                     "type": "item",
                     "el": "boots_hover"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "key_small_shadow"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small",
+                            "value": "keysanity_small_ignore"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
                 }
             ]
         },
@@ -5271,6 +5289,24 @@
                 {
                     "type": "item",
                     "el": "boots_hover"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "key_small_shadow"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small",
+                            "value": "keysanity_small_ignore"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
                 }
             ]
         },
@@ -5444,6 +5480,19 @@
                             "type": "option",
                             "el": "keysanity_small",
                             "value": "keysanity_small_ignore"
+                        }
+                    ]
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "bombs"
+                        },
+                        {
+                            "type": "item",
+                            "el": "glove"
                         }
                     ]
                 }
@@ -21763,8 +21812,22 @@
                     "el": "boots_hover"
                 },
                 {
-                    "type": "item",
-                    "el": "hookshot"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "key_small_shadow"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_small",
+                            "value": "keysanity_small_ignore"
+                        }
+                    ]
+                },
+                {
+                    "type": "mixin",
+                    "el": "has_explosives"
                 }
             ]
         },
