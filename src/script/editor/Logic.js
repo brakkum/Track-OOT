@@ -26,7 +26,6 @@ class EditorLogic {
     }
 
     async clear() {
-        data = {};
         await SettingsStorage.set("logic", {});
     }
 
@@ -45,6 +44,10 @@ class EditorLogic {
             return data[type][key];
         }
         return GlobalData.get("logic")[type][key];
+    }
+
+    async getAll() {
+        return await loadPatchedLogic();
     }
 
     async remove(type, key) {

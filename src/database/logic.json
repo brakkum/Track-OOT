@@ -17168,6 +17168,24 @@
                 {
                     "type": "item",
                     "el": "magic_power"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "key_boss_ganon"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_boss",
+                            "value": "keysanity_boss_ignore"
+                        },
+                        {
+                            "type": "option",
+                            "el": "ganon_boss_door_open"
+                        }
+                    ]
                 }
             ]
         },
@@ -17852,6 +17870,24 @@
                 {
                     "type": "item",
                     "el": "magic_power"
+                },
+                {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "item",
+                            "el": "key_boss_ganon"
+                        },
+                        {
+                            "type": "option",
+                            "el": "keysanity_boss",
+                            "value": "keysanity_boss_ignore"
+                        },
+                        {
+                            "type": "option",
+                            "el": "ganon_boss_door_open"
+                        }
+                    ]
                 }
             ]
         },
