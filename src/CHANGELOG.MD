@@ -63,6 +63,25 @@ Application:    Track-OOT
 
 ---
 
+## VERSION 1.6.11
+
+### BUGFIXES
+
+- fix logic for ganon boss door
+- reconfigure triforce pieces to be "infinite" items
+- fix navbar in logic editor
+- fix logic editor save/clear/patch operations
+
+---
+
+## VERSION 1.6.10
+
+### BUGFIXES
+
+- fixed missing explosives and key at beamos intersection in shadow temple
+
+---
+
 ## VERSION 1.6.9
 
 ### BUGFIXES
