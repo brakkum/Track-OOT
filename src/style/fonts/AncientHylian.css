@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "AncientHylian";
+    src: url('/fonts/AncientHylian.ttf') format('truetype');
+}
+
+[data-font="font_ancienthylian"] {
+    font-size: 1em;
+    font-family: AncientHylian, Arial, sans-serif;
+}

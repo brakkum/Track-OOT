@@ -1,367 +1,363 @@
 {
-    "heart_1": {
+    "item.heart_1": {
         "image": "/images/items/heart.png",
         "category": "shop_items",
         "refill": true,
         "price": 10
     },
-    "arrows_10": {
+    "item.arrows_10": {
         "image": "/images/items/arrow.png",
         "category": "shop_items",
         "refill": true,
         "price": 20
     },
-    "arrows_30": {
+    "item.arrows_30": {
         "image": "/images/items/arrow_2.png",
         "category": "shop_items",
         "refill": true,
         "price": 60
     },
-    "arrows_50": {
+    "item.arrows_50": {
         "image": "/images/items/arrow_3.png",
         "category": "shop_items",
         "refill": true,
         "price": 90
     },
-    "seeds_30": {
+    "item.seeds_30": {
         "image": "/images/items/seeds.png",
         "category": "shop_items",
         "refill": true,
         "price": 30
     },
-    "stick_1": {
+    "item.stick_1": {
         "image": "/images/items/stick.png",
         "category": "shop_items",
         "refill": true,
         "price": 10
     },
-    "nuts_5": {
+    "item.nuts_5": {
         "image": "/images/items/nut.png",
         "category": "shop_items",
         "refill": true,
         "price": 15
     },
-    "nuts_10": {
+    "item.nuts_10": {
         "image": "/images/items/nut.png",
         "category": "shop_items",
         "refill": true,
         "price": 30
     },
-    "bombs_5": {
+    "item.bombs_5": {
         "image": "/images/items/bombs.png",
         "category": "shop_items",
         "refill": true,
         "price": 25
     },
-    "bombs_5_2": {
+    "item.bombs_5_2": {
         "image": "/images/items/bombs.png",
         "category": "shop_items",
         "refill": true,
         "price": 35
     },
-    "bombs_10": {
+    "item.bombs_10": {
         "image": "/images/items/bombs.png",
         "category": "shop_items",
         "refill": true,
         "price": 50
     },
-    "bombs_20": {
+    "item.bombs_20": {
         "image": "/images/items/bombs.png",
         "category": "shop_items",
         "refill": true,
         "price": 80
     },
-    "bombs_30": {
+    "item.bombs_30": {
         "image": "/images/items/bombs.png",
         "category": "shop_items",
         "refill": true,
         "price": 120
     },
-    "bombchu_5": {
+    "item.bombchu_5": {
         "image": "/images/items/bombchu.png",
         "category": "shop_items",
         "refill": true,
         "price": 60
     },
-    "bombchu_10": {
+    "item.bombchu_10": {
         "image": "/images/items/bombchu.png",
         "category": "shop_items",
         "refill": true,
         "price": 99
     },
-    "bombchu_20": {
+    "item.bombchu_20": {
         "image": "/images/items/bombchu.png",
         "category": "shop_items",
         "refill": true,
         "price": 180
     },
-    "blue_fire_1": {
+    "item.blue_fire_1": {
         "image": "/images/items/bottle_blue_fire.png",
         "category": "shop_items",
         "refill": true,
         "price": 300
     },
-    "bugs_1": {
+    "item.bugs_1": {
         "image": "/images/items/bottle_bugs.png",
         "category": "shop_items",
         "refill": true,
         "price": 50
     },
-    "fairy_spirit_1": {
+    "item.fairy_spirit_1": {
         "image": "/images/items/bottle_fairy.png",
         "category": "shop_items",
         "refill": true,
         "price": 50
     },
-    "fish_1": {
+    "item.fish_1": {
         "image": "/images/items/bottle_fish.png",
         "category": "shop_items",
         "refill": true,
         "price": 200
     },
-    "poe_1": {
+    "item.poe_1": {
         "image": "/images/items/bottle_poe.png",
         "category": "shop_items",
         "refill": true,
         "price": 30
     },
-    "potion_red_1": {
+    "item.potion_red_1": {
         "image": "/images/items/bottle_potion_red.png",
         "category": "shop_items",
         "refill": true,
         "price": 30
     },
-    "potion_green_1": {
+    "item.potion_green_1": {
         "image": "/images/items/bottle_potion_green.png",
         "category": "shop_items",
         "refill": true,
         "price": 30
     },
-    "shield_kokiri_1": {
+    "item.shield_kokiri_1": {
         "image": "/images/items/shield_kokiri.png",
         "category": "shop_items",
         "refill": true,
         "price": 40
     },
-    "shield_hylia_1": {
+    "item.shield_hylia_1": {
         "image": "/images/items/shield_hylia.png",
         "category": "shop_items",
         "refill": true,
         "price": 80
     },
-    "tunic_fire_1": {
+    "item.tunic_fire_1": {
         "image": "/images/items/tunic_fire.png",
         "category": "shop_items",
         "refill": true,
         "price": 200
     },
-    "tunic_water_1": {
+    "item.tunic_water_1": {
         "image": "/images/items/tunic_water.png",
         "category": "shop_items",
         "refill": true,
         "price": 300
     },
-
-    "refill_item": {
+    "item.refill_item": {
         "image": "/images/items/refill_item.png",
         "category": "junk_items"
     },
-    "ice_trap": {
+    "item.ice_trap": {
         "image": "/images/items/ice_trap.png",
         "category": "junk_items"
     },
-    "rupee_green":{
+    "item.rupee_green":{
         "image": "/images/items/rupee_green.png",
         "category": "junk_items"
     },
-    "rupee_blue":{
+    "item.rupee_blue":{
         "image": "/images/items/rupee_blue.png",
         "category": "junk_items"
     },
-    "rupee_red":{
+    "item.rupee_red":{
         "image": "/images/items/rupee_red.png",
         "category": "junk_items"
     },
-    "rupee_purple":{
+    "item.rupee_purple":{
         "image": "/images/items/rupee_purple.png",
         "category": "junk_items"
     },
-    "rupee_yellow":{
+    "item.rupee_yellow":{
         "image": "/images/items/rupee_yellow.png",
         "category": "junk_items"
     },
-
-    "heart_piece": {
+    "item.heart_piece": {
         "image": "/images/items/heart_piece.png",
         "category": "equipment_items"
     },
-    "heart_container": {
+    "item.heart_container": {
         "image": "/images/items/heart_container.png",
         "category": "equipment_items"
     },
-    "heart_double": {
+    "item.heart_double": {
         "image": "/images/items/heart_double.png",
         "category": "equipment_items"
     },
-    "magic_power":{
+    "item.magic_power":{
         "image": "/images/items/magic_power_small.png",
         "category": "equipment_items"
     },
-    "skulltula": {
+    "item.skulltula": {
         "image": "/images/items/skulltula.png",
         "category": "equipment_items"
     },
-    "triforce_piece": {
+    "item.triforce_piece": {
         "image": "/images/items/triforce_piece.png",
         "category": "equipment_items"
     },
-    "sword_kokiri":{
+    "item.sword_kokiri":{
         "image": "/images/items/sword_kokiri.png",
         "category": "equipment_items"
     },
-    "sword_biggoron":{
+    "item.sword_biggoron":{
         "image": "/images/items/sword_biggoron.png",
         "category": "equipment_items"
     },
-    "shield_kokiri":{
+    "item.shield_kokiri":{
         "image": "/images/items/shield_kokiri.png",
         "category": "equipment_items"
     },
-    "shield_hylia":{
+    "item.shield_hylia":{
         "image": "/images/items/shield_hylia.png",
         "category": "equipment_items"
     },
-    "shield_mirror":{
+    "item.shield_mirror":{
         "image": "/images/items/shield_mirror.png",
         "category": "equipment_items"
     },
-    "tunic_fire":{
+    "item.tunic_fire":{
         "image": "/images/items/tunic_fire.png",
         "category": "equipment_items"
     },
-    "tunic_water":{
+    "item.tunic_water":{
         "image": "/images/items/tunic_water.png",
         "category": "equipment_items"
     },
-    "boots_iron":{
+    "item.boots_iron":{
         "image": "/images/items/boots_iron.png",
         "category": "equipment_items"
     },
-    "boots_hover":{
+    "item.boots_hover":{
         "image": "/images/items/boots_hover.png",
         "category": "equipment_items"
     },
-    "glove":{
+    "item.glove":{
         "image": "/images/items/glove_goron.png",
         "category": "equipment_items"
     },
-    "scale":{
+    "item.scale":{
         "image": "/images/items/scale_silver.png",
         "category": "equipment_items"
     },
-    "stone_of_agony":{
+    "item.stone_of_agony":{
         "image": "/images/items/stoneofagony.png",
         "category": "equipment_items"
     },
-    "wallet": {
+    "item.wallet": {
         "image": "/images/items/wallet_silver.png",
         "category": "equipment_items"
     },
-
-    "blue_fire": {
+    "item.blue_fire": {
         "image": "/images/items/bottle_blue_fire.png",
         "category": "bottle_items"
     },
-    "bugs": {
+    "item.bugs": {
         "image": "/images/items/bottle_bugs.png",
         "category": "bottle_items"
     },
-    "fairy_spirit": {
+    "item.fairy_spirit": {
         "image": "/images/items/bottle_fairy.png",
         "category": "bottle_items"
     },
-    "fish": {
+    "item.fish": {
         "image": "/images/items/bottle_fish.png",
         "category": "bottle_items"
     },
-    "milk": {
+    "item.milk": {
         "image": "/images/items/bottle_milk.png",
         "category": "bottle_items"
     },
-    "poe": {
+    "item.poe": {
         "image": "/images/items/bottle_poe.png",
         "category": "bottle_items"
     },
-    "poe_big": {
+    "item.poe_big": {
         "image": "/images/items/bottle_poe_big.png",
         "category": "bottle_items"
     },
-    "potion_red": {
+    "item.potion_red": {
         "image": "/images/items/bottle_potion_red.png",
         "category": "bottle_items"
     },
-    "potion_green": {
+    "item.potion_green": {
         "image": "/images/items/bottle_potion_green.png",
         "category": "bottle_items"
     },
-    "potion_blue": {
+    "item.potion_blue": {
         "image": "/images/items/bottle_potion_blue.png",
         "category": "bottle_items"
     },
-
-    "key_small_forest": {
+    "item.key_small_forest": {
         "image": "/images/items/key_small.png",
         "category": "unlocking_items"
     },
-    "key_boss_forest": {
+    "item.key_boss_forest": {
         "image": "/images/items/key_boss.png",
         "category": "unlocking_items"
     },
-    "key_small_fire": {
+    "item.key_small_fire": {
         "image": "/images/items/key_small.png",
         "category": "unlocking_items"
     },
-    "key_boss_fire": {
+    "item.key_boss_fire": {
         "image": "/images/items/key_boss.png",
         "category": "unlocking_items"
     },
-    "key_small_water": {
+    "item.key_small_water": {
         "image": "/images/items/key_small.png",
         "category": "unlocking_items"
     },
-    "key_boss_water": {
+    "item.key_boss_water": {
         "image": "/images/items/key_boss.png",
         "category": "unlocking_items"
     },
-    "key_small_shadow": {
+    "item.key_small_shadow": {
         "image": "/images/items/key_small.png",
         "category": "unlocking_items"
     },
-    "key_boss_shadow": {
+    "item.key_boss_shadow": {
         "image": "/images/items/key_boss.png",
         "category": "unlocking_items"
     },
-    "key_small_spirit": {
+    "item.key_small_spirit": {
         "image": "/images/items/key_small.png",
         "category": "unlocking_items"
     },
-    "key_boss_spirit": {
+    "item.key_boss_spirit": {
         "image": "/images/items/key_boss.png",
         "category": "unlocking_items"
     },
-    "key_small_ganon": {
+    "item.key_small_ganon": {
         "image": "/images/items/key_small.png",
         "category": "unlocking_items"
     },
-    "key_boss_ganon": {
+    "item.key_boss_ganon": {
         "image": "/images/items/key_boss.png",
         "category": "unlocking_items"
     },
-    "key_small_gerudo": {
+    "item.key_small_gerudo": {
         "image": "/images/items/key_small.png",
         "category": "unlocking_items"
     },
-    "membership":{
+    "item.membership":{
         "image": "/images/items/membership.png",
         "category": "unlocking_items"
     }, 
@@ -369,270 +365,266 @@
         "image": "/images/items/key_small.png",
         "category": "unlocking_items"
     },
-    "key_small_well": {
+    "item.key_small_well": {
         "image": "/images/items/key_small.png",
         "category": "unlocking_items"
     },
-
-    "compass_deku": {
+    "item.compass_deku": {
         "image": "/images/items/compass.png",
         "category": "tracking_items"
     },
-    "dungeon_map_deku": {
+    "item.dungeon_map_deku": {
         "image": "/images/items/dungeon_map.png",
         "category": "tracking_items"
     },
-    "compass_dodongo": {
+    "item.compass_dodongo": {
         "image": "/images/items/compass.png",
         "category": "tracking_items"
     },
-    "dungeon_map_dodongo": {
+    "item.dungeon_map_dodongo": {
         "image": "/images/items/dungeon_map.png",
         "category": "tracking_items"
     },
-    "compass_jabujabu": {
+    "item.compass_jabujabu": {
         "image": "/images/items/compass.png",
         "category": "tracking_items"
     },
-    "dungeon_map_jabujabu": {
+    "item.dungeon_map_jabujabu": {
         "image": "/images/items/dungeon_map.png",
         "category": "tracking_items"
     },
-    "compass_temple_forest": {
+    "item.compass_temple_forest": {
         "image": "/images/items/compass.png",
         "category": "tracking_items"
     },
-    "dungeon_map_temple_forest": {
+    "item.dungeon_map_temple_forest": {
         "image": "/images/items/dungeon_map.png",
         "category": "tracking_items"
     },
-    "compass_temple_fire": {
+    "item.compass_temple_fire": {
         "image": "/images/items/compass.png",
         "category": "tracking_items"
     },
-    "dungeon_map_temple_fire": {
+    "item.dungeon_map_temple_fire": {
         "image": "/images/items/dungeon_map.png",
         "category": "tracking_items"
     },
-    "compass_temple_water": {
+    "item.compass_temple_water": {
         "image": "/images/items/compass.png",
         "category": "tracking_items"
     },
-    "dungeon_map_temple_water": {
+    "item.dungeon_map_temple_water": {
         "image": "/images/items/dungeon_map.png",
         "category": "tracking_items"
     },
-    "compass_temple_shadow": {
+    "item.compass_temple_shadow": {
         "image": "/images/items/compass.png",
         "category": "tracking_items"
     },
-    "dungeon_map_temple_shadow": {
+    "item.dungeon_map_temple_shadow": {
         "image": "/images/items/dungeon_map.png",
         "category": "tracking_items"
     },
-    "compass_temple_spirit": {
+    "item.compass_temple_spirit": {
         "image": "/images/items/compass.png",
         "category": "tracking_items"
     },
-    "dungeon_map_temple_spirit": {
+    "item.dungeon_map_temple_spirit": {
         "image": "/images/items/dungeon_map.png",
         "category": "tracking_items"
     },
-    "compass_well": {
+    "item.compass_well": {
         "image": "/images/items/compass.png",
         "category": "tracking_items"
     },
-    "dungeon_map_well": {
+    "item.dungeon_map_well": {
         "image": "/images/items/dungeon_map.png",
         "category": "tracking_items"
     },
-    "compass_ice": {
+    "item.compass_ice": {
         "image": "/images/items/compass.png",
         "category": "tracking_items"
     },
-    "dungeon_map_ice": {
+    "item.dungeon_map_ice": {
         "image": "/images/items/dungeon_map.png",
         "category": "tracking_items"
     },
-
-    "bow":{
+    "item.bow":{
         "image": "/images/items/bow.png",
         "category": "inventory_items"
     },
-    "hookshot": {
+    "item.hookshot": {
         "image": "/images/items/hookshot_small.png",
         "category": "inventory_items"
     },
-    "hammer":{
+    "item.hammer":{
         "image": "/images/items/hammer.png",
         "category": "inventory_items"
     },
-    "stick":{
+    "item.stick":{
         "image": "/images/items/stick.png",
         "category": "inventory_items"
     },
-    "nut":{
+    "item.nut":{
         "image": "/images/items/nut.png",
         "category": "inventory_items"
     },
-    "slingshot":{
+    "item.slingshot":{
         "image": "/images/items/slingshot.png",
         "category": "inventory_items"
     },
-    "boomerang":{
+    "item.boomerang":{
         "image": "/images/items/boomerang.png",
         "category": "inventory_items"
     },
-    "bomb_bag":{
+    "item.bomb_bag":{
         "image": "/images/items/bomb_bag.png",
         "category": "inventory_items"
     },
-    "bombchu":{
+    "item.bombchu":{
         "image": "/images/items/bombchu.png",
         "category": "inventory_items"
     },
-    "lens":{
+    "item.lens":{
         "image": "/images/items/lens.png",
         "category": "inventory_items"
     },
-    "magic_din":{
+    "item.magic_din":{
         "image": "/images/items/magic_din.png",
         "category": "inventory_items"
     },
-    "magic_farore":{
+    "item.magic_farore":{
         "image": "/images/items/magic_farore.png",
         "category": "inventory_items"
     },
-    "magic_nayru":{
+    "item.magic_nayru":{
         "image": "/images/items/magic_nayru.png",
         "category": "inventory_items"
     },
-    "arrow_fire":{
+    "item.arrow_fire":{
         "max": 1,
         "image": "/images/items/arrow_fire.png",
         "category": "inventory_items"
     },
-    "arrow_ice":{
+    "item.arrow_ice":{
         "max": 1,
         "image": "/images/items/arrow_ice.png",
         "category": "inventory_items"
     },
-    "arrow_light":{
+    "item.arrow_light":{
         "max": 1,
         "image": "/images/items/arrow_light.png",
         "category": "inventory_items"
     },
-    "ocarina":{
+    "item.ocarina":{
         "image": "/images/items/ocarina_saria.png",
         "category": "inventory_items"
     },
-    "bottle": {
+    "item.bottle": {
         "image": "/images/items/bottle.png",
         "category": "inventory_items"
     },
-    "zora_letter":{
+    "item.zora_letter":{
         "image": "/images/items/zora_letter.png",
         "category": "inventory_items"
     },
-    "weird_egg": {
+    "item.weird_egg": {
         "image": "/images/items/egg.png",
         "category": "inventory_items"
     },
-    "bean": {
+    "item.bean": {
         "image": "/images/items/bean.png",
         "category": "inventory_items"
     },
-
-    "pocket_egg": {
+    "item.pocket_egg": {
         "image": "/images/items/egg_cojiro.png",
         "category": "trading_items"
     },
-    "pocket_cucco": {
+    "item.pocket_cucco": {
         "image": "/images/items/cucco.png",
         "category": "trading_items"
     },
-    "cojiro": {
+    "item.cojiro": {
         "image": "/images/items/cojiro.png",
         "category": "trading_items"
     },
-    "mushroom": {
+    "item.mushroom": {
         "image": "/images/items/mushroom.png",
         "category": "trading_items"
     },
-    "medicine": {
+    "item.medicine": {
         "image": "/images/items/medicine.png",
         "category": "trading_items"
     },
-    "saw": {
+    "item.saw": {
         "image": "/images/items/saw.png",
         "category": "trading_items"
     },
-    "broken_sword": {
+    "item.broken_sword": {
         "image": "/images/items/broken_sword.png",
         "category": "trading_items"
     },
-    "prescription": {
+    "item.prescription": {
         "image": "/images/items/prescription.png",
         "category": "trading_items"
     },
-    "frog": {
+    "item.frog": {
         "image": "/images/items/frog.png",
         "category": "trading_items"
     },
-    "eyedrops": {
+    "item.eyedrops": {
         "image": "/images/items/eyedrops.png",
         "category": "trading_items"
     },
-    "claim": {
+    "item.claim": {
         "image": "/images/items/claim.png",
         "category": "trading_items"
     },
-
-    "song_zelda":{
+    "item.song_zelda":{
         "image": "/images/items/song_zelda.png",
         "category": "song_items"
     },
-    "song_epona":{
+    "item.song_epona":{
         "image": "/images/items/song_epona.png",
         "category": "song_items"
     },
-    "song_sun":{
+    "item.song_sun":{
         "image": "/images/items/song_sun.png",
         "category": "song_items"
     },
-    "song_saria":{
+    "item.song_saria":{
         "image": "/images/items/song_saria.png",
         "category": "song_items"
     },
-    "song_time":{
+    "item.song_time":{
         "image": "/images/items/song_time.png",
         "category": "song_items"
     },
-    "song_storm":{
+    "item.song_storm":{
         "image": "/images/items/song_storm.png",
         "category": "song_items"
     },
-    "warp_forest":{
+    "item.warp_forest":{
         "image": "/images/items/warp_forest.png",
         "category": "song_items"
     },
-    "warp_fire":{
+    "item.warp_fire":{
         "image": "/images/items/warp_fire.png",
         "category": "song_items"
     },
-    "warp_water":{
+    "item.warp_water":{
         "image": "/images/items/warp_water.png",
         "category": "song_items"
     },
-    "warp_shadow":{
+    "item.warp_shadow":{
         "image": "/images/items/warp_shadow.png",
         "category": "song_items"
     },
-    "warp_spirit":{
+    "item.warp_spirit":{
         "image": "/images/items/warp_spirit.png",
         "category": "song_items"
     },
-    "warp_light":{
+    "item.warp_light":{
         "image": "/images/items/warp_light.png",
         "category": "song_items"
     }

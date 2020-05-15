@@ -1,9 +1,34 @@
 
 <emc-navbar id="navbar"></emc-navbar>
 <emc-paging id="view-pager" active="">
-    <emc-import slot="main" html="/content/pages/main.html" module="/script/main.js"></emc-import>
+    <emc-tabview id="main-content" slot="main">
+        <div ref="tracker" data-title="Item & Map Tracker" data-icon="images/icons/tracker.svg">
+            <ootrt-layoutcontainer id="layout-container" layout="map-compact">
+            </ootrt-layoutcontainer>
+        </div>
+        <div ref="shops" data-title="Shops" data-icon="images/icons/shops.svg">
+            <ootrt-shoplist>
+            </ootrt-shoplist>
+        </div>
+        <div ref="songs" data-title="Songs" data-icon="images/icons/songs.svg">
+            <ootrt-songlist>
+            </ootrt-songlist>
+        </div>
+        <div ref="notes" data-title="Notes" data-icon="images/icons/notes.svg">
+            <emc-texteditor id="notes-editor" title="Notes">
+            </emc-texteditor>
+        </div>
+        <div ref="multi" data-title="Multiplayer" data-icon="images/icons/multi.svg">
+            <ootrt-multiplayer>
+            </ootrt-multiplayer>
+        </div>
+    </emc-tabview>
     <ted-editorchoice id="editor-choice" slot="editor_choice"></ted-editorchoice>
     <ted-logiceditor id="editor-logic" slot="editor_logic"></ted-logiceditor>
 </emc-paging>
+<footer class="footer">
+    <ootrt-locationstate>
+    </ootrt-locationstate>
+</footer>
 
 <div id="busy-animation"></div>

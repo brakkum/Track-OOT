@@ -137,7 +137,7 @@ export default class MapEntrance extends EventBusSubsetMixin(HTMLElement) {
                     let ref = FileData.get(`world/${r}/access`);
                     let l = {};
                     l[ref] = {
-                        "type": "number",
+                        "type": "value",
                         "el": this.access,
                         "category": "entrance"
                     }

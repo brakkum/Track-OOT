@@ -1,0 +1,14 @@
+/* import used font definitions */
+
+@import "./fonts/AncientHylian.css";
+@import "./fonts/Charlemagne.css";
+@import "./fonts/Ravenna.css";
+@import "./fonts/ReturnofGanon.css";
+@import "./fonts/Sheikah.css";
+@import "./fonts/Triforce.css";
+@import "./fonts/ZeldaDX.css";
+
+/* set initial font size */
+:root {
+    font-size: 14px;
+}

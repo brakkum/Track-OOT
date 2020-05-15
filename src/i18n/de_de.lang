@@ -5,7 +5,12 @@
 language=Sprache (Neustart erforderlich)
 
 # LOCATIONS - OVERWORLD
-hyrule=Hyrule
+area.hyrule_field=Hylianische Steppe
+area.kokiri=Kokiri-Wald
+area.desert=Gespensterwüste
+area.river=Zora-Fluss
+area.gerudo_valley=Gerudotal
+area.lake=Hyliasee
 area.overworld=Weltkarte
 location.kokiri.c_sword=Kokiri Schwert
 location.kokiri.c_midos_house=Midos Haus (4)
@@ -779,9 +784,9 @@ item.warp_water=Serenade des Wassers
 item.warp_shadow=Nocturne des Schatten
 item.warp_spirit=Requiem der Geister
 item.warp_light=Kantate des Lichts
-song_scarecrow=Lied der Vogelscheuche
-song_frogs=Frosch Chor Lied
-song_woods=Horror-Kid Okarina Minispiel
+item.song_scarecrow=Lied der Vogelscheuche
+item.song_frogs=Frosch Chor Lied
+item.song_woods=Horror-Kid Okarina Minispiel
 item.stone_forest=Kokiri-Smaragd
 item.stone_fire=Goronen-Opal
 item.stone_water=Zora-Saphir
@@ -791,6 +796,23 @@ item.medallion_water=Amulett des Wassers
 item.medallion_spirit=Amulett der Geister
 item.medallion_shadow=Amulett des Schattens
 item.medallion_light=Amulett des Lichts
+
+#songs
+song.zelda=Zeldas Wiegenlied
+song.epona=Eponas Lied
+song.saria=Salias Lied
+song.sun=Hymne der Sonne
+song.time=Hymne der Zeit
+song.storm=Hymne des Sturms
+song.warp_forest=Menuett des Waldes
+song.warp_fire=Bolero des Feuers
+song.warp_water=Serenade des Wassers
+song.warp_shadow=Nocturne des Schatten
+song.warp_spirit=Requiem der Geister
+song.warp_light=Kantate des Lichts
+song.scarecrow=Lied der Vogelscheuche
+song.frogs=Frosch Chor Lied
+song.woods=Horror-Kid Okarina Minispiel
 
 # KEYS
 item.key_small_forest=Waldtempel Kleiner Schlüssel
@@ -867,6 +889,7 @@ option.ganon_castle_open=Ganons Teufelsturm Zugang
 option.ganon_boss_door_open=Ganon Boss Tür
 option.trade_sequence_start_item=Starte Erwachsenes Tauschgeschäft bei
 trials=Benötigte Siegel
+option.gossipstones_active=Aktiviere Gossipsteine
 
 # SETTINGS - SKIPS
 skip.lens_required=Auge der Wahrheit Vorraussetzung
@@ -971,6 +994,7 @@ skip.shadow_temple_stone_umbrella_skip=Shadow Temple Stone Umbrella Skip
 skip.wt_central_bow_nothing=Water Temple Central Bow Target without Longshot or Hover Boots
 skip.fit_east_noscarecrow=Fire Temple East Tower without Scarecrow's Song
 skip.shadow_temple_entry_fire_arrow=Shadow Temple Entry with Fire Arrows
+skip.wt_bosskey_noitem=Wasser Tempel Bossschlüssel Truhe ohne zusätzliche Gegenstände
 
 # SETTINGS - SEQUENCE BREAKS
 skip.ground_jump=Enable Bomb Bag Ground Jumping
@@ -1047,60 +1071,60 @@ compact=Kompakt
 flat=Flach
 
 # SHOPS
-shop_kokiri=Kokiri Laden
-shop_goron=Goronia Laden
-shop_zora=Zora Reich Laden
-shop_bombchu=Bombchu Laden
-shop_basar_child=Stadt Hyrule Bazaar
-shop_magic_child=Stadt Hyrule Magieladen
-shop_basar_adult=Kakariko Bazaar
-shop_magic_adult=Kakariko Magieladen
+shop.kokiri=Kokiri Laden
+shop.goron=Goronia Laden
+shop.zora=Zora Reich Laden
+shop.bombchu=Bombchu Laden
+shop.basar_child=Stadt Hyrule Bazaar
+shop.magic_child=Stadt Hyrule Magieladen
+shop.basar_adult=Kakariko Bazaar
+shop.magic_adult=Kakariko Magieladen
 
 # SHOPS - ITEMS
-heart_1=Herz
-arrows_10=Pfeile (10)
-arrows_30=Pfeile (30)
-arrows_50=Pfeile (50)
-seeds_30=Dekukerne (30)
-stick_1=Dekustab
-nuts_5=Dekunuss (5)
-nuts_10=Dekunuss (10)
-bombs_5=Bomben (5)
-bombs_5_2=Bomben (5)
-bombs_10=Bomben (10)
-bombs_20=Bomben (20)
-bombs_30=Bomben (30)
-bombchu_5=Bombchus (5)
-bombchu_10=Bombchus (10)
-bombchu_20=Bombchus (20)
-blue_fire_1=Blaue Flamme
-bugs_1=Käfer
-fairy_spirit_1=Rosa Fee
-fish_1=Fisch
-poe_1=Irrlicht
-potion_red_1=Rotes Elixier
-potion_green_1=Grünes Elixier
-shield_kokiri_1=Dekuschild
-shield_hylia_1=Hyliaschild
-tunic_fire_1=Goronen-Rüstung
-tunic_water_1=Zora-Rüstung
-refill_item=Verbrauchsgegenstände
-item.ice_trap=FOOL
-bomb_bag=Bombentasche
-special_deal=[SD]
+item.heart_1=Herz
+item.arrows_10=Pfeile (10)
+item.arrows_30=Pfeile (30)
+item.arrows_50=Pfeile (50)
+item.seeds_30=Dekukerne (30)
+item.stick_1=Dekustab
+item.nuts_5=Dekunuss (5)
+item.nuts_10=Dekunuss (10)
+item.bombs_5=Bomben (5)
+item.bombs_5_2=Bomben (5)
+item.bombs_10=Bomben (10)
+item.bombs_20=Bomben (20)
+item.bombs_30=Bomben (30)
+item.bombchu_5=Bombchus (5)
+item.bombchu_10=Bombchus (10)
+item.bombchu_20=Bombchus (20)
+item.blue_fire_1=Blaue Flamme
+item.bugs_1=Käfer
+item.fairy_spirit_1=Rosa Fee
+item.fish_1=Fisch
+item.poe_1=Irrlicht
+item.potion_red_1=Rotes Elixier
+item.potion_green_1=Grünes Elixier
+item.shield_kokiri_1=Dekuschild
+item.shield_hylia_1=Hyliaschild
+item.tunic_fire_1=Goronen-Rüstung
+item.tunic_water_1=Zora-Rüstung
+item.refill_item=Verbrauchsgegenstände
+item.item.ice_trap=FOOL
+item.bomb_bag=Bombentasche
+item.special_deal=[SD]
 
 # SHOPS - TRADE
-weird_egg=Seltsames Ei
-pocket_egg=Das Ei
-pocket_cucco=Kiki & Henni
-mushroom=Schimmelpilz
-medicine=Asa's Modertrank
-saw=Säge
-broken_sword=Zerbrochenes Biggoron-Schwert
-prescription=Rezept
-frog=Glotzfrosch
-eyedrops=Augentropfen
-claim=Zertifikat
+item.weird_egg=Seltsames Ei
+item.pocket_egg=Das Ei
+item.pocket_cucco=Kiki & Henni
+item.mushroom=Schimmelpilz
+item.medicine=Asa's Modertrank
+item.saw=Säge
+item.broken_sword=Zerbrochenes Biggoron-Schwert
+item.prescription=Rezept
+item.frog=Glotzfrosch
+item.eyedrops=Augentropfen
+item.claim=Zertifikat
 
 # SHOPS - HEALTH
 item.heart_piece=Herzteil
@@ -1120,11 +1144,11 @@ item.potion_green=Grünes Elixier
 item.potion_blue=Blaues Elixier
 
 # SHOPS - RUPEES
-rupee_green=Grüner Rubin
-rupee_blue=Blauer Rubin
-rupee_red=Roter Rubin
-rupee_purple=Violetter Rubin
-rupee_yellow=Gelber Rubin
+item.rupee_green=Grüner Rubin
+item.rupee_blue=Blauer Rubin
+item.rupee_red=Roter Rubin
+item.rupee_purple=Violetter Rubin
+item.rupee_yellow=Gelber Rubin
 
 # SHOPS - CATEGORIES
 shop_items=Items im Laden
@@ -1138,6 +1162,11 @@ equipment_items=Ausrüstung
 song_items=Lieder
 
 # OTHER
+hyrule=Hyrule
+vanilla=Normal
+masterquest=Master Quest
+pocket=Tasche
+skulltula=Skulltula
 item=Item
 location=Ort
 back=Zurück

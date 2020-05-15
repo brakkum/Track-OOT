@@ -77,7 +77,7 @@ export default class LiteralLinked extends AbstractElement {
 
     toJSON() {
         return {
-            type: "number",
+            type: "value",
             el: this.ref,
             category: this.category
         };

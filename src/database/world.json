@@ -4,7 +4,7 @@
         "type": "dungeon",
         "access": "logic.entrance.deku",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.entrance_shuffle_dungeons"
         },
         "filter": {
@@ -23,7 +23,7 @@
         "type": "dungeon",
         "access": "logic.entrance.dodongo",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.entrance_shuffle_dungeons"
         },
         "filter": {
@@ -42,7 +42,7 @@
         "type": "dungeon",
         "access": "logic.entrance.jabujabu",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.entrance_shuffle_dungeons"
         },
         "filter": {
@@ -61,7 +61,7 @@
         "type": "dungeon",
         "access": "logic.entrance.temple_forest",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.entrance_shuffle_dungeons"
         },
         "filter": {
@@ -80,7 +80,7 @@
         "type": "dungeon",
         "access": "logic.entrance.temple_fire",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.entrance_shuffle_dungeons"
         },
         "filter": {
@@ -99,7 +99,7 @@
         "type": "dungeon",
         "access": "logic.entrance.temple_water",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.entrance_shuffle_dungeons"
         },
         "filter": {
@@ -118,7 +118,7 @@
         "type": "dungeon",
         "access": "logic.entrance.temple_spirit",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.entrance_shuffle_dungeons"
         },
         "filter": {
@@ -137,7 +137,7 @@
         "type": "dungeon",
         "access": "logic.entrance.temple_shadow",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.entrance_shuffle_dungeons"
         },
         "filter": {
@@ -156,7 +156,7 @@
         "type": "dungeon",
         "access": "logic.entrance.well",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.entrance_shuffle_dungeons"
         },
         "filter": {
@@ -175,7 +175,7 @@
         "type": "dungeon",
         "access": "logic.entrance.ice_cavern",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.entrance_shuffle_dungeons"
         },
         "filter": {
@@ -194,7 +194,7 @@
         "type": "dungeon",
         "access": "logic.entrance.training_grounds",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.entrance_shuffle_dungeons"
         },
         "filter": {
@@ -261,7 +261,7 @@
         "type": "cow",
         "access": "logic.location.kokiri.c_links_house_cow",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.cowsanity"
         },
         "filter": {
@@ -360,7 +360,7 @@
         "type": "gossipstone",
         "access": "logic.location.kokiri.g_gossip_kokiri",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -379,7 +379,7 @@
         "type": "gossipstone",
         "access": "logic.location.kokiri.g_gossip_grotto_kokiri",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -398,7 +398,7 @@
         "type": "gossipstone",
         "access": "logic.location.kokiri.g_gossip_deku_left",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -417,7 +417,7 @@
         "type": "gossipstone",
         "access": "logic.location.kokiri.g_gossip_deku_right",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -596,7 +596,7 @@
         "type": "scrub",
         "access": "logic.location.desert.c_colossus_grotto_salesman_1",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -615,7 +615,7 @@
         "type": "scrub",
         "access": "logic.location.desert.c_colossus_grotto_salesman_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -714,7 +714,7 @@
         "type": "gossipstone",
         "access": "logic.location.desert.g_gossip_desert",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -861,7 +861,7 @@
         "type": "scrub",
         "access": "logic.location.river.c_zora_grotto_salesman_1",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -880,7 +880,7 @@
         "type": "scrub",
         "access": "logic.location.river.c_zora_grotto_salesman_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -899,7 +899,7 @@
         "type": "bean",
         "access": "logic.location.river.c_zora_bean_salesman",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.beansanity"
         },
         "filter": {
@@ -982,7 +982,7 @@
         "type": "gossipstone",
         "access": "logic.location.river.g_gossip_plateau",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -1001,7 +1001,7 @@
         "type": "gossipstone",
         "access": "logic.location.river.g_gossip_waterfall",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -1020,7 +1020,7 @@
         "type": "gossipstone",
         "access": "logic.location.river.g_gossip_grotto_river",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -1199,7 +1199,7 @@
         "type": "cow",
         "access": "logic.location.hyrule_field.c_hyrule_west_grotto_cow",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.cowsanity"
         },
         "filter": {
@@ -1250,7 +1250,7 @@
         "type": "gossipstone",
         "access": "logic.location.hyrule_field.g_gossip_grotto_near_market",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -1269,7 +1269,7 @@
         "type": "gossipstone",
         "access": "logic.location.hyrule_field.g_gossip_grotto_near_lake",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -1288,7 +1288,7 @@
         "type": "gossipstone",
         "access": "logic.location.hyrule_field.g_gossip_grotto_small_forest",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -1307,7 +1307,7 @@
         "type": "gossipstone",
         "access": "logic.location.hyrule_field.g_gossip_field_valley",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -1470,7 +1470,7 @@
         "type": "cow",
         "access": "logic.location.gerudo_valley.c_gerudo_river_cow",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.cowsanity"
         },
         "filter": {
@@ -1521,7 +1521,7 @@
         "type": "scrub",
         "access": "logic.location.gerudo_valley.c_gerudo_behind_carpenter_tent_grotto_salesman_1",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -1540,7 +1540,7 @@
         "type": "scrub",
         "access": "logic.location.gerudo_valley.c_gerudo_behind_carpenter_tent_grotto_salesman_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -1639,7 +1639,7 @@
         "type": "gossipstone",
         "access": "logic.location.gerudo_valley.g_gossip_gerudo_valley",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -1754,7 +1754,7 @@
         "type": "scrub",
         "access": "logic.location.lake.c_grave_grotto_salesman_1",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -1773,7 +1773,7 @@
         "type": "scrub",
         "access": "logic.location.lake.c_grave_grotto_salesman_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -1792,7 +1792,7 @@
         "type": "scrub",
         "access": "logic.location.lake.c_grave_grotto_salesman_3",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -1955,7 +1955,7 @@
         "type": "gossipstone",
         "access": "logic.location.lake.g_gossip_waterfall",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -1974,7 +1974,7 @@
         "type": "gossipstone",
         "access": "logic.location.lake.g_gossip_southeast",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -1993,7 +1993,7 @@
         "type": "gossipstone",
         "access": "logic.location.lake.g_gossip_southwest",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -2124,7 +2124,7 @@
         "type": "scrub",
         "access": "logic.location.lonlon.c_grotto_deku_salesman_1",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -2143,7 +2143,7 @@
         "type": "scrub",
         "access": "logic.location.lonlon.c_grotto_deku_salesman_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -2162,7 +2162,7 @@
         "type": "scrub",
         "access": "logic.location.lonlon.c_grotto_deku_salesman_3",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -2181,7 +2181,7 @@
         "type": "cow",
         "access": "logic.location.lonlon.c_cow_tower_1",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.cowsanity"
         },
         "filter": {
@@ -2200,7 +2200,7 @@
         "type": "cow",
         "access": "logic.location.lonlon.c_cow_tower_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.cowsanity"
         },
         "filter": {
@@ -2219,7 +2219,7 @@
         "type": "cow",
         "access": "logic.location.lonlon.c_cow_stables_1",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.cowsanity"
         },
         "filter": {
@@ -2238,7 +2238,7 @@
         "type": "cow",
         "access": "logic.location.lonlon.c_cow_stables_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.cowsanity"
         },
         "filter": {
@@ -2419,7 +2419,7 @@
         "visible": {
             "type": "not",
             "el": {
-                "type": "value",
+                "type": "state",
                 "el": "option.gerudo_fortress_open",
                 "value": "gerudo_fortress_open_open"
             }
@@ -2443,12 +2443,12 @@
             "type": "nor",
             "el": [
                 {
-                    "type": "value",
+                    "type": "state",
                     "el": "option.gerudo_fortress_open",
                     "value": "gerudo_fortress_open_open"
                 },
                 {
-                    "type": "value",
+                    "type": "state",
                     "el": "option.gerudo_fortress_open",
                     "value": "gerudo_fortress_open_one"
                 }
@@ -2473,12 +2473,12 @@
             "type": "nor",
             "el": [
                 {
-                    "type": "value",
+                    "type": "state",
                     "el": "option.gerudo_fortress_open",
                     "value": "gerudo_fortress_open_open"
                 },
                 {
-                    "type": "value",
+                    "type": "state",
                     "el": "option.gerudo_fortress_open",
                     "value": "gerudo_fortress_open_one"
                 }
@@ -2503,12 +2503,12 @@
             "type": "nor",
             "el": [
                 {
-                    "type": "value",
+                    "type": "state",
                     "el": "option.gerudo_fortress_open",
                     "value": "gerudo_fortress_open_open"
                 },
                 {
-                    "type": "value",
+                    "type": "state",
                     "el": "option.gerudo_fortress_open",
                     "value": "gerudo_fortress_open_one"
                 }
@@ -2738,7 +2738,7 @@
         "type": "scrub",
         "access": "logic.location.woods.c_deku_salesman_grotto_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -2757,7 +2757,7 @@
         "type": "scrub",
         "access": "logic.location.woods.c_deku_salesman_meadow_grotto_1",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -2776,7 +2776,7 @@
         "type": "scrub",
         "access": "logic.location.woods.c_deku_salesman_meadow_grotto_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -2875,7 +2875,7 @@
         "type": "scrub",
         "access": "logic.location.woods.c_deku_salesman_theater_1",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -2894,7 +2894,7 @@
         "type": "scrub",
         "access": "logic.location.woods.c_deku_salesman_theater_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -2977,7 +2977,7 @@
         "type": "gossipstone",
         "access": "logic.location.woods.g_gossip_bridge",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -2996,7 +2996,7 @@
         "type": "gossipstone",
         "access": "logic.location.woods.g_gossip_meadow_left",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -3015,7 +3015,7 @@
         "type": "gossipstone",
         "access": "logic.location.woods.g_gossip_meadow_right",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -3034,7 +3034,7 @@
         "type": "gossipstone",
         "access": "logic.location.woods.g_gossip_meadow_saria",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -3053,7 +3053,7 @@
         "type": "gossipstone",
         "access": "logic.location.woods.g_gossip_grotto_woods",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -3440,7 +3440,7 @@
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_castle_malon",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -3459,7 +3459,7 @@
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_castle_climb",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -3478,7 +3478,7 @@
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_castle_grotto",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -3497,7 +3497,7 @@
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_tot_1",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -3516,7 +3516,7 @@
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_tot_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -3535,7 +3535,7 @@
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_tot_3",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -3554,7 +3554,7 @@
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_tot_4",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -4101,7 +4101,7 @@
         "type": "cow",
         "access": "logic.location.kakariko.c_impas_cow",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.cowsanity"
         },
         "filter": {
@@ -4328,7 +4328,7 @@
         "type": "gossipstone",
         "access": "logic.location.kakariko.g_gossip_graveyard",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -4347,7 +4347,7 @@
         "type": "gossipstone",
         "access": "logic.location.kakariko.g_gossip_grotto_kakariko",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -4654,7 +4654,7 @@
         "type": "scrub",
         "access": "logic.location.mountain.c_crater_ladder_salesman",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -4673,7 +4673,7 @@
         "type": "scrub",
         "access": "logic.location.mountain.c_crater_grotto_salesman_1",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -4692,7 +4692,7 @@
         "type": "scrub",
         "access": "logic.location.mountain.c_crater_grotto_salesman_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -4711,7 +4711,7 @@
         "type": "scrub",
         "access": "logic.location.mountain.c_crater_grotto_salesman_3",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -4730,7 +4730,7 @@
         "type": "cow",
         "access": "logic.location.mountain.c_grotto_cow",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.cowsanity"
         },
         "filter": {
@@ -4925,7 +4925,7 @@
         "type": "gossipstone",
         "access": "logic.location.mountain.g_gossip_dm_crater",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -4944,7 +4944,7 @@
         "type": "gossipstone",
         "access": "logic.location.mountain.g_gossip_dm_trail",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -4963,7 +4963,7 @@
         "type": "gossipstone",
         "access": "logic.location.mountain.g_gossip_grotto_crater",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -4982,7 +4982,7 @@
         "type": "gossipstone",
         "access": "logic.location.mountain.g_gossip_grotto_mountain",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -5225,7 +5225,7 @@
         "type": "scrub",
         "access": "logic.location.goron.c_grotto_salesman_1",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -5244,7 +5244,7 @@
         "type": "scrub",
         "access": "logic.location.goron.c_grotto_salesman_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -5263,7 +5263,7 @@
         "type": "scrub",
         "access": "logic.location.goron.c_grotto_salesman_3",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -5314,7 +5314,7 @@
         "type": "gossipstone",
         "access": "logic.location.goron.g_gossip_maze",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -5333,7 +5333,7 @@
         "type": "gossipstone",
         "access": "logic.location.goron.g_gossip_medigoron",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -5560,7 +5560,7 @@
         "type": "gossipstone",
         "access": "logic.location.zoras.g_gossip_zora_king",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -5579,7 +5579,7 @@
         "type": "gossipstone",
         "access": "logic.location.zoras.g_gossip_zora_fairy",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -5598,7 +5598,7 @@
         "type": "gossipstone",
         "access": "logic.location.zoras.g_gossip_zora_jabu",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -5667,7 +5667,7 @@
         "visible": {
             "type": "not",
             "el": {
-                "type": "number",
+                "type": "value",
                 "el": "option.entrance_shuffle_dungeons"
             }
         },
@@ -6089,7 +6089,7 @@
         "visible": {
             "type": "not",
             "el": {
-                "type": "number",
+                "type": "value",
                 "el": "option.entrance_shuffle_dungeons"
             }
         },
@@ -6367,7 +6367,7 @@
         "visible": {
             "type": "not",
             "el": {
-                "type": "number",
+                "type": "value",
                 "el": "option.entrance_shuffle_dungeons"
             }
         },
@@ -7013,7 +7013,7 @@
         "visible": {
             "type": "not",
             "el": {
-                "type": "number",
+                "type": "value",
                 "el": "option.entrance_shuffle_dungeons"
             }
         },
@@ -7257,7 +7257,7 @@
         "type": "scrub",
         "access": "logic.location.deku_mq.c_basement_salesman",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -7422,7 +7422,7 @@
         "visible": {
             "type": "not",
             "el": {
-                "type": "number",
+                "type": "value",
                 "el": "option.entrance_shuffle_dungeons"
             }
         },
@@ -7442,7 +7442,7 @@
         "type": "scrub",
         "access": "logic.location.dodongo.c_lobby_salesman",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -7461,7 +7461,7 @@
         "type": "scrub",
         "access": "logic.location.dodongo.c_east_corridor_salesman",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -7544,7 +7544,7 @@
         "type": "scrub",
         "access": "logic.location.dodongo.c_near_bomb_bag_salesman_1",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -7563,7 +7563,7 @@
         "type": "scrub",
         "access": "logic.location.dodongo.c_near_bomb_bag_salesman_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -7726,7 +7726,7 @@
         "type": "scrub",
         "access": "logic.location.dodongo_mq.c_main_room_salesman_1",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -7745,7 +7745,7 @@
         "type": "scrub",
         "access": "logic.location.dodongo_mq.c_main_room_salesman_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -7764,7 +7764,7 @@
         "type": "scrub",
         "access": "logic.location.dodongo_mq.c_1f_right",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -7783,7 +7783,7 @@
         "type": "scrub",
         "access": "logic.location.dodongo_mq.c_above_stairs",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -7994,7 +7994,7 @@
         "type": "gossipstone",
         "access": "logic.location.dodongo.g_gossip_dodongo",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.gossipstones_active"
         },
         "filter": {
@@ -8015,7 +8015,7 @@
         "visible": {
             "type": "not",
             "el": {
-                "type": "number",
+                "type": "value",
                 "el": "option.entrance_shuffle_dungeons"
             }
         },
@@ -8035,7 +8035,7 @@
         "type": "scrub",
         "access": "logic.location.jabujabu.c_elevator_dive_salesman",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -8262,7 +8262,7 @@
         "type": "cow",
         "access": "logic.location.jabujabu_mq.c_cow",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.cowsanity"
         },
         "filter": {
@@ -8459,7 +8459,7 @@
         "visible": {
             "type": "not",
             "el": {
-                "type": "number",
+                "type": "value",
                 "el": "option.entrance_shuffle_dungeons"
             }
         },
@@ -9073,7 +9073,7 @@
         "visible": {
             "type": "not",
             "el": {
-                "type": "number",
+                "type": "value",
                 "el": "option.entrance_shuffle_dungeons"
             }
         },
@@ -9703,7 +9703,7 @@
         "visible": {
             "type": "not",
             "el": {
-                "type": "number",
+                "type": "value",
                 "el": "option.entrance_shuffle_dungeons"
             }
         },
@@ -10173,7 +10173,7 @@
         "visible": {
             "type": "not",
             "el": {
-                "type": "number",
+                "type": "value",
                 "el": "option.entrance_shuffle_dungeons"
             }
         },
@@ -10979,7 +10979,7 @@
         "visible": {
             "type": "not",
             "el": {
-                "type": "number",
+                "type": "value",
                 "el": "option.entrance_shuffle_dungeons"
             }
         },
@@ -11863,7 +11863,7 @@
         "type": "scrub",
         "access": "logic.location.castle_ganon.c_under_bridge_salesman_1",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -11882,7 +11882,7 @@
         "type": "scrub",
         "access": "logic.location.castle_ganon.c_under_bridge_salesman_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -11901,7 +11901,7 @@
         "type": "scrub",
         "access": "logic.location.castle_ganon.c_under_bridge_salesman_3",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -11920,7 +11920,7 @@
         "type": "scrub",
         "access": "logic.location.castle_ganon.c_under_bridge_salesman_4",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -12211,7 +12211,7 @@
         "type": "scrub",
         "access": "logic.location.castle_ganon_mq.c_under_bridge_salesman_1",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -12230,7 +12230,7 @@
         "type": "scrub",
         "access": "logic.location.castle_ganon_mq.c_under_bridge_salesman_2",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -12249,7 +12249,7 @@
         "type": "scrub",
         "access": "logic.location.castle_ganon_mq.c_under_bridge_salesman_3",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -12268,7 +12268,7 @@
         "type": "scrub",
         "access": "logic.location.castle_ganon_mq.c_under_bridge_salesman_4",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {
@@ -12287,7 +12287,7 @@
         "type": "scrub",
         "access": "logic.location.castle_ganon_mq.c_under_bridge_salesman_5",
         "visible": {
-            "type": "number",
+            "type": "value",
             "el": "option.scrubsanity"
         },
         "filter": {

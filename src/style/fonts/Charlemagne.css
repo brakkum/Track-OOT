@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "Charlemagne";
+    src: url('/fonts/Charlemagne.ttf') format('truetype');
+}
+
+[data-font="font_charlemagne"] {
+    font-size: 1em;
+    font-family: Charlemagne, Arial, sans-serif;
+}

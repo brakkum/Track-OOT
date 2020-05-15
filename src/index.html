@@ -107,7 +107,7 @@
                             document.body.append(r[0]);
                         }
                         updateLoadingMessage("add style...");
-                        await $import.importCSS("/style/app.css");
+                        await $import.importCSS("/style/index.css");
                         updateLoadingMessage("add script...");
                         await $import.importModule("/script/app.js");
                     } catch(e) {

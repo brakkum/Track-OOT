@@ -84,14 +84,14 @@ export default class LiteralCustom extends AbstractElement {
     toJSON() {
         if (!!this.value) {
             return {
-                type: "value",
+                type: "state",
                 el: this.ref,
                 value: this.value,
                 category: this.category
             };
         } else {
             return {
-                type: "number",
+                type: "value",
                 el: this.ref,
                 category: this.category
             };

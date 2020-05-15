@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "Sheikah";
+    src: url('/fonts/Sheikah.ttf') format('truetype');
+}
+
+[data-font="font_sheikah"] {
+    font-size: 1em;
+    font-family: Sheikah, Arial, sans-serif;
+}

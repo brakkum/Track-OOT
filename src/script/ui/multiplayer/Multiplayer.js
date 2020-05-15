@@ -8,7 +8,10 @@ const TPL = new Template(`
     <style>
         :host {
             display: flex;
-            flex: 1;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
         }
         :host > * {
             flex: 1;

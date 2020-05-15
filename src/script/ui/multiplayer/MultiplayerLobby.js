@@ -112,8 +112,8 @@ class HTMLMultiplayerLobby extends HTMLElement {
             }
         }.bind(this);
 
-        let refresh = async function() {
-            let res = await RTCController.getInstances();
+        let refresh = async function(supressError) {
+            let res = await RTCController.getInstances(supressError);
             if (res != null) {
                 this.innerHTML = "";
                 res.forEach(function(inst) {
@@ -127,8 +127,10 @@ class HTMLMultiplayerLobby extends HTMLElement {
             }
         }.bind(this);
 
-        refresh_button.addEventListener("click", refresh);
-        refresh();
+        refresh_button.addEventListener("click", function() {
+            refresh(false);
+        });
+        refresh(true);
     }
 
 }

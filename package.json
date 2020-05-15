@@ -3,9 +3,7 @@
   "author": "Denis Peters (ZidArgs)",
   "dependencies": {
     "del": "^5.1.0",
-    "emcjs": "git+https://bitbucket.org/zidargs/emcjs.git/@0.1.29",
-    "jseditors": "git+https://bitbucket.org/zidargs/jseditors.git/@0.0.5",
-    "rtcclient": "git+https://bitbucket.org/zidargs/rtcclient.git/@1.1.2",
+    "emcjs": "git+https://bitbucket.org/zidargs/emcjs.git/@0.1.31",
     "glob-all": "^3.1.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
@@ -14,9 +12,10 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-jsonminify": "^1.1.0",
     "gulp-newer": "^1.4.0",
-    "gulp-sass": "^4.0.2",
     "gulp-svgo": "^2.1.0",
     "gulp-terser": "^1.2.0",
+    "jseditors": "git+https://bitbucket.org/zidargs/jseditors.git/@0.0.6",
+    "rtcclient": "git+https://bitbucket.org/zidargs/rtcclient.git/@1.1.2",
     "through": "^2.3.8"
   },
   "devDependencies": {

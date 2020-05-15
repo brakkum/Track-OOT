@@ -75,10 +75,12 @@ function getClientNameList() {
 
 class RTCController {
     
-    async getInstances() {
+    async getInstances(supressError) {
         let res = await rtcClient.getInstances();
         if (res == null || !res.success) {
-            await Dialog.alert("Connection error", "There seems to be an connection issue trying to refresh the instance list.\nPlease try again later.");
+            if (!supressError) {
+                await Dialog.alert("Connection error", "There seems to be an connection issue trying to refresh the instance list.\nPlease try again later.");
+            }
             if (res.error != null) {
                 console.error(res.error);
             }

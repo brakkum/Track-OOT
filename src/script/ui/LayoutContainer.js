@@ -14,6 +14,8 @@ const TPL = new Template(`
             --item-size: 40px;
             justify-content: stretch;
             align-items: stretch;
+            min-width: 100%;
+            min-height: 100%;
         }
         #layout {
             flex: 1;

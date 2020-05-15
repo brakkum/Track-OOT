@@ -64,11 +64,7 @@ function stateChanged(event) {
     // settings
     let data = FileData.get("items")[this.ref];
     if (data.hasOwnProperty("start_settings")) {
-        let stsp = data.start_settings.split(".");
-        let startvalue;
-        if (!!event.data[stsp[0]]) {
-            startvalue = parseInt(event.data[data.start_settings]);
-        }
+        let startvalue = parseInt(event.data[data.start_settings]);
         if (isNaN(startvalue)) {
             startvalue = 1;
         }
@@ -105,7 +101,7 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.append(TPL.generate());
         /* event bus */
         this.registerGlobal("item", itemUpdate.bind(this));
-        this.registerGlobal("state", stateChanged.bind(this));
+        this.registerGlobal(["state", "randomizer_options"], stateChanged.bind(this));
         this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));
         // TODO react to rom settings
     }

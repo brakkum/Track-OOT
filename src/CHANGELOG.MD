@@ -7,15 +7,14 @@ Application:    Track-OOT
 ## VERSION 1.7.0 (DEV)
 
 ### ADDED RANDOMIZER OPTIONS
-- sequence breaks added (PR: pidgezero_one)
-- skips extended (PR: pidgezero_one)
 - skip: hidden grottos without stone of agony
 
 ### USABILITY ENHANCEMENTS
 - added filters and bulk select to lists in settngs
 - show actual savestate name in state load/save/management instead of id
-- added undo (ctrl+z) / redo (ctrl+y) 
-- redo i18n system to dynamically switch language without the need to restart the application (WIP)
+- added undo (ctrl+z) / redo (ctrl+y)
+- split rom-settings and tracker-settings into seperate dialogs
+- better navbar (finally)
 
 ### IMPROVED LOGIC
 - logic is now way faster than before
@@ -34,20 +33,9 @@ Application:    Track-OOT
 - gossipstones are now hidden by default
     - gossipstones can be enabled by randomizer option
 
-### INTRODUCING ENTRANCES
-- entrances have their own logic
-- the configuration works like the gossipstones
-    - clicking opens a entrance linking dialog
-    - right-clicking resets the entrance
-- clicking on an activated entrance jumps to the linked area
-- entrance shuffle is toggleable in randomizer options
-
 ### UI CHANGES
-- added entrance icons
 - added area icons
 - added more location icons
-- split rom-settings and tracker-settings into seperate dialogs
-- better navbar (finally)
 
 ### SYSTEM STABILITY
 - reworked global event system and removed crappy mechanics

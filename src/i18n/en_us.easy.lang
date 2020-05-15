@@ -5,7 +5,12 @@
 language=Language (needs restart)
 
 # LOCATIONS - OVERWORLD
-hyrule=Hyrule
+area.hyrule_field=Hyrule Field
+area.kokiri=Kokiri Forest
+area.desert=Haunted Wasteland
+area.river=Zora River
+area.gerudo_valley=Gerudo Valley
+area.lake=Lake Hylia
 area.overworld=Overworld
 location.kokiri.c_sword=Kokiri Sword Chest
 location.kokiri.c_midos_house=Mido's House (4)
@@ -790,9 +795,9 @@ item.warp_water=Serenade of Water
 item.warp_shadow=Nocturne of Shadow
 item.warp_spirit=Requiem of Spirit
 item.warp_light=Prelude of Light
-song_scarecrow=Scarecrow's Song
-song_frogs=Frog Choir's Song
-song_woods=Skull Kid's Ocarina Game
+item.song_scarecrow=Scarecrow's Song
+item.song_frogs=Frog Choir's Song
+item.song_woods=Skull Kid's Ocarina Game
 item.stone_forest=Kokiri's Emerald
 item.stone_fire=Goron's Ruby
 item.stone_water=Zora's Sapphire
@@ -802,6 +807,23 @@ item.medallion_water=Water Medallion
 item.medallion_spirit=Spirit Medallion
 item.medallion_shadow=Shadow Medallion
 item.medallion_light=Light Medallion
+
+#songs
+song.zelda=Zelda's Lullaby
+song.epona=Epona's Song
+song.saria=Saria's Song
+song.sun=Sun's Song
+song.time=Song of Time
+song.storm=Song of Storms
+song.warp_forest=Minuet of Forest
+song.warp_fire=Bolero of Fire
+song.warp_water=Serenade of Water
+song.warp_shadow=Nocturne of Shadow
+song.warp_spirit=Requiem of Spirit
+song.warp_light=Prelude of Light
+song.scarecrow=Scarecrow's Song
+song.frogs=Frog Choir's Song
+song.woods=Skull Kid's Ocarina Game
 
 # KEYS
 item.key_small_forest=Forest Small Key
@@ -878,6 +900,7 @@ option.ganon_castle_open=Ganons Castle entry
 option.ganon_boss_door_open=Open Ganon Boss Door
 option.trade_sequence_start_item=Start adult trading sequence at
 trials=Trials needed
+option.gossipstones_active=Activate Gossipstones
 
 # SETTINGS - SKIPS
 skip.lens_required=Lens of Truth requirement
@@ -982,6 +1005,7 @@ skip.shadow_temple_stone_umbrella_skip=Shadow Temple Stone Umbrella Skip
 skip.wt_central_bow_nothing=Water Temple Central Bow Target without Longshot or Hover Boots
 skip.fit_east_noscarecrow=Fire Temple East Tower without Scarecrow's Song
 skip.shadow_temple_entry_fire_arrow=Shadow Temple Entry with Fire Arrows
+skip.wt_bosskey_noitem=Water Temple behind rolling stones Chest without additional Items
 
 # SETTINGS - SEQUENCE BREAKS
 skip.ground_jump=Enable Bomb Bag Ground Jumping
@@ -1059,61 +1083,61 @@ compact=Compact
 flat=Flat
 
 # SHOPS
-shop_kokiri=Kokiri Shop
-shop_goron=Goron Shop
-shop_zora=Zora Shop
-shop_bombchu=Bombchu Shop
-shop_basar_child=Castletown Bazaar
-shop_magic_child=Castletown Magic Shop
-shop_basar_adult=Kakariko Bazaar
-shop_magic_adult=Kakariko Magic Shop
+shop.kokiri=Kokiri Shop
+shop.goron=Goron Shop
+shop.zora=Zora Shop
+shop.bombchu=Bombchu Shop
+shop.basar_child=Castletown Bazaar
+shop.magic_child=Castletown Magic Shop
+shop.basar_adult=Kakariko Bazaar
+shop.magic_adult=Kakariko Magic Shop
 
 # SHOPS - ITEMS
-heart_1=Heart
-arrows_10=Arrows (10)
-arrows_30=Arrows (30)
-arrows_50=Arrows (50)
-seeds_30=Deku Seeds (30)
-stick_1=Deku Stick
-nuts_5=Deku Nuts (5)
-nuts_10=Deku Nuts (10)
-bombs_5=Bombs (5)
-bombs_5_2=Bombs (5)
-bombs_10=Bombs (10)
-bombs_20=Bombs (20)
-bombs_30=Bombs (30)
-bombchu_5=Bombchus (5)
-bombchu_10=Bombchus (10)
-bombchu_20=Bombchus (20)
-blue_fire_1=Blue Fire
-bugs_1=Bugs
-fairy_spirit_1=Fairy Spirit
-fish_1=Fish
-poe_1=Poe
-potion_red_1=Red Potion
-potion_green_1=Green Potion
-shield_kokiri_1=Deku Shield
-shield_hylia_1=Hylian Shield
-tunic_fire_1=Goron Tunic
-tunic_water_1=Zora Tunic
-refill_item=Refill Item
+item.heart_1=Heart
+item.arrows_10=Arrows (10)
+item.arrows_30=Arrows (30)
+item.arrows_50=Arrows (50)
+item.seeds_30=Deku Seeds (30)
+item.stick_1=Deku Stick
+item.nuts_5=Deku Nuts (5)
+item.nuts_10=Deku Nuts (10)
+item.bombs_5=Bombs (5)
+item.bombs_5_2=Bombs (5)
+item.bombs_10=Bombs (10)
+item.bombs_20=Bombs (20)
+item.bombs_30=Bombs (30)
+item.bombchu_5=Bombchus (5)
+item.bombchu_10=Bombchus (10)
+item.bombchu_20=Bombchus (20)
+item.blue_fire_1=Blue Fire
+item.bugs_1=Bugs
+item.fairy_spirit_1=Fairy Spirit
+item.fish_1=Fish
+item.poe_1=Poe
+item.potion_red_1=Red Potion
+item.potion_green_1=Green Potion
+item.shield_kokiri_1=Deku Shield
+item.shield_hylia_1=Hylian Shield
+item.tunic_fire_1=Goron Tunic
+item.tunic_water_1=Zora Tunic
+item.refill_item=Refill Item
 item.ice_trap=FOOL
 item.triforce_piece=Triforce Piece
-bomb_bag=Bomb Bag
-special_deal=[SD]
+item.bomb_bag=Bomb Bag
+item.special_deal=[SD]
 
 # SHOPS - TRADE
-weird_egg=Weird Egg
-pocket_egg=Pocket Egg
-pocket_cucco=Pocket Cucco
-mushroom=Weird Mushroom
-medicine=Odd Potion
-saw=Poacher's Saw
-broken_sword=Broken Goron Sword
-prescription=Prescription
-frog=Eyeball Frog
-eyedrops=Eyedrops
-claim=Claim Check
+item.weird_egg=Weird Egg
+item.pocket_egg=Pocket Egg
+item.pocket_cucco=Pocket Cucco
+item.mushroom=Weird Mushroom
+item.medicine=Odd Potion
+item.saw=Poacher's Saw
+item.broken_sword=Broken Goron Sword
+item.prescription=Prescription
+item.frog=Eyeball Frog
+item.eyedrops=Eyedrops
+item.claim=Claim Check
 
 # SHOPS - HEALTH
 item.heart_piece=Heart Piece
@@ -1133,11 +1157,11 @@ item.potion_green=Green Potion
 item.potion_blue=Blue Potion
 
 # SHOPS - RUPEES
-rupee_green=Green Rupee
-rupee_blue=Blue Rupee
-rupee_red=Red Rupee
-rupee_purple=Purple Rupee
-rupee_yellow=Huge Rupee
+item.rupee_green=Green Rupee
+item.rupee_blue=Blue Rupee
+item.rupee_red=Red Rupee
+item.rupee_purple=Purple Rupee
+item.rupee_yellow=Huge Rupee
 
 # SHOPS - CATEGORIES
 shop_items=Shop items
@@ -1151,6 +1175,10 @@ equipment_items=Equipment
 song_items=Songs
 
 # OTHER
+hyrule=Hyrule
+vanilla=Vanilla
+masterquest=Master Quest
+pocket=Pocket
 item=Item
 location=Location
 back=back

@@ -42,7 +42,6 @@ const terser = require('gulp-terser');
 const htmlmin = require('gulp-htmlmin');
 const jsonminify = require('gulp-jsonminify');
 const svgo = require('gulp-svgo');
-const sass = require('gulp-sass');
 const newer = require('gulp-newer');
 const filelist = require('gulp-filelist');
 const autoprefixer = require('gulp-autoprefixer');
@@ -85,15 +84,6 @@ function copyChangelog(dest = DEV_PATH) {
         .pipe(deleted.register(SRC_PATH, dest))
         .pipe(newer(dest))
         .pipe(gulp.dest(dest));
-}
-
-function copySCSS(dest = DEV_PATH) {
-    return gulp.src(`${SRC_PATH}/style/app.scss`, {sourcemaps: true})
-        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-        .pipe(deleted.register(`${SRC_PATH}/style`, `${dest}/style`, true))
-        .pipe(newer(`${dest}/style`))
-        .pipe(autoprefixer())
-        .pipe(gulp.dest(`${dest}/style`, {sourcemaps: true}));
 }
 
 function copyCSS(dest = DEV_PATH) {
@@ -170,7 +160,6 @@ exports.build = gulp.series(
         copyJSON.bind(this, PRD_PATH),
         copyI18N.bind(this, PRD_PATH),
         copyImg.bind(this, PRD_PATH),
-        copySCSS.bind(this, PRD_PATH),
         copyCSS.bind(this, PRD_PATH),
         copyFonts.bind(this, PRD_PATH),
         copyScript.bind(this, PRD_PATH),
@@ -190,7 +179,6 @@ exports.buildDev = gulp.series(
         copyJSON.bind(this, DEV_PATH),
         copyI18N.bind(this, DEV_PATH),
         copyImg.bind(this, DEV_PATH),
-        copySCSS.bind(this, DEV_PATH),
         copyCSS.bind(this, DEV_PATH),
         copyFonts.bind(this, DEV_PATH),
         copyScript.bind(this, DEV_PATH),

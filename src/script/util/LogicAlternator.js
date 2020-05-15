@@ -20,6 +20,7 @@ let entrance_binding = {};
 let use_custom_logic = false;
 
 // register event on entrances change
+/* TODO make this available if graphs hit
 EventBus.register("entrance", event => {
     let world = FileData.get("world", {});
     let entrance = world[event.data.name];
@@ -35,7 +36,7 @@ EventBus.register("entrance", event => {
     if (event.data.value != "") {
         let area = world[event.data.value];
         let buf = {
-            "type": "number",
+            "type": "value",
             "el": entrance.access,
             "category": "entrance"
         };
@@ -46,6 +47,7 @@ EventBus.register("entrance", event => {
         Logic.setLogic(logic);
     }
 });
+*/
 // register event for (de-)activate entrances
 EventBus.register("randomizer_options", event => {
     let changed = false;
@@ -85,6 +87,7 @@ async function updateLogic() {
             logic[l] = customLogic[l];
         }
     }
+    /* TODO make this available if graphs hit
     for (let type in entrance_types) {
         let name = entrance_types[type];
         if (entrance_active[name]) {
@@ -93,6 +96,7 @@ async function updateLogic() {
             }
         }
     }
+    */
     Logic.setLogic(logic);
 }
 
@@ -100,6 +104,7 @@ class LogicAlternator {
 
     async init() {
         let settings = FileData.get("settings", {});
+        /* TODO make this available if graphs hit
         let world = FileData.get("world", {});
         for (let type in entrance_types) {
             let name = entrance_types[type];
@@ -123,7 +128,7 @@ class LogicAlternator {
                     if (key != "") {
                         let area = world[key];
                         entrance_logic[entry.type][area.access] = {
-                            "type": "number",
+                            "type": "value",
                             "el": entrance.access,
                             "category": "entrance"
                         };
@@ -131,6 +136,7 @@ class LogicAlternator {
                 }
             }
         }
+        */
         use_custom_logic = await SettingsStorage.get("use_custom_logic", settings["use_custom_logic"].default);
         await updateLogic();
     }

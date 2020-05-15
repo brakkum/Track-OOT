@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "ZeldaDX";
+    src: url('/fonts/ZeldaDX.ttf') format('truetype');
+}
+
+[data-font="font_ravenna"] {
+    font-size: 1.15em;
+    font-family: ZeldaDX, Arial, sans-serif;
+}

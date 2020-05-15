@@ -130,7 +130,7 @@ export default class ListEntrance extends EventBusSubsetMixin(HTMLElement) {
                         if (!!area) {
                             let ref = FileData.get(`world/${area}/access`);
                             logic[ref] = {
-                                "type": "number",
+                                "type": "value",
                                 "el": this.access,
                                 "category": "entrance"
                             }
