@@ -1,10 +1,12 @@
 import Converter0 from "./StateConverter0.js";
 import Converter1 from "./StateConverter1.js";
+import Converter2 from "./StateConverter2.js";
 
-const TARGET_VERSION = 2;
+const TARGET_VERSION = 3;
 const CONVERTER_FN = [
     Converter0,
-    Converter1
+    Converter1,
+    Converter2
 ];
 
 class StateConverter {

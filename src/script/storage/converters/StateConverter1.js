@@ -844,7 +844,6 @@ const translation = {
     "skips.fotmq_hallway_hook": "skip.fotmq_hallway_hook",
     "skips.dm_bomb_strength": "skip.dm_bomb_strength",
     "skips.wt_bosskey_iron_boots": "skip.wt_bosskey_iron_boots",
-    "skips.wt_bosskey_noitem": "skip.wt_bosskey_noitem",
     "skips.forest_adult_gs_hover": "skip.forest_adult_gs_hover",
     "skips.sptmq_frozen_nofire": "skip.sptmq_frozen_nofire",
     "skips.spt_shifting_wall_noitems": "skip.spt_shifting_wall_noitems",
@@ -1015,28 +1014,5 @@ export default function(state) {
     for (let i of Object.keys(state.data)) {
         res.data[translation[i]||i] = state.data[i];
     }
-    // additional conversions
-    res.data["option.doors_open_zora"] = state.data["options.doors_open_zora"] ? "doors_open_zora_both" : "doors_open_zora_closed";
-    let shops = [
-        "shop.kokiri",
-        "shop.goron",
-        "shop.zora",
-        "shop.bombchu",
-        "shop.basar_child",
-        "shop.magic_child",
-        "shop.basar_adult",
-        "shop.magic_adult"
-    ];
-    for (let name of shops) {
-        if (res.data[name] != null) {
-            res.data[name].map(convertShopItem);
-        }
-    }
-
     return res;
 };
-
-
-function convertShopItem(item) {
-    item.item = `item.${item.item}`;
-}

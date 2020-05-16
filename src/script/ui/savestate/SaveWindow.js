@@ -124,7 +124,14 @@ const TPL = new Template(`
             height: 40vh;
             border: solid 2px #ccc;
         }
-        emc-option .date {
+        emc-option .name {
+            flex: 1;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        emc-option .date,
+        emc-option .version {
             margin-left: 10px;
             font-size: 0.8em;
             opacity: 0.4;
@@ -226,8 +233,14 @@ export default class SaveWindow extends HTMLElement {
         };
     }
 
-    async show() {
-        await fillStates(this.shadowRoot.getElementById('statelist'));
+    async show(activeState) {
+        let lst = this.shadowRoot.getElementById('statelist');
+        let snm = this.shadowRoot.getElementById('statename');
+        await fillStates(lst);
+        if (activeState != null) {
+            lst.value = activeState;
+            snm.value = activeState;
+        }
         document.body.append(this);
         this.initialFocus();
     }
@@ -260,24 +273,36 @@ export default class SaveWindow extends HTMLElement {
 function createOption(key, state) {
     let opt = document.createElement('emc-option');
     opt.value = key;
-    if (state.autosave) {
+    // autosave
+    if (!!state.autosave) {
         let ato = document.createElement("span");
         ato.className = "auto";
         ato.innerHTML = "[auto]";
         opt.append(ato);
     }
+    // name
     let nme = document.createElement("span");
     nme.className = "name";
     nme.innerHTML = state.name;
     opt.append(nme);
+    // date
     let dte = document.createElement("span");
     dte.className = "date";
-    if (!!state.timestamp) {
+    if (state.timestamp != null) {
         dte.innerHTML = DateUtil.convert(new Date(state.timestamp), "D.M.Y h:m:s");
     } else {
         dte.innerHTML = "no date";
     }
     opt.append(dte);
+    // version
+    let vrs = document.createElement("span");
+    vrs.className = "version";
+    if (state.version != null) {
+        vrs.innerHTML = `(v-${("00"+state.version).slice(-3)})`;
+    } else {
+        vrs.innerHTML = "(v-000)";
+    }
+    opt.append(vrs);
     return opt;
 }
 

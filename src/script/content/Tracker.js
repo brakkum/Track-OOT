@@ -42,7 +42,7 @@ PageSwitcher.register("main", [{
 PageSwitcher.switch("main");
 
 async function state_Save() {
-    let activestate = await StateStorage.getName()
+    let activestate = await StateStorage.getName();
     if (!!activestate) {
         await StateStorage.save();
         Toast.show(`Saved "${activestate}" successfully.`);
@@ -52,13 +52,23 @@ async function state_Save() {
 }
 
 async function state_SaveAs() {
+    let activestate = await StateStorage.getName();
     let w = new SaveWindow();
-    w.show();
+    if (!!activestate) {
+        w.show(activestate);
+    } else {
+        w.show();
+    }
 }
 
 async function state_Load() {
+    let activestate = await StateStorage.getName()
     let w = new LoadWindow();
-    w.show();
+    if (!!activestate) {
+        w.show(activestate);
+    } else {
+        w.show();
+    }
 }
 
 async function state_New() {
@@ -88,8 +98,13 @@ async function state_New() {
 }
 
 async function states_Manage() {
+    let activestate = await StateStorage.getName()
     let w = new ManageWindow();
-    w.show();
+    if (!!activestate) {
+        w.show(activestate);
+    } else {
+        w.show();
+    }
 }
 
 function openDiscortJoin() {
