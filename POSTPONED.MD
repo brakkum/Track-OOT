@@ -4,6 +4,7 @@
 ### ADDED RANDOMIZER OPTIONS
 - sequence breaks added (PR: pidgezero_one)
 - skips extended (PR: pidgezero_one)
+- skip: hidden grottos without stone of agony
 
 ### USABILITY ENHANCEMENTS
 - redo i18n system to dynamically switch language without the need to restart the application (WIP)

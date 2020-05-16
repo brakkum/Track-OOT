@@ -16,23 +16,21 @@ import "/emcJS/ui/Paging.js";
 
 const SettingsStorage = new IDBStorage('settings');
 
-const JSON_FILES = {
-    "world": "/database/world.json",
-    "world_lists": "/database/world_lists.json",
-    "logic": "/database/logic.json"
-};
-const JSONC_FILES = {
-    "items": "/database/items.json",
-    "grids": "/database/grids.json",
-    "dungeonstate": "/database/dungeonstate.json",
-    "layouts": "/database/layouts.json",
-    "songs": "/database/songs.json",
-    "hints": "/database/hints.json",
-    "settings": "/database/settings.json",
-    "randomizer_options": "/database/randomizer_options.json",
-    "filter": "/database/filter.json",
-    "shops": "/database/shops.json",
-    "shop_items": "/database/shop_items.json"
+const FILES = {
+    "world":                {path: "/database/world.json",              type: "json"},
+    "world_lists":          {path: "/database/world_lists.json",        type: "json"},
+    "logic":                {path: "/database/logic.json",              type: "json"},
+    "items":                {path: "/database/items.json",              type: "jsonc"},
+    "grids":                {path: "/database/grids.json",              type: "jsonc"},
+    "dungeonstate":         {path: "/database/dungeonstate.json",       type: "jsonc"},
+    "layouts":              {path: "/database/layouts.json",            type: "jsonc"},
+    "songs":                {path: "/database/songs.json",              type: "jsonc"},
+    "hints":                {path: "/database/hints.json",              type: "jsonc"},
+    "settings":             {path: "/database/settings.json",           type: "jsonc"},
+    "randomizer_options":   {path: "/database/randomizer_options.json", type: "jsonc"},
+    "filter":               {path: "/database/filter.json",             type: "jsonc"},
+    "shops":                {path: "/database/shops.json",              type: "jsonc"},
+    "shop_items":           {path: "/database/shop_items.json",         type: "jsonc"}
 };
 
 function setVersion(data) {
@@ -49,8 +47,7 @@ function setVersion(data) {
 
     try {
         updateLoadingMessage("load data...");
-        await FileData.json(JSON_FILES);
-        await FileData.json(JSONC_FILES);
+        await FileData.load(FILES);
         setVersion(await FileLoader.json("version.json"));
         updateLoadingMessage("learn languages...");
         await Language.load(await SettingsStorage.get("language", "en_us"));

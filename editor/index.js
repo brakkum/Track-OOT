@@ -14,20 +14,20 @@ import "/utils/logic/LiteralCustom.js";
 import "/utils/logic/LiteralLinked.js";
 
 const FILES = {
-    "items": "/src/database/items.json",
-    "grids": "/src/database/grids.json",
-    "dungeonstate": "/src/database/dungeonstate.json",
-    "world": "/src/database/world.json",
-    "world_lists": "/src/database/world_lists.json",
-    "layouts": "/src/database/layouts.json",
-    "songs": "/src/database/songs.json",
-    "hints": "/src/database/hints.json",
-    "logic": "/src/database/logic.json",
-    "settings": "/src/database/settings.json",
-    "randomizer_options": "/src/database/randomizer_options.json",
-    "filter": "/src/database/filter.json",
-    "shops": "/src/database/shops.json",
-    "shop_items": "/src/database/shop_items.json"
+    "world":                {path: "/src/database/world.json",              type: "json"},
+    "world_lists":          {path: "/src/database/world_lists.json",        type: "json"},
+    "logic":                {path: "/src/database/logic.json",              type: "json"},
+    "items":                {path: "/src/database/items.json",              type: "jsonc"},
+    "grids":                {path: "/src/database/grids.json",              type: "jsonc"},
+    "dungeonstate":         {path: "/src/database/dungeonstate.json",       type: "jsonc"},
+    "layouts":              {path: "/src/database/layouts.json",            type: "jsonc"},
+    "songs":                {path: "/src/database/songs.json",              type: "jsonc"},
+    "hints":                {path: "/src/database/hints.json",              type: "jsonc"},
+    "settings":             {path: "/src/database/settings.json",           type: "jsonc"},
+    "randomizer_options":   {path: "/src/database/randomizer_options.json", type: "jsonc"},
+    "filter":               {path: "/src/database/filter.json",             type: "jsonc"},
+    "shops":                {path: "/src/database/shops.json",              type: "jsonc"},
+    "shop_items":           {path: "/src/database/shop_items.json",         type: "jsonc"}
 };
 
 const NAVIGATION = new Map();

@@ -4,10 +4,7 @@ Application:    Track-OOT
 
 ***
 
-## VERSION 1.7.0 (DEV)
-
-### ADDED RANDOMIZER OPTIONS
-- skip: hidden grottos without stone of agony
+## VERSION 1.7.0
 
 ### USABILITY ENHANCEMENTS
 - added filters and bulk select to lists in settngs
