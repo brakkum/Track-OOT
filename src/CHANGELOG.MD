@@ -15,6 +15,10 @@ Application:    Track-OOT
 - added undo (ctrl+z) / redo (ctrl+y)
 - split rom-settings and tracker-settings into seperate dialogs
 - better navbar (finally)
+- show savestate version on state windows
+- add state version to state windows
+- move date and version to right in state windows
+- make state windows select current state on show if possible
 
 ### IMPROVED LOGIC
 - logic is now way faster than before
