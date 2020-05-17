@@ -45,11 +45,13 @@ const TPL = new Template(`
 `);
     
 function stateChanged(event) {
-    let value = parseInt(event.data[this.ref]);
-    if (isNaN(value)) {
-        value = 0;
+    if (event.data[this.ref] != null) {
+        let value = parseInt(event.data[this.ref]);
+        if (isNaN(value)) {
+            value = 0;
+        }
+        this.value = value;
     }
-    this.value = value;
 }
 
 function itemUpdate(event) {

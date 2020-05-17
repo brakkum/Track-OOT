@@ -29161,14 +29161,14 @@
                 "el": [
                     {
                         "type": "value",
-                        "el": "option.doors_open_zora",
-                        "value": "doors_open_zora_both",
-                        "category": "option"
-                    },
-                    {
-                        "type": "value",
                         "el": "mixin.zora_fountain_access",
                         "category": "mixin"
+                    },
+                    {
+                        "type": "state",
+                        "el": "option.doors_open_zora",
+                        "value": "doors_open_zora_adult",
+                        "category": "option"
                     }
                 ]
             },
@@ -30653,7 +30653,7 @@
                         "category": "item"
                     },
                     {
-                        "type": "value",
+                        "type": "state",
                         "el": "option.doors_open_zora",
                         "value": "doors_open_zora_both",
                         "category": "option"

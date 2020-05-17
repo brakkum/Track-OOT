@@ -4,6 +4,25 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.2
+
+### BUGFIXES
+
+- fix items getting reset on rom options change
+- fix areas not updating counts on filter change
+
+---
+
+## VERSION 1.7.1
+
+### BUGFIXES
+
+- add open zora adult
+- fix logic for fountain and ice cavern access
+- fix detached window not loading
+
+---
+
 ## VERSION 1.7.0
 
 ### USABILITY ENHANCEMENTS
