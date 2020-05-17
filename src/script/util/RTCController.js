@@ -5,21 +5,25 @@ import EventBusModuleGeneric from "/emcJS/util/events/EventBusModuleGeneric.js";
 import RTCClient from "/rtc/RTCClient.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
-const CONFIG = [{
-    urls: 'stun:stun.zidargs.net:18001'
-},{
-    urls: [
-        'stun:stun.l.google.com:19302',
-        'stun:stun1.l.google.com:19302',
-        'stun:stun2.l.google.com:19302',
-        'stun:stun3.l.google.com:19302',
-        'stun:stun4.l.google.com:19302'
-    ]
-},{
-    urls: 'turn:turn.zidargs.net:18001',
-    credential: 'fHNsIeqdgVcUAypvaxDVE6tywaMlP1fA',
-    username: 'iamgroot'
-}];
+// TODO create listentry editor for using custom stun/turn server config
+
+const CONFIG = {
+    iceServers: [{
+        urls: 'stun:stun.zidargs.net:18001'
+    },{
+        urls: [
+            'stun:stun.l.google.com:19302',
+            'stun:stun1.l.google.com:19302',
+            'stun:stun2.l.google.com:19302',
+            'stun:stun3.l.google.com:19302',
+            'stun:stun4.l.google.com:19302'
+        ]
+    },{
+        urls: 'turn:turn.zidargs.net:18001',
+        credential: 'fHNsIeqdgVcUAypvaxDVE6tywaMlP1fA',
+        username: 'iamgroot'
+    }]
+};
 
 const rtcClient = new RTCClient(window.location.hostname == "localhost" ? 8001 : "", CONFIG, ["data"]);
 
