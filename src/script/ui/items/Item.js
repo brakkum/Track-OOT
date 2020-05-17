@@ -56,14 +56,16 @@ const TPL = new Template(`
 
 function stateChanged(event) {
     // savesatate
-    let value = parseInt(event.data[this.ref]);
-    if (isNaN(value)) {
-        value = 0;
+    if (event.data[this.ref] != null) {
+        let value = parseInt(event.data[this.ref]);
+        if (isNaN(value)) {
+            value = 0;
+        }
+        this.value = value;
     }
-    this.value = value;
     // settings
     let data = FileData.get("items")[this.ref];
-    if (data.hasOwnProperty("start_settings")) {
+    if (data.hasOwnProperty("start_settings") && event.data[data.start_settings] != null) {
         let startvalue = parseInt(event.data[data.start_settings]);
         if (isNaN(startvalue)) {
             startvalue = 1;
