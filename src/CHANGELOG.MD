@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.3
+
+### BUGFIXES
+
+- fix rtc server configuration
+
+---
+
 ## VERSION 1.7.2
 
 ### BUGFIXES
