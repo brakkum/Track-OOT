@@ -4,6 +4,16 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.1
+
+### BUGFIXES
+
+- add open zora adult
+- fix logic for fountain and ice cavern access
+- fix detached window not loading
+
+---
+
 ## VERSION 1.7.0
 
 ### USABILITY ENHANCEMENTS
