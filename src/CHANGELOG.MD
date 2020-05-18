@@ -12,7 +12,7 @@ Application:    Track-OOT
 - add support for multiple list filters
     - this allows filtering skulltulas/gossipstones directly from list in the future
 - add support for storing selected filters to savestate
-added theme support to context menu
+- added theme support to context menu
 
 ---
 
