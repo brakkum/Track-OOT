@@ -54,18 +54,30 @@ const TPL = new Template(`
     </slot>
 `);
 
-function stateChanged(event) {
-    // savesatate
-    if (event.data[this.ref] != null) {
-        let value = parseInt(event.data[this.ref]);
-        if (isNaN(value)) {
-            value = 0;
-        }
-        this.value = value;
-    }
+function optionsChanged(event) {
     // settings
     let data = FileData.get("items")[this.ref];
     if (data.hasOwnProperty("start_settings") && event.data[data.start_settings] != null) {
+        let startvalue = parseInt(event.data[data.start_settings]);
+        if (isNaN(startvalue)) {
+            startvalue = 1;
+        }
+        this.startvalue = startvalue;
+    } else {
+        this.fillItemChoices();
+    }
+}
+
+function stateChanged(event) {
+    // savesatate
+    let value = parseInt(event.data[this.ref]);
+    if (isNaN(value)) {
+        value = 0;
+    }
+    this.value = value;
+    // settings
+    let data = FileData.get("items")[this.ref];
+    if (data.hasOwnProperty("start_settings")) {
         let startvalue = parseInt(event.data[data.start_settings]);
         if (isNaN(startvalue)) {
             startvalue = 1;
@@ -103,7 +115,8 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.append(TPL.generate());
         /* event bus */
         this.registerGlobal("item", itemUpdate.bind(this));
-        this.registerGlobal(["state", "randomizer_options"], stateChanged.bind(this));
+        this.registerGlobal("state", stateChanged.bind(this));
+        this.registerGlobal("randomizer_options", optionsChanged.bind(this));
         this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));
         // TODO react to rom settings
     }

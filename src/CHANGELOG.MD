@@ -8,6 +8,15 @@ Application:    Track-OOT
 
 ### BUGFIXES
 
+- fix areas in list not updating
+- fix items not resetting on load/new state
+
+---
+
+## VERSION 1.7.3
+
+### BUGFIXES
+
 - fix rtc server configuration
 
 ---

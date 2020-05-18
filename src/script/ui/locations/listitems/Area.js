@@ -108,7 +108,7 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         /* event bus */
-        this.registerGlobal(["state", "state_change", "settings", "randomizer_options", "logic"], event => {
+        this.registerGlobal(["state", "state_change", "settings", "randomizer_options", "logic", "filter"], event => {
             this.update()
         });
         //this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));

@@ -168,7 +168,7 @@ export default class ListEntrance extends EventBusSubsetMixin(HTMLElement) {
             }
             this.value = value;
         });
-        this.registerGlobal(["settings", "randomizer_options", "logic"], event => {
+        this.registerGlobal(["settings", "randomizer_options", "logic", "filter"], event => {
             this.update()
         });
         this.registerGlobal("entrance", event => {
