@@ -10,7 +10,7 @@ import "./marker/Entrance.js";
 import "./marker/Location.js";
 import "./marker/Gossipstone.js";
 import "/script/ui/dungeonstate/DungeonType.js";
-import "/script/ui/FilterButton.js";
+import "/script/ui/FilterMenu.js";
 
 const ZOOM_MIN = 10;
 const ZOOM_MAX = 200;
@@ -188,9 +188,9 @@ const TPL = new Template(`
                 <div id="toggle-button" class="button-wrapper">⇑</div>
                 <div class="button-wrapper">
                     <emc-switchbutton id="location-mode" class="button" value="chests">
-                        <emc-option value="chests" style="background-image: url('images/world/icons/chest.svg')"></emc-option>
-                        <emc-option value="skulltulas" style="background-image: url('images/world/icons/skulltula.svg')"></emc-option>
-                        <emc-option value="gossipstones" style="background-image: url('images/world/icons/gossipstone.svg')"></emc-option>
+                        <emc-option value="chests" style="background-image: url('images/icons/chest.svg')"></emc-option>
+                        <emc-option value="skulltulas" style="background-image: url('images/icons/skulltula.svg')"></emc-option>
+                        <emc-option value="gossipstones" style="background-image: url('images/icons/gossipstone.svg')"></emc-option>
                     </emc-switchbutton>
                 </div>
                 <!-- dungeon type button
@@ -200,8 +200,8 @@ const TPL = new Template(`
                 </div>
                 -->
                 <div class="button-wrapper">
-                    <ootrt-filterbutton id="filter-era" class="button" ref="filter.era">
-                    </ootrt-filterbutton>
+                    <ootrt-filtermenu class="button map-menu">
+                    </ootrt-filtermenu>
                 </div>
             </div>
             <div class="map-options">
@@ -478,11 +478,11 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
         if (!!data) {
             // switch map/minimap background
             let map = this.shadowRoot.getElementById('map');
-            map.style.backgroundImage = `url("/images/world/maps/${data.background}")`;
+            map.style.backgroundImage = `url("/images/maps/${data.background}")`;
             map.style.width = `${data.width}px`;
             map.style.height = `${data.height}px`;
             let minimap = this.shadowRoot.getElementById('map-overview');
-            minimap.style.backgroundImage = `url("/images/world/maps/${data.background}")`;
+            minimap.style.backgroundImage = `url("/images/maps/${data.background}")`;
             // fill map
             if (dType == "n") {
 

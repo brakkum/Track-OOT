@@ -84,9 +84,9 @@ const TPL = new Template(`
     <div class="textarea">
         <div id="text"></div>
         <div id="badge">
-            <emc-icon id="badge-type" src="images/world/icons/location.svg"></emc-icon>
-            <emc-icon id="badge-time" src="images/world/time/always.svg"></emc-icon>
-            <emc-icon id="badge-era" src="images/world/era/none.svg"></emc-icon>
+            <emc-icon id="badge-type" src="images/icons/location.svg"></emc-icon>
+            <emc-icon id="badge-time" src="images/icons/time_always.svg"></emc-icon>
+            <emc-icon id="badge-era" src="images/icons/era_none.svg"></emc-icon>
         </div>
     </div>
 `);
@@ -104,7 +104,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.append(TPL.generate());
         if (!!type) {
             let el_type = this.shadowRoot.getElementById("badge-type");
-            el_type.src = `images/world/icons/${type}.svg`;
+            el_type.src = `images/icons/${type}.svg`;
             type = `location_${type}`;
         } else {
             type = "location";
@@ -252,19 +252,19 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
     setFilterData(data) {
         let el_era = this.shadowRoot.getElementById("badge-era");
         if (!data["filter.era/child"]) {
-            el_era.src = "images/world/era/adult.svg";
+            el_era.src = "images/icons/era_adult.svg";
         } else if (!data["filter.era/adult"]) {
-            el_era.src = "images/world/era/child.svg";
+            el_era.src = "images/icons/era_child.svg";
         } else {
-            el_era.src = "images/world/era/both.svg";
+            el_era.src = "images/icons/era_both.svg";
         }
         let el_time = this.shadowRoot.getElementById("badge-time");
         if (!data["filter.time/day"]) {
-            el_time.src = "images/world/time/night.svg";
+            el_time.src = "images/icons/time_night.svg";
         } else if (!data["filter.time/night"]) {
-            el_time.src = "images/world/time/day.svg";
+            el_time.src = "images/icons/time_day.svg";
         } else {
-            el_time.src = "images/world/time/always.svg";
+            el_time.src = "images/icons/time_always.svg";
         }
     }
 

@@ -4,6 +4,18 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.5
+
+### BUGFIXES
+
+- fix hidden areas not updating correctly
+- add support for multiple list filters
+    - this allows filtering skulltulas/gossipstones directly from list in the future
+- add support for storing selected filters to savestate
+added theme support to context menu
+
+---
+
 ## VERSION 1.7.4
 
 ### BUGFIXES

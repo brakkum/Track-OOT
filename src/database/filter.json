@@ -1,6 +1,8 @@
 {
     "filter.era": {
-        "type": "choice",
+        "choice": true,
+        "badge": true,
+        "stored": false,
         "default": "",
         "values": [
             "",
@@ -8,13 +10,15 @@
             "adult"
         ],
         "images": [
-            "/images/world/era/both.svg",
-            "/images/world/era/child.svg",
-            "/images/world/era/adult.svg"
+            "/images/icons/era_both.svg",
+            "/images/icons/era_child.svg",
+            "/images/icons/era_adult.svg"
         ]
     },
     "filter.time": {
-        "type": "-choice",
+        "choice": false,
+        "badge": true,
+        "stored": false,
         "default": "",
         "values": [
             "",
@@ -22,9 +26,37 @@
             "night"
         ],
         "images": [
-            "/images/world/time/always.svg",
-            "/images/world/time/day.svg",
-            "/images/world/time/night.svg"
+            "/images/icons/time_always.svg",
+            "/images/icons/time_day.svg",
+            "/images/icons/time_night.svg"
+        ]
+    },
+    "filter.skulltulas": {
+        "choice": false,
+        "badge": false,
+        "stored": true,
+        "default": "true",
+        "values": [
+            "true",
+            "false"
+        ],
+        "images": [
+            "/images/icons/skulltula.svg",
+            "/images/icons/skulltula_no.svg"
+        ]
+    },
+    "filter.gossipstones": {
+        "choice": false,
+        "badge": false,
+        "stored": true,
+        "default": "false",
+        "values": [
+            "true",
+            "false"
+        ],
+        "images": [
+            "/images/icons/gossipstone.svg",
+            "/images/icons/gossipstone_no.svg"
         ]
     }
 }

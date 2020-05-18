@@ -212,7 +212,7 @@ function createLogicWorldCategories(data, world) {
                         "access": ref.access,
                         "category": ref.category,
                         "content": record.id,
-                        "icon": `/src/images/world/icons/${ref.type}.svg`
+                        "icon": `/src/images/icons/${ref.type}.svg`
                     });
                 } else {
                     Dialog.alert("Error!", `creating world logics encountered missing id in world.json file: ${record.id}`);
@@ -251,7 +251,7 @@ function createLogicWorldCategories(data, world) {
                         "access": ref.access,
                         "category": ref.category,
                         "content": record.id,
-                        "icon": `/src/images/world/icons/${ref.type}.svg`
+                        "icon": `/src/images/icons/${ref.type}.svg`
                     });
                 } else {
                     Dialog.alert("Error!", `creating world logics encountered missing id in world.json file: ${record.id}`);

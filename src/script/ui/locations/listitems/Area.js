@@ -79,9 +79,9 @@ const TPL = new Template(`
     <div class="textarea">
         <div id="text"></div>
         <div id="badge">
-            <emc-icon src="images/world/icons/area.svg"></emc-icon>
-            <emc-icon id="badge-time" src="images/world/time/always.svg"></emc-icon>
-            <emc-icon id="badge-era" src="images/world/era/both.svg"></emc-icon>
+            <emc-icon src="images/icons/area.svg"></emc-icon>
+            <emc-icon id="badge-time" src="images/icons/time_always.svg"></emc-icon>
+            <emc-icon id="badge-era" src="images/icons/era_both.svg"></emc-icon>
         </div>
     </div>
 `);
@@ -109,9 +109,14 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
         });
         /* event bus */
         this.registerGlobal(["state", "state_change", "settings", "randomizer_options", "logic", "filter"], event => {
-            this.update()
+            this.update();
         });
         //this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        this.update();
     }
 
     async update() {
@@ -164,19 +169,19 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
     setFilterData(data) {
         let el_era = this.shadowRoot.getElementById("badge-era");
         if (!data["filter.era/child"]) {
-            el_era.src = "images/world/era/adult.svg";
+            el_era.src = "images/icons/era_adult.svg";
         } else if (!data["filter.era/adult"]) {
-            el_era.src = "images/world/era/child.svg";
+            el_era.src = "images/icons/era_child.svg";
         } else {
-            el_era.src = "images/world/era/both.svg";
+            el_era.src = "images/icons/era_both.svg";
         }
         let el_time = this.shadowRoot.getElementById("badge-time");
         if (!data["filter.time/day"]) {
-            el_time.src = "images/world/time/night.svg";
+            el_time.src = "images/icons/time_night.svg";
         } else if (!data["filter.time/night"]) {
-            el_time.src = "images/world/time/day.svg";
+            el_time.src = "images/icons/time_day.svg";
         } else {
-            el_time.src = "images/world/time/always.svg";
+            el_time.src = "images/icons/time_always.svg";
         }
     }
 

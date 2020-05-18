@@ -14,7 +14,7 @@ import "./listitems/Entrance.js";
 import "./listitems/Location.js";
 import "./listitems/Gossipstone.js";
 import "/script/ui/dungeonstate/DungeonType.js";
-import "/script/ui/FilterButton.js";
+import "/script/ui/FilterMenu.js";
 
 const SettingsStorage = new IDBStorage('settings');
 
@@ -51,9 +51,11 @@ const TPL = new Template(`
             width: 38px;
             height: 38px;
             padding: 4px;
-            margin-left: 8px;
             border: solid 2px var(--navigation-background-color, #ffffff);
             border-radius: 10px;
+        }
+        #title > .button {
+            margin-left: 8px;
         }
         #body {
             flex: 1;
@@ -98,8 +100,8 @@ const TPL = new Template(`
         <div id="title-text">${Language.translate("hyrule")}</div>
         <ootrt-dungeontype id="location-version" class="button" ref="" value="v" readonly="true">
         </ootrt-dungeontype>
-        <ootrt-filterbutton id="filter-era" class="button" ref="filter.era">
-        </ootrt-filterbutton>
+        <ootrt-filtermenu class="button">
+        </ootrt-filtermenu>
     </div>
     <div id="body">
         <ootrt-list-button id="back">(${Language.translate("back")})</ootrt-list-button>

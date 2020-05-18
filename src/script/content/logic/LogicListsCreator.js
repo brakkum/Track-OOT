@@ -211,7 +211,7 @@ function createLogicWorldCategories(data, world) {
                         "access": ref.access,
                         "category": ref.category,
                         "content": record.id,
-                        "icon": `images/world/icons/${ref.type}.svg`
+                        "icon": `images/icons/${ref.type}.svg`
                     });
                 }
             }
@@ -247,7 +247,7 @@ function createLogicWorldCategories(data, world) {
                         "access": ref.access,
                         "category": ref.category,
                         "content": record.id,
-                        "icon": `images/world/icons/${ref.type}.svg`
+                        "icon": `images/icons/${ref.type}.svg`
                     });
                 }
             }
