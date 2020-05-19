@@ -11,19 +11,9 @@
         "category": "mixin"
     },
     "logic.location.kokiri.c_storm_grotto": {
-        "type": "and",
-        "el": [
-            {
-                "type": "value",
-                "el": "item.ocarina",
-                "category": "item"
-            },
-            {
-                "type": "value",
-                "el": "item.song_storm",
-                "category": "item"
-            }
-        ]
+        "type": "value",
+        "el": "mixin.can_open_storm_grotto",
+        "category": "mixin"
     },
     "logic.location.hyrule_field.c_song_of_time": {
         "type": "and",
@@ -67,17 +57,12 @@
     },
     "logic.location.hyrule_field.c_hyrule_deku_salesman_grotto": {
         "type": "value",
-        "el": "mixin.can_blast_or_smash",
+        "el": "mixin.can_open_bomb_grotto",
         "category": "mixin"
     },
     "logic.location.hyrule_field.c_diving_heart_piece_grotto": {
         "type": "and",
         "el": [
-            {
-                "type": "value",
-                "el": "mixin.can_blast_or_smash",
-                "category": "mixin"
-            },
             {
                 "type": "or",
                 "el": [
@@ -106,6 +91,11 @@
                         ]
                     }
                 ]
+            },
+            {
+                "type": "value",
+                "el": "mixin.can_open_bomb_grotto",
+                "category": "mixin"
             }
         ]
     },
@@ -1644,17 +1634,12 @@
         "el": [
             {
                 "type": "value",
-                "el": "item.ocarina",
-                "category": "item"
-            },
-            {
-                "type": "value",
-                "el": "item.song_storm",
-                "category": "item"
-            },
-            {
-                "type": "value",
                 "el": "mixin.can_enter_mountain",
+                "category": "mixin"
+            },
+            {
+                "type": "value",
+                "el": "mixin.can_open_storm_grotto",
                 "category": "mixin"
             }
         ]
@@ -9224,16 +9209,6 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "value",
-                        "el": "item.hammer",
-                        "category": "item"
-                    },
-                    {
-                        "type": "value",
-                        "el": "item.ocarina",
-                        "category": "item"
-                    },
-                    {
                         "type": "or",
                         "el": [
                             {
@@ -9247,13 +9222,43 @@
                                 "category": "item"
                             }
                         ]
+                    },
+                    {
+                        "type": "value",
+                        "el": "mixin.can_become_adult",
+                        "category": "mixin"
+                    },
+                    {
+                        "type": "value",
+                        "el": "mixin.can_use_ocarina",
+                        "category": "mixin"
+                    },
+                    {
+                        "type": "value",
+                        "el": "mixin.can_open_bomb_grotto",
+                        "category": "mixin"
                     }
                 ]
             },
             {
-                "type": "value",
-                "el": "mixin.has_explosives",
-                "category": "mixin"
+                "type": "and",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": "mixin.can_open_bomb_grotto",
+                        "category": "mixin"
+                    },
+                    {
+                        "type": "value",
+                        "el": "mixin.is_currently_child",
+                        "category": "mixin"
+                    },
+                    {
+                        "type": "value",
+                        "el": "mixin.has_explosives",
+                        "category": "mixin"
+                    }
+                ]
             }
         ]
     },
@@ -10223,7 +10228,7 @@
     },
     "logic.location.kakariko.c_redead_grotto": {
         "type": "value",
-        "el": "mixin.can_blast_or_smash",
+        "el": "mixin.can_open_bomb_grotto",
         "category": "mixin"
     },
     "logic.location.kakariko.c_cow_hp": {
@@ -11099,17 +11104,12 @@
         "el": [
             {
                 "type": "value",
-                "el": "item.ocarina",
-                "category": "item"
-            },
-            {
-                "type": "value",
-                "el": "item.song_storm",
-                "category": "item"
-            },
-            {
-                "type": "value",
                 "el": "mixin.can_stun_deku",
+                "category": "mixin"
+            },
+            {
+                "type": "value",
+                "el": "mixin.can_open_storm_grotto",
                 "category": "mixin"
             }
         ]
@@ -11119,17 +11119,12 @@
         "el": [
             {
                 "type": "value",
-                "el": "item.ocarina",
-                "category": "item"
-            },
-            {
-                "type": "value",
-                "el": "item.song_storm",
-                "category": "item"
-            },
-            {
-                "type": "value",
                 "el": "mixin.can_stun_deku",
+                "category": "mixin"
+            },
+            {
+                "type": "value",
+                "el": "mixin.can_open_storm_grotto",
                 "category": "mixin"
             }
         ]
@@ -11661,17 +11656,12 @@
             },
             {
                 "type": "value",
-                "el": "item.ocarina",
-                "category": "item"
-            },
-            {
-                "type": "value",
-                "el": "item.song_storm",
-                "category": "item"
-            },
-            {
-                "type": "value",
                 "el": "mixin.can_stun_deku",
+                "category": "mixin"
+            },
+            {
+                "type": "value",
+                "el": "mixin.can_open_storm_grotto",
                 "category": "mixin"
             }
         ]
@@ -11686,17 +11676,12 @@
             },
             {
                 "type": "value",
-                "el": "item.ocarina",
-                "category": "item"
-            },
-            {
-                "type": "value",
-                "el": "item.song_storm",
-                "category": "item"
-            },
-            {
-                "type": "value",
                 "el": "mixin.can_stun_deku",
+                "category": "mixin"
+            },
+            {
+                "type": "value",
+                "el": "mixin.can_open_storm_grotto",
                 "category": "mixin"
             }
         ]
@@ -11753,15 +11738,40 @@
         "type": "and",
         "el": [
             {
-                "type": "value",
-                "el": "item.ocarina",
-                "category": "item"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": "mixin.can_become_adult",
+                        "category": "mixin"
+                    },
+                    {
+                        "type": "value",
+                        "el": "mixin.has_explosives",
+                        "category": "mixin"
+                    },
+                    {
+                        "type": "value",
+                        "el": "item.scale",
+                        "category": "item"
+                    }
+                ]
             },
             {
                 "type": "value",
-                "el": "item.song_storm",
-                "category": "item"
+                "el": "mixin.can_stun_deku",
+                "category": "mixin"
             },
+            {
+                "type": "value",
+                "el": "mixin.can_open_storm_grotto",
+                "category": "mixin"
+            }
+        ]
+    },
+    "logic.location.river.c_zora_grotto_salesman_2": {
+        "type": "and",
+        "el": [
             {
                 "type": "or",
                 "el": [
@@ -11786,45 +11796,10 @@
                 "type": "value",
                 "el": "mixin.can_stun_deku",
                 "category": "mixin"
-            }
-        ]
-    },
-    "logic.location.river.c_zora_grotto_salesman_2": {
-        "type": "and",
-        "el": [
-            {
-                "type": "value",
-                "el": "item.ocarina",
-                "category": "item"
             },
             {
                 "type": "value",
-                "el": "item.song_storm",
-                "category": "item"
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "value",
-                        "el": "mixin.can_become_adult",
-                        "category": "mixin"
-                    },
-                    {
-                        "type": "value",
-                        "el": "mixin.has_explosives",
-                        "category": "mixin"
-                    },
-                    {
-                        "type": "value",
-                        "el": "item.scale",
-                        "category": "item"
-                    }
-                ]
-            },
-            {
-                "type": "value",
-                "el": "mixin.can_stun_deku",
+                "el": "mixin.can_open_storm_grotto",
                 "category": "mixin"
             }
         ]
@@ -21962,6 +21937,11 @@
                         ]
                     }
                 ]
+            },
+            {
+                "type": "value",
+                "el": "mixin.can_open_bomb_grotto",
+                "category": "mixin"
             }
         ]
     },
@@ -24059,47 +24039,57 @@
         ]
     },
     "logic.location.hyrule_field.s_hyrule_north_east_grotto": {
-        "type": "or",
+        "type": "and",
         "el": [
             {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
-                        "type": "value",
-                        "el": "mixin.can_leave_forest",
-                        "category": "mixin"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "mixin.can_leave_forest",
+                                "category": "mixin"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.boomerang",
+                                "category": "item"
+                            },
+                            {
+                                "type": "value",
+                                "el": "mixin.has_explosives",
+                                "category": "mixin"
+                            }
+                        ]
                     },
                     {
-                        "type": "value",
-                        "el": "item.boomerang",
-                        "category": "item"
-                    },
-                    {
-                        "type": "value",
-                        "el": "mixin.has_explosives",
-                        "category": "mixin"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "mixin.can_become_adult",
+                                "category": "mixin"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.hookshot",
+                                "category": "item"
+                            },
+                            {
+                                "type": "value",
+                                "el": "mixin.can_blast_or_smash",
+                                "category": "mixin"
+                            }
+                        ]
                     }
                 ]
             },
             {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "value",
-                        "el": "mixin.can_become_adult",
-                        "category": "mixin"
-                    },
-                    {
-                        "type": "value",
-                        "el": "item.hookshot",
-                        "category": "item"
-                    },
-                    {
-                        "type": "value",
-                        "el": "mixin.can_blast_or_smash",
-                        "category": "mixin"
-                    }
-                ]
+                "type": "value",
+                "el": "mixin.can_open_bomb_grotto",
+                "category": "mixin"
             }
         ]
     },
@@ -24185,6 +24175,11 @@
                         ]
                     }
                 ]
+            },
+            {
+                "type": "value",
+                "el": "mixin.can_open_bomb_grotto",
+                "category": "mixin"
             }
         ]
     },
@@ -24213,22 +24208,17 @@
         "el": [
             {
                 "type": "value",
-                "el": "item.song_storm",
-                "category": "item"
-            },
-            {
-                "type": "value",
-                "el": "item.ocarina",
-                "category": "item"
-            },
-            {
-                "type": "value",
                 "el": "item.boomerang",
                 "category": "item"
             },
             {
                 "type": "value",
                 "el": "mixin.has_explosives",
+                "category": "mixin"
+            },
+            {
+                "type": "value",
+                "el": "mixin.can_open_storm_grotto",
                 "category": "mixin"
             }
         ]
@@ -30715,5 +30705,70 @@
             "value": "adult",
             "category": "filter"
         }
+    },
+    "mixin.can_use_ocarina": {
+        "type": "or",
+        "el": [
+            {
+                "type": "value",
+                "el": "item.ocarina",
+                "category": "item"
+            }
+        ]
+    },
+    "mixin.can_open_bomb_grotto": {
+        "type": "and",
+        "el": [
+            {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": "skip.hidden_grotto_no_agony",
+                        "category": "skip"
+                    },
+                    {
+                        "type": "value",
+                        "el": "item.stone_of_agony",
+                        "category": "item"
+                    }
+                ]
+            },
+            {
+                "type": "value",
+                "el": "mixin.can_blast_or_smash",
+                "category": "mixin"
+            }
+        ]
+    },
+    "mixin.can_open_storm_grotto": {
+        "type": "and",
+        "el": [
+            {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": "skip.hidden_grotto_no_agony",
+                        "category": "skip"
+                    },
+                    {
+                        "type": "value",
+                        "el": "item.stone_of_agony",
+                        "category": "item"
+                    }
+                ]
+            },
+            {
+                "type": "value",
+                "el": "item.song_storm",
+                "category": "item"
+            },
+            {
+                "type": "value",
+                "el": "mixin.can_use_ocarina",
+                "category": "mixin"
+            }
+        ]
     }
 }
