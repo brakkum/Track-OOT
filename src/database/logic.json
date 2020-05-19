@@ -1185,10 +1185,9 @@
                         ]
                     },
                     {
-                        "type": "state",
-                        "el": "option.keysanity_small",
-                        "value": "keysanity_small_keysanity",
-                        "category": "option"
+                        "type": "value",
+                        "el": "item.boots_iron",
+                        "category": "item"
                     }
                 ]
             },
@@ -1416,32 +1415,6 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "value",
-                                "el": "item.song_zelda",
-                                "category": "item"
-                            },
-                            {
-                                "type": "value",
-                                "el": "item.ocarina",
-                                "category": "item"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "state",
-                        "el": "option.keysanity_small",
-                        "value": "keysanity_small_keysanity",
-                        "category": "option"
-                    }
-                ]
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
                         "type": "min",
                         "el": {
                             "type": "value",
@@ -1487,22 +1460,6 @@
                 "type": "value",
                 "el": "item.ocarina",
                 "category": "item"
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "value",
-                        "el": "item.song_zelda",
-                        "category": "item"
-                    },
-                    {
-                        "type": "state",
-                        "el": "option.keysanity_small",
-                        "value": "keysanity_small_keysanity",
-                        "category": "option"
-                    }
-                ]
             },
             {
                 "type": "or",
@@ -24404,32 +24361,6 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "value",
-                                "el": "item.song_zelda",
-                                "category": "item"
-                            },
-                            {
-                                "type": "value",
-                                "el": "item.ocarina",
-                                "category": "item"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "state",
-                        "el": "option.keysanity_small",
-                        "value": "keysanity_small_keysanity",
-                        "category": "option"
-                    }
-                ]
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
                         "type": "min",
                         "el": {
                             "type": "value",
@@ -24484,10 +24415,9 @@
                         ]
                     },
                     {
-                        "type": "state",
-                        "el": "option.keysanity_small",
-                        "value": "keysanity_small_keysanity",
-                        "category": "option"
+                        "type": "value",
+                        "el": "item.boots_iron",
+                        "category": "item"
                     }
                 ]
             },
@@ -24683,22 +24613,6 @@
                         "type": "state",
                         "el": "option.keysanity_small",
                         "value": "keysanity_small_ignore",
-                        "category": "option"
-                    }
-                ]
-            },
-            {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "value",
-                        "el": "item.song_zelda",
-                        "category": "item"
-                    },
-                    {
-                        "type": "state",
-                        "el": "option.keysanity_small",
-                        "value": "keysanity_small_keysanity",
                         "category": "option"
                     }
                 ]
