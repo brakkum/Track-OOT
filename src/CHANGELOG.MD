@@ -9,7 +9,7 @@ Application:    Track-OOT
 ### FEATURES
 
 - added skulltulas filter for list and map
-- added skulltulas filter for list and map
+- added gossipstones filter for list and map
     - remove gossipstones disable option
 
 ### BUGFIXES
