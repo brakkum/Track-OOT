@@ -4,6 +4,18 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.6
+
+### FEATURES
+
+- added hidden grotto logic
+
+### BUGFIXES
+
+- fixed some checks in water temple requireing lullaby although they should not
+
+---
+
 ## VERSION 1.7.5
 
 ### BUGFIXES
