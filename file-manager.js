@@ -12,7 +12,7 @@
         return path.replace(/\\/g, "/");
     }
 
-    class Deleted {
+    class FileManager {
 
         register(src = "/", dest = "/", sourcemaps = false) {
             let files = [];
@@ -28,7 +28,7 @@
             });
         }
 
-        cleanup(dest = "/") {
+        finish(dest = "/", index = "index.json") {
             let destFiles = glob.sync("./**/*", {
                 nodir: true,
                 cwd: dest,
@@ -36,9 +36,6 @@
             });
 
             let srcFiles = Array.from(FILES);
-
-            // fs.writeFileSync("src.txt", srcFiles.sort().join("\n"));
-            // fs.writeFileSync("dst.txt", destFiles.sort().join("\n"));
             
             for (let i in destFiles) {
                 let fName = destFiles[i];
@@ -50,11 +47,16 @@
 
             // TODO remove empty folders
 
+            let files = Array.from(FILES).map(el=>`/${path.relative(dest, el)}`);
+            files.push("/");
+            // TODO generate file structure object for sorting
+            fs.writeFileSync(path.resolve(dest, index), JSON.stringify(files, null, 4));
+
             FILES.clear();
         }
 
     }
 
-    module.exports = new Deleted;
+    module.exports = new FileManager();
 
 }();
