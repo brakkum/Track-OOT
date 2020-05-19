@@ -320,6 +320,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -336,6 +339,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -352,6 +358,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -359,10 +368,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.kokiri.g_gossip_kokiri",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -371,6 +377,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -378,10 +387,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.kokiri.g_gossip_grotto_kokiri",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -390,6 +396,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -397,10 +406,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.kokiri.g_gossip_deku_left",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -409,6 +415,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -416,10 +425,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.kokiri.g_gossip_deku_right",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -428,6 +434,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -658,6 +667,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -674,6 +686,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -690,6 +705,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -706,6 +724,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -713,10 +734,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.desert.g_gossip_desert",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -725,6 +743,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -926,6 +947,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -942,6 +966,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -958,6 +985,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -974,6 +1004,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -981,10 +1014,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.river.g_gossip_plateau",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -993,6 +1023,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -1000,10 +1033,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.river.g_gossip_waterfall",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1012,6 +1042,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -1019,10 +1052,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.river.g_gossip_grotto_river",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1031,6 +1061,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -1226,6 +1259,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -1242,6 +1278,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -1249,10 +1288,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.hyrule_field.g_gossip_grotto_near_market",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1261,6 +1297,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -1268,10 +1307,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.hyrule_field.g_gossip_grotto_near_lake",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1280,6 +1316,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -1287,10 +1326,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.hyrule_field.g_gossip_grotto_small_forest",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1299,6 +1335,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -1306,10 +1345,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.hyrule_field.g_gossip_field_valley",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1318,6 +1354,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -1583,6 +1622,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -1599,6 +1641,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -1615,6 +1660,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -1631,6 +1679,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -1638,10 +1689,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.gerudo_valley.g_gossip_gerudo_valley",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1650,6 +1698,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -1883,6 +1934,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -1899,6 +1953,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -1915,6 +1972,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -1931,6 +1991,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -1947,6 +2010,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -1954,10 +2020,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.lake.g_gossip_waterfall",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1966,6 +2029,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -1973,10 +2039,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.lake.g_gossip_southeast",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -1985,6 +2048,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -1992,10 +2058,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.lake.g_gossip_southwest",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -2004,6 +2067,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -2265,6 +2331,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -2281,6 +2350,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -2297,6 +2369,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -2313,6 +2388,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -2586,6 +2664,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -2602,6 +2683,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -2921,6 +3005,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -2937,6 +3024,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -2953,6 +3043,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -2969,6 +3062,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -2976,10 +3072,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.woods.g_gossip_bridge",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -2988,6 +3081,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -2995,10 +3091,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.woods.g_gossip_meadow_left",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3007,6 +3100,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -3014,10 +3110,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.woods.g_gossip_meadow_right",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3026,6 +3119,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -3033,10 +3129,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.woods.g_gossip_meadow_saria",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3045,6 +3138,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -3052,10 +3148,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.woods.g_gossip_grotto_woods",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3064,6 +3157,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -3384,6 +3480,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -3400,6 +3499,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -3416,6 +3518,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -3432,6 +3537,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -3439,10 +3547,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_castle_malon",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3451,6 +3556,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -3458,10 +3566,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_castle_climb",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3470,6 +3575,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -3477,10 +3585,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_castle_grotto",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3489,6 +3594,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -3496,10 +3604,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_tot_1",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3508,6 +3613,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -3515,10 +3623,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_tot_2",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3527,6 +3632,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -3534,10 +3642,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_tot_3",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3546,6 +3651,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -3553,10 +3661,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.castle_town.g_gossip_tot_4",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -3565,6 +3670,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -4208,6 +4316,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -4224,6 +4335,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -4240,6 +4354,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -4256,6 +4373,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -4272,6 +4392,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -4288,6 +4411,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -4304,6 +4430,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -4320,6 +4449,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -4327,10 +4459,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.kakariko.g_gossip_graveyard",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -4339,6 +4468,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -4346,10 +4478,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.kakariko.g_gossip_grotto_kakariko",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -4358,6 +4487,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -4837,6 +4969,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -4853,6 +4988,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -4869,6 +5007,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -4885,6 +5026,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -4901,6 +5045,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -4917,6 +5064,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -4924,10 +5074,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.mountain.g_gossip_dm_crater",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -4936,6 +5083,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -4943,10 +5093,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.mountain.g_gossip_dm_trail",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -4955,6 +5102,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -4962,10 +5112,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.mountain.g_gossip_grotto_crater",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -4974,6 +5121,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -4981,10 +5131,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.mountain.g_gossip_grotto_mountain",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -4993,6 +5140,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -5290,6 +5440,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -5306,6 +5459,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -5313,10 +5469,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.goron.g_gossip_maze",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -5325,6 +5478,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -5332,10 +5488,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.goron.g_gossip_medigoron",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -5344,6 +5497,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -5504,6 +5660,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -5520,6 +5679,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -5536,6 +5698,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -5552,6 +5717,9 @@
             "filter.time": {
                 "day": false,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -5559,10 +5727,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.zoras.g_gossip_zora_king",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -5571,6 +5736,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -5578,10 +5746,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.zoras.g_gossip_zora_fairy",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -5590,6 +5755,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -5597,10 +5765,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.zoras.g_gossip_zora_jabu",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -5609,6 +5774,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -5999,6 +6167,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -6015,6 +6186,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -6031,6 +6205,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -6047,6 +6224,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -6063,6 +6243,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -6079,6 +6262,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -6277,6 +6463,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -6293,6 +6482,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -6309,6 +6501,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -6325,6 +6520,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -6341,6 +6539,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -6357,6 +6558,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7300,6 +7504,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7316,6 +7523,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7332,6 +7542,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7348,6 +7561,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7364,6 +7580,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7380,6 +7599,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7396,6 +7618,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7412,6 +7637,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7842,6 +8070,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7858,6 +8089,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7874,6 +8108,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7890,6 +8127,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7906,6 +8146,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7922,6 +8165,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7938,6 +8184,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7954,6 +8203,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7970,6 +8222,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7986,6 +8241,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -7993,10 +8251,7 @@
         "category": "location",
         "type": "gossipstone",
         "access": "logic.location.dodongo.g_gossip_dodongo",
-        "visible": {
-            "type": "value",
-            "el": "option.gossipstones_active"
-        },
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -8005,6 +8260,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.gossipstones": {
+                "false": false
             }
         }
     },
@@ -8337,6 +8595,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -8353,6 +8614,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -8369,6 +8633,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -8385,6 +8652,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -8401,6 +8671,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -8417,6 +8690,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -8433,6 +8709,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -8449,6 +8728,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -8919,6 +9201,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -8935,6 +9220,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -8951,6 +9239,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -8967,6 +9258,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -8983,6 +9277,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -8999,6 +9296,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -9015,6 +9315,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -9031,6 +9334,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -9047,6 +9353,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -9063,6 +9372,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -9549,6 +9861,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -9565,6 +9880,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -9581,6 +9899,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -9597,6 +9918,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -9613,6 +9937,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -9629,6 +9956,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -9645,6 +9975,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -9661,6 +9994,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -9677,6 +10013,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -9693,6 +10032,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10019,6 +10361,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10035,6 +10380,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10051,6 +10399,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10067,6 +10418,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10083,6 +10437,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10099,6 +10456,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10115,6 +10475,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10131,6 +10494,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10147,6 +10513,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10163,6 +10532,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10825,6 +11197,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10841,6 +11216,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10857,6 +11235,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10873,6 +11254,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10889,6 +11273,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10905,6 +11292,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10921,6 +11311,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10937,6 +11330,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10953,6 +11349,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -10969,6 +11368,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -11695,6 +12097,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -11711,6 +12116,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -11727,6 +12135,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -11743,6 +12154,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -11759,6 +12173,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -11775,6 +12192,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -11791,6 +12211,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -11807,6 +12230,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -11823,6 +12249,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },
@@ -11839,6 +12268,9 @@
             "filter.time": {
                 "day": true,
                 "night": true
+            },
+            "filter.skulltulas": {
+                "false": false
             }
         }
     },

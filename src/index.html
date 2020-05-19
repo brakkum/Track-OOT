@@ -12,6 +12,7 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/images/favicons/default_96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/default_16.png">
         <link rel="icon" type="image/svg+xml" href="/images/logo.svg" sizes="any">
+        <link rel="apple-touch-icon" href="/images/favicons/default_192.png">
         <link rel="manifest" href="/manifest.json">
         <script src="script/import.js"></script>
         <script>
@@ -102,14 +103,14 @@
                             navigator.serviceWorker.removeEventListener('message', swStateRecieve);
                         }
                         updateLoadingMessage("add structure...");
-                        let r = await $import.importHTML("/content/app.html");
+                        let r = await $import.html("/content/app.html");
                         while (r.length > 0) {
                             document.body.append(r[0]);
                         }
                         updateLoadingMessage("add style...");
-                        await $import.importCSS("/style/index.css");
+                        await $import.addStyle("/style/index.css");
                         updateLoadingMessage("add script...");
-                        await $import.importModule("/script/app.js");
+                        await $import.addModule("/script/app.js");
                     } catch(e) {
                         printError(e);
                     }

@@ -69,29 +69,36 @@ window.onbeforeunload = function() {
 
 async function init() {
 
-    const EventBus = (await import("/emcJS/util/events/EventBus.js")).default;
-    const Logger = (await import("/emcJS/util/Logger.js")).default;
-    const TrackerSettingsWindow = (await import("/script/ui/TrackerSettingsWindow.js")).default;
-    const StateStorage = (await import("/script/storage/StateStorage.js")).default;
-    const RandomizerOptionsWindow = (await import("/script/ui/RandomizerOptionsWindow.js")).default;
+    const [
+        EventBus,
+        Logger,
+        TrackerSettingsWindow,
+        StateStorage,
+        RandomizerOptionsWindow
+    ] = await $import.module([
+        // consts
+        "/emcJS/util/events/EventBus.js",
+        "/emcJS/util/Logger.js",
+        "/script/ui/TrackerSettingsWindow.js",
+        "/script/storage/StateStorage.js",
+        "/script/ui/RandomizerOptionsWindow.js",
+        // untracked
+        "/emcJS/ui/TextEditor.js",
+        "/emcJS/ui/LogScreen.js",
+        "/emcJS/ui/Icon.js",
+        "/emcJS/ui/selection/ChoiceSelect.js",
+        "/emcJS/ui/layout/Layout.js",
+        "/emcJS/ui/layout/TabView.js",
+        "/script/ui/items/ItemGrid.js",
+        "/script/ui/dungeonstate/DungeonState.js",
+        "/script/ui/locations/LocationList.js",
+        "/script/ui/map/Map.js",
+        "/script/ui/LocationStatus.js",
+        "/script/content/Tracker.js",
+        "/script/content/EditorChoice.js",
+        "/script/content/EditorLogic.js"
+    ]);
     
-    await import("/emcJS/ui/TextEditor.js");
-    await import("/emcJS/ui/LogScreen.js");
-    await import("/emcJS/ui/Icon.js");
-    await import("/emcJS/ui/selection/ChoiceSelect.js");
-    await import("/emcJS/ui/layout/Layout.js");
-    await import("/emcJS/ui/layout/TabView.js");
-
-    await import("/script/ui/items/ItemGrid.js");
-    await import("/script/ui/dungeonstate/DungeonState.js");
-    await import("/script/ui/locations/LocationList.js");
-    await import("/script/ui/map/Map.js");
-    
-    await import("/script/ui/LocationStatus.js");
-    await import("/script/content/Tracker.js");
-    await import("/script/content/EditorChoice.js");
-    await import("/script/content/EditorLogic.js");
-
     if ("SharedWorker" in window) {
         let EventBusModuleShare = (await import("/emcJS/util/events/EventBusModuleShare.js")).default;
         EventBus.addModule(EventBusModuleShare, {blacklist:["logic"]});
@@ -133,11 +140,11 @@ async function init() {
     window.RandomizerOptionsWindow = new RandomizerOptionsWindow();
 
     updateLoadingMessage("add modules...");
-    await Promise.all([
-        $import.importModule("/script/ui/shops/ShopList.js"),
-        $import.importModule("/script/ui/songs/SongList.js"),
-        $import.importModule("/script/ui/multiplayer/Multiplayer.js"),
-        $import.importModule("/script/ui/LayoutContainer.js")
+    await $import.module([
+        "/script/ui/shops/ShopList.js",
+        "/script/ui/songs/SongList.js",
+        "/script/ui/multiplayer/Multiplayer.js",
+        "/script/ui/LayoutContainer.js"
     ]);
 
     updateLoadingMessage("wake up...");

@@ -2,7 +2,7 @@ import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
-import StateStorage from "/script/storage/StateStorage.js";
+import FilterStorage from "/script/storage/FilterStorage.js";
 import Language from "/script/util/Language.js";
 import World from "/script/util/World.js";
 import "./marker/Area.js";
@@ -187,10 +187,10 @@ const TPL = new Template(`
             <div class="buttons">
                 <div id="toggle-button" class="button-wrapper">⇑</div>
                 <div class="button-wrapper">
-                    <emc-switchbutton id="location-mode" class="button" value="chests">
-                        <emc-option value="chests" style="background-image: url('images/icons/chest.svg')"></emc-option>
-                        <emc-option value="skulltulas" style="background-image: url('images/icons/skulltula.svg')"></emc-option>
-                        <emc-option value="gossipstones" style="background-image: url('images/icons/gossipstone.svg')"></emc-option>
+                    <emc-switchbutton id="location-mode" class="button" value="filter.chests">
+                        <emc-option value="filter.chests" style="background-image: url('images/icons/chest.svg')"></emc-option>
+                        <emc-option value="filter.skulltulas" data-filter="filter.skulltulas" style="background-image: url('images/icons/skulltula.svg')"></emc-option>
+                        <emc-option value="filter.gossipstones" data-filter="filter.gossipstones" style="background-image: url('images/icons/gossipstone.svg')"></emc-option>
                     </emc-switchbutton>
                 </div>
                 <!-- dungeon type button
@@ -412,6 +412,23 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
             this.shadowRoot.getElementById('location-mode').value = this.mode;
         });
         this.registerGlobal(["state", "settings", "randomizer_options", "filter"], event => {
+            if (this.ref == "#") {
+                let modeEl = this.shadowRoot.getElementById('location-mode');
+                let opts = modeEl.querySelectorAll("[data-filter]");
+                for (let opt of opts) {
+                    if (FilterStorage.get(opt.dataset.filter) == "true") {
+                        // LEGACY
+                        opt.removeAttribute("disabled");
+                    } else {
+                        // LEGACY
+                        opt.setAttribute("disabled", true);
+                        if (this.mode == opt.dataset.filter) {
+                            modeEl.value = "filter.chests";
+                            this.setAttribute('mode', "filter.chests");
+                        }
+                    }
+                }
+            }
             this.refresh();
         });
         this.registerGlobal("dungeontype", event => {
@@ -423,6 +440,23 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
 
     connectedCallback() {
         super.connectedCallback();
+        if (this.ref == "#") {
+            let modeEl = this.shadowRoot.getElementById('location-mode');
+            let opts = modeEl.querySelectorAll("[data-filter]");
+            for (let opt of opts) {
+                if (FilterStorage.get(opt.dataset.filter) == "true") {
+                    // LEGACY
+                    opt.removeAttribute("disabled");
+                } else {
+                    // LEGACY
+                    opt.setAttribute("disabled", true);
+                    if (this.mode == opt.dataset.filter) {
+                        modeEl.value = "filter.chests";
+                        this.setAttribute('mode', "filter.chests");
+                    }
+                }
+            }
+        }
         this.refresh();
     }
 
@@ -437,7 +471,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
     }
 
     get mode() {
-        return this.getAttribute('mode') || "chests";
+        return this.getAttribute('mode') || "filter.chests";
     }
 
     set mode(val) {
@@ -461,20 +495,6 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
         let dType = "v";//this.shadowRoot.getElementById("location-version").value;
         this.innerHTML = "";
         let data = FileData.get(`world_lists/${this.ref}`);
-        if (this.ref == "#") {
-            let modeEl = this.shadowRoot.getElementById('location-mode');
-            if (StateStorage.read("option.gossipstones_active", FileData.get("randomizer_options/option/option.gossipstones_active/default", false))) {
-                // LEGACY
-                modeEl.querySelector('[value="gossipstones"]').visible = true;
-            } else {
-                // LEGACY
-                modeEl.querySelector('[value="gossipstones"]').visible = false;
-                if (this.mode == "gossipstones") {
-                    modeEl.value = "chests";
-                    this.setAttribute('mode', "chests");
-                }
-            }
-        }
         if (!!data) {
             // switch map/minimap background
             let map = this.shadowRoot.getElementById('map');
@@ -496,7 +516,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
 
             } else {
                 data.lists[dType].forEach(record => {
-                    if (this.ref == "#" && this.mode == "gossipstones") {
+                    if (this.ref == "#" && this.mode == "filter.gossipstones") {
                         // LEGACY
                         if (record.type == "area" || record.type == "entrance") {
                             return;

@@ -2,8 +2,8 @@ import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/Option.js";
-import StateStorage from "/script/storage/StateStorage.js";
-import FilterStorage from "/script/storage/FilterStorage.js";
+import StateStorage from "../storage/StateStorage.js";
+import FilterStorage from "../storage/FilterStorage.js";
 
 const TPL = new Template(`
     <style>
@@ -12,7 +12,9 @@ const TPL = new Template(`
             box-sizing: border-box;
         }
         :host {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 20px;
             height: 20px;
             -webkit-user-select: none;
@@ -45,13 +47,13 @@ const TPL = new Template(`
     </slot>
 `);
 
-const STORED = new WeakMap();
+const PERSIST = new WeakMap();
 
 class FilterButton extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
-        STORED.set(this, false);
+        PERSIST.set(this, false);
         this.addEventListener("click", this.next);
         this.addEventListener("contextmenu", this.revert);
         this.attachShadow({mode: 'open'});
@@ -98,13 +100,8 @@ class FilterButton extends EventBusSubsetMixin(HTMLElement) {
             case 'ref':
                 if (oldValue != newValue) {
                     let data = FileData.get(`filter/${this.ref}`);
-                    if (data.stored != null && !!data.stored) {
-                        STORED.set(this, true);
-                        this.value = StateStorage.read(this.ref, data.default);
-                    } else {
-                        STORED.set(this, false);
-                        this.value = FilterStorage.get(this.ref, data.default);
-                    }
+                    PERSIST.set(this, data.persist != null && !!data.persist);
+                    this.value = FilterStorage.get(this.ref, data.default);
                     for (let i in data.values) {
                         let img = data.images;
                         if (Array.isArray(img)) {
@@ -151,12 +148,11 @@ class FilterButton extends EventBusSubsetMixin(HTMLElement) {
                 }
             }
             if (value != oldValue) {
-                let stored = STORED.get(this);
+                let persist = PERSIST.get(this);
                 this.value = value;
-                if (stored) {
+                FilterStorage.set(this.ref, value);
+                if (persist) {
                     StateStorage.write(this.ref, value);
-                } else {
-                    FilterStorage.set(this.ref, value);
                 }
                 this.triggerGlobal("filter", {
                     name: this.ref,
@@ -182,8 +178,12 @@ class FilterButton extends EventBusSubsetMixin(HTMLElement) {
                 }
             }
             if (value != oldValue) {
+                let persist = PERSIST.get(this);
                 this.value = value;
                 FilterStorage.set(this.ref, value);
+                if (persist) {
+                    StateStorage.write(this.ref, value);
+                }
                 this.triggerGlobal("filter", {
                     name: this.ref,
                     value: value

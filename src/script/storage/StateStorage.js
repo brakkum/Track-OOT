@@ -7,7 +7,7 @@ import StateConverter from "./converters/StateConverter.js";
 
 const PERSISTANCE_NAME = "savestate";
 const STATE_DIRTY = "state_dirty";
-const TITLE_PREFIX = "Track-OOT";
+const TITLE_PREFIX = document.title;
 
 const STORAGE = new IDBStorage("savestates");
 
@@ -57,7 +57,7 @@ async function autosave() {
 }
 
 function updateTitle() {
-    if (document.title != "Track-OOT [Detached]") {
+    if (!document.title.startsWith("[D]")) {
         name = state.name || "new state";
         if (LocalStorage.get(STATE_DIRTY)) {
             document.title = `${TITLE_PREFIX} - ${name} *`;

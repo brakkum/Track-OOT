@@ -2,7 +2,7 @@
     "filter.era": {
         "choice": true,
         "badge": true,
-        "stored": false,
+        "persist": false,
         "default": "",
         "values": [
             "",
@@ -18,7 +18,7 @@
     "filter.time": {
         "choice": false,
         "badge": true,
-        "stored": false,
+        "persist": false,
         "default": "",
         "values": [
             "",
@@ -32,9 +32,9 @@
         ]
     },
     "filter.skulltulas": {
-        "choice": false,
+        "choice": true,
         "badge": false,
-        "stored": true,
+        "persist": true,
         "default": "true",
         "values": [
             "true",
@@ -46,9 +46,9 @@
         ]
     },
     "filter.gossipstones": {
-        "choice": false,
+        "choice": true,
         "badge": false,
-        "stored": true,
+        "persist": true,
         "default": "false",
         "values": [
             "true",

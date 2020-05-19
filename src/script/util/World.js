@@ -106,8 +106,11 @@ class WorldEntry {
         let values = FILTER.get(this);
         for (let filter in activeFilter) {
             let value = activeFilter[filter];
-            if (!!value && !values.get(`${filter}/${value}`)) {
-                return false; 
+            let name = `${filter}/${value}`;
+            if (!!value && values.has(name)) {
+                if (!values.get(name)) {
+                    return false; 
+                }
             }
         }
         return true;
@@ -149,11 +152,11 @@ class WorldEntry {
                 mapItem = MapLocation.createType(type);
                 // LEGACY
                 if (type == "skulltula") {
-                    mapItem.dataset.mode = "skulltulas";
+                    mapItem.dataset.mode = "filter.skulltulas";
                 } else if (type == "gossipstone") {
-                    mapItem.dataset.mode = "gossipstones";
+                    mapItem.dataset.mode = "filter.gossipstones";
                 } else {
-                    mapItem.dataset.mode = "chests";
+                    mapItem.dataset.mode = "filter.chests";
                 }
             }
             mapItem.access = ACCESS.get(this);

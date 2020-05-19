@@ -1,7 +1,9 @@
 import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import "/emcJS/ui/ContextMenu.js";
-import "/script/ui/FilterButton.js";
+import "./FilterButton.js";
+import StateStorage from "../storage/StateStorage.js";
+import FilterStorage from "../storage/FilterStorage.js";
 
 const TPL = new Template(`
     <style>
@@ -10,7 +12,9 @@ const TPL = new Template(`
             box-sizing: border-box;
         }
         :host {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 20px;
             height: 20px;
             -webkit-user-select: none;
@@ -42,13 +46,10 @@ const TPL = new Template(`
     <emc-icon id="icon" src="images/icons/filter.svg"></emc-icon>
 `);
 
-const STORED = new WeakMap();
-
 class FilterMenu extends HTMLElement {
 
     constructor() {
         super();
-        STORED.set(this, false);
         this.addEventListener("click", event => {
             this.showContextMenu();
         });
@@ -58,6 +59,12 @@ class FilterMenu extends HTMLElement {
         let menu = this.shadowRoot.getElementById("menu");
         let data = FileData.get("filter");
         for (let name in data) {
+            if (!!data[name].persist) {
+                let value = StateStorage.read(name, data[name].default);
+                FilterStorage.set(name, value);
+            } else {
+                FilterStorage.set(name, data[name].default);
+            }
             if (!!data[name].choice) {
                 let el = document.createElement("ootrt-filterbutton");
                 el.ref = name;

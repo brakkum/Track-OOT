@@ -4,6 +4,23 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.7
+
+### FEATURES
+
+- added skulltulas filter for list and map
+- added skulltulas filter for list and map
+    - remove gossipstones disable option
+
+### BUGFIXES
+
+- fixed font size being to small
+- fixed some styling bugs occuring while making the font size bigger
+- fixed filters misbehaving if not strictly defined
+- faster import resources by using async loading instead of sequential
+
+---
+
 ## VERSION 1.7.6
 
 ### FEATURES
@@ -21,6 +38,9 @@ Application:    Track-OOT
 ### BUGFIXES
 
 - fix hidden areas not updating correctly
+
+### FEATURES
+
 - add support for multiple list filters
     - this allows filtering skulltulas/gossipstones directly from list in the future
 - add support for storing selected filters to savestate
@@ -58,9 +78,12 @@ Application:    Track-OOT
 
 ### BUGFIXES
 
-- add open zora adult
 - fix logic for fountain and ice cavern access
 - fix detached window not loading
+
+### FEATURES
+
+- add open zora adult
 
 ---
 
