@@ -16,11 +16,14 @@ let editorChoice = document.getElementById("editor-choice");
 let logicEditor = document.getElementById("editor-logic");
 
 !async function() {
-    let lists = await LogicListsCreator.createLists();
-    logicEditor.loadOperatorList(lists.operators);
-    logicEditor.loadLogicList(lists.logics);
-    logicEditor.setLogic(FileData.get("logic", {}));
-    logicEditor.setPatch(await LogicsStorage.getAll());
+    async function refreshLogicEditor() {
+        let lists = await LogicListsCreator.createLists();
+        logicEditor.loadOperatorList(lists.operators);
+        logicEditor.loadLogicList(lists.logics);
+        logicEditor.setLogic(FileData.get("logic", {}));
+        logicEditor.setPatch(await LogicsStorage.getAll());
+    }
+    await refreshLogicEditor();
     // register
     logicEditor.addEventListener("save", async event => {
         await LogicsStorage.set(event.key, event.logic);
@@ -54,7 +57,8 @@ let logicEditor = document.getElementById("editor-logic");
                 if (!!res && !!res.data) {
                     let logic = res.data;
                     await LogicsStorage.setAll(logic);
-                    await logicEditor.refreshWorkingarea();
+                    await refreshWorkingarea();
+                    await logicEditor.resetWorkingarea();
                 }
             }
         },{
@@ -67,7 +71,8 @@ let logicEditor = document.getElementById("editor-logic");
             "content": "REMOVE PATCH",
             "handler": async () => {
                 await LogicsStorage.clear();
-                await logicEditor.refreshWorkingarea();
+                await refreshWorkingarea();
+                await logicEditor.resetWorkingarea();
             }
         },{
             "content": "EXIT EDITOR",

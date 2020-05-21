@@ -265,15 +265,18 @@ export default class ManageWindow extends HTMLElement {
         let imp = this.shadowRoot.getElementById('import');
         imp.onclick = async () => {
             let res = await FileSystem.load(".json");
-            if (!res || !res.data || !res.data.data || !res.data.name) {
+            if (res == null || res.data == null || res.data.data == null || res.data.name == null) {
                 await Dialog.alert("Warning", "Did not find any data to import.");
                 return;
             }
             let name = "";
-            while (name == "") {
+            while (name === "") {
                 name = await Dialog.prompt("Import state", `Please enter a new name for the imported state!`, res.data.name);
                 if (name === false) {
                     return;
+                }
+                if (name === "") {
+                    await Dialog.alert("Warning", "The state name can not be empty.");
                 }
                 if (await StateManager.exists(name)) {
                     if (!await Dialog.confirm("Warning", `The name "${name}" already exists. Do you want to overwrite it?`)) {

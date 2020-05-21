@@ -63,17 +63,22 @@ let editorChoice = document.getElementById("editor-choice");
     !async function() {
         let LogicsStorage = new IDBStorage("logics");
         let logicEditor = document.getElementById("logic-editor");
+        // refresh
+        async function refreshLogicEditor() {
+            let lists = await LogicListsCreator.createLists();
+            logicEditor.loadOperatorList(lists.operators);
+            logicEditor.loadLogicList(lists.logics);
+            logicEditor.setLogic(FileData.get("logic", {}));
+            logicEditor.setPatch(await LogicsStorage.getAll());
+        }
+        await refreshLogicEditor();
+        // register
         logicEditor.addEventListener("save", async event => {
             await LogicsStorage.set(event.key, event.logic);
         });
         logicEditor.addEventListener("clear", async event => {
             await LogicsStorage.delete(event.key);
         });
-        let lists = await LogicListsCreator.createLists();
-        logicEditor.loadOperatorList(lists.operators);
-        logicEditor.loadLogicList(lists.logics);
-        logicEditor.setLogic(FileData.get("logic", {}));
-        logicEditor.setPatch(await LogicsStorage.getAll());
         NAVIGATION.set("logic-editor", [{
             "content": "FILE",
             "submenu": [{
@@ -99,7 +104,8 @@ let editorChoice = document.getElementById("editor-choice");
                     if (!!res && !!res.data) {
                         let logic = res.data;
                         await LogicsStorage.setAll(logic);
-                        await logicEditor.refreshWorkingarea();
+                        await refreshLogicEditor();
+                        logicEditor.resetWorkingarea();
                     }
                 }
             },{
@@ -112,7 +118,8 @@ let editorChoice = document.getElementById("editor-choice");
                 "content": "REMOVE PATCH",
                 "handler": async () => {
                     await LogicsStorage.clear();
-                    await logicEditor.refreshWorkingarea();
+                    await refreshLogicEditor();
+                    logicEditor.resetWorkingarea();
                 }
             },{
                 "content": "EXIT EDITOR",

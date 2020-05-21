@@ -22,6 +22,7 @@ function convertValueList(values = [], names = []) {
 }
 
 function switchView(view) {
+    // XXX unused ?
     document.getElementById('view-pager').setAttribute("active", view);
     window.close();
 }

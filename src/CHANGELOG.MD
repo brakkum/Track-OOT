@@ -4,6 +4,17 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.8
+
+### BUGFIXES
+
+- fix spirit temple access logic missing gerudo fortress access
+- fix logic editor not reloading data if "load patch" or "remove patch" has been pressed
+- fix state import failing for unnamed states
+    - autosave import was not possible
+
+---
+
 ## VERSION 1.7.7
 
 ### FEATURES
