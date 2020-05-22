@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.9
+
+### BUGFIXES
+
+- fixed wasteland checks missing gerudo access
+
+---
+
 ## VERSION 1.7.8
 
 ### BUGFIXES
