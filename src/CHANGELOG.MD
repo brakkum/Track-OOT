@@ -4,6 +4,18 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.10
+
+### FEATURES
+
+- added only in dungeons to skulltulas filter
+
+### BUGFIXES
+
+- fixed right clicking on filtermenu closed the filter context menu
+
+---
+
 ## VERSION 1.7.9
 
 ### BUGFIXES

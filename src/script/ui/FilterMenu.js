@@ -71,6 +71,9 @@ class FilterMenu extends HTMLElement {
                 el.onclick = function(event) {
                     event.stopPropagation();
                 };
+                el.oncontextmenu = function(event) {
+                    event.stopPropagation();
+                };
                 menu.append(el);
             }
         }

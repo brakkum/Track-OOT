@@ -14,6 +14,7 @@ const LOGIC_OPERATORS = [
     "ted-logic-or",
     "ted-logic-nor",
     "ted-logic-xor",
+    "ted-logic-xnor",
     "ted-logic-min",
     "ted-logic-max"
 ];
