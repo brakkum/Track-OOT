@@ -5,7 +5,8 @@
             "type": "panel",
             "name": "item-grid",
             "options": {
-                "itemsize": 40
+                "itemsize": 40,
+                "grid": "items"
             }
         },{
             "type": "panel",
@@ -20,6 +21,35 @@
             }
         }]
     },
+    "items-essentials": {
+        "type": "hbox",
+        "items": [{
+            "type": "panel",
+            "name": "item-grid",
+            "options": {
+                "itemsize": 40,
+                "grid": "essentials"
+            }
+        },{
+            "type": "panel",
+            "name": "dungeon-status",
+            "options": {
+                "itemsize": 40,
+                "orientation": "column",
+                "active": [
+                    "reward"
+                ]
+            }
+        }]
+    },
+    "items-race": {
+        "type": "panel",
+        "name": "item-grid",
+        "options": {
+            "itemsize": 40,
+            "grid": "race"
+        }
+    },
     "race": {
         "type": "vbox",
         "items": [{
@@ -27,15 +57,7 @@
             "name": "item-grid",
             "options": {
                 "itemsize": 40,
-                "items": [
-                    "bombs bow medallion_forest",
-                    "boomerang hammer medallion_fire",
-                    "hookshot magic_din medallion_water",
-                    "zora_letter arrows medallion_spirit",
-                    "shield_mirror glove medallion_shadow",
-                    "boots scale medallion_light",
-                    "stone_forest stone_fire stone_water"
-                ]
+                "grid": "race"
             }
         },{
             "type": "panel",
@@ -56,7 +78,8 @@
             "type": "panel",
             "name": "item-grid",
             "options": {
-                "itemsize": 40
+                "itemsize": 40,
+                "grid": "items"
             }
         },{
             "type": "panel",
@@ -78,7 +101,8 @@
             "type": "panel",
             "name": "item-grid",
             "options": {
-                "itemsize": 40
+                "itemsize": 40,
+                "grid": "items"
             }
         },{
             "type": "panel",
@@ -105,7 +129,8 @@
             "type": "panel",
             "name": "item-grid",
             "options": {
-                "itemsize": 40
+                "itemsize": 40,
+                "grid": "items"
             }
         },{
             "type": "panel",
@@ -135,7 +160,8 @@
                 "type": "panel",
                 "name": "item-grid",
                 "options": {
-                    "itemsize": 40
+                    "itemsize": 40,
+                    "grid": "items"
                 }
             },{
                 "type": "panel",
@@ -168,7 +194,8 @@
                 "type": "panel",
                 "name": "item-grid",
                 "options": {
-                    "itemsize": 40
+                    "itemsize": 40,
+                    "grid": "items"
                 }
             },{
                 "type": "panel",
@@ -194,6 +221,40 @@
             "name": "location-map"
         }]
     },
+    "map-right-dtr": {
+        "type": "hbox",
+        "items": [{
+            "type": "vbox",
+            "items": [{
+                "type": "panel",
+                "name": "item-grid",
+                "options": {
+                    "itemsize": 40,
+                    "grid": "items"
+                }
+            },{
+                "type": "panel",
+                "name": "dungeon-status",
+                "options": {
+                    "itemsize": 40,
+                    "orientation": "row",
+                    "active": [
+                        "reward",
+                        "type"
+                    ]
+                }
+            },{
+                "type": "hbox",
+                "items": [{
+                    "type": "panel",
+                    "name": "location-list"
+                }]
+            }]
+        },{
+            "type": "panel",
+            "name": "location-map"
+        }]
+    },
     "map-center": {
         "type": "hbox",
         "items": [{
@@ -202,7 +263,8 @@
                 "type": "panel",
                 "name": "item-grid",
                 "options": {
-                    "itemsize": 40
+                    "itemsize": 40,
+                    "grid": "items"
                 }
             },{
                 "type": "panel",
@@ -237,7 +299,8 @@
                 "type": "panel",
                 "name": "item-grid",
                 "options": {
-                    "itemsize": 40
+                    "itemsize": 40,
+                    "grid": "items"
                 }
             },{
                 "type": "hbox",
@@ -280,7 +343,8 @@
                 "type": "panel",
                 "name": "item-grid",
                 "options": {
-                    "itemsize": 40
+                    "itemsize": 40,
+                    "grid": "items"
                 }
             },{
                 "type": "panel",
@@ -309,7 +373,8 @@
             "type": "panel",
             "name": "item-grid",
             "options": {
-                "itemsize": 40
+                "itemsize": 40,
+                "grid": "items"
             }
         },{
             "type": "panel",
@@ -329,6 +394,42 @@
         },{
             "type": "panel",
             "name": "location-list"
+        }]
+    },
+    "essential-map": {
+        "type": "hbox",
+        "items": [{
+            "type": "vbox",
+            "items": [{
+                "type": "hbox",
+                "items": [{
+                    "type": "panel",
+                    "name": "item-grid",
+                    "options": {
+                        "itemsize": 40,
+                        "grid": "essentials"
+                    }
+                },{
+                    "type": "panel",
+                    "name": "dungeon-status",
+                    "options": {
+                        "itemsize": 40,
+                        "orientation": "column",
+                        "active": [
+                            "reward"
+                        ]
+                    }
+                }]
+            },{
+                "type": "hbox",
+                "items": [{
+                    "type": "panel",
+                    "name": "location-list"
+                }]
+            }]
+        },{
+            "type": "panel",
+            "name": "location-map"
         }]
     }
 }

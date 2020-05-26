@@ -86,9 +86,17 @@ class HTMLTrackerItemGrid extends Panel {
     }
 
     connectedCallback() {
-        if (!this.items) {
-            this.items = JSON.stringify(FileData.get("grids/items"));
+        if (!this.items && !!this.grid) {
+            this.items = JSON.stringify(FileData.get(`grids/${this.grid}`));
         }
+    }
+
+    get grid() {
+        return this.getAttribute('grid');
+    }
+
+    set grid(val) {
+        this.setAttribute('grid', val);
     }
 
     get items() {
@@ -100,11 +108,18 @@ class HTMLTrackerItemGrid extends Panel {
     }
 
     static get observedAttributes() {
-        return ['items'];
+        return ['items', 'grid'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
         switch (name) {
+            case 'grid':
+                if (oldValue != newValue) {
+                    if (!this.items && !!newValue) {
+                        this.items = JSON.stringify(FileData.get(`grids/${newValue}`));
+                    }
+                }
+            break;
             case 'items':
                 if (oldValue != newValue) {
                     let config = JSON.parse(newValue);

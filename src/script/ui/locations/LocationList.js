@@ -40,6 +40,8 @@ const TPL = new Template(`
             font-size: 1.5em;
             line-height: 1em;
             border-bottom: solid 1px white;
+            -moz-user-select: none;
+            user-select: none;
         }
         #title-text {
             display: flex;

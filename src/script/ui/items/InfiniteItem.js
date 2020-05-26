@@ -10,6 +10,7 @@ const TPL = new Template(`
         * {
             position: relative;
             box-sizing: border-box;
+            user-select: none;
         }
         :host {
             display: inline-block;
@@ -39,6 +40,8 @@ const TPL = new Template(`
             padding: 0;
             line-height: 0.7em;
             font-weight: bold;
+            -moz-user-select: none;
+            user-select: none;
         }
     </style>
     <div id="value"></div>

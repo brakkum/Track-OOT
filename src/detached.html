@@ -61,7 +61,7 @@
             EventBus.addModule(EventBusModuleShare, {blacklist:["logic"]});
 
             let conf = decodeURI(window.location.hash.slice(1));
-            let layout = FileData.get("layouts")[conf];
+            let layout = FileData.get(`layouts/${conf}`);
 
             if (!!layout) {
                 let el = document.getElementById("layout");

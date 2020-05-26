@@ -32,6 +32,8 @@ const TPL = new Template(`
         }
         #text {
             flex: 1;
+            -moz-user-select: none;
+            user-select: none;
         }
         #badge {
             display: inline-flex;

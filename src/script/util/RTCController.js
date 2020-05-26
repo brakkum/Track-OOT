@@ -11,13 +11,7 @@ const CONFIG = {
     iceServers: [{
         urls: 'stun:stun.zidargs.net:18001'
     },{
-        urls: [
-            'stun:stun.l.google.com:19302',
-            'stun:stun1.l.google.com:19302',
-            'stun:stun2.l.google.com:19302',
-            'stun:stun3.l.google.com:19302',
-            'stun:stun4.l.google.com:19302'
-        ]
+        urls: 'stun:stun.l.google.com:19302'
     },{
         urls: 'turn:turn.zidargs.net:18001',
         credential: 'fHNsIeqdgVcUAypvaxDVE6tywaMlP1fA',
@@ -32,7 +26,8 @@ const EVENT_BLACKLIST = [
     "filter",
     "location_change",
     "location_mode",
-    "state_change"
+    "state_change",
+    "state"
 ];
 const eventModule = new EventBusModuleGeneric();
 EventBus.addModule(eventModule, {
@@ -65,7 +60,7 @@ function setState(state) {
             buffer[i] =  state[i];
         }
     }
-    StateStorage.write(buffer);
+    StateStorage.reset(buffer);
     EventBus.trigger("state", StateStorage.getAll());
 }
 
@@ -185,6 +180,8 @@ class RTCController {
 
     async disconnect() {
         await rtcClient.disconnect();
+        clients.clear();
+        spectators.clear();
     }
 
 }
@@ -285,10 +282,7 @@ async function onHosting() {
         }
     });
     rtcClient.onconnect = function(key) {
-        /*rtcClient.sendOne("data", key, {
-            type: "state",
-            data: getState()
-        });*/
+        // nothing
     };
     rtcClient.ondisconnect = function(key) {
         let name = "";
@@ -297,7 +291,7 @@ async function onHosting() {
             clients.delete(key);
         } else if (spectators.has(key)) {
             name = spectators.get(key);
-            clients.delete(key);
+            spectators.delete(key);
         } else {
             return;
         }

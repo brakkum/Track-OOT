@@ -49,7 +49,9 @@ const TPL = new Template(`
             width: 40px;
             height: 20px;
             padding: 2px;
-            font-size: 0.8em;
+            font-size: 0.6em;
+            -moz-user-select: none;
+            user-select: none;
         }
         :host([orientation="column"]) div.text {
             height: 40px;

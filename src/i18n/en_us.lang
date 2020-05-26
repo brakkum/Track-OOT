@@ -1065,16 +1065,18 @@ font_ancienthylian=AncientHylian
 font_sheikah=Sheikah
 
 # SETTINGS - LAYOUT
-items=Items only
-items-dt=Items only (dungeontype)
-items-list=Items and List
-items-list-dt=Items and List (dungeontype)
-map-right=Minimal Items with Map
-map-right-dt=Minimal Items with Map (dungeontype)
-map-center=Map in center
-map-compact=Compact Map
-compact=Compact
-flat=Flat
+items=Items only (key)
+items-dt=Items only (key/type)
+items-list=Items and List (key)
+items-list-dt=Items and List (key/type)
+map-right=Minimal Items with Map (key)
+map-right-dt=Minimal Items with Map (key/type)
+map-center=Map in center (key/reward/type)
+map-compact=Compact Map (key/reward/type)
+compact=Compact (key/reward/type)
+flat=Flat (key/reward/type)
+map-right-dtr=Minimal Items with Map (reward/type)
+essential-map=Essential Items with Map (reward)
 
 # SHOPS
 shop.kokiri=Kokiri Shop

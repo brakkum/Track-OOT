@@ -4,6 +4,18 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.11
+
+### FEATURES
+
+- added more layout configurations
+
+### BUGFIXES
+
+- fixed some bugs concerning multiplayer
+
+---
+
 ## VERSION 1.7.10
 
 ### FEATURES

@@ -40,9 +40,9 @@ const TPL = new Template(`
             display: flex;
             flex: 1;
             align-items: center;
+            color: #ffffff;
             -moz-user-select: none;
             user-select: none;
-            color: #ffffff;
         }
         #text[data-state="available"] {
             color: var(--location-status-available-color, #000000);
