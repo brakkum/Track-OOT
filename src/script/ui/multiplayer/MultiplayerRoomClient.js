@@ -1,9 +1,14 @@
 import Template from "/emcJS/util/Template.js";
 import RTCController from "/script/util/RTCController.js";
 import "./MPUser.js";
+import "./MPLogger.js";
 
 const TPL = new Template(`
     <style>
+        * {
+            position: relative;
+            box-sizing: border-box;
+        }
         :host {
             display: flex;
             flex-direction: column;

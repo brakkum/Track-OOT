@@ -1,5 +1,6 @@
 
 import Dialog from "/emcJS/ui/Dialog.js";
+import Toast from "/emcJS/ui/Toast.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import EventBusModuleGeneric from "/emcJS/util/events/EventBusModuleGeneric.js";
 import RTCClient from "/rtc/RTCClient.js";
@@ -8,6 +9,7 @@ import StateStorage from "/script/storage/StateStorage.js";
 // TODO create listentry editor for using custom stun/turn server config
 
 const CONFIG = {
+    iceTransportPolicy: "all", // all | relay
     iceServers: [{
         urls: 'stun:stun.zidargs.net:18001'
     },{
@@ -73,6 +75,10 @@ function getClientNameList() {
 }
 
 class RTCController {
+
+    setLogger(value) {
+        RTCClient.setLogger(value);
+    }
     
     async getInstances(supressError) {
         let res = await rtcClient.getInstances();
@@ -215,9 +221,9 @@ async function promptPeerName() {
 function onJoined() {
     rtcClient.setMessageHandler("data", async function(key, msg) {
         if (msg.type == "join") {
-            // TODO toast a join message
+            Toast.show(`Multiplayer: "${msg.data}" joined`);
         } else if (msg.type == "leave") {
-            // TODO toast a leave message
+            Toast.show(`Multiplayer: "${msg.data}" left`);
         } else if (msg.type == "kick") {
             await Dialog.alert("You have been kicked", `You have been kicked by the host: ${!!msg.data ? msg.data : "no reason provided"}.`);
         } else if (msg.type == "room") {
@@ -259,7 +265,7 @@ async function onHosting() {
                 clients.set(key, msg.data);
                 // or spectators.set(key, msg.data);
                 reverseLookup.set(msg.data, key);
-                // TODO toast a join message
+                Toast.show(`Multiplayer: "${msg.data}" joined`);
                 rtcClient.sendButOne("data", key, {
                     type: "join",
                     data: msg.data
@@ -295,7 +301,7 @@ async function onHosting() {
         } else {
             return;
         }
-        // TODO toast a leave message
+        Toast.show(`Multiplayer: "${name}" left`);
         rtcClient.send("data", {
             type: "leave",
             data: name

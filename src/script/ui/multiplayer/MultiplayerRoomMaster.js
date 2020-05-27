@@ -2,10 +2,14 @@ import Template from "/emcJS/util/Template.js";
 import RTCController from "/script/util/RTCController.js";
 import "./MPUser.js";
 import "./MPManagedUser.js";
-
+import "./MPLogger.js";
 
 const TPL = new Template(`
     <style>
+        * {
+            position: relative;
+            box-sizing: border-box;
+        }
         :host {
             display: flex;
             flex-direction: column;
@@ -26,6 +30,9 @@ const TPL = new Template(`
             flex: 1;
             height: 100%;
             color: #ffffff;
+        }
+        #logger {
+            flex: 1;
         }
     </style>
     <div id="room-list" class="view-container-title">Room (proof of concept) <button id="close_button">close</button> <button id="leave_button">leave</button></div>

@@ -4,6 +4,13 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.12
+
+### FEATURES
+
+- added logger to multiplayer
+- added join/leave "toasts" to multiplayer
+
 ## VERSION 1.7.11
 
 ### FEATURES

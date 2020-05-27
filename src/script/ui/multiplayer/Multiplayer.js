@@ -6,6 +6,10 @@ import "./MultiplayerRoomMaster.js";
 
 const TPL = new Template(`
     <style>
+        * {
+            position: relative;
+            box-sizing: border-box;
+        }
         :host {
             display: flex;
             flex-direction: column;
@@ -19,10 +23,15 @@ const TPL = new Template(`
         :host > :not(.active) {
             display: none;
         }
+        #logger {
+            max-height: 30vh;
+            min-height: 20vh;
+        }
     </style>
     <ootrt-multiplayerlobby id="lobby_view" class="active"></ootrt-multiplayerlobby>
     <ootrt-multiplayerroommaster id="room_master"></ootrt-multiplayerroommaster>
     <ootrt-multiplayerroomclient id="room_client"></ootrt-multiplayerroomclient>
+    <ootrt-mplogger id="logger" class="active"></ootrt-mplogger>
 `);
 
 class HTMLMultiplayer extends HTMLElement {
@@ -35,6 +44,9 @@ class HTMLMultiplayer extends HTMLElement {
         let lobby_view = this.shadowRoot.getElementById("lobby_view");
         let room_master = this.shadowRoot.getElementById("room_master");
         let room_client = this.shadowRoot.getElementById("room_client");
+        let logger = this.shadowRoot.getElementById("logger");
+
+        RTCController.setLogger(logger);
 
         RTCController.onroomupdate = function(data) {
             room_master.updateRoom(data);
