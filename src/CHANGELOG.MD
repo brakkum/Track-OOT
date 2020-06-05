@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## DEV
+
+### BUGFIXES
+
+- added some more checks for errors to room closing in multiplayer
+
+---
+
 ## VERSION 1.7.11
 
 ### FEATURES

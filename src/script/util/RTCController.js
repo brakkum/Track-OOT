@@ -123,7 +123,12 @@ class RTCController {
     }
 
     async close() {
-        await rtcClient.unregister();
+        let res = await rtcClient.unregister();
+        if (!res.success) {
+            await Dialog.alert("Error closing Room", "The Room could not be closed.");
+            return false;
+        }
+        return true;
     }
 
     connect(name, pass) {
