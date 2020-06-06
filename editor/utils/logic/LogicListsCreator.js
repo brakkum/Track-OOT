@@ -55,10 +55,10 @@ class LogicListsCreator {
 
         // OPERATORS
         result.operators.push(createDefaultOperatorCategory());
-        result.operators.push(createOperatorCategory(items, "item"));
-        result.operators.push(createOperatorCategory(randomizer_options.options, "option"));
-        result.operators.push(createOperatorCategory(randomizer_options.skips, "skip"));
-        result.operators.push(createOperatorCategory(filter, "filter"));
+        result.operators.push(createItemOperatorCategory(items));
+        result.operators.push(createSettingsOperatorCategory(randomizer_options.options, "option"));
+        result.operators.push(createSettingsOperatorCategory(randomizer_options.skips, "skip"));
+        result.operators.push(createFilterOperatorCategory(filter));
         for (let cat of createOperatorWorldCategories(world)) {
             result.operators.push(cat);
         }
@@ -93,7 +93,43 @@ function createDefaultOperatorCategory() {
     return res;
 }
 
-function createOperatorCategory(data, ref) {
+function createItemOperatorCategory(data) {
+    let res = {
+        "type": "group",
+        "caption": "item",
+        "children": []
+    };
+    for (let i in data) {
+        res.children.push({
+            "type": "tracker-logic-custom",
+            "ref": i,
+            "category": "item"
+        });
+    }
+    return res;
+}
+
+function createFilterOperatorCategory(data, ref) {
+    let res = {
+        "type": "group",
+        "caption": "filter",
+        "children": []
+    };
+    for (let i in data) {
+        let opt = data[i];
+        for (let j of opt.values) {
+            res.children.push({
+                "type": "tracker-logic-custom",
+                "ref": i,
+                "value": j,
+                "category": "filter"
+            });
+        }
+    }
+    return res;
+}
+
+function createSettingsOperatorCategory(data, ref) {
     let res = {
         "type": "group",
         "caption": ref,
@@ -119,12 +155,6 @@ function createOperatorCategory(data, ref) {
                     "category": ref
                 });
             }
-        } else {
-            res.children.push({
-                "type": "tracker-logic-custom",
-                "ref": i,
-                "category": ref
-            });
         }
     }
     return res;
@@ -213,7 +243,7 @@ function createLogicWorldCategories(data, world) {
                         "access": ref.access,
                         "category": ref.category,
                         "content": record.id,
-                        "icon": `/src/images/icons/${ref.type}.svg`
+                        "icon": `/images/icons/${ref.type}.svg`
                     });
                 } else {
                     Dialog.alert("Error!", `creating world logics encountered missing id in world.json file: ${record.id}`);
@@ -252,7 +282,7 @@ function createLogicWorldCategories(data, world) {
                         "access": ref.access,
                         "category": ref.category,
                         "content": record.id,
-                        "icon": `/src/images/icons/${ref.type}.svg`
+                        "icon": `/images/icons/${ref.type}.svg`
                     });
                 } else {
                     Dialog.alert("Error!", `creating world logics encountered missing id in world.json file: ${record.id}`);

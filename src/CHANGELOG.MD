@@ -4,12 +4,26 @@ Application:    Track-OOT
 
 ***
 
+## 1.7.13
+
+### BUGFIXES
+
+- added some more checks for errors to room closing in multiplayer
+- adjusted names for era filters in logic to represent actual existing values
+- make filters in logic editor expand to specific values
+- make logic editor expansion modules be used by the tracker (remove redundancy)
+- allow special characters in multiplayer rooms
+
+---
+
 ## VERSION 1.7.12
 
 ### FEATURES
 
 - added logger to multiplayer
 - added join/leave "toasts" to multiplayer
+
+---
 
 ## VERSION 1.7.11
 

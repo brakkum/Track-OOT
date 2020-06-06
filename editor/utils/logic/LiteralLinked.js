@@ -1,6 +1,6 @@
 import Template from "/emcJS/util/Template.js";
 import AbstractElement from "/editors/logic/elements/AbstractElement.js";
-import LogicViewer from "/utils/logic/LogicViewer.js";
+import LogicViewer from "./LogicViewer.js";
 
 const TPL_CAPTION = "LINKED";
 const TPL_BACKGROUND = "#ffffff";

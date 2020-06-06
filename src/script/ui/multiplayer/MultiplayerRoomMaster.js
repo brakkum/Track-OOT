@@ -52,20 +52,22 @@ class HTMLMultiplayerRoomMaster extends HTMLElement {
 
         let close_button = this.shadowRoot.getElementById("close_button");
         let leave_button = this.shadowRoot.getElementById("leave_button");
+        let closed_room = false;
 
         close_button.addEventListener("click", async function() {
-            await RTCController.close();
-            close_button.style.display = "none";
+            if (await RTCController.close()) {
+                close_button.style.display = "none";
+                closed_room = true;
+            }
         }.bind(this));
 
         leave_button.addEventListener("click", async function() {
-            if (close_button.style.display != "none") {
-                await RTCController.close();
-            } else {
+            if (closed_room || await RTCController.close()) {
                 close_button.style.display = undefined;
+                await RTCController.disconnect();
+                closed_room = false;
+                this.dispatchEvent(new Event('close'));
             }
-            await RTCController.disconnect();
-            this.dispatchEvent(new Event('close'));
         }.bind(this));
     }
 

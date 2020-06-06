@@ -12,6 +12,7 @@ function createWindow() {
     protocol.interceptFileProtocol("file", (request, callback) => {
         let url = request.url.replace(/file\:\/+(:?[a-z]\:)?/i, "");
         url = url.replace(/^\/src\//i, "../src/");
+        url = url.replace(/^\/images\//i, "../src/images/");
         url = url.replace(/^\/emcjs\//i, "../node_modules/emcjs/");
         url = url.replace(/^\/editors\//i, "../node_modules/jseditors/");
         url = path.join(__dirname, ".", url);

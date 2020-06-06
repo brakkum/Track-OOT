@@ -6,6 +6,7 @@ const path = require("path");
 const SRC_PATH = path.resolve(__dirname, "./src");
 const DEV_PATH = path.resolve(__dirname, "./dev");
 const PRD_PATH = path.resolve(__dirname, "./prod");
+const EDT_PATH = path.resolve(__dirname, "./editor/utils");
 
 const MODULE_PATHS = {
     emcJS: path.resolve(__dirname, "node_modules/emcjs"),
@@ -113,22 +114,29 @@ function copyScript(dest = DEV_PATH) {
         .pipe(gulp.dest(`${dest}/script`));
 }
 
+function copyEditorExtension(dest = DEV_PATH) {
+    return gulp.src(`${EDT_PATH}/**/*.js`)
+        .pipe(filemanager.register(`${EDT_PATH}`, `${dest}/script/content`))
+        .pipe(newer(`${dest}/script/content`))
+        .pipe(gulp.dest(`${dest}/script/content`));
+}
+
 function copyEmcJS(dest = DEV_PATH) {
-    return gulp.src([MODULE_PATHS.emcJS + "/**/*.js", `!${MODULE_PATHS.emcJS}/*.js`])
+    return gulp.src([`${MODULE_PATHS.emcJS}/**/*.js`, `!${MODULE_PATHS.emcJS}/*.js`])
         .pipe(filemanager.register(MODULE_PATHS.emcJS, `${dest}/emcJS`))
         .pipe(newer(`${dest}/emcJS`))
         .pipe(gulp.dest(`${dest}/emcJS`));
 }
 
 function copyTrackerEditor(dest = DEV_PATH) {
-    return gulp.src(MODULE_PATHS.trackerEditor + "/**/*.js")
+    return gulp.src(`${MODULE_PATHS.trackerEditor}/**/*.js`)
         .pipe(filemanager.register(MODULE_PATHS.trackerEditor, `${dest}/editors`))
         .pipe(newer(`${dest}/editors`))
         .pipe(gulp.dest(`${dest}/editors`));
 }
 
 function copyRTCClient(dest = DEV_PATH) {
-    return gulp.src(MODULE_PATHS.RTCClient + "/**/*.js")
+    return gulp.src(`${MODULE_PATHS.RTCClient}/**/*.js`)
         .pipe(filemanager.register(MODULE_PATHS.RTCClient, `${dest}/rtc`))
         .pipe(newer(`${dest}/rtc`))
         .pipe(gulp.dest(`${dest}/rtc`));
@@ -155,6 +163,7 @@ exports.build = gulp.series(
         copyCSS.bind(this, PRD_PATH),
         copyFonts.bind(this, PRD_PATH),
         copyScript.bind(this, PRD_PATH),
+        copyEditorExtension.bind(this, PRD_PATH),
         copyEmcJS.bind(this, PRD_PATH),
         copyTrackerEditor.bind(this, PRD_PATH),
         copyRTCClient.bind(this, PRD_PATH),
@@ -173,6 +182,7 @@ exports.buildDev = gulp.series(
         copyCSS.bind(this, DEV_PATH),
         copyFonts.bind(this, DEV_PATH),
         copyScript.bind(this, DEV_PATH),
+        copyEditorExtension.bind(this, DEV_PATH),
         copyEmcJS.bind(this, DEV_PATH),
         copyTrackerEditor.bind(this, DEV_PATH),
         copyRTCClient.bind(this, DEV_PATH),
