@@ -5,8 +5,6 @@ import Language from "/script/util/Language.js";
 import "./Item.js";
 import "./InfiniteItem.js";
 
-// TODO use same method as in DungeonState (no extra container)
-
 const TPL = new Template(`
     <style>
         * {

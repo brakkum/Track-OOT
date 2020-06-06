@@ -118,7 +118,6 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
         this.registerGlobal("state", stateChanged.bind(this));
         this.registerGlobal("randomizer_options", optionsChanged.bind(this));
         this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));
-        // TODO react to rom settings
     }
 
     get ref() {

@@ -134,8 +134,6 @@ async function init() {
     });
 
     updateLoadingMessage("initialize settings...");
-    // TODO create navigation component class
-    // TODO make better use of navigation component once it is declared
     window.TrackerSettingsWindow = new TrackerSettingsWindow();
     window.RandomizerOptionsWindow = new RandomizerOptionsWindow();
 
