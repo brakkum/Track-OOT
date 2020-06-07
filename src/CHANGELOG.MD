@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.16
+
+### BUGFIXES
+
+- fixed logging on connection established for host
+
+---
+
 ## VERSION 1.7.15
 
 ### BUGFIXES
