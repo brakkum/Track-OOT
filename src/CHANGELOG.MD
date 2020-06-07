@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.15
+
+### BUGFIXES
+
+- fixed message buffer on connection not called correctly
+
+---
+
 ## VERSION 1.7.14
 
 ### BUGFIXES
