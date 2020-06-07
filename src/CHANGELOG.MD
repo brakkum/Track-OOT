@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.14
+
+### BUGFIXES
+
+- fixed signalling connection issue
+
+---
+
 ## 1.7.13
 
 ### BUGFIXES
