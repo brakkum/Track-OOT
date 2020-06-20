@@ -62,6 +62,7 @@ const REWARDS = [
     "item.medallion_shadow",
     "item.medallion_light"
 ];
+export { REWARDS as Rewards }
 
 function stateChanged(event) {
     let value = parseInt(event.data[`dungeonRewards.${this.ref}`]);
