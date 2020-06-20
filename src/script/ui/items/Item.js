@@ -1,4 +1,5 @@
 import FileData from "/emcJS/storage/FileData.js";
+import Language from "/script/util/Language.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
@@ -60,17 +61,17 @@ const TPL = new Template(`
     </slot>
 `);
 
-const ALL_DUNGEONS = {
-    pocket: "FREE",
-    ['area.deku']: "DEKU",
-    ['area.dodongo']: "DCVN",
-    ['area.jabujabu']: "JABU",
-    ['area.temple_forest']: "FRST",
-    ['area.temple_fire']: "FIRE",
-    ['area.temple_shadow']: "SHDW",
-    ['area.temple_water']: "WATR",
-    ['area.temple_spirit']: "SPRT"
-}
+const ALL_DUNGEONS = [
+    'pocket',
+    'area.deku',
+    'area.dodongo',
+    'area.jabujabu',
+    'area.temple_forest',
+    'area.temple_fire',
+    'area.temple_shadow',
+    'area.temple_water',
+    'area.temple_spirit'
+]
     
 function optionsChanged(event) {
     // settings
@@ -127,7 +128,7 @@ function dungeonRewardUpdate(event) {
     const rewardId = Rewards.indexOf(this.ref)
     if (rewardId >= 0) {
         let defined = false;
-        for (let dungeon of Object.keys(ALL_DUNGEONS)) {
+        for (let dungeon of ALL_DUNGEONS) {
             let rewardValue = StateStorage.read(`dungeonRewards.${dungeon}`, 0);
             if (rewardValue == rewardId+1) {
                 this.dungeonReward = dungeon;
@@ -382,7 +383,7 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
         let all = this.querySelectorAll("[value]");
         if (!!all.length) {
             let opt = this.querySelector(`[value="${this.value}"]`);
-            opt.innerHTML = ALL_DUNGEONS[newValue] || "";
+            opt.innerHTML = !!newValue ? Language.translate(`${newValue}.short`) : ""
         }
     }
 

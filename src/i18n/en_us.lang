@@ -60,6 +60,7 @@ location.gerudo.c_archer_2=Horseback Archery Game 1500pts
 
 # LOCATIONS - DEKU
 area.deku=Deku Tree
+area.deku.short=DEKU
 location.deku.c_lobby=Lobby Chest
 location.deku.c_compass=Compass Chest
 location.deku.c_compass_side=Compass Room Side Chest
@@ -78,6 +79,7 @@ location.deku_mq.c_gohma=Gohma
 
 # LOCATIONS - DODONGO
 area.dodongo=Dodongo's Cavern
+area.dodongo.short=DCVN
 location.dodongo.c_map=Map Chest
 location.dodongo.c_compass=Compass Chest
 location.dodongo.c_bomb_flower_platform=Bomb Flower Platform
@@ -96,6 +98,7 @@ location.dodongo_mq.c_dodongo=King Dodongo
 
 # LOCATIONS - JABU JABU
 area.jabujabu=Jabu Jabu's Belly
+area.jabujabu.short=JABU
 location.jabujabu.c_boomerang=Boomerang Chest
 location.jabujabu.c_map=Map Chest
 location.jabujabu.c_compass=Compass Chest
@@ -115,6 +118,7 @@ location.jabujabu_mq.c_barinade=Barinade
 
 # LOCATIONS - TEMPLE FOREST
 area.temple_forest=Forest Temple
+area.temple_forest.short=FRST
 location.temple_forest.c_entrance=First Chest
 location.temple_forest.c_behind_lobby=Chest Behind Lobby
 location.temple_forest.c_well=Well Chest
@@ -145,6 +149,7 @@ location.temple_forest_mq.c_phantomganon=Phantom Ganon
 
 # LOCATIONS - TEMPLE FIRE
 area.temple_fire=Fire Temple
+area.temple_fire.short=FIRE
 location.temple_fire.c_near_boss=Chest Near Boss
 location.temple_fire.c_dancer=Fire Dancer Chest
 location.temple_fire.c_boss_key=Boss Key Chest
@@ -176,6 +181,7 @@ location.temple_fire_mq.c_volvagia=Volvagia
 
 # LOCATIONS - TEMPLE WATER
 area.temple_water=Water Temple
+area.temple_water.short=WATR
 location.temple_water.c_map=Map Chest
 location.temple_water.c_compass=Compass Chest
 location.temple_water.c_torches=Torches Chest
@@ -197,6 +203,7 @@ location.temple_water_mq.c_morpha=Morpha
 
 # LOCATIONS - TEMPLE SHADOW
 area.temple_shadow=Shadow Temple
+area.temple_shadow.short=SHDW
 location.temple_shadow.c_map=Map Chest
 location.temple_shadow.c_boots=Hover Boots Chest
 location.temple_shadow.c_compass=Compass Chest
@@ -239,6 +246,7 @@ location.temple_shadow_mq.c_bongobongo=Bongo Bongo
 
 # LOCATIONS - TEMPLE SPIRIT
 area.temple_spirit=Spirit Temple
+area.temple_spirit.short=SPRT
 location.temple_spirit.c_child_left=Child Left Chest
 location.temple_spirit.c_child_right=Child Right Chest
 location.temple_spirit.c_compass=Compass Chest
@@ -1175,6 +1183,7 @@ hyrule=Hyrule
 vanilla=Vanilla
 masterquest=Master Quest
 pocket=Pocket
+pocket.short=FREE
 item=Item
 location=Location
 back=back
