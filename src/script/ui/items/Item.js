@@ -414,7 +414,7 @@ function createOption(value, img, data, max_value) {
             }
         }
     }
-    if (!!data.dungeon_reward_id) {
+    if (!!data.dungeon_reward) {
         opt.classList.add("dungeon_reward");
     }
     // radial-gradient(ellipse at center, rgb(24, 241, 21) 0%,rgb(24, 241, 21) 45%,rgba(0,255,255,0) 72%,rgba(0,255,255,0) 87%)
