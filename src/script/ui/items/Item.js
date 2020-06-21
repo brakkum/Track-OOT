@@ -1,9 +1,11 @@
 import FileData from "/emcJS/storage/FileData.js";
+import Language from "/script/util/Language.js";
 import Template from "/emcJS/util/Template.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/Option.js";
 import StateStorage from "/script/storage/StateStorage.js";
+import { Rewards } from  "/script/ui/dungeonstate/DungeonReward.js"
 
 const TPL = new Template(`
     <style>
@@ -49,11 +51,28 @@ const TPL = new Template(`
         ::slotted([value].mark) {
             color: #54ff54;
         }
+        ::slotted([value].dungeon_reward) {
+            font-size: 0.55em;
+            align-items: flex-end;
+            justify-content: flex-center;
+        }
     </style>
     <slot>
     </slot>
 `);
 
+const ALL_DUNGEONS = [
+    'pocket',
+    'area.deku',
+    'area.dodongo',
+    'area.jabujabu',
+    'area.temple_forest',
+    'area.temple_fire',
+    'area.temple_shadow',
+    'area.temple_water',
+    'area.temple_spirit'
+]
+    
 function optionsChanged(event) {
     // settings
     let data = FileData.get("items")[this.ref];
@@ -105,6 +124,23 @@ function dungeonTypeUpdate(event) {
     }
 }
 
+function dungeonRewardUpdate(event) {
+    const rewardId = Rewards.indexOf(this.ref)
+    if (rewardId >= 0) {
+        let defined = false;
+        for (let dungeon of ALL_DUNGEONS) {
+            let rewardValue = StateStorage.read(`dungeonRewards.${dungeon}`, 0);
+            if (rewardValue == rewardId+1) {
+                this.dungeonReward = dungeon;
+                defined = true;
+            }
+        }
+        if (!defined) {
+            this.dungeonReward = "";
+        }
+    }
+}
+
 class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
@@ -118,6 +154,7 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
         this.registerGlobal("state", stateChanged.bind(this));
         this.registerGlobal("randomizer_options", optionsChanged.bind(this));
         this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));
+        this.registerGlobal("dungeonreward", dungeonRewardUpdate.bind(this));
     }
 
     get ref() {
@@ -134,6 +171,14 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
 
     set value(val) {
         this.setAttribute('value', val);
+    }
+
+    get dungeonReward() {
+        return this.getAttribute('dungeonreward');
+    }
+
+    set dungeonReward(val) {
+        this.setAttribute('dungeonreward', val);
     }
 
     get startvalue() {
@@ -153,7 +198,7 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
     }
 
     static get observedAttributes() {
-        return ['ref', 'value', 'startvalue'];
+        return ['ref', 'value', 'startvalue', 'dungeonreward'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -173,6 +218,9 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
                 case 'startvalue':
                     this.fillItemChoices();
                 break;
+                case 'dungeonreward':
+                    this.displayDungeonReward(newValue);
+                break;
                 case 'value':
                     let oe = this.querySelector(`.active`);
                     if (!!oe) {
@@ -181,6 +229,9 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
                     let ne = this.querySelector(`[value="${newValue}"]`);
                     if (!!ne) {
                         ne.classList.add("active");
+                    }
+                    if (!!this.dungeonReward) {
+                        this.displayDungeonReward(this.dungeonReward);
                     }
                 break;
             }
@@ -328,6 +379,14 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
         return false;
     }
 
+    displayDungeonReward(newValue) {
+        let all = this.querySelectorAll("[value]");
+        if (!!all.length) {
+            let opt = this.querySelector(`[value="${this.value}"]`);
+            opt.innerHTML = !!newValue ? Language.translate(`${newValue}.short`) : ""
+        }
+    }
+
 }
 
 customElements.define('ootrt-item', HTMLTrackerItem);
@@ -354,6 +413,9 @@ function createOption(value, img, data, max_value) {
                 opt.classList.add("mark");
             }
         }
+    }
+    if (!!data.dungeon_reward) {
+        opt.classList.add("dungeon_reward");
     }
     // radial-gradient(ellipse at center, rgb(24, 241, 21) 0%,rgb(24, 241, 21) 45%,rgba(0,255,255,0) 72%,rgba(0,255,255,0) 87%)
     return opt;
