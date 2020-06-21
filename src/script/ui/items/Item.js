@@ -52,7 +52,7 @@ const TPL = new Template(`
             color: #54ff54;
         }
         ::slotted([value].dungeon_reward) {
-            font-size: 0.6em;
+            font-size: 0.55em;
             align-items: flex-end;
             justify-content: flex-center;
         }
