@@ -60,6 +60,7 @@ location.gerudo.c_archer_2=Bogenschießen zu Pferd 1500pkt
 
 # LOCATIONS - DEKU
 area.deku=Dekubaum
+area.deku.short=DEKU
 location.deku.c_lobby=Lobby
 location.deku.c_compass=Kompass
 location.deku.c_compass_side=Kompass Raum weitere Truhe
@@ -78,6 +79,7 @@ location.deku_mq.c_gohma=Gohma
 
 # LOCATIONS - DODONGO
 area.dodongo=Dodongos Höhle
+area.dodongo.short=DCVN
 location.dodongo.c_map=Karte
 location.dodongo.c_compass=Kompass
 location.dodongo.c_bomb_flower_platform=Donnerblumen Plattform
@@ -96,6 +98,7 @@ location.dodongo_mq.c_dodongo=King Dodongo
 
 # LOCATIONS - JABU JABU
 area.jabujabu=Jabu Jabus Bauch
+area.jabujabu.short=JABU
 location.jabujabu.c_boomerang=Bumerang
 location.jabujabu.c_map=Karte
 location.jabujabu.c_compass=Kompass
@@ -115,6 +118,7 @@ location.jabujabu_mq.c_barinade=Barinade
 
 # LOCATIONS - TEMPLE FOREST
 area.temple_forest=Waldtempel
+area.temple_forest.short=FRST
 location.temple_forest.c_entrance=Erste Truhe
 location.temple_forest.c_behind_lobby=Truhe hinter Lobby
 location.temple_forest.c_well=Brunnen
@@ -145,6 +149,7 @@ location.temple_forest_mq.c_phantomganon=Phantom Ganon
 
 # LOCATIONS - TEMPLE FIRE
 area.temple_fire=Feuertempel
+area.temple_fire.short=FIRE
 location.temple_fire.c_near_boss=Nahe Boss Truhe
 location.temple_fire.c_dancer=Flammenderwisch
 location.temple_fire.c_boss_key=Boss-Schlüssel
@@ -176,6 +181,7 @@ location.temple_fire_mq.c_volvagia=Volvagia
 
 # LOCATIONS - TEMPLE WATER
 area.temple_water=Wassertempel
+area.temple_water.short=WATR
 location.temple_water.c_map=Karte
 location.temple_water.c_compass=Kompass
 location.temple_water.c_torches=Fackel Truhe
@@ -197,6 +203,7 @@ location.temple_water_mq.c_morpha=Morpha
 
 # LOCATIONS - TEMPLE SHADOW
 area.temple_shadow=Schattentempel
+area.temple_shadow.short=SHDW
 location.temple_shadow.c_map=Karte
 location.temple_shadow.c_boots=Gleitstiefel
 location.temple_shadow.c_compass=Kompass
@@ -239,6 +246,7 @@ location.temple_shadow_mq.c_bongobongo=Bongo Bongo
 
 # LOCATIONS - TEMPLE SPIRIT
 area.temple_spirit=Geistertempel
+area.temple_spirit.short=SPRT
 location.temple_spirit.c_child_left=Kind Links
 location.temple_spirit.c_child_right=Kind Rechts
 location.temple_spirit.c_compass=Kompass
@@ -1169,6 +1177,7 @@ hyrule=Hyrule
 vanilla=Normal
 masterquest=Master Quest
 pocket=Tasche
+pocket.short=FREE
 skulltula=Skulltula
 item=Item
 location=Ort
