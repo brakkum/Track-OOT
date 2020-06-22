@@ -28,6 +28,7 @@ const TPL = new Template(`
         }
         #lobby_register {
             display: flex;
+            font-size: 0.8em;
         }
         .flex {
             flex: 1;

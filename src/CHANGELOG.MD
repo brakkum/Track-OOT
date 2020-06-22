@@ -4,6 +4,34 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.17
+
+### FEATURES
+
+- merge in pull request by Elagatua
+    - add rewarded from string to medallions/stones in item panel
+
+    >---
+    > ! BUG
+    >  - detached panel not syncing correctly due to direct read from state
+    >  - needs some rework to be a little bit more efficient
+    >  - maybe add some functionality to reward choice, to exclude already taken rewards, too
+    >---
+
+- add item value alignment to configuration
+- add a different default font size for items
+
+### BUGFIXES
+
+- fix location list header not updating after location check/uncheck
+- fix some styling regarding item element hover
+
+### REMOVED
+
+- ancient hylian font was removed due to bad leading
+
+---
+
 ## VERSION 1.7.16
 
 ### BUGFIXES

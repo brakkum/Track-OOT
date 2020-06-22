@@ -4,6 +4,7 @@ import Panel from "/emcJS/ui/layout/Panel.js";
 import Language from "/script/util/Language.js";
 import "./Item.js";
 import "./InfiniteItem.js";
+import "./RewardItem.js";
 
 const TPL = new Template(`
     <style>
@@ -19,13 +20,8 @@ const TPL = new Template(`
         div.item-row {
             display: flex;
         }
-        ootrt-item,
-        ootrt-infiniteitem {
-            display: block;
-            padding: 5px;
-        }
-        ootrt-item:hover,
-        ootrt-infiniteitem:hover {
+        .item {
+            display: flex;
             padding: 2px;
         }
         div.text,
@@ -40,19 +36,19 @@ const TPL = new Template(`
 `);
 
 function createItem(value, data) {
+    let type = 'ootrt-item';
     if (data.max === false) {
-        let el = document.createElement('ootrt-infiniteitem');
-        el.title = Language.translate(value);
-        el.setAttribute('i18n-tooltip', value);
-        el.setAttribute('ref', value);
-        return el;
-    } else {
-        let el = document.createElement('ootrt-item');
-        el.title = Language.translate(value);
-        el.setAttribute('i18n-tooltip', value);
-        el.setAttribute('ref', value);
-        return el;
+        type = 'ootrt-infiniteitem';
+    } else if (data.dungeon_reward === true) {
+        type = 'ootrt-rewarditem';
     }
+        
+    let el = document.createElement(type);
+    el.className = "item";
+    el.title = Language.translate(value);
+    el.setAttribute('i18n-tooltip', value);
+    el.setAttribute('ref', value);
+    return el;
 }
 
 function createText(value) {
@@ -84,6 +80,7 @@ class HTMLTrackerItemGrid extends Panel {
     }
 
     connectedCallback() {
+        this.setAttribute("data-fontmod", "items");
         if (!this.items && !!this.grid) {
             this.items = JSON.stringify(FileData.get(`grids/${this.grid}`));
         }

@@ -4,6 +4,10 @@
 }
 
 [data-font="font_triforce"] {
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-family: Triforce, Arial, sans-serif;
+}
+
+[data-font="font_triforce"] [data-fontmod="items"] {
+    font-size: 1rem;
 }

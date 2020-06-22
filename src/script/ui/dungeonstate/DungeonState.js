@@ -31,13 +31,15 @@ const TPL = new Template(`
         :host([orientation="column"]) div.item-row {
             flex-direction: row;
         }
-        ootrt-item,
+        ootrt-item {
+            display: block;
+            padding: 2px;
+        }
         ootrt-dungeonreward,
         ootrt-dungeontype {
             display: block;
             padding: 5px;
         }
-        ootrt-item:hover,
         ootrt-dungeonreward:hover,
         ootrt-dungeontype:hover {
             padding: 2px;
@@ -49,7 +51,7 @@ const TPL = new Template(`
             width: 40px;
             height: 20px;
             padding: 2px;
-            font-size: 0.6em;
+            font-size: 1em;
             -moz-user-select: none;
             user-select: none;
         }
@@ -95,6 +97,10 @@ class HTMLTrackerDungeonState extends Panel {
             this.shadowRoot.append(createRow(data[i]));
         }
         switchActive.call(this, this.active);
+    }
+
+    connectedCallback() {
+        this.setAttribute("data-fontmod", "items");
     }
 
     get active() {
