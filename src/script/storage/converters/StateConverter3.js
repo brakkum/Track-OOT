@@ -1,4 +1,5 @@
 const REWARDS = [
+    "",
     "item.stone_forest",
     "item.stone_fire",
     "item.stone_water",
@@ -20,7 +21,7 @@ export default function(state) {
     };
     for (let i of Object.keys(state.data)) {
         if (i.startsWith("dungeonRewards.")) {
-            res.data[i] = REWARDS[state.data[i] - 1];
+            res.data[i] = REWARDS[state.data[i]];
         } else {
             res.data[i] = state.data[i];
         }

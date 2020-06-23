@@ -94,6 +94,7 @@ function stateChanged(event) {
         value = 0;
     }
     this.value = value;
+    this.dungeon = getDisplayDungeon(this.ref);
 }
 
 function itemUpdate(event) {

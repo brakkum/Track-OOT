@@ -94,7 +94,7 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
 
     connectedCallback() {
         super.connectedCallback();
-        this.value = StateStorage.read(`dungeonRewards.${this.ref}`, "0");
+        this.value = StateStorage.read(`dungeonRewards.${this.ref}`, "");
     }
 
     get ref() {
