@@ -117,7 +117,7 @@ class HTMLTrackerRewardItem extends EventBusSubsetMixin(HTMLElement) {
 
     connectedCallback() {
         super.connectedCallback();
-        if (this.ref != null && !!this.grid) {
+        if (this.ref != null) {
             this.displayDungeonReward();
         }
     }
