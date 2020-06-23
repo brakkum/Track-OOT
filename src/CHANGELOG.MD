@@ -10,16 +10,10 @@ Application:    Track-OOT
 
 - merge in pull request by Elagatua
     - add rewarded from string to medallions/stones in item panel
-
-    >---
-    > ! BUG
-    >  - detached panel not syncing correctly due to direct read from state
-    >  - needs some rework to be a little bit more efficient
-    >  - maybe add some functionality to reward choice, to exclude already taken rewards, too
-    >---
-
+- make dungeon rewards save as string values instead of indexes
 - add item value alignment to configuration
 - add a different default font size for items
+- add unexpected disconnect from host alert to network play
 
 ### BUGFIXES
 

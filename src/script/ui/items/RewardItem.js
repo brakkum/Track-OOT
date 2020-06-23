@@ -4,7 +4,6 @@ import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/Option.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import { Rewards } from  "/script/ui/dungeonstate/DungeonReward.js";
 
 const TPL = new Template(`
     <style>
@@ -68,6 +67,16 @@ const ALL_DUNGEONS = [
     'area.temple_spirit'
 ];
 
+function getDisplayDungeon(reward) {
+    for (let dungeon of ALL_DUNGEONS) {
+        let rewardValue = StateStorage.read(`dungeonRewards.${dungeon}`, "");
+        if (rewardValue == reward) {
+            return dungeon;
+        }
+    }
+    return "";
+}
+
 function getAlign(value) {
     switch (value) {
         case 'start':
@@ -98,7 +107,12 @@ function itemUpdate(event) {
 }
 
 function dungeonRewardUpdate(event) {
-    this.displayDungeonReward();
+    let el = this.shadowRoot.getElementById("value");
+    if (this.dungeon == event.data.name && event.data.value != this.ref) {
+        this.dungeon = "";
+    } else if (this.ref === event.data.value) {
+        this.dungeon = event.data.name;
+    }
 }
 
 class HTMLTrackerRewardItem extends EventBusSubsetMixin(HTMLElement) {
@@ -118,7 +132,7 @@ class HTMLTrackerRewardItem extends EventBusSubsetMixin(HTMLElement) {
     connectedCallback() {
         super.connectedCallback();
         if (this.ref != null) {
-            this.displayDungeonReward();
+            this.dungeon = getDisplayDungeon(this.ref);
         }
     }
 
@@ -162,8 +176,16 @@ class HTMLTrackerRewardItem extends EventBusSubsetMixin(HTMLElement) {
         this.setAttribute('valign', val);
     }
 
+    get dungeon() {
+        return this.getAttribute('dungeon');
+    }
+
+    set dungeon(val) {
+        this.setAttribute('dungeon', val);
+    }
+
     static get observedAttributes() {
-        return ['ref', 'halign', 'valign'];
+        return ['ref', 'dungeon', 'halign', 'valign'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -179,7 +201,15 @@ class HTMLTrackerRewardItem extends EventBusSubsetMixin(HTMLElement) {
                     }
                     this.style.backgroundImage = `url("${data.images}")`;
                     this.value = StateStorage.read(this.ref, 0);
-                    this.displayDungeonReward();
+                    this.dungeon = getDisplayDungeon(this.ref);
+                break;
+                case 'dungeon':
+                    let el = this.shadowRoot.getElementById("value");
+                    if (newValue != "") {
+                        el.innerHTML = Language.translate(`${newValue}.short`);
+                    } else {
+                        el.innerHTML = "";
+                    }
                 break;
                 case 'halign':
                     this.shadowRoot.getElementById("value").style.justifyContent = getAlign(newValue);
@@ -217,20 +247,6 @@ class HTMLTrackerRewardItem extends EventBusSubsetMixin(HTMLElement) {
         if (!event) return;
         event.preventDefault();
         return false;
-    }
-
-    displayDungeonReward() {
-        let el = this.shadowRoot.getElementById("value");
-        el.innerHTML = "";
-        const rewardId = Rewards.indexOf(this.ref)
-        if (rewardId >= 0) {
-            for (let dungeon of ALL_DUNGEONS) {
-                let rewardValue = StateStorage.read(`dungeonRewards.${dungeon}`, 0);
-                if (rewardValue == rewardId + 1) {
-                    el.innerHTML = Language.translate(`${dungeon}.short`);
-                }
-            }
-        }
     }
 
 }
