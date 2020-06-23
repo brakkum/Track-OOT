@@ -3,13 +3,13 @@ import Converter1 from "./StateConverter1.js";
 import Converter2 from "./StateConverter2.js";
 import Converter3 from "./StateConverter3.js";
 
-const TARGET_VERSION = 3;
 const CONVERTER_FN = [
     Converter0,
     Converter1,
     Converter2,
     Converter3
 ];
+const TARGET_VERSION = CONVERTER_FN.length - 1;
 
 class StateConverter {
 
