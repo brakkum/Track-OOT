@@ -9,7 +9,7 @@ const CONVERTER_FN = [
     Converter2,
     Converter3
 ];
-const TARGET_VERSION = CONVERTER_FN.length - 1;
+const TARGET_VERSION = CONVERTER_FN.length;
 
 class StateConverter {
 
