@@ -62,7 +62,7 @@ const REWARDS = [
     "item.medallion_shadow",
     "item.medallion_light"
 ];
-const TAKEN_REWARDS = new Set();
+const TAKEN_REWARDS = new Map();
 
 function stateChanged(event) {
     let value = event.data[`dungeonRewards.${this.ref}`];
@@ -148,11 +148,11 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
-                    if (oldValue != "") {
+                    if (oldValue != "" && TAKEN_REWARDS.get(oldValue) == this) {
                         TAKEN_REWARDS.delete(oldValue);
                     }
                     if (newValue != "") {
-                        TAKEN_REWARDS.add(newValue);
+                        TAKEN_REWARDS.set(newValue, this);
                     }
                 }
             break;
