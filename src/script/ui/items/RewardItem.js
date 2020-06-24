@@ -67,7 +67,7 @@ const ALL_DUNGEONS = [
     'area.temple_spirit'
 ];
 
-function getDisplayDungeon(reward) {
+function getDisplayDungeon(reward, data) {
     for (let dungeon of ALL_DUNGEONS) {
         let rewardValue = StateStorage.read(`dungeonRewards.${dungeon}`, "");
         if (rewardValue == reward) {
@@ -94,7 +94,15 @@ function stateChanged(event) {
         value = 0;
     }
     this.value = value;
-    this.dungeon = getDisplayDungeon(this.ref);
+    /* dungeon data */
+    for (let dungeon of ALL_DUNGEONS) {
+        let rewardValue = event.data[`dungeonRewards.${dungeon}`];
+        if (rewardValue == reward) {
+            this.dungeon = dungeon;
+            return;
+        }
+    }
+    this.dungeon = "";
 }
 
 function itemUpdate(event) {
