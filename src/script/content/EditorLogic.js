@@ -81,5 +81,20 @@ let logicEditor = document.getElementById("editor-logic");
                 PageSwitcher.switch("editor_choice");
             }
         }]
+    },{
+        "content": " TOGGLE FULLSCREEN",
+        "handler": toggleFullscreen
     }]);
 }();
+
+function toggleFullscreen() {
+    if (document.fullscreenEnabled) {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen(); 
+            }
+        }
+    }
+}

@@ -33,6 +33,9 @@ PageSwitcher.register("main", [{
     "content": "EDITORS",
     "handler": showEditors
 },{
+    "content": " TOGGLE FULLSCREEN",
+    "handler": toggleFullscreen
+},{
     "content": "RANDOMIZER OPTIONS",
     "handler": openRomSettingsWindow
 },{
@@ -127,8 +130,17 @@ function showEditors() {
     PageSwitcher.switch("editor_choice");
 }
 
-
-
+function toggleFullscreen() {
+    if (document.fullscreenEnabled) {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen(); 
+            }
+        }
+    }
+}
 
 /* TODO
 ** use this to create unified states

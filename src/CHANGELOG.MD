@@ -14,6 +14,7 @@ Application:    Track-OOT
 - add item value alignment to configuration
 - add a different default font size for items
 - add unexpected disconnect from host alert to network play
+- added fullscreen toggle button
 
 ### BUGFIXES
 
