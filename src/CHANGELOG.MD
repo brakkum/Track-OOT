@@ -9,7 +9,7 @@ Application:    Track-OOT
 ### FEATURES
 
 - merge in pull request by Elagatua
-    - add rewarded from string to medallions/stones in item panel
+    - add reward string to medallions/stones in item panel
 - make dungeon rewards save as string values instead of indexes
 - add item value alignment to configuration
 - add a different default font size for items
