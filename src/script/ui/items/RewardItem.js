@@ -94,10 +94,10 @@ function stateChanged(event) {
         value = 0;
     }
     this.value = value;
-    /* dungeon data */
+    /* dungeon */
     for (let dungeon of ALL_DUNGEONS) {
         let rewardValue = event.data[`dungeonRewards.${dungeon}`];
-        if (rewardValue == reward) {
+        if (rewardValue == this.ref) {
             this.dungeon = dungeon;
             return;
         }
