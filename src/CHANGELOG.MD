@@ -4,6 +4,18 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.18
+
+### FEATURES
+
+- make locations be toggled instead of set
+    - click / touch will be used for toggle checked / unchecked
+    - right click / long press is now for contextmenu only
+    
+    `currently only for locations in list`
+
+---
+
 ## VERSION 1.7.17
 
 ### FEATURES
