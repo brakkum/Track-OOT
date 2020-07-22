@@ -62,22 +62,46 @@ let editorChoice = document.getElementById("editor-choice");
     // logic editor
     !async function() {
         let LogicsStorage = new IDBStorage("logics");
+        let GraphStorage = new IDBStorage("edges");
         let logicEditor = document.getElementById("logic-editor");
+        function resolveGraphs2Logic(input) {
+            let res = {};
+            for (let i in input) {
+                let value = input[i];
+                let [key, target] = i.split(" -> ");
+                res[key] = res[key] || {};
+                res[key][target] = value;
+            }
+            return res;
+        }
         // refresh
         async function refreshLogicEditor() {
             let lists = await LogicListsCreator.createLists();
             logicEditor.loadOperatorList(lists.operators);
             logicEditor.loadLogicList(lists.logics);
             logicEditor.setLogic(FileData.get("logic", {}));
-            logicEditor.setPatch(await LogicsStorage.getAll());
+            // TODO resolve graph to logic edges format
+            let patch = {
+                edges: resolveGraphs2Logic(await GraphStorage.getAll()),
+                logic: await LogicsStorage.getAll()
+            };
+            logicEditor.setPatch(patch);
         }
         await refreshLogicEditor();
         // register
         logicEditor.addEventListener("save", async event => {
-            await LogicsStorage.set(event.key, event.logic);
+            if (event.target != null) {
+                await GraphStorage.set(`${event.key} -> ${event.target}`, event.logic);
+            } else {
+                await LogicsStorage.set(event.key, event.logic);
+            }
         });
         logicEditor.addEventListener("clear", async event => {
-            await LogicsStorage.delete(event.key);
+            if (event.target != null) {
+                await GraphStorage.delete(`${event.key} -> ${event.target}`);
+            } else {
+                await LogicsStorage.delete(event.key);
+            }
         });
         NAVIGATION.set("logic-editor", [{
             "content": "FILE",
@@ -85,13 +109,25 @@ let editorChoice = document.getElementById("editor-choice");
                 "content": "SAVE LOGIC",
                 "handler": async () => {
                     let logic = JSON.parse(JSON.stringify(FileData.get("logic")));
-                    let logic_patched = await LogicsStorage.getAll();
-                    for (let i in logic_patched) {
-                        if (!logic[i]) {
-                            logic[i] = logic_patched[i];
+                    let patch = {
+                        edges: resolveGraphs2Logic(await GraphStorage.getAll()),
+                        logic: await LogicsStorage.getAll()
+                    };
+                    for (let i in patch.logic) {
+                        if (!logic.logic[i]) {
+                            logic.logic[i] = patch.logic[i];
                         } else {
-                            for (let j in logic_patched[i]) {
-                                logic[i][j] = logic_patched[i][j];
+                            for (let j in patch.logic[i]) {
+                                logic.logic[i][j] = patch.logic[i][j];
+                            }
+                        }
+                    }
+                    for (let i in patch.edges) {
+                        if (!logic.edges[i]) {
+                            logic.edges[i] = patch.edges[i];
+                        } else {
+                            for (let j in patch.edges[i]) {
+                                edges[`${i} -> ${j}`] = patch.edges[i][j];
                             }
                         }
                     }
@@ -103,7 +139,19 @@ let editorChoice = document.getElementById("editor-choice");
                     let res = await FileSystem.load(".json");
                     if (!!res && !!res.data) {
                         let logic = res.data;
-                        await LogicsStorage.setAll(logic);
+                        // load logic
+                        await LogicsStorage.setAll(logic.logic || {});
+                        // load edges
+                        let edges = {};
+                        for (let i in logic.edges) {
+                            if (!!logic.edges[i]) {
+                                for (let j in logic.edges[i]) {
+                                    logic.edges[i][j] = logic.edges[i][j];
+                                }
+                            }
+                        }
+                        await GraphStorage.setAll(edges);
+                        // refresh
                         await refreshLogicEditor();
                         logicEditor.resetWorkingarea();
                     }
@@ -111,13 +159,17 @@ let editorChoice = document.getElementById("editor-choice");
             },{
                 "content": "SAVE PATCH",
                 "handler": async () => {
-                    let logic = await LogicsStorage.getAll();
-                    FileSystem.save(JSON.stringify(logic, " ", 4), `logic.${(new Date).valueOf()}.json`);
+                    let patch = {
+                        edges: resolveGraphs2Logic(await GraphStorage.getAll()),
+                        logic: await LogicsStorage.getAll()
+                    };
+                    FileSystem.save(JSON.stringify(patch, " ", 4), `logic.${(new Date).valueOf()}.json`);
                 }
             },{
                 "content": "REMOVE PATCH",
                 "handler": async () => {
                     await LogicsStorage.clear();
+                    await GraphStorage.clear();
                     await refreshLogicEditor();
                     logicEditor.resetWorkingarea();
                 }

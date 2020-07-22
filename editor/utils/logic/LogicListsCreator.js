@@ -3,6 +3,8 @@ import FileData from "/emcJS/storage/FileData.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 
+import ReferrerAt from "/editors/logic/elements/ReferrerAt.js";
+
 const LogicsStorage = new IDBStorage('logics');
 
 const LOGIC_OPERATORS = [
@@ -16,7 +18,9 @@ const LOGIC_OPERATORS = [
     "ted-logic-xor",
     "ted-logic-xnor",
     "ted-logic-min",
-    "ted-logic-max"
+    "ted-logic-max",
+    "ted-logic-at",
+    "ted-logic-here"
 ];
 const CUSTOM_OPERATOR_GROUP = [
     "location"
@@ -39,17 +43,30 @@ class LogicListsCreator {
         let logic = FileData.get("logic");
         let custom_logic = await LogicsStorage.getAll();
         let mixins = {};
+        let functions = {};
         
         if (!!logic) {
-            for (let i in logic) {
-                if (!i.startsWith("mixin.")) continue;
-                mixins[i] = logic[i];
+            for (let i in logic.logic) {
+                if (i.startsWith("mixin.")) {
+                    mixins[i] = logic[i];
+                    continue;
+                }
+                if (i.startsWith("function.")) {
+                    functions[i] = logic[i];
+                    continue;
+                }
             }
         }
         if (!!custom_logic) {
-            for (let i in custom_logic) {
-                if (!i.startsWith("mixin.")) continue;
-                mixins[i] = custom_logic[i];
+            for (let i in custom_logic.logic) {
+                if (i.startsWith("mixin.")) {
+                    mixins[i] = logic[i];
+                    continue;
+                }
+                if (i.startsWith("function.")) {
+                    functions[i] = logic[i];
+                    continue;
+                }
             }
         }
 
@@ -65,10 +82,12 @@ class LogicListsCreator {
         result.operators.push(createOperatorMixins(mixins));
         
         // LOGICS
-        for (let cat of createLogicWorldCategories(world_lists, world)) {
-            result.logics.push(cat);
-        }
+        //for (let cat of createLogicWorldCategories(world_lists, world)) {
+        //    result.logics.push(cat);
+        //}
+        result.logics.push(createLogicGraphCategory(logic.edges, world));
         result.logics.push(createLogicMixinCategory(mixins));
+        result.logics.push(createLogicFunctionCategory(functions));
 
         return result;
     }
@@ -305,6 +324,60 @@ function createLogicWorldCategories(data, world) {
     return ress;
 }
 
+function createLogicGraphCategory(data, world) {
+    let res = {
+        "type": "group",
+        "caption": "graph",
+        "children": []
+    };
+    for (let ref in data) {
+        let lbuf = {
+            "type": "group",
+            "caption": "locations",
+            "children": []
+        };
+        let rbuf = {
+            "type": "group",
+            "caption": "regions",
+            "children": []
+        };
+        let sub = data[ref];
+        for (let sref in sub) {
+            if (sref.startsWith("logic.location.")) {
+                let name = sref.slice(6);
+                let loc = world[name];
+                if (!!loc) {
+                    lbuf.children.push({
+                        "type": loc.type,
+                        "edge": [ref, sref],
+                        "category": "location",
+                        "content": sref,
+                        "icon": `/images/icons/${loc.type}.svg`
+                    });
+                } else {
+                    lbuf.children.push({
+                        "edge": [ref, sref],
+                        "category": "location",
+                        "content": sref
+                    });
+                }
+            } else if (sref.startsWith("region.")) {
+                rbuf.children.push({
+                    "edge": [ref, sref],
+                    "category": "region",
+                    "content": sref
+                });
+            }
+        }
+        res.children.push({
+            "type": "group",
+            "caption": ref,
+            "children": [lbuf, rbuf]
+        });
+    }
+    return res;
+}
+
 function createLogicMixinCategory(data) {
     let res = {
         "type": "group",
@@ -315,6 +388,22 @@ function createLogicMixinCategory(data) {
         res.children.push({
             "access": ref,
             "category": "mixin",
+            "content": ref
+        });
+    }
+    return res;
+}
+
+function createLogicFunctionCategory(data) {
+    let res = {
+        "type": "group",
+        "caption": "function",
+        "children": []
+    };
+    for (let ref in data) {
+        res.children.push({
+            "access": ref,
+            "category": "function",
             "content": ref
         });
     }
