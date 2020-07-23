@@ -341,6 +341,11 @@ function createLogicGraphCategory(data, world) {
             "caption": "regions",
             "children": []
         };
+		let ebuf = {
+			"type": "group",
+			"caption": "events",
+			"children": []
+		};
         let sub = data[ref];
         for (let sref in sub) {
             if (sref.startsWith("logic.location.")) {
@@ -367,12 +372,18 @@ function createLogicGraphCategory(data, world) {
                     "category": "region",
                     "content": sref
                 });
-            }
+            } else if (sref.startsWith("event.")) {
+				ebuf.children.push({
+					"edge": [ref, sref],
+					"category": "location",
+					"content": sref
+				});
+			}
         }
         res.children.push({
             "type": "group",
             "caption": ref,
-            "children": [lbuf, rbuf]
+            "children": [lbuf, rbuf, ebuf]
         });
     }
     return res;
