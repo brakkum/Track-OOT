@@ -48,8 +48,13 @@
             "default": false
         },
         "option.doors_open_forest": {
-            "type": "check",
-            "default": true
+            "type": "choice",
+            "default": "doors_open_forest_open",
+            "values": [
+                "doors_open_forest_closed",
+                "doors_open_forest_deku",
+                "doors_open_forest_open"
+            ]
         },
         "option.doors_open_mountain": {
             "type": "hidden",
