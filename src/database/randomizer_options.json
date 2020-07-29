@@ -1,5 +1,13 @@
 {
     "options": {
+        "option.starting_age": {
+            "type": "choice",
+            "default": "child",
+            "values": [
+                "child",
+                "adult"
+            ]
+        },
         "option.consider_buyable": {
             "type": "check",
             "default": false
