@@ -15,7 +15,6 @@ class Ruleset {
     if (!ruleset) { return }
 
     let settings = {};
-    let options = FileData.get("randomizer_options");
     for (let i in ruleset) {
         for (let j in ruleset[i]) {
             let v = ruleset[i][j];
