@@ -36,6 +36,15 @@
             "essential-map"
         ]
     },
+    "ruleset": {
+        "type": "choice",
+        "default": "ruleset-no-template",
+        "values": [
+            "ruleset-no-template",
+            "ruleset-vanilla",
+            "ruleset-s3-standard"
+        ]
+    },
     "item_size": {
         "type": "-range",
         "min": 32,

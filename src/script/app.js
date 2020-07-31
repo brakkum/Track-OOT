@@ -27,6 +27,7 @@ const FILES = {
     "songs":                {path: "/database/songs.json",              type: "jsonc"},
     "hints":                {path: "/database/hints.json",              type: "jsonc"},
     "settings":             {path: "/database/settings.json",           type: "jsonc"},
+    "rulesets":             {path: "/database/rulesets.json",           type: "jsonc"},
     "randomizer_options":   {path: "/database/randomizer_options.json", type: "jsonc"},
     "filter":               {path: "/database/filter.json",             type: "jsonc"},
     "shops":                {path: "/database/shops.json",              type: "jsonc"},
@@ -94,6 +95,7 @@ async function init() {
         "/script/ui/locations/LocationList.js",
         "/script/ui/map/Map.js",
         "/script/ui/LocationStatus.js",
+        "/script/util/Ruleset.js",
         "/script/content/Tracker.js",
         "/script/content/EditorChoice.js",
         "/script/content/EditorLogic.js"
