@@ -869,6 +869,7 @@ skips=Aktive Skips
 # SETTINGS - GENERAL
 font=Wähle Font
 layout=Wähle Layout
+ruleset=Wähle Regelsatz Vorlage
 item_size=Item Größe
 autosave_time=Zeit für automatisches Speichern in Minuten (0 zum deaktivieren)
 autosave_amount=Anzahl zu behaltender automatischer Speicherungen
@@ -1080,6 +1081,10 @@ compact=Kompakt (Schlüssel/Belohnung/Typ)
 flat=Flach (Schlüssel/Belohnung/Typ)
 map-right-dtr=Minimal Items with Map (Belohnung/Typ)
 essential-map=Essentielle Items mit Karte (Belohnung)
+
+# SETTINGS - RULESET
+ruleset-vanilla=Vanille
+ruleset-s3-standard=S3 Standard
 
 # SHOPS
 shop.kokiri=Kokiri Laden

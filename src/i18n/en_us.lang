@@ -870,6 +870,7 @@ skips=Active skips
 # SETTINGS - GENERAL
 font=Select Font
 layout=Select Layout
+ruleset=Select Ruleset Template
 item_size=Item Size
 autosave_time=Autosave time in minutes (0 to deactivate)
 autosave_amount=Number of autosaves to keep
@@ -1085,6 +1086,10 @@ compact=Compact (key/reward/type)
 flat=Flat (key/reward/type)
 map-right-dtr=Minimal Items with Map (reward/type)
 essential-map=Essential Items with Map (reward)
+
+# SETTINGS - RULESET
+ruleset-vanilla=Vanilla
+ruleset-s3-standard=S3 Standard
 
 # SHOPS
 shop.kokiri=Kokiri Shop
