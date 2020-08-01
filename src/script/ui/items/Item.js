@@ -1,11 +1,8 @@
 import FileData from "/emcJS/storage/FileData.js";
-import Language from "/script/util/Language.js";
 import Template from "/emcJS/util/Template.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/Option.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import { Rewards } from  "/script/ui/dungeonstate/DungeonReward.js"
 
 const TPL = new Template(`
     <style>
@@ -14,14 +11,17 @@ const TPL = new Template(`
             box-sizing: border-box;
         }
         :host {
-            display: inline-block;
+            display: inline-flex;
             width: 40px;
             height: 40px;
             cursor: pointer;
         }
-        slot {
+        #slot {
             width: 100%;
             height: 100%;
+            font-size: 1em;
+            --halign: center;
+            --valign: center;
         }
         ::slotted(:not([value])),
         ::slotted([value]:not(.active)) {
@@ -29,24 +29,27 @@ const TPL = new Template(`
         }
         ::slotted([value]) {
             display: inline-flex;
-            align-items: flex-end;
-            justify-content: flex-end;
+            align-items: var(--valign, center);
+            justify-content: var(--halign, center);
             width: 100%;
             height: 100%;
+            padding: 2px;
             color: white;
             font-size: 0.8em;
             text-shadow: -1px 0 1px black, 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black;
-            background-size: contain;
+            background-size: 80%;
             background-repeat: no-repeat;
             background-position: center;
-            background-origin: content-box;
+            background-origin: border-box;
             flex-grow: 0;
             flex-shrink: 0;
             min-height: 0;
             white-space: normal;
-            padding: 0;
             line-height: 0.7em;
             font-weight: bold;
+        }
+        ::slotted([value]:hover) {
+            background-size: 100%;
         }
         ::slotted([value].mark) {
             color: #54ff54;
@@ -57,21 +60,20 @@ const TPL = new Template(`
             justify-content: flex-center;
         }
     </style>
-    <slot>
+    <slot id="slot">
     </slot>
 `);
 
-const ALL_DUNGEONS = [
-    'pocket',
-    'area.deku',
-    'area.dodongo',
-    'area.jabujabu',
-    'area.temple_forest',
-    'area.temple_fire',
-    'area.temple_shadow',
-    'area.temple_water',
-    'area.temple_spirit'
-]
+function getAlign(value) {
+    switch (value) {
+        case 'start':
+            return "flex-start";
+        case 'end':
+            return "flex-end";
+        default:
+            return "center";
+    }
+}
     
 function optionsChanged(event) {
     // settings
@@ -124,23 +126,6 @@ function dungeonTypeUpdate(event) {
     }
 }
 
-function dungeonRewardUpdate(event) {
-    const rewardId = Rewards.indexOf(this.ref)
-    if (rewardId >= 0) {
-        let defined = false;
-        for (let dungeon of ALL_DUNGEONS) {
-            let rewardValue = StateStorage.read(`dungeonRewards.${dungeon}`, 0);
-            if (rewardValue == rewardId+1) {
-                this.dungeonReward = dungeon;
-                defined = true;
-            }
-        }
-        if (!defined) {
-            this.dungeonReward = "";
-        }
-    }
-}
-
 class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
@@ -154,7 +139,6 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
         this.registerGlobal("state", stateChanged.bind(this));
         this.registerGlobal("randomizer_options", optionsChanged.bind(this));
         this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));
-        this.registerGlobal("dungeonreward", dungeonRewardUpdate.bind(this));
     }
 
     get ref() {
@@ -197,8 +181,24 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
         this.setAttribute('readonly', val);
     }
 
+    get halign() {
+        return this.getAttribute('halign');
+    }
+
+    set halign(val) {
+        this.setAttribute('halign', val);
+    }
+
+    get valign() {
+        return this.getAttribute('halign');
+    }
+
+    set valign(val) {
+        this.setAttribute('valign', val);
+    }
+
     static get observedAttributes() {
-        return ['ref', 'value', 'startvalue', 'dungeonreward'];
+        return ['ref', 'value', 'startvalue', 'halign', 'valign'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -209,7 +209,13 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
                     this.value = StateStorage.read(this.ref, 0);
                     // settings
                     let data = FileData.get("items")[this.ref];
-                    if (data.hasOwnProperty("start_settings")) {
+                    if (data.halign != null) {
+                        this.halign = data.halign;
+                    }
+                    if (data.valign != null) {
+                        this.valign = data.valign;
+                    }
+                    if (data.start_settings != null) {
                         this.startvalue = StateStorage.read(data.start_settings, 1);
                     } else {
                         this.fillItemChoices();
@@ -218,8 +224,11 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
                 case 'startvalue':
                     this.fillItemChoices();
                 break;
-                case 'dungeonreward':
-                    this.displayDungeonReward(newValue);
+                case 'halign':
+                    this.shadowRoot.getElementById("slot").style.setProperty("--halign", getAlign(newValue));
+                break;
+                case 'valign':
+                    this.shadowRoot.getElementById("slot").style.setProperty("--valign", getAlign(newValue));
                 break;
                 case 'value':
                     let oe = this.querySelector(`.active`);
@@ -377,14 +386,6 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
         if (!event) return;
         event.preventDefault();
         return false;
-    }
-
-    displayDungeonReward(newValue) {
-        let all = this.querySelectorAll("[value]");
-        if (!!all.length) {
-            let opt = this.querySelector(`[value="${this.value}"]`);
-            opt.innerHTML = !!newValue ? Language.translate(`${newValue}.short`) : ""
-        }
     }
 
 }

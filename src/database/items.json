@@ -7,7 +7,9 @@
             "30",
             "40",
             "50"
-        ]
+        ],
+        "halign": "end",
+        "valign": "end"
     },
     "item.hookshot": {
         "max": 2,
@@ -21,7 +23,9 @@
             "",
             "H",
             "L"
-        ]
+        ],
+        "halign": "end",
+        "valign": "end"
     },
     "item.hammer": {
         "max": 1,
@@ -35,7 +39,9 @@
             "10",
             "20",
             "30"
-        ]
+        ],
+        "halign": "end",
+        "valign": "end"
     },
     "item.nut": {
         "max": 3,
@@ -45,7 +51,9 @@
             "20",
             "30",
             "40"
-        ]
+        ],
+        "halign": "end",
+        "valign": "end"
     },
     "item.slingshot": {
         "max": 3,
@@ -55,7 +63,9 @@
             "30",
             "40",
             "50"
-        ]
+        ],
+        "halign": "end",
+        "valign": "end"
     },
     "item.boomerang": {
         "max": 1,
@@ -69,7 +79,9 @@
             "20",
             "30",
             "40"
-        ]
+        ],
+        "halign": "end",
+        "valign": "end"
     },
     "item.bombchu": {
         "max": 1,
@@ -105,11 +117,15 @@
     },
     "item.ice_trap": {
         "max": false,
-        "images": "/images/items/ice_trap.png"
+        "images": "/images/items/ice_trap.png",
+        "halign": "end",
+        "valign": "end"
     },
     "item.triforce_piece": {
         "max": false,
-        "images": "/images/items/triforce_piece.png"
+        "images": "/images/items/triforce_piece.png",
+        "halign": "end",
+        "valign": "end"
     },
     "item.arrows": {
         "max": 3,
@@ -149,7 +165,9 @@
     "item.bottle": {
         "max": 4,
         "counting": true,
-        "images": "/images/items/bottle.png"
+        "images": "/images/items/bottle.png",
+        "halign": "end",
+        "valign": "end"
     },
     "item.wallet": {
         "max": 3,
@@ -166,12 +184,16 @@
             "500",
             "999"
         ],
-        "always_active": true
+        "always_active": true,
+        "halign": "end",
+        "valign": "end"
     },
     "item.bean": {
         "max": 10,
         "counting": true,
-        "images": "/images/items/bean.png"
+        "images": "/images/items/bean.png",
+        "halign": "end",
+        "valign": "end"
     },
     "item.skulltula": {
         "max": 100,
@@ -186,7 +208,9 @@
             50,
             100
         ],
-        "images": "/images/items/skulltula.png"
+        "images": "/images/items/skulltula.png",
+        "halign": "end",
+        "valign": "end"
     },
     "item.egg": {
         "max": 8,
@@ -341,7 +365,9 @@
             "",
             "S",
             "G"
-        ]
+        ],
+        "halign": "end",
+        "valign": "end"
     },
     "item.scale": {
         "max": 2,
@@ -355,7 +381,9 @@
             "",
             "S",
             "G"
-        ]
+        ],
+        "halign": "end",
+        "valign": "end"
     },
     "item.stone_of_agony": {
         "max": 1,
@@ -373,7 +401,9 @@
             "",
             "",
             "+"
-        ]
+        ],
+        "halign": "end",
+        "valign": "end"
     },
     "item.zora_letter": {
         "max": 1,
@@ -435,62 +465,73 @@
         "max": 1,
         "images": "/images/items/stone_forest.png",
         "dungeon_reward": true,
-        "blacklist_shop": true
+        "blacklist_shop": true,
+        "valign": "end"
     },
     "item.stone_fire": {
         "max": 1,
         "images": "/images/items/stone_fire.png",
         "dungeon_reward": true,
-        "blacklist_shop": true
+        "blacklist_shop": true,
+        "valign": "end"
     },
     "item.stone_water": {
         "max": 1,
         "images": "/images/items/stone_water.png",
         "dungeon_reward": true,
-        "blacklist_shop": true
+        "blacklist_shop": true,
+        "valign": "end"
     },
     "item.medallion_forest": {
         "max": 1,
         "images": "/images/items/medallion_forest.png",
         "dungeon_reward": true,
-        "blacklist_shop": true
+        "blacklist_shop": true,
+        "valign": "end"
     },
     "item.medallion_fire": {
         "max": 1,
         "images": "/images/items/medallion_fire.png",
         "dungeon_reward": true,
-        "blacklist_shop": true
+        "blacklist_shop": true,
+        "valign": "end"
     },
     "item.medallion_water": {
         "max": 1,
         "images": "/images/items/medallion_water.png",
         "dungeon_reward": true,
-        "blacklist_shop": true
+        "blacklist_shop": true,
+        "valign": "end"
     },
     "item.medallion_spirit": {
         "max": 1,
         "images": "/images/items/medallion_spirit.png",
         "dungeon_reward": true,
-        "blacklist_shop": true
+        "blacklist_shop": true,
+        "valign": "end"
     },
     "item.medallion_shadow": {
         "max": 1,
         "images": "/images/items/medallion_shadow.png",
         "dungeon_reward": true,
-        "blacklist_shop": true
+        "blacklist_shop": true,
+        "valign": "end"
     },
     "item.medallion_light": {
         "max": 1,
         "images": "/images/items/medallion_light.png",
         "dungeon_reward": true,
-        "blacklist_shop": true
+        "blacklist_shop": true,
+        "valign": "end"
     },
     "item.key_small_forest": {
         "max": 5,
         "maxmq": 6,
         "related_dungeon": "temple_forest",
         "counting": true,
-        "images": "/images/items/key_small.png"
+        "images": "/images/items/key_small.png",
+        "halign": "end",
+        "valign": "end"
     },
     "item.key_boss_forest": {
         "max": 1,
@@ -502,7 +543,9 @@
         "maxmq": 5,
         "related_dungeon": "temple_fire",
         "counting": true,
-        "images": "/images/items/key_small.png"
+        "images": "/images/items/key_small.png",
+        "halign": "end",
+        "valign": "end"
     },
     "item.key_boss_fire": {
         "max": 1,
@@ -514,7 +557,9 @@
         "maxmq": 2,
         "related_dungeon": "temple_water",
         "counting": true,
-        "images": "/images/items/key_small.png"
+        "images": "/images/items/key_small.png",
+        "halign": "end",
+        "valign": "end"
     },
     "item.key_boss_water": {
         "max": 1,
@@ -526,7 +571,9 @@
         "maxmq": 6,
         "related_dungeon": "temple_shadow",
         "counting": true,
-        "images": "/images/items/key_small.png"
+        "images": "/images/items/key_small.png",
+        "halign": "end",
+        "valign": "end"
     },
     "item.key_boss_shadow": {
         "max": 1,
@@ -538,7 +585,9 @@
         "maxmq": 7,
         "related_dungeon": "temple_spirit",
         "counting": true,
-        "images": "/images/items/key_small.png"
+        "images": "/images/items/key_small.png",
+        "halign": "end",
+        "valign": "end"
     },
     "item.key_boss_spirit": {
         "max": 1,
@@ -550,7 +599,9 @@
         "maxmq": 3,
         "related_dungeon": "castle_ganon",
         "counting": true,
-        "images": "/images/items/key_small.png"
+        "images": "/images/items/key_small.png",
+        "halign": "end",
+        "valign": "end"
     },
     "item.key_boss_ganon": {
         "max": 1,
@@ -560,21 +611,27 @@
     "item.key_small_gerudo": {
         "max": 4,
         "counting": true,
-        "images": "/images/items/key_small.png"
+        "images": "/images/items/key_small.png",
+        "halign": "end",
+        "valign": "end"
     },
     "item.key_small_training": {
         "max": 9,
         "maxmq": 3,
         "related_dungeon": "gerudo_training",
         "counting": true,
-        "images": "/images/items/key_small.png"
+        "images": "/images/items/key_small.png",
+        "halign": "end",
+        "valign": "end"
     },
     "item.key_small_well": {
         "max": 3,
         "maxmq": 2,
         "related_dungeon": "well",
         "counting": true,
-        "images": "/images/items/key_small.png"
+        "images": "/images/items/key_small.png",
+        "halign": "end",
+        "valign": "end"
     },
     "item.compass_deku": {
         "max": 1,
@@ -659,12 +716,16 @@
     "item.heart_piece": {
         "max": 36,
         "counting": true,
-        "images": "/images/items/heart_piece.png"
+        "images": "/images/items/heart_piece.png",
+        "halign": "end",
+        "valign": "end"
     },
     "item.heart_container": {
         "max": 8,
         "counting": true,
-        "images": "/images/items/heart_container.png"
+        "images": "/images/items/heart_container.png",
+        "halign": "end",
+        "valign": "end"
     },
     "item.heart_double": {
         "max": 1,

@@ -62,14 +62,15 @@ const REWARDS = [
     "item.medallion_shadow",
     "item.medallion_light"
 ];
-export { REWARDS as Rewards }
+const TAKEN_REWARDS = new Map();
 
 function stateChanged(event) {
-    let value = parseInt(event.data[`dungeonRewards.${this.ref}`]);
-    if (isNaN(value)) {
-        value = 0;
+    let value = event.data[`dungeonRewards.${this.ref}`];
+    if (value != null) {
+        this.value = value;
+    } else {
+        this.value = "";
     }
-    this.value = value;
 }
 
 function dungeonRewardUpdate(event){
@@ -93,7 +94,7 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
 
     connectedCallback() {
         super.connectedCallback();
-        this.value = StateStorage.read(`dungeonRewards.${this.ref}`, "0");
+        this.value = StateStorage.read(`dungeonRewards.${this.ref}`, "");
     }
 
     get ref() {
@@ -123,16 +124,17 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
                     if (newValue === "") {
                         this.innerHTML = "";
                     } else if (oldValue === null || oldValue === undefined || oldValue === "") {
-                        this.append(createOption(0, "/images/items/unknown.png"));
+                        this.append(createOption("", "/images/items/unknown.png"));
                         let items = FileData.get("items");
                         for (let i = 0; i < REWARDS.length; ++i) {
-                            let j = items[REWARDS[i]].images;
+                            let name = REWARDS[i];
+                            let j = items[name].images;
                             if (Array.isArray(j)) {
                                 j = j[0];
                             }
-                            this.append(createOption(i+1, j));
+                            this.append(createOption(name, j));
                         }
-                        this.value = StateStorage.read(`dungeonRewards.${newValue}`, "0");
+                        this.value = StateStorage.read(`dungeonRewards.${newValue}`, "");
                     }
                 }
             break;
@@ -146,6 +148,12 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
                     if (!!ne) {
                         ne.classList.add("active");
                     }
+                    if (oldValue != "" && TAKEN_REWARDS.get(oldValue) == this) {
+                        TAKEN_REWARDS.delete(oldValue);
+                    }
+                    if (newValue != "") {
+                        TAKEN_REWARDS.set(newValue, this);
+                    }
                 }
             break;
         }
@@ -154,20 +162,19 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
     next(ev) {
         let oldValue = this.value;
         let value = oldValue;
-        let all = this.querySelectorAll("[value]");
-        if (!!all.length) {
-            let opt = this.querySelector(`[value="${oldValue}"]`);
-            if (!!opt) {
-                if (!!opt.nextElementSibling) {
-                    value = opt.nextElementSibling.getAttribute("value");
-                } else {
-                    value = all[1].getAttribute("value");
-                }
+        let idx = REWARDS.indexOf(oldValue);
+        while (true) {
+            if (++idx >= REWARDS.length) {
+                idx = 0;
+            }
+            value = REWARDS[idx];
+            if (!TAKEN_REWARDS.has(value) || value == oldValue) {
+                break;
             }
         }
         if (value != oldValue) {
             this.value = value;
-            StateStorage.write(`dungeonRewards.${this.ref}`, parseInt(value));
+            StateStorage.write(`dungeonRewards.${this.ref}`, value);
             this.triggerGlobal("dungeonreward", {
                 name: this.ref,
                 value: value
@@ -178,12 +185,12 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
     }
 
     revert(ev) {
-        if (this.value != "0") {
-            this.value = "0";
-            StateStorage.write(`dungeonRewards.${this.ref}`, "0");
+        if (this.value != "") {
+            this.value = "";
+            StateStorage.write(`dungeonRewards.${this.ref}`, "");
             this.triggerGlobal("dungeonreward", {
                 name: this.ref,
-                value: "0"
+                value: ""
             });
         }
         ev.preventDefault();

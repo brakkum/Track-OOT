@@ -148,7 +148,7 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
         this.registerGlobal("location_change", event => {
             this.ref = event.data.name;
         });
-        this.registerGlobal(["chest", "skulltula", "item", "logic"], event => {
+        this.registerGlobal(["location_chest", "location_skulltula", "location_gossipstone", "item", "logic"], event => {
             this.updateHeader();
         });
         this.registerGlobal(["state", "settings", "randomizer_options", "filter"], event => {

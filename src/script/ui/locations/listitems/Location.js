@@ -113,16 +113,12 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         
         /* mouse events */
         this.addEventListener("click", event => {
-            this.check();
+            this.toggleCheckValue();
             event.preventDefault();
             return false;
         });
         this.addEventListener("contextmenu", event => {
-            if (event.ctrlKey) {
-                this.uncheck();
-            } else {
-                this.showContextMenu(event.clientX, event.clientY);
-            }
+            this.showContextMenu(event.clientX, event.clientY);
             event.preventDefault();
             return false;
         });
@@ -150,14 +146,14 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             if (this.ref === event.data.name && this.checked !== event.data.value) {
                 let textEl = this.shadowRoot.getElementById("text");
                 textEl.dataset.checked = event.data.value;
-                this.setCheckValue(event.data.value);
+                this.toggleCheckValue(event.data.value);
             }
         });
         this.registerGlobal("state", event => {
             let value = !!event.data[this.ref];
             let textEl = this.shadowRoot.getElementById("text");
             textEl.dataset.checked = value;
-            this.setCheckValue(value);
+            this.toggleCheckValue(value);
         });
         this.registerGlobal("logic", event => {
             if (LOGIC_ACTIVE.get(this) && event.data.hasOwnProperty(this.access)) {
@@ -229,17 +225,20 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
     }
 
     check() {
-        this.setCheckValue(true);
+        this.toggleCheckValue(true);
     }
     
     uncheck() {
-        this.setCheckValue(false);
+        this.toggleCheckValue(false);
     }
 
-    setCheckValue(value) {
+    toggleCheckValue(value) {
         let textEl = this.shadowRoot.getElementById("text");
         let oldValue = textEl.dataset.checked == "true";
-        if (value != oldValue) {
+        if (value == null) {
+            value = !oldValue;
+        }
+        if (!!value != oldValue) {
             StateStorage.write(this.ref, value);
             textEl.dataset.checked = value;
             this.triggerGlobal(TYPE.get(this), {

@@ -4,6 +4,10 @@
 }
 
 [data-font="font_ravenna"] {
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-family: Ravenna, Arial, sans-serif;
+}
+
+[data-font="font_ravenna"] [data-fontmod="items"] {
+    font-size: 0.8rem;
 }

@@ -4,6 +4,41 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.18
+
+### FEATURES
+
+- make locations be toggled instead of set
+    - click / touch will be used for toggle checked / unchecked
+    - right click / long press is now for contextmenu only
+    
+    `currently only for locations in list`
+
+---
+
+## VERSION 1.7.17
+
+### FEATURES
+
+- merge in pull request by Elagatua
+    - add reward string to medallions/stones in item panel
+- make dungeon rewards save as string values instead of indexes
+- add item value alignment to configuration
+- add a different default font size for items
+- add unexpected disconnect from host alert to network play
+- added fullscreen toggle button
+
+### BUGFIXES
+
+- fix location list header not updating after location check/uncheck
+- fix some styling regarding item element hover
+
+### REMOVED
+
+- ancient hylian font was removed due to bad leading
+
+---
+
 ## VERSION 1.7.16
 
 ### BUGFIXES

@@ -4,6 +4,10 @@
 }
 
 [data-font="font_zeldadx"] {
-    font-size: 1.4em;
+    font-size: 1.8em;
     font-family: ZeldaDX, Arial, sans-serif;
+}
+
+[data-font="font_zeldadx"] [data-fontmod="items"] {
+    font-size: 1rem;
 }

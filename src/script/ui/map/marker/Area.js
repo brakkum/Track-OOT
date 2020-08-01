@@ -34,7 +34,7 @@ const TPL = new Template(`
             border-radius: 25%;
             color: black;
             background-color: #ffffff;
-            font-size: 30px;
+            font-size: 1em;
             font-weight: bold;
             cursor: pointer;
         }

@@ -150,6 +150,9 @@ class RTCController {
                     if (msg.type == "name") {
                         if (!!msg.data) {
                             rtcClient.onfailed = undefined;
+                            rtcClient.ondisconnect = async function(key) {
+                                await Dialog.alert("Disconnected from host", "The connection to the host closed unexpectedly.");
+                            };
                             onJoined(this);
                             resolve(true);
                         } else {
@@ -190,6 +193,7 @@ class RTCController {
     }
 
     async disconnect() {
+        rtcClient.ondisconnect = EMPTY_FN;
         await rtcClient.disconnect();
         clients.clear();
         spectators.clear();

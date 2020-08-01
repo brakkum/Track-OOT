@@ -1,4 +1,5 @@
 import FileData from "/emcJS/storage/FileData.js";
+import Language from "/script/util/Language.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/Option.js";
@@ -23,6 +24,10 @@ const TPL = new Template(`
         }
         :host(:hover) {
             background-size: 100%;
+        }
+        :host([value="0"]) {
+            filter: contrast(0.8) grayscale(0.5);
+            opacity: 0.4;
         }
         #value {
             width: 100%;
@@ -50,6 +55,28 @@ const TPL = new Template(`
     </div>
 `);
 
+const ALL_DUNGEONS = [
+    'pocket',
+    'area.deku',
+    'area.dodongo',
+    'area.jabujabu',
+    'area.temple_forest',
+    'area.temple_fire',
+    'area.temple_shadow',
+    'area.temple_water',
+    'area.temple_spirit'
+];
+
+function getDisplayDungeon(reward, data) {
+    for (let dungeon of ALL_DUNGEONS) {
+        let rewardValue = StateStorage.read(`dungeonRewards.${dungeon}`, "");
+        if (rewardValue == reward) {
+            return dungeon;
+        }
+    }
+    return "";
+}
+
 function getAlign(value) {
     switch (value) {
         case 'start':
@@ -67,6 +94,15 @@ function stateChanged(event) {
         value = 0;
     }
     this.value = value;
+    /* dungeon */
+    for (let dungeon of ALL_DUNGEONS) {
+        let rewardValue = event.data[`dungeonRewards.${dungeon}`];
+        if (rewardValue == this.ref) {
+            this.dungeon = dungeon;
+            return;
+        }
+    }
+    this.dungeon = "";
 }
 
 function itemUpdate(event) {
@@ -79,7 +115,16 @@ function itemUpdate(event) {
     }
 }
 
-class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
+function dungeonRewardUpdate(event) {
+    let el = this.shadowRoot.getElementById("value");
+    if (this.dungeon == event.data.name && event.data.value != this.ref) {
+        this.dungeon = "";
+    } else if (this.ref === event.data.value) {
+        this.dungeon = event.data.name;
+    }
+}
+
+class HTMLTrackerRewardItem extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
@@ -90,6 +135,14 @@ class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
         /* event bus */
         this.registerGlobal("item", itemUpdate.bind(this));
         this.registerGlobal("state", stateChanged.bind(this));
+        this.registerGlobal("dungeonreward", dungeonRewardUpdate.bind(this));
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        if (this.ref != null) {
+            this.dungeon = getDisplayDungeon(this.ref);
+        }
     }
 
     get ref() {
@@ -132,8 +185,16 @@ class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
         this.setAttribute('valign', val);
     }
 
+    get dungeon() {
+        return this.getAttribute('dungeon');
+    }
+
+    set dungeon(val) {
+        this.setAttribute('dungeon', val);
+    }
+
     static get observedAttributes() {
-        return ['ref', 'value', 'halign', 'valign'];
+        return ['ref', 'dungeon', 'halign', 'valign'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -149,9 +210,15 @@ class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
                     }
                     this.style.backgroundImage = `url("${data.images}")`;
                     this.value = StateStorage.read(this.ref, 0);
+                    this.dungeon = getDisplayDungeon(this.ref);
                 break;
-                case 'value':
-                    this.shadowRoot.getElementById("value").innerHTML = newValue;
+                case 'dungeon':
+                    let el = this.shadowRoot.getElementById("value");
+                    if (newValue != "") {
+                        el.innerHTML = Language.translate(`${newValue}.short`);
+                    } else {
+                        el.innerHTML = "";
+                    }
                 break;
                 case 'halign':
                     this.shadowRoot.getElementById("value").style.justifyContent = getAlign(newValue);
@@ -165,17 +232,12 @@ class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
 
     next(event) {
         if (!this.readonly) {
-            let val = parseInt(this.value) + 1;
-            if (val <= 9999) {
-                this.value = val;
-                StateStorage.write(this.ref, val);
-                this.triggerGlobal("item", {
-                    name: this.ref,
-                    value: val
-                });
-            } else {
-                this.value = 9999;
-            }
+            this.value = 1;
+            StateStorage.write(this.ref, 1);
+            this.triggerGlobal("item", {
+                name: this.ref,
+                value: 1
+            });
         }
         if (!event) return;
         event.preventDefault();
@@ -184,20 +246,12 @@ class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
 
     prev(event) {
         if (!this.readonly) {
-            let val = parseInt(this.value) - 1;
-            if (val >= 0) {
-                if ((event.shiftKey || event.ctrlKey)) {
-                    val = 0;
-                }
-                this.value = val;
-                StateStorage.write(this.ref, val);
-                this.triggerGlobal("item", {
-                    name: this.ref,
-                    value: val
-                });
-            } else {
-                this.value = 0;
-            }
+            this.value = 0;
+            StateStorage.write(this.ref, 0);
+            this.triggerGlobal("item", {
+                name: this.ref,
+                value: 0
+            });
         }
         if (!event) return;
         event.preventDefault();
@@ -206,4 +260,4 @@ class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
 
 }
 
-customElements.define('ootrt-infiniteitem', HTMLTrackerInfiniteItem);
+customElements.define('ootrt-rewarditem', HTMLTrackerRewardItem);
