@@ -95,7 +95,6 @@ async function init() {
         "/script/ui/locations/LocationList.js",
         "/script/ui/map/Map.js",
         "/script/ui/LocationStatus.js",
-        "/script/util/Ruleset.js",
         "/script/content/Tracker.js",
         "/script/content/EditorChoice.js",
         "/script/content/EditorLogic.js"
