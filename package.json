@@ -34,7 +34,6 @@
   "scripts": {
     "build": "gulp build",
     "buildDev": "gulp buildDev",
-    "watch": "gulp watch",
     "serve": "serve dev",
     "edit": "electron  --inspect=7777 ./editor --no-sandbox"
   }
