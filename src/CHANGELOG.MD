@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.18
+
+### BUGFIXES
+
+- fix loading wrong dependency version for editors
+
+---
+
 ## VERSION 1.7.17
 
 ### FEATURES
