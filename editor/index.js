@@ -24,6 +24,7 @@ const FILES = {
     "songs":                {path: "/src/database/songs.json",              type: "jsonc"},
     "hints":                {path: "/src/database/hints.json",              type: "jsonc"},
     "settings":             {path: "/src/database/settings.json",           type: "jsonc"},
+    "rulesets":             {path: "/src/database/rulesets.json",           type: "jsonc"},
     "randomizer_options":   {path: "/src/database/randomizer_options.json", type: "jsonc"},
     "filter":               {path: "/src/database/filter.json",             type: "jsonc"},
     "shops":                {path: "/src/database/shops.json",              type: "jsonc"},
@@ -79,7 +80,7 @@ let editorChoice = document.getElementById("editor-choice");
             let lists = await LogicListsCreator.createLists();
             logicEditor.loadOperatorList(lists.operators);
             logicEditor.loadLogicList(lists.logics);
-            logicEditor.setLogic(FileData.get("logic", {}));
+            logicEditor.setLogic(FileData.get("logic", {edges:{},logic:{}}));
             // TODO resolve graph to logic edges format
             let patch = {
                 edges: resolveGraphs2Logic(await GraphStorage.getAll()),

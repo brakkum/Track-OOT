@@ -3,6 +3,7 @@ import EventBus from "/emcJS/util/events/EventBus.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import Logic from "/script/util/Logic.js";
+import LogicViewer from "/script/content/logic/LogicViewer.js";
 
 const SettingsStorage = new IDBStorage('settings');
 const LogicsStorage = new IDBStorage('logics');
@@ -67,6 +68,7 @@ EventBus.register("settings", async event => {
     if (event.data.hasOwnProperty('use_custom_logic')) {
         if (use_custom_logic != event.data.use_custom_logic) {
             use_custom_logic = event.data.use_custom_logic;
+            LogicViewer.customLogic = !!use_custom_logic;
             updateLogic();
         }
     }
@@ -80,11 +82,11 @@ EventBus.register("custom_logic", async event => {
 });
 
 async function updateLogic() {
-    let logic = FileData.get("logic", {});
+    let logic = FileData.get("logic", {edges:{},logic:{}});
     if (use_custom_logic) {
         let customLogic = await LogicsStorage.getAll();
         for (let l in customLogic) {
-            logic[l] = customLogic[l];
+            logic.logic[l] = customLogic[l];
         }
     }
     /* TODO make this available if graphs hit

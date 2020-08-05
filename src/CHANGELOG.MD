@@ -4,15 +4,42 @@ Application:    Track-OOT
 
 ***
 
-## VERSION 1.7.18
+## VERSION [DEV]
+
+### LOGIC
+
+- use logic graph instead of static logic
+    - graph traversial uses first hit for determining reachability
+    - mixins get executed on demand
+        - slower mixins, but region dependency safe
 
 ### FEATURES
 
 - make locations be toggled instead of set
     - click / touch will be used for toggle checked / unchecked
     - right click / long press is now for contextmenu only
-    
-    `currently only for locations in list`
+        - `currently only for locations in list`
+- add presets to randomizer options
+
+### BUGFIXES
+
+- fix logger breaking out of the viewport
+
+---
+
+## VERSION 1.7.19
+
+### BUGFIXES
+
+- fix loading custom logic for view even if custom logic is off
+
+---
+
+## VERSION 1.7.18
+
+### BUGFIXES
+
+- fix loading wrong dependency version for editors
 
 ---
 
