@@ -39,10 +39,11 @@ console.log(MODULE_PATHS);
 function createWindow() {
     protocol.interceptFileProtocol("file", (request, callback) => {
         let url = request.url.replace(/file\:\/+(:?[a-z]\:)?/i, "");
-        url = url.replace(/^\/src\//i, "../src/");
-        url = url.replace(/^\/images\//i, "../src/images/");
-        url = url.replace(/^\/emcjs\//i, MODULE_PATHS.emcJS);
-        url = url.replace(/^\/editors\//i, MODULE_PATHS.trackerEditor);
+        url = url.replace(__dirname, "");
+        url = url.replace(/^\/?src\//i, "../src/");
+        url = url.replace(/^\/?images\//i, "../src/images/");
+        url = url.replace(/^\/?emcjs\//i, MODULE_PATHS.emcJS);
+        url = url.replace(/^\/?editors\//i, MODULE_PATHS.trackerEditor);
         url = path.join(__dirname, ".", url);
         url = path.normalize(url);
         callback({path: url});

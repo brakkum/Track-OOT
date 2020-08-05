@@ -4,7 +4,7 @@ Application:    Track-OOT
 
 ***
 
-## VERSION 1.7.18
+## VERSION [DEV]
 
 ### FEATURES
 
@@ -13,6 +13,22 @@ Application:    Track-OOT
     - right click / long press is now for contextmenu only
     
     `currently only for locations in list`
+
+---
+
+## VERSION 1.7.19
+
+### BUGFIXES
+
+- fix loading custom logic for view even if custom logic is off
+
+---
+
+## VERSION 1.7.18
+
+### BUGFIXES
+
+- fix loading wrong dependency version for editors
 
 ---
 
