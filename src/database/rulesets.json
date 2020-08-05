@@ -1,0 +1,80 @@
+{
+  "ruleset-vanilla": {
+    "options": {
+      "option.consider_buyable": false,
+      "option.bombchu_logic": false,
+      "option.keysanity_small": "keysanity_small_ignore",
+      "option.keysanity_boss": "keysanity_boss_ignore",
+      "option.scrubsanity": false,
+      "option.cowsanity": false,
+      "option.beansanity": false,
+      "option.skullsanity": false,
+      "option.doors_open_forest": false,
+      "option.doors_open_mountain": false,
+      "option.doors_open_temple": false,
+      "option.doors_open_zora": "doors_open_zora_closed",
+      "option.gerudo_fortress_open": "gerudo_fortress_open_default",
+      "option.ganon_castle_open": "ganon_castle_open_default",
+      "option.trade_sequence_start_item": 1,
+      "option.forest_trial": true,
+      "option.water_trial": true,
+      "option.shadow_trial": true,
+      "option.fire_trial": true,
+      "option.light_trial": true,
+      "option.spirit_trial": true,
+      "option.ganon_boss_door_open": false
+    },
+    "skips": {
+      "skip.lens_required": "lens_required_default",
+      "skip.fewer_tunic": false,
+      "skip.hidden_grotto_no_agony": false,
+      "skip.child_deadhand": false,
+      "skip.man_on_roof": false,
+      "skip.dodongo_spike": false,
+      "skip.hammer_through_wall": false,
+      "skip.windmill_hp": false,
+      "skip.crater_bean_hp": false,
+      "skip.fot_east_vines_hook": false,
+      "skip.morpha_scale": false
+    }
+  },
+  "ruleset-s3-standard": {
+    "options": {
+      "option.consider_buyable": false,
+      "option.bombchu_logic": false,
+      "option.keysanity_small": "keysanity_small_ignore",
+      "option.keysanity_boss": "keysanity_boss_ignore",
+      "option.scrubsanity": false,
+      "option.cowsanity": false,
+      "option.beansanity": false,
+      "option.skullsanity": false,
+      "option.doors_open_forest": true,
+      "option.doors_open_mountain": false,
+      "option.doors_open_temple": true,
+      "option.doors_open_zora": "doors_open_zora_closed",
+      "option.gerudo_fortress_open": "gerudo_fortress_open_one",
+      "option.ganon_castle_open": "ganon_castle_open_medallion",
+      "option.trade_sequence_start_item": 7,
+      "option.forest_trial": false,
+      "option.water_trial": false,
+      "option.shadow_trial": false,
+      "option.fire_trial": false,
+      "option.light_trial": false,
+      "option.spirit_trial": false,
+      "option.ganon_boss_door_open": true
+    },
+    "skips": {
+      "skip.lens_required": "lens_required_wasteland",
+      "skip.fewer_tunic": true,
+      "skip.hidden_grotto_no_agony": true,
+      "skip.child_deadhand": true,
+      "skip.man_on_roof": true,
+      "skip.dodongo_spike": true,
+      "skip.hammer_through_wall": true,
+      "skip.windmill_hp": true,
+      "skip.crater_bean_hp": true,
+      "skip.fot_east_vines_hook": true,
+      "skip.morpha_scale": false
+    }
+  }
+}

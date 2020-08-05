@@ -8,6 +8,7 @@ import Dialog from "/emcJS/ui/Dialog.js";
 import BusyIndicator from "/script/ui/BusyIndicator.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
+import Language from "/script/util/Language.js";
 
 const SettingsStorage = new IDBStorage('settings');
 
@@ -56,6 +57,14 @@ Big thanks to:<br>
 <i class="thanks-name">pidgezero_one</i> for adding sequence breaks and extending skips.
 </div>
 `);
+
+const LOAD_RULESET = new Template(`
+<label class="settings-option">
+    <span id="load-template-title" class="option-text"></span>
+    <button id="load-template-button" class="settings-button" type="button" value="undefined" style="margin-right: 10px;"></button>
+    <select id="select-template" class="settings-input" type="input"></select>
+</label>
+`)
 
 async function getSettings() {
     let options = FileData.get("settings");
@@ -119,6 +128,9 @@ export default class Settings {
         settings.addTab("About", "about");
         settings.addElements("about", settings_about);
 
+        const loadRulesetRow = this.buildRulesetOptionsRow();
+        settings.addElements("settings", loadRulesetRow);
+
         settings.addEventListener('submit', function(event) {
             BusyIndicator.busy();
             let settings = {};
@@ -155,5 +167,43 @@ export default class Settings {
         showUpdatePopup = false;
         settings.show({settings: await getSettings()}, 'settings');
     }
+
+    buildRulesetOptionsRow = () => {
+        const loadRulesetRow = LOAD_RULESET.generate();
+        loadRulesetRow.getElementById("load-template-title").innerHTML = Language.translate('load-ruleset-title');
+        const loadRulesetButton = loadRulesetRow.getElementById("load-template-button");
+        loadRulesetButton.innerHTML = Language.translate('load-ruleset-button');
+        
+        const selector = loadRulesetRow.getElementById("select-template");
+        const allRulesets = Object.keys(FileData.get("rulesets"));
+        for (let value of allRulesets) {
+            let opt = document.createElement('option');
+            opt.value = value;
+            opt.innerHTML = Language.translate(value);
+            selector.append(opt);
+        }
+
+        loadRulesetButton.addEventListener('click', () => {
+            const ruleset = settings.shadowRoot.getElementById("select-template").value;
+            this.setOptionsFromRuleset(ruleset);
+        })
+
+        return loadRulesetRow
+    }
+
+    setOptionsFromRuleset = name => {
+        const ruleset = FileData.get("rulesets")[name];
+        if (!ruleset) { return }
+    
+        let settings = {};
+        for (let i in ruleset) {
+            for (let j in ruleset[i]) {
+                let v = ruleset[i][j];
+                settings[j] = v;
+            }
+        }
+        StateStorage.write(settings);
+        EventBus.trigger("randomizer_options", settings);
+      }
 
 }
