@@ -82,11 +82,11 @@ EventBus.register("custom_logic", async event => {
 });
 
 async function updateLogic() {
-    let logic = FileData.get("logic", {});
+    let logic = FileData.get("logic", {edges:{},logic:{}});
     if (use_custom_logic) {
         let customLogic = await LogicsStorage.getAll();
         for (let l in customLogic) {
-            logic[l] = customLogic[l];
+            logic.logic[l] = customLogic[l];
         }
     }
     /* TODO make this available if graphs hit

@@ -79,7 +79,7 @@ let editorChoice = document.getElementById("editor-choice");
             let lists = await LogicListsCreator.createLists();
             logicEditor.loadOperatorList(lists.operators);
             logicEditor.loadLogicList(lists.logics);
-            logicEditor.setLogic(FileData.get("logic", {}));
+            logicEditor.setLogic(FileData.get("logic", {edges:{},logic:{}}));
             // TODO resolve graph to logic edges format
             let patch = {
                 edges: resolveGraphs2Logic(await GraphStorage.getAll()),

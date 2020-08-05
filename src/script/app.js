@@ -110,6 +110,7 @@ async function init() {
         logPanel.setAttribute("ref", "log");
         logPanel.dataset.title = "Logger";
         logPanel.dataset.icon = "images/icons/log.svg";
+        logPanel.style.overflow = "hidden";
         let logScreen = document.createElement("emc-logscreen");
         logScreen.title = "Logger";
         logPanel.append(logScreen);

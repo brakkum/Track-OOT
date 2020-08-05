@@ -20,7 +20,7 @@ let logicEditor = document.getElementById("editor-logic");
         let lists = await LogicListsCreator.createLists();
         logicEditor.loadOperatorList(lists.operators);
         logicEditor.loadLogicList(lists.logics);
-        logicEditor.setLogic(FileData.get("logic", {}));
+        logicEditor.setLogic(FileData.get("logic", {edges:{},logic:{}}));
         logicEditor.setPatch(await LogicsStorage.getAll());
     }
     await refreshLogicEditor();

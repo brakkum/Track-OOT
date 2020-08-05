@@ -6,6 +6,13 @@ Application:    Track-OOT
 
 ## VERSION [DEV]
 
+### LOGIC
+
+- use logic graph instead of static logic
+    - graph traversial uses first hit for determining reachability
+    - mixins get executed on demand
+        - slower mixins, but region dependency safe
+
 ### FEATURES
 
 - make locations be toggled instead of set
@@ -13,6 +20,10 @@ Application:    Track-OOT
     - right click / long press is now for contextmenu only
     
     `currently only for locations in list`
+
+### BUGFIXES
+
+- fix logger breaking out of the viewport
 
 ---
 
