@@ -57,15 +57,7 @@ class SettingsBuilder {
                         window.addListSelectInput(i, label, j, val.default, true, convertValueList(val.values, val.names));
                     break;
                     case "button":
-                        if (!!val.view) {
-                            window.addButton(i, label, j, Language.translate(val.text), switchView.bind(this, val.view));
-                        } else if (!!val.url) {
-                            window.addButton(i, label, j, Language.translate(val.text), () => {
-                                window.open(val.url, val.target || "_blank");
-                            });
-                        } else {
-                            window.addButton(i, label, j, Language.translate(val.text), alert.bind(window, "not functionality bound"));
-                        }
+                        window.addButton(i, label, j, Language.translate(val.text), alert.bind(window, "not functionality bound"));
                     break;
                 }
             }
