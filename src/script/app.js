@@ -27,6 +27,7 @@ const FILES = {
     "songs":                {path: "/database/songs.json",              type: "jsonc"},
     "hints":                {path: "/database/hints.json",              type: "jsonc"},
     "settings":             {path: "/database/settings.json",           type: "jsonc"},
+    "rulesets":             {path: "/database/rulesets.json",           type: "jsonc"},
     "randomizer_options":   {path: "/database/randomizer_options.json", type: "jsonc"},
     "filter":               {path: "/database/filter.json",             type: "jsonc"},
     "shops":                {path: "/database/shops.json",              type: "jsonc"},
@@ -110,6 +111,7 @@ async function init() {
         logPanel.setAttribute("ref", "log");
         logPanel.dataset.title = "Logger";
         logPanel.dataset.icon = "images/icons/log.svg";
+        logPanel.style.overflow = "hidden";
         let logScreen = document.createElement("emc-logscreen");
         logScreen.title = "Logger";
         logPanel.append(logScreen);
