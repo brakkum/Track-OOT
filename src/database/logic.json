@@ -186,8 +186,12 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "value",
-                        "el": "skip.lens_required_never"
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "skip.lens_required",
+                            "value": "lens_required_default"
+                        }
                     },
                     {
                         "type": "mixin",
@@ -203,8 +207,12 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "value",
-                        "el": "skip.lens_required_never"
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "skip.lens_required",
+                            "value": "lens_required_default"
+                        }
                     },
                     {
                         "type": "mixin",
@@ -216,8 +224,12 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "value",
-                        "el": "skip.lens_required_never"
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "skip.lens_required",
+                            "value": "lens_required_default"
+                        }
                     },
                     {
                         "type": "mixin",
@@ -229,8 +241,12 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "value",
-                        "el": "skip.lens_required_never"
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "skip.lens_required",
+                            "value": "lens_required_default"
+                        }
                     },
                     {
                         "type": "mixin",
@@ -249,8 +265,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -315,8 +335,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -362,8 +386,12 @@
                                                 "type": "or",
                                                 "el": [
                                                     {
-                                                        "type": "value",
-                                                        "el": "skip.lens_required_never"
+                                                        "type": "not",
+                                                        "el": {
+                                                            "type": "state",
+                                                            "el": "skip.lens_required",
+                                                            "value": "lens_required_default"
+                                                        }
                                                     },
                                                     {
                                                         "type": "mixin",
@@ -415,8 +443,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -441,8 +473,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -463,8 +499,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -493,8 +533,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -527,8 +571,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -3441,11 +3489,11 @@
                 "el": [
                     {
                         "type": "value",
-                        "el": "event.jo_and_beth"
+                        "el": "event.forest_temple_jo_and_beth"
                     },
                     {
                         "type": "value",
-                        "el": "event.amy_and_meg"
+                        "el": "event.forest_temple_amy_and_meg"
                     }
                 ]
             },
@@ -3674,11 +3722,11 @@
                 "el": [
                     {
                         "type": "value",
-                        "el": "event.jo_and_beth"
+                        "el": "event.forest_temple_jo_and_beth"
                     },
                     {
                         "type": "value",
-                        "el": "event.amy_and_meg"
+                        "el": "event.forest_temple_amy_and_meg"
                     }
                 ]
             },
@@ -4677,8 +4725,12 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "value",
-                        "el": "skip.lens_required_never"
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "skip.lens_required",
+                            "value": "lens_required_default"
+                        }
                     },
                     {
                         "type": "mixin",
@@ -4882,8 +4934,12 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "value",
-                                        "el": "skip.lens_required_never"
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
                                     },
                                     {
                                         "type": "mixin",
@@ -4923,8 +4979,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -5042,8 +5102,12 @@
                                         "type": "or",
                                         "el": [
                                             {
-                                                "type": "value",
-                                                "el": "skip.lens_required_never"
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "state",
+                                                    "el": "skip.lens_required",
+                                                    "value": "lens_required_default"
+                                                }
                                             },
                                             {
                                                 "type": "mixin",
@@ -5078,8 +5142,12 @@
                                                         "type": "or",
                                                         "el": [
                                                             {
-                                                                "type": "value",
-                                                                "el": "skip.lens_required_never"
+                                                                "type": "not",
+                                                                "el": {
+                                                                    "type": "state",
+                                                                    "el": "skip.lens_required",
+                                                                    "value": "lens_required_default"
+                                                                }
                                                             },
                                                             {
                                                                 "type": "mixin",
@@ -5149,8 +5217,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -5284,8 +5356,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -5353,8 +5429,12 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "value",
-                        "el": "skip.lens_required_never"
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "skip.lens_required",
+                            "value": "lens_required_default"
+                        }
                     },
                     {
                         "type": "mixin",
@@ -5402,8 +5482,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -5510,8 +5594,12 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "value",
-                        "el": "skip.lens_required_never"
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "skip.lens_required",
+                            "value": "lens_required_default"
+                        }
                     },
                     {
                         "type": "mixin",
@@ -5729,8 +5817,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -5904,8 +5996,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -6066,8 +6162,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -6110,8 +6210,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -6787,8 +6891,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -8056,7 +8164,7 @@
                                             },
                                             {
                                                 "type": "value",
-                                                "el": "skip.morpha_scale"
+                                                "el": "skip.water_temple_early_hookshot"
                                             }
                                         ]
                                     },
@@ -9142,8 +9250,9 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "value",
-                        "el": "skip.lens_required_never"
+                        "type": "state",
+                        "el": "skip.lens_required",
+                        "value": "lens_required_never"
                     },
                     {
                         "type": "mixin",
@@ -11443,7 +11552,7 @@
                     }
                 ]
             },
-            "logic.location.mountain.s_crater_beanspot_child": {
+            "logic.location.mountain.s_cave_entrance_beanspot_child": {
                 "type": "and",
                 "el": [
                     {
@@ -13834,7 +13943,7 @@
             "region.lw_beyond_mido": {
                 "type": "true"
             },
-            "logic.location.woods.c_deku_salesman_theater_1": {
+            "logic.location.woods.c_deku_theater_1": {
                 "type": "and",
                 "el": [
                     {
@@ -13851,7 +13960,7 @@
                     }
                 ]
             },
-            "logic.location.woods.c_deku_salesman_theater_2": {
+            "logic.location.woods.c_deku_theater_2": {
                 "type": "and",
                 "el": [
                     {
@@ -14675,8 +14784,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -14839,8 +14952,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -14924,8 +15041,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -14954,8 +15075,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -15196,8 +15321,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -15269,8 +15398,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -15295,8 +15428,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -15358,8 +15495,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -15953,8 +16094,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -15980,8 +16125,12 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "value",
-                        "el": "skip.lens_required_never"
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "skip.lens_required",
+                            "value": "lens_required_default"
+                        }
                     },
                     {
                         "type": "mixin",
@@ -16101,8 +16250,12 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "value",
-                                        "el": "skip.lens_required_never"
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
                                     },
                                     {
                                         "type": "mixin",
@@ -16162,8 +16315,12 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "value",
-                                        "el": "skip.lens_required_never"
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
                                     },
                                     {
                                         "type": "mixin",
@@ -16365,8 +16522,12 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "value",
-                        "el": "skip.lens_required_never"
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "skip.lens_required",
+                            "value": "lens_required_default"
+                        }
                     },
                     {
                         "type": "mixin",
@@ -17735,8 +17896,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -17757,8 +17922,12 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "skip.lens_required_never"
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
                             },
                             {
                                 "type": "mixin",
@@ -19427,9 +19596,12 @@
             ]
         },
         "mixin.is_day": {
-            "type": "state",
-            "el": "filter.time",
-            "value": "day"
+            "type": "not",
+            "el": {
+                "type": "state",
+                "el": "filter.time",
+                "value": "night"
+            }
         },
         "mixin.can_ride_epona": {
             "type": "and",
@@ -19566,9 +19738,12 @@
             ]
         },
         "mixin.is_night": {
-            "type": "state",
-            "el": "filter.time",
-            "value": "night"
+            "type": "not",
+            "el": {
+                "type": "state",
+                "el": "filter.time",
+                "value": "day"
+            }
         },
         "mixin.can_open_storm_grotto": {
             "type": "and",
@@ -19961,6 +20136,56 @@
                     }
                 }
             ]
+        },
+        "mixin.distant_scarecrow": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "value",
+                    "el": "event.bonooru"
+                },
+                {
+                    "type": "mixin",
+                    "el": "mixin.longshot"
+                }
+            ]
+        },
+        "mixin.scarecrow": {
+            "type": "and",
+            "el": [
+                {
+                    "type": "value",
+                    "el": "event.bonooru"
+                },
+                {
+                    "type": "value",
+                    "el": "item.hookshot"
+                }
+            ]
+        },
+        "mixin.golden_gauntlets": {
+            "type": "min",
+            "el": {
+                "type": "value",
+                "el": "item.glove"
+            },
+            "value": 3
+        },
+        "mixin.silver_gauntlets": {
+            "type": "min",
+            "el": {
+                "type": "value",
+                "el": "item.glove"
+            },
+            "value": 2
+        },
+        "mixin.longshot": {
+            "type": "min",
+            "el": {
+                "type": "value",
+                "el": "item.hookshot"
+            },
+            "value": 2
         },
         "function.can_use(item.magic_farore)": {
             "type": "and",

@@ -2,6 +2,20 @@
 
 ---
 
+### TODO BEFORE GRAPH LOGIC RELEASE
+
+- verify all location availability (major)
+
+- test skips and reorganize skips by area
+
+- add missing options
+
+- fix randomizer option defaults not being loaded initially (minor)
+
+- fix avail chest and missing chests showing incorrect values until updated (minor)
+
+---
+
 ### TODOS
 
 - add warning dialog to download update if needed
