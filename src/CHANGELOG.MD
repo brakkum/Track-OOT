@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.19
+
+### BUGFIXES
+
+- fix loading custom logic for view even if custom logic is off
+
+---
+
 ## VERSION 1.7.18
 
 ### BUGFIXES
