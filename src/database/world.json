@@ -6213,7 +6213,7 @@
     "location.well.s_center_child": {
         "category": "location",
         "type": "skulltula",
-        "access": "logic.location.well.s_center_child",
+        "access": "logic.location.well.s_west_inner_child",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -6232,7 +6232,7 @@
     "location.well.s_center_locked_room_child": {
         "category": "location",
         "type": "skulltula",
-        "access": "logic.location.well.s_center_locked_room_child",
+        "access": "logic.location.well.s_east_inner_child",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -6493,7 +6493,7 @@
     "location.ice_cavern_mq.c_sheik": {
         "category": "location",
         "type": "chest",
-        "access": "logic.location.ice_cavern_mq.c_sheik",
+        "access": "logic.location.ice_cavern.c_sheik",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -7534,7 +7534,7 @@
     "location.deku_mq.c_gohma": {
         "category": "location",
         "type": "chest",
-        "access": "logic.location.deku_mq.c_gohma",
+        "access": "logic.location.deku.c_gohma",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -8084,7 +8084,7 @@
     "location.dodongo_mq.c_chest_above_dodongo": {
         "category": "location",
         "type": "chest",
-        "access": "logic.location.dodongo_mq.c_chest_above_dodongo",
+        "access": "logic.location.dodongo.c_chest_above_dodongo",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -8100,7 +8100,7 @@
     "location.dodongo_mq.c_dodongo": {
         "category": "location",
         "type": "chest",
-        "access": "logic.location.dodongo_mq.c_dodongo",
+        "access": "logic.location.dodongo.c_dodongo",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -8625,7 +8625,7 @@
     "location.jabujabu_mq.c_barinade": {
         "category": "location",
         "type": "chest",
-        "access": "logic.location.jabujabu_mq.c_barinade",
+        "access": "logic.location.jabujabu.c_barinade",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -9231,7 +9231,7 @@
     "location.temple_forest_mq.c_phantomganon": {
         "category": "location",
         "type": "chest",
-        "access": "logic.location.temple_forest_mq.c_phantomganon",
+        "access": "logic.location.temple_forest.c_phantomganon",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -9891,7 +9891,7 @@
     "location.temple_fire_mq.c_volvagia": {
         "category": "location",
         "type": "chest",
-        "access": "logic.location.temple_fire_mq.c_volvagia",
+        "access": "logic.location.temple_fire.c_volvagia",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -10391,7 +10391,7 @@
     "location.temple_water_mq.c_morpha": {
         "category": "location",
         "type": "chest",
-        "access": "logic.location.temple_water_mq.c_morpha",
+        "access": "logic.location.temple_water.c_morpha",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -11227,7 +11227,7 @@
     "location.temple_shadow_mq.c_bongobongo": {
         "category": "location",
         "type": "chest",
-        "access": "logic.location.temple_shadow_mq.c_bongobongo",
+        "access": "logic.location.temple_shadow.c_bongobongo",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -11919,7 +11919,7 @@
     "location.temple_spirit_mq.c_gauntlets": {
         "category": "location",
         "type": "chest",
-        "access": "logic.location.temple_spirit_mq.c_gauntlets",
+        "access": "logic.location.temple_spirit.c_gauntlets",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -12079,7 +12079,7 @@
     "location.temple_spirit_mq.c_mirror_shield": {
         "category": "location",
         "type": "chest",
-        "access": "logic.location.temple_spirit_mq.c_mirror_shield",
+        "access": "logic.location.temple_spirit.c_shield",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -12127,7 +12127,7 @@
     "location.temple_spirit_mq.c_twinrova": {
         "category": "location",
         "type": "chest",
-        "access": "logic.location.temple_spirit_mq.c_twinrova",
+        "access": "logic.location.temple_spirit.c_twinrova",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -13000,7 +13000,7 @@
     "location.castle_ganon_mq.c_boss_key": {
         "category": "location",
         "type": "chest",
-        "access": "logic.location.castle_ganon_mq.c_boss_key",
+        "access": "logic.location.castle_ganon.c_boss_key",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -13016,7 +13016,7 @@
     "location.castle_ganon_mq.c_boss": {
         "category": "location",
         "type": "chest",
-        "access": "logic.location.castle_ganon_mq.c_boss",
+        "access": "logic.location.castle_ganon.c_boss",
         "visible": true,
         "filter": {
             "filter.era": {

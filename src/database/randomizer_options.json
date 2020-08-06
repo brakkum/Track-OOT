@@ -8,6 +8,16 @@
                 "adult"
             ]
         },
+        "option.light_arrow_cutscene": {
+            "type": "choice",
+            "default": "light_arrow_cutscene_vanilla",
+            "values": [
+                "light_arrow_cutscene_vanilla",
+                "light_arrow_cutscene_stones",
+                "light_arrow_cutscene_medallions",
+                "light_arrow_cutscene_dungeons"
+            ]
+        },
         "option.consider_buyable": {
             "type": "check",
             "default": false
@@ -272,8 +282,8 @@
                 "skip.wt_bosskey_noitem"
             ],
             "default": []
-        },
-        "known_sequence_breaks": {
+        }
+        /*"known_sequence_breaks": {
             "type": "list",
             "values": [
                 //"skip.ground_jump",
@@ -294,9 +304,8 @@
                 //"skip.gtg_hammer_switch_nohammer",
                 //"skip.spt_bosskey_nohookshot",
                 //"skip.lab_hovers",
-                "skip.morpha_scale"
             ],
             "default": []
-        }
+        }*/
     }
 }
