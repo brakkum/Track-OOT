@@ -4,7 +4,7 @@
 
 ### TODO BEFORE GRAPH LOGIC RELEASE
 
-- verify all location availability (major)
+- verify all logic of location availability (major)
 
 - test skips and reorganize skips by area
 
