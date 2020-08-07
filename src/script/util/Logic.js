@@ -65,6 +65,14 @@ class TrackerLogic {
         }
     }
 
+    setTranslation(source, target, reroute) {
+        LOGIC_PROCESSOR.reroute(source, target, reroute);
+        let res = LOGIC_PROCESSOR.traverse("region.root");
+        if (Object.keys(res).length > 0) {
+            EventBus.trigger("logic", res);
+        }
+    }
+
     execute(data) {
         if (!!data) {
             LOGIC_PROCESSOR.setAll(data);

@@ -13,7 +13,13 @@ Application:    Track-OOT
     - mixins get executed on demand
         - slower mixins, but region dependency safe
 
-### FEATURES
+### ENTRANCE SHUFFLE
+
+- added translation matrix for entrance shuffle
+- added exit types configuration
+- add new exit->entrance configuration to savestate
+
+### UX ENHANCEMENTS
 
 - make locations be toggled instead of set
     - click / touch will be used for toggle checked / unchecked

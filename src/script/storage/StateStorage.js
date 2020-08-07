@@ -215,6 +215,18 @@ class StateStorage {
         return JSON.parse(JSON.stringify(state.data));
     }
 
+    setEntranceRewrite(source, target, reroute) {
+        state.entrance_rewrites[`${source} -> ${target}`] = reroute;
+    }
+
+    getEntranceRewrite(source, target) {
+        return state.entrance_rewrites[`${source} -> ${target}`];
+    }
+
+    getAllEntranceRewrites() {
+        return JSON.parse(JSON.stringify(state.entrance_rewrites));
+    }
+
 }
 
 export default new StateStorage;

@@ -8,12 +8,25 @@ import "/editors/logic/LogicEditor.js";
 import LogicListsCreator from "/script/content/logic/LogicListsCreator.js";
 import "/script/content/logic/LiteralCustom.js";
 import "/script/content/logic/LiteralLinked.js";
+import "/script/content/logic/LiteralMixin.js";
 
 import PageSwitcher from "/script/util/PageSwitcher.js";
 
 let LogicsStorage = new IDBStorage("logics");
+let GraphStorage = new IDBStorage("edges");
 let editorChoice = document.getElementById("editor-choice");
 let logicEditor = document.getElementById("editor-logic");
+
+function resolveGraphs2Logic(input) {
+    let res = {};
+    for (let i in input) {
+        let value = input[i];
+        let [key, target] = i.split(" -> ");
+        res[key] = res[key] || {};
+        res[key][target] = value;
+    }
+    return res;
+}
 
 !async function() {
     async function refreshLogicEditor() {
@@ -21,15 +34,28 @@ let logicEditor = document.getElementById("editor-logic");
         logicEditor.loadOperatorList(lists.operators);
         logicEditor.loadLogicList(lists.logics);
         logicEditor.setLogic(FileData.get("logic", {edges:{},logic:{}}));
-        logicEditor.setPatch(await LogicsStorage.getAll());
+        // TODO resolve graph to logic edges format
+        let patch = {
+            edges: resolveGraphs2Logic(await GraphStorage.getAll()),
+            logic: await LogicsStorage.getAll()
+        };
+        logicEditor.setPatch(patch);
     }
     await refreshLogicEditor();
     // register
     logicEditor.addEventListener("save", async event => {
-        await LogicsStorage.set(event.key, event.logic);
+        if (event.targetKey != null) {
+            await GraphStorage.set(`${event.key} -> ${event.targetKey}`, event.logic);
+        } else {
+            await LogicsStorage.set(event.key, event.logic);
+        }
     });
     logicEditor.addEventListener("clear", async event => {
-        await LogicsStorage.delete(event.key);
+        if (event.targetKey != null) {
+            await GraphStorage.delete(`${event.key} -> ${event.targetKey}`);
+        } else {
+            await LogicsStorage.delete(event.key);
+        }
     });
     editorChoice.register("editor_logic", "LOGIC");
     PageSwitcher.register("editor_logic", [{
@@ -56,23 +82,39 @@ let logicEditor = document.getElementById("editor-logic");
                 let res = await FileSystem.load(".json");
                 if (!!res && !!res.data) {
                     let logic = res.data;
-                    await LogicsStorage.setAll(logic);
-                    await refreshWorkingarea();
-                    await logicEditor.resetWorkingarea();
+                    // load logic
+                    await LogicsStorage.setAll(logic.logic || {});
+                    // load edges
+                    let edges = {};
+                    for (let i in logic.edges) {
+                        if (!!logic.edges[i]) {
+                            for (let j in logic.edges[i]) {
+                                logic.edges[i][j] = logic.edges[i][j];
+                            }
+                        }
+                    }
+                    await GraphStorage.setAll(edges);
+                    // refresh
+                    await refreshLogicEditor();
+                    logicEditor.resetWorkingarea();
                 }
             }
         },{
             "content": "SAVE PATCH",
             "handler": async () => {
-                let logic = await LogicsStorage.getAll();
-                FileSystem.save(JSON.stringify(logic, " ", 4), `logic.${(new Date).valueOf()}.json`);
+                let patch = {
+                    edges: resolveGraphs2Logic(await GraphStorage.getAll()),
+                    logic: await LogicsStorage.getAll()
+                };
+                FileSystem.save(JSON.stringify(patch, " ", 4), `logic.${(new Date).valueOf()}.json`);
             }
         },{
             "content": "REMOVE PATCH",
             "handler": async () => {
                 await LogicsStorage.clear();
-                await refreshWorkingarea();
-                await logicEditor.resetWorkingarea();
+                await GraphStorage.clear();
+                await refreshLogicEditor();
+                logicEditor.resetWorkingarea();
             }
         },{
             "content": "EXIT EDITOR",
