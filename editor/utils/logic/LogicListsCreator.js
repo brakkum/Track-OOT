@@ -18,9 +18,7 @@ const LOGIC_OPERATORS = [
     "ted-logic-xor",
     "ted-logic-xnor",
     "ted-logic-min",
-    "ted-logic-max",
-    "ted-logic-at",
-    "ted-logic-here"
+    "ted-logic-max"
 ];
 const CUSTOM_OPERATOR_GROUP = [
     "location"
@@ -42,6 +40,7 @@ class LogicListsCreator {
         let filter = FileData.get("filter");
         let logic = FileData.get("logic");
         let custom_logic = await LogicsStorage.getAll();
+
         let mixins = {};
         let functions = {};
         
@@ -76,10 +75,17 @@ class LogicListsCreator {
         result.operators.push(createSettingsOperatorCategory(randomizer_options.options, "option"));
         result.operators.push(createSettingsOperatorCategory(randomizer_options.skips, "skip"));
         result.operators.push(createFilterOperatorCategory(filter));
-        for (let cat of createOperatorWorldCategories(world)) {
+        /*for (let cat of createOperatorWorldCategories(world)) {
+            result.operators.push(cat);
+        }*/
+        result.operators.push(createOperatorLocationDoneCategory(world));
+        
+        for (let cat of createOperatorReachCategories(logic.edges)) {
             result.operators.push(cat);
         }
+
         result.operators.push(createOperatorMixins(mixins));
+        result.operators.push(createOperatorFunctions(functions));
         
         // LOGICS
         //for (let cat of createLogicWorldCategories(world_lists, world)) {
@@ -217,6 +223,68 @@ function createOperatorWorldCategories(world) {
     return res;
 }
 
+function createOperatorReachCategories(data) {
+    let lbuf = {
+        "type": "group",
+        "caption": "locations reach",
+        "children": []
+    };
+    let rbuf = {
+        "type": "group",
+        "caption": "regions reach",
+        "children": []
+    };
+    let ebuf = {
+        "type": "group",
+        "caption": "events reach",
+        "children": []
+    };
+    for (let ref in data) {
+        let sub = data[ref];
+        for (let sref in sub) {
+            if (sref.startsWith("logic.location.")) {
+                lbuf.children.push({
+                    "type": "ted-logic-at",
+                    "ref": sref,
+                    "category": "location"
+                });
+            } else if (sref.startsWith("region.")) {
+                rbuf.children.push({
+                    "type": "ted-logic-at",
+                    "ref": sref,
+                    "category": "region"
+                });
+            } else if (sref.startsWith("event.")) {
+				ebuf.children.push({
+                    "type": "ted-logic-at",
+					"ref": sref,
+					"category": "event"
+				});
+			}
+        }
+    }
+    return [lbuf, rbuf, ebuf];
+}
+
+function createOperatorLocationDoneCategory(world) {
+    let res = {
+        "type": "group",
+        "caption": "locations done",
+        "children": []
+    };
+    for (let name in world) {
+        let ref = world[name];
+        if (ref.category == "location") {
+            res.children.push({
+                "type": "tracker-logic-custom",
+                "ref": name,
+                "category": "location"
+            });
+        }
+    }
+    return res;
+}
+
 function createOperatorMixins(data) {
     let res = {
         "type": "group",
@@ -228,6 +296,22 @@ function createOperatorMixins(data) {
             "type": "tracker-logic-linked",
             "ref": ref,
             "category": "mixin"
+        });
+    }
+    return res;
+}
+
+function createOperatorFunctions(data) {
+    let res = {
+        "type": "group",
+        "caption": "function",
+        "children": []
+    };
+    for (let ref in data) {
+        res.children.push({
+            "type": "tracker-logic-linked",
+            "ref": ref,
+            "category": "function"
         });
     }
     return res;
@@ -375,15 +459,25 @@ function createLogicGraphCategory(data, world) {
             } else if (sref.startsWith("event.")) {
 				ebuf.children.push({
 					"edge": [ref, sref],
-					"category": "location",
+					"category": "event",
 					"content": sref
 				});
 			}
         }
+        let ch = [];
+        if (!!lbuf.children.length) {
+            ch.push(lbuf);
+        }
+        if (!!rbuf.children.length) {
+            ch.push(rbuf);
+        }
+        if (!!ebuf.children.length) {
+            ch.push(ebuf);
+        }
         res.children.push({
             "type": "group",
             "caption": ref,
-            "children": [lbuf, rbuf, ebuf]
+            "children": ch
         });
     }
     return res;

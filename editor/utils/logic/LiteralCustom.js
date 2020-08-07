@@ -10,7 +10,6 @@ const TPL = new Template(`
         :host {
             --logic-color-back: ${TPL_BACKGROUND};
             --logic-color-border: ${TPL_BORDER};
-            word-break: break-word;
         }
         #value:empty {
             display: none;

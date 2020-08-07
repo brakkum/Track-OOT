@@ -12,6 +12,7 @@ import "/editors/logic/LogicEditor.js";
 import LogicListsCreator from "/utils/logic/LogicListsCreator.js";
 import "/utils/logic/LiteralCustom.js";
 import "/utils/logic/LiteralLinked.js";
+import "/utils/logic/LiteralMixin.js";
 
 const FILES = {
     "world":                {path: "/src/database/world.json",              type: "json"},
@@ -91,15 +92,15 @@ let editorChoice = document.getElementById("editor-choice");
         await refreshLogicEditor();
         // register
         logicEditor.addEventListener("save", async event => {
-            if (event.target != null) {
-                await GraphStorage.set(`${event.key} -> ${event.target}`, event.logic);
+            if (event.targetKey != null) {
+                await GraphStorage.set(`${event.key} -> ${event.targetKey}`, event.logic);
             } else {
                 await LogicsStorage.set(event.key, event.logic);
             }
         });
         logicEditor.addEventListener("clear", async event => {
-            if (event.target != null) {
-                await GraphStorage.delete(`${event.key} -> ${event.target}`);
+            if (event.targetKey != null) {
+                await GraphStorage.delete(`${event.key} -> ${event.targetKey}`);
             } else {
                 await LogicsStorage.delete(event.key);
             }

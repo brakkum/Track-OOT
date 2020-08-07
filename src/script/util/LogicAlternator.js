@@ -7,59 +7,69 @@ import LogicViewer from "/script/content/logic/LogicViewer.js";
 
 const SettingsStorage = new IDBStorage('settings');
 const LogicsStorage = new IDBStorage('logics');
+let GraphStorage = new IDBStorage("edges");
 
-let entrance_active = {
-    "dungeon": false
+const ENTRANCE_SHUFFLE_RESOLVER_LIST = {
+    "entrance_shuffle_off": [],
+    "entrance_shuffle_dungeons": [
+        "dungeon"
+    ],
+    "entrance_shuffle_simple": [
+        "dungeon",
+        "interior.simple",
+        "grotto.simple"
+    ],
+    "entrance_shuffle_indoors": [
+        "dungeon",
+        "interior.simple",
+        "grotto.simple",
+        "interior.extended",
+        "grotto.extended"
+    ],
+    "entrance_shuffle_all": [
+        "dungeon",
+        "interior.simple",
+        "grotto.simple",
+        "interior.extended",
+        "grotto.extended",
+        "overworld"
+    ],
 };
-let entrance_types = {
-    "option.entrance_shuffle_dungeons": "dungeon"
-};
-let entrance_logic = {
-    "dungeon": {}
-};
-let entrance_binding = {};
+
+let entrance_shuffle = "entrance_shuffle_off";
+let exit_binding = {};
 let use_custom_logic = false;
 
-// register event on entrances change
-/* TODO make this available if graphs hit
-EventBus.register("entrance", event => {
-    let world = FileData.get("world", {});
-    let entrance = world[event.data.name];
-    let logic = {};
-    if (entrance_binding[event.data.name] != "") {
-        let area = world[entrance_binding[event.data.name]];
-        let buf = {
-            "type": "false"
-        };
-        entrance_logic[entrance.type][area.access] = buf;
-        logic[area.access] = buf;
-    }
-    if (event.data.value != "") {
-        let area = world[event.data.value];
-        let buf = {
-            "type": "value",
-            "el": entrance.access,
-            "category": "entrance"
-        };
-        entrance_logic[entrance.type][area.access] = buf;
-        logic[area.access] = buf;
-    }
-    if (entrance_active[entrance.type]) {
-        Logic.setLogic(logic);
-    }
-});
-*/
-// register event for (de-)activate entrances
-EventBus.register("randomizer_options", event => {
-    let changed = false;
-    for (let type in entrance_types) {
-        let name = entrance_types[type];
-        if (event.data.hasOwnProperty(type) && entrance_active[name] != event.data[type]) {
-            entrance_active[name] = event.data[type];
-            changed = true;
+// register event on exit target change
+EventBus.register("exit_change", event => {
+    let types = FileData.get("exit_types", {});
+    let source = event.data.source;
+    let target = event.data.target;
+    let reroute = event.data.reroute;
+    let entrance = event.data.entrance;
+
+    let edgeThere = `${source} -> ${target}`;
+    let edgeBack = `${reroute} -> ${entrance}`;
+
+    if (types[edgeThere].split(".")[0] == types[edgeBack].split(".")[0]) {
+        // set local binding
+        exit_binding[`${source} -> ${target}`] = reroute;
+        exit_binding[`${reroute} -> ${entrance}`] = source;
+        // write to storage
+        StateStorage.setEntranceRewrite(source, target, reroute);
+        StateStorage.setEntranceRewrite(reroute, entrance, source);
+        // apply if possible
+        let shuffled = ENTRANCE_SHUFFLE_RESOLVER_LIST[entrance_shuffle];
+        if (shuffled.indexOf(types[edgeThere]) >= 0) {
+            Logic.setTranslation(source, target, reroute);
+            Logic.setTranslation(reroute, entrance, source);
         }
     }
-    if (changed) {
+});
+// register event for (de-)activate entrances
+EventBus.register("randomizer_options", event => {
+    if (event.data.hasOwnProperty("option.entrance_shuffle") && entrance_shuffle != event.data["option.entrance_shuffle"]) {
+        entrance_shuffle = event.data["option.entrance_shuffle"];
         updateLogic();
     }
 });
@@ -84,61 +94,36 @@ EventBus.register("custom_logic", async event => {
 async function updateLogic() {
     let logic = FileData.get("logic", {edges:{},logic:{}});
     if (use_custom_logic) {
+        let customEdges = await GraphStorage.getAll();
+        for (let l in customEdges) {
+            let value = customEdges[l];
+            let [key, target] = l.split(" -> ");
+            logic.edges[key] = logic.edges[key] || {};
+            logic.edges[key][target] = value;
+        }
         let customLogic = await LogicsStorage.getAll();
         for (let l in customLogic) {
             logic.logic[l] = customLogic[l];
         }
     }
-    /* TODO make this available if graphs hit
-    for (let type in entrance_types) {
-        let name = entrance_types[type];
-        if (entrance_active[name]) {
-            for (let l in entrance_logic[name]) {
-                logic[l] = entrance_logic[name][l];
-            }
+    Logic.setLogic(logic);
+   /* rewrite the edge from [source] to [target], so it instead links to [reroute] */
+    let shuffled = ENTRANCE_SHUFFLE_RESOLVER_LIST[entrance_shuffle];
+    for (let l in exit_binding) {
+        if (shuffled.indexOf(types[l]) >= 0) {
+            let reroute = exit_binding[i];
+            let [source, target] = l.split(" -> ");
+            Logic.setTranslation(source, target, reroute);
         }
     }
-    */
-    Logic.setLogic(logic);
 }
 
 class LogicAlternator {
 
     async init() {
         let settings = FileData.get("settings", {});
-        /* TODO make this available if graphs hit
-        let world = FileData.get("world", {});
-        for (let type in entrance_types) {
-            let name = entrance_types[type];
-            entrance_active[name] = StateStorage.read(type, "");
-        }
-        for (let name in world) {
-            let entry = world[name];
-            if (entry.category == "area") {
-                if (entrance_logic.hasOwnProperty(entry.type)) {
-                    if (!entrance_logic[entry.type].hasOwnProperty(entry.access)) {
-                        entrance_logic[entry.type][entry.access] = {
-                            "type": "false"
-                        };
-                    }
-                }
-            } else if (entry.category == "entrance") {
-                if (entrance_logic.hasOwnProperty(entry.type)) {
-                    let entrance = world[name];
-                    let key = StateStorage.read(name, "");
-                    entrance_binding[name] = key;
-                    if (key != "") {
-                        let area = world[key];
-                        entrance_logic[entry.type][area.access] = {
-                            "type": "value",
-                            "el": entrance.access,
-                            "category": "entrance"
-                        };
-                    }
-                }
-            }
-        }
-        */
+        entrance_shuffle = StateStorage.read("option.entrance_shuffle");
+        exit_binding = StateStorage.getAllEntranceRewrites();
         use_custom_logic = await SettingsStorage.get("use_custom_logic", settings["use_custom_logic"].default);
         await updateLogic();
     }
