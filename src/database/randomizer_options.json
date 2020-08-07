@@ -44,10 +44,17 @@
                 "keysanity_boss_keysanity"
             ]
         },
-        /*"option.entrance_shuffle_dungeons": {
-            "type": "-check",
-            "default": false
-        },*/
+        "option.entrance_shuffle": {
+            "type": "check",
+            "default": "entrance_shuffle_off",
+            "values": [
+                "entrance_shuffle_off",
+                "entrance_shuffle_dungeons",
+                "entrance_shuffle_simple",
+                "entrance_shuffle_indoors",
+                "entrance_shuffle_all"
+            ]
+        },
         "option.scrubsanity": {
             "type": "check",
             "default": false

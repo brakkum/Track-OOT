@@ -2,7 +2,7 @@ import Template from "/emcJS/util/Template.js";
 import AbstractElement from "/editors/logic/elements/AbstractElement.js";
 import LogicViewer from "./LogicViewer.js";
 
-const TPL_CAPTION = "LINKED";
+const TPL_CAPTION = "MIXIN";
 const TPL_BACKGROUND = "#ffffff";
 const TPL_BORDER = "#777777";
 
@@ -31,7 +31,7 @@ const SVG = new Template(`
     </div>
 `);
 
-export default class LiteralLinked extends AbstractElement {
+export default class LiteralMixin extends AbstractElement {
 
     constructor() {
         super();
@@ -50,12 +50,12 @@ export default class LiteralLinked extends AbstractElement {
         this.setAttribute('ref', val);
     }
 
-    get category() {
-        return this.getAttribute('category');
+    get type() {
+        return this.getAttribute('type');
     }
 
-    set category(val) {
-        this.setAttribute('category', val);
+    set type(val) {
+        this.setAttribute('type', val);
     }
 
     calculate(state = {}) {
@@ -71,14 +71,13 @@ export default class LiteralLinked extends AbstractElement {
 
     loadLogic(logic) {
         this.ref = logic.el;
-        this.category = logic.category || logic.type;
+        this.type = logic.type;
     }
 
     toJSON() {
         return {
             type: this.type,
-            el: this.ref,
-            category: this.category
+            el: this.ref
         };
     }
 
@@ -88,7 +87,7 @@ export default class LiteralLinked extends AbstractElement {
 
     static get observedAttributes() {
         let attr = AbstractElement.observedAttributes;
-        attr.push('ref', 'category');
+        attr.push('ref', 'type');
         return attr;
     }
       
@@ -110,7 +109,7 @@ export default class LiteralLinked extends AbstractElement {
                     }
                 }
                 break;
-            case 'category':
+            case 'type':
                 if (oldValue != newValue) {
                     if (!!newValue) {
                         this.shadowRoot.getElementById('header-name').innerHTML = newValue.toUpperCase();
@@ -124,7 +123,7 @@ export default class LiteralLinked extends AbstractElement {
 
 }
 
-AbstractElement.registerReference("entrance", LiteralLinked);
-AbstractElement.registerReference("area", LiteralLinked);
+AbstractElement.registerReference("mixin", LiteralMixin);
+AbstractElement.registerReference("function", LiteralMixin);
 
-customElements.define(`tracker-logic-linked`, LiteralLinked);
+customElements.define(`tracker-logic-mixin`, LiteralMixin);
