@@ -45,7 +45,7 @@
             ]
         },
         "option.entrance_shuffle": {
-            "type": "check",
+            "type": "choice",
             "default": "entrance_shuffle_off",
             "values": [
                 "entrance_shuffle_off",

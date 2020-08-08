@@ -1968,7 +1968,7 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -2007,7 +2007,7 @@
                         ]
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -2051,7 +2051,7 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -2090,7 +2090,7 @@
                         ]
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -2120,7 +2120,7 @@
                         "el": "skip.deku_tree_B1_skip"
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -2143,7 +2143,7 @@
                 ]
             },
             "region.deku_tree_slingshot_room[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -2167,7 +2167,7 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -2231,7 +2231,7 @@
                                 "el": "skip.deku_tree_B1_skip"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -2697,7 +2697,7 @@
                                 "type": "and",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -2754,7 +2754,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -2793,7 +2793,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -2814,7 +2814,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -2865,7 +2865,7 @@
                                                 "el": "skip.deku_tree_B1_skip"
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -2927,7 +2927,7 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -2966,7 +2966,7 @@
                         ]
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -3010,7 +3010,7 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -3049,7 +3049,7 @@
                         ]
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -3079,7 +3079,7 @@
                         "el": "skip.deku_tree_B1_skip"
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -3102,7 +3102,7 @@
                 ]
             },
             "region.deku_tree_slingshot_room[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -3126,7 +3126,7 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -3190,7 +3190,7 @@
                                 "el": "skip.deku_tree_B1_skip"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -3656,7 +3656,7 @@
                                 "type": "and",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -3713,7 +3713,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -3752,7 +3752,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -3773,7 +3773,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -3824,7 +3824,7 @@
                                                 "el": "skip.deku_tree_B1_skip"
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -3943,7 +3943,7 @@
                                                 "type": "or",
                                                 "el": [
                                                     {
-                                                        "type": "and",
+                                                        "type": "or",
                                                         "el": [
                                                             {
                                                                 "type": "at",
@@ -4043,7 +4043,7 @@
                                                 "type": "or",
                                                 "el": [
                                                     {
-                                                        "type": "and",
+                                                        "type": "or",
                                                         "el": [
                                                             {
                                                                 "type": "at",
@@ -4250,7 +4250,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -4378,7 +4378,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -4456,7 +4456,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -4555,7 +4555,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -4707,7 +4707,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -4785,7 +4785,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -4852,7 +4852,7 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -4887,7 +4887,7 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -4916,7 +4916,7 @@
         },
         "region.dodongos_cavern_lobby[child]": {
             "region.dodongos_cavern_lower_right_side[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -5035,7 +5035,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -5117,7 +5117,7 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -5817,7 +5817,7 @@
         },
         "region.dodongos_cavern_lobby[adult]": {
             "region.dodongos_cavern_lower_right_side[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -5936,7 +5936,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -6018,7 +6018,7 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -6724,7 +6724,7 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -6808,7 +6808,7 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -6922,7 +6922,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -7030,7 +7030,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -7410,7 +7410,7 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -7511,7 +7511,7 @@
                         ]
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -7660,7 +7660,7 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -7761,7 +7761,7 @@
                         ]
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -8083,7 +8083,7 @@
                                 ]
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -8535,7 +8535,7 @@
                                         "el": "item.boots_hover"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -8667,7 +8667,7 @@
                                 ]
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -9119,7 +9119,7 @@
                                         "el": "item.boots_hover"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -10497,7 +10497,7 @@
                                         "el": "item.boots_hover"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -10581,7 +10581,7 @@
                                         "el": "item.boots_hover"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -11698,18 +11698,12 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "at",
-                        "node": "event.forest_temple_jo_and_beth",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.forest_temple_jo_and_beth"
                     },
                     {
-                        "type": "at",
-                        "node": "event.forest_temple_amy_and_meg",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.forest_temple_amy_and_meg"
                     }
                 ]
             },
@@ -11990,18 +11984,12 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "at",
-                        "node": "event.forest_temple_jo_and_beth",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.forest_temple_jo_and_beth"
                     },
                     {
-                        "type": "at",
-                        "node": "event.forest_temple_amy_and_meg",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.forest_temple_amy_and_meg"
                     }
                 ]
             },
@@ -12320,18 +12308,12 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "at",
-                        "node": "event.forest_temple_jo_and_beth",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.forest_temple_jo_and_beth"
                     },
                     {
-                        "type": "at",
-                        "node": "event.forest_temple_amy_and_meg",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.forest_temple_amy_and_meg"
                     }
                 ]
             },
@@ -12562,18 +12544,12 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "at",
-                        "node": "event.forest_temple_jo_and_beth",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.forest_temple_jo_and_beth"
                     },
                     {
-                        "type": "at",
-                        "node": "event.forest_temple_amy_and_meg",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.forest_temple_amy_and_meg"
                     }
                 ]
             },
@@ -12945,7 +12921,7 @@
                                 "el": "function.can_use(mixin.longshot)[child]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -13205,7 +13181,7 @@
                                 "el": "function.can_use(mixin.longshot)[adult]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -13625,7 +13601,7 @@
                                 "el": "function.can_use(item.hookshot)[child]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -13655,7 +13631,7 @@
                                         "el": "function.can_use(item.boots_hover)[child]"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -13711,7 +13687,7 @@
                                 ]
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -14053,7 +14029,7 @@
                                 "el": "function.can_use(item.hookshot)[adult]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -14083,7 +14059,7 @@
                                         "el": "function.can_use(item.boots_hover)[adult]"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -14139,7 +14115,7 @@
                                 ]
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -15319,11 +15295,8 @@
                                 }
                             },
                             {
-                                "type": "at",
-                                "node": "event.forest_trial_clear",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.forest_trial_clear"
                             }
                         ]
                     },
@@ -15338,11 +15311,8 @@
                                 }
                             },
                             {
-                                "type": "at",
-                                "node": "event.fire_trial_clear",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.fire_trial_clear"
                             }
                         ]
                     },
@@ -15357,11 +15327,8 @@
                                 }
                             },
                             {
-                                "type": "at",
-                                "node": "event.water_trial_clear",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.water_trial_clear"
                             }
                         ]
                     },
@@ -15376,11 +15343,8 @@
                                 }
                             },
                             {
-                                "type": "at",
-                                "node": "event.shadow_trial_clear",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.shadow_trial_clear"
                             }
                         ]
                     },
@@ -15395,11 +15359,8 @@
                                 }
                             },
                             {
-                                "type": "at",
-                                "node": "event.spirit_trial_clear",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.spirit_trial_clear"
                             }
                         ]
                     },
@@ -15414,11 +15375,8 @@
                                 }
                             },
                             {
-                                "type": "at",
-                                "node": "event.light_trial_clear",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.light_trial_clear"
                             }
                         ]
                     }
@@ -15479,11 +15437,8 @@
                                 }
                             },
                             {
-                                "type": "at",
-                                "node": "event.forest_trial_clear",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.forest_trial_clear"
                             }
                         ]
                     },
@@ -15498,11 +15453,8 @@
                                 }
                             },
                             {
-                                "type": "at",
-                                "node": "event.fire_trial_clear",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.fire_trial_clear"
                             }
                         ]
                     },
@@ -15517,11 +15469,8 @@
                                 }
                             },
                             {
-                                "type": "at",
-                                "node": "event.water_trial_clear",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.water_trial_clear"
                             }
                         ]
                     },
@@ -15536,11 +15485,8 @@
                                 }
                             },
                             {
-                                "type": "at",
-                                "node": "event.shadow_trial_clear",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.shadow_trial_clear"
                             }
                         ]
                     },
@@ -15555,11 +15501,8 @@
                                 }
                             },
                             {
-                                "type": "at",
-                                "node": "event.spirit_trial_clear",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.spirit_trial_clear"
                             }
                         ]
                     },
@@ -15574,11 +15517,8 @@
                                 }
                             },
                             {
-                                "type": "at",
-                                "node": "event.light_trial_clear",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.light_trial_clear"
                             }
                         ]
                     }
@@ -18347,7 +18287,7 @@
                 "type": "true"
             },
             "region.gerudo_training_grounds_left_side[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -18368,7 +18308,7 @@
                 ]
             },
             "region.gerudo_training_grounds_right_side[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -18438,7 +18378,7 @@
                 ]
             },
             "region.gerudo_training_grounds_lava_room[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -18731,7 +18671,7 @@
                 "type": "true"
             },
             "region.gerudo_training_grounds_left_side[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -18752,7 +18692,7 @@
                 ]
             },
             "region.gerudo_training_grounds_right_side[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -18822,7 +18762,7 @@
                 ]
             },
             "region.gerudo_training_grounds_lava_room[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -21115,7 +21055,7 @@
                 "el": "item.bottle"
             },
             "region.ice_cavern[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -21257,7 +21197,7 @@
                 "el": "item.bottle"
             },
             "region.ice_cavern[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -22598,7 +22538,7 @@
                                 "el": "function.can_use(item.hookshot)[child]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -22950,7 +22890,7 @@
                                 "el": "function.can_use(item.hookshot)[adult]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -23333,7 +23273,7 @@
                                 ]
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -23481,7 +23421,7 @@
                                 ]
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -24051,11 +23991,8 @@
                         "el": "mixin.is_adult[child]"
                     },
                     {
-                        "type": "at",
-                        "node": "event.showed_mido_sword_&_shield",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.showed_mido_sword_&_shield"
                     }
                 ]
             },
@@ -24348,11 +24285,8 @@
                         "el": "mixin.is_adult[adult]"
                     },
                     {
-                        "type": "at",
-                        "node": "event.showed_mido_sword_&_shield",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.showed_mido_sword_&_shield"
                     }
                 ]
             },
@@ -24638,11 +24572,8 @@
                                 }
                             },
                             {
-                                "type": "at",
-                                "node": "event.showed_mido_sword_&_shield",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.showed_mido_sword_&_shield"
                             }
                         ]
                     }
@@ -24808,11 +24739,8 @@
                                 }
                             },
                             {
-                                "type": "at",
-                                "node": "event.showed_mido_sword_&_shield",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.showed_mido_sword_&_shield"
                             }
                         ]
                     }
@@ -24985,11 +24913,8 @@
                                 "el": "function.can_play(item.song_epona)[child]"
                             },
                             {
-                                "type": "at",
-                                "node": "event.links_cow",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.links_cow"
                             }
                         ]
                     }
@@ -25023,11 +24948,8 @@
                                 "el": "function.can_play(item.song_epona)[adult]"
                             },
                             {
-                                "type": "at",
-                                "node": "event.links_cow",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.links_cow"
                             }
                         ]
                     }
@@ -25408,7 +25330,7 @@
                                 "el": "function.can_use(mixin.longshot)[child]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -25476,7 +25398,7 @@
                 ]
             },
             "region.lw_near_shortcuts_grotto[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -25737,11 +25659,8 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "at",
-                                        "node": "event.cojiro_access",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.cojiro_access"
                                     },
                                     {
                                         "type": "min",
@@ -25776,11 +25695,8 @@
                                 "el": "mixin.is_adult[child]"
                             },
                             {
-                                "type": "at",
-                                "node": "event.odd_potion_access",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.odd_potion_access"
                             }
                         ]
                     }
@@ -25813,7 +25729,7 @@
                                 "el": "function.can_use(mixin.longshot)[adult]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -25881,7 +25797,7 @@
                 ]
             },
             "region.lw_near_shortcuts_grotto[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -26142,11 +26058,8 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "at",
-                                        "node": "event.cojiro_access",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.cojiro_access"
                                     },
                                     {
                                         "type": "min",
@@ -26181,11 +26094,8 @@
                                 "el": "mixin.is_adult[adult]"
                             },
                             {
-                                "type": "at",
-                                "node": "event.odd_potion_access",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.odd_potion_access"
                             }
                         ]
                     }
@@ -26216,7 +26126,7 @@
                 "type": "true"
             },
             "region.lw_scrubs_grotto[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -26314,7 +26224,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -26470,7 +26380,7 @@
                 "type": "true"
             },
             "region.lw_scrubs_grotto[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -26568,7 +26478,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -27183,7 +27093,7 @@
                 "type": "true"
             },
             "region.hf_southeast_grotto[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -27233,7 +27143,7 @@
                 ]
             },
             "region.hf_near_market_grotto[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -27254,7 +27164,7 @@
                 ]
             },
             "region.hf_fairy_grotto[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -27388,7 +27298,7 @@
                 "type": "true"
             },
             "region.hf_southeast_grotto[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -27438,7 +27348,7 @@
                 ]
             },
             "region.hf_near_market_grotto[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -27459,7 +27369,7 @@
                 ]
             },
             "region.hf_fairy_grotto[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -27606,7 +27516,7 @@
                         "el": "function.can_use(mixin.scarecrow)[child]"
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -27627,11 +27537,8 @@
                         ]
                     },
                     {
-                        "type": "at",
-                        "node": "event.water_temple_clear",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.water_temple_clear"
                     }
                 ]
             },
@@ -27701,11 +27608,8 @@
                                 "el": "mixin.is_adult[child]"
                             },
                             {
-                                "type": "at",
-                                "node": "event.bonooru",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.bonooru"
                             },
                             {
                                 "type": "not",
@@ -27770,11 +27674,8 @@
                                         "el": "function.can_use(mixin.distant_scarecrow)[child]"
                                     },
                                     {
-                                        "type": "at",
-                                        "node": "event.water_temple_clear",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.water_temple_clear"
                                     }
                                 ]
                             },
@@ -27812,7 +27713,7 @@
                                         "el": "function.can_use(mixin.scarecrow)[child]"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -28196,7 +28097,7 @@
                         "el": "function.can_use(mixin.scarecrow)[adult]"
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -28217,11 +28118,8 @@
                         ]
                     },
                     {
-                        "type": "at",
-                        "node": "event.water_temple_clear",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.water_temple_clear"
                     }
                 ]
             },
@@ -28291,11 +28189,8 @@
                                 "el": "mixin.is_adult[adult]"
                             },
                             {
-                                "type": "at",
-                                "node": "event.bonooru",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.bonooru"
                             },
                             {
                                 "type": "not",
@@ -28360,11 +28255,8 @@
                                         "el": "function.can_use(mixin.distant_scarecrow)[adult]"
                                     },
                                     {
-                                        "type": "at",
-                                        "node": "event.water_temple_clear",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.water_temple_clear"
                                     }
                                 ]
                             },
@@ -28402,7 +28294,7 @@
                                         "el": "function.can_use(mixin.scarecrow)[adult]"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -28855,11 +28747,8 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "at",
-                                        "node": "event.eyeball_frog_access",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.eyeball_frog_access"
                                     },
                                     {
                                         "type": "and",
@@ -28997,11 +28886,8 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "at",
-                                        "node": "event.eyeball_frog_access",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.eyeball_frog_access"
                                     },
                                     {
                                         "type": "and",
@@ -29169,11 +29055,8 @@
                                 "el": "option.gerudo_fortress_open"
                             },
                             {
-                                "type": "at",
-                                "node": "event.carpenter_rescue",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.carpenter_rescue"
                             }
                         ]
                     }
@@ -29288,11 +29171,8 @@
                                 "el": "option.gerudo_fortress_open"
                             },
                             {
-                                "type": "at",
-                                "node": "event.carpenter_rescue",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.carpenter_rescue"
                             }
                         ]
                     }
@@ -29747,11 +29627,8 @@
                         "el": "option.gerudo_fortress_open"
                     },
                     {
-                        "type": "at",
-                        "node": "event.carpenter_rescue",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.carpenter_rescue"
                     }
                 ]
             },
@@ -29863,11 +29740,8 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "at",
-                                        "node": "event.poachers_saw_access",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.poachers_saw_access"
                                     },
                                     {
                                         "type": "min",
@@ -29945,11 +29819,8 @@
                         "el": "option.gerudo_fortress_open"
                     },
                     {
-                        "type": "at",
-                        "node": "event.carpenter_rescue",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.carpenter_rescue"
                     }
                 ]
             },
@@ -30061,11 +29932,8 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "at",
-                                        "node": "event.poachers_saw_access",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.poachers_saw_access"
                                     },
                                     {
                                         "type": "min",
@@ -30097,11 +29965,8 @@
                 "type": "true"
             },
             "region.gf_outside_gate[child]": {
-                "type": "at",
-                "node": "event.gf_gate_open",
-                "el": {
-                    "type": "true"
-                }
+                "type": "value",
+                "el": "event.gf_gate_open"
             },
             "region.gerudo_training_grounds_lobby[child]": {
                 "type": "and",
@@ -30543,11 +30408,8 @@
                 "type": "true"
             },
             "region.gf_outside_gate[adult]": {
-                "type": "at",
-                "node": "event.gf_gate_open",
-                "el": {
-                    "type": "true"
-                }
+                "type": "value",
+                "el": "event.gf_gate_open"
             },
             "region.gerudo_training_grounds_lobby[adult]": {
                 "type": "and",
@@ -31001,11 +30863,8 @@
                                 "value": "entrance_shuffle_all"
                             },
                             {
-                                "type": "at",
-                                "node": "event.gf_gate_open",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.gf_gate_open"
                             }
                         ]
                     }
@@ -31093,11 +30952,8 @@
                                 "value": "entrance_shuffle_all"
                             },
                             {
-                                "type": "at",
-                                "node": "event.gf_gate_open",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.gf_gate_open"
                             }
                         ]
                     }
@@ -31594,7 +31450,7 @@
                                 "el": "mixin.is_adult[child]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -31712,7 +31568,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -31893,7 +31749,7 @@
                                 "el": "mixin.is_adult[adult]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -32011,7 +31867,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -33917,7 +33773,7 @@
                                         "type": "true"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -33975,7 +33831,7 @@
                                         "type": "and",
                                         "el": [
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -34014,7 +33870,7 @@
                                                 ]
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -34053,7 +33909,7 @@
                                                 ]
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -34133,7 +33989,7 @@
                                         "type": "true"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -34191,7 +34047,7 @@
                                         "type": "and",
                                         "el": [
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -34230,7 +34086,7 @@
                                                 ]
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -34269,7 +34125,7 @@
                                                 ]
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -35148,11 +35004,8 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "at",
-                        "node": "event.drain_well",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.drain_well"
                     },
                     {
                         "type": "or",
@@ -35340,11 +35193,8 @@
                         "el": "mixin.is_adult[child]"
                     },
                     {
-                        "type": "at",
-                        "node": "event.kakariko_village_gate_open",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.kakariko_village_gate_open"
                     }
                 ]
             },
@@ -35700,11 +35550,8 @@
                                 "el": "mixin.is_adult[child]"
                             },
                             {
-                                "type": "at",
-                                "node": "event.wake_up_adult_talon",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.wake_up_adult_talon"
                             }
                         ]
                     }
@@ -35797,11 +35644,8 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "at",
-                        "node": "event.drain_well",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.drain_well"
                     },
                     {
                         "type": "or",
@@ -35989,11 +35833,8 @@
                         "el": "mixin.is_adult[adult]"
                     },
                     {
-                        "type": "at",
-                        "node": "event.kakariko_village_gate_open",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.kakariko_village_gate_open"
                     }
                 ]
             },
@@ -36349,11 +36190,8 @@
                                 "el": "mixin.is_adult[adult]"
                             },
                             {
-                                "type": "at",
-                                "node": "event.wake_up_adult_talon",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.wake_up_adult_talon"
                             }
                         ]
                     }
@@ -36968,11 +36806,8 @@
                                 ]
                             },
                             {
-                                "type": "at",
-                                "node": "event.dampes_windmill_access",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.dampes_windmill_access"
                             }
                         ]
                     }
@@ -37067,11 +36902,8 @@
                                 ]
                             },
                             {
-                                "type": "at",
-                                "node": "event.dampes_windmill_access",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.dampes_windmill_access"
                             }
                         ]
                     }
@@ -37792,11 +37624,8 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "at",
-                                        "node": "event.odd_mushroom_access",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.odd_mushroom_access"
                                     },
                                     {
                                         "type": "and",
@@ -37865,11 +37694,8 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "at",
-                                        "node": "event.odd_mushroom_access",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.odd_mushroom_access"
                                     },
                                     {
                                         "type": "and",
@@ -37988,7 +37814,7 @@
                                         "type": "or",
                                         "el": [
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -38279,7 +38105,7 @@
                                         "type": "or",
                                         "el": [
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -39117,11 +38943,8 @@
                         "el": "skip.one_way_pass"
                     },
                     {
-                        "type": "at",
-                        "node": "event.kakariko_village_gate_open",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.kakariko_village_gate_open"
                     },
                     {
                         "type": "state",
@@ -39147,11 +38970,8 @@
                         "el": "skip.one_way_pass"
                     },
                     {
-                        "type": "at",
-                        "node": "event.kakariko_village_gate_open",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.kakariko_village_gate_open"
                     },
                     {
                         "type": "state",
@@ -39175,7 +38995,7 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -39203,7 +39023,7 @@
                                 "el": "mixin.is_adult[child]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -39347,7 +39167,7 @@
                                         "el": "mixin.is_adult[child]"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -39524,7 +39344,7 @@
                                                 "el": "skip.dm_lower_gs_bean"
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -39630,7 +39450,7 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -39658,7 +39478,7 @@
                                 "el": "mixin.is_adult[adult]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -39802,7 +39622,7 @@
                                         "el": "mixin.is_adult[adult]"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -39979,7 +39799,7 @@
                                                 "el": "skip.dm_lower_gs_bean"
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -40086,7 +39906,7 @@
                 "el": "mixin.is_child[child]"
             },
             "region.dmt_cow_grotto[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -40107,7 +39927,7 @@
                 ]
             },
             "region.dmt_great_fairy_fountain[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -40167,11 +39987,8 @@
                                                 "type": "or",
                                                 "el": [
                                                     {
-                                                        "type": "at",
-                                                        "node": "event.eyedrops_access",
-                                                        "el": {
-                                                            "type": "true"
-                                                        }
+                                                        "type": "value",
+                                                        "el": "event.eyedrops_access"
                                                     },
                                                     {
                                                         "type": "and",
@@ -40355,11 +40172,8 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "at",
-                                        "node": "event.broken_sword_access",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.broken_sword_access"
                                     },
                                     {
                                         "type": "min",
@@ -40388,7 +40202,7 @@
                 "el": "mixin.is_child[adult]"
             },
             "region.dmt_cow_grotto[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -40409,7 +40223,7 @@
                 ]
             },
             "region.dmt_great_fairy_fountain[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -40469,11 +40283,8 @@
                                                 "type": "or",
                                                 "el": [
                                                     {
-                                                        "type": "at",
-                                                        "node": "event.eyedrops_access",
-                                                        "el": {
-                                                            "type": "true"
-                                                        }
+                                                        "type": "value",
+                                                        "el": "event.eyedrops_access"
                                                     },
                                                     {
                                                         "type": "and",
@@ -40657,11 +40468,8 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "at",
-                                        "node": "event.broken_sword_access",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.broken_sword_access"
                                     },
                                     {
                                         "type": "min",
@@ -40709,11 +40517,8 @@
                 "type": "true"
             },
             "region.gc_woods_warp[child]": {
-                "type": "at",
-                "node": "event.gc_woods_warp_open",
-                "el": {
-                    "type": "true"
-                }
+                "type": "value",
+                "el": "event.gc_woods_warp_open"
             },
             "region.gc_shop[child]": {
                 "type": "or",
@@ -40726,11 +40531,8 @@
                                 "el": "mixin.is_adult[child]"
                             },
                             {
-                                "type": "at",
-                                "node": "event.stop_gc_rolling_goron_as_adult",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.stop_gc_rolling_goron_as_adult"
                             }
                         ]
                     },
@@ -40753,11 +40555,8 @@
                                         "el": "item.glove"
                                     },
                                     {
-                                        "type": "at",
-                                        "node": "event.goron_city_child_fire",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.goron_city_child_fire"
                                     }
                                 ]
                             }
@@ -40776,11 +40575,8 @@
                                 "el": "mixin.is_adult[child]"
                             },
                             {
-                                "type": "at",
-                                "node": "event.stop_gc_rolling_goron_as_adult",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.stop_gc_rolling_goron_as_adult"
                             }
                         ]
                     },
@@ -41008,11 +40804,8 @@
                                 "el": "mixin.is_child[child]"
                             },
                             {
-                                "type": "at",
-                                "node": "event.goron_city_child_fire",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.goron_city_child_fire"
                             },
                             {
                                 "type": "or",
@@ -41109,11 +40902,8 @@
                         }
                     },
                     {
-                        "type": "at",
-                        "node": "event.stop_gc_rolling_goron_as_adult",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.stop_gc_rolling_goron_as_adult"
                     }
                 ]
             },
@@ -41391,11 +41181,8 @@
                 "type": "true"
             },
             "region.gc_woods_warp[adult]": {
-                "type": "at",
-                "node": "event.gc_woods_warp_open",
-                "el": {
-                    "type": "true"
-                }
+                "type": "value",
+                "el": "event.gc_woods_warp_open"
             },
             "region.gc_shop[adult]": {
                 "type": "or",
@@ -41408,11 +41195,8 @@
                                 "el": "mixin.is_adult[adult]"
                             },
                             {
-                                "type": "at",
-                                "node": "event.stop_gc_rolling_goron_as_adult",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.stop_gc_rolling_goron_as_adult"
                             }
                         ]
                     },
@@ -41435,11 +41219,8 @@
                                         "el": "item.glove"
                                     },
                                     {
-                                        "type": "at",
-                                        "node": "event.goron_city_child_fire",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.goron_city_child_fire"
                                     }
                                 ]
                             }
@@ -41458,11 +41239,8 @@
                                 "el": "mixin.is_adult[adult]"
                             },
                             {
-                                "type": "at",
-                                "node": "event.stop_gc_rolling_goron_as_adult",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.stop_gc_rolling_goron_as_adult"
                             }
                         ]
                     },
@@ -41690,11 +41468,8 @@
                                 "el": "mixin.is_child[adult]"
                             },
                             {
-                                "type": "at",
-                                "node": "event.goron_city_child_fire",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.goron_city_child_fire"
                             },
                             {
                                 "type": "or",
@@ -41791,11 +41566,8 @@
                         }
                     },
                     {
-                        "type": "at",
-                        "node": "event.stop_gc_rolling_goron_as_adult",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.stop_gc_rolling_goron_as_adult"
                     }
                 ]
             },
@@ -42077,11 +41849,8 @@
                         "el": "mixin.can_leave_forest[child]"
                     },
                     {
-                        "type": "at",
-                        "node": "event.gc_woods_warp_open",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.gc_woods_warp_open"
                     }
                 ]
             },
@@ -42124,11 +41893,8 @@
                         "el": "mixin.can_leave_forest[adult]"
                     },
                     {
-                        "type": "at",
-                        "node": "event.gc_woods_warp_open",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.gc_woods_warp_open"
                     }
                 ]
             },
@@ -42541,7 +42307,7 @@
                 "type": "true"
             },
             "region.dmc_upper_grotto[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -42571,7 +42337,7 @@
                 "type": "true"
             },
             "region.dmc_upper_grotto[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -43177,7 +42943,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -43261,7 +43027,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -43341,7 +43107,7 @@
                                 "el": "function.can_use(item.hookshot)[child]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -43373,7 +43139,7 @@
                         "el": "mixin.is_adult[child]"
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -43519,7 +43285,7 @@
                                 "el": "function.can_use(item.hookshot)[adult]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -43551,7 +43317,7 @@
                         "el": "mixin.is_adult[adult]"
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -43868,7 +43634,7 @@
                 "type": "true"
             },
             "region.zr_fairy_grotto[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -44338,7 +44104,7 @@
                 "type": "true"
             },
             "region.zr_fairy_grotto[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -44957,11 +44723,8 @@
                         }
                     },
                     {
-                        "type": "at",
-                        "node": "event.king_zora_thawed",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.king_zora_thawed"
                     }
                 ]
             },
@@ -45135,7 +44898,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -45154,7 +44917,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -45214,11 +44977,8 @@
                                 "el": "mixin.is_adult[child]"
                             },
                             {
-                                "type": "at",
-                                "node": "event.king_zora_thawed",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.king_zora_thawed"
                             },
                             {
                                 "type": "or",
@@ -45248,11 +45008,8 @@
                                         "value": 7
                                     },
                                     {
-                                        "type": "at",
-                                        "node": "event.prescription_access",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.prescription_access"
                                     }
                                 ]
                             }
@@ -45402,11 +45159,8 @@
                         }
                     },
                     {
-                        "type": "at",
-                        "node": "event.king_zora_thawed",
-                        "el": {
-                            "type": "true"
-                        }
+                        "type": "value",
+                        "el": "event.king_zora_thawed"
                     }
                 ]
             },
@@ -45580,7 +45334,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -45599,7 +45353,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -45659,11 +45413,8 @@
                                 "el": "mixin.is_adult[adult]"
                             },
                             {
-                                "type": "at",
-                                "node": "event.king_zora_thawed",
-                                "el": {
-                                    "type": "true"
-                                }
+                                "type": "value",
+                                "el": "event.king_zora_thawed"
                             },
                             {
                                 "type": "or",
@@ -45693,11 +45444,8 @@
                                         "value": 7
                                     },
                                     {
-                                        "type": "at",
-                                        "node": "event.prescription_access",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.prescription_access"
                                     }
                                 ]
                             }
@@ -54728,7 +54476,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -54864,7 +54612,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -54978,7 +54726,7 @@
                         }
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -55137,7 +54885,7 @@
                                         "el": "function.can_use(item.magic_din)[child]"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -55573,7 +55321,7 @@
                         }
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -55732,7 +55480,7 @@
                                         "el": "function.can_use(item.magic_din)[adult]"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -61482,11 +61230,8 @@
                                 "type": "and",
                                 "el": [
                                     {
-                                        "type": "at",
-                                        "node": "event.child_water_temple",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.child_water_temple"
                                     },
                                     {
                                         "type": "value",
@@ -61702,7 +61447,7 @@
                                 "type": "and",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -61723,7 +61468,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -61813,11 +61558,8 @@
                                         "type": "and",
                                         "el": [
                                             {
-                                                "type": "at",
-                                                "node": "event.child_water_temple",
-                                                "el": {
-                                                    "type": "true"
-                                                }
+                                                "type": "value",
+                                                "el": "event.child_water_temple"
                                             },
                                             {
                                                 "type": "value",
@@ -61902,18 +61644,15 @@
                                                 "el": "skip.wt_central_bow_nothing"
                                             },
                                             {
-                                                "type": "at",
-                                                "node": "event.child_water_temple",
-                                                "el": {
-                                                    "type": "true"
-                                                }
+                                                "type": "value",
+                                                "el": "event.child_water_temple"
                                             },
                                             {
                                                 "type": "value",
                                                 "el": "item.slingshot"
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -62076,11 +61815,8 @@
                                 "type": "and",
                                 "el": [
                                     {
-                                        "type": "at",
-                                        "node": "event.child_water_temple",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.child_water_temple"
                                     },
                                     {
                                         "type": "value",
@@ -62296,7 +62032,7 @@
                                 "type": "and",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -62317,7 +62053,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -62407,11 +62143,8 @@
                                         "type": "and",
                                         "el": [
                                             {
-                                                "type": "at",
-                                                "node": "event.child_water_temple",
-                                                "el": {
-                                                    "type": "true"
-                                                }
+                                                "type": "value",
+                                                "el": "event.child_water_temple"
                                             },
                                             {
                                                 "type": "value",
@@ -62496,18 +62229,15 @@
                                                 "el": "skip.wt_central_bow_nothing"
                                             },
                                             {
-                                                "type": "at",
-                                                "node": "event.child_water_temple",
-                                                "el": {
-                                                    "type": "true"
-                                                }
+                                                "type": "value",
+                                                "el": "event.child_water_temple"
                                             },
                                             {
                                                 "type": "value",
                                                 "el": "item.slingshot"
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -62610,7 +62340,7 @@
                                 "el": "function.can_use(item.magic_din)[child]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -62728,7 +62458,7 @@
                                 "el": "function.can_use(item.magic_din)[adult]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -64439,11 +64169,8 @@
                                 "type": "and",
                                 "el": [
                                     {
-                                        "type": "at",
-                                        "node": "event.child_water_temple",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.child_water_temple"
                                     },
                                     {
                                         "type": "value",
@@ -64594,11 +64321,8 @@
                                 "type": "and",
                                 "el": [
                                     {
-                                        "type": "at",
-                                        "node": "event.child_water_temple",
-                                        "el": {
-                                            "type": "true"
-                                        }
+                                        "type": "value",
+                                        "el": "event.child_water_temple"
                                     },
                                     {
                                         "type": "value",
@@ -64702,11 +64426,8 @@
             "type": "and",
             "el": [
                 {
-                    "type": "at",
-                    "node": "event.bonooru",
-                    "el": {
-                        "type": "true"
-                    }
+                    "type": "value",
+                    "el": "event.bonooru"
                 },
                 {
                     "type": "value",
@@ -64718,11 +64439,8 @@
             "type": "and",
             "el": [
                 {
-                    "type": "at",
-                    "node": "event.bonooru",
-                    "el": {
-                        "type": "true"
-                    }
+                    "type": "value",
+                    "el": "event.bonooru"
                 },
                 {
                     "type": "value",
@@ -64734,11 +64452,8 @@
             "type": "and",
             "el": [
                 {
-                    "type": "at",
-                    "node": "event.bonooru",
-                    "el": {
-                        "type": "true"
-                    }
+                    "type": "value",
+                    "el": "event.bonooru"
                 },
                 {
                     "type": "mixin",
@@ -64750,11 +64465,8 @@
             "type": "and",
             "el": [
                 {
-                    "type": "at",
-                    "node": "event.bonooru",
-                    "el": {
-                        "type": "true"
-                    }
+                    "type": "value",
+                    "el": "event.bonooru"
                 },
                 {
                     "type": "mixin",
@@ -65564,11 +65276,8 @@
                     "el": "mixin.is_glitched[child]"
                 },
                 {
-                    "type": "at",
-                    "node": "event.deku_tree_clear",
-                    "el": {
-                        "type": "true"
-                    }
+                    "type": "value",
+                    "el": "event.deku_tree_clear"
                 }
             ]
         },
@@ -65592,11 +65301,8 @@
                     "el": "mixin.is_glitched[adult]"
                 },
                 {
-                    "type": "at",
-                    "node": "event.deku_tree_clear",
-                    "el": {
-                        "type": "true"
-                    }
+                    "type": "value",
+                    "el": "event.deku_tree_clear"
                 }
             ]
         },
@@ -65634,11 +65340,8 @@
                     "el": "mixin.is_adult[child]"
                 },
                 {
-                    "type": "at",
-                    "node": "event.epona",
-                    "el": {
-                        "type": "true"
-                    }
+                    "type": "value",
+                    "el": "event.epona"
                 },
                 {
                     "type": "or",
@@ -65672,11 +65375,8 @@
                     "el": "mixin.is_adult[adult]"
                 },
                 {
-                    "type": "at",
-                    "node": "event.epona",
-                    "el": {
-                        "type": "true"
-                    }
+                    "type": "value",
+                    "el": "event.epona"
                 },
                 {
                     "type": "or",
@@ -66190,11 +65890,8 @@
                     "el": "mixin.can_blast_or_smash[child]"
                 },
                 {
-                    "type": "at",
-                    "node": "event.stop_gc_rolling_goron_as_adult",
-                    "el": {
-                        "type": "true"
-                    }
+                    "type": "value",
+                    "el": "event.stop_gc_rolling_goron_as_adult"
                 }
             ]
         },
@@ -66244,11 +65941,8 @@
                     "el": "mixin.can_blast_or_smash[adult]"
                 },
                 {
-                    "type": "at",
-                    "node": "event.stop_gc_rolling_goron_as_adult",
-                    "el": {
-                        "type": "true"
-                    }
+                    "type": "value",
+                    "el": "event.stop_gc_rolling_goron_as_adult"
                 }
             ]
         },
@@ -67445,7 +67139,7 @@
                     "value": "adult"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
                             "type": "at",
@@ -67474,7 +67168,7 @@
                     "value": "adult"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
                             "type": "at",
@@ -67503,7 +67197,7 @@
                     "value": "child"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
                             "type": "at",
@@ -67532,7 +67226,7 @@
                     "value": "child"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
                             "type": "at",
