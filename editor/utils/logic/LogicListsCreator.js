@@ -18,8 +18,7 @@ const LOGIC_OPERATORS = [
     "ted-logic-xor",
     "ted-logic-xnor",
     "ted-logic-min",
-    "ted-logic-max",
-    "ted-logic-here"
+    "ted-logic-max"
 ];
 const CUSTOM_OPERATOR_GROUP = [
     "location"
