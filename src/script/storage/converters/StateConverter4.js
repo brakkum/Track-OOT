@@ -11,5 +11,8 @@ export default function(state) {
         // possible changes go here
         res.data[i] = state.data[i];
     }
+    if (res.data["option.starting_age"] == null) {
+        res.data["option.starting_age"] = "child";
+    }
     return res;
 };

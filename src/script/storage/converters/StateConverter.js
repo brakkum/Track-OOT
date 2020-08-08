@@ -32,9 +32,10 @@ class StateConverter {
         return {
             name: "",
             data: {},
+            entrance_rewrites: {},
             autosave: false,
             timestamp: new Date(),
-            version: TARGET_VERSION
+            version: 4 //TARGET_VERSION // keep this until release
         };
     }
 
