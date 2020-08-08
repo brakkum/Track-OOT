@@ -2,7 +2,7 @@
     "options": {
         "option.logic_rules": {
             "type": "choice",
-            "default": "glitchless",
+            "default": "logic_rules_glitchless",
             "values": [
                 "logic_rules_glitchless",
                 "logic_rules_glitched"
@@ -53,7 +53,7 @@
             ]
         },
         "option.entrance_shuffle": {
-            "type": "check",
+            "type": "choice",
             "default": "entrance_shuffle_off",
             "values": [
                 "entrance_shuffle_off",
@@ -467,9 +467,9 @@
                 "skip.sptmq_sunblock_gs_boomerang"
             ],
             "default": []
-        }
-        /*"known_sequence_breaks": {
-            "type": "list",
+        },
+        "known_sequence_breaks": {
+            "type": "hidden",
             "values": [
                 //"skip.ground_jump",
                 //"skip.invisible_ocarina",
@@ -491,6 +491,6 @@
                 //"skip.lab_hovers",
             ],
             "default": []
-        }*/
+        }
     }
 }
