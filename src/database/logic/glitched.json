@@ -9,7 +9,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "or",
@@ -419,7 +419,7 @@
             },
             "logic.location.stick_pot": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             }
         },
         "region.deku_tree_lobby": {
@@ -464,7 +464,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     }
                 ]
             },
@@ -526,7 +526,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -543,7 +543,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -556,7 +556,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -569,7 +569,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -649,7 +649,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "or",
@@ -688,7 +688,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "mixin",
@@ -853,7 +853,7 @@
                                         "el": [
                                             {
                                                 "type": "mixin",
-                                                "el": "mixin.can_become_adult"
+                                                "el": "mixin.is_adult"
                                             },
                                             {
                                                 "type": "value",
@@ -869,7 +869,7 @@
                             },
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             }
                         ]
                     }
@@ -934,7 +934,7 @@
                                         "el": [
                                             {
                                                 "type": "mixin",
-                                                "el": "mixin.can_become_adult"
+                                                "el": "mixin.is_adult"
                                             },
                                             {
                                                 "type": "value",
@@ -950,7 +950,7 @@
                             },
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             }
                         ]
                     }
@@ -1016,7 +1016,7 @@
                             "el": [
                                 {
                                     "type": "mixin",
-                                    "el": "mixin.can_become_adult"
+                                    "el": "mixin.is_adult"
                                 },
                                 {
                                     "type": "mixin",
@@ -1095,7 +1095,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -1140,7 +1140,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "or",
@@ -1168,7 +1168,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "and",
@@ -1245,7 +1245,7 @@
                             },
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             }
                         ]
                     }
@@ -1439,7 +1439,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -1497,7 +1497,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "value",
@@ -1544,7 +1544,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -1564,7 +1564,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "value",
@@ -1631,7 +1631,7 @@
                                                 "el": [
                                                     {
                                                         "type": "mixin",
-                                                        "el": "mixin.can_become_adult"
+                                                        "el": "mixin.is_adult"
                                                     },
                                                     {
                                                         "type": "mixin",
@@ -1644,7 +1644,7 @@
                                                 "el": [
                                                     {
                                                         "type": "mixin",
-                                                        "el": "mixin.can_become_child"
+                                                        "el": "mixin.is_child"
                                                     },
                                                     {
                                                         "type": "mixin",
@@ -1663,7 +1663,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "value",
@@ -2554,7 +2554,7 @@
             },
             "logic.location.temple_fire.s_big_lava_time_block_adult": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             }
         },
         "region.fire_temple_middle": {
@@ -3001,14 +3001,14 @@
             },
             "region.forest_temple_boss_room": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "logic.location.sticks": {
                 "type": "or",
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "value",
@@ -3025,7 +3025,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "value",
@@ -3254,7 +3254,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "or",
@@ -3337,7 +3337,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -3743,7 +3743,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     }
                 ]
             },
@@ -3762,7 +3762,7 @@
                                 "el": [
                                     {
                                         "type": "mixin",
-                                        "el": "mixin.can_become_adult"
+                                        "el": "mixin.is_adult"
                                     },
                                     {
                                         "type": "mixin",
@@ -3857,7 +3857,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -5115,7 +5115,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -5154,7 +5154,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -5206,7 +5206,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -5258,7 +5258,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -5310,7 +5310,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -5362,7 +5362,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -5396,7 +5396,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "and",
@@ -5516,7 +5516,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "or",
@@ -5573,7 +5573,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "value",
@@ -5634,14 +5634,14 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "and",
                                 "el": [
                                     {
                                         "type": "mixin",
-                                        "el": "mixin.can_become_child"
+                                        "el": "mixin.is_child"
                                     },
                                     {
                                         "type": "or",
@@ -5701,14 +5701,14 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "and",
                                 "el": [
                                     {
                                         "type": "mixin",
-                                        "el": "mixin.can_become_child"
+                                        "el": "mixin.is_child"
                                     },
                                     {
                                         "type": "or",
@@ -5739,7 +5739,7 @@
                                 "el": [
                                     {
                                         "type": "mixin",
-                                        "el": "mixin.can_become_adult"
+                                        "el": "mixin.is_adult"
                                     },
                                     {
                                         "type": "value",
@@ -5777,7 +5777,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "or",
@@ -5812,7 +5812,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "or",
@@ -5876,14 +5876,14 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "and",
                                 "el": [
                                     {
                                         "type": "mixin",
-                                        "el": "mixin.can_become_child"
+                                        "el": "mixin.is_child"
                                     },
                                     {
                                         "type": "or",
@@ -5945,7 +5945,7 @@
                                 "el": [
                                     {
                                         "type": "mixin",
-                                        "el": "mixin.can_become_adult"
+                                        "el": "mixin.is_adult"
                                     },
                                     {
                                         "type": "mixin",
@@ -5958,7 +5958,7 @@
                                 "el": [
                                     {
                                         "type": "mixin",
-                                        "el": "mixin.can_become_child"
+                                        "el": "mixin.is_child"
                                     },
                                     {
                                         "type": "mixin",
@@ -6011,7 +6011,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "or",
@@ -6262,7 +6262,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "or",
@@ -6341,14 +6341,14 @@
         "region.root_exits": {
             "region.kf_links_house": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "region.temple_of_time": {
                 "type": "or",
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "and",
@@ -6454,7 +6454,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     }
                 ]
             },
@@ -6471,14 +6471,14 @@
             },
             "logic.location.kokiri.c_sword": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "logic.location.kokiri.s_know_it_all_brothers_child_night": {
                 "type": "and",
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -6525,7 +6525,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -6579,7 +6579,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "value",
@@ -6600,14 +6600,14 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "and",
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "mixin",
@@ -6629,7 +6629,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "value",
@@ -6646,7 +6646,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "value",
@@ -6686,7 +6686,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -6771,7 +6771,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -6784,7 +6784,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "value",
@@ -6801,7 +6801,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -6830,7 +6830,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -6862,7 +6862,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -6875,7 +6875,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -6888,7 +6888,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -6971,7 +6971,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "value",
@@ -7038,7 +7038,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "min",
@@ -7052,7 +7052,7 @@
             },
             "logic.location.woods.c_warp": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "logic.location.woods.s_labyrinth_adult_night": {
                 "type": "and",
@@ -7076,7 +7076,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     }
                 ]
             },
@@ -7142,7 +7142,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -7155,7 +7155,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "or",
@@ -7204,7 +7204,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -7217,7 +7217,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -7258,7 +7258,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -7293,7 +7293,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "value",
@@ -7313,7 +7313,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -7326,7 +7326,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "or",
@@ -7356,7 +7356,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "or",
@@ -7394,7 +7394,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "or",
@@ -7420,7 +7420,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -7472,7 +7472,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "value",
@@ -7538,11 +7538,11 @@
         "region.lh_fishing_hole": {
             "logic.location.lake.c_fishing_child": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "logic.location.lake.c_fishing_adult": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             }
         },
         "region.gerudo_valley": {
@@ -7560,7 +7560,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "or",
@@ -7582,7 +7582,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "or",
@@ -7617,7 +7617,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -7683,7 +7683,7 @@
                                     },
                                     {
                                         "type": "mixin",
-                                        "el": "mixin.can_become_child"
+                                        "el": "mixin.is_child"
                                     }
                                 ]
                             }
@@ -7716,7 +7716,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -7734,7 +7734,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -7779,7 +7779,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "value",
@@ -7838,7 +7838,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -7851,7 +7851,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "or",
@@ -7895,7 +7895,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     }
                 ]
             },
@@ -7916,7 +7916,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     }
                 ]
             },
@@ -7925,14 +7925,14 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "and",
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -7947,14 +7947,14 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "and",
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -7969,14 +7969,14 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "and",
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -7991,14 +7991,14 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "and",
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -8034,7 +8034,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     }
                 ]
             },
@@ -8047,7 +8047,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "value",
@@ -8065,7 +8065,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "value",
@@ -8102,7 +8102,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "or",
@@ -8173,7 +8173,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "here",
@@ -8254,50 +8254,50 @@
             },
             "region.hyrule_castle_grounds": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "region.ganons_castle_grounds": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "region.market_guard_house": {
                 "type": "true"
             },
             "region.market_bazaar": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "region.market_mask_shop": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "region.market_shooting_gallery": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "region.market_bombchu_bowling": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "region.market_potion_shop": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "region.market_treasure_chest_game": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "region.market_bombchu_shop": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "region.market_dog_lady": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "region.market_man_in_green_house": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "logic.location.castle_town.g_gossip_tot_1": {
                 "type": "true"
@@ -8338,7 +8338,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -8363,7 +8363,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     }
                 ]
             }
@@ -8491,7 +8491,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "or",
@@ -8514,14 +8514,14 @@
             },
             "logic.location.castle_town.s_pot_room_child": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "event.sell_big_poe": {
                 "type": "and",
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "value",
@@ -8579,7 +8579,7 @@
                                 "node": "region.kakariko_village",
                                 "el": {
                                     "type": "mixin",
-                                    "el": "mixin.can_become_child"
+                                    "el": "mixin.is_child"
                                 }
                             }
                         ]
@@ -8614,7 +8614,7 @@
                                             "el": [
                                                 {
                                                     "type": "mixin",
-                                                    "el": "mixin.can_become_child"
+                                                    "el": "mixin.is_child"
                                                 },
                                                 {
                                                     "type": "mixin",
@@ -8631,7 +8631,7 @@
                                             "el": [
                                                 {
                                                     "type": "mixin",
-                                                    "el": "mixin.can_become_child"
+                                                    "el": "mixin.is_child"
                                                 },
                                                 {
                                                     "type": "mixin",
@@ -8648,7 +8648,7 @@
                                             "el": [
                                                 {
                                                     "type": "mixin",
-                                                    "el": "mixin.can_become_child"
+                                                    "el": "mixin.is_child"
                                                 },
                                                 {
                                                     "type": "mixin",
@@ -8770,14 +8770,14 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "and",
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -8789,7 +8789,7 @@
             },
             "region.kak_shooting_gallery": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "region.bottom_of_the_well": {
                 "type": "or",
@@ -8799,7 +8799,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "or",
@@ -8829,7 +8829,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "mixin",
@@ -8841,15 +8841,15 @@
             },
             "region.kak_potion_shop_front": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "region.kak_potion_shop_back": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "region.kak_odd_medicine_building": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "region.kak_redead_grotto": {
                 "type": "and",
@@ -8863,7 +8863,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "or",
@@ -8905,7 +8905,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "state",
@@ -8923,18 +8923,18 @@
             },
             "logic.location.kakariko.c_anju_adult": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "logic.location.kakariko.c_anju_chickens": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "logic.location.kakariko.c_warp": {
                 "type": "and",
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "value",
@@ -8955,7 +8955,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -8968,7 +8968,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -8981,7 +8981,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -8994,7 +8994,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -9011,7 +9011,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "or",
@@ -9138,7 +9138,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -9151,7 +9151,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "value",
@@ -9164,7 +9164,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -9259,7 +9259,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "at",
@@ -9297,7 +9297,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "here",
@@ -9320,7 +9320,7 @@
             },
             "logic.location.kakariko.c_digging": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "logic.location.kakariko.s_graveyard_royal_grave_child_night": {
                 "type": "and",
@@ -9341,7 +9341,7 @@
                                     },
                                     {
                                         "type": "mixin",
-                                        "el": "mixin.can_become_child"
+                                        "el": "mixin.is_child"
                                     }
                                 ]
                             }
@@ -9391,7 +9391,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "value",
@@ -9419,7 +9419,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "or",
@@ -9473,7 +9473,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     }
                 ]
             },
@@ -9503,7 +9503,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -9530,7 +9530,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     }
                 ]
             },
@@ -9558,7 +9558,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "value",
@@ -9573,7 +9573,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -9628,7 +9628,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     }
                 ]
             },
@@ -9683,7 +9683,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "or",
@@ -9704,7 +9704,7 @@
                                         "node": "region.dmc_upper",
                                         "el": {
                                             "type": "mixin",
-                                            "el": "mixin.can_become_adult"
+                                            "el": "mixin.is_adult"
                                         }
                                     },
                                     {
@@ -9712,7 +9712,7 @@
                                         "node": "region.zoras_domain",
                                         "el": {
                                             "type": "mixin",
-                                            "el": "mixin.can_become_adult"
+                                            "el": "mixin.is_adult"
                                         }
                                     },
                                     {
@@ -9758,7 +9758,7 @@
                                                     "el": [
                                                         {
                                                             "type": "mixin",
-                                                            "el": "mixin.can_become_adult"
+                                                            "el": "mixin.is_adult"
                                                         },
                                                         {
                                                             "type": "or",
@@ -9856,7 +9856,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "or",
@@ -9892,7 +9892,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "or",
@@ -9932,7 +9932,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "or",
@@ -9967,7 +9967,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "or",
@@ -10157,7 +10157,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "or",
@@ -10210,7 +10210,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "or",
@@ -10232,7 +10232,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "or",
@@ -10266,7 +10266,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -10276,7 +10276,7 @@
             },
             "logic.location.goron.s_center_platform_adult": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "logic.location.goron.g_gossip_maze": {
                 "type": "or",
@@ -10323,14 +10323,14 @@
             },
             "logic.location.stick_pot": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "event.gc_woods_warp_open": {
                 "type": "and",
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "value",
@@ -10361,7 +10361,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "value",
@@ -10379,14 +10379,14 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "and",
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "or",
@@ -10423,7 +10423,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -10436,7 +10436,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "value",
@@ -10496,7 +10496,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -10530,7 +10530,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "mixin",
@@ -10585,7 +10585,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -10598,7 +10598,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -10628,7 +10628,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     }
                 ]
             },
@@ -10693,7 +10693,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "here",
@@ -10716,7 +10716,7 @@
             },
             "region.fire_temple_lower": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "logic.location.mountain.c_magic_bean": {
                 "type": "or",
@@ -10726,7 +10726,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "here",
@@ -10749,7 +10749,7 @@
             },
             "logic.location.mountain.c_warp": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "logic.location.mountain.s_crater_beanspot_child": {
                 "type": "and",
@@ -10783,7 +10783,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -10799,7 +10799,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -10835,7 +10835,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "or",
@@ -10888,20 +10888,20 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     }
                 ]
             },
             "logic.location.river.c_zora_bean_salesman": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "logic.location.river.c_frog_game": {
                 "type": "and",
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -10934,7 +10934,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -10953,7 +10953,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -10970,7 +10970,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "or",
@@ -11032,7 +11032,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "and",
@@ -11054,7 +11054,7 @@
             },
             "logic.location.zoras.c_diving": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "logic.location.zoras.c_torch": {
                 "type": "mixin",
@@ -11068,7 +11068,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "value",
@@ -11088,14 +11088,14 @@
             },
             "logic.location.zoras.c_king_zora": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "logic.location.zoras.s_wall_ice_adult_night": {
                 "type": "and",
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -11132,7 +11132,7 @@
                                     "el": [
                                         {
                                             "type": "mixin",
-                                            "el": "mixin.can_become_adult"
+                                            "el": "mixin.is_adult"
                                         },
                                         {
                                             "type": "value",
@@ -11170,7 +11170,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "value",
@@ -11180,7 +11180,7 @@
             },
             "logic.location.stick_pot": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "logic.location.nut_pot": {
                 "type": "true"
@@ -11198,7 +11198,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "or",
@@ -11220,7 +11220,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "value",
@@ -11243,14 +11243,14 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "and",
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -11275,14 +11275,14 @@
             },
             "logic.location.zoras.c_ice": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "logic.location.zoras.c_underwater": {
                 "type": "and",
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "value",
@@ -11292,7 +11292,7 @@
             },
             "logic.location.zoras.s_tree_child": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "logic.location.zoras.s_wall_child_night": {
                 "type": "and",
@@ -11313,7 +11313,7 @@
                                     },
                                     {
                                         "type": "mixin",
-                                        "el": "mixin.can_become_child"
+                                        "el": "mixin.is_child"
                                     }
                                 ]
                             }
@@ -11466,7 +11466,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -11479,7 +11479,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "min",
@@ -11497,14 +11497,14 @@
             },
             "logic.location.lonlon.s_tree_child_night": {
                 "type": "mixin",
-                "el": "mixin.can_become_child"
+                "el": "mixin.is_child"
             },
             "logic.location.lonlon.s_paddock_fence_child_night": {
                 "type": "and",
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -11556,7 +11556,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     }
                 ]
             },
@@ -11578,7 +11578,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     }
                 ]
             }
@@ -11589,7 +11589,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "min",
@@ -11665,7 +11665,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "min",
@@ -11682,7 +11682,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "min",
@@ -12152,14 +12152,14 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "and",
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -12296,7 +12296,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -12309,7 +12309,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -12387,7 +12387,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -12411,7 +12411,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "mixin",
@@ -12424,7 +12424,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -12608,7 +12608,7 @@
                                     },
                                     {
                                         "type": "mixin",
-                                        "el": "mixin.can_become_adult"
+                                        "el": "mixin.is_adult"
                                     }
                                 ]
                             }
@@ -12767,14 +12767,14 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "and",
                                 "el": [
                                     {
                                         "type": "mixin",
-                                        "el": "mixin.can_become_child"
+                                        "el": "mixin.is_child"
                                     },
                                     {
                                         "type": "mixin",
@@ -12811,7 +12811,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "mixin",
@@ -12836,14 +12836,14 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "and",
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "or",
@@ -12895,7 +12895,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "mixin",
@@ -12993,7 +12993,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_child"
+                                "el": "mixin.is_child"
                             },
                             {
                                 "type": "or",
@@ -13101,7 +13101,7 @@
                                     "el": [
                                         {
                                             "type": "mixin",
-                                            "el": "mixin.can_become_adult"
+                                            "el": "mixin.is_adult"
                                         },
                                         {
                                             "type": "mixin",
@@ -13149,7 +13149,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "and",
@@ -13231,7 +13231,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "mixin",
@@ -13253,7 +13253,7 @@
                                         "type": "here",
                                         "el": {
                                             "type": "mixin",
-                                            "el": "mixin.can_become_adult"
+                                            "el": "mixin.is_adult"
                                         }
                                     },
                                     {
@@ -13337,7 +13337,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "and",
@@ -14023,7 +14023,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -14043,7 +14043,7 @@
                     },
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_child"
+                        "el": "mixin.is_child"
                     },
                     {
                         "type": "mixin",
@@ -14093,7 +14093,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "or",
@@ -14533,7 +14533,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -14858,11 +14858,11 @@
         "region.high_alcove": {
             "region.compass_room": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "region.ruto_column": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "region.under_entrance_block": {
                 "type": "and",
@@ -14879,18 +14879,18 @@
             },
             "region.caged_skulltula": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "region.dragon_head_area": {
                 "type": "mixin",
-                "el": "mixin.can_become_adult"
+                "el": "mixin.is_adult"
             },
             "region.boss_key_area": {
                 "type": "and",
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "min",
@@ -15010,7 +15010,7 @@
                                     "el": [
                                         {
                                             "type": "mixin",
-                                            "el": "mixin.can_become_child"
+                                            "el": "mixin.is_child"
                                         },
                                         {
                                             "type": "mixin",
@@ -15077,7 +15077,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "mixin",
@@ -15207,7 +15207,7 @@
                                 "el": [
                                     {
                                         "type": "mixin",
-                                        "el": "mixin.can_become_adult"
+                                        "el": "mixin.is_adult"
                                     },
                                     {
                                         "type": "mixin",
@@ -15232,7 +15232,7 @@
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.can_become_adult"
+                        "el": "mixin.is_adult"
                     },
                     {
                         "type": "mixin",
@@ -15293,7 +15293,7 @@
                                     "el": [
                                         {
                                             "type": "mixin",
-                                            "el": "mixin.can_become_child"
+                                            "el": "mixin.is_child"
                                         },
                                         {
                                             "type": "mixin",
@@ -15344,7 +15344,7 @@
                                 "el": [
                                     {
                                         "type": "mixin",
-                                        "el": "mixin.can_become_adult"
+                                        "el": "mixin.is_adult"
                                     },
                                     {
                                         "type": "mixin",
@@ -15474,7 +15474,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "mixin",
@@ -15492,7 +15492,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult"
+                                "el": "mixin.is_adult"
                             },
                             {
                                 "type": "mixin",
@@ -15663,7 +15663,7 @@
                         "node": "region.river_chest",
                         "el": {
                             "type": "mixin",
-                            "el": "mixin.can_become_adult"
+                            "el": "mixin.is_adult"
                         }
                     },
                     {
