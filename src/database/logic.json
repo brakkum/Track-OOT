@@ -1968,7 +1968,7 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -2007,7 +2007,7 @@
                         ]
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -2051,7 +2051,7 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -2090,7 +2090,7 @@
                         ]
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -2120,7 +2120,7 @@
                         "el": "skip.deku_tree_B1_skip"
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -2143,7 +2143,7 @@
                 ]
             },
             "region.deku_tree_slingshot_room[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -2167,7 +2167,7 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -2231,7 +2231,7 @@
                                 "el": "skip.deku_tree_B1_skip"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -2697,7 +2697,7 @@
                                 "type": "and",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -2754,7 +2754,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -2793,7 +2793,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -2814,7 +2814,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -2865,7 +2865,7 @@
                                                 "el": "skip.deku_tree_B1_skip"
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -2927,7 +2927,7 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -2966,7 +2966,7 @@
                         ]
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -3010,7 +3010,7 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -3049,7 +3049,7 @@
                         ]
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -3079,7 +3079,7 @@
                         "el": "skip.deku_tree_B1_skip"
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -3102,7 +3102,7 @@
                 ]
             },
             "region.deku_tree_slingshot_room[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -3126,7 +3126,7 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -3190,7 +3190,7 @@
                                 "el": "skip.deku_tree_B1_skip"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -3656,7 +3656,7 @@
                                 "type": "and",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -3713,7 +3713,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -3752,7 +3752,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -3773,7 +3773,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -3824,7 +3824,7 @@
                                                 "el": "skip.deku_tree_B1_skip"
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -3943,7 +3943,7 @@
                                                 "type": "or",
                                                 "el": [
                                                     {
-                                                        "type": "and",
+                                                        "type": "or",
                                                         "el": [
                                                             {
                                                                 "type": "at",
@@ -4043,7 +4043,7 @@
                                                 "type": "or",
                                                 "el": [
                                                     {
-                                                        "type": "and",
+                                                        "type": "or",
                                                         "el": [
                                                             {
                                                                 "type": "at",
@@ -4250,7 +4250,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -4378,7 +4378,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -4456,7 +4456,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -4555,7 +4555,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -4707,7 +4707,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -4785,7 +4785,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -4852,7 +4852,7 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -4887,7 +4887,7 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -4916,7 +4916,7 @@
         },
         "region.dodongos_cavern_lobby[child]": {
             "region.dodongos_cavern_lower_right_side[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -5035,7 +5035,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -5117,7 +5117,7 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -5817,7 +5817,7 @@
         },
         "region.dodongos_cavern_lobby[adult]": {
             "region.dodongos_cavern_lower_right_side[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -5936,7 +5936,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -6018,7 +6018,7 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -6724,7 +6724,7 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -6808,7 +6808,7 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -6922,7 +6922,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -7030,7 +7030,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -7410,7 +7410,7 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -7511,7 +7511,7 @@
                         ]
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -7660,7 +7660,7 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -7761,7 +7761,7 @@
                         ]
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -8083,7 +8083,7 @@
                                 ]
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -8535,7 +8535,7 @@
                                         "el": "item.boots_hover"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -8667,7 +8667,7 @@
                                 ]
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -9119,7 +9119,7 @@
                                         "el": "item.boots_hover"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -10497,7 +10497,7 @@
                                         "el": "item.boots_hover"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -10581,7 +10581,7 @@
                                         "el": "item.boots_hover"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -12945,7 +12945,7 @@
                                 "el": "function.can_use(mixin.longshot)[child]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -13205,7 +13205,7 @@
                                 "el": "function.can_use(mixin.longshot)[adult]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -13625,7 +13625,7 @@
                                 "el": "function.can_use(item.hookshot)[child]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -13655,7 +13655,7 @@
                                         "el": "function.can_use(item.boots_hover)[child]"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -13711,7 +13711,7 @@
                                 ]
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -14053,7 +14053,7 @@
                                 "el": "function.can_use(item.hookshot)[adult]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -14083,7 +14083,7 @@
                                         "el": "function.can_use(item.boots_hover)[adult]"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -14139,7 +14139,7 @@
                                 ]
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -18347,7 +18347,7 @@
                 "type": "true"
             },
             "region.gerudo_training_grounds_left_side[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -18368,7 +18368,7 @@
                 ]
             },
             "region.gerudo_training_grounds_right_side[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -18438,7 +18438,7 @@
                 ]
             },
             "region.gerudo_training_grounds_lava_room[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -18731,7 +18731,7 @@
                 "type": "true"
             },
             "region.gerudo_training_grounds_left_side[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -18752,7 +18752,7 @@
                 ]
             },
             "region.gerudo_training_grounds_right_side[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -18822,7 +18822,7 @@
                 ]
             },
             "region.gerudo_training_grounds_lava_room[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -21115,7 +21115,7 @@
                 "el": "item.bottle"
             },
             "region.ice_cavern[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -21257,7 +21257,7 @@
                 "el": "item.bottle"
             },
             "region.ice_cavern[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -22598,7 +22598,7 @@
                                 "el": "function.can_use(item.hookshot)[child]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -22950,7 +22950,7 @@
                                 "el": "function.can_use(item.hookshot)[adult]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -23333,7 +23333,7 @@
                                 ]
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -23481,7 +23481,7 @@
                                 ]
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -25408,7 +25408,7 @@
                                 "el": "function.can_use(mixin.longshot)[child]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -25476,7 +25476,7 @@
                 ]
             },
             "region.lw_near_shortcuts_grotto[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -25813,7 +25813,7 @@
                                 "el": "function.can_use(mixin.longshot)[adult]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -25881,7 +25881,7 @@
                 ]
             },
             "region.lw_near_shortcuts_grotto[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -26216,7 +26216,7 @@
                 "type": "true"
             },
             "region.lw_scrubs_grotto[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -26314,7 +26314,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -26470,7 +26470,7 @@
                 "type": "true"
             },
             "region.lw_scrubs_grotto[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -26568,7 +26568,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -27183,7 +27183,7 @@
                 "type": "true"
             },
             "region.hf_southeast_grotto[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -27233,7 +27233,7 @@
                 ]
             },
             "region.hf_near_market_grotto[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -27254,7 +27254,7 @@
                 ]
             },
             "region.hf_fairy_grotto[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -27388,7 +27388,7 @@
                 "type": "true"
             },
             "region.hf_southeast_grotto[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -27438,7 +27438,7 @@
                 ]
             },
             "region.hf_near_market_grotto[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -27459,7 +27459,7 @@
                 ]
             },
             "region.hf_fairy_grotto[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -27606,7 +27606,7 @@
                         "el": "function.can_use(mixin.scarecrow)[child]"
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -27812,7 +27812,7 @@
                                         "el": "function.can_use(mixin.scarecrow)[child]"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -28196,7 +28196,7 @@
                         "el": "function.can_use(mixin.scarecrow)[adult]"
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -28402,7 +28402,7 @@
                                         "el": "function.can_use(mixin.scarecrow)[adult]"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -30497,41 +30497,6 @@
                             {
                                 "type": "value",
                                 "el": "item.membership"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "option.gerudo_card_shuffle"
-                                    },
-                                    {
-                                        "type": "state",
-                                        "el": "option.entrance_shuffle",
-                                        "value": "entrance_shuffle_all"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_off"
-                                                }
-                                            },
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_dungeon"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
                             }
                         ]
                     }
@@ -30943,41 +30908,6 @@
                             {
                                 "type": "value",
                                 "el": "item.membership"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "option.gerudo_card_shuffle"
-                                    },
-                                    {
-                                        "type": "state",
-                                        "el": "option.entrance_shuffle",
-                                        "value": "entrance_shuffle_all"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_off"
-                                                }
-                                            },
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_dungeon"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
                             }
                         ]
                     }
@@ -31035,41 +30965,6 @@
                             {
                                 "type": "value",
                                 "el": "item.membership"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "option.gerudo_card_shuffle"
-                                    },
-                                    {
-                                        "type": "state",
-                                        "el": "option.entrance_shuffle",
-                                        "value": "entrance_shuffle_all"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_off"
-                                                }
-                                            },
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_dungeon"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
                             }
                         ]
                     }
@@ -31127,41 +31022,6 @@
                             {
                                 "type": "value",
                                 "el": "item.membership"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "option.gerudo_card_shuffle"
-                                    },
-                                    {
-                                        "type": "state",
-                                        "el": "option.entrance_shuffle",
-                                        "value": "entrance_shuffle_all"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_off"
-                                                }
-                                            },
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_dungeon"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
                             }
                         ]
                     }
@@ -31594,7 +31454,7 @@
                                 "el": "mixin.is_adult[child]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -31712,7 +31572,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -31893,7 +31753,7 @@
                                 "el": "mixin.is_adult[adult]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -32011,7 +31871,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -33917,7 +33777,7 @@
                                         "type": "true"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -33975,7 +33835,7 @@
                                         "type": "and",
                                         "el": [
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -34014,7 +33874,7 @@
                                                 ]
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -34053,7 +33913,7 @@
                                                 ]
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -34133,7 +33993,7 @@
                                         "type": "true"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -34191,7 +34051,7 @@
                                         "type": "and",
                                         "el": [
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -34230,7 +34090,7 @@
                                                 ]
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -34269,7 +34129,7 @@
                                                 ]
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -37988,7 +37848,7 @@
                                         "type": "or",
                                         "el": [
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -38279,7 +38139,7 @@
                                         "type": "or",
                                         "el": [
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -39175,7 +39035,7 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -39203,7 +39063,7 @@
                                 "el": "mixin.is_adult[child]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -39347,7 +39207,7 @@
                                         "el": "mixin.is_adult[child]"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -39524,7 +39384,7 @@
                                                 "el": "skip.dm_lower_gs_bean"
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -39630,7 +39490,7 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -39658,7 +39518,7 @@
                                 "el": "mixin.is_adult[adult]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -39802,7 +39662,7 @@
                                         "el": "mixin.is_adult[adult]"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -39979,7 +39839,7 @@
                                                 "el": "skip.dm_lower_gs_bean"
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -40086,7 +39946,7 @@
                 "el": "mixin.is_child[child]"
             },
             "region.dmt_cow_grotto[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -40107,7 +39967,7 @@
                 ]
             },
             "region.dmt_great_fairy_fountain[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -40388,7 +40248,7 @@
                 "el": "mixin.is_child[adult]"
             },
             "region.dmt_cow_grotto[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -40409,7 +40269,7 @@
                 ]
             },
             "region.dmt_great_fairy_fountain[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -42541,7 +42401,7 @@
                 "type": "true"
             },
             "region.dmc_upper_grotto[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -42571,7 +42431,7 @@
                 "type": "true"
             },
             "region.dmc_upper_grotto[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -43177,7 +43037,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -43261,7 +43121,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -43341,7 +43201,7 @@
                                 "el": "function.can_use(item.hookshot)[child]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -43373,7 +43233,7 @@
                         "el": "mixin.is_adult[child]"
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -43519,7 +43379,7 @@
                                 "el": "function.can_use(item.hookshot)[adult]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -43551,7 +43411,7 @@
                         "el": "mixin.is_adult[adult]"
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -43868,7 +43728,7 @@
                 "type": "true"
             },
             "region.zr_fairy_grotto[child]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -44338,7 +44198,7 @@
                 "type": "true"
             },
             "region.zr_fairy_grotto[adult]": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
                         "type": "at",
@@ -45135,7 +44995,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -45154,7 +45014,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -45580,7 +45440,7 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -45599,7 +45459,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -54728,7 +54588,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -54864,7 +54724,7 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -54978,7 +54838,7 @@
                         }
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -55137,7 +54997,7 @@
                                         "el": "function.can_use(item.magic_din)[child]"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -55573,7 +55433,7 @@
                         }
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "at",
@@ -55732,7 +55592,7 @@
                                         "el": "function.can_use(item.magic_din)[adult]"
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -61702,7 +61562,7 @@
                                 "type": "and",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -61723,7 +61583,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -61913,7 +61773,7 @@
                                                 "el": "item.slingshot"
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -62296,7 +62156,7 @@
                                 "type": "and",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -62317,7 +62177,7 @@
                                         ]
                                     },
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
                                                 "type": "at",
@@ -62507,7 +62367,7 @@
                                                 "el": "item.slingshot"
                                             },
                                             {
-                                                "type": "and",
+                                                "type": "or",
                                                 "el": [
                                                     {
                                                         "type": "at",
@@ -62610,7 +62470,7 @@
                                 "el": "function.can_use(item.magic_din)[child]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -62728,7 +62588,7 @@
                                 "el": "function.can_use(item.magic_din)[adult]"
                             },
                             {
-                                "type": "and",
+                                "type": "or",
                                 "el": [
                                     {
                                         "type": "at",
@@ -67445,7 +67305,7 @@
                     "value": "adult"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
                             "type": "at",
@@ -67474,7 +67334,7 @@
                     "value": "adult"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
                             "type": "at",
@@ -67503,7 +67363,7 @@
                     "value": "child"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
                             "type": "at",
@@ -67532,7 +67392,7 @@
                     "value": "child"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
                             "type": "at",
@@ -69175,7 +69035,7 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "mixin.v[child]"
+                    "el": "mixin.is_adult[child]"
                 }
             ]
         },
@@ -69188,7 +69048,7 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "mixin.v[adult]"
+                    "el": "mixin.is_adult[adult]"
                 }
             ]
         },
@@ -69275,7 +69135,7 @@
             "el": [
                 {
                     "type": "value",
-                    "el": "item.tunic_fire"
+                    "el": "item.tunic_water"
                 },
                 {
                     "type": "mixin",
@@ -69288,7 +69148,7 @@
             "el": [
                 {
                     "type": "value",
-                    "el": "item.tunic_fire"
+                    "el": "item.tunic_water"
                 },
                 {
                     "type": "mixin",

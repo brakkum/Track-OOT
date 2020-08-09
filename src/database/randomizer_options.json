@@ -35,15 +35,10 @@
             "default": false
         },
         "option.keysanity_small": {
-            "type": "choice",
-            "default": "keysanity_small_ignore",
-            "values": [
-                "keysanity_small_ignore",
-                "keysanity_small_track",
-                "keysanity_small_keysanity"
-            ]
+            "type": "check",
+            "default": false
         },
-        "option.keysanity_boss": {
+        /*"option.keysanity_boss": {
             "type": "choice",
             "default": "keysanity_boss_ignore",
             "values": [
@@ -51,7 +46,7 @@
                 "keysanity_boss_track",
                 "keysanity_boss_keysanity"
             ]
-        },
+        },*/
         "option.entrance_shuffle": {
             "type": "choice",
             "default": "entrance_shuffle_off",
