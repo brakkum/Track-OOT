@@ -409,10 +409,20 @@ function createLogicWorldCategories(data, world) {
 }
 
 function createLogicGraphCategory(data, world) {
-    let res = {
+    let resC = {
+        "type": "group",
+        "caption": "child",
+        "children": []
+    };
+    let resA = {
+        "type": "group",
+        "caption": "adult",
+        "children": []
+    };
+	let res = {
         "type": "group",
         "caption": "graph",
-        "children": []
+        "children": [resC, resA]
     };
     for (let ref in data) {
         let lbuf = {
@@ -431,6 +441,7 @@ function createLogicGraphCategory(data, world) {
 			"children": []
 		};
         let sub = data[ref];
+        if (ref.endsWith("[child]")) {
         for (let sref in sub) {
             if (sref.startsWith("logic.location.")) {
                 let name = sref.slice(6);
@@ -474,43 +485,144 @@ function createLogicGraphCategory(data, world) {
         if (!!ebuf.children.length) {
             ch.push(ebuf);
         }
-        res.children.push({
+        resC.children.push({
             "type": "group",
             "caption": ref,
             "children": ch
         });
-    }
+		} else {
+			lbuf = {
+				"type": "group",
+				"caption": "locations",
+				"children": []
+			};
+			rbuf = {
+				"type": "group",
+				"caption": "regions",
+				"children": []
+			};
+			ebuf = {
+				"type": "group",
+				"caption": "events",
+				"children": []
+			};
+			for (let sref in sub) {
+				if (sref.startsWith("logic.location.")) {
+					let name = sref.slice(6);
+					let loc = world[name];
+					if (!!loc) {
+						lbuf.children.push({
+							"type": loc.type,
+							"edge": [ref, sref],
+							"category": "location",
+							"content": sref,
+							"icon": `/images/icons/${loc.type}.svg`
+						});
+					} else {
+						lbuf.children.push({
+							"edge": [ref, sref],
+							"category": "location",
+							"content": sref
+						});
+					}
+				} else if (sref.startsWith("region.")) {
+					rbuf.children.push({
+						"edge": [ref, sref],
+						"category": "region",
+						"content": sref
+					});
+				} else if (sref.startsWith("event.")) {
+					ebuf.children.push({
+						"edge": [ref, sref],
+						"category": "event",
+						"content": sref
+					});
+				}
+			}
+			let ch = [];
+			if (!!lbuf.children.length) {
+				ch.push(lbuf);
+			}
+			if (!!rbuf.children.length) {
+				ch.push(rbuf);
+			}
+			if (!!ebuf.children.length) {
+				ch.push(ebuf);
+			}
+			resA.children.push({
+				"type": "group",
+				"caption": ref,
+				"children": ch
+			});
+		}
+	}
     return res;
 }
 
 function createLogicMixinCategory(data) {
-    let res = {
+    let resC = {
         "type": "group",
-        "caption": "mixin",
+        "caption": "child",
         "children": []
     };
+	let resA = {
+        "type": "group",
+        "caption": "adult",
+        "children": []
+    };
+	let res = {
+        "type": "group",
+        "caption": "mixin",
+        "children": [resC, resA]
+    };
     for (let ref in data) {
-        res.children.push({
-            "access": ref,
-            "category": "mixin",
-            "content": ref
-        });
+		if(ref.endsWith("[child]")) {
+			resC.children.push({
+				"access": ref,
+				"category": "mixin",
+				"content": ref
+			});
+		} else {
+			resA.children.push({
+				"access": ref,
+				"category": "mixin",
+				"content": ref
+			});
+		}
     }
     return res;
 }
 
 function createLogicFunctionCategory(data) {
+	let resC = {
+        "type": "group",
+        "caption": "child",
+        "children": []
+    };
+	let resA = {
+        "type": "group",
+        "caption": "adult",
+        "children": []
+    };
     let res = {
         "type": "group",
         "caption": "function",
-        "children": []
+        "children": [resC, resA]
     };
     for (let ref in data) {
-        res.children.push({
-            "access": ref,
-            "category": "function",
-            "content": ref
-        });
+		if(ref.endsWith("[child]")) {
+			resC.children.push({
+				"access": ref,
+				"category": "function",
+				"content": ref
+			});
+		} else {
+			resA.children.push({
+				"access": ref,
+				"category": "function",
+				"content": ref
+			});
+		}
     }
     return res;
 }
