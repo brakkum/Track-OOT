@@ -244,7 +244,7 @@ function createOperatorReachCategories(data) {
         for (let sref in sub) {
             if (sref.startsWith("logic.location.")) {
                 lbuf.children.push({
-                    "type": "ted-logic-at",
+                    "type": "tracker-logic-custom",
                     "ref": sref,
                     "category": "location"
                 });
@@ -256,7 +256,7 @@ function createOperatorReachCategories(data) {
                 });
             } else if (sref.startsWith("event.")) {
 				ebuf.children.push({
-                    "type": "ted-logic-at",
+                    "type": "tracker-logic-custom",
 					"ref": sref,
 					"category": "event"
 				});
