@@ -55,8 +55,11 @@ class TrackerLogic {
         }
     }
 
-    setLogic(logic) {
+    setLogic(logic, reset = false) {
         if (!!logic) {
+            if (!!reset) {
+                LOGIC_PROCESSOR.clearGraph();
+            }
             LOGIC_PROCESSOR.load(logic);
             let res = LOGIC_PROCESSOR.traverse("region.root");
             if (Object.keys(res).length > 0) {

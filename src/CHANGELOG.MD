@@ -12,6 +12,9 @@ Application:    Track-OOT
     - graph traversial uses first hit for determining reachability
     - mixins get executed on demand
         - slower mixins, but region dependency safe
+- added glitched logic
+    - add glitched custom logic
+    - add glitched logic editor
 
 ### ENTRANCE SHUFFLE
 

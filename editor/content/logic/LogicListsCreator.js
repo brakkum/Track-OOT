@@ -3,9 +3,8 @@ import FileData from "/emcJS/storage/FileData.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 
-import ReferrerAt from "/editors/logic/elements/ReferrerAt.js";
-
 const LogicsStorage = new IDBStorage('logics');
+const LogicsStorageGlitched = new IDBStorage('logics_glitched');
 
 const LOGIC_OPERATORS = [
     "ted-logic-false",
@@ -26,7 +25,7 @@ const CUSTOM_OPERATOR_GROUP = [
 
 class LogicListsCreator {
 
-    async createLists() {
+    async createLists(glitched = false) {
 
         let result = {
             logics: [],
@@ -38,8 +37,13 @@ class LogicListsCreator {
         let items = FileData.get("items");
         let randomizer_options = FileData.get("randomizer_options");
         let filter = FileData.get("filter");
-        let logic = FileData.get("logic");
-        let custom_logic = await LogicsStorage.getAll();
+        let logic = FileData.get(`logic${!!glitched?"_glitched":""}`);
+        let custom_logic = {};
+        if (!!glitched) {
+            await LogicsStorageGlitched.getAll();
+        } else {
+            await LogicsStorage.getAll();
+        }
 
         let mixins = {};
         let functions = {};

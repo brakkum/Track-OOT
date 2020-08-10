@@ -14,5 +14,14 @@ export default function(state) {
     if (res.data["option.starting_age"] == null) {
         res.data["option.starting_age"] = "child";
     }
+    if (res.data["option.light_arrow_cutscene"] == null) {
+        res.data["option.light_arrow_cutscene"] = "light_arrow_cutscene_vanilla";
+    }
+    if (res.data["option.doors_open_forest"] == null || res.data["option.doors_open_forest"] === true) {
+        res.data["option.doors_open_forest"] = "doors_open_forest_open";
+    }
+    if (res.data["option.doors_open_forest"] === false) {
+        res.data["option.doors_open_forest"] = "doors_open_forest_closed";
+    }
     return res;
 };

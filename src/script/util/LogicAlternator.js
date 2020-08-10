@@ -7,7 +7,9 @@ import LogicViewer from "/script/content/logic/LogicViewer.js";
 
 const SettingsStorage = new IDBStorage('settings');
 const LogicsStorage = new IDBStorage('logics');
-let GraphStorage = new IDBStorage("edges");
+const GraphStorage = new IDBStorage("edges");
+const LogicsStorageGlitched = new IDBStorage('logics_glitched');
+const GraphStorageGlitched = new IDBStorage("edges_glitched");
 
 const ENTRANCE_SHUFFLE_RESOLVER_LIST = {
     "entrance_shuffle_off": [],
@@ -36,6 +38,7 @@ const ENTRANCE_SHUFFLE_RESOLVER_LIST = {
     ],
 };
 
+let logic_rules = "logic_rules_glitchless";
 let entrance_shuffle = "entrance_shuffle_off";
 let exit_binding = {};
 let use_custom_logic = false;
@@ -68,8 +71,16 @@ EventBus.register("exit_change", event => {
 });
 // register event for (de-)activate entrances
 EventBus.register("randomizer_options", event => {
+    let changed = false;
+    if (event.data.hasOwnProperty("option.logic_rules") && logic_rules != event.data["option.logic_rules"]) {
+        logic_rules = event.data["option.logic_rules"];
+        changed = true;
+    }
     if (event.data.hasOwnProperty("option.entrance_shuffle") && entrance_shuffle != event.data["option.entrance_shuffle"]) {
         entrance_shuffle = event.data["option.entrance_shuffle"];
+        changed = true;
+    }
+    if (!!changed) {
         updateLogic();
     }
 });
@@ -92,22 +103,40 @@ EventBus.register("custom_logic", async event => {
 });
 
 async function updateLogic() {
-    let logic = FileData.get("logic", {edges:{},logic:{}});
-    if (use_custom_logic) {
-        let customEdges = await GraphStorage.getAll();
-        for (let l in customEdges) {
-            let value = customEdges[l];
-            let [key, target] = l.split(" -> ");
-            logic.edges[key] = logic.edges[key] || {};
-            logic.edges[key][target] = value;
+    if (logic_rules == "logic_rules_glitchless") {
+        let logic = FileData.get("logic", {edges:{},logic:{}});
+        if (use_custom_logic) {
+            let customEdges = await GraphStorage.getAll();
+            for (let l in customEdges) {
+                let value = customEdges[l];
+                let [key, target] = l.split(" -> ");
+                logic.edges[key] = logic.edges[key] || {};
+                logic.edges[key][target] = value;
+            }
+            let customLogic = await LogicsStorage.getAll();
+            for (let l in customLogic) {
+                logic.logic[l] = customLogic[l];
+            }
         }
-        let customLogic = await LogicsStorage.getAll();
-        for (let l in customLogic) {
-            logic.logic[l] = customLogic[l];
+        Logic.setLogic(logic, true);
+    } else {
+        let logic = FileData.get("logic_glitched", {edges:{},logic:{}});
+        if (use_custom_logic) {
+            let customEdges = await GraphStorageGlitched.getAll();
+            for (let l in customEdges) {
+                let value = customEdges[l];
+                let [key, target] = l.split(" -> ");
+                logic.edges[key] = logic.edges[key] || {};
+                logic.edges[key][target] = value;
+            }
+            let customLogic = await LogicsStorageGlitched.getAll();
+            for (let l in customLogic) {
+                logic.logic[l] = customLogic[l];
+            }
         }
+        Logic.setLogic(logic, true);
     }
-    Logic.setLogic(logic);
-   /* rewrite the edge from [source] to [target], so it instead links to [reroute] */
+    /* rewrite the edge from [source] to [target], so it instead links to [reroute] */
     let shuffled = ENTRANCE_SHUFFLE_RESOLVER_LIST[entrance_shuffle];
     for (let l in exit_binding) {
         if (shuffled.indexOf(types[l]) >= 0) {
@@ -119,24 +148,23 @@ async function updateLogic() {
 }
 
 async function initOptionSet() {
-	let options = FileData.get("randomizer_options");
-        for (let i in options) {
-            for (let j in options[i]) {
-                let opt = options[i][j];
-                if (opt.type === "list") {
-                    let def = new Set(opt.default);
-                    let val = [];
-                    for (let el of opt.values) {
-                        if (StateStorage.read(el, def.has(el))) {
-                            val.push(el);
-                        }
-                    }
-                    StateStorage.write(j, val);
-                } else {
-                    StateStorage.write(j, opt.default);
-                }
+    console.error("LogicAlternator had to initialize options, check converters and state creation calls");
+    let options = FileData.get("randomizer_options");
+    let def_state = {};
+    for (let i in options) {
+        for (let j in options[i]) {
+            let v = options[i][j].default;
+            if (Array.isArray(v)) {
+                v = new Set(v);
+                options[i][j].values.forEach(el => {
+                    def_state[el] = v.has(el);
+                });
+            } else {
+                def_state[j] = v;
             }
         }
+    }
+    StateStorage.write(def_state);
 }
 
 class LogicAlternator {
@@ -144,8 +172,10 @@ class LogicAlternator {
     async init() {
         let settings = FileData.get("settings", {});
 		let initState = StateStorage.read("option.starting_age", true);
-		if(initState === true)
-			initOptionSet();
+		if(initState === true) {
+			initOptionSet(); // should never be reached
+        }
+        logic_rules = StateStorage.read("option.logic_rules");
         entrance_shuffle = StateStorage.read("option.entrance_shuffle");
         exit_binding = StateStorage.getAllEntranceRewrites();
         use_custom_logic = await SettingsStorage.get("use_custom_logic", settings["use_custom_logic"].default);

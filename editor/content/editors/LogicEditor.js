@@ -1,40 +1,39 @@
 import FileData from "/emcJS/storage/FileData.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
+import Dialog from "/emcJS/ui/Dialog.js";
 import FileSystem from "/emcJS/util/FileSystem.js";
 
-import "/editors/EditorChoice.js";
 import "/editors/logic/LogicEditor.js";
 
-import LogicListsCreator from "/script/content/logic/LogicListsCreator.js";
-import "/script/content/logic/LiteralCustom.js";
-import "/script/content/logic/LiteralLinked.js";
-import "/script/content/logic/LiteralMixin.js";
+import LogicListsCreator from "../logic/LogicListsCreator.js";
+import "../logic/LiteralCustom.js";
+import "../logic/LiteralLinked.js";
+import "../logic/LiteralMixin.js";
 
-import PageSwitcher from "/script/util/PageSwitcher.js";
-
-let LogicsStorage = new IDBStorage("logics");
-let GraphStorage = new IDBStorage("edges");
-let editorChoice = document.getElementById("editor-choice");
-let logicEditor = document.getElementById("editor-logic");
-
-function resolveGraphs2Logic(input) {
-    let res = {};
-    for (let i in input) {
-        let value = input[i];
-        let [key, target] = i.split(" -> ");
-        res[key] = res[key] || {};
-        res[key][target] = value;
+export default async function(editorChoice, glitched = false) {
+    let postfix = "";
+    if (!!glitched) {
+        postfix = "_glitched";
     }
-    return res;
-}
-
-!async function() {
+    let LogicsStorage = new IDBStorage(`logics${postfix}`);
+    let GraphStorage = new IDBStorage(`edges${postfix}`);
+    let logicEditor = document.createElement("ted-logiceditor");
+    function resolveGraphs2Logic(input) {
+        let res = {};
+        for (let i in input) {
+            let value = input[i];
+            let [key, target] = i.split(" -> ");
+            res[key] = res[key] || {};
+            res[key][target] = value;
+        }
+        return res;
+    }
+    // refresh
     async function refreshLogicEditor() {
-        let lists = await LogicListsCreator.createLists();
+        let lists = await LogicListsCreator.createLists(glitched);
         logicEditor.loadOperatorList(lists.operators);
         logicEditor.loadLogicList(lists.logics);
-        logicEditor.setLogic(FileData.get("logic", {edges:{},logic:{}}));
-        // TODO resolve graph to logic edges format
+        logicEditor.setLogic(FileData.get(`logic${postfix}`, {edges:{},logic:{}}));
         let patch = {
             edges: resolveGraphs2Logic(await GraphStorage.getAll()),
             logic: await LogicsStorage.getAll()
@@ -57,24 +56,35 @@ function resolveGraphs2Logic(input) {
             await LogicsStorage.delete(event.key);
         }
     });
-    editorChoice.register("editor_logic", "LOGIC");
-    PageSwitcher.register("editor_logic", [{
+    const NAV = [{
         "content": "FILE",
         "submenu": [{
             "content": "SAVE LOGIC",
             "handler": async () => {
-                let logic = JSON.parse(JSON.stringify(FileData.get("logic")));
-                let logic_patched = await LogicsStorage.getAll();
-                for (let i in logic_patched) {
-                    if (!logic[i]) {
-                        logic[i] = logic_patched[i];
+                let logic = JSON.parse(JSON.stringify(FileData.get(`logic${postfix}`, {edges:{},logic:{}})));
+                let patch = {
+                    edges: resolveGraphs2Logic(await GraphStorage.getAll()),
+                    logic: await LogicsStorage.getAll()
+                };
+                for (let i in patch.logic) {
+                    if (!logic.logic[i]) {
+                        logic.logic[i] = patch.logic[i];
                     } else {
-                        for (let j in logic_patched[i]) {
-                            logic[i][j] = logic_patched[i][j];
+                        for (let j in patch.logic[i]) {
+                            logic.logic[i][j] = patch.logic[i][j];
                         }
                     }
                 }
-                FileSystem.save(JSON.stringify(logic, " ", 4), "logic.json");
+                for (let i in patch.edges) {
+                    if (!logic.edges[i]) {
+                        logic.edges[i] = patch.edges[i];
+                    } else {
+                        for (let j in patch.edges[i]) {
+                            edges[`${i} -> ${j}`] = patch.edges[i][j];
+                        }
+                    }
+                }
+                FileSystem.save(JSON.stringify(logic, " ", 4), `logic${postfix}.json`);
             }
         },{
             "content": "LOAD PATCH",
@@ -106,7 +116,7 @@ function resolveGraphs2Logic(input) {
                     edges: resolveGraphs2Logic(await GraphStorage.getAll()),
                     logic: await LogicsStorage.getAll()
                 };
-                FileSystem.save(JSON.stringify(patch, " ", 4), `logic.${(new Date).valueOf()}.json`);
+                FileSystem.save(JSON.stringify(patch, " ", 4), `logic${postfix}.${(new Date).valueOf()}.json`);
             }
         },{
             "content": "REMOVE PATCH",
@@ -120,23 +130,29 @@ function resolveGraphs2Logic(input) {
             "content": "EXIT EDITOR",
             "handler": () => {
                 logicEditor.resetWorkingarea();
-                PageSwitcher.switch("editor_choice");
+                editorChoice.closeCurrent();
             }
         }]
     },{
-        "content": " TOGGLE FULLSCREEN",
-        "handler": toggleFullscreen
-    }]);
-}();
-
-function toggleFullscreen() {
-    if (document.fullscreenEnabled) {
-        if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen();
-        } else {
-            if (document.exitFullscreen) {
-                document.exitFullscreen(); 
+        "content": "CREATE MIXIN",
+        "handler": async () => {
+            let name = await Dialog.prompt("Create Mixin", "please enter a name");
+            if (typeof name == "string") {
+                let el = {
+                    "access": `mixin.${name}`,
+                    "category": "mixin",
+                    "content": `mixin.${name}`
+                };
+                for (let i of lists.logics) {
+                    if (i.type == "group" && i.caption == "mixin") {
+                        i.children.push(el);
+                        break;
+                    }
+                }
+                logicEditor.loadLogicList(lists.logics);
             }
         }
-    }
-}
+    }];
+    // register
+    editorChoice.register(logicEditor, `Logic${!!glitched?" Glitched":""}`, NAV);
+};

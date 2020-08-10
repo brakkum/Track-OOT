@@ -13,6 +13,8 @@
 - test skips and reorganize skips by area
 
 - add missing options
+    - on new game options are written initially by the `StateStorage`
+    - on game load missing/changed options should be added by `StateConverters`
 
 - fix randomizer option defaults not being loaded initially (minor)
 
