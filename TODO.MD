@@ -4,7 +4,11 @@
 
 ### TODO BEFORE GRAPH LOGIC RELEASE
 
-- verify all location availability (major)
+- verify all logic of location availability (major)
+- completed(kokiri,woods,field,lake,water temple,deku)
+
+- verify all logic of location availability glitched logic (major)
+- completed()
 
 - test skips and reorganize skips by area
 

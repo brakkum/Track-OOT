@@ -30362,41 +30362,6 @@
                             {
                                 "type": "value",
                                 "el": "item.membership"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "option.gerudo_card_shuffle"
-                                    },
-                                    {
-                                        "type": "state",
-                                        "el": "option.entrance_shuffle",
-                                        "value": "entrance_shuffle_all"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_off"
-                                                }
-                                            },
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_dungeon"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
                             }
                         ]
                     }
@@ -30805,41 +30770,6 @@
                             {
                                 "type": "value",
                                 "el": "item.membership"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "option.gerudo_card_shuffle"
-                                    },
-                                    {
-                                        "type": "state",
-                                        "el": "option.entrance_shuffle",
-                                        "value": "entrance_shuffle_all"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_off"
-                                                }
-                                            },
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_dungeon"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
                             }
                         ]
                     }
@@ -30894,41 +30824,6 @@
                             {
                                 "type": "value",
                                 "el": "item.membership"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "option.gerudo_card_shuffle"
-                                    },
-                                    {
-                                        "type": "state",
-                                        "el": "option.entrance_shuffle",
-                                        "value": "entrance_shuffle_all"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_off"
-                                                }
-                                            },
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_dungeon"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
                             }
                         ]
                     }
@@ -30983,41 +30878,6 @@
                             {
                                 "type": "value",
                                 "el": "item.membership"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "option.gerudo_card_shuffle"
-                                    },
-                                    {
-                                        "type": "state",
-                                        "el": "option.entrance_shuffle",
-                                        "value": "entrance_shuffle_all"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_off"
-                                                }
-                                            },
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_dungeon"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
                             }
                         ]
                     }
@@ -68869,7 +68729,7 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "mixin.v[child]"
+                    "el": "mixin.is_adult[child]"
                 }
             ]
         },
@@ -68882,7 +68742,7 @@
                 },
                 {
                     "type": "mixin",
-                    "el": "mixin.v[adult]"
+                    "el": "mixin.is_adult[adult]"
                 }
             ]
         },
@@ -68969,7 +68829,7 @@
             "el": [
                 {
                     "type": "value",
-                    "el": "item.tunic_fire"
+                    "el": "item.tunic_water"
                 },
                 {
                     "type": "mixin",
@@ -68982,7 +68842,7 @@
             "el": [
                 {
                     "type": "value",
-                    "el": "item.tunic_fire"
+                    "el": "item.tunic_water"
                 },
                 {
                     "type": "mixin",

@@ -75,7 +75,6 @@ class StateStorage {
             state = {data: state};
         }
         state = StateConverter.convert(state);
-        state.data["option.entrance_shuffle_dungeons"] = false; // XXX remove later
         updateTitle();
         EventBus.trigger("state", JSON.parse(JSON.stringify(state.data)));
     }
@@ -101,7 +100,6 @@ class StateStorage {
                 state = {data: state};
             }
             state = StateConverter.convert(state);
-            state.data["option.entrance_shuffle_dungeons"] = false; // XXX remove later
             LocalStorage.set(PERSISTANCE_NAME, state);
             if (autosaveTimeout != null) {
                 clearTimeout(autosaveTimeout);
@@ -224,7 +222,11 @@ class StateStorage {
     }
 
     getAllEntranceRewrites() {
-        return JSON.parse(JSON.stringify(state.entrance_rewrites));
+		if (state.hasOwnProperty("entance_rewrites")){
+			return JSON.parse(JSON.stringify(state.entrance_rewrites));
+		} else {
+			return null;
+		}
     }
 
 }

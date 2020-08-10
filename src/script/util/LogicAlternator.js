@@ -118,10 +118,34 @@ async function updateLogic() {
     }
 }
 
+async function initOptionSet() {
+	let options = FileData.get("randomizer_options");
+        for (let i in options) {
+            for (let j in options[i]) {
+                let opt = options[i][j];
+                if (opt.type === "list") {
+                    let def = new Set(opt.default);
+                    let val = [];
+                    for (let el of opt.values) {
+                        if (StateStorage.read(el, def.has(el))) {
+                            val.push(el);
+                        }
+                    }
+                    StateStorage.write(j, val);
+                } else {
+                    StateStorage.write(j, opt.default);
+                }
+            }
+        }
+}
+
 class LogicAlternator {
 
     async init() {
         let settings = FileData.get("settings", {});
+		let initState = StateStorage.read("option.starting_age", true);
+		if(initState === true)
+			initOptionSet();
         entrance_shuffle = StateStorage.read("option.entrance_shuffle");
         exit_binding = StateStorage.getAllEntranceRewrites();
         use_custom_logic = await SettingsStorage.get("use_custom_logic", settings["use_custom_logic"].default);
