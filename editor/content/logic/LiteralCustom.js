@@ -1,8 +1,7 @@
 import Template from "/emcJS/util/Template.js";
-import AbstractElement from "/editors/logic/elements/AbstractElement.js";
-import LogicViewer from "./LogicViewer.js";
+import AbstractElement from "/editors/ui/logic/AbstractElement.js";
 
-const TPL_CAPTION = "LINKED";
+const TPL_CAPTION = "CUSTOM";
 const TPL_BACKGROUND = "#ffffff";
 const TPL_BORDER = "#777777";
 
@@ -11,20 +10,17 @@ const TPL = new Template(`
         :host {
             --logic-color-back: ${TPL_BACKGROUND};
             --logic-color-border: ${TPL_BORDER};
-            word-break: break-word;
         }
-        #view {
-            margin-left: 8px;
-            padding: 5px;
-            background: #cccccc;
-            cursor: pointer;
+        #value:empty {
+            display: none;
         }
         .body.blank {
             font-style: italic;
         }
     </style>
-    <div id="header" class="header"><span id="header-name">${TPL_CAPTION}</span><span id="view">view</span></div>
+    <div id="header" class="header">${TPL_CAPTION}</div>
     <div id="ref" class="body"></div>
+    <div id="value" class="body"></div>
 `);
 const SVG = new Template(`
     <div class="logic-element" style="--logic-color-back: ${TPL_BACKGROUND}; --logic-color-border: ${TPL_BORDER};">
@@ -32,15 +28,11 @@ const SVG = new Template(`
     </div>
 `);
 
-export default class LiteralLinked extends AbstractElement {
+export default class LiteralCustom extends AbstractElement {
 
     constructor() {
         super();
         this.shadowRoot.append(TPL.generate());
-        this.shadowRoot.getElementById("view").addEventListener("click", function(event) {
-            let title = this.ref;
-            LogicViewer.show(this.ref, title);
-        }.bind(this));
     }
 
     get ref() {
@@ -59,6 +51,18 @@ export default class LiteralLinked extends AbstractElement {
         this.setAttribute('category', val);
     }
 
+    get value() {
+        return this.getAttribute('value');
+    }
+
+    set value(val) {
+        if (typeof val != "undefined" && val != null) {
+            this.setAttribute('value', val);
+        } else {
+            this.removeAttribute('value');
+        }
+    }
+
     calculate(state = {}) {
         if (state.hasOwnProperty(this.ref)) {
             let val = !!this.value ? +(state[this.ref] == this.value) : +!!state[this.ref];
@@ -72,15 +76,25 @@ export default class LiteralLinked extends AbstractElement {
 
     loadLogic(logic) {
         this.ref = logic.el;
+        this.value = logic.value;
         this.category = logic.category;
     }
 
     toJSON() {
-        return {
-            type: "value",
-            el: this.ref,
-            category: this.category
-        };
+        if (!!this.value) {
+            return {
+                type: "state",
+                el: this.ref,
+                value: this.value,
+                category: this.category
+            };
+        } else {
+            return {
+                type: "value",
+                el: this.ref,
+                category: this.category
+            };
+        }
     }
 
     static getSVG(logic) {
@@ -89,7 +103,7 @@ export default class LiteralLinked extends AbstractElement {
 
     static get observedAttributes() {
         let attr = AbstractElement.observedAttributes;
-        attr.push('ref', 'category');
+        attr.push('ref', 'category', 'value');
         return attr;
     }
       
@@ -97,26 +111,27 @@ export default class LiteralLinked extends AbstractElement {
         super.attributeChangedCallback(name, oldValue, newValue);
         switch (name) {
             case 'ref':
+            case 'value':
                 if (oldValue != newValue) {
                     if (typeof newValue == "string") {
                         if (!!newValue) {
-                            this.shadowRoot.getElementById('ref').innerHTML = newValue;
-                            this.shadowRoot.getElementById('ref').classList.remove("blank");
+                            this.shadowRoot.getElementById(name).innerHTML = newValue;
+                            this.shadowRoot.getElementById(name).classList.remove("blank");
                         } else {
-                            this.shadowRoot.getElementById('ref').innerHTML = "[blank]";
-                            this.shadowRoot.getElementById('ref').classList.add("blank");
+                            this.shadowRoot.getElementById(name).innerHTML = "[blank]";
+                            this.shadowRoot.getElementById(name).classList.add("blank");
                         }
                     } else {
-                        this.shadowRoot.getElementById('ref').innerHTML = "";
+                        this.shadowRoot.getElementById(name).innerHTML = "";
                     }
                 }
                 break;
             case 'category':
                 if (oldValue != newValue) {
                     if (!!newValue) {
-                        this.shadowRoot.getElementById('header-name').innerHTML = newValue.toUpperCase();
+                        this.shadowRoot.getElementById('header').innerHTML = newValue.toUpperCase();
                     } else {
-                        this.shadowRoot.getElementById('header-name').innerHTML = TPL_CAPTION;
+                        this.shadowRoot.getElementById('header').innerHTML = TPL_CAPTION;
                     }
                 }
                 break;
@@ -125,8 +140,12 @@ export default class LiteralLinked extends AbstractElement {
 
 }
 
-AbstractElement.registerReference("mixin", LiteralLinked);
-AbstractElement.registerReference("entrance", LiteralLinked);
-AbstractElement.registerReference("area", LiteralLinked);
+AbstractElement.registerReference("chest", LiteralCustom);
+AbstractElement.registerReference("skulltula", LiteralCustom);
+AbstractElement.registerReference("item", LiteralCustom);
+AbstractElement.registerReference("skip", LiteralCustom);
+AbstractElement.registerReference("option", LiteralCustom);
+AbstractElement.registerReference("filter", LiteralCustom);
+AbstractElement.registerReference("location", LiteralCustom);
 
-customElements.define(`tracker-logic-linked`, LiteralLinked);
+customElements.define(`tracker-logic-custom`, LiteralCustom);

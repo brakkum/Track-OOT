@@ -20,6 +20,7 @@ const FILES = {
     "world":                {path: "/database/world.json",              type: "json"},
     "world_lists":          {path: "/database/world_lists.json",        type: "json"},
     "logic":                {path: "/database/logic.json",              type: "json"},
+    "logic_glitched":       {path: "/database/logic_glitched.json",     type: "json"},
     "items":                {path: "/database/items.json",              type: "jsonc"},
     "grids":                {path: "/database/grids.json",              type: "jsonc"},
     "dungeonstate":         {path: "/database/dungeonstate.json",       type: "jsonc"},
@@ -96,8 +97,7 @@ async function init() {
         "/script/ui/map/Map.js",
         "/script/ui/LocationStatus.js",
         "/script/content/Tracker.js",
-        "/script/content/EditorChoice.js",
-        "/script/content/EditorLogic.js"
+        "/script/content/EditorChoice.js"
     ]);
     
     if ("SharedWorker" in window) {
@@ -111,6 +111,7 @@ async function init() {
         logPanel.setAttribute("ref", "log");
         logPanel.dataset.title = "Logger";
         logPanel.dataset.icon = "images/icons/log.svg";
+        logPanel.style.overflow = "hidden";
         let logScreen = document.createElement("emc-logscreen");
         logScreen.title = "Logger";
         logPanel.append(logScreen);

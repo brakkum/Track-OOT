@@ -120,12 +120,12 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
         
         /* mouse events */
         this.addEventListener("click", event => {
-            this.check();
+            this.toggleCheckValue();
             event.preventDefault();
             return false;
         });
         this.addEventListener("contextmenu", event => {
-            this.uncheck();
+            //this.showContextMenu(event.clientX, event.clientY);
             event.preventDefault();
             return false;
         });
@@ -257,23 +257,27 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
     }
 
     check() {
-        Logger.log(`check location "${this.ref}"`, "Location");
-        StateStorage.write(this.ref, true);
-        this.checked = true;
-        EventBus.trigger(TYPE.get(this), {
-            name: this.ref,
-            value: true
-        });
+        this.toggleCheckValue(true);
     }
     
     uncheck() {
-        Logger.log(`uncheck location "${this.ref}"`, "Location");
-        this.checked = false;
-        StateStorage.write(this.ref, false);
-        EventBus.trigger(TYPE.get(this), {
-            name: this.ref,
-            value: false
-        });
+        this.toggleCheckValue(false);
+    }
+
+    toggleCheckValue(value) {
+        let oldValue = this.checked;
+        oldValue = oldValue != null && oldValue != "false";
+        if (value == null) {
+            value = !oldValue;
+        }
+        if (!!value != oldValue) {
+            StateStorage.write(this.ref, value);
+            this.checked = value;
+            this.triggerGlobal(TYPE.get(this), {
+                name: this.ref,
+                value: value
+            });
+        }
     }
 
     setFilterData(data) {
