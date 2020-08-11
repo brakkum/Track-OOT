@@ -3,7 +3,7 @@ import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import FileSystem from "/emcJS/util/FileSystem.js";
 
-import "/editors/logic/LogicEditor.js";
+import "/editors/modules/logic/Editor.js";
 
 import LogicListsCreator from "../logic/LogicListsCreator.js";
 import "../logic/LiteralCustom.js";
@@ -16,45 +16,33 @@ export default async function(editorChoice, glitched = false) {
         postfix = "_glitched";
     }
     let LogicsStorage = new IDBStorage(`logics${postfix}`);
-    let GraphStorage = new IDBStorage(`edges${postfix}`);
-    let logicEditor = document.createElement("ted-logiceditor");
-    function resolveGraphs2Logic(input) {
-        let res = {};
-        for (let i in input) {
-            let value = input[i];
-            let [key, target] = i.split(" -> ");
-            res[key] = res[key] || {};
-            res[key][target] = value;
-        }
-        return res;
-    }
+    let logicEditor = document.createElement("ted-logic-editor");
     // refresh
     async function refreshLogicEditor() {
         let lists = await LogicListsCreator.createLists(glitched);
-        logicEditor.loadOperatorList(lists.operators);
-        logicEditor.loadLogicList(lists.logics);
-        logicEditor.setLogic(FileData.get(`logic${postfix}`, {edges:{},logic:{}}));
-        let patch = {
-            edges: resolveGraphs2Logic(await GraphStorage.getAll()),
-            logic: await LogicsStorage.getAll()
-        };
+        logicEditor.loadOperators(lists.operators);
+        logicEditor.loadList(lists.logics);
+        let logic = FileData.get(`logic${postfix}`, {edges:{},logic:{}});
+        let intLogic = {};
+        for (let i in logic.edges) {
+            for (let j in logic.edges[i]) {
+                intLogic[`${i} -> ${j}`] = logic.edges[i][j];
+            }
+        }
+        for (let i in logic.logic) {
+            intLogic[i] = logic.logic[i];
+        }
+        logicEditor.setLogic(intLogic);
+        let patch = await LogicsStorage.getAll();
         logicEditor.setPatch(patch);
     }
     await refreshLogicEditor();
     // register
     logicEditor.addEventListener("save", async event => {
-        if (event.targetKey != null) {
-            await GraphStorage.set(`${event.key} -> ${event.targetKey}`, event.logic);
-        } else {
-            await LogicsStorage.set(event.key, event.logic);
-        }
+        await LogicsStorage.set(event.key, event.logic);
     });
     logicEditor.addEventListener("clear", async event => {
-        if (event.targetKey != null) {
-            await GraphStorage.delete(`${event.key} -> ${event.targetKey}`);
-        } else {
-            await LogicsStorage.delete(event.key);
-        }
+        await LogicsStorage.delete(event.key);
     });
     const NAV = [{
         "content": "FILE",
@@ -62,26 +50,16 @@ export default async function(editorChoice, glitched = false) {
             "content": "SAVE LOGIC",
             "handler": async () => {
                 let logic = JSON.parse(JSON.stringify(FileData.get(`logic${postfix}`, {edges:{},logic:{}})));
-                let patch = {
-                    edges: resolveGraphs2Logic(await GraphStorage.getAll()),
-                    logic: await LogicsStorage.getAll()
-                };
-                for (let i in patch.logic) {
-                    if (!logic.logic[i]) {
-                        logic.logic[i] = patch.logic[i];
-                    } else {
-                        for (let j in patch.logic[i]) {
-                            logic.logic[i][j] = patch.logic[i][j];
+                let patch = await LogicsStorage.getAll();
+                for (let i in patch) {
+                    if (i.indexOf(" -> ") >= 0) {
+                        let [key, target] = i.split(" -> ");
+                        if (logic.edges[key] == null) {
+                            logic.edges[key] = {};
                         }
-                    }
-                }
-                for (let i in patch.edges) {
-                    if (!logic.edges[i]) {
-                        logic.edges[i] = patch.edges[i];
+                        logic.edges[key][target] = patch[i];
                     } else {
-                        for (let j in patch.edges[i]) {
-                            edges[`${i} -> ${j}`] = patch.edges[i][j];
-                        }
+                        logic.logic[i] = patch[i];
                     }
                 }
                 FileSystem.save(JSON.stringify(logic, " ", 4), `logic${postfix}.json`);
@@ -92,39 +70,46 @@ export default async function(editorChoice, glitched = false) {
                 let res = await FileSystem.load(".json");
                 if (!!res && !!res.data) {
                     let logic = res.data;
-                    // load logic
-                    await LogicsStorage.setAll(logic.logic || {});
-                    // load edges
-                    let edges = {};
+                    let intLogic = {};
                     for (let i in logic.edges) {
-                        if (!!logic.edges[i]) {
-                            for (let j in logic.edges[i]) {
-                                logic.edges[i][j] = logic.edges[i][j];
-                            }
+                        for (let j in logic.edges[i]) {
+                            intLogic[`${i} -> ${j}`] = logic.edges[i][j];
                         }
                     }
-                    await GraphStorage.setAll(edges);
+                    for (let i in logic.logic) {
+                        intLogic[i] = logic.logic[i];
+                    }
+                    // load logic
+                    await LogicsStorage.setAll(intLogic);
                     // refresh
                     await refreshLogicEditor();
-                    logicEditor.resetWorkingarea();
+                    //logicEditor.resetWorkingarea();
                 }
             }
         },{
             "content": "SAVE PATCH",
             "handler": async () => {
-                let patch = {
-                    edges: resolveGraphs2Logic(await GraphStorage.getAll()),
-                    logic: await LogicsStorage.getAll()
-                };
-                FileSystem.save(JSON.stringify(patch, " ", 4), `logic${postfix}.${(new Date).valueOf()}.json`);
+                let logic = {edges:{},logic:{}};
+                let patch = await LogicsStorage.getAll();
+                for (let i in patch) {
+                    if (i.indexOf(" -> ") >= 0) {
+                        let [key, target] = i.split(" -> ");
+                        if (logic.edges[key] == null) {
+                            logic.edges[key] = {};
+                        }
+                        logic.edges[key][target] = patch[i];
+                    } else {
+                        logic.logic[i] = patch[i];
+                    }
+                }
+                FileSystem.save(JSON.stringify(logic, " ", 4), `logic${postfix}.${(new Date).valueOf()}.json`);
             }
         },{
             "content": "REMOVE PATCH",
             "handler": async () => {
                 await LogicsStorage.clear();
-                await GraphStorage.clear();
                 await refreshLogicEditor();
-                logicEditor.resetWorkingarea();
+                //logicEditor.resetWorkingarea();
             }
         },{
             "content": "EXIT EDITOR",
@@ -139,7 +124,7 @@ export default async function(editorChoice, glitched = false) {
             let name = await Dialog.prompt("Create Mixin", "please enter a name");
             if (typeof name == "string") {
                 let el = {
-                    "access": `mixin.${name}`,
+                    "ref": `mixin.${name}`,
                     "category": "mixin",
                     "content": `mixin.${name}`
                 };
@@ -149,10 +134,10 @@ export default async function(editorChoice, glitched = false) {
                         break;
                     }
                 }
-                logicEditor.loadLogicList(lists.logics);
+                logicEditor.loadList(lists.logics);
             }
         }
     }];
     // register
-    editorChoice.register(logicEditor, `Logic${!!glitched?" Glitched":""}`, NAV);
+    editorChoice.register(logicEditor, `Logic${!!glitched?" Glitched":""}`, NAV, refreshLogicEditor);
 };

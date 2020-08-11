@@ -21,12 +21,6 @@ function convertValueList(values = [], names = []) {
     return opt;
 }
 
-function switchView(view) {
-    // XXX unused ?
-    document.getElementById('view-pager').setAttribute("active", view);
-    window.close();
-}
-
 class SettingsBuilder {
 
     build(window, options) {

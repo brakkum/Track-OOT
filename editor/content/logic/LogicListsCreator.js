@@ -40,9 +40,9 @@ class LogicListsCreator {
         let logic = FileData.get(`logic${!!glitched?"_glitched":""}`);
         let custom_logic = {};
         if (!!glitched) {
-            await LogicsStorageGlitched.getAll();
+            custom_logic = await LogicsStorageGlitched.getAll();
         } else {
-            await LogicsStorage.getAll();
+            custom_logic = await LogicsStorage.getAll();
         }
 
         let mixins = {};
@@ -167,20 +167,28 @@ function createSettingsOperatorCategory(data, ref) {
     for (let i in data) {
         let opt = data[i];
         if (!!opt.type && opt.type.startsWith("-")) continue;
-        if (opt.type === "list") {
-            for (let j of opt.values) {
-                res.children.push({
-                    "type": "tracker-logic-custom",
-                    "ref": j,
-                    "category": ref
-                });
-            }
-        } else if (opt.type === "choice") {
+        if (opt.type === "choice") {
             for (let j of opt.values) {
                 res.children.push({
                     "type": "tracker-logic-custom",
                     "ref": i,
                     "value": j,
+                    "category": ref
+                });
+            }
+        } else {
+            if (opt.type === "list") {
+                for (let j of opt.values) {
+                    res.children.push({
+                        "type": "tracker-logic-custom",
+                        "ref": j,
+                        "category": ref
+                    });
+                }
+            } else {
+                res.children.push({
+                    "type": "tracker-logic-custom",
+                    "ref": i,
                     "category": ref
                 });
             }
@@ -347,7 +355,7 @@ function createLogicWorldCategories(data, world) {
                     }
                     els[ref.category].push({
                         "type": ref.type,
-                        "access": ref.access,
+                        "ref": ref.access,
                         "category": ref.category,
                         "content": record.id,
                         "icon": `/images/icons/${ref.type}.svg`
@@ -386,7 +394,7 @@ function createLogicWorldCategories(data, world) {
                     }
                     els[ref.category].push({
                         "type": ref.type,
-                        "access": ref.access,
+                        "ref": ref.access,
                         "category": ref.category,
                         "content": record.id,
                         "icon": `/images/icons/${ref.type}.svg`
@@ -453,27 +461,27 @@ function createLogicGraphCategory(data, world) {
                 if (!!loc) {
                     lbuf.children.push({
                         "type": loc.type,
-                        "edge": [ref, sref],
+                        "ref": `${ref} -> ${sref}`,
                         "category": "location",
                         "content": sref,
                         "icon": `/images/icons/${loc.type}.svg`
                     });
                 } else {
                     lbuf.children.push({
-                        "edge": [ref, sref],
+                        "ref": `${ref} -> ${sref}`,
                         "category": "location",
                         "content": sref
                     });
                 }
             } else if (sref.startsWith("region.")) {
                 rbuf.children.push({
-                    "edge": [ref, sref],
+                    "ref": `${ref} -> ${sref}`,
                     "category": "region",
                     "content": sref
                 });
             } else if (sref.startsWith("event.")) {
 				ebuf.children.push({
-					"edge": [ref, sref],
+                    "ref": `${ref} -> ${sref}`,
 					"category": "event",
 					"content": sref
 				});
@@ -517,27 +525,27 @@ function createLogicGraphCategory(data, world) {
 					if (!!loc) {
 						lbuf.children.push({
 							"type": loc.type,
-							"edge": [ref, sref],
+                            "ref": `${ref} -> ${sref}`,
 							"category": "location",
 							"content": sref,
 							"icon": `/images/icons/${loc.type}.svg`
 						});
 					} else {
 						lbuf.children.push({
-							"edge": [ref, sref],
+                            "ref": `${ref} -> ${sref}`,
 							"category": "location",
 							"content": sref
 						});
 					}
 				} else if (sref.startsWith("region.")) {
 					rbuf.children.push({
-						"edge": [ref, sref],
+                        "ref": `${ref} -> ${sref}`,
 						"category": "region",
 						"content": sref
 					});
 				} else if (sref.startsWith("event.")) {
 					ebuf.children.push({
-						"edge": [ref, sref],
+                        "ref": `${ref} -> ${sref}`,
 						"category": "event",
 						"content": sref
 					});
@@ -582,13 +590,13 @@ function createLogicMixinCategory(data) {
     for (let ref in data) {
 		if(ref.endsWith("[child]")) {
 			resC.children.push({
-				"access": ref,
+				"ref": ref,
 				"category": "mixin",
 				"content": ref
 			});
 		} else {
 			resA.children.push({
-				"access": ref,
+				"ref": ref,
 				"category": "mixin",
 				"content": ref
 			});
@@ -616,13 +624,13 @@ function createLogicFunctionCategory(data) {
     for (let ref in data) {
 		if(ref.endsWith("[child]")) {
 			resC.children.push({
-				"access": ref,
+				"ref": ref,
 				"category": "function",
 				"content": ref
 			});
 		} else {
 			resA.children.push({
-				"access": ref,
+				"ref": ref,
 				"category": "function",
 				"content": ref
 			});

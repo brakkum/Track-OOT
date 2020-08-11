@@ -6,6 +6,7 @@ import "/emcJS/ui/NavBar.js";
 import "/editors/EditorChoice.js";
 
 import createLogicEditor from "./content/editors/LogicEditor.js";
+import createLocationEditor from "./content/editors/LocationEditor.js";
 
 const TITLE_PREFIX = "Tracker-Editor";
 
@@ -62,5 +63,6 @@ let editorChoice = document.getElementById("editor-choice");
     // add editors
     await createLogicEditor(editorChoice, false);
     await createLogicEditor(editorChoice, true);
+    await createLocationEditor(editorChoice);
 
 }();
