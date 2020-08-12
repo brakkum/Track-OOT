@@ -30,6 +30,11 @@ Application:    Track-OOT
         - `currently only for locations in list`
 - add presets to randomizer options
 
+### CREDITS
+
+- added credits section
+    - auto generate supporter list
+
 ### BUGFIXES
 
 - fix logger breaking out of the viewport
