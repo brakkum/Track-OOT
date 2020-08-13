@@ -65,6 +65,8 @@ class HTMLTrackerSelectableItem extends EventBusSubsetMixin(HTMLElement) {
     select(event) {
         if (!event) return;
         event.preventDefault();
+
+        this.dispatchEvent(new CustomEvent('select', { detail: this.ref }));
         return false;
     }
 

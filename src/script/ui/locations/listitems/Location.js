@@ -152,7 +152,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         this.shadowRoot.getElementById("menu-disassociate").addEventListener("click", event => {
-            this.disassociateItem();
+            this.associateItem(false);
             event.preventDefault();
             return false;
         });
@@ -176,6 +176,9 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             let textEl = this.shadowRoot.getElementById("text");
             textEl.dataset.checked = value;
             this.toggleCheckValue(value);
+
+            const path = this.ref.split('.');
+            this.item = StateStorage.read(`chests.${path[2]}.item`, false);
         });
         this.registerGlobal("logic", event => {
             if (LOGIC_ACTIVE.get(this) && event.data.hasOwnProperty(this.access)) {
@@ -258,7 +261,8 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
                     if (!newValue || newValue === "false") { return; }
                     let el_icon = document.createElement("img");
                     let itemsData = FileData.get("items")[newValue];
-                    el_icon.src = itemsData.images;
+                    const bgImage = Array.isArray(itemsData.images) ? itemsData.images[0] : itemsData.images;
+                    el_icon.src = bgImage;
                     itemEl.append(el_icon);
                 }
             break;
@@ -282,24 +286,23 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
 
         let el = document.createElement("ootrt-itempicker");
         el.grid = 'items'
+        el.addEventListener("pick", event => {
+            const item = event.detail;
+            this.associateItem(item);
+            event.preventDefault();
+            return false;
+        });
+
         this.shadowRoot.getElementById('item_picker_content').append(el);
     
         this.shadowRoot.getElementById("item_picker").show(x, y);
     }
 
-    associateItem() {
-        const tempItem = 'item.boomerang';
-        this.item = tempItem;
+    associateItem(item) {
+        this.item = item;
     
         const path = this.ref.split(".");
-        StateStorage.write(`chests.${path[2]}.item`, tempItem);
-    }
-
-    disassociateItem() {
-        this.item = false;
-
-        const path = this.ref.split(".");
-        StateStorage.write(`chests.${path[2]}.item`, false);
+        StateStorage.write(`chests.${path[2]}.item`, item);
     }
 
     toggleCheckValue(value) {

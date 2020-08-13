@@ -100,7 +100,13 @@ class HTMLTrackerItemPicker extends Panel {
                         cnt.classList.add("item-row");
                         for (let element of row) {
                             if (element.type == "item") {
-                                cnt.append(createItem(element.value));
+                                let item = createItem(element.value);
+                                item.addEventListener("select", event => {
+                                    this.dispatchEvent(new CustomEvent('pick', { detail: event.detail }));
+                                    event.preventDefault();
+                                    return false;
+                                });
+                                cnt.append(item);
                             } else {
                                 cnt.append(createEmpty());
                             }
