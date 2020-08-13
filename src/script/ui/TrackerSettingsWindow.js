@@ -9,6 +9,8 @@ import BusyIndicator from "/script/ui/BusyIndicator.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
+// TODO bind erase stored data button
+
 const SettingsStorage = new IDBStorage('settings');
 
 import SettingsBuilder from "/script/util/SettingsBuilder.js";
@@ -56,6 +58,14 @@ Big thanks to:<br>
 <i class="thanks-name">pidgezero_one</i> for adding sequence breaks and extending skips.
 </div>
 `);
+
+const LOAD_RULESET = new Template(`
+<label class="settings-option">
+    <span id="load-template-title" class="option-text"></span>
+    <button id="load-template-button" class="settings-button" type="button" value="undefined" style="margin-right: 10px;"></button>
+    <select id="select-template" class="settings-input" type="input"></select>
+</label>
+`)
 
 async function getSettings() {
     let options = FileData.get("settings");

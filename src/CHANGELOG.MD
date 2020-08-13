@@ -4,15 +4,31 @@ Application:    Track-OOT
 
 ***
 
-## VERSION 1.7.18
+## VERSION [DEV]
 
 ### FEATURES
 
 - make locations be toggled instead of set
     - click / touch will be used for toggle checked / unchecked
     - right click / long press is now for contextmenu only
-    
-    `currently only for locations in list`
+        - `currently only for locations in list`
+- add presets to randomizer options
+
+---
+
+## VERSION 1.7.19
+
+### BUGFIXES
+
+- fix loading custom logic for view even if custom logic is off
+
+---
+
+## VERSION 1.7.18
+
+### BUGFIXES
+
+- fix loading wrong dependency version for editors
 
 ---
 
