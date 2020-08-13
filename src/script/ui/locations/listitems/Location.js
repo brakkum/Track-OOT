@@ -7,6 +7,7 @@ import StateStorage from "/script/storage/StateStorage.js";
 import LogicViewer from "/script/content/logic/LogicViewer.js";
 import Logic from "/script/util/Logic.js";
 import Language from "/script/util/Language.js";
+import "/script/ui/items/ItemPicker.js";
 
 const TPL = new Template(`
     <style>
@@ -88,6 +89,9 @@ const TPL = new Template(`
         <div id="menu-logic" class="item">Show Logic</div>
         <div id="menu-logic-image" class="item">Create Logic Image</div>
     </emc-contextmenu>
+    <emc-contextmenu id="item_picker">
+        <div id="item_picker_content"></div>
+    </emc-contextmenu>
     <div class="textarea">
         <div id="text"></div>
         <div id="item"></div>
@@ -143,7 +147,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         this.shadowRoot.getElementById("menu-associate").addEventListener("click", event => {
-            this.associateItem();
+            this.showItemPicker(event.clientX, event.clientY);
             event.preventDefault();
             return false;
         });
@@ -273,17 +277,27 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         this.toggleCheckValue(false);
     }
 
+    showItemPicker(x, y) {
+        this.shadowRoot.getElementById('item_picker_content').innerHTML = "";
+
+        let el = document.createElement("ootrt-itempicker");
+        el.grid = 'items'
+        this.shadowRoot.getElementById('item_picker_content').append(el);
+    
+        this.shadowRoot.getElementById("item_picker").show(x, y);
+    }
+
     associateItem() {
         const tempItem = 'item.boomerang';
         this.item = tempItem;
-
+    
         const path = this.ref.split(".");
         StateStorage.write(`chests.${path[2]}.item`, tempItem);
     }
 
     disassociateItem() {
-        this.item = null;
-        
+        this.item = false;
+
         const path = this.ref.split(".");
         StateStorage.write(`chests.${path[2]}.item`, false);
     }
