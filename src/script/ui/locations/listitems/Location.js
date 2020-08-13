@@ -83,6 +83,7 @@ const TPL = new Template(`
         <div id="menu-uncheck" class="item">Uncheck<span class="menu-tip">(ctrl + rightclick)</span></div>
         <div class="splitter"></div>
         <div id="menu-associate" class="item">Set Item</div>
+        <div id="menu-disassociate" class="item">Clear Item</div>
         <div class="splitter"></div>
         <div id="menu-logic" class="item">Show Logic</div>
         <div id="menu-logic-image" class="item">Create Logic Image</div>
@@ -143,6 +144,11 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         });
         this.shadowRoot.getElementById("menu-associate").addEventListener("click", event => {
             this.associateItem();
+            event.preventDefault();
+            return false;
+        });
+        this.shadowRoot.getElementById("menu-disassociate").addEventListener("click", event => {
+            this.disassociateItem();
             event.preventDefault();
             return false;
         });
@@ -273,6 +279,13 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
 
         const path = this.ref.split(".");
         StateStorage.write(`chests.${path[2]}.item`, tempItem);
+    }
+
+    disassociateItem() {
+        this.item = null;
+        
+        const path = this.ref.split(".");
+        StateStorage.write(`chests.${path[2]}.item`, false);
     }
 
     toggleCheckValue(value) {
