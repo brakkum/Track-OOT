@@ -1,6 +1,8 @@
 import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
+import LocalStorage from "/emcJS/storage/LocalStorage.js";
 import Template from "/emcJS/util/Template.js";
 import FileData from "/emcJS/storage/FileData.js";
+import FileLoader from "/emcJS/util/FileLoader.js";
 import SettingsWindow from "/emcJS/ui/SettingsWindow.js";
 import PopOver from "/emcJS/ui/PopOver.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
@@ -195,13 +197,17 @@ export default class Settings {
                 Dialog.alert("Connection Lost", "The ServiceWorker was not able to establish or keep connection to the Server<br>Please try again later.");
             }
         });
-        settings.addTab("About", "about");
-        settings.addElements("about", settings_about);
     
         !async function() {
             let settings_credits = CREDITS_TPL.generate();
             let supporters_list = settings_credits.getElementById("supporters");
-            let supporters = await fetch(SUPPORTER_URL).then(r=>r.json());
+            let supporters = LocalStorage.get("supporters", {});
+            try {
+                supporters = await FileLoader.getJSON(SUPPORTER_URL).then(r=>r.json());
+                LocalStorage.set("supporters", supporters);
+            } catch(err) {
+                // nothing
+            }
             for (let name in supporters) {
                 let el = createSupporterPanel(name, supporters[name]);
                 if (el != null) {
@@ -210,6 +216,10 @@ export default class Settings {
             }
             settings.addTab("Credits", "credits");
             settings.addElements("credits", settings_credits);
+
+            // add about tab last
+            settings.addTab("About", "about");
+            settings.addElements("about", settings_about);
         }();
         
 

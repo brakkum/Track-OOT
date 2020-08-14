@@ -1,7 +1,8 @@
 export default function(state) {
     let res = {
         data: {},
-        entrance_rewrites: {},
+        extra: {},
+        notes: state.data.notes || "",
         autosave: state.autosave,
         timestamp: state.timestamp,
         version: 4,//5, // keep this until release
@@ -9,6 +10,7 @@ export default function(state) {
     };
     for (let i of Object.keys(state.data)) {
         // possible changes go here
+        if (i == "notes") continue;
         res.data[i] = state.data[i];
     }
     if (res.data["option.starting_age"] == null) {

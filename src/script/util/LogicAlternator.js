@@ -59,8 +59,8 @@ EventBus.register("exit_change", event => {
         exit_binding[`${source} -> ${target}`] = reroute;
         exit_binding[`${reroute} -> ${entrance}`] = source;
         // write to storage
-        StateStorage.setEntranceRewrite(source, target, reroute);
-        StateStorage.setEntranceRewrite(reroute, entrance, source);
+        StateStorage.writeExtra("entrances", `${source} -> ${target}`, reroute);
+        StateStorage.writeExtra("entrances", `${reroute} -> ${entrance}`, source);
         // apply if possible
         let shuffled = ENTRANCE_SHUFFLE_RESOLVER_LIST[entrance_shuffle];
         if (shuffled.indexOf(types[edgeThere]) >= 0) {
@@ -177,7 +177,7 @@ class LogicAlternator {
         }
         logic_rules = StateStorage.read("option.logic_rules");
         entrance_shuffle = StateStorage.read("option.entrance_shuffle");
-        exit_binding = StateStorage.getAllEntranceRewrites();
+        exit_binding = StateStorage.getAllExtra("entrances");
         use_custom_logic = await SettingsStorage.get("use_custom_logic", settings["use_custom_logic"].default);
         await updateLogic();
     }

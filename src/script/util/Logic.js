@@ -19,7 +19,7 @@ EventBus.register("state", event => {
     }
 });
 
-EventBus.register("state_change", event => {
+EventBus.register("statechange", event => {
     let changed = {};
     for (let i in event.data) {
         changed[i] = event.data[i].newValue;

@@ -34,6 +34,7 @@ Application:    Track-OOT
 
 - added credits section
     - auto generate supporter list
+    - supporter list is cached locally
 
 ### BUGFIXES
 

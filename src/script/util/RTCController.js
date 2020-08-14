@@ -28,7 +28,7 @@ const EVENT_BLACKLIST = [
     "filter",
     "location_change",
     "location_mode",
-    "state_change",
+    "statechange",
     "state"
 ];
 const eventModule = new EventBusModuleGeneric();
