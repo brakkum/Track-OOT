@@ -28,16 +28,8 @@
         },
         "skips": {
             "skip.lens_required": "lens_required_default",
-            "skip.fewer_tunic": false,
-            "skip.hidden_grotto_no_agony": false,
-            "skip.child_deadhand": false,
-            "skip.man_on_roof": false,
-            "skip.dodongo_spike": false,
-            "skip.hammer_through_wall": false,
-            "skip.windmill_hp": false,
-            "skip.crater_bean_hp": false,
-            "skip.fot_east_vines_hook": false,
-            "skip.morpha_scale": false
+            "tricks": [],
+            "known_sequence_breaks": []
         }
     },
     "S3 Standard": {
@@ -52,7 +44,7 @@
             "option.skullsanity": false,
             "option.doors_open_forest": true,
             "option.doors_open_mountain": false,
-            "option.doors_open_temple": true,
+            "option.doors_open_temple": "true",
             "option.doors_open_zora": "doors_open_zora_closed",
             "option.gerudo_fortress_open": "gerudo_fortress_open_one",
             "option.ganon_castle_open": "ganon_castle_open_medallion",
@@ -62,16 +54,18 @@
         },
         "skips": {
             "skip.lens_required": "lens_required_wasteland",
-            "skip.fewer_tunic": true,
-            "skip.hidden_grotto_no_agony": true,
-            "skip.child_deadhand": true,
-            "skip.man_on_roof": true,
-            "skip.dodongo_spike": true,
-            "skip.hammer_through_wall": true,
-            "skip.windmill_hp": true,
-            "skip.crater_bean_hp": true,
-            "skip.fot_east_vines_hook": true,
-            "skip.morpha_scale": false
+            "tricks": [
+                "skip.fewer_tunic",
+                "skip.hidden_grotto_no_agony",
+                "skip.child_deadhand",
+                "skip.man_on_roof",
+                "skip.dodongo_spike",
+                "skip.hammer_through_wall",
+                "skip.windmill_hp",
+                "skip.crater_bean_hp",
+                "skip.fot_east_vines_hook"
+            ],
+            "known_sequence_breaks": []
         }
     }
 }

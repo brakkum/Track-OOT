@@ -30,7 +30,11 @@ function setOptionsFromRuleset(name) {
         for (let j in ruleset[i]) {
             let opt = panel.querySelector(`[data-ref="${j}"]`);
             if (opt != null) {
-                opt.value = ruleset[i][j];
+                if (opt.type === "checkbox") {
+                    opt.checked = ruleset[i][j];
+                } else {
+                    opt.value = ruleset[i][j];
+                }
             }
         }
     }
