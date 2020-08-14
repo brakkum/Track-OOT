@@ -26,6 +26,10 @@ BusyIndicator.setIndicator(document.getElementById("busy-animation"));
 
 const SUPPORTER_URL = new URL("/patreon", location);
 
+if (location.hostname == "localhost") {
+    SUPPORTER_URL.port = 10001;
+}
+
 const ABOUT_TPL = new Template(`
 <div style="display: flex; margin-bottom: 10px;">
     <div style="flex: 1">
@@ -203,7 +207,11 @@ export default class Settings {
             let supporters_list = settings_credits.getElementById("supporters");
             let supporters = LocalStorage.get("supporters", {});
             try {
-                supporters = await FileLoader.getJSON(SUPPORTER_URL).then(r=>r.json());
+                let r = await fetch(SUPPORTER_URL);
+                if (r.status < 200 || r.status >= 300) {
+                    throw new Error(`error loading patreon data - status: ${r.status}`);
+                }
+                supporters = await r.json();
                 LocalStorage.set("supporters", supporters);
             } catch(err) {
                 // nothing
