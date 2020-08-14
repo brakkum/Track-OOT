@@ -140,7 +140,7 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
             }
         });
         this.registerGlobal("state", event => {
-            let value = !!event.data[this.ref];
+            let value = !!event.data.state[this.ref];
             if (typeof value == "undefined") {
                 value = false;
             }

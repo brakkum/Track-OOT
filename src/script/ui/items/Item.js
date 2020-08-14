@@ -91,7 +91,7 @@ function optionsChanged(event) {
 
 function stateChanged(event) {
     // savesatate
-    let value = parseInt(event.data[this.ref]);
+    let value = parseInt(event.data.state[this.ref]);
     if (isNaN(value)) {
         value = 0;
     }
@@ -99,7 +99,7 @@ function stateChanged(event) {
     // settings
     let data = FileData.get("items")[this.ref];
     if (data.hasOwnProperty("start_settings")) {
-        let startvalue = parseInt(event.data[data.start_settings]);
+        let startvalue = parseInt(event.data.state[data.start_settings]);
         if (isNaN(startvalue)) {
             startvalue = 1;
         }

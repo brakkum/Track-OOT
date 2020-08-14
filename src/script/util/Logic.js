@@ -11,7 +11,7 @@ const LOGIC_PROCESSOR = new LogicGraph(true);
 EventBus.register("state", event => {
     LOGIC_PROCESSOR.reset();
     let filter = FilterStorage.getAll();
-    LOGIC_PROCESSOR.setAll(event.data);
+    LOGIC_PROCESSOR.setAll(event.data.state);
     LOGIC_PROCESSOR.setAll(filter);
     let res = LOGIC_PROCESSOR.traverse("region.root");
     if (Object.keys(res).length > 0) {

@@ -199,6 +199,9 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
         cnt.innerHTML = "";
         let data = FileData.get(`world_lists/${this.ref}`);
         if (!!data) {
+            if (data.lists.mq == null) {
+                dType = "v";
+            }
             if (dType == "n") {
                 let data_v = data.lists.v;
                 let data_m = data.lists.mq;

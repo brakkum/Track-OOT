@@ -164,7 +164,7 @@ export default class MapEntrance extends EventBusSubsetMixin(HTMLElement) {
 
         /* event bus */
         this.registerGlobal("state", event => {
-            let value = event.data[this.ref];
+            let value = event.data.state[this.ref];
             if (typeof value == "undefined") {
                 value = "";
             }
