@@ -2,6 +2,26 @@
 
 ---
 
+### TODO BEFORE GRAPH LOGIC RELEASE
+
+- verify all logic of location availability (major)
+- completed(kokiri,woods,field,lake,water temple,deku)
+
+- verify all logic of location availability glitched logic (major)
+- completed()
+
+- test skips and reorganize skips by area
+
+- add missing options
+    - on new game options are written initially by the `StateStorage`
+    - on game load missing/changed options should be added by `StateConverters`
+
+- fix randomizer option defaults not being loaded initially (minor)
+
+- fix avail chest and missing chests showing incorrect values until updated (minor)
+
+---
+
 ### TODOS
 
 - add warning dialog to download update if needed

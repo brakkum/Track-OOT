@@ -6,7 +6,7 @@ const path = require("path");
 const SRC_PATH = path.resolve(__dirname, "./src");
 const DEV_PATH = path.resolve(__dirname, "./dev");
 const PRD_PATH = path.resolve(__dirname, "./prod");
-const EDT_PATH = path.resolve(__dirname, "./editor/utils");
+const EDT_PATH = path.resolve(__dirname, "./editor/content");
 
 const MODULE_PATHS = {
     emcJS: path.resolve(__dirname, "node_modules/emcjs"),

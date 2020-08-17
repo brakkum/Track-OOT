@@ -124,9 +124,9 @@ function stateChanged(event) {
     let bought;
     let names;
     if (!!event.data) {
-        data = event.data[this.ref];
-        bought = event.data[`${this.ref}.bought`];
-        names = event.data[`${this.ref}.names`];
+        data = event.data.state[this.ref];
+        bought = event.data.state[`${this.ref}.bought`];
+        names = event.data.state[`${this.ref}.names`];
     }
     /* shop items */
     if (typeof data == "undefined") {

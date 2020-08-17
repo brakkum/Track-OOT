@@ -2,12 +2,14 @@ import Converter0 from "./StateConverter0.js";
 import Converter1 from "./StateConverter1.js";
 import Converter2 from "./StateConverter2.js";
 import Converter3 from "./StateConverter3.js";
+import Converter4 from "./StateConverter4.js";
 
 const CONVERTER_FN = [
     Converter0,
     Converter1,
     Converter2,
-    Converter3
+    Converter3,
+    Converter4
 ];
 const TARGET_VERSION = CONVERTER_FN.length;
 
@@ -30,9 +32,11 @@ class StateConverter {
         return {
             name: "",
             data: {},
+            extra: {},
+            notes: "",
             autosave: false,
             timestamp: new Date(),
-            version: TARGET_VERSION
+            version: 4 //TARGET_VERSION // keep this until release
         };
     }
 

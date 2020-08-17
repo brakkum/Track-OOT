@@ -65,7 +65,7 @@ const REWARDS = [
 const TAKEN_REWARDS = new Map();
 
 function stateChanged(event) {
-    let value = event.data[`dungeonRewards.${this.ref}`];
+    let value = event.data.state[`dungeonRewards.${this.ref}`];
     if (value != null) {
         this.value = value;
     } else {

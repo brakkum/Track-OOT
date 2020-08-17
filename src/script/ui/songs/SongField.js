@@ -62,7 +62,7 @@ function editSong(event) {
 }
 
 function stateChanged(event) {
-    let value = event.data[this.ref];
+    let value = event.data.state[this.ref];
     if (typeof value == "undefined") {
         value = FileData.get("songs")[this.ref].notes;
     }

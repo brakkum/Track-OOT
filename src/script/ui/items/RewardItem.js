@@ -89,14 +89,14 @@ function getAlign(value) {
 }
     
 function stateChanged(event) {
-    let value = parseInt(event.data[this.ref]);
+    let value = parseInt(event.data.state[this.ref]);
     if (isNaN(value)) {
         value = 0;
     }
     this.value = value;
     /* dungeon */
     for (let dungeon of ALL_DUNGEONS) {
-        let rewardValue = event.data[`dungeonRewards.${dungeon}`];
+        let rewardValue = event.data.state[`dungeonRewards.${dungeon}`];
         if (rewardValue == this.ref) {
             this.dungeon = dungeon;
             return;

@@ -172,7 +172,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             }
         });
         this.registerGlobal("state", event => {
-            let value = !!event.data[this.ref];
+            let value = !!event.data.state[this.ref];
             let textEl = this.shadowRoot.getElementById("text");
             textEl.dataset.checked = value;
             this.toggleCheckValue(value);

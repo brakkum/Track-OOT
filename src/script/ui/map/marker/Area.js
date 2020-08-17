@@ -132,7 +132,7 @@ export default class MapArea extends EventBusSubsetMixin(HTMLElement) {
         });
 
         /* event bus */
-        this.registerGlobal(["state", "state_change", "settings", "randomizer_options", "logic", "filter"], event => {
+        this.registerGlobal(["state", "statechange", "settings", "randomizer_options", "logic", "filter"], event => {
             this.update()
         });
         //this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));

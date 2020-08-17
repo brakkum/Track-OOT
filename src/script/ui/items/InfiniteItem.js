@@ -62,7 +62,7 @@ function getAlign(value) {
 }
     
 function stateChanged(event) {
-    let value = parseInt(event.data[this.ref]);
+    let value = parseInt(event.data.state[this.ref]);
     if (isNaN(value)) {
         value = 0;
     }

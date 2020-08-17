@@ -1,12 +1,12 @@
 import "/editors/EditorChoice.js";
 import PageSwitcher from "/script/util/PageSwitcher.js";
 
-let editorChoice = document.getElementById("editor-choice");
+import createLogicEditor from "./editors/LogicEditor.js";
 
-editorChoice.addEventListener("choice", function(event) {
-    PageSwitcher.switch(event.app);
-});
-PageSwitcher.register("editor_choice", [{
+let editorChoice = document.getElementById("editor-choice");
+let nav = document.getElementById("navbar");
+
+const MAIN_NAV = [{
     "content": "EXIT",
     "handler": () => {
         PageSwitcher.switch("main");
@@ -14,7 +14,9 @@ PageSwitcher.register("editor_choice", [{
 },{
     "content": " TOGGLE FULLSCREEN",
     "handler": toggleFullscreen
-}]);
+}];
+
+PageSwitcher.register("editor_choice", MAIN_NAV);
 
 function toggleFullscreen() {
     if (document.fullscreenEnabled) {
@@ -27,3 +29,27 @@ function toggleFullscreen() {
         }
     }
 }
+
+editorChoice.addEventListener("choice", function(event) {
+    if (event.app == "") {
+        nav.loadNavigation(MAIN_NAV);
+    } else {
+        if (event.nav != null) {
+            nav.loadNavigation(event.nav.concat({
+                "content": " TOGGLE FULLSCREEN",
+                "handler": toggleFullscreen
+            }));
+        } else {
+            nav.loadNavigation([{
+                "content": " TOGGLE FULLSCREEN",
+                "handler": toggleFullscreen
+            }]);
+        }
+    }
+});
+
+// add editors
+!async function() {
+    await createLogicEditor(editorChoice, false);
+    await createLogicEditor(editorChoice, true);
+}();

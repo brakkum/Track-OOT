@@ -75,9 +75,12 @@ class StateStorage {
             state = {data: state};
         }
         state = StateConverter.convert(state);
-        state.data["option.entrance_shuffle_dungeons"] = false; // XXX remove later
         updateTitle();
-        EventBus.trigger("state", JSON.parse(JSON.stringify(state.data)));
+        EventBus.trigger("state", JSON.parse(JSON.stringify({
+            notes: state.notes,
+            state: state.data,
+            extra: state.extra
+        })));
     }
 
     async save(name = state.name) {
@@ -101,7 +104,6 @@ class StateStorage {
                 state = {data: state};
             }
             state = StateConverter.convert(state);
-            state.data["option.entrance_shuffle_dungeons"] = false; // XXX remove later
             LocalStorage.set(PERSISTANCE_NAME, state);
             if (autosaveTimeout != null) {
                 clearTimeout(autosaveTimeout);
@@ -110,7 +112,11 @@ class StateStorage {
             LocalStorage.set(STATE_DIRTY, false);
             updateTitle();
             actionPath.clear();
-            EventBus.trigger("state", JSON.parse(JSON.stringify(state.data)));
+            EventBus.trigger("state", JSON.parse(JSON.stringify({
+                notes: state.notes,
+                state: state.data,
+                extra: state.extra
+            })));
         }
     }
 
@@ -129,12 +135,53 @@ class StateStorage {
         }
     }
 
+    reset(def) {
+        state = StateConverter.createEmptyState();
+
+        if (typeof def == "object") {
+            def = JSON.parse(JSON.stringify(def));
+            for (let i in def) {
+                state.data[i] = def[i];
+            }
+        }
+
+        LocalStorage.set(PERSISTANCE_NAME, state);
+        LocalStorage.set(STATE_DIRTY, false);
+        document.title = "Track-OOT - new state";
+        actionPath.clear();
+        EventBus.trigger("state", JSON.parse(JSON.stringify({
+            notes: state.notes,
+            state: state.data,
+            extra: state.extra
+        })));
+    }
+
     getName() {
         return state.name;
     }
 
     isDirty() {
         return LocalStorage.get(STATE_DIRTY);
+    }
+
+    undo() {
+        let act = actionPath.undo();
+        if (!!act) {
+            for (let i in act) {
+                state.data[i] = act[i].oldValue;
+            }
+            EventBus.trigger("statedata", JSON.parse(JSON.stringify(state.data)));
+        }
+    }
+
+    redo() {
+        let act = actionPath.redo();
+        if (!!act) {
+            for (let i in act) {
+                state.data[i] = act[i].newValue;
+            }
+            EventBus.trigger("statedata", JSON.parse(JSON.stringify(state.data)));
+        }
     }
 
     write(key, value) {
@@ -162,7 +209,7 @@ class StateStorage {
             LocalStorage.set(PERSISTANCE_NAME, state);
             LocalStorage.set(STATE_DIRTY, true);
             actionPath.put(changed);
-            EventBus.trigger("state_change", changed);
+            EventBus.trigger("statechange", changed);
             updateTitle();
         }
     }
@@ -174,45 +221,66 @@ class StateStorage {
         return def;
     }
 
-    reset(def) {
-        state = StateConverter.createEmptyState();
-
-        if (typeof def == "object") {
-            def = JSON.parse(JSON.stringify(def));
-            for (let i in def) {
-                state.data[i] = def[i];
-            }
-        }
-
-        LocalStorage.set(PERSISTANCE_NAME, state);
-        LocalStorage.set(STATE_DIRTY, false);
-        document.title = "Track-OOT - new state";
-        actionPath.clear();
-        EventBus.trigger("state", JSON.parse(JSON.stringify(state.data)));
-    }
-
-    undo() {
-        let act = actionPath.undo();
-        if (!!act) {
-            for (let i in act) {
-                state.data[i] = act[i].oldValue;
-            }
-            EventBus.trigger("state", JSON.parse(JSON.stringify(state.data)));
-        }
-    }
-
-    redo() {
-        let act = actionPath.redo();
-        if (!!act) {
-            for (let i in act) {
-                state.data[i] = act[i].newValue;
-            }
-            EventBus.trigger("state", JSON.parse(JSON.stringify(state.data)));
-        }
-    }
-
     getAll() {
         return JSON.parse(JSON.stringify(state.data));
+    }
+
+    writeNotes(value) {
+        state.notes = value.toString();
+        LocalStorage.set(PERSISTANCE_NAME, state);
+        LocalStorage.set(STATE_DIRTY, true);
+        updateTitle();
+    }
+
+    readNotes() {
+        return state.notes || "";
+    }
+
+    writeExtra(category, key, value) {
+        let changed = {};
+        if (!state.extra.hasOwnProperty(category)) {
+            state.extra[category] = {};
+        }
+        if (typeof key == "object") {
+            for (let i in key) {
+                if (!state.extra[category].hasOwnProperty(i) || state.extra[category][i] != key[i]) {
+                    changed[i] = {
+                        oldValue: state.extra[category][i],
+                        newValue: key[i]
+                    };
+                    state.extra[category][i] = key[i];
+                }
+            }
+        } else {
+            if (!state.extra[category].hasOwnProperty(key) || state.extra[category][key] != value) {
+                changed[key] = {
+                    oldValue: state.extra[category][key],
+                    newValue: value
+                };
+                state.extra[category][key] = value;
+            }
+        }
+        if (!!Object.keys(changed).length) {
+            LocalStorage.set(PERSISTANCE_NAME, state);
+            LocalStorage.set(STATE_DIRTY, true);
+            EventBus.trigger(`statechange_${category}`, changed);
+            updateTitle();
+        }
+    }
+
+    readExtra(category, key, def) {
+        if (state.extra.hasOwnProperty(category) && state.extra[category].hasOwnProperty(key)) {
+            return state.extra[category][key];
+        }
+        return def;
+    }
+
+    getAllExtra(category) {
+		if (state.hasOwnProperty(category)) {
+            return JSON.parse(JSON.stringify(state.extra[category]));
+		} else {
+			return null;
+		}
     }
 
 }

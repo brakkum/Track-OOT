@@ -30,6 +30,9 @@ PageSwitcher.register("main", [{
     "content": "DISCORD",
     "handler": openDiscortJoin
 },{
+    "content": "PATREON",
+    "handler": openPatreon
+},{
     "content": "EDITORS",
     "handler": showEditors
 },{
@@ -112,6 +115,10 @@ async function states_Manage() {
 
 function openDiscortJoin() {
     window.open("https://discord.gg/wgFVtuv", "_blank");
+}
+
+function openPatreon() {
+    window.open("https://www.patreon.com/zidargs", "_blank");
 }
 
 function openSettingsWindow() {
