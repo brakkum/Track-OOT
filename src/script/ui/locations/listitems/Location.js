@@ -177,8 +177,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             textEl.dataset.checked = value;
             this.toggleCheckValue(value);
 
-            const path = this.ref.split('.');
-            this.item = StateStorage.readExtra("item_location", path[2], false);
+            this.item = StateStorage.readExtra("item_location", this.ref, false);
         });
         this.registerGlobal("logic", event => {
             if (LOGIC_ACTIVE.get(this) && event.data.hasOwnProperty(this.access)) {
@@ -241,8 +240,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
                     textEl.innerHTML = Language.translate(this.ref);
                     textEl.dataset.checked = StateStorage.read(this.ref, false);
 
-                    const path = newValue.split('.');
-                    this.item = StateStorage.readExtra("item_location", path[2], false);
+                    this.item = StateStorage.readExtra("item_location", newValue, false);
                 }
             break;
             case 'access':
@@ -300,9 +298,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
 
     associateItem(item) {
         this.item = item;
-    
-        const path = this.ref.split(".");
-        StateStorage.writeExtra("item_location", path[2], item);
+        StateStorage.writeExtra("item_location", this.ref, item);
     }
 
     toggleCheckValue(value) {
