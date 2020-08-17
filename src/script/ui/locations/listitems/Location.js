@@ -285,7 +285,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.getElementById('item_picker_content').innerHTML = "";
 
         let el = document.createElement("ootrt-itempicker");
-        el.grid = 'items'
+        el.grid = 'pickable'
         el.addEventListener("pick", event => {
             const item = event.detail;
             this.associateItem(item);
