@@ -1,7 +1,7 @@
 export default function(state) {
     let res = {
         data: {},
-        extra: {},
+        extra: state.extra || {},
         notes: state.data.notes || "",
         autosave: state.autosave,
         timestamp: state.timestamp,

@@ -80,8 +80,8 @@ const TPL = new Template(`
         }
     </style>
     <emc-contextmenu id="menu">
-        <div id="menu-check" class="item">Check<span class="menu-tip">(leftclick)</span></div>
-        <div id="menu-uncheck" class="item">Uncheck<span class="menu-tip">(ctrl + rightclick)</span></div>
+        <div id="menu-check" class="item">Check</div>
+        <div id="menu-uncheck" class="item">Uncheck</div>
         <div class="splitter"></div>
         <div id="menu-associate" class="item">Set Item</div>
         <div id="menu-disassociate" class="item">Clear Item</div>
@@ -163,6 +163,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.getElementById("menu-logic-image").addEventListener("click", event => {
             LogicViewer.printSVG(this.access);
         });
+
         /* event bus */
         this.registerGlobal(TYPE.get(this), event => {
             if (this.ref === event.data.name && this.checked !== event.data.value) {
@@ -176,9 +177,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             let textEl = this.shadowRoot.getElementById("text");
             textEl.dataset.checked = value;
             this.toggleCheckValue(value);
-
-            const path = this.ref.split('.');
-            this.item = StateStorage.readExtra("item_location", path[2], false);
+            this.item = StateStorage.readExtra("item_location", this.ref, false);
         });
         this.registerGlobal("logic", event => {
             if (LOGIC_ACTIVE.get(this) && event.data.hasOwnProperty(this.access)) {
@@ -188,6 +187,11 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
                 } else {
                     textEl.dataset.state = "unavailable";
                 }
+            }
+        });
+        this.registerGlobal("statechange_item_location", event => {
+            if (event.data.hasOwnProperty(this.ref)) {
+                this.item = event.data[this.ref].newValue;
             }
         });
     }
@@ -202,6 +206,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         } else {
             textEl.dataset.state = "unavailable";
         }
+        this.item = StateStorage.readExtra("item_location", this.ref, false);
     }
 
     get ref() {
@@ -238,11 +243,9 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    textEl.innerHTML = Language.translate(this.ref);
-                    textEl.dataset.checked = StateStorage.read(this.ref, false);
-
-                    const path = newValue.split('.');
-                    this.item = StateStorage.readExtra("item_location", path[2], false);
+                    textEl.innerHTML = Language.translate(newValue);
+                    textEl.dataset.checked = StateStorage.read(newValue, false);
+                    this.item = StateStorage.readExtra("item_location", newValue, false);
                 }
             break;
             case 'access':
@@ -300,9 +303,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
 
     associateItem(item) {
         this.item = item;
-    
-        const path = this.ref.split(".");
-        StateStorage.writeExtra("item_location", path[2], item);
+        StateStorage.writeExtra("item_location", this.ref, item);
     }
 
     toggleCheckValue(value) {

@@ -1,9 +1,8 @@
 import Template from "/emcJS/util/Template.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
-import Logger from "/emcJS/util/Logger.js";
 import "/emcJS/ui/Tooltip.js";
 import "/emcJS/ui/Icon.js";
+import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import Logic from "/script/util/Logic.js";
 import Language from "/script/util/Language.js";
@@ -72,6 +71,9 @@ const TPL = new Template(`
             user-select: none;
             white-space: nowrap;
         }
+        #item {
+            margin-left: 5px;
+        }
         #badge {
             display: inline-flex;
             align-items: center;
@@ -91,6 +93,7 @@ const TPL = new Template(`
     <emc-tooltip position="top" id="tooltip">
         <div class="textarea">
             <div id="text"></div>
+            <div id="item"></div>
             <div id="badge">
                 <emc-icon id="badge-type" src="images/icons/location.svg"></emc-icon>
                 <emc-icon id="badge-time" src="images/icons/time_always.svg"></emc-icon>
@@ -100,8 +103,29 @@ const TPL = new Template(`
     </emc-tooltip>
 `);
 
+const TPL_MNU_CTX = new Template(`
+    <emc-contextmenu id="menu">
+        <div id="menu-check" class="item">Check</div>
+        <div id="menu-uncheck" class="item">Uncheck</div>
+        <div class="splitter"></div>
+        <div id="menu-associate" class="item">Set Item</div>
+        <div id="menu-disassociate" class="item">Clear Item</div>
+        <div class="splitter"></div>
+        <div id="menu-logic" class="item">Show Logic</div>
+        <div id="menu-logic-image" class="item">Create Logic Image</div>
+    </emc-contextmenu>
+`);
+
+const TPL_MNU_ITM = new Template(`
+    <emc-contextmenu id="menu">
+        <ootrt-itempicker id="item-picker" grid="pickable"></ootrt-itempicker>
+    </emc-contextmenu>
+`);
+
 const REG = new Map();
 const TYPE = new WeakMap();
+const MNU_CTX = new WeakMap();
+const MNU_ITM = new WeakMap();
 
 export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
 
@@ -117,6 +141,54 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
             type = "location";
         }
         TYPE.set(this, type);
+
+        /* context menu */
+        let mnu_ctx = document.createElement("div");
+        mnu_ctx.attachShadow({mode: 'open'});
+        mnu_ctx.shadowRoot.append(TPL_MNU_CTX.generate());
+        let mnu_ctx_el = mnu_ctx.shadowRoot.getElementById("menu");
+        MNU_CTX.set(this, mnu_ctx);
+
+        let mnu_itm = document.createElement("div");
+        mnu_itm.attachShadow({mode: 'open'});
+        mnu_itm.shadowRoot.append(TPL_MNU_ITM.generate());
+        let mnu_itm_el = mnu_itm.shadowRoot.getElementById("menu");
+        MNU_ITM.set(this, mnu_itm);
+
+        mnu_itm.shadowRoot.getElementById("item-picker").addEventListener("pick", event => {
+            const item = event.detail;
+            this.item = item;
+            StateStorage.writeExtra("item_location", this.ref, item);
+            event.preventDefault();
+            return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-check").addEventListener("click", event => {
+            this.check();
+            event.preventDefault();
+            return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-uncheck").addEventListener("click", event => {
+            this.uncheck();
+            event.preventDefault();
+            return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-associate").addEventListener("click", event => {
+            mnu_itm_el.show(mnu_ctx_el.left, mnu_ctx_el.top);
+            event.preventDefault();
+            return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-disassociate").addEventListener("click", event => {
+            this.associateItem(false);
+            event.preventDefault();
+            return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-logic").addEventListener("click", event => {
+            let title = Language.translate(this.ref);
+            LogicViewer.show(this.access, title);
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-logic-image").addEventListener("click", event => {
+            LogicViewer.printSVG(this.access);
+        });
         
         /* mouse events */
         this.addEventListener("click", event => {
@@ -125,13 +197,10 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         this.addEventListener("contextmenu", event => {
-            //this.showContextMenu(event.clientX, event.clientY);
+            mnu_ctx_el.show(event.clientX, event.clientY)
             event.preventDefault();
             return false;
         });
-
-        /* context menu */
-        // TODO
 
         /* event bus */
         this.registerGlobal(type, event => {
@@ -145,6 +214,7 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
                 value = false;
             }
             this.checked = value;
+            this.item = StateStorage.readExtra("item_location", this.ref, false);
         });
         this.registerGlobal("logic", event => {
             if (event.data.hasOwnProperty(this.access)) {
@@ -156,13 +226,37 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
                 }
             }
         });
+        this.registerGlobal("logic", event => {
+            if (event.data.hasOwnProperty(this.access)) {
+                let el = this.shadowRoot.getElementById("marker");
+                if (!!this.access && !!event.data[this.access]) {
+                    el.dataset.state = "available";
+                } else {
+                    el.dataset.state = "unavailable";
+                }
+            }
+        });
+        this.registerGlobal("statechange_item_location", event => {
+            if (event.data.hasOwnProperty(this.ref)) {
+                this.item = event.data[this.ref].newValue;
+            }
+        });
     }
 
     connectedCallback() {
         super.connectedCallback();
         let value = StateStorage.read(this.ref, false);
         this.checked = value;
+        this.item = StateStorage.readExtra("item_location", this.ref, false);
         this.update();
+        this.parentElement.parentElement.append(MNU_CTX.get(this));
+        this.parentElement.parentElement.append(MNU_ITM.get(this));
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        MNU_CTX.get(this).remove();
+        MNU_ITM.get(this).remove();
     }
 
     async update() {
@@ -221,17 +315,27 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
         this.setAttribute('tooltip', val);
     }
 
+    get item() {
+        return this.getAttribute('item');
+    }
+
+    set item(val) {
+        this.setAttribute('item', val);
+    }
+
     static get observedAttributes() {
-        return ['ref', 'checked', 'access', 'left', 'top', 'tooltip'];
+        return ['ref', 'checked', 'access', 'left', 'top', 'tooltip', 'item'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
+        let textEl = this.shadowRoot.getElementById("text");
+        let itemEl = this.shadowRoot.getElementById("item");
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    let txt = this.shadowRoot.getElementById("text");
-                    txt.innerHTML = Language.translate(this.ref);
-                    this.checked = StateStorage.read(this.ref, false);
+                    textEl.innerHTML = Language.translate(newValue);
+                    this.checked = StateStorage.read(newValue, false);
+                    this.item = StateStorage.readExtra("item_location", newValue, false);
                 }
             break;
             case 'checked':
@@ -251,6 +355,18 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
                 if (oldValue != newValue) {
                     let tooltip = this.shadowRoot.getElementById("tooltip");
                     tooltip.position = newValue;
+                }
+            break;
+            case 'item':
+                if (oldValue != newValue) {
+                    itemEl.innerHTML = "";
+
+                    if (!newValue || newValue === "false") { return; }
+                    let el_icon = document.createElement("img");
+                    let itemsData = FileData.get("items")[newValue];
+                    const bgImage = Array.isArray(itemsData.images) ? itemsData.images[0] : itemsData.images;
+                    el_icon.src = bgImage;
+                    itemEl.append(el_icon);
                 }
             break;
         }

@@ -27,8 +27,9 @@ Application:    Track-OOT
 - make locations be toggled instead of set
     - click / touch will be used for toggle checked / unchecked
     - right click / long press is now for contextmenu only
-        - `currently only for locations in list`
+        - context menu added for map locations
 - add presets to randomizer options
+- add item association to location
 
 ### CREDITS
 

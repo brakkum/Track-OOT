@@ -166,21 +166,29 @@ class StateStorage {
 
     undo() {
         let act = actionPath.undo();
-        if (!!act) {
+        if (act != null) {
             for (let i in act) {
                 state.data[i] = act[i].oldValue;
             }
-            EventBus.trigger("statedata", JSON.parse(JSON.stringify(state.data)));
+            EventBus.trigger("state", JSON.parse(JSON.stringify({
+                notes: state.notes,
+                state: state.data,
+                extra: state.extra
+            })));
         }
     }
 
     redo() {
         let act = actionPath.redo();
-        if (!!act) {
+        if (act != null) {
             for (let i in act) {
                 state.data[i] = act[i].newValue;
             }
-            EventBus.trigger("statedata", JSON.parse(JSON.stringify(state.data)));
+            EventBus.trigger("state", JSON.parse(JSON.stringify({
+                notes: state.notes,
+                state: state.data,
+                extra: state.extra
+            })));
         }
     }
 
@@ -209,7 +217,7 @@ class StateStorage {
             LocalStorage.set(PERSISTANCE_NAME, state);
             LocalStorage.set(STATE_DIRTY, true);
             actionPath.put(changed);
-            EventBus.trigger("statechange", changed);
+            EventBus.trigger("statechange", JSON.parse(JSON.stringify(changed)));
             updateTitle();
         }
     }

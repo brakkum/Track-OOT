@@ -6,6 +6,7 @@ import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import FileData from "/emcJS/storage/FileData.js";
 import FileLoader from "/emcJS/util/FileLoader.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
+import HotkeyHandler from "/emcJS/util/HotkeyHandler.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import "/script/storage/TrackerStorage.js";
 import Language from "/script/util/Language.js";
@@ -153,21 +154,25 @@ async function init() {
         spl.className = "inactive";
     }
 
+    // hotkeys
+    function openDetached() {
+        window.open('detached.html#items', "TrackOOT", "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,titlebar=0", false);
+    }
+    HotkeyHandler.setAction("detached_window", openDetached, {
+        ctrlKey: true,
+        altKey: true,
+        key: "i"
+    });
+    HotkeyHandler.setAction("undo", StateStorage.undo, {
+        ctrlKey: true,
+        key: "z"
+    });
+    HotkeyHandler.setAction("redo", StateStorage.redo, {
+        ctrlKey: true,
+        key: "y"
+    });
     window.addEventListener('keydown', function(event) {
-        if (event.ctrlKey == true && event.altKey == true && event.key == "i") {
-            window.open('detached.html#items', "TrackOOT", "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,titlebar=0", false);
-            event.preventDefault();
-            event.stopPropagation();
-            return false;
-        }
-        if (event.ctrlKey == true && event.key == "z") {
-            StateStorage.undo();
-            event.preventDefault();
-            event.stopPropagation();
-            return false;
-        }
-        if (event.ctrlKey == true && event.key == "y") {
-            StateStorage.redo();
+        if (HotkeyHandler.callHotkey(event.key, event.ctrlKey, event.altKey, event.shiftKey)) {
             event.preventDefault();
             event.stopPropagation();
             return false;
