@@ -2,10 +2,12 @@ import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/ContextMenu.js";
 import "/emcJS/ui/Icon.js";
+import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import LogicViewer from "/script/content/logic/LogicViewer.js";
 import Logic from "/script/util/Logic.js";
 import Language from "/script/util/Language.js";
+import "/script/ui/items/ItemPicker.js";
 
 const TPL = new Template(`
     <style>
@@ -53,6 +55,9 @@ const TPL = new Template(`
         #text[data-checked="true"] {
             color: var(--location-status-opened-color, #000000);
         }
+        #item {
+            margin-left: 5px;
+        }
         #badge {
             display: inline-flex;
             align-items: center;
@@ -78,11 +83,18 @@ const TPL = new Template(`
         <div id="menu-check" class="item">Check<span class="menu-tip">(leftclick)</span></div>
         <div id="menu-uncheck" class="item">Uncheck<span class="menu-tip">(ctrl + rightclick)</span></div>
         <div class="splitter"></div>
+        <div id="menu-associate" class="item">Set Item</div>
+        <div id="menu-disassociate" class="item">Clear Item</div>
+        <div class="splitter"></div>
         <div id="menu-logic" class="item">Show Logic</div>
         <div id="menu-logic-image" class="item">Create Logic Image</div>
     </emc-contextmenu>
+    <emc-contextmenu id="item_picker">
+        <div id="item_picker_content"></div>
+    </emc-contextmenu>
     <div class="textarea">
         <div id="text"></div>
+        <div id="item"></div>
         <div id="badge">
             <emc-icon id="badge-type" src="images/icons/location.svg"></emc-icon>
             <emc-icon id="badge-time" src="images/icons/time_always.svg"></emc-icon>
@@ -134,6 +146,16 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             event.preventDefault();
             return false;
         });
+        this.shadowRoot.getElementById("menu-associate").addEventListener("click", event => {
+            this.showItemPicker(event.clientX, event.clientY);
+            event.preventDefault();
+            return false;
+        });
+        this.shadowRoot.getElementById("menu-disassociate").addEventListener("click", event => {
+            this.associateItem(false);
+            event.preventDefault();
+            return false;
+        });
         this.shadowRoot.getElementById("menu-logic").addEventListener("click", event => {
             let title = Language.translate(this.ref);
             LogicViewer.show(this.access, title);
@@ -154,6 +176,9 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             let textEl = this.shadowRoot.getElementById("text");
             textEl.dataset.checked = value;
             this.toggleCheckValue(value);
+
+            const path = this.ref.split('.');
+            this.item = StateStorage.readExtra("item_location", path[2], false);
         });
         this.registerGlobal("logic", event => {
             if (LOGIC_ACTIVE.get(this) && event.data.hasOwnProperty(this.access)) {
@@ -195,17 +220,29 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         this.setAttribute('access', val);
     }
 
+    get item() {
+        return this.getAttribute('item');
+    }
+
+    set item(val) {
+        this.setAttribute('item', val);
+    }
+
     static get observedAttributes() {
-        return ['ref', 'access'];
+        return ['ref', 'access', 'item'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
         let textEl = this.shadowRoot.getElementById("text");
+        let itemEl = this.shadowRoot.getElementById("item");
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
                     textEl.innerHTML = Language.translate(this.ref);
                     textEl.dataset.checked = StateStorage.read(this.ref, false);
+
+                    const path = newValue.split('.');
+                    this.item = StateStorage.readExtra("item_location", path[2], false);
                 }
             break;
             case 'access':
@@ -215,6 +252,18 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
                     } else {
                         textEl.dataset.state = "unavailable";
                     }
+                }
+            break;
+            case 'item':
+                if (oldValue != newValue) {
+                    itemEl.innerHTML = "";
+
+                    if (!newValue || newValue === "false") { return; }
+                    let el_icon = document.createElement("img");
+                    let itemsData = FileData.get("items")[newValue];
+                    const bgImage = Array.isArray(itemsData.images) ? itemsData.images[0] : itemsData.images;
+                    el_icon.src = bgImage;
+                    itemEl.append(el_icon);
                 }
             break;
         }
@@ -230,6 +279,30 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
     
     uncheck() {
         this.toggleCheckValue(false);
+    }
+
+    showItemPicker(x, y) {
+        this.shadowRoot.getElementById('item_picker_content').innerHTML = "";
+
+        let el = document.createElement("ootrt-itempicker");
+        el.grid = 'pickable'
+        el.addEventListener("pick", event => {
+            const item = event.detail;
+            this.associateItem(item);
+            event.preventDefault();
+            return false;
+        });
+
+        this.shadowRoot.getElementById('item_picker_content').append(el);
+    
+        this.shadowRoot.getElementById("item_picker").show(x, y);
+    }
+
+    associateItem(item) {
+        this.item = item;
+    
+        const path = this.ref.split(".");
+        StateStorage.writeExtra("item_location", path[2], item);
     }
 
     toggleCheckValue(value) {
