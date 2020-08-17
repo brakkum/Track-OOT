@@ -1,15 +1,18 @@
 {
     "Vanilla": {
         "options": {
+            "option.logic_rules": "logic_rules_glitchless",
+            "option.starting_age": "child",
+            "option.light_arrow_cutscene": "light_arrow_cutscene_vanilla",
             "option.consider_buyable": false,
             "option.bombchu_logic": false,
-            "option.keysanity_small": "keysanity_small_ignore",
-            "option.keysanity_boss": "keysanity_boss_ignore",
+            "option.keysanity_small": false,
+            "option.entrance_shuffle": "entrance_shuffle_off",
             "option.scrubsanity": false,
             "option.cowsanity": false,
             "option.beansanity": false,
             "option.skullsanity": false,
-            "option.doors_open_forest": false,
+            "option.doors_open_forest": "doors_open_forest_closed",
             "option.doors_open_mountain": false,
             "option.doors_open_temple": false,
             "option.doors_open_zora": "doors_open_zora_closed",
@@ -28,21 +31,30 @@
         },
         "skips": {
             "skip.lens_required": "lens_required_default",
-            "tricks": [],
-            "known_sequence_breaks": []
+            "overworld": [],
+            "child_dungeons": [],
+            "mini_adult_dungeons": [],
+            "area.temple_forest": [],
+            "area.temple_fire": [],
+            "area.temple_water": [],
+            "area.temple_shadow": [],
+            "area.temple_spirit": []
         }
     },
     "S3 Standard": {
         "options": {
+            "option.logic_rules": "logic_rules_glitchless",
+            "option.starting_age": "child",
+            "option.light_arrow_cutscene": "light_arrow_cutscene_vanilla",
             "option.consider_buyable": false,
             "option.bombchu_logic": false,
-            "option.keysanity_small": "keysanity_small_ignore",
-            "option.keysanity_boss": "keysanity_boss_ignore",
+            "option.keysanity_small": false,
+            "option.entrance_shuffle": "entrance_shuffle_off",
             "option.scrubsanity": false,
             "option.cowsanity": false,
             "option.beansanity": false,
             "option.skullsanity": false,
-            "option.doors_open_forest": true,
+            "option.doors_open_forest": "doors_open_forest_open",
             "option.doors_open_mountain": false,
             "option.doors_open_temple": "true",
             "option.doors_open_zora": "doors_open_zora_closed",
@@ -54,18 +66,26 @@
         },
         "skips": {
             "skip.lens_required": "lens_required_wasteland",
-            "tricks": [
+            "overworld": [
                 "skip.fewer_tunic",
                 "skip.hidden_grotto_no_agony",
-                "skip.child_deadhand",
-                "skip.man_on_roof",
-                "skip.dodongo_spike",
                 "skip.hammer_through_wall",
+                "skip.man_on_roof",
                 "skip.windmill_hp",
-                "skip.crater_bean_hp",
+                "skip.crater_bean_hp"
+            ],
+            "child_dungeons": [
+                "skip.child_deadhand",
+                "skip.dodongo_spike"
+            ],
+            "mini_adult_dungeons": [],
+            "area.temple_forest": [
                 "skip.fot_east_vines_hook"
             ],
-            "known_sequence_breaks": []
+            "area.temple_fire": [],
+            "area.temple_water": [],
+            "area.temple_shadow": [],
+            "area.temple_spirit": []
         }
     }
 }
