@@ -22,6 +22,18 @@
 
 ---
 
+- fix multiplayer sync
+    - logic/access not updated for slave
+    - shop items and cost not synced
+    - item association not synced correctly
+    - dungeon data not synced
+
+- item association missing
+    - refill item
+    - rupees
+
+---
+
 ### TODOS
 
 - add warning dialog to download update if needed
