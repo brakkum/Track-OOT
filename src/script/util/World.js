@@ -73,7 +73,7 @@ class WorldEntry {
 
         /* EVENTS */
         EventBus.register(["state", "randomizer_options"], event => {
-            let data = new Map(Object.entries(event.data));
+            let data = new Map(Object.entries(event.data.state));
             if (typeof visible_logic == "function") {
                 VISIBLE.set(this, !!visible_logic(valueGetter.bind(data)));
             }

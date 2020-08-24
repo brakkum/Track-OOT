@@ -60,21 +60,17 @@ const TPL = new Template(`
 
 function editShop(event) {
     let builder = document.createElement("ootrt-shopbuilder");
-    builder.value = StateStorage.read(this.ref, FileData.get("shops")[this.ref]);
+    builder.value = StateStorage.readExtra("shops_items", this.ref, FileData.get("shops")[this.ref]);
     let d = new Dialog({title: Language.translate(this.ref), submit: true, cancel: true});
     d.addEventListener("submit", function(result) {
         if (!!result) {
             let res = builder.value;
-            StateStorage.write(this.ref, res);
+            StateStorage.writeExtra("shops_items", this.ref, res);
             for (let i = 0; i < 8; ++i) {
                 let el = this.shadowRoot.getElementById(`slot${i}`);
                 el.ref = res[i].item;
                 el.price = res[i].price;
             }
-            this.triggerGlobal("shop-items-update", {
-                name: this.ref,
-                value: res
-            });
         }
     }.bind(this));
     d.append(builder);
@@ -84,13 +80,9 @@ function editShop(event) {
 function checkSlot(event) {
     if ((!event.target.checked || event.target.checked == "false") && !FileData.get("shop_items")[event.target.ref].refill) {
         event.target.checked = true;
-        let ch = StateStorage.read(`${this.ref}.bought`, [0,0,0,0,0,0,0,0]);
+        let ch = StateStorage.readExtra("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
         ch[parseInt(event.target.id.slice(-1))] = 1;
-        StateStorage.write(`${this.ref}.bought`, ch);
-        this.triggerGlobal("shop_bought", {
-            name: this.ref,
-            value: ch
-        });
+        StateStorage.writeExtra("shops_bought", this.ref, ch);
     }
     event.preventDefault();
     return false;
@@ -99,22 +91,18 @@ function checkSlot(event) {
 function uncheckSlot(event) {
     if (!!event.target.checked && event.target.checked == "true") {
         event.target.checked = false;
-        let ch = StateStorage.read(`${this.ref}.bought`, [0,0,0,0,0,0,0,0]);
+        let ch = StateStorage.readExtra("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
         ch[parseInt(event.target.id.slice(-1))] = 0;
-        StateStorage.write(`${this.ref}.bought`, ch);
-        this.triggerGlobal("shop_bought", {
-            name: this.ref,
-            value: ch
-        });
+        StateStorage.writeExtra("shops_bought", this.ref, ch);
     }
     event.preventDefault();
     return false;
 }
 
 function renameSlot(event) {
-    let names = StateStorage.read(`${this.ref}.names`, ["","","","","","","",""]);
+    let names = StateStorage.readExtra("shops_names", this.ref, ["","","","","","","",""]);
     names[parseInt(event.target.id.slice(-1))] = event.name;
-    StateStorage.write(`${this.ref}.names`, names);
+    StateStorage.writeExtra("shops_names", this.ref, names);
     event.preventDefault();
     return false;
 }
@@ -123,21 +111,27 @@ function stateChanged(event) {
     let data;
     let bought;
     let names;
-    if (!!event.data) {
-        data = event.data.state[this.ref];
-        bought = event.data.state[`${this.ref}.bought`];
-        names = event.data.state[`${this.ref}.names`];
+    if (event.data != null && event.data.extra != null) {
+        if (event.data.extra.shops_items != null) {
+            data = event.data.extra.shops_items[this.ref];
+        }
+        if (event.data.extra.shops_bought != null) {
+            bought = event.data.extra.shops_bought[this.ref];
+        }
+        if (event.data.extra.shops_names != null) {
+            names = event.data.extra.shops_names[this.ref];
+        }
     }
     /* shop items */
-    if (typeof data == "undefined") {
+    if (data == null) {
         data = FileData.get("shops")[this.ref];
     }
     /* shop bought */
-    if (typeof bought == "undefined") {
+    if (bought == null) {
         bought = [0,0,0,0,0,0,0,0];
     }
     /* shop names */
-    if (typeof names == "undefined") {
+    if (names == null) {
         names = ["","","","","","","",""];
     }
     /* update shop */
@@ -151,22 +145,28 @@ function stateChanged(event) {
 }
 
 function shopItemUpdate(event) {
-    if (this.ref === event.data.name) {
-        StateStorage.write(this.ref, event.data.value);
+    let data;
+    if (event.data != null) {
+        data = event.data[this.ref];
+    }
+    if (data != null) {
         for (let i = 0; i < 8; ++i) {
             let el = this.shadowRoot.getElementById(`slot${i}`);
-            el.ref = event.data.value[i].item;
-            el.price = event.data.value[i].price;
+            el.ref = data.newValue[i].item;
+            el.price = data.newValue[i].price;
         }
     }
 }
 
 function shopBoughtUpdate(event) {
-    if (this.ref === event.data.name) {
-        StateStorage.write(`${this.ref}.bought`, event.data.value);
+    let data;
+    if (event.data != null) {
+        data = event.data[this.ref];
+    }
+    if (data != null) {
         for (let i = 0; i < 8; ++i) {
             let el = this.shadowRoot.getElementById(`slot${i}`);
-            el.checked = !!event.data.value[i];
+            el.checked = !!data.newValue[i];
         }
     }
 }
@@ -185,8 +185,8 @@ export default class HTMLTrackerShopField extends EventBusSubsetMixin(HTMLElemen
             el.addEventListener("namechange", renameSlot.bind(this));
         }
         /* event bus */
-        this.registerGlobal("shop_items", shopItemUpdate.bind(this));
-        this.registerGlobal("shop_bought", shopBoughtUpdate.bind(this));
+        this.registerGlobal("statechange_shops_items", shopItemUpdate.bind(this));
+        this.registerGlobal("statechange_shops_bought", shopBoughtUpdate.bind(this));
         this.registerGlobal("state", stateChanged.bind(this));
     }
 
@@ -204,11 +204,11 @@ export default class HTMLTrackerShopField extends EventBusSubsetMixin(HTMLElemen
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
-            let data = StateStorage.read(newValue, FileData.get("shops")[newValue]);
+            let data = StateStorage.readExtra("shops_items", newValue, FileData.get("shops")[newValue]);
             let title = this.shadowRoot.getElementById("title-text");
             title.innerHTML = Language.translate(newValue);
-            let names = StateStorage.read(`${this.ref}.names`, ["","","","","","","",""]);
-            let checked = StateStorage.read(`${this.ref}.bought`, [0,0,0,0,0,0,0,0]);
+            let names = StateStorage.readExtra("shops_names", this.ref, ["","","","","","","",""]);
+            let checked = StateStorage.readExtra("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
             for (let i = 0; i < 8; ++i) {
                 let el = this.shadowRoot.getElementById(`slot${i}`);
                 el.ref = data[i].item;

@@ -152,7 +152,8 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         this.shadowRoot.getElementById("menu-disassociate").addEventListener("click", event => {
-            this.associateItem(false);
+            this.item = false;
+            StateStorage.writeExtra("item_location", this.ref, false);
             event.preventDefault();
             return false;
         });
@@ -260,13 +261,13 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             case 'item':
                 if (oldValue != newValue) {
                     itemEl.innerHTML = "";
-
-                    if (!newValue || newValue === "false") { return; }
-                    let el_icon = document.createElement("img");
-                    let itemsData = FileData.get("items")[newValue];
-                    const bgImage = Array.isArray(itemsData.images) ? itemsData.images[0] : itemsData.images;
-                    el_icon.src = bgImage;
-                    itemEl.append(el_icon);
+                    if (!!newValue && newValue != "false") {
+                        let el_icon = document.createElement("img");
+                        let itemsData = FileData.get("items")[newValue];
+                        const bgImage = Array.isArray(itemsData.images) ? itemsData.images[0] : itemsData.images;
+                        el_icon.src = bgImage;
+                        itemEl.append(el_icon);
+                    }
                 }
             break;
         }
@@ -291,7 +292,8 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         el.grid = 'pickable'
         el.addEventListener("pick", event => {
             const item = event.detail;
-            this.associateItem(item);
+            this.item = item;
+            StateStorage.writeExtra("item_location", this.ref, item);
             event.preventDefault();
             return false;
         });
@@ -299,11 +301,6 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.getElementById('item_picker_content').append(el);
     
         this.shadowRoot.getElementById("item_picker").show(x, y);
-    }
-
-    associateItem(item) {
-        this.item = item;
-        StateStorage.writeExtra("item_location", this.ref, item);
     }
 
     toggleCheckValue(value) {

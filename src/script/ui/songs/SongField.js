@@ -49,12 +49,8 @@ function editSong(event) {
     d.addEventListener("submit", function(result) {
         if (!!result) {
             let res = builder.value;
-            StateStorage.write(this.ref, res);
             this.shadowRoot.getElementById("stave").value = res;
-            this.triggerGlobal("song", {
-                name: this.ref,
-                value: res
-            });
+            StateStorage.writeExtra("songs", this.ref, res);
         }
     }.bind(this));
     d.append(builder);
@@ -70,9 +66,12 @@ function stateChanged(event) {
 }
 
 function songUpdate(event) {
-    if (this.ref === event.data.name) {
-        StateStorage.write(this.ref, event.data.value);
-        this.shadowRoot.getElementById("stave").value = event.data.value;
+    let data;
+    if (event.data != null) {
+        data = event.data[this.ref];
+    }
+    if (data != null) {
+        this.shadowRoot.getElementById("stave").value = data.newValue;
     }
 }
 
@@ -83,7 +82,7 @@ export default class HTMLTrackerSongField extends EventBusSubsetMixin(HTMLElemen
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         /* event bus */
-        this.registerGlobal("song", songUpdate.bind(this));
+        this.registerGlobal("statechange_songs", songUpdate.bind(this));
         this.registerGlobal("state", stateChanged.bind(this));
     }
 
@@ -104,7 +103,7 @@ export default class HTMLTrackerSongField extends EventBusSubsetMixin(HTMLElemen
             let data = FileData.get("songs")[newValue];
             let title = this.shadowRoot.getElementById("title");
             title.innerHTML = Language.translate(newValue);
-            this.shadowRoot.getElementById("stave").value = StateStorage.read(newValue, data.notes);
+            this.shadowRoot.getElementById("stave").value = StateStorage.readExtra("songs", newValue, data.notes);
             if (data.editable) {
                 let edt = document.createElement('button');
                 edt.innerHTML = "✎";

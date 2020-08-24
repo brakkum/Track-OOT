@@ -23,14 +23,17 @@
 ---
 
 - fix multiplayer sync
-    - logic/access not updated for slave
-    - shop items and cost not synced
-    - item association not synced correctly
-    - dungeon data not synced
+    - dungeon data not synced (?)
+    - undo/redo does not sync
 
 - item association missing
     - refill item
     - rupees
+
+- make all tracker input recievers use postponed event triggers
+    - see `Item.js` for reference
+    - make event reaction time a settable value in tracker settings (optional)
+        - 200ms - 1000ms
 
 ---
 

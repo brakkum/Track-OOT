@@ -30,6 +30,10 @@ Application:    Track-OOT
         - context menu added for map locations
 - add presets to randomizer options
 - add item association to location
+- make the item checkers trigger less events
+    - change event will be triggered after input stops
+    - less logic updates and less syncs for multiplayer
+    - more responsive
 
 ### CREDITS
 

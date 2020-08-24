@@ -178,7 +178,8 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-disassociate").addEventListener("click", event => {
-            this.associateItem(false);
+            this.item = false;
+            StateStorage.writeExtra("item_location", this.ref, false);
             event.preventDefault();
             return false;
         });
@@ -360,13 +361,13 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
             case 'item':
                 if (oldValue != newValue) {
                     itemEl.innerHTML = "";
-
-                    if (!newValue || newValue === "false") { return; }
-                    let el_icon = document.createElement("img");
-                    let itemsData = FileData.get("items")[newValue];
-                    const bgImage = Array.isArray(itemsData.images) ? itemsData.images[0] : itemsData.images;
-                    el_icon.src = bgImage;
-                    itemEl.append(el_icon);
+                    if (!!newValue && newValue != "false") {
+                        let el_icon = document.createElement("img");
+                        let itemsData = FileData.get("items")[newValue];
+                        const bgImage = Array.isArray(itemsData.images) ? itemsData.images[0] : itemsData.images;
+                        el_icon.src = bgImage;
+                        itemEl.append(el_icon);
+                    }
                 }
             break;
         }

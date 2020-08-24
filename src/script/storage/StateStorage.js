@@ -1,4 +1,5 @@
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
+import Helper from "/emcJS/util/Helper.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import ActionPath from "/emcJS/util/ActionPath.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
@@ -135,13 +136,25 @@ class StateStorage {
         }
     }
 
-    reset(def) {
+    reset(data, extraData) {
         state = StateConverter.createEmptyState();
 
-        if (typeof def == "object") {
-            def = JSON.parse(JSON.stringify(def));
-            for (let i in def) {
-                state.data[i] = def[i];
+        if (typeof data == "object") {
+            data = JSON.parse(JSON.stringify(data));
+            for (let i in data) {
+                state.data[i] = data[i];
+            }
+        }
+
+        if (typeof extraData == "object") {
+            extraData = JSON.parse(JSON.stringify(extraData));
+            for (let i in extraData) {
+                if (!state.extra.hasOwnProperty(i)) {
+                    state.extra[i] = {};
+                }
+                for (let j in extraData[i]) {
+                    state.extra[i][j] = extraData[i][j];
+                }
             }
         }
 
@@ -170,6 +183,9 @@ class StateStorage {
             for (let i in act) {
                 state.data[i] = act[i].oldValue;
             }
+            LocalStorage.set(PERSISTANCE_NAME, state);
+            LocalStorage.set(STATE_DIRTY, true);
+            // EventBus.trigger("statechange", JSON.parse(JSON.stringify(changed))); // TODO
             EventBus.trigger("state", JSON.parse(JSON.stringify({
                 notes: state.notes,
                 state: state.data,
@@ -184,6 +200,9 @@ class StateStorage {
             for (let i in act) {
                 state.data[i] = act[i].newValue;
             }
+            LocalStorage.set(PERSISTANCE_NAME, state);
+            LocalStorage.set(STATE_DIRTY, true);
+            // EventBus.trigger("statechange", JSON.parse(JSON.stringify(changed))); // TODO
             EventBus.trigger("state", JSON.parse(JSON.stringify({
                 notes: state.notes,
                 state: state.data,
@@ -196,7 +215,7 @@ class StateStorage {
         let changed = {};
         if (typeof key == "object") {
             for (let i in key) {
-                if (!state.data.hasOwnProperty(i) || state.data[i] != key[i]) {
+                if (!state.data.hasOwnProperty(i) || !Helper.isEqual(state.data[i], key[i])) {
                     changed[i] = {
                         oldValue: state.data[i],
                         newValue: key[i]
@@ -205,7 +224,7 @@ class StateStorage {
                 }
             }
         } else {
-            if (!state.data.hasOwnProperty(key) || state.data[key] != value) {
+            if (!state.data.hasOwnProperty(key) || !Helper.isEqual(state.data[key], value)) {
                 changed[key] = {
                     oldValue: state.data[key],
                     newValue: value
@@ -214,9 +233,9 @@ class StateStorage {
             }
         }
         if (!!Object.keys(changed).length) {
+            actionPath.put(changed);
             LocalStorage.set(PERSISTANCE_NAME, state);
             LocalStorage.set(STATE_DIRTY, true);
-            actionPath.put(changed);
             EventBus.trigger("statechange", JSON.parse(JSON.stringify(changed)));
             updateTitle();
         }
@@ -251,7 +270,7 @@ class StateStorage {
         }
         if (typeof key == "object") {
             for (let i in key) {
-                if (!state.extra[category].hasOwnProperty(i) || state.extra[category][i] != key[i]) {
+                if (!state.extra[category].hasOwnProperty(i) || !Helper.isEqual(state.extra[category][i], key[i])) {
                     changed[i] = {
                         oldValue: state.extra[category][i],
                         newValue: key[i]
@@ -260,7 +279,7 @@ class StateStorage {
                 }
             }
         } else {
-            if (!state.extra[category].hasOwnProperty(key) || state.extra[category][key] != value) {
+            if (!state.extra[category].hasOwnProperty(key) || !Helper.isEqual(state.extra[category][key], value)) {
                 changed[key] = {
                     oldValue: state.extra[category][key],
                     newValue: value
@@ -284,11 +303,56 @@ class StateStorage {
     }
 
     getAllExtra(category) {
-		if (state.extra.hasOwnProperty(category)) {
-            return JSON.parse(JSON.stringify(state.extra[category]));
-		} else {
-			return null;
-		}
+        if (category == null) {
+            return JSON.parse(JSON.stringify(state.extra));
+        } else {
+            if (state.extra.hasOwnProperty(category)) {
+                return JSON.parse(JSON.stringify(state.extra[category]));
+            } else {
+                return null;
+            }
+        }
+    }
+
+    resolveNetworkStateEvent(event, data) {
+        if (event == "statechange") {
+            let changed = {};
+            for (let [key, value] of Object.entries(data)) {
+                if (!state.data.hasOwnProperty(key) || !Helper.isEqual(state.data[key], value.newValue)) {
+                    changed[key] = value;
+                    state.data[key] = value.newValue;
+                }
+            }
+            if (!!Object.keys(changed).length) {
+                actionPath.put(changed);
+                LocalStorage.set(PERSISTANCE_NAME, state);
+                LocalStorage.set(STATE_DIRTY, true);
+                EventBus.trigger("statechange", JSON.parse(JSON.stringify(changed)));
+                updateTitle();
+            }
+            return true;
+        }
+        if (event.startsWith("statechange_")) {
+            const category = event.slice(12);
+            let changed = {};
+            if (!state.extra.hasOwnProperty(category)) {
+                state.extra[category] = {};
+            }
+            for (let [key, value] of Object.entries(data)) {
+                if (!state.extra[category].hasOwnProperty(key) || !Helper.isEqual(state.extra[category][key], value.newValue)) {
+                    changed[key] = value;
+                    state.extra[category][key] = value.newValue;
+                }
+            }
+            if (!!Object.keys(changed).length) {
+                LocalStorage.set(PERSISTANCE_NAME, state);
+                LocalStorage.set(STATE_DIRTY, true);
+                EventBus.trigger(`statechange_${category}`, changed);
+                updateTitle();
+            }
+            return true;
+        }
+        return false;
     }
 
 }
