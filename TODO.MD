@@ -23,8 +23,7 @@
 ---
 
 - fix multiplayer sync
-    - dungeon data not synced (?)
-    - undo/redo does not sync
+    - undo/redo does not sync correctly
 
 - item association missing
     - refill item
@@ -34,6 +33,7 @@
     - see `Item.js` for reference
     - make event reaction time a settable value in tracker settings (optional)
         - 200ms - 1000ms
+    - maybe better to do this for storage writes only
 
 ---
 
