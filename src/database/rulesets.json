@@ -1,0 +1,91 @@
+{
+    "Vanilla": {
+        "options": {
+            "option.logic_rules": "logic_rules_glitchless",
+            "option.starting_age": "child",
+            "option.light_arrow_cutscene": "light_arrow_cutscene_vanilla",
+            "option.consider_buyable": false,
+            "option.bombchu_logic": false,
+            "option.keysanity_small": false,
+            "option.entrance_shuffle": "entrance_shuffle_off",
+            "option.scrubsanity": false,
+            "option.cowsanity": false,
+            "option.beansanity": false,
+            "option.skullsanity": false,
+            "option.doors_open_forest": "doors_open_forest_closed",
+            "option.doors_open_mountain": false,
+            "option.doors_open_temple": false,
+            "option.doors_open_zora": "doors_open_zora_closed",
+            "option.gerudo_fortress_open": "gerudo_fortress_open_default",
+            "option.ganon_castle_open": "ganon_castle_open_default",
+            "option.trade_sequence_start_item": 1,
+            "trials": [
+                "option.forest_trial",
+                "option.water_trial",
+                "option.shadow_trial",
+                "option.fire_trial",
+                "option.light_trial",
+                "option.spirit_trial"
+            ],
+            "option.ganon_boss_door_open": false
+        },
+        "skips": {
+            "skip.lens_required": "lens_required_default",
+            "overworld": [],
+            "child_dungeons": [],
+            "mini_adult_dungeons": [],
+            "area.temple_forest": [],
+            "area.temple_fire": [],
+            "area.temple_water": [],
+            "area.temple_shadow": [],
+            "area.temple_spirit": []
+        }
+    },
+    "S3 Standard": {
+        "options": {
+            "option.logic_rules": "logic_rules_glitchless",
+            "option.starting_age": "child",
+            "option.light_arrow_cutscene": "light_arrow_cutscene_vanilla",
+            "option.consider_buyable": false,
+            "option.bombchu_logic": false,
+            "option.keysanity_small": false,
+            "option.entrance_shuffle": "entrance_shuffle_off",
+            "option.scrubsanity": false,
+            "option.cowsanity": false,
+            "option.beansanity": false,
+            "option.skullsanity": false,
+            "option.doors_open_forest": "doors_open_forest_open",
+            "option.doors_open_mountain": false,
+            "option.doors_open_temple": "true",
+            "option.doors_open_zora": "doors_open_zora_closed",
+            "option.gerudo_fortress_open": "gerudo_fortress_open_one",
+            "option.ganon_castle_open": "ganon_castle_open_medallion",
+            "option.trade_sequence_start_item": 7,
+            "trials": [],
+            "option.ganon_boss_door_open": true
+        },
+        "skips": {
+            "skip.lens_required": "lens_required_wasteland",
+            "overworld": [
+                "skip.fewer_tunic",
+                "skip.hidden_grotto_no_agony",
+                "skip.hammer_through_wall",
+                "skip.man_on_roof",
+                "skip.windmill_hp",
+                "skip.crater_bean_hp"
+            ],
+            "child_dungeons": [
+                "skip.child_deadhand",
+                "skip.dodongo_spike"
+            ],
+            "mini_adult_dungeons": [],
+            "area.temple_forest": [
+                "skip.fot_east_vines_hook"
+            ],
+            "area.temple_fire": [],
+            "area.temple_water": [],
+            "area.temple_shadow": [],
+            "area.temple_spirit": []
+        }
+    }
+}

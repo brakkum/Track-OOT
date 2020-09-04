@@ -4,15 +4,62 @@ Application:    Track-OOT
 
 ***
 
-## VERSION 1.7.18
+## VERSION [DEV]
 
-### FEATURES
+### LOGIC
+
+- use logic graph instead of static logic
+    - graph traversial uses first hit for determining reachability
+    - mixins get executed on demand
+        - slower mixins, but region dependency safe
+- added glitched logic
+    - add glitched custom logic
+    - add glitched logic editor
+
+### ENTRANCE SHUFFLE
+
+- added translation matrix for entrance shuffle
+- added exit types configuration
+- add new exit->entrance configuration to savestate
+
+### UX ENHANCEMENTS
 
 - make locations be toggled instead of set
     - click / touch will be used for toggle checked / unchecked
     - right click / long press is now for contextmenu only
-    
-    `currently only for locations in list`
+        - context menu added for map locations
+- add presets to randomizer options
+- add item association to location
+- make the item checkers trigger less events
+    - change event will be triggered after input stops
+    - less logic updates and less syncs for multiplayer
+    - more responsive
+
+### CREDITS
+
+- added credits section
+    - auto generate supporter list
+    - supporter list is cached locally
+
+### BUGFIXES
+
+- fix logger breaking out of the viewport
+
+---
+
+## VERSION 1.7.19
+
+### BUGFIXES
+
+- fix loading custom logic for view even if custom logic is off
+
+---
+
+## VERSION 1.7.18
+
+### BUGFIXES
+
+- fix loading wrong dependency version for editors
 
 ---
 

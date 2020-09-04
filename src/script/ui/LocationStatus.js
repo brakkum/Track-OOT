@@ -85,7 +85,7 @@ class HTMLLocationState extends EventBusSubsetMixin(HTMLElement) {
         /* event bus */
         this.registerGlobal([
             "logic",
-            "state_change",
+            "statechange",
             "settings",
             "randomizer_options"
         ], () => {

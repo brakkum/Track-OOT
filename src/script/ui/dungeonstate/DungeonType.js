@@ -53,7 +53,7 @@ const TPL = new Template(`
 `);
 
 function stateChanged(event) {
-    let value = event.data[`dungeonTypes.${this.ref}`];
+    let value = event.data.state[`dungeonTypes.${this.ref}`];
     if (typeof value == "undefined" || value == "") {
         value = "v";
         if (!!this.ref) {

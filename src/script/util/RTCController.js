@@ -28,7 +28,7 @@ const EVENT_BLACKLIST = [
     "filter",
     "location_change",
     "location_mode",
-    "state_change",
+    "statechange_shops_names",
     "state"
 ];
 const eventModule = new EventBusModuleGeneric();
@@ -46,24 +46,27 @@ let ON_ROOMUPDATE = EMPTY_FN;
 
 function getState() {
     let state = StateStorage.getAll();
+    let extra = StateStorage.getAllExtra();
     let res = {};
-    for (let i in state) {
-        if (i != "notes" && !i.endsWith(".names")) {
-            res[i] = state[i];
+    for (let i in extra) {
+        if (!i.endsWith("Names")) {
+            res[i] = extra[i];
         }
     }
-    return res;
+    return {
+        state: state,
+        extra: res
+    };
 }
 
-function setState(state) {
+function setState(data) {
     let buffer = {};
-    for (let i in state) {
-        if (i != "notes" && !i.endsWith(".names")) {
-            buffer[i] =  state[i];
+    for (let i in data.extra) {
+        if (!i.endsWith("Names")) {
+            buffer[i] =  data.extra[i];
         }
     }
-    StateStorage.reset(buffer);
-    EventBus.trigger("state", StateStorage.getAll());
+    StateStorage.reset(data.state, buffer);
 }
 
 function getClientNameList() {
@@ -241,8 +244,9 @@ function onJoined() {
             setState(msg.data);
         } else if (msg.type == "event") {
             if (EVENT_BLACKLIST.indexOf(msg.data.name) < 0) {
-                eventModule.trigger(msg.data.name, msg.data.data);
-                StateStorage.write(msg.data.data.name, msg.data.data.value);
+                if (!StateStorage.resolveNetworkStateEvent(msg.data.name, msg.data.data)) {
+                    eventModule.trigger(msg.data.name, msg.data.data);
+                }
             }
         }
     });
@@ -290,8 +294,9 @@ async function onHosting() {
             if (clients.has(key)) {
                 if (EVENT_BLACKLIST.indexOf(msg.data.name) < 0) {
                     rtcClient.sendButOne("data", key, msg);
-                    eventModule.trigger(msg.data.name, msg.data.data);
-                    StateStorage.write(msg.data.data.name, msg.data.data.value);
+                    if (!StateStorage.resolveNetworkStateEvent(msg.data.name, msg.data.data)) {
+                        eventModule.trigger(msg.data.name, msg.data.data);
+                    }
                 }
             }
         }

@@ -72,8 +72,7 @@ class WorldEntry {
         }
 
         /* EVENTS */
-        EventBus.register(["state", "randomizer_options"], event => {
-            let data = new Map(Object.entries(event.data));
+        let calculateFilter = function(data) {
             if (typeof visible_logic == "function") {
                 VISIBLE.set(this, !!visible_logic(valueGetter.bind(data)));
             }
@@ -89,6 +88,12 @@ class WorldEntry {
             if (MAP_MARKERS.has(this)) {
                 MAP_MARKERS.get(this).setFilterData(mapToObj(filter_values));
             }
+        }.bind(this);
+        EventBus.register("state", event => {
+            calculateFilter(new Map(Object.entries(event.data.state)));
+        });
+        EventBus.register("randomizer_options", event => {
+            calculateFilter(new Map(Object.entries(event.data)));
         });
     }
 

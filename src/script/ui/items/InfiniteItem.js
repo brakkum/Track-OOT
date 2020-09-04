@@ -62,7 +62,7 @@ function getAlign(value) {
 }
     
 function stateChanged(event) {
-    let value = parseInt(event.data[this.ref]);
+    let value = parseInt(event.data.state[this.ref]);
     if (isNaN(value)) {
         value = 0;
     }
@@ -78,6 +78,9 @@ function itemUpdate(event) {
         this.value = value;
     }
 }
+
+const EVENT_REACTION_TIME = 500;
+const EVENT_TIMEOUT = new WeakMap();
 
 class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
 
@@ -168,11 +171,16 @@ class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
             let val = parseInt(this.value) + 1;
             if (val <= 9999) {
                 this.value = val;
-                StateStorage.write(this.ref, val);
-                this.triggerGlobal("item", {
-                    name: this.ref,
-                    value: val
-                });
+                if (EVENT_TIMEOUT.has(this)) {
+                    clearTimeout(EVENT_TIMEOUT.get(this));
+                }
+                EVENT_TIMEOUT.set(this, setTimeout(() => {
+                    StateStorage.write(this.ref, parseInt(this.value));
+                    this.triggerGlobal("item", {
+                        name: this.ref,
+                        value: this.value
+                    });
+                }, EVENT_REACTION_TIME));
             } else {
                 this.value = 9999;
             }
@@ -190,11 +198,16 @@ class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
                     val = 0;
                 }
                 this.value = val;
-                StateStorage.write(this.ref, val);
-                this.triggerGlobal("item", {
-                    name: this.ref,
-                    value: val
-                });
+                if (EVENT_TIMEOUT.has(this)) {
+                    clearTimeout(EVENT_TIMEOUT.get(this));
+                }
+                EVENT_TIMEOUT.set(this, setTimeout(() => {
+                    StateStorage.write(this.ref, parseInt(this.value));
+                    this.triggerGlobal("item", {
+                        name: this.ref,
+                        value: this.value
+                    });
+                }, EVENT_REACTION_TIME));
             } else {
                 this.value = 0;
             }

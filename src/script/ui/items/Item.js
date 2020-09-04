@@ -91,7 +91,7 @@ function optionsChanged(event) {
 
 function stateChanged(event) {
     // savesatate
-    let value = parseInt(event.data[this.ref]);
+    let value = parseInt(event.data.state[this.ref]);
     if (isNaN(value)) {
         value = 0;
     }
@@ -99,7 +99,7 @@ function stateChanged(event) {
     // settings
     let data = FileData.get("items")[this.ref];
     if (data.hasOwnProperty("start_settings")) {
-        let startvalue = parseInt(event.data[data.start_settings]);
+        let startvalue = parseInt(event.data.state[data.start_settings]);
         if (isNaN(startvalue)) {
             startvalue = 1;
         }
@@ -125,6 +125,9 @@ function dungeonTypeUpdate(event) {
         this.fillItemChoices();
     }
 }
+
+const EVENT_REACTION_TIME = 500;
+const EVENT_TIMEOUT = new WeakMap();
 
 class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
 
@@ -329,11 +332,16 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
             }
             if (value != oldValue) {
                 this.value = value;
-                StateStorage.write(this.ref, parseInt(value));
-                this.triggerGlobal("item", {
-                    name: this.ref,
-                    value: value
-                });
+                if (EVENT_TIMEOUT.has(this)) {
+                    clearTimeout(EVENT_TIMEOUT.get(this));
+                }
+                EVENT_TIMEOUT.set(this, setTimeout(() => {
+                    StateStorage.write(this.ref, parseInt(this.value));
+                    this.triggerGlobal("item", {
+                        name: this.ref,
+                        value: this.value
+                    });
+                }, EVENT_REACTION_TIME));
             }
         }
         if (!event) return;
@@ -376,11 +384,16 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
             }
             if (value != oldValue) {
                 this.value = value;
-                StateStorage.write(this.ref, parseInt(value));
-                this.triggerGlobal("item", {
-                    name: this.ref,
-                    value: parseInt(value)
-                });
+                if (EVENT_TIMEOUT.has(this)) {
+                    clearTimeout(EVENT_TIMEOUT.get(this));
+                }
+                EVENT_TIMEOUT.set(this, setTimeout(() => {
+                    StateStorage.write(this.ref, parseInt(this.value));
+                    this.triggerGlobal("item", {
+                        name: this.ref,
+                        value: this.value
+                    });
+                }, EVENT_REACTION_TIME));
             }
         }
         if (!event) return;

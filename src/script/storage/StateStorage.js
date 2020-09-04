@@ -1,4 +1,5 @@
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
+import Helper from "/emcJS/util/Helper.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import ActionPath from "/emcJS/util/ActionPath.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
@@ -75,9 +76,12 @@ class StateStorage {
             state = {data: state};
         }
         state = StateConverter.convert(state);
-        state.data["option.entrance_shuffle_dungeons"] = false; // XXX remove later
         updateTitle();
-        EventBus.trigger("state", JSON.parse(JSON.stringify(state.data)));
+        EventBus.trigger("state", JSON.parse(JSON.stringify({
+            notes: state.notes,
+            state: state.data,
+            extra: state.extra
+        })));
     }
 
     async save(name = state.name) {
@@ -101,7 +105,6 @@ class StateStorage {
                 state = {data: state};
             }
             state = StateConverter.convert(state);
-            state.data["option.entrance_shuffle_dungeons"] = false; // XXX remove later
             LocalStorage.set(PERSISTANCE_NAME, state);
             if (autosaveTimeout != null) {
                 clearTimeout(autosaveTimeout);
@@ -110,7 +113,11 @@ class StateStorage {
             LocalStorage.set(STATE_DIRTY, false);
             updateTitle();
             actionPath.clear();
-            EventBus.trigger("state", JSON.parse(JSON.stringify(state.data)));
+            EventBus.trigger("state", JSON.parse(JSON.stringify({
+                notes: state.notes,
+                state: state.data,
+                extra: state.extra
+            })));
         }
     }
 
@@ -129,6 +136,39 @@ class StateStorage {
         }
     }
 
+    reset(data, extraData) {
+        state = StateConverter.createEmptyState();
+
+        if (typeof data == "object") {
+            data = JSON.parse(JSON.stringify(data));
+            for (let i in data) {
+                state.data[i] = data[i];
+            }
+        }
+
+        if (typeof extraData == "object") {
+            extraData = JSON.parse(JSON.stringify(extraData));
+            for (let i in extraData) {
+                if (!state.extra.hasOwnProperty(i)) {
+                    state.extra[i] = {};
+                }
+                for (let j in extraData[i]) {
+                    state.extra[i][j] = extraData[i][j];
+                }
+            }
+        }
+
+        LocalStorage.set(PERSISTANCE_NAME, state);
+        LocalStorage.set(STATE_DIRTY, false);
+        document.title = "Track-OOT - new state";
+        actionPath.clear();
+        EventBus.trigger("state", JSON.parse(JSON.stringify({
+            notes: state.notes,
+            state: state.data,
+            extra: state.extra
+        })));
+    }
+
     getName() {
         return state.name;
     }
@@ -137,11 +177,45 @@ class StateStorage {
         return LocalStorage.get(STATE_DIRTY);
     }
 
+    undo() {
+        let act = actionPath.undo();
+        if (act != null) {
+            for (let i in act) {
+                state.data[i] = act[i].oldValue;
+            }
+            LocalStorage.set(PERSISTANCE_NAME, state);
+            LocalStorage.set(STATE_DIRTY, true);
+            // EventBus.trigger("statechange", JSON.parse(JSON.stringify(changed))); // TODO
+            EventBus.trigger("state", JSON.parse(JSON.stringify({
+                notes: state.notes,
+                state: state.data,
+                extra: state.extra
+            })));
+        }
+    }
+
+    redo() {
+        let act = actionPath.redo();
+        if (act != null) {
+            for (let i in act) {
+                state.data[i] = act[i].newValue;
+            }
+            LocalStorage.set(PERSISTANCE_NAME, state);
+            LocalStorage.set(STATE_DIRTY, true);
+            // EventBus.trigger("statechange", JSON.parse(JSON.stringify(changed))); // TODO
+            EventBus.trigger("state", JSON.parse(JSON.stringify({
+                notes: state.notes,
+                state: state.data,
+                extra: state.extra
+            })));
+        }
+    }
+
     write(key, value) {
         let changed = {};
         if (typeof key == "object") {
             for (let i in key) {
-                if (!state.data.hasOwnProperty(i) || state.data[i] != key[i]) {
+                if (!state.data.hasOwnProperty(i) || !Helper.isEqual(state.data[i], key[i])) {
                     changed[i] = {
                         oldValue: state.data[i],
                         newValue: key[i]
@@ -150,7 +224,7 @@ class StateStorage {
                 }
             }
         } else {
-            if (!state.data.hasOwnProperty(key) || state.data[key] != value) {
+            if (!state.data.hasOwnProperty(key) || !Helper.isEqual(state.data[key], value)) {
                 changed[key] = {
                     oldValue: state.data[key],
                     newValue: value
@@ -159,10 +233,10 @@ class StateStorage {
             }
         }
         if (!!Object.keys(changed).length) {
+            actionPath.put(changed);
             LocalStorage.set(PERSISTANCE_NAME, state);
             LocalStorage.set(STATE_DIRTY, true);
-            actionPath.put(changed);
-            EventBus.trigger("state_change", changed);
+            EventBus.trigger("statechange", JSON.parse(JSON.stringify(changed)));
             updateTitle();
         }
     }
@@ -174,45 +248,111 @@ class StateStorage {
         return def;
     }
 
-    reset(def) {
-        state = StateConverter.createEmptyState();
-
-        if (typeof def == "object") {
-            def = JSON.parse(JSON.stringify(def));
-            for (let i in def) {
-                state.data[i] = def[i];
-            }
-        }
-
-        LocalStorage.set(PERSISTANCE_NAME, state);
-        LocalStorage.set(STATE_DIRTY, false);
-        document.title = "Track-OOT - new state";
-        actionPath.clear();
-        EventBus.trigger("state", JSON.parse(JSON.stringify(state.data)));
-    }
-
-    undo() {
-        let act = actionPath.undo();
-        if (!!act) {
-            for (let i in act) {
-                state.data[i] = act[i].oldValue;
-            }
-            EventBus.trigger("state", JSON.parse(JSON.stringify(state.data)));
-        }
-    }
-
-    redo() {
-        let act = actionPath.redo();
-        if (!!act) {
-            for (let i in act) {
-                state.data[i] = act[i].newValue;
-            }
-            EventBus.trigger("state", JSON.parse(JSON.stringify(state.data)));
-        }
-    }
-
     getAll() {
         return JSON.parse(JSON.stringify(state.data));
+    }
+
+    writeNotes(value) {
+        state.notes = value.toString();
+        LocalStorage.set(PERSISTANCE_NAME, state);
+        LocalStorage.set(STATE_DIRTY, true);
+        updateTitle();
+    }
+
+    readNotes() {
+        return state.notes || "";
+    }
+
+    writeExtra(category, key, value) {
+        let changed = {};
+        if (!state.extra.hasOwnProperty(category)) {
+            state.extra[category] = {};
+        }
+        if (typeof key == "object") {
+            for (let i in key) {
+                if (!state.extra[category].hasOwnProperty(i) || !Helper.isEqual(state.extra[category][i], key[i])) {
+                    changed[i] = {
+                        oldValue: state.extra[category][i],
+                        newValue: key[i]
+                    };
+                    state.extra[category][i] = key[i];
+                }
+            }
+        } else {
+            if (!state.extra[category].hasOwnProperty(key) || !Helper.isEqual(state.extra[category][key], value)) {
+                changed[key] = {
+                    oldValue: state.extra[category][key],
+                    newValue: value
+                };
+                state.extra[category][key] = value;
+            }
+        }
+        if (!!Object.keys(changed).length) {
+            LocalStorage.set(PERSISTANCE_NAME, state);
+            LocalStorage.set(STATE_DIRTY, true);
+            EventBus.trigger(`statechange_${category}`, changed);
+            updateTitle();
+        }
+    }
+
+    readExtra(category, key, def) {
+        if (state.extra.hasOwnProperty(category) && state.extra[category].hasOwnProperty(key)) {
+            return state.extra[category][key];
+        }
+        return def;
+    }
+
+    getAllExtra(category) {
+        if (category == null) {
+            return JSON.parse(JSON.stringify(state.extra));
+        } else {
+            if (state.extra.hasOwnProperty(category)) {
+                return JSON.parse(JSON.stringify(state.extra[category]));
+            } else {
+                return null;
+            }
+        }
+    }
+
+    resolveNetworkStateEvent(event, data) {
+        if (event == "statechange") {
+            let changed = {};
+            for (let [key, value] of Object.entries(data)) {
+                if (!state.data.hasOwnProperty(key) || !Helper.isEqual(state.data[key], value.newValue)) {
+                    changed[key] = value;
+                    state.data[key] = value.newValue;
+                }
+            }
+            if (!!Object.keys(changed).length) {
+                actionPath.put(changed);
+                LocalStorage.set(PERSISTANCE_NAME, state);
+                LocalStorage.set(STATE_DIRTY, true);
+                EventBus.trigger("statechange", JSON.parse(JSON.stringify(changed)));
+                updateTitle();
+            }
+            return true;
+        }
+        if (event.startsWith("statechange_")) {
+            const category = event.slice(12);
+            let changed = {};
+            if (!state.extra.hasOwnProperty(category)) {
+                state.extra[category] = {};
+            }
+            for (let [key, value] of Object.entries(data)) {
+                if (!state.extra[category].hasOwnProperty(key) || !Helper.isEqual(state.extra[category][key], value.newValue)) {
+                    changed[key] = value;
+                    state.extra[category][key] = value.newValue;
+                }
+            }
+            if (!!Object.keys(changed).length) {
+                LocalStorage.set(PERSISTANCE_NAME, state);
+                LocalStorage.set(STATE_DIRTY, true);
+                EventBus.trigger(`statechange_${category}`, changed);
+                updateTitle();
+            }
+            return true;
+        }
+        return false;
     }
 
 }

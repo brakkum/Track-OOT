@@ -2,19 +2,23 @@ import FileData from "/emcJS/storage/FileData.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import Dialog from "/emcJS/ui/Dialog.js";
 import Helper from "/emcJS/util/Helper.js";
-import LogicUIAbstractElement from "/editors/logic/elements/AbstractElement.js";
+import LogicUIAbstractElement from "/editors/ui/logic/AbstractElement.js";
 
 const LogicsStorage = new IDBStorage('logics');
 
-async function getLogic(ref) {
-    let logic = await LogicsStorage.get(ref, null);
-    if (!!logic) {
-        return logic;
+async function getLogic(ref, custom = false) {
+    if (!!custom) {
+        let logic = await LogicsStorage.get(ref, null);
+        if (logic != null) {
+            return logic;
+        }
     }
     return FileData.get(`logic/${ref}`);
 }
 
 class LogicViewer {
+
+    customLogic = false;
 
     async show(ref, title = ref) {
         let d = new Dialog({
@@ -23,7 +27,7 @@ class LogicViewer {
         });
         d.value = ref;
         let el = document.createElement("div");
-        let logic = await getLogic(ref);
+        let logic = await getLogic(ref, !!this.customLogic);
         if (!!logic) {
             let l = LogicUIAbstractElement.buildLogic(logic);
             l.readonly = true;
@@ -34,7 +38,7 @@ class LogicViewer {
     }
 
     async printSVG(ref) {
-        let logic = await getLogic(ref);
+        let logic = await getLogic(ref, !!this.customLogic);
         if (!!logic) {
             let svg = LogicUIAbstractElement.buildSVG(logic);
             let png = await Helper.svg2png(svg);
@@ -46,6 +50,7 @@ class LogicViewer {
             //TODO show error
         }
     }
+
 }
 
 export default new LogicViewer();

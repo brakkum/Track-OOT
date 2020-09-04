@@ -2,10 +2,12 @@ import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/ContextMenu.js";
 import "/emcJS/ui/Icon.js";
+import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import LogicViewer from "/script/content/logic/LogicViewer.js";
 import Logic from "/script/util/Logic.js";
 import Language from "/script/util/Language.js";
+import "/script/ui/items/ItemPicker.js";
 
 const TPL = new Template(`
     <style>
@@ -53,6 +55,9 @@ const TPL = new Template(`
         #text[data-checked="true"] {
             color: var(--location-status-opened-color, #000000);
         }
+        #item {
+            margin-left: 5px;
+        }
         #badge {
             display: inline-flex;
             align-items: center;
@@ -75,14 +80,21 @@ const TPL = new Template(`
         }
     </style>
     <emc-contextmenu id="menu">
-        <div id="menu-check" class="item">Check<span class="menu-tip">(leftclick)</span></div>
-        <div id="menu-uncheck" class="item">Uncheck<span class="menu-tip">(ctrl + rightclick)</span></div>
+        <div id="menu-check" class="item">Check</div>
+        <div id="menu-uncheck" class="item">Uncheck</div>
+        <div class="splitter"></div>
+        <div id="menu-associate" class="item">Set Item</div>
+        <div id="menu-disassociate" class="item">Clear Item</div>
         <div class="splitter"></div>
         <div id="menu-logic" class="item">Show Logic</div>
         <div id="menu-logic-image" class="item">Create Logic Image</div>
     </emc-contextmenu>
+    <emc-contextmenu id="item_picker">
+        <div id="item_picker_content"></div>
+    </emc-contextmenu>
     <div class="textarea">
         <div id="text"></div>
+        <div id="item"></div>
         <div id="badge">
             <emc-icon id="badge-type" src="images/icons/location.svg"></emc-icon>
             <emc-icon id="badge-time" src="images/icons/time_always.svg"></emc-icon>
@@ -134,6 +146,17 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             event.preventDefault();
             return false;
         });
+        this.shadowRoot.getElementById("menu-associate").addEventListener("click", event => {
+            this.showItemPicker(event.clientX, event.clientY);
+            event.preventDefault();
+            return false;
+        });
+        this.shadowRoot.getElementById("menu-disassociate").addEventListener("click", event => {
+            this.item = false;
+            StateStorage.writeExtra("item_location", this.ref, false);
+            event.preventDefault();
+            return false;
+        });
         this.shadowRoot.getElementById("menu-logic").addEventListener("click", event => {
             let title = Language.translate(this.ref);
             LogicViewer.show(this.access, title);
@@ -141,6 +164,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.getElementById("menu-logic-image").addEventListener("click", event => {
             LogicViewer.printSVG(this.access);
         });
+
         /* event bus */
         this.registerGlobal(TYPE.get(this), event => {
             if (this.ref === event.data.name && this.checked !== event.data.value) {
@@ -150,10 +174,11 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             }
         });
         this.registerGlobal("state", event => {
-            let value = !!event.data[this.ref];
+            let value = !!event.data.state[this.ref];
             let textEl = this.shadowRoot.getElementById("text");
             textEl.dataset.checked = value;
             this.toggleCheckValue(value);
+            this.item = StateStorage.readExtra("item_location", this.ref, false);
         });
         this.registerGlobal("logic", event => {
             if (LOGIC_ACTIVE.get(this) && event.data.hasOwnProperty(this.access)) {
@@ -163,6 +188,11 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
                 } else {
                     textEl.dataset.state = "unavailable";
                 }
+            }
+        });
+        this.registerGlobal("statechange_item_location", event => {
+            if (event.data.hasOwnProperty(this.ref)) {
+                this.item = event.data[this.ref].newValue;
             }
         });
     }
@@ -177,6 +207,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         } else {
             textEl.dataset.state = "unavailable";
         }
+        this.item = StateStorage.readExtra("item_location", this.ref, false);
     }
 
     get ref() {
@@ -195,17 +226,27 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         this.setAttribute('access', val);
     }
 
+    get item() {
+        return this.getAttribute('item');
+    }
+
+    set item(val) {
+        this.setAttribute('item', val);
+    }
+
     static get observedAttributes() {
-        return ['ref', 'access'];
+        return ['ref', 'access', 'item'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
         let textEl = this.shadowRoot.getElementById("text");
+        let itemEl = this.shadowRoot.getElementById("item");
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    textEl.innerHTML = Language.translate(this.ref);
-                    textEl.dataset.checked = StateStorage.read(this.ref, false);
+                    textEl.innerHTML = Language.translate(newValue);
+                    textEl.dataset.checked = StateStorage.read(newValue, false);
+                    this.item = StateStorage.readExtra("item_location", newValue, false);
                 }
             break;
             case 'access':
@@ -214,6 +255,18 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
                         textEl.dataset.state = "available";
                     } else {
                         textEl.dataset.state = "unavailable";
+                    }
+                }
+            break;
+            case 'item':
+                if (oldValue != newValue) {
+                    itemEl.innerHTML = "";
+                    if (!!newValue && newValue != "false") {
+                        let el_icon = document.createElement("img");
+                        let itemsData = FileData.get("items")[newValue];
+                        const bgImage = Array.isArray(itemsData.images) ? itemsData.images[0] : itemsData.images;
+                        el_icon.src = bgImage;
+                        itemEl.append(el_icon);
                     }
                 }
             break;
@@ -230,6 +283,24 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
     
     uncheck() {
         this.toggleCheckValue(false);
+    }
+
+    showItemPicker(x, y) {
+        this.shadowRoot.getElementById('item_picker_content').innerHTML = "";
+
+        let el = document.createElement("ootrt-itempicker");
+        el.grid = 'pickable'
+        el.addEventListener("pick", event => {
+            const item = event.detail;
+            this.item = item;
+            StateStorage.writeExtra("item_location", this.ref, item);
+            event.preventDefault();
+            return false;
+        });
+
+        this.shadowRoot.getElementById('item_picker_content').append(el);
+    
+        this.shadowRoot.getElementById("item_picker").show(x, y);
     }
 
     toggleCheckValue(value) {

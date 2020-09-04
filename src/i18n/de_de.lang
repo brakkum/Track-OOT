@@ -838,6 +838,8 @@ item.key_boss_ganon=Ganons Teufelsturm Boss Schlüssel
 item.key_small_gerudo=Gerudo Festung Kleiner Schlüssel
 item.key_small_training=Gerudo Trainingsarena Kleiner Schlüssel
 item.key_small_well=Brunnen von Kakariko Kleiner Schlüssel
+item.key_small_generic=Kleiner Schlüssel
+item.key_boss_generic=Boss Schlüssel
 
 # MAPS & COMPASSES
 item.compass_deku=Dekubaum Kompass
@@ -860,6 +862,8 @@ item.compass_well=Brunnen von Kakariko Kompass
 item.dungeon_map_well=Brunnen von Kakariko Karte
 item.compass_ice=Eishöhle Kompass
 item.dungeon_map_ice=Eishöhle Karte
+item.compass_generic=Kompass
+item.dungeon_map_generic=Karte
 
 # SETTINGS
 settings=Allgemeine Einstellungen
@@ -1079,6 +1083,9 @@ compact=Kompakt (Schlüssel/Belohnung/Typ)
 flat=Flach (Schlüssel/Belohnung/Typ)
 map-right-dtr=Minimal Items with Map (Belohnung/Typ)
 essential-map=Essentielle Items mit Karte (Belohnung)
+
+# SETTINGS - RULESET
+load-preset-button=Vorlage laden
 
 # SHOPS
 shop.kokiri=Kokiri Laden

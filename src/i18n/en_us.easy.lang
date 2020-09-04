@@ -849,6 +849,8 @@ item.key_boss_ganon=Ganons Castle Boss Key
 item.key_small_gerudo=Gerudo Carpenter Small Key
 item.key_small_training=Gerudo Training Small Key
 item.key_small_well=Bottom of the Well Small Key
+item.key_small_generic=Small Key
+item.key_boss_generic=Boss Key
 
 # MAPS & COMPASSES
 item.compass_deku=Deku Compass
@@ -871,6 +873,8 @@ item.compass_well=Bottom of the Well Compass
 item.dungeon_map_well=Bottom of the Well Map
 item.compass_ice=Ice Cavern Compass
 item.dungeon_map_ice=Ice Cavern Map
+item.compass_generic=Compass
+item.dungeon_map_generic=Dungeon Map
 
 # SETTINGS
 settings=General settings
@@ -1091,6 +1095,9 @@ compact=Compact (key/reward/type)
 flat=Flat (key/reward/type)
 map-right-dtr=Minimal Items with Map (reward/type)
 essential-map=Essential Items with Map (reward)
+
+# SETTINGS - RULESET
+load-preset-button=Load preset
 
 # SHOPS
 shop.kokiri=Kokiri Shop

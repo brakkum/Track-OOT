@@ -6,6 +6,7 @@ import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import FileData from "/emcJS/storage/FileData.js";
 import FileLoader from "/emcJS/util/FileLoader.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
+import HotkeyHandler from "/emcJS/util/HotkeyHandler.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import "/script/storage/TrackerStorage.js";
 import Language from "/script/util/Language.js";
@@ -20,6 +21,7 @@ const FILES = {
     "world":                {path: "/database/world.json",              type: "json"},
     "world_lists":          {path: "/database/world_lists.json",        type: "json"},
     "logic":                {path: "/database/logic.json",              type: "json"},
+    "logic_glitched":       {path: "/database/logic_glitched.json",     type: "json"},
     "items":                {path: "/database/items.json",              type: "jsonc"},
     "grids":                {path: "/database/grids.json",              type: "jsonc"},
     "dungeonstate":         {path: "/database/dungeonstate.json",       type: "jsonc"},
@@ -27,6 +29,7 @@ const FILES = {
     "songs":                {path: "/database/songs.json",              type: "jsonc"},
     "hints":                {path: "/database/hints.json",              type: "jsonc"},
     "settings":             {path: "/database/settings.json",           type: "jsonc"},
+    "rulesets":             {path: "/database/rulesets.json",           type: "jsonc"},
     "randomizer_options":   {path: "/database/randomizer_options.json", type: "jsonc"},
     "filter":               {path: "/database/filter.json",             type: "jsonc"},
     "shops":                {path: "/database/shops.json",              type: "jsonc"},
@@ -95,8 +98,7 @@ async function init() {
         "/script/ui/map/Map.js",
         "/script/ui/LocationStatus.js",
         "/script/content/Tracker.js",
-        "/script/content/EditorChoice.js",
-        "/script/content/EditorLogic.js"
+        "/script/content/EditorChoice.js"
     ]);
     
     if ("SharedWorker" in window) {
@@ -110,6 +112,7 @@ async function init() {
         logPanel.setAttribute("ref", "log");
         logPanel.dataset.title = "Logger";
         logPanel.dataset.icon = "images/icons/log.svg";
+        logPanel.style.overflow = "hidden";
         let logScreen = document.createElement("emc-logscreen");
         logScreen.title = "Logger";
         logPanel.append(logScreen);
@@ -125,12 +128,12 @@ async function init() {
 
     updateLoadingMessage("initialize components...");
     let notePad = document.getElementById("notes-editor");
-    notePad.value = StateStorage.read("notes", "");
+    notePad.value = StateStorage.readNotes();
     notePad.addEventListener("change", function() {
-        StateStorage.write("notes", notePad.value);
+        StateStorage.writeNotes(notePad.value);
     });
     EventBus.register("state", function(event) {
-        notePad.value = event.data["notes"] || "";
+        notePad.value = event.data.notes || "";
     });
 
     updateLoadingMessage("initialize settings...");
@@ -151,21 +154,25 @@ async function init() {
         spl.className = "inactive";
     }
 
+    // hotkeys
+    function openDetached() {
+        window.open('detached.html#items', "TrackOOT", "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,titlebar=0", false);
+    }
+    HotkeyHandler.setAction("detached_window", openDetached, {
+        ctrlKey: true,
+        altKey: true,
+        key: "i"
+    });
+    HotkeyHandler.setAction("undo", StateStorage.undo, {
+        ctrlKey: true,
+        key: "z"
+    });
+    HotkeyHandler.setAction("redo", StateStorage.redo, {
+        ctrlKey: true,
+        key: "y"
+    });
     window.addEventListener('keydown', function(event) {
-        if (event.ctrlKey == true && event.altKey == true && event.key == "i") {
-            window.open('detached.html#items', "TrackOOT", "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,titlebar=0", false);
-            event.preventDefault();
-            event.stopPropagation();
-            return false;
-        }
-        if (event.ctrlKey == true && event.key == "z") {
-            StateStorage.undo();
-            event.preventDefault();
-            event.stopPropagation();
-            return false;
-        }
-        if (event.ctrlKey == true && event.key == "y") {
-            StateStorage.redo();
+        if (HotkeyHandler.callHotkey(event.key, event.ctrlKey, event.altKey, event.shiftKey)) {
             event.preventDefault();
             event.stopPropagation();
             return false;

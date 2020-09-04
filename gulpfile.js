@@ -6,7 +6,7 @@ const path = require("path");
 const SRC_PATH = path.resolve(__dirname, "./src");
 const DEV_PATH = path.resolve(__dirname, "./dev");
 const PRD_PATH = path.resolve(__dirname, "./prod");
-const EDT_PATH = path.resolve(__dirname, "./editor/utils");
+const EDT_PATH = path.resolve(__dirname, "./editor/content");
 
 const MODULE_PATHS = {
     emcJS: path.resolve(__dirname, "node_modules/emcjs"),
@@ -56,11 +56,19 @@ function copyHTML(dest = DEV_PATH) {
 }
 
 function copyJSON(dest = DEV_PATH) {
-    return gulp.src(`${SRC_PATH}/**/*.json`)
-        .pipe(filemanager.register(SRC_PATH, dest))
-        .pipe(newer(dest))
-        .pipe(jsonminify())
-        .pipe(gulp.dest(dest));
+    if (process.argv.indexOf('-nocompress') < 0) {
+        return gulp.src(`${SRC_PATH}/**/*.json`)
+            .pipe(filemanager.register(SRC_PATH, dest))
+            .pipe(newer(dest))
+            .pipe(jsonminify())
+            .pipe(gulp.dest(dest));
+    } else {
+        return gulp.src(`${SRC_PATH}/**/*.json`)
+            .pipe(filemanager.register(SRC_PATH, dest))
+            .pipe(newer(dest))
+            .pipe(gulp.dest(dest));
+    }
+        
 }
 
 function copyI18N(dest = DEV_PATH) {
