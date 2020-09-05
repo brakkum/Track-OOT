@@ -1,14 +1,10 @@
 
 import FileData from "/emcJS/storage/FileData.js";
-import "/emcJS/ui/Paging.js";
-import "/emcJS/ui/NavBar.js";
 
-import "/editors/EditorChoice.js";
+import "/editors/EditorWindow.js";
 
 import createLogicEditor from "./content/editors/LogicEditor.js";
 import createLocationEditor from "./content/editors/LocationEditor.js";
-
-const TITLE_PREFIX = "Tracker-Editor";
 
 const FILES = {
     "world":                {path: "/src/database/world.json",              type: "json"},
@@ -29,40 +25,19 @@ const FILES = {
     "shop_items":           {path: "/src/database/shop_items.json",         type: "jsonc"}
 };
 
-let nav = document.getElementById("navbar");
-let editorChoice = document.getElementById("editor-choice");
+let windowElement = document.getElementById("window");
+
+function registerWindow({name, panel, navigation, refreshFn}) {
+    windowElement.register(name, panel, navigation, refreshFn);
+}
 
 !async function() {
     
     await FileData.load(FILES);
 
-    // main
-    !function() {
-        const MAIN_NAV = [{
-            "content": "EXIT",
-            "handler": () => {
-                window.close()
-            }
-        }];
-        editorChoice.addEventListener("choice", function(event) {
-            if (event.app == "") {
-                document.title = TITLE_PREFIX;
-                nav.loadNavigation(MAIN_NAV);
-            } else {
-                document.title = `${TITLE_PREFIX} - ${event.app}`;
-                if (event.nav != null) {
-                    nav.loadNavigation(event.nav);
-                } else {
-                    nav.loadNavigation([]);
-                }
-            }
-        });
-        nav.loadNavigation(MAIN_NAV);
-    }();
-
     // add editors
-    await createLogicEditor(editorChoice, false);
-    await createLogicEditor(editorChoice, true);
-    await createLocationEditor(editorChoice);
+    registerWindow(await createLogicEditor(false));
+    registerWindow(await createLogicEditor(true));
+    registerWindow(await createLocationEditor());
 
 }();
