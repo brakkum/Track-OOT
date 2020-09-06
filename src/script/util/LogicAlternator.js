@@ -11,62 +11,38 @@ const GraphStorage = new IDBStorage("edges");
 const LogicsStorageGlitched = new IDBStorage('logics_glitched');
 const GraphStorageGlitched = new IDBStorage("edges_glitched");
 
-const ENTRANCE_SHUFFLE_RESOLVER_LIST = {
-    "entrance_shuffle_off": [],
-    "entrance_shuffle_dungeons": [
-        "dungeon"
-    ],
-    "entrance_shuffle_simple": [
-        "dungeon",
-        "interior.simple",
-        "grotto.simple"
-    ],
-    "entrance_shuffle_indoors": [
-        "dungeon",
-        "interior.simple",
-        "grotto.simple",
-        "interior.extended",
-        "grotto.extended"
-    ],
-    "entrance_shuffle_all": [
-        "dungeon",
-        "interior.simple",
-        "grotto.simple",
-        "interior.extended",
-        "grotto.extended",
-        "overworld"
-    ],
-};
-
 let logic_rules = "logic_rules_glitchless";
 let entrance_shuffle = "entrance_shuffle_off";
 let exit_binding = {};
 let use_custom_logic = false;
 
 // register event on exit target change
-EventBus.register("exit_change", event => {
-    let types = FileData.get("exit_types", {});
-    let source = event.data.source;
-    let target = event.data.target;
-    let reroute = event.data.reroute;
-    let entrance = event.data.entrance;
-
-    let edgeThere = `${source} -> ${target}`;
-    let edgeBack = `${reroute} -> ${entrance}`;
-
-    if (types[edgeThere].split(".")[0] == types[edgeBack].split(".")[0]) {
-        // set local binding
-        exit_binding[`${source} -> ${target}`] = reroute;
-        exit_binding[`${reroute} -> ${entrance}`] = source;
-        // write to storage
-        StateStorage.writeExtra("entrances", `${source} -> ${target}`, reroute);
-        StateStorage.writeExtra("entrances", `${reroute} -> ${entrance}`, source);
-        // apply if possible
-        let shuffled = ENTRANCE_SHUFFLE_RESOLVER_LIST[entrance_shuffle];
-        if (shuffled.indexOf(types[edgeThere]) >= 0) {
-            Logic.setTranslation(source, target, reroute);
-            Logic.setTranslation(reroute, entrance, source);
+EventBus.register("statechange_exits", event => {
+    let exits = FileData.get("exits");
+    let changes = [];
+    for (let edgeThere in event.data) {
+        let edgeBack = event.data[edgeThere].newValue;
+        let [source, target] = edgeThere.split(" => ");
+        let [reroute, entrance] = edgeBack.split(" => ");
+        let edgeThereData = exits[edgeThere];
+        if (edgeThereData == null) {
+            edgeThereData = exits[`${target} => ${source}`];
         }
+        let edgeBackData = exits[edgeBack];
+        if ((edgeBackData == null || edgeThereData.type == edgeBackData.type) && edgeThereData.active.indexOf(entrance_shuffle) >= 0) {
+            if (exit_binding[edgeThere] != reroute) {
+                changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: `${reroute}[child]`});
+                changes.push({source: `${reroute}[child]`, target: `${entrance}[child]`, reroute: `${source}[child]`});
+                changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: `${reroute}[adult]`});
+                changes.push({source: `${reroute}[adult]`, target: `${entrance}[adult]`, reroute: `${source}[adult]`});
+                exit_binding[edgeThere] = reroute;
+                exit_binding[edgeBack] = source;
+                StateStorage.writeExtra("exits", edgeBack, edgeThere);
+            }
+        }
+    }
+    if (!!changes.length) {
+        Logic.setTranslation(changes);
     }
 });
 // register event for (de-)activate entrances
@@ -136,14 +112,31 @@ async function updateLogic() {
         }
         Logic.setLogic(logic, true);
     }
+
     /* rewrite the edge from [source] to [target], so it instead links to [reroute] */
-    let shuffled = ENTRANCE_SHUFFLE_RESOLVER_LIST[entrance_shuffle];
-    for (let l in exit_binding) {
-        if (shuffled.indexOf(types[l]) >= 0) {
-            let reroute = exit_binding[i];
-            let [source, target] = l.split(" -> ");
-            Logic.setTranslation(source, target, reroute);
+    updateEntrances();
+}
+
+function updateEntrances() {
+    let exits = FileData.get("exits");
+    let changes = [];
+    for (let exit in exit_binding) {
+        let [source, target] = exit.split(" => ");
+        let edgeData = exits[exit];
+        if (edgeData == null) {
+            edgeData = exits[`${target} => ${source}`];
         }
+        if (edgeData.active.indexOf(entrance_shuffle) >= 0) {
+            let reroute = exit_binding[exit];
+            changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: `${reroute}[child]`});
+            changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: `${reroute}[adult]`});
+        } else {
+            changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: `${target}[child]`});
+            changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: `${target}[adult]`});
+        }
+    }
+    if (!!changes.length) {
+        Logic.setTranslation(changes);
     }
 }
 
@@ -177,7 +170,10 @@ class LogicAlternator {
         }
         logic_rules = StateStorage.read("option.logic_rules");
         entrance_shuffle = StateStorage.read("option.entrance_shuffle");
-        exit_binding = StateStorage.getAllExtra("entrances");
+        let exits = StateStorage.getAllExtra("exits");
+        for (let exit in exits) {
+            exit_binding[exit] = exits[exit].split(" => ")[0]
+        }
         use_custom_logic = await SettingsStorage.get("use_custom_logic", settings["use_custom_logic"].default);
         await updateLogic();
     }

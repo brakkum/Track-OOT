@@ -18,6 +18,7 @@ import "/emcJS/ui/Paging.js";
 const SettingsStorage = new IDBStorage('settings');
 
 const FILES = {
+    "exits":                {path: "/database/exits.json",              type: "json"},
     "world":                {path: "/database/world.json",              type: "json"},
     "world_lists":          {path: "/database/world_lists.json",        type: "json"},
     "logic":                {path: "/database/logic.json",              type: "json"},
@@ -61,6 +62,7 @@ function setVersion(data) {
         updateLoadingMessage("poke application...");
         await init();
     } catch(err) {
+        console.error(err);
         updateLoadingMessage(err.message.replace(/\n/g, "<br>"));
     }
 
@@ -144,6 +146,7 @@ async function init() {
     await $import.module([
         "/script/ui/shops/ShopList.js",
         "/script/ui/songs/SongList.js",
+        "/script/ui/exits/ExitList.js",
         "/script/ui/multiplayer/Multiplayer.js",
         "/script/ui/LayoutContainer.js"
     ]);
