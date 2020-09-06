@@ -45,6 +45,14 @@ Application:    Track-OOT
 
 - fix logger breaking out of the viewport
 
+***
+
+## VERSION 1.7.20
+
+### BUGFIXES
+
+- fix shops not syncing for multiplayer
+
 ---
 
 ## VERSION 1.7.19
