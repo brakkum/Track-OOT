@@ -309,7 +309,7 @@ class StateStorage {
             if (state.extra.hasOwnProperty(category)) {
                 return JSON.parse(JSON.stringify(state.extra[category]));
             } else {
-                return null;
+                return {};
             }
         }
     }

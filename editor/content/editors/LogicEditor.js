@@ -10,13 +10,13 @@ import "../logic/LiteralCustom.js";
 import "../logic/LiteralLinked.js";
 import "../logic/LiteralMixin.js";
 
-export default async function(editorChoice, glitched = false) {
+export default async function(glitched = false) {
     let postfix = "";
     if (!!glitched) {
         postfix = "_glitched";
     }
     let LogicsStorage = new IDBStorage(`logics${postfix}`);
-    let logicEditor = document.createElement("ted-logic-editor");
+    let logicEditor = document.createElement("jse-logic-editor");
     // refresh
     async function refreshLogicEditor() {
         let lists = await LogicListsCreator.createLists(glitched);
@@ -115,7 +115,8 @@ export default async function(editorChoice, glitched = false) {
             "content": "EXIT EDITOR",
             "handler": () => {
                 logicEditor.resetWorkingarea();
-                editorChoice.closeCurrent();
+                let event = new Event('close');
+                logicEditor.dispatchEvent(event);
             }
         }]
     },{
@@ -138,6 +139,11 @@ export default async function(editorChoice, glitched = false) {
             }
         }
     }];
-    // register
-    editorChoice.register(logicEditor, `Logic${!!glitched?" Glitched":""}`, NAV, refreshLogicEditor);
+
+    return {
+        name: `Logic${!!glitched?" Glitched":""}`,
+        panel: logicEditor,
+        navigation: NAV,
+        refreshFn: refreshLogicEditor
+    }
 };

@@ -7,9 +7,9 @@ import "/editors/modules/properties/Editor.js";
 
 import LocationListsCreator from "../locations/LocationListsCreator.js";
 
-export default async function(editorChoice) {
+export default async function() {
     let DataStorage = new IDBStorage("locations");
-    let locationEditor = document.createElement("ted-properties-editor");
+    let locationEditor = document.createElement("jse-properties-editor");
 
     let filter = FileData.get("filter");
     let logic = FileData.get("logic/edges");
@@ -191,10 +191,16 @@ export default async function(editorChoice) {
             "content": "EXIT EDITOR",
             "handler": () => {
                 locationEditor.resetWorkingarea();
-                editorChoice.closeCurrent();
+                let event = new Event('close');
+                locationEditor.dispatchEvent(event);
             }
         }]
     }];
-    // register
-    editorChoice.register(locationEditor, "Locations", NAV, refreshLocationEditor);
+
+    return {
+        name: "Locations",
+        panel: locationEditor,
+        navigation: NAV,
+        refreshFn: refreshLocationEditor
+    }
 };

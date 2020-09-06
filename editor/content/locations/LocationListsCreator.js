@@ -6,17 +6,17 @@ import Dialog from "/emcJS/ui/Dialog.js";
 let DataStorage = new IDBStorage("locations");
 
 const LOGIC_OPERATORS = [
-    "ted-logic-false",
-    "ted-logic-true",
-    "ted-logic-not",
-    "ted-logic-and",
-    "ted-logic-nand",
-    "ted-logic-or",
-    "ted-logic-nor",
-    "ted-logic-xor",
-    "ted-logic-xnor",
-    "ted-logic-min",
-    "ted-logic-max"
+    "jse-logic-false",
+    "jse-logic-true",
+    "jse-logic-not",
+    "jse-logic-and",
+    "jse-logic-nand",
+    "jse-logic-or",
+    "jse-logic-nor",
+    "jse-logic-xor",
+    "jse-logic-xnor",
+    "jse-logic-min",
+    "jse-logic-max"
 ];
 const CUSTOM_OPERATOR_GROUP = [
     "location"

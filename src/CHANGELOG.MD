@@ -21,6 +21,13 @@ Application:    Track-OOT
 - added translation matrix for entrance shuffle
 - added exit types configuration
 - add new exit->entrance configuration to savestate
+- add view for configuring exit->entrances
+    - dungeons
+    - `TODO` interior
+    - `TODO` grottos
+    - `TODO` graves
+    - `TODO` overworld
+    - `TODO` owls
 
 ### UX ENHANCEMENTS
 
@@ -44,6 +51,14 @@ Application:    Track-OOT
 ### BUGFIXES
 
 - fix logger breaking out of the viewport
+
+***
+
+## VERSION 1.7.20
+
+### BUGFIXES
+
+- fix shops not syncing for multiplayer
 
 ---
 
