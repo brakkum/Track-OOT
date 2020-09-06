@@ -71,7 +71,7 @@ function editShop(event) {
                 el.ref = res[i].item;
                 el.price = res[i].price;
             }
-            this.triggerGlobal("shop-items-update", {
+            this.triggerGlobal("shop_items", {
                 name: this.ref,
                 value: res
             });
