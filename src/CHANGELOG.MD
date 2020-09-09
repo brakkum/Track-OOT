@@ -48,6 +48,12 @@ Application:    Track-OOT
     - auto generate supporter list
     - supporter list is cached locally
 
+### DEBOUNCED STATE EVENTS
+
+- state events are now debounced
+    - reduces ui lag
+    - reduces network messages
+
 ### BUGFIXES
 
 - fix logger breaking out of the viewport
