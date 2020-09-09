@@ -6,12 +6,8 @@
     - add to debug information
 - location list not updating to dungeon type set in dungeon state module
     - check for proof first
-- there is a possibility for state writes to overlap in events so the state cycles between event values
-    - high output of events slows down tracker massively
-    - use postponed event triggers on state changes
-        - make event reaction time a settable value in tracker settings (optional)
-            - 200ms - 1000ms
-        - see `Item.js` for reference
+- new game does not reset entrances
+    - also check load game
 
 ---
 
