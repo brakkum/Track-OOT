@@ -26745,8 +26745,17 @@
                 "el": "function.can_use(mixin.silver_gauntlets)[child]"
             },
             "region.spirit_temple_outdoor_hands[child]": {
-                "type": "mixin",
-                "el": "mixin.can_hover[child]"
+                "type": "and",
+                "el": [
+                    {
+                        "type": "mixin",
+                        "el": "mixin.can_hover[child]"
+                    },
+                    {
+                        "type": "mixin",
+                        "el": "function.can_use(item.boots_hover)[child]"
+                    }
+                ]
             },
             "logic.location.desert.c_colossus_hp": {
                 "type": "and",
@@ -26971,8 +26980,17 @@
                 "el": "function.can_use(mixin.silver_gauntlets)[adult]"
             },
             "region.spirit_temple_outdoor_hands[adult]": {
-                "type": "mixin",
-                "el": "mixin.can_hover[adult]"
+                "type": "and",
+                "el": [
+                    {
+                        "type": "mixin",
+                        "el": "mixin.can_hover[adult]"
+                    },
+                    {
+                        "type": "mixin",
+                        "el": "function.can_use(item.boots_hover)[adult]"
+                    }
+                ]
             },
             "logic.location.desert.c_colossus_hp": {
                 "type": "and",
@@ -27250,7 +27268,7 @@
                 "type": "mixin",
                 "el": "mixin.is_child[child]"
             },
-            "region.market_dog_lady[child]": {
+            "region.market_dog_lady_house[child]": {
                 "type": "mixin",
                 "el": "mixin.is_child[child]"
             },
@@ -27369,7 +27387,7 @@
                 "type": "mixin",
                 "el": "mixin.is_child[adult]"
             },
-            "region.market_dog_lady[adult]": {
+            "region.market_dog_lady_house[adult]": {
                 "type": "mixin",
                 "el": "mixin.is_child[adult]"
             },
@@ -27643,20 +27661,8 @@
                 "type": "true"
             },
             "region.hc_garden[child]": {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "value",
-                        "el": "item.egg"
-                    },
-                    {
-                        "type": "not",
-                        "el": {
-                            "type": "value",
-                            "el": "option.shuffle_egg"
-                        }
-                    }
-                ]
+                "type": "value",
+                "el": "item.egg"
             },
             "region.hc_great_fairy_fountain[child]": {
                 "type": "true"
@@ -27736,20 +27742,8 @@
                 "type": "true"
             },
             "region.hc_garden[adult]": {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "value",
-                        "el": "item.egg"
-                    },
-                    {
-                        "type": "not",
-                        "el": {
-                            "type": "value",
-                            "el": "option.shuffle_egg"
-                        }
-                    }
-                ]
+                "type": "value",
+                "el": "item.egg"
             },
             "region.hc_great_fairy_fountain[adult]": {
                 "type": "true"
@@ -28100,21 +28094,16 @@
                                 "el": "mixin.is_adult[child]"
                             },
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.poe_big"
-                                    },
-                                    {
-                                        "type": "min",
-                                        "el": {
-                                            "type": "value",
-                                            "el": "item.poe_big"
-                                        },
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "value",
+                                "el": "item.bottle"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.bow"
+                            },
+                            {
+                                "type": "value",
+                                "el": "event.epona"
                             }
                         ]
                     }
@@ -28184,21 +28173,16 @@
                                 "el": "mixin.is_adult[adult]"
                             },
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.poe_big"
-                                    },
-                                    {
-                                        "type": "min",
-                                        "el": {
-                                            "type": "value",
-                                            "el": "item.poe_big"
-                                        },
-                                        "value": 0
-                                    }
-                                ]
+                                "type": "value",
+                                "el": "item.bottle"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.bow"
+                            },
+                            {
+                                "type": "value",
+                                "el": "event.epona"
                             }
                         ]
                     }
@@ -28935,7 +28919,7 @@
             }
         },
         "region.market_shooting_gallery[child]": {
-            "logic.location.castle_town.c_child_shooting": {
+            "logic.location.ice_cavern_mq.c_sheik": {
                 "type": "and",
                 "el": [
                     {
@@ -28953,7 +28937,7 @@
             }
         },
         "region.market_shooting_gallery[adult]": {
-            "logic.location.castle_town.c_child_shooting": {
+            "logic.location.ice_cavern_mq.c_sheik": {
                 "type": "and",
                 "el": [
                     {
@@ -29337,7 +29321,7 @@
             }
         },
         "region.market_treasure_chest_game[child]": {
-            "logic.location.castle_town.c_chest_game": {
+            "logic.location.ice_cavern_mq.c_sheik": {
                 "type": "and",
                 "el": [
                     {
@@ -29356,7 +29340,7 @@
             }
         },
         "region.market_treasure_chest_game[adult]": {
-            "logic.location.castle_town.c_chest_game": {
+            "logic.location.ice_cavern_mq.c_sheik": {
                 "type": "and",
                 "el": [
                     {
@@ -29634,8 +29618,8 @@
                 ]
             }
         },
-        "region.market_dog_lady[child]": {
-            "logic.location.castle_town.c_dog": {
+        "region.market_dog_lady_house[child]": {
+            "logic.location.ice_cavern_mq.c_sheik": {
                 "type": "and",
                 "el": [
                     {
@@ -29652,8 +29636,8 @@
                 ]
             }
         },
-        "region.market_dog_lady[adult]": {
-            "logic.location.castle_town.c_dog": {
+        "region.market_dog_lady_house[adult]": {
+            "logic.location.ice_cavern_mq.c_sheik": {
                 "type": "and",
                 "el": [
                     {
@@ -31331,7 +31315,7 @@
             }
         },
         "region.kak_shooting_gallery[child]": {
-            "logic.location.kakariko.c_adult_shooting": {
+            "logic.location.ice_cavern_mq.c_sheik": {
                 "type": "and",
                 "el": [
                     {
@@ -31350,7 +31334,7 @@
             }
         },
         "region.kak_shooting_gallery[adult]": {
-            "logic.location.kakariko.c_adult_shooting": {
+            "logic.location.ice_cavern_mq.c_sheik": {
                 "type": "and",
                 "el": [
                     {
@@ -33325,7 +33309,7 @@
                     }
                 ]
             },
-            "logic.location.mountain.g_gossip_dm_crater": {
+            "logic.location.goron.g_gossip_maze": {
                 "type": "and",
                 "el": [
                     {
@@ -33619,7 +33603,7 @@
                     }
                 ]
             },
-            "logic.location.mountain.g_gossip_dm_crater": {
+            "logic.location.goron.g_gossip_maze": {
                 "type": "and",
                 "el": [
                     {
@@ -55528,7 +55512,7 @@
                                 "type": "value",
                                 "el": "item.skulltula"
                             },
-                            "value": 0
+                            "value": 100
                         }
                     ]
                 }
@@ -55624,7 +55608,7 @@
                                 "type": "value",
                                 "el": "item.skulltula"
                             },
-                            "value": 0
+                            "value": 100
                         }
                     ]
                 }
