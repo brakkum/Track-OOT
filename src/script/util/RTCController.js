@@ -36,6 +36,7 @@ EventBus.addModule(eventModule, {
     blacklist: EVENT_BLACKLIST
 });
 
+let silent = false;
 let username = "";
 let clients = new Map();
 let spectators = new Map();
@@ -231,6 +232,7 @@ async function promptPeerName() {
 }
 
 function onJoined() {
+    silent = false;
     rtcClient.setMessageHandler("data", async function(key, msg) {
         if (msg.type == "join") {
             Toast.show(`Multiplayer: "${msg.data}" joined`);
@@ -244,21 +246,26 @@ function onJoined() {
             setState(msg.data);
         } else if (msg.type == "event") {
             if (EVENT_BLACKLIST.indexOf(msg.data.name) < 0) {
+                silent = true;
                 if (!StateStorage.resolveNetworkStateEvent(msg.data.name, msg.data.data)) {
                     eventModule.trigger(msg.data.name, msg.data.data);
                 }
+                silent = false;
             }
         }
     });
     eventModule.register(function(event) {
-        rtcClient.send("data", {
-            type: "event",
-            data: event
-        });
+        if (!silent) {
+            rtcClient.send("data", {
+                type: "event",
+                data: event
+            });
+        }
     });
 }
 
 async function onHosting() {
+    silent = false;
     rtcClient.setMessageHandler("data", function(key, msg) {
         if (msg.type == "name") {
             if (msg.data == username || reverseLookup.has(msg.data)) {
@@ -294,9 +301,11 @@ async function onHosting() {
             if (clients.has(key)) {
                 if (EVENT_BLACKLIST.indexOf(msg.data.name) < 0) {
                     rtcClient.sendButOne("data", key, msg);
+                    silent = true;
                     if (!StateStorage.resolveNetworkStateEvent(msg.data.name, msg.data.data)) {
                         eventModule.trigger(msg.data.name, msg.data.data);
                     }
+                    silent = false;
                 }
             }
         }
@@ -329,10 +338,12 @@ async function onHosting() {
         ON_ROOMUPDATE(data);
     };
     eventModule.register(function(event) {
-        rtcClient.send("data", {
-            type: "event",
-            data: event
-        });
+        if (!silent) {
+            rtcClient.send("data", {
+                type: "event",
+                data: event
+            });
+        }
     });
     ON_ROOMUPDATE(getClientNameList());
 }

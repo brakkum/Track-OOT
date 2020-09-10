@@ -126,9 +126,6 @@ function dungeonTypeUpdate(event) {
     }
 }
 
-const EVENT_REACTION_TIME = 500;
-const EVENT_TIMEOUT = new WeakMap();
-
 class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
@@ -332,16 +329,11 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
             }
             if (value != oldValue) {
                 this.value = value;
-                if (EVENT_TIMEOUT.has(this)) {
-                    clearTimeout(EVENT_TIMEOUT.get(this));
-                }
-                EVENT_TIMEOUT.set(this, setTimeout(() => {
-                    StateStorage.write(this.ref, parseInt(this.value));
-                    this.triggerGlobal("item", {
-                        name: this.ref,
-                        value: this.value
-                    });
-                }, EVENT_REACTION_TIME));
+                StateStorage.write(this.ref, parseInt(this.value));
+                this.triggerGlobal("item", {
+                    name: this.ref,
+                    value: this.value
+                });
             }
         }
         if (!event) return;
@@ -384,16 +376,11 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
             }
             if (value != oldValue) {
                 this.value = value;
-                if (EVENT_TIMEOUT.has(this)) {
-                    clearTimeout(EVENT_TIMEOUT.get(this));
-                }
-                EVENT_TIMEOUT.set(this, setTimeout(() => {
-                    StateStorage.write(this.ref, parseInt(this.value));
-                    this.triggerGlobal("item", {
-                        name: this.ref,
-                        value: this.value
-                    });
-                }, EVENT_REACTION_TIME));
+                StateStorage.write(this.ref, parseInt(this.value));
+                this.triggerGlobal("item", {
+                    name: this.ref,
+                    value: this.value
+                });
             }
         }
         if (!event) return;
