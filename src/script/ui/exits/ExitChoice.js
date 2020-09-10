@@ -3,6 +3,7 @@ import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/selection/SearchSelect.js";
 import StateStorage from "/script/storage/StateStorage.js";
+import Language from "/script/util/Language.js";
 
 const TPL = new Template(`
     <style>
@@ -38,20 +39,29 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
 
-        this.shadowRoot.getElementById("select").addEventListener("change", event => {
+        let selectEl = this.shadowRoot.getElementById("select");
+        selectEl.addEventListener("change", event => {
             if (this.ref != "") {
                 StateStorage.writeExtra("exits", this.ref, event.value);
             }
         });
         /* event bus */
         this.registerGlobal("state", event => {
+            let active = ACTIVE.get(this);
             if (event.data.state.hasOwnProperty("option.entrance_shuffle")) {
-                this.active = event.data.state["option.entrance_shuffle"]
+                selectEl.readonly = active.indexOf(event.data.state["option.entrance_shuffle"]) < 0;
+            }
+            if (event.data.extra.exits != null && event.data.extra.exits[this.ref] != null) {
+                selectEl.value = event.data.extra.exits[this.ref];
+            } else {
+                let data = FileData.get(`exits/${this.ref}`);
+                selectEl.value = data.target;
             }
         });
         this.registerGlobal("randomizer_options", event => {
+            let active = ACTIVE.get(this);
             if (event.data.hasOwnProperty("option.entrance_shuffle")) {
-                this.active = event.data["option.entrance_shuffle"]
+                selectEl.readonly = active.indexOf(event.data["option.entrance_shuffle"]) < 0;
             }
         });
         this.registerGlobal("statechange_exits", event => {
@@ -60,7 +70,7 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
                 data = event.data[this.ref];
             }
             if (data != null) {
-                this.shadowRoot.getElementById("select").value = data.newValue;
+                selectEl.value = data.newValue;
             }
         });
     }
@@ -84,18 +94,23 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
                     let exits = FileData.get("exits");
                     let data = exits[newValue];
                     // savesatate
-                    this.shadowRoot.getElementById("title").innerHTML = newValue;
-                    let select = this.shadowRoot.getElementById("select");
-                    select.value = StateStorage.readExtra("exits", this.ref, data.target);
+                    let title = this.shadowRoot.getElementById("title");
+                    title.innerHTML = Language.translate(newValue);
+                    title.setAttribute('i18n-content', newValue);
+                    let selectEl = this.shadowRoot.getElementById("select");
+                    selectEl.value = StateStorage.readExtra("exits", this.ref, data.target);
                     ACTIVE.set(this, data.active);
+                    // readonly
+                    selectEl.readonly = data.active.indexOf(StateStorage.read("option.entrance_shuffle")) < 0;
                     // options
                     for (let key in exits) {
                         let value = exits[key];
                         if (value.type == data.type) {
                             let opt = document.createElement('emc-option');
                             opt.value = value.target;
-                            opt.innerHTML = value.target;
-                            select.append(opt);
+                            opt.innerHTML = Language.translate(value.target);
+                            opt.setAttribute('i18n-content', value.target);
+                            selectEl.append(opt);
                         }
                     }
                 break;

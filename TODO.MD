@@ -1,4 +1,19 @@
-### WIP
+
+### FIX MAJOR BUGS
+
+- region translation matrix not applied correctly
+    - check for proof first
+    - add to debug information
+- location list not updating to dungeon type set in dungeon state module
+    - check for proof first
+
+---
+
+### FIX MINOR BUGS
+
+- fix avail chest and missing chests showing incorrect values until updated
+- fix multiplayer sync
+    - undo/redo does not sync correctly
 
 ---
 
@@ -15,27 +30,7 @@
 - add missing options
     - on new game options are written initially by the `StateStorage`
     - on game load missing/changed options should be added by `StateConverters`
-
-- fix randomizer option defaults not being loaded initially (minor)
-
-- fix avail chest and missing chests showing incorrect values until updated (minor)
-
----
-
-- fix multiplayer sync
-    - undo/redo does not sync correctly
-
-- item association missing
-    - refill item
-    - rupees
-
-- make all tracker input recievers use postponed event triggers
-    - see `Item.js` for reference
-    - make event reaction time a settable value in tracker settings (optional)
-        - 200ms - 1000ms
-    - maybe better to do this for storage writes only
-
----
+    
 
 ### TODOS
 

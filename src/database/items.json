@@ -797,5 +797,35 @@
         "max": 0,
         "images": "/images/items/bottle_potion_blue.png",
         "always_active": true
+    },
+    "item.rupee_green":{
+        "max": false,
+        "images": "/images/items/rupee_green.png",
+        "always_active": true
+    },
+    "item.rupee_blue":{
+        "max": false,
+        "images": "/images/items/rupee_blue.png",
+        "always_active": true
+    },
+    "item.rupee_red":{
+        "max": false,
+        "images": "/images/items/rupee_red.png",
+        "always_active": true
+    },
+    "item.rupee_purple":{
+        "max": false,
+        "images": "/images/items/rupee_purple.png",
+        "always_active": true
+    },
+    "item.rupee_yellow":{
+        "max": false,
+        "images": "/images/items/rupee_yellow.png",
+        "always_active": true
+    },
+    "item.refill_item": {
+        "max": false,
+        "images": "/images/items/refill_item.png",
+        "always_active": true
     }
 }
