@@ -6,8 +6,6 @@
     - add to debug information
 - location list not updating to dungeon type set in dungeon state module
     - check for proof first
-- new game does not reset entrances
-    - also check load game
 
 ---
 
@@ -32,10 +30,7 @@
 - add missing options
     - on new game options are written initially by the `StateStorage`
     - on game load missing/changed options should be added by `StateConverters`
-
-- item association missing
-    - refill item
-    - rupees
+    
 
 ### TODOS
 
