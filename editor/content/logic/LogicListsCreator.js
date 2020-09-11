@@ -305,7 +305,7 @@ function createOperatorMixins(data) {
     };
     for (let ref in data) {
         res.children.push({
-            "type": "tracker-logic-linked",
+            "type": "tracker-logic-mixin",
             "ref": ref,
             "category": "mixin"
         });
@@ -321,7 +321,7 @@ function createOperatorFunctions(data) {
     };
     for (let ref in data) {
         res.children.push({
-            "type": "tracker-logic-linked",
+            "type": "tracker-logic-mixin",
             "ref": ref,
             "category": "function"
         });

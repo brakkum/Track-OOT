@@ -35,6 +35,7 @@
   "scripts": {
     "build": "gulp build",
     "buildDev": "gulp buildDev",
+    "buildDevNoCompress": "gulp buildDev -nocompress",
     "serve": "serve dev",
     "edit": "electron  --inspect=7777 ./editor --no-sandbox"
   }
