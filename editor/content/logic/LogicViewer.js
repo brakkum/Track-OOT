@@ -1,7 +1,6 @@
 import FileData from "/emcJS/storage/FileData.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import Dialog from "/emcJS/ui/Dialog.js";
-import Helper from "/emcJS/util/Helper.js";
 import LogicUIAbstractElement from "/editors/ui/logic/AbstractElement.js";
 
 const LogicsStorage = new IDBStorage('logics');
@@ -35,20 +34,6 @@ class LogicViewer {
         }
         d.append(el);
         d.show();
-    }
-
-    async printSVG(ref) {
-        let logic = await getLogic(ref, !!this.customLogic);
-        if (!!logic) {
-            let svg = LogicUIAbstractElement.buildSVG(logic);
-            let png = await Helper.svg2png(svg);
-            let svg_win = window.open("", "_blank", "menubar=no,location=no,resizable=yes,scrollbars=yes,status=no");
-            let img = document.createElement("img");
-            img.src = png;
-            svg_win.document.body.append(img);
-        } else {
-            //TODO show error
-        }
     }
 
 }

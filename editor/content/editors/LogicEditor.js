@@ -7,8 +7,8 @@ import "/editors/modules/logic/Editor.js";
 
 import LogicListsCreator from "../logic/LogicListsCreator.js";
 import "../logic/LiteralCustom.js";
-import "../logic/LiteralLinked.js";
 import "../logic/LiteralMixin.js";
+import "../logic/LiteralFunction.js";
 
 export default async function(glitched = false) {
     let postfix = "";

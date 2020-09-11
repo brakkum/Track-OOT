@@ -28,7 +28,7 @@ const SVG = new Template(`
     </div>
 `);
 
-export default class LiteralCustom extends AbstractElement {
+export default class LogicElement extends AbstractElement {
 
     constructor() {
         super();
@@ -97,10 +97,6 @@ export default class LiteralCustom extends AbstractElement {
         }
     }
 
-    static getSVG(logic) {
-        return SVG.generate().children[0];
-    }
-
     static get observedAttributes() {
         let attr = AbstractElement.observedAttributes;
         attr.push('ref', 'category', 'value');
@@ -140,12 +136,12 @@ export default class LiteralCustom extends AbstractElement {
 
 }
 
-AbstractElement.registerReference("chest", LiteralCustom);
-AbstractElement.registerReference("skulltula", LiteralCustom);
-AbstractElement.registerReference("item", LiteralCustom);
-AbstractElement.registerReference("skip", LiteralCustom);
-AbstractElement.registerReference("option", LiteralCustom);
-AbstractElement.registerReference("filter", LiteralCustom);
-AbstractElement.registerReference("location", LiteralCustom);
+AbstractElement.registerReference("chest", LogicElement);
+AbstractElement.registerReference("skulltula", LogicElement);
+AbstractElement.registerReference("item", LogicElement);
+AbstractElement.registerReference("skip", LogicElement);
+AbstractElement.registerReference("option", LogicElement);
+AbstractElement.registerReference("filter", LogicElement);
+AbstractElement.registerReference("location", LogicElement);
 
-customElements.define(`tracker-logic-custom`, LiteralCustom);
+customElements.define("tracker-logic-custom", LogicElement);

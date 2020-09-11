@@ -2,9 +2,10 @@ import Template from "/emcJS/util/Template.js";
 import AbstractElement from "/editors/ui/logic/AbstractElement.js";
 import LogicViewer from "./LogicViewer.js";
 
-const TPL_CAPTION = "LINKED";
+const TPL_CAPTION = "FUNCTION";
 const TPL_BACKGROUND = "#ffffff";
 const TPL_BORDER = "#777777";
+const REFERENCE = "function";
 
 const TPL = new Template(`
     <style>
@@ -31,7 +32,7 @@ const SVG = new Template(`
     </div>
 `);
 
-export default class LiteralLinked extends AbstractElement {
+export default class LogicElement extends AbstractElement {
 
     constructor() {
         super();
@@ -50,14 +51,6 @@ export default class LiteralLinked extends AbstractElement {
         this.setAttribute('ref', val);
     }
 
-    get category() {
-        return this.getAttribute('category');
-    }
-
-    set category(val) {
-        this.setAttribute('category', val);
-    }
-
     calculate(state = {}) {
         if (state.hasOwnProperty(this.ref)) {
             let val = !!this.value ? +(state[this.ref] == this.value) : +!!state[this.ref];
@@ -71,24 +64,18 @@ export default class LiteralLinked extends AbstractElement {
 
     loadLogic(logic) {
         this.ref = logic.el;
-        this.category = logic.category || logic.type;
     }
 
     toJSON() {
         return {
-            type: this.type,
-            el: this.ref,
-            category: this.category
+            type: REFERENCE,
+            el: this.ref
         };
-    }
-
-    static getSVG(logic) {
-        return SVG.generate().children[0];
     }
 
     static get observedAttributes() {
         let attr = AbstractElement.observedAttributes;
-        attr.push('ref', 'category');
+        attr.push('ref', 'type');
         return attr;
     }
       
@@ -110,21 +97,10 @@ export default class LiteralLinked extends AbstractElement {
                     }
                 }
                 break;
-            case 'category':
-                if (oldValue != newValue) {
-                    if (!!newValue) {
-                        this.shadowRoot.getElementById('header-name').innerHTML = newValue.toUpperCase();
-                    } else {
-                        this.shadowRoot.getElementById('header-name').innerHTML = TPL_CAPTION;
-                    }
-                }
-                break;
         }
     }
 
 }
 
-AbstractElement.registerReference("entrance", LiteralLinked);
-AbstractElement.registerReference("area", LiteralLinked);
-
-customElements.define(`tracker-logic-linked`, LiteralLinked);
+AbstractElement.registerReference(REFERENCE, LogicElement);
+customElements.define(`tracker-logic-${REFERENCE}`, LogicElement);

@@ -1,7 +1,6 @@
 
 import FileData from "/emcJS/storage/FileData.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
-import Dialog from "/emcJS/ui/Dialog.js";
 
 const LogicsStorage = new IDBStorage('logics');
 const LogicsStorageGlitched = new IDBStorage('logics_glitched');
@@ -206,44 +205,6 @@ function createSettingsOperatorCategory(data, ref) {
     return res;
 }
 
-function createOperatorWorldCategories(world) {
-    let res = [];
-
-    let els = {};
-
-    for (let name in world) {
-        let ref = world[name];
-        if (els[ref.category] == null) {
-            els[ref.category] = [];
-        }
-        if (CUSTOM_OPERATOR_GROUP.indexOf(ref.category) >= 0) {
-            els[ref.category].push({
-                "type": "tracker-logic-custom",
-                "ref": name,
-                "category": ref.category
-            });
-        } else {
-            els[ref.category].push({
-                "type": "tracker-logic-linked",
-                "ref": ref.access,
-                "category": ref.category
-            });
-        }
-    }
-
-    for (let cat in els) {
-        if (els[cat].length > 0) {
-            res.push({
-                "type": "group",
-                "caption": cat,
-                "children": els[cat]
-            });
-        }
-    }
-
-    return res;
-}
-
 function createOperatorReachCategories(data) {
     let lbuf = {
         "type": "group",
@@ -315,8 +276,7 @@ function createOperatorMixins(data) {
     for (let ref in data) {
         res.children.push({
             "type": "tracker-logic-mixin",
-            "ref": ref,
-            "category": "mixin"
+            "ref": ref
         });
     }
     return res;
@@ -330,9 +290,8 @@ function createOperatorFunctions(data) {
     };
     for (let ref in data) {
         res.children.push({
-            "type": "tracker-logic-mixin",
-            "ref": ref,
-            "category": "function"
+            "type": "tracker-logic-function",
+            "ref": ref
         });
     }
     return res;
@@ -340,95 +299,6 @@ function createOperatorFunctions(data) {
 
 // LOGICS
 // -------------------
-function createLogicWorldCategories(data, world) {
-    let ress = [];
-
-    for (let name in data) {
-        if (name == "#") continue; 
-        let lists = data[name].lists;
-        if (name == "") name = "area.overworld";
-        if (lists.hasOwnProperty("v")) {
-            let res = {
-                "type": "group",
-                "caption": name,
-                "children": []
-            };
-
-            let els = {};
-
-            for (let record of lists.v) {
-                let ref = world[record.id];
-                if (!!ref) {
-                    if (els[ref.category] == null) {
-                        els[ref.category] = [];
-                    }
-                    els[ref.category].push({
-                        "type": ref.type,
-                        "ref": ref.access,
-                        "category": ref.category,
-                        "content": record.id,
-                        "icon": `/images/icons/${ref.type}.svg`
-                    });
-                } else {
-                    Dialog.alert("Error!", `creating world logics encountered missing id in world.json file: ${record.id}`);
-                }
-            }
-
-            for (let cat in els) {
-                if (els[cat].length > 0) {
-                    res.children.push({
-                        "type": "group",
-                        "caption": cat,
-                        "children": els[cat]
-                    });
-                }
-            }
-
-            ress.push(res);
-        }
-        if (lists.hasOwnProperty("mq")) {
-            let res = {
-                "type": "group",
-                "caption": `${name} MQ`,
-                "children": []
-            };
-
-            let els = {};
-
-            for (let record of lists.mq) {
-                let ref = world[record.id];
-                if (!!ref) {
-                    if (els[ref.category] == null) {
-                        els[ref.category] = [];
-                    }
-                    els[ref.category].push({
-                        "type": ref.type,
-                        "ref": ref.access,
-                        "category": ref.category,
-                        "content": record.id,
-                        "icon": `/images/icons/${ref.type}.svg`
-                    });
-                } else {
-                    Dialog.alert("Error!", `creating world logics encountered missing id in world.json file: ${record.id}`);
-                }
-            }
-
-            for (let cat in els) {
-                if (els[cat].length > 0) {
-                    res.children.push({
-                        "type": "group",
-                        "caption": cat,
-                        "children": els[cat]
-                    });
-                }
-            }
-
-            ress.push(res);
-        }
-    }
-    return ress;
-}
-
 function createLogicGraphCategory(data, world) {
     let resC = {
         "type": "group",

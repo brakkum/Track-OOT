@@ -5,6 +5,7 @@ import LogicViewer from "./LogicViewer.js";
 const TPL_CAPTION = "MIXIN";
 const TPL_BACKGROUND = "#ffffff";
 const TPL_BORDER = "#777777";
+const REFERENCE = "mixin";
 
 const TPL = new Template(`
     <style>
@@ -31,7 +32,7 @@ const SVG = new Template(`
     </div>
 `);
 
-export default class LiteralMixin extends AbstractElement {
+export default class LogicElement extends AbstractElement {
 
     constructor() {
         super();
@@ -50,14 +51,6 @@ export default class LiteralMixin extends AbstractElement {
         this.setAttribute('ref', val);
     }
 
-    get type() {
-        return this.getAttribute('type');
-    }
-
-    set type(val) {
-        this.setAttribute('type', val);
-    }
-
     calculate(state = {}) {
         if (state.hasOwnProperty(this.ref)) {
             let val = !!this.value ? +(state[this.ref] == this.value) : +!!state[this.ref];
@@ -71,18 +64,13 @@ export default class LiteralMixin extends AbstractElement {
 
     loadLogic(logic) {
         this.ref = logic.el;
-        this.type = logic.type;
     }
 
     toJSON() {
         return {
-            type: this.type,
+            type: REFERENCE,
             el: this.ref
         };
-    }
-
-    static getSVG(logic) {
-        return SVG.generate().children[0];
     }
 
     static get observedAttributes() {
@@ -109,21 +97,10 @@ export default class LiteralMixin extends AbstractElement {
                     }
                 }
                 break;
-            case 'type':
-                if (oldValue != newValue) {
-                    if (!!newValue) {
-                        this.shadowRoot.getElementById('header-name').innerHTML = newValue.toUpperCase();
-                    } else {
-                        this.shadowRoot.getElementById('header-name').innerHTML = TPL_CAPTION;
-                    }
-                }
-                break;
         }
     }
 
 }
 
-AbstractElement.registerReference("mixin", LiteralMixin);
-AbstractElement.registerReference("function", LiteralMixin);
-
-customElements.define(`tracker-logic-mixin`, LiteralMixin);
+AbstractElement.registerReference(REFERENCE, LogicElement);
+customElements.define(`tracker-logic-${REFERENCE}`, LogicElement);
