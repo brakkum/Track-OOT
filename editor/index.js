@@ -7,7 +7,7 @@ import createLogicEditor from "./content/editors/LogicEditor.js";
 import createLocationEditor from "./content/editors/LocationEditor.js";
 
 const FILES = {
-    "exits":                {path: "/database/exits.json",                  type: "json"},
+    "exits":                {path: "/src/database/exits.json",                  type: "json"},
     "world":                {path: "/src/database/world.json",              type: "json"},
     "world_lists":          {path: "/src/database/world_lists.json",        type: "json"},
     "logic":                {path: "/src/database/logic.json",              type: "json"},
