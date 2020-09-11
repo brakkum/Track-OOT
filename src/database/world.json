@@ -2,7 +2,7 @@
     "entrance.deku": {
         "category": "entrance",
         "type": "dungeon",
-        "access": "logic.entrance.deku",
+        "access": "region.deku_tree_lobby",
         "visible": {
             "type": "not",
             "el": {
@@ -25,7 +25,7 @@
     "entrance.dodongo": {
         "category": "entrance",
         "type": "dungeon",
-        "access": "logic.entrance.dodongo",
+        "access": "region.dodongos_cavern_beginning",
         "visible": {
             "type": "not",
             "el": {
@@ -48,7 +48,7 @@
     "entrance.jabujabu": {
         "category": "entrance",
         "type": "dungeon",
-        "access": "logic.entrance.jabujabu",
+        "access": "region.jabu_jabus_belly_beginning",
         "visible": {
             "type": "not",
             "el": {
@@ -71,7 +71,7 @@
     "entrance.temple_forest": {
         "category": "entrance",
         "type": "dungeon",
-        "access": "logic.entrance.temple_forest",
+        "access": "region.forest_temple_lobby",
         "visible": {
             "type": "not",
             "el": {
@@ -94,7 +94,7 @@
     "entrance.temple_fire": {
         "category": "entrance",
         "type": "dungeon",
-        "access": "logic.entrance.temple_fire",
+        "access": "region.fire_temple_lower",
         "visible": {
             "type": "not",
             "el": {
@@ -117,7 +117,7 @@
     "entrance.temple_water": {
         "category": "entrance",
         "type": "dungeon",
-        "access": "logic.entrance.temple_water",
+        "access": "region.water_temple_lobby",
         "visible": {
             "type": "not",
             "el": {
@@ -140,7 +140,7 @@
     "entrance.temple_spirit": {
         "category": "entrance",
         "type": "dungeon",
-        "access": "logic.entrance.temple_spirit",
+        "access": "region.spirit_temple_lobby",
         "visible": {
             "type": "not",
             "el": {
@@ -163,7 +163,7 @@
     "entrance.temple_shadow": {
         "category": "entrance",
         "type": "dungeon",
-        "access": "logic.entrance.temple_shadow",
+        "access": "region.shadow_temple_entryway",
         "visible": {
             "type": "not",
             "el": {
@@ -186,7 +186,7 @@
     "entrance.well": {
         "category": "entrance",
         "type": "dungeon",
-        "access": "logic.entrance.well",
+        "access": "region.bottom_of_the_well",
         "visible": {
             "type": "not",
             "el": {
@@ -209,7 +209,7 @@
     "entrance.ice_cavern": {
         "category": "entrance",
         "type": "dungeon",
-        "access": "logic.entrance.ice_cavern",
+        "access": "region.ice_cavern_beginning",
         "visible": {
             "type": "not",
             "el": {
@@ -232,7 +232,7 @@
     "entrance.training_grounds": {
         "category": "entrance",
         "type": "dungeon",
-        "access": "logic.entrance.training_grounds",
+        "access": "region.gerudo_training_grounds_lobby",
         "visible": {
             "type": "not",
             "el": {
