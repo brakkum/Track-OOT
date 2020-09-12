@@ -112,7 +112,6 @@ const TPL_MNU_CTX = new Template(`
         <div id="menu-disassociate" class="item">Clear Item</div>
         <div class="splitter"></div>
         <div id="menu-logic" class="item">Show Logic</div>
-        <div id="menu-logic-image" class="item">Create Logic Image</div>
     </emc-contextmenu>
 `);
 
@@ -186,9 +185,6 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
         mnu_ctx.shadowRoot.getElementById("menu-logic").addEventListener("click", event => {
             let title = Language.translate(this.ref);
             LogicViewer.show(this.access, title);
-        });
-        mnu_ctx.shadowRoot.getElementById("menu-logic-image").addEventListener("click", event => {
-            LogicViewer.printSVG(this.access);
         });
         
         /* mouse events */

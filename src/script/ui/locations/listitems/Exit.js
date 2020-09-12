@@ -1,0 +1,324 @@
+import FileData from "/emcJS/storage/FileData.js";
+import Template from "/emcJS/util/Template.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
+import Dialog from "/emcJS/ui/Dialog.js";
+import "/emcJS/ui/ContextMenu.js";
+import "/emcJS/ui/Icon.js";
+import StateStorage from "/script/storage/StateStorage.js";
+import IDBStorage from "/emcJS/storage/IDBStorage.js";
+import ListLogic from "/script/util/ListLogic.js";
+import Logic from "/script/util/Logic.js";
+import Language from "/script/util/Language.js";
+
+const SettingsStorage = new IDBStorage('settings');
+
+const TPL = new Template(`
+    <style>
+        * {
+            position: relative;
+            box-sizing: border-box;
+        }
+        :host {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+            padding: 5px;
+        }
+        :host(:hover) {
+            background-color: var(--main-hover-color, #ffffff32);
+        }
+        .textarea {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            min-height: 35px;
+            word-break: break-word;
+        }
+        .textarea:empty {
+            display: none;
+        }
+        #text {
+            display: flex;
+            flex: 1;
+            color: #ffffff;
+            align-items: center;
+            -moz-user-select: none;
+            user-select: none;
+        }
+        #text[data-state="available"] {
+            color: var(--location-status-available-color, #000000);
+        }
+        #text[data-state="unavailable"] {
+            color: var(--location-status-unavailable-color, #000000);
+        }
+        :host([value]:not([value=""])) #text {
+            color: var(--location-status-opened-color, #000000);
+        }
+        #value[data-state="opened"] {
+            color: var(--location-status-opened-color, #000000);
+        }
+        #value[data-state="available"] {
+            color: var(--location-status-available-color, #000000);
+        }
+        #value[data-state="unavailable"] {
+            color: var(--location-status-unavailable-color, #000000);
+        }
+        #value[data-state="possible"] {
+            color: var(--location-status-possible-color, #000000);
+        }
+        #badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px;
+            flex-shrink: 0;
+            margin-left: 5px;
+            border: 1px solid var(--navigation-background-color, #ffffff);
+            border-radius: 2px;
+        }
+        #badge emc-icon {
+            width: 25px;
+            height: 25px;
+        }
+        .menu-tip {
+            font-size: 0.7em;
+            color: #777777;
+            margin-left: 15px;
+            float: right;
+        }
+    </style>
+    <div class="textarea">
+        <div id="text"></div>
+        <div id="badge">
+            <emc-icon src="images/icons/entrance.svg"></emc-icon>
+            <emc-icon id="badge-time" src="images/icons/time_always.svg"></emc-icon>
+            <emc-icon id="badge-era" src="images/icons/era_none.svg"></emc-icon>
+        </div>
+    </div>
+    <div id="value" class="textarea">
+    </div>
+`);
+
+const TPL_MNU_CTX = new Template(`
+    <emc-contextmenu id="menu">
+        <div id="menu-check" class="item">Check All</div>
+        <div id="menu-uncheck" class="item">Uncheck All</div>
+        <div class="splitter"></div>
+        <div id="menu-associate" class="item">Set Exit</div>
+        <div class="splitter"></div>
+        <div id="menu-logic" class="item">Show Logic</div>
+    </emc-contextmenu>
+`);
+
+const TPL_MNU_ITM = new Template(`
+    <emc-contextmenu id="menu">
+        <ootrt-itempicker id="item-picker" grid="pickable"></ootrt-itempicker>
+    </emc-contextmenu>
+`);
+
+const ACTIVE = new WeakMap();
+
+const VALUE_STATES = [
+    "opened",
+    "unavailable",
+    "possible",
+    "available"
+];
+
+export default class ListEntrance extends EventBusSubsetMixin(HTMLElement) {
+
+    constructor() {
+        super();
+        this.attachShadow({mode: 'open'});
+        this.shadowRoot.append(TPL.generate());
+
+        /* mouse events */
+        this.addEventListener("click", event => {
+            this.triggerGlobal("location_change", {
+                name: this.value
+            });
+            event.preventDefault();
+            return false;
+        });
+        this.addEventListener("contextmenu", event => {
+            // TODO open contextmenu
+            event.preventDefault();
+            return false;
+        });
+
+        /* event bus */
+        this.registerGlobal("state", event => {
+            // TODO
+            let active = ACTIVE.get(this);
+            if (event.data.state.hasOwnProperty("option.entrance_shuffle")) {
+                selectEl.readonly = active.indexOf(event.data.state["option.entrance_shuffle"]) < 0;
+            }
+            if (event.data.extra.exits != null && event.data.extra.exits[this.ref] != null) {
+                selectEl.value = event.data.extra.exits[this.ref];
+            } else {
+                let data = FileData.get(`exits/${this.ref}`);
+                selectEl.value = data.target;
+            }
+        });
+        this.registerGlobal("randomizer_options", event => {
+            let active = ACTIVE.get(this);
+            // TODO
+            if (event.data.hasOwnProperty("option.entrance_shuffle")) {
+                selectEl.readonly = active.indexOf(event.data["option.entrance_shuffle"]) < 0;
+            }
+        });
+        this.registerGlobal("statechange_exits", event => {
+            // TODO
+            let data;
+            if (event.data != null) {
+                data = event.data[this.ref];
+            }
+            if (data != null) {
+                selectEl.value = data.newValue;
+            }
+        });
+        this.registerGlobal("exit", event => {
+            if (this.ref === event.data.name && this.value !== event.data.value) {
+                this.value = event.data.value;
+            }
+        });
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        this.update();
+    }
+
+    async update() {
+        // TODO
+    }
+
+    get ref() {
+        return this.getAttribute('ref');
+    }
+
+    set ref(val) {
+        this.setAttribute('ref', val);
+    }
+
+    get value() {
+        return this.getAttribute('value');
+    }
+
+    set value(val) {
+        this.setAttribute('value', val);
+    }
+
+    static get observedAttributes() {
+        return ['ref', 'value'];
+    }
+    
+    attributeChangedCallback(name, oldValue, newValue) {
+        switch (name) {
+            case 'ref':
+                if (oldValue != newValue) {
+                    let txt = this.shadowRoot.getElementById("text");
+                    txt.innerHTML = Language.translate(newValue);
+                    this.value = StateStorage.read(newValue, "");
+                }
+            break;
+            case 'value':
+                if (oldValue != newValue) {
+                    if (!!newValue) {
+                        this.shadowRoot.getElementById("value").innerHTML = Language.translate(newValue);
+                    } else {
+                        this.shadowRoot.getElementById("value").innerHTML = "";
+                    }
+                    this.update();
+                }
+            break;
+        }
+    }
+
+    setFilterData(data) {
+        let el_era = this.shadowRoot.getElementById("badge-era");
+        if (!data["filter.era/child"]) {
+            el_era.src = "images/icons/era_adult.svg";
+        } else if (!data["filter.era/adult"]) {
+            el_era.src = "images/icons/era_child.svg";
+        } else {
+            el_era.src = "images/icons/era_both.svg";
+        }
+        let el_time = this.shadowRoot.getElementById("badge-time");
+        if (!data["filter.time/day"]) {
+            el_time.src = "images/icons/time_night.svg";
+        } else if (!data["filter.time/night"]) {
+            el_time.src = "images/icons/time_day.svg";
+        } else {
+            el_time.src = "images/icons/time_always.svg";
+        }
+    }
+
+}
+
+customElements.define('ootrt-list-entrance', ListEntrance);
+
+function entranceDialog(ref) {
+    return new Promise(resolve => {
+        let value = StateStorage.read(ref, "");
+        let world = FileData.get('world');
+        let type = world[ref].type;
+    
+        let loc = document.createElement('label');
+        loc.style.display = "flex";
+        loc.style.justifyContent = "space-between";
+        loc.style.alignItems = "center";
+        loc.style.padding = "5px";
+        loc.innerHTML = Language.translate("location");
+        let slt = document.createElement("select");
+
+        let unbound = new Set();
+        for (let i in world) {
+            let entry = world[i];
+            if (entry.category == "area" && entry.type == type) {
+                unbound.add(i);
+            }
+        }
+        for (let i in world) {
+            let entry = world[i];
+            if (entry.category == "entrance" && entry.type == type) {
+                let bound = StateStorage.read(i, "");
+                if (i != ref && !!bound) {
+                    unbound.delete(bound);
+                }
+            }
+        }
+        unbound = Array.from(unbound);
+        
+        for (let i of unbound) {
+            slt.append(createOption(i, Language.translate(i)));
+        }
+        slt.style.width = "200px";
+        slt.value = value;
+        loc.append(slt);
+        
+        let d = new Dialog({title: Language.translate(ref), submit: true, cancel: true});
+        d.onsubmit = function(ref, result) {
+            if (!!result) {
+                let res = slt.value;
+                StateStorage.write(ref, res);
+                resolve(res);
+            } else {
+                resolve(false);
+            }
+        }.bind(this, ref);
+        d.append(loc);
+        d.show();
+    });
+}
+
+function createOption(value, content) {
+    let opt = document.createElement('option');
+    opt.value = value;
+    opt.innerHTML = content;
+    return opt;
+}
