@@ -108,12 +108,21 @@ const TPL = new Template(`
     </emc-tooltip>
 `);
 
+const TPL_MNU_CTX = new Template(`
+    <emc-contextmenu id="menu">
+        <div id="menu-check" class="item">Check All</div>
+        <div id="menu-uncheck" class="item">Uncheck All</div>
+    </emc-contextmenu>
+`);
+
 const VALUE_STATES = [
     "opened",
     "unavailable",
     "possible",
     "available"
 ];
+
+const MNU_CTX = new WeakMap();
 
 export default class MapArea extends EventBusSubsetMixin(HTMLElement) {
 
@@ -122,11 +131,54 @@ export default class MapArea extends EventBusSubsetMixin(HTMLElement) {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
 
+        /* context menu */
+        let mnu_ctx = document.createElement("div");
+        mnu_ctx.attachShadow({mode: 'open'});
+        mnu_ctx.shadowRoot.append(TPL_MNU_CTX.generate());
+        let mnu_ctx_el = mnu_ctx.shadowRoot.getElementById("menu");
+        MNU_CTX.set(this, mnu_ctx);
+
+        mnu_ctx.shadowRoot.getElementById("menu-check").addEventListener("click", event => {
+            let data = FileData.get(`world_lists/${this.ref}/lists`);
+            if (data.v != null) {
+                for (let loc of data.v) {
+                    StateStorage.write(loc.id, true);
+                }
+            }
+            if (data.mq != null) {
+                for (let loc of data.mq) {
+                    StateStorage.write(loc.id, true);
+                }
+            }
+            event.preventDefault();
+            return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-uncheck").addEventListener("click", event => {
+            let data = FileData.get(`world_lists/${this.ref}/lists`);
+            if (data.v != null) {
+                for (let loc of data.v) {
+                    StateStorage.write(loc.id, false);
+                }
+            }
+            if (data.mq != null) {
+                for (let loc of data.mq) {
+                    StateStorage.write(loc.id, false);
+                }
+            }
+            event.preventDefault();
+            return false;
+        });
+
         /* mouse events */
         this.addEventListener("click", event => {
             this.triggerGlobal("location_change", {
                 name: this.ref
             });
+            event.preventDefault();
+            return false;
+        });
+        this.addEventListener("contextmenu", event => {
+            mnu_ctx_el.show(event.clientX, event.clientY);
             event.preventDefault();
             return false;
         });
@@ -140,7 +192,20 @@ export default class MapArea extends EventBusSubsetMixin(HTMLElement) {
 
     connectedCallback() {
         super.connectedCallback();
+        let el = this.parentElement;
+        if (el != null) {
+            el = el.parentElement;
+            if (el != null) {
+                el.append(MNU_CTX.get(this));
+            }
+        }
+        // update state
         this.update();
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        MNU_CTX.get(this).remove();
     }
 
     async update() {

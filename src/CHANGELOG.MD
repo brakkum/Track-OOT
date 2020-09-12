@@ -37,6 +37,11 @@ Application:    Track-OOT
         - context menu added for map locations
 - add presets to randomizer options
 - add item association to location
+- add contextmenus to areas
+    - add check/uncheck all
+- add contextmenus to exits
+    - add check/uncheck all
+    - set entrance as 2nd level contextmenu
 
 ### CREDITS
 
