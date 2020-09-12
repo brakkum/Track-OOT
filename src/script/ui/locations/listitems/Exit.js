@@ -49,25 +49,16 @@ const TPL = new Template(`
             -moz-user-select: none;
             user-select: none;
         }
+        #text[data-state="opened"] {
+            color: var(--location-status-opened-color, #000000);
+        }
         #text[data-state="available"] {
             color: var(--location-status-available-color, #000000);
         }
         #text[data-state="unavailable"] {
             color: var(--location-status-unavailable-color, #000000);
         }
-        :host([value]:not([value=""])) #text {
-            color: var(--location-status-opened-color, #000000);
-        }
-        #value[data-state="opened"] {
-            color: var(--location-status-opened-color, #000000);
-        }
-        #value[data-state="available"] {
-            color: var(--location-status-available-color, #000000);
-        }
-        #value[data-state="unavailable"] {
-            color: var(--location-status-unavailable-color, #000000);
-        }
-        #value[data-state="possible"] {
+        #text[data-state="possible"] {
             color: var(--location-status-possible-color, #000000);
         }
         #badge {
@@ -108,7 +99,7 @@ const TPL_MNU_CTX = new Template(`
         <div id="menu-check" class="item">Check All</div>
         <div id="menu-uncheck" class="item">Uncheck All</div>
         <div class="splitter"></div>
-        <div id="menu-associate" class="item">Set Exit</div>
+        <div id="menu-associate" class="item">Set Entrance</div>
         <div class="splitter"></div>
         <div id="menu-logic" class="item">Show Logic</div>
     </emc-contextmenu>
@@ -120,8 +111,6 @@ const TPL_MNU_ITM = new Template(`
     </emc-contextmenu>
 `);
 
-const ACTIVE = new WeakMap();
-
 const VALUE_STATES = [
     "opened",
     "unavailable",
@@ -129,18 +118,30 @@ const VALUE_STATES = [
     "available"
 ];
 
-export default class ListEntrance extends EventBusSubsetMixin(HTMLElement) {
+const ACTIVE = new WeakMap();
+const EXIT = new WeakMap();
+const AREA = new WeakMap();
+const ACCESS = new WeakMap();
+
+export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
+        ACTIVE.set(this, []);
+        EXIT.set(this, "");
+        AREA.set(this, "");
+        ACCESS.set(this, "");
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
 
         /* mouse events */
         this.addEventListener("click", event => {
-            this.triggerGlobal("location_change", {
-                name: this.value
-            });
+            let area = AREA.get(this);
+            if (!!area) {
+                this.triggerGlobal("location_change", {
+                    name: area
+                });
+            }
             event.preventDefault();
             return false;
         });
@@ -153,33 +154,33 @@ export default class ListEntrance extends EventBusSubsetMixin(HTMLElement) {
         /* event bus */
         this.registerGlobal("state", event => {
             // TODO
-            let active = ACTIVE.get(this);
-            if (event.data.state.hasOwnProperty("option.entrance_shuffle")) {
-                selectEl.readonly = active.indexOf(event.data.state["option.entrance_shuffle"]) < 0;
-            }
-            if (event.data.extra.exits != null && event.data.extra.exits[this.ref] != null) {
-                selectEl.value = event.data.extra.exits[this.ref];
+            let exit = EXIT.get(this);
+            //let active = ACTIVE.get(this);
+            if (event.data.extra.exits != null && event.data.extra.exits[exit] != null) {
+                this.value = event.data.extra.exits[exit];
             } else {
-                let data = FileData.get(`exits/${this.ref}`);
-                selectEl.value = data.target;
+                let data = FileData.get(`exits/${exit}`);
+                this.value = data.target;
             }
         });
         this.registerGlobal("randomizer_options", event => {
-            let active = ACTIVE.get(this);
             // TODO
-            if (event.data.hasOwnProperty("option.entrance_shuffle")) {
-                selectEl.readonly = active.indexOf(event.data["option.entrance_shuffle"]) < 0;
-            }
+            //let active = ACTIVE.get(this);
+            this.update();
         });
         this.registerGlobal("statechange_exits", event => {
             // TODO
+            let exit = EXIT.get(this);
             let data;
             if (event.data != null) {
-                data = event.data[this.ref];
+                data = event.data[exit];
             }
             if (data != null) {
-                selectEl.value = data.newValue;
+                this.value = data.newValue;
             }
+        });
+        this.registerGlobal(["settings", "logic", "filter"], event => {
+            this.update();
         });
         this.registerGlobal("exit", event => {
             if (this.ref === event.data.name && this.value !== event.data.value) {
@@ -195,6 +196,32 @@ export default class ListEntrance extends EventBusSubsetMixin(HTMLElement) {
 
     async update() {
         // TODO
+        let area = AREA.get(this);
+        if (!!area) {
+            let dType = StateStorage.read(`dungeonTypes.${area}`, 'v');
+            if (dType == "n") {
+                let data_v = FileData.get(`world_lists/${area}/lists/v`);
+                let data_m = FileData.get(`world_lists/${area}/lists/mq`);
+                let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
+                let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
+                if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
+                    this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[Math.min(res_v.value, res_m.value)];
+                } else {
+                    this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[Math.max(res_v.value, res_m.value)];
+                }
+            } else {
+                let data = FileData.get(`world_lists/${area}/lists/${dType}`);
+                let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
+                this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[res.value];
+            }
+        } else {
+            let access = ACCESS.get(this);
+            if (!!access && !!Logic.getValue(access)) {
+                this.shadowRoot.getElementById("text").dataset.state = "available";
+            } else {
+                this.shadowRoot.getElementById("text").dataset.state = "unavailable";
+            }
+        }
     }
 
     get ref() {
@@ -221,17 +248,30 @@ export default class ListEntrance extends EventBusSubsetMixin(HTMLElement) {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
+                    let data = FileData.get(`world/${newValue}`);
+                    let exit = FileData.get(`exits/${data.access}`);
+                    let entrance = FileData.get(`entrances/${exit.target}`);
                     let txt = this.shadowRoot.getElementById("text");
-                    txt.innerHTML = Language.translate(newValue);
-                    this.value = StateStorage.read(newValue, "");
+                    txt.innerHTML = Language.translate(data.access);
+                    txt.setAttribute('i18n-content', data.access);
+                    ACTIVE.set(this, exit.active);
+                    EXIT.set(this, data.access);
+                    AREA.set(this, entrance.area);
+                    ACCESS.set(this, data.access.split(" => ")[1]);
+                    this.value = StateStorage.readExtra("exits", data.access, exit.target);
+                    this.update();
                 }
             break;
             case 'value':
                 if (oldValue != newValue) {
+                    let el = this.shadowRoot.getElementById("value");
                     if (!!newValue) {
-                        this.shadowRoot.getElementById("value").innerHTML = Language.translate(newValue);
+                        let entrance = FileData.get(`entrances/${newValue}`);
+                        el.innerHTML = Language.translate(newValue);
+                        AREA.set(this, entrance.area);
                     } else {
-                        this.shadowRoot.getElementById("value").innerHTML = "";
+                        el.innerHTML = "";
+                        AREA.set(this, "");
                     }
                     this.update();
                 }
@@ -260,7 +300,7 @@ export default class ListEntrance extends EventBusSubsetMixin(HTMLElement) {
 
 }
 
-customElements.define('ootrt-list-entrance', ListEntrance);
+customElements.define('ootrt-list-exit', ListExit);
 
 function entranceDialog(ref) {
     return new Promise(resolve => {

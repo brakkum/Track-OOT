@@ -79,18 +79,6 @@ const TPL = new Template(`
             float: right;
         }
     </style>
-    <emc-contextmenu id="menu">
-        <div id="menu-check" class="item">Check</div>
-        <div id="menu-uncheck" class="item">Uncheck</div>
-        <div class="splitter"></div>
-        <div id="menu-associate" class="item">Set Item</div>
-        <div id="menu-disassociate" class="item">Clear Item</div>
-        <div class="splitter"></div>
-        <div id="menu-logic" class="item">Show Logic</div>
-    </emc-contextmenu>
-    <emc-contextmenu id="item_picker">
-        <div id="item_picker_content"></div>
-    </emc-contextmenu>
     <div class="textarea">
         <div id="text"></div>
         <div id="item"></div>
@@ -102,15 +90,33 @@ const TPL = new Template(`
     </div>
 `);
 
+const TPL_MNU_CTX = new Template(`
+    <emc-contextmenu id="menu">
+        <div id="menu-check" class="item">Check</div>
+        <div id="menu-uncheck" class="item">Uncheck</div>
+        <div class="splitter"></div>
+        <div id="menu-associate" class="item">Set Item</div>
+        <div id="menu-disassociate" class="item">Clear Item</div>
+        <div class="splitter"></div>
+        <div id="menu-logic" class="item">Show Logic</div>
+    </emc-contextmenu>
+`);
+
+const TPL_MNU_ITM = new Template(`
+    <emc-contextmenu id="menu">
+        <ootrt-itempicker id="item-picker" grid="pickable"></ootrt-itempicker>
+    </emc-contextmenu>
+`);
+
 const REG = new Map();
 const TYPE = new WeakMap();
-const LOGIC_ACTIVE = new WeakMap();
+const MNU_CTX = new WeakMap();
+const MNU_ITM = new WeakMap();
 
 export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
 
     constructor(type) {
         super();
-        LOGIC_ACTIVE.set(this, true);
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         if (!!type) {
@@ -121,6 +127,52 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             type = "location";
         }
         TYPE.set(this, type);
+
+        /* context menu */
+        let mnu_ctx = document.createElement("div");
+        mnu_ctx.attachShadow({mode: 'open'});
+        mnu_ctx.shadowRoot.append(TPL_MNU_CTX.generate());
+        let mnu_ctx_el = mnu_ctx.shadowRoot.getElementById("menu");
+        MNU_CTX.set(this, mnu_ctx);
+
+        let mnu_itm = document.createElement("div");
+        mnu_itm.attachShadow({mode: 'open'});
+        mnu_itm.shadowRoot.append(TPL_MNU_ITM.generate());
+        let mnu_itm_el = mnu_itm.shadowRoot.getElementById("menu");
+        MNU_ITM.set(this, mnu_itm);
+
+        mnu_itm.shadowRoot.getElementById("item-picker").addEventListener("pick", event => {
+            const item = event.detail;
+            this.item = item;
+            StateStorage.writeExtra("item_location", this.ref, item);
+            event.preventDefault();
+            return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-check").addEventListener("click", event => {
+            this.check();
+            event.preventDefault();
+            return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-uncheck").addEventListener("click", event => {
+            this.uncheck();
+            event.preventDefault();
+            return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-associate").addEventListener("click", event => {
+            mnu_itm_el.show(mnu_ctx_el.left, mnu_ctx_el.top);
+            event.preventDefault();
+            return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-disassociate").addEventListener("click", event => {
+            this.item = false;
+            StateStorage.writeExtra("item_location", this.ref, false);
+            event.preventDefault();
+            return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-logic").addEventListener("click", event => {
+            let title = Language.translate(this.ref);
+            LogicViewer.show(this.access, title);
+        });
         
         /* mouse events */
         this.addEventListener("click", event => {
@@ -129,36 +181,9 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         this.addEventListener("contextmenu", event => {
-            this.showContextMenu(event.clientX, event.clientY);
+            mnu_ctx_el.show(event.clientX, event.clientY);
             event.preventDefault();
             return false;
-        });
-
-        /* context menu */
-        this.shadowRoot.getElementById("menu-check").addEventListener("click", event => {
-            this.check();
-            event.preventDefault();
-            return false;
-        });
-        this.shadowRoot.getElementById("menu-uncheck").addEventListener("click", event => {
-            this.uncheck();
-            event.preventDefault();
-            return false;
-        });
-        this.shadowRoot.getElementById("menu-associate").addEventListener("click", event => {
-            this.showItemPicker(event.clientX, event.clientY);
-            event.preventDefault();
-            return false;
-        });
-        this.shadowRoot.getElementById("menu-disassociate").addEventListener("click", event => {
-            this.item = false;
-            StateStorage.writeExtra("item_location", this.ref, false);
-            event.preventDefault();
-            return false;
-        });
-        this.shadowRoot.getElementById("menu-logic").addEventListener("click", event => {
-            let title = Language.translate(this.ref);
-            LogicViewer.show(this.access, title);
         });
 
         /* event bus */
@@ -177,7 +202,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             this.item = StateStorage.readExtra("item_location", this.ref, false);
         });
         this.registerGlobal("logic", event => {
-            if (LOGIC_ACTIVE.get(this) && event.data.hasOwnProperty(this.access)) {
+            if (event.data.hasOwnProperty(this.access)) {
                 let textEl = this.shadowRoot.getElementById("text");
                 if (!!this.access && !!event.data[this.access]) {
                     textEl.dataset.state = "available";
@@ -195,6 +220,9 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
 
     connectedCallback() {
         super.connectedCallback();
+        this.parentElement.parentElement.append(MNU_CTX.get(this));
+        this.parentElement.parentElement.append(MNU_ITM.get(this));
+        // update state
         let textEl = this.shadowRoot.getElementById("text");
         let value = StateStorage.read(this.ref, false);
         textEl.dataset.checked = value;
@@ -204,6 +232,12 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             textEl.dataset.state = "unavailable";
         }
         this.item = StateStorage.readExtra("item_location", this.ref, false);
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        MNU_CTX.get(this).remove();
+        MNU_ITM.get(this).remove();
     }
 
     get ref() {
@@ -269,34 +303,12 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         }
     }
 
-    showContextMenu(x, y) {
-        this.shadowRoot.getElementById("menu").show(x, y);
-    }
-
     check() {
         this.toggleCheckValue(true);
     }
     
     uncheck() {
         this.toggleCheckValue(false);
-    }
-
-    showItemPicker(x, y) {
-        this.shadowRoot.getElementById('item_picker_content').innerHTML = "";
-
-        let el = document.createElement("ootrt-itempicker");
-        el.grid = 'pickable'
-        el.addEventListener("pick", event => {
-            const item = event.detail;
-            this.item = item;
-            StateStorage.writeExtra("item_location", this.ref, item);
-            event.preventDefault();
-            return false;
-        });
-
-        this.shadowRoot.getElementById('item_picker_content').append(el);
-    
-        this.shadowRoot.getElementById("item_picker").show(x, y);
     }
 
     toggleCheckValue(value) {

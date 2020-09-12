@@ -1,8 +1,8 @@
 {
-    "entrance.deku": {
-        "category": "entrance",
+    "exit.deku": {
+        "category": "exit",
         "type": "dungeon",
-        "access": "logic.entrance.deku",
+        "access": "region.kf_outside_deku_tree => region.deku_tree_lobby",
         "visible": {
             "type": "not",
             "el": {
@@ -22,10 +22,10 @@
             }
         }
     },
-    "entrance.dodongo": {
-        "category": "entrance",
+    "exit.dodongo": {
+        "category": "exit",
         "type": "dungeon",
-        "access": "logic.entrance.dodongo",
+        "access": "region.dodongos_cavern_entryway => region.dodongos_cavern_beginning",
         "visible": {
             "type": "not",
             "el": {
@@ -45,10 +45,10 @@
             }
         }
     },
-    "entrance.jabujabu": {
-        "category": "entrance",
+    "exit.jabujabu": {
+        "category": "exit",
         "type": "dungeon",
-        "access": "logic.entrance.jabujabu",
+        "access": "region.zoras_fountain => region.jabu_jabus_belly_beginning",
         "visible": {
             "type": "not",
             "el": {
@@ -68,10 +68,10 @@
             }
         }
     },
-    "entrance.temple_forest": {
-        "category": "entrance",
+    "exit.well": {
+        "category": "exit",
         "type": "dungeon",
-        "access": "logic.entrance.temple_forest",
+        "access": "region.kakariko_village => region.bottom_of_the_well",
         "visible": {
             "type": "not",
             "el": {
@@ -91,10 +91,10 @@
             }
         }
     },
-    "entrance.temple_fire": {
-        "category": "entrance",
+    "exit.temple_forest": {
+        "category": "exit",
         "type": "dungeon",
-        "access": "logic.entrance.temple_fire",
+        "access": "region.sacred_forest_meadow => region.forest_temple_lobby",
         "visible": {
             "type": "not",
             "el": {
@@ -114,10 +114,10 @@
             }
         }
     },
-    "entrance.temple_water": {
-        "category": "entrance",
+    "exit.temple_fire": {
+        "category": "exit",
         "type": "dungeon",
-        "access": "logic.entrance.temple_water",
+        "access": "region.fire_temple_entrance => region.fire_temple_lower",
         "visible": {
             "type": "not",
             "el": {
@@ -137,10 +137,10 @@
             }
         }
     },
-    "entrance.temple_spirit": {
-        "category": "entrance",
+    "exit.temple_water": {
+        "category": "exit",
         "type": "dungeon",
-        "access": "logic.entrance.temple_spirit",
+        "access": "region.lake_hylia => region.water_temple_lobby",
         "visible": {
             "type": "not",
             "el": {
@@ -160,10 +160,10 @@
             }
         }
     },
-    "entrance.temple_shadow": {
-        "category": "entrance",
+    "exit.temple_spirit": {
+        "category": "exit",
         "type": "dungeon",
-        "access": "logic.entrance.temple_shadow",
+        "access": "region.desert_colossus => region.spirit_temple_lobby",
         "visible": {
             "type": "not",
             "el": {
@@ -183,10 +183,10 @@
             }
         }
     },
-    "entrance.well": {
-        "category": "entrance",
+    "exit.temple_shadow": {
+        "category": "exit",
         "type": "dungeon",
-        "access": "logic.entrance.well",
+        "access": "region.graveyard_warp_pad_region => region.shadow_temple_entryway",
         "visible": {
             "type": "not",
             "el": {
@@ -206,10 +206,10 @@
             }
         }
     },
-    "entrance.ice_cavern": {
-        "category": "entrance",
+    "exit.ice_cavern": {
+        "category": "exit",
         "type": "dungeon",
-        "access": "logic.entrance.ice_cavern",
+        "access": "region.zoras_fountain => region.ice_cavern_beginning",
         "visible": {
             "type": "not",
             "el": {
@@ -229,10 +229,10 @@
             }
         }
     },
-    "entrance.training_grounds": {
-        "category": "entrance",
+    "exit.training_grounds": {
+        "category": "exit",
         "type": "dungeon",
-        "access": "logic.entrance.training_grounds",
+        "access": "region.gerudo_fortress => region.gerudo_training_grounds_lobby",
         "visible": {
             "type": "not",
             "el": {
@@ -487,10 +487,10 @@
             }
         }
     },
-    "entrance.kokiri.midos_house": {
-        "category": "entrance",
+    "exit.kokiri.midos_house": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.kokiri.midos_house",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -503,10 +503,10 @@
             }
         }
     },
-    "entrance.kokiri.know_it_house": {
-        "category": "entrance",
+    "exit.kokiri.know_it_house": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.kokiri.know_it_house",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -519,10 +519,10 @@
             }
         }
     },
-    "entrance.kokiri.saria_house": {
-        "category": "entrance",
+    "exit.kokiri.saria_house": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.kokiri.saria_house",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -535,10 +535,10 @@
             }
         }
     },
-    "entrance.kokiri.twins_house": {
-        "category": "entrance",
+    "exit.kokiri.twins_house": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.kokiri.twins_house",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -551,10 +551,10 @@
             }
         }
     },
-    "entrance.kokiri.shop": {
-        "category": "entrance",
+    "exit.kokiri.shop": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.kokiri.shop",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -567,10 +567,10 @@
             }
         }
     },
-    "entrance.kokiri.storm_grotto": {
-        "category": "entrance",
+    "exit.kokiri.storm_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.kokiri.storm_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -800,10 +800,10 @@
             }
         }
     },
-    "entrance.desert.fairy_colossus": {
-        "category": "entrance",
+    "exit.desert.fairy_colossus": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.desert.fairy_colossus",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -816,10 +816,10 @@
             }
         }
     },
-    "entrance.desert.strength_grotto": {
-        "category": "entrance",
+    "exit.desert.strength_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.desert.strength_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -1122,10 +1122,10 @@
             }
         }
     },
-    "entrance.river.bomb_grotto": {
-        "category": "entrance",
+    "exit.river.bomb_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.river.bomb_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -1138,10 +1138,10 @@
             }
         }
     },
-    "entrance.river.open_grotto": {
-        "category": "entrance",
+    "exit.river.open_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.river.open_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -1154,10 +1154,10 @@
             }
         }
     },
-    "entrance.river.storms_grotto": {
-        "category": "entrance",
+    "exit.river.storms_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.river.storms_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -1417,10 +1417,10 @@
             }
         }
     },
-    "entrance.hyrule_field.castle_river_grotto": {
-        "category": "entrance",
+    "exit.hyrule_field.castle_river_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.hyrule_field.castle_river_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -1433,10 +1433,10 @@
             }
         }
     },
-    "entrance.hyrule_field.kakariko_grotto": {
-        "category": "entrance",
+    "exit.hyrule_field.kakariko_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.hyrule_field.kakariko_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -1449,10 +1449,10 @@
             }
         }
     },
-    "entrance.hyrule_field.lake_fence_grotto": {
-        "category": "entrance",
+    "exit.hyrule_field.lake_fence_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.hyrule_field.lake_fence_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -1465,10 +1465,10 @@
             }
         }
     },
-    "entrance.hyrule_field.lake_open_grotto": {
-        "category": "entrance",
+    "exit.hyrule_field.lake_open_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.hyrule_field.lake_open_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -1481,10 +1481,10 @@
             }
         }
     },
-    "entrance.hyrule_field.dive_grotto": {
-        "category": "entrance",
+    "exit.hyrule_field.dive_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.hyrule_field.dive_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -1497,10 +1497,10 @@
             }
         }
     },
-    "entrance.hyrule_field.valley_grotto": {
-        "category": "entrance",
+    "exit.hyrule_field.valley_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.hyrule_field.valley_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -1513,10 +1513,10 @@
             }
         }
     },
-    "entrance.hyrule_field.castle_entrance_grotto": {
-        "category": "entrance",
+    "exit.hyrule_field.castle_entrance_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.hyrule_field.castle_entrance_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -1529,10 +1529,10 @@
             }
         }
     },
-    "entrance.hyrule_field.little_forest_grotto": {
-        "category": "entrance",
+    "exit.hyrule_field.little_forest_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.hyrule_field.little_forest_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -1765,10 +1765,10 @@
             }
         }
     },
-    "entrance.gerudo_valley.tend": {
-        "category": "entrance",
+    "exit.gerudo_valley.tend": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.gerudo_valley.tend",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -1781,10 +1781,10 @@
             }
         }
     },
-    "entrance.gerudo_valley.octorock_grotto": {
-        "category": "entrance",
+    "exit.gerudo_valley.octorock_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.gerudo_valley.octorock_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -1797,10 +1797,10 @@
             }
         }
     },
-    "entrance.gerudo_valley.storms_grotto": {
-        "category": "entrance",
+    "exit.gerudo_valley.storms_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.gerudo_valley.storms_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -2139,10 +2139,10 @@
             }
         }
     },
-    "entrance.lake.laboratory": {
-        "category": "entrance",
+    "exit.lake.laboratory": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.lake.laboratory",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -2155,10 +2155,10 @@
             }
         }
     },
-    "entrance.lake.fishing": {
-        "category": "entrance",
+    "exit.lake.fishing": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.lake.fishing",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -2171,10 +2171,10 @@
             }
         }
     },
-    "entrance.lake.grave_grotto": {
-        "category": "entrance",
+    "exit.lake.grave_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.lake.grave_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -2464,10 +2464,10 @@
             }
         }
     },
-    "entrance.lonlon.house": {
-        "category": "entrance",
+    "exit.lonlon.house": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.lonlon.house",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -2480,10 +2480,10 @@
             }
         }
     },
-    "entrance.lonlon.stables": {
-        "category": "entrance",
+    "exit.lonlon.stables": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.lonlon.stables",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -2496,10 +2496,10 @@
             }
         }
     },
-    "entrance.lonlon.silo": {
-        "category": "entrance",
+    "exit.lonlon.silo": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.lonlon.silo",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -2512,10 +2512,10 @@
             }
         }
     },
-    "entrance.lonlon.open_grotto": {
-        "category": "entrance",
+    "exit.lonlon.open_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.lonlon.open_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -2761,10 +2761,10 @@
             }
         }
     },
-    "entrance.gerudo.storms_grotto": {
-        "category": "entrance",
+    "exit.gerudo.storms_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.gerudo.storms_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3239,10 +3239,10 @@
             }
         }
     },
-    "entrance.woods.near_goron_grotto": {
-        "category": "entrance",
+    "exit.woods.near_goron_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.woods.near_goron_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3255,10 +3255,10 @@
             }
         }
     },
-    "entrance.woods.theatre_grotto": {
-        "category": "entrance",
+    "exit.woods.theatre_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.woods.theatre_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3271,10 +3271,10 @@
             }
         }
     },
-    "entrance.woods.near_meadow_grotto": {
-        "category": "entrance",
+    "exit.woods.near_meadow_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.woods.near_meadow_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3287,10 +3287,10 @@
             }
         }
     },
-    "entrance.woods.wolfos_grotto": {
-        "category": "entrance",
+    "exit.woods.wolfos_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.woods.wolfos_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3303,10 +3303,10 @@
             }
         }
     },
-    "entrance.woods.fairy_grotto": {
-        "category": "entrance",
+    "exit.woods.fairy_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.woods.fairy_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3319,10 +3319,10 @@
             }
         }
     },
-    "entrance.woods.storms_grotto": {
-        "category": "entrance",
+    "exit.woods.storms_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.woods.storms_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3756,10 +3756,10 @@
             }
         }
     },
-    "entrance.castle_town.shop_bombchu": {
-        "category": "entrance",
+    "exit.castle_town.shop_bombchu": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.castle_town.shop_bombchu",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3772,10 +3772,10 @@
             }
         }
     },
-    "entrance.castle_town.shop_bazaar": {
-        "category": "entrance",
+    "exit.castle_town.shop_bazaar": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.castle_town.shop_bazaar",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3788,10 +3788,10 @@
             }
         }
     },
-    "entrance.castle_town.shop_magic": {
-        "category": "entrance",
+    "exit.castle_town.shop_magic": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.castle_town.shop_magic",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3804,10 +3804,10 @@
             }
         }
     },
-    "entrance.castle_town.shop_mask": {
-        "category": "entrance",
+    "exit.castle_town.shop_mask": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.castle_town.shop_mask",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3820,10 +3820,10 @@
             }
         }
     },
-    "entrance.castle_town.minigame_bombchu": {
-        "category": "entrance",
+    "exit.castle_town.minigame_bombchu": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.castle_town.minigame_bombchu",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3836,10 +3836,10 @@
             }
         }
     },
-    "entrance.castle_town.minigame_shooting": {
-        "category": "entrance",
+    "exit.castle_town.minigame_shooting": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.castle_town.minigame_shooting",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3852,10 +3852,10 @@
             }
         }
     },
-    "entrance.castle_town.minigame_treasure": {
-        "category": "entrance",
+    "exit.castle_town.minigame_treasure": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.castle_town.minigame_treasure",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3868,10 +3868,10 @@
             }
         }
     },
-    "entrance.castle_town.guard_tower": {
-        "category": "entrance",
+    "exit.castle_town.guard_tower": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.castle_town.guard_tower",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3884,10 +3884,10 @@
             }
         }
     },
-    "entrance.castle_town.temple_of_time": {
-        "category": "entrance",
+    "exit.castle_town.temple_of_time": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.castle_town.temple_of_time",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3900,10 +3900,10 @@
             }
         }
     },
-    "entrance.castle_town.dog_lady": {
-        "category": "entrance",
+    "exit.castle_town.dog_lady": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.castle_town.dog_lady",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3916,10 +3916,10 @@
             }
         }
     },
-    "entrance.castle_town.back_house": {
-        "category": "entrance",
+    "exit.castle_town.back_house": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.castle_town.back_house",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3932,10 +3932,10 @@
             }
         }
     },
-    "entrance.castle_town.fairy_young": {
-        "category": "entrance",
+    "exit.castle_town.fairy_young": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.castle_town.fairy_young",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3948,10 +3948,10 @@
             }
         }
     },
-    "entrance.castle_town.fairy_adult": {
-        "category": "entrance",
+    "exit.castle_town.fairy_adult": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.castle_town.fairy_adult",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -3964,10 +3964,10 @@
             }
         }
     },
-    "entrance.castle_town.storm_grotto": {
-        "category": "entrance",
+    "exit.castle_town.storm_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.castle_town.storm_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -4581,10 +4581,10 @@
             }
         }
     },
-    "entrance.kakariko.shop_bazaar": {
-        "category": "entrance",
+    "exit.kakariko.shop_bazaar": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.kakariko.shop_bazaar",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -4597,10 +4597,10 @@
             }
         }
     },
-    "entrance.kakariko.shop_magic": {
-        "category": "entrance",
+    "exit.kakariko.shop_magic": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.kakariko.shop_magic",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -4613,10 +4613,10 @@
             }
         }
     },
-    "entrance.kakariko.minigame_shooting": {
-        "category": "entrance",
+    "exit.kakariko.minigame_shooting": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.kakariko.minigame_shooting",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -4629,10 +4629,10 @@
             }
         }
     },
-    "entrance.kakariko.impas_house": {
-        "category": "entrance",
+    "exit.kakariko.impas_house": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.kakariko.impas_house",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -4645,10 +4645,10 @@
             }
         }
     },
-    "entrance.kakariko.impa_back": {
-        "category": "entrance",
+    "exit.kakariko.impa_back": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.kakariko.impa_back",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -4661,10 +4661,10 @@
             }
         }
     },
-    "entrance.kakariko.windmill": {
-        "category": "entrance",
+    "exit.kakariko.windmill": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.kakariko.windmill",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -4677,10 +4677,10 @@
             }
         }
     },
-    "entrance.kakariko.skulltula_house": {
-        "category": "entrance",
+    "exit.kakariko.skulltula_house": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.kakariko.skulltula_house",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -4693,10 +4693,10 @@
             }
         }
     },
-    "entrance.kakariko.kakariko_witch": {
-        "category": "entrance",
+    "exit.kakariko.kakariko_witch": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.kakariko.kakariko_witch",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -4709,10 +4709,10 @@
             }
         }
     },
-    "entrance.kakariko.carpenter_house": {
-        "category": "entrance",
+    "exit.kakariko.carpenter_house": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.kakariko.carpenter_house",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -4725,10 +4725,10 @@
             }
         }
     },
-    "entrance.kakariko.dampes_hut": {
-        "category": "entrance",
+    "exit.kakariko.dampes_hut": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.kakariko.dampes_hut",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -4741,10 +4741,10 @@
             }
         }
     },
-    "entrance.kakariko.open_grotto": {
-        "category": "entrance",
+    "exit.kakariko.open_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.kakariko.open_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -4757,10 +4757,10 @@
             }
         }
     },
-    "entrance.kakariko.redead_grotto": {
-        "category": "entrance",
+    "exit.kakariko.redead_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.kakariko.redead_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -5240,10 +5240,10 @@
             }
         }
     },
-    "entrance.mountain.mountain_fairy": {
-        "category": "entrance",
+    "exit.mountain.mountain_fairy": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.mountain.mountain_fairy",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -5256,10 +5256,10 @@
             }
         }
     },
-    "entrance.mountain.crater_fairy": {
-        "category": "entrance",
+    "exit.mountain.crater_fairy": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.mountain.crater_fairy",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -5272,10 +5272,10 @@
             }
         }
     },
-    "entrance.mountain.bomb_grotto": {
-        "category": "entrance",
+    "exit.mountain.bomb_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.mountain.bomb_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -5288,10 +5288,10 @@
             }
         }
     },
-    "entrance.mountain.storms_grotto": {
-        "category": "entrance",
+    "exit.mountain.storms_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.mountain.storms_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -5304,10 +5304,10 @@
             }
         }
     },
-    "entrance.mountain.crater_hammer_grotto": {
-        "category": "entrance",
+    "exit.mountain.crater_hammer_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.mountain.crater_hammer_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -5320,10 +5320,10 @@
             }
         }
     },
-    "entrance.mountain.crater_bomb_grotto": {
-        "category": "entrance",
+    "exit.mountain.crater_bomb_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.mountain.crater_bomb_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -5599,10 +5599,10 @@
             }
         }
     },
-    "entrance.goron.shop": {
-        "category": "entrance",
+    "exit.goron.shop": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.goron.shop",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -5615,10 +5615,10 @@
             }
         }
     },
-    "entrance.goron.grotto": {
-        "category": "entrance",
+    "exit.goron.grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.goron.grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -5880,10 +5880,10 @@
             }
         }
     },
-    "entrance.zoras.shop": {
-        "category": "entrance",
+    "exit.zoras.shop": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.zoras.shop",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -5896,10 +5896,10 @@
             }
         }
     },
-    "entrance.zoras.fairy": {
-        "category": "entrance",
+    "exit.zoras.fairy": {
+        "category": "exit",
         "type": "interior",
-        "access": "logic.entrance.zoras.fairy",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -5912,10 +5912,10 @@
             }
         }
     },
-    "entrance.zoras.storms_grotto": {
-        "category": "entrance",
+    "exit.zoras.storms_grotto": {
+        "category": "exit",
         "type": "grotto",
-        "access": "logic.entrance.zoras.storms_grotto",
+        "access": "",
         "visible": false,
         "filter": {
             "filter.era": {
@@ -5931,7 +5931,7 @@
     "area.well": {
         "category": "area",
         "type": "dungeon",
-        "access": "logic.area.well",
+        "access": "region.bottom_of_the_well",
         "visible": {
             "type": "state",
             "el": "option.entrance_shuffle",
@@ -6369,7 +6369,7 @@
     "area.ice_cavern": {
         "category": "area",
         "type": "dungeon",
-        "access": "logic.area.ice_cavern",
+        "access": "region.ice_cavern_beginning",
         "visible": {
             "type": "state",
             "el": "option.entrance_shuffle",
@@ -6663,7 +6663,7 @@
     "area.training_grounds": {
         "category": "area",
         "type": "dungeon",
-        "access": "logic.area.training_grounds",
+        "access": "region.gerudo_training_grounds_lobby",
         "visible": {
             "type": "state",
             "el": "option.entrance_shuffle",
@@ -7307,7 +7307,7 @@
     "area.deku": {
         "category": "area",
         "type": "dungeon",
-        "access": "logic.area.deku",
+        "access": "region.deku_tree_lobby",
         "visible": {
             "type": "state",
             "el": "option.entrance_shuffle",
@@ -7738,7 +7738,7 @@
     "area.dodongo": {
         "category": "area",
         "type": "dungeon",
-        "access": "logic.area.dodongo",
+        "access": "region.dodongos_cavern_beginning",
         "visible": {
             "type": "state",
             "el": "option.entrance_shuffle",
@@ -8359,7 +8359,7 @@
     "area.jabujabu": {
         "category": "area",
         "type": "dungeon",
-        "access": "logic.area.jabujabu",
+        "access": "region.jabu_jabus_belly_beginning",
         "visible": {
             "type": "state",
             "el": "option.entrance_shuffle",
@@ -8825,7 +8825,7 @@
     "area.temple_forest": {
         "category": "area",
         "type": "dungeon",
-        "access": "logic.area.temple_forest",
+        "access": "region.forest_temple_lobby",
         "visible": {
             "type": "state",
             "el": "option.entrance_shuffle",
@@ -9467,7 +9467,7 @@
     "area.temple_fire": {
         "category": "area",
         "type": "dungeon",
-        "access": "logic.area.temple_fire",
+        "access": "region.fire_temple_lower",
         "visible": {
             "type": "state",
             "el": "option.entrance_shuffle",
@@ -10125,7 +10125,7 @@
     "area.temple_water": {
         "category": "area",
         "type": "dungeon",
-        "access": "logic.area.temple_water",
+        "access": "region.water_temple_lobby",
         "visible": {
             "type": "state",
             "el": "option.entrance_shuffle",
@@ -10623,7 +10623,7 @@
     "area.temple_shadow": {
         "category": "area",
         "type": "dungeon",
-        "access": "logic.area.temple_shadow",
+        "access": "region.shadow_temple_entryway",
         "visible": {
             "type": "state",
             "el": "option.entrance_shuffle",
@@ -11457,7 +11457,7 @@
     "area.temple_spirit": {
         "category": "area",
         "type": "dungeon",
-        "access": "logic.area.temple_spirit",
+        "access": "region.spirit_temple_lobby",
         "visible": {
             "type": "state",
             "el": "option.entrance_shuffle",

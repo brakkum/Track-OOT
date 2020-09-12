@@ -194,7 +194,7 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         this.addEventListener("contextmenu", event => {
-            mnu_ctx_el.show(event.clientX, event.clientY)
+            mnu_ctx_el.show(event.clientX, event.clientY);
             event.preventDefault();
             return false;
         });
@@ -242,12 +242,13 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
 
     connectedCallback() {
         super.connectedCallback();
+        this.parentElement.parentElement.append(MNU_CTX.get(this));
+        this.parentElement.parentElement.append(MNU_ITM.get(this));
+        // update state
         let value = StateStorage.read(this.ref, false);
         this.checked = value;
         this.item = StateStorage.readExtra("item_location", this.ref, false);
         this.update();
-        this.parentElement.parentElement.append(MNU_CTX.get(this));
-        this.parentElement.parentElement.append(MNU_ITM.get(this));
     }
 
     disconnectedCallback() {

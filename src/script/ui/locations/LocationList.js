@@ -10,7 +10,7 @@ import World from "/script/util/World.js";
 import ListLogic from "/script/util/ListLogic.js";
 import "./listitems/Button.js";
 import "./listitems/Area.js";
-import "./listitems/Entrance.js";
+import "./listitems/Exit.js";
 import "./listitems/Location.js";
 import "./listitems/Gossipstone.js";
 import "/script/ui/dungeonstate/DungeonType.js";

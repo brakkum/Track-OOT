@@ -5,12 +5,12 @@ import FilterStorage from "/script/storage/FilterStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
 import ListArea from "/script/ui/locations/listitems/Area.js";
-import ListEntrance from "/script/ui/locations/listitems/Entrance.js";
+import ListExit from "/script/ui/locations/listitems/Exit.js";
 import ListLocation from "/script/ui/locations/listitems/Location.js";
 import "/script/ui/locations/listitems/Gossipstone.js";
 
 import MapArea from "/script/ui/map/marker/Area.js";
-import MapEntrance from "/script/ui/map/marker/Entrance.js";
+import MapExit from "/script/ui/map/marker/Exit.js";
 import MapLocation from "/script/ui/map/marker/Location.js";
 import "/script/ui/map/marker/Gossipstone.js";
 
@@ -129,8 +129,8 @@ class WorldEntry {
             let type = TYPE.get(this);
             if (category == "area" && type != "") {
                 listItem = new ListArea();
-            } else if (category == "entrance") {
-                listItem = new ListEntrance();
+            } else if (category == "exit") {
+                listItem = new ListExit();
             } else {
                 listItem = ListLocation.createType(type);
             }
@@ -151,8 +151,8 @@ class WorldEntry {
             let type = TYPE.get(this);
             if (category == "area" && type != "") {
                 mapItem = new MapArea();
-            } else if (category == "entrance") {
-                mapItem = new MapEntrance();
+            } else if (category == "exit") {
+                mapItem = new MapExit();
             } else {
                 mapItem = MapLocation.createType(type);
                 // LEGACY

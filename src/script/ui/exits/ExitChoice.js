@@ -91,25 +91,25 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
         if (oldValue != newValue) {
             switch (name) {
                 case 'ref':
-                    let exits = FileData.get("exits");
-                    let data = exits[newValue];
+                    let exit = FileData.get(`exits/${newValue}`);
+                    let entrances = FileData.get("entrances");
                     // savesatate
                     let title = this.shadowRoot.getElementById("title");
                     title.innerHTML = Language.translate(newValue);
                     title.setAttribute('i18n-content', newValue);
                     let selectEl = this.shadowRoot.getElementById("select");
-                    selectEl.value = StateStorage.readExtra("exits", this.ref, data.target);
-                    ACTIVE.set(this, data.active);
+                    selectEl.value = StateStorage.readExtra("exits", newValue, exit.target);
+                    ACTIVE.set(this, exit.active);
                     // readonly
-                    selectEl.readonly = data.active.indexOf(StateStorage.read("option.entrance_shuffle")) < 0;
+                    selectEl.readonly = exit.active.indexOf(StateStorage.read("option.entrance_shuffle")) < 0;
                     // options
-                    for (let key in exits) {
-                        let value = exits[key];
-                        if (value.type == data.type) {
+                    for (let key in entrances) {
+                        let value = entrances[key];
+                        if (value.type == exit.type) {
                             let opt = document.createElement('emc-option');
-                            opt.value = value.target;
-                            opt.innerHTML = Language.translate(value.target);
-                            opt.setAttribute('i18n-content', value.target);
+                            opt.value = key;
+                            opt.innerHTML = Language.translate(key);
+                            opt.setAttribute('i18n-content', key);
                             selectEl.append(opt);
                         }
                     }

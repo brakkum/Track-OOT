@@ -19,6 +19,7 @@ const SettingsStorage = new IDBStorage('settings');
 
 const FILES = {
     "exits":                {path: "/database/exits.json",              type: "json"},
+    "entrances":            {path: "/database/entrances.json",          type: "json"},
     "world":                {path: "/database/world.json",              type: "json"},
     "world_lists":          {path: "/database/world_lists.json",        type: "json"},
     "logic":                {path: "/database/logic.json",              type: "json"},
