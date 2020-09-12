@@ -66711,12 +66711,19 @@
                             "value": "ganon_castle_open_skulltulas"
                         },
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "value",
-                                "el": "item.skulltula"
-                            },
-                            "value": 100
+                            "type": "gte",
+                            "el": [
+                                {
+                                    "type": "value",
+                                    "el": "item.skulltula",
+                                    "category": "item"
+                                },
+                                {
+                                    "type": "value",
+                                    "el": "option.ganon_castle_skulltulas",
+                                    "category": "option"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -66807,12 +66814,19 @@
                             "value": "ganon_castle_open_skulltulas"
                         },
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "value",
-                                "el": "item.skulltula"
-                            },
-                            "value": 100
+                            "type": "gte",
+                            "el": [
+                                {
+                                    "type": "value",
+                                    "el": "item.skulltula",
+                                    "category": "item"
+                                },
+                                {
+                                    "type": "value",
+                                    "el": "option.ganon_castle_skulltulas",
+                                    "category": "option"
+                                }
+                            ]
                         }
                     ]
                 }
