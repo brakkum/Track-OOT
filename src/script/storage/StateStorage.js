@@ -16,6 +16,7 @@ const STORAGE = new IDBStorage("savestates");
 
 const DATA = {
     name: "",
+    version: 0,
     timestamp: new Date(),
     autosave: false,
     notes: "",
@@ -25,6 +26,7 @@ const DATA = {
 
 function decodeState(data) {
     DATA.name = data.name;
+    DATA.version = data.version;
     DATA.timestamp = data.timestamp;
     DATA.autosave = data.autosave;
     DATA.notes = data.notes;
@@ -43,6 +45,7 @@ function decodeState(data) {
 function encodeState() {
     let res = {
         name: DATA.name,
+        version: DATA.version,
         timestamp: DATA.timestamp,
         autosave: DATA.autosave,
         notes: DATA.notes,

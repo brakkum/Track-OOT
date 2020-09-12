@@ -111,6 +111,23 @@ const TPL = new Template(`
     </emc-tooltip>
 `);
 
+const TPL_MNU_CTX = new Template(`
+    <emc-contextmenu id="menu">
+        <div id="menu-check" class="item">Check All</div>
+        <div id="menu-uncheck" class="item">Uncheck All</div>
+        <div class="splitter"></div>
+        <div id="menu-associate" class="item">Set Entrance</div>
+        <div class="splitter"></div>
+        <div id="menu-logic" class="item">Show Logic</div>
+    </emc-contextmenu>
+`);
+
+const TPL_MNU_ITM = new Template(`
+    <emc-contextmenu id="menu">
+        <ootrt-itempicker id="item-picker" grid="pickable"></ootrt-itempicker>
+    </emc-contextmenu>
+`);
+
 const VALUE_STATES = [
     "opened",
     "unavailable",
@@ -118,62 +135,71 @@ const VALUE_STATES = [
     "available"
 ];
 
-export default class MapEntrance extends EventBusSubsetMixin(HTMLElement) {
+const ACTIVE = new WeakMap();
+const EXIT = new WeakMap();
+const AREA = new WeakMap();
+const ACCESS = new WeakMap();
+
+export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
+        ACTIVE.set(this, []);
+        EXIT.set(this, "");
+        AREA.set(this, "");
+        ACCESS.set(this, "");
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
 
         /* mouse events */
         this.addEventListener("click", event => {
-            if (!!this.value) {
+            let area = AREA.get(this);
+            if (!!area) {
                 this.triggerGlobal("location_change", {
-                    name: this.value
-                });
-            } else {
-                entranceDialog(this.ref).then(r => {
-                    this.value = r;
-                    let ref = FileData.get(`world/${r}/access`);
-                    let l = {};
-                    l[ref] = {
-                        "type": "value",
-                        "el": this.access,
-                        "category": "entrance"
-                    }
-                    //Logic.setLogic(l);
-                    this.triggerGlobal("entrance", {
-                        name: this.ref,
-                        value: r
-                    });
+                    name: area
                 });
             }
             event.preventDefault();
             return false;
         });
         this.addEventListener("contextmenu", event => {
-            this.value = "";
-            StateStorage.write(this.ref, "");
-            this.triggerGlobal("entrance", {
-                name: this.ref,
-                value: ""
-            });
+            // TODO open contextmenu
             event.preventDefault();
             return false;
         });
 
         /* event bus */
         this.registerGlobal("state", event => {
-            let value = event.data.state[this.ref];
-            if (typeof value == "undefined") {
-                value = "";
+            // TODO
+            let exit = EXIT.get(this);
+            //let active = ACTIVE.get(this);
+            if (event.data.extra.exits != null && event.data.extra.exits[exit] != null) {
+                this.value = event.data.extra.exits[exit];
+            } else {
+                let data = FileData.get(`exits/${exit}`);
+                this.value = data.target;
             }
-            this.value = value;
         });
-        this.registerGlobal(["state_change", "settings", "randomizer_options", "logic", "filter", "statechange_exits"], event => {
-            this.update()
+        this.registerGlobal("randomizer_options", event => {
+            // TODO
+            //let active = ACTIVE.get(this);
+            this.update();
         });
-        this.registerGlobal("entrance", event => {
+        this.registerGlobal("statechange_exits", event => {
+            // TODO
+            let exit = EXIT.get(this);
+            let data;
+            if (event.data != null) {
+                data = event.data[exit];
+            }
+            if (data != null) {
+                this.value = data.newValue;
+            }
+        });
+        this.registerGlobal(["settings", "logic", "filter"], event => {
+            this.update();
+        });
+        this.registerGlobal("exit", event => {
             if (this.ref === event.data.name && this.value !== event.data.value) {
                 this.value = event.data.value;
             }
@@ -186,11 +212,13 @@ export default class MapEntrance extends EventBusSubsetMixin(HTMLElement) {
     }
 
     async update() {
-        if (!!this.value) {
-            let dType = StateStorage.read(`dungeonTypes.${this.value}`, 'v'); // TODO
+        // TODO
+        let area = AREA.get(this);
+        if (!!area) {
+            let dType = StateStorage.read(`dungeonTypes.${area}`, 'v');
             if (dType == "n") {
-                let data_v = FileData.get(`world_lists/${this.value}/lists/v`);
-                let data_m = FileData.get(`world_lists/${this.value}/lists/mq`);
+                let data_v = FileData.get(`world_lists/${area}/lists/v`);
+                let data_m = FileData.get(`world_lists/${area}/lists/mq`);
                 let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
                 let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
@@ -200,7 +228,7 @@ export default class MapEntrance extends EventBusSubsetMixin(HTMLElement) {
                 }
                 this.shadowRoot.getElementById("marker").innerHTML = "";
             } else {
-                let data = FileData.get(`world_lists/${this.value}/lists/${dType}`);
+                let data = FileData.get(`world_lists/${area}/lists/${dType}`);
                 let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[res.value];
                 if (res.value > 1) {
@@ -209,12 +237,15 @@ export default class MapEntrance extends EventBusSubsetMixin(HTMLElement) {
                     this.shadowRoot.getElementById("marker").innerHTML = "";
                 }
             }
-        } else if (!!this.access && !!Logic.getValue(this.access)) {
-            this.shadowRoot.getElementById("marker").dataset.state = "available";
-            this.shadowRoot.getElementById("marker").innerHTML = "";
         } else {
-            this.shadowRoot.getElementById("marker").dataset.state = "unavailable";
-            this.shadowRoot.getElementById("marker").innerHTML = "";
+            let access = ACCESS.get(this);
+            if (!!access && !!Logic.getValue(access)) {
+                this.shadowRoot.getElementById("marker").dataset.state = "available";
+                this.shadowRoot.getElementById("marker").innerHTML = "";
+            } else {
+                this.shadowRoot.getElementById("marker").dataset.state = "unavailable";
+                this.shadowRoot.getElementById("marker").innerHTML = "";
+            }
         }
     }
 
@@ -232,14 +263,6 @@ export default class MapEntrance extends EventBusSubsetMixin(HTMLElement) {
 
     set value(val) {
         this.setAttribute('value', val);
-    }
-
-    get access() {
-        return this.getAttribute('access');
-    }
-
-    set access(val) {
-        this.setAttribute('access', val);
     }
 
     get left() {
@@ -267,31 +290,38 @@ export default class MapEntrance extends EventBusSubsetMixin(HTMLElement) {
     }
 
     static get observedAttributes() {
-        return ['ref', 'value', 'access', 'left', 'top', 'tooltip'];
+        return ['ref', 'value', 'left', 'top', 'tooltip'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
+                    let data = FileData.get(`world/${newValue}`);
+                    let exit = FileData.get(`exits/${data.access}`);
+                    let entrance = FileData.get(`entrances/${exit.target}`);
                     let txt = this.shadowRoot.getElementById("text");
-                    txt.innerHTML = Language.translate(newValue);
-                    this.value = StateStorage.read(newValue, "");
+                    txt.innerHTML = Language.translate(data.access);
+                    txt.setAttribute('i18n-content', data.access);
+                    ACTIVE.set(this, exit.active);
+                    EXIT.set(this, data.access);
+                    AREA.set(this, entrance.area);
+                    ACCESS.set(this, data.access.split(" => ")[1]);
+                    this.value = StateStorage.readExtra("exits", data.access, exit.target);
                     this.update();
                 }
             break;
             case 'value':
                 if (oldValue != newValue) {
+                    let el = this.shadowRoot.getElementById("value");
                     if (!!newValue) {
-                        this.shadowRoot.getElementById("value").innerHTML = Language.translate(newValue);
+                        let entrance = FileData.get(`entrances/${newValue}`);
+                        el.innerHTML = Language.translate(newValue);
+                        AREA.set(this, entrance.area);
                     } else {
-                        this.shadowRoot.getElementById("value").innerHTML = "";
+                        el.innerHTML = "";
+                        AREA.set(this, "");
                     }
-                    this.update();
-                }
-            break;
-            case 'access':
-                if (oldValue != newValue) {
                     this.update();
                 }
             break;
@@ -332,7 +362,7 @@ export default class MapEntrance extends EventBusSubsetMixin(HTMLElement) {
 
 }
 
-customElements.define('ootrt-marker-entrance', MapEntrance);
+customElements.define('ootrt-marker-exit', MapExit);
 
 function entranceDialog(ref) {
     return new Promise(resolve => {

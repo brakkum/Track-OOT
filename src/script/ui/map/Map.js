@@ -6,7 +6,7 @@ import FilterStorage from "/script/storage/FilterStorage.js";
 import Language from "/script/util/Language.js";
 import World from "/script/util/World.js";
 import "./marker/Area.js";
-import "./marker/Entrance.js";
+import "./marker/Exit.js";
 import "./marker/Location.js";
 import "./marker/Gossipstone.js";
 import "/script/ui/dungeonstate/DungeonType.js";
