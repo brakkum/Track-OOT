@@ -393,7 +393,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
                     ACTIVE.set(this, exit.active);
                     EXIT.set(this, data.access);
                     AREA.set(this, entrances[exit.target].area);
-                    ACCESS.set(this, data.access.split(" => ")[1]);
+                    ACCESS.set(this, data.access.split(" -> ")[1]);
                     this.value = StateStorage.readExtra("exits", data.access, exit.target);
                     // options
                     let selectEl = MNU_EXT.get(this).shadowRoot.getElementById("select");

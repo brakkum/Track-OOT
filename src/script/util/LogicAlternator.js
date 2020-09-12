@@ -22,11 +22,11 @@ EventBus.register("statechange_exits", event => {
     let changes = [];
     for (let edgeThere in event.data) {
         let edgeBack = event.data[edgeThere].newValue;
-        let [source, target] = edgeThere.split(" => ");
-        let [reroute, entrance] = edgeBack.split(" => ");
+        let [source, target] = edgeThere.split(" -> ");
+        let [reroute, entrance] = edgeBack.split(" -> ");
         let edgeThereData = exits[edgeThere];
         if (edgeThereData == null) {
-            edgeThereData = exits[`${target} => ${source}`];
+            edgeThereData = exits[`${target} -> ${source}`];
         }
         let edgeBackData = exits[edgeBack];
         if ((edgeBackData == null || edgeThereData.type == edgeBackData.type) && edgeThereData.active.indexOf(entrance_shuffle) >= 0) {
@@ -121,10 +121,10 @@ function updateEntrances() {
     let exits = FileData.get("exits");
     let changes = [];
     for (let exit in exit_binding) {
-        let [source, target] = exit.split(" => ");
+        let [source, target] = exit.split(" -> ");
         let edgeData = exits[exit];
         if (edgeData == null) {
-            edgeData = exits[`${target} => ${source}`];
+            edgeData = exits[`${target} -> ${source}`];
         }
         if (edgeData.active.indexOf(entrance_shuffle) >= 0) {
             let reroute = exit_binding[exit];
@@ -172,7 +172,7 @@ class LogicAlternator {
         entrance_shuffle = StateStorage.read("option.entrance_shuffle");
         let exits = StateStorage.getAllExtra("exits");
         for (let exit in exits) {
-            exit_binding[exit] = exits[exit].split(" => ")[0]
+            exit_binding[exit] = exits[exit].split(" -> ")[0]
         }
         use_custom_logic = await SettingsStorage.get("use_custom_logic", settings["use_custom_logic"].default);
         await updateLogic();
