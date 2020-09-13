@@ -204,10 +204,12 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             }
         });
         this.registerGlobal("statechange", event => {
-            let value = !!event.data[this.ref];
-            let textEl = this.shadowRoot.getElementById("text");
-            textEl.dataset.checked = value;
-            this.toggleCheckValue(value);
+            if (event.data.hasOwnProperty(this.ref)) {
+                let value = !!event.data[this.ref];
+                let textEl = this.shadowRoot.getElementById("text");
+                textEl.dataset.checked = value;
+                this.toggleCheckValue(value);
+            }
         });
         this.registerGlobal("logic", event => {
             if (event.data.hasOwnProperty(this.access)) {

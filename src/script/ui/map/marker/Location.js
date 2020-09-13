@@ -216,11 +216,10 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
             }
         });
         this.registerGlobal("statechange", event => {
-            let value = !!event.data[this.ref];
-            if (typeof value == "undefined") {
-                value = false;
+            if (event.data.hasOwnProperty(this.ref)) {
+                let value = !!event.data[this.ref];
+                this.checked = value;
             }
-            this.checked = value;
         });
         this.registerGlobal("logic", event => {
             if (event.data.hasOwnProperty(this.access)) {
