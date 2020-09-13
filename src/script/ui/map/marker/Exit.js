@@ -32,11 +32,11 @@ const TPL = new Template(`
             box-sizing: border-box;
             width: 100%;
             height: 100%;
-            background-color: #ffffff;
             border: solid 4px black;
             border-radius: 25%;
             color: black;
-            font-size: 30px;
+            background-color: #ffffff;
+            font-size: 1em;
             font-weight: bold;
             cursor: pointer;
         }
@@ -269,7 +269,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
                 selectEl.value = data.newValue;
             }
         });
-        this.registerGlobal(["settings", "logic", "filter"], event => {
+        this.registerGlobal(["statechange", "settings", "logic", "filter"], event => {
             this.update();
         });
         this.registerGlobal("exit", event => {

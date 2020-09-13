@@ -150,10 +150,10 @@ class StateStorage {
     }
 
     async save(name = DATA.name) {
+        DATA.timestamp = new Date();
+        DATA.name = name;
+        DATA.autosave = false;
         let state = encodeState();
-        state.timestamp = new Date();
-        state.name = name;
-        state.autosave = false;
         LocalStorage.set(PERSISTANCE_NAME, state);
         await STORAGE.set(name, state);
         if (autosaveTimeout != null) {
@@ -249,8 +249,14 @@ class StateStorage {
         let act = actionPath.undo();
         if (act != null) {
             for (let i in act) {
-                DATA.state.set(i, act[i].oldValue);
+                DATA.state.overwrite(i, act[i].oldValue);
             }
+            let state = encodeState();
+            EventBus.trigger("state", JSON.parse(JSON.stringify({
+                notes: state.notes,
+                state: state.data,
+                extra: state.extra
+            })));
         }
     }
 
@@ -258,8 +264,14 @@ class StateStorage {
         let act = actionPath.redo();
         if (act != null) {
             for (let i in act) {
-                DATA.state.set(i, act[i].newValue);
+                DATA.state.overwrite(i, act[i].newValue);
             }
+            let state = encodeState();
+            EventBus.trigger("state", JSON.parse(JSON.stringify({
+                notes: state.notes,
+                state: state.data,
+                extra: state.extra
+            })));
         }
     }
 

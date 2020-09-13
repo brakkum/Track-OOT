@@ -189,7 +189,11 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
         
         /* mouse events */
         this.addEventListener("click", event => {
-            this.toggleCheckValue();
+            if (this.checked == "true") {
+                this.uncheck();
+            } else {
+                this.check();
+            }
             event.preventDefault();
             return false;
         });
@@ -217,7 +221,7 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
         });
         this.registerGlobal("statechange", event => {
             if (event.data.hasOwnProperty(this.ref)) {
-                let value = !!event.data[this.ref];
+                let value = !!event.data[this.ref].newValue;
                 this.checked = value;
             }
         });
@@ -385,25 +389,23 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
     }
 
     check() {
-        this.toggleCheckValue(true);
+        if (this.checked != "true") {
+            StateStorage.write(this.ref, true);
+            this.checked = true;
+            this.triggerGlobal(TYPE.get(this), {
+                name: this.ref,
+                value: true
+            });
+        }
     }
     
     uncheck() {
-        this.toggleCheckValue(false);
-    }
-
-    toggleCheckValue(value) {
-        let oldValue = this.checked;
-        oldValue = oldValue != null && oldValue != "false";
-        if (value == null) {
-            value = !oldValue;
-        }
-        if (!!value != oldValue) {
-            StateStorage.write(this.ref, value);
-            this.checked = value;
+        if (this.checked == "true") {
+            StateStorage.write(this.ref, false);
+            this.checked = true;
             this.triggerGlobal(TYPE.get(this), {
                 name: this.ref,
-                value: value
+                value: false
             });
         }
     }

@@ -176,7 +176,11 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         
         /* mouse events */
         this.addEventListener("click", event => {
-            this.toggleCheckValue();
+            if (this.checked == "true") {
+                this.uncheck();
+            } else {
+                this.check();
+            }
             event.preventDefault();
             return false;
         });
@@ -189,26 +193,23 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         /* event bus */
         this.registerGlobal(TYPE.get(this), event => {
             if (this.ref === event.data.name && this.checked !== event.data.value) {
-                let textEl = this.shadowRoot.getElementById("text");
-                textEl.dataset.checked = event.data.value;
-                this.toggleCheckValue(event.data.value);
+                this.checked = event.data.value;
             }
         });
         this.registerGlobal("state", event => {
             let value = !!event.data.state[this.ref];
-            let textEl = this.shadowRoot.getElementById("text");
-            textEl.dataset.checked = value;
-            this.toggleCheckValue(value);
+            if (typeof value == "undefined") {
+                value = false;
+            }
+            this.checked = value;
             if (event.data.extra["item_location"] != null && event.data.extra["item_location"][this.ref] != null) {
                 this.item = event.data.extra["item_location"][this.ref];
             }
         });
         this.registerGlobal("statechange", event => {
             if (event.data.hasOwnProperty(this.ref)) {
-                let value = !!event.data[this.ref];
-                let textEl = this.shadowRoot.getElementById("text");
-                textEl.dataset.checked = value;
-                this.toggleCheckValue(value);
+                let value = !!event.data[this.ref].newValue;
+                this.checked = value;
             }
         });
         this.registerGlobal("logic", event => {
@@ -264,6 +265,14 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         this.setAttribute('ref', val);
     }
 
+    get checked() {
+        return this.getAttribute('checked');
+    }
+
+    set checked(val) {
+        this.setAttribute('checked', val);
+    }
+
     get access() {
         return this.getAttribute('access');
     }
@@ -281,7 +290,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
     }
 
     static get observedAttributes() {
-        return ['ref', 'access', 'item'];
+        return ['ref', 'checked', 'access', 'item'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -293,6 +302,11 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
                     textEl.innerHTML = Language.translate(newValue);
                     textEl.dataset.checked = StateStorage.read(newValue, false);
                     this.item = StateStorage.readExtra("item_location", newValue, false);
+                }
+            break;
+            case 'checked':
+                if (oldValue != newValue) {
+                    textEl.dataset.checked = newValue;
                 }
             break;
             case 'access':
@@ -320,25 +334,23 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
     }
 
     check() {
-        this.toggleCheckValue(true);
+        if (this.checked != "true") {
+            StateStorage.write(this.ref, true);
+            this.checked = true;
+            this.triggerGlobal(TYPE.get(this), {
+                name: this.ref,
+                value: true
+            });
+        }
     }
     
     uncheck() {
-        this.toggleCheckValue(false);
-    }
-
-    toggleCheckValue(value) {
-        let textEl = this.shadowRoot.getElementById("text");
-        let oldValue = textEl.dataset.checked == "true";
-        if (value == null) {
-            value = !oldValue;
-        }
-        if (!!value != oldValue) {
-            StateStorage.write(this.ref, value);
-            textEl.dataset.checked = value;
+        if (this.checked == "true") {
+            StateStorage.write(this.ref, false);
+            this.checked = true;
             this.triggerGlobal(TYPE.get(this), {
                 name: this.ref,
-                value: value
+                value: false
             });
         }
     }
