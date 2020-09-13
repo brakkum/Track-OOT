@@ -16,6 +16,7 @@
 - fix avail chest and missing chests showing incorrect values until updated
 - fix multiplayer sync
     - undo/redo does not sync correctly
+- fix active state name not saved
 
 ---
 

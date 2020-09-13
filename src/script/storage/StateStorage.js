@@ -48,7 +48,7 @@ function decodeState(data) {
     DATA.extra.clear();
     if (data.extra != null) {
         for (let category in data.extra) {
-            let buffer = new DebouncedState();
+            let buffer = new DebouncedState(category);
             buffer.addEventListener("change", onStateChange);
             buffer.overwriteAll(data.extra[category]);
             DATA.extra.set(category, buffer);
