@@ -132,11 +132,11 @@ async function init() {
     updateLoadingMessage("initialize components...");
     let notePad = document.getElementById("notes-editor");
     notePad.value = StateStorage.readNotes();
-    notePad.addEventListener("change", function() {
-        StateStorage.writeNotes(notePad.value);
-    });
     EventBus.register("state", function(event) {
         notePad.value = event.data.notes || "";
+    });
+    notePad.addEventListener("change", function() {
+        StateStorage.writeNotes(notePad.value);
     });
 
     updateLoadingMessage("initialize settings...");

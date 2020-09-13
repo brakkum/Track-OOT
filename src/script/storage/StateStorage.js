@@ -52,8 +52,8 @@ function encodeState() {
         data: DATA.state.getAll(),
         extra: {}
     };
-    for (let category in DATA.extra) {
-        res.extra[category] = DATA.extra[category].getAll();
+    for (let [key, value] of DATA.extra) {
+        res.extra[key] = value.getAll();
     }
     return res;
 }
