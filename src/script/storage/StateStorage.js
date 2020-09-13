@@ -24,6 +24,19 @@ const DATA = {
     extra: new Map()
 };
 
+function onStateChange(event) {
+    LocalStorage.set(PERSISTANCE_NAME, encodeState());
+    LocalStorage.set(STATE_DIRTY, true);
+    if (event.category == null) {
+        actionPath.put(event.data);
+        EventBus.trigger("statechange", JSON.parse(JSON.stringify(event.data)));
+        updateTitle();
+    } else {
+        EventBus.trigger(`statechange_${event.category}`, event.data);
+        updateTitle();
+    }
+}
+
 function decodeState(data) {
     DATA.name = data.name;
     DATA.version = data.version;
@@ -35,7 +48,8 @@ function decodeState(data) {
     DATA.extra.clear();
     if (data.extra != null) {
         for (let category in data.extra) {
-            let buffer = new DebouncedState();
+            let buffer = new DebouncedState(category);
+            buffer.addEventListener("change", onStateChange);
             buffer.overwriteAll(data.extra[category]);
             DATA.extra.set(category, buffer);
         }
@@ -52,23 +66,10 @@ function encodeState() {
         data: DATA.state.getAll(),
         extra: {}
     };
-    for (let category in DATA.extra) {
-        res.extra[category] = DATA.extra[category].getAll();
+    for (let [key, value] of DATA.extra) {
+        res.extra[key] = value.getAll();
     }
     return res;
-}
-
-function onStateChange(event) {
-    LocalStorage.set(PERSISTANCE_NAME, encodeState());
-    LocalStorage.set(STATE_DIRTY, true);
-    if (event.category == null) {
-        actionPath.put(event.data);
-        EventBus.trigger("statechange", JSON.parse(JSON.stringify(event.data)));
-        updateTitle();
-    } else {
-        EventBus.trigger(`statechange_${event.category}`, event.data);
-        updateTitle();
-    }
 }
 
 DATA.state.addEventListener("change", onStateChange);
@@ -358,7 +359,7 @@ class StateStorage {
             for (let [key, value] of Object.entries(data)) {
                 buffer.overwrite(key, value.newValue);
             }
-            if (!!Object.keys(changed).length) {
+            if (!!Object.keys(data).length) {
                 LocalStorage.set(PERSISTANCE_NAME, encodeState());
                 LocalStorage.set(STATE_DIRTY, true);
                 EventBus.trigger(`statechange_${category}`, data);

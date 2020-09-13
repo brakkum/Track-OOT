@@ -1,11 +1,8 @@
 
 ### FIX MAJOR BUGS
 
-- region translation matrix not applied correctly
-    - check for proof first
-    - add to debug information
-- location list not updating to dungeon type set in dungeon state module
-    - check for proof first
+- map exits marker not updating after check/uncheck
+- list exits not updating after check/uncheck
 
 ---
 
@@ -14,6 +11,9 @@
 - fix avail chest and missing chests showing incorrect values until updated
 - fix multiplayer sync
     - undo/redo does not sync correctly
+- fix active state name not saved
+- locations sometimes cant be unchecked directly
+    - locations need to be unchecked twice before state gets saved
 
 ---
 

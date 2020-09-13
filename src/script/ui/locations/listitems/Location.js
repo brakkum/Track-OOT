@@ -199,7 +199,17 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             let textEl = this.shadowRoot.getElementById("text");
             textEl.dataset.checked = value;
             this.toggleCheckValue(value);
-            this.item = StateStorage.readExtra("item_location", this.ref, false);
+            if (event.data.extra["item_location"] != null && event.data.extra["item_location"][this.ref] != null) {
+                this.item = event.data.extra["item_location"][this.ref];
+            }
+        });
+        this.registerGlobal("statechange", event => {
+            if (event.data.hasOwnProperty(this.ref)) {
+                let value = !!event.data[this.ref];
+                let textEl = this.shadowRoot.getElementById("text");
+                textEl.dataset.checked = value;
+                this.toggleCheckValue(value);
+            }
         });
         this.registerGlobal("logic", event => {
             if (event.data.hasOwnProperty(this.access)) {
@@ -220,12 +230,18 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
 
     connectedCallback() {
         super.connectedCallback();
-        this.parentElement.parentElement.append(MNU_CTX.get(this));
-        this.parentElement.parentElement.append(MNU_ITM.get(this));
+        let el = this.parentElement;
+        if (el != null) {
+            el = el.parentElement;
+            if (el != null) {
+                el.append(MNU_CTX.get(this));
+                el.append(MNU_ITM.get(this));
+            }
+        }
         // update state
         let textEl = this.shadowRoot.getElementById("text");
         let value = StateStorage.read(this.ref, false);
-        textEl.dataset.checked = value;
+        textEl.dataset.checked = !!value;
         if (!!this.access && !!Logic.getValue(this.access)) {
             textEl.dataset.state = "available";
         } else {

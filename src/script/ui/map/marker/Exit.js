@@ -117,14 +117,18 @@ const TPL_MNU_CTX = new Template(`
         <div id="menu-uncheck" class="item">Uncheck All</div>
         <div class="splitter"></div>
         <div id="menu-associate" class="item">Set Entrance</div>
-        <div class="splitter"></div>
-        <div id="menu-logic" class="item">Show Logic</div>
     </emc-contextmenu>
 `);
 
-const TPL_MNU_ITM = new Template(`
+const TPL_MNU_EXT = new Template(`
+    <style>
+        #select {
+            height: 300px;
+            width: 300px;
+        }
+    </style>
     <emc-contextmenu id="menu">
-        <ootrt-itempicker id="item-picker" grid="pickable"></ootrt-itempicker>
+        <emc-listselect id="select"></emc-listselect>
     </emc-contextmenu>
 `);
 
@@ -139,6 +143,8 @@ const ACTIVE = new WeakMap();
 const EXIT = new WeakMap();
 const AREA = new WeakMap();
 const ACCESS = new WeakMap();
+const MNU_CTX = new WeakMap();
+const MNU_EXT = new WeakMap();
 
 export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
 
@@ -150,6 +156,69 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
         ACCESS.set(this, "");
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
+
+        /* context menu */
+        let mnu_ctx = document.createElement("div");
+        mnu_ctx.attachShadow({mode: 'open'});
+        mnu_ctx.shadowRoot.append(TPL_MNU_CTX.generate());
+        let mnu_ctx_el = mnu_ctx.shadowRoot.getElementById("menu");
+        MNU_CTX.set(this, mnu_ctx);
+
+        let mnu_ext = document.createElement("div");
+        mnu_ext.attachShadow({mode: 'open'});
+        mnu_ext.shadowRoot.append(TPL_MNU_EXT.generate());
+        let selectEl = mnu_ext.shadowRoot.getElementById("select");
+        let mnu_ext_el = mnu_ext.shadowRoot.getElementById("menu");
+        MNU_EXT.set(this, mnu_ext);
+
+        selectEl.addEventListener("change", event => {
+            let exit = EXIT.get(this);
+            if (exit != "") {
+                StateStorage.writeExtra("exits", exit, event.value);
+            }
+        });
+        selectEl.addEventListener("click", event => {
+            event.stopPropagation();
+            event.preventDefault();
+            return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-check").addEventListener("click", event => {
+            let area = AREA.get(this);
+            let data = FileData.get(`world_lists/${area}/lists`);
+            if (data.v != null) {
+                for (let loc of data.v) {
+                    StateStorage.write(loc.id, true);
+                }
+            }
+            if (data.mq != null) {
+                for (let loc of data.mq) {
+                    StateStorage.write(loc.id, true);
+                }
+            }
+            event.preventDefault();
+            return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-uncheck").addEventListener("click", event => {
+            let area = AREA.get(this);
+            let data = FileData.get(`world_lists/${area}/lists`);
+            if (data.v != null) {
+                for (let loc of data.v) {
+                    StateStorage.write(loc.id, false);
+                }
+            }
+            if (data.mq != null) {
+                for (let loc of data.mq) {
+                    StateStorage.write(loc.id, false);
+                }
+            }
+            event.preventDefault();
+            return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-associate").addEventListener("click", event => {
+            mnu_ext_el.show(mnu_ctx_el.left, mnu_ctx_el.top);
+            event.preventDefault();
+            return false;
+        });
 
         /* mouse events */
         this.addEventListener("click", event => {
@@ -163,16 +232,18 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         this.addEventListener("contextmenu", event => {
-            // TODO open contextmenu
+            mnu_ctx_el.show(event.clientX, event.clientY);
             event.preventDefault();
             return false;
         });
 
         /* event bus */
         this.registerGlobal("state", event => {
-            // TODO
             let exit = EXIT.get(this);
-            //let active = ACTIVE.get(this);
+            let active = ACTIVE.get(this);
+            if (event.data.state.hasOwnProperty("option.entrance_shuffle")) {
+                selectEl.readonly = active.indexOf(event.data.state["option.entrance_shuffle"]) < 0;
+            }
             if (event.data.extra.exits != null && event.data.extra.exits[exit] != null) {
                 this.value = event.data.extra.exits[exit];
             } else {
@@ -181,12 +252,13 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
             }
         });
         this.registerGlobal("randomizer_options", event => {
-            // TODO
-            //let active = ACTIVE.get(this);
+            let active = ACTIVE.get(this);
+            if (event.data.hasOwnProperty("option.entrance_shuffle")) {
+                selectEl.readonly = active.indexOf(event.data["option.entrance_shuffle"]) < 0;
+            }
             this.update();
         });
         this.registerGlobal("statechange_exits", event => {
-            // TODO
             let exit = EXIT.get(this);
             let data;
             if (event.data != null) {
@@ -194,6 +266,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
             }
             if (data != null) {
                 this.value = data.newValue;
+                selectEl.value = data.newValue;
             }
         });
         this.registerGlobal(["settings", "logic", "filter"], event => {
@@ -208,11 +281,25 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
 
     connectedCallback() {
         super.connectedCallback();
+        let el = this.parentElement;
+        if (el != null) {
+            el = el.parentElement;
+            if (el != null) {
+                el.append(MNU_CTX.get(this));
+                el.append(MNU_EXT.get(this));
+            }
+        }
+        // update state
         this.update();
     }
 
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        MNU_CTX.get(this).remove();
+        MNU_EXT.get(this).remove();
+    }
+
     async update() {
-        // TODO
         let area = AREA.get(this);
         if (!!area) {
             let dType = StateStorage.read(`dungeonTypes.${area}`, 'v');
@@ -299,15 +386,29 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
                 if (oldValue != newValue) {
                     let data = FileData.get(`world/${newValue}`);
                     let exit = FileData.get(`exits/${data.access}`);
-                    let entrance = FileData.get(`entrances/${exit.target}`);
+                    let entrances = FileData.get("entrances");
                     let txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = Language.translate(data.access);
                     txt.setAttribute('i18n-content', data.access);
                     ACTIVE.set(this, exit.active);
                     EXIT.set(this, data.access);
-                    AREA.set(this, entrance.area);
-                    ACCESS.set(this, data.access.split(" => ")[1]);
+                    AREA.set(this, entrances[exit.target].area);
+                    ACCESS.set(this, data.access.split(" -> ")[1]);
                     this.value = StateStorage.readExtra("exits", data.access, exit.target);
+                    // options
+                    let selectEl = MNU_EXT.get(this).shadowRoot.getElementById("select");
+                    selectEl.value = this.value;
+                    for (let key in entrances) {
+                        let value = entrances[key];
+                        if (value.type == exit.type) {
+                            let opt = document.createElement('emc-option');
+                            opt.value = key;
+                            opt.innerHTML = Language.translate(key);
+                            opt.setAttribute('i18n-content', key);
+                            selectEl.append(opt);
+                        }
+                    }
+                    // update state
                     this.update();
                 }
             break;
@@ -363,64 +464,3 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
 }
 
 customElements.define('ootrt-marker-exit', MapExit);
-
-function entranceDialog(ref) {
-    return new Promise(resolve => {
-        let value = StateStorage.read(ref, "");
-        let world = FileData.get('world');
-        let type = world[ref].type;
-    
-        let loc = document.createElement('label');
-        loc.style.display = "flex";
-        loc.style.justifyContent = "space-between";
-        loc.style.alignItems = "center";
-        loc.style.padding = "5px";
-        loc.innerHTML = Language.translate("location");
-        let slt = document.createElement("select");
-
-        let unbound = new Set();
-        for (let i in world) {
-            let entry = world[i];
-            if (entry.category == "area" && entry.type == type) {
-                unbound.add(i);
-            }
-        }
-        for (let i in world) {
-            let entry = world[i];
-            if (entry.category == "entrance" && entry.type == type) {
-                let bound = StateStorage.read(i, "");
-                if (i != ref && !!bound) {
-                    unbound.delete(bound);
-                }
-            }
-        }
-        unbound = Array.from(unbound);
-        
-        for (let i of unbound) {
-            slt.append(createOption(i, Language.translate(i)));
-        }
-        slt.style.width = "200px";
-        slt.value = value;
-        loc.append(slt);
-        
-        let d = new Dialog({title: Language.translate(ref), submit: true, cancel: true});
-        d.onsubmit = function(ref, result) {
-            if (!!result) {
-                let res = slt.value;
-                StateStorage.write(ref, res);
-                resolve(res);
-            } else {
-                resolve(false);
-            }
-        }.bind(this, ref);
-        d.append(loc);
-        d.show();
-    });
-}
-
-function createOption(value, content) {
-    let opt = document.createElement('option');
-    opt.value = value;
-    opt.innerHTML = content;
-    return opt;
-}

@@ -1,45 +1,45 @@
 {
-    "region.deku_tree_lobby => region.kf_outside_deku_tree": {
+    "region.deku_tree_lobby -> region.kf_outside_deku_tree": {
         "type": "dungeon",
         "area": "area.deku"
     },
-    "region.dodongos_cavern_beginning => region.dodongos_cavern_entryway": {
+    "region.dodongos_cavern_beginning -> region.dodongos_cavern_entryway": {
         "type": "dungeon",
         "area": "area.dodongo"
     },
-    "region.jabu_jabus_belly_beginning => region.zoras_fountain": {
+    "region.jabu_jabus_belly_beginning -> region.zoras_fountain": {
         "type": "dungeon",
         "area": "area.jabujabu"
     },
-    "region.bottom_of_the_well => region.kakariko_village": {
+    "region.bottom_of_the_well -> region.kakariko_village": {
         "type": "dungeon",
         "area": "area.well"
     },
-    "region.forest_temple_lobby => region.sacred_forest_meadow": {
+    "region.forest_temple_lobby -> region.sacred_forest_meadow": {
         "type": "dungeon",
         "area": "area.temple_forest"
     },
-    "region.fire_temple_lower => region.fire_temple_entrance": {
+    "region.fire_temple_lower -> region.fire_temple_entrance": {
         "type": "dungeon",
         "area": "area.temple_fire"
     },
-    "region.water_temple_lobby => region.lake_hylia": {
+    "region.water_temple_lobby -> region.lake_hylia": {
         "type": "dungeon",
         "area": "area.temple_water"
     },
-    "region.spirit_temple_lobby => region.desert_colossus": {
+    "region.spirit_temple_lobby -> region.desert_colossus": {
         "type": "dungeon",
         "area": "area.temple_spirit"
     },
-    "region.shadow_temple_entryway => region.graveyard_warp_pad_region": {
+    "region.shadow_temple_entryway -> region.graveyard_warp_pad_region": {
         "type": "dungeon",
         "area": "area.temple_shadow"
     },
-    "region.ice_cavern_beginning => region.zoras_fountain": {
+    "region.ice_cavern_beginning -> region.zoras_fountain": {
         "type": "dungeon",
         "area": "area.ice_cavern"
     },
-    "region.gerudo_training_grounds_lobby => region.gerudo_fortress": {
+    "region.gerudo_training_grounds_lobby -> region.gerudo_fortress": {
         "type": "dungeon",
         "area": "area.training_grounds"
     }
