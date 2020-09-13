@@ -2,7 +2,7 @@ export default function(state) {
     let res = {
         data: {},
         extra: state.extra || {},
-        notes: state.data.notes || "",
+        notes: state.notes || state.data.notes || "",
         autosave: state.autosave,
         timestamp: state.timestamp,
         version: 4,//5, // keep this until release
