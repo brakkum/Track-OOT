@@ -24,6 +24,19 @@ const DATA = {
     extra: new Map()
 };
 
+function onStateChange(event) {
+    LocalStorage.set(PERSISTANCE_NAME, encodeState());
+    LocalStorage.set(STATE_DIRTY, true);
+    if (event.category == null) {
+        actionPath.put(event.data);
+        EventBus.trigger("statechange", JSON.parse(JSON.stringify(event.data)));
+        updateTitle();
+    } else {
+        EventBus.trigger(`statechange_${event.category}`, event.data);
+        updateTitle();
+    }
+}
+
 function decodeState(data) {
     DATA.name = data.name;
     DATA.version = data.version;
@@ -36,6 +49,7 @@ function decodeState(data) {
     if (data.extra != null) {
         for (let category in data.extra) {
             let buffer = new DebouncedState();
+            buffer.addEventListener("change", onStateChange);
             buffer.overwriteAll(data.extra[category]);
             DATA.extra.set(category, buffer);
         }
@@ -56,19 +70,6 @@ function encodeState() {
         res.extra[key] = value.getAll();
     }
     return res;
-}
-
-function onStateChange(event) {
-    LocalStorage.set(PERSISTANCE_NAME, encodeState());
-    LocalStorage.set(STATE_DIRTY, true);
-    if (event.category == null) {
-        actionPath.put(event.data);
-        EventBus.trigger("statechange", JSON.parse(JSON.stringify(event.data)));
-        updateTitle();
-    } else {
-        EventBus.trigger(`statechange_${event.category}`, event.data);
-        updateTitle();
-    }
 }
 
 DATA.state.addEventListener("change", onStateChange);

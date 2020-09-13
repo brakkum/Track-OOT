@@ -6,6 +6,8 @@
     - add to debug information
 - location list not updating to dungeon type set in dungeon state module
     - check for proof first
+- map marker not updating after check/uncheck all
+- list locations not updating after check/uncheck all
 
 ---
 
@@ -30,6 +32,15 @@
 - add missing options
     - on new game options are written initially by the `StateStorage`
     - on game load missing/changed options should be added by `StateConverters`
+
+
+### LOGIC SEEMINGLY WRONG
+
+- lake lab wall skulltula
+- field near kak grotto skulltula
+- lon lon back wall skulltula
+- lon lon house window skulltula
+- grave wall skulltula
     
 
 ### TODOS
