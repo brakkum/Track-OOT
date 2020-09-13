@@ -358,7 +358,7 @@ class StateStorage {
             for (let [key, value] of Object.entries(data)) {
                 buffer.overwrite(key, value.newValue);
             }
-            if (!!Object.keys(changed).length) {
+            if (!!Object.keys(data).length) {
                 LocalStorage.set(PERSISTANCE_NAME, encodeState());
                 LocalStorage.set(STATE_DIRTY, true);
                 EventBus.trigger(`statechange_${category}`, data);

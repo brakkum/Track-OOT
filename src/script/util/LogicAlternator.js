@@ -126,13 +126,17 @@ function updateEntrances() {
         if (edgeData == null) {
             edgeData = exits[`${target} -> ${source}`];
         }
-        if (edgeData.active.indexOf(entrance_shuffle) >= 0) {
-            let reroute = exit_binding[exit];
-            changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: `${reroute}[child]`});
-            changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: `${reroute}[adult]`});
+        if (edgeData != null) {
+            if (edgeData.active.indexOf(entrance_shuffle) >= 0) {
+                let reroute = exit_binding[exit];
+                changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: `${reroute}[child]`});
+                changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: `${reroute}[adult]`});
+            } else {
+                changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: `${target}[child]`});
+                changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: `${target}[adult]`});
+            }
         } else {
-            changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: `${target}[child]`});
-            changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: `${target}[adult]`});
+            throw Error("Entrance association error: data may be stale");
         }
     }
     if (!!changes.length) {
