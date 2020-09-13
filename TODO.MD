@@ -1,13 +1,8 @@
 
 ### FIX MAJOR BUGS
 
-- region translation matrix not applied correctly
-    - check for proof first
-    - add to debug information
-- location list not updating to dungeon type set in dungeon state module
-    - check for proof first
-- map marker not updating after check/uncheck all
-- list locations not updating after check/uncheck all
+- map exits marker not updating after check/uncheck
+- list exits not updating after check/uncheck
 
 ---
 
@@ -17,6 +12,8 @@
 - fix multiplayer sync
     - undo/redo does not sync correctly
 - fix active state name not saved
+- locations sometimes cant be unchecked directly
+    - locations need to be unchecked twice before state gets saved
 
 ---
 
@@ -33,15 +30,6 @@
 - add missing options
     - on new game options are written initially by the `StateStorage`
     - on game load missing/changed options should be added by `StateConverters`
-
-
-### LOGIC SEEMINGLY WRONG
-
-- lake lab wall skulltula
-- field near kak grotto skulltula
-- lon lon back wall skulltula
-- lon lon house window skulltula
-- grave wall skulltula
     
 
 ### TODOS
