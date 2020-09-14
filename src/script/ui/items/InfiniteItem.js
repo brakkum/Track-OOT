@@ -1,7 +1,7 @@
 import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
-import "/emcJS/ui/selection/Option.js";
+import "/emcJS/ui/input/Option.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
 const TPL = new Template(`
