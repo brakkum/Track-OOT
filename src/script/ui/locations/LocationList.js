@@ -2,7 +2,7 @@ import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
-import "/emcJS/ui/selection/SwitchButton.js";
+import "/emcJS/ui/input/SwitchButton.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import Language from "/script/util/Language.js";

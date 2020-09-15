@@ -92,7 +92,7 @@ async function init() {
         "/emcJS/ui/TextEditor.js",
         "/emcJS/ui/LogScreen.js",
         "/emcJS/ui/Icon.js",
-        "/emcJS/ui/selection/ChoiceSelect.js",
+        "/emcJS/ui/input/ChoiceSelect.js",
         "/emcJS/ui/layout/Layout.js",
         "/emcJS/ui/layout/TabView.js",
         "/script/ui/items/ItemGrid.js",

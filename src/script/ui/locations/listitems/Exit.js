@@ -252,7 +252,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                 selectEl.value = data.newValue;
             }
         });
-        this.registerGlobal(["settings", "logic", "filter"], event => {
+        this.registerGlobal(["statechange", "settings", "logic", "filter"], event => {
             this.update();
         });
         this.registerGlobal("exit", event => {

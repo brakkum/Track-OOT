@@ -1,19 +1,14 @@
 
 ### FIX MAJOR BUGS
 
-- map exits marker not updating after check/uncheck
-- list exits not updating after check/uncheck
+- `currently none`
 
 ---
 
 ### FIX MINOR BUGS
 
-- fix avail chest and missing chests showing incorrect values until updated
 - fix multiplayer sync
     - undo/redo does not sync correctly
-- fix active state name not saved
-- locations sometimes cant be unchecked directly
-    - locations need to be unchecked twice before state gets saved
 
 ---
 
