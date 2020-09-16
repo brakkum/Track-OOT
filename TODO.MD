@@ -1,7 +1,9 @@
 
 ### FIX MAJOR BUGS
 
-- `currently none`
+- create entrance aliases so the association wont break on return paths
+    - blocks interior association
+    - blocks overworld association
 
 ---
 
@@ -27,7 +29,7 @@
     - on game load missing/changed options should be added by `StateConverters`
     
 
-### TODOS
+### TODO
 
 - add warning dialog to download update if needed
 
