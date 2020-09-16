@@ -7,12 +7,12 @@ import createLogicEditor from "./content/editors/LogicEditor.js";
 import createLocationEditor from "./content/editors/LocationEditor.js";
 
 const FILES = {
-    "exits":                {path: "/src/database/exits.json",              type: "json"},
-    "entrances":            {path: "/src/database/entrances.json",          type: "json"},
     "world":                {path: "/src/database/world.json",              type: "json"},
     "world_lists":          {path: "/src/database/world_lists.json",        type: "json"},
     "logic":                {path: "/src/database/logic.json",              type: "json"},
     "logic_glitched":       {path: "/src/database/logic_glitched.json",     type: "json"},
+    "exits":                {path: "/src/database/exits.json",              type: "jsonc"},
+    "entrances":            {path: "/src/database/entrances.json",          type: "jsonc"},
     "items":                {path: "/src/database/items.json",              type: "jsonc"},
     "grids":                {path: "/src/database/grids.json",              type: "jsonc"},
     "dungeonstate":         {path: "/src/database/dungeonstate.json",       type: "jsonc"},
