@@ -4,6 +4,8 @@
 - create entrance aliases so the association wont break on return paths
     - blocks interior association
     - blocks overworld association
+- initial sync does not include extra data (?)
+    - at least entrances have not been transfered
 
 ---
 
