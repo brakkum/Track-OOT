@@ -12,6 +12,7 @@ import "/script/storage/TrackerStorage.js";
 import Language from "/script/util/Language.js";
 import LogicAlternator from "/script/util/LogicAlternator.js";
 import World from "/script/util/World.js";
+import SpoilerParser from "/script/util/SpoilerParser.js";
 
 import "/emcJS/ui/Paging.js";
 
@@ -22,6 +23,8 @@ const FILES = {
     "world_lists":          {path: "/database/world_lists.json",        type: "json"},
     "logic":                {path: "/database/logic.json",              type: "json"},
     "logic_glitched":       {path: "/database/logic_glitched.json",     type: "json"},
+    "spoiler":              {path: "/database/spoiler.json",            type: "json"},
+    "options_trans":        {path: "/database/options_trans.json",      type: "json"},
     "exits":                {path: "/database/exits.json",              type: "jsonc"},
     "entrances":            {path: "/database/entrances.json",          type: "jsonc"},
     "items":                {path: "/database/items.json",              type: "jsonc"},
@@ -159,6 +162,7 @@ async function init() {
     if (!!spl) {
         spl.className = "inactive";
     }
+    SpoilerParser.parse(FileData.get("spoiler", {}));
 
     // hotkeys
     function openDetached() {

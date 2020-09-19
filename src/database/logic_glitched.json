@@ -118,7 +118,7 @@
                                 "el": [
                                     {
                                         "type": "value",
-                                        "el": "skip.wellmq_deadhand_key_boomerang"
+                                        "el": "skip.botw_mq_dead_hand_key"
                                     },
                                     {
                                         "type": "value",
@@ -357,7 +357,7 @@
                                 "el": [
                                     {
                                         "type": "value",
-                                        "el": "skip.wellmq_deadhand_key_boomerang"
+                                        "el": "skip.botw_mq_dead_hand_key"
                                     },
                                     {
                                         "type": "value",
@@ -1019,8 +1019,7 @@
                         }
                     },
                     {
-                        "type": "mixin",
-                        "el": "mixin.is_child[child]"
+                        "type": "true"
                     }
                 ]
             }
@@ -1518,8 +1517,7 @@
                         }
                     },
                     {
-                        "type": "mixin",
-                        "el": "mixin.is_child[adult]"
+                        "type": "true"
                     }
                 ]
             }
@@ -2067,101 +2065,19 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.nut"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.slingshot)[child]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.has_bombchus[child]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.hookshot)[child]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.bow)[child]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.boomerang)[child]"
-                                    }
-                                ]
+                                "type": "value",
+                                "el": "item.shield_kokiri"
                             },
                             {
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "or",
-                                                "el": [
-                                                    {
-                                                        "type": "at",
-                                                        "node": "region.deku_tree_boss_room_mq[child]",
-                                                        "el": {
-                                                            "type": "or",
-                                                            "el": [
-                                                                {
-                                                                    "type": "mixin",
-                                                                    "el": "mixin.has_shield[child]"
-                                                                },
-                                                                {
-                                                                    "type": "mixin",
-                                                                    "el": "function.can_use(item.hammer)[child]"
-                                                                }
-                                                            ]
-                                                        }
-                                                    },
-                                                    {
-                                                        "type": "at",
-                                                        "node": "region.deku_tree_boss_room_mq[adult]",
-                                                        "el": {
-                                                            "type": "or",
-                                                            "el": [
-                                                                {
-                                                                    "type": "mixin",
-                                                                    "el": "mixin.has_shield[adult]"
-                                                                },
-                                                                {
-                                                                    "type": "mixin",
-                                                                    "el": "function.can_use(item.hammer)[adult]"
-                                                                }
-                                                            ]
-                                                        }
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "type": "or",
-                                                "el": [
-                                                    {
-                                                        "type": "mixin",
-                                                        "el": "mixin.is_adult[child]"
-                                                    },
-                                                    {
-                                                        "type": "value",
-                                                        "el": "item.sword_kokiri"
-                                                    },
-                                                    {
-                                                        "type": "value",
-                                                        "el": "item.stick"
-                                                    }
-                                                ]
-                                            }
-                                        ]
+                                        "type": "value",
+                                        "el": "item.sword_kokiri"
                                     },
                                     {
-                                        "type": "mixin",
-                                        "el": "mixin.is_adult[child]"
+                                        "type": "value",
+                                        "el": "item.stick"
                                     }
                                 ]
                             }
@@ -2181,8 +2097,26 @@
                         }
                     },
                     {
-                        "type": "value",
-                        "el": "location.deku.c_gohma"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "item.shield_kokiri"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "value",
+                                        "el": "item.sword_kokiri"
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "item.stick"
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }
@@ -2298,101 +2232,19 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.nut"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.slingshot)[adult]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.has_bombchus[adult]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.hookshot)[adult]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.bow)[adult]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.boomerang)[adult]"
-                                    }
-                                ]
+                                "type": "value",
+                                "el": "item.shield_kokiri"
                             },
                             {
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "or",
-                                                "el": [
-                                                    {
-                                                        "type": "at",
-                                                        "node": "region.deku_tree_boss_room_mq[child]",
-                                                        "el": {
-                                                            "type": "or",
-                                                            "el": [
-                                                                {
-                                                                    "type": "mixin",
-                                                                    "el": "mixin.has_shield[child]"
-                                                                },
-                                                                {
-                                                                    "type": "mixin",
-                                                                    "el": "function.can_use(item.hammer)[child]"
-                                                                }
-                                                            ]
-                                                        }
-                                                    },
-                                                    {
-                                                        "type": "at",
-                                                        "node": "region.deku_tree_boss_room_mq[adult]",
-                                                        "el": {
-                                                            "type": "or",
-                                                            "el": [
-                                                                {
-                                                                    "type": "mixin",
-                                                                    "el": "mixin.has_shield[adult]"
-                                                                },
-                                                                {
-                                                                    "type": "mixin",
-                                                                    "el": "function.can_use(item.hammer)[adult]"
-                                                                }
-                                                            ]
-                                                        }
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "type": "or",
-                                                "el": [
-                                                    {
-                                                        "type": "mixin",
-                                                        "el": "mixin.is_adult[adult]"
-                                                    },
-                                                    {
-                                                        "type": "value",
-                                                        "el": "item.sword_kokiri"
-                                                    },
-                                                    {
-                                                        "type": "value",
-                                                        "el": "item.stick"
-                                                    }
-                                                ]
-                                            }
-                                        ]
+                                        "type": "value",
+                                        "el": "item.sword_kokiri"
                                     },
                                     {
-                                        "type": "mixin",
-                                        "el": "mixin.is_adult[adult]"
+                                        "type": "value",
+                                        "el": "item.stick"
                                     }
                                 ]
                             }
@@ -2412,8 +2264,26 @@
                         }
                     },
                     {
-                        "type": "value",
-                        "el": "location.deku.c_gohma"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "item.shield_kokiri"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "value",
+                                        "el": "item.sword_kokiri"
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "item.stick"
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }
@@ -3543,8 +3413,108 @@
                         }
                     },
                     {
-                        "type": "value",
-                        "el": "location.deku.c_gohma"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "value",
+                                        "el": "item.nut"
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "function.can_use(item.slingshot)[child]"
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "mixin.has_bombchus[child]"
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "function.can_use(item.hookshot)[child]"
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "function.can_use(item.bow)[child]"
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "function.can_use(item.boomerang)[child]"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "and",
+                                        "el": [
+                                            {
+                                                "type": "or",
+                                                "el": [
+                                                    {
+                                                        "type": "at",
+                                                        "node": "region.deku_tree_boss_room[child]",
+                                                        "el": {
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "mixin",
+                                                                    "el": "mixin.has_shield[child]"
+                                                                },
+                                                                {
+                                                                    "type": "mixin",
+                                                                    "el": "function.can_use(item.hammer)[child]"
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "at",
+                                                        "node": "region.deku_tree_boss_room[adult]",
+                                                        "el": {
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "mixin",
+                                                                    "el": "mixin.has_shield[adult]"
+                                                                },
+                                                                {
+                                                                    "type": "mixin",
+                                                                    "el": "function.can_use(item.hammer)[adult]"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "or",
+                                                "el": [
+                                                    {
+                                                        "type": "mixin",
+                                                        "el": "mixin.is_adult[child]"
+                                                    },
+                                                    {
+                                                        "type": "value",
+                                                        "el": "item.sword_kokiri"
+                                                    },
+                                                    {
+                                                        "type": "value",
+                                                        "el": "item.stick"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "mixin.is_adult[child]"
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }
@@ -3682,8 +3652,108 @@
                         }
                     },
                     {
-                        "type": "value",
-                        "el": "location.deku.c_gohma"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "value",
+                                        "el": "item.nut"
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "function.can_use(item.slingshot)[adult]"
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "mixin.has_bombchus[adult]"
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "function.can_use(item.hookshot)[adult]"
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "function.can_use(item.bow)[adult]"
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "function.can_use(item.boomerang)[adult]"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "and",
+                                        "el": [
+                                            {
+                                                "type": "or",
+                                                "el": [
+                                                    {
+                                                        "type": "at",
+                                                        "node": "region.deku_tree_boss_room[child]",
+                                                        "el": {
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "mixin",
+                                                                    "el": "mixin.has_shield[child]"
+                                                                },
+                                                                {
+                                                                    "type": "mixin",
+                                                                    "el": "function.can_use(item.hammer)[child]"
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "at",
+                                                        "node": "region.deku_tree_boss_room[adult]",
+                                                        "el": {
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "mixin",
+                                                                    "el": "mixin.has_shield[adult]"
+                                                                },
+                                                                {
+                                                                    "type": "mixin",
+                                                                    "el": "function.can_use(item.hammer)[adult]"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "or",
+                                                "el": [
+                                                    {
+                                                        "type": "mixin",
+                                                        "el": "mixin.is_adult[adult]"
+                                                    },
+                                                    {
+                                                        "type": "value",
+                                                        "el": "item.sword_kokiri"
+                                                    },
+                                                    {
+                                                        "type": "value",
+                                                        "el": "item.stick"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "mixin.is_adult[adult]"
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }
@@ -3839,7 +3909,7 @@
                                         "el": [
                                             {
                                                 "type": "value",
-                                                "el": "skip.dodongo_spike"
+                                                "el": "skip.dc_jump"
                                             },
                                             {
                                                 "type": "value",
@@ -4104,7 +4174,7 @@
                                                                                         "el": [
                                                                                             {
                                                                                                 "type": "value",
-                                                                                                "el": "skip.dodongo_spike"
+                                                                                                "el": "skip.dc_jump"
                                                                                             },
                                                                                             {
                                                                                                 "type": "value",
@@ -4429,7 +4499,7 @@
                                         "el": [
                                             {
                                                 "type": "value",
-                                                "el": "skip.dodongo_spike"
+                                                "el": "skip.dc_jump"
                                             },
                                             {
                                                 "type": "value",
@@ -4694,7 +4764,7 @@
                                                                                         "el": [
                                                                                             {
                                                                                                 "type": "value",
-                                                                                                "el": "skip.dodongo_spike"
+                                                                                                "el": "skip.dc_jump"
                                                                                             },
                                                                                             {
                                                                                                 "type": "value",
@@ -4961,46 +5031,6 @@
                                     {
                                         "type": "value",
                                         "el": "item.glove"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.has_bombchus[child]"
-                                            },
-                                            {
-                                                "type": "or",
-                                                "el": [
-                                                    {
-                                                        "type": "and",
-                                                        "el": [
-                                                            {
-                                                                "type": "mixin",
-                                                                "el": "mixin.is_adult[child]"
-                                                            },
-                                                            {
-                                                                "type": "mixin",
-                                                                "el": "mixin.can_shield[child]"
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        "type": "and",
-                                                        "el": [
-                                                            {
-                                                                "type": "mixin",
-                                                                "el": "mixin.is_child[child]"
-                                                            },
-                                                            {
-                                                                "type": "mixin",
-                                                                "el": "mixin.can_isg[child]"
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
-                                            }
-                                        ]
                                     }
                                 ]
                             },
@@ -5099,46 +5129,6 @@
                                     {
                                         "type": "value",
                                         "el": "item.glove"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.has_bombchus[adult]"
-                                            },
-                                            {
-                                                "type": "or",
-                                                "el": [
-                                                    {
-                                                        "type": "and",
-                                                        "el": [
-                                                            {
-                                                                "type": "mixin",
-                                                                "el": "mixin.is_adult[adult]"
-                                                            },
-                                                            {
-                                                                "type": "mixin",
-                                                                "el": "mixin.can_shield[adult]"
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        "type": "and",
-                                                        "el": [
-                                                            {
-                                                                "type": "mixin",
-                                                                "el": "mixin.is_child[adult]"
-                                                            },
-                                                            {
-                                                                "type": "mixin",
-                                                                "el": "mixin.can_isg[adult]"
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
-                                            }
-                                        ]
                                     }
                                 ]
                             },
@@ -6654,7 +6644,7 @@
                         "el": [
                             {
                                 "type": "value",
-                                "el": "skip.fit_bossdoor_noitems"
+                                "el": "skip.fire_boss_door_jump"
                             },
                             {
                                 "type": "value",
@@ -6762,7 +6752,7 @@
                                                 "el": [
                                                     {
                                                         "type": "value",
-                                                        "el": "skip.fitmq_near_boss_nocrate"
+                                                        "el": "skip.fire_mq_near_boss"
                                                     },
                                                     {
                                                         "type": "value",
@@ -6880,7 +6870,7 @@
                         "el": [
                             {
                                 "type": "value",
-                                "el": "skip.fit_bossdoor_noitems"
+                                "el": "skip.fire_boss_door_jump"
                             },
                             {
                                 "type": "value",
@@ -6988,7 +6978,7 @@
                                                 "el": [
                                                     {
                                                         "type": "value",
-                                                        "el": "skip.fitmq_near_boss_nocrate"
+                                                        "el": "skip.fire_mq_near_boss"
                                                     },
                                                     {
                                                         "type": "value",
@@ -7197,7 +7187,7 @@
                                     },
                                     {
                                         "type": "value",
-                                        "el": "skip.fitmq_bosskey_nobow"
+                                        "el": "skip.fire_mq_bk_chest"
                                     }
                                 ]
                             },
@@ -7305,7 +7295,7 @@
                                     },
                                     {
                                         "type": "value",
-                                        "el": "skip.fitmq_bosskey_nobow"
+                                        "el": "skip.fire_mq_bk_chest"
                                     }
                                 ]
                             },
@@ -7377,7 +7367,7 @@
                             },
                             {
                                 "type": "value",
-                                "el": "skip.hammer_through_wall"
+                                "el": "skip.rusted_switches"
                             }
                         ]
                     },
@@ -7426,7 +7416,7 @@
                                 "el": [
                                     {
                                         "type": "value",
-                                        "el": "skip.fitmq_boulder_side"
+                                        "el": "skip.fire_mq_maze_side_room"
                                     },
                                     {
                                         "type": "mixin",
@@ -7452,7 +7442,7 @@
                             },
                             {
                                 "type": "value",
-                                "el": "skip.hammer_through_wall"
+                                "el": "skip.rusted_switches"
                             }
                         ]
                     },
@@ -7501,7 +7491,7 @@
                                 "el": [
                                     {
                                         "type": "value",
-                                        "el": "skip.fitmq_boulder_side"
+                                        "el": "skip.fire_mq_maze_side_room"
                                     },
                                     {
                                         "type": "mixin",
@@ -7889,63 +7879,7 @@
                         }
                     },
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.tunic_fire)[child]"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "value",
-                                                "el": "item.fairy"
-                                            },
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.has_explosives[child]"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "mixin",
-                                "el": "function.can_use(item.hammer)[child]"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.key_boss_fire"
-                                    },
-                                    {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "at",
-                                                "node": "region.fire_temple_flame_maze[child]",
-                                                "el": {
-                                                    "type": "true"
-                                                }
-                                            },
-                                            {
-                                                "type": "at",
-                                                "node": "region.fire_temple_flame_maze[adult]",
-                                                "el": {
-                                                    "type": "true"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
+                        "type": "true"
                     }
                 ]
             }
@@ -7963,63 +7897,7 @@
                         }
                     },
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.tunic_fire)[adult]"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "value",
-                                                "el": "item.fairy"
-                                            },
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.has_explosives[adult]"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "mixin",
-                                "el": "function.can_use(item.hammer)[adult]"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.key_boss_fire"
-                                    },
-                                    {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "at",
-                                                "node": "region.fire_temple_flame_maze[child]",
-                                                "el": {
-                                                    "type": "true"
-                                                }
-                                            },
-                                            {
-                                                "type": "at",
-                                                "node": "region.fire_temple_flame_maze[adult]",
-                                                "el": {
-                                                    "type": "true"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
+                        "type": "true"
                     }
                 ]
             }
@@ -10087,7 +9965,7 @@
                             },
                             {
                                 "type": "value",
-                                "el": "skip.fotmq_puzzle_bombchu"
+                                "el": "skip.forest_mq_block_puzzle"
                             }
                         ]
                     },
@@ -10109,7 +9987,7 @@
                             },
                             {
                                 "type": "value",
-                                "el": "skip.fotmq_puzzle_bombchu"
+                                "el": "skip.forest_mq_block_puzzle"
                             }
                         ]
                     },
@@ -10191,7 +10069,7 @@
                             },
                             {
                                 "type": "value",
-                                "el": "skip.fotmq_puzzle_bombchu"
+                                "el": "skip.forest_mq_block_puzzle"
                             }
                         ]
                     },
@@ -10213,7 +10091,7 @@
                             },
                             {
                                 "type": "value",
-                                "el": "skip.fotmq_puzzle_bombchu"
+                                "el": "skip.forest_mq_block_puzzle"
                             }
                         ]
                     },
@@ -10403,7 +10281,7 @@
                         "el": [
                             {
                                 "type": "value",
-                                "el": "skip.fotmq_well_hook"
+                                "el": "skip.forest_well_swim"
                             },
                             {
                                 "type": "mixin",
@@ -10459,7 +10337,7 @@
                         "el": [
                             {
                                 "type": "value",
-                                "el": "skip.fotmq_well_hook"
+                                "el": "skip.forest_well_swim"
                             },
                             {
                                 "type": "mixin",
@@ -10511,7 +10389,7 @@
                         "el": [
                             {
                                 "type": "value",
-                                "el": "skip.fot_east_vines_hook"
+                                "el": "skip.forest_vines"
                             },
                             {
                                 "type": "mixin",
@@ -10606,7 +10484,7 @@
                         "el": [
                             {
                                 "type": "value",
-                                "el": "skip.fot_east_vines_hook"
+                                "el": "skip.forest_vines"
                             },
                             {
                                 "type": "mixin",
@@ -10994,8 +10872,21 @@
                         }
                     },
                     {
-                        "type": "mixin",
-                        "el": "function.can_use(item.bow)[child]"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.bow)[child]"
+                            },
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "value",
+                                    "el": "item.key_small_forest"
+                                },
+                                "value": 6
+                            }
+                        ]
                     }
                 ]
             }
@@ -11032,8 +10923,21 @@
                         }
                     },
                     {
-                        "type": "mixin",
-                        "el": "function.can_use(item.bow)[adult]"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.bow)[adult]"
+                            },
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "value",
+                                    "el": "item.key_small_forest"
+                                },
+                                "value": 6
+                            }
+                        ]
                     }
                 ]
             }
@@ -11067,44 +10971,8 @@
                         }
                     },
                     {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.hookshot)[child]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.bow)[child]"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.slingshot)[child]"
-                                    },
-                                    {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "value",
-                                                "el": "item.sword_kokiri"
-                                            },
-                                            {
-                                                "type": "value",
-                                                "el": "item.stick"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
+                        "type": "value",
+                        "el": "item.key_boss_forest"
                     }
                 ]
             }
@@ -11138,44 +11006,8 @@
                         }
                     },
                     {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.hookshot)[adult]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.bow)[adult]"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.slingshot)[adult]"
-                                    },
-                                    {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "value",
-                                                "el": "item.sword_kokiri"
-                                            },
-                                            {
-                                                "type": "value",
-                                                "el": "item.stick"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
+                        "type": "value",
+                        "el": "item.key_boss_forest"
                     }
                 ]
             }
@@ -11278,33 +11110,8 @@
                         }
                     },
                     {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "mixin.is_adult[child]"
-                            },
-                            {
-                                "type": "value",
-                                "el": "item.slingshot"
-                            },
-                            {
-                                "type": "value",
-                                "el": "item.stick"
-                            },
-                            {
-                                "type": "mixin",
-                                "el": "mixin.has_explosives[child]"
-                            },
-                            {
-                                "type": "value",
-                                "el": "item.sword_kokiri"
-                            },
-                            {
-                                "type": "mixin",
-                                "el": "function.can_use(item.magic_din)[child]"
-                            }
-                        ]
+                        "type": "mixin",
+                        "el": "mixin.is_adult[child]"
                     }
                 ]
             },
@@ -11320,21 +11127,8 @@
                         }
                     },
                     {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "mixin.is_adult[child]"
-                            },
-                            {
-                                "type": "value",
-                                "el": "item.sword_kokiri"
-                            },
-                            {
-                                "type": "value",
-                                "el": "item.boomerang"
-                            }
-                        ]
+                        "type": "mixin",
+                        "el": "mixin.is_adult[child]"
                     }
                 ]
             },
@@ -11539,33 +11333,8 @@
                         }
                     },
                     {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "mixin.is_adult[adult]"
-                            },
-                            {
-                                "type": "value",
-                                "el": "item.slingshot"
-                            },
-                            {
-                                "type": "value",
-                                "el": "item.stick"
-                            },
-                            {
-                                "type": "mixin",
-                                "el": "mixin.has_explosives[adult]"
-                            },
-                            {
-                                "type": "value",
-                                "el": "item.sword_kokiri"
-                            },
-                            {
-                                "type": "mixin",
-                                "el": "function.can_use(item.magic_din)[adult]"
-                            }
-                        ]
+                        "type": "mixin",
+                        "el": "mixin.is_adult[adult]"
                     }
                 ]
             },
@@ -11581,21 +11350,8 @@
                         }
                     },
                     {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "mixin.is_adult[adult]"
-                            },
-                            {
-                                "type": "value",
-                                "el": "item.sword_kokiri"
-                            },
-                            {
-                                "type": "value",
-                                "el": "item.boomerang"
-                            }
-                        ]
+                        "type": "mixin",
+                        "el": "mixin.is_adult[adult]"
                     }
                 ]
             },
@@ -13546,12 +13302,21 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "skip.lens_required",
-                            "value": "lens_required_default"
-                        }
+                        "type": "or",
+                        "el": [
+                            {
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
+                            },
+                            {
+                                "type": "value",
+                                "el": "skip.lens_castle_mq"
+                            }
+                        ]
                     },
                     {
                         "type": "mixin",
@@ -13688,12 +13453,21 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "skip.lens_required",
-                            "value": "lens_required_default"
-                        }
+                        "type": "or",
+                        "el": [
+                            {
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "skip.lens_required",
+                                    "value": "lens_required_default"
+                                }
+                            },
+                            {
+                                "type": "value",
+                                "el": "skip.lens_castle_mq"
+                            }
+                        ]
                     },
                     {
                         "type": "mixin",
@@ -13937,17 +13711,8 @@
                                 "el": "function.can_use(item.arrow_light)[child]"
                             },
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.arrow_fire"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.magic_din"
-                                    }
-                                ]
+                                "type": "mixin",
+                                "el": "function.can_play(item.song_time)[child]"
                             }
                         ]
                     }
@@ -14025,17 +13790,8 @@
                                 "el": "function.can_use(item.arrow_light)[adult]"
                             },
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.arrow_fire"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.magic_din"
-                                    }
-                                ]
+                                "type": "mixin",
+                                "el": "function.can_play(item.song_time)[adult]"
                             }
                         ]
                     }
@@ -14058,30 +13814,12 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.tunic_fire)[child]"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.fairy"
-                                    }
-                                ]
+                                "type": "mixin",
+                                "el": "function.can_use(item.tunic_fire)[child]"
                             },
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(mixin.golden_gauntlets)[child]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.boots_hover)[child]"
-                                    }
-                                ]
+                                "type": "mixin",
+                                "el": "function.can_use(mixin.golden_gauntlets)[child]"
                             },
                             {
                                 "type": "mixin",
@@ -14095,17 +13833,8 @@
                                         "el": "function.can_use(mixin.longshot)[child]"
                                     },
                                     {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.can_mega[child]"
-                                            },
-                                            {
-                                                "type": "mixin",
-                                                "el": "function.can_use(item.boots_hover)[child]"
-                                            }
-                                        ]
+                                        "type": "value",
+                                        "el": "item.boots_hover"
                                     }
                                 ]
                             }
@@ -14130,30 +13859,12 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.tunic_fire)[adult]"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.fairy"
-                                    }
-                                ]
+                                "type": "mixin",
+                                "el": "function.can_use(item.tunic_fire)[adult]"
                             },
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(mixin.golden_gauntlets)[adult]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.boots_hover)[adult]"
-                                    }
-                                ]
+                                "type": "mixin",
+                                "el": "function.can_use(mixin.golden_gauntlets)[adult]"
                             },
                             {
                                 "type": "mixin",
@@ -14167,17 +13878,8 @@
                                         "el": "function.can_use(mixin.longshot)[adult]"
                                     },
                                     {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.can_mega[adult]"
-                                            },
-                                            {
-                                                "type": "mixin",
-                                                "el": "function.can_use(item.boots_hover)[adult]"
-                                            }
-                                        ]
+                                        "type": "value",
+                                        "el": "item.boots_hover"
                                     }
                                 ]
                             }
@@ -14236,25 +13938,20 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.bottle"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.hookshot)[child]"
-                                    }
-                                ]
-                            },
-                            {
                                 "type": "value",
-                                "el": "item.hammer"
+                                "el": "item.bottle"
                             },
                             {
                                 "type": "mixin",
                                 "el": "function.can_use(item.arrow_light)[child]"
+                            },
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "value",
+                                    "el": "item.key_small_ganon"
+                                },
+                                "value": 3
                             }
                         ]
                     }
@@ -14311,25 +14008,20 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.bottle"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.hookshot)[adult]"
-                                    }
-                                ]
-                            },
-                            {
                                 "type": "value",
-                                "el": "item.hammer"
+                                "el": "item.bottle"
                             },
                             {
                                 "type": "mixin",
                                 "el": "function.can_use(item.arrow_light)[adult]"
+                            },
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "value",
+                                    "el": "item.key_small_ganon"
+                                },
+                                "value": 3
                             }
                         ]
                     }
@@ -14384,12 +14076,21 @@
                                         "type": "or",
                                         "el": [
                                             {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "skip.lens_required",
-                                                    "value": "lens_required_default"
-                                                }
+                                                "type": "or",
+                                                "el": [
+                                                    {
+                                                        "type": "not",
+                                                        "el": {
+                                                            "type": "state",
+                                                            "el": "skip.lens_required",
+                                                            "value": "lens_required_default"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "value",
+                                                        "el": "skip.lens_castle_mq"
+                                                    }
+                                                ]
                                             },
                                             {
                                                 "type": "mixin",
@@ -14442,12 +14143,21 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "not",
-                                        "el": {
-                                            "type": "state",
-                                            "el": "skip.lens_required",
-                                            "value": "lens_required_default"
-                                        }
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "state",
+                                                    "el": "skip.lens_required",
+                                                    "value": "lens_required_default"
+                                                }
+                                            },
+                                            {
+                                                "type": "value",
+                                                "el": "skip.lens_castle_mq"
+                                            }
+                                        ]
                                     },
                                     {
                                         "type": "mixin",
@@ -14500,70 +14210,48 @@
                                 "el": "function.can_use(item.arrow_light)[child]"
                             },
                             {
-                                "type": "value",
-                                "el": "item.hammer"
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "state",
+                                                    "el": "skip.lens_required",
+                                                    "value": "lens_required_default"
+                                                }
+                                            },
+                                            {
+                                                "type": "value",
+                                                "el": "skip.lens_castle_mq"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "function.can_use(item.lens)[child]"
+                                    }
+                                ]
                             },
                             {
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.has_bombchus[child]"
-                                            },
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.can_isg[child]"
-                                            }
-                                        ]
+                                        "type": "value",
+                                        "el": "item.boots_hover"
                                     },
                                     {
                                         "type": "and",
                                         "el": [
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.has_explosives[child]"
-                                            },
                                             {
                                                 "type": "value",
-                                                "el": "item.boots_hover"
+                                                "el": "item.hookshot"
                                             },
                                             {
                                                 "type": "mixin",
-                                                "el": "mixin.can_shield[child]"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "and",
-                                                "el": [
-                                                    {
-                                                        "type": "mixin",
-                                                        "el": "function.can_use(mixin.longshot)[child]"
-                                                    },
-                                                    {
-                                                        "type": "or",
-                                                        "el": [
-                                                            {
-                                                                "type": "value",
-                                                                "el": "item.boots_hover"
-                                                            },
-                                                            {
-                                                                "type": "mixin",
-                                                                "el": "function.can_use(item.magic_din)[child]"
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "type": "mixin",
-                                                "el": "function.can_use(item.arrow_fire)[child]"
+                                                "el": "mixin.has_fire_source[child]"
                                             }
                                         ]
                                     }
@@ -14622,12 +14310,21 @@
                                         "type": "or",
                                         "el": [
                                             {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "skip.lens_required",
-                                                    "value": "lens_required_default"
-                                                }
+                                                "type": "or",
+                                                "el": [
+                                                    {
+                                                        "type": "not",
+                                                        "el": {
+                                                            "type": "state",
+                                                            "el": "skip.lens_required",
+                                                            "value": "lens_required_default"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "value",
+                                                        "el": "skip.lens_castle_mq"
+                                                    }
+                                                ]
                                             },
                                             {
                                                 "type": "mixin",
@@ -14680,12 +14377,21 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "not",
-                                        "el": {
-                                            "type": "state",
-                                            "el": "skip.lens_required",
-                                            "value": "lens_required_default"
-                                        }
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "state",
+                                                    "el": "skip.lens_required",
+                                                    "value": "lens_required_default"
+                                                }
+                                            },
+                                            {
+                                                "type": "value",
+                                                "el": "skip.lens_castle_mq"
+                                            }
+                                        ]
                                     },
                                     {
                                         "type": "mixin",
@@ -14738,70 +14444,48 @@
                                 "el": "function.can_use(item.arrow_light)[adult]"
                             },
                             {
-                                "type": "value",
-                                "el": "item.hammer"
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "state",
+                                                    "el": "skip.lens_required",
+                                                    "value": "lens_required_default"
+                                                }
+                                            },
+                                            {
+                                                "type": "value",
+                                                "el": "skip.lens_castle_mq"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "function.can_use(item.lens)[adult]"
+                                    }
+                                ]
                             },
                             {
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.has_bombchus[adult]"
-                                            },
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.can_isg[adult]"
-                                            }
-                                        ]
+                                        "type": "value",
+                                        "el": "item.boots_hover"
                                     },
                                     {
                                         "type": "and",
                                         "el": [
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.has_explosives[adult]"
-                                            },
                                             {
                                                 "type": "value",
-                                                "el": "item.boots_hover"
+                                                "el": "item.hookshot"
                                             },
                                             {
                                                 "type": "mixin",
-                                                "el": "mixin.can_shield[adult]"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "and",
-                                                "el": [
-                                                    {
-                                                        "type": "mixin",
-                                                        "el": "function.can_use(mixin.longshot)[adult]"
-                                                    },
-                                                    {
-                                                        "type": "or",
-                                                        "el": [
-                                                            {
-                                                                "type": "value",
-                                                                "el": "item.boots_hover"
-                                                            },
-                                                            {
-                                                                "type": "mixin",
-                                                                "el": "function.can_use(item.magic_din)[adult]"
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "type": "mixin",
-                                                "el": "function.can_use(item.arrow_fire)[adult]"
+                                                "el": "mixin.has_fire_source[adult]"
                                             }
                                         ]
                                     }
@@ -14836,7 +14520,7 @@
                                     },
                                     {
                                         "type": "value",
-                                        "el": "skip.hammer_through_wall"
+                                        "el": "skip.rusted_switches"
                                     }
                                 ]
                             },
@@ -14871,7 +14555,7 @@
                                     },
                                     {
                                         "type": "value",
-                                        "el": "skip.hammer_through_wall"
+                                        "el": "skip.rusted_switches"
                                     }
                                 ]
                             },
@@ -14887,12 +14571,21 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "not",
-                                        "el": {
-                                            "type": "state",
-                                            "el": "skip.lens_required",
-                                            "value": "lens_required_default"
-                                        }
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "state",
+                                                    "el": "skip.lens_required",
+                                                    "value": "lens_required_default"
+                                                }
+                                            },
+                                            {
+                                                "type": "value",
+                                                "el": "skip.lens_castle_mq"
+                                            }
+                                        ]
                                     },
                                     {
                                         "type": "mixin",
@@ -15060,38 +14753,19 @@
                             },
                             {
                                 "type": "value",
-                                "el": "item.shield_mirror"
+                                "el": "item.hammer"
                             },
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.has_bombchus[child]"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.can_shield[child]"
-                                            },
-                                            {
-                                                "type": "or",
-                                                "el": [
-                                                    {
-                                                        "type": "mixin",
-                                                        "el": "function.can_use(mixin.longshot)[child]"
-                                                    },
-                                                    {
-                                                        "type": "value",
-                                                        "el": "item.bow"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    }
-                                ]
+                                "type": "mixin",
+                                "el": "mixin.has_bombchus[child]"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.arrow_fire"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.shield_mirror"
                             }
                         ]
                     }
@@ -15122,7 +14796,7 @@
                                     },
                                     {
                                         "type": "value",
-                                        "el": "skip.hammer_through_wall"
+                                        "el": "skip.rusted_switches"
                                     }
                                 ]
                             },
@@ -15157,7 +14831,7 @@
                                     },
                                     {
                                         "type": "value",
-                                        "el": "skip.hammer_through_wall"
+                                        "el": "skip.rusted_switches"
                                     }
                                 ]
                             },
@@ -15173,12 +14847,21 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "not",
-                                        "el": {
-                                            "type": "state",
-                                            "el": "skip.lens_required",
-                                            "value": "lens_required_default"
-                                        }
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "state",
+                                                    "el": "skip.lens_required",
+                                                    "value": "lens_required_default"
+                                                }
+                                            },
+                                            {
+                                                "type": "value",
+                                                "el": "skip.lens_castle_mq"
+                                            }
+                                        ]
                                     },
                                     {
                                         "type": "mixin",
@@ -15346,38 +15029,19 @@
                             },
                             {
                                 "type": "value",
-                                "el": "item.shield_mirror"
+                                "el": "item.hammer"
                             },
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.has_bombchus[adult]"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.can_shield[adult]"
-                                            },
-                                            {
-                                                "type": "or",
-                                                "el": [
-                                                    {
-                                                        "type": "mixin",
-                                                        "el": "function.can_use(mixin.longshot)[adult]"
-                                                    },
-                                                    {
-                                                        "type": "value",
-                                                        "el": "item.bow"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    }
-                                ]
+                                "type": "mixin",
+                                "el": "mixin.has_bombchus[adult]"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.arrow_fire"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.shield_mirror"
                             }
                         ]
                     }
@@ -15421,26 +15085,8 @@
                                 "el": "function.can_use(item.arrow_light)[child]"
                             },
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.hookshot"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.has_explosives[child]"
-                                            },
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.can_shield[child]"
-                                            }
-                                        ]
-                                    }
-                                ]
+                                "type": "value",
+                                "el": "item.hookshot"
                             },
                             {
                                 "type": "min",
@@ -15448,7 +15094,7 @@
                                     "type": "value",
                                     "el": "item.key_small_ganon"
                                 },
-                                "value": 2
+                                "value": 3
                             }
                         ]
                     }
@@ -15492,26 +15138,8 @@
                                 "el": "function.can_use(item.arrow_light)[adult]"
                             },
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.hookshot"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.has_explosives[adult]"
-                                            },
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.can_shield[adult]"
-                                            }
-                                        ]
-                                    }
-                                ]
+                                "type": "value",
+                                "el": "item.hookshot"
                             },
                             {
                                 "type": "min",
@@ -15519,7 +15147,7 @@
                                     "type": "value",
                                     "el": "item.key_small_ganon"
                                 },
-                                "value": 2
+                                "value": 3
                             }
                         ]
                     }
@@ -17321,12 +16949,21 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "skip.lens_required",
-                                    "value": "lens_required_default"
-                                }
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "skip.lens_gtg_mq"
+                                    }
+                                ]
                             },
                             {
                                 "type": "mixin",
@@ -17449,12 +17086,21 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "skip.lens_required",
-                                    "value": "lens_required_default"
-                                }
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "skip.lens_gtg_mq"
+                                    }
+                                ]
                             },
                             {
                                 "type": "mixin",
@@ -17610,7 +17256,7 @@
                                 "el": [
                                     {
                                         "type": "value",
-                                        "el": "skip.fewer_tunic"
+                                        "el": "skip.fewer_tunic_requirements"
                                     },
                                     {
                                         "type": "mixin",
@@ -17741,7 +17387,7 @@
                                 "el": [
                                     {
                                         "type": "value",
-                                        "el": "skip.fewer_tunic"
+                                        "el": "skip.fewer_tunic_requirements"
                                     },
                                     {
                                         "type": "mixin",
@@ -17793,7 +17439,7 @@
                         "el": [
                             {
                                 "type": "value",
-                                "el": "skip.gtgmq_silver_hook"
+                                "el": "skip.gtg_mq_with_hookshot"
                             },
                             {
                                 "type": "mixin",
@@ -17833,7 +17479,7 @@
                         "el": [
                             {
                                 "type": "value",
-                                "el": "skip.gtgmq_silver_hook"
+                                "el": "skip.gtg_mq_with_hookshot"
                             },
                             {
                                 "type": "mixin",
@@ -17872,12 +17518,21 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "skip.lens_required",
-                                    "value": "lens_required_default"
-                                }
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "skip.lens_gtg_mq"
+                                    }
+                                ]
                             },
                             {
                                 "type": "mixin",
@@ -17954,12 +17609,21 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "skip.lens_required",
-                                    "value": "lens_required_default"
-                                }
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "skip.lens_gtg_mq"
+                                    }
+                                ]
                             },
                             {
                                 "type": "mixin",
@@ -20029,8 +19693,17 @@
                         }
                     },
                     {
-                        "type": "value",
-                        "el": "item.bottle"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "mixin.is_adult[child]"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.bottle"
+                            }
+                        ]
                     }
                 ]
             }
@@ -20052,8 +19725,17 @@
                         }
                     },
                     {
-                        "type": "value",
-                        "el": "item.bottle"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "mixin.is_adult[adult]"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.bottle"
+                            }
+                        ]
                     }
                 ]
             }
@@ -20136,39 +19818,7 @@
                         }
                     },
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "mixin.is_adult[child]"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.bottle"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "mixin",
-                                                "el": "function.can_use(item.boots_hover)[child]"
-                                            },
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.can_shield[child]"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.can_mega[child]"
-                                    }
-                                ]
-                            }
-                        ]
+                        "type": "true"
                     }
                 ]
             },
@@ -20319,39 +19969,7 @@
                         }
                     },
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "mixin.is_adult[adult]"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.bottle"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "mixin",
-                                                "el": "function.can_use(item.boots_hover)[adult]"
-                                            },
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.can_shield[adult]"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.can_mega[adult]"
-                                    }
-                                ]
-                            }
-                        ]
+                        "type": "true"
                     }
                 ]
             },
@@ -21722,7 +21340,7 @@
                                 "el": [
                                     {
                                         "type": "value",
-                                        "el": "skip.jjmq_sot_boomerang"
+                                        "el": "skip.jabu_mq_sot_gs"
                                     },
                                     {
                                         "type": "value",
@@ -21871,7 +21489,7 @@
                                 "el": [
                                     {
                                         "type": "value",
-                                        "el": "skip.jjmq_sot_boomerang"
+                                        "el": "skip.jabu_mq_sot_gs"
                                     },
                                     {
                                         "type": "value",
@@ -21967,12 +21585,21 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "skip.lens_required",
-                                    "value": "lens_required_default"
-                                }
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "skip.lens_jabu_mq"
+                                    }
+                                ]
                             },
                             {
                                 "type": "mixin",
@@ -22066,12 +21693,21 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "skip.lens_required",
-                                    "value": "lens_required_default"
-                                }
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "skip.lens_jabu_mq"
+                                    }
+                                ]
                             },
                             {
                                 "type": "mixin",
@@ -22147,26 +21783,7 @@
                         }
                     },
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "function.can_use(item.boomerang)[child]"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.stick"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.sword_kokiri"
-                                    }
-                                ]
-                            }
-                        ]
+                        "type": "true"
                     }
                 ]
             },
@@ -22252,26 +21869,7 @@
                         }
                     },
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "function.can_use(item.boomerang)[adult]"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.stick"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.sword_kokiri"
-                                    }
-                                ]
-                            }
-                        ]
+                        "type": "true"
                     }
                 ]
             },
@@ -23272,7 +22870,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_summon_gossip_fairy[child]"
+                                "el": "mixin.can_summon_gossip_fairy_without_suns[child]"
                             },
                             {
                                 "type": "value",
@@ -23535,7 +23133,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_summon_gossip_fairy[adult]"
+                                "el": "mixin.can_summon_gossip_fairy_without_suns[adult]"
                             },
                             {
                                 "type": "value",
@@ -36382,15 +35980,23 @@
                         }
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.is_child[child]"
+                                "el": "mixin.can_blast_or_smash[child]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.magic_din)[child]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.bow)[child]"
                             },
                             {
                                 "type": "value",
-                                "el": "item.stick"
+                                "el": "item.glove"
                             }
                         ]
                     }
@@ -37049,15 +36655,23 @@
                         }
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.is_child[adult]"
+                                "el": "mixin.can_blast_or_smash[adult]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.magic_din)[adult]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.bow)[adult]"
                             },
                             {
                                 "type": "value",
-                                "el": "item.stick"
+                                "el": "item.glove"
                             }
                         ]
                     }
@@ -37093,15 +36707,15 @@
                         }
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.is_child[child]"
+                                "el": "mixin.can_blast_or_smash[child]"
                             },
                             {
-                                "type": "value",
-                                "el": "item.stick"
+                                "type": "mixin",
+                                "el": "function.can_use(item.magic_din)[child]"
                             }
                         ]
                     }
@@ -37137,15 +36751,15 @@
                         }
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.is_child[adult]"
+                                "el": "mixin.can_blast_or_smash[adult]"
                             },
                             {
-                                "type": "value",
-                                "el": "item.stick"
+                                "type": "mixin",
+                                "el": "function.can_use(item.magic_din)[adult]"
                             }
                         ]
                     }
@@ -43774,12 +43388,21 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "skip.lens_required",
-                                    "value": "lens_required_default"
-                                }
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "skip.lens_shadow_mq"
+                                    }
+                                ]
                             },
                             {
                                 "type": "mixin",
@@ -43811,12 +43434,21 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "skip.lens_required",
-                                    "value": "lens_required_default"
-                                }
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "skip.lens_shadow_mq"
+                                    }
+                                ]
                             },
                             {
                                 "type": "mixin",
@@ -44770,7 +44402,17 @@
                         }
                     },
                     {
-                        "type": "true"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "item.bow"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.key_boss_shadow"
+                            }
+                        ]
                     }
                 ]
             },
@@ -44838,7 +44480,17 @@
                         }
                     },
                     {
-                        "type": "true"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "item.bow"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.key_boss_shadow"
+                            }
+                        ]
                     }
                 ]
             },
@@ -47353,7 +47005,7 @@
                                                                     "el": [
                                                                         {
                                                                             "type": "value",
-                                                                            "el": "skip.sptmq_frozen_nofire"
+                                                                            "el": "skip.spirit_mq_frozen_eye"
                                                                         },
                                                                         {
                                                                             "type": "value",
@@ -47400,7 +47052,7 @@
                                                                     "el": [
                                                                         {
                                                                             "type": "value",
-                                                                            "el": "skip.sptmq_frozen_nofire"
+                                                                            "el": "skip.spirit_mq_frozen_eye"
                                                                         },
                                                                         {
                                                                             "type": "value",
@@ -47587,7 +47239,7 @@
                                                                     "el": [
                                                                         {
                                                                             "type": "value",
-                                                                            "el": "skip.sptmq_frozen_nofire"
+                                                                            "el": "skip.spirit_mq_frozen_eye"
                                                                         },
                                                                         {
                                                                             "type": "value",
@@ -47634,7 +47286,7 @@
                                                                     "el": [
                                                                         {
                                                                             "type": "value",
-                                                                            "el": "skip.sptmq_frozen_nofire"
+                                                                            "el": "skip.spirit_mq_frozen_eye"
                                                                         },
                                                                         {
                                                                             "type": "value",
@@ -47676,7 +47328,7 @@
                                 "el": [
                                     {
                                         "type": "value",
-                                        "el": "skip.sptmq_lower_no_firearrows"
+                                        "el": "skip.spirit_mq_lower_adult"
                                     },
                                     {
                                         "type": "mixin",
@@ -47739,12 +47391,21 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "skip.lens_required",
-                                    "value": "lens_required_default"
-                                }
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "skip.lens_spirit_mq"
+                                    }
+                                ]
                             },
                             {
                                 "type": "mixin",
@@ -47841,12 +47502,21 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "skip.lens_required",
-                                    "value": "lens_required_default"
-                                }
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "skip.lens_spirit_mq"
+                                    }
+                                ]
                             },
                             {
                                 "type": "mixin",
@@ -48000,7 +47670,7 @@
                                 "el": [
                                     {
                                         "type": "value",
-                                        "el": "skip.sptmq_lower_no_firearrows"
+                                        "el": "skip.spirit_mq_lower_adult"
                                     },
                                     {
                                         "type": "mixin",
@@ -48063,12 +47733,21 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "skip.lens_required",
-                                    "value": "lens_required_default"
-                                }
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "skip.lens_spirit_mq"
+                                    }
+                                ]
                             },
                             {
                                 "type": "mixin",
@@ -48165,12 +47844,21 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "skip.lens_required",
-                                    "value": "lens_required_default"
-                                }
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "skip.lens_spirit_mq"
+                                    }
+                                ]
                             },
                             {
                                 "type": "mixin",
@@ -48366,12 +48054,21 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "not",
-                                        "el": {
-                                            "type": "state",
-                                            "el": "skip.lens_required",
-                                            "value": "lens_required_default"
-                                        }
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "state",
+                                                    "el": "skip.lens_required",
+                                                    "value": "lens_required_default"
+                                                }
+                                            },
+                                            {
+                                                "type": "value",
+                                                "el": "skip.lens_spirit_mq"
+                                            }
+                                        ]
                                     },
                                     {
                                         "type": "mixin",
@@ -48523,7 +48220,7 @@
                                 "el": [
                                     {
                                         "type": "value",
-                                        "el": "skip.sptmq_sunblock_gs_boomerang"
+                                        "el": "skip.spirit_mq_sun_block_gs"
                                     },
                                     {
                                         "type": "mixin",
@@ -48611,12 +48308,21 @@
                                 "type": "or",
                                 "el": [
                                     {
-                                        "type": "not",
-                                        "el": {
-                                            "type": "state",
-                                            "el": "skip.lens_required",
-                                            "value": "lens_required_default"
-                                        }
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "not",
+                                                "el": {
+                                                    "type": "state",
+                                                    "el": "skip.lens_required",
+                                                    "value": "lens_required_default"
+                                                }
+                                            },
+                                            {
+                                                "type": "value",
+                                                "el": "skip.lens_spirit_mq"
+                                            }
+                                        ]
                                     },
                                     {
                                         "type": "mixin",
@@ -48768,7 +48474,7 @@
                                 "el": [
                                     {
                                         "type": "value",
-                                        "el": "skip.sptmq_sunblock_gs_boomerang"
+                                        "el": "skip.spirit_mq_sun_block_gs"
                                     },
                                     {
                                         "type": "mixin",
@@ -49132,12 +48838,21 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "skip.lens_required",
-                                    "value": "lens_required_default"
-                                }
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "skip.lens_spirit_mq"
+                                    }
+                                ]
                             },
                             {
                                 "type": "mixin",
@@ -49159,7 +48874,17 @@
                         }
                     },
                     {
-                        "type": "true"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "item.shield_mirror"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.key_boss_spirit"
+                            }
+                        ]
                     }
                 ]
             }
@@ -49180,12 +48905,21 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "skip.lens_required",
-                                    "value": "lens_required_default"
-                                }
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "skip.lens_spirit_mq"
+                                    }
+                                ]
                             },
                             {
                                 "type": "mixin",
@@ -49207,7 +48941,17 @@
                         }
                     },
                     {
-                        "type": "true"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "item.shield_mirror"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.key_boss_spirit"
+                            }
+                        ]
                     }
                 ]
             }
@@ -52041,21 +51785,12 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "mixin",
-                                "el": "mixin.can_jumpslash[child]"
+                                "type": "value",
+                                "el": "item.key_boss_water"
                             },
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.can_hover[child]"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.key_boss_water"
-                                    }
-                                ]
+                                "type": "mixin",
+                                "el": "function.can_use(mixin.longshot)[child]"
                             }
                         ]
                     }
@@ -52073,8 +51808,17 @@
                         }
                     },
                     {
-                        "type": "value",
-                        "el": "location.temple_water.c_morpha"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "item.key_boss_water"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(mixin.longshot)[child]"
+                            }
+                        ]
                     }
                 ]
             }
@@ -52202,21 +51946,12 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "mixin",
-                                "el": "mixin.can_jumpslash[adult]"
+                                "type": "value",
+                                "el": "item.key_boss_water"
                             },
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.can_hover[adult]"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.key_boss_water"
-                                    }
-                                ]
+                                "type": "mixin",
+                                "el": "function.can_use(mixin.longshot)[adult]"
                             }
                         ]
                     }
@@ -52234,8 +51969,17 @@
                         }
                     },
                     {
-                        "type": "value",
-                        "el": "location.temple_water.c_morpha"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "item.key_boss_water"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(mixin.longshot)[adult]"
+                            }
+                        ]
                     }
                 ]
             }
@@ -55308,8 +55052,26 @@
                         }
                     },
                     {
-                        "type": "value",
-                        "el": "location.temple_water.c_morpha"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "mixin.can_jumpslash[child]"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "mixin",
+                                        "el": "mixin.can_hover[child]"
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "item.key_boss_water"
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }
@@ -55362,8 +55124,26 @@
                         }
                     },
                     {
-                        "type": "value",
-                        "el": "location.temple_water.c_morpha"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "mixin.can_jumpslash[adult]"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "mixin",
+                                        "el": "mixin.can_hover[adult]"
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "item.key_boss_water"
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }
@@ -56946,7 +56726,7 @@
                         },
                         {
                             "type": "value",
-                            "el": "skip.hidden_grotto_no_agony"
+                            "el": "skip.grottos_without_agony"
                         }
                     ]
                 }
@@ -56968,7 +56748,7 @@
                         },
                         {
                             "type": "value",
-                            "el": "skip.hidden_grotto_no_agony"
+                            "el": "skip.grottos_without_agony"
                         }
                     ]
                 }
@@ -56990,7 +56770,7 @@
                         },
                         {
                             "type": "value",
-                            "el": "skip.hidden_grotto_no_agony"
+                            "el": "skip.grottos_without_agony"
                         }
                     ]
                 }
@@ -57012,7 +56792,7 @@
                         },
                         {
                             "type": "value",
-                            "el": "skip.hidden_grotto_no_agony"
+                            "el": "skip.grottos_without_agony"
                         }
                     ]
                 }
