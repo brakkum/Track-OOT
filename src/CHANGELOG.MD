@@ -4,6 +4,12 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 1.7.21
+
+### BUGFIXES
+
+- fix collossus scrubs missing can_become_adult
+
 ## VERSION 1.7.20
 
 ### BUGFIXES
