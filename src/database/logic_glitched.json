@@ -14210,7 +14210,6 @@
                                 "el": "function.can_use(item.arrow_light)[child]"
                             },
                             {
-<<<<<<< HEAD
                                 "type": "or",
                                 "el": [
                                     {
@@ -14244,32 +14243,6 @@
                                         "el": "item.boots_hover"
                                     },
                                     {
-=======
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "not",
-                                        "el": {
-                                            "type": "state",
-                                            "el": "skip.lens_required",
-                                            "value": "lens_required_default"
-                                        }
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.lens)[child]"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.boots_hover"
-                                    },
-                                    {
->>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                         "type": "and",
                                         "el": [
                                             {
@@ -14471,7 +14444,6 @@
                                 "el": "function.can_use(item.arrow_light)[adult]"
                             },
                             {
-<<<<<<< HEAD
                                 "type": "or",
                                 "el": [
                                     {
@@ -14505,32 +14477,6 @@
                                         "el": "item.boots_hover"
                                     },
                                     {
-=======
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "not",
-                                        "el": {
-                                            "type": "state",
-                                            "el": "skip.lens_required",
-                                            "value": "lens_required_default"
-                                        }
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.lens)[adult]"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.boots_hover"
-                                    },
-                                    {
->>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                         "type": "and",
                                         "el": [
                                             {
