@@ -9777,7 +9777,11 @@
                                     },
                                     {
                                         "type": "value",
+<<<<<<< HEAD
                                         "el": "skip.fire_mq_bk_chest"
+=======
+                                        "el": "skip.fitmq_bosskey_nobow"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                     }
                                 ]
                             },
@@ -9790,7 +9794,11 @@
                                     },
                                     {
                                         "type": "value",
+<<<<<<< HEAD
                                         "el": "skip.fire_song_of_time"
+=======
+                                        "el": "skip.fit_gs_nosot"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                     }
                                 ]
                             }
@@ -9986,7 +9994,11 @@
                                     },
                                     {
                                         "type": "value",
+<<<<<<< HEAD
                                         "el": "skip.fire_mq_bk_chest"
+=======
+                                        "el": "skip.fitmq_bosskey_nobow"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                     }
                                 ]
                             },
@@ -9999,7 +10011,11 @@
                                     },
                                     {
                                         "type": "value",
+<<<<<<< HEAD
                                         "el": "skip.fire_song_of_time"
+=======
+                                        "el": "skip.fit_gs_nosot"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                     }
                                 ]
                             }
@@ -10628,6 +10644,7 @@
                     {
                         "type": "value",
                         "el": "item.bottle"
+<<<<<<< HEAD
                     }
                 ]
             }
@@ -10721,6 +10738,8 @@
                                 "el": "function.can_use(item.tunic_fire)[child]"
                             }
                         ]
+=======
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                     }
                 ]
             },
@@ -10820,6 +10839,7 @@
                         }
                     },
                     {
+<<<<<<< HEAD
                         "type": "and",
                         "el": [
                             {
@@ -10889,6 +10909,34 @@
                         ]
                     }
                 ]
+=======
+                        "type": "true"
+                    }
+                ]
+            }
+        },
+        "region.fire_boss_room_mq[adult]": {
+            "logic.location.temple_fire.c_volvagia": {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "filter.era",
+                            "value": "child"
+                        }
+                    },
+                    {
+                        "type": "true"
+                    }
+                ]
+            }
+        },
+        "region.fire_temple_lower[child]": {
+            "region.fire_temple_gateway[child]": {
+                "type": "true"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
             },
             "logic.location.temple_fire.s_near_boss_key_adult": {
                 "type": "and",
@@ -10975,6 +11023,61 @@
                                         "el": "function.can_use(item.tunic_fire)[child]"
                                     }
                                 ]
+<<<<<<< HEAD
+=======
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.hammer)[child]"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "logic.location.fairy_pot": {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "filter.era",
+                            "value": "adult"
+                        }
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "item.bottle"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "mixin",
+                                        "el": "function.can_use(item.boots_hover)[child]"
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "function.can_use(item.hookshot)[child]"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "value",
+                                        "el": "skip.fewer_tunic"
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "function.can_use(item.tunic_fire)[child]"
+                                    }
+                                ]
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                             }
                         ]
                     }
@@ -11281,7 +11384,11 @@
                                 "el": [
                                     {
                                         "type": "value",
+<<<<<<< HEAD
                                         "el": "skip.fewer_tunic_requirements"
+=======
+                                        "el": "skip.fewer_tunic"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                     },
                                     {
                                         "type": "mixin",
@@ -17379,6 +17486,7 @@
                                 "el": "function.can_use(item.arrow_light)[child]"
                             },
                             {
+<<<<<<< HEAD
                                 "type": "or",
                                 "el": [
                                     {
@@ -17397,6 +17505,30 @@
                                                 "el": "skip.lens_castle_mq"
                                             }
                                         ]
+=======
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "function.can_use(item.lens)[child]"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "value",
+                                        "el": "item.boots_hover"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                     },
                                     {
                                         "type": "mixin",
@@ -17427,7 +17559,11 @@
                                                     },
                                                     {
                                                         "type": "value",
+<<<<<<< HEAD
                                                         "el": "skip.shadow_trial_mq"
+=======
+                                                        "el": "skip.sht_mq_no_fire"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                                     }
                                                 ]
                                             }
@@ -17631,6 +17767,7 @@
                                 "el": "function.can_use(item.arrow_light)[adult]"
                             },
                             {
+<<<<<<< HEAD
                                 "type": "or",
                                 "el": [
                                     {
@@ -17649,6 +17786,30 @@
                                                 "el": "skip.lens_castle_mq"
                                             }
                                         ]
+=======
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "state",
+                                            "el": "skip.lens_required",
+                                            "value": "lens_required_default"
+                                        }
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "function.can_use(item.lens)[adult]"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "value",
+                                        "el": "item.boots_hover"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                     },
                                     {
                                         "type": "mixin",
@@ -17679,7 +17840,11 @@
                                                     },
                                                     {
                                                         "type": "value",
+<<<<<<< HEAD
                                                         "el": "skip.shadow_trial_mq"
+=======
+                                                        "el": "skip.sht_mq_no_fire"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                                     }
                                                 ]
                                             }
@@ -18394,7 +18559,11 @@
                                         "el": [
                                             {
                                                 "type": "value",
+<<<<<<< HEAD
                                                 "el": "skip.light_trial_mq"
+=======
+                                                "el": "skip.light_trial_mq_nohookshot"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                             },
                                             {
                                                 "type": "or",
@@ -18508,7 +18677,11 @@
                                         "el": [
                                             {
                                                 "type": "value",
+<<<<<<< HEAD
                                                 "el": "skip.light_trial_mq"
+=======
+                                                "el": "skip.light_trial_mq_nohookshot"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                             },
                                             {
                                                 "type": "or",
@@ -19905,7 +20078,11 @@
                                 "el": [
                                     {
                                         "type": "value",
+<<<<<<< HEAD
                                         "el": "skip.spirit_trial_hookshot"
+=======
+                                        "el": "skip.spirit_trial_without_hookshot"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                     },
                                     {
                                         "type": "value",
@@ -20080,7 +20257,11 @@
                                 "el": [
                                     {
                                         "type": "value",
+<<<<<<< HEAD
                                         "el": "skip.spirit_trial_hookshot"
+=======
+                                        "el": "skip.spirit_trial_without_hookshot"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                     },
                                     {
                                         "type": "value",
@@ -66126,7 +66307,11 @@
                                 "el": [
                                     {
                                         "type": "value",
+<<<<<<< HEAD
                                         "el": "skip.water_bk_jump_dive"
+=======
+                                        "el": "skip.wt_bosskey_jumpdive"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                     },
                                     {
                                         "type": "mixin",
@@ -66142,7 +66327,11 @@
                                         "el": [
                                             {
                                                 "type": "value",
+<<<<<<< HEAD
                                                 "el": "skip.water_bk_chest"
+=======
+                                                "el": "skip.wt_bosskey_iron_boots"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                             },
                                             {
                                                 "type": "value",
@@ -66152,7 +66341,11 @@
                                     },
                                     {
                                         "type": "value",
+<<<<<<< HEAD
                                         "el": "skip.water_north_basement_ledge_jump"
+=======
+                                        "el": "skip.wt_bosskey_noitem"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                     },
                                     {
                                         "type": "and",
@@ -66304,7 +66497,11 @@
                                 "el": [
                                     {
                                         "type": "value",
+<<<<<<< HEAD
                                         "el": "skip.water_bk_jump_dive"
+=======
+                                        "el": "skip.wt_bosskey_jumpdive"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                     },
                                     {
                                         "type": "mixin",
@@ -66320,7 +66517,11 @@
                                         "el": [
                                             {
                                                 "type": "value",
+<<<<<<< HEAD
                                                 "el": "skip.water_bk_chest"
+=======
+                                                "el": "skip.wt_bosskey_iron_boots"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                             },
                                             {
                                                 "type": "value",
@@ -66330,7 +66531,11 @@
                                     },
                                     {
                                         "type": "value",
+<<<<<<< HEAD
                                         "el": "skip.water_north_basement_ledge_jump"
+=======
+                                        "el": "skip.wt_bosskey_noitem"
+>>>>>>> 76e659dec63078b277c88450996a1a00eb61a42a
                                     },
                                     {
                                         "type": "and",
