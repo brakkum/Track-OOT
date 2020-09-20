@@ -12,6 +12,7 @@ import SettingsBuilder from "/script/util/SettingsBuilder.js";
 import Language from "/script/util/Language.js";
 import SpoilerParser from "/script/util/SpoilerParser.js";
 
+let spoiler = {};
 const settings = new SettingsWindow;
 
 BusyIndicator.setIndicator(document.getElementById("busy-animation"));
@@ -23,9 +24,9 @@ const LOAD_SPOILER = new Template(`
 `);
 
 async function loadSpoiler() {
-    let res = await FileSystem.load(".json");
-    if (!!res && !!res.data) {
-        SpoilerParser.parse(res.data);
+    spoiler = await FileSystem.load(".json");
+    if (!!spoiler && !!spoiler.data) {
+        loadSpoilerButton.innerHTML = Language.translate('loaded-spoiler-button');
     }
 }
 
@@ -51,6 +52,9 @@ export default class SpoilerLogSettings {
             }
             StateStorage.write(settings);
             EventBus.trigger("spoiler_options", settings);
+            if (!!spoiler && !!spoiler.data) {
+                SpoilerParser.parse(spoiler.data, settings);
+            }
             BusyIndicator.unbusy();
         });
         let options = FileData.get("spoiler_options");
@@ -93,6 +97,7 @@ export default class SpoilerLogSettings {
                 }
             }
         }
+        //loadSpoilerButton.innerHTML = Language.translate('load-spoiler-button');
         settings.show(res/*, Object.keys(options)[0]*/);
     }
 

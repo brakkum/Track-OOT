@@ -1,5 +1,5 @@
 {
-  "options": {
+  "spoilerOptions": {
     "parse.settings": {
       "type": "check",
       "default": true
@@ -13,7 +13,7 @@
       "default": false
     },
     "parse.starting_items": {
-      "type": "hidden",
+      "type": "check",
       "default": false
     },
     "parse.entrances": {
@@ -22,6 +22,26 @@
     },
     "parse.shops": {
       "type": "hidden",
+      "default": false
+    },
+    "parse.gossip_stones": {
+      "type": "hidden",
+      "default": false
+    },
+    "parse.barren": {
+      "type": "hidden",
+      "default": false
+    },
+    "parse.trials": {
+      "type": "check",
+      "default": false
+    },
+    "parse.random_settings": {
+      "type": "hidden",
+      "default": false
+    },
+    "parse.dungeons": {
+      "type": "check",
       "default": false
     }
   }

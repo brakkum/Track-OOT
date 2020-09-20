@@ -39,7 +39,7 @@ PageSwitcher.register("main", [{
     "content": "TOGGLE FULLSCREEN",
     "handler": toggleFullscreen
 },{
-    "content": "Upload Spoiler Log",
+    "content": "UPLOAD SPOILER",
     "handler": openSpoilerSettingsWindow
 },{
     "content": "RANDOMIZER OPTIONS",

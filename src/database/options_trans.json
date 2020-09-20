@@ -583,5 +583,135 @@
 				"1": 1
 			}
 		}
+	},
+	"dungeons": {
+		"Deku Tree": {
+			"name": "dungeonTypes.area.deku",
+			"values": {
+				"vanilla": "v",
+				"mq": "mq"
+			}
+		},
+		"Dodongos Cavern": {
+			"name": "dungeonTypes.area.dodongo",
+			"values": {
+				"vanilla": "v",
+				"mq": "mq"
+			}
+		},
+		"Jabu Jabus Belly": {
+			"name": "dungeonTypes.area.jabujabu",
+			"values": {
+				"vanilla": "v",
+				"mq": "mq"
+			}
+		},
+		"Bottom of the Well": {
+			"name": "dungeonTypes.area.well",
+			"values": {
+				"vanilla": "v",
+				"mq": "mq"
+			}
+		},
+		"Ice Cavern": {
+			"name": "dungeonTypes.area.ice_cavern",
+			"values": {
+				"vanilla": "v",
+				"mq": "mq"
+			}
+		},
+		"Gerudo Training Grounds": {
+			"name": "dungeonTypes.area.training_grounds",
+			"values": {
+				"vanilla": "v",
+				"mq": "mq"
+			}
+		},
+		"Forest Temple": {
+			"name": "dungeonTypes.area.temple_forest",
+			"values": {
+				"vanilla": "v",
+				"mq": "mq"
+			}
+		},
+		"Fire Temple": {
+			"name": "dungeonTypes.area.temple_fire",
+			"values": {
+				"vanilla": "v",
+				"mq": "mq"
+			}
+		},
+		"Water Temple": {
+			"name": "dungeonTypes.area.temple_water",
+			"values": {
+				"vanilla": "v",
+				"mq": "mq"
+			}
+		},
+		"Spirit Temple": {
+			"name": "dungeonTypes.area.temple_spirit",
+			"values": {
+				"vanilla": "v",
+				"mq": "mq"
+			}
+		},
+		"Shadow Temple": {
+			"name": "dungeonTypes.area.temple_shadow",
+			"values": {
+				"vanilla": "v",
+				"mq": "mq"
+			}
+		},
+		"Ganons Castle": {
+			"name": "dungeonTypes.area.castle_ganon",
+			"values": {
+				"vanilla": "v",
+				"mq": "mq"
+			}
+		}
+	},
+	"trials": {
+		"Forest": {
+			"name": "option.forest_trial",
+			"values": {
+				"active": true,
+				"inactive": false
+			}
+		},
+		"Fire": {
+			"name": "option.fire_trial",
+			"values": {
+				"active": true,
+				"inactive": false
+			}
+		},
+		"Water": {
+			"name": "option.water_trial",
+			"values": {
+				"active": true,
+				"inactive": false
+			}
+		},
+		"Spirit": {
+			"name": "option.spirit_trial",
+			"values": {
+				"active": true,
+				"inactive": false
+			}
+		},
+		"Shadow": {
+			"name": "option.shadow_trial",
+			"values": {
+				"active": true,
+				"inactive": false
+			}
+		},
+		"Light": {
+			"name": "option.light_trial",
+			"values": {
+				"active": true,
+				"inactive": false
+			}
+		}
 	}
 }
