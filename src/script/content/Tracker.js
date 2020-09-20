@@ -35,9 +35,12 @@ PageSwitcher.register("main", [{
 },{
     "content": "EDITORS",
     "handler": showEditors
-},{
-    "content": " TOGGLE FULLSCREEN",
+}, {
+    "content": "TOGGLE FULLSCREEN",
     "handler": toggleFullscreen
+},{
+    "content": "Upload Spoiler Log",
+    "handler": openSpoilerSettingsWindow
 },{
     "content": "RANDOMIZER OPTIONS",
     "handler": openRomSettingsWindow
@@ -133,6 +136,11 @@ function openRomSettingsWindow() {
     }
 }
 
+function openSpoilerSettingsWindow() {
+    if(!!window.SpoilerLogWindow) {
+        window.SpoilerLogWindow.show();
+    }
+}
 function showEditors() {
     PageSwitcher.switch("editor_choice");
 }

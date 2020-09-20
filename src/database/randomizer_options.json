@@ -38,17 +38,16 @@
             "type": "check",
             "default": false
         },
-        /*
-        "option.keysanity_small": {
-            "type": "choice",
+        "option.keysanity_small_old": {
+            "type": "hidden",
             "default": "keysanity_small_ignore",
             "values": [
                 "keysanity_small_ignore",
                 "keysanity_small_track",
                 "keysanity_small_keysanity"
             ]
-        },"option.keysanity_boss": {
-            "type": "choice",
+        },"option.keysanity_boss_old": {
+            "type": "hidden",
             "default": "keysanity_boss_ignore",
             "values": [
                 "keysanity_boss_ignore",
@@ -56,7 +55,6 @@
                 "keysanity_boss_keysanity"
             ]
         },
-        */
         "option.entrance_shuffle": {
             "type": "choice",
             "default": "entrance_shuffle_off",
@@ -201,164 +199,55 @@
                 "lens_required_default"
             ]
         },
-        /*"tricks": {
-            "type": "list",
-            "values": [
-                "skip.hidden_grotto_no_agony",
-                //"skip.goron_spinning_pot_strength",
-                "skip.fewer_tunic",
-                //"skip.one_way_pass",
-                "skip.child_deadhand",
-                "skip.man_on_roof",
-                "skip.dodongo_staircase",
-                "skip.dodongo_spike",
-                "skip.gerudo_kitchen",
-                "skip.deku_vine_gs",
-                "skip.hammer_through_wall",
-                "skip.botw_strength_sticks",
-                "skip.fotmq_puzzle_bombchu",
-                "skip.spt_child_bridge_bombchu",
-                "skip.windmill_hp",
-                "skip.crater_bean_hp",
-                "skip.zora_cucco",
-                "skip.gtgmq_silver_hook",
-                "skip.fot_east_vines_hook",
-                "skip.fotmq_well_hook",
-                //"skip.fotmq_hallway_hook",
-                "skip.dm_bomb_strength",
-                //"skip.wt_bosskey_iron_boots",
-                "skip.forest_adult_gs_hover",
-                "skip.sptmq_frozen_nofire",
-                //"skip.spt_shifting_wall_noitems",
-                //"skip.spt_main_room_gs_boomerang",
-                //"skip.sptmq_sunblock_gs_boomerang",
-                //"skip.jjmq_sot_boomerang",
-                //"skip.well_cage_gs_no_boomerang",
-                //"skip.wellmq_deadhand_key_boomerang",
-                //"skip.fit_fire_maze_skip",
-                //"skip.fitmq_fire_maze_skip",
-                //"skip.fitmq_climb_no_fire",
-                //"skip.fitmq_near_boss_nocrate",
-                //"skip.fitmq_boulder_side",
-                "skip.fitmq_bosskey_nobow",
-                //"skip.zora_1st_hp_no_hovers",
-                //"skip.wt_cracked_wall_hovers",
-                //"skip.shtmq_lower_nofire",
-                //"skip.mido_skip",
-                //"skip.fit_bossdoor_noitems",
-                //"skip.lab_hookshot",
-                //"skip.naked_wasteland",
-                //"skip.colossus_hill_GS_hookshot",
-                //"skip.dodongo_scarecrow_armos",
-                //"skip.kakariko_gs_with_jumpslash",
-                //"skip.lake_lab_gs_jumpslash",
-                //"skip.sptmq_lower_no_firearrows",
-                //"skip.spt_map_bow",
-                //"skip.spt_sunblock_torch_bow",
-                //"skip.shtmq_torch_bow",
-                //"skip.fotmq_ne_ledge_hovers",
-                //"skip.wt_boss_key_hovers",
-                //"skip.wt_platform_gs_hookshot",
-                //"skip.wt_serpent_gs_noirons",
-                //"skip.wt_entry_noirons",
-                //"skip.dm_upper_gs_no_hammer",
-                //"skip.dm_lower_gs_hookshot",
-                //"skip.dm_lower_gs_bean",
-                //"skip.dmc_mash_hammer",
-                "skip.zora_hover",
-                //"skip.shadow_temple_river_statue_bombchu",
-                //"skip.linkthegoron_dins",
-                //"skip.fit_gs_nosot",
-                //"skip.fit_climb_nostrength",
-                //"skip.fitmq_lava_room_bombable_nohookshot",
-                //"skip.light_trial_mq_nohookshot",
-                //"skip.icmq_scarecrow_gs_noitems",
-                //"skip.reverse_wasteland",
-                //"skip.zora_2nd_hp_no_hovers",
-                //"skip.sht_mq_spinner_longshot",
-                //"skip.lost_woods_stage_skulltula_no_beans",
-                //"skip.graveyard_poh_boomerang",
-                //"skip.dm_soil_no_explosives",
-                //"skip.gtg_rupees_nohookshot",
-                //"skip.gtgmq_rupees_nohookshot",
-                //"skip.gtg_ledge_hovers",
-                //"skip.wt_cracked_noitems",
-                //"skip.wt_basement_jump",
-                //"skip.wt_torch_longshot",
-                //"skip.wt_bosskey_jumpdive",
-                //"skip.wt_dragon_jump_dive",
-                //"skip.wt_dragon_bombchu",
-                //"skip.goron_left_maze_hovers",
-                //"skip.deku_tree_B1_skip",
-                //"skip.spt_adult_switch_bombs",
-                //"skip.forest_temple_floormaster_strength",
-                //"skip.forest_temple_pierre_early",
-                //"skip.dodongomq_early_bombbag_child",
-                //"skip.dodongo_child_slingshot_skip",
-                //"skip.hotrodder_child_strength",
-                //"skip.goron_pot_bombchu",
-                //"skip.gerudo_crate_hovers",
-                //"skip.spirit_trial_without_hookshot",
-                //"skip.shadow_temple_stone_umbrella_skip",
-                //"skip.wt_central_bow_nothing",
-                //"skip.fit_east_noscarecrow",
-                //"skip.shadow_temple_entry_fire_arrow"
-
-                // XXX remove this one later
-                "skip.wt_bosskey_noitem"
-            ],
-            "default": []
-        },*/
         "overworld": {
             "type": "list",
             "values": [
-                //general
                 "skip.grottos_without_agony",
                 "skip.rusted_switches",
                 "skip.fewer_tunic_requirements",
                 "skip.visible_collisions",
-                //kokiri
+
                 "skip.adult_kokiri_gs",
-                //woods
+
                 "skip.lost_woods_bridge",
                 "skip.mido_backflip",
                 "skip.lost_woods_gs_bean",
-                //lake
+
                 "skip.lab_wall_gs",
                 "skip.water_hookshot_entry",
                 "skip.lab_diving",
-                //gerudo
+
                 "skip.valley_crate_hovers",
                 "skip.gerudo_kitchen",
-                //wasteland
+
                 "skip.wasteland_crossing",
                 "skip.lens_wasteland",
                 "skip.reverse_wasteland",
                 "skip.colossus_gs",
-                //kak
+
                 "skip.kakariko_tower_gs",
                 "skip.man_on_roof",
                 "skip.windmill_poh",
                 "skip.graveyard_poh",
                 "skip.child_dampe_race_poh",
                 "skip.shadow_fire_arrow_entry",
-                //mountain
+
                 "skip.dmt_bombable",
                 "skip.dmt_soil_gs",
                 "skip.trail_gs_lower_hookshot",
                 "skip.trail_gs_lower_bean",
                 "skip.trail_gs_upper",
                 "skip.biggoron_bolero",
-                //gorons
+
                 "skip.link_goron_dins",
                 "skip.goron_city_leftmost",
                 "skip.goron_city_pot_with_strength",
                 "skip.goron_city_pot",
                 "skip.child_rolling_with_strength",
-                //crater
+
                 "skip.crater_upper_to_lower",
                 "skip.crater_bean_poh_with_hovers",
-                //river
+
                 "skip.zora_river_lower",
                 "skip.zora_river_upper",
                 "skip.zora_with_hover",
@@ -369,23 +258,22 @@
         "child_dungeons": {
             "type": "list",
             "values": [
-                //well
                 "skip.lens_botw",
                 "skip.child_deadhand",
                 "skip.botw_basement",
                 "skip.botw_cage_gs",
                 "skip.botw_mq_dead_hand_key",
-                //deku
+
                 "skip.deku_basement_gs",
                 "skip.deku_b1_webs_with_bow",
                 "skip.deku_b1_skip",
-                //dodongo
+
                 "skip.dc_scarecrow_gs",
                 "skip.dc_staircase",
                 "skip.dc_slingshot_skip",
                 "skip.dc_jump",
                 "skip.dc_mq_child_bombs",
-                //jabu
+
                 "skip.jabu_scrub_jump_dive",
                 "skip.jabu_boss_gs_adult",
                 "skip.jabu_mq_sot_gs",
@@ -396,16 +284,16 @@
         "mini_adult_dungeons": {
             "type": "list",
             "values": [
-                //ice cavern
+
                 "skip.ice_mq_scarecrow",
-                //gtg
+
                 "skip.gtg_without_hookshot",
                 "skip.lens_gtg",
                 "skip.gtg_fake_wall",
                 "skip.lens_gtg_mq",
                 "skip.gtg_mq_without_hookshot",
                 "skip.gtg_mq_with_hookshot",
-                //castle
+
                 "skip.lens_castle",
                 "skip.spirit_trial_hookshot",
                 "skip.lens_castle_mq",
@@ -498,24 +386,24 @@
         "known_sequence_breaks": {
             "type": "hidden",
             "values": [
-                //"skip.ground_jump",
-                //"skip.invisible_ocarina",
-                //"skip.invisible_ocarina_midair",
-                //"skip.navi_dive",
-                //"skip.underwater_chests_openable",
-                //"skip.lost_woods_allow_pedestal_clip",
-                //"skip.king_zora_child",
-                //"skip.king_zora_adult",
-                //"skip.well_entry_isg",
-                //"skip.shadow_temple_entry_hookshot",
-                //"skip.shadow_temple_clip",
-                //"skip.dodongo_open_bombchu",
-                //"skip.dodongo_bombchu",
-                //"skip.valley_hookshot",
-                //"skip.gtg_clip",
-                //"skip.gtg_hammer_switch_nohammer",
-                //"skip.spt_bosskey_nohookshot",
-                //"skip.lab_hovers",
+                "skip.ground_jump",
+                "skip.invisible_ocarina",
+                "skip.invisible_ocarina_midair",
+                "skip.navi_dive",
+                "skip.underwater_chests_openable",
+                "skip.lost_woods_allow_pedestal_clip",
+                "skip.king_zora_child",
+                "skip.king_zora_adult",
+                "skip.well_entry_isg",
+                "skip.shadow_temple_entry_hookshot",
+                "skip.shadow_temple_clip",
+                "skip.dodongo_open_bombchu",
+                "skip.dodongo_bombchu",
+                "skip.valley_hookshot",
+                "skip.gtg_clip",
+                "skip.gtg_hammer_switch_nohammer",
+                "skip.spt_bosskey_nohookshot",
+                "skip.lab_hovers"
             ],
             "default": []
         }

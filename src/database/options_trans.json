@@ -1,268 +1,587 @@
 {
-	"open_forest": {
-		"name": "option.doors_open_forest",
-		"values": {
-			"closed": "doors_open_forest_closed",
-			"closed_deku": "doors_open_forest_deku",
-			"open": "doors_open_forest_open"
+	"setting": {
+		"open_forest": {
+			"name": "option.doors_open_forest",
+			"values": {
+				"closed": "doors_open_forest_closed",
+				"closed_deku": "doors_open_forest_deku",
+				"open": "doors_open_forest_open"
+			}
+		},
+		"open_kakariko": {
+			"name": "option.doors_open_mountain",
+			"values": {
+				"closed": "doors_open_mountain_closed",
+				"zelda": "doors_open_mountain_zelda",
+				"open": "doors_open_mountain_open"
+			}
+		},
+		"open_door_of_time": {
+			"name": "option.doors_open_temple",
+			"values": {
+				"true": true,
+				"false": false
+			}
+		},
+		"zora_fountain": {
+			"name": "option.doors_open_zora",
+			"values": {
+				"closed": "doors_open_zora_closed",
+				"adult": "doors_open_zora_adult",
+				"both": "doors_open_zora_both"
+			}
+		},
+		"gerudo_fortress": {
+			"name": "option.gerudo_fortress_open",
+			"values": {
+				"normal": "gerudo_fortress_open_default",
+				"one": "gerudo_fortress_open_one",
+				"open": "gerudo_fortress_open_open"
+			}
+		},
+		"bridge": {
+			"name": "option.ganon_castle_open",
+			"values": {
+				"vanilla": "ganon_castle_open_default",
+				"dungeon": "ganon_castle_open_dungeon",
+				"medallions": "ganon_castle_open_medallion",
+				"stones": "ganon_castle_open_stones",
+				"tokens": "ganon_castle_open_skulltulas",
+				"triforce": "ganon_castle_open_triforce",
+				"open": "ganon_castle_open_open"
+			}
+		},
+		"logic_rules": {
+			"name": "option.logic_rules",
+			"values": {
+				"glitchless": "logic_rules_glitchless",
+				"glitched": "logic_rules_glitched",
+				"none": "logic_rules_glitched"
+			}
+		},
+		"bombchus_in_logic": {
+			"name": "option.bombchu_logic",
+			"values": {
+				"true": true,
+				"false": false
+			}
+		},
+		"shuffle_cows": {
+			"name": "option.cowsanity",
+			"values": {
+				"true": true,
+				"false": false
+			}
+		},
+		"shuffle_beans": {
+			"name": "option.beansanity",
+			"values": {
+				"true": true,
+				"false": false
+			}
+		},
+		"entrance_shuffle": {
+			"name": "option.entrance_shuffle",
+			"values": {
+				"off": "entrance_shuffle_off",
+				"dungeons": "entrance_shuffle_dungeons",
+				"simple-indoors": "entrance_shuffle_simple",
+				"all-indoors": "entrance_shuffle_indoors",
+				"all": "entrance_shuffle_all"
+			}
+		},
+		"shuffle_scrubs": {
+			"name": "option.scrubsanity",
+			"values": {
+				"off": false,
+				"regular": true,
+				"low": true,
+				"random": true
+			}
+		},
+		"shuffle_smallkeys": {
+			"name": "option.keysanity_small",
+			"values": {
+				"keysanity": true,
+				"dungeon": false,
+				"vanilla": false,
+				"remove": false
+			}
+		},
+		"shuffle_ganon_bosskey": {
+			"name": "option.light_arrow_cutscene",
+			"values": {
+				"remove": "light_arrow_cutscene_vanilla",
+				"vanilla": "light_arrow_cutscene_vanilla",
+				"dungeon": "light_arrow_cutscene_vanilla",
+				"keysanity": "light_arrow_cutscene_vanilla",
+				"lacs_vanilla": "light_arrow_cutscene_vanilla",
+				"lacs_medallions": "light_arrow_cutscene_medallions",
+				"lacs_stones": "light_arrow_cutscene_stones",
+				"lacs_dungeons": "light_arrow_cutscene_dungeons"
+			}
+		},
+		"logic_earliest_adult_trade": {
+			"name": "option.tade_sequence_start_item",
+			"values": {
+				"pocket_egg": 1,
+				"pocket_cucco": 2,
+				"cojiro": 2,
+				"odd_mushroom": 3,
+				"poachers_saw": 5,
+				"broken_sword": 6,
+				"prescription": 7,
+				"eyeball_frog": 8,
+				"eyedrops": 9,
+				"claim_check": 10
 		}
 	},
-	"open_kakariko": {
-		"name": "option.doors_open_mountain",
-		"values": {
-			"closed": "doors_open_mountain_closed",
-			"zelda": "doors_open_mountain_zelda",
-			"open": "doors_open_mountain_open"
+		"starting_age": {
+			"name": "option.starting_age",
+			"values": {
+				"child": "child",
+				"adult": "adult",
+				"random": "child"
 		}
 	},
-	"open_door_of_time": {
-		"name": "option.doors_open_temple",
-		"values": {
-			"true": true,
-			"false": false
-		}
+		"allowed_tricks": [
+			"logic_fewer_tunic_requirements",
+			"logic_grottos_without_agony",
+			"logic_visible_collisions",
+			"logic_child_deadhand",
+			"logic_child_dampe_race_poh",
+			"logic_man_on_roof",
+			"logic_dc_staircase",
+			"logic_dc_jump",
+			"logic_gerudo_kitchen",
+			"logic_deku_basement_gs",
+			"logic_deku_b1_webs_with_bow",
+			"logic_rusted_switches",
+			"logic_botw_basement",
+			"logic_forest_mq_block_puzzle",
+			"logic_spirit_child_bombchu",
+			"logic_windmill_poh",
+			"logic_crater_bean_poh_with_hovers",
+			"logic_zora_with_cucco",
+			"logic_gtg_mq_with_hookshot",
+			"logic_forest_vines",
+			"logic_forest_outdoor_east_gs",
+			"logic_forest_well_swim",
+			"logic_forest_mq_hallway_switch",
+			"logic_dmt_bombable",
+			"logic_goron_city_pot_with_strength",
+			"logic_water_bk_chest",
+			"logic_adult_kokiri_gs",
+			"logic_spirit_mq_frozen_eye",
+			"logic_spirit_wall",
+			"logic_spirit_lobby_gs",
+			"logic_spirit_mq_sun_block_gs",
+			"logic_jabu_scrub_jump_dive",
+			"logic_jabu_mq_sot_gs",
+			"logic_botw_cage_gs",
+			"logic_botw_mq_dead_hand_key",
+			"logic_fire_flame_maze",
+			"logic_fire_mq_flame_maze",
+			"logic_fire_mq_climb",
+			"logic_fire_mq_near_boss",
+			"logic_fire_mq_maze_side_room",
+			"logic_fire_mq_bk_chest",
+			"logic_zora_river_lower",
+			"logic_water_cracked_wall_hovers",
+			"logic_shadow_freestanding_key",
+			"logic_shadow_mq_huge_pit",
+			"logic_mido_backflip",
+			"logic_fire_boss_door_jump",
+			"logic_lab_diving",
+			"logic_biggoron_bolero",
+			"logic_wasteland_crossing",
+			"logic_colossus_gs",
+			"logic_dc_scarecrow_gs",
+			"logic_kakariko_tower_gs",
+			"logic_lab_wall_gs",
+			"logic_spirit_mq_lower_adult",
+			"logic_spirit_map_chest",
+			"logic_spirit_sun_chest",
+			"logic_shadow_trial_mq",
+			"logic_forest_outdoors_ledge",
+			"logic_water_boss_key_region",
+			"logic_water_falling_platform_gs",
+			"logic_water_river_gs",
+			"logic_water_hookshot_entry",
+			"logic_trail_gs_upper",
+			"logic_trail_gs_lower_hookshot",
+			"logic_trail_gs_lower_bean",
+			"logic_crater_upper_to_lower",
+			"logic_zora_with_hovers",
+			"logic_shadow_statue",
+			"logic_link_goron_dins",
+			"logic_fire_song_of_time",
+			"logic_fire_strength",
+			"logic_fire_mq_bombable_chest",
+			"logic_light_trial_mq",
+			"logic_ice_mq_scarecrow",
+			"logic_reverse_wasteland",
+			"logic_zora_river_upper",
+			"logic_shadow_mq_gap",
+			"logic_lost_woods_gs_bean",
+			"logic_jabu_boss_gs_adult",
+			"logic_graveyard_poh",
+			"logic_dmt_soil_gs",
+			"logic_gtg_without_hookshot",
+			"logic_gtg_mq_without_hookshot",
+			"logic_gtg_fake_wall",
+			"logic_water_cracked_wall_nothing",
+			"logic_water_north_basement_ledge_jump",
+			"logic_water_temple_torch_longshot",
+			"logic_water_bk_jump_dive",
+			"logic_water_dragon_jump_dive",
+			"logic_water_dragon_bombchu",
+			"logic_goron_city_leftmost",
+			"logic_deku_b1_skip",
+			"logic_spirit_lower_adult_switch",
+			"logic_forest_outside_backdoor",
+			"logic_forest_scarecrow",
+			"logic_dc_mq_child_bombs",
+			"logic_dc_slingshot_skip",
+			"logic_child_rolling_with_strength",
+			"logic_goron_city_pot",
+			"logic_valley_crate_hovers",
+			"logic_lost_woods_bridge",
+			"logic_spirit_trial_hookshot",
+			"logic_shadow_umbrella",
+			"logic_water_central_bow",
+			"logic_fire_scarecrow",
+			"logic_shadow_fire_arrow_entry",
+			"logic_lens_wasteland",
+			"logic_lens_botw",
+			"logic_lens_castle_mq",
+			"logic_lens_castle",
+			"logic_lens_gtg_mq",
+			"logic_lens_gtg",
+			"logic_lens_jabu_mq",
+			"logic_lens_shadow_mq",
+			"logic_lens_shadow_mq_back",
+			"logic_lens_shadow",
+			"logic_lens_shadow_back",
+			"logic_lens_spirit_mq",
+			"logic_lens_spirit"
+		]
 	},
-	"zora_fountain": {
-		"name": "option.doors_open_zora",
-		"values": {
-			"closed": "doors_open_zora_closed",
-			"adult": "doors_open_zora_adult",
-			"both": "doors_open_zora_both"
+	"starting_items": {
+		"Biggoron Sword": {
+			"name": "item.sword_biggoron",
+			"values": {
+				"1": 1
+			}
+		},
+		"Bolero of Fire": {
+			"name": "item.warp_fire",
+			"values": {
+				"1": 1
+			}
+		},
+		"Bomb Bag": {
+			"name": "item.bombs",
+			"values": {
+				"1": 1,
+				"2": 2,
+				"3": 3
+			}
+		},
+		"Bombchus": {
+			"name": "item.bombchu",
+			"values": {
+				"20": 1
+			}
+		},
+		"Boomerang": {
+			"name": "item.boomerang",
+			"values": {
+				"1": 1
+			}
+		},
+		"Bottle with Letter": {
+			"name": "item.zora_letter",
+			"values": {
+				"1": 1
+			}
+		},
+		"Bottle": {
+			"name": "item.bottle",
+			"values": {
+				"1": 1,
+				"2": 2,
+				"3": 3
+			}
+		},
+		"Bow": {
+			"name": "item.bow",
+			"values": {
+				"1": 1,
+				"2": 2,
+				"3": 3
+			}
+		},
+		"Deku Nut Capacity": {
+			"name": "item.nut",
+			"values": {
+				"1": 2,
+				"2": 3
+			}
+		},
+		"Deku Shield": {
+			"name": "item.shield_kokiri",
+			"values": {
+				"1": 1
+			}
+		},
+		"Deku Stick Capacity": {
+			"name": "item.stick",
+			"values": {
+				"1": 2,
+				"2": 3
+			}
+		},
+		"Dins Fire": {
+			"name": "item.magic_din",
+			"values": {
+				"1": 1
+			}
+		},
+		"Double Defense": {
+			"name": "item.heart_double",
+			"values": {
+				"1": 1
+			}
+		},
+		"Eponas Song": {
+			"name": "item.song_eoona",
+			"values": {
+				"1": 1
+			}
+		},
+		"Farores Wind": {
+			"name": "item.magic_farore",
+			"values": {
+				"1": 1
+			}
+		},
+		"Fire Arrows": {
+			"name": "item.arrow_fire",
+			"values": {
+				"1": 1
+			}
+		},
+		"Goron Tunic": {
+			"name": "item.tunic_fire",
+			"values": {
+				"1": 1
+			}
+		},
+		"Hammer": {
+			"name": "item.hammer",
+			"values": {
+				"1": 1
+			}
+		},
+		"Megaton Hammer": {
+			"name": "item.hammer",
+			"values": {
+				"1": 1
+			}
+		},
+		"Hover Boots": {
+			"name": "item.boots_hover",
+			"values": {
+				"1": 1
+			}
+		},
+		"Hylian Shield": {
+			"name": "item.shield_hylia",
+			"values": {
+				"1": 1
+			}
+		},
+		"Ice Arrows": {
+			"name": "item.arrow_ice",
+			"values": {
+				"1": 1
+			}
+		},
+		"Iron Boots": {
+			"name": "item.boots_iron",
+			"values": {
+				"1": 1
+			}
+		},
+		"Kokiri Sword": {
+			"name": "item.sword_kokiri",
+			"values": {
+				"1": 1
+			}
+		},
+		"Lens of Truth": {
+			"name": "item.lens",
+			"values": {
+				"1": 1
+			}
+		},
+		"Light Arrows": {
+			"name": "item.arrow_light",
+			"values": {
+				"1": 1
+			}
+		},
+		"Magic Bean": {
+			"name": "item.bean",
+			"values": {
+				"1": 1,
+				"2": 2,
+				"3": 3,
+				"4": 4,
+				"5": 5,
+				"6": 6,
+				"7": 7,
+				"8": 8,
+				"9": 9,
+				"10": 10
+			}
+		},
+		"Magic Meter": {
+			"name": "item.magic_power",
+			"values": {
+				"1": 1,
+				"2": 2
+			}
+		},
+		"Minuet of Forest": {
+			"name": "item.warp_forest",
+			"values": {
+				"1": 1
+			}
+		},
+		"Mirror Shield": {
+			"name": "item.shield_mirror",
+			"values": {
+				"1": 1
+			}
+		},
+		"Nayrus Love": {
+			"name": "item.magic_nayru",
+			"values": {
+				"1": 1
+			}
+		},
+		"Nocturne of Shadow": {
+			"name": "item.warp_shadow",
+			"values": {
+				"1": 1
+			}
+		},
+		"Ocarina": {
+			"name": "item.ocarina",
+			"values": {
+				"1": 1,
+				"2": 2
+			}
+		},
+		"Prelude of Light": {
+			"name": "item.warp_light",
+			"values": {
+				"1": 1
+			}
+		},
+		"Progressive Hookshot": {
+			"name": "item.hookshot",
+			"values": {
+				"1": 1,
+				"2": 2
+			}
+		},
+		"Progressive Scale": {
+			"name": "item.scale",
+			"values": {
+				"1": 1,
+				"2": 2
+			}
+		},
+		"Progressive Strength Upgrade": {
+			"name": "item.glove",
+			"values": {
+				"1": 1,
+				"2": 2,
+				"3": 3
+			}
+		},
+		"Progressive Wallet": {
+			"name": "item.wallet",
+			"values": {
+				"1": 2,
+				"2": 3,
+				"3": 4
+			}
+		},
+		"Requiem of Spirit": {
+			"name": "item.warp_spirit",
+			"values": {
+				"1": 1
+			}
+		},
+		"Sarias Song": {
+			"name": "item.song_saria",
+			"values": {
+				"1": 1
+			}
+		},
+		"Serenade of Water": {
+			"name": "item.warp_water",
+			"values": {
+				"1": 1
+			}
+		},
+		"Slingshot": {
+			"name": "item.slingshot",
+			"values": {
+				"1": 1,
+				"2": 2,
+				"3": 3
+			}
+		},
+		"Song of Storms": {
+			"name": "item.song_storm",
+			"values": {
+				"1": 1
+			}
+		},
+		"Song of Time": {
+			"name": "item.song_time",
+			"values": {
+				"1": 1
+			}
+		},
+		"Stone of Agony": {
+			"name": "item.stone_of_agony",
+			"values": {
+				"1": 1
+			}
+		},
+		"Suns Song": {
+			"name": "item.song_sun",
+			"values": {
+				"1": 1
+			}
+		},
+		"Zeldas Lullaby": {
+			"name": "item.song_zelda",
+			"values": {
+				"1": 1
+			}
+		},
+		"Zora Tunic": {
+			"name": "item.tunic_water",
+			"values": {
+				"1": 1
+			}
 		}
-	},
-	"gerudo_fortress": {
-		"name": "option.gerudo_fortress_open",
-		"values": {
-			"normal": "gerudo_fortress_open_default",
-			"one": "gerudo_fortress_open_one",
-			"open": "gerudo_fortress_open_open"
-		}
-	},
-	"bridge": {
-		"name": "option.ganon_castle_open",
-		"values": {
-			"vanilla": "ganon_castle_open_default",
-			"dungeon": "ganon_castle_open_dungeon",
-			"medallion": "ganon_castle_open_medallion",
-			"stones": "ganon_castle_open_stones",
-			"tokens": "ganon_castle_open_skulltulas",
-			"triforce": "ganon_castle_open_triforce",
-			"open": "ganon_castle_open_open"
-		}
-	},
-	"logic_rules": {
-		"name": "option.logic_rules",
-		"values": {
-			"glitchless": "logic_rules_glitchless",
-			"glitched": "logic_rules_glitched",
-			"none": "logic_rules_glitched"
-		}
-	},
-	"bombchus_in_logic": {
-		"name": "option.bombchu_logic",
-		"values": {
-			"true": true,
-			"false": false
-		}
-	},
-	"shuffle_cows": {
-		"name": "option.cowsanity",
-		"values": {
-			"true": true,
-			"false": false
-		}
-	},
-	"shuffle_beans": {
-		"name": "option.beansanity",
-		"values": {
-			"true": true,
-			"false": false
-		}
-	},
-	"entrance_shuffle": {
-		"name": "option.entrance_shuffle",
-		"values": {
-			"off": "entrance_shuffle_off",
-			"dungeons": "entrance_shuffle_dungeons",
-			"simple-indoors": "entrance_shuffle_simple",
-			"all-indoors": "entrance_shuffle_indoors",
-			"all": "entrance_shuffle_all"
-		}
-	},
-	"shuffle_scrubs": {
-		"name": "option.scrubsanity",
-		"values": {
-			"off": false,
-			"regular": true,
-			"low": true,
-			"random": true
-		}
-	},
-	"shuffle_smallkeys": {
-		"name": "option.keysanity_small",
-		"values": {
-			"keysanity": true,
-			"dungeon": false,
-			"vanilla": false,
-			"remove": false
-		}
-	},
-	"shuffle_ganon_bosskey": {
-		"name": "option.light_arrow_cutscene",
-		"values": {
-			"remove": "light_arrow_cutscene_vanilla",
-			"vanilla": "light_arrow_cutscene_vanilla",
-			"dungeon": "light_arrow_cutscene_vanilla",
-			"keysanity": "light_arrow_cutscene_vanilla",
-			"lacs_vanilla": "light_arrow_cutscene_vanilla",
-			"lacs_medallions": "light_arrow_cutscene_medallions",
-			"lacs_stones": "light_arrow_cutscene_stones",
-			"lacs_dungeons": "light_arrow_cutscene_dungeons"
-		}
-	},
-	"logic_earliest_adult_trade": {
-		"name": "option.tade_sequence_start_item",
-		"values": {
-			"pocket_egg": 1,
-			"pocket_cucco": 2,
-			"cojiro": 2,
-			"odd_mushroom": 3,
-			"poachers_saw": 5,
-			"broken_sword": 6,
-			"prescription": 7,
-			"eyeball_frog": 8,
-			"eyedrops": 9,
-			"claim_check": 10
-		}
-	},
-	"starting_age": {
-		"name": "option.starting_age",
-		"values": {
-			"child": "child",
-			"adult": "adult",
-			"random": "child"
-		}
-	},
-	"allowed_tricks":                          [
-      "logic_fewer_tunic_requirements",
-      "logic_grottos_without_agony",
-      "logic_visible_collisions",
-      "logic_child_deadhand",
-      "logic_child_dampe_race_poh",
-      "logic_man_on_roof",
-      "logic_dc_staircase",
-      "logic_dc_jump",
-      "logic_gerudo_kitchen",
-      "logic_deku_basement_gs",
-      "logic_deku_b1_webs_with_bow",
-      "logic_rusted_switches",
-      "logic_botw_basement",
-      "logic_forest_mq_block_puzzle",
-      "logic_spirit_child_bombchu",
-      "logic_windmill_poh",
-      "logic_crater_bean_poh_with_hovers",
-      "logic_zora_with_cucco",
-      "logic_gtg_mq_with_hookshot",
-      "logic_forest_vines",
-      "logic_forest_outdoor_east_gs",
-      "logic_forest_well_swim",
-      "logic_forest_mq_hallway_switch",
-      "logic_dmt_bombable",
-      "logic_goron_city_pot_with_strength",
-      "logic_water_bk_chest",
-      "logic_adult_kokiri_gs",
-      "logic_spirit_mq_frozen_eye",
-      "logic_spirit_wall",
-      "logic_spirit_lobby_gs",
-      "logic_spirit_mq_sun_block_gs",
-      "logic_jabu_scrub_jump_dive",
-      "logic_jabu_mq_sot_gs",
-      "logic_botw_cage_gs",
-      "logic_botw_mq_dead_hand_key",
-      "logic_fire_flame_maze",
-      "logic_fire_mq_flame_maze",
-      "logic_fire_mq_climb",
-      "logic_fire_mq_near_boss",
-      "logic_fire_mq_maze_side_room",
-      "logic_fire_mq_bk_chest",
-      "logic_zora_river_lower",
-      "logic_water_cracked_wall_hovers",
-      "logic_shadow_freestanding_key",
-      "logic_shadow_mq_huge_pit",
-      "logic_mido_backflip",
-      "logic_fire_boss_door_jump",
-      "logic_lab_diving",
-      "logic_biggoron_bolero",
-      "logic_wasteland_crossing",
-      "logic_colossus_gs",
-      "logic_dc_scarecrow_gs",
-      "logic_kakariko_tower_gs",
-      "logic_lab_wall_gs",
-      "logic_spirit_mq_lower_adult",
-      "logic_spirit_map_chest",
-      "logic_spirit_sun_chest",
-      "logic_shadow_trial_mq",
-      "logic_forest_outdoors_ledge",
-      "logic_water_boss_key_region",
-      "logic_water_falling_platform_gs",
-      "logic_water_river_gs",
-      "logic_water_hookshot_entry",
-      "logic_trail_gs_upper",
-      "logic_trail_gs_lower_hookshot",
-      "logic_trail_gs_lower_bean",
-      "logic_crater_upper_to_lower",
-      "logic_zora_with_hovers",
-      "logic_shadow_statue",
-      "logic_link_goron_dins",
-      "logic_fire_song_of_time",
-      "logic_fire_strength",
-      "logic_fire_mq_bombable_chest",
-      "logic_light_trial_mq",
-      "logic_ice_mq_scarecrow",
-      "logic_reverse_wasteland",
-      "logic_zora_river_upper",
-      "logic_shadow_mq_gap",
-      "logic_lost_woods_gs_bean",
-      "logic_jabu_boss_gs_adult",
-      "logic_graveyard_poh",
-      "logic_dmt_soil_gs",
-      "logic_gtg_without_hookshot",
-      "logic_gtg_mq_without_hookshot",
-      "logic_gtg_fake_wall",
-      "logic_water_cracked_wall_nothing",
-      "logic_water_north_basement_ledge_jump",
-      "logic_water_temple_torch_longshot",
-      "logic_water_bk_jump_dive",
-      "logic_water_dragon_jump_dive",
-      "logic_water_dragon_bombchu",
-      "logic_goron_city_leftmost",
-      "logic_deku_b1_skip",
-      "logic_spirit_lower_adult_switch",
-      "logic_forest_outside_backdoor",
-      "logic_forest_scarecrow",
-      "logic_dc_mq_child_bombs",
-      "logic_dc_slingshot_skip",
-      "logic_child_rolling_with_strength",
-      "logic_goron_city_pot",
-      "logic_valley_crate_hovers",
-      "logic_lost_woods_bridge",
-      "logic_spirit_trial_hookshot",
-      "logic_shadow_umbrella",
-      "logic_water_central_bow",
-      "logic_fire_scarecrow",
-      "logic_shadow_fire_arrow_entry",
-      "logic_lens_wasteland",
-      "logic_lens_botw",
-      "logic_lens_castle_mq",
-      "logic_lens_castle",
-      "logic_lens_gtg_mq",
-      "logic_lens_gtg",
-      "logic_lens_jabu_mq",
-      "logic_lens_shadow_mq",
-      "logic_lens_shadow_mq_back",
-      "logic_lens_shadow",
-      "logic_lens_shadow_back",
-      "logic_lens_spirit_mq",
-      "logic_lens_spirit"
-    ]
+	}
 }

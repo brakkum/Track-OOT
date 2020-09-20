@@ -1,5 +1,7 @@
 import StateStorage from "/script/storage/StateStorage.js";
 import FileData from "/emcJS/storage/FileData.js";
+let trans
+let options = {};
 
 function versionChecker(version) {
     let failure = 0;
@@ -11,42 +13,51 @@ function versionChecker(version) {
     return failure
 }
 
-function seedURLCheck(url) {
-    let ootr = "https://ootrandomizer.com"
-    let [u1, u2] = url.split("=");
-
-    u1 = u1.split("/seed")
-
-    if(u1[0] === ootr && !isNaN(u2)) return true;
-    return false;
-}
-
 function parseSetting(setting) {
-    let options = {};
-    let trans = FileData.get("options_trans", {});
-    console.log(trans);
-
+    let setting_trans = trans["setting"];
     for (let i in setting) {
         let v = setting[i];
-        if(trans.hasOwnProperty(i)) {
+        if(setting_trans.hasOwnProperty(i)) {
             if (Array.isArray(v)) {
                 v = new Set(v);
-                trans[i].forEach(el => {
-                    options["skip." + el.split("logic_")[1]] = v.has(el);
-                    console.log("skip." + el.split("logic_")[1] + "           +            " + v.has(el))
+                setting_trans[i].forEach(el => {
+                    options[el.replace("logic_", "skip.")] = v.has(el);
                 });
             } else {
-                options[trans[i]["name"]] = trans[i]["values"][v];
-                console.log(trans[i]["name"] + "    +     " + trans[i]["values"][v])
+                options[setting_trans[i]["name"]] = setting_trans[i]["values"][v];
+                if(setting_trans[i] === "shuffle_ganon_bosskey" && v === "remove") options["option.ganon_boss_door_open"] = true;
+                if(setting_trans[i]["values"][v] === undefined) console.warn(i + ": " + v + "    is a invalid value. Please report this bug")
             }
         }
     }
-    StateStorage.write(options);
     return setting["world_count"]
 }
+
+function parseStartingItems(items) {
+    let starting_trans = trans["starting_items"];
+    let bottles = 0;
+
+    for(let i in items) {
+        let v = items[i];
+        if(starting_trans.hasOwnProperty(i)) {
+            if(Array.isArray(i)) {
+                console.warn("Unexpected Array withing starting items, please report this!")
+                break;
+            }
+            options[starting_trans[i]["name"]] = starting_trans[i]["values"][v];
+            if(i === "Bottle With Letter" || i === "Bottle") {
+                bottles = bottles + starting_trans[i]["values"][v]
+                options[starting_trans["Bottle"]["name"]] = bottles;
+            }
+            if(starting_trans[i]["values"][v] === undefined) console.warn(i + ": " + v + "    is a invalid value. Please report this bug")
+        }
+    }
+}
+
 function parseLocations(locations, world) {
     // TODO add code to parse location items to tracker locations with Item Association
 }
+
 function parseWothLocation(woth, world) {
     // TODO utilize WOTH locations to build WOTH hint system
 }
@@ -54,31 +65,22 @@ function parseWothLocation(woth, world) {
 class SpoilerParser {
 
     parse(spoiler) {
-        let data = spoiler;//JSON.parse(spoiler);
+        let data = spoiler;
+        trans = FileData.get("options_trans")
+        console.log(trans)
+
         let version = versionChecker(data[":version"]);
         if(version === 0) return console.log("Fail State: Not a valid OOTR Spoiler log");
-        if(version === 1) {
-            if(seedURLCheck(data[":seed_url"])) {
-                let world = parseSetting(data["settings"]);
-                console.log("DONE")
-                if(world === 1) {
-                    //parseLocations(data["location"], world);
-                    //parseWothLocation(data[":woth_locations"], world);
-                } else {
-                    console.log("Multiworld location parsing currently not supported")
-                }
-            } else {
-                console.log("Spoiler did not come from ootrandomizer.com")
-            }
-        }
-        if(version === 2) {
+        if(version >= 1) {
             let world = parseSetting(data["settings"]);
             if(world === 1) {
+                parseStartingItems(data["starting_items"]);
                 //parseLocations(data["location"], world);
                 //parseWothLocation(data[":woth_locations"], world);
             } else {
                 console.log("Multiworld location parsing currently not supported")
             }
+            StateStorage.write(options);
         }
     }
 }
