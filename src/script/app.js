@@ -12,6 +12,7 @@ import "/script/storage/TrackerStorage.js";
 import Language from "/script/util/Language.js";
 import LogicAlternator from "/script/util/LogicAlternator.js";
 import World from "/script/util/World.js";
+import SpoilerParser from "/script/util/SpoilerParser.js";
 
 import "/emcJS/ui/Paging.js";
 
@@ -22,6 +23,7 @@ const FILES = {
     "world_lists":          {path: "/database/world_lists.json",        type: "json"},
     "logic":                {path: "/database/logic.json",              type: "json"},
     "logic_glitched":       {path: "/database/logic_glitched.json",     type: "json"},
+    "options_trans":        {path: "/database/options_trans.json",      type: "jsonc"},
     "exits":                {path: "/database/exits.json",              type: "jsonc"},
     "entrances":            {path: "/database/entrances.json",          type: "jsonc"},
     "items":                {path: "/database/items.json",              type: "jsonc"},
@@ -33,6 +35,7 @@ const FILES = {
     "settings":             {path: "/database/settings.json",           type: "jsonc"},
     "rulesets":             {path: "/database/rulesets.json",           type: "jsonc"},
     "randomizer_options":   {path: "/database/randomizer_options.json", type: "jsonc"},
+    "spoiler_options":      {path: "/database/spoiler_options.json",    type: "jsonc"},
     "filter":               {path: "/database/filter.json",             type: "jsonc"},
     "shops":                {path: "/database/shops.json",              type: "jsonc"},
     "shop_items":           {path: "/database/shop_items.json",         type: "jsonc"}
@@ -80,7 +83,8 @@ async function init() {
         Logger,
         TrackerSettingsWindow,
         StateStorage,
-        RandomizerOptionsWindow
+        RandomizerOptionsWindow,
+        SpoilerLogWindow
     ] = await $import.module([
         // consts
         "/emcJS/util/events/EventBus.js",
@@ -88,6 +92,7 @@ async function init() {
         "/script/ui/TrackerSettingsWindow.js",
         "/script/storage/StateStorage.js",
         "/script/ui/RandomizerOptionsWindow.js",
+        "/script/ui/SpoilerLogWindow.js",
         // untracked
         "/emcJS/ui/TextEditor.js",
         "/emcJS/ui/LogScreen.js",
@@ -144,6 +149,7 @@ async function init() {
     updateLoadingMessage("initialize settings...");
     window.TrackerSettingsWindow = new TrackerSettingsWindow();
     window.RandomizerOptionsWindow = new RandomizerOptionsWindow();
+    window.SpoilerLogWindow = new SpoilerLogWindow();
 
     updateLoadingMessage("add modules...");
     await $import.module([

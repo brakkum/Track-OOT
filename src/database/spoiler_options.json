@@ -1,0 +1,48 @@
+{
+  "spoilerOptions": {
+    "parse.settings": {
+      "type": "check",
+      "default": true
+    },
+    "parse.item_association": {
+      "type": "hidden",
+      "default": false
+    },
+    "parse.woth_hints": {
+      "type": "hidden",
+      "default": false
+    },
+    "parse.starting_items": {
+      "type": "check",
+      "default": false
+    },
+    "parse.entrances": {
+      "type": "hidden",
+      "default": false
+    },
+    "parse.shops": {
+      "type": "hidden",
+      "default": false
+    },
+    "parse.gossip_stones": {
+      "type": "hidden",
+      "default": false
+    },
+    "parse.barren": {
+      "type": "hidden",
+      "default": false
+    },
+    "parse.trials": {
+      "type": "check",
+      "default": false
+    },
+    "parse.random_settings": {
+      "type": "hidden",
+      "default": false
+    },
+    "parse.dungeons": {
+      "type": "check",
+      "default": false
+    }
+  }
+}
