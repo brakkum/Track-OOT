@@ -167,6 +167,7 @@ async function initOptionSet() {
 class LogicAlternator {
 
     async init() {
+        await Logic.init();
         let settings = FileData.get("settings", {});
 		let initState = StateStorage.read("option.starting_age", true);
 		if(initState === true) {

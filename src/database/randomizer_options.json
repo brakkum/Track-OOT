@@ -38,6 +38,14 @@
             "type": "check",
             "default": false
         },
+        "option.track_keys": {
+            "type": "check",
+            "default": true
+        },
+        "option.track_bosskeys": {
+            "type": "check",
+            "default": true
+        },
         "option.keysanity_small_old": {
             "type": "hidden",
             "default": "keysanity_small_ignore",
