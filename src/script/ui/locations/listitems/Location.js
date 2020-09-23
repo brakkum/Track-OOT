@@ -5,7 +5,7 @@ import "/emcJS/ui/Icon.js";
 import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import LogicViewer from "/script/content/logic/LogicViewer.js";
-import Logic from "/script/util/Logic.js";
+import Logic from "/script/util/logic/Logic.js";
 import Language from "/script/util/Language.js";
 import "/script/ui/items/ItemPicker.js";
 

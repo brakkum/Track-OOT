@@ -1,3 +1,5 @@
+import StateConverter from "../StateConverter.js";
+
 const REWARDS = [
     "",
     "item.stone_forest",
@@ -11,7 +13,7 @@ const REWARDS = [
     "item.medallion_light"
 ];
 
-export default function(state) {
+StateConverter.register(function(state) {
     let res = {
         data: {},
         autosave: state.autosave,
@@ -27,4 +29,4 @@ export default function(state) {
         }
     }
     return res;
-};
+});

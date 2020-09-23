@@ -1,4 +1,13 @@
-export default function(state) {
+import StateConverter from "../StateConverter.js";
+
+function convertShopItem(item) {
+    if (!item.item.startsWith("item.")) {
+        item.item = `item.${item.item}`;
+    }
+    return item;
+}
+
+StateConverter.register(function(state) {
     let res = {
         data: {},
         autosave: state.autosave,
@@ -30,12 +39,4 @@ export default function(state) {
         }
     }
     return res;
-};
-
-
-function convertShopItem(item) {
-    if (!item.item.startsWith("item.")) {
-        item.item = `item.${item.item}`;
-    }
-    return item;
-}
+});

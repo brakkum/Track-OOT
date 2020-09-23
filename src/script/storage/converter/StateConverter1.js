@@ -1,3 +1,5 @@
+import StateConverter from "../StateConverter.js";
+
 const translation = {
     "overworld": "area.overworld",
     "kokiri": "area.kokiri",
@@ -1003,7 +1005,7 @@ const translation = {
     "dungeonRewards.castle_ganon": "dungeonRewards.area.castle_ganon"
 };
 
-export default function(state) {
+StateConverter.register(function(state) {
     let res = {
         data: {},
         autosave: state.autosave,
@@ -1015,4 +1017,4 @@ export default function(state) {
         res.data[translation[i]||i] = state.data[i];
     }
     return res;
-};
+});

@@ -8,11 +8,13 @@ import FileLoader from "/emcJS/util/FileLoader.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
 import HotkeyHandler from "/emcJS/util/HotkeyHandler.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
-import "/script/storage/TrackerStorage.js";
+import StateStorage from "/script/storage/StateStorage.js";
 import Language from "/script/util/Language.js";
-import LogicAlternator from "/script/util/LogicAlternator.js";
 import World from "/script/util/World.js";
-import SpoilerParser from "/script/util/SpoilerParser.js";
+
+import "/script/storage/converter/StateConverter.js";
+import AugmentExits from "/script/util/logic/AugmentExits.js";
+import AugmentCustomLogic from "/script/util/logic/AugmentCustomLogic.js";
 
 import "/emcJS/ui/Paging.js";
 
@@ -59,8 +61,28 @@ function setVersion(data) {
         setVersion(await FileLoader.json("version.json"));
         updateLoadingMessage("learn languages...");
         await Language.load(await SettingsStorage.get("language", "en_us"));
+        updateLoadingMessage("initialize states...");
+        await StateStorage.init(function() {
+            let options = FileData.get("randomizer_options");
+            let def_state = {};
+            for (let i in options) {
+                for (let j in options[i]) {
+                    let v = options[i][j].default;
+                    if (Array.isArray(v)) {
+                        v = new Set(v);
+                        options[i][j].values.forEach(el => {
+                            def_state[el] = v.has(el);
+                        });
+                    } else {
+                        def_state[j] = v;
+                    }
+                }
+            }
+            return def_state;
+        }());
         updateLoadingMessage("build logic data...");
-        await LogicAlternator.init();
+        await AugmentExits.init();
+        await AugmentCustomLogic.init();
         updateLoadingMessage("build world data...");
         World.init();
         updateLoadingMessage("poke application...");
@@ -82,7 +104,6 @@ async function init() {
         EventBus,
         Logger,
         TrackerSettingsWindow,
-        StateStorage,
         RandomizerOptionsWindow,
         SpoilerLogWindow
     ] = await $import.module([
@@ -90,7 +111,6 @@ async function init() {
         "/emcJS/util/events/EventBus.js",
         "/emcJS/util/Logger.js",
         "/script/ui/TrackerSettingsWindow.js",
-        "/script/storage/StateStorage.js",
         "/script/ui/RandomizerOptionsWindow.js",
         "/script/ui/SpoilerLogWindow.js",
         // untracked
@@ -106,7 +126,8 @@ async function init() {
         "/script/ui/map/Map.js",
         "/script/ui/LocationStatus.js",
         "/script/content/Tracker.js",
-        "/script/content/EditorChoice.js"
+        "/script/content/EditorChoice.js",
+        "/script/util/logic/LogicCaller.js"
     ]);
     
     if ("SharedWorker" in window) {

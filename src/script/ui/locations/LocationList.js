@@ -7,7 +7,7 @@ import StateStorage from "/script/storage/StateStorage.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import Language from "/script/util/Language.js";
 import World from "/script/util/World.js";
-import ListLogic from "/script/util/ListLogic.js";
+import ListLogic from "/script/util/logic/ListLogic.js";
 import "./listitems/Button.js";
 import "./listitems/Area.js";
 import "./listitems/Exit.js";

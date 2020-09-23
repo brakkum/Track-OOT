@@ -1,3 +1,5 @@
+import StateConverter from "../StateConverter.js";
+
 const EXIT_TRANS = {
     "region.deku_tree_lobby": "region.deku_tree_gateway",
     "region.dodongos_cavern_beginning": "region.dodongos_cavern_gateway",
@@ -113,7 +115,7 @@ const SKIP_CONVERT = {
     "skip.sptmq_sunblock_gs_boomerang": "skip.spirit_mq_sun_block_gs"
 };
 
-export default function(state) {
+StateConverter.register(function(state) {
     let res = {
         data: {},
         extra: state.extra || {},
@@ -181,4 +183,4 @@ export default function(state) {
         res.extra.exits = buf;
     }
     return res;
-};
+});

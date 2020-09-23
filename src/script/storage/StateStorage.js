@@ -4,7 +4,7 @@ import EventBus from "/emcJS/util/events/EventBus.js";
 import ActionPath from "/emcJS/util/ActionPath.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
 import LocalStorage from "/emcJS/storage/LocalStorage.js";
-import StateConverter from "./converters/StateConverter.js";
+import StateConverter from "/script/storage/StateConverter.js";
 
 const PERSISTANCE_NAME = "savestate";
 const STATE_DIRTY = "state_dirty";
@@ -13,7 +13,6 @@ const TITLE_PREFIX = document.title;
 const STORAGE = new IDBStorage("savestates");
 
 /* START DEBOUNCE STATE INIT */
-
 const DATA = {
     name: "",
     version: 0,
@@ -75,7 +74,6 @@ function encodeState() {
 DATA.state.addEventListener("change", onStateChange);
 
 decodeState(StateConverter.createEmptyState());
-
 /* END DEBOUNCE STATE INIT */
 
 let actionPath = new ActionPath();
@@ -135,8 +133,8 @@ function updateTitle() {
 
 class StateStorage {
 
-    constructor() {
-        let state = LocalStorage.get(PERSISTANCE_NAME, StateConverter.createEmptyState());
+    init(defaultState) {
+        let state = LocalStorage.get(PERSISTANCE_NAME, StateConverter.createEmptyState(defaultState));
         if (!state.hasOwnProperty("data")) {
             state = {data: state};
         }
@@ -203,14 +201,7 @@ class StateStorage {
     }
 
     reset(data, extraData) {
-        let state = StateConverter.createEmptyState();
-
-        if (typeof data == "object") {
-            data = JSON.parse(JSON.stringify(data));
-            for (let i in data) {
-                state.data[i] = data[i];
-            }
-        }
+        let state = StateConverter.createEmptyState(data);
 
         if (typeof extraData == "object") {
             extraData = JSON.parse(JSON.stringify(extraData));

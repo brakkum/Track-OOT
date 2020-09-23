@@ -6,8 +6,8 @@ import "/emcJS/ui/Tooltip.js";
 import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
-import ListLogic from "/script/util/ListLogic.js";
-import Logic from "/script/util/Logic.js";
+import ListLogic from "/script/util/logic/ListLogic.js";
+import Logic from "/script/util/logic/Logic.js";
 import Language from "/script/util/Language.js";
 
 const SettingsStorage = new IDBStorage('settings');

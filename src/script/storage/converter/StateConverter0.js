@@ -1,4 +1,6 @@
-export default function(state) {
+import StateConverter from "../StateConverter.js";
+
+StateConverter.register(function(state) {
     let res = {
         data: {},
         autosave: false,
@@ -20,4 +22,4 @@ export default function(state) {
         }
     }
     return res;
-};
+});

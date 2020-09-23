@@ -1,6 +1,6 @@
 import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import Logic from "/script/util/Logic.js";
+import Logic from "/script/util/logic/Logic.js";
 import World from "/script/util/World.js";
 
 class ListLogic {
