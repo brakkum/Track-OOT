@@ -7,6 +7,10 @@ class StateConverter {
         OFFSET = Math.max(parseInt(value) || 0, 0);
     }
 
+    get offset() {
+        return OFFSET;
+    }
+
     convert(state) {
         const TARGET_VERSION = OFFSET + CONVERTER_FN.length;
         if (!state.hasOwnProperty("data")) {

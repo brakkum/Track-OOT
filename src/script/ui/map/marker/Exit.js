@@ -108,14 +108,16 @@ const TPL = new Template(`
     <emc-tooltip position="top" id="tooltip">
         <div class="textarea">
             <div id="text"></div>
-            <div id="hint"></div>
             <div id="badge">
                 <emc-icon src="images/icons/entrance.svg"></emc-icon>
                 <emc-icon id="badge-time" src="images/icons/time_always.svg"></emc-icon>
                 <emc-icon id="badge-era" src="images/icons/era_none.svg"></emc-icon>
             </div>
         </div>
-        <div id="value" class="textarea"></div>
+        <div class="textarea">
+            <div id="value"></div>
+            <div id="hint"></div>
+        </div>
     </emc-tooltip>
 `);
 

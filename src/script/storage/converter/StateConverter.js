@@ -5,4 +5,4 @@ import "./StateConverter2.js";
 import "./StateConverter3.js";
 import "./StateConverter4.js";
 
-StateConverter.setOffset(0);
+StateConverter.offset = 0;
