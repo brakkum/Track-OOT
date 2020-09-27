@@ -1,9 +1,6 @@
 
 ### FIX MAJOR BUGS
 
-- create entrance aliases so the association wont break on return paths
-    - blocks interior association
-    - blocks overworld association
 - initial sync does not include extra data (?)
     - at least entrances have not been transfered
 
@@ -13,6 +10,10 @@
 
 - fix multiplayer sync
     - undo/redo does not sync correctly
+        - fix: disable undo/redo in multiplayer, do to possibly unwanted behaviour
+- not all components react to statechanges correctly
+    - e.g. items, dungeontype, dungeonreward, etc.
+- dungeontype/dungeonreward still saved to statedata not extradata
 
 ---
 
@@ -29,6 +30,12 @@
 - add missing options
     - on new game options are written initially by the `StateStorage`
     - on game load missing/changed options should be added by `StateConverters`
+
+### TODO FOR OVERWORLD ENTRANCES
+
+- create entrance aliases so the association wont break on return paths
+    - blocks interior association
+    - blocks overworld association
     
 
 ### TODO
