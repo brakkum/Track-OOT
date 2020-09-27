@@ -67,21 +67,21 @@
         "skips": {
             "skip.lens_required": "lens_required_wasteland",
             "overworld": [
-                "skip.fewer_tunic",
-                "skip.hidden_grotto_no_agony",
-                "skip.hammer_through_wall",
+                "skip.fewer_tunic_requirements",
+                "skip.grottos_without_agony",
+                "skip.rusted_switches",
                 "skip.man_on_roof",
-                "skip.windmill_hp",
-                "skip.crater_bean_hp",
-                "skip.goron_spinning_pot_strength"
+                "skip.windmill_poh",
+                "skip.crater_bean_poh_with_hovers",
+                "skip.goron_city_pot_with_strength"
             ],
             "child_dungeons": [
                 "skip.child_deadhand",
-                "skip.dodongo_spike"
+                "skip.dc_jump"
             ],
             "mini_adult_dungeons": [],
             "area.temple_forest": [
-                "skip.fot_east_vines_hook"
+                "skip.forest_vines"
             ],
             "area.temple_fire": [],
             "area.temple_water": [],
