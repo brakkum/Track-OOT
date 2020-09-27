@@ -39,9 +39,11 @@ Application:    Track-OOT
 - add item association to location
 - add contextmenus to areas
     - add check/uncheck all
+    - add woth/barren markers
 - add contextmenus to exits
     - add check/uncheck all
     - set entrance as 2nd level contextmenu
+    - add woth/barren markers
 
 ### CREDITS
 

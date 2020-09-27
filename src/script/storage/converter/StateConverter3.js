@@ -1,3 +1,7 @@
+/**
+ * move to serverside past 2021‑06-23
+ */
+
 import StateConverter from "../StateConverter.js";
 
 const REWARDS = [

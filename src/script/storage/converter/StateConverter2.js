@@ -1,3 +1,7 @@
+/**
+ * move to serverside past 2021‑05‑16
+ */
+
 import StateConverter from "../StateConverter.js";
 
 function convertShopItem(item) {

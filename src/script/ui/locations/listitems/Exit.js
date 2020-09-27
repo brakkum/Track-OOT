@@ -61,6 +61,13 @@ const TPL = new Template(`
         #text[data-state="possible"] {
             color: var(--location-status-possible-color, #000000);
         }
+        #hint {
+            margin-left: 5px;
+        }
+        #hint img {
+            width: 25px;
+            height: 25px;
+        }
         #badge {
             display: inline-flex;
             align-items: center;
@@ -84,6 +91,7 @@ const TPL = new Template(`
     </style>
     <div class="textarea">
         <div id="text"></div>
+        <div id="hint"></div>
         <div id="badge">
             <emc-icon src="images/icons/entrance.svg"></emc-icon>
             <emc-icon id="badge-time" src="images/icons/time_always.svg"></emc-icon>
@@ -100,6 +108,10 @@ const TPL_MNU_CTX = new Template(`
         <div id="menu-uncheck" class="item">Uncheck All</div>
         <div class="splitter"></div>
         <div id="menu-associate" class="item">Set Entrance</div>
+        <div class="splitter"></div>
+        <div id="menu-setwoth" class="item">Set WOTH</div>
+        <div id="menu-setbarren" class="item">Set barren</div>
+        <div id="menu-clearhint" class="item">Clear hint</div>
     </emc-contextmenu>
 `);
 
@@ -202,6 +214,27 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
             event.preventDefault();
             return false;
         });
+        mnu_ctx.shadowRoot.getElementById("menu-setwoth").addEventListener("click", event => {
+            const item = event.detail;
+            this.item = item;
+            StateStorage.writeExtra("area_hint", this.value, "woth");
+            event.preventDefault();
+            return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-setbarren").addEventListener("click", event => {
+            const item = event.detail;
+            this.item = item;
+            StateStorage.writeExtra("area_hint", this.value, "barren");
+            event.preventDefault();
+            return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-clearhint").addEventListener("click", event => {
+            const item = event.detail;
+            this.item = item;
+            StateStorage.writeExtra("area_hint", this.value, "");
+            event.preventDefault();
+            return false;
+        });
 
         /* mouse events */
         this.addEventListener("click", event => {
@@ -250,6 +283,15 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
             if (data != null) {
                 this.value = data.newValue;
                 selectEl.value = data.newValue;
+            }
+        });
+        this.registerGlobal("statechange_area_hint", event => {
+            let data;
+            if (event.data != null) {
+                data = event.data[this.value];
+            }
+            if (data != null) {
+                this.hint = data.newValue;
             }
         });
         this.registerGlobal(["statechange", "settings", "logic", "filter"], event => {
@@ -327,8 +369,16 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
         this.setAttribute('value', val);
     }
 
+    get hint() {
+        return this.getAttribute('hint');
+    }
+
+    set hint(val) {
+        this.setAttribute('hint', val);
+    }
+
     static get observedAttributes() {
-        return ['ref', 'value'];
+        return ['ref', 'value', 'hint'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -370,11 +420,24 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                         let entrance = FileData.get(`entrances/${newValue}`);
                         el.innerHTML = Language.translate(newValue);
                         AREA.set(this, entrance.area);
+                        this.hint = StateStorage.readExtra("area_hint", newValue, "");
                     } else {
                         el.innerHTML = "";
                         AREA.set(this, "");
+                        this.hint = "";
                     }
                     this.update();
+                }
+            break;
+            case 'hint':
+                if (oldValue != newValue) {
+                    let hintEl = this.shadowRoot.getElementById("hint");
+                    hintEl.innerHTML = "";
+                    if (!!newValue && newValue != "") {
+                        let el_icon = document.createElement("img");
+                        el_icon.src = `images/icons/area_${newValue}.svg`;
+                        hintEl.append(el_icon);
+                    }
                 }
             break;
         }
