@@ -1,3 +1,7 @@
+/**
+ * move to serverside past TBD
+ */
+
 import StateConverter from "../StateConverter.js";
 
 const EXIT_TRANS = {
@@ -122,11 +126,9 @@ StateConverter.register(function(state) {
         notes: state.notes || state.data.notes || "",
         autosave: state.autosave,
         timestamp: state.timestamp,
-        version: 5,
         name: state.name
     };
     for (let i of Object.keys(state.data)) {
-        // possible changes go here
         if (i == "notes") continue;
         if (i.startsWith("shop.")) {
             if (i.endsWith(".names")) {
@@ -142,23 +144,20 @@ StateConverter.register(function(state) {
         } else if (i.startsWith("song.")) {
             res.extra.songs = res.extra.songs || {};
             res.extra.songs[i] = state.data[i];
-        } else {
-            res.data[i] = state.data[i];
-        }
-        if (i == "option.keysanity_small") {
+        } else if (i == "option.keysanity_small") {
             let val = state.data[i];
             if (typeof val == "string") {
                 res.data[i] = val == "keysanity_small_keysanity";
                 res.data["option.track_keys"] = val != "keysanity_small_ignore";
             }
-        }
-        if (i == "option.keysanity_boss") {
+        } else if (i == "option.keysanity_boss") {
             if (typeof val == "string") {
                 res.data["option.track_bosskeys"] = val != "keysanity_boss_ignore";
             }
-        }
-        if (SKIP_CONVERT.hasOwnProperty(i)) {
+        } else if (SKIP_CONVERT.hasOwnProperty(i)) {
             res.data[SKIP_CONVERT[i]] = state.data[i];
+        } else {
+            res.data[i] = state.data[i];
         }
     }
     if (res.data["option.starting_age"] == null) {

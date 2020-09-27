@@ -1,9 +1,14 @@
 const CONVERTER_FN = [];
+let OFFSET = 0;
 
 class StateConverter {
 
+    set offset(value) {
+        OFFSET = Math.max(parseInt(value) || 0, 0);
+    }
+
     convert(state) {
-        const TARGET_VERSION = CONVERTER_FN.length;
+        const TARGET_VERSION = OFFSET + CONVERTER_FN.length;
         if (!state.hasOwnProperty("data")) {
             state = {data: state};
         }
@@ -14,7 +19,7 @@ class StateConverter {
         const version = state.version || 0;
         if (version < TARGET_VERSION) {
             for (let i = version; i < TARGET_VERSION; ++i) {
-                state = CONVERTER_FN[i](state);
+                state = CONVERTER_FN[i - OFFSET](state);
             }
             state.name = name;
             state.timestamp = timestamp;

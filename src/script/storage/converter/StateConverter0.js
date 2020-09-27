@@ -9,7 +9,6 @@ StateConverter.register(function(state) {
         data: {},
         autosave: false,
         timestamp: new Date(),
-        version: 1,
         name: state.name || ""
     };
     for (let i of Object.keys(state.data)) {

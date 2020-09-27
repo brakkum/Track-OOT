@@ -16,7 +16,6 @@ StateConverter.register(function(state) {
         data: {},
         autosave: state.autosave,
         timestamp: state.timestamp,
-        version: 3,
         name: state.name
     };
     for (let i of Object.keys(state.data)) {

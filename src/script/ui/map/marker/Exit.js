@@ -127,8 +127,8 @@ const TPL_MNU_CTX = new Template(`
         <div id="menu-associate" class="item">Set Entrance</div>
         <div class="splitter"></div>
         <div id="menu-setwoth" class="item">Set WOTH</div>
-        <div id="menu-setbarren" class="item">Set barren</div>
-        <div id="menu-clearhint" class="item">Clear hint</div>
+        <div id="menu-setbarren" class="item">Set Barren</div>
+        <div id="menu-clearhint" class="item">Clear Hint</div>
     </emc-contextmenu>
 `);
 
