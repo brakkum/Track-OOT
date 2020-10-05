@@ -234,23 +234,26 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-setwoth").addEventListener("click", event => {
+            const area = AREA.get(this);
             const item = event.detail;
             this.item = item;
-            StateStorage.writeExtra("area_hint", this.value, "woth");
+            StateStorage.writeExtra("area_hint", area, "woth");
             event.preventDefault();
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-setbarren").addEventListener("click", event => {
+            const area = AREA.get(this);
             const item = event.detail;
             this.item = item;
-            StateStorage.writeExtra("area_hint", this.value, "barren");
+            StateStorage.writeExtra("area_hint", area, "barren");
             event.preventDefault();
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-clearhint").addEventListener("click", event => {
+            const area = AREA.get(this);
             const item = event.detail;
             this.item = item;
-            StateStorage.writeExtra("area_hint", this.value, "");
+            StateStorage.writeExtra("area_hint", area, "");
             event.preventDefault();
             return false;
         });
@@ -305,9 +308,10 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
             }
         });
         this.registerGlobal("statechange_area_hint", event => {
+            const area = AREA.get(this);
             let data;
             if (event.data != null) {
-                data = event.data[this.value];
+                data = event.data[area];
             }
             if (data != null) {
                 this.hint = data.newValue;
@@ -344,7 +348,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
     }
 
     async update() {
-        let area = AREA.get(this);
+        const area = AREA.get(this);
         if (!!area) {
             let dType = StateStorage.read(`dungeonTypes.${area}`, 'v');
             if (dType == "n") {
@@ -436,24 +440,23 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    let data = FileData.get(`world/${newValue}`);
-                    let exit = FileData.get(`exits/${data.access}`);
-                    let entrances = FileData.get("entrances");
-                    let txt = this.shadowRoot.getElementById("text");
+                    const data = FileData.get(`world/${newValue}`);
+                    const exit = FileData.get(`exits/${data.access}`);
+                    const entrances = FileData.get("entrances");
+                    const txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = Language.translate(data.access);
                     txt.setAttribute('i18n-content', data.access);
                     ACTIVE.set(this, exit.active);
                     EXIT.set(this, data.access);
-                    AREA.set(this, entrances[exit.target].area);
                     ACCESS.set(this, data.access.split(" -> ")[1]);
                     this.value = StateStorage.readExtra("exits", data.access, exit.target);
                     // options
-                    let selectEl = MNU_EXT.get(this).shadowRoot.getElementById("select");
+                    const selectEl = MNU_EXT.get(this).shadowRoot.getElementById("select");
                     selectEl.value = this.value;
-                    for (let key in entrances) {
-                        let value = entrances[key];
+                    for (const key in entrances) {
+                        const value = entrances[key];
                         if (value.type == exit.type) {
-                            let opt = document.createElement('emc-option');
+                            const opt = document.createElement('emc-option');
                             opt.value = key;
                             opt.innerHTML = Language.translate(key);
                             opt.setAttribute('i18n-content', key);
@@ -466,12 +469,12 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
             break;
             case 'value':
                 if (oldValue != newValue) {
-                    let el = this.shadowRoot.getElementById("value");
+                    const el = this.shadowRoot.getElementById("value");
                     if (!!newValue) {
-                        let entrance = FileData.get(`entrances/${newValue}`);
+                        const entrance = FileData.get(`entrances/${newValue}`);
                         el.innerHTML = Language.translate(newValue);
                         AREA.set(this, entrance.area);
-                        this.hint = StateStorage.readExtra("area_hint", newValue, "");
+                        this.hint = StateStorage.readExtra("area_hint", entrance.area, "");
                     } else {
                         el.innerHTML = "";
                         AREA.set(this, "");
@@ -482,10 +485,10 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
             break;
             case 'hint':
                 if (oldValue != newValue) {
-                    let hintEl = this.shadowRoot.getElementById("hint");
+                    const hintEl = this.shadowRoot.getElementById("hint");
                     hintEl.innerHTML = "";
                     if (!!newValue && newValue != "") {
-                        let el_icon = document.createElement("img");
+                        const el_icon = document.createElement("img");
                         el_icon.src = `images/icons/area_${newValue}.svg`;
                         hintEl.append(el_icon);
                     }

@@ -44,10 +44,12 @@ const TPL = new Template(`
             user-select: none;
         }
         #title-text {
-            display: flex;
+            display: block;
             flex: 1;
-            justify-content: flex-start;
-            align-items: center;
+            font-size: .8em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         #title > .button {
             width: 38px;
