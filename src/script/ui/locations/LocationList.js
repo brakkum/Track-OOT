@@ -79,6 +79,13 @@ const TPL = new Template(`
         #list {
             display: content;
         }
+        #hint {
+            margin-left: 5px;
+        }
+        #hint img {
+            width: 25px;
+            height: 25px;
+        }
         ootrt-list-button {
             display: flex;
             justify-content: flex-start;
@@ -100,6 +107,7 @@ const TPL = new Template(`
     </style>
     <div id="title">
         <div id="title-text">${Language.translate("hyrule")}</div>
+        <div id="hint"></div>
         <ootrt-dungeontype id="location-version" class="button" ref="" value="v" readonly="true">
         </ootrt-dungeontype>
         <ootrt-filtermenu class="button">
@@ -160,6 +168,15 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
                 this.refresh();
             }
         });
+        this.registerGlobal("statechange_area_hint", event => {
+            let data;
+            if (event.data != null) {
+                data = event.data[this.ref];
+            }
+            if (data != null) {
+                this.hint = data.newValue;
+            }
+        });
     }
 
     connectedCallback() {
@@ -175,19 +192,41 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
         this.setAttribute('ref', val);
     }
 
+    get hint() {
+        return this.getAttribute('hint');
+    }
+
+    set hint(val) {
+        this.setAttribute('hint', val);
+    }
+
     static get observedAttributes() {
-        return ['ref'];
+        return ['ref', 'hint'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue != newValue) {
-            if (name == "ref") {
-                this.shadowRoot.getElementById("title-text").innerHTML = Language.translate(newValue || "hyrule");
-                this.shadowRoot.getElementById("location-version").ref = newValue;
-                this.shadowRoot.getElementById('vanilla').ref = newValue;
-                this.shadowRoot.getElementById('masterquest').ref = newValue;
-            }
-            this.refresh();
+        switch (name) {
+            case 'ref':
+                if (oldValue != newValue) {
+                    this.shadowRoot.getElementById("title-text").innerHTML = Language.translate(newValue || "hyrule");
+                    this.shadowRoot.getElementById("location-version").ref = newValue;
+                    this.shadowRoot.getElementById('vanilla').ref = newValue;
+                    this.shadowRoot.getElementById('masterquest').ref = newValue;
+                    this.hint = StateStorage.readExtra("area_hint", newValue, "");
+                    this.refresh();
+                }
+            break;
+            case 'hint':
+                if (oldValue != newValue) {
+                    let hintEl = this.shadowRoot.getElementById("hint");
+                    hintEl.innerHTML = "";
+                    if (!!newValue && newValue != "") {
+                        let el_icon = document.createElement("img");
+                        el_icon.src = `images/icons/area_${newValue}.svg`;
+                        hintEl.append(el_icon);
+                    }
+                }
+            break;
         }
     }
 
