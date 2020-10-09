@@ -17,8 +17,14 @@
       "default": false
     },
     "parse.entrances": {
-      "type": "hidden",
-      "default": false
+      "type": "list",
+      "values": [
+        "parse.entro_dungeons",
+        "parse.entro_simple",
+        "parse.entro_indoors",
+        "parse.entro_overworld"
+      ],
+      "default": []
     },
     "parse.shops": {
       "type": "hidden",
@@ -43,6 +49,12 @@
     "parse.dungeons": {
       "type": "check",
       "default": false
+    },
+    "parse.multiworld": {
+      "type": "number",
+      "default": 1,
+      "min": 1,
+      "max": 100
     }
   }
 }

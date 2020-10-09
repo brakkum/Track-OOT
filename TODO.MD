@@ -19,13 +19,25 @@
 
 ### TODO BEFORE GRAPH LOGIC RELEASE
 
-- verify all logic of location availability (major)
-- completed(kokiri,woods,field,lake,water temple,deku)
-
 - verify all logic of location availability glitched logic (major)
 - completed()
 
-- test skips and reorganize skips by area
+- add these skips to options
+    - "skip.dc_vines_gs"
+    - "skip.dc_scrub_room"
+    - "skip.forest_first_gs"
+    - "skip.ice_block_gs"
+    - "skip.dmt_climb_hovers"
+    - "skip.goron_grotto"
+    - "skip.domain_gs"
+    - "skip.castle_storms_gs"
+    - "skip.shadow_umbrella_gs"
+    - "skip.spirit_lobby_jump"
+    - "skip.water_dragon_adult"
+    - "skip.water_dragon_child"
+    - "skip.water_central_gs_irons"
+    - "skip.water_falling_platform_gs_hookshot"
+    - "skip.water_falling_platform_gs_boomerang"
 
 - add missing options
     - on new game options are written initially by the `StateStorage`
@@ -35,7 +47,7 @@
 
 - create entrance aliases so the association wont break on return paths
     - blocks interior association
-    - blocks overworld association
+    - blocks overworld association(should be fixed with overworld gateways)
     
 
 ### TODO
