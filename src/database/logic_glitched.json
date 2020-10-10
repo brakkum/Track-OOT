@@ -29077,29 +29077,12 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "min",
-                                "el": {
-                                    "type": "value",
-                                    "el": "item.wallet"
-                                },
-                                "value": 2
+                                "type": "value",
+                                "el": "item.wallet"
                             },
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.is_adult[child]"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.stick"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.sword_kokiri"
-                                    }
-                                ]
+                                "type": "mixin",
+                                "el": "mixin.can_jumpslash[child]"
                             }
                         ]
                     }
@@ -29208,29 +29191,12 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "min",
-                                "el": {
-                                    "type": "value",
-                                    "el": "item.wallet"
-                                },
-                                "value": 2
+                                "type": "value",
+                                "el": "item.wallet"
                             },
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.is_adult[adult]"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.stick"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.sword_kokiri"
-                                    }
-                                ]
+                                "type": "mixin",
+                                "el": "mixin.can_jumpslash[adult]"
                             }
                         ]
                     }
@@ -36742,12 +36708,8 @@
                                 "el": "mixin.is_adult[child]"
                             },
                             {
-                                "type": "min",
-                                "el": {
-                                    "type": "value",
-                                    "el": "item.wallet"
-                                },
-                                "value": 2
+                                "type": "value",
+                                "el": "item.wallet"
                             },
                             {
                                 "type": "or",
@@ -36759,6 +36721,10 @@
                                     {
                                         "type": "value",
                                         "el": "item.glove"
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "item.bottle"
                                     }
                                 ]
                             }
@@ -37460,12 +37426,8 @@
                                 "el": "mixin.is_adult[adult]"
                             },
                             {
-                                "type": "min",
-                                "el": {
-                                    "type": "value",
-                                    "el": "item.wallet"
-                                },
-                                "value": 2
+                                "type": "value",
+                                "el": "item.wallet"
                             },
                             {
                                 "type": "or",
@@ -37477,6 +37439,10 @@
                                     {
                                         "type": "value",
                                         "el": "item.glove"
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "item.bottle"
                                     }
                                 ]
                             }

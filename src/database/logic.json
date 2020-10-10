@@ -34613,12 +34613,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "min",
-                                "el": {
-                                    "type": "value",
-                                    "el": "item.wallet"
-                                },
-                                "value": 2
+                                "type": "value",
+                                "el": "item.wallet"
                             },
                             {
                                 "type": "or",
@@ -34774,12 +34770,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "min",
-                                "el": {
-                                    "type": "value",
-                                    "el": "item.wallet"
-                                },
-                                "value": 2
+                                "type": "value",
+                                "el": "item.wallet"
                             },
                             {
                                 "type": "or",
@@ -44289,12 +44281,8 @@
                                 "el": "mixin.is_adult[child]"
                             },
                             {
-                                "type": "min",
-                                "el": {
-                                    "type": "value",
-                                    "el": "item.wallet"
-                                },
-                                "value": 2
+                                "type": "value",
+                                "el": "item.wallet"
                             },
                             {
                                 "type": "or",
@@ -45056,12 +45044,8 @@
                                 "el": "mixin.is_adult[adult]"
                             },
                             {
-                                "type": "min",
-                                "el": {
-                                    "type": "value",
-                                    "el": "item.wallet"
-                                },
-                                "value": 2
+                                "type": "value",
+                                "el": "item.wallet"
                             },
                             {
                                 "type": "or",
