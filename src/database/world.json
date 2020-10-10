@@ -615,6 +615,25 @@
             }
         }
     },
+    "location.desert.c_bombchu_wasteland": {
+        "category": "location",
+        "type": "chest",
+        "access": "logic.location.desert.c_bombchu_wasteland",
+        "visible": {
+            "type": "value",
+            "el": "option.shuffleMediCarpet"
+        },
+        "filter": {
+            "filter.era": {
+                "child": false,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
     "location.desert.c_warp_spirit": {
         "category": "location",
         "type": "chest",
@@ -5421,6 +5440,25 @@
         "type": "chest",
         "access": "logic.location.goron.c_little_link",
         "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": false,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "location.goron.c_medigoron": {
+        "category": "location",
+        "type": "chest",
+        "access": "logic.location.goron.c_medigoron",
+        "visible": {
+            "type": "value",
+            "el": "option.shuffleMediCarpet"
+        },
         "filter": {
             "filter.era": {
                 "child": false,

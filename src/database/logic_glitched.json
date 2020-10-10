@@ -18039,6 +18039,32 @@
                         ]
                     }
                 ]
+            },
+            "logic.location.ice_cavern_mq.c_sheik": {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "filter.era",
+                            "value": "adult"
+                        }
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "item.bottle"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.bow)[child]"
+                            }
+                        ]
+                    }
+                ]
             }
         },
         "region.gerudo_training_grounds_right_side_mq[adult]": {
@@ -18166,6 +18192,32 @@
                                         ]
                                     }
                                 ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "logic.location.ice_cavern_mq.c_sheik": {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "filter.era",
+                            "value": "child"
+                        }
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "item.bottle"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.bow)[adult]"
                             }
                         ]
                     }
@@ -18808,6 +18860,32 @@
                         ]
                     }
                 ]
+            },
+            "logic.location.ice_cavern_mq.c_sheik": {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "filter.era",
+                            "value": "adult"
+                        }
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "item.bottle"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.bow)[child]"
+                            }
+                        ]
+                    }
+                ]
             }
         },
         "region.gerudo_training_grounds_lobby[adult]": {
@@ -18946,6 +19024,32 @@
                             {
                                 "type": "mixin",
                                 "el": "mixin.can_jumpslash[adult]"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "logic.location.ice_cavern_mq.c_sheik": {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "filter.era",
+                            "value": "child"
+                        }
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "item.bottle"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.bow)[adult]"
                             }
                         ]
                     }
@@ -28958,7 +29062,7 @@
                     }
                 ]
             },
-            "logic.location.bombchu_wasteland": {
+            "logic.location.desert.c_bombchu_wasteland": {
                 "type": "and",
                 "el": [
                     {
@@ -28973,12 +29077,29 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.wallet"
+                                "type": "min",
+                                "el": {
+                                    "type": "value",
+                                    "el": "item.wallet"
+                                },
+                                "value": 2
                             },
                             {
-                                "type": "mixin",
-                                "el": "mixin.can_jumpslash[child]"
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "mixin",
+                                        "el": "mixin.is_adult[child]"
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "item.stick"
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "item.sword_kokiri"
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -29072,7 +29193,7 @@
                     }
                 ]
             },
-            "logic.location.bombchu_wasteland": {
+            "logic.location.desert.c_bombchu_wasteland": {
                 "type": "and",
                 "el": [
                     {
@@ -29087,12 +29208,29 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.wallet"
+                                "type": "min",
+                                "el": {
+                                    "type": "value",
+                                    "el": "item.wallet"
+                                },
+                                "value": 2
                             },
                             {
-                                "type": "mixin",
-                                "el": "mixin.can_jumpslash[adult]"
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "mixin",
+                                        "el": "mixin.is_adult[adult]"
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "item.stick"
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "item.sword_kokiri"
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -36585,6 +36723,49 @@
                     }
                 ]
             },
+            "logic.location.goron.c_medigoron": {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "filter.era",
+                            "value": "adult"
+                        }
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "mixin.is_adult[child]"
+                            },
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "value",
+                                    "el": "item.wallet"
+                                },
+                                "value": 2
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "mixin",
+                                        "el": "mixin.can_blast_or_smash[child]"
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "item.glove"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
             "logic.location.goron.s_maze_center_child": {
                 "type": "and",
                 "el": [
@@ -37253,6 +37434,49 @@
                                     {
                                         "type": "value",
                                         "el": "item.bottle"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "logic.location.goron.c_medigoron": {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "filter.era",
+                            "value": "child"
+                        }
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "mixin.is_adult[adult]"
+                            },
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "value",
+                                    "el": "item.wallet"
+                                },
+                                "value": 2
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "mixin",
+                                        "el": "mixin.can_blast_or_smash[adult]"
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "item.glove"
                                     }
                                 ]
                             }
