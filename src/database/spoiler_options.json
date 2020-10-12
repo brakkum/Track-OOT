@@ -20,14 +20,13 @@
       "type": "list",
       "values": [
         "parse.entro_dungeons",
-        "parse.entro_simple",
         "parse.entro_indoors",
         "parse.entro_overworld"
       ],
       "default": []
     },
     "parse.shops": {
-      "type": "hidden",
+      "type": "check",
       "default": false
     },
     "parse.gossip_stones": {
