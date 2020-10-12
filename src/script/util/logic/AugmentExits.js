@@ -18,16 +18,20 @@ EventBus.register("statechange_exits", event => {
         if (edgeThereData == null) {
             edgeThereData = exits[`${target} -> ${source}`];
         }
-        let edgeBackData = exits[edgeBack];
-        if ((edgeBackData == null || edgeThereData.type == edgeBackData.type) && edgeThereData.active.indexOf(entrance_shuffle) >= 0) {
-            if (exit_binding[edgeThere] != reroute) {
-                changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: `${reroute}[child]`});
-                changes.push({source: `${reroute}[child]`, target: `${entrance}[child]`, reroute: `${source}[child]`});
-                changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: `${reroute}[adult]`});
-                changes.push({source: `${reroute}[adult]`, target: `${entrance}[adult]`, reroute: `${source}[adult]`});
-                exit_binding[edgeThere] = reroute;
-                exit_binding[edgeBack] = source;
-                StateStorage.writeExtra("exits", edgeBack, edgeThere);
+        if (edgeThereData == null) {
+            console.error(`missing exit: ${target} -> ${source}`);
+        } else {
+            let edgeBackData = exits[edgeBack];
+            if ((edgeBackData == null || edgeThereData.type == edgeBackData.type) && edgeThereData.active.indexOf(entrance_shuffle) >= 0) {
+                if (exit_binding[edgeThere] != reroute) {
+                    changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: `${reroute}[child]`});
+                    changes.push({source: `${reroute}[child]`, target: `${entrance}[child]`, reroute: `${source}[child]`});
+                    changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: `${reroute}[adult]`});
+                    changes.push({source: `${reroute}[adult]`, target: `${entrance}[adult]`, reroute: `${source}[adult]`});
+                    exit_binding[edgeThere] = reroute;
+                    exit_binding[edgeBack] = source;
+                    StateStorage.writeExtra("exits", edgeBack, edgeThere);
+                }
             }
         }
     }
