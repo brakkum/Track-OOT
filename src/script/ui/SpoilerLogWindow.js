@@ -23,10 +23,10 @@ const LOAD_SPOILER = new Template(`
     </div>
 `);
 
-async function loadSpoiler() {
+async function loadSpoiler(button) {
     spoiler = await FileSystem.load(".json");
     if (!!spoiler && !!spoiler.data) {
-        loadSpoilerButton.innerHTML = Language.translate('loaded-spoiler-button');
+        button.innerHTML = Language.translate('loaded-spoiler-button');
     }
 }
 
@@ -36,6 +36,7 @@ export default class SpoilerLogSettings {
         settings.addEventListener('submit', function(event) {
             BusyIndicator.busy();
             let options = FileData.get("spoiler_options");
+            let settingsData = {};
             for (let i in event.data) {
                 for (let j in event.data[i]) {
                     let v = event.data[i][j];
@@ -43,14 +44,16 @@ export default class SpoilerLogSettings {
                         v = new Set(v);
                         options[i][j].values.forEach(el => {
                             StateStorage.writeExtra("parseSpoiler", el, v.has(el));
+                            settingsData[el] = v.has(el);
                         });
                     } else {
                         StateStorage.writeExtra("parseSpoiler", j, v);
+                        settingsData[j] = v;
                     }
                 }
             }
             if (!!spoiler && !!spoiler.data) {
-                SpoilerParser.parse(spoiler.data);
+                SpoilerParser.parse(spoiler.data, settingsData);
             }
             BusyIndicator.unbusy();
         });
@@ -67,7 +70,7 @@ export default class SpoilerLogSettings {
 
 
         loadSpoilerButton.addEventListener('click', () => {
-            loadSpoiler();
+            loadSpoiler(loadSpoilerButton);
         });
 
         settings.shadowRoot.getElementById("footer").prepend(loadSpoilerRow)

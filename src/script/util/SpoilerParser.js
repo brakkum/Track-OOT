@@ -392,10 +392,8 @@ function parseWothLocation(woth, world) {
 
 class SpoilerParser {
 
-    parse(spoiler) {
+    parse(spoiler, settings) {
         let data = spoiler;
-        let settings = StateStorage.getAllExtra("parseSpoiler");
-        console.log(StateStorage.getAllExtra("parseSpoiler"))
         trans = FileData.get("options_trans");
         let multiWorld = settings["parse.multiworld"];
         let parseEntra = false;
