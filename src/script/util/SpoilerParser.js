@@ -5,6 +5,7 @@ import EventBus from "/emcJS/util/events/EventBus.js";
 let trans;
 let options = {};
 let extra = {};
+let areahint = {};
 
 function versionChecker(version) {
     let failure = 0;
@@ -25,7 +26,6 @@ function arrayActivator(world) {
 
 function parseSetting(setting, world) {
     let setting_trans = trans["setting"];
-    options[world] = {};
     for(let i in setting) {
         let v = setting[i];
 
@@ -33,7 +33,7 @@ function parseSetting(setting, world) {
             if(Array.isArray(v)) {
                 v = new Set(v);
                 setting_trans[i].forEach(el => {
-                    options[world.toString()][el.replace("logic_", "skip.")] = v.has(el);
+                    options[world][el.replace("logic_", "skip.")] = v.has(el);
                 });
             } else {
                 if(setting_trans[i]["values"][v] === undefined) {
@@ -41,7 +41,7 @@ function parseSetting(setting, world) {
                 } else {
                     options[world][setting_trans[i]["name"]] = setting_trans[i]["values"][v];
 
-                    if(setting_trans[i] === "shuffle_ganon_bosskey" && v === "remove") options[world.toString()]["option.ganon_boss_door_open"] = true;
+                    if(setting_trans[i] === "shuffle_ganon_bosskey" && v === "remove") options[world]["option.ganon_boss_door_open"] = true;
                 }
             }
         }
@@ -163,10 +163,10 @@ function parseEntrances(entrances, world, dungeon, indoors, overworld) {
     let exit_simple = exit_trans["simple"];
     let exit_indoors = exit_trans["indoors"];
     let exit_overworld = exit_trans["overworld"];
-    let exits = {};
 
     for(let w = 1; w <= world; w++) {
         if(world !== 1) entrances =  entrances["World " + w];
+        let exits = {};
 
         for(let i in entrances) {
             let v = entrances[i];
@@ -382,12 +382,93 @@ function parseShops(shops, world) {
     }
 }
 
+function parseBarren(barren, world) {
+    let barren_trans = trans["barren"];
+    let castle = 0;
+    let kak = 0;
+    let zora = 0;
+    let desert = 0;
+    let mountain = 0;
+    let woods = 0;
+
+    for(let w = 1; w <= world; w++) {
+        if(world !== 1) barren = barren["World " + w];
+        let bar = new Set(barren);
+
+        bar.forEach(i => {
+            if(barren_trans.hasOwnProperty(i)) {
+                if(barren_trans[i] === "area.castle_town") {
+                    castle++;
+                    if(castle === 4) areahint[barren_trans[i]] = "barren";
+                } else if(barren_trans[i] === "area.woods") {
+                    woods++;
+                    if(woods === 2) areahint[barren_trans[i]] = "barren";
+                } else if(barren_trans[i] === "area.kakariko") {
+                    kak++;
+                    if(kak === 2) areahint[barren_trans[i]] = "barren";
+                } else if(barren_trans[i] === "area.zoras") {
+                    zora++;
+                    if(zora === 2) areahint[barren_trans[i]] = "barren";
+                } else if(barren_trans[i] === "area.desert") {
+                    desert++;
+                    if(desert === 2) areahint[barren_trans[i]] = "barren";
+                } else if(barren_trans[i] === "area.mountain") {
+                    mountain++;
+                    if(mountain === 2) areahint[barren_trans[i]] = "barren";
+                } else {
+                    areahint[barren_trans[i]] = "barren";
+                }
+            } else {
+                console.warn("[" + i + "] is a invalid value. Please report this bug")
+            }
+        });
+        extra[w]["area_hint"] = areahint;
+    }
+}
+
 function parseLocations(locations, world) {
-    // TODO add code to parse location items to tracker locations with Item Association
+    let location_trans = trans["locations"];
+    let item_trans = trans["itemList"];
+
+    for(let w = 1; w <= world; w++) {
+        if(world !== 1) locations = locations["World " + w];
+        let loca = {};
+
+        for(let i in locations) {
+            if(location_trans.hasOwnProperty(i)) {
+                let v = locations[i];
+                if(typeof v === 'object' && v !== null) v = v["item"];
+                if (location_trans[i] !== "") {
+                    if (item_trans[v] === undefined) {
+                        console.warn("[" + v + "] is a invalid value. Please report this bug")
+
+                    } else {
+                        loca[location_trans[i]] = item_trans[v];
+                    }
+                }
+            } else {
+                console.warn("[" + i + "] is a invalid value. Please report this bug")
+            }
+        }
+        extra[w]["item_location"] = loca;
+    }
 }
 
 function parseWothLocation(woth, world) {
-    // TODO utilize WOTH locations to build WOTH hint system
+    let woth_trans = trans["woth"];
+
+    for(let w = 1; w <= world; w++) {
+        if(world !== 1) woth = woth["World " + w];
+
+        for(let i in woth) {
+            if(woth_trans.hasOwnProperty(i)) {
+                areahint[woth_trans[i]] = "woth";
+            } else {
+                console.warn("[" + i + "] is a invalid value. Please report this bug")
+            }
+        }
+        extra[w]["area_hint"] = areahint;
+    }
 }
 
 class SpoilerParser {
@@ -410,19 +491,18 @@ class SpoilerParser {
 
             if(settings["parse.settings"]) parseSetting(data["settings"], multiWorld)
             if(settings["parse.starting_items"]) parseStartingItems(data["starting_items"], world);
-            //if(settings["parse.item_association"]) parseLocations(data["locations"], world);
-            //if(settings["parse.woth_hints"]) parseWothLocation(data[":woth_locations"], world);
+            if(settings["parse.item_association"]) parseLocations(data["locations"], world);
+            if(settings["parse.woth_hints"]) parseWothLocation(data[":woth_locations"], world);
             if(parseEntra) parseEntrances(data["entrances"], world, settings["parse.entro_dungeons"], settings["parse.entro_indoors"], false/*settings["parse.entro_overworld"]*/);
             if(settings["parse.shops"]) parseShops(data["locations"], world);
             //if(settings["parse.gossip_stones"]) parseStones(data["gossip_stones"], world);
-            //if(settings["parse.barren"]) parseBarren(data[":barren_regions"], world);
+            if(settings["parse.barren"]) parseBarren(data[":barren_regions"], world);
             if(settings["parse.trials"]) parseTrials(data["trials"], world);
-            //if(settings["parse.random_settings"]) parseRandom(data["randomized_settings"], world);
+            if(settings["parse.random_settings"]) parseSetting(data["randomized_settings"], multiWorld);
             if(settings["parse.dungeons"]) parseDungeons(data["dungeons"], world);
 
             StateStorage.write(options[multiWorld]);
             StateStorage.writeExtraAll(extra[multiWorld]);
-            console.log(extra[multiWorld]["exits"])
 
             EventBus.trigger("randomizer_options", options[multiWorld]);
         }

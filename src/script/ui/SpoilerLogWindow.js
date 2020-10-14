@@ -54,6 +54,7 @@ export default class SpoilerLogSettings {
             }
             if (!!spoiler && !!spoiler.data) {
                 SpoilerParser.parse(spoiler.data, settingsData);
+                loadSpoilerButton.innerHTML = Language.translate('load-spoiler-button');
             }
             BusyIndicator.unbusy();
         });
@@ -97,7 +98,6 @@ export default class SpoilerLogSettings {
                 }
             }
         }
-        //loadSpoilerButton.innerHTML = Language.translate('load-spoiler-button');
         settings.show(res/*, Object.keys(options)[0]*/);
     }
 
