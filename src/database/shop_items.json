@@ -627,5 +627,9 @@
     "item.warp_light":{
         "image": "/images/items/warp_light.png",
         "category": "song_items"
+    },
+    "item.bad_item": {
+        "image": "/images/unknown.svg",
+        "category": "hidden_items"
     }
 }

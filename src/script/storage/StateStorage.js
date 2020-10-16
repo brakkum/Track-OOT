@@ -312,6 +312,15 @@ class StateStorage {
         }
     }
 
+    writeExtraAll(key) {
+        for(let c in key) {
+            for(let k in key[c]) {
+                let v = key[c][k];
+                this.writeExtra(c, k, v);
+            }
+        }
+    }
+
     readExtra(category, key, def) {
         if (DATA.extra.has(category) && DATA.extra.get(category).has(key)) {
             return DATA.extra.get(category).get(key);

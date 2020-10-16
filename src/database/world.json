@@ -615,6 +615,25 @@
             }
         }
     },
+    "location.desert.c_bombchu_wasteland": {
+        "category": "location",
+        "type": "chest",
+        "access": "logic.location.desert.c_bombchu_wasteland",
+        "visible": {
+            "type": "value",
+            "el": "option.shuffleMediCarpet"
+        },
+        "filter": {
+            "filter.era": {
+                "child": false,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
     "location.desert.c_warp_spirit": {
         "category": "location",
         "type": "chest",
@@ -5432,6 +5451,25 @@
             }
         }
     },
+    "location.goron.c_medigoron": {
+        "category": "location",
+        "type": "chest",
+        "access": "logic.location.goron.c_medigoron",
+        "visible": {
+            "type": "value",
+            "el": "option.shuffleMediCarpet"
+        },
+        "filter": {
+            "filter.era": {
+                "child": false,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
     "location.goron.c_spinning_pot_hp": {
         "category": "location",
         "type": "chest",
@@ -6252,7 +6290,7 @@
             }
         }
     },
-    "location.well.s_center_child": {
+    "location.well.s_west_inner_child": {
         "category": "location",
         "type": "skulltula",
         "access": "logic.location.well.s_west_inner_child",
@@ -6271,7 +6309,7 @@
             }
         }
     },
-    "location.well.s_center_locked_room_child": {
+    "location.well.s_east_inner_child": {
         "category": "location",
         "type": "skulltula",
         "access": "logic.location.well.s_east_inner_child",

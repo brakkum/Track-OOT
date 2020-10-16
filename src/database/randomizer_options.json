@@ -54,7 +54,8 @@
                 "keysanity_small_track",
                 "keysanity_small_keysanity"
             ]
-        },"option.keysanity_boss_old": {
+        },
+        "option.keysanity_boss_old": {
             "type": "hidden",
             "default": "keysanity_boss_ignore",
             "values": [
@@ -89,6 +90,10 @@
         "option.skullsanity": {
             "type": "hidden",
             "old_type": "check",
+            "default": false
+        },
+        "option.shuffleMediCarpet": {
+            "type": "check",
             "default": false
         },
         "option.doors_open_forest": {

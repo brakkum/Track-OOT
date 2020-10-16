@@ -23,10 +23,10 @@ const LOAD_SPOILER = new Template(`
     </div>
 `);
 
-async function loadSpoiler() {
+async function loadSpoiler(button) {
     spoiler = await FileSystem.load(".json");
     if (!!spoiler && !!spoiler.data) {
-        loadSpoilerButton.innerHTML = Language.translate('loaded-spoiler-button');
+        button.innerHTML = Language.translate('loaded-spoiler-button');
     }
 }
 
@@ -35,25 +35,26 @@ export default class SpoilerLogSettings {
     constructor() {
         settings.addEventListener('submit', function(event) {
             BusyIndicator.busy();
-            let settings = {};
             let options = FileData.get("spoiler_options");
+            let settingsData = {};
             for (let i in event.data) {
                 for (let j in event.data[i]) {
                     let v = event.data[i][j];
                     if (Array.isArray(v)) {
                         v = new Set(v);
                         options[i][j].values.forEach(el => {
-                            settings[el] = v.has(el);
+                            StateStorage.writeExtra("parseSpoiler", el, v.has(el));
+                            settingsData[el] = v.has(el);
                         });
                     } else {
-                        settings[j] = v;
+                        StateStorage.writeExtra("parseSpoiler", j, v);
+                        settingsData[j] = v;
                     }
                 }
             }
-            StateStorage.write(settings);
-            EventBus.trigger("spoiler_options", settings);
             if (!!spoiler && !!spoiler.data) {
-                SpoilerParser.parse(spoiler.data, settings);
+                SpoilerParser.parse(spoiler.data, settingsData);
+                loadSpoilerButton.innerHTML = Language.translate('load-spoiler-button');
             }
             BusyIndicator.unbusy();
         });
@@ -70,7 +71,7 @@ export default class SpoilerLogSettings {
 
 
         loadSpoilerButton.addEventListener('click', () => {
-            loadSpoiler();
+            loadSpoiler(loadSpoilerButton);
         });
 
         settings.shadowRoot.getElementById("footer").prepend(loadSpoilerRow)
@@ -87,17 +88,16 @@ export default class SpoilerLogSettings {
                     let def = new Set(opt.default);
                     let val = [];
                     for (let el of opt.values) {
-                        if (StateStorage.read(el, def.has(el))) {
+                        if (StateStorage.readExtra("parseSpoiler", el, def.has(el))) {
                             val.push(el);
                         }
                     }
                     res[i][j] = val;
                 } else {
-                    res[i][j] = StateStorage.read(j, opt.default);
+                    res[i][j] = StateStorage.readExtra("parseSpoiler", j, opt.default);
                 }
             }
         }
-        //loadSpoilerButton.innerHTML = Language.translate('load-spoiler-button');
         settings.show(res/*, Object.keys(options)[0]*/);
     }
 
