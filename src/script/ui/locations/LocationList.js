@@ -141,18 +141,10 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
             this.ref = ""
         });
         this.shadowRoot.getElementById('vanilla').addEventListener("click", event => {
-            StateStorage.write(`dungeonTypes.${this.ref}`, 'v');
-            this.triggerGlobal("dungeontype", {
-                name: this.ref,
-                value: 'v'
-            });
+            StateStorage.writeExtra("dungeontype", this.ref, 'v');
         });
         this.shadowRoot.getElementById('masterquest').addEventListener("click", event => {
-            StateStorage.write(`dungeonTypes.${this.ref}`, 'mq');
-            this.triggerGlobal("dungeontype", {
-                name: this.ref,
-                value: 'mq'
-            });
+            StateStorage.writeExtra("dungeontype", this.ref, 'mq');
         });
         /* event bus */
         this.registerGlobal("location_change", event => {
@@ -164,9 +156,13 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
         this.registerGlobal(["state", "settings", "randomizer_options", "filter"], event => {
             this.refresh();
         });
-        this.registerGlobal("dungeontype", event => {
-            if (this.ref === event.data.name) {
-                this.shadowRoot.getElementById("location-version").value = event.data.value;
+        this.registerGlobal("statechange_dungeontype", event => {
+            let data;
+            if (event.data != null) {
+                data = event.data[this.ref];
+            }
+            if (data != null) {
+                this.shadowRoot.getElementById("location-version").value = data.newValue;
                 this.refresh();
             }
         });
@@ -233,6 +229,7 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
     }
 
     refresh() {
+        // TODO do not use specialized code. make generic
         let cnt = this.shadowRoot.getElementById("list");
         let dType = this.shadowRoot.getElementById("location-version").value;
         let btn_vanilla = this.shadowRoot.getElementById('vanilla');
@@ -266,6 +263,7 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
     }
 
     async updateHeader() {
+        // TODO do not use specialized code. make generic
         if ((!this.ref || this.ref === "")) {
             this.shadowRoot.querySelector('#title').className = "";
         } else {

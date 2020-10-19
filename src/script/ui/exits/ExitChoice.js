@@ -92,7 +92,7 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
             switch (name) {
                 case 'ref':
                     let exit = FileData.get(`exits/${newValue}`);
-                    let entrances = FileData.get("entrances");
+                    let entrances = FileData.get("exits");
                     // savesatate
                     let title = this.shadowRoot.getElementById("title");
                     title.innerHTML = Language.translate(newValue);
@@ -107,9 +107,9 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
                         let value = entrances[key];
                         if (value.type == exit.type) {
                             let opt = document.createElement('emc-option');
-                            opt.value = key;
-                            opt.innerHTML = Language.translate(key);
-                            opt.setAttribute('i18n-content', key);
+                            opt.value = value.target;
+                            opt.innerHTML = Language.translate(value.target);
+                            opt.setAttribute('i18n-content', value.target);
                             selectEl.append(opt);
                         }
                     }

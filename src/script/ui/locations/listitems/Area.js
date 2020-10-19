@@ -232,7 +232,7 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
 
     async update() {
         if (!!this.ref) {
-            let dType = StateStorage.read(`dungeonTypes.${this.ref}`, 'v');
+            let dType = StateStorage.readExtra("dungeontype", this.ref, 'v');
             if (dType == "n") {
                 let data_v = FileData.get(`world_lists/${this.ref}/lists/v`);
                 let data_m = FileData.get(`world_lists/${this.ref}/lists/mq`);

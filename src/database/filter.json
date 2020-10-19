@@ -31,6 +31,20 @@
             "/images/icons/time_night.svg"
         ]
     },
+    "filter.chests": {
+        "choice": true,
+        "badge": false,
+        "persist": true,
+        "default": "true",
+        "values": [
+            "true",
+            "false"
+        ],
+        "images": [
+            "/images/icons/chest.svg",
+            "/images/icons/chest_no.svg"
+        ]
+    },
     "filter.skulltulas": {
         "choice": true,
         "badge": false,

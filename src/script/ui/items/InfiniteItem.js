@@ -61,12 +61,23 @@ function getAlign(value) {
     }
 }
     
-function stateChanged(event) {
+function stateLoaded(event) {
     let value = parseInt(event.data.state[this.ref]);
     if (isNaN(value)) {
         value = 0;
     }
     this.value = value;
+}
+    
+function stateChanged(event) {
+    const change = event.data[this.ref];
+    if (change != null) {
+        let value = parseInt(change.newValue);
+        if (!isNaN(value)) {
+            value = 0;
+        }
+        this.value = value;
+    }
 }
 
 function itemUpdate(event) {
@@ -92,7 +103,8 @@ class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.append(TPL.generate());
         /* event bus */
         this.registerGlobal("item", itemUpdate.bind(this));
-        this.registerGlobal("state", stateChanged.bind(this));
+        this.registerGlobal("state", stateLoaded.bind(this));
+        this.registerGlobal("statechange", stateChanged.bind(this));
     }
 
     get ref() {

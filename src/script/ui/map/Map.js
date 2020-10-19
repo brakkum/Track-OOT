@@ -187,8 +187,9 @@ const TPL = new Template(`
             <div class="buttons">
                 <div id="toggle-button" class="button-wrapper">⇑</div>
                 <div class="button-wrapper">
-                    <emc-switchbutton id="location-mode" class="button" value="filter.chests">
-                        <emc-option value="filter.chests" style="background-image: url('images/icons/chest.svg')"></emc-option>
+                    <emc-switchbutton id="location-mode" class="button" value="filter.unknown">
+                        <emc-option value="filter.unknown" style="background-image: url('images/unknown.svg')" disabled="true"></emc-option>
+                        <emc-option value="filter.chests" data-filter="filter.chests" style="background-image: url('images/icons/chest.svg')"></emc-option>
                         <emc-option value="filter.skulltulas" data-filter="filter.skulltulas" style="background-image: url('images/icons/skulltula.svg')"></emc-option>
                         <emc-option value="filter.gossipstones" data-filter="filter.gossipstones" style="background-image: url('images/icons/gossipstone.svg')"></emc-option>
                     </emc-switchbutton>
@@ -413,21 +414,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
         });
         this.registerGlobal(["state", "settings", "randomizer_options", "filter"], event => {
             if (this.ref == "#") {
-                let modeEl = this.shadowRoot.getElementById('location-mode');
-                let opts = modeEl.querySelectorAll("[data-filter]");
-                for (let opt of opts) {
-                    if (FilterStorage.get(opt.dataset.filter) == "true") {
-                        // LEGACY
-                        opt.removeAttribute("disabled");
-                    } else {
-                        // LEGACY
-                        opt.setAttribute("disabled", true);
-                        if (this.mode == opt.dataset.filter) {
-                            modeEl.value = "filter.chests";
-                            this.setAttribute('mode', "filter.chests");
-                        }
-                    }
-                }
+                this.refreshFilter();
             }
             this.refresh();
         });
@@ -441,21 +428,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
     connectedCallback() {
         super.connectedCallback();
         if (this.ref == "#") {
-            let modeEl = this.shadowRoot.getElementById('location-mode');
-            let opts = modeEl.querySelectorAll("[data-filter]");
-            for (let opt of opts) {
-                if (FilterStorage.get(opt.dataset.filter) == "true") {
-                    // LEGACY
-                    opt.removeAttribute("disabled");
-                } else {
-                    // LEGACY
-                    opt.setAttribute("disabled", true);
-                    if (this.mode == opt.dataset.filter) {
-                        modeEl.value = "filter.chests";
-                        this.setAttribute('mode', "filter.chests");
-                    }
-                }
-            }
+            this.refreshFilter();
         }
         this.refresh();
     }
@@ -471,7 +444,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
     }
 
     get mode() {
-        return this.getAttribute('mode') || "filter.chests";
+        return this.getAttribute('mode') || "filter.unknown";
     }
 
     set mode(val) {
@@ -491,7 +464,37 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
         }
     }
 
+    refreshFilter() {
+        let modeEl = this.shadowRoot.getElementById('location-mode');
+        let opts = modeEl.querySelectorAll("[data-filter]");
+        let first = "filter.unknown";
+        let change = false;
+        for (let opt of opts) {
+            if (FilterStorage.get(opt.dataset.filter) != "false") {
+                // LEGACY
+                opt.removeAttribute("disabled");
+                if (first == "filter.unknown") {
+                    first = opt.dataset.filter;
+                }
+                if (this.mode == "filter.unknown") {
+                    change = true;
+                }
+            } else {
+                // LEGACY
+                opt.setAttribute("disabled", true);
+                if (this.mode == opt.dataset.filter) {
+                    change = true;
+                }
+            }
+        }
+        if (change) {
+            modeEl.value = first;
+            this.setAttribute('mode', first);
+        }
+    }
+
     async refresh() {
+        // TODO do not use specialized code. make generic
         let dType = "v";//this.shadowRoot.getElementById("location-version").value;
         this.innerHTML = "";
         let data = FileData.get(`world_lists/${this.ref}`);
@@ -505,7 +508,6 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
             minimap.style.backgroundImage = `url("/images/maps/${data.background}")`;
             // fill map
             if (dType == "n") {
-
                 let data_v = data.lists.v;
                 let data_m = data.lists.mq;
                 let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));

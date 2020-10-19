@@ -12,6 +12,10 @@ class StateConverter {
     }
 
     convert(state) {
+        const version = state.version || 0;
+        if (version < OFFSET) {
+            // TODO show error to user and link to converter page
+        }
         const TARGET_VERSION = OFFSET + CONVERTER_FN.length;
         if (!state.hasOwnProperty("data")) {
             state = {data: state};
@@ -20,10 +24,10 @@ class StateConverter {
         const timestamp = state.timestamp || new Date();
         const autosave = state.autosave || new Date();
         const notes = state.notes || "";
-        const version = state.version || 0;
         if (version < TARGET_VERSION) {
             for (let i = version; i < TARGET_VERSION; ++i) {
-                state = CONVERTER_FN[i - OFFSET](state);
+                const fn = CONVERTER_FN[i - OFFSET];
+                if (typeof fn == "function") state = fn(state);
             }
             state.name = name;
             state.timestamp = timestamp;

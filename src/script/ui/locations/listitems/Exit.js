@@ -299,7 +299,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                 this.hint = data.newValue;
             }
         });
-        this.registerGlobal(["statechange", "settings", "logic", "filter"], event => {
+        this.registerGlobal(["statechange", "statechange_dungeontype", "settings", "logic", "filter"], event => {
             this.update();
         });
         this.registerGlobal("exit", event => {
@@ -332,7 +332,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
     async update() {
         const area = AREA.get(this);
         if (!!area) {
-            let dType = StateStorage.read(`dungeonTypes.${area}`, 'v');
+            let dType = StateStorage.readExtra("dungeontype", area, 'v');
             if (dType == "n") {
                 let data_v = FileData.get(`world_lists/${area}/lists/v`);
                 let data_m = FileData.get(`world_lists/${area}/lists/mq`);
@@ -392,7 +392,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                 if (oldValue != newValue) {
                     const data = FileData.get(`world/${newValue}`);
                     const exit = FileData.get(`exits/${data.access}`);
-                    const entrances = FileData.get("entrances");
+                    const entrances = FileData.get("exits");
                     const txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = Language.translate(data.access);
                     txt.setAttribute('i18n-content', data.access);
@@ -407,9 +407,9 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                         const value = entrances[key];
                         if (value.type == exit.type) {
                             const opt = document.createElement('emc-option');
-                            opt.value = key;
-                            opt.innerHTML = Language.translate(key);
-                            opt.setAttribute('i18n-content', key);
+                            opt.value = value.target;
+                            opt.innerHTML = Language.translate(value.target);
+                            opt.setAttribute('i18n-content', value.target);
                             selectEl.append(opt);
                         }
                     }
@@ -421,7 +421,10 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                 if (oldValue != newValue) {
                     const el = this.shadowRoot.getElementById("value");
                     if (!!newValue) {
-                        const entrance = FileData.get(`entrances/${newValue}`);
+                        let entrance = FileData.get(`exits/${newValue}`);
+                        if (entrance == null) {
+                            entrance = FileData.get(`exits/${newValue.split(" -> ").reverse().join(" -> ")}`)
+                        }
                         el.innerHTML = Language.translate(newValue);
                         AREA.set(this, entrance.area);
                         this.hint = StateStorage.readExtra("area_hint", entrance.area, "");

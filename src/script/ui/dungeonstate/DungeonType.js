@@ -53,7 +53,7 @@ const TPL = new Template(`
 `);
 
 function stateChanged(event) {
-    let value = event.data.state[`dungeonTypes.${this.ref}`];
+    let value = event.data.extra.dungeontype[this.ref];
     if (typeof value == "undefined" || value == "") {
         value = "v";
         if (!!this.ref) {
@@ -66,9 +66,13 @@ function stateChanged(event) {
     this.value = value;
 }
 
-function dungeonTypeUpdate(event){
-    if (this.ref === event.data.name && this.value !== event.data.value) {
-        this.value = event.data.value;
+function dungeonTypeUpdate(event) {
+    let data;
+    if (event.data != null) {
+        data = event.data[this.ref];
+    }
+    if (data != null) {
+        this.value = data.newValue;
     }
 }
 
@@ -82,7 +86,7 @@ class HTMLTrackerDungeonType extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.append(TPL.generate());
         /* event bus */
         this.registerGlobal("state", stateChanged.bind(this));
-        this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));
+        this.registerGlobal("statechange_dungeontype", dungeonTypeUpdate.bind(this));
     }
 
     get ref() {
@@ -123,7 +127,7 @@ class HTMLTrackerDungeonType extends EventBusSubsetMixin(HTMLElement) {
                     if (!!newValue) {
                         let area = FileData.get(`world_lists/${newValue}/lists`);
                         if (area.hasOwnProperty("mq")) {
-                            value = StateStorage.read(`dungeonTypes.${newValue}`, "n");
+                            value = StateStorage.readExtra("dungeontype", newValue, "n");
                             readonly = false;
                         }
                     }
@@ -153,11 +157,7 @@ class HTMLTrackerDungeonType extends EventBusSubsetMixin(HTMLElement) {
             } else {
                 this.value = 'v';
             }
-            StateStorage.write(`dungeonTypes.${this.ref}`, this.value);
-            this.triggerGlobal("dungeontype", {
-                name: this.ref,
-                value: this.value
-            });
+            StateStorage.writeExtra("dungeontype", this.ref, this.value);
         }
         event.preventDefault();
         return false;
@@ -166,11 +166,7 @@ class HTMLTrackerDungeonType extends EventBusSubsetMixin(HTMLElement) {
     revert(event) {
         if (!this.readonly) {
             this.value = "n";
-            StateStorage.write(`dungeonTypes.${this.ref}`, 'n');
-            this.triggerGlobal("dungeontype", {
-                name: this.ref,
-                value: 'n'
-            });
+            StateStorage.writeExtra("dungeontype", this.ref, 'n');
         }
         event.preventDefault();
         return false;

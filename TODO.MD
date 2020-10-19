@@ -10,10 +10,7 @@
 
 - fix multiplayer sync
     - undo/redo does not sync correctly
-        - fix: disable undo/redo in multiplayer, do to possibly unwanted behaviour
-- not all components react to statechanges correctly
-    - e.g. items, dungeontype, dungeonreward, etc.
-- dungeontype/dungeonreward still saved to statedata not extradata
+        - fix: disable undo/redo in multiplayer, due to possibly unwanted behaviour
 
 ---
 
@@ -38,10 +35,6 @@
     - "skip.water_central_gs_irons"
     - "skip.water_falling_platform_gs_hookshot"
     - "skip.water_falling_platform_gs_boomerang"
-
-- add missing options
-    - on new game options are written initially by the `StateStorage`
-    - on game load missing/changed options should be added by `StateConverters`
 
 ### TODO FOR OVERWORLD ENTRANCES
 
@@ -74,10 +67,6 @@
 ### REQUESTS
 
 - optionally increase skully token count with ticking off skullies
-
-- add tooltips to all the icons
-- context menu for areas/entrances
-- context menu on map icons
 
 - better color choices
     - add theming to custom-elements

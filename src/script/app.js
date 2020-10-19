@@ -27,7 +27,6 @@ const FILES = {
     "logic_glitched":       {path: "/database/logic_glitched.json",     type: "json"},
     "options_trans":        {path: "/database/options_trans.json",      type: "jsonc"},
     "exits":                {path: "/database/exits.json",              type: "jsonc"},
-    "entrances":            {path: "/database/entrances.json",          type: "jsonc"},
     "items":                {path: "/database/items.json",              type: "jsonc"},
     "grids":                {path: "/database/grids.json",              type: "jsonc"},
     "dungeonstate":         {path: "/database/dungeonstate.json",       type: "jsonc"},

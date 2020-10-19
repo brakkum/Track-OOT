@@ -54,11 +54,6 @@ const TPL = new Template(`
         ::slotted([value].mark) {
             color: #54ff54;
         }
-        ::slotted([value].dungeon_reward) {
-            font-size: 0.55em;
-            align-items: flex-end;
-            justify-content: flex-center;
-        }
     </style>
     <slot id="slot">
     </slot>
@@ -89,7 +84,7 @@ function optionsChanged(event) {
     }
 }
 
-function stateChanged(event) {
+function stateLoaded(event) {
     // savesatate
     let value = parseInt(event.data.state[this.ref]);
     if (isNaN(value)) {
@@ -109,6 +104,32 @@ function stateChanged(event) {
     }
 }
 
+function stateChanged(event) {
+    // savesatate
+    const change = event.data[this.ref];
+    if (change != null) {
+        let value = parseInt(change.newValue);
+        if (!isNaN(value)) {
+            value = 0;
+        }
+        this.value = value;
+    }
+    // settings
+    const data = FileData.get("items")[this.ref];
+    if (data.hasOwnProperty("start_settings")) {
+        const start = event.data[data.start_settings];
+        if (start != null) {
+            let startvalue = parseInt(start.newValue);
+            if (isNaN(startvalue)) {
+                startvalue = 1;
+            }
+            this.startvalue = startvalue;
+        }
+    } else {
+        this.fillItemChoices();
+    }
+}
+
 function itemUpdate(event) {
     if (this.ref === event.data.name && this.value !== event.data.value) {
         let value = parseInt(event.data.value);
@@ -121,8 +142,11 @@ function itemUpdate(event) {
 
 function dungeonTypeUpdate(event) {
     let data = FileData.get("items")[this.ref];
-    if (data.hasOwnProperty("maxmq") && data.hasOwnProperty("related_dungeon") && event.data.name === data.related_dungeon) {
-        this.fillItemChoices();
+    if (data.hasOwnProperty("maxmq") && data.hasOwnProperty("related_dungeon")) {
+        const change = event.data[data.related_dungeon];
+        if (change != null) {
+            this.fillItemChoices();
+        }
     }
 }
 
@@ -136,9 +160,10 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.append(TPL.generate());
         /* event bus */
         this.registerGlobal("item", itemUpdate.bind(this));
-        this.registerGlobal("state", stateChanged.bind(this));
         this.registerGlobal("randomizer_options", optionsChanged.bind(this));
-        this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));
+        this.registerGlobal("state", stateLoaded.bind(this));
+        this.registerGlobal("statechange", stateChanged.bind(this));
+        this.registerGlobal("statechange_dungeontype", dungeonTypeUpdate.bind(this));
     }
 
     get ref() {
@@ -262,7 +287,7 @@ class HTMLTrackerItem extends EventBusSubsetMixin(HTMLElement) {
 
         let max_value = 0;
         if (data.hasOwnProperty("related_dungeon") && data.hasOwnProperty("maxmq")) {
-            let type = StateStorage.read(`dungeonTypes.${data.related_dungeon}`, "n");
+            let type = StateStorage.readExtra("dungeontype", data.related_dungeon, "n");
             if (type == "v") {
                 max_value = data.max;
             } else if (type == "mq") {
@@ -414,9 +439,6 @@ function createOption(value, img, data, max_value) {
                 opt.classList.add("mark");
             }
         }
-    }
-    if (!!data.dungeon_reward) {
-        opt.classList.add("dungeon_reward");
     }
     // radial-gradient(ellipse at center, rgb(24, 241, 21) 0%,rgb(24, 241, 21) 45%,rgba(0,255,255,0) 72%,rgba(0,255,255,0) 87%)
     return opt;

@@ -44,6 +44,13 @@ Application:    Track-OOT
     - add check/uncheck all
     - set entrance as 2nd level contextmenu
     - add woth/barren markers
+- added spoilerlog parser for presetting
+    - randomizer options
+    - starting items
+    - item-location-binding
+    - woth/barren
+    - dungeon type
+    - shops
 
 ### CREDITS
 

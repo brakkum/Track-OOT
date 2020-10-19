@@ -29,7 +29,7 @@ function updateStates(doneEl, availEl, missEl) {
         Object.keys(data).forEach(name => {
             if (name == "#" || name == "") return;
             let buff = data[name];
-            let dType = StateStorage.read(`dungeonTypes.${name}`, buff.lists.hasOwnProperty("mq") ? "n" : "v");
+            let dType = StateStorage.readExtra("dungeontype", name, buff.lists.hasOwnProperty("mq") ? "n" : "v");
             if (dType == "n") {
                 let cv = ListLogic.check(buff.lists.v.filter(ListLogic.filterUnusedChecks));
                 let cm = ListLogic.check(buff.lists.mq.filter(ListLogic.filterUnusedChecks));
