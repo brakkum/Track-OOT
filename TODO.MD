@@ -3,6 +3,8 @@
 
 - initial sync does not include extra data (?)
     - at least entrances have not been transfered
+- check key counts for dungeons
+    - seems to always use max of both instead of the correct value
 
 ---
 
@@ -57,8 +59,9 @@
     - 1 list with activated elements
     - buttons for (de-)activating elements
 
-- make unified list/map marker abstract class
+- make unified listitems/mapmarkers abstract class
     - make overwritable update state/aviability function (called on connected callback)
+    - removes the need to explicitly have all functions present on all listitems/mapmarkers
     
 - add tooltips to location badges
 

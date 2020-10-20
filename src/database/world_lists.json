@@ -833,38 +833,38 @@
                 {
                     "type": "area",
                     "id": "area.kokiri",
-                    "x": 0,
-                    "y": 0
+                    "x": 1507,
+                    "y": 626
                 },
                 {
                     "type": "area",
                     "id": "area.desert",
-                    "x": 0,
-                    "y": 0
+                    "x": 123,
+                    "y": 254
                 },
                 {
                     "type": "area",
                     "id": "area.river",
-                    "x": 0,
-                    "y": 0
+                    "x": 1498,
+                    "y": 346
                 },
                 {
                     "type": "area",
                     "id": "area.hyrule_field",
-                    "x": 0,
-                    "y": 0
+                    "x": 1004,
+                    "y": 329
                 },
                 {
                     "type": "area",
                     "id": "area.gerudo_valley",
-                    "x": 0,
-                    "y": 0
+                    "x": 461,
+                    "y": 383
                 },
                 {
                     "type": "area",
                     "id": "area.lake",
-                    "x": 0,
-                    "y": 0
+                    "x": 741,
+                    "y": 864
                 },
                 {
                     "type": "area",
@@ -895,6 +895,12 @@
                     "id": "area.kakariko",
                     "x": 1248,
                     "y": 259
+                },
+                {
+                    "type": "area",
+                    "id": "area.graveyard",
+                    "x": 1400,
+                    "y": 240
                 },
                 {
                     "type": "area",
@@ -1055,6 +1061,54 @@
             ]
         }
     },
+    "subarea.kokiri.links_house": {
+        "background": "",
+        "width": 0,
+        "height": 0,
+        "lists": {
+            "v": [
+                {
+                    "type": "chest",
+                    "id": "location.kokiri.c_links_house_cow",
+                    "x": 0,
+                    "y": 0
+                }
+            ]
+        }
+    },
+    "subarea.kokiri.midos_house": {
+        "background": "",
+        "width": 0,
+        "height": 0,
+        "lists": {
+            "v": [
+                {
+                    "type": "chest",
+                    "id": "location.kokiri.c_midos_house_1",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.kokiri.c_midos_house_2",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.kokiri.c_midos_house_3",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.kokiri.c_midos_house_4",
+                    "x": 0,
+                    "y": 0
+                }
+            ]
+        }
+    },
     "area.kokiri": {
         "background": "",
         "width": 0,
@@ -1068,14 +1122,14 @@
                     "y": 0
                 },
                 {
-                    "type": "chest",
-                    "id": "location.kokiri.c_midos_house",
+                    "type": "subarea",
+                    "id": "subarea.kokiri.links_house",
                     "x": 0,
                     "y": 0
                 },
                 {
-                    "type": "chest",
-                    "id": "location.kokiri.c_links_house_cow",
+                    "type": "subarea",
+                    "id": "subarea.kokiri.midos_house",
                     "x": 0,
                     "y": 0
                 },
@@ -2419,54 +2473,6 @@
                 },
                 {
                     "type": "chest",
-                    "id": "location.kakariko.c_race_1",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.kakariko.c_race_2",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.kakariko.c_digging",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.kakariko.c_shield_grave",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.kakariko.c_redead_grave",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.kakariko.c_sun_song",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.kakariko.c_sun_song_chest",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.kakariko.c_bean_hp",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
                     "id": "location.kakariko.c_warp",
                     "x": 0,
                     "y": 0
@@ -2544,24 +2550,6 @@
                     "y": 0
                 },
                 {
-                    "type": "skulltula",
-                    "id": "location.kakariko.s_graveyard_royal_grave_child_night",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "skulltula",
-                    "id": "location.kakariko.s_graveyard_beanspot_child_night",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "gossipstone",
-                    "id": "location.kakariko.g_gossip_graveyard",
-                    "x": 0,
-                    "y": 0
-                },
-                {
                     "type": "gossipstone",
                     "id": "location.kakariko.g_gossip_grotto_kakariko",
                     "x": 0,
@@ -2623,12 +2611,6 @@
                 },
                 {
                     "type": "exit",
-                    "id": "exit.kakariko.dampes_hut",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "exit",
                     "id": "exit.kakariko.open_grotto",
                     "x": 0,
                     "y": 0
@@ -2636,6 +2618,87 @@
                 {
                     "type": "exit",
                     "id": "exit.kakariko.redead_grotto",
+                    "x": 0,
+                    "y": 0
+                }
+            ]
+        }
+    },
+    "area.graveyard": {
+        "background": "",
+        "width": 0,
+        "height": 0,
+        "lists": {
+            "v": [
+                {
+                    "type": "chest",
+                    "id": "location.kakariko.c_race_1",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.kakariko.c_race_2",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.kakariko.c_digging",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.kakariko.c_shield_grave",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.kakariko.c_redead_grave",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.kakariko.c_sun_song",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.kakariko.c_sun_song_chest",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.kakariko.c_bean_hp",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "skulltula",
+                    "id": "location.kakariko.s_graveyard_royal_grave_child_night",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "skulltula",
+                    "id": "location.kakariko.s_graveyard_beanspot_child_night",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "gossipstone",
+                    "id": "location.kakariko.g_gossip_graveyard",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "exit",
+                    "id": "exit.kakariko.dampes_hut",
                     "x": 0,
                     "y": 0
                 }

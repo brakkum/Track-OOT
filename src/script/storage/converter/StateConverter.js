@@ -5,5 +5,6 @@ import "./StateConverter2.js";
 import "./StateConverter3.js";
 import "./StateConverter4.js";
 import "./StateConverter5.js";
+import "./StateConverter6.js";
 
 StateConverter.offset = 0;

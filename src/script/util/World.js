@@ -5,11 +5,13 @@ import FilterStorage from "/script/storage/FilterStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
 import ListArea from "/script/ui/locations/listitems/Area.js";
+import ListSubArea from "/script/ui/locations/listitems/SubArea.js";
 import ListExit from "/script/ui/locations/listitems/Exit.js";
 import ListLocation from "/script/ui/locations/listitems/Location.js";
 import "/script/ui/locations/listitems/Gossipstone.js";
 
 import MapArea from "/script/ui/map/marker/Area.js";
+import MapSubArea from "/script/ui/map/marker/SubArea.js";
 import MapExit from "/script/ui/map/marker/Exit.js";
 import MapLocation from "/script/ui/map/marker/Location.js";
 import "/script/ui/map/marker/Gossipstone.js";
@@ -28,10 +30,64 @@ function valueGetter(key) {
 }
 
 function mapToObj(map) {
-    let res = {};
+    const res = {};
     map.forEach((v, k) => {
         res[k] = v;
     });
+    return res;
+}
+
+function createListItem(instance) {
+    let res = null;
+    const values = FILTER.get(instance);
+    const category = CATEGORY.get(instance);
+    const type = TYPE.get(instance);
+    if (category == "subarea") {
+        res = new ListSubArea();
+        const list = FileData.get(`world_lists/${REF.get(instance)}/lists/v`);
+        for (const entry of list) {
+            res.append(createListItem(WORLD.get(entry.id)));
+        }
+    } else {
+        if (category == "area" && type != "") {
+            res = new ListArea();
+        } else if (category == "exit") {
+            res = new ListExit();
+        } else {
+            res = ListLocation.createType(type);
+        }
+        res.access = ACCESS.get(instance);
+        res.ref = REF.get(instance);
+        res.setFilterData(mapToObj(values));
+    }
+    return res;
+}
+
+function createMapItem(instance) {
+    let res = null;
+    const values = FILTER.get(instance);
+    const category = CATEGORY.get(instance);
+    const type = TYPE.get(instance);
+    if (category == "area" && type != "") {
+        res = new MapArea();
+    } else if (category == "subarea") {
+        res = new MapSubArea();
+    } else if (category == "exit") {
+        res = new MapExit();
+    } else {
+        res = MapLocation.createType(type);
+        // LEGACY
+        if (type == "skulltula") {
+            res.dataset.mode = "filter.skulltulas";
+        } else if (type == "gossipstone") {
+            res.dataset.mode = "filter.gossipstones";
+        } else {
+            res.dataset.mode = "filter.chests";
+        }
+    }
+    res.access = ACCESS.get(instance);
+    res.ref = REF.get(instance);
+    res.setFilterData(mapToObj(values));
     return res;
 }
 
@@ -39,15 +95,15 @@ class WorldEntry {
 
     constructor(ref, data) {
         let visible_logic = null;
-        let filter_logics = new Map();
-        let filter_values = new Map();
+        const filter_logics = new Map();
+        const filter_values = new Map();
         REF.set(this, ref);
         ACCESS.set(this, data.access);
         FILTER.set(this, filter_values);
         CATEGORY.set(this, data.category);
         TYPE.set(this, data.type);
 
-        let stored_data = new Map(Object.entries(StateStorage.getAll()));
+        const stored_data = new Map(Object.entries(StateStorage.getAll()));
 
         /* LOGIC */
         if (typeof data.visible == "object") {
@@ -60,9 +116,9 @@ class WorldEntry {
             for (let i in data.filter) {
                 for (let j in data.filter[i]) {
                     if (typeof data.filter[i][j] == "object") {
-                        let logicFn = LogicCompiler.compile(data.filter[i][j]);
+                        const logicFn = LogicCompiler.compile(data.filter[i][j]);
                         filter_logics.set(`${i}/${j}`, logicFn);
-                        let res = !!logicFn(valueGetter.bind(stored_data));
+                        const res = !!logicFn(valueGetter.bind(stored_data));
                         filter_values.set(`${i}/${j}`, res);
                     } else {
                         filter_values.set(`${i}/${j}`, !!data.filter[i][j]);
@@ -72,13 +128,13 @@ class WorldEntry {
         }
 
         /* EVENTS */
-        let calculateFilter = function(data) {
+        const calculateFilter = function(data) {
             if (typeof visible_logic == "function") {
                 VISIBLE.set(this, !!visible_logic(valueGetter.bind(data)));
             }
             filter_logics.forEach((logicFn, key) => {
                 if (typeof logicFn == "function") {
-                    let res = !!logicFn(valueGetter.bind(data));
+                    const res = !!logicFn(valueGetter.bind(data));
                     filter_values.set(key, res);
                 }
             });
@@ -98,7 +154,7 @@ class WorldEntry {
     }
 
     visible() {
-        let visible = !!VISIBLE.get(this);
+        const visible = !!VISIBLE.get(this);
         return visible && this.filtered();
     }
 
@@ -107,11 +163,11 @@ class WorldEntry {
     }
 
     filtered() {
-        let activeFilter = FilterStorage.getAll();
-        let values = FILTER.get(this);
-        for (let filter in activeFilter) {
-            let value = activeFilter[filter];
-            let name = `${filter}/${value}`;
+        const activeFilter = FilterStorage.getAll();
+        const values = FILTER.get(this);
+        for (const filter in activeFilter) {
+            const value = activeFilter[filter];
+            const name = `${filter}/${value}`;
             if (!!value && values.has(name)) {
                 if (!values.get(name)) {
                     return false; 
@@ -123,20 +179,7 @@ class WorldEntry {
 
     get listItem() {
         if (!LIST_ITEMS.has(this)) {
-            let values = FILTER.get(this);
-            let listItem = null;
-            let category = CATEGORY.get(this);
-            let type = TYPE.get(this);
-            if (category == "area" && type != "") {
-                listItem = new ListArea();
-            } else if (category == "exit") {
-                listItem = new ListExit();
-            } else {
-                listItem = ListLocation.createType(type);
-            }
-            listItem.access = ACCESS.get(this);
-            listItem.ref = REF.get(this);
-            listItem.setFilterData(mapToObj(values));
+            const listItem = createListItem(this);
             LIST_ITEMS.set(this, listItem);
             return listItem;
         }
@@ -145,28 +188,7 @@ class WorldEntry {
 
     get mapMarker() {
         if (!MAP_MARKERS.has(this)) {
-            let values = FILTER.get(this);
-            let mapItem = null;
-            let category = CATEGORY.get(this);
-            let type = TYPE.get(this);
-            if (category == "area" && type != "") {
-                mapItem = new MapArea();
-            } else if (category == "exit") {
-                mapItem = new MapExit();
-            } else {
-                mapItem = MapLocation.createType(type);
-                // LEGACY
-                if (type == "skulltula") {
-                    mapItem.dataset.mode = "filter.skulltulas";
-                } else if (type == "gossipstone") {
-                    mapItem.dataset.mode = "filter.gossipstones";
-                } else {
-                    mapItem.dataset.mode = "filter.chests";
-                }
-            }
-            mapItem.access = ACCESS.get(this);
-            mapItem.ref = REF.get(this);
-            mapItem.setFilterData(mapToObj(values));
+            const mapItem = createMapItem(this);
             MAP_MARKERS.set(this, mapItem);
             return mapItem;
         }
@@ -183,9 +205,9 @@ class World {
     init() {
         if (!initialized) {
             initialized = true;
-            let world = FileData.get("world");
-            for (let ref in world) {
-                let entry = world[ref];
+            const world = FileData.get("world");
+            for (const ref in world) {
+                const entry = world[ref];
                 WORLD.set(ref, new WorldEntry(ref, entry));
             }
         }

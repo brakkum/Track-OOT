@@ -174,8 +174,7 @@ const TPL = new Template(`
             background-color: var(--dungeon-status-hover-color, #ffffff32);
         }
         :host(:not([ref])) #back,
-        :host([ref=""]) #back,
-        :host([ref="#"]) #back {
+        :host([ref=""]) #back {
             display: none;
         }
     </style>
@@ -413,7 +412,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
             this.shadowRoot.getElementById('location-mode').value = this.mode;
         });
         this.registerGlobal(["state", "settings", "randomizer_options", "filter"], event => {
-            if (this.ref == "#") {
+            if (this.ref == "") {
                 this.refreshFilter();
             }
             this.refresh();
@@ -427,7 +426,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
 
     connectedCallback() {
         super.connectedCallback();
-        if (this.ref == "#") {
+        if (this.ref == "") {
             this.refreshFilter();
         }
         this.refresh();
@@ -435,12 +434,12 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
 
     get ref() {
         //return this.getAttribute('ref') || "";
-        return "#";
+        return "";
     }
 
     set ref(val) {
         //this.setAttribute('ref', val);
-        this.setAttribute('ref', "#");
+        this.setAttribute('ref', "");
     }
 
     get mode() {
@@ -518,7 +517,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
 
             } else {
                 data.lists[dType].forEach(record => {
-                    if (this.ref == "#" && this.mode == "filter.gossipstones") {
+                    if (this.ref == "" && this.mode == "filter.gossipstones") {
                         // LEGACY
                         if (record.type == "area" || record.type == "entrance") {
                             return;
@@ -527,7 +526,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
                     let loc = World.getLocation(record.id);
                     if (!!loc && loc.visible()) {
                         let el = loc.mapMarker;
-                        if (this.ref == "#" && !!el.dataset.mode && el.dataset.mode != this.mode) {
+                        if (this.ref == "" && !!el.dataset.mode && el.dataset.mode != this.mode) {
                             // LEGACY
                             return;
                         }

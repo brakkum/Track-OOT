@@ -60,7 +60,7 @@
         "filter": {
             "filter.era": {
                 "child": true,
-                "adult": true
+                "adult": false
             },
             "filter.time": {
                 "day": true,
@@ -83,7 +83,7 @@
         "filter": {
             "filter.era": {
                 "child": true,
-                "adult": true
+                "adult": false
             },
             "filter.time": {
                 "day": true,
@@ -105,7 +105,7 @@
         },
         "filter": {
             "filter.era": {
-                "child": true,
+                "child": false,
                 "adult": true
             },
             "filter.time": {
@@ -220,7 +220,7 @@
         },
         "filter": {
             "filter.era": {
-                "child": true,
+                "child": false,
                 "adult": true
             },
             "filter.time": {
@@ -241,6 +241,38 @@
                 "value": "entrance_shuffle_off"
             }
         },
+        "filter": {
+            "filter.era": {
+                "child": false,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "subarea.kokiri.links_house": {
+        "category": "subarea",
+        "type": "interior",
+        "access": "logic.subarea.kokiri.links_house",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "subarea.kokiri.midos_house": {
+        "category": "subarea",
+        "type": "interior",
+        "access": "logic.subarea.kokiri.midos_house",
+        "visible": true,
         "filter": {
             "filter.era": {
                 "child": true,
@@ -287,7 +319,64 @@
             }
         }
     },
-    "location.kokiri.c_midos_house": {
+    "location.kokiri.c_midos_house_1": {
+        "category": "location",
+        "type": "chest",
+        "access": "logic.location.kokiri.c_midos_house",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            },
+            "filter.chests": {
+                "false": false
+            }
+        }
+    },
+    "location.kokiri.c_midos_house_2": {
+        "category": "location",
+        "type": "chest",
+        "access": "logic.location.kokiri.c_midos_house",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            },
+            "filter.chests": {
+                "false": false
+            }
+        }
+    },
+    "location.kokiri.c_midos_house_3": {
+        "category": "location",
+        "type": "chest",
+        "access": "logic.location.kokiri.c_midos_house",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            },
+            "filter.chests": {
+                "false": false
+            }
+        }
+    },
+    "location.kokiri.c_midos_house_4": {
         "category": "location",
         "type": "chest",
         "access": "logic.location.kokiri.c_midos_house",
@@ -4267,6 +4356,22 @@
         "category": "area",
         "type": "area",
         "access": "logic.area.kakariko",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "area.graveyard": {
+        "category": "area",
+        "type": "area",
+        "access": "logic.area.graveyard",
         "visible": true,
         "filter": {
             "filter.era": {

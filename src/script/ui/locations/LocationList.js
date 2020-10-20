@@ -99,7 +99,7 @@ const TPL = new Template(`
         }
         ootrt-list-button:hover,
         #list > *:hover {
-            background-color: var(--dungeon-status-hover-color, #ffffff32);
+            background-color: var(--main-hover-color, #ffffff32);
         }
         ootrt-list-button.hidden,
         :host(:not([ref])) #back,

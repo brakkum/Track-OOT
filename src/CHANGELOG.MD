@@ -28,6 +28,9 @@ Application:    Track-OOT
     - `TODO` graves
     - `TODO` overworld
     - `TODO` owls
+- added subareas
+- temporarily deactivate the map view containing overworld locations
+    - does conflict with current interior/grotto entrance rando
 
 ### UX ENHANCEMENTS
 
