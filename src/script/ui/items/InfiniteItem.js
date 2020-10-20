@@ -73,7 +73,7 @@ function stateChanged(event) {
     const change = event.data[this.ref];
     if (change != null) {
         let value = parseInt(change.newValue);
-        if (!isNaN(value)) {
+        if (isNaN(value)) {
             value = 0;
         }
         this.value = value;
