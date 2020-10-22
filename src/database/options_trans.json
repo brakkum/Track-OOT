@@ -586,89 +586,100 @@
 	},
 	"dungeons": {
 		"Deku Tree": {
-			"name": "dungeonTypes.area.deku",
+			"name": "area.deku",
 			"values": {
 				"vanilla": "v",
 				"mq": "mq"
 			}
 		},
 		"Dodongos Cavern": {
-			"name": "dungeonTypes.area.dodongo",
+			"name": "area.dodongo",
 			"values": {
 				"vanilla": "v",
 				"mq": "mq"
 			}
 		},
 		"Jabu Jabus Belly": {
-			"name": "dungeonTypes.area.jabujabu",
+			"name": "area.jabujabu",
 			"values": {
 				"vanilla": "v",
 				"mq": "mq"
 			}
 		},
 		"Bottom of the Well": {
-			"name": "dungeonTypes.area.well",
+			"name": "area.well",
 			"values": {
 				"vanilla": "v",
 				"mq": "mq"
 			}
 		},
 		"Ice Cavern": {
-			"name": "dungeonTypes.area.ice_cavern",
+			"name": "area.ice_cavern",
 			"values": {
 				"vanilla": "v",
 				"mq": "mq"
 			}
 		},
 		"Gerudo Training Grounds": {
-			"name": "dungeonTypes.area.training_grounds",
+			"name": "area.training_grounds",
 			"values": {
 				"vanilla": "v",
 				"mq": "mq"
 			}
 		},
 		"Forest Temple": {
-			"name": "dungeonTypes.area.temple_forest",
+			"name": "area.temple_forest",
 			"values": {
 				"vanilla": "v",
 				"mq": "mq"
 			}
 		},
 		"Fire Temple": {
-			"name": "dungeonTypes.area.temple_fire",
+			"name": "area.temple_fire",
 			"values": {
 				"vanilla": "v",
 				"mq": "mq"
 			}
 		},
 		"Water Temple": {
-			"name": "dungeonTypes.area.temple_water",
+			"name": "area.temple_water",
 			"values": {
 				"vanilla": "v",
 				"mq": "mq"
 			}
 		},
 		"Spirit Temple": {
-			"name": "dungeonTypes.area.temple_spirit",
+			"name": "area.temple_spirit",
 			"values": {
 				"vanilla": "v",
 				"mq": "mq"
 			}
 		},
 		"Shadow Temple": {
-			"name": "dungeonTypes.area.temple_shadow",
+			"name": "area.temple_shadow",
 			"values": {
 				"vanilla": "v",
 				"mq": "mq"
 			}
 		},
 		"Ganons Castle": {
-			"name": "dungeonTypes.area.castle_ganon",
+			"name": "area.castle_ganon",
 			"values": {
 				"vanilla": "v",
 				"mq": "mq"
 			}
 		}
+	},
+	"dungeonReward": {
+		"Links Pocket": "pocket",
+		"Queen Gohma": "area.deku",
+		"King Dodongo": "area.dodongo",
+		"Barinade": "area.jabujabu",
+		"Phantom Ganon": "area.temple_water",
+		"Volvagia": "area.temple_forest",
+		"Morpha": "area.temple_fire",
+		"Bongo Bongo": "area.temple_shadow",
+		"Twinrova": "area.temple_spirit"
 	},
 	"trials": {
 		"Forest": {
@@ -2469,8 +2480,16 @@
 		"Compass (Shadow Temple)":              "item.compass_temple_shadow",
 		"Map (Shadow Temple)":                  "item.dungeon_map_temple_shadow",
 		"Compass (Spirit Temple)":              "item.compass_temple_spirit",
-		"Map (Spirit Temple)":                  "item.dungeon_map_temple_spirit"
-
+		"Map (Spirit Temple)":                  "item.dungeon_map_temple_spirit",
+		"Light Medallion": "item.medallion_light",
+		"Shadow Medallion": "item.medallion_shadow",
+		"Zora Sapphire": "item.stone_water",
+		"Spirit Medallion": "item.medallion_spirit",
+		"Fire Medallion": "item.medallion_fire",
+		"Water Medallion": "item.medallion_water",
+		"Kokiri Emerald": "item.stone_forest",
+		"Forest Medallion": "item.medallion_forest",
+		"Goron Ruby": "item.stone_fire"
 	},
 	"locations": {
 		"HF Ocarina of Time Item": "location.hyrule_field.c_ocarina_of_time",
