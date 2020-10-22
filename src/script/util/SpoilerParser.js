@@ -50,12 +50,10 @@ function parseSetting(setting, world) {
 
 function parseStartingItems(items, world) {
     let starting_trans = trans["starting_items"];
-    let bottles = 0;
-    let bottle;
-    let bottleWL;
 
     for(let w = 1; w <= world; w++) {
         if(world !== 1) items = items["World " + w];
+        let bottles = 0;
 
         for(let i in items) {
             let v = items[i];
@@ -67,33 +65,11 @@ function parseStartingItems(items, world) {
                     if (starting_trans[i]["values"][v] === undefined) {
                         console.warn("[" + i + ": " + v + "] is a invalid value. Please report this bug")
                     } else {
-                        options[w][starting_trans[i]["name"]] = starting_trans[i]["values"][v];
-
-                        if (i !== "Bottle") {
-                            EventBus.trigger("item", {
-                                name: starting_trans[i]["name"],
-                                value: starting_trans[i]["values"][v]
-                            });
-                        }
-
-                        if (i === "Bottle With Letter" || i === "Bottle") {
-                            if(i === "Bottle With Letter") bottleWL = true;
-                            if(i === "Bottle") bottle = true;
-
+                        if(!i.includes("Bottle")) {
+                            options[w][starting_trans[i]["name"]] = starting_trans[i]["values"][v];
+                        } else {
                             bottles = bottles + starting_trans[i]["values"][v]
                             options[w][starting_trans["Bottle"]["name"]] = bottles;
-                            if(i.hasOwnProperty("Bottle") && i.hasOwnProperty("Bottle With Letter") && bottle && bottleWL) {
-                                EventBus.trigger("item", {
-                                    name: starting_trans["Bottle"]["name"],
-                                    value: bottles
-                                });
-                            }
-                            if(!i.hasOwnProperty("Bottle") || !i.hasOwnProperty("Bottle With Letter")) {
-                                EventBus.trigger("item", {
-                                    name: starting_trans["Bottle"]["name"],
-                                    value: bottles
-                                });
-                            }
                         }
                     }
                 }
@@ -102,29 +78,50 @@ function parseStartingItems(items, world) {
     }
 }
 
-function parseDungeons(dungeons, world) {
+function parseDungeons(dungeons, locations, world, dt, dr) {
     let dungeon_trans = trans["dungeons"];
+    let location_trans = trans["dungeonReward"]
+    let item_trans = trans["itemList"]
 
     for(let w = 1; w <= world; w++) {
-        if(world !== 1) dungeons = dungeons["World " + w];
+        if(world !== 1) {
+            dungeons = dungeons["World " + w];
+            locations = locations["World " + w];
+        }
 
-        for(let i in dungeons) {
-            let v = dungeons[i];
-            if(dungeon_trans.hasOwnProperty(i)) {
-                if(Array.isArray(i)) {
-                    console.warn("Unexpected Array within dungeon types, please report this!")
-                } else {
-                    if (dungeon_trans[i]["values"][v] === undefined) {
-                        console.warn("[" + i + ": " + v + "] is a invalid value. Please report this bug")
+        if(dt) {
+            let data = {};
+            for (let i in dungeons) {
+                let v = dungeons[i];
+                if (dungeon_trans.hasOwnProperty(i)) {
+                    if (Array.isArray(i)) {
+                        console.warn("Unexpected Array within dungeon types, please report this!")
                     } else {
-                        options[w][dungeon_trans[i]["name"]] = dungeon_trans[i]["values"][v];
-                        EventBus.trigger("dungeontype", {
-                            name: dungeon_trans[i]["name"].replace("dungeonTypes.", ""),
-                            value: dungeon_trans[i]["values"][v]
-                        });
+                        if (dungeon_trans[i]["values"][v] === undefined) {
+                            console.warn("[" + i + ": " + v + "] is a invalid value. Please report this bug")
+                        } else {
+                            data[dungeon_trans[i]["name"]] = dungeon_trans[i]["values"][v];
+                        }
                     }
                 }
             }
+            extra[w]["dungeontype"] = data;
+        }
+        if(dr) {
+            let data = {};
+            for (let i in locations) {
+                let v = locations[i];
+                if(location_trans.hasOwnProperty(i)) {
+                    if(Array.isArray(i)) v = v["item"];
+
+                    if(item_trans[v] === undefined){
+                        console.warn("[" + i + ": " + v + "] is a invalid value. Please report this bug")
+                    } else {
+                        data[location_trans[i]] = item_trans[v];
+                    }
+                }
+            }
+            extra[w]["dungeonreward"] = data;
         }
     }
 }
@@ -437,13 +434,17 @@ function parseLocations(locations, world) {
         for(let i in locations) {
             if(location_trans.hasOwnProperty(i)) {
                 let v = locations[i];
-                if(typeof v === 'object' && v !== null) v = v["item"];
+                let player = 1;
+                if(typeof v === 'object' && v !== null) {
+                    player = v["player"];
+                    v = v["item"];
+                }
                 if (location_trans[i] !== "") {
                     if (item_trans[v] === undefined) {
                         console.warn("[" + v + "] is a invalid value. Please report this bug")
 
                     } else {
-                        loca[location_trans[i]] = item_trans[v];
+                        if(player === w) loca[location_trans[i]] = item_trans[v];
                     }
                 }
             } else {
@@ -477,8 +478,6 @@ class SpoilerParser {
         let data = spoiler;
         trans = FileData.get("options_trans");
         let multiWorld = settings["parse.multiworld"];
-        let parseEntra = false;
-        if(settings["parse.entro_dungeons"] || settings["parse.entro_indoors"] || settings["parse.entro_overworld"]) parseEntra = true;
 
         let version = versionChecker(data[":version"]);
 
@@ -493,13 +492,13 @@ class SpoilerParser {
             if(settings["parse.starting_items"]) parseStartingItems(data["starting_items"], world);
             if(settings["parse.item_association"]) parseLocations(data["locations"], world);
             if(settings["parse.woth_hints"]) parseWothLocation(data[":woth_locations"], world);
-            if(parseEntra) parseEntrances(data["entrances"], world, settings["parse.entro_dungeons"], settings["parse.entro_indoors"], false/*settings["parse.entro_overworld"]*/);
+            parseEntrances(data["entrances"], world, settings["parse.entro_dungeons"], settings["parse.entro_indoors"], false/*settings["parse.entro_overworld"]*/);
             if(settings["parse.shops"]) parseShops(data["locations"], world);
             //if(settings["parse.gossip_stones"]) parseStones(data["gossip_stones"], world);
             if(settings["parse.barren"]) parseBarren(data[":barren_regions"], world);
             if(settings["parse.trials"]) parseTrials(data["trials"], world);
             if(settings["parse.random_settings"]) parseSetting(data["randomized_settings"], multiWorld);
-            if(settings["parse.dungeons"]) parseDungeons(data["dungeons"], world);
+            parseDungeons(data["dungeons"], data["locations"], world, settings["parse.dungeons"], settings["parse.dungeonReward"]);
 
             StateStorage.write(options[multiWorld]);
             StateStorage.writeExtraAll(extra[multiWorld]);

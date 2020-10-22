@@ -40,6 +40,10 @@
       "type": "check",
       "default": false
     },
+    "parse.dungeonReward": {
+      "type": "check",
+      "default": false
+    },
     "parse.multiworld": {
       "type": "number",
       "default": 1,
