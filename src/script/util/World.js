@@ -4,17 +4,19 @@ import EventBus from "/emcJS/util/events/EventBus.js";
 import FilterStorage from "/script/storage/FilterStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
-import ListArea from "/script/ui/locations/listitems/Area.js";
-import ListSubArea from "/script/ui/locations/listitems/SubArea.js";
-import ListExit from "/script/ui/locations/listitems/Exit.js";
-import ListLocation from "/script/ui/locations/listitems/Location.js";
-import "/script/ui/locations/listitems/Gossipstone.js";
+import WorldRegistry from "./WorldRegistry.js";
 
-import MapArea from "/script/ui/map/marker/Area.js";
-import MapSubArea from "/script/ui/map/marker/SubArea.js";
-import MapExit from "/script/ui/map/marker/Exit.js";
-import MapLocation from "/script/ui/map/marker/Location.js";
-import "/script/ui/map/marker/Gossipstone.js";
+import ListArea from "/script/ui/world/listitems/Area.js";
+import ListSubArea from "/script/ui/world/listitems/SubArea.js";
+import ListExit from "/script/ui/world/listitems/Exit.js";
+import ListLocation from "/script/ui/world/listitems/Location.js";
+import "/script/ui/world/listitems/Gossipstone.js";
+
+import MapArea from "/script/ui/world/mapmarker/Area.js";
+import MapSubArea from "/script/ui/world/mapmarker/SubArea.js";
+import MapExit from "/script/ui/world/mapmarker/Exit.js";
+import MapLocation from "/script/ui/world/mapmarker/Location.js";
+import "/script/ui/world/mapmarker/Gossipstone.js";
 
 const REF = new WeakMap();
 const ACCESS = new WeakMap();
@@ -42,24 +44,18 @@ function createListItem(instance) {
     const values = FILTER.get(instance);
     const category = CATEGORY.get(instance);
     const type = TYPE.get(instance);
-    if (category == "subarea") {
+    if (category == "area" && type != "") {
+        res = new ListArea();
+    } else if (category == "subarea") {
         res = new ListSubArea();
-        const list = FileData.get(`world_lists/${REF.get(instance)}/lists/v`);
-        for (const entry of list) {
-            res.append(createListItem(WORLD.get(entry.id)));
-        }
+    } else if (category == "exit") {
+        res = new ListExit();
     } else {
-        if (category == "area" && type != "") {
-            res = new ListArea();
-        } else if (category == "exit") {
-            res = new ListExit();
-        } else {
-            res = ListLocation.createType(type);
-        }
-        res.access = ACCESS.get(instance);
-        res.ref = REF.get(instance);
-        res.setFilterData(mapToObj(values));
+        res = ListLocation.createType(type);
     }
+    res.setFilterData(mapToObj(values));
+    res.access = ACCESS.get(instance);
+    res.ref = REF.get(instance);
     return res;
 }
 
@@ -197,7 +193,6 @@ class WorldEntry {
 
 }
 
-const WORLD = new Map();
 let initialized = false;
 
 class World {
@@ -208,13 +203,13 @@ class World {
             const world = FileData.get("world");
             for (const ref in world) {
                 const entry = world[ref];
-                WORLD.set(ref, new WorldEntry(ref, entry));
+                WorldRegistry.set(ref, new WorldEntry(ref, entry));
             }
         }
     }
 
     getLocation(ref) {
-        return WORLD.get(ref);
+        return WorldRegistry.get(ref);
     }
 
 }

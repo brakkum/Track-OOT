@@ -6,7 +6,7 @@ import "/emcJS/ui/input/SwitchButton.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import Language from "/script/util/Language.js";
-import World from "/script/util/World.js";
+import WorldRegistry from "/script/util/WorldRegistry.js";
 import ListLogic from "/script/util/logic/ListLogic.js";
 import "./listitems/Button.js";
 import "./listitems/Area.js";
@@ -251,7 +251,7 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
                 btn_vanilla.className = "hidden";
                 btn_masterquest.className = "hidden";
                 data.lists[dType].forEach(record => {
-                    let loc = World.getLocation(record.id);
+                    let loc = WorldRegistry.get(record.id);
                     if (!!loc && loc.visible()) {
                         let el = loc.listItem;
                         cnt.append(el);

@@ -7,6 +7,7 @@ import StateStorage from "/script/storage/StateStorage.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import ListLogic from "/script/util/logic/ListLogic.js";
 import Language from "/script/util/Language.js";
+import WorldRegistry from "/script/util/WorldRegistry.js";
 
 const SettingsStorage = new IDBStorage('settings');
 
@@ -39,6 +40,7 @@ export default class ListSubArea extends EventBusSubsetMixin(HTMLElement) {
 
     connectedCallback() {
         super.connectedCallback();
+        this.refresh();
     }
 
     get ref() {
@@ -71,7 +73,7 @@ export default class ListSubArea extends EventBusSubsetMixin(HTMLElement) {
         if (!!data) {
             if (data.lists.mq == null) {
                 data.lists.v.forEach(record => {
-                    let loc = World.getLocation(record.id);
+                    let loc = WorldRegistry.get(record.id);
                     if (!!loc && loc.visible()) {
                         let el = loc.listItem;
                         cnt.append(el);

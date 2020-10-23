@@ -172,7 +172,7 @@ StateConverter.register(function(state) {
     if (res.data["option.doors_open_forest"] === false) {
         res.data["option.doors_open_forest"] = "doors_open_forest_closed";
     }
-    if (state.extra.exits != null) {
+    if (state.extra != null && state.extra.exits != null) {
         let buf = {};
         for (let i of Object.keys(state.extra.exits)) {
             let [k1, k2] = i.split(" -> ");

@@ -4,8 +4,8 @@ import Template from "/emcJS/util/Template.js";
 import Layout from "/emcJS/ui/layout/Layout.js";
 import "/script/ui/items/ItemGrid.js";
 import "/script/ui/dungeonstate/DungeonState.js";
-import "/script/ui/locations/LocationList.js";
-import "/script/ui/map/Map.js";
+import "/script/ui/world/LocationList.js";
+import "/script/ui/world/Map.js";
 
 const TPL = new Template(`
     <style>

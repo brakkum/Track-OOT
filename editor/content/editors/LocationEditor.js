@@ -5,7 +5,7 @@ import FileSystem from "/emcJS/util/FileSystem.js";
 
 import "/editors/modules/properties/Editor.js";
 
-import LocationListsCreator from "../locations/LocationListsCreator.js";
+import LocationListsCreator from "../world/LocationListsCreator.js";
 
 export default async function() {
     let DataStorage = new IDBStorage("locations");

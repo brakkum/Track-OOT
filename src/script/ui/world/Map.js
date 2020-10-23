@@ -4,11 +4,11 @@ import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
 import FilterStorage from "/script/storage/FilterStorage.js";
 import Language from "/script/util/Language.js";
-import World from "/script/util/World.js";
-import "./marker/Area.js";
-import "./marker/Exit.js";
-import "./marker/Location.js";
-import "./marker/Gossipstone.js";
+import WorldRegistry from "/script/util/WorldRegistry.js";
+import "./mapmarker/Area.js";
+import "./mapmarker/Exit.js";
+import "./mapmarker/Location.js";
+import "./mapmarker/Gossipstone.js";
 import "/script/ui/dungeonstate/DungeonType.js";
 import "/script/ui/FilterMenu.js";
 
@@ -523,7 +523,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
                             return;
                         }
                     }
-                    let loc = World.getLocation(record.id);
+                    let loc = WorldRegistry.get(record.id);
                     if (!!loc && loc.visible()) {
                         let el = loc.mapMarker;
                         if (this.ref == "" && !!el.dataset.mode && el.dataset.mode != this.mode) {
