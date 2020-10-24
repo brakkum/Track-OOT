@@ -739,6 +739,22 @@
             }
         }
     },
+    "area.colossus": {
+        "category": "area",
+        "type": "area",
+        "access": "logic.area.colossus",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
     "location.desert.c_chest": {
         "category": "location",
         "type": "chest",
@@ -3117,6 +3133,22 @@
             }
         }
     },
+    "area.meadow": {
+        "category": "area",
+        "type": "area",
+        "access": "logic.area.meadow",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
     "location.woods.c_skull_kid": {
         "category": "location",
         "type": "chest",
@@ -3711,6 +3743,54 @@
         "category": "area",
         "type": "area",
         "access": "logic.area.castle_town",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "area.temple_time": {
+        "category": "area",
+        "type": "area",
+        "access": "logic.area.temple_time",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "area.hyrule_castle": {
+        "category": "area",
+        "type": "area",
+        "access": "logic.area.hyrule_castle",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "area.outside_ganon_castle": {
+        "category": "area",
+        "type": "area",
+        "access": "logic.area.outside_ganon_castle",
         "visible": true,
         "filter": {
             "filter.era": {
@@ -5269,6 +5349,22 @@
             }
         }
     },
+    "area.crater": {
+        "category": "area",
+        "type": "area",
+        "access": "logic.area.crater",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
     "location.mountain.c_above_dodongo": {
         "category": "location",
         "type": "chest",
@@ -6212,6 +6308,22 @@
         "category": "area",
         "type": "area",
         "access": "logic.area.zoras",
+        "visible": true,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "area.fountain": {
+        "category": "area",
+        "type": "area",
+        "access": "logic.area.fountain",
         "visible": true,
         "filter": {
             "filter.era": {

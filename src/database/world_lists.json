@@ -839,6 +839,12 @@
                 {
                     "type": "area",
                     "id": "area.desert",
+                    "x": 275,
+                    "y": 254
+                },
+                {
+                    "type": "area",
+                    "id": "area.colossus",
                     "x": 123,
                     "y": 254
                 },
@@ -851,8 +857,8 @@
                 {
                     "type": "area",
                     "id": "area.hyrule_field",
-                    "x": 1004,
-                    "y": 329
+                    "x": 1104,
+                    "y": 390
                 },
                 {
                     "type": "area",
@@ -881,14 +887,38 @@
                 {
                     "type": "area",
                     "id": "area.woods",
-                    "x": 1498,
-                    "y": 518
+                    "x": 1480,
+                    "y": 540
+                },
+                {
+                    "type": "area",
+                    "id": "area.meadow",
+                    "x": 1545,
+                    "y": 500
                 },
                 {
                     "type": "area",
                     "id": "area.castle_town",
                     "x": 998,
+                    "y": 270
+                },
+                {
+                    "type": "area",
+                    "id": "area.temple_time",
+                    "x": 1075,
                     "y": 216
+                },
+                {
+                    "type": "area",
+                    "id": "area.hyrule_castle",
+                    "x": 961,
+                    "y": 150
+                },
+                {
+                    "type": "area",
+                    "id": "area.outside_ganon_castle",
+                    "x": 1036,
+                    "y": 150
                 },
                 {
                     "type": "area",
@@ -910,6 +940,12 @@
                 },
                 {
                     "type": "area",
+                    "id": "area.crater",
+                    "x": 1248,
+                    "y": 30
+                },
+                {
+                    "type": "area",
                     "id": "area.goron",
                     "x": 1152,
                     "y": 70
@@ -919,6 +955,12 @@
                     "id": "area.zoras",
                     "x": 1795,
                     "y": 313
+                },
+                {
+                    "type": "area",
+                    "id": "area.fountain",
+                    "x": 1840,
+                    "y": 240
                 },
                 {
                     "type": "exit",
@@ -1056,7 +1098,7 @@
                     "type": "area",
                     "id": "area.castle_ganon",
                     "x": 998,
-                    "y": 108
+                    "y": 75
                 }
             ]
         }
@@ -1251,6 +1293,21 @@
                     "y": 0
                 },
                 {
+                    "type": "skulltula",
+                    "id": "location.desert.s_fortress_adult",
+                    "x": 0,
+                    "y": 0
+                }
+            ]
+        }
+    },
+    "area.colossus": {
+        "background": "",
+        "width": 0,
+        "height": 0,
+        "lists": {
+            "v": [
+                {
                     "type": "chest",
                     "id": "location.desert.c_warp_spirit",
                     "x": 0,
@@ -1277,12 +1334,6 @@
                 {
                     "type": "chest",
                     "id": "location.desert.c_colossus_hp",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "skulltula",
-                    "id": "location.desert.s_fortress_adult",
                     "x": 0,
                     "y": 0
                 },
@@ -2041,36 +2092,6 @@
                 },
                 {
                     "type": "chest",
-                    "id": "location.woods.c_deku_salesman_meadow_grotto_1",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.woods.c_deku_salesman_meadow_grotto_2",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.woods.c_wolfos_grotto",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.woods.c_saria",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.woods.c_warp",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
                     "id": "location.woods.c_deku_theater_1",
                     "x": 0,
                     "y": 0
@@ -2112,32 +2133,8 @@
                     "y": 0
                 },
                 {
-                    "type": "skulltula",
-                    "id": "location.woods.s_labyrinth_adult_night",
-                    "x": 0,
-                    "y": 0
-                },
-                {
                     "type": "gossipstone",
                     "id": "location.woods.g_gossip_bridge",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "gossipstone",
-                    "id": "location.woods.g_gossip_meadow_left",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "gossipstone",
-                    "id": "location.woods.g_gossip_meadow_right",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "gossipstone",
-                    "id": "location.woods.g_gossip_meadow_saria",
                     "x": 0,
                     "y": 0
                 },
@@ -2162,6 +2159,69 @@
                 {
                     "type": "exit",
                     "id": "exit.woods.near_meadow_grotto",
+                    "x": 0,
+                    "y": 0
+                }
+            ]
+        }
+    },
+    "area.meadow":  {
+        "background": "",
+        "width": 0,
+        "height": 0,
+        "lists": {
+            "v": [
+                {
+                    "type": "chest",
+                    "id": "location.woods.c_deku_salesman_meadow_grotto_1",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.woods.c_deku_salesman_meadow_grotto_2",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.woods.c_wolfos_grotto",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.woods.c_saria",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.woods.c_warp",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "skulltula",
+                    "id": "location.woods.s_labyrinth_adult_night",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "gossipstone",
+                    "id": "location.woods.g_gossip_meadow_left",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "gossipstone",
+                    "id": "location.woods.g_gossip_meadow_right",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "gossipstone",
+                    "id": "location.woods.g_gossip_meadow_saria",
                     "x": 0,
                     "y": 0
                 },
@@ -2192,18 +2252,6 @@
         "height": 0,
         "lists": {
             "v": [
-                {
-                    "type": "chest",
-                    "id": "location.castle_town.c_maron",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.castle_town.c_zelda",
-                    "x": 0,
-                    "y": 0
-                },
                 {
                     "type": "chest",
                     "id": "location.castle_town.c_child_shooting",
@@ -2241,92 +2289,8 @@
                     "y": 0
                 },
                 {
-                    "type": "chest",
-                    "id": "location.castle_town.c_hyrule_fairy",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.castle_town.c_ganon_fairy",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.castle_town.c_warp",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.castle_town.c_light_arrows",
-                    "x": 0,
-                    "y": 0
-                },
-                {
                     "type": "skulltula",
                     "id": "location.castle_town.s_pot_room_child",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "skulltula",
-                    "id": "location.castle_town.s_tree_child",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "skulltula",
-                    "id": "location.castle_town.s_storm_grotto_child",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "skulltula",
-                    "id": "location.castle_town.s_near_ganon_fairy_adult",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "gossipstone",
-                    "id": "location.castle_town.g_gossip_castle_malon",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "gossipstone",
-                    "id": "location.castle_town.g_gossip_castle_climb",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "gossipstone",
-                    "id": "location.castle_town.g_gossip_castle_grotto",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "gossipstone",
-                    "id": "location.castle_town.g_gossip_tot_1",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "gossipstone",
-                    "id": "location.castle_town.g_gossip_tot_2",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "gossipstone",
-                    "id": "location.castle_town.g_gossip_tot_3",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "gossipstone",
-                    "id": "location.castle_town.g_gossip_tot_4",
                     "x": 0,
                     "y": 0
                 },
@@ -2380,12 +2344,6 @@
                 },
                 {
                     "type": "exit",
-                    "id": "exit.castle_town.temple_of_time",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "exit",
                     "id": "exit.castle_town.dog_lady",
                     "x": 0,
                     "y": 0
@@ -2393,6 +2351,114 @@
                 {
                     "type": "exit",
                     "id": "exit.castle_town.back_house",
+                    "x": 0,
+                    "y": 0
+                }
+            ]
+        }
+    },
+    "area.temple_time": {
+        "background": "",
+        "width": 0,
+        "height": 0,
+        "lists": {
+            "v": [
+                {
+                    "type": "chest",
+                    "id": "location.castle_town.c_warp",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.castle_town.c_light_arrows",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "gossipstone",
+                    "id": "location.castle_town.g_gossip_tot_1",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "gossipstone",
+                    "id": "location.castle_town.g_gossip_tot_2",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "gossipstone",
+                    "id": "location.castle_town.g_gossip_tot_3",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "gossipstone",
+                    "id": "location.castle_town.g_gossip_tot_4",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "exit",
+                    "id": "exit.castle_town.temple_of_time",
+                    "x": 0,
+                    "y": 0
+                }
+            ]
+        }
+    },
+    "area.hyrule_castle": {
+        "background": "",
+        "width": 0,
+        "height": 0,
+        "lists": {
+            "v": [
+                {
+                    "type": "chest",
+                    "id": "location.castle_town.c_maron",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.castle_town.c_zelda",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.castle_town.c_hyrule_fairy",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "skulltula",
+                    "id": "location.castle_town.s_tree_child",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "skulltula",
+                    "id": "location.castle_town.s_storm_grotto_child",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "gossipstone",
+                    "id": "location.castle_town.g_gossip_castle_malon",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "gossipstone",
+                    "id": "location.castle_town.g_gossip_castle_climb",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "gossipstone",
+                    "id": "location.castle_town.g_gossip_castle_grotto",
                     "x": 0,
                     "y": 0
                 },
@@ -2404,13 +2470,34 @@
                 },
                 {
                     "type": "exit",
-                    "id": "exit.castle_town.fairy_adult",
+                    "id": "exit.castle_town.storm_grotto",
+                    "x": 0,
+                    "y": 0
+                }
+            ]
+        }
+    },
+    "area.outside_ganon_castle": {
+        "background": "",
+        "width": 0,
+        "height": 0,
+        "lists": {
+            "v": [
+                {
+                    "type": "chest",
+                    "id": "location.castle_town.c_ganon_fairy",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "skulltula",
+                    "id": "location.castle_town.s_near_ganon_fairy_adult",
                     "x": 0,
                     "y": 0
                 },
                 {
                     "type": "exit",
-                    "id": "exit.castle_town.storm_grotto",
+                    "id": "exit.castle_town.fairy_adult",
                     "x": 0,
                     "y": 0
                 }
@@ -2737,61 +2824,7 @@
                 },
                 {
                     "type": "chest",
-                    "id": "location.mountain.c_warp",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.mountain.c_crater_wall",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.mountain.c_crater_ladder_salesman",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.mountain.c_crater_grotto_salesman_1",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.mountain.c_crater_grotto_salesman_2",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.mountain.c_crater_grotto_salesman_3",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
                     "id": "location.mountain.c_grotto_cow",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.mountain.c_magic_bean",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.mountain.c_crater_grotto",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.mountain.c_crater_fairy",
                     "x": 0,
                     "y": 0
                 },
@@ -2832,6 +2865,99 @@
                     "y": 0
                 },
                 {
+                    "type": "gossipstone",
+                    "id": "location.mountain.g_gossip_dm_trail",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "gossipstone",
+                    "id": "location.mountain.g_gossip_grotto_mountain",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "exit",
+                    "id": "exit.mountain.mountain_fairy",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "exit",
+                    "id": "exit.mountain.bomb_grotto",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "exit",
+                    "id": "exit.mountain.storms_grotto",
+                    "x": 0,
+                    "y": 0
+                }
+            ]
+        }
+    },
+    "area.crater": {
+        "background": "",
+        "width": 0,
+        "height": 0,
+        "lists": {
+            "v": [
+                {
+                    "type": "chest",
+                    "id": "location.mountain.c_warp",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.mountain.c_crater_wall",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.mountain.c_crater_ladder_salesman",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.mountain.c_crater_grotto_salesman_1",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.mountain.c_crater_grotto_salesman_2",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.mountain.c_crater_grotto_salesman_3",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.mountain.c_magic_bean",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.mountain.c_crater_grotto",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "chest",
+                    "id": "location.mountain.c_crater_fairy",
+                    "x": 0,
+                    "y": 0
+                },
+                {
                     "type": "skulltula",
                     "id": "location.mountain.s_crater_beanspot_child",
                     "x": 0,
@@ -2851,43 +2977,13 @@
                 },
                 {
                     "type": "gossipstone",
-                    "id": "location.mountain.g_gossip_dm_trail",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "gossipstone",
                     "id": "location.mountain.g_gossip_grotto_crater",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "gossipstone",
-                    "id": "location.mountain.g_gossip_grotto_mountain",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "exit",
-                    "id": "exit.mountain.mountain_fairy",
                     "x": 0,
                     "y": 0
                 },
                 {
                     "type": "exit",
                     "id": "exit.mountain.crater_fairy",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "exit",
-                    "id": "exit.mountain.bomb_grotto",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "exit",
-                    "id": "exit.mountain.storms_grotto",
                     "x": 0,
                     "y": 0
                 },
@@ -3037,6 +3133,45 @@
                 },
                 {
                     "type": "chest",
+                    "id": "location.zoras.c_king_zora",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "skulltula",
+                    "id": "location.zoras.s_wall_ice_adult_night",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "gossipstone",
+                    "id": "location.zoras.g_gossip_zora_king",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "exit",
+                    "id": "exit.zoras.shop",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "exit",
+                    "id": "exit.zoras.storms_grotto",
+                    "x": 0,
+                    "y": 0
+                }
+            ]
+        }
+    },
+    "area.fountain": {
+        "background": "",
+        "width": 0,
+        "height": 0,
+        "lists": {
+            "v": [
+                {
+                    "type": "chest",
                     "id": "location.zoras.c_fairy",
                     "x": 0,
                     "y": 0
@@ -3050,18 +3185,6 @@
                 {
                     "type": "chest",
                     "id": "location.zoras.c_underwater",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "chest",
-                    "id": "location.zoras.c_king_zora",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "skulltula",
-                    "id": "location.zoras.s_wall_ice_adult_night",
                     "x": 0,
                     "y": 0
                 },
@@ -3085,12 +3208,6 @@
                 },
                 {
                     "type": "gossipstone",
-                    "id": "location.zoras.g_gossip_zora_king",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "gossipstone",
                     "id": "location.zoras.g_gossip_zora_fairy",
                     "x": 0,
                     "y": 0
@@ -3103,19 +3220,7 @@
                 },
                 {
                     "type": "exit",
-                    "id": "exit.zoras.shop",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "exit",
                     "id": "exit.zoras.fairy",
-                    "x": 0,
-                    "y": 0
-                },
-                {
-                    "type": "exit",
-                    "id": "exit.zoras.storms_grotto",
                     "x": 0,
                     "y": 0
                 }
