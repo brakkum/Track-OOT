@@ -40,8 +40,7 @@ class LogicListsCreator {
             operators: []
         };
 
-        let world = FileData.get("world");
-        let world_lists = FileData.get("world_lists");
+        let world = FileData.get("world/marker");
         let items = FileData.get("items");
         let randomizer_options = FileData.get("randomizer_options");
         let filter = FileData.get("filter");

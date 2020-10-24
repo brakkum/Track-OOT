@@ -53,8 +53,8 @@ export default class ExitChoiceCtxMenu extends EventBusSubsetMixin(HTMLElement) 
     show(posX, posY, exitRef) {
         const mnu_ext_el = this.shadowRoot.getElementById("menu");
 
-        const exit = FileData.get(`exits/${exitRef}`);
-        const entrances = FileData.get("exits");
+        const exit = FileData.get(`world/exit/${exitRef}`);
+        const entrances = FileData.get("world/exit");
         // TODO remove used entrances
         for (const key in entrances) {
             const value = entrances[key];

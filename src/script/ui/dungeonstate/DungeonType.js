@@ -57,7 +57,7 @@ function stateChanged(event) {
     if (typeof value == "undefined" || value == "") {
         value = "v";
         if (!!this.ref) {
-            let area = FileData.get(`world_lists/${this.ref}/lists`);
+            let area = FileData.get(`world/${this.ref}/lists`);
             if (area.hasOwnProperty("mq")) {
                 value = "n";
             }
@@ -125,7 +125,7 @@ class HTMLTrackerDungeonType extends EventBusSubsetMixin(HTMLElement) {
                     let value = "v";
                     let readonly = true;
                     if (!!newValue) {
-                        let area = FileData.get(`world_lists/${newValue}/lists`);
+                        let area = FileData.get(`world/${newValue}/lists`);
                         if (area.hasOwnProperty("mq")) {
                             value = StateStorage.readExtra("dungeontype", newValue, "n");
                             readonly = false;

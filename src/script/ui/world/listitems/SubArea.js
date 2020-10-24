@@ -97,7 +97,9 @@ const TPL = new Template(`
             <emc-icon id="badge-era" src="images/icons/era_none.svg"></emc-icon>
         </div>
     </div>
-    <div id="list"></div>
+    <div id="list">
+        <slot></slot>
+    </div>
 `);
 
 const TPL_MNU_CTX = new Template(`
@@ -135,7 +137,7 @@ export default class ListSubArea extends EventBusSubsetMixin(HTMLElement) {
         MNU_CTX.set(this, mnu_ctx);
         
         mnu_ctx.shadowRoot.getElementById("menu-check").addEventListener("click", event => {
-            const data = FileData.get(`world_lists/${this.ref}/lists`);
+            const data = FileData.get(`world/${this.ref}/lists`);
             if (data.v != null) {
                 for (const loc of data.v) {
                     StateStorage.write(loc.id, true);
@@ -150,7 +152,7 @@ export default class ListSubArea extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-uncheck").addEventListener("click", event => {
-            const data = FileData.get(`world_lists/${this.ref}/lists`);
+            const data = FileData.get(`world/${this.ref}/lists`);
             if (data.v != null) {
                 for (const loc of data.v) {
                     StateStorage.write(loc.id, false);
@@ -167,14 +169,13 @@ export default class ListSubArea extends EventBusSubsetMixin(HTMLElement) {
 
         /* mouse events */
         this.addEventListener("click", event => {
-            this.triggerGlobal("location_change", {
-                name: this.ref
-            });
+            event.stopPropagation();
             event.preventDefault();
             return false;
         });
         this.addEventListener("contextmenu", event => {
             mnu_ctx_el.show(event.clientX, event.clientY);
+            event.stopPropagation();
             event.preventDefault();
             return false;
         });
@@ -187,13 +188,12 @@ export default class ListSubArea extends EventBusSubsetMixin(HTMLElement) {
 
     connectedCallback() {
         super.connectedCallback();
-        let el = this.parentElement;
-        if (el != null) {
+        let el = this;
+        while (el.parentElement != null) {
             el = el.parentElement;
-            if (el != null) {
-                el.append(MNU_CTX.get(this));
-            }
         }
+        el.append(MNU_CTX.get(this));
+        el.append(MNU_ITM.get(this));
         // update state
         this.refresh();
     }
@@ -231,23 +231,20 @@ export default class ListSubArea extends EventBusSubsetMixin(HTMLElement) {
     refresh() {
         // TODO do not use specialized code. make generic
         if (!!this.ref) {
-            // check access logic
-            const data = FileData.get(`world_lists/${this.ref}`);
-            const res = ListLogic.check(data.lists.v.filter(ListLogic.filterUnusedChecks));
-            this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[res.value];
-            // create list entries
-            const cnt = this.shadowRoot.getElementById("list");
-            cnt.innerHTML = "";
+            const data = FileData.get(`world/${this.ref}`);
+            this.innerHTML = "";
             if (!!data) {
-                if (data.lists.mq == null) {
-                    data.lists.v.forEach(record => {
-                        const loc = WorldRegistry.get(record.id);
-                        if (!!loc && loc.visible()) {
-                            const el = loc.listItem;
-                            cnt.append(el);
-                        }
-                    });
-                }
+                // check access logic
+                const res = ListLogic.check(data.list.filter(ListLogic.filterUnusedChecks));
+                this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[res.value];
+                // create list entries
+                data.list.forEach(record => {
+                    const loc = WorldRegistry.get(`${record.category}/${record.id}`);
+                    if (!!loc && loc.visible()) {
+                        const el = loc.listItem;
+                        this.append(el);
+                    }
+                });
             }
         } else {
             this.shadowRoot.getElementById("text").dataset.state = "unavailable";

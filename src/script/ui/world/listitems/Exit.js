@@ -182,7 +182,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
         });
         mnu_ctx.shadowRoot.getElementById("menu-check").addEventListener("click", event => {
             let area = AREA.get(this);
-            let data = FileData.get(`world_lists/${area}/lists`);
+            let data = FileData.get(`world/${area}/lists`);
             if (data.v != null) {
                 for (let loc of data.v) {
                     StateStorage.write(loc.id, true);
@@ -198,7 +198,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
         });
         mnu_ctx.shadowRoot.getElementById("menu-uncheck").addEventListener("click", event => {
             let area = AREA.get(this);
-            let data = FileData.get(`world_lists/${area}/lists`);
+            let data = FileData.get(`world/${area}/lists`);
             if (data.v != null) {
                 for (let loc of data.v) {
                     StateStorage.write(loc.id, false);
@@ -250,11 +250,13 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                     name: area
                 });
             }
+            event.stopPropagation();
             event.preventDefault();
             return false;
         });
         this.addEventListener("contextmenu", event => {
             mnu_ctx_el.show(event.clientX, event.clientY);
+            event.stopPropagation();
             event.preventDefault();
             return false;
         });
@@ -269,7 +271,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
             if (event.data.extra.exits != null && event.data.extra.exits[exit] != null) {
                 this.value = event.data.extra.exits[exit];
             } else {
-                let data = FileData.get(`exits/${exit}`);
+                let data = FileData.get(`world/exit/${exit}`);
                 this.value = data.target;
             }
         });
@@ -313,14 +315,12 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
 
     connectedCallback() {
         super.connectedCallback();
-        let el = this.parentElement;
-        if (el != null) {
+        let el = this;
+        while (el.parentElement != null) {
             el = el.parentElement;
-            if (el != null) {
-                el.append(MNU_CTX.get(this));
-                el.append(MNU_EXT.get(this));
-            }
         }
+        el.append(MNU_CTX.get(this));
+        el.append(MNU_ITM.get(this));
         // update state
         this.update();
     }
@@ -336,8 +336,8 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
         if (!!area) {
             let dType = StateStorage.readExtra("dungeontype", area, 'v');
             if (dType == "n") {
-                let data_v = FileData.get(`world_lists/${area}/lists/v`);
-                let data_m = FileData.get(`world_lists/${area}/lists/mq`);
+                let data_v = FileData.get(`world/${area}/lists/v`);
+                let data_m = FileData.get(`world/${area}/lists/mq`);
                 let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
                 let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
@@ -346,7 +346,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                     this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[Math.max(res_v.value, res_m.value)];
                 }
             } else {
-                let data = FileData.get(`world_lists/${area}/lists/${dType}`);
+                let data = FileData.get(`world/${area}/lists/${dType}`);
                 let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[res.value];
             }
@@ -392,9 +392,9 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    const data = FileData.get(`world/${newValue}`);
-                    const exit = FileData.get(`exits/${data.access}`);
-                    const entrances = FileData.get("exits");
+                    const data = FileData.get(`world/marker/${newValue}`);
+                    const exit = FileData.get(`world/exit/${data.access}`);
+                    const entrances = FileData.get("world/exit");
                     const txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = Language.translate(data.access);
                     txt.setAttribute('i18n-content', data.access);
@@ -423,9 +423,9 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                 if (oldValue != newValue) {
                     const el = this.shadowRoot.getElementById("value");
                     if (!!newValue) {
-                        let entrance = FileData.get(`exits/${newValue}`);
+                        let entrance = FileData.get(`world/exit/${newValue}`);
                         if (entrance == null) {
-                            entrance = FileData.get(`exits/${newValue.split(" -> ").reverse().join(" -> ")}`)
+                            entrance = FileData.get(`world/exit/${newValue.split(" -> ").reverse().join(" -> ")}`)
                         }
                         el.innerHTML = Language.translate(newValue);
                         AREA.set(this, entrance.area);

@@ -24,7 +24,7 @@ export default class HTMLTrackerExitList extends EventBusSubsetMixin(Panel) {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
 
-        let exits = FileData.get("exits");
+        let exits = FileData.get("world/exit");
         for (let exit in exits) {
             let el = document.createElement('ootrt-exitchoice');
             el.ref = exit;

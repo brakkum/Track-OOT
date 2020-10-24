@@ -54,7 +54,7 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
             if (event.data.extra.exits != null && event.data.extra.exits[this.ref] != null) {
                 selectEl.value = event.data.extra.exits[this.ref];
             } else {
-                let data = FileData.get(`exits/${this.ref}`);
+                let data = FileData.get(`world/exit/${this.ref}`);
                 selectEl.value = data.target;
             }
         });
@@ -91,8 +91,8 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
         if (oldValue != newValue) {
             switch (name) {
                 case 'ref':
-                    let exit = FileData.get(`exits/${newValue}`);
-                    let entrances = FileData.get("exits");
+                    let exit = FileData.get(`world/exit/${newValue}`);
+                    let entrances = FileData.get("world/exit");
                     // savesatate
                     let title = this.shadowRoot.getElementById("title");
                     title.innerHTML = Language.translate(newValue);

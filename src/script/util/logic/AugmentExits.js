@@ -8,7 +8,7 @@ let exit_binding = {};
 
 // register event on exit target change
 EventBus.register("statechange_exits", event => {
-    let exits = FileData.get("exits");
+    let exits = FileData.get("world/exit");
     let changes = [];
     for (let edgeThere in event.data) {
         let edgeBack = event.data[edgeThere].newValue;
@@ -49,7 +49,7 @@ EventBus.register("randomizer_options", event => {
 });
 
 async function update() {
-    let exits = FileData.get("exits");
+    let exits = FileData.get("world/exit");
     let changes = [];
     for (let exit in exit_binding) {
         let [source, target] = exit.split(" -> ");

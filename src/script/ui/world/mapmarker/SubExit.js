@@ -188,7 +188,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
         selectEl.addEventListener("change", event => {
             let exit = EXIT.get(this);
             if (exit != "") {
-                StateStorage.writeExtra("exits", exit, event.value);
+                StateStorage.writeExtra("subexits", exit, event.value);
             }
         });
         selectEl.addEventListener("click", event => {
@@ -198,7 +198,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
         });
         mnu_ctx.shadowRoot.getElementById("menu-check").addEventListener("click", event => {
             let area = AREA.get(this);
-            let data = FileData.get(`world_lists/${area}/lists`);
+            let data = FileData.get(`world/${area}/lists`);
             if (data.v != null) {
                 for (let loc of data.v) {
                     StateStorage.write(loc.id, true);
@@ -214,7 +214,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
         });
         mnu_ctx.shadowRoot.getElementById("menu-uncheck").addEventListener("click", event => {
             let area = AREA.get(this);
-            let data = FileData.get(`world_lists/${area}/lists`);
+            let data = FileData.get(`world/${area}/lists`);
             if (data.v != null) {
                 for (let loc of data.v) {
                     StateStorage.write(loc.id, false);
@@ -266,11 +266,13 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
                     name: area
                 });
             }
+            event.stopPropagation();
             event.preventDefault();
             return false;
         });
         this.addEventListener("contextmenu", event => {
             mnu_ctx_el.show(event.clientX, event.clientY);
+            event.stopPropagation();
             event.preventDefault();
             return false;
         });
@@ -282,10 +284,10 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
             if (event.data.state.hasOwnProperty("option.entrance_shuffle")) {
                 selectEl.readonly = active.indexOf(event.data.state["option.entrance_shuffle"]) < 0;
             }
-            if (event.data.extra.exits != null && event.data.extra.exits[exit] != null) {
-                this.value = event.data.extra.exits[exit];
+            if (event.data.extra.subexits != null && event.data.extra.subexits[exit] != null) {
+                this.value = event.data.extra.subexits[exit];
             } else {
-                let data = FileData.get(`exits/${exit}`);
+                let data = FileData.get(`world/exit/${exit}`);
                 this.value = data.target;
             }
         });
@@ -352,8 +354,8 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
         if (!!area) {
             let dType = StateStorage.readExtra("dungeontype", area, 'v');
             if (dType == "n") {
-                let data_v = FileData.get(`world_lists/${area}/lists/v`);
-                let data_m = FileData.get(`world_lists/${area}/lists/mq`);
+                let data_v = FileData.get(`world/${area}/lists/v`);
+                let data_m = FileData.get(`world/${area}/lists/mq`);
                 let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
                 let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
@@ -363,7 +365,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
                 }
                 this.shadowRoot.getElementById("marker").innerHTML = "";
             } else {
-                let data = FileData.get(`world_lists/${area}/lists/${dType}`);
+                let data = FileData.get(`world/${area}/lists/${dType}`);
                 let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[res.value];
                 if (res.value > 1) {
@@ -440,16 +442,16 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    const data = FileData.get(`world/${newValue}`);
-                    const exit = FileData.get(`exits/${data.access}`);
-                    const entrances = FileData.get("exits");
+                    const data = FileData.get(`world/marker/${newValue}`);
+                    const exit = FileData.get(`world/exit/${data.access}`);
+                    const entrances = FileData.get("world/exit");
                     const txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = Language.translate(data.access);
                     txt.setAttribute('i18n-content', data.access);
                     ACTIVE.set(this, exit.active);
                     EXIT.set(this, data.access);
                     ACCESS.set(this, data.access.split(" -> ")[1]);
-                    this.value = StateStorage.readExtra("exits", data.access, exit.target);
+                    this.value = StateStorage.readExtra("subexits", data.access, exit.target);
                     // options
                     const selectEl = MNU_EXT.get(this).shadowRoot.getElementById("select");
                     selectEl.value = this.value;
@@ -471,9 +473,9 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
                 if (oldValue != newValue) {
                     const el = this.shadowRoot.getElementById("value");
                     if (!!newValue) {
-                        let entrance = FileData.get(`exits/${newValue}`);
+                        let entrance = FileData.get(`world/exit/${newValue}`);
                         if (entrance == null) {
-                            entrance = FileData.get(`exits/${newValue.split(" -> ").reverse().join(" -> ")}`)
+                            entrance = FileData.get(`world/exit/${newValue.split(" -> ").reverse().join(" -> ")}`)
                         }
                         el.innerHTML = Language.translate(newValue);
                         AREA.set(this, entrance.area);

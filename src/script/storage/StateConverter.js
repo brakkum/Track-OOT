@@ -11,12 +11,15 @@ class StateConverter {
         return OFFSET;
     }
 
+    get version() {
+        return OFFSET + CONVERTER_FN.length;
+    }
+
     convert(state) {
         const version = state.version || 0;
         if (version < OFFSET) {
             // TODO show error to user and link to converter page
         }
-        const TARGET_VERSION = OFFSET + CONVERTER_FN.length;
         if (!state.hasOwnProperty("data")) {
             state = {data: state};
         }
@@ -24,8 +27,8 @@ class StateConverter {
         const timestamp = state.timestamp || new Date();
         const autosave = state.autosave || new Date();
         const notes = state.notes || "";
-        if (version < TARGET_VERSION) {
-            for (let i = version; i < TARGET_VERSION; ++i) {
+        if (version < this.version) {
+            for (let i = version; i < this.version; ++i) {
                 const fn = CONVERTER_FN[i - OFFSET];
                 if (typeof fn == "function") state = fn(state);
             }
@@ -33,31 +36,27 @@ class StateConverter {
             state.timestamp = timestamp;
             state.autosave = autosave;
             state.notes = notes;
-            state.version = TARGET_VERSION;
+            state.version = this.version;
         }
         return state;
     }
 
     createEmptyState(data) {
-        const TARGET_VERSION = CONVERTER_FN.length;
-
-        let res = {
+        const res = {
             name: "",
             data: {},
             extra: {},
             notes: "",
             autosave: false,
             timestamp: new Date(),
-            version: TARGET_VERSION
+            version: this.version
         };
-    
         if (typeof data == "object") {
             data = JSON.parse(JSON.stringify(data));
-            for (let i in data) {
+            for (const i in data) {
                 res.data[i] = data[i];
             }
         }
-    
         return res;
     }
 
@@ -69,4 +68,4 @@ class StateConverter {
 
 }
 
-export default new StateConverter;
+export default new StateConverter();

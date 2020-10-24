@@ -174,7 +174,7 @@ const TPL = new Template(`
             background-color: var(--dungeon-status-hover-color, #ffffff32);
         }
         :host(:not([ref])) #back,
-        :host([ref=""]) #back {
+        :host([ref="overworld"]) #back {
             display: none;
         }
     </style>
@@ -185,6 +185,7 @@ const TPL = new Template(`
         <div id="map-settings">
             <div class="buttons">
                 <div id="toggle-button" class="button-wrapper">⇑</div>
+                <!--
                 <div class="button-wrapper">
                     <emc-switchbutton id="location-mode" class="button" value="filter.unknown">
                         <emc-option value="filter.unknown" style="background-image: url('images/unknown.svg')" disabled="true"></emc-option>
@@ -193,9 +194,10 @@ const TPL = new Template(`
                         <emc-option value="filter.gossipstones" data-filter="filter.gossipstones" style="background-image: url('images/icons/gossipstone.svg')"></emc-option>
                     </emc-switchbutton>
                 </div>
+                -->
                 <!-- dungeon type button
                 <div class="button-wrapper">
-                    <ootrt-dungeontype id="location-version" class="button" ref="" value="v" readonly="true">
+                    <ootrt-dungeontype id="location-version" class="button" ref="overworld" value="v" readonly="true">
                     </ootrt-dungeontype>
                 </div>
                 -->
@@ -331,14 +333,14 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-        this.shadowRoot.getElementById('location-mode').addEventListener("change", event => {
+        /*this.shadowRoot.getElementById('location-mode').addEventListener("change", event => {
             this.mode = event.newValue;
             this.triggerGlobal("location_mode", {
                 value: this.mode
             });
-        });
+        });*/
         this.shadowRoot.getElementById('back').addEventListener("click", event => {
-            this.ref = ""
+            this.ref = "overworld"
         });
         // map specifics
         let map = this.shadowRoot.getElementById("map");
@@ -412,7 +414,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
             this.shadowRoot.getElementById('location-mode').value = this.mode;
         });
         this.registerGlobal(["state", "settings", "randomizer_options", "filter"], event => {
-            if (this.ref == "") {
+            if (this.ref == "overworld") {
                 this.refreshFilter();
             }
             this.refresh();
@@ -426,20 +428,20 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
 
     connectedCallback() {
         super.connectedCallback();
-        if (this.ref == "") {
+        if (this.ref == "overworld") {
             this.refreshFilter();
         }
         this.refresh();
     }
 
     get ref() {
-        //return this.getAttribute('ref') || "";
-        return "";
+        //return this.getAttribute('ref') || "overworld";
+        return "overworld";
     }
 
     set ref(val) {
         //this.setAttribute('ref', val);
-        this.setAttribute('ref', "");
+        this.setAttribute('ref', "overworld");
     }
 
     get mode() {
@@ -464,6 +466,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
     }
 
     refreshFilter() {
+        /*
         let modeEl = this.shadowRoot.getElementById('location-mode');
         let opts = modeEl.querySelectorAll("[data-filter]");
         let first = "filter.unknown";
@@ -490,13 +493,14 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
             modeEl.value = first;
             this.setAttribute('mode', first);
         }
+        */
     }
 
     async refresh() {
         // TODO do not use specialized code. make generic
         let dType = "v";//this.shadowRoot.getElementById("location-version").value;
         this.innerHTML = "";
-        let data = FileData.get(`world_lists/${this.ref}`);
+        let data = FileData.get(`world/${this.ref}`);
         if (!!data) {
             // switch map/minimap background
             let map = this.shadowRoot.getElementById('map');
@@ -517,16 +521,16 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
 
             } else {
                 data.lists[dType].forEach(record => {
-                    if (this.ref == "" && this.mode == "filter.gossipstones") {
+                    if (this.ref == "overworld" && this.mode == "filter.gossipstones") {
                         // LEGACY
                         if (record.type == "area" || record.type == "entrance") {
                             return;
                         }
                     }
-                    let loc = WorldRegistry.get(record.id);
+                    let loc = WorldRegistry.get(`${record.category}/${record.id}`);
                     if (!!loc && loc.visible()) {
                         let el = loc.mapMarker;
-                        if (this.ref == "" && !!el.dataset.mode && el.dataset.mode != this.mode) {
+                        if (this.ref == "overworld" && !!el.dataset.mode && el.dataset.mode != this.mode) {
                             // LEGACY
                             return;
                         }
