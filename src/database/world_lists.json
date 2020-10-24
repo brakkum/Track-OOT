@@ -1164,6 +1164,12 @@
                     "y": 0
                 },
                 {
+                    "type": "subexit",
+                    "id": "subexit.kokiri.links_house",
+                    "x": 0,
+                    "y": 0
+                },
+                {
                     "type": "subarea",
                     "id": "subarea.kokiri.links_house",
                     "x": 0,
@@ -3164,7 +3170,7 @@
             ]
         }
     },
-    "area.fountain": {
+    "subarea.fountain.fairy_fountain": {
         "background": "",
         "width": 0,
         "height": 0,
@@ -3173,6 +3179,27 @@
                 {
                     "type": "chest",
                     "id": "location.zoras.c_fairy",
+                    "x": 0,
+                    "y": 0
+                }
+            ]
+        }
+    },
+    "area.fountain": {
+        "background": "",
+        "width": 0,
+        "height": 0,
+        "lists": {
+            "v": [
+                {
+                    "type": "subexit",
+                    "id": "subexit.fountain.fairy_fountain",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "type": "subarea",
+                    "id": "subarea.fountain.fairy_fountain",
                     "x": 0,
                     "y": 0
                 },
