@@ -41,6 +41,9 @@ const TPL = new Template(`
         .textarea:empty {
             display: none;
         }
+        .textarea + .textarea {
+            margin-top: 5px;
+        }
         #text {
             display: flex;
             flex: 1;
@@ -88,6 +91,9 @@ const TPL = new Template(`
             margin-left: 15px;
             float: right;
         }
+        #list {
+            width: 100%;
+        }
     </style>
     <div class="textarea">
         <div id="text"></div>
@@ -97,7 +103,10 @@ const TPL = new Template(`
             <emc-icon id="badge-era" src="images/icons/era_none.svg"></emc-icon>
         </div>
     </div>
-    <slot id="list"></slot>
+    <div class="textarea">
+        <div id="value"></div>
+    </div>
+    <div id="list"></div>
 `);
 
 const TPL_MNU_CTX = new Template(`
@@ -135,7 +144,7 @@ const ACCESS = new WeakMap();
 const MNU_CTX = new WeakMap();
 const MNU_EXT = new WeakMap();
 
-export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
+export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
@@ -163,7 +172,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
         selectEl.addEventListener("change", event => {
             let exit = EXIT.get(this);
             if (exit != "") {
-                StateStorage.writeExtra("exits", exit, event.value);
+                StateStorage.writeExtra("subexits", exit, event.value);
             }
         });
         selectEl.addEventListener("click", event => {
@@ -208,30 +217,6 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
             event.preventDefault();
             return false;
         });
-        mnu_ctx.shadowRoot.getElementById("menu-setwoth").addEventListener("click", event => {
-            const area = AREA.get(this);
-            const item = event.detail;
-            this.item = item;
-            StateStorage.writeExtra("area_hint", area, "woth");
-            event.preventDefault();
-            return false;
-        });
-        mnu_ctx.shadowRoot.getElementById("menu-setbarren").addEventListener("click", event => {
-            const area = AREA.get(this);
-            const item = event.detail;
-            this.item = item;
-            StateStorage.writeExtra("area_hint", area, "barren");
-            event.preventDefault();
-            return false;
-        });
-        mnu_ctx.shadowRoot.getElementById("menu-clearhint").addEventListener("click", event => {
-            const area = AREA.get(this);
-            const item = event.detail;
-            this.item = item;
-            StateStorage.writeExtra("area_hint", area, "");
-            event.preventDefault();
-            return false;
-        });
 
         /* mouse events */
         this.addEventListener("click", event => {
@@ -271,7 +256,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
             }
             this.update();
         });
-        this.registerGlobal("statechange_exits", event => {
+        this.registerGlobal("statechange_subexits", event => {
             let exit = EXIT.get(this);
             let data;
             if (event.data != null) {
@@ -282,20 +267,10 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                 selectEl.value = data.newValue;
             }
         });
-        this.registerGlobal("statechange_area_hint", event => {
-            const area = AREA.get(this);
-            let data;
-            if (event.data != null) {
-                data = event.data[area];
-            }
-            if (data != null) {
-                this.hint = data.newValue;
-            }
-        });
-        this.registerGlobal(["statechange", "statechange_dungeontype", "settings", "logic", "filter"], event => {
+        this.registerGlobal(["statechange", "settings", "logic", "filter"], event => {
             this.update();
         });
-        this.registerGlobal("exit", event => {
+        this.registerGlobal("subexit", event => {
             if (this.ref === event.data.name && this.value !== event.data.value) {
                 this.value = event.data.value;
             }
@@ -323,30 +298,22 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
     }
 
     async update() {
+        const access = ACCESS.get(this);
+        if (!!access && (!!Logic.getValue(`${access}[child]`) || !!Logic.getValue(`${access}[adult]`))) {
+            this.shadowRoot.getElementById("text").dataset.state = "available";
+        } else {
+            this.shadowRoot.getElementById("text").dataset.state = "unavailable";
+        }
+        const cnt = this.shadowRoot.getElementById("list");
+        cnt.innerHTML = "";
         const area = AREA.get(this);
         if (!!area) {
-            let dType = StateStorage.readExtra("dungeontype", area, 'v');
-            if (dType == "n") {
-                let data_v = FileData.get(`world_lists/${area}/lists/v`);
-                let data_m = FileData.get(`world_lists/${area}/lists/mq`);
-                let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
-                let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
-                if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
-                    this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[Math.min(res_v.value, res_m.value)];
-                } else {
-                    this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[Math.max(res_v.value, res_m.value)];
-                }
-            } else {
-                let data = FileData.get(`world_lists/${area}/lists/${dType}`);
-                let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
-                this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[res.value];
-            }
-        } else {
-            let access = ACCESS.get(this);
-            if (!!access && !!Logic.getValue(access)) {
-                this.shadowRoot.getElementById("text").dataset.state = "available";
-            } else {
-                this.shadowRoot.getElementById("text").dataset.state = "unavailable";
+            // TODO load subarea
+            const loc = WorldRegistry.get(area);
+            if (!!loc) {
+                const el = loc.listItem;
+                el.dataset.headless = "true";
+                cnt.append(el);
             }
         }
     }
@@ -367,16 +334,8 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
         this.setAttribute('value', val);
     }
 
-    get hint() {
-        return this.getAttribute('hint');
-    }
-
-    set hint(val) {
-        this.setAttribute('hint', val);
-    }
-
     static get observedAttributes() {
-        return ['ref', 'value', 'hint'];
+        return ['ref', 'value'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -392,7 +351,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                     ACTIVE.set(this, exit.active);
                     EXIT.set(this, data.access);
                     ACCESS.set(this, data.access.split(" -> ")[1]);
-                    this.value = StateStorage.readExtra("exits", data.access, exit.target);
+                    this.value = StateStorage.readExtra("subexits", data.access, exit.target);
                     // options
                     const selectEl = MNU_EXT.get(this).shadowRoot.getElementById("select");
                     selectEl.value = this.value;
@@ -429,17 +388,6 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                     this.update();
                 }
             break;
-            case 'hint':
-                if (oldValue != newValue) {
-                    const hintEl = this.shadowRoot.getElementById("hint");
-                    hintEl.innerHTML = "";
-                    if (!!newValue && newValue != "") {
-                        const el_icon = document.createElement("img");
-                        el_icon.src = `images/icons/area_${newValue}.svg`;
-                        hintEl.append(el_icon);
-                    }
-                }
-            break;
         }
     }
 
@@ -464,4 +412,4 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
 
 }
 
-customElements.define('ootrt-list-exit', ListExit);
+customElements.define('ootrt-list-subexit', ListSubExit);

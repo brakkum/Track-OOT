@@ -126,6 +126,7 @@
     "region.hyrule_field -> region.hf_tektite_grotto": {
         "target": "region.hf_tektite_grotto -> region.hyrule_field",
         "type": "grotto",
+        "area": "subarea.hyrule_field.dive_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -135,6 +136,7 @@
     "region.hyrule_field -> region.hf_near_kak_grotto": {
         "target": "region.hf_near_kak_grotto -> region.hyrule_field",
         "type": "grotto",
+        "area": "subarea.hyrule_field.kakariko_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -144,6 +146,7 @@
     "region.hyrule_field -> region.hf_fairy_grotto": {
         "target": "region.hf_fairy_grotto -> region.hyrule_field",
         "type": "grotto",
+        "area": "subarea.hyrule_field.fairy_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -153,6 +156,7 @@
     "region.hyrule_field -> region.hf_near_market_grotto": {
         "target": "region.hf_near_market_grotto -> region.hyrule_field",
         "type": "grotto",
+        "area": "subarea.hyrule_field.castle_entrance_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -162,6 +166,7 @@
     "region.hyrule_field -> region.hf_cow_grotto": {
         "target": "region.hf_cow_grotto -> region.hyrule_field",
         "type": "grotto",
+        "area": "subarea.hyrule_field.valley_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -171,6 +176,7 @@
     "region.hyrule_field -> region.hf_inside_fence_grotto": {
         "target": "region.hf_inside_fence_grotto -> region.hyrule_field",
         "type": "grotto",
+        "area": "subarea.hyrule_field.lake_fence_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -180,6 +186,7 @@
     "region.hyrule_field -> region.hf_open_grotto": {
         "target": "region.hf_open_grotto -> region.hyrule_field",
         "type": "grotto",
+        "area": "subarea.hyrule_field.lake_open_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -189,6 +196,7 @@
     "region.hyrule_field -> region.hf_southeast_grotto": {
         "target": "region.hf_southeast_grotto -> region.hyrule_field",
         "type": "grotto",
+        "area": "subarea.hyrule_field.little_forest_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -200,6 +208,7 @@
     "region.kokiri_forest -> region.kf_midos_house": {
         "target": "region.kf_midos_house -> region.kokiri_forest",
         "type": "interior",
+        "area": "subarea.kokiri.midos_house",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -209,6 +218,7 @@
     "region.kokiri_forest -> region.kf_sarias_house": {
         "target": "region.kf_sarias_house -> region.kokiri_forest",
         "type": "interior",
+        "area": "subarea.kokiri.sarias_house",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -218,6 +228,7 @@
     "region.kokiri_forest -> region.kf_house_of_twins": {
         "target": "region.kf_house_of_twins -> region.kokiri_forest",
         "type": "interior",
+        "area": "subarea.kokiri.twins_house",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -227,6 +238,7 @@
     "region.kokiri_forest -> region.kf_know_it_all_house": {
         "target": "region.kf_know_it_all_house -> region.kokiri_forest",
         "type": "interior",
+        "area": "subarea.kokiri.know_it_all_house",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -236,6 +248,7 @@
     "region.kokiri_forest -> region.kf_kokiri_shop": {
         "target": "region.kf_kokiri_shop -> region.kokiri_forest",
         "type": "interior",
+        "area": "subarea.kokiri.shop",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -245,6 +258,7 @@
     "region.kokiri_forest -> region.kf_links_house": {
         "target": "region.kf_links_house -> region.kokiri_forest",
         "type": "interior",
+        "area": "subarea.kokiri.links_house",
         "active": [
             "entrance_shuffle_indoors",
             "entrance_shuffle_all"
@@ -253,6 +267,7 @@
     "region.kokiri_forest -> region.kf_storms_grotto": {
         "target": "region.kf_storms_grotto -> region.kokiri_forest",
         "type": "grotto",
+        "area": "subarea.kokiri.storm_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -264,6 +279,7 @@
     "region.lost_woods -> region.lw_near_shortcuts_grotto": {
         "target": "region.lw_near_shortcuts_grotto -> region.lost_woods",
         "type": "grotto",
+        "area": "subarea.woods.near_goron_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -273,6 +289,7 @@
     "region.lw_beyond_mido -> region.lw_scrubs_grotto": {
         "target": "region.lw_scrubs_grotto -> region.lw_beyond_mido",
         "type": "grotto",
+        "area": "subarea.woods.near_meadow_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -282,6 +299,7 @@
     "region.lw_beyond_mido -> region.deku_theater": {
         "target": "region.deku_theater -> region.lw_beyond_mido",
         "type": "grotto",
+        "area": "subarea.woods.theatre_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -293,6 +311,7 @@
     "region.sfm_entryway -> region.sfm_wolfos_grotto": {
         "target": "region.sfm_wolfos_grotto -> region.sfm_entryway",
         "type": "grotto",
+        "area": "subarea.meadow.wolfos_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -302,6 +321,7 @@
     "region.sacred_forest_meadow -> region.sfm_storms_grotto": {
         "target": "region.sfm_storms_grotto -> region.sacred_forest_meadow",
         "type": "grotto",
+        "area": "subarea.meadow.storms_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -311,6 +331,7 @@
     "region.sacred_forest_meadow -> region.sfm_fairy_grotto": {
         "target": "region.sfm_fairy_grotto -> region.sacred_forest_meadow",
         "type": "grotto",
+        "area": "subarea.meadow.fairy_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -323,6 +344,7 @@
     "region.market_entrance -> region.market_guard_house": {
         "target": "region.market_guard_house -> region.market_entrance",
         "type": "interior",
+        "area": "subarea.castle_town.guard_tower",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -332,6 +354,7 @@
     "region.market -> region.market_mask_shop": {
         "target": "region.market_mask_shop -> region.market",
         "type": "interior",
+        "area": "subarea.castle_town.shop_mask",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -341,6 +364,7 @@
     "region.market -> region.market_bombchu_bowling": {
         "target": "region.market_bombchu_bowling -> region.market",
         "type": "interior",
+        "area": "subarea.castle_town.minigame_bombchu",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -350,6 +374,7 @@
     "region.market -> region.market_potion_shop": {
         "target": "region.market_potion_shop -> region.market",
         "type": "interior",
+        "area": "subarea.castle_town.shop_magic",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -359,6 +384,7 @@
     "region.market -> region.market_treasure_chest_game": {
         "target": "region.market_treasure_chest_game -> region.market",
         "type": "interior",
+        "area": "subarea.castle_town.minigame_treasure",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -368,6 +394,7 @@
     "region.market -> region.market_bombchu_shop": {
         "target": "region.market_bombchu_shop -> region.market",
         "type": "interior",
+        "area": "subarea.castle_town.shop_bombchu",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -377,6 +404,7 @@
     "region.market -> region.market_man_in_green_house": {
         "target": "region.market_man_in_green_house -> region.market",
         "type": "interior",
+        "area": "subarea.castle_town.back_house",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -386,6 +414,7 @@
     "region.market -> region.market_bazaar": {
         "target": "region.market_bazaar -> region.market",
         "type": "interior",
+        "area": "subarea.castle_town.shop_bazaar",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -395,6 +424,7 @@
     "region.market -> region.market_shooting_gallery": {
         "target": "region.market_shooting_gallery -> region.market",
         "type": "interior",
+        "area": "subarea.castle_town.minigame_shooting",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -404,6 +434,7 @@
     "region.tot_entrance -> region.temple_of_time": {
         "target": "region.temple_of_time -> region.tot_entrance",
         "type": "interior",
+        "area": "subarea.castle_town.temple_of_time",
         "active": [
             "entrance_shuffle_indoors",
             "entrance_shuffle_all"
@@ -414,6 +445,7 @@
     "region.lon_lon_ranch -> region.llr_talons_house": {
         "target": "region.llr_talons_house -> region.lon_lon_ranch",
         "type": "interior",
+        "area": "subarea.lonlon.house",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -423,6 +455,7 @@
     "region.lon_lon_ranch -> region.llr_stables": {
         "target": "region.llr_stables -> region.lon_lon_ranch",
         "type": "interior",
+        "area": "subarea.lonlon.stables",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -432,6 +465,7 @@
     "region.lon_lon_ranch -> region.llr_tower": {
         "target": "region.llr_tower -> region.lon_lon_ranch",
         "type": "interior",
+        "area": "subarea.lonlon.silo",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -441,6 +475,7 @@
     "region.lon_lon_ranch -> region.llr_grotto": {
         "target": "region.llr_grotto -> region.lon_lon_ranch",
         "type": "grotto",
+        "area": "subarea.lonlon.open_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -452,6 +487,7 @@
     "region.hyrule_castle_grounds -> region.childcastle_fairy_gateway": {
         "target": "region.childcastle_fairy_gateway -> region.hyrule_castle_grounds",
         "type": "interior",
+        "area": "subarea.castle.fairy_young",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -461,6 +497,7 @@
     "region.hyrule_castle_grounds -> region.hc_storms_grotto": {
         "target": "region.hc_storms_grotto -> region.hyrule_castle_grounds",
         "type": "grotto",
+        "area": "subarea.castle.storm_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -470,6 +507,7 @@
     "region.ganons_castle_grounds -> region.adultcastle_fairy_gateway": {
         "target": "region.adultcastle_fairy_gateway -> region.ganons_castle_grounds",
         "type": "interior",
+        "area": "subarea.castle.fairy_adult",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -481,6 +519,7 @@
     "region.kakariko_village -> region.kak_carpenter_boss_house": {
         "target": "region.kak_carpenter_boss_house -> region.kakariko_village",
         "type": "interior",
+        "area": "subarea.kakariko.carpenter_house",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -490,6 +529,7 @@
     "region.kakariko_village -> region.kak_house_of_skulltula": {
         "target": "region.kak_house_of_skulltula -> region.kakariko_village",
         "type": "interior",
+        "area": "subarea.kakariko.skulltula_house",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -499,6 +539,7 @@
     "region.kakariko_village -> region.kak_impas_house": {
         "target": "region.kak_impas_house -> region.kakariko_village",
         "type": "interior",
+        "area": "subarea.kakariko.impas_house",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -508,6 +549,7 @@
     "region.kak_impas_ledge -> region.kak_impas_house_back": {
         "target": "region.kak_impas_house_back -> region.kak_impas_ledge",
         "type": "interior",
+        "area": "subarea.kakariko.impa_back",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -517,6 +559,7 @@
     "region.kak_backyard -> region.kak_odd_medicine_building": {
         "target": "region.kak_odd_medicine_building -> region.kak_backyard",
         "type": "interior",
+        "area": "subarea.kakariko.kakariko_witch",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -526,6 +569,7 @@
     "region.kakariko_village -> region.kak_bazaar": {
         "target": "region.kak_bazaar -> region.kakariko_village",
         "type": "interior",
+        "area": "subarea.kakariko.shop_bazaar",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -535,6 +579,7 @@
     "region.kakariko_village -> region.kak_shooting_gallery": {
         "target": "region.kak_shooting_gallery -> region.kakariko_village",
         "type": "interior",
+        "area": "subarea.kakariko.minigame_shooting",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -544,6 +589,7 @@
     "region.kakariko_village -> region.kak_windmill": {
         "target": "region.kak_windmill -> region.kakariko_village",
         "type": "interior",
+        "area": "subarea.kakariko.windmill",
         "active": [
             "entrance_shuffle_indoors",
             "entrance_shuffle_all"
@@ -552,6 +598,7 @@
     "region.kakariko_village -> region.kak_potion_shop_front": {
         "target": "region.kak_potion_shop_front -> region.kakariko_village",
         "type": "interior",
+        "area": "subarea.kakariko.shop_magic",
         "active": [
             "entrance_shuffle_indoors",
             "entrance_shuffle_all"
@@ -560,6 +607,7 @@
     "region.kakariko_village -> region.kak_potion_shop_back": {
         "target": "region.kak_potion_shop_back -> region.kakariko_village",
         "type": "interior",
+        "area": "subarea.kakariko.shop_magic",
         "active": [
             "entrance_shuffle_indoors",
             "entrance_shuffle_all"
@@ -568,6 +616,7 @@
     "region.kak_backyard -> region.kak_open_grotto": {
         "target": "region.kak_open_grotto -> region.kak_backyard",
         "type": "grotto",
+        "area": "subarea.kakariko.open_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -577,6 +626,7 @@
     "region.kakariko_village -> region.kak_redead_grotto": {
         "target": "region.kak_redead_grotto -> region.kakariko_village",
         "type": "grotto",
+        "area": "subarea.kakariko.redead_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -588,6 +638,7 @@
     "region.graveyard -> region.graveyard_dampes_house": {
         "target": "region.graveyard_dampes_house -> region.graveyard",
         "type": "interior",
+        "area": "subarea.graveyard.dampes_hut",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -597,6 +648,7 @@
     "region.graveyard -> region.graveyard_shield_grave": {
         "target": "region.graveyard_shield_grave -> region.graveyard",
         "type": "grotto",
+        "area": "subarea.graveyard.shield_grave",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -606,6 +658,7 @@
     "region.graveyard -> region.graveyard_heart_piece_grave": {
         "target": "region.graveyard_heart_piece_grave -> region.graveyard",
         "type": "grotto",
+        "area": "subarea.graveyard.redead_grave",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -615,6 +668,7 @@
     "region.graveyard -> region.graveyard_composers_grave": {
         "target": "region.graveyard_composers_grave -> region.graveyard",
         "type": "grotto",
+        "area": "subarea.graveyard.royal_grave",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -624,6 +678,7 @@
     "region.graveyard -> region.graveyard_dampes_grave": {
         "target": "region.graveyard_dampes_grave -> region.graveyard",
         "type": "grotto",
+        "area": "subarea.graveyard.dampes_grave",
         "active": [
             "entrance_shuffle_indoors",
             "entrance_shuffle_all"
@@ -634,6 +689,7 @@
     "region.death_mountain_summit -> region.dmt_great_fairy_fountain": {
         "target": "region.dmt_great_fairy_fountain -> region.death_mountain_summit",
         "type": "interior",
+        "area": "subarea.mountain.fairy_fountain",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -643,6 +699,7 @@
     "region.death_mountain -> region.dmt_storms_grotto": {
         "target": "region.dmt_storms_grotto -> region.death_mountain",
         "type": "grotto",
+        "area": "subarea.mountain.storms_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -652,6 +709,7 @@
     "region.death_mountain_summit -> region.dmt_cow_grotto": {
         "target": "region.dmt_cow_grotto -> region.death_mountain_summit",
         "type": "grotto",
+        "area": "subarea.mountain.bomb_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -663,6 +721,7 @@
     "region.dmc_lower_nearby -> region.dmc_great_fairy_fountain": {
         "target": "region.dmc_great_fairy_fountain -> region.dmc_lower_nearby",
         "type": "interior",
+        "area": "subarea.crater.fairy_fountain",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -672,6 +731,7 @@
     "region.dmc_lower_nearby -> region.dmc_hammer_grotto": {
         "target": "region.dmc_hammer_grotto -> region.dmc_lower_nearby",
         "type": "grotto",
+        "area": "subarea.crater.hammer_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -681,6 +741,7 @@
     "region.dmc_upper_nearby -> region.dmc_upper_grotto": {
         "target": "region.dmc_upper_grotto -> region.dmc_upper_nearby",
         "type": "grotto",
+        "area": "subarea.crater.crater_bomb_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -692,6 +753,7 @@
     "region.goron_city -> region.gc_shop": {
         "target": "region.gc_shop -> region.goron_city",
         "type": "interior",
+        "area": "subarea.goron.shop",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -701,6 +763,7 @@
     "region.goron_city -> region.gc_grotto": {
         "target": "region.gc_grotto -> region.goron_city",
         "type": "grotto",
+        "area": "subarea.goron.grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -712,6 +775,7 @@
     "region.zora_river -> region.zr_storms_grotto": {
         "target": "region.zr_storms_grotto -> region.zora_river",
         "type": "grotto",
+        "area": "subarea.river.storms_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -721,6 +785,7 @@
     "region.zora_river -> region.zr_fairy_grotto": {
         "target": "region.zr_fairy_grotto -> region.zora_river",
         "type": "grotto",
+        "area": "subarea.river.bomb_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -730,6 +795,7 @@
     "region.zora_river -> region.zr_open_grotto": {
         "target": "region.zr_open_grotto -> region.zora_river",
         "type": "grotto",
+        "area": "subarea.river.open_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -741,6 +807,7 @@
     "region.zoras_domain -> region.zd_shop": {
         "target": "region.zd_shop -> region.zoras_domain",
         "type": "interior",
+        "area": "subarea.zoras.shop",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -750,6 +817,7 @@
     "region.zoras_domain -> region.zd_storms_grotto": {
         "target": "region.zd_storms_grotto -> region.zoras_domain",
         "type": "grotto",
+        "area": "subarea.zoras.storms_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -761,6 +829,7 @@
     "region.zoras_fountain -> region.zf_great_fairy_fountain": {
         "target": "region.zf_great_fairy_fountain -> region.zoras_fountain",
         "type": "interior",
+        "area": "subarea.fountain.fairy_fountain",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -772,6 +841,7 @@
     "region.lake_hylia -> region.lh_lab": {
         "target": "region.lh_lab -> region.lake_hylia",
         "type": "interior",
+        "area": "subarea.lake.laboratory",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -781,6 +851,7 @@
     "region.lake_hylia -> region.lh_fishing_hole": {
         "target": "region.lh_fishing_hole -> region.lake_hylia",
         "type": "interior",
+        "area": "subarea.lake.fishing",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -790,6 +861,7 @@
     "region.lake_hylia -> region.lh_grotto": {
         "target": "region.lh_grotto -> region.lake_hylia",
         "type": "grotto",
+        "area": "subarea.lake.grave_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -801,6 +873,7 @@
     "region.gv_fortress_side -> region.gv_carpenter_tent": {
         "target": "region.gv_carpenter_tent -> region.gv_fortress_side",
         "type": "interior",
+        "area": "subarea.gerudo_valley.tend",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -810,6 +883,7 @@
     "region.gv_fortress_side -> region.gv_storms_grotto": {
         "target": "region.gv_storms_grotto -> region.gv_fortress_side",
         "type": "grotto",
+        "area": "subarea.gerudo_valley.storms_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -819,6 +893,7 @@
     "region.gerudo_valley -> region.gv_octorok_grotto": {
         "target": "region.gv_octorok_grotto -> region.gerudo_valley",
         "type": "grotto",
+        "area": "subarea.gerudo_valley.octorock_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -830,6 +905,7 @@
     "region.gerudo_fortress -> region.gf_storms_grotto": {
         "target": "region.gf_storms_grotto -> region.gerudo_fortress",
         "type": "grotto",
+        "area": "subarea.gerudo.storms_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -841,6 +917,7 @@
     "region.desert_colossus -> region.colossus_great_fairy_fountain": {
         "target": "region.colossus_great_fairy_fountain -> region.desert_colossus",
         "type": "interior",
+        "area": "subarea.desert.fairy_fountain",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",
@@ -850,6 +927,7 @@
     "region.desert_colossus -> region.colossus_grotto": {
         "target": "region.colossus_grotto -> region.desert_colossus",
         "type": "grotto",
+        "area": "subarea.desert.strength_grotto",
         "active": [
             "entrance_shuffle_simple",
             "entrance_shuffle_indoors",

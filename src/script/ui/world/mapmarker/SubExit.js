@@ -1,7 +1,8 @@
 import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
-import "/emcJS/ui/ContextMenu.js";
+import Dialog from "/emcJS/ui/Dialog.js";
+import "/emcJS/ui/Tooltip.js";
 import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
@@ -13,55 +14,73 @@ const SettingsStorage = new IDBStorage('settings');
 
 const TPL = new Template(`
     <style>
-        * {
-            position: relative;
-            box-sizing: border-box;
-        }
         :host {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            width: 100%;
-            cursor: pointer;
-            padding: 5px;
+            position: absolute;
+            display: inline-flex;
+            width: 48px;
+            height: 48px;
+            box-sizing: border-box;
+            transform: translate(-24px, -24px);
         }
         :host(:hover) {
-            background-color: var(--main-hover-color, #ffffff32);
+            z-index: 1000;
+        }
+        #marker {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            border: solid 4px black;
+            border-radius: 25%;
+            color: black;
+            background-color: #ffffff;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #marker[data-state="opened"] {
+            background-color: var(--location-status-opened-color, #000000);
+        }
+        #marker[data-state="available"] {
+            background-color: var(--location-status-available-color, #000000);
+        }
+        #marker[data-state="unavailable"] {
+            background-color: var(--location-status-unavailable-color, #000000);
+        }
+        #marker[data-state="possible"] {
+            background-color: var(--location-status-possible-color, #000000);
+        }
+        #marker:hover {
+            box-shadow: 0 0 2px 4px #67ffea;
+        }
+        #marker:hover + #tooltip {
+            display: block;
+        }
+        #tooltip {
+            padding: 5px 12px;
+            -moz-user-select: none;
+            user-select: none;
+            white-space: nowrap;
+            font-size: 30px;
         }
         .textarea {
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            width: 100%;
-            min-height: 35px;
+            height: 46px;
             word-break: break-word;
         }
         .textarea:empty {
             display: none;
         }
-        .textarea + .textarea {
-            margin-top: 5px;
-        }
         #text {
-            display: flex;
-            flex: 1;
-            color: #ffffff;
+            display: inline-flex;
             align-items: center;
             -moz-user-select: none;
             user-select: none;
-        }
-        #text[data-state="opened"] {
-            color: var(--location-status-opened-color, #000000);
-        }
-        #text[data-state="available"] {
-            color: var(--location-status-available-color, #000000);
-        }
-        #text[data-state="unavailable"] {
-            color: var(--location-status-unavailable-color, #000000);
-        }
-        #text[data-state="possible"] {
-            color: var(--location-status-possible-color, #000000);
+            white-space: nowrap;
         }
         #hint {
             margin-left: 5px;
@@ -74,35 +93,32 @@ const TPL = new Template(`
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 2px;
+            padding: 0.1em;
             flex-shrink: 0;
-            margin-left: 5px;
-            border: 1px solid var(--navigation-background-color, #ffffff);
-            border-radius: 2px;
+            margin-left: 0.3em;
+            border: 0.1em solid var(--navigation-background-color, #ffffff);
+            border-radius: 0.3em;
         }
         #badge emc-icon {
-            width: 25px;
-            height: 25px;
-        }
-        .menu-tip {
-            font-size: 0.7em;
-            color: #777777;
-            margin-left: 15px;
-            float: right;
+            width: 30px;
+            height: 30px;
         }
     </style>
-    <div class="textarea">
-        <div id="text"></div>
-        <div id="badge">
-            <emc-icon src="images/icons/entrance.svg"></emc-icon>
-            <emc-icon id="badge-time" src="images/icons/time_always.svg"></emc-icon>
-            <emc-icon id="badge-era" src="images/icons/era_none.svg"></emc-icon>
+    <div id="marker" class="unavailable"></div>
+    <emc-tooltip position="top" id="tooltip">
+        <div class="textarea">
+            <div id="text"></div>
+            <div id="badge">
+                <emc-icon src="images/icons/entrance.svg"></emc-icon>
+                <emc-icon id="badge-time" src="images/icons/time_always.svg"></emc-icon>
+                <emc-icon id="badge-era" src="images/icons/era_none.svg"></emc-icon>
+            </div>
         </div>
-    </div>
-    <div class="textarea">
-        <div id="value"></div>
-        <div id="hint"></div>
-    </div>
+        <div class="textarea">
+            <div id="value"></div>
+            <div id="hint"></div>
+        </div>
+    </emc-tooltip>
 `);
 
 const TPL_MNU_CTX = new Template(`
@@ -144,7 +160,7 @@ const ACCESS = new WeakMap();
 const MNU_CTX = new WeakMap();
 const MNU_EXT = new WeakMap();
 
-export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
+export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
@@ -244,7 +260,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
 
         /* mouse events */
         this.addEventListener("click", event => {
-            const area = AREA.get(this);
+            let area = AREA.get(this);
             if (!!area) {
                 this.triggerGlobal("location_change", {
                     name: area
@@ -341,21 +357,29 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                 let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
                 let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
-                    this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[Math.min(res_v.value, res_m.value)];
+                    this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[Math.min(res_v.value, res_m.value)];
                 } else {
-                    this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[Math.max(res_v.value, res_m.value)];
+                    this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[Math.max(res_v.value, res_m.value)];
                 }
+                this.shadowRoot.getElementById("marker").innerHTML = "";
             } else {
                 let data = FileData.get(`world_lists/${area}/lists/${dType}`);
                 let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
-                this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[res.value];
+                this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[res.value];
+                if (res.value > 1) {
+                    this.shadowRoot.getElementById("marker").innerHTML = res.reachable;
+                } else {
+                    this.shadowRoot.getElementById("marker").innerHTML = "";
+                }
             }
         } else {
             let access = ACCESS.get(this);
-            if (!!access && (!!Logic.getValue(`${access}[child]`) || !!Logic.getValue(`${access}[adult]`))) {
-                this.shadowRoot.getElementById("text").dataset.state = "available";
+            if (!!access && !!Logic.getValue(access)) {
+                this.shadowRoot.getElementById("marker").dataset.state = "available";
+                this.shadowRoot.getElementById("marker").innerHTML = "";
             } else {
-                this.shadowRoot.getElementById("text").dataset.state = "unavailable";
+                this.shadowRoot.getElementById("marker").dataset.state = "unavailable";
+                this.shadowRoot.getElementById("marker").innerHTML = "";
             }
         }
     }
@@ -384,8 +408,32 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
         this.setAttribute('hint', val);
     }
 
+    get left() {
+        return this.getAttribute('left');
+    }
+
+    set left(val) {
+        this.setAttribute('left', val);
+    }
+
+    get top() {
+        return this.getAttribute('top');
+    }
+
+    set top(val) {
+        this.setAttribute('top', val);
+    }
+
+    get tooltip() {
+        return this.getAttribute('tooltip');
+    }
+
+    set tooltip(val) {
+        this.setAttribute('tooltip', val);
+    }
+
     static get observedAttributes() {
-        return ['ref', 'value', 'hint'];
+        return ['ref', 'value', 'hint', 'left', 'top', 'tooltip'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -449,6 +497,19 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                     }
                 }
             break;
+            case 'top':
+            case 'left':
+                if (oldValue != newValue) {
+                    this.style.left = `${this.left}px`;
+                    this.style.top = `${this.top}px`;
+                }
+            break;
+            case 'tooltip':
+                if (oldValue != newValue) {
+                    let tooltip = this.shadowRoot.getElementById("tooltip");
+                    tooltip.position = newValue;
+                }
+            break;
         }
     }
 
@@ -473,4 +534,4 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
 
 }
 
-customElements.define('ootrt-list-exit', ListExit);
+customElements.define('ootrt-marker-subexit', MapSubExit);

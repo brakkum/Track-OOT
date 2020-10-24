@@ -256,7 +256,18 @@
         "category": "subarea",
         "type": "interior",
         "access": "logic.subarea.kokiri.links_house",
-        "visible": true,
+        "visible": {
+            "type": "or",
+            "el": [{
+                "type": "state",
+                "el": "option.entrance_shuffle",
+                "value": "entrance_shuffle_off"
+            },{
+                "type": "state",
+                "el": "option.entrance_shuffle",
+                "value": "entrance_shuffle_dungeons"
+            }]
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -272,7 +283,18 @@
         "category": "subarea",
         "type": "interior",
         "access": "logic.subarea.kokiri.midos_house",
-        "visible": true,
+        "visible": {
+            "type": "or",
+            "el": [{
+                "type": "state",
+                "el": "option.entrance_shuffle",
+                "value": "entrance_shuffle_off"
+            },{
+                "type": "state",
+                "el": "option.entrance_shuffle",
+                "value": "entrance_shuffle_dungeons"
+            }]
+        },
         "filter": {
             "filter.era": {
                 "child": true,
@@ -591,8 +613,38 @@
             }
         }
     },
-    "exit.kokiri.midos_house": {
-        "category": "exit",
+    "subexit.kokiri.midos_house": {
+        "category": "subexit",
+        "type": "interior",
+        "access": "region.kokiri_forest -> region.kf_midos_house",
+        "visible": {
+            "type": "not",
+            "el": {
+                "type": "or",
+                "el": [{
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                },{
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_dungeons"
+                }]
+            }
+        },
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "subexit.kokiri.know_it_house": {
+        "category": "subexit",
         "type": "interior",
         "access": "",
         "visible": false,
@@ -607,8 +659,8 @@
             }
         }
     },
-    "exit.kokiri.know_it_house": {
-        "category": "exit",
+    "subexit.kokiri.saria_house": {
+        "category": "subexit",
         "type": "interior",
         "access": "",
         "visible": false,
@@ -623,8 +675,8 @@
             }
         }
     },
-    "exit.kokiri.saria_house": {
-        "category": "exit",
+    "subexit.kokiri.twins_house": {
+        "category": "subexit",
         "type": "interior",
         "access": "",
         "visible": false,
@@ -639,8 +691,8 @@
             }
         }
     },
-    "exit.kokiri.twins_house": {
-        "category": "exit",
+    "subexit.kokiri.shop": {
+        "category": "subexit",
         "type": "interior",
         "access": "",
         "visible": false,
@@ -655,24 +707,8 @@
             }
         }
     },
-    "exit.kokiri.shop": {
-        "category": "exit",
-        "type": "interior",
-        "access": "",
-        "visible": false,
-        "filter": {
-            "filter.era": {
-                "child": true,
-                "adult": true
-            },
-            "filter.time": {
-                "day": true,
-                "night": true
-            }
-        }
-    },
-    "exit.kokiri.storm_grotto": {
-        "category": "exit",
+    "subexit.kokiri.storm_grotto": {
+        "category": "subexit",
         "type": "grotto",
         "access": "",
         "visible": false,
@@ -944,7 +980,7 @@
             }
         }
     },
-    "exit.desert.fairy_colossus": {
+    "exit.desert.fairy_fountain": {
         "category": "exit",
         "type": "interior",
         "access": "",
@@ -3623,7 +3659,7 @@
             }
         }
     },
-    "exit.woods.wolfos_grotto": {
+    "exit.meadow.wolfos_grotto": {
         "category": "exit",
         "type": "grotto",
         "access": "",
@@ -3639,7 +3675,7 @@
             }
         }
     },
-    "exit.woods.fairy_grotto": {
+    "exit.meadow.fairy_grotto": {
         "category": "exit",
         "type": "grotto",
         "access": "",
@@ -3655,7 +3691,7 @@
             }
         }
     },
-    "exit.woods.storms_grotto": {
+    "exit.meadow.storms_grotto": {
         "category": "exit",
         "type": "grotto",
         "access": "",
@@ -4272,22 +4308,6 @@
             }
         }
     },
-    "exit.castle_town.dog_lady": {
-        "category": "exit",
-        "type": "interior",
-        "access": "",
-        "visible": false,
-        "filter": {
-            "filter.era": {
-                "child": true,
-                "adult": true
-            },
-            "filter.time": {
-                "day": true,
-                "night": true
-            }
-        }
-    },
     "exit.castle_town.back_house": {
         "category": "exit",
         "type": "interior",
@@ -4304,7 +4324,7 @@
             }
         }
     },
-    "exit.castle_town.fairy_young": {
+    "exit.castle.fairy_young": {
         "category": "exit",
         "type": "interior",
         "access": "",
@@ -4320,7 +4340,7 @@
             }
         }
     },
-    "exit.castle_town.fairy_adult": {
+    "exit.castle.fairy_adult": {
         "category": "exit",
         "type": "interior",
         "access": "",
@@ -4336,7 +4356,7 @@
             }
         }
     },
-    "exit.castle_town.storm_grotto": {
+    "exit.castle.storm_grotto": {
         "category": "exit",
         "type": "grotto",
         "access": "",
@@ -5185,22 +5205,6 @@
             }
         }
     },
-    "exit.kakariko.dampes_hut": {
-        "category": "exit",
-        "type": "interior",
-        "access": "",
-        "visible": false,
-        "filter": {
-            "filter.era": {
-                "child": true,
-                "adult": true
-            },
-            "filter.time": {
-                "day": true,
-                "night": true
-            }
-        }
-    },
     "exit.kakariko.open_grotto": {
         "category": "exit",
         "type": "grotto",
@@ -5220,6 +5224,22 @@
     "exit.kakariko.redead_grotto": {
         "category": "exit",
         "type": "grotto",
+        "access": "",
+        "visible": false,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "exit.graveyard.dampes_hut": {
+        "category": "exit",
+        "type": "interior",
         "access": "",
         "visible": false,
         "filter": {
@@ -5745,23 +5765,7 @@
             }
         }
     },
-    "exit.mountain.mountain_fairy": {
-        "category": "exit",
-        "type": "interior",
-        "access": "",
-        "visible": false,
-        "filter": {
-            "filter.era": {
-                "child": true,
-                "adult": true
-            },
-            "filter.time": {
-                "day": true,
-                "night": true
-            }
-        }
-    },
-    "exit.mountain.crater_fairy": {
+    "exit.mountain.fairy_fountain": {
         "category": "exit",
         "type": "interior",
         "access": "",
@@ -5809,7 +5813,23 @@
             }
         }
     },
-    "exit.mountain.crater_hammer_grotto": {
+    "exit.crater.fairy_fountain": {
+        "category": "exit",
+        "type": "interior",
+        "access": "",
+        "visible": false,
+        "filter": {
+            "filter.era": {
+                "child": true,
+                "adult": true
+            },
+            "filter.time": {
+                "day": true,
+                "night": true
+            }
+        }
+    },
+    "exit.crater.hammer_grotto": {
         "category": "exit",
         "type": "grotto",
         "access": "",
@@ -5825,7 +5845,7 @@
             }
         }
     },
-    "exit.mountain.crater_bomb_grotto": {
+    "exit.crater.bomb_grotto": {
         "category": "exit",
         "type": "grotto",
         "access": "",
@@ -6471,9 +6491,9 @@
             }
         }
     },
-    "exit.zoras.fairy": {
+    "exit.zoras.storms_grotto": {
         "category": "exit",
-        "type": "interior",
+        "type": "grotto",
         "access": "",
         "visible": false,
         "filter": {
@@ -6487,9 +6507,9 @@
             }
         }
     },
-    "exit.zoras.storms_grotto": {
+    "exit.fountain.fairy_fountain": {
         "category": "exit",
-        "type": "grotto",
+        "type": "interior",
         "access": "",
         "visible": false,
         "filter": {

@@ -39,6 +39,9 @@ const TPL = new Template(`
         .textarea:empty {
             display: none;
         }
+        .textarea + .textarea {
+            margin-top: 5px;
+        }
         #text {
             flex: 1;
             color: #ffffff;

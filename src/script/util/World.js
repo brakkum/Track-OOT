@@ -9,12 +9,14 @@ import WorldRegistry from "./WorldRegistry.js";
 import ListArea from "/script/ui/world/listitems/Area.js";
 import ListSubArea from "/script/ui/world/listitems/SubArea.js";
 import ListExit from "/script/ui/world/listitems/Exit.js";
+import ListSubExit from "/script/ui/world/listitems/SubExit.js";
 import ListLocation from "/script/ui/world/listitems/Location.js";
 import "/script/ui/world/listitems/Gossipstone.js";
 
 import MapArea from "/script/ui/world/mapmarker/Area.js";
 import MapSubArea from "/script/ui/world/mapmarker/SubArea.js";
 import MapExit from "/script/ui/world/mapmarker/Exit.js";
+import MapSubExit from "/script/ui/world/mapmarker/SubExit.js";
 import MapLocation from "/script/ui/world/mapmarker/Location.js";
 import "/script/ui/world/mapmarker/Gossipstone.js";
 
@@ -50,6 +52,8 @@ function createListItem(instance) {
         res = new ListSubArea();
     } else if (category == "exit") {
         res = new ListExit();
+    } else if (category == "subexit") {
+        res = new ListSubExit();
     } else {
         res = ListLocation.createType(type);
     }
@@ -70,6 +74,8 @@ function createMapItem(instance) {
         res = new MapSubArea();
     } else if (category == "exit") {
         res = new MapExit();
+    } else if (category == "subexit") {
+        res = new MapSubExit();
     } else {
         res = MapLocation.createType(type);
         // LEGACY
