@@ -1383,28 +1383,38 @@ dun_type=Type (V/MQ)
 
 # exits
 ## dungeons
-region.kf_outside_deku_tree\u0020->\u0020region.deku_tree_gateway=Deku Tree Entrance
-region.deku_tree_gateway\u0020->\u0020region.kf_outside_deku_tree=Deku Tree Exit
+region.deku_tree_entrance\u0020->\u0020region.deku_tree_gateway=Deku Tree Entrance
+region.deku_tree_gateway\u0020->\u0020region.deku_tree_entrance=Deku Tree Exit
+
 region.dodongos_cavern_entryway\u0020->\u0020region.dodongos_cavern_gateway=Dodongos Cavern Entrance
 region.dodongos_cavern_gateway\u0020->\u0020region.dodongos_cavern_entryway=Dodongos Cavern Exit
-region.zoras_fountain\u0020->\u0020region.jabu_jabus_belly_gateway=Jabu Jabu Entrance
-region.jabu_jabus_belly_gateway\u0020->\u0020region.zoras_fountain=Jabu Jabu Exit
-region.kakariko_village\u0020->\u0020region.bottom_of_the_well_gateway=Well Entrance
-region.bottom_of_the_well_gateway\u0020->\u0020region.kakariko_village=Well Exit
-region.sacred_forest_meadow\u0020->\u0020region.forest_temple_gateway=Forest Temple Entrance
-region.forest_temple_gateway\u0020->\u0020region.sacred_forest_meadow=Forest Temple Exit
+
+region.jabu_jabus_belly_entrance\u0020->\u0020region.jabu_jabus_belly_gateway=Jabu Jabu Entrance
+region.jabu_jabus_belly_gateway\u0020->\u0020region.jabu_jabus_belly_entrance=Jabu Jabu Exit
+
+region.bottom_of_the_well_entrance\u0020->\u0020region.bottom_of_the_well_gateway=Well Entrance
+region.bottom_of_the_well_gateway\u0020->\u0020region.bottom_of_the_well_entrance=Well Exit
+
+region.forest_temple_entrance\u0020->\u0020region.forest_temple_gateway=Forest Temple Entrance
+region.forest_temple_gateway\u0020->\u0020region.forest_temple_entrance=Forest Temple Exit
+
 region.fire_temple_entrance\u0020->\u0020region.fire_temple_gateway=Fire Temple Entrance
 region.fire_temple_gateway\u0020->\u0020region.fire_temple_entrance=Fire Temple Exit
-region.lake_hylia\u0020->\u0020region.water_temple_gateway=Water Temple Entrance
-region.water_temple_gateway\u0020->\u0020region.lake_hylia=Water Temple Exit
-region.desert_colossus\u0020->\u0020region.spirit_temple_gateway=Spirit Temple Entrance
-region.spirit_temple_gateway\u0020->\u0020region.desert_colossus=Spirit Temple Exit
-region.graveyard_warp_pad_region\u0020->\u0020region.shadow_temple_gateway=Shadow Temple Entrance
-region.shadow_temple_gateway\u0020->\u0020region.graveyard_warp_pad_region=Shadow Temple Exit
-region.zoras_fountain\u0020->\u0020region.ice_cavern_gateway=Ice Cavern Entrance
-region.ice_cavern_gateway\u0020->\u0020region.zoras_fountain=Ice Cavern Exit
-region.gerudo_fortress\u0020->\u0020region.gerudo_training_grounds_gateway=Training Grounds Entrance
-region.gerudo_training_grounds_gateway\u0020->\u0020region.gerudo_fortress=Training Grounds Exit
+
+region.water_temple_entrance\u0020->\u0020region.water_temple_gateway=Water Temple Entrance
+region.water_temple_gateway\u0020->\u0020region.water_temple_entrance=Water Temple Exit
+
+region.spirit_temple_entrance\u0020->\u0020region.spirit_temple_gateway=Spirit Temple Entrance
+region.spirit_temple_gateway\u0020->\u0020region.spirit_temple_entrance=Spirit Temple Exit
+
+region.shadow_temple_entrance\u0020->\u0020region.shadow_temple_gateway=Shadow Temple Entrance
+region.shadow_temple_gateway\u0020->\u0020region.shadow_temple_entrance=Shadow Temple Exit
+
+region.ice_cavern_entrance\u0020->\u0020region.ice_cavern_gateway=Ice Cavern Entrance
+region.ice_cavern_gateway\u0020->\u0020region.ice_cavern_entrance=Ice Cavern Exit
+
+region.gerudo_training_grounds_entrance\u0020->\u0020region.gerudo_training_grounds_gateway=Training Grounds Entrance
+region.gerudo_training_grounds_gateway\u0020->\u0020region.gerudo_training_grounds_entrance=Training Grounds Exit
 
 ## simple indoors
 region.death_mountain\u0020->\u0020region.dmt_storms_grotto=Trail Storms Grotto Entrance
