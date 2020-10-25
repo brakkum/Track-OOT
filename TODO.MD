@@ -13,6 +13,7 @@
 - fix multiplayer sync
     - undo/redo does not sync correctly
         - fix: disable undo/redo in multiplayer, due to possibly unwanted behaviour
+- load icon from marker config
 
 ---
 
