@@ -237,7 +237,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
     connectedCallback() {
         super.connectedCallback();
         let el = this;
-        while (el.parentElement != null) {
+        while (el.parentElement != null && !el.classList.contains("panel")) {
             el = el.parentElement;
         }
         el.append(MNU_CTX.get(this));

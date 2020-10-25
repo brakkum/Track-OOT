@@ -220,11 +220,10 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
     connectedCallback() {
         super.connectedCallback();
         let el = this;
-        while (el.parentElement != null) {
+        while (el.parentElement != null && !el.classList.contains("panel")) {
             el = el.parentElement;
         }
         el.append(MNU_CTX.get(this));
-        el.append(MNU_ITM.get(this));
         // update state
         this.update();
     }

@@ -15,6 +15,14 @@ class TrackerLogic {
         return [];
     }
 
+    clearTranslations(root) {
+        LOGIC_PROCESSOR.clearTranslations();
+        if (root != null) {
+            return LOGIC_PROCESSOR.traverse(root);
+        }
+        return [];
+    }
+
     setTranslation(translations, root) {
         if (Array.isArray(translations)) {
             for (let t of translations) {

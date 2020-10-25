@@ -287,8 +287,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
             if (event.data.extra.subexits != null && event.data.extra.subexits[exit] != null) {
                 this.value = event.data.extra.subexits[exit];
             } else {
-                let data = FileData.get(`world/exit/${exit}`);
-                this.value = data.target;
+                this.value = "";
             }
         });
         this.registerGlobal("randomizer_options", event => {
@@ -331,14 +330,12 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
 
     connectedCallback() {
         super.connectedCallback();
-        let el = this.parentElement;
-        if (el != null) {
+        let el = this;
+        while (el.parentElement != null && !el.classList.contains("panel")) {
             el = el.parentElement;
-            if (el != null) {
-                el.append(MNU_CTX.get(this));
-                el.append(MNU_EXT.get(this));
-            }
         }
+        el.append(MNU_CTX.get(this));
+        el.append(MNU_EXT.get(this));
         // update state
         this.update();
     }
@@ -378,10 +375,10 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
             let access = ACCESS.get(this);
             if (!!access && !!Logic.getValue(access)) {
                 this.shadowRoot.getElementById("marker").dataset.state = "available";
-                this.shadowRoot.getElementById("marker").innerHTML = "";
+                this.shadowRoot.getElementById("marker").innerHTML = "?";
             } else {
                 this.shadowRoot.getElementById("marker").dataset.state = "unavailable";
-                this.shadowRoot.getElementById("marker").innerHTML = "";
+                this.shadowRoot.getElementById("marker").innerHTML = "?";
             }
         }
     }
@@ -451,10 +448,14 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
                     ACTIVE.set(this, exit.active);
                     EXIT.set(this, data.access);
                     ACCESS.set(this, data.access.split(" -> ")[1]);
-                    this.value = StateStorage.readExtra("subexits", data.access, exit.target);
+                    this.value = StateStorage.readExtra("subexits", data.access, "");
                     // options
                     const selectEl = MNU_EXT.get(this).shadowRoot.getElementById("select");
                     selectEl.value = this.value;
+                    selectEl.innerHTML = "";
+                    const empty = document.createElement('emc-option');
+                    empty.value = "";
+                    selectEl.append(empty);
                     for (const key in entrances) {
                         const value = entrances[key];
                         if (value.type == exit.type) {

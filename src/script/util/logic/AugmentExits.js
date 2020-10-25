@@ -6,34 +6,72 @@ import Logic from "/script/util/logic/Logic.js";
 let entrance_shuffle = "entrance_shuffle_off";
 let exit_binding = {};
 
-// register event on exit target change
-EventBus.register("statechange_exits", event => {
-    let exits = FileData.get("world/exit");
-    let changes = [];
-    for (let edgeThere in event.data) {
-        let edgeBack = event.data[edgeThere].newValue;
-        let [source, target] = edgeThere.split(" -> ");
-        let [reroute, entrance] = edgeBack.split(" -> ");
-        let edgeThereData = exits[edgeThere];
-        if (edgeThereData == null) {
-            edgeThereData = exits[`${target} -> ${source}`];
-        }
-        if (edgeThereData == null) {
-            console.error(`missing exit: ${target} -> ${source}`);
-        } else {
-            let edgeBackData = exits[edgeBack];
-            if ((edgeBackData == null || edgeThereData.type == edgeBackData.type) && edgeThereData.active.indexOf(entrance_shuffle) >= 0) {
-                if (exit_binding[edgeThere] != reroute) {
-                    changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: `${reroute}[child]`});
-                    changes.push({source: `${reroute}[child]`, target: `${entrance}[child]`, reroute: `${source}[child]`});
-                    changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: `${reroute}[adult]`});
-                    changes.push({source: `${reroute}[adult]`, target: `${entrance}[adult]`, reroute: `${source}[adult]`});
-                    exit_binding[edgeThere] = reroute;
-                    exit_binding[edgeBack] = source;
-                    StateStorage.writeExtra("exits", edgeBack, edgeThere);
-                }
+function applyEntranceChanges(changes, edgeThere, edgeBack) {
+    const exits = FileData.get("world/exit");
+    const [source, target] = edgeThere.split(" -> ");
+    const [reroute, entrance] = edgeBack.split(" -> ");
+    const edgeThereData = exits[edgeThere] != null ? exits[edgeThere] : exits[`${target} -> ${source}`];
+    if (edgeThereData == null) {
+        console.error(`missing exit: ${target} -> ${source}`);
+    } else {
+        const edgeBackData = exits[edgeBack];
+        if ((edgeBackData == null || edgeThereData.type == edgeBackData.type) && edgeThereData.active.indexOf(entrance_shuffle) >= 0) {
+            if (exit_binding[edgeThere] != reroute) {
+                changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: `${reroute}[child]`});
+                changes.push({source: `${reroute}[child]`, target: `${entrance}[child]`, reroute: `${source}[child]`});
+                changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: `${reroute}[adult]`});
+                changes.push({source: `${reroute}[adult]`, target: `${entrance}[adult]`, reroute: `${source}[adult]`});
+                exit_binding[edgeThere] = reroute;
+                exit_binding[edgeBack] = source;
+                StateStorage.writeExtra("exits", edgeBack, edgeThere);
             }
         }
+    }
+}
+
+// register event on state change
+EventBus.register("state", event => {
+    Logic.clearTranslations("region.root");
+    const changes = [];
+    if (event.data.extra.exits != null) {
+        for (const edgeThere in event.data.extra.exits) {
+            if (!edgeThere) continue;
+            const edgeBack = event.data.extra.exits[edgeThere];
+            applyEntranceChanges(changes, edgeThere, edgeBack);
+        }
+    }
+    if (event.data.extra.subexits != null) {
+        for (const edgeThere in event.data.extra.subexits) {
+            if (!edgeThere) continue;
+            const edgeBack = event.data.extra.subexits[edgeThere];
+            applyEntranceChanges(changes, edgeThere, edgeBack);
+        }
+    }
+    if (!!changes.length) {
+        Logic.setTranslation(changes, "region.root");
+    }
+});
+
+// register event on exit target change
+EventBus.register("statechange_exits", event => {
+    const changes = [];
+    for (const edgeThere in event.data) {
+        if (!edgeThere) continue;
+        const edgeBack = event.data[edgeThere].newValue;
+        applyEntranceChanges(changes, edgeThere, edgeBack);
+    }
+    if (!!changes.length) {
+        Logic.setTranslation(changes, "region.root");
+    }
+});
+
+// register event on subexit target change
+EventBus.register("statechange_subexits", event => {
+    const changes = [];
+    for (const edgeThere in event.data) {
+        if (!edgeThere) continue;
+        const edgeBack = event.data[edgeThere].newValue;
+        applyEntranceChanges(changes, edgeThere, edgeBack);
     }
     if (!!changes.length) {
         Logic.setTranslation(changes, "region.root");
@@ -52,6 +90,7 @@ async function update() {
     let exits = FileData.get("world/exit");
     let changes = [];
     for (let exit in exit_binding) {
+        if (!exit) continue;
         let [source, target] = exit.split(" -> ");
         let edgeData = exits[exit];
         if (edgeData == null) {

@@ -6638,8 +6638,8 @@
         }
     },
     "exit": {
-        "region.kf_outside_deku_tree -> region.deku_tree_gateway": {
-            "target": "region.deku_tree_gateway -> region.kf_outside_deku_tree",
+        "region.deku_tree_entrance -> region.deku_tree_gateway": {
+            "target": "region.deku_tree_gateway -> region.deku_tree_entrance",
             "type": "dungeon",
             "area": "area/deku",
             "active": [
@@ -6660,8 +6660,8 @@
                 "entrance_shuffle_all"
             ]
         },
-        "region.zoras_fountain -> region.jabu_jabus_belly_gateway": {
-            "target": "region.jabu_jabus_belly_gateway -> region.zoras_fountain",
+        "region.jabu_jabus_belly_entrance -> region.jabu_jabus_belly_gateway": {
+            "target": "region.jabu_jabus_belly_gateway -> region.jabu_jabus_belly_entrance",
             "type": "dungeon",
             "area": "area/jabujabu",
             "active": [
@@ -6671,8 +6671,8 @@
                 "entrance_shuffle_all"
             ]
         },
-        "region.kakariko_village -> region.bottom_of_the_well_gateway": {
-            "target": "region.bottom_of_the_well_gateway -> region.kakariko_village",
+        "region.bottom_of_the_well_entrance -> region.bottom_of_the_well_gateway": {
+            "target": "region.bottom_of_the_well_gateway -> region.bottom_of_the_well_entrance",
             "type": "dungeon",
             "area": "area/well",
             "active": [
@@ -6682,8 +6682,8 @@
                 "entrance_shuffle_all"
             ]
         },
-        "region.sacred_forest_meadow -> region.forest_temple_gateway": {
-            "target": "region.forest_temple_gateway -> region.sacred_forest_meadow",
+        "region.forest_temple_entrance -> region.forest_temple_gateway": {
+            "target": "region.forest_temple_gateway -> region.forest_temple_entrance",
             "type": "dungeon",
             "area": "area/temple_forest",
             "active": [
@@ -6704,8 +6704,8 @@
                 "entrance_shuffle_all"
             ]
         },
-        "region.lake_hylia -> region.water_temple_gateway": {
-            "target": "region.water_temple_gateway -> region.lake_hylia",
+        "region.water_temple_entrance -> region.water_temple_gateway": {
+            "target": "region.water_temple_gateway -> region.water_temple_entrance",
             "type": "dungeon",
             "area": "area/temple_water",
             "active": [
@@ -6715,8 +6715,8 @@
                 "entrance_shuffle_all"
             ]
         },
-        "region.desert_colossus -> region.spirit_temple_gateway": {
-            "target": "region.spirit_temple_gateway -> region.desert_colossus",
+        "region.spirit_temple_entrance -> region.spirit_temple_gateway": {
+            "target": "region.spirit_temple_gateway -> region.spirit_temple_entrance",
             "type": "dungeon",
             "area": "area/temple_spirit",
             "active": [
@@ -6726,8 +6726,8 @@
                 "entrance_shuffle_all"
             ]
         },
-        "region.graveyard_warp_pad_region -> region.shadow_temple_gateway": {
-            "target": "region.shadow_temple_gateway -> region.graveyard_warp_pad_region",
+        "region.shadow_temple_entrance -> region.shadow_temple_gateway": {
+            "target": "region.shadow_temple_gateway -> region.shadow_temple_entrance",
             "type": "dungeon",
             "area": "area/temple_shadow",
             "active": [
@@ -6737,8 +6737,8 @@
                 "entrance_shuffle_all"
             ]
         },
-        "region.zoras_fountain -> region.ice_cavern_gateway": {
-            "target": "region.ice_cavern_gateway -> region.zoras_fountain",
+        "region.ice_cavern_entrance -> region.ice_cavern_gateway": {
+            "target": "region.ice_cavern_gateway -> region.ice_cavern_entrance",
             "type": "dungeon",
             "area": "area/ice_cavern",
             "active": [
@@ -6748,8 +6748,8 @@
                 "entrance_shuffle_all"
             ]
         },
-        "region.gerudo_fortress -> region.gerudo_training_grounds_gateway": {
-            "target": "region.gerudo_training_grounds_gateway -> region.gerudo_fortress",
+        "region.gerudo_training_grounds_entrance -> region.gerudo_training_grounds_gateway": {
+            "target": "region.gerudo_training_grounds_gateway -> region.gerudo_training_grounds_entrance",
             "type": "dungeon",
             "area": "area/training_grounds",
             "active": [
@@ -7538,7 +7538,7 @@
         "exit": {
             "deku": {
                 "type": "dungeon",
-                "access": "region.kf_outside_deku_tree -> region.deku_tree_gateway",
+                "access": "region.deku_tree_entrance -> region.deku_tree_gateway",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -7584,7 +7584,7 @@
             },
             "jabujabu": {
                 "type": "dungeon",
-                "access": "region.zoras_fountain -> region.jabu_jabus_belly_gateway",
+                "access": "region.jabu_jabus_belly_entrance -> region.jabu_jabus_belly_gateway",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -7607,7 +7607,7 @@
             },
             "well": {
                 "type": "dungeon",
-                "access": "region.kakariko_village -> region.bottom_of_the_well_gateway",
+                "access": "region.bottom_of_the_well_entrance -> region.bottom_of_the_well_gateway",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -7630,7 +7630,7 @@
             },
             "temple_forest": {
                 "type": "dungeon",
-                "access": "region.sacred_forest_meadow -> region.forest_temple_gateway",
+                "access": "region.forest_temple_entrance -> region.forest_temple_gateway",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -7676,7 +7676,7 @@
             },
             "temple_water": {
                 "type": "dungeon",
-                "access": "region.lake_hylia -> region.water_temple_gateway",
+                "access": "region.water_temple_entrance -> region.water_temple_gateway",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -7699,7 +7699,7 @@
             },
             "temple_spirit": {
                 "type": "dungeon",
-                "access": "region.desert_colossus -> region.spirit_temple_gateway",
+                "access": "region.spirit_temple_entrance -> region.spirit_temple_gateway",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -7722,7 +7722,7 @@
             },
             "temple_shadow": {
                 "type": "dungeon",
-                "access": "region.graveyard_warp_pad_region -> region.shadow_temple_gateway",
+                "access": "region.shadow_temple_entrance -> region.shadow_temple_gateway",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -7745,7 +7745,7 @@
             },
             "ice_cavern": {
                 "type": "dungeon",
-                "access": "region.zoras_fountain -> region.ice_cavern_gateway",
+                "access": "region.ice_cavern_entrance -> region.ice_cavern_gateway",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -7768,7 +7768,7 @@
             },
             "training_grounds": {
                 "type": "dungeon",
-                "access": "region.gerudo_fortress -> region.gerudo_training_grounds_gateway",
+                "access": "region.gerudo_training_grounds_entrance -> region.gerudo_training_grounds_gateway",
                 "visible": {
                     "type": "not",
                     "el": {
