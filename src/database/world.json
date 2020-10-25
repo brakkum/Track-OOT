@@ -1114,6 +1114,12 @@
                         "id": "kokiri.links_house",
                         "x": 0,
                         "y": 0,
+                        "category": "subexit"
+                    },
+                    {
+                        "id": "kokiri.links_house",
+                        "x": 0,
+                        "y": 0,
                         "category": "subarea"
                     },
                     {
@@ -3103,10 +3109,16 @@
             "lists": {
                 "v": [
                     {
-                        "id": "zoras.c_fairy",
+                        "id": "fountain.fairy_fountain",
                         "x": 0,
                         "y": 0,
-                        "category": "location"
+                        "category": "subexit"
+                    },
+                    {
+                        "id": "fountain.fairy_fountain",
+                        "x": 0,
+                        "y": 0,
+                        "category": "subarea"
                     },
                     {
                         "id": "zoras.c_ice",
@@ -6197,7 +6209,14 @@
             "background": "",
             "width": 0,
             "height": 0,
-            "list": []
+            "list": [
+                {
+                    "id": "zoras.c_fairy",
+                    "x": 0,
+                    "y": 0,
+                    "category": "location"
+                }
+            ]
         },
         "lake.laboratory": {
             "background": "",
@@ -7423,6 +7442,11 @@
                             "type": "state",
                             "el": "option.entrance_shuffle",
                             "value": "entrance_shuffle_dungeons"
+                        },
+                        {
+                            "type": "state",
+                            "el": "option.entrance_shuffle",
+                            "value": "entrance_shuffle_simple"
                         }
                     ]
                 },
@@ -7441,6 +7465,36 @@
             "kokiri.midos_house": {
                 "type": "interior",
                 "access": "logic.subarea.kokiri.midos_house",
+                "visible": {
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "state",
+                            "el": "option.entrance_shuffle",
+                            "value": "entrance_shuffle_off"
+                        },
+                        {
+                            "type": "state",
+                            "el": "option.entrance_shuffle",
+                            "value": "entrance_shuffle_dungeons"
+                        }
+                    ]
+                },
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "fountain.fairy_fountain": {
+                "type": "interior",
+                "access": "logic.subarea.fountain.fairy_fountain",
                 "visible": {
                     "type": "or",
                     "el": [
@@ -20740,6 +20794,44 @@
                 },
                 "icon": "images/icons/interior.svg"
             },
+            "kokiri.links_house": {
+                "type": "interior",
+                "access": "region.kokiri_forest -> region.kf_links_house",
+                "visible": {
+                    "type": "not",
+                    "el": {
+                        "type": "or",
+                        "el": [
+                            {
+                                "type": "state",
+                                "el": "option.entrance_shuffle",
+                                "value": "entrance_shuffle_off"
+                            },
+                            {
+                                "type": "state",
+                                "el": "option.entrance_shuffle",
+                                "value": "entrance_shuffle_dungeons"
+                            },
+                            {
+                                "type": "state",
+                                "el": "option.entrance_shuffle",
+                                "value": "entrance_shuffle_simple"
+                            }
+                        ]
+                    }
+                },
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
             "kokiri.know_it_house": {
                 "type": "interior",
                 "access": "",
@@ -23052,7 +23144,7 @@
             },
             "fountain.fairy_fountain": {
                 "type": "interior",
-                "access": "",
+                "access": "region.zoras_fountain -> region.zf_great_fairy_fountain",
                 "visible": {
                     "type": "not",
                     "el": {

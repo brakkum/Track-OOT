@@ -100,7 +100,7 @@ function parseDungeons(dungeons, locations, world, dt, dr) {
                         if (dungeon_trans[i]["values"][v] === undefined) {
                             console.warn("[" + i + ": " + v + "] is a invalid value. Please report this bug")
                         } else {
-                            data[dungeon_trans[i]["name"]] = dungeon_trans[i]["values"][v];
+                            data["area/" + dungeon_trans[i]["name"]] = dungeon_trans[i]["values"][v];
                         }
                     }
                 }
@@ -117,7 +117,8 @@ function parseDungeons(dungeons, locations, world, dt, dr) {
                     if(item_trans[v] === undefined){
                         console.warn("[" + i + ": " + v + "] is a invalid value. Please report this bug")
                     } else {
-                        data[location_trans[i]] = item_trans[v];
+                        data["area/" + location_trans[i]] = item_trans[v];
+                        if(location_trans[i] === "pocket") data[location_trans[i]] = item_trans[v];
                     }
                 }
             }
@@ -382,11 +383,6 @@ function parseShops(shops, world) {
 function parseBarren(barren, world) {
     let barren_trans = trans["barren"];
     let castle = 0;
-    let kak = 0;
-    let zora = 0;
-    let desert = 0;
-    let mountain = 0;
-    let woods = 0;
 
     for(let w = 1; w <= world; w++) {
         if(world !== 1) barren = barren["World " + w];
@@ -394,26 +390,11 @@ function parseBarren(barren, world) {
 
         bar.forEach(i => {
             if(barren_trans.hasOwnProperty(i)) {
-                if(barren_trans[i] === "area.castle_town") {
+                if(barren_trans[i] === "castle") {
                     castle++;
-                    if(castle === 4) areahint[barren_trans[i]] = "barren";
-                } else if(barren_trans[i] === "area.woods") {
-                    woods++;
-                    if(woods === 2) areahint[barren_trans[i]] = "barren";
-                } else if(barren_trans[i] === "area.kakariko") {
-                    kak++;
-                    if(kak === 2) areahint[barren_trans[i]] = "barren";
-                } else if(barren_trans[i] === "area.zoras") {
-                    zora++;
-                    if(zora === 2) areahint[barren_trans[i]] = "barren";
-                } else if(barren_trans[i] === "area.desert") {
-                    desert++;
-                    if(desert === 2) areahint[barren_trans[i]] = "barren";
-                } else if(barren_trans[i] === "area.mountain") {
-                    mountain++;
-                    if(mountain === 2) areahint[barren_trans[i]] = "barren";
+                    if(castle === 2) areahint["area/" + barren_trans[i]] = "barren";
                 } else {
-                    areahint[barren_trans[i]] = "barren";
+                    areahint["area/" + barren_trans[i]] = "barren";
                 }
             } else {
                 console.warn("[" + i + "] is a invalid value. Please report this bug")
@@ -436,7 +417,7 @@ function parseLocations(locations, world) {
                 let v = locations[i];
                 let player = 1;
                 if(typeof v === 'object' && v !== null) {
-                    player = v["player"];
+                    if(v["player"] !== undefined) player = v["player"];
                     v = v["item"];
                 }
                 if (location_trans[i] !== "") {
@@ -444,7 +425,7 @@ function parseLocations(locations, world) {
                         console.warn("[" + v + "] is a invalid value. Please report this bug")
 
                     } else {
-                        if(player === w) loca[location_trans[i]] = item_trans[v];
+                        if(player === w) loca["location/" + location_trans[i]] = item_trans[v];
                     }
                 }
             } else {
@@ -463,7 +444,7 @@ function parseWothLocation(woth, world) {
 
         for(let i in woth) {
             if(woth_trans.hasOwnProperty(i)) {
-                areahint[woth_trans[i]] = "woth";
+                areahint["area/" + woth_trans[i]] = "woth";
             } else {
                 console.warn("[" + i + "] is a invalid value. Please report this bug")
             }
