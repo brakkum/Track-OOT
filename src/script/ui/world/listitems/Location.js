@@ -184,11 +184,13 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             } else {
                 this.check();
             }
+            event.stopPropagation();
             event.preventDefault();
             return false;
         });
         this.addEventListener("contextmenu", event => {
             mnu_ctx_el.show(event.clientX, event.clientY);
+            event.stopPropagation();
             event.preventDefault();
             return false;
         });
@@ -234,14 +236,12 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
 
     connectedCallback() {
         super.connectedCallback();
-        let el = this.parentElement;
-        if (el != null) {
+        let el = this;
+        while (el.parentElement != null) {
             el = el.parentElement;
-            if (el != null) {
-                el.append(MNU_CTX.get(this));
-                el.append(MNU_ITM.get(this));
-            }
         }
+        el.append(MNU_CTX.get(this));
+        el.append(MNU_ITM.get(this));
         // update state
         let textEl = this.shadowRoot.getElementById("text");
         let value = StateStorage.read(this.ref, false);

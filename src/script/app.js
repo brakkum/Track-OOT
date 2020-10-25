@@ -22,11 +22,9 @@ const SettingsStorage = new IDBStorage('settings');
 
 const FILES = {
     "world":                {path: "/database/world.json",              type: "json"},
-    "world_lists":          {path: "/database/world_lists.json",        type: "json"},
     "logic":                {path: "/database/logic.json",              type: "json"},
     "logic_glitched":       {path: "/database/logic_glitched.json",     type: "json"},
     "options_trans":        {path: "/database/options_trans.json",      type: "jsonc"},
-    "exits":                {path: "/database/exits.json",              type: "jsonc"},
     "items":                {path: "/database/items.json",              type: "jsonc"},
     "grids":                {path: "/database/grids.json",              type: "jsonc"},
     "dungeonstate":         {path: "/database/dungeonstate.json",       type: "jsonc"},

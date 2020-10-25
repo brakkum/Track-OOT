@@ -24,11 +24,10 @@ function updateStates(doneEl, availEl, missEl) {
     let todo_min = 0;
     let todo_max = 0;
     let done = 0;
-    let data = FileData.get("world_lists");
-    if (!!data) {
-        Object.keys(data).forEach(name => {
-            if (name == "#" || name == "") return;
-            let buff = data[name];
+    const areas = FileData.get("world/area");
+    if (!!areas) {
+        Object.keys(areas).forEach(name => {
+            let buff = areas[name];
             let dType = StateStorage.readExtra("dungeontype", name, buff.lists.hasOwnProperty("mq") ? "n" : "v");
             if (dType == "n") {
                 let cv = ListLogic.check(buff.lists.v.filter(ListLogic.filterUnusedChecks));

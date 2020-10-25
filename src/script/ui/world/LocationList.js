@@ -110,7 +110,7 @@ const TPL = new Template(`
     <div id="title">
         <div id="title-text">${Language.translate("hyrule")}</div>
         <div id="hint"></div>
-        <ootrt-dungeontype id="location-version" class="button" ref="" value="v" readonly="true">
+        <ootrt-dungeontype id="location-version" class="button" ref="overworld" value="v" readonly="true">
         </ootrt-dungeontype>
         <ootrt-filtermenu class="button">
         </ootrt-filtermenu>
@@ -138,7 +138,10 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
         this.shadowRoot.append(TPL.generate());
         this.attributeChangedCallback("", "");
         this.shadowRoot.getElementById('back').addEventListener("click", event => {
-            this.ref = ""
+            this.ref = "overworld";
+            event.stopPropagation();
+            event.preventDefault();
+            return false;
         });
         this.shadowRoot.getElementById('vanilla').addEventListener("click", event => {
             StateStorage.writeExtra("dungeontype", this.ref, 'v');
@@ -183,7 +186,7 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
     }
 
     get ref() {
-        return this.getAttribute('ref') || "";
+        return this.getAttribute('ref') || "overworld";
     }
 
     set ref(val) {
@@ -235,7 +238,7 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
         let btn_vanilla = this.shadowRoot.getElementById('vanilla');
         let btn_masterquest = this.shadowRoot.getElementById('masterquest');
         cnt.innerHTML = "";
-        let data = FileData.get(`world_lists/${this.ref}`);
+        let data = FileData.get(`world/${this.ref || "overworld"}`);
         if (!!data) {
             if (data.lists.mq == null) {
                 dType = "v";
@@ -251,7 +254,7 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
                 btn_vanilla.className = "hidden";
                 btn_masterquest.className = "hidden";
                 data.lists[dType].forEach(record => {
-                    let loc = WorldRegistry.get(record.id);
+                    let loc = WorldRegistry.get(`${record.category}/${record.id}`);
                     if (!!loc && loc.visible()) {
                         let el = loc.listItem;
                         cnt.append(el);
@@ -264,14 +267,14 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
 
     async updateHeader() {
         // TODO do not use specialized code. make generic
-        if ((!this.ref || this.ref === "")) {
+        if ((!this.ref || this.ref === "overworld")) {
             this.shadowRoot.querySelector('#title').className = "";
         } else {
             let dType = this.shadowRoot.getElementById("location-version").value;
             let header_value = 1;
             if (dType == "n") {
-                let data_v = FileData.get(`world_lists/${this.ref}/lists/v`);
-                let data_m = FileData.get(`world_lists/${this.ref}/lists/mq`);
+                let data_v = FileData.get(`world/${this.ref}/lists/v`);
+                let data_m = FileData.get(`world/${this.ref}/lists/mq`);
                 let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
                 let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
@@ -280,7 +283,7 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
                     header_value = Math.max(res_v.value, res_m.value);
                 }
             } else {
-                let data = FileData.get(`world_lists/${this.ref}/lists/${dType}`);
+                let data = FileData.get(`world/${this.ref}/lists/${dType}`);
                 let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 header_value = res.value;
             }

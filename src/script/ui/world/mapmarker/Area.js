@@ -151,7 +151,7 @@ export default class MapArea extends EventBusSubsetMixin(HTMLElement) {
         MNU_CTX.set(this, mnu_ctx);
 
         mnu_ctx.shadowRoot.getElementById("menu-check").addEventListener("click", event => {
-            let data = FileData.get(`world_lists/${this.ref}/lists`);
+            let data = FileData.get(`world/${this.ref}/lists`);
             if (data.v != null) {
                 for (let loc of data.v) {
                     StateStorage.write(loc.id, true);
@@ -166,7 +166,7 @@ export default class MapArea extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-uncheck").addEventListener("click", event => {
-            let data = FileData.get(`world_lists/${this.ref}/lists`);
+            let data = FileData.get(`world/${this.ref}/lists`);
             if (data.v != null) {
                 for (let loc of data.v) {
                     StateStorage.write(loc.id, false);
@@ -207,11 +207,13 @@ export default class MapArea extends EventBusSubsetMixin(HTMLElement) {
             this.triggerGlobal("location_change", {
                 name: this.ref
             });
+            event.stopPropagation();
             event.preventDefault();
             return false;
         });
         this.addEventListener("contextmenu", event => {
             mnu_ctx_el.show(event.clientX, event.clientY);
+            event.stopPropagation();
             event.preventDefault();
             return false;
         });
@@ -254,8 +256,8 @@ export default class MapArea extends EventBusSubsetMixin(HTMLElement) {
         if (!!this.ref) {
             let dType = StateStorage.readExtra("dungeontype", this.ref, 'v'); // TODO
             if (dType == "n") {
-                let data_v = FileData.get(`world_lists/${this.ref}/lists/v`);
-                let data_m = FileData.get(`world_lists/${this.ref}/lists/mq`);
+                let data_v = FileData.get(`world/${this.ref}/lists/v`);
+                let data_m = FileData.get(`world/${this.ref}/lists/mq`);
                 let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
                 let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
@@ -265,7 +267,7 @@ export default class MapArea extends EventBusSubsetMixin(HTMLElement) {
                 }
                 this.shadowRoot.getElementById("marker").innerHTML = "";
             } else {
-                let data = FileData.get(`world_lists/${this.ref}/lists/${dType}`);
+                let data = FileData.get(`world/${this.ref}/lists/${dType}`);
                 let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[res.value];
                 if (res.value > 1) {

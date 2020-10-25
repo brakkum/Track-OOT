@@ -41,10 +41,9 @@ function mapToObj(map) {
     return res;
 }
 
-function createListItem(instance) {
+function createListItem(category, instance) {
     let res = null;
     const values = FILTER.get(instance);
-    const category = CATEGORY.get(instance);
     const type = TYPE.get(instance);
     if (category == "area" && type != "") {
         res = new ListArea();
@@ -63,10 +62,9 @@ function createListItem(instance) {
     return res;
 }
 
-function createMapItem(instance) {
+function createMapItem(category, instance) {
     let res = null;
     const values = FILTER.get(instance);
-    const category = CATEGORY.get(instance);
     const type = TYPE.get(instance);
     if (category == "area" && type != "") {
         res = new MapArea();
@@ -95,14 +93,14 @@ function createMapItem(instance) {
 
 class WorldEntry {
 
-    constructor(ref, data) {
+    constructor(ref, category, data) {
         let visible_logic = null;
         const filter_logics = new Map();
         const filter_values = new Map();
         REF.set(this, ref);
         ACCESS.set(this, data.access);
         FILTER.set(this, filter_values);
-        CATEGORY.set(this, data.category);
+        CATEGORY.set(this, category);
         TYPE.set(this, data.type);
 
         const stored_data = new Map(Object.entries(StateStorage.getAll()));
@@ -181,7 +179,8 @@ class WorldEntry {
 
     get listItem() {
         if (!LIST_ITEMS.has(this)) {
-            const listItem = createListItem(this);
+            const category = CATEGORY.get(this);
+            const listItem = createListItem(category, this);
             LIST_ITEMS.set(this, listItem);
             return listItem;
         }
@@ -190,7 +189,8 @@ class WorldEntry {
 
     get mapMarker() {
         if (!MAP_MARKERS.has(this)) {
-            const mapItem = createMapItem(this);
+            const category = CATEGORY.get(this);
+            const mapItem = createMapItem(category, this);
             MAP_MARKERS.set(this, mapItem);
             return mapItem;
         }
@@ -206,16 +206,16 @@ class World {
     init() {
         if (!initialized) {
             initialized = true;
-            const world = FileData.get("world");
-            for (const ref in world) {
-                const entry = world[ref];
-                WorldRegistry.set(ref, new WorldEntry(ref, entry));
+            const world = FileData.get("world/marker");
+            for (const cat in world) {
+                const marker = world[cat];
+                for (const ref in marker) {
+                    const entry = marker[ref];
+                    const id = `${cat}/${ref}`;
+                    WorldRegistry.set(id, new WorldEntry(id, cat, entry));
+                }
             }
         }
-    }
-
-    getLocation(ref) {
-        return WorldRegistry.get(ref);
     }
 
 }

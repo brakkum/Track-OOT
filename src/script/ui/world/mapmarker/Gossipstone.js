@@ -10,6 +10,7 @@ const TPL = new Template(`
     <div id="item" class="textarea"></div>
 `);
 
+// TODO save gossipstone data to extra storage
 export default class MapGossipstone extends MapLocation {
 
     constructor() {
