@@ -256,20 +256,12 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
 
     connectedCallback() {
         super.connectedCallback();
-        let el = this; // TODO test this
-        while (el.parentElement != null) {
+        let el = this;
+        while (el.parentElement != null && !el.classList.contains("panel")) {
             el = el.parentElement;
         }
         el.append(MNU_CTX.get(this));
         el.append(MNU_ITM.get(this));
-        /*let el = this.parentElement;
-        if (el != null) {
-            el = el.parentElement;
-            if (el != null) {
-                el.append(MNU_CTX.get(this));
-                el.append(MNU_ITM.get(this));
-            }
-        }*/
         // update state
         let value = StateStorage.read(this.ref, false);
         this.checked = !!value;

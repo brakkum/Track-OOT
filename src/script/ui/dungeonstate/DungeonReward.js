@@ -65,9 +65,13 @@ const REWARDS = [
 const TAKEN_REWARDS = new Map();
 
 function stateChanged(event) {
-    let value = event.data.extra.dungeonreward[this.ref];
-    if (value != null) {
-        this.value = value;
+    if (event.data.extra.dungeonreward != null) {
+        let value = event.data.extra.dungeonreward[this.ref];
+        if (value != null) {
+            this.value = value;
+        } else {
+            this.value = "";
+        }
     } else {
         this.value = "";
     }

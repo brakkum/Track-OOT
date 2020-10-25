@@ -247,8 +247,7 @@ export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
             if (event.data.extra.exits != null && event.data.extra.exits[exit] != null) {
                 this.value = event.data.extra.exits[exit];
             } else {
-                let data = FileData.get(`world/exit/${exit}`);
-                this.value = data.target;
+                this.value = "";
             }
         });
         this.registerGlobal("randomizer_options", event => {
@@ -282,11 +281,11 @@ export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
     connectedCallback() {
         super.connectedCallback();
         let el = this;
-        while (el.parentElement != null) {
+        while (el.parentElement != null && !el.classList.contains("panel")) {
             el = el.parentElement;
         }
         el.append(MNU_CTX.get(this));
-        el.append(MNU_ITM.get(this));
+        el.append(MNU_EXT.get(this));
         // update state
         this.update();
     }
@@ -351,10 +350,14 @@ export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
                     ACTIVE.set(this, exit.active);
                     EXIT.set(this, data.access);
                     ACCESS.set(this, data.access.split(" -> ")[1]);
-                    this.value = StateStorage.readExtra("subexits", data.access, exit.target);
+                    this.value = StateStorage.readExtra("subexits", data.access, "");
                     // options
                     const selectEl = MNU_EXT.get(this).shadowRoot.getElementById("select");
                     selectEl.value = this.value;
+                    selectEl.innerHTML = "";
+                    const empty = document.createElement('emc-option');
+                    empty.value = "";
+                    selectEl.append(empty);
                     for (const key in entrances) {
                         const value = entrances[key];
                         if (value.type == exit.type) {

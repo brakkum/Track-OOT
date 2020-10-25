@@ -53,17 +53,21 @@ const TPL = new Template(`
 `);
 
 function stateChanged(event) {
-    let value = event.data.extra.dungeontype[this.ref];
-    if (typeof value == "undefined" || value == "") {
-        value = "v";
-        if (!!this.ref) {
-            let area = FileData.get(`world/${this.ref}/lists`);
-            if (area.hasOwnProperty("mq")) {
-                value = "n";
+    if (event.data.extra.dungeontype != null) {
+        let value = event.data.extra.dungeontype[this.ref];
+        if (typeof value == "undefined" || value == "") {
+            value = "v";
+            if (!!this.ref) {
+                let area = FileData.get(`world/${this.ref}/lists`);
+                if (area.hasOwnProperty("mq")) {
+                    value = "n";
+                }
             }
         }
+        this.value = value;
+    } else {
+        this.value = "v";
     }
-    this.value = value;
 }
 
 function dungeonTypeUpdate(event) {

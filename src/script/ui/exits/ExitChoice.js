@@ -54,8 +54,7 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
             if (event.data.extra.exits != null && event.data.extra.exits[this.ref] != null) {
                 selectEl.value = event.data.extra.exits[this.ref];
             } else {
-                let data = FileData.get(`world/exit/${this.ref}`);
-                selectEl.value = data.target;
+                selectEl.value = "";
             }
         });
         this.registerGlobal("randomizer_options", event => {
@@ -98,11 +97,15 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
                     title.innerHTML = Language.translate(newValue);
                     title.setAttribute('i18n-content', newValue);
                     let selectEl = this.shadowRoot.getElementById("select");
-                    selectEl.value = StateStorage.readExtra("exits", newValue, exit.target);
+                    selectEl.value = StateStorage.readExtra("exits", newValue, "");
                     ACTIVE.set(this, exit.active);
                     // readonly
                     selectEl.readonly = exit.active.indexOf(StateStorage.read("option.entrance_shuffle")) < 0;
                     // options
+                    selectEl.innerHTML = "";
+                    const empty = document.createElement('emc-option');
+                    empty.value = "";
+                    selectEl.append(empty);
                     for (let key in entrances) {
                         let value = entrances[key];
                         if (value.type == exit.type) {

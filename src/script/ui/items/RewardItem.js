@@ -95,11 +95,13 @@ function stateLoaded(event) {
     }
     this.value = value;
     /* dungeon */
-    for (let dungeon of ALL_DUNGEONS) {
-        let rewardValue = event.data.extra.dungeonreward[dungeon];
-        if (rewardValue == this.ref) {
-            this.dungeon = dungeon;
-            return;
+    if (event.data.extra.dungeonreward != null) {
+        for (let dungeon of ALL_DUNGEONS) {
+            let rewardValue = event.data.extra.dungeonreward[dungeon];
+            if (rewardValue == this.ref) {
+                this.dungeon = dungeon;
+                return;
+            }
         }
     }
     this.dungeon = "";

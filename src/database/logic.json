@@ -1,7 +1,23 @@
 {
     "edges": {
-        "region.bottom_of_the_well_gateway[child]": {
+        "region.bottom_of_the_well_entrance[child]": {
             "region.kakariko_village[child]": {
+                "type": "true"
+            },
+            "region.bottom_of_the_well_gateway[child]": {
+                "type": "true"
+            }
+        },
+        "region.bottom_of_the_well_entrance[adult]": {
+            "region.kakariko_village[adult]": {
+                "type": "true"
+            },
+            "region.bottom_of_the_well_gateway[adult]": {
+                "type": "true"
+            }
+        },
+        "region.bottom_of_the_well_gateway[child]": {
+            "region.bottom_of_the_well_entrance[child]": {
                 "type": "true"
             },
             "region.bottom_of_the_well[child]": {
@@ -12,7 +28,7 @@
             }
         },
         "region.bottom_of_the_well_gateway[adult]": {
-            "region.kakariko_village[adult]": {
+            "region.bottom_of_the_well_entrance[adult]": {
                 "type": "true"
             },
             "region.bottom_of_the_well[adult]": {
@@ -22,8 +38,24 @@
                 "type": "true"
             }
         },
-        "region.deku_tree_gateway[child]": {
+        "region.deku_tree_entrance[child]": {
             "region.kf_outside_deku_tree[child]": {
+                "type": "true"
+            },
+            "region.deku_tree_gateway[child]": {
+                "type": "true"
+            }
+        },
+        "region.deku_tree_entrance[adult]": {
+            "region.kf_outside_deku_tree[adult]": {
+                "type": "true"
+            },
+            "region.deku_tree_gateway[adult]": {
+                "type": "true"
+            }
+        },
+        "region.deku_tree_gateway[child]": {
+            "region.deku_tree_entrance[child]": {
                 "type": "true"
             },
             "region.deku_tree_lobby[child]": {
@@ -34,7 +66,7 @@
             }
         },
         "region.deku_tree_gateway[adult]": {
-            "region.kf_outside_deku_tree[adult]": {
+            "region.deku_tree_entrance[adult]": {
                 "type": "true"
             },
             "region.deku_tree_lobby[adult]": {
@@ -66,8 +98,24 @@
                 "type": "true"
             }
         },
-        "region.jabu_jabus_belly_gateway[child]": {
+        "region.jabu_jabus_belly_entrance[child]": {
             "region.zoras_fountain[child]": {
+                "type": "true"
+            },
+            "region.jabu_jabus_belly_gateway[child]": {
+                "type": "true"
+            }
+        },
+        "region.jabu_jabus_belly_entrance[adult]": {
+            "region.zoras_fountain[adult]": {
+                "type": "true"
+            },
+            "region.jabu_jabus_belly_gateway[adult]": {
+                "type": "true"
+            }
+        },
+        "region.jabu_jabus_belly_gateway[child]": {
+            "region.zjabu_jabus_belly_entrance[child]": {
                 "type": "true"
             },
             "region.jabu_jabus_belly_beginning[child]": {
@@ -78,7 +126,7 @@
             }
         },
         "region.jabu_jabus_belly_gateway[adult]": {
-            "region.zoras_fountain[adult]": {
+            "region.zjabu_jabus_belly_entrance[adult]": {
                 "type": "true"
             },
             "region.jabu_jabus_belly_beginning[adult]": {
@@ -88,8 +136,24 @@
                 "type": "true"
             }
         },
-        "region.ice_cavern_gateway[child]": {
+        "region.ice_cavern_entrance[child]": {
             "region.zoras_fountain[child]": {
+                "type": "true"
+            },
+            "region.ice_cavern_gateway[child]": {
+                "type": "true"
+            }
+        },
+        "region.ice_cavern_entrance[adult]": {
+            "region.zoras_fountain[adult]": {
+                "type": "true"
+            },
+            "region.ice_cavern_gateway[adult]": {
+                "type": "true"
+            }
+        },
+        "region.ice_cavern_gateway[child]": {
+            "region.ice_cavern_entrance[child]": {
                 "type": "true"
             },
             "region.ice_cavern_beginning[child]": {
@@ -100,7 +164,7 @@
             }
         },
         "region.ice_cavern_gateway[adult]": {
-            "region.zoras_fountain[adult]": {
+            "region.ice_cavern_entrance[adult]": {
                 "type": "true"
             },
             "region.ice_cavern_beginning[adult]": {
@@ -110,8 +174,24 @@
                 "type": "true"
             }
         },
-        "region.gerudo_training_grounds_gateway[child]": {
+        "region.gerudo_training_grounds_entrance[child]": {
             "region.gerudo_fortress[child]": {
+                "type": "true"
+            },
+            "region.gerudo_training_grounds_gateway[child]": {
+                "type": "true"
+            }
+        },
+        "region.gerudo_training_grounds_entrance[adult]": {
+            "region.gerudo_fortress[adult]": {
+                "type": "true"
+            },
+            "region.gerudo_training_grounds_gateway[adult]": {
+                "type": "true"
+            }
+        },
+        "region.gerudo_training_grounds_gateway[child]": {
+            "region.gerudo_training_grounds_entrance[child]": {
                 "type": "true"
             },
             "region.gerudo_training_grounds_lobby[child]": {
@@ -122,7 +202,7 @@
             }
         },
         "region.gerudo_training_grounds_gateway[adult]": {
-            "region.gerudo_fortress[adult]": {
+            "region.gerudo_training_grounds_entrance[adult]": {
                 "type": "true"
             },
             "region.gerudo_training_grounds_lobby[adult]": {
@@ -132,8 +212,24 @@
                 "type": "true"
             }
         },
-        "region.forest_temple_gateway[child]": {
+        "region.forest_temple_entrance[child]": {
             "region.sacred_forest_meadow[child]": {
+                "type": "true"
+            },
+            "region.forest_temple_gateway[child]": {
+                "type": "true"
+            }
+        },
+        "region.forest_temple_entrance[adult]": {
+            "region.sacred_forest_meadow[adult]": {
+                "type": "true"
+            },
+            "region.forest_temple_gateway[adult]": {
+                "type": "true"
+            }
+        },
+        "region.forest_temple_gateway[child]": {
+            "region.forest_temple_entrance[child]": {
                 "type": "true"
             },
             "region.forest_temple_lobby[child]": {
@@ -144,7 +240,7 @@
             }
         },
         "region.forest_temple_gateway[adult]": {
-            "region.sacred_forest_meadow[adult]": {
+            "region.forest_temple_entrance[adult]": {
                 "type": "true"
             },
             "region.forest_temple_lobby[adult]": {
@@ -176,8 +272,24 @@
                 "type": "true"
             }
         },
-        "region.water_temple_gateway[child]": {
+        "region.water_temple_entrance[child]": {
             "region.lake_hylia[child]": {
+                "type": "true"
+            },
+            "region.water_temple_gateway[child]": {
+                "type": "true"
+            }
+        },
+        "region.water_temple_entrance[adult]": {
+            "region.lake_hylia[adult]": {
+                "type": "true"
+            },
+            "region.water_temple_gateway[adult]": {
+                "type": "true"
+            }
+        },
+        "region.water_temple_gateway[child]": {
+            "region.water_temple_entrance[child]": {
                 "type": "true"
             },
             "region.water_temple_lobby[child]": {
@@ -188,7 +300,7 @@
             }
         },
         "region.water_temple_gateway[adult]": {
-            "region.lake_hylia[adult]": {
+            "region.water_temple_entrance[adult]": {
                 "type": "true"
             },
             "region.water_temple_lobby[adult]": {
@@ -198,8 +310,24 @@
                 "type": "true"
             }
         },
-        "region.shadow_temple_gateway[child]": {
+        "region.shadow_temple_entrance[child]": {
             "region.graveyard_warp_pad_region[child]": {
+                "type": "true"
+            },
+            "region.shadow_temple_gateway[child]": {
+                "type": "true"
+            }
+        },
+        "region.shadow_temple_entrance[adult]": {
+            "region.graveyard_warp_pad_region[adult]": {
+                "type": "true"
+            },
+            "region.shadow_temple_gateway[adult]": {
+                "type": "true"
+            }
+        },
+        "region.shadow_temple_gateway[child]": {
+            "region.shadow_temple_entrance[child]": {
                 "type": "true"
             },
             "region.shadow_temple_entryway[child]": {
@@ -210,7 +338,7 @@
             }
         },
         "region.shadow_temple_gateway[adult]": {
-            "region.graveyard_warp_pad_region[adult]": {
+            "region.shadow_temple_entrance[adult]": {
                 "type": "true"
             },
             "region.shadow_temple_entryway[adult]": {
@@ -220,8 +348,24 @@
                 "type": "true"
             }
         },
-        "region.spirit_temple_gateway[child]": {
+        "region.spirit_temple_entrance[child]": {
             "region.desert_colossus[child]": {
+                "type": "true"
+            },
+            "region.spirit_temple_entrance[child]": {
+                "type": "true"
+            }
+        },
+        "region.spirit_temple_entrance[adult]": {
+            "region.desert_colossus[adult]": {
+                "type": "true"
+            },
+            "region.spirit_temple_entrance[adult]": {
+                "type": "true"
+            }
+        },
+        "region.spirit_temple_gateway[child]": {
+            "region.spirit_temple_entrance[child]": {
                 "type": "true"
             },
             "region.spirit_temple_lobby[child]": {
@@ -232,7 +376,7 @@
             }
         },
         "region.spirit_temple_gateway[adult]": {
-            "region.desert_colossus[adult]": {
+            "region.spirit_temple_entrance[adult]": {
                 "type": "true"
             },
             "region.spirit_temple_lobby[adult]": {
@@ -779,7 +923,7 @@
             }
         },
         "region.bottom_of_the_well_mq[child]": {
-            "region.bottom_of_the_well_gateway[child]": {
+            "region.bottom_of_the_well_entrance[child]": {
                 "type": "true"
             },
             "region.bottom_of_the_well_main_area_mq[child]": {
@@ -788,7 +932,7 @@
             }
         },
         "region.bottom_of_the_well_mq[adult]": {
-            "region.bottom_of_the_well_gateway[adult]": {
+            "region.bottom_of_the_well_entrance[adult]": {
                 "type": "true"
             }
         },
@@ -1249,7 +1393,7 @@
             }
         },
         "region.bottom_of_the_well[child]": {
-            "region.bottom_of_the_well_gateway[child]": {
+            "region.bottom_of_the_well_entrance[child]": {
                 "type": "true"
             },
             "region.bottom_of_the_well_main_area[child]": {
@@ -1276,7 +1420,7 @@
             }
         },
         "region.bottom_of_the_well[adult]": {
-            "region.bottom_of_the_well_gateway[adult]": {
+            "region.bottom_of_the_well_entrance[adult]": {
                 "type": "true"
             }
         },
@@ -24944,7 +25088,7 @@
             }
         },
         "region.kf_outside_deku_tree[child]": {
-            "region.deku_tree_gateway[child]": {
+            "region.deku_tree_entrance[child]": {
                 "type": "or",
                 "el": [
                     {
@@ -25053,7 +25197,7 @@
             }
         },
         "region.kf_outside_deku_tree[adult]": {
-            "region.deku_tree_gateway[adult]": {
+            "region.deku_tree_entrance[adult]": {
                 "type": "or",
                 "el": [
                     {
@@ -26503,7 +26647,7 @@
             "region.sfm_entryway[adult]": {
                 "type": "true"
             },
-            "region.forest_temple_gateway[adult]": {
+            "region.forest_temple_entrance[adult]": {
                 "type": "mixin",
                 "el": "function.can_use(item.hookshot)[adult]"
             },
@@ -27458,7 +27602,7 @@
                     }
                 ]
             },
-            "region.water_temple_gateway[adult]": {
+            "region.water_temple_entrance[adult]": {
                 "type": "and",
                 "el": [
                     {
@@ -28729,7 +28873,7 @@
                 "type": "value",
                 "el": "event.gf_gate_open"
             },
-            "region.gerudo_training_grounds_gateway[adult]": {
+            "region.gerudo_training_grounds_entrance[adult]": {
                 "type": "and",
                 "el": [
                     {
@@ -29627,7 +29771,7 @@
                 "type": "mixin",
                 "el": "mixin.has_explosives[child]"
             },
-            "region.spirit_temple_gateway[child]": {
+            "region.spirit_temple_entrance[child]": {
                 "type": "true"
             },
             "region.wasteland_colossus_gateway[child]": {
@@ -29766,7 +29910,7 @@
                 "type": "mixin",
                 "el": "mixin.has_explosives[adult]"
             },
-            "region.spirit_temple_gateway[adult]": {
+            "region.spirit_temple_entrance[adult]": {
                 "type": "true"
             },
             "region.wasteland_colossus_gateway[adult]": {
@@ -35423,7 +35567,7 @@
             "region.graveyard[child]": {
                 "type": "true"
             },
-            "region.shadow_temple_gateway[child]": {
+            "region.shadow_temple_entrance[child]": {
                 "type": "or",
                 "el": [
                     {
@@ -35492,7 +35636,7 @@
             "region.graveyard[adult]": {
                 "type": "true"
             },
-            "region.shadow_temple_gateway[adult]": {
+            "region.shadow_temple_entrance[adult]": {
                 "type": "or",
                 "el": [
                     {
@@ -40522,7 +40666,7 @@
             "region.fountain_domain_gateway[child]": {
                 "type": "true"
             },
-            "region.jabu_jabus_belly_gateway[child]": {
+            "region.jabu_jabus_belly_entrance[child]": {
                 "type": "and",
                 "el": [
                     {
@@ -40675,7 +40819,7 @@
             "region.fountain_domain_gateway[adult]": {
                 "type": "true"
             },
-            "region.ice_cavern_gateway[adult]": {
+            "region.ice_cavern_entrance[adult]": {
                 "type": "mixin",
                 "el": "mixin.is_adult[adult]"
             },

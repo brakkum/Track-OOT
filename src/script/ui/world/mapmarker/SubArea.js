@@ -236,13 +236,11 @@ export default class MapSubArea extends EventBusSubsetMixin(HTMLElement) {
 
     connectedCallback() {
         super.connectedCallback();
-        let el = this.parentElement;
-        if (el != null) {
+        let el = this;
+        while (el.parentElement != null && !el.classList.contains("panel")) {
             el = el.parentElement;
-            if (el != null) {
-                el.append(MNU_CTX.get(this));
-            }
         }
+        el.append(MNU_CTX.get(this));
         // update state
         this.update();
     }
