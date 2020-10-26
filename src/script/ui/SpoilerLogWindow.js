@@ -55,6 +55,7 @@ export default class SpoilerLogSettings {
             if (!!spoiler && !!spoiler.data) {
                 SpoilerParser.parse(spoiler.data, settingsData);
                 loadSpoilerButton.innerHTML = Language.translate('load-spoiler-button');
+                spoiler = {};
             }
             BusyIndicator.unbusy();
         });
