@@ -5,6 +5,7 @@
 language=Language (needs restart)
 
 # LOCATIONS - OVERWORLD
+overworld=Hyrule
 area/hyrule_field=Hyrule Field
 area/kokiri=Kokiri Forest
 area/desert=Haunted Wasteland
@@ -1364,7 +1365,7 @@ song_items=Songs
 # OTHER
 hyrule=Hyrule
 vanilla=Vanilla
-MQ=Master Quest
+masterquest=Master Quest
 pocket=Pocket
 pocket.short=FREE
 item=Item
@@ -1641,7 +1642,7 @@ region.kak_potion_shop_back\u0020->\u0020region.kakariko_village=Adult Potions B
 region.kokiri_forest\u0020->\u0020region.kf_links_house=Links House Entrance
 region.kf_links_house\u0020->\u0020region.kokiri_forest=Links House Exit
 
-region.tot_entrance\u0020->\u0020region.temple_of_time=Temple of TIme Entrance
-region.temple_of_time\u0020->\u0020region.tot_entrance=Temple of TIme Exit
+region.tot_entrance\u0020->\u0020region.temple_of_time=Temple of Time Entrance
+region.temple_of_time\u0020->\u0020region.tot_entrance=Temple of Time Exit
 
 ## overworld

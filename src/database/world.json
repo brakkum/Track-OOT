@@ -7107,8 +7107,8 @@
                 "entrance_shuffle_all"
             ]
         },
-        "region.hyrule_castle_grounds -> region.childcastle_fairy_gateway": {
-            "target": "region.childcastle_fairy_gateway -> region.hyrule_castle_grounds",
+        "region.hyrule_castle_grounds -> region.hc_great_fairy_fountain": {
+            "target": "region.hc_great_fairy_fountain -> region.hyrule_castle_grounds",
             "type": "interior",
             "area": "subarea/castle.fairy_young",
             "active": [
@@ -7127,8 +7127,8 @@
                 "entrance_shuffle_all"
             ]
         },
-        "region.ganons_castle_grounds -> region.adultcastle_fairy_gateway": {
-            "target": "region.adultcastle_fairy_gateway -> region.ganons_castle_grounds",
+        "region.ganons_castle_grounds -> region.ogc_great_fairy_fountain": {
+            "target": "region.ogc_great_fairy_fountain -> region.ganons_castle_grounds",
             "type": "interior",
             "area": "subarea/castle.fairy_adult",
             "active": [
@@ -7513,6 +7513,7 @@
                 "entrance_shuffle_all"
             ]
         },
+
         "region.desert_colossus -> region.colossus_great_fairy_fountain": {
             "target": "region.colossus_great_fairy_fountain -> region.desert_colossus",
             "type": "interior",
