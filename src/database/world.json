@@ -1183,40 +1183,34 @@
                         "category": "location"
                     },
                     {
-                        "id": "kokiri.midos_house",
-                        "x": 0,
-                        "y": 0,
-                        "category": "exit"
-                    },
-                    {
                         "id": "kokiri.know_it_house",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
-                        "id": "kokiri.saria_house",
+                        "id": "kokiri.sarias_house",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "kokiri.twins_house",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "kokiri.shop",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "kokiri.storm_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     }
                 ]
             }
@@ -1318,13 +1312,13 @@
                     "id": "desert.fairy_colossus",
                     "x": 0,
                     "y": 0,
-                    "category": "exit"
+                    "category": "subexit"
                 },
                     {
                     "id": "desert.strength_grotto",
                     "x": 0,
                     "y": 0,
-                    "category": "exit"
+                    "category": "subexit"
                 }
                 ]
             }
@@ -1417,19 +1411,19 @@
                         "id": "river.bomb_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "river.open_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "river.storms_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     }
                 ]
             }
@@ -1498,49 +1492,49 @@
                         "id": "hyrule_field.castle_river_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "hyrule_field.kakariko_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "hyrule_field.lake_fence_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "hyrule_field.lake_open_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "hyrule_field.dive_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "hyrule_field.valley_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "hyrule_field.castle_entrance_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "hyrule_field.little_forest_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     }
                 ]
             }
@@ -1615,19 +1609,19 @@
                         "id": "gerudo_valley.tend",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "gerudo_valley.octorock_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "gerudo_valley.storms_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     }
                 ]
             }
@@ -1720,19 +1714,19 @@
                         "id": "lake.laboratory",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "lake.fishing",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "lake.grave_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     }
                 ]
             }
@@ -1802,25 +1796,25 @@
                         "id": "lonlon.house",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "lonlon.stables",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "lonlon.silo",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "lonlon.open_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     }
                 ]
             }
@@ -1895,7 +1889,7 @@
                         "id": "gerudo.storms_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     }
                 ]
             }
@@ -1988,19 +1982,19 @@
                         "id": "woods.near_goron_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "woods.theatre_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "woods.near_meadow_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     }
                 ]
             }
@@ -2063,19 +2057,19 @@
                     "id": "woods.wolfos_grotto",
                     "x": 0,
                     "y": 0,
-                    "category": "exit"
+                    "category": "subexit"
                 },
                     {
                     "id": "woods.fairy_grotto",
                     "x": 0,
                     "y": 0,
-                    "category": "exit"
+                    "category": "subexit"
                 },
                     {
                     "id": "woods.storms_grotto",
                     "x": 0,
                     "y": 0,
-                    "category": "exit"
+                    "category": "subexit"
                 }
                 ]
             }
@@ -2120,67 +2114,67 @@
                         "id": "castle_town.shop_bombchu",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "castle_town.shop_bazaar",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "castle_town.shop_magic",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "castle_town.shop_mask",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "castle_town.minigame_bombchu",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "castle_town.minigame_shooting",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "castle_town.minigame_treasure",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "castle_town.guard_tower",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "castle_town.temple_of_time",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "castle_town.dog_lady",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "castle_town.back_house",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     }
                 ]
             }
@@ -2294,19 +2288,19 @@
                     "id": "castle_town.fairy_young",
                     "x": 0,
                     "y": 0,
-                    "category": "exit"
+                    "category": "subexit"
                 },
                     {
                     "id": "castle_town.fairy_adult",
                     "x": 0,
                     "y": 0,
-                    "category": "exit"
+                    "category": "subexit"
                 },
                     {
                     "id": "castle_town.storm_grotto",
                     "x": 0,
                     "y": 0,
-                    "category": "exit"
+                    "category": "subexit"
                 }
                 ]
             }
@@ -2423,67 +2417,67 @@
                         "id": "kakariko.shop_bazaar",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "kakariko.shop_magic",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "kakariko.minigame_shooting",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "kakariko.impas_house",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "kakariko.impa_back",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "kakariko.windmill",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "kakariko.skulltula_house",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "kakariko.kakariko_witch",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "kakariko.carpenter_house",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "kakariko.open_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "kakariko.redead_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     }
                 ]
             }
@@ -2552,7 +2546,7 @@
                         "id": "kakariko.dampes_hut",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     }
                 ]
             }
@@ -2633,19 +2627,19 @@
                         "id": "mountain.mountain_fairy",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "mountain.bomb_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "mountain.storms_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     }
                 ]
             }
@@ -2720,19 +2714,19 @@
                         "id": "mountain.crater_fairy",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "mountain.crater_hammer_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "mountain.crater_bomb_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     }
                 ]
             }
@@ -2825,13 +2819,13 @@
                         "id": "goron.shop",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "goron.grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     }
                 ]
             }
@@ -2876,13 +2870,13 @@
                         "id": "zoras.shop",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     },
                     {
                         "id": "zoras.storms_grotto",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     }
                 ]
             }
@@ -2951,7 +2945,7 @@
                         "id": "zoras.fairy",
                         "x": 0,
                         "y": 0,
-                        "category": "exit"
+                        "category": "subexit"
                     }
                 ]
             }
@@ -6782,7 +6776,7 @@
         "region.hyrule_field -> region.hf_fairy_grotto": {
             "target": "region.hf_fairy_grotto -> region.hyrule_field",
             "type": "grotto",
-            "area": "subarea/hyrule_field.fairy_grotto",
+            "area": "subarea/hyrule_field.castle_river_grotto",
             "active": [
                 "entrance_shuffle_simple",
                 "entrance_shuffle_indoors",
@@ -22704,7 +22698,7 @@
             },
             "kokiri.know_it_house": {
                 "type": "interior",
-                "access": "",
+                "access": "region.kokiri_forest -> region.kf_know_it_all_house",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -22735,9 +22729,9 @@
                 },
                 "icon": "images/icons/interior.svg"
             },
-            "kokiri.saria_house": {
+            "kokiri.sarias_house": {
                 "type": "interior",
-                "access": "",
+                "access": "region.kokiri_forest -> region.kf_sarias_house",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -22770,7 +22764,7 @@
             },
             "kokiri.twins_house": {
                 "type": "interior",
-                "access": "",
+                "access": "region.kokiri_forest -> region.kf_house_of_twins",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -22803,7 +22797,7 @@
             },
             "kokiri.shop": {
                 "type": "interior",
-                "access": "",
+                "access": "region.kokiri_forest -> region.kf_kokiri_shop",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -22836,7 +22830,7 @@
             },
             "kokiri.storm_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.kokiri_forest -> region.kf_storms_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -22935,7 +22929,7 @@
             },
             "river.bomb_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.zora_river -> region.zr_fairy_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -22968,7 +22962,7 @@
             },
             "river.open_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.zora_river -> region.zr_open_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23001,7 +22995,7 @@
             },
             "river.storms_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.zora_river -> region.zr_storms_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23067,7 +23061,7 @@
             },
             "hyrule_field.kakariko_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.hyrule_field -> region.hf_near_kak_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23100,7 +23094,7 @@
             },
             "hyrule_field.lake_fence_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.hyrule_field -> region.hf_inside_fence_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23133,7 +23127,7 @@
             },
             "hyrule_field.lake_open_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.hyrule_field -> region.hf_open_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23166,7 +23160,7 @@
             },
             "hyrule_field.dive_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.hyrule_field -> region.hf_tektite_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23199,7 +23193,7 @@
             },
             "hyrule_field.valley_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.hyrule_field -> region.hf_cow_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23232,7 +23226,7 @@
             },
             "hyrule_field.castle_entrance_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.hyrule_field -> region.hf_near_market_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23265,7 +23259,7 @@
             },
             "hyrule_field.little_forest_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.hyrule_field -> region.hf_southeast_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23298,7 +23292,7 @@
             },
             "gerudo_valley.tend": {
                 "type": "interior",
-                "access": "",
+                "access": "region.gv_fortress_side -> region.gv_carpenter_tent",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23331,7 +23325,7 @@
             },
             "gerudo_valley.octorock_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.gerudo_valley -> region.gv_octorok_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23364,7 +23358,7 @@
             },
             "gerudo_valley.storms_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.gv_fortress_side -> region.gv_storms_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23397,7 +23391,7 @@
             },
             "lake.laboratory": {
                 "type": "interior",
-                "access": "",
+                "access": "region.lake_hylia -> region.lh_lab",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23430,7 +23424,7 @@
             },
             "lake.fishing": {
                 "type": "interior",
-                "access": "",
+                "access": "region.lake_hylia -> region.lh_fishing_hole",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23463,7 +23457,7 @@
             },
             "lake.grave_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.lake_hylia -> region.lh_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23496,7 +23490,7 @@
             },
             "lonlon.house": {
                 "type": "interior",
-                "access": "",
+                "access": "region.lon_lon_ranch -> region.llr_talons_house",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23529,7 +23523,7 @@
             },
             "lonlon.stables": {
                 "type": "interior",
-                "access": "",
+                "access": "region.lon_lon_ranch -> region.llr_stables",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23562,7 +23556,7 @@
             },
             "lonlon.silo": {
                 "type": "interior",
-                "access": "",
+                "access": "region.lon_lon_ranch -> region.llr_tower",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23595,7 +23589,7 @@
             },
             "lonlon.open_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.lon_lon_ranch -> region.llr_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23628,7 +23622,7 @@
             },
             "gerudo.storms_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.gerudo_fortress -> region.gf_storms_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23661,7 +23655,7 @@
             },
             "woods.near_goron_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.lost_woods -> region.lw_near_shortcuts_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23694,7 +23688,7 @@
             },
             "woods.theatre_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.lw_beyond_mido -> region.deku_theater",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23727,7 +23721,7 @@
             },
             "woods.near_meadow_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.lw_beyond_mido -> region.lw_scrubs_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23859,7 +23853,7 @@
             },
             "castle_town.shop_bombchu": {
                 "type": "interior",
-                "access": "",
+                "access": "region.market -> region.market_bombchu_shop",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23892,7 +23886,7 @@
             },
             "castle_town.shop_bazaar": {
                 "type": "interior",
-                "access": "",
+                "access": "region.market -> region.market_bazaar",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23925,7 +23919,7 @@
             },
             "castle_town.shop_magic": {
                 "type": "interior",
-                "access": "",
+                "access": "region.market -> region.market_potion_shop",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23958,7 +23952,7 @@
             },
             "castle_town.shop_mask": {
                 "type": "interior",
-                "access": "",
+                "access": "region.market -> region.market_mask_shop",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -23991,7 +23985,7 @@
             },
             "castle_town.minigame_bombchu": {
                 "type": "interior",
-                "access": "",
+                "access": "region.market -> region.market_bombchu_bowling",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24024,7 +24018,7 @@
             },
             "castle_town.minigame_shooting": {
                 "type": "interior",
-                "access": "",
+                "access": "region.market -> region.market_shooting_gallery",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24057,7 +24051,7 @@
             },
             "castle_town.minigame_treasure": {
                 "type": "interior",
-                "access": "",
+                "access": "region.market -> region.market_treasure_chest_game",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24090,7 +24084,7 @@
             },
             "castle_town.guard_tower": {
                 "type": "interior",
-                "access": "",
+                "access": "region.market_entrance -> region.market_guard_house",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24123,7 +24117,7 @@
             },
             "castle_town.temple_of_time": {
                 "type": "interior",
-                "access": "",
+                "access": "region.tot_entrance -> region.temple_of_time",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24156,7 +24150,7 @@
             },
             "castle_town.back_house": {
                 "type": "interior",
-                "access": "",
+                "access": "region.market -> region.market_man_in_green_house",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24288,7 +24282,7 @@
             },
             "kakariko.shop_bazaar": {
                 "type": "interior",
-                "access": "",
+                "access": "region.kakariko_village -> region.kak_bazaar",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24321,7 +24315,7 @@
             },
             "kakariko.shop_magic": {
                 "type": "interior",
-                "access": "",
+                "access": "region.kakariko_village -> region.kak_potion_shop_front",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24354,7 +24348,7 @@
             },
             "kakariko.minigame_shooting": {
                 "type": "interior",
-                "access": "",
+                "access": "region.kakariko_village -> region.kak_shooting_gallery",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24387,7 +24381,7 @@
             },
             "kakariko.impas_house": {
                 "type": "interior",
-                "access": "",
+                "access": "region.kakariko_village -> region.kak_impas_house",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24420,7 +24414,7 @@
             },
             "kakariko.impa_back": {
                 "type": "interior",
-                "access": "",
+                "access": "region.kak_impas_ledge -> region.kak_impas_house_back",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24453,7 +24447,7 @@
             },
             "kakariko.windmill": {
                 "type": "interior",
-                "access": "",
+                "access": "region.kakariko_village -> region.kak_windmill",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24486,7 +24480,7 @@
             },
             "kakariko.skulltula_house": {
                 "type": "interior",
-                "access": "",
+                "access": "region.kakariko_village -> region.kak_house_of_skulltula",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24519,7 +24513,7 @@
             },
             "kakariko.kakariko_witch": {
                 "type": "interior",
-                "access": "",
+                "access": "region.kak_backyard -> region.kak_odd_medicine_building",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24552,7 +24546,7 @@
             },
             "kakariko.carpenter_house": {
                 "type": "interior",
-                "access": "",
+                "access": "region.kakariko_village -> region.kak_carpenter_boss_house",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24585,7 +24579,7 @@
             },
             "kakariko.open_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.kak_backyard -> region.kak_open_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24618,7 +24612,7 @@
             },
             "kakariko.redead_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.kakariko_village -> region.kak_redead_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24717,7 +24711,7 @@
             },
             "mountain.bomb_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.death_mountain_summit -> region.dmt_cow_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24750,7 +24744,7 @@
             },
             "mountain.storms_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.death_mountain -> region.dmt_storms_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24882,7 +24876,7 @@
             },
             "goron.shop": {
                 "type": "interior",
-                "access": "",
+                "access": "region.goron_city -> region.gc_shop",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24915,7 +24909,7 @@
             },
             "goron.grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.goron_city -> region.gc_grotto",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24948,7 +24942,7 @@
             },
             "zoras.shop": {
                 "type": "interior",
-                "access": "",
+                "access": "region.zoras_domain -> region.zd_shop",
                 "visible": {
                     "type": "not",
                     "el": {
@@ -24981,7 +24975,7 @@
             },
             "zoras.storms_grotto": {
                 "type": "grotto",
-                "access": "",
+                "access": "region.zoras_domain -> region.zd_storms_grotto",
                 "visible": {
                     "type": "not",
                     "el": {

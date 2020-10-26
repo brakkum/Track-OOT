@@ -39,11 +39,14 @@ class ListLogic {
                 if (category == "subexit") {
                     const subexit = FileData.get(`world/marker/subexit/${id}`);
                     const bound = StateStorage.readExtra("subexits", subexit.access);
+                    if (!bound) {
+                        continue;
+                    }
                     let entrance = FileData.get(`world/exit/${bound}`);
                     if (entrance == null) {
                         entrance = FileData.get(`world/exit/${bound.split(" -> ").reverse().join(" -> ")}`)
                     }
-                    if (bound != null) {
+                    if (entrance != null) {
                         const subarea = FileData.get(`world/${entrance.area}/list`).filter(this.filterUnusedChecks);
                         const {done, unopened, reachable} = this.check(subarea);
                         res.done += done;

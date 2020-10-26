@@ -443,6 +443,9 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
                     const exit = FileData.get(`world/exit/${data.access}`);
                     const entrances = FileData.get("world/exit");
                     const txt = this.shadowRoot.getElementById("text");
+                    if (!data.access) {
+                        console.warn(`missing exit access for "${newValue}"`);
+                    }
                     txt.innerHTML = Language.translate(data.access);
                     txt.setAttribute('i18n-content', data.access);
                     ACTIVE.set(this, exit.active);

@@ -39,6 +39,7 @@ class Language {
     }
 
     translate(index) {
+        if (!index) return "";
         return I18n.translate(index);
     }
 
