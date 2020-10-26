@@ -312,12 +312,10 @@ class StateStorage {
         }
     }
 
-    writeExtraAll(key) {
-        for(let c in key) {
-            for(let k in key[c]) {
-                let v = key[c][k];
-                this.writeExtra(c, k, v);
-            }
+    writeAllExtra(data) {
+        for(let c in data) {
+            let state = data[c];
+            this.writeExtra(c, state);
         }
     }
 
@@ -328,7 +326,7 @@ class StateStorage {
         return def;
     }
 
-    getAllExtra(category) {
+    readAllExtra(category) {
         if (category == null) {
             let res = {};
             for (let [category, state] of DATA.extra) {

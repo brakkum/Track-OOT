@@ -156,21 +156,21 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.append(TPL.generate());
 
         /* context menu */
-        let mnu_ctx = document.createElement("div");
+        const mnu_ctx = document.createElement("div");
         mnu_ctx.attachShadow({mode: 'open'});
         mnu_ctx.shadowRoot.append(TPL_MNU_CTX.generate());
-        let mnu_ctx_el = mnu_ctx.shadowRoot.getElementById("menu");
+        const mnu_ctx_el = mnu_ctx.shadowRoot.getElementById("menu");
         MNU_CTX.set(this, mnu_ctx);
 
-        let mnu_ext = document.createElement("div");
+        const mnu_ext = document.createElement("div");
         mnu_ext.attachShadow({mode: 'open'});
         mnu_ext.shadowRoot.append(TPL_MNU_EXT.generate());
-        let selectEl = mnu_ext.shadowRoot.getElementById("select");
-        let mnu_ext_el = mnu_ext.shadowRoot.getElementById("menu");
+        const selectEl = mnu_ext.shadowRoot.getElementById("select");
+        const mnu_ext_el = mnu_ext.shadowRoot.getElementById("menu");
         MNU_EXT.set(this, mnu_ext);
 
         selectEl.addEventListener("change", event => {
-            let exit = EXIT.get(this);
+            const exit = EXIT.get(this);
             if (exit != "") {
                 StateStorage.writeExtra("exits", exit, event.value);
             }
@@ -197,7 +197,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-uncheck").addEventListener("click", event => {
-            let area = AREA.get(this);
+            const area = AREA.get(this);
             let data = FileData.get(`world/${area}/lists`);
             if (data.v != null) {
                 for (let loc of data.v) {
@@ -213,6 +213,19 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-associate").addEventListener("click", event => {
+            const exit = this.value;
+            const exits = StateStorage.readAllExtra("exits");
+            const bound = new Set();
+            for (const key in exits) {
+                bound.add(exits[key]);
+            }
+            selectEl.querySelectorAll("emc-option").forEach(el => {
+                if (!!el.value && el.value != exit && bound.has(el.value)) {
+                    el.style.display = "none";
+                } else {
+                    el.style.display = "";
+                }
+            });
             mnu_ext_el.show(mnu_ctx_el.left, mnu_ctx_el.top);
             event.preventDefault();
             return false;

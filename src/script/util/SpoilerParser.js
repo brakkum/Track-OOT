@@ -482,7 +482,7 @@ class SpoilerParser {
             parseDungeons(data["dungeons"], data["locations"], world, settings["parse.dungeons"], settings["parse.dungeonReward"]);
 
             StateStorage.write(options[multiWorld]);
-            StateStorage.writeExtraAll(extra[multiWorld]);
+            StateStorage.writeAllExtra(extra[multiWorld]);
 
             EventBus.trigger("randomizer_options", options[multiWorld]);
         }
