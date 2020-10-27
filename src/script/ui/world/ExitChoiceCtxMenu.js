@@ -100,7 +100,7 @@ export default class ExitChoiceCtxMenu extends EventBusSubsetMixin(HTMLElement) 
         if (!!data) {
             if (data.lists.mq == null) {
                 data.lists.v.forEach(record => {
-                    let loc = WorldRegistry.get(record.id);
+                    let loc = MarkerRegistry.get(record.id);
                     if (!!loc && loc.visible()) {
                         let el = loc.listItem;
                         cnt.append(el);

@@ -1,7 +1,7 @@
 import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import Logic from "/script/util/logic/Logic.js";
-import WorldRegistry from "../WorldRegistry.js";
+import MarkerRegistry from "/script/util/world/MarkerRegistry.js";
 
 class ListLogic {
     
@@ -71,7 +71,7 @@ class ListLogic {
     }
 
     filterUnusedChecks(check) {
-        const loc = WorldRegistry.get(`${check.category}/${check.id}`);
+        const loc = MarkerRegistry.get(`${check.category}/${check.id}`);
         return !!loc && loc.visible();
     }
 

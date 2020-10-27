@@ -1,10 +1,7 @@
-import FileData from "/emcJS/storage/FileData.js";
 import LogicCompiler from "/emcJS/util/logic/Compiler.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import FilterStorage from "/script/storage/FilterStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
-
-import WorldRegistry from "./WorldRegistry.js";
 
 import ListArea from "/script/ui/world/listitems/Area.js";
 import ListSubArea from "/script/ui/world/listitems/SubArea.js";
@@ -91,7 +88,7 @@ function createMapItem(category, instance) {
     return res;
 }
 
-class WorldEntry {
+export default class MarkerEntry {
 
     constructor(ref, category, data) {
         let visible_logic = null;
@@ -198,26 +195,3 @@ class WorldEntry {
     }
 
 }
-
-let initialized = false;
-
-class World {
-
-    init() {
-        if (!initialized) {
-            initialized = true;
-            const world = FileData.get("world/marker");
-            for (const cat in world) {
-                const marker = world[cat];
-                for (const ref in marker) {
-                    const entry = marker[ref];
-                    const id = `${cat}/${ref}`;
-                    WorldRegistry.set(id, new WorldEntry(id, cat, entry));
-                }
-            }
-        }
-    }
-
-}
-
-export default new World();

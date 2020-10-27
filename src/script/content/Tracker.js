@@ -33,14 +33,20 @@ PageSwitcher.register("main", [{
     "content": "PATREON",
     "handler": openPatreon
 },{
-    "content": "EDITORS",
-    "handler": showEditors
-}, {
-    "content": "TOGGLE FULLSCREEN",
-    "handler": toggleFullscreen
-},{
-    "content": "UPLOAD SPOILER",
-    "handler": openSpoilerSettingsWindow
+    "content": "EXTRAS",
+    "submenu": [{
+        "content": "TOGGLE FULLSCREEN",
+        "handler": toggleFullscreen
+    },{
+        "content": "UPLOAD SPOILER",
+        "handler": openSpoilerSettingsWindow
+    }, {
+        "content": "DETACHED ITEM WINDOW",
+        "handler": openDetachedItems
+    }, {
+        "content": "EDITORS",
+        "handler": showEditors
+    }]
 },{
     "content": "RANDOMIZER OPTIONS",
     "handler": openRomSettingsWindow
@@ -114,6 +120,10 @@ async function states_Manage() {
     } else {
         w.show();
     }
+}
+
+function openDetachedItems() {
+    window.open('detached.html#items', "TrackOOT", "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,titlebar=0", false);
 }
 
 function openDiscortJoin() {

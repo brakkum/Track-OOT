@@ -7,7 +7,7 @@ import StateStorage from "/script/storage/StateStorage.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import ListLogic from "/script/util/logic/ListLogic.js";
 import Language from "/script/util/Language.js";
-import WorldRegistry from "/script/util/WorldRegistry.js";
+import MarkerRegistry from "/script/util/world/MarkerRegistry.js";
 
 const SettingsStorage = new IDBStorage('settings');
 
@@ -26,7 +26,7 @@ const TPL = new Template(`
             cursor: pointer;
             padding: 5px;
         }
-        :host(:not([data-headless="true"]):hover) {
+        :host(:hover) {
             background-color: var(--main-hover-color, #ffffff32);
         }
         .textarea {
@@ -43,12 +43,11 @@ const TPL = new Template(`
         .textarea + .textarea {
             margin-top: 5px;
         }
-        :host([data-headless="true"]) .textarea {
-            display: none;
-        }
         #text {
+            display: flex;
             flex: 1;
             color: #ffffff;
+            align-items: center;
             -moz-user-select: none;
             user-select: none;
         }
@@ -88,8 +87,11 @@ const TPL = new Template(`
             width: 100%;
             margin-top: 5px;
         }
+        :host(:empty) #list {
+            display: none;
+        }
     </style>
-    <div class="textarea">
+    <div id="header" class="textarea">
         <div id="text"></div>
         <div id="badge">
             <emc-icon src="images/icons/entrance.svg"></emc-icon>
@@ -200,7 +202,6 @@ export default class ListSubArea extends EventBusSubsetMixin(HTMLElement) {
     disconnectedCallback() {
         super.disconnectedCallback();
         MNU_CTX.get(this).remove();
-        this.dataset.headless = "";
     }
 
     get ref() {
@@ -228,7 +229,6 @@ export default class ListSubArea extends EventBusSubsetMixin(HTMLElement) {
     }
 
     refresh() {
-        // TODO do not use specialized code. make generic
         if (!!this.ref) {
             const data = FileData.get(`world/${this.ref}`);
             this.innerHTML = "";
@@ -238,7 +238,7 @@ export default class ListSubArea extends EventBusSubsetMixin(HTMLElement) {
                 this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[res.value];
                 // create list entries
                 data.list.forEach(record => {
-                    const loc = WorldRegistry.get(`${record.category}/${record.id}`);
+                    const loc = MarkerRegistry.get(`${record.category}/${record.id}`);
                     if (!!loc && loc.visible()) {
                         const el = loc.listItem;
                         this.append(el);
