@@ -117,7 +117,7 @@ async function update() {
 class AugmentExits {
 
     async init() {
-        let exits = StateStorage.getAllExtra("exits");
+        let exits = StateStorage.readAllExtra("exits");
         for (let exit in exits) {
             exit_binding[exit] = exits[exit].split(" -> ")[0]
         }

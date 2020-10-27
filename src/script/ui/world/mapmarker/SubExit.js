@@ -229,6 +229,19 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-associate").addEventListener("click", event => {
+            const exit = this.value;
+            const exits = StateStorage.readAllExtra("subexits");
+            const bound = new Set();
+            for (const key in exits) {
+                bound.add(exits[key]);
+            }
+            selectEl.querySelectorAll("emc-option").forEach(el => {
+                if (!!el.value && el.value != exit && bound.has(el.value)) {
+                    el.style.display = "none";
+                } else {
+                    el.style.display = "";
+                }
+            });
             mnu_ext_el.show(mnu_ctx_el.left, mnu_ctx_el.top);
             event.preventDefault();
             return false;

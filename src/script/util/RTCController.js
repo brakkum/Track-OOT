@@ -47,7 +47,7 @@ let ON_ROOMUPDATE = EMPTY_FN;
 
 function getState() {
     let state = StateStorage.getAll();
-    let extra = StateStorage.getAllExtra();
+    let extra = StateStorage.readAllExtra();
     let res = {};
     for (let i in extra) {
         if (!i.endsWith("Names")) {
