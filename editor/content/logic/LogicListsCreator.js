@@ -25,7 +25,14 @@ const LOGIC_OPERATORS = [
     "jse-logic-gte",
     "jse-logic-lt",
     "jse-logic-lte",
-    "jse-logic-neq"
+    "jse-logic-neq",
+    // math
+    "jse-logic-add",
+    "jse-logic-sub",
+    "jse-logic-mul",
+    "jse-logic-div",
+    "jse-logic-mod",
+    "jse-logic-pow"
 ];
 const CUSTOM_OPERATOR_GROUP = [
     "location"
