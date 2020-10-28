@@ -7,6 +7,7 @@ import StateStorage from "/script/storage/StateStorage.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import ListLogic from "/script/util/logic/ListLogic.js";
 import Logic from "/script/util/logic/Logic.js";
+import ExitRegistry from "/script/util/world/ExitRegistry.js";
 import Language from "/script/util/Language.js";
 
 const SettingsStorage = new IDBStorage('settings');
@@ -42,6 +43,11 @@ const TPL = new Template(`
         }
         .textarea + .textarea {
             margin-top: 5px;
+        }
+        #value:empty:after {
+            display: inline;
+            font-style: italic;
+            content: "empty";
         }
         #text {
             display: flex;
@@ -137,7 +143,6 @@ const VALUE_STATES = [
     "available"
 ];
 
-const ACTIVE = new WeakMap();
 const EXIT = new WeakMap();
 const AREA = new WeakMap();
 const ACCESS = new WeakMap();
@@ -148,7 +153,6 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
-        ACTIVE.set(this, []);
         EXIT.set(this, "");
         AREA.set(this, "");
         ACCESS.set(this, "");
@@ -213,19 +217,35 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-associate").addEventListener("click", event => {
-            const exit = this.value;
+            // retrieve bound
+            const current = this.value;
             const exits = StateStorage.readAllExtra("exits");
             const bound = new Set();
             for (const key in exits) {
+                if (exits[key] == current) continue;
                 bound.add(exits[key]);
             }
-            selectEl.querySelectorAll("emc-option").forEach(el => {
-                if (!!el.value && el.value != exit && bound.has(el.value)) {
-                    el.style.display = "none";
-                } else {
-                    el.style.display = "";
+            // add options
+            const access = EXIT.get(this);
+            const exit = FileData.get(`world/exit/${access}`);
+            const entrances = FileData.get("world/exit");
+            const selectEl = MNU_EXT.get(this).shadowRoot.getElementById("select");
+            selectEl.value = this.value;
+            selectEl.innerHTML = "";
+            const empty = document.createElement('emc-option');
+            empty.value = "";
+            selectEl.append(empty);
+            for (const key in entrances) {
+                const value = entrances[key];
+                if (value.type == exit.type && !bound.has(value.target)) {
+                    const opt = document.createElement('emc-option');
+                    opt.value = value.target;
+                    opt.innerHTML = Language.translate(value.target);
+                    opt.setAttribute('i18n-content', value.target);
+                    selectEl.append(opt);
                 }
-            });
+            }
+            // show menu
             mnu_ext_el.show(mnu_ctx_el.left, mnu_ctx_el.top);
             event.preventDefault();
             return false;
@@ -276,11 +296,9 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
 
         /* event bus */
         this.registerGlobal("state", event => {
-            let exit = EXIT.get(this);
-            let active = ACTIVE.get(this);
-            if (event.data.state.hasOwnProperty("option.entrance_shuffle")) {
-                selectEl.readonly = active.indexOf(event.data.state["option.entrance_shuffle"]) < 0;
-            }
+            const exit = EXIT.get(this);
+            const exitEntry = ExitRegistry.get(exit);
+            selectEl.readonly = exitEntry.active();
             if (event.data.extra.exits != null && event.data.extra.exits[exit] != null) {
                 this.value = event.data.extra.exits[exit];
             } else {
@@ -288,10 +306,9 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
             }
         });
         this.registerGlobal("randomizer_options", event => {
-            let active = ACTIVE.get(this);
-            if (event.data.hasOwnProperty("option.entrance_shuffle")) {
-                selectEl.readonly = active.indexOf(event.data["option.entrance_shuffle"]) < 0;
-            }
+            const exit = EXIT.get(this);
+            const exitEntry = ExitRegistry.get(exit);
+            selectEl.readonly = exitEntry.active();
             this.update();
         });
         this.registerGlobal("statechange_exits", event => {
@@ -405,35 +422,15 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
             case 'ref':
                 if (oldValue != newValue) {
                     const data = FileData.get(`world/marker/${newValue}`);
-                    const exit = FileData.get(`world/exit/${data.access}`);
-                    const entrances = FileData.get("world/exit");
                     const txt = this.shadowRoot.getElementById("text");
                     if (!data.access) {
                         console.warn(`missing exit access for "${newValue}"`);
                     }
                     txt.innerHTML = Language.translate(data.access);
                     txt.setAttribute('i18n-content', data.access);
-                    ACTIVE.set(this, exit.active);
                     EXIT.set(this, data.access);
-                    ACCESS.set(this, data.access.split(" -> ")[1]);
+                    ACCESS.set(this, data.access.split(" -> ")[0]);
                     this.value = StateStorage.readExtra("exits", data.access, "");
-                    // options
-                    const selectEl = MNU_EXT.get(this).shadowRoot.getElementById("select");
-                    selectEl.value = this.value;
-                    selectEl.innerHTML = "";
-                    const empty = document.createElement('emc-option');
-                    empty.value = "";
-                    selectEl.append(empty);
-                    for (const key in entrances) {
-                        const value = entrances[key];
-                        if (value.type == exit.type) {
-                            const opt = document.createElement('emc-option');
-                            opt.value = value.target;
-                            opt.innerHTML = Language.translate(value.target);
-                            opt.setAttribute('i18n-content', value.target);
-                            selectEl.append(opt);
-                        }
-                    }
                     // update state
                     this.update();
                 }

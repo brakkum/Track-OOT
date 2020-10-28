@@ -4,7 +4,7 @@ import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
 import FilterStorage from "/script/storage/FilterStorage.js";
 import Language from "/script/util/Language.js";
-import WorldRegistry from "/script/util/WorldRegistry.js";
+import MarkerRegistry from "/script/util/world/MarkerRegistry.js";
 import "./mapmarker/Area.js";
 import "./mapmarker/Exit.js";
 import "./mapmarker/Location.js";
@@ -527,7 +527,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
                             return;
                         }
                     }
-                    let loc = WorldRegistry.get(`${record.category}/${record.id}`);
+                    let loc = MarkerRegistry.get(`${record.category}/${record.id}`);
                     if (!!loc && loc.visible()) {
                         let el = loc.mapMarker;
                         if (this.ref == "overworld" && !!el.dataset.mode && el.dataset.mode != this.mode) {

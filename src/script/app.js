@@ -10,7 +10,7 @@ import HotkeyHandler from "/emcJS/util/HotkeyHandler.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import Language from "/script/util/Language.js";
-import World from "/script/util/World.js";
+import World from "/script/util/world/World.js";
 
 import "/script/storage/converter/StateConverter.js";
 import AugmentExits from "/script/util/logic/AugmentExits.js";
@@ -193,14 +193,14 @@ async function init() {
         altKey: true,
         key: "i"
     });
-    HotkeyHandler.setAction("undo", StateStorage.undo, {
+    /*HotkeyHandler.setAction("undo", StateStorage.undo, {
         ctrlKey: true,
         key: "z"
     });
     HotkeyHandler.setAction("redo", StateStorage.redo, {
         ctrlKey: true,
         key: "y"
-    });
+    });*/
     window.addEventListener('keydown', function(event) {
         if (HotkeyHandler.callHotkey(event.key, event.ctrlKey, event.altKey, event.shiftKey)) {
             event.preventDefault();

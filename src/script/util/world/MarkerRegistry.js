@@ -1,6 +1,6 @@
 const WORLD = new Map();
 
-class WorldRegistry {
+class MarkerRegistry {
 
     set(ref, entry) {
         WORLD.set(ref, entry);
@@ -12,4 +12,4 @@ class WorldRegistry {
 
 }
 
-export default new WorldRegistry();
+export default new MarkerRegistry();

@@ -30,25 +30,25 @@ const TPL = new Template(`
     </label>
 `);
 
-export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLElement) {
+export default class HTMLTrackerSubExitChoice extends EventBusSubsetMixin(HTMLElement) {
     
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
 
-        let selectEl = this.shadowRoot.getElementById("select");
+        const selectEl = this.shadowRoot.getElementById("select");
         selectEl.addEventListener("change", event => {
             if (this.ref != "") {
-                StateStorage.writeExtra("exits", this.ref, event.value);
+                StateStorage.writeExtra("subexits", this.ref, event.value);
             }
         });
         /* event bus */
         this.registerGlobal("state", event => {
             const exitEntry = ExitRegistry.get(this.ref);
             selectEl.readonly = exitEntry.active();
-            if (event.data.extra.exits != null && event.data.extra.exits[this.ref] != null) {
-                selectEl.value = event.data.extra.exits[this.ref];
+            if (event.data.extra.subexits != null && event.data.extra.subexits[this.ref] != null) {
+                selectEl.value = event.data.extra.subexits[this.ref];
             } else {
                 selectEl.value = "";
             }
@@ -59,7 +59,7 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
             selectEl.readonly = exitEntry.active();
             this.refreshExits();
         });
-        this.registerGlobal("statechange_exits", event => {
+        this.registerGlobal("statechange_subexits", event => {
             let data;
             if (event.data != null) {
                 data = event.data[this.ref];
@@ -93,7 +93,7 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
                     title.innerHTML = Language.translate(newValue);
                     title.setAttribute('i18n-content', newValue);
                     let selectEl = this.shadowRoot.getElementById("select");
-                    selectEl.value = StateStorage.readExtra("exits", newValue, "");
+                    selectEl.value = StateStorage.readExtra("subexits", newValue, "");
                     // readonly
                     const exitEntry = ExitRegistry.get(newValue);
                     selectEl.readonly = exitEntry.active();
@@ -107,7 +107,7 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
         const selectEl = this.shadowRoot.getElementById("select");
         // retrieve bound
         const current = selectEl.value;
-        const exits = StateStorage.readAllExtra("exits");
+        const exits = StateStorage.readAllExtra("subexits");
         const bound = new Set();
         for (const key in exits) {
             if (exits[key] == current) continue;
@@ -134,4 +134,4 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
 
 }
 
-customElements.define('ootrt-exitchoice', HTMLTrackerExitChoice);
+customElements.define('ootrt-subexitchoice', HTMLTrackerSubExitChoice);
