@@ -9337,9 +9337,11 @@
                 "type": "dungeon",
                 "access": "region.bottom_of_the_well",
                 "visible": {
-                    "type": "state",
-                    "el": "option.entrance_shuffle",
-                    "value": "entrance_shuffle_off"
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_dungeons"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9357,9 +9359,11 @@
                 "type": "dungeon",
                 "access": "region.ice_cavern_beginning",
                 "visible": {
-                    "type": "state",
-                    "el": "option.entrance_shuffle",
-                    "value": "entrance_shuffle_off"
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_dungeons"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9377,9 +9381,11 @@
                 "type": "dungeon",
                 "access": "region.gerudo_training_grounds_lobby",
                 "visible": {
-                    "type": "state",
-                    "el": "option.entrance_shuffle",
-                    "value": "entrance_shuffle_off"
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_dungeons"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9397,9 +9403,11 @@
                 "type": "dungeon",
                 "access": "region.deku_tree_lobby",
                 "visible": {
-                    "type": "state",
-                    "el": "option.entrance_shuffle",
-                    "value": "entrance_shuffle_off"
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_dungeons"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9417,9 +9425,11 @@
                 "type": "dungeon",
                 "access": "region.dodongos_cavern_beginning",
                 "visible": {
-                    "type": "state",
-                    "el": "option.entrance_shuffle",
-                    "value": "entrance_shuffle_off"
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_dungeons"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9437,9 +9447,11 @@
                 "type": "dungeon",
                 "access": "region.jabu_jabus_belly_beginning",
                 "visible": {
-                    "type": "state",
-                    "el": "option.entrance_shuffle",
-                    "value": "entrance_shuffle_off"
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_dungeons"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9457,9 +9469,11 @@
                 "type": "dungeon",
                 "access": "region.forest_temple_lobby",
                 "visible": {
-                    "type": "state",
-                    "el": "option.entrance_shuffle",
-                    "value": "entrance_shuffle_off"
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_dungeons"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9477,9 +9491,11 @@
                 "type": "dungeon",
                 "access": "region.fire_temple_lower",
                 "visible": {
-                    "type": "state",
-                    "el": "option.entrance_shuffle",
-                    "value": "entrance_shuffle_off"
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_dungeons"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9497,9 +9513,11 @@
                 "type": "dungeon",
                 "access": "region.water_temple_lobby",
                 "visible": {
-                    "type": "state",
-                    "el": "option.entrance_shuffle",
-                    "value": "entrance_shuffle_off"
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_dungeons"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9517,9 +9535,11 @@
                 "type": "dungeon",
                 "access": "region.shadow_temple_entryway",
                 "visible": {
-                    "type": "state",
-                    "el": "option.entrance_shuffle",
-                    "value": "entrance_shuffle_off"
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_dungeons"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9537,9 +9557,11 @@
                 "type": "dungeon",
                 "access": "region.spirit_temple_lobby",
                 "visible": {
-                    "type": "state",
-                    "el": "option.entrance_shuffle",
-                    "value": "entrance_shuffle_off"
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_dungeons"
+                    }
                 },
                 "filter": {
                     "filter.era": {
