@@ -103,7 +103,7 @@ const TPL = new Template(`
         }
         ootrt-list-button.hidden,
         :host(:not([ref])) #back,
-        :host([ref=""]) #back {
+        :host([ref="overworld"]) #back {
             display: none;
         }
     </style>
