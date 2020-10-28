@@ -59,7 +59,7 @@ function parseStartingItems(items, world) {
             let v = items[i];
 
             if(starting_trans.hasOwnProperty(i)) {
-                if(Array.isArray(i)) {
+                if(typeof v === 'object' && v !== null) {
                     console.warn("Unexpected Array within starting items, please report this!")
                 } else {
                     if (starting_trans[i]["values"][v] === undefined) {
@@ -165,50 +165,58 @@ function parseEntrances(entrances, world, dungeon, indoors, overworld) {
     for(let w = 1; w <= world; w++) {
         if(world !== 1) entrances =  entrances["World " + w];
         let exits = {};
+        let subs = {};
 
         for(let i in entrances) {
             let v = entrances[i];
-            if(Array.isArray(i)) {
+            if(typeof i === 'object' && i !== null) {
                 console.warn("Unexpected Array within entrances, please report this!")
             } else {
-                if(Array.isArray(v)) {
-                    v = v["region"] + " -> " + v["from"];
+                if(entro_dungeon[i] === undefined && exit_dungeon[v] === undefined && entro_simple[i] === undefined && exit_simple[v] === undefined && entro_indoors[i] === undefined && exit_indoors[v] === undefined && entro_overworld[i] === undefined && exit_overworld[v] === undefined) {
+                    console.warn("[" + i + ": " + v + "] is a invalid value. Please report this bug")
                 } else {
-                    if(entro_dungeon[i] === undefined && exit_dungeon[v] === undefined && entro_simple[i] === undefined && exit_simple[v] === undefined && entro_indoors[i] === undefined && exit_indoors[v] === undefined && entro_overworld[i] === undefined && exit_overworld[v] === undefined) {
-                        console.warn("[" + i + ": " + v + "] is a invalid value. Please report this bug")
-                    } else {
-                        if (dungeon) {
-                            if (entro_dungeon[i] === undefined) {
-                            } else {
-                                exits[entro_dungeon[i]] = exit_dungeon[v];
-                            }
+                    if (dungeon) {
+                        if(typeof v === 'object' && v !== null) {
+                            v = v["region"];
                         }
-                        if (indoors) {
-                            if (entro_simple[i] !== undefined && exit_simple[v] !== undefined) {
-                                exits[entro_simple[i]] = exit_simple[v];
-                            }
-                            if (entro_indoors[i] !== undefined && exit_indoors[v] !== undefined) {
-                                exits[entro_indoors[i]] = exit_indoors[v];
-                            }
-                            if(entro_simple[i] !== undefined && exit_indoors[v] !== undefined) {
-                                exits[entro_simple[i]] = exit_indoors[v];
-                            }
-                            if(entro_indoors[i] !== undefined && exit_simple[v] !== undefined) {
-                                exits[entro_indoors[i]] = exit_simple[v];
-                            }
+                        if (entro_dungeon[i] === undefined) {
+                        } else {
+                            exits[entro_dungeon[i]] = exit_dungeon[v];
+                        }
+                    }
+                    if (indoors) {
+                        if (entro_simple[i] !== undefined && exit_simple[v] !== undefined) {
+                            exits[entro_simple[i]] = exit_simple[v];
+                            subs[entro_simple[i]] = exit_simple[v];
+                        }
+                        if (entro_indoors[i] !== undefined && exit_indoors[v] !== undefined) {
+                            exits[entro_indoors[i]] = exit_indoors[v];
+                            subs[entro_indoors[i]] = exit_indoors[v];
+                        }
+                        if(entro_simple[i] !== undefined && exit_indoors[v] !== undefined) {
+                            exits[entro_simple[i]] = exit_indoors[v];
+                            subs[entro_simple[i]] = exit_indoors[v];
+                        }
+                        if(entro_indoors[i] !== undefined && exit_simple[v] !== undefined) {
+                            exits[entro_indoors[i]] = exit_simple[v];
+                            subs[entro_indoors[i]] = exit_simple[v];
+                        }
 
+                    }
+                    if (overworld) {
+                        if(typeof v === 'object' && v !== null) {
+                            v = v["region"] + " -> " + v["from"];
                         }
-                        if (overworld) {
-                            if (entro_overworld[i] === undefined || exit_overworld[v] === undefined) {
-                            } else {
-                                exits[entro_overworld[i]] = exit_overworld[v];
-                            }
+                        if (entro_overworld[i] === undefined || exit_overworld[v] === undefined) {
+                        } else {
+                            exits[entro_overworld[i]] = exit_overworld[v];
                         }
                     }
                 }
             }
         }
         extra[w]["exits"] = exits;
+        extra[w]["subexits"] = subs;
     }
 }
 

@@ -6642,912 +6642,967 @@
             "target": "region.deku_tree_gateway -> region.deku_tree_entrance",
             "type": "dungeon",
             "area": "area/deku",
-            "active": [
-                "entrance_shuffle_dungeons",
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_dungeons"
+            }
         },
-        "region.dodongos_cavern_entryway -> region.dodongos_cavern_gateway": {
-            "target": "region.dodongos_cavern_gateway -> region.dodongos_cavern_entryway",
+        "region.dodongos_cavern_entrance -> region.dodongos_cavern_gateway": {
+            "target": "region.dodongos_cavern_gateway -> region.dodongos_cavern_entrance",
             "type": "dungeon",
             "area": "area/dodongo",
-            "active": [
-                "entrance_shuffle_dungeons",
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_dungeons"
+            }
         },
         "region.jabu_jabus_belly_entrance -> region.jabu_jabus_belly_gateway": {
             "target": "region.jabu_jabus_belly_gateway -> region.jabu_jabus_belly_entrance",
             "type": "dungeon",
             "area": "area/jabujabu",
-            "active": [
-                "entrance_shuffle_dungeons",
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_dungeons"
+            }
         },
         "region.bottom_of_the_well_entrance -> region.bottom_of_the_well_gateway": {
             "target": "region.bottom_of_the_well_gateway -> region.bottom_of_the_well_entrance",
             "type": "dungeon",
             "area": "area/well",
-            "active": [
-                "entrance_shuffle_dungeons",
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_dungeons"
+            }
         },
         "region.forest_temple_entrance -> region.forest_temple_gateway": {
             "target": "region.forest_temple_gateway -> region.forest_temple_entrance",
             "type": "dungeon",
             "area": "area/temple_forest",
-            "active": [
-                "entrance_shuffle_dungeons",
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_dungeons"
+            }
         },
         "region.fire_temple_entrance -> region.fire_temple_gateway": {
             "target": "region.fire_temple_gateway -> region.fire_temple_entrance",
             "type": "dungeon",
             "area": "area/temple_fire",
-            "active": [
-                "entrance_shuffle_dungeons",
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_dungeons"
+            }
         },
         "region.water_temple_entrance -> region.water_temple_gateway": {
             "target": "region.water_temple_gateway -> region.water_temple_entrance",
             "type": "dungeon",
             "area": "area/temple_water",
-            "active": [
-                "entrance_shuffle_dungeons",
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_dungeons"
+            }
         },
         "region.spirit_temple_entrance -> region.spirit_temple_gateway": {
             "target": "region.spirit_temple_gateway -> region.spirit_temple_entrance",
             "type": "dungeon",
             "area": "area/temple_spirit",
-            "active": [
-                "entrance_shuffle_dungeons",
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_dungeons"
+            }
         },
         "region.shadow_temple_entrance -> region.shadow_temple_gateway": {
             "target": "region.shadow_temple_gateway -> region.shadow_temple_entrance",
             "type": "dungeon",
             "area": "area/temple_shadow",
-            "active": [
-                "entrance_shuffle_dungeons",
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_dungeons"
+            }
         },
         "region.ice_cavern_entrance -> region.ice_cavern_gateway": {
             "target": "region.ice_cavern_gateway -> region.ice_cavern_entrance",
             "type": "dungeon",
             "area": "area/ice_cavern",
-            "active": [
-                "entrance_shuffle_dungeons",
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_dungeons"
+            }
         },
         "region.gerudo_training_grounds_entrance -> region.gerudo_training_grounds_gateway": {
             "target": "region.gerudo_training_grounds_gateway -> region.gerudo_training_grounds_entrance",
             "type": "dungeon",
             "area": "area/training_grounds",
-            "active": [
-                "entrance_shuffle_dungeons",
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_dungeons"
+            }
         },
 
         "region.hf_tektite_grotto_entrance -> region.hf_tektite_grotto": {
             "target": "region.hf_tektite_grotto -> region.hf_tektite_grotto_entrance",
             "type": "grotto",
             "area": "subarea/hyrule_field.dive_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.hf_near_kak_grotto_entrance -> region.hf_near_kak_grotto": {
             "target": "region.hf_near_kak_grotto -> region.hf_near_kak_grotto_entrance",
             "type": "grotto",
             "area": "subarea/hyrule_field.kakariko_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.hf_fairy_grotto_entrance -> region.hf_fairy_grotto": {
             "target": "region.hf_fairy_grotto -> region.hf_fairy_grotto_entrance",
             "type": "grotto",
             "area": "subarea/hyrule_field.castle_river_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.hf_near_market_grotto_entrance -> region.hf_near_market_grotto": {
             "target": "region.hf_near_market_grotto -> region.hf_near_market_grotto_entrance",
             "type": "grotto",
             "area": "subarea/hyrule_field.castle_entrance_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.hf_cow_grotto_entrance -> region.hf_cow_grotto": {
             "target": "region.hf_cow_grotto -> region.hf_cow_grotto_entrance",
             "type": "grotto",
             "area": "subarea/hyrule_field.valley_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.hf_inside_fence_grotto_entrance -> region.hf_inside_fence_grotto": {
             "target": "region.hf_inside_fence_grotto -> region.hf_inside_fence_grotto_entrance",
             "type": "grotto",
             "area": "subarea/hyrule_field.lake_fence_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.hf_open_grotto_entrance -> region.hf_open_grotto": {
             "target": "region.hf_open_grotto -> region.hf_open_grotto_entrance",
             "type": "grotto",
             "area": "subarea/hyrule_field.lake_open_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.hf_southeast_grotto_entrance -> region.hf_southeast_grotto": {
             "target": "region.hf_southeast_grotto -> region.hf_southeast_grotto_entrance",
             "type": "grotto",
             "area": "subarea/hyrule_field.little_forest_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
 
         "region.kf_midos_house_entrance -> region.kf_midos_house": {
             "target": "region.kf_midos_house -> region.kf_midos_house_entrance",
             "type": "interior",
             "area": "subarea/kokiri.midos_house",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.kf_sarias_house_entrance -> region.kf_sarias_house": {
             "target": "region.kf_sarias_house -> region.kf_sarias_house_entrance",
             "type": "interior",
             "area": "subarea/kokiri.sarias_house",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.kf_house_of_twins_entrance -> region.kf_house_of_twins": {
             "target": "region.kf_house_of_twins -> region.kf_house_of_twins_entrance",
             "type": "interior",
             "area": "subarea/kokiri.twins_house",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.kf_know_it_all_house_entrance -> region.kf_know_it_all_house": {
             "target": "region.kf_know_it_all_house -> region.kf_know_it_all_house_entrance",
             "type": "interior",
             "area": "subarea/kokiri.know_it_all_house",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.kf_kokiri_shop_entrance -> region.kf_kokiri_shop": {
             "target": "region.kf_kokiri_shop -> region.kf_kokiri_shop_entrance",
             "type": "interior",
             "area": "subarea/kokiri.shop",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.kf_links_house_entrance -> region.kf_links_house": {
             "target": "region.kf_links_house -> region.kf_links_house_entrance",
             "type": "interior",
             "area": "subarea/kokiri.links_house",
-            "active": [
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "state",
+                "el": "option.entrance_shuffle_interior",
+                "value": "entrance_shuffle_all"
+            }
         },
         "region.kf_storms_grotto_entrance -> region.kf_storms_grotto": {
             "target": "region.kf_storms_grotto -> region.kf_storms_grotto_entrance",
             "type": "grotto",
             "area": "subarea/kokiri.storm_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
 
         "region.lw_near_shortcuts_grotto_entrance -> region.lw_near_shortcuts_grotto": {
             "target": "region.lw_near_shortcuts_grotto -> region.lw_near_shortcuts_grotto_entrance",
             "type": "grotto",
             "area": "subarea/woods.near_goron_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.lw_scrubs_grotto_entrance -> region.lw_scrubs_grotto": {
             "target": "region.lw_scrubs_grotto -> region.lw_scrubs_grotto_entrance",
             "type": "grotto",
             "area": "subarea/woods.near_meadow_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.deku_theater_entrance -> region.deku_theater": {
             "target": "region.deku_theater -> region.deku_theater_entrance",
             "type": "grotto",
             "area": "subarea/woods.theatre_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
 
         "region.sfm_wolfos_grotto_entrance -> region.sfm_wolfos_grotto": {
             "target": "region.sfm_wolfos_grotto -> region.sfm_wolfos_grotto_entrance",
             "type": "grotto",
             "area": "subarea/meadow.wolfos_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.sfm_storms_grotto_entrance -> region.sfm_storms_grotto": {
             "target": "region.sfm_storms_grotto -> region.sfm_storms_grotto_entrance",
             "type": "grotto",
             "area": "subarea/meadow.storms_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.sfm_fairy_grotto_entrance -> region.sfm_fairy_grotto": {
             "target": "region.sfm_fairy_grotto -> region.sfm_fairy_grotto_entrance",
             "type": "grotto",
             "area": "subarea/meadow.fairy_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
 
         "region.market_guard_house_entrance -> region.market_guard_house": {
             "target": "region.market_guard_house -> region.market_guard_house_entrance",
             "type": "interior",
             "area": "subarea/castle_town.guard_tower",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.market_mask_shop_entrance -> region.market_mask_shop": {
             "target": "region.market_mask_shop -> region.market_mask_shop_entrance",
             "type": "interior",
             "area": "subarea/castle_town.shop_mask",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.market_bombchu_bowling_entrance -> region.market_bombchu_bowling": {
             "target": "region.market_bombchu_bowling -> region.market_bombchu_bowling_entrance",
             "type": "interior",
             "area": "subarea/castle_town.minigame_bombchu",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.market_potion_shop_entrance -> region.market_potion_shop": {
             "target": "region.market_potion_shop -> region.market_potion_shop_entrance",
             "type": "interior",
             "area": "subarea/castle_town.shop_magic",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.market_treasure_chest_game_entrance -> region.market_treasure_chest_game": {
             "target": "region.market_treasure_chest_game -> region.market_treasure_chest_game_entrance",
             "type": "interior",
             "area": "subarea/castle_town.minigame_treasure",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.market_bombchu_shop_entrance -> region.market_bombchu_shop": {
             "target": "region.market_bombchu_shop -> region.market_bombchu_shop_entrance",
             "type": "interior",
             "area": "subarea/castle_town.shop_bombchu",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.market_man_in_green_house_entrance -> region.market_man_in_green_house": {
             "target": "region.market_man_in_green_house -> region.market_man_in_green_house_entrance",
             "type": "interior",
             "area": "subarea/castle_town.back_house",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.market_bazaar_entrance -> region.market_bazaar": {
             "target": "region.market_bazaar -> region.market_bazaar_entrance",
             "type": "interior",
             "area": "subarea/castle_town.shop_bazaar",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.market_shooting_gallery_entrance -> region.market_shooting_gallery": {
             "target": "region.market_shooting_gallery -> region.market_shooting_gallery_entrance",
             "type": "interior",
             "area": "subarea/castle_town.minigame_shooting",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.tot_entrance -> region.temple_of_time": {
             "target": "region.temple_of_time -> region.tot_entrance",
             "type": "interior",
             "area": "subarea/castle_town.temple_of_time",
-            "active": [
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "state",
+                "el": "option.entrance_shuffle_interior",
+                "value": "entrance_shuffle_all"
+            }
         },
 
         "region.llr_talons_house_entrance -> region.llr_talons_house": {
             "target": "region.llr_talons_house -> region.llr_talons_house_entrance",
             "type": "interior",
             "area": "subarea/lonlon.house",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.llr_stables_entrance -> region.llr_stables": {
             "target": "region.llr_stables -> region.llr_stables_entrance",
             "type": "interior",
             "area": "subarea/lonlon.stables",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.llr_tower_entrance -> region.llr_tower": {
             "target": "region.llr_tower -> region.llr_tower_entrance",
             "type": "interior",
             "area": "subarea/lonlon.silo",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.llr_grotto_entrance -> region.llr_grotto": {
             "target": "region.llr_grotto -> region.llr_grotto_entrance",
             "type": "grotto",
             "area": "subarea/lonlon.open_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
 
         "region.hc_great_fairy_fountain_entrance -> region.hc_great_fairy_fountain": {
             "target": "region.hc_great_fairy_fountain -> region.hc_great_fairy_fountain_entrance",
             "type": "interior",
             "area": "subarea/castle.fairy_young",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.hc_storms_grotto_entrance -> region.hc_storms_grotto": {
             "target": "region.hc_storms_grotto -> region.hc_storms_grotto_entrance",
             "type": "grotto",
             "area": "subarea/castle.storm_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.ogc_great_fairy_fountain_entrance -> region.ogc_great_fairy_fountain": {
             "target": "region.ogc_great_fairy_fountain -> region.ogc_great_fairy_fountain_entrance",
             "type": "interior",
             "area": "subarea/castle.fairy_adult",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
 
         "region.kak_carpenter_boss_house_entrance -> region.kak_carpenter_boss_house": {
             "target": "region.kak_carpenter_boss_house -> region.kak_carpenter_boss_house_entrance",
             "type": "interior",
             "area": "subarea/kakariko.carpenter_house",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.kak_house_of_skulltula_entrance -> region.kak_house_of_skulltula": {
             "target": "region.kak_house_of_skulltula -> region.kak_house_of_skulltula_entrance",
             "type": "interior",
             "area": "subarea/kakariko.skulltula_house",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.kak_impas_house_entrance -> region.kak_impas_house": {
             "target": "region.kak_impas_house -> region.kak_impas_house_entrance",
             "type": "interior",
             "area": "subarea/kakariko.impas_house",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.kak_impas_house_back_entrance -> region.kak_impas_house_back": {
             "target": "region.kak_impas_house_back -> region.kak_impas_house_back_entrance",
             "type": "interior",
             "area": "subarea/kakariko.impa_back",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.kak_odd_medicine_building_entrance -> region.kak_odd_medicine_building": {
             "target": "region.kak_odd_medicine_building -> region.kak_odd_medicine_building_entrance",
             "type": "interior",
             "area": "subarea/kakariko.kakariko_witch",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.kak_bazaar_entrance -> region.kak_bazaar": {
             "target": "region.kak_bazaar -> region.kak_bazaar_entrance",
             "type": "interior",
             "area": "subarea/kakariko.shop_bazaar",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.kak_shooting_gallery_entrance -> region.kak_shooting_gallery": {
             "target": "region.kak_shooting_gallery -> region.kak_shooting_gallery_entrance",
             "type": "interior",
             "area": "subarea/kakariko.minigame_shooting",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.kak_windmill_entrance -> region.kak_windmill": {
             "target": "region.kak_windmill -> region.kak_windmill_entrance",
             "type": "interior",
             "area": "subarea/kakariko.windmill",
-            "active": [
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "state",
+                "el": "option.entrance_shuffle_interior",
+                "value": "entrance_shuffle_all"
+            }
         },
         "region.kak_potion_shop_front_entrance -> region.kak_potion_shop_front": {
             "target": "region.kak_potion_shop_front -> region.kak_potion_shop_front_entrance",
             "type": "interior",
             "area": "subarea/kakariko.shop_magic",
-            "active": [
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "state",
+                "el": "option.entrance_shuffle_interior",
+                "value": "entrance_shuffle_all"
+            }
         },
         "region.kak_potion_shop_back_entrance -> region.kak_potion_shop_back": {
             "target": "region.kak_potion_shop_back -> region.kak_potion_shop_back_entrance",
             "type": "interior",
             "area": "subarea/kakariko.shop_magic",
-            "active": [
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "state",
+                "el": "option.entrance_shuffle_interior",
+                "value": "entrance_shuffle_all"
+            }
         },
         "region.kak_open_grotto_entrance -> region.kak_open_grotto": {
             "target": "region.kak_open_grotto -> region.kak_open_grotto_entrance",
             "type": "grotto",
             "area": "subarea/kakariko.open_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.kak_redead_grotto_entrance -> region.kak_redead_grotto": {
             "target": "region.kak_redead_grotto -> region.kak_redead_grotto_entrance",
             "type": "grotto",
             "area": "subarea/kakariko.redead_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
 
         "region.graveyard_dampes_house_entrance -> region.graveyard_dampes_house": {
             "target": "region.graveyard_dampes_house -> region.graveyard_dampes_house_entrance",
             "type": "interior",
             "area": "subarea/graveyard.dampes_hut",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.graveyard_shield_grave_entrance -> region.graveyard_shield_grave": {
             "target": "region.graveyard_shield_grave -> region.graveyard_shield_grave_entrance",
             "type": "grotto",
             "area": "subarea/graveyard.shield_grave",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.graveyard_heart_piece_grave_entrance -> region.graveyard_heart_piece_grave": {
             "target": "region.graveyard_heart_piece_grave -> region.graveyard_heart_piece_grave_entrance",
             "type": "grotto",
             "area": "subarea/graveyard.redead_grave",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.graveyard_composers_grave_entrance -> region.graveyard_composers_grave": {
             "target": "region.graveyard_composers_grave -> region.graveyard_composers_grave_entrance",
             "type": "grotto",
             "area": "subarea/graveyard.royal_grave",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.graveyard_dampes_grave_entrance -> region.graveyard_dampes_grave": {
             "target": "region.graveyard_dampes_grave -> region.graveyard_dampes_grave_entrance",
             "type": "grotto",
             "area": "subarea/graveyard.dampes_grave",
-            "active": [
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
 
         "region.dmt_great_fairy_fountain_entrance -> region.dmt_great_fairy_fountain": {
             "target": "region.dmt_great_fairy_fountain -> region.dmt_great_fairy_fountain_entrance",
             "type": "interior",
             "area": "subarea/mountain.fairy_fountain",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.dmt_storms_grotto_entrance -> region.dmt_storms_grotto": {
             "target": "region.dmt_storms_grotto -> region.dmt_storms_grotto_entrance",
             "type": "grotto",
             "area": "subarea/mountain.storms_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.dmt_cow_grotto_entrance -> region.dmt_cow_grotto": {
             "target": "region.dmt_cow_grotto -> region.dmt_cow_grotto_entrance",
             "type": "grotto",
             "area": "subarea/mountain.bomb_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.dmc_great_fairy_fountain_entrance -> region.dmc_great_fairy_fountain": {
             "target": "region.dmc_great_fairy_fountain -> region.dmc_great_fairy_fountain_entrance",
             "type": "interior",
             "area": "subarea/crater.fairy_fountain",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.dmc_hammer_grotto_entrance -> region.dmc_hammer_grotto": {
             "target": "region.dmc_hammer_grotto -> region.dmc_hammer_grotto_entrance",
             "type": "grotto",
             "area": "subarea/crater.hammer_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.dmc_upper_grotto_entrance -> region.dmc_upper_grotto": {
             "target": "region.dmc_upper_grotto -> region.dmc_upper_grotto_entrance",
             "type": "grotto",
             "area": "subarea/crater.crater_bomb_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
 
         "region.gc_shop_entrance -> region.gc_shop": {
             "target": "region.gc_shop -> region.gc_shop_entrance",
             "type": "interior",
             "area": "subarea/goron.shop",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.gc_grotto_entrance -> region.gc_grotto": {
             "target": "region.gc_grotto -> region.gc_grotto_entrance",
             "type": "grotto",
             "area": "subarea/goron.grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
 
         "region.zr_storms_grotto_entrance -> region.zr_storms_grotto": {
             "target": "region.zr_storms_grotto -> region.zr_storms_grotto_entrance",
             "type": "grotto",
             "area": "subarea/river.storms_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.zr_fairy_grotto_entrance -> region.zr_fairy_grotto": {
             "target": "region.zr_fairy_grotto -> region.zr_fairy_grotto_entrance",
             "type": "grotto",
             "area": "subarea/river.bomb_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.zr_open_grotto_entrance -> region.zr_open_grotto": {
             "target": "region.zr_open_grotto -> region.zr_open_grotto_entrance",
             "type": "grotto",
             "area": "subarea/river.open_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
 
         "region.zd_shop_entrance -> region.zd_shop": {
             "target": "region.zd_shop -> region.zd_shop_entrance",
             "type": "interior",
             "area": "subarea/zoras.shop",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.zd_storms_grotto_entrance -> region.zd_storms_grotto": {
             "target": "region.zd_storms_grotto -> region.zd_storms_grotto_entrance",
             "type": "grotto",
             "area": "subarea/zoras.storms_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.zf_great_fairy_fountain_entrance -> region.zf_great_fairy_fountain": {
             "target": "region.zf_great_fairy_fountain -> region.zf_great_fairy_fountain_entrance",
             "type": "interior",
             "area": "subarea/fountain.fairy_fountain",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
 
         "region.lh_lab_entrance -> region.lh_lab": {
             "target": "region.lh_lab -> region.lh_lab_entrance",
             "type": "interior",
             "area": "subarea/lake.laboratory",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.lh_fishing_hole_entrance -> region.lh_fishing_hole": {
             "target": "region.lh_fishing_hole -> region.lh_fishing_hole_entrance",
             "type": "interior",
             "area": "subarea/lake.fishing",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.lh_grotto_entrance -> region.lh_grotto": {
             "target": "region.lh_grotto -> region.lh_grotto_entrance",
             "type": "grotto",
             "area": "subarea/lake.grave_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
 
         "region.gv_carpenter_tent_entrance -> region.gv_carpenter_tent": {
             "target": "region.gv_carpenter_tent -> region.gv_carpenter_tent_entrance",
             "type": "interior",
             "area": "subarea/gerudo_valley.tend",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.gv_storms_grotto_entrance -> region.gv_storms_grotto": {
             "target": "region.gv_storms_grotto -> region.gv_storms_grotto_entrance",
             "type": "grotto",
             "area": "subarea/gerudo_valley.storms_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.gv_octorok_grotto_entrance -> region.gv_octorok_grotto": {
             "target": "region.gv_octorok_grotto -> region.gv_octorok_grotto_entrance",
             "type": "grotto",
             "area": "subarea/gerudo_valley.octorock_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
         "region.gf_storms_grotto_entrance -> region.gf_storms_grotto": {
             "target": "region.gf_storms_grotto -> region.gf_storms_grotto_entrance",
             "type": "grotto",
             "area": "subarea/gerudo.storms_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         },
 
         "region.colossus_great_fairy_fountain_entrance -> region.colossus_great_fairy_fountain": {
             "target": "region.colossus_great_fairy_fountain -> region.colossus_great_fairy_fountain_entrance",
             "type": "interior",
             "area": "subarea/desert.fairy_fountain",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_off"
+                }
+            }
         },
         "region.colossus_grotto_entrance -> region.colossus_grotto": {
             "target": "region.colossus_grotto -> region.colossus_grotto_entrance",
             "type": "grotto",
             "area": "subarea/desert.strength_grotto",
-            "active": [
-                "entrance_shuffle_simple",
-                "entrance_shuffle_indoors",
-                "entrance_shuffle_all"
-            ]
+            "active": {
+                "type": "value",
+                "el": "option.shuffle_grottos"
+            }
         }
     },
     "marker": {
@@ -7556,12 +7611,8 @@
                 "type": "dungeon",
                 "access": "region.deku_tree_entrance -> region.deku_tree_gateway",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "state",
-                        "el": "option.entrance_shuffle",
-                        "value": "entrance_shuffle_off"
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_dungeons"
                 },
                 "filter": {
                     "filter.era": {
@@ -7577,14 +7628,10 @@
             },
             "dodongo": {
                 "type": "dungeon",
-                "access": "region.dodongos_cavern_entryway -> region.dodongos_cavern_gateway",
+                "access": "region.dodongos_cavern_entrance -> region.dodongos_cavern_gateway",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "state",
-                        "el": "option.entrance_shuffle",
-                        "value": "entrance_shuffle_off"
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_dungeons"
                 },
                 "filter": {
                     "filter.era": {
@@ -7602,12 +7649,8 @@
                 "type": "dungeon",
                 "access": "region.jabu_jabus_belly_entrance -> region.jabu_jabus_belly_gateway",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "state",
-                        "el": "option.entrance_shuffle",
-                        "value": "entrance_shuffle_off"
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_dungeons"
                 },
                 "filter": {
                     "filter.era": {
@@ -7625,12 +7668,8 @@
                 "type": "dungeon",
                 "access": "region.bottom_of_the_well_entrance -> region.bottom_of_the_well_gateway",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "state",
-                        "el": "option.entrance_shuffle",
-                        "value": "entrance_shuffle_off"
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_dungeons"
                 },
                 "filter": {
                     "filter.era": {
@@ -7648,12 +7687,8 @@
                 "type": "dungeon",
                 "access": "region.forest_temple_entrance -> region.forest_temple_gateway",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "state",
-                        "el": "option.entrance_shuffle",
-                        "value": "entrance_shuffle_off"
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_dungeons"
                 },
                 "filter": {
                     "filter.era": {
@@ -7671,12 +7706,8 @@
                 "type": "dungeon",
                 "access": "region.fire_temple_entrance -> region.fire_temple_gateway",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "state",
-                        "el": "option.entrance_shuffle",
-                        "value": "entrance_shuffle_off"
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_dungeons"
                 },
                 "filter": {
                     "filter.era": {
@@ -7694,12 +7725,8 @@
                 "type": "dungeon",
                 "access": "region.water_temple_entrance -> region.water_temple_gateway",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "state",
-                        "el": "option.entrance_shuffle",
-                        "value": "entrance_shuffle_off"
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_dungeons"
                 },
                 "filter": {
                     "filter.era": {
@@ -7717,12 +7744,8 @@
                 "type": "dungeon",
                 "access": "region.spirit_temple_entrance -> region.spirit_temple_gateway",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "state",
-                        "el": "option.entrance_shuffle",
-                        "value": "entrance_shuffle_off"
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_dungeons"
                 },
                 "filter": {
                     "filter.era": {
@@ -7740,12 +7763,8 @@
                 "type": "dungeon",
                 "access": "region.shadow_temple_entrance -> region.shadow_temple_gateway",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "state",
-                        "el": "option.entrance_shuffle",
-                        "value": "entrance_shuffle_off"
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_dungeons"
                 },
                 "filter": {
                     "filter.era": {
@@ -7763,12 +7782,8 @@
                 "type": "dungeon",
                 "access": "region.ice_cavern_entrance -> region.ice_cavern_gateway",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "state",
-                        "el": "option.entrance_shuffle",
-                        "value": "entrance_shuffle_off"
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_dungeons"
                 },
                 "filter": {
                     "filter.era": {
@@ -7786,12 +7801,8 @@
                 "type": "dungeon",
                 "access": "region.gerudo_training_grounds_entrance -> region.gerudo_training_grounds_gateway",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "state",
-                        "el": "option.entrance_shuffle",
-                        "value": "entrance_shuffle_off"
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_dungeons"
                 },
                 "filter": {
                     "filter.era": {
@@ -7811,24 +7822,12 @@
                 "type": "interior",
                 "access": "logic.subarea.kokiri.links_house",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_simple"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "state",
+                        "el": "option.entrance_shuffle_interior",
+                        "value": "entrance_shuffle_all"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -7846,19 +7845,9 @@
                 "type": "interior",
                 "access": "logic.subarea.kokiri.midos_house",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -7876,19 +7865,11 @@
                 "type": "interior",
                 "access": "logic.subarea.hyrule_field.dive_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -7906,19 +7887,11 @@
                 "type": "interior",
                 "access": "logic.subarea.hyrule_field.kakariko_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -7936,19 +7909,11 @@
                 "type": "interior",
                 "access": "logic.subarea.hyrule_field.castle_entrance_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -7966,19 +7931,11 @@
                 "type": "interior",
                 "access": "logic.subarea.hyrule_field.valley_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -7996,19 +7953,11 @@
                 "type": "interior",
                 "access": "logic.subarea.hyrule_field.lake_fence_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8026,19 +7975,11 @@
                 "type": "interior",
                 "access": "logic.subarea.hyrule_field.lake_open_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8056,19 +7997,11 @@
                 "type": "interior",
                 "access": "logic.subarea.hyrule_field.little_forest_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8086,19 +8019,11 @@
                 "type": "interior",
                 "access": "logic.subarea.kokiri.storm_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8116,19 +8041,11 @@
                 "type": "interior",
                 "access": "logic.subarea.woods.near_goron_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8146,19 +8063,11 @@
                 "type": "interior",
                 "access": "logic.subarea.woods.near_meadow_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8176,19 +8085,11 @@
                 "type": "interior",
                 "access": "logic.subarea.woods.theatre_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8206,19 +8107,11 @@
                 "type": "interior",
                 "access": "logic.subarea.meadow.wolfos_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8236,19 +8129,11 @@
                 "type": "interior",
                 "access": "logic.subarea.meadow.storms_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8266,19 +8151,9 @@
                 "type": "interior",
                 "access": "logic.subarea.castle_town.guard_tower",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -8296,19 +8171,9 @@
                 "type": "interior",
                 "access": "logic.subarea.castle_town.minigame_bombchu",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -8326,19 +8191,9 @@
                 "type": "interior",
                 "access": "logic.subarea.castle_town.minigame_treasure",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -8356,19 +8211,9 @@
                 "type": "interior",
                 "access": "logic.subarea.castle_town.minigame_shooting",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -8386,19 +8231,9 @@
                 "type": "interior",
                 "access": "logic.subarea.lonlon.house",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -8416,19 +8251,9 @@
                 "type": "interior",
                 "access": "logic.subarea.lonlon.stables",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -8446,19 +8271,9 @@
                 "type": "interior",
                 "access": "logic.subarea.lonlon.silo",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -8476,19 +8291,9 @@
                 "type": "interior",
                 "access": "logic.subarea.lonlon.open_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -8506,19 +8311,9 @@
                 "type": "interior",
                 "access": "logic.subarea.castle.fairy_young",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -8536,19 +8331,11 @@
                 "type": "interior",
                 "access": "logic.subarea.castle.storm_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8566,19 +8353,9 @@
                 "type": "interior",
                 "access": "logic.subarea.castle.fairy_adult",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -8596,19 +8373,9 @@
                 "type": "interior",
                 "access": "logic.subarea.kakariko.skulltula_house",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -8626,19 +8393,9 @@
                 "type": "interior",
                 "access": "logic.subarea.kakariko.impas_house",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -8656,19 +8413,9 @@
                 "type": "interior",
                 "access": "logic.subarea.kakariko.impa_back",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -8686,19 +8433,9 @@
                 "type": "interior",
                 "access": "logic.subarea.kakariko.minigame_shooting",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -8716,19 +8453,12 @@
                 "type": "interior",
                 "access": "logic.subarea.kakariko.windmill",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "state",
+                        "el": "option.entrance_shuffle_interior",
+                        "value": "entrance_shuffle_all"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8746,19 +8476,11 @@
                 "type": "interior",
                 "access": "logic.subarea.kakariko.open_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8776,19 +8498,11 @@
                 "type": "interior",
                 "access": "logic.subarea.kakariko.redead_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8806,19 +8520,11 @@
                 "type": "interior",
                 "access": "logic.subarea.graveyard.shield_grave",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8836,19 +8542,11 @@
                 "type": "interior",
                 "access": "logic.subarea.graveyard.redead_grave",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8866,24 +8564,11 @@
                 "type": "interior",
                 "access": "logic.subarea.graveyard.dampes_grave",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_simple"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8901,19 +8586,11 @@
                 "type": "interior",
                 "access": "logic.subarea.graveyard.royal_grave",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8931,19 +8608,9 @@
                 "type": "interior",
                 "access": "logic.subarea.mountain.fairy_fountain",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -8961,19 +8628,11 @@
                 "type": "interior",
                 "access": "logic.subarea.mountain.storms_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -8991,19 +8650,11 @@
                 "type": "interior",
                 "access": "logic.subarea.mountain.bomb_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9021,19 +8672,9 @@
                 "type": "interior",
                 "access": "logic.subarea.crater.fairy_fountain",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -9051,19 +8692,11 @@
                 "type": "interior",
                 "access": "logic.subarea.crater.hammer_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9081,19 +8714,11 @@
                 "type": "interior",
                 "access": "logic.subarea.crater.crater_bomb_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9111,19 +8736,11 @@
                 "type": "interior",
                 "access": "logic.subarea.goron.grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9141,19 +8758,11 @@
                 "type": "interior",
                 "access": "logic.subarea.river.storms_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9171,19 +8780,11 @@
                 "type": "interior",
                 "access": "logic.subarea.river.open_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9201,19 +8802,9 @@
                 "type": "interior",
                 "access": "logic.subarea.fountain.fairy_fountain",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -9231,19 +8822,9 @@
                 "type": "interior",
                 "access": "logic.subarea.lake.laboratory",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -9261,19 +8842,9 @@
                 "type": "interior",
                 "access": "logic.subarea.lake.fishing",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -9291,19 +8862,11 @@
                 "type": "interior",
                 "access": "logic.subarea.lake.grave_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9321,19 +8884,11 @@
                 "type": "interior",
                 "access": "logic.subarea.gerudo_valley.storms_grotto",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -9351,19 +8906,9 @@
                 "type": "interior",
                 "access": "logic.subarea.fountain.fairy_fountain",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "state",
+                    "el": "option.entrance_shuffle_interior",
+                    "value": "entrance_shuffle_off"
                 },
                 "filter": {
                     "filter.era": {
@@ -9381,19 +8926,11 @@
                 "type": "interior",
                 "access": "logic.subarea.fountain.fairy_fountain",
                 "visible": {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_off"
-                        },
-                        {
-                            "type": "state",
-                            "el": "option.entrance_shuffle",
-                            "value": "entrance_shuffle_dungeons"
-                        }
-                    ]
+                    "type": "not",
+                    "el": {
+                            "type": "value",
+                            "el": "option.shuffle_grottos"
+                    }
                 },
                 "filter": {
                     "filter.era": {
@@ -22650,22 +22187,8 @@
                 "type": "grotto",
                 "access": "region.hf_tektite_grotto_entrance -> region.hf_tektite_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -22683,22 +22206,8 @@
                 "type": "grotto",
                 "access": "region.hf_near_kak_grotto_entrance -> region.hf_near_kak_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -22716,22 +22225,8 @@
                 "type": "grotto",
                 "access": "region.hf_fairy_grotto_entrance -> region.hf_fairy_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -22749,22 +22244,8 @@
                 "type": "grotto",
                 "access": "region.hf_near_market_grotto_entrance -> region.hf_near_market_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -22782,22 +22263,8 @@
                 "type": "grotto",
                 "access": "region.hf_cow_grotto_entrance -> region.hf_cow_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -22815,22 +22282,8 @@
                 "type": "grotto",
                 "access": "region.hf_inside_fence_grotto_entrance -> region.hf_inside_fence_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -22848,22 +22301,8 @@
                 "type": "grotto",
                 "access": "region.hf_open_grotto_entrance -> region.hf_open_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -22881,22 +22320,8 @@
                 "type": "grotto",
                 "access": "region.hf_southeast_grotto_entrance -> region.hf_southeast_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -22917,19 +22342,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -22950,19 +22365,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -22983,19 +22388,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23016,19 +22411,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23049,19 +22434,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23080,27 +22455,9 @@
                 "type": "interior",
                 "access": "region.kf_links_house_entrance -> region.kf_links_house",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_simple"
-                            }
-                        ]
-                    }
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_all"
                 },
                 "filter": {
                     "filter.era": {
@@ -23118,22 +22475,8 @@
                 "type": "grotto",
                 "access": "region.kf_storms_grotto_entrance -> region.kf_storms_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -23152,22 +22495,8 @@
                 "type": "grotto",
                 "access": "region.lw_near_shortcuts_grotto_entrance -> region.lw_near_shortcuts_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -23185,22 +22514,8 @@
                 "type": "grotto",
                 "access": "region.lw_scrubs_grotto_entrance -> region.lw_scrubs_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -23218,22 +22533,8 @@
                 "type": "grotto",
                 "access": "region.deku_theater_entrance -> region.deku_theater",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -23252,22 +22553,8 @@
                 "type": "grotto",
                 "access": "region.sfm_wolfos_grotto_entrance -> region.sfm_wolfos_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -23285,22 +22572,8 @@
                 "type": "grotto",
                 "access": "region.sfm_storms_grotto_entrance -> region.sfm_storms_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -23318,22 +22591,8 @@
                 "type": "grotto",
                 "access": "region.sfm_fairy_grotto_entrance -> region.sfm_fairy_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -23354,19 +22613,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23387,19 +22636,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23420,19 +22659,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23453,19 +22682,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23486,19 +22705,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23519,19 +22728,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23552,19 +22751,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23585,19 +22774,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23618,19 +22797,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23649,22 +22818,9 @@
                 "type": "interior",
                 "access": "region.tot_entrance -> region.temple_of_time",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_all"
                 },
                 "filter": {
                     "filter.era": {
@@ -23685,19 +22841,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23718,19 +22864,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23751,19 +22887,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23782,22 +22908,8 @@
                 "type": "grotto",
                 "access": "region.llr_grotto_entrance -> region.llr_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -23818,19 +22930,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23849,22 +22951,8 @@
                 "type": "grotto",
                 "access": "region.hc_storms_grotto_entrance -> region.hc_storms_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -23884,19 +22972,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23918,19 +22996,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23951,19 +23019,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -23984,19 +23042,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -24017,19 +23065,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -24050,19 +23088,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -24083,19 +23111,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -24116,19 +23134,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -24147,22 +23155,9 @@
                 "type": "interior",
                 "access": "region.kak_windmill_entrance -> region.kak_windmill",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_all"
                 },
                 "filter": {
                     "filter.era": {
@@ -24180,27 +23175,9 @@
                 "type": "interior",
                 "access": "region.kak_potion_shop_front_entrance -> region.kak_potion_shop_front",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_simple"
-                            }
-                        ]
-                    }
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_all"
                 },
                 "filter": {
                     "filter.era": {
@@ -24218,27 +23195,9 @@
                 "type": "interior",
                 "access": "region.kak_potion_shop_back_entrance -> region.kak_potion_shop_back",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_simple"
-                            }
-                        ]
-                    }
+                    "type": "state",
+                    "el": "option.entrance_shuffle",
+                    "value": "entrance_shuffle_all"
                 },
                 "filter": {
                     "filter.era": {
@@ -24256,22 +23215,8 @@
                 "type": "grotto",
                 "access": "region.kak_open_grotto_entrance -> region.kak_open_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -24289,22 +23234,8 @@
                 "type": "grotto",
                 "access": "region.kak_redead_grotto_entrance -> region.kak_redead_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -24325,19 +23256,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -24356,22 +23277,8 @@
                 "type": "grotto",
                 "access": "region.graveyard_shield_grave_entrance -> region.graveyard_shield_grave",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -24389,22 +23296,8 @@
                 "type": "grotto",
                 "access": "region.graveyard_heart_piece_grave_entrance -> region.graveyard_heart_piece_grave",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -24422,22 +23315,8 @@
                 "type": "grotto",
                 "access": "region.graveyard_composers_grave_entrance -> region.graveyard_composers_grave",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -24455,27 +23334,8 @@
                 "type": "grotto",
                 "access": "region.graveyard_dampes_grave_entrance -> region.graveyard_dampes_grave",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_simple"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -24496,19 +23356,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -24527,22 +23377,8 @@
                 "type": "grotto",
                 "access": "region.dmt_storms_grotto_entrance -> region.dmt_storms_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -24560,22 +23396,8 @@
                 "type": "grotto",
                 "access": "region.dmt_cow_grotto_entrance -> region.dmt_cow_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -24595,19 +23417,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -24626,22 +23438,8 @@
                 "type": "grotto",
                 "access": "region.dmc_hammer_grotto_entrance -> region.dmc_hammer_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -24659,22 +23457,8 @@
                 "type": "grotto",
                 "access": "region.dmc_upper_grotto_entrance -> region.dmc_upper_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -24695,19 +23479,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -24726,22 +23500,8 @@
                 "type": "grotto",
                 "access": "region.gc_grotto_entrance -> region.gc_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -24760,22 +23520,8 @@
                 "type": "grotto",
                 "access": "region.zr_storms_grotto_entrance -> region.zr_storms_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -24793,22 +23539,8 @@
                 "type": "grotto",
                 "access": "region.zr_fairy_grotto_entrance -> region.zr_fairy_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -24826,22 +23558,8 @@
                 "type": "grotto",
                 "access": "region.zr_open_grotto_entrance -> region.zr_open_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -24862,19 +23580,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -24893,22 +23601,8 @@
                 "type": "grotto",
                 "access": "region.zd_storms_grotto_entrance -> region.zd_storms_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -24928,19 +23622,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -24962,19 +23646,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -24995,19 +23669,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -25026,22 +23690,8 @@
                 "type": "grotto",
                 "access": "region.lh_grotto_entrance -> region.lh_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -25062,19 +23712,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -25093,22 +23733,8 @@
                 "type": "grotto",
                 "access": "region.gv_storms_grotto_entrance -> region.gv_storms_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -25126,22 +23752,8 @@
                 "type": "grotto",
                 "access": "region.gv_octorok_grotto_entrance -> region.gv_octorok_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -25159,22 +23771,8 @@
                 "type": "grotto",
                 "access": "region.gf_storms_grotto_entrance -> region.gf_storms_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {
@@ -25195,19 +23793,9 @@
                 "visible": {
                     "type": "not",
                     "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
+                        "type": "state",
+                        "el": "option.entrance_shuffle",
+                        "value": "entrance_shuffle_off"
                     }
                 },
                 "filter": {
@@ -25226,22 +23814,8 @@
                 "type": "grotto",
                 "access": "region.colossus_grotto_entrance -> region.colossus_grotto",
                 "visible": {
-                    "type": "not",
-                    "el": {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_off"
-                            },
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_dungeons"
-                            }
-                        ]
-                    }
+                    "type": "value",
+                    "el": "option.shuffle_grottos"
                 },
                 "filter": {
                     "filter.era": {

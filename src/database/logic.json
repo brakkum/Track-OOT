@@ -76,6 +76,22 @@
                 "type": "true"
             }
         },
+        "region.dodongos_cavern_entrance[child]": {
+            "region.death_mountain[child]": {
+                "type": "true"
+            },
+            "region.dodongos_cavern_gateway[child]": {
+                "type": "true"
+            }
+        },
+        "region.dodongos_cavern_entrance[adult]": {
+            "region.death_mountain[adult]": {
+                "type": "true"
+            },
+            "region.dodongos_cavern_gateway[adult]": {
+                "type": "true"
+            }
+        },
         "region.dodongos_cavern_gateway[child]": {
             "region.dodongos_cavern_entryway[child]": {
                 "type": "true"
@@ -137,7 +153,7 @@
             }
         },
         "region.ice_cavern_entrance[child]": {
-            "region.zoras_fountain[child]": {
+            "region.zf_ice_ledge[child]": {
                 "type": "true"
             },
             "region.ice_cavern_gateway[child]": {
@@ -145,7 +161,7 @@
             }
         },
         "region.ice_cavern_entrance[adult]": {
-            "region.zoras_fountain[adult]": {
+            "region.zf_ice_ledge[adult]": {
                 "type": "true"
             },
             "region.ice_cavern_gateway[adult]": {
@@ -213,7 +229,7 @@
             }
         },
         "region.forest_temple_entrance[child]": {
-            "region.sacred_forest_meadow[child]": {
+            "region.sfm_forest_temple_entrance_ledge[child]": {
                 "type": "true"
             },
             "region.forest_temple_gateway[child]": {
@@ -221,7 +237,7 @@
             }
         },
         "region.forest_temple_entrance[adult]": {
-            "region.sacred_forest_meadow[adult]": {
+            "region.sfm_forest_temple_entrance_ledge[adult]": {
                 "type": "true"
             },
             "region.forest_temple_gateway[adult]": {
@@ -247,6 +263,22 @@
                 "type": "true"
             },
             "region.forest_temple_lobby_mq[adult]": {
+                "type": "true"
+            }
+        },
+        "region.fire_temple_entrance[child]": {
+            "region.fire_temple_gateway[child]": {
+                "type": "true"
+            },
+            "region.dmc_fire_temple_entrance[child]": {
+                "type": "true"
+            }
+        },
+        "region.fire_temple_entrance[adult]": {
+            "region.fire_temple_gateway[adult]": {
+                "type": "true"
+            },
+            "region.dmc_fire_temple_entrance[adult]": {
                 "type": "true"
             }
         },
@@ -828,7 +860,7 @@
             "region.market_bombchu_shop[child]": {
                 "type": "true"
             },
-            "region.market[child]": {
+            "region.market_back_alley[child]": {
                 "type": "true"
             }
         },
@@ -836,7 +868,7 @@
             "region.market_bombchu_shop[adult]": {
                 "type": "true"
             },
-            "region.market[adult]": {
+            "region.market_back_alley[adult]": {
                 "type": "true"
             }
         },
@@ -844,7 +876,7 @@
             "region.market_man_in_green_house[child]": {
                 "type": "true"
             },
-            "region.market[child]": {
+            "region.market_back_alley[child]": {
                 "type": "true"
             }
         },
@@ -852,7 +884,7 @@
             "region.market_man_in_green_house[adult]": {
                 "type": "true"
             },
-            "region.market[adult]": {
+            "region.market_back_alley[adult]": {
                 "type": "true"
             }
         },
@@ -1388,7 +1420,7 @@
             "region.gc_grotto[child]": {
                 "type": "true"
             },
-            "region.goron_city[child]": {
+            "region.gc_grotto_platform[child]": {
                 "type": "true"
             }
         },
@@ -1396,7 +1428,7 @@
             "region.gc_grotto[adult]": {
                 "type": "true"
             },
-            "region.goron_city[adult]": {
+            "region.gc_grotto_platform[adult]": {
                 "type": "true"
             }
         },
@@ -1516,7 +1548,7 @@
             "region.lh_fishing_hole[child]": {
                 "type": "true"
             },
-            "region.lake_hylia[child]": {
+            "region.lh_fishing_island[child]": {
                 "type": "true"
             }
         },
@@ -1524,7 +1556,7 @@
             "region.lh_fishing_hole[adult]": {
                 "type": "true"
             },
-            "region.lake_hylia[adult]": {
+            "region.lh_fishing_island[adult]": {
                 "type": "true"
             }
         },
@@ -1580,7 +1612,7 @@
             "region.gv_octorok_grotto[child]": {
                 "type": "true"
             },
-            "region.gerudo_valley[child]": {
+            "region.gv_grotto_ledge[child]": {
                 "type": "true"
             }
         },
@@ -1588,7 +1620,7 @@
             "region.gv_octorok_grotto[adult]": {
                 "type": "true"
             },
-            "region.gerudo_valley[adult]": {
+            "region.gv_grotto_ledge[adult]": {
                 "type": "true"
             }
         },
@@ -4209,7 +4241,7 @@
             }
         },
         "region.deku_tree_lobby_mq[child]": {
-            "region.kf_outside_deku_tree[child]": {
+            "region.deku_tree_gateway[child]": {
                 "type": "true"
             },
             "region.deku_tree_compass_room_mq[child]": {
@@ -4584,7 +4616,7 @@
             }
         },
         "region.deku_tree_lobby_mq[adult]": {
-            "region.kf_outside_deku_tree[adult]": {
+            "region.deku_tree_gateway[adult]": {
                 "type": "true"
             },
             "region.deku_tree_compass_room_mq[adult]": {
@@ -5849,7 +5881,7 @@
             }
         },
         "region.deku_tree_lobby[child]": {
-            "region.kf_outside_deku_tree[child]": {
+            "region.deku_tree_gateway[child]": {
                 "type": "true"
             },
             "region.deku_tree_slingshot_room[child]": {
@@ -6366,7 +6398,7 @@
             }
         },
         "region.deku_tree_lobby[adult]": {
-            "region.kf_outside_deku_tree[adult]": {
+            "region.deku_tree_gateway[adult]": {
                 "type": "true"
             },
             "region.deku_tree_slingshot_room[adult]": {
@@ -7383,7 +7415,7 @@
             }
         },
         "region.dodongos_cavern_beginning_mq[child]": {
-            "region.dodongos_cavern_entryway[child]": {
+            "region.dodongos_cavern_gateway[child]": {
                 "type": "true"
             },
             "region.dodongos_cavern_lobby_mq[child]": {
@@ -7427,7 +7459,7 @@
             }
         },
         "region.dodongos_cavern_beginning_mq[adult]": {
-            "region.dodongos_cavern_entryway[adult]": {
+            "region.dodongos_cavern_gateway[adult]": {
                 "type": "true"
             },
             "region.dodongos_cavern_lobby_mq[adult]": {
@@ -9072,7 +9104,7 @@
             }
         },
         "region.dodongos_cavern_beginning[child]": {
-            "region.dodongos_cavern_entryway[child]": {
+            "region.dodongos_cavern_gateway[child]": {
                 "type": "true"
             },
             "region.dodongos_cavern_lobby[child]": {
@@ -9107,7 +9139,7 @@
             }
         },
         "region.dodongos_cavern_beginning[adult]": {
-            "region.dodongos_cavern_entryway[adult]": {
+            "region.dodongos_cavern_gateway[adult]": {
                 "type": "true"
             },
             "region.dodongos_cavern_lobby[adult]": {
@@ -17172,7 +17204,7 @@
             }
         },
         "region.ganons_castle_lobby_mq[child]": {
-            "region.ganons_castle_gateway[child]": {
+            "region.castle_grounds_mq[child]": {
                 "type": "true"
             },
             "region.ganons_castle_forest_trial_mq[child]": {
@@ -17319,7 +17351,7 @@
             }
         },
         "region.ganons_castle_lobby_mq[adult]": {
-            "region.ganons_castle_gateway[adult]": {
+            "region.castle_grounds_mq[adult]": {
                 "type": "true"
             },
             "region.ganons_castle_forest_trial_mq[adult]": {
@@ -18922,7 +18954,7 @@
             }
         },
         "region.ganons_castle_lobby[child]": {
-            "region.ganons_castle_gateway[child]": {
+            "region.castle_grounds[child]": {
                 "type": "true"
             },
             "region.ganons_castle_forest_trial[child]": {
@@ -19069,7 +19101,7 @@
             }
         },
         "region.ganons_castle_lobby[adult]": {
-            "region.ganons_castle_gateway[adult]": {
+            "region.castle_grounds[adult]": {
                 "type": "true"
             },
             "region.ganons_castle_forest_trial[adult]": {
@@ -25672,37 +25704,28 @@
             }
         },
         "region.root_exits[child]": {
-            "region.kf_links_house[child]": {
+            "region.child_spawn[child]": {
                 "type": "mixin",
                 "el": "mixin.is_child[child]"
             },
-            "region.temple_of_time[child]": {
-                "type": "or",
+            "region.prelude_of_light_warp[child]": {
+                "type": "and",
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.is_adult[child]"
+                        "el": "function.can_play(item.warp_light)[child]"
                     },
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "function.can_play(item.warp_light)[child]"
-                            },
-                            {
-                                "type": "mixin",
-                                "el": "mixin.can_leave_forest[child]"
-                            }
-                        ]
+                        "type": "mixin",
+                        "el": "mixin.can_leave_forest[child]"
                     }
                 ]
             },
-            "region.sacred_forest_meadow[child]": {
+            "region.minuet_of_forest_warp[child]": {
                 "type": "mixin",
                 "el": "function.can_play(item.warp_forest)[child]"
             },
-            "region.dmc_central_local[child]": {
+            "region.bolero_of_fire_warp[child]": {
                 "type": "and",
                 "el": [
                     {
@@ -25715,7 +25738,7 @@
                     }
                 ]
             },
-            "region.lake_hylia[child]": {
+            "region.serenade_of_water_warp[child]": {
                 "type": "and",
                 "el": [
                     {
@@ -25728,7 +25751,7 @@
                     }
                 ]
             },
-            "region.graveyard_warp_pad_region[child]": {
+            "region.nocturne_of_shadow_warp[child]": {
                 "type": "and",
                 "el": [
                     {
@@ -25741,7 +25764,7 @@
                     }
                 ]
             },
-            "region.desert_colossus[child]": {
+            "region.requiem_of_spirit_warp[child]": {
                 "type": "and",
                 "el": [
                     {
@@ -25756,33 +25779,28 @@
             }
         },
         "region.root_exits[adult]": {
-            "region.temple_of_time[adult]": {
-                "type": "or",
+            "region.adult_spawn[adult]": {
+                "type": "mixin",
+                "el": "mixin.is_adult[adult]"
+            },
+            "region.prelude_of_light_warp[adult]": {
+                "type": "and",
                 "el": [
                     {
                         "type": "mixin",
-                        "el": "mixin.is_adult[adult]"
+                        "el": "function.can_play(item.warp_light)[adult]"
                     },
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "function.can_play(item.warp_light)[adult]"
-                            },
-                            {
-                                "type": "mixin",
-                                "el": "mixin.can_leave_forest[adult]"
-                            }
-                        ]
+                        "type": "mixin",
+                        "el": "mixin.can_leave_forest[adult]"
                     }
                 ]
             },
-            "region.sacred_forest_meadow[adult]": {
+            "region.minuet_of_forest_warp[adult]": {
                 "type": "mixin",
                 "el": "function.can_play(item.warp_forest)[adult]"
             },
-            "region.dmc_central_local[adult]": {
+            "region.bolero_of_fire_warp[adult]": {
                 "type": "and",
                 "el": [
                     {
@@ -25795,7 +25813,7 @@
                     }
                 ]
             },
-            "region.lake_hylia[adult]": {
+            "region.serenade_of_water_warp[adult]": {
                 "type": "and",
                 "el": [
                     {
@@ -25808,7 +25826,7 @@
                     }
                 ]
             },
-            "region.graveyard_warp_pad_region[adult]": {
+            "region.nocturne_of_shadow_warp[adult]": {
                 "type": "and",
                 "el": [
                     {
@@ -25821,7 +25839,7 @@
                     }
                 ]
             },
-            "region.desert_colossus[adult]": {
+            "region.requiem_of_spirit_warp[adult]": {
                 "type": "and",
                 "el": [
                     {
@@ -25833,6 +25851,86 @@
                         "el": "mixin.can_leave_forest[adult]"
                     }
                 ]
+            }
+        },
+        "region.child_spawn[child]": {
+            "region.kf_links_house[child]": {
+                "type": "true"
+            }
+        },
+        "region.child_spawn[adult]": {
+            "region.kf_links_house[adult]": {
+                "type": "true"
+            }
+        },
+        "region.adult_spawn[child]": {
+            "region.temple_of_time[child]": {
+                "type": "true"
+            }
+        },
+        "region.adult_spawn[adult]": {
+            "region.temple_of_time[adult]": {
+                "type": "true"
+            }
+        },
+        "region.prelude_of_light_warp[child]": {
+            "region.temple_of_time[child]": {
+                "type": "true"
+            }
+        },
+        "region.prelude_of_light_warp[adult]": {
+            "region.temple_of_time[adult]": {
+                "type": "true"
+            }
+        },
+        "region.minuet_of_forest_warp[child]": {
+            "region.sacred_forest_meadow[child]": {
+                "type": "true"
+            }
+        },
+        "region.minuet_of_forest_warp[adult]": {
+            "region.sacred_forest_meadow[adult]": {
+                "type": "true"
+            }
+        },
+        "region.bolero_of_fire_warp[child]": {
+            "region.dmc_central_local[child]": {
+                "type": "true"
+            }
+        },
+        "region.bolero_of_fire_warp[adult]": {
+            "region.dmc_central_local[adult]": {
+                "type": "true"
+            }
+        },
+        "region.serenade_of_water_warp[child]": {
+            "region.lake_hylia[child]": {
+                "type": "true"
+            }
+        },
+        "region.serenade_of_water_warp[adult]": {
+            "region.lake_hylia[adult]": {
+                "type": "true"
+            }
+        },
+        "region.nocturne_of_shadow_warp[child]": {
+            "region.graveyard_warp_pad_region[child]": {
+                "type": "true"
+            }
+        },
+        "region.nocturne_of_shadow_warp[adult]": {
+            "region.graveyard_warp_pad_region[adult]": {
+                "type": "true"
+            }
+        },
+        "region.requiem_of_spirit_warp[child]": {
+            "region.desert_colossus[child]": {
+                "type": "true"
+            }
+        },
+        "region.requiem_of_spirit_warp[adult]": {
+            "region.desert_colossus[adult]": {
+                "type": "true"
             }
         },
         "region.kokiri_forest[child]": {
@@ -25860,6 +25958,11 @@
                     {
                         "type": "mixin",
                         "el": "mixin.is_adult[child]"
+                    },
+                    {
+                        "type": "state",
+                        "el": "option.doors_open_forest",
+                        "value": "doors_open_forest_open"
                     },
                     {
                         "type": "value",
@@ -26052,29 +26155,19 @@
                         }
                     },
                     {
-                        "type": "or",
+                        "type": "and",
                         "el": [
                             {
-                                "type": "state",
-                                "el": "option.doors_open_forest",
-                                "value": "doors_open_forest_open"
+                                "type": "mixin",
+                                "el": "mixin.is_child[child]"
                             },
                             {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.is_child[child]"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.sword_kokiri"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.shield_kokiri"
-                                    }
-                                ]
+                                "type": "value",
+                                "el": "item.sword_kokiri"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.shield_kokiri"
                             }
                         ]
                     }
@@ -26106,6 +26199,11 @@
                     {
                         "type": "mixin",
                         "el": "mixin.is_adult[adult]"
+                    },
+                    {
+                        "type": "state",
+                        "el": "option.doors_open_forest",
+                        "value": "doors_open_forest_open"
                     },
                     {
                         "type": "value",
@@ -26213,46 +26311,6 @@
                         ]
                     }
                 ]
-            },
-            "event.showed_mido_sword_&_shield": {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "filter.era",
-                            "value": "child"
-                        }
-                    },
-                    {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.doors_open_forest",
-                                "value": "doors_open_forest_open"
-                            },
-                            {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.is_child[adult]"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.sword_kokiri"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.shield_kokiri"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
             }
         },
         "region.kf_outside_deku_tree[child]": {
@@ -26267,23 +26325,44 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "option.entrance_shuffle",
-                                    "value": "entrance_shuffle_off"
-                                }
+                                "type": "value",
+                                "el": "option.shuffle_dungeons"
                             },
                             {
-                                "type": "value",
-                                "el": "event.showed_mido_sword_&_shield"
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "state",
+                                        "el": "option.doors_open_forest",
+                                        "value": "doors_open_forest_open"
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "event.showed_mido_sword_&_shield"
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
             },
             "region.kokiri_forest[child]": {
-                "type": "true"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "mixin",
+                        "el": "mixin.is_adult[child]"
+                    },
+                    {
+                        "type": "state",
+                        "el": "option.doors_open_forest",
+                        "value": "doors_open_forest_open"
+                    },
+                    {
+                        "type": "value",
+                        "el": "event.showed_mido_sword_&_shield"
+                    }
+                ]
             },
             "logic.location.sticks": {
                 "type": "and",
@@ -26309,12 +26388,31 @@
                                     {
                                         "type": "not",
                                         "el": {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "state",
-                                                "el": "option.entrance_shuffle",
-                                                "value": "entrance_shuffle_off"
-                                            }
+                                            "type": "or",
+                                            "el": [
+                                                {
+                                                    "type": "value",
+                                                    "el": "option.shuffle_grottos"
+                                                },
+                                                {
+                                                    "type": "value",
+                                                    "el": "option.shuffle_dungeons"
+                                                },
+                                                {
+                                                    "type": "value",
+                                                    "el": "option.shuffle_overworld"
+                                                },
+                                                {
+                                                    "type": "state",
+                                                    "el": "option.entrance_shuffle_interior",
+                                                    "value": "entrance_shuffle_simple"
+                                                },
+                                                {
+                                                    "type": "state",
+                                                    "el": "option.entrance_shuffle_interior",
+                                                    "value": "entrance_shuffle_all"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -26362,37 +26460,173 @@
                         "type": "true"
                     }
                 ]
-            }
-        },
-        "region.kf_outside_deku_tree[adult]": {
-            "region.deku_tree_entrance[adult]": {
-                "type": "or",
+            },
+            "event.showed_mido_sword_&_shield": {
+                "type": "and",
                 "el": [
                     {
-                        "type": "mixin",
-                        "el": "mixin.is_child[adult]"
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "filter.era",
+                            "value": "adult"
+                        }
                     },
                     {
                         "type": "and",
                         "el": [
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "option.entrance_shuffle",
-                                    "value": "entrance_shuffle_off"
-                                }
+                                "type": "mixin",
+                                "el": "mixin.is_child[child]"
                             },
                             {
                                 "type": "value",
-                                "el": "event.showed_mido_sword_&_shield"
+                                "el": "item.sword_kokiri"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.shield_kokiri"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "region.kf_outside_deku_tree[adult]": {
+            "region.kokiri_forest[adult]": {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "mixin",
+                        "el": "mixin.is_adult[adult]"
+                    },
+                    {
+                        "type": "state",
+                        "el": "option.doors_open_forest",
+                        "value": "doors_open_forest_open"
+                    },
+                    {
+                        "type": "value",
+                        "el": "event.showed_mido_sword_&_shield"
+                    }
+                ]
+            },
+            "logic.location.sticks": {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "filter.era",
+                            "value": "child"
+                        }
+                    },
+                    {
+                        "type": "or",
+                        "el": [
+                            {
+                                "type": "and",
+                                "el": [
+                                    {
+                                        "type": "mixin",
+                                        "el": "mixin.is_adult[adult]"
+                                    },
+                                    {
+                                        "type": "not",
+                                        "el": {
+                                            "type": "or",
+                                            "el": [
+                                                {
+                                                    "type": "value",
+                                                    "el": "option.shuffle_grottos"
+                                                },
+                                                {
+                                                    "type": "value",
+                                                    "el": "option.shuffle_dungeons"
+                                                },
+                                                {
+                                                    "type": "value",
+                                                    "el": "option.shuffle_overworld"
+                                                },
+                                                {
+                                                    "type": "state",
+                                                    "el": "option.entrance_shuffle_interior",
+                                                    "value": "entrance_shuffle_simple"
+                                                },
+                                                {
+                                                    "type": "state",
+                                                    "el": "option.entrance_shuffle_interior",
+                                                    "value": "entrance_shuffle_all"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.sword_kokiri)[adult]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.boomerang)[adult]"
                             }
                         ]
                     }
                 ]
             },
-            "region.kokiri_forest[adult]": {
-                "type": "true"
+            "logic.location.nuts": {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "filter.era",
+                            "value": "child"
+                        }
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "mixin.is_adult[adult]"
+                            },
+                            {
+                                "type": "not",
+                                "el": {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "value",
+                                            "el": "option.shuffle_grottos"
+                                        },
+                                        {
+                                            "type": "value",
+                                            "el": "option.shuffle_dungeons"
+                                        },
+                                        {
+                                            "type": "value",
+                                            "el": "option.shuffle_overworld"
+                                        },
+                                        {
+                                            "type": "state",
+                                            "el": "option.entrance_shuffle_interior",
+                                            "value": "entrance_shuffle_simple"
+                                        },
+                                        {
+                                            "type": "state",
+                                            "el": "option.entrance_shuffle_interior",
+                                            "value": "entrance_shuffle_all"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
             "logic.location.kokiri.g_gossip_deku_left": {
                 "type": "and",
@@ -27627,6 +27861,16 @@
                 ]
             }
         },
+        "region.lost_woods_mushroom_timeout[child]": {
+            "region.lost_woods[child]": {
+                "type": "true"
+            }
+        },
+        "region.lost_woods_mushroom_timeout[adult]": {
+            "region.lost_woods[adult]": {
+                "type": "true"
+            }
+        },
         "region.sfm_entryway[child]": {
             "region.meadow_woods_gateway[child]": {
                 "type": "true"
@@ -27815,7 +28059,7 @@
             "region.sfm_entryway[adult]": {
                 "type": "true"
             },
-            "region.forest_temple_entrance[adult]": {
+            "region.sfm_forest_temple_entrance_ledge[adult]": {
                 "type": "mixin",
                 "el": "function.can_use(item.hookshot)[adult]"
             },
@@ -27944,6 +28188,22 @@
                 ]
             }
         },
+        "region.sfm_forest_temple_entrance_ledge[child]": {
+            "region.sacred_forest_meadow[child]": {
+                "type": "true"
+            },
+            "region.forest_temple_entrance[child]": {
+                "type": "true"
+            }
+        },
+        "region.sfm_forest_temple_entrance_ledge[adult]": {
+            "region.sacred_forest_meadow[adult]": {
+                "type": "true"
+            },
+            "region.forest_temple_entrance[adult]": {
+                "type": "true"
+            }
+        },
         "region.lw_bridge_from_forest[child]": {
             "region.kokiri_bridge_gateway[child]": {
                 "type": "true"
@@ -28007,7 +28267,7 @@
             }
         },
         "region.hyrule_field[child]": {
-            "region.lw_bridge[child]": {
+            "region.field_woods_gateway[child]": {
                 "type": "true"
             },
             "region.lake_field_gateway[child]": {
@@ -28182,7 +28442,7 @@
             }
         },
         "region.hyrule_field[adult]": {
-            "region.lw_bridge[adult]": {
+            "region.field_woods_gateway[adult]": {
                 "type": "true"
             },
             "region.lake_field_gateway[adult]": {
@@ -28358,7 +28618,7 @@
             "region.lh_lab_entrance[child]": {
                 "type": "true"
             },
-            "region.lh_fishing_hole_entrance[child]": {
+            "region.lh_fishing_island[child]": {
                 "type": "or",
                 "el": [
                     {
@@ -28732,7 +28992,7 @@
             "region.lh_lab_entrance[adult]": {
                 "type": "true"
             },
-            "region.lh_fishing_hole_entrance[adult]": {
+            "region.lh_fishing_island[adult]": {
                 "type": "or",
                 "el": [
                     {
@@ -29042,6 +29302,22 @@
                 ]
             }
         },
+        "region.lh_fishing_island[child]": {
+            "region.lake_hylia[child]": {
+                "type": "true"
+            },
+            "region.lh_fishing_hole_entrance[child]": {
+                "type": "true"
+            }
+        },
+        "region.lh_fishing_island[adult]": {
+            "region.lake_hylia[adult]": {
+                "type": "true"
+            },
+            "region.lh_fishing_hole_entrance[adult]": {
+                "type": "true"
+            }
+        },
         "region.lh_owl_flight[child]": {
             "region.hyrule_field[child]": {
                 "type": "true"
@@ -29287,7 +29563,7 @@
             "region.valley_field_gateway[child]": {
                 "type": "true"
             },
-            "region.gv_stream[child]": {
+            "region.gv_upper_stream[child]": {
                 "type": "true"
             },
             "region.gv_crate_ledge[child]": {
@@ -29302,6 +29578,9 @@
                         "el": "function.can_use(mixin.longshot)[child]"
                     }
                 ]
+            },
+            "region.gv_grotto_ledge[child]": {
+                "type": "true"
             },
             "logic.location.gerudo_valley.s_gerudo_wood_plank_child_night": {
                 "type": "and",
@@ -29360,7 +29639,7 @@
             "region.valley_field_gateway[adult]": {
                 "type": "true"
             },
-            "region.gv_stream[adult]": {
+            "region.gv_upper_stream[adult]": {
                 "type": "true"
             },
             "region.gv_crate_ledge[adult]": {
@@ -29376,9 +29655,8 @@
                     }
                 ]
             },
-            "region.gv_octorok_grotto_entrance[adult]": {
-                "type": "mixin",
-                "el": "function.can_use(mixin.silver_gauntlets)[adult]"
+            "region.gv_grotto_ledge[adult]": {
+                "type": "true"
             },
             "region.gv_fortress_side[adult]": {
                 "type": "and",
@@ -29411,8 +29689,8 @@
                 ]
             }
         },
-        "region.gv_stream[child]": {
-            "region.lake_hylia[child]": {
+        "region.gv_upper_stream[child]": {
+            "region.gv_lower_stream[child]": {
                 "type": "true"
             },
             "logic.location.gerudo_valley.c_gerudo_waterfall": {
@@ -29556,8 +29834,8 @@
                 ]
             }
         },
-        "region.gv_stream[adult]": {
-            "region.lake_hylia[adult]": {
+        "region.gv_upper_stream[adult]": {
+            "region.gv_lower_stream[adult]": {
                 "type": "true"
             },
             "logic.location.gerudo_valley.c_gerudo_waterfall": {
@@ -29619,7 +29897,38 @@
                 ]
             }
         },
+        "region.gv_lower_stream[child]": {
+            "region.lake_hylia[child]": {
+                "type": "true"
+            }
+        },
+        "region.gv_lower_stream[adult]": {
+            "region.lake_hylia[adult]": {
+                "type": "true"
+            }
+        },
+        "region.gv_grotto_ledge[child]": {
+            "region.gv_lower_stream[child]": {
+                "type": "true"
+            }
+        },
+        "region.gv_grotto_ledge[adult]": {
+            "region.gv_lower_stream[adult]": {
+                "type": "true"
+            },
+            "region.gv_octorok_grotto_entrance[adult]": {
+                "type": "mixin",
+                "el": "function.can_use(mixin.silver_gauntlets)[adult]"
+            },
+            "region.gv_crate_ledge[adult]": {
+                "type": "mixin",
+                "el": "function.can_use(mixin.longshot)[adult]"
+            }
+        },
         "region.gv_crate_ledge[child]": {
+            "region.gv_lower_stream[child]": {
+                "type": "true"
+            },
             "logic.location.gerudo_valley.c_gerudo_crate": {
                 "type": "and",
                 "el": [
@@ -29638,6 +29947,9 @@
             }
         },
         "region.gv_crate_ledge[adult]": {
+            "region.gv_lower_stream[adult]": {
+                "type": "true"
+            },
             "logic.location.gerudo_valley.c_gerudo_crate": {
                 "type": "and",
                 "el": [
@@ -29659,7 +29971,7 @@
             "region.valley_fortress_gateway[child]": {
                 "type": "true"
             },
-            "region.gv_stream[child]": {
+            "region.gv_upper_stream[child]": {
                 "type": "true"
             },
             "region.gerudo_valley[child]": {
@@ -29692,7 +30004,7 @@
             "region.valley_fortress_gateway[adult]": {
                 "type": "true"
             },
-            "region.gv_stream[adult]": {
+            "region.gv_upper_stream[adult]": {
                 "type": "true"
             },
             "region.gv_crate_ledge[adult]": {
@@ -29881,12 +30193,12 @@
             }
         },
         "region.gv_carpenter_tent[child]": {
-            "region.gv_fortress_side[child]": {
+            "region.gv_carpenter_tent_entrance[child]": {
                 "type": "true"
             }
         },
         "region.gv_carpenter_tent[adult]": {
-            "region.gv_fortress_side[adult]": {
+            "region.gv_carpenter_tent_entrance[adult]": {
                 "type": "true"
             }
         },
@@ -30442,29 +30754,6 @@
             }
         },
         "region.gf_outside_gate[child]": {
-            "region.gerudo_fortress[child]": {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "mixin",
-                        "el": "mixin.is_adult[child]"
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_all"
-                            },
-                            {
-                                "type": "value",
-                                "el": "event.gf_gate_open"
-                            }
-                        ]
-                    }
-                ]
-            },
             "region.wasteland_fortress_gateway[child]": {
                 "type": "true"
             }
@@ -30481,9 +30770,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_all"
+                                "type": "value",
+                                "el": "option.shuffle_overworld"
                             },
                             {
                                 "type": "value",
@@ -30495,67 +30783,6 @@
             },
             "region.wasteland_fortress_gateway[adult]": {
                 "type": "true"
-            },
-            "event.gf_gate_open": {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "filter.era",
-                            "value": "child"
-                        }
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "mixin.is_adult[adult]"
-                            },
-                            {
-                                "type": "value",
-                                "el": "item.membership"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "option.gerudo_card_shuffle"
-                                    },
-                                    {
-                                        "type": "state",
-                                        "el": "option.entrance_shuffle",
-                                        "value": "entrance_shuffle_all"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_off"
-                                                }
-                                            },
-                                            {
-                                                "type": "not",
-                                                "el": {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle",
-                                                    "value": "entrance_shuffle_dungeon"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
             }
         },
         "region.wasteland_near_fortress[child]": {
@@ -30945,22 +31172,6 @@
             "region.wasteland_colossus_gateway[child]": {
                 "type": "true"
             },
-            "logic.location.desert.c_warp_spirit": {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "filter.era",
-                            "value": "adult"
-                        }
-                    },
-                    {
-                        "type": "true"
-                    }
-                ]
-            },
             "logic.location.desert.s_beanspot_child": {
                 "type": "and",
                 "el": [
@@ -31128,22 +31339,6 @@
                                 ]
                             }
                         ]
-                    }
-                ]
-            },
-            "logic.location.desert.c_warp_spirit": {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "filter.era",
-                            "value": "child"
-                        }
-                    },
-                    {
-                        "type": "true"
                     }
                 ]
             },
@@ -31328,6 +31523,48 @@
                 ]
             }
         },
+        "region.desert_colossus_from_spirit_lobby[child]": {
+            "region.desert_colossus[child]": {
+                "type": "true"
+            },
+            "logic.location.desert.c_warp_spirit": {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "filter.era",
+                            "value": "adult"
+                        }
+                    },
+                    {
+                        "type": "true"
+                    }
+                ]
+            }
+        },
+        "region.desert_colossus_from_spirit_lobby[adult]": {
+            "region.desert_colossus[adult]": {
+                "type": "true"
+            },
+            "logic.location.desert.c_warp_spirit": {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "filter.era",
+                            "value": "child"
+                        }
+                    },
+                    {
+                        "type": "true"
+                    }
+                ]
+            }
+        },
         "region.colossus_great_fairy_fountain[child]": {
             "region.colossus_great_fairy_fountain_entrance[child]": {
                 "type": "true"
@@ -31463,7 +31700,7 @@
                     }
                 ]
             },
-            "region.market_bombchu_bowling_entrance[child]": {
+            "region.market_bombchu_bowling[child]": {
                 "type": "mixin",
                 "el": "mixin.is_child[child]"
             },
@@ -31493,35 +31730,9 @@
                     }
                 ]
             },
-            "region.market_bombchu_shop_entrance[child]": {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "mixin",
-                        "el": "mixin.is_child[child]"
-                    },
-                    {
-                        "type": "mixin",
-                        "el": "mixin.is_night[child]"
-                    }
-                ]
-            },
-            "region.market_dog_lady_house[child]": {
+            "region.market_back_alley[child]": {
                 "type": "mixin",
                 "el": "mixin.is_child[child]"
-            },
-            "region.market_man_in_green_house_entrance[child]": {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "mixin",
-                        "el": "mixin.is_child[child]"
-                    },
-                    {
-                        "type": "mixin",
-                        "el": "mixin.is_night[child]"
-                    }
-                ]
             }
         },
         "region.market[adult]": {
@@ -31533,6 +31744,38 @@
             },
             "region.grounds_market_gateway[adult]": {
                 "type": "true"
+            }
+        },
+        "region.market_back_alley[child]": {
+            "region.market[child]": {
+                "type": "true"
+            },
+            "region.market_bombchu_shop_entrance[child]": {
+                "type": "mixin",
+                "el": "mixin.is_night[child]"
+            },
+            "region.market_dog_lady_house[child]": {
+                "type": "true"
+            },
+            "region.market_man_in_green_house[child]": {
+                "type": "mixin",
+                "el": "mixin.is_night[child]"
+            }
+        },
+        "region.market_back_alley[adult]": {
+            "region.market[adult]": {
+                "type": "true"
+            },
+            "region.market_bombchu_shop_entrance[adult]": {
+                "type": "mixin",
+                "el": "mixin.is_night[adult]"
+            },
+            "region.market_dog_lady_house[adult]": {
+                "type": "true"
+            },
+            "region.market_man_in_green_house[adult]": {
+                "type": "mixin",
+                "el": "mixin.is_night[adult]"
             }
         },
         "region.tot_entrance[child]": {
@@ -31869,7 +32112,17 @@
         },
         "region.castle_grounds[child]": {
             "region.grounds_market_gateway[child]": {
-                "type": "true"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "mixin",
+                        "el": "mixin.is_child[child]"
+                    },
+                    {
+                        "type": "mixin",
+                        "el": "mixin.is_night[child]"
+                    }
+                ]
             },
             "region.hyrule_castle_grounds[child]": {
                 "type": "mixin",
@@ -31878,7 +32131,17 @@
         },
         "region.castle_grounds[adult]": {
             "region.grounds_market_gateway[adult]": {
-                "type": "true"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "mixin",
+                        "el": "mixin.is_child[adult]"
+                    },
+                    {
+                        "type": "mixin",
+                        "el": "mixin.is_night[adult]"
+                    }
+                ]
             },
             "region.ganons_castle_grounds[adult]": {
                 "type": "mixin",
@@ -32232,12 +32495,20 @@
         },
         "region.ganons_castle_grounds[child]": {
             "region.castle_grounds[child]": {
-                "type": "mixin",
-                "el": "mixin.is_night[child]"
+                "type": "true"
             },
             "region.ganons_castle_gateway[child]": {
-                "type": "mixin",
-                "el": "mixin.can_build_rainbow_bridge[child]"
+                "type": "and",
+                "el": [
+                    {
+                        "type": "mixin",
+                        "el": "mixin.can_build_rainbow_bridge[child]"
+                    },
+                    {
+                        "type": "mixin",
+                        "el": "mixin.is_night[child]"
+                    }
+                ]
             },
             "logic.location.castle_town.s_near_ganon_fairy_adult": {
                 "type": "and",
@@ -32258,8 +32529,7 @@
         },
         "region.ganons_castle_grounds[adult]": {
             "region.castle_grounds[adult]": {
-                "type": "mixin",
-                "el": "mixin.is_night[adult]"
+                "type": "true"
             },
             "region.ogc_great_fairy_fountain_entrance[adult]": {
                 "type": "and",
@@ -32275,8 +32545,17 @@
                 ]
             },
             "region.ganons_castle_gateway[adult]": {
-                "type": "mixin",
-                "el": "mixin.can_build_rainbow_bridge[adult]"
+                "type": "and",
+                "el": [
+                    {
+                        "type": "mixin",
+                        "el": "mixin.can_build_rainbow_bridge[adult]"
+                    },
+                    {
+                        "type": "mixin",
+                        "el": "mixin.is_night[adult]"
+                    }
+                ]
             },
             "logic.location.castle_town.s_near_ganon_fairy_adult": {
                 "type": "and",
@@ -33814,7 +34093,7 @@
             }
         },
         "region.market_dog_lady_house[child]": {
-            "region.market[child]": {
+            "region.market_back_alley[child]": {
                 "type": "true"
             },
             "logic.location.castle_town.c_dog": {
@@ -33829,32 +34108,24 @@
                         }
                     },
                     {
-                        "type": "mixin",
-                        "el": "mixin.is_night[child]"
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "mixin.is_child[child]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "mixin.is_night[child]"
+                            }
+                        ]
                     }
                 ]
             }
         },
         "region.market_dog_lady_house[adult]": {
-            "region.market[adult]": {
+            "region.market_back_alley[adult]": {
                 "type": "true"
-            },
-            "logic.location.castle_town.c_dog": {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "filter.era",
-                            "value": "child"
-                        }
-                    },
-                    {
-                        "type": "mixin",
-                        "el": "mixin.is_night[adult]"
-                    }
-                ]
             }
         },
         "region.market_man_in_green_house[child]": {
@@ -33898,12 +34169,8 @@
                                 "el": "mixin.is_child[child]"
                             },
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "option.entrance_shuffle",
-                                    "value": "entrance_shuffle_off"
-                                }
+                                "type": "value",
+                                "el": "option.shuffle_dungeons"
                             }
                         ]
                     }
@@ -33961,7 +34228,7 @@
                     }
                 ]
             },
-            "region.kak_rooftop[child]": {
+            "region.kak_odd_medicine_rooftop[child]": {
                 "type": "or",
                 "el": [
                     {
@@ -34051,17 +34318,8 @@
                         "el": "mixin.is_adult[child]"
                     },
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "mixin.is_child[child]"
-                            },
-                            {
-                                "type": "mixin",
-                                "el": "mixin.is_day[child]"
-                            }
-                        ]
+                        "type": "mixin",
+                        "el": "mixin.is_day[child]"
                     }
                 ]
             },
@@ -34393,32 +34651,6 @@
                     }
                 ]
             },
-            "region.bottom_of_the_well_entrance[adult]": {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "value",
-                        "el": "event.drain_well"
-                    },
-                    {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "mixin.is_child[adult]"
-                            },
-                            {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "option.entrance_shuffle",
-                                    "value": "entrance_shuffle_off"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
             "region.kak_potion_shop_front_entrance[adult]": {
                 "type": "or",
                 "el": [
@@ -34471,7 +34703,7 @@
                     }
                 ]
             },
-            "region.kak_rooftop[adult]": {
+            "region.kak_odd_medicine_rooftop[adult]": {
                 "type": "or",
                 "el": [
                     {
@@ -34561,17 +34793,8 @@
                         "el": "mixin.is_adult[adult]"
                     },
                     {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "mixin.is_child[adult]"
-                            },
-                            {
-                                "type": "mixin",
-                                "el": "mixin.is_day[adult]"
-                            }
-                        ]
+                        "type": "mixin",
+                        "el": "mixin.is_day[adult]"
                     }
                 ]
             },
@@ -34737,7 +34960,10 @@
                 "type": "true"
             }
         },
-        "region.kak_rooftop[child]": {
+        "region.kak_odd_medicine_rooftop[child]": {
+            "region.kakariko_village[child]": {
+                "type": "true"
+            },
             "region.kak_backyard[child]": {
                 "type": "true"
             },
@@ -34758,7 +34984,10 @@
                 ]
             }
         },
-        "region.kak_rooftop[adult]": {
+        "region.kak_odd_medicine_rooftop[adult]": {
+            "region.kakariko_village[adult]": {
+                "type": "true"
+            },
             "region.kak_backyard[adult]": {
                 "type": "true"
             },
@@ -37017,7 +37246,7 @@
                     }
                 ]
             },
-            "region.dodongos_cavern_entryway[child]": {
+            "region.dodongos_cavern_entrance[child]": {
                 "type": "or",
                 "el": [
                     {
@@ -37388,7 +37617,7 @@
                     }
                 ]
             },
-            "region.dodongos_cavern_entryway[adult]": {
+            "region.dodongos_cavern_entrance[adult]": {
                 "type": "or",
                 "el": [
                     {
@@ -38073,22 +38302,6 @@
                 "type": "true"
             }
         },
-        "region.dodongos_cavern_entryway[child]": {
-            "region.dodongos_cavern_gateway[child]": {
-                "type": "true"
-            },
-            "region.death_mountain[child]": {
-                "type": "true"
-            }
-        },
-        "region.dodongos_cavern_entryway[adult]": {
-            "region.dodongos_cavern_gateway[adult]": {
-                "type": "true"
-            },
-            "region.death_mountain[adult]": {
-                "type": "true"
-            }
-        },
         "region.goron_city[child]": {
             "region.mountain_goron_gateway[child]": {
                 "type": "true"
@@ -38663,7 +38876,7 @@
                     }
                 ]
             },
-            "region.gc_grotto_entrance[adult]": {
+            "region.gc_grotto_platform[adult]": {
                 "type": "and",
                 "el": [
                     {
@@ -39314,6 +39527,110 @@
                 "el": "mixin.is_adult[adult]"
             }
         },
+        "region.gc_grotto_platform[child]": {
+            "region.gc_grotto_entrance[child]": {
+                "type": "true"
+            },
+            "region.goron_city[child]": {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "option.damage_multiplier",
+                                    "value": "damage_multiplier_ohko"
+                                }
+                            },
+                            {
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "option.damage_multiplier",
+                                    "value": "damage_multiplier_quadruple"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "mixin",
+                        "el": "function.can_use(item.tunic_fire)[child]"
+                    },
+                    {
+                        "type": "mixin",
+                        "el": "function.can_use(item.magic_nayru)[child]"
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "function.can_play(item.song_time)[child]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(mixin.longshot)[child]"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "region.gc_grotto_platform[adult]": {
+            "region.gc_grotto_entrance[adult]": {
+                "type": "true"
+            },
+            "region.goron_city[adult]": {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "option.damage_multiplier",
+                                    "value": "damage_multiplier_ohko"
+                                }
+                            },
+                            {
+                                "type": "not",
+                                "el": {
+                                    "type": "state",
+                                    "el": "option.damage_multiplier",
+                                    "value": "damage_multiplier_quadruple"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "mixin",
+                        "el": "function.can_use(item.tunic_fire)[adult]"
+                    },
+                    {
+                        "type": "mixin",
+                        "el": "function.can_use(item.magic_nayru)[adult]"
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "function.can_play(item.song_time)[adult]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(mixin.longshot)[adult]"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
         "region.gc_shop[child]": {
             "region.gc_shop_entrance[child]": {
                 "type": "true"
@@ -39785,12 +40102,8 @@
                                     {
                                         "type": "not",
                                         "el": {
-                                            "type": "not",
-                                            "el": {
-                                                "type": "state",
-                                                "el": "option.entrance_shuffle",
-                                                "value": "entrance_shuffle_off"
-                                            }
+                                            "type": "value",
+                                            "el": "option.shuffle_dungeons"
                                         }
                                     }
                                 ]
@@ -39973,7 +40286,7 @@
                     }
                 ]
             },
-            "region.fire_temple_entrance[adult]": {
+            "region.dmc_fire_temple_entrance[adult]": {
                 "type": "and",
                 "el": [
                     {
@@ -40093,50 +40406,6 @@
         "region.dmc_central_local[child]": {
             "region.dmc_central_nearby[child]": {
                 "type": "true"
-            },
-            "region.fire_temple_entrance[child]": {
-                "type": "or",
-                "el": [
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "mixin.is_child[child]"
-                            },
-                            {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "option.entrance_shuffle",
-                                    "value": "entrance_shuffle_off"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "mixin.is_adult[child]"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "skip.fewer_tunic_requirements"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.tunic_fire)[child]"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
             },
             "logic.location.mountain.s_crater_beanspot_child": {
                 "type": "and",
@@ -40272,7 +40541,7 @@
                     }
                 ]
             },
-            "region.fire_temple_entrance[adult]": {
+            "region.dmc_fire_temple_entrance[adult]": {
                 "type": "or",
                 "el": [
                     {
@@ -40283,12 +40552,8 @@
                                 "el": "mixin.is_child[adult]"
                             },
                             {
-                                "type": "not",
-                                "el": {
-                                    "type": "state",
-                                    "el": "option.entrance_shuffle",
-                                    "value": "entrance_shuffle_off"
-                                }
+                                "type": "value",
+                                "el": "option.shuffle_dungeons"
                             }
                         ]
                     },
@@ -40317,14 +40582,18 @@
                 ]
             }
         },
-        "region.fire_temple_entrance[child]": {
-            "region.fire_temple_gateway[child]": {
+        "region.dmc_fire_temple_entrance[child]": {
+            "region.fire_temple_entrance[child]": {
                 "type": "true"
             }
         },
-        "region.fire_temple_entrance[adult]": {
-            "region.fire_temple_gateway[adult]": {
+        "region.dmc_fire_temple_entrance[adult]": {
+            "region.fire_temple_entrance[adult]": {
                 "type": "true"
+            },
+            "region.dmc_central_nearby[adult]": {
+                "type": "mixin",
+                "el": "function.can_use(item.tunic_fire)[adult]"
             }
         },
         "region.dmc_great_fairy_fountain[child]": {
@@ -41258,6 +41527,16 @@
                 "type": "true"
             }
         },
+        "region.zr_top_of_waterfall[child]": {
+            "region.zora_river[child]": {
+                "type": "true"
+            }
+        },
+        "region.zr_top_of_waterfall[adult]": {
+            "region.zora_river[adult]": {
+                "type": "true"
+            }
+        },
         "region.zoras_domain[child]": {
             "region.river_domain_gateway[child]": {
                 "type": "true"
@@ -41830,6 +42109,16 @@
                 "type": "true"
             }
         },
+        "region.zd_eyeball_frog_timeout[child]": {
+            "region.zoras_domain[child]": {
+                "type": "true"
+            }
+        },
+        "region.zd_eyeball_frog_timeout[adult]": {
+            "region.zoras_domain[adult]": {
+                "type": "true"
+            }
+        },
         "region.zoras_fountain[child]": {
             "region.fountain_domain_gateway[child]": {
                 "type": "true"
@@ -41987,7 +42276,7 @@
             "region.fountain_domain_gateway[adult]": {
                 "type": "true"
             },
-            "region.ice_cavern_entrance[adult]": {
+            "region.zf_ice_ledge[adult]": {
                 "type": "mixin",
                 "el": "mixin.is_adult[adult]"
             },
@@ -42142,6 +42431,22 @@
                         ]
                     }
                 ]
+            }
+        },
+        "region.zf_ice_ledge[child]": {
+            "region.zoras_fountain[child]": {
+                "type": "true"
+            },
+            "region.ice_cavern_entrance[child]": {
+                "type": "true"
+            }
+        },
+        "region.zf_ice_ledge[adult]": {
+            "region.zoras_fountain[adult]": {
+                "type": "true"
+            },
+            "region.ice_cavern_entrance[adult]": {
+                "type": "true"
             }
         },
         "region.zd_shop[child]": {
@@ -42979,7 +43284,7 @@
             }
         },
         "region.gf_storms_grotto[child]": {
-            "region.gerudo_fortress[child]": {
+            "region.gf_storms_grotto_entrance[child]": {
                 "type": "true"
             },
             "logic.location.fairy": {
@@ -43001,7 +43306,7 @@
             }
         },
         "region.gf_storms_grotto[adult]": {
-            "region.gerudo_fortress[adult]": {
+            "region.gf_storms_grotto_entrance[adult]": {
                 "type": "true"
             },
             "logic.location.fairy": {
@@ -45265,7 +45570,7 @@
             }
         },
         "region.hc_storms_grotto[child]": {
-            "region.hc_storms_grotto_entrance[child]": {
+            "region.castle_grounds[child]": {
                 "type": "true"
             },
             "logic.location.castle_town.s_storm_grotto_child": {
@@ -45413,7 +45718,7 @@
             }
         },
         "region.hc_storms_grotto[adult]": {
-            "region.hc_storms_grotto_entrance[adult]": {
+            "region.castle_grounds[adult]": {
                 "type": "true"
             },
             "logic.location.castle_town.s_storm_grotto_child": {
@@ -47191,7 +47496,7 @@
             }
         },
         "region.gv_storms_grotto[child]": {
-            "region.gv_fortress_side[child]": {
+            "region.gv_storms_grotto_entrance[child]": {
                 "type": "true"
             },
             "logic.location.gerudo_valley.c_gerudo_behind_carpenter_tent_grotto_salesman_2": {
@@ -47230,7 +47535,7 @@
             }
         },
         "region.gv_storms_grotto[adult]": {
-            "region.gv_fortress_side[adult]": {
+            "region.gv_storms_grotto_entrance[adult]": {
                 "type": "true"
             },
             "logic.location.gerudo_valley.c_gerudo_behind_carpenter_tent_grotto_salesman_2": {
@@ -50393,7 +50698,7 @@
             }
         },
         "region.spirit_temple_lobby_mq[child]": {
-            "region.spirit_temple_gateway[child]": {
+            "region.desert_colossus_from_spirit_lobby_mq[child]": {
                 "type": "true"
             },
             "region.child_spirit_temple_mq[child]": {
@@ -50508,7 +50813,7 @@
             }
         },
         "region.spirit_temple_lobby_mq[adult]": {
-            "region.spirit_temple_gateway[adult]": {
+            "region.desert_colossus_from_spirit_lobby_mq[adult]": {
                 "type": "true"
             },
             "region.adult_spirit_temple_mq[adult]": {
@@ -52914,7 +53219,7 @@
             }
         },
         "region.spirit_temple_lobby[child]": {
-            "region.spirit_temple_gateway[child]": {
+            "region.desert_colossus_from_spirit_lobby[child]": {
                 "type": "true"
             },
             "region.child_spirit_temple[child]": {
@@ -52923,7 +53228,7 @@
             }
         },
         "region.spirit_temple_lobby[adult]": {
-            "region.spirit_temple_gateway[adult]": {
+            "region.desert_colossus_from_spirit_lobby[adult]": {
                 "type": "true"
             },
             "region.early_adult_spirit_temple[adult]": {
@@ -53610,12 +53915,31 @@
                                                     {
                                                         "type": "not",
                                                         "el": {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "state",
-                                                                "el": "option.entrance_shuffle",
-                                                                "value": "entrance_shuffle_off"
-                                                            }
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_grottos"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_dungeons"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_overworld"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_simple"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_all"
+                                                                }
+                                                            ]
                                                         }
                                                     }
                                                 ]
@@ -53707,12 +54031,31 @@
                                                     {
                                                         "type": "not",
                                                         "el": {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "state",
-                                                                "el": "option.entrance_shuffle",
-                                                                "value": "entrance_shuffle_off"
-                                                            }
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_grottos"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_dungeons"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_overworld"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_simple"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_all"
+                                                                }
+                                                            ]
                                                         }
                                                     }
                                                 ]
@@ -53872,12 +54215,31 @@
                                                     {
                                                         "type": "not",
                                                         "el": {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "state",
-                                                                "el": "option.entrance_shuffle",
-                                                                "value": "entrance_shuffle_off"
-                                                            }
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_grottos"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_dungeons"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_overworld"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_simple"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_all"
+                                                                }
+                                                            ]
                                                         }
                                                     }
                                                 ]
@@ -53983,12 +54345,31 @@
                                                     {
                                                         "type": "not",
                                                         "el": {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "state",
-                                                                "el": "option.entrance_shuffle",
-                                                                "value": "entrance_shuffle_off"
-                                                            }
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_grottos"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_dungeons"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_overworld"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_simple"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_all"
+                                                                }
+                                                            ]
                                                         }
                                                     }
                                                 ]
@@ -54080,12 +54461,31 @@
                                                     {
                                                         "type": "not",
                                                         "el": {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "state",
-                                                                "el": "option.entrance_shuffle",
-                                                                "value": "entrance_shuffle_off"
-                                                            }
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_grottos"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_dungeons"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_overworld"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_simple"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_all"
+                                                                }
+                                                            ]
                                                         }
                                                     }
                                                 ]
@@ -54245,12 +54645,31 @@
                                                     {
                                                         "type": "not",
                                                         "el": {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "state",
-                                                                "el": "option.entrance_shuffle",
-                                                                "value": "entrance_shuffle_off"
-                                                            }
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_grottos"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_dungeons"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_overworld"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_simple"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_all"
+                                                                }
+                                                            ]
                                                         }
                                                     }
                                                 ]
@@ -54670,12 +55089,31 @@
                                                     {
                                                         "type": "not",
                                                         "el": {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "state",
-                                                                "el": "option.entrance_shuffle",
-                                                                "value": "entrance_shuffle_off"
-                                                            }
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_grottos"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_dungeons"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_overworld"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_simple"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_all"
+                                                                }
+                                                            ]
                                                         }
                                                     }
                                                 ]
@@ -54842,12 +55280,31 @@
                                                     {
                                                         "type": "not",
                                                         "el": {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "state",
-                                                                "el": "option.entrance_shuffle",
-                                                                "value": "entrance_shuffle_off"
-                                                            }
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_grottos"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_dungeons"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_overworld"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_simple"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_all"
+                                                                }
+                                                            ]
                                                         }
                                                     }
                                                 ]
@@ -55060,12 +55517,31 @@
                                                     {
                                                         "type": "not",
                                                         "el": {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "state",
-                                                                "el": "option.entrance_shuffle",
-                                                                "value": "entrance_shuffle_off"
-                                                            }
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_grottos"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_dungeons"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_overworld"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_simple"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_all"
+                                                                }
+                                                            ]
                                                         }
                                                     }
                                                 ]
@@ -55128,12 +55604,31 @@
                                                     {
                                                         "type": "not",
                                                         "el": {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "state",
-                                                                "el": "option.entrance_shuffle",
-                                                                "value": "entrance_shuffle_off"
-                                                            }
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_grottos"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_dungeons"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_overworld"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_simple"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_all"
+                                                                }
+                                                            ]
                                                         }
                                                     }
                                                 ]
@@ -55305,12 +55800,31 @@
                                                     {
                                                         "type": "not",
                                                         "el": {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "state",
-                                                                "el": "option.entrance_shuffle",
-                                                                "value": "entrance_shuffle_off"
-                                                            }
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_grottos"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_dungeons"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_overworld"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_simple"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_all"
+                                                                }
+                                                            ]
                                                         }
                                                     }
                                                 ]
@@ -55477,12 +55991,31 @@
                                                     {
                                                         "type": "not",
                                                         "el": {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "state",
-                                                                "el": "option.entrance_shuffle",
-                                                                "value": "entrance_shuffle_off"
-                                                            }
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_grottos"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_dungeons"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_overworld"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_simple"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_all"
+                                                                }
+                                                            ]
                                                         }
                                                     }
                                                 ]
@@ -55780,12 +56313,31 @@
                                                     {
                                                         "type": "not",
                                                         "el": {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "state",
-                                                                "el": "option.entrance_shuffle",
-                                                                "value": "entrance_shuffle_off"
-                                                            }
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_grottos"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_dungeons"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_overworld"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_simple"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_all"
+                                                                }
+                                                            ]
                                                         }
                                                     }
                                                 ]
@@ -55848,12 +56400,31 @@
                                                     {
                                                         "type": "not",
                                                         "el": {
-                                                            "type": "not",
-                                                            "el": {
-                                                                "type": "state",
-                                                                "el": "option.entrance_shuffle",
-                                                                "value": "entrance_shuffle_off"
-                                                            }
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_grottos"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_dungeons"
+                                                                },
+                                                                {
+                                                                    "type": "value",
+                                                                    "el": "option.shuffle_overworld"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_simple"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "option.entrance_shuffle_interior",
+                                                                    "value": "entrance_shuffle_all"
+                                                                }
+                                                            ]
                                                         }
                                                     }
                                                 ]
@@ -57540,50 +58111,8 @@
                                 "type": "and",
                                 "el": [
                                     {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.is_adult[child]"
-                                            },
-                                            {
-                                                "type": "and",
-                                                "el": [
-                                                    {
-                                                        "type": "not",
-                                                        "el": {
-                                                            "type": "state",
-                                                            "el": "option.entrance_shuffle",
-                                                            "value": "entrance_shuffle_all"
-                                                        }
-                                                    },
-                                                    {
-                                                        "type": "not",
-                                                        "el": {
-                                                            "type": "and",
-                                                            "el": [
-                                                                {
-                                                                    "type": "not",
-                                                                    "el": {
-                                                                        "type": "state",
-                                                                        "el": "option.entrance_shuffle",
-                                                                        "value": "entrance_shuffle_off"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "type": "not",
-                                                                    "el": {
-                                                                        "type": "state",
-                                                                        "el": "option.entrance_shuffle",
-                                                                        "value": "entrance_shuffle_dungeon"
-                                                                    }
-                                                                }
-                                                            ]
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        ]
+                                        "type": "mixin",
+                                        "el": "mixin.is_adult[child]"
                                     },
                                     {
                                         "type": "or",
@@ -57688,50 +58217,8 @@
                                 "type": "and",
                                 "el": [
                                     {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "mixin",
-                                                "el": "mixin.is_adult[adult]"
-                                            },
-                                            {
-                                                "type": "and",
-                                                "el": [
-                                                    {
-                                                        "type": "not",
-                                                        "el": {
-                                                            "type": "state",
-                                                            "el": "option.entrance_shuffle",
-                                                            "value": "entrance_shuffle_all"
-                                                        }
-                                                    },
-                                                    {
-                                                        "type": "not",
-                                                        "el": {
-                                                            "type": "and",
-                                                            "el": [
-                                                                {
-                                                                    "type": "not",
-                                                                    "el": {
-                                                                        "type": "state",
-                                                                        "el": "option.entrance_shuffle",
-                                                                        "value": "entrance_shuffle_off"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "type": "not",
-                                                                    "el": {
-                                                                        "type": "state",
-                                                                        "el": "option.entrance_shuffle",
-                                                                        "value": "entrance_shuffle_dungeon"
-                                                                    }
-                                                                }
-                                                            ]
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        ]
+                                        "type": "mixin",
+                                        "el": "mixin.is_adult[adult]"
                                     },
                                     {
                                         "type": "or",
@@ -61283,21 +61770,8 @@
                                 "el": "option.entrance_shuffle",
                                 "value": "entrance_shuffle_dungeon"
                             }
-                        },
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_simple"
-                            }
                         }
                     ]
-                },
-                {
-                    "type": "state",
-                    "el": "option.entrance_shuffle",
-                    "value": "entrance_shuffle_all"
                 },
                 {
                     "type": "value",
@@ -61334,21 +61808,8 @@
                                 "el": "option.entrance_shuffle",
                                 "value": "entrance_shuffle_dungeon"
                             }
-                        },
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_simple"
-                            }
                         }
                     ]
-                },
-                {
-                    "type": "state",
-                    "el": "option.entrance_shuffle",
-                    "value": "entrance_shuffle_all"
                 },
                 {
                     "type": "value",
@@ -62441,7 +62902,7 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_stones[child]"
+                            "el": "function.has_stones(lacs_stones)[child]"
                         }
                     ]
                 },
@@ -62455,7 +62916,7 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_medallions[child]"
+                            "el": "function.has_medallions(lacs_medallions)[child]"
                         }
                     ]
                 },
@@ -62469,11 +62930,24 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_stones[child]"
+                            "el": "function.has_dungeon_rewards(lacs_rewards)[child]"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "state",
+                            "el": "option.light_arrow_cutscene"
                         },
                         {
-                            "type": "mixin",
-                            "el": "mixin.has_all_medallions[child]"
+                            "type": "min",
+                            "el": {
+                                "type": "value",
+                                "el": "item.skulltula"
+                            },
+                            "value": 0
                         }
                     ]
                 }
@@ -62510,7 +62984,7 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_stones[adult]"
+                            "el": "function.has_stones(lacs_stones)[adult]"
                         }
                     ]
                 },
@@ -62524,7 +62998,7 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_medallions[adult]"
+                            "el": "function.has_medallions(lacs_medallions)[adult]"
                         }
                     ]
                 },
@@ -62538,11 +63012,24 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_stones[adult]"
+                            "el": "function.has_dungeon_rewards(lacs_rewards)[adult]"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "state",
+                            "el": "option.light_arrow_cutscene"
                         },
                         {
-                            "type": "mixin",
-                            "el": "mixin.has_all_medallions[adult]"
+                            "type": "min",
+                            "el": {
+                                "type": "value",
+                                "el": "item.skulltula"
+                            },
+                            "value": 0
                         }
                     ]
                 }
