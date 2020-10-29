@@ -150,14 +150,16 @@ function parseTrials(trials, world) {
     }
 }
 
-function parseEntrances(entrances, world, dungeon, indoors, overworld) {
+function parseEntrances(entrances, world, dungeon, grottos, indoors, overworld) {
     let entrance_trans  = trans["entrances"]["entrances"];
     let exit_trans = trans["entrances"]["exits"];
-    let entro_dungeon  = entrance_trans["dungeons"];
+    let entro_dungeon = entrance_trans["dungeons"];
+    let entro_grottos = entrance_trans["grottos"];
     let entro_simple = entrance_trans["simple"];
     let entro_indoors = entrance_trans["indoors"];
     let entro_overworld = entrance_trans["overworld"];
     let exit_dungeon = exit_trans["dungeons"];
+    let exit_grottos = exit_trans["grottos"];
     let exit_simple = exit_trans["simple"];
     let exit_indoors = exit_trans["indoors"];
     let exit_overworld = exit_trans["overworld"];
@@ -182,6 +184,12 @@ function parseEntrances(entrances, world, dungeon, indoors, overworld) {
                         if (entro_dungeon[i] === undefined) {
                         } else {
                             exits[entro_dungeon[i]] = exit_dungeon[v];
+                        }
+                    }
+                    if(grottos) {
+                        if(entro_grottos[i] !== undefined) {
+                            exits[entro_grottos[i]] = exit_grottos[v];
+                            subs[entro_grottos[i]] = exit_grottos[v];
                         }
                     }
                     if (indoors) {

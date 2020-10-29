@@ -22,22 +22,6 @@
 - verify all logic of location availability glitched logic (major)
 - completed()
 
-- add these skips to options
-    - "skip.dc_vines_gs"
-    - "skip.dc_scrub_room"
-    - "skip.forest_first_gs"
-    - "skip.ice_block_gs"
-    - "skip.dmt_climb_hovers"
-    - "skip.goron_grotto"
-    - "skip.domain_gs"
-    - "skip.castle_storms_gs"
-    - "skip.shadow_umbrella_gs"
-    - "skip.spirit_lobby_jump"
-    - "skip.water_dragon_adult"
-    - "skip.water_dragon_child"
-    - "skip.water_central_gs_irons"
-    - "skip.water_falling_platform_gs_hookshot"
-    - "skip.water_falling_platform_gs_boomerang"
 
 ### TODO FOR OVERWORLD ENTRANCES
 

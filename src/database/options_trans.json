@@ -44,6 +44,7 @@
             "values": {
                 "vanilla": "ganon_castle_open_default",
                 "dungeon": "ganon_castle_open_dungeon",
+                "dungeons": "ganon_castle_open_dungeon",
                 "medallions": "ganon_castle_open_medallion",
                 "stones": "ganon_castle_open_stones",
                 "tokens": "ganon_castle_open_skulltulas",
@@ -144,6 +145,108 @@
                 "random": "child"
             }
         },
+        "shuffle_interior_entrances": {
+            "name": "option.entrance_shuffle_interiors",
+            "values": {
+                "off": "entrance_shuffle_off",
+                "simple": "entrance_shuffle_simple",
+                "all": "entrance_shuffle_all"
+            }
+        },
+        "shuffle_grotto_entrances": {
+            "name": "option.shuffle_grottos",
+            "values": {
+                "true": true,
+                "false": false
+            }
+        },
+        "shuffle_dungeon_entrances": {
+            "name": "option.shuffle_dungeons",
+            "values": {
+                "true": true,
+                "false": false
+            }
+        },
+        "shuffle_overworld_entrances": {
+            "name": "option.shuffle_overworld",
+            "values": {
+                "true": true,
+                "false": false
+            }
+        },
+        "lacs_stones": {
+            "name": "option.stone_count_lacs",
+            "values": {
+                "1": 1,
+                "2": 2,
+                "3": 3
+            }
+        },
+        "lacs_medallions": {
+            "name": "option.medallion_count_lacs",
+            "values": {
+                "1": 1,
+                "2": 2,
+                "3": 3,
+                "4": 4,
+                "5": 5,
+                "6": 6
+            }
+        },
+        "lacs_rewards": {
+            "name": "option.dungeon_count_lacs",
+            "values": {
+                "1": 1,
+                "2": 2,
+                "3": 3,
+                "4": 4,
+                "5": 5,
+                "6": 6,
+                "7": 7,
+                "8": 8,
+                "9": 9
+            }
+        },
+        "bridge_stones": {
+            "name": "option.stone_count_bridge",
+            "values": {
+                "1": 1,
+                "2": 2,
+                "3": 3
+            }
+        },
+        "bridge_medallions": {
+            "name": "option.medallion_count_bridge",
+            "values": {
+                "1": 1,
+                "2": 2,
+                "3": 3,
+                "4": 4,
+                "5": 5,
+                "6": 6
+            }
+        },
+        "bridge_rewards": {
+            "name": "option.dungeon_count_bridge",
+            "values": {
+                "1": 1,
+                "2": 2,
+                "3": 3,
+                "4": 4,
+                "5": 5,
+                "6": 6,
+                "7": 7,
+                "8": 8,
+                "9": 9
+            }
+        },
+        "shuffle_medigoron_carpet_salesman": {
+            "name": "option.shuffleMediCarpet",
+            "values": {
+                "true": true,
+                "false": false
+            }
+        },
         "allowed_tricks": [
             "logic_fewer_tunic_requirements",
             "logic_grottos_without_agony",
@@ -153,6 +256,7 @@
             "logic_man_on_roof",
             "logic_dc_staircase",
             "logic_dc_jump",
+            "logic_dc_vines_gs",
             "logic_gerudo_kitchen",
             "logic_deku_basement_gs",
             "logic_deku_b1_webs_with_bow",
@@ -165,6 +269,7 @@
             "logic_zora_with_cucco",
             "logic_gtg_mq_with_hookshot",
             "logic_forest_vines",
+            "logic_forest_first_gs",
             "logic_forest_outdoor_east_gs",
             "logic_forest_well_swim",
             "logic_forest_mq_hallway_switch",
@@ -175,6 +280,7 @@
             "logic_spirit_mq_frozen_eye",
             "logic_spirit_wall",
             "logic_spirit_lobby_gs",
+            "logic_spirit_lobby_jump",
             "logic_spirit_mq_sun_block_gs",
             "logic_jabu_scrub_jump_dive",
             "logic_jabu_mq_sot_gs",
@@ -264,7 +370,17 @@
             "logic_lens_shadow",
             "logic_lens_shadow_back",
             "logic_lens_spirit_mq",
-            "logic_lens_spirit"
+            "logic_lens_spirit",
+            "logic_water_falling_platform_gs_hookshot",
+            "logic_water_falling_platform_gs_boomerang",
+            "logic_dmt_climb_hovers",
+            "logic_domain_gs",
+            "logic_shadow_umbrella_gs",
+            "logic_ice_block_gs",
+            "logic_castle_storms_gs",
+            "logic_water_dragon_adult",
+            "logic_water_dragon_child",
+            "logic_dc_scrub_room"
         ]
     },
     "starting_items": {
@@ -727,7 +843,7 @@
     },
     "entrances": {
         "entrances": {
-            "simple": {
+            "grottos": {
                 "Death Mountain -> Mountain Storms Grotto": "region.dmt_storms_grotto_entrance -> region.dmt_storms_grotto",
                 "Death Mountain Crater Lower Nearby -> DMC Hammer Grotto": "region.dmc_hammer_grotto_entrance -> region.dmc_hammer_grotto",
                 "Death Mountain Crater Upper Nearby -> Top of Crater Grotto": "region.dmc_upper_grotto_entrance -> region.dmc_upper_grotto",
@@ -764,43 +880,8 @@
                 "Zora River -> Zora River Plateau Open Grotto": "region.zr_open_grotto_entrance -> region.zr_open_grotto",
                 "Zora River -> Zora River Storms Grotto": "region.zr_storms_grotto_entrance -> region.zr_storms_grotto",
                 "Zoras Domain -> Zoras Domain Storms Grotto": "region.zd_storms_grotto_entrance -> region.zd_storms_grotto",
-                "Castle Town -> Castle Town Bazaar": "region.market_bazaar_entrance -> region.market_bazaar",
-                "Castle Town -> Castle Town Bombchu Bowling": "region.market_bombchu_bowling_entrance -> region.market_bombchu_bowling",
-                "Castle Town -> Castle Town Bombchu Shop": "region.market_bombchu_shop_entrance -> region.market_bombchu_shop",
-                "Castle Town -> Castle Town Man in Green House": "region.market_man_in_green_house_entrance -> region.market_man_in_green_house",
-                "Castle Town -> Castle Town Mask Shop": "region.market_mask_shop_entrance -> region.market_mask_shop",
-                "Castle Town -> Castle Town Potion Shop": "region.market_potion_shop_entrance -> region.market_potion_shop",
-                "Castle Town -> Castle Town Shooting Gallery": "region.market_shooting_gallery_entrance -> region.market_shooting_gallery",
-                "Castle Town -> Castle Town Treasure Chest Game": "region.market_treasure_chest_game_entrance -> region.market_treasure_chest_game",
-                "Castle Town Entrance -> Castle Town Rupee Room": "region.market_guard_house_entrance -> region.market_guard_house",
-                "Death Mountain Crater Lower Nearby -> Crater Fairy": "region.dmc_great_fairy_fountain_entrance -> region.dmc_great_fairy_fountain",
-                "Death Mountain Summit -> Mountain Summit Fairy": "region.dmt_great_fairy_fountain_entrance -> region.dmt_great_fairy_fountain",
-                "Desert Colossus -> Colossus Fairy": "region.colossus_great_fairy_fountain_entrance -> region.colossus_great_fairy_fountain",
-                "Ganons Castle Grounds -> Ganons Castle Fairy": "region.ogc_great_fairy_fountain_entrance -> region.ogc_great_fairy_fountain",
-                "Gerudo Valley Far Side -> Carpenter Tent": "region.gv_carpenter_tent_entrance -> region.gv_carpenter_tent",
-                "Goron City -> Goron Shop": "region.gc_shop_entrance -> region.gc_shop",
-                "Graveyard -> Dampes House": "region.graveyard_dampes_house_entrance -> region.graveyard_dampes_house",
-                "Hyrule Castle Grounds -> Hyrule Castle Fairy": "region.hc_great_fairy_fountain_entrance -> region.hc_great_fairy_fountain",
-                "Kakariko Impa Ledge -> Impas House Back": "region.kak_impas_house_back_entrance -> region.kak_impas_house_back",
-                "Kakariko Village -> Carpenter Boss House": "region.kak_carpenter_boss_house_entrance -> region.kak_carpenter_boss_house",
-                "Kakariko Village -> House of Skulltula": "region.kak_house_of_skulltula_entrance -> region.kak_house_of_skulltula",
-                "Kakariko Village -> Impas House": "region.kak_impas_house_entrance -> region.kak_impas_house",
-                "Kakariko Village -> Kakariko Bazaar": "region.kak_bazaar_entrance -> region.kak_bazaar",
-                "Kakariko Village -> Kakariko Shooting Gallery": "region.kak_shooting_gallery_entrance -> region.kak_shooting_gallery",
-                "Kakariko Village -> Windmill": "region.kak_windmill_entrance -> region.kak_windmill",
-                "Kakariko Village Backyard -> Odd Medicine Building": "region.kak_odd_medicine_building_entrance -> region.kak_odd_medicine_building",
-                "Kokiri Forest -> House of Twins": "region.kf_house_of_twins_entrance -> region.kf_house_of_twins",
-                "Kokiri Forest -> Know It All House": "region.kf_know_it_all_house_entrance -> region.kf_know_it_all_house",
-                "Kokiri Forest -> Kokiri Shop": "region.kf_kokiri_shop_entrance -> region.kf_kokiri_shop",
-                "Kokiri Forest -> Mido House": "region.kf_midos_house_entrance -> region.kf_midos_house",
-                "Kokiri Forest -> Saria House": "region.kf_sarias_house_entrance -> region.kf_sarias_house",
-                "Lake Hylia -> Fishing Hole": "region.lh_fishing_hole_entrance -> region.lh_fishing_hole",
-                "Lake Hylia -> Lake Hylia Lab": "region.lh_lab_entrance -> region.lh_lab",
-                "Lon Lon Ranch -> Ingo Barn": "region.llr_stables_entrance -> region.llr_stables",
-                "Lon Lon Ranch -> Lon Lon Corner Tower": "region.llr_tower_entrance -> region.llr_tower",
-                "Lon Lon Ranch -> Talon House": "region.llr_talons_house_entrance -> region.llr_talons_house",
-                "Zoras Domain -> Zora Shop": "region.zd_shop_entrance -> region.zd_shop",
-                "Zoras Fountain -> Zoras Fountain Fairy": "region.zf_great_fairy_fountain_entrance -> region.zf_great_fairy_fountain",
+                "Graveyard -> Dampes Grave": "region.graveyard_dampes_grave_entrance -> region.graveyard_dampes_grave",
+                "Graveyard -> Graveyard Dampes Grave": "region.graveyard_dampes_grave_entrance -> region.graveyard_dampes_grave",
                 "DMC Lower Nearby -> DMC Hammer Grotto": "region.dmc_hammer_grotto_entrance -> region.dmc_hammer_grotto",
                 "DMC Upper Nearby -> DMC Upper Grotto": "region.dmc_upper_grotto_entrance -> region.dmc_upper_grotto",
                 "Death Mountain -> DMT Storms Grotto": "region.dmt_storms_grotto_entrance -> region.dmt_storms_grotto",
@@ -837,6 +918,47 @@
                 "Zora River -> ZR Open Grotto": "region.zr_open_grotto_entrance -> region.zr_open_grotto",
                 "Zora River -> ZR Storms Grotto": "region.zr_storms_grotto_entrance -> region.zr_storms_grotto",
                 "Zoras Domain -> ZD Storms Grotto": "region.zd_storms_grotto_entrance -> region.zd_storms_grotto",
+
+                "GC Grotto Platform -> GC Grotto":                         "region.gc_grotto_entrance -> region.gc_grotto",
+                "GV Grotto Ledge -> GV Octorok Grotto":                    "region.gv_octorok_grotto_entrance -> region.gv_octorok_grotto"
+            },
+            "simple": {
+                "Castle Town -> Castle Town Bazaar": "region.market_bazaar_entrance -> region.market_bazaar",
+                "Castle Town -> Castle Town Bombchu Bowling": "region.market_bombchu_bowling_entrance -> region.market_bombchu_bowling",
+                "Castle Town -> Castle Town Bombchu Shop": "region.market_bombchu_shop_entrance -> region.market_bombchu_shop",
+                "Castle Town -> Castle Town Man in Green House": "region.market_man_in_green_house_entrance -> region.market_man_in_green_house",
+                "Castle Town -> Castle Town Mask Shop": "region.market_mask_shop_entrance -> region.market_mask_shop",
+                "Castle Town -> Castle Town Potion Shop": "region.market_potion_shop_entrance -> region.market_potion_shop",
+                "Castle Town -> Castle Town Shooting Gallery": "region.market_shooting_gallery_entrance -> region.market_shooting_gallery",
+                "Castle Town -> Castle Town Treasure Chest Game": "region.market_treasure_chest_game_entrance -> region.market_treasure_chest_game",
+                "Castle Town Entrance -> Castle Town Rupee Room": "region.market_guard_house_entrance -> region.market_guard_house",
+                "Death Mountain Crater Lower Nearby -> Crater Fairy": "region.dmc_great_fairy_fountain_entrance -> region.dmc_great_fairy_fountain",
+                "Death Mountain Summit -> Mountain Summit Fairy": "region.dmt_great_fairy_fountain_entrance -> region.dmt_great_fairy_fountain",
+                "Desert Colossus -> Colossus Fairy": "region.colossus_great_fairy_fountain_entrance -> region.colossus_great_fairy_fountain",
+                "Ganons Castle Grounds -> Ganons Castle Fairy": "region.ogc_great_fairy_fountain_entrance -> region.ogc_great_fairy_fountain",
+                "Gerudo Valley Far Side -> Carpenter Tent": "region.gv_carpenter_tent_entrance -> region.gv_carpenter_tent",
+                "Goron City -> Goron Shop": "region.gc_shop_entrance -> region.gc_shop",
+                "Graveyard -> Dampes House": "region.graveyard_dampes_house_entrance -> region.graveyard_dampes_house",
+                "Hyrule Castle Grounds -> Hyrule Castle Fairy": "region.hc_great_fairy_fountain_entrance -> region.hc_great_fairy_fountain",
+                "Kakariko Impa Ledge -> Impas House Back": "region.kak_impas_house_back_entrance -> region.kak_impas_house_back",
+                "Kakariko Village -> Carpenter Boss House": "region.kak_carpenter_boss_house_entrance -> region.kak_carpenter_boss_house",
+                "Kakariko Village -> House of Skulltula": "region.kak_house_of_skulltula_entrance -> region.kak_house_of_skulltula",
+                "Kakariko Village -> Impas House": "region.kak_impas_house_entrance -> region.kak_impas_house",
+                "Kakariko Village -> Kakariko Bazaar": "region.kak_bazaar_entrance -> region.kak_bazaar",
+                "Kakariko Village -> Kakariko Shooting Gallery": "region.kak_shooting_gallery_entrance -> region.kak_shooting_gallery",
+                "Kakariko Village Backyard -> Odd Medicine Building": "region.kak_odd_medicine_building_entrance -> region.kak_odd_medicine_building",
+                "Kokiri Forest -> House of Twins": "region.kf_house_of_twins_entrance -> region.kf_house_of_twins",
+                "Kokiri Forest -> Know It All House": "region.kf_know_it_all_house_entrance -> region.kf_know_it_all_house",
+                "Kokiri Forest -> Kokiri Shop": "region.kf_kokiri_shop_entrance -> region.kf_kokiri_shop",
+                "Kokiri Forest -> Mido House": "region.kf_midos_house_entrance -> region.kf_midos_house",
+                "Kokiri Forest -> Saria House": "region.kf_sarias_house_entrance -> region.kf_sarias_house",
+                "Lake Hylia -> Fishing Hole": "region.lh_fishing_hole_entrance -> region.lh_fishing_hole",
+                "Lake Hylia -> Lake Hylia Lab": "region.lh_lab_entrance -> region.lh_lab",
+                "Lon Lon Ranch -> Ingo Barn": "region.llr_stables_entrance -> region.llr_stables",
+                "Lon Lon Ranch -> Lon Lon Corner Tower": "region.llr_tower_entrance -> region.llr_tower",
+                "Lon Lon Ranch -> Talon House": "region.llr_talons_house_entrance -> region.llr_talons_house",
+                "Zoras Domain -> Zora Shop": "region.zd_shop_entrance -> region.zd_shop",
+                "Zoras Fountain -> Zoras Fountain Fairy": "region.zf_great_fairy_fountain_entrance -> region.zf_great_fairy_fountain",
                 "DMC Lower Nearby -> DMC Great Fairy Fountain": "region.dmc_great_fairy_fountain_entrance -> region.dmc_great_fairy_fountain",
                 "Death Mountain Summit -> DMT Great Fairy Fountain": "region.dmt_great_fairy_fountain_entrance -> region.dmt_great_fairy_fountain",
                 "Desert Colossus -> Colossus Great Fairy Fountain": "region.colossus_great_fairy_fountain_entrance -> region.colossus_great_fairy_fountain",
@@ -852,7 +974,6 @@
                 "Kakariko Village -> Kak House of Skulltula": "region.kak_house_of_skulltula_entrance -> region.kak_house_of_skulltula",
                 "Kakariko Village -> Kak Impas House": "region.kak_impas_house_entrance -> region.kak_impas_house",
                 "Kakariko Village -> Kak Shooting Gallery": "region.kak_shooting_gallery_entrance -> region.kak_shooting_gallery",
-                "Kakariko Village -> Kak Windmill": "region.kak_windmill_entrance -> region.kak_windmill",
                 "Kokiri Forest -> KF House of Twins": "region.kf_house_of_twins_entrance -> region.kf_house_of_twins",
                 "Kokiri Forest -> KF Know It All House": "region.kf_know_it_all_house_entrance -> region.kf_know_it_all_house",
                 "Kokiri Forest -> KF Kokiri Shop": "region.kf_kokiri_shop_entrance -> region.kf_kokiri_shop",
@@ -873,33 +994,41 @@
                 "Market -> Market Treasure Chest Game": "region.market_treasure_chest_game_entrance -> region.market_treasure_chest_game",
                 "Market Entrance -> Market Guard House": "region.market_guard_house_entrance -> region.market_guard_house",
                 "Zoras Domain -> ZD Shop": "region.zd_shop_entrance -> region.zd_shop",
-                "Zoras Fountain -> ZF Great Fairy Fountain": "region.zf_great_fairy_fountain_entrance -> region.zf_great_fairy_fountain"
+                "Zoras Fountain -> ZF Great Fairy Fountain": "region.zf_great_fairy_fountain_entrance -> region.zf_great_fairy_fountain",
+
+                "Market Back Alley -> Market Bombchu Shop":          "region.market_bombchu_shop_entrance -> region.market_bombchu_shop",
+                "Market Back Alley -> Market Man in Green House":    "region.market_man_in_green_house_entrance -> region.market_man_in_green_house",
+                "LH Fishing Island -> LH Fishing Hole":              "region.lh_fishing_hole_entrance -> region.lh_fishing_hole",
             },
             "indoors": {
-                "Graveyard -> Dampes Grave": "region.graveyard_dampes_grave_entrance -> region.graveyard_dampes_grave",
                 "Kakariko Village -> Kakariko Potion Shop Front": "region.kak_potion_shop_front_entrance -> region.kak_potion_shop_front",
                 "Kakariko Village Backyard -> Kakariko Potion Shop Back": "region.kak_potion_shop_back_entrance -> region.kak_potion_shop_back",
                 "Kokiri Forest -> Links House": "region.kf_links_house_entrance -> region.kf_links_house",
                 "Temple of Time Exterior -> Temple of Time": "region.tot_entrance -> region.temple_of_time",
-                "Graveyard -> Graveyard Dampes Grave": "region.graveyard_dampes_grave_entrance -> region.graveyard_dampes_grave",
                 "Kak Backyard -> Kak Potion Shop Back": "region.kak_potion_shop_back_entrance -> region.kak_potion_shop_back",
                 "Kakariko Village -> Kak Potion Shop Front": "region.kak_potion_shop_front_entrance -> region.kak_potion_shop_front",
                 "Kokiri Forest -> KF Links House": "region.kf_links_house_entrance -> region.kf_links_house",
-                "ToT Entrance -> Temple of Time": "region.tot_entrance -> region.temple_of_time"
+                "ToT Entrance -> Temple of Time": "region.tot_entrance -> region.temple_of_time",
+                "Kakariko Village -> Windmill": "region.kak_windmill_entrance -> region.kak_windmill",
+                "Kakariko Village -> Kak Windmill": "region.kak_windmill_entrance -> region.kak_windmill",
             },
             "dungeons": {
                 "Desert Colossus -> Spirit Temple Lobby": "region.spirit_temple_entrance -> region.spirit_temple_gateway",
-                "Dodongos Cavern Entryway -> Dodongos Cavern Beginning": "region.dodongos_cavern_entryway -> region.dodongos_cavern_gateway",
+                "Dodongos Cavern Entryway -> Dodongos Cavern Beginning": "region.dodongos_cavern_entrance -> region.dodongos_cavern_gateway",
+                "Death Mountain -> Dodongos Cavern Beginning": "region.dodongos_cavern_entrance -> region.dodongos_cavern_gateway",
                 "Fire Temple Entrance -> Fire Temple Lower": "region.fire_temple_entrance -> region.fire_temple_gateway",
+                "DMC Fire Temple Entrance -> Fire Temple Lower": "region.fire_temple_entrance -> region.fire_temple_gateway",
                 "Gerudo Fortress -> Gerudo Training Grounds Lobby": "region.gerudo_training_grounds_entrance -> region.gerudo_training_grounds_gateway",
                 "Kakariko Village -> Bottom of the Well": "region.bottom_of_the_well_entrance -> region.bottom_of_the_well_gateway",
                 "Lake Hylia -> Water Temple Lobby": "region.water_temple_entrance -> region.water_temple_gateway",
                 "Outside Deku Tree -> Deku Tree Lobby": "region.deku_tree_entrance -> region.deku_tree_gateway",
                 "KF Outside Deku Tree -> Deku Tree Lobby": "region.deku_tree_entrance -> region.deku_tree_gateway",
                 "Sacred Forest Meadow -> Forest Temple Lobby": "region.forest_temple_entrance -> region.forest_temple_gateway",
+                "SFM Forest Temple Entrance Ledge -> Forest Temple Lobby": "region.forest_temple_entrance -> region.forest_temple_gateway",
                 "Shadow Temple Warp Region -> Shadow Temple Entryway": "region.shadow_temple_entrance -> region.shadow_temple_gateway",
                 "Graveyard Warp Pad Region -> Shadow Temple Entryway": "region.shadow_temple_entrance -> region.shadow_temple_gateway",
                 "Zoras Fountain -> Ice Cavern Beginning": "region.ice_cavern_entrance -> region.ice_cavern_gateway",
+                "ZF Ice Ledge -> Ice Cavern Beginning": "region.ice_cavern_entrance -> region.ice_cavern_gateway",
                 "Zoras Fountain -> Jabu Jabus Belly Beginning": "region.jabu_jabus_belly_entrance -> region.jabu_jabus_belly_gateway"
             },
             "overworld": {
@@ -960,7 +1089,9 @@
             }
         },
         "exits": {
-            "simple": {
+            "grottos": {
+                "Graveyard Dampes Grave": "region.graveyard_dampes_grave -> region.graveyard_dampes_grave_entrance",
+                "Dampes Grave": "region.graveyard_dampes_grave -> region.graveyard_dampes_grave_entrance",
                 "Mountain Storms Grotto": "region.dmt_storms_grotto -> region.dmt_storms_grotto_entrance",
                 "DMC Hammer Grotto": "region.dmc_hammer_grotto -> region.dmc_hammer_grotto_entrance",
                 "Top of Crater Grotto": "region.dmc_upper_grotto -> region.dmc_upper_grotto_entrance",
@@ -997,43 +1128,6 @@
                 "Zora River Plateau Open Grotto": "region.zr_open_grotto -> region.zr_open_grotto_entrance",
                 "Zora River Storms Grotto": "region.zr_storms_grotto -> region.zr_storms_grotto_entrance",
                 "Zoras Domain Storms Grotto": "region.zd_storms_grotto -> region.zd_storms_grotto_entrance",
-                "Castle Town Bazaar": "region.market_bazaar -> region.market_bazaar_entrance",
-                "Castle Town Bombchu Bowling": "region.market_bombchu_bowling -> region.market_bombchu_bowling_entrance",
-                "Castle Town Bombchu Shop": "region.market_bombchu_shop -> region.market_bombchu_shop_entrance",
-                "Castle Town Man in Green House": "region.market_man_in_green_house -> region.market_man_in_green_house_entrance",
-                "Castle Town Mask Shop": "region.market_mask_shop -> region.market_mask_shop_entrance",
-                "Castle Town Potion Shop": "region.market_potion_shop -> region.market_potion_shop_entrance",
-                "Castle Town Shooting Gallery": "region.market_shooting_gallery -> region.market_shooting_gallery_entrance",
-                "Castle Town Treasure Chest Game": "region.market_treasure_chest_game -> region.market_treasure_chest_game_entrance",
-                "Castle Town Rupee Room": "region.market_guard_house -> region.market_guard_house_entrance",
-                "Crater Fairy": "region.dmc_great_fairy_fountain -> region.dmc_great_fairy_fountain_entrance",
-                "Mountain Summit Fairy": "region.dmt_great_fairy_fountain -> region.dmt_great_fairy_fountain_entrance",
-                "Colossus Fairy": "region.colossus_great_fairy_fountain -> region.colossus_great_fairy_fountain_entrance",
-                "Ganons Castle Fairy": "region.ogc_great_fairy_fountain -> region.ogc_great_fairy_fountain_entrance",
-                "Carpenter Tent": "region.gv_carpenter_tent -> region.gv_carpenter_tent_entrance",
-                "Goron Shop": "region.gc_shop -> region.gc_shop_entrance",
-                "Dampes House": "region.graveyard_dampes_house -> region.graveyard_dampes_house_entrance",
-                "Hyrule Castle Fairy": "region.hc_great_fairy_fountain -> region.hc_great_fairy_fountain_entrance",
-                "Impas House Back": "region.kak_impas_house_back -> region.kak_impas_house_back_entrance",
-                "Carpenter Boss House": "region.kak_carpenter_boss_house -> region.kak_carpenter_boss_house_entrance",
-                "House of Skulltula": "region.kak_house_of_skulltula -> region.kak_house_of_skulltula_entrance",
-                "Impas House": "region.kak_impas_house -> region.kak_impas_house_entrance",
-                "Kakariko Bazaar": "region.kak_bazaar -> region.kak_bazaar_entrance",
-                "Kakariko Shooting Gallery": "region.kak_shooting_gallery -> region.kak_shooting_gallery_entrance",
-                "Windmill": "region.kak_windmill -> region.kak_windmill_entrance",
-                "Odd Medicine Building": "region.kak_odd_medicine_building -> region.kak_odd_medicine_building_entrance",
-                "House of Twins": "region.kf_house_of_twins -> region.kf_house_of_twins_entrance",
-                "Know It All House": "region.kf_know_it_all_house -> region.kf_know_it_all_house_entrance",
-                "Kokiri Shop": "region.kf_kokiri_shop -> region.kf_kokiri_shop_entrance",
-                "Mido House": "region.kf_midos_house -> region.kf_midos_house_entrance",
-                "Saria House": "region.kf_sarias_house -> region.kf_sarias_house_entrance",
-                "Fishing Hole": "region.lh_fishing_hole -> region.lh_fishing_hole_entrance",
-                "Lake Hylia Lab": "region.lh_lab -> region.lh_lab_entrance",
-                "Ingo Barn": "region.llr_stables -> region.llr_stables_entrance",
-                "Lon Lon Corner Tower": "region.llr_tower -> region.llr_tower_entrance",
-                "Talon House": "region.llr_talons_house -> region.llr_talons_house_entrance",
-                "Zora Shop": "region.zd_shop -> region.zd_shop_entrance",
-                "Zoras Fountain Fairy": "region.zf_great_fairy_fountain -> region.zf_great_fairy_fountain_entrance",
                 "DMC Upper Grotto": "region.dmc_upper_grotto -> region.dmc_upper_grotto_entrance",
                 "DMT Storms Grotto": "region.dmt_storms_grotto -> region.dmt_storms_grotto_entrance",
                 "DMT Cow Grotto": "region.dmt_cow_grotto -> region.dmt_cow_grotto_entrance",
@@ -1067,7 +1161,45 @@
                 "ZR Fairy Grotto": "region.zr_fairy_grotto -> region.zr_fairy_grotto_entrance",
                 "ZR Open Grotto": "region.zr_open_grotto -> region.zr_open_grotto_entrance",
                 "ZR Storms Grotto": "region.zr_storms_grotto -> region.zr_storms_grotto_entrance",
-                "ZD Storms Grotto": "region.zd_storms_grotto -> region.zd_storms_grotto_entrance",
+                "ZD Storms Grotto": "region.zd_storms_grotto -> region.zd_storms_grotto_entrance"
+            },
+            "simple": {
+                "Castle Town Bazaar": "region.market_bazaar -> region.market_bazaar_entrance",
+                "Castle Town Bombchu Bowling": "region.market_bombchu_bowling -> region.market_bombchu_bowling_entrance",
+                "Castle Town Bombchu Shop": "region.market_bombchu_shop -> region.market_bombchu_shop_entrance",
+                "Castle Town Man in Green House": "region.market_man_in_green_house -> region.market_man_in_green_house_entrance",
+                "Castle Town Mask Shop": "region.market_mask_shop -> region.market_mask_shop_entrance",
+                "Castle Town Potion Shop": "region.market_potion_shop -> region.market_potion_shop_entrance",
+                "Castle Town Shooting Gallery": "region.market_shooting_gallery -> region.market_shooting_gallery_entrance",
+                "Castle Town Treasure Chest Game": "region.market_treasure_chest_game -> region.market_treasure_chest_game_entrance",
+                "Castle Town Rupee Room": "region.market_guard_house -> region.market_guard_house_entrance",
+                "Crater Fairy": "region.dmc_great_fairy_fountain -> region.dmc_great_fairy_fountain_entrance",
+                "Mountain Summit Fairy": "region.dmt_great_fairy_fountain -> region.dmt_great_fairy_fountain_entrance",
+                "Colossus Fairy": "region.colossus_great_fairy_fountain -> region.colossus_great_fairy_fountain_entrance",
+                "Ganons Castle Fairy": "region.ogc_great_fairy_fountain -> region.ogc_great_fairy_fountain_entrance",
+                "Carpenter Tent": "region.gv_carpenter_tent -> region.gv_carpenter_tent_entrance",
+                "Goron Shop": "region.gc_shop -> region.gc_shop_entrance",
+                "Dampes House": "region.graveyard_dampes_house -> region.graveyard_dampes_house_entrance",
+                "Hyrule Castle Fairy": "region.hc_great_fairy_fountain -> region.hc_great_fairy_fountain_entrance",
+                "Impas House Back": "region.kak_impas_house_back -> region.kak_impas_house_back_entrance",
+                "Carpenter Boss House": "region.kak_carpenter_boss_house -> region.kak_carpenter_boss_house_entrance",
+                "House of Skulltula": "region.kak_house_of_skulltula -> region.kak_house_of_skulltula_entrance",
+                "Impas House": "region.kak_impas_house -> region.kak_impas_house_entrance",
+                "Kakariko Bazaar": "region.kak_bazaar -> region.kak_bazaar_entrance",
+                "Kakariko Shooting Gallery": "region.kak_shooting_gallery -> region.kak_shooting_gallery_entrance",
+                "Odd Medicine Building": "region.kak_odd_medicine_building -> region.kak_odd_medicine_building_entrance",
+                "House of Twins": "region.kf_house_of_twins -> region.kf_house_of_twins_entrance",
+                "Know It All House": "region.kf_know_it_all_house -> region.kf_know_it_all_house_entrance",
+                "Kokiri Shop": "region.kf_kokiri_shop -> region.kf_kokiri_shop_entrance",
+                "Mido House": "region.kf_midos_house -> region.kf_midos_house_entrance",
+                "Saria House": "region.kf_sarias_house -> region.kf_sarias_house_entrance",
+                "Fishing Hole": "region.lh_fishing_hole -> region.lh_fishing_hole_entrance",
+                "Lake Hylia Lab": "region.lh_lab -> region.lh_lab_entrance",
+                "Ingo Barn": "region.llr_stables -> region.llr_stables_entrance",
+                "Lon Lon Corner Tower": "region.llr_tower -> region.llr_tower_entrance",
+                "Talon House": "region.llr_talons_house -> region.llr_talons_house_entrance",
+                "Zora Shop": "region.zd_shop -> region.zd_shop_entrance",
+                "Zoras Fountain Fairy": "region.zf_great_fairy_fountain -> region.zf_great_fairy_fountain_entrance",
                 "DMC Great Fairy Fountain": "region.dmc_great_fairy_fountain -> region.dmc_great_fairy_fountain_entrance",
                 "DMT Great Fairy Fountain": "region.dmt_great_fairy_fountain -> region.dmt_great_fairy_fountain_entrance",
                 "Colossus Great Fairy Fountain": "region.colossus_great_fairy_fountain -> region.colossus_great_fairy_fountain_entrance",
@@ -1083,7 +1215,6 @@
                 "Kak House of Skulltula": "region.kak_house_of_skulltula -> region.kak_house_of_skulltula_entrance",
                 "Kak Impas House": "region.kak_impas_house -> region.kak_impas_house_entrance",
                 "Kak Shooting Gallery": "region.kak_shooting_gallery -> region.kak_shooting_gallery_entrance",
-                "Kak Windmill": "region.kak_windmill -> region.kak_windmill_entrance",
                 "KF House of Twins": "region.kf_house_of_twins -> region.kf_house_of_twins_entrance",
                 "KF Know It All House": "region.kf_know_it_all_house -> region.kf_know_it_all_house_entrance",
                 "KF Kokiri Shop": "region.kf_kokiri_shop -> region.kf_kokiri_shop_entrance",
@@ -1107,15 +1238,15 @@
                 "ZF Great Fairy Fountain": "region.zf_great_fairy_fountain -> region.zf_great_fairy_fountain_entrance"
             },
             "indoors": {
-                "Dampes Grave": "region.graveyard_dampes_grave -> region.graveyard_dampes_grave_entrance",
                 "Kakariko Potion Shop Front": "region.kak_potion_shop_front -> region.kak_potion_shop_front_entrance",
                 "Kakariko Potion Shop Back": "region.kak_potion_shop_back -> region.kak_potion_shop_back_entrance",
                 "Links House": "region.kf_links_house -> region.kf_links_house_entrance",
                 "Temple of Time": "region.temple_of_time -> region.tot_entrance",
-                "Graveyard Dampes Grave": "region.graveyard_dampes_grave -> region.graveyard_dampes_grave_entrance",
                 "Kak Potion Shop Back": "region.kak_potion_shop_back -> region.kak_potion_shop_back_entrance",
                 "Kak Potion Shop Front": "region.kak_potion_shop_front -> region.kak_potion_shop_front_entrance",
-                "KF Links House": "region.kf_links_house -> region.kf_links_house_entrance"
+                "KF Links House": "region.kf_links_house -> region.kf_links_house_entrance",
+                "Kak Windmill": "region.kak_windmill -> region.kak_windmill_entrance",
+                "Windmill": "region.kak_windmill -> region.kak_windmill_entrance"
             },
             "dungeons": {
                 "Spirit Temple Lobby": "region.spirit_temple_gateway -> region.spirit_temple_entrance",

@@ -2147,12 +2147,6 @@
                         "category": "subexit"
                     },
                     {
-                        "id": "castle_town.temple_of_time",
-                        "x": 0,
-                        "y": 0,
-                        "category": "subexit"
-                    },
-                    {
                         "id": "castle_town.back_house",
                         "x": 0,
                         "y": 0,
@@ -2168,17 +2162,17 @@
             "lists": {
                 "v": [
                     {
-                    "id": "castle_town.c_warp",
-                    "x": 0,
-                    "y": 0,
-                    "category": "location"
-                },
+                        "id": "castle_town.temple_of_time",
+                        "x": 0,
+                        "y": 0,
+                        "category": "subexit"
+                    },
                     {
-                    "id": "castle_town.c_light_arrows",
-                    "x": 0,
-                    "y": 0,
-                    "category": "location"
-                },
+                        "id": "castle_town.temple_of_time",
+                        "x": 0,
+                        "y": 0,
+                        "category": "subarea"
+                    },
                     {
                     "id": "castle_town.g_gossip_tot_1",
                     "x": 0,
@@ -5951,7 +5945,20 @@
             "background": "",
             "width": 0,
             "height": 0,
-            "list": []
+            "list": [
+                {
+                    "id": "castle_town.c_warp",
+                    "x": 0,
+                    "y": 0,
+                    "category": "location"
+                },
+                {
+                    "id": "castle_town.c_light_arrows",
+                    "x": 0,
+                    "y": 0,
+                    "category": "location"
+                }
+            ]
         },
         "lonlon.house": {
             "background": "",
@@ -8265,6 +8272,29 @@
                     "type": "state",
                     "el": "option.entrance_shuffle_interior",
                     "value": "entrance_shuffle_off"
+                },
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "castle_town.temple_of_time": {
+                "type": "interior",
+                "access": "logic.subarea.castle_town.temple_of_time",
+                "visible": {
+                    "type": "not",
+                    "el": {
+                        "type": "state",
+                        "el": "option.entrance_shuffle_interior",
+                        "value": "entrance_shuffle_all"
+                    }
                 },
                 "filter": {
                     "filter.era": {
