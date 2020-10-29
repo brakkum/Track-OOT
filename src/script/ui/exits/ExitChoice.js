@@ -46,7 +46,7 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
         /* event bus */
         this.registerGlobal("state", event => {
             const exitEntry = ExitRegistry.get(this.ref);
-            selectEl.readonly = exitEntry.active();
+            selectEl.readonly = !exitEntry.active();
             if (event.data.extra.exits != null && event.data.extra.exits[this.ref] != null) {
                 selectEl.value = event.data.extra.exits[this.ref];
             } else {
@@ -56,7 +56,7 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
         });
         this.registerGlobal("randomizer_options", event => {
             const exitEntry = ExitRegistry.get(this.ref);
-            selectEl.readonly = exitEntry.active();
+            selectEl.readonly = !exitEntry.active();
             this.refreshExits();
         });
         this.registerGlobal("statechange_exits", event => {
@@ -96,7 +96,7 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
                     selectEl.value = StateStorage.readExtra("exits", newValue, "");
                     // readonly
                     const exitEntry = ExitRegistry.get(newValue);
-                    selectEl.readonly = exitEntry.active();
+                    selectEl.readonly = !exitEntry.active();
                     this.refreshExits();
                 break;
             }
@@ -119,10 +119,7 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
         selectEl.innerHTML = "";
         const empty = document.createElement('emc-option');
         empty.value = "";
-        const emptyText = document.createElement('span');
-        emptyText.innerHTML = "unbind";
-        emptyText.style.fontStyle = "italic";
-        empty.append(emptyText);
+        empty.innerHTML = "unbound";
         selectEl.append(empty);
         for (const key in entrances) {
             const value = entrances[key];
