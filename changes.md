@@ -1,1 +1,1 @@
-region.dodongos_cavern_entrance
+exit rename: region.dodongos_cavern_entryway to region.dodongos_cavern_entrance
