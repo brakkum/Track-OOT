@@ -76,6 +76,22 @@
                 "type": "true"
             }
         },
+        "region.dodongos_cavern_entrance[child]": {
+            "region.death_mountain[child]": {
+                "type": "true"
+            },
+            "region.dodongos_cavern_gateway[child]": {
+                "type": "true"
+            }
+        },
+        "region.dodongos_cavern_entrance[adult]": {
+            "region.death_mountain[adult]": {
+                "type": "true"
+            },
+            "region.dodongos_cavern_gateway[adult]": {
+                "type": "true"
+            }
+        },
         "region.dodongos_cavern_gateway[child]": {
             "region.dodongos_cavern_entryway[child]": {
                 "type": "true"
@@ -137,7 +153,7 @@
             }
         },
         "region.ice_cavern_entrance[child]": {
-            "region.zoras_fountain[child]": {
+            "region.zf_ice_ledge[child]": {
                 "type": "true"
             },
             "region.ice_cavern_gateway[child]": {
@@ -145,7 +161,7 @@
             }
         },
         "region.ice_cavern_entrance[adult]": {
-            "region.zoras_fountain[adult]": {
+            "region.zf_ice_ledge[adult]": {
                 "type": "true"
             },
             "region.ice_cavern_gateway[adult]": {
@@ -213,7 +229,7 @@
             }
         },
         "region.forest_temple_entrance[child]": {
-            "region.sacred_forest_meadow[child]": {
+            "region.sfm_forest_temple_entrance_ledge[child]": {
                 "type": "true"
             },
             "region.forest_temple_gateway[child]": {
@@ -221,7 +237,7 @@
             }
         },
         "region.forest_temple_entrance[adult]": {
-            "region.sacred_forest_meadow[adult]": {
+            "region.sfm_forest_temple_entrance_ledge[adult]": {
                 "type": "true"
             },
             "region.forest_temple_gateway[adult]": {
@@ -247,6 +263,22 @@
                 "type": "true"
             },
             "region.forest_temple_lobby_mq[adult]": {
+                "type": "true"
+            }
+        },
+        "region.fire_temple_entrance[child]": {
+            "region.fire_temple_gateway[child]": {
+                "type": "true"
+            },
+            "region.dmc_fire_temple_entrance[child]": {
+                "type": "true"
+            }
+        },
+        "region.fire_temple_entrance[adult]": {
+            "region.fire_temple_gateway[adult]": {
+                "type": "true"
+            },
+            "region.dmc_fire_temple_entrance[adult]": {
                 "type": "true"
             }
         },
@@ -828,7 +860,7 @@
             "region.market_bombchu_shop[child]": {
                 "type": "true"
             },
-            "region.market[child]": {
+            "region.market_back_alley[child]": {
                 "type": "true"
             }
         },
@@ -836,7 +868,7 @@
             "region.market_bombchu_shop[adult]": {
                 "type": "true"
             },
-            "region.market[adult]": {
+            "region.market_back_alley[adult]": {
                 "type": "true"
             }
         },
@@ -844,7 +876,7 @@
             "region.market_man_in_green_house[child]": {
                 "type": "true"
             },
-            "region.market[child]": {
+            "region.market_back_alley[child]": {
                 "type": "true"
             }
         },
@@ -852,7 +884,7 @@
             "region.market_man_in_green_house[adult]": {
                 "type": "true"
             },
-            "region.market[adult]": {
+            "region.market_back_alley[adult]": {
                 "type": "true"
             }
         },
@@ -1388,7 +1420,7 @@
             "region.gc_grotto[child]": {
                 "type": "true"
             },
-            "region.goron_city[child]": {
+            "region.gc_grotto_platform[child]": {
                 "type": "true"
             }
         },
@@ -1396,7 +1428,7 @@
             "region.gc_grotto[adult]": {
                 "type": "true"
             },
-            "region.goron_city[adult]": {
+            "region.gc_grotto_platform[adult]": {
                 "type": "true"
             }
         },
@@ -1516,7 +1548,7 @@
             "region.lh_fishing_hole[child]": {
                 "type": "true"
             },
-            "region.lake_hylia[child]": {
+            "region.lh_fishing_island[child]": {
                 "type": "true"
             }
         },
@@ -1524,7 +1556,7 @@
             "region.lh_fishing_hole[adult]": {
                 "type": "true"
             },
-            "region.lake_hylia[adult]": {
+            "region.lh_fishing_island[adult]": {
                 "type": "true"
             }
         },
@@ -1580,7 +1612,7 @@
             "region.gv_octorok_grotto[child]": {
                 "type": "true"
             },
-            "region.gerudo_valley[child]": {
+            "region.gv_grotto_ledge[child]": {
                 "type": "true"
             }
         },
@@ -1588,7 +1620,7 @@
             "region.gv_octorok_grotto[adult]": {
                 "type": "true"
             },
-            "region.gerudo_valley[adult]": {
+            "region.gv_grotto_ledge[adult]": {
                 "type": "true"
             }
         },
@@ -3540,7 +3572,7 @@
             }
         },
         "region.deku_tree_lobby_mq[child]": {
-            "region.kf_outside_deku_tree[child]": {
+            "region.deku_tree_gateway[child]": {
                 "type": "true"
             },
             "region.deku_tree_compass_room_mq[child]": {
@@ -3691,7 +3723,7 @@
             }
         },
         "region.deku_tree_lobby_mq[adult]": {
-            "region.kf_outside_deku_tree[adult]": {
+            "region.deku_tree_gateway[adult]": {
                 "type": "true"
             },
             "region.deku_tree_compass_room_mq[adult]": {
@@ -5742,7 +5774,7 @@
             }
         },
         "region.dodongos_cavern_beginning_mq[child]": {
-            "region.dodongos_cavern_entryway[child]": {
+            "region.dodongos_cavern_entryway_mq[child]": {
                 "type": "true"
             },
             "region.dodongos_cavern_lobby_mq[child]": {
@@ -5760,7 +5792,7 @@
             }
         },
         "region.dodongos_cavern_beginning_mq[adult]": {
-            "region.dodongos_cavern_entryway[adult]": {
+            "region.dodongos_cavern_entryway_mq[adult]": {
                 "type": "true"
             },
             "region.dodongos_cavern_lobby_mq[adult]": {
@@ -11389,7 +11421,7 @@
             }
         },
         "region.forest_temple_lobby_mq[child]": {
-            "region.forest_temple_gateway[child]": {
+            "region.sacred_forest_meadow_mq[child]": {
                 "type": "true"
             },
             "region.forest_temple_central_area_mq[child]": {
@@ -11466,7 +11498,7 @@
             }
         },
         "region.forest_temple_lobby_mq[adult]": {
-            "region.forest_temple_gateway[adult]": {
+            "region.sacred_forest_meadow_mq[adult]": {
                 "type": "true"
             },
             "region.forest_temple_central_area_mq[adult]": {
@@ -20063,7 +20095,7 @@
             }
         },
         "region.ice_cavern_beginning_mq[child]": {
-            "region.ice_cavern_gateway[child]": {
+            "region.zoras_fountain[child]": {
                 "type": "true"
             },
             "region.ice_cavern_mq[child]": {
@@ -20071,7 +20103,7 @@
             }
         },
         "region.ice_cavern_beginning_mq[adult]": {
-            "region.ice_cavern_gateway[adult]": {
+            "region.zoras_fountain[adult]": {
                 "type": "true"
             },
             "region.ice_cavern_mq[adult]": {
@@ -24531,7 +24563,7 @@
             "region.sfm_entryway[child]": {
                 "type": "true"
             },
-            "region.forest_temple_entrance[child]": {
+            "region.forest_temple_lobby[child]": {
                 "type": "or",
                 "el": [
                     {
@@ -24643,7 +24675,7 @@
             "region.sfm_entryway[adult]": {
                 "type": "true"
             },
-            "region.forest_temple_entrance[adult]": {
+            "region.forest_temple_lobby[adult]": {
                 "type": "or",
                 "el": [
                     {
@@ -24826,7 +24858,7 @@
             }
         },
         "region.hyrule_field[child]": {
-            "region.lw_bridge[child]": {
+            "region.field_woods_gateway[child]": {
                 "type": "true"
             },
             "region.lake_field_gateway[child]": {
@@ -24977,7 +25009,7 @@
             }
         },
         "region.hyrule_field[adult]": {
-            "region.lw_bridge[adult]": {
+            "region.field_woods_gateway[adult]": {
                 "type": "true"
             },
             "region.lake_field_gateway[adult]": {
@@ -25115,7 +25147,7 @@
             "region.lh_lab_entrance[child]": {
                 "type": "true"
             },
-            "region.lh_fishing_hole_entrance[child]": {
+            "region.lh_fishing_hole[child]": {
                 "type": "or",
                 "el": [
                     {
@@ -25396,7 +25428,7 @@
             "region.lh_lab_entrance[adult]": {
                 "type": "true"
             },
-            "region.lh_fishing_hole_entrance[adult]": {
+            "region.lh_fishing_hole[adult]": {
                 "type": "or",
                 "el": [
                     {
@@ -27837,7 +27869,7 @@
                 "type": "mixin",
                 "el": "mixin.is_child[child]"
             },
-            "region.market_bombchu_bowling_entrance[child]": {
+            "region.market_bombchu_bowling[child]": {
                 "type": "mixin",
                 "el": "mixin.is_child[child]"
             },
@@ -27849,7 +27881,7 @@
                 "type": "mixin",
                 "el": "mixin.is_child[child]"
             },
-            "region.market_bombchu_shop_entrance[child]": {
+            "region.market_bombchu_shop[child]": {
                 "type": "mixin",
                 "el": "mixin.is_child[child]"
             },
@@ -33187,7 +33219,7 @@
             }
         },
         "region.dodongos_cavern_entryway[child]": {
-            "region.dodongos_cavern_gateway[child]": {
+            "region.dodongos_cavern_beginning[child]": {
                 "type": "true"
             },
             "region.death_mountain[child]": {
@@ -33195,7 +33227,7 @@
             }
         },
         "region.dodongos_cavern_entryway[adult]": {
-            "region.dodongos_cavern_gateway[adult]": {
+            "region.dodongos_cavern_beginning[adult]": {
                 "type": "true"
             },
             "region.death_mountain[adult]": {
@@ -33329,7 +33361,7 @@
                     }
                 ]
             },
-            "region.gc_grotto_entrance[child]": {
+            "region.gc_grotto[child]": {
                 "type": "or",
                 "el": [
                     {
@@ -33940,7 +33972,7 @@
                     }
                 ]
             },
-            "region.gc_grotto_entrance[adult]": {
+            "region.gc_grotto[adult]": {
                 "type": "or",
                 "el": [
                     {
@@ -52402,21 +52434,8 @@
                                 "el": "option.entrance_shuffle",
                                 "value": "entrance_shuffle_dungeon"
                             }
-                        },
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_simple"
-                            }
                         }
                     ]
-                },
-                {
-                    "type": "state",
-                    "el": "option.entrance_shuffle",
-                    "value": "entrance_shuffle_all"
                 },
                 {
                     "type": "value",
@@ -52453,21 +52472,8 @@
                                 "el": "option.entrance_shuffle",
                                 "value": "entrance_shuffle_dungeon"
                             }
-                        },
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "state",
-                                "el": "option.entrance_shuffle",
-                                "value": "entrance_shuffle_simple"
-                            }
                         }
                     ]
-                },
-                {
-                    "type": "state",
-                    "el": "option.entrance_shuffle",
-                    "value": "entrance_shuffle_all"
                 },
                 {
                     "type": "value",
@@ -53377,7 +53383,7 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_stones[child]"
+                            "el": "function.has_stones(bridge_stones)[child]"
                         }
                     ]
                 },
@@ -53391,7 +53397,7 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_medallions[child]"
+                            "el": "function.has_medallions(bridge_medallions)[child]"
                         }
                     ]
                 },
@@ -53405,11 +53411,7 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_stones[child]"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "mixin.has_all_medallions[child]"
+                            "el": "function.has_dungeon_rewards(bridge_rewards)[child]"
                         }
                     ]
                 },
@@ -53427,7 +53429,7 @@
                                 "type": "value",
                                 "el": "item.skulltula"
                             },
-                            "value": 100
+                            "value": 0
                         }
                     ]
                 }
@@ -53473,7 +53475,7 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_stones[adult]"
+                            "el": "function.has_stones(bridge_stones)[adult]"
                         }
                     ]
                 },
@@ -53487,7 +53489,7 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_medallions[adult]"
+                            "el": "function.has_medallions(bridge_medallions)[adult]"
                         }
                     ]
                 },
@@ -53501,11 +53503,7 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_stones[adult]"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "mixin.has_all_medallions[adult]"
+                            "el": "function.has_dungeon_rewards(bridge_rewards)[adult]"
                         }
                     ]
                 },
@@ -53523,7 +53521,7 @@
                                 "type": "value",
                                 "el": "item.skulltula"
                             },
-                            "value": 100
+                            "value": 0
                         }
                     ]
                 }
@@ -53560,7 +53558,7 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_stones[child]"
+                            "el": "function.has_stones(lacs_stones)[child]"
                         }
                     ]
                 },
@@ -53574,7 +53572,7 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_medallions[child]"
+                            "el": "function.has_medallions(lacs_medallions)[child]"
                         }
                     ]
                 },
@@ -53588,11 +53586,30 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_stones[child]"
+                            "el": "function.has_dungeon_rewards(lacs_rewards)[child]"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "state",
+                            "el": "option.light_arrow_cutscene",
+                            "value": "light_arrow_cutscene_skulltulas"
                         },
                         {
-                            "type": "mixin",
-                            "el": "mixin.has_all_medallions[child]"
+                            "type": "gte",
+                            "el": [
+                                {
+                                    "type": "value",
+                                    "el": "item.skulltula"
+                                },
+                                {
+                                    "type": "value",
+                                    "el": "option.lacs_skulltulas"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -53629,7 +53646,7 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_stones[adult]"
+                            "el": "function.has_stones(lacs_stones)[adult]"
                         }
                     ]
                 },
@@ -53643,7 +53660,7 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_medallions[adult]"
+                            "el": "function.has_medallions(lacs_medallions)[adult]"
                         }
                     ]
                 },
@@ -53657,11 +53674,30 @@
                         },
                         {
                             "type": "mixin",
-                            "el": "mixin.has_all_stones[adult]"
+                            "el": "function.has_dungeon_rewards(lacs_rewards)[adult]"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "state",
+                            "el": "option.light_arrow_cutscene",
+                            "value": "light_arrow_cutscene_skulltulas"
                         },
                         {
-                            "type": "mixin",
-                            "el": "mixin.has_all_medallions[adult]"
+                            "type": "gte",
+                            "el": [
+                                {
+                                    "type": "value",
+                                    "el": "item.skulltula"
+                                },
+                                {
+                                    "type": "value",
+                                    "el": "option.lacs_skulltulas"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -53838,6 +53874,200 @@
                 {
                     "type": "value",
                     "el": "item.zora_letter"
+                }
+            ]
+        },
+        "mixin.can_build_rainbow_bridge[adult][child]": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "state",
+                    "el": "option.ganon_castle_open",
+                    "value": "ganon_castle_open_open"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "state",
+                            "el": "option.ganon_castle_open",
+                            "value": "ganon_castle_open_default"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_shadow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_spirit"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.arrow_light"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "state",
+                            "el": "option.ganon_castle_open",
+                            "value": "ganon_castle_open_stones"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "function.has_stones(bridge_stones)[adult][child]"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "state",
+                            "el": "option.ganon_castle_open",
+                            "value": "ganon_castle_open_medallion"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "function.has_medallions(bridge_medallions)[adult][child]"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "state",
+                            "el": "option.ganon_castle_open",
+                            "value": "ganon_castle_open_dungeon"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "function.has_dungeon_rewards(bridge_rewards)[adult][child]"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "state",
+                            "el": "option.ganon_castle_open",
+                            "value": "ganon_castle_open_skulltulas"
+                        },
+                        {
+                            "type": "gte",
+                            "el": [
+                                {
+                                    "type": "value",
+                                    "el": "item.skulltula"
+                                },
+                                {
+                                    "type": "value",
+                                    "el": "option.ganon_castle_skulltulas"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "mixin.can_build_rainbow_bridge[adult][adult]": {
+            "type": "or",
+            "el": [
+                {
+                    "type": "state",
+                    "el": "option.ganon_castle_open",
+                    "value": "ganon_castle_open_open"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "state",
+                            "el": "option.ganon_castle_open",
+                            "value": "ganon_castle_open_default"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_shadow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_spirit"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.arrow_light"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "state",
+                            "el": "option.ganon_castle_open",
+                            "value": "ganon_castle_open_stones"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "function.has_stones(bridge_stones)[adult][adult]"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "state",
+                            "el": "option.ganon_castle_open",
+                            "value": "ganon_castle_open_medallion"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "function.has_medallions(bridge_medallions)[adult][adult]"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "state",
+                            "el": "option.ganon_castle_open",
+                            "value": "ganon_castle_open_dungeon"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "function.has_dungeon_rewards(bridge_rewards)[adult][adult]"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "state",
+                            "el": "option.ganon_castle_open",
+                            "value": "ganon_castle_open_skulltulas"
+                        },
+                        {
+                            "type": "gte",
+                            "el": [
+                                {
+                                    "type": "value",
+                                    "el": "item.skulltula"
+                                },
+                                {
+                                    "type": "value",
+                                    "el": "option.ganon_castle_skulltulas"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -55706,6 +55936,462 @@
                 {
                     "type": "mixin",
                     "el": "mixin.is_child[adult]"
+                }
+            ]
+        },
+        "function.has_stones(lacs_stones)[child]": {
+            "type": "gte",
+            "el": [
+                {
+                    "type": "add",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.stone_forest"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_fire"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_water"
+                        }
+                    ]
+                },
+                {
+                    "type": "value",
+                    "el": "option.stone_count_lacs"
+                }
+            ]
+        },
+        "function.has_stones(lacs_stones)[adult]": {
+            "type": "gte",
+            "el": [
+                {
+                    "type": "add",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.stone_forest"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_fire"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_water"
+                        }
+                    ]
+                },
+                {
+                    "type": "value",
+                    "el": "option.stone_count_lacs"
+                }
+            ]
+        },
+        "function.has_medallions(lacs_medallions)[child]": {
+            "type": "gte",
+            "el": [
+                {
+                    "type": "add",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.medallion_forest"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_fire"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_water"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_spirit"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_shadow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_light"
+                        }
+                    ]
+                },
+                {
+                    "type": "value",
+                    "el": "option.medallion_count_lacs"
+                }
+            ]
+        },
+        "function.has_medallions(lacs_medallions)[adult]": {
+            "type": "gte",
+            "el": [
+                {
+                    "type": "add",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.medallion_forest"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_fire"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_water"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_spirit"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_shadow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_light"
+                        }
+                    ]
+                },
+                {
+                    "type": "value",
+                    "el": "option.medallion_count_lacs"
+                }
+            ]
+        },
+        "function.has_dungeon_rewards(lacs_rewards)[child]": {
+            "type": "gte",
+            "el": [
+                {
+                    "type": "add",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.medallion_forest"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_fire"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_water"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_spirit"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_shadow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_light"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_forest"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_fire"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_water"
+                        }
+                    ]
+                },
+                {
+                    "type": "value",
+                    "el": "option.dungeon_count_lacs"
+                }
+            ]
+        },
+        "function.has_dungeon_rewards(lacs_rewards)[adult]": {
+            "type": "gte",
+            "el": [
+                {
+                    "type": "add",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.medallion_forest"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_fire"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_water"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_spirit"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_shadow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_light"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_forest"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_fire"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_water"
+                        }
+                    ]
+                },
+                {
+                    "type": "value",
+                    "el": "option.dungeon_count_lacs"
+                }
+            ]
+        },
+        "function.has_stones(bridge_stones)[child]": {
+            "type": "gte",
+            "el": [
+                {
+                    "type": "add",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.stone_forest"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_fire"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_water"
+                        }
+                    ]
+                },
+                {
+                    "type": "value",
+                    "el": "option.stone_count_bridge"
+                }
+            ]
+        },
+        "function.has_stones(bridge_stones)[adult]": {
+            "type": "gte",
+            "el": [
+                {
+                    "type": "add",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.stone_forest"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_fire"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_water"
+                        }
+                    ]
+                },
+                {
+                    "type": "value",
+                    "el": "option.stone_count_bridge"
+                }
+            ]
+        },
+        "function.has_medallions(bridge_medallions)[child]": {
+            "type": "gte",
+            "el": [
+                {
+                    "type": "add",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.medallion_forest"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_fire"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_water"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_spirit"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_shadow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_light"
+                        }
+                    ]
+                },
+                {
+                    "type": "value",
+                    "el": "option.medallion_count_bridge"
+                }
+            ]
+        },
+        "function.has_medallions(bridge_medallions)[adult]": {
+            "type": "gte",
+            "el": [
+                {
+                    "type": "add",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.medallion_forest"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_fire"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_water"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_spirit"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_shadow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_light"
+                        }
+                    ]
+                },
+                {
+                    "type": "value",
+                    "el": "option.medallion_count_bridge"
+                }
+            ]
+        },
+        "function.has_dungeon_rewards(bridge_rewards)[child]": {
+            "type": "gte",
+            "el": [
+                {
+                    "type": "add",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.medallion_forest"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_fire"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_water"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_spirit"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_shadow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_light"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_forest"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_fire"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_water"
+                        }
+                    ]
+                },
+                {
+                    "type": "value",
+                    "el": "option.dungeon_count_bridge"
+                }
+            ]
+        },
+        "function.has_dungeon_rewards(bridge_rewards)[adult]": {
+            "type": "gte",
+            "el": [
+                {
+                    "type": "add",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.medallion_forest"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_fire"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_water"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_spirit"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_shadow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.medallion_light"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_forest"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_fire"
+                        },
+                        {
+                            "type": "value",
+                            "el": "item.stone_water"
+                        }
+                    ]
+                },
+                {
+                    "type": "value",
+                    "el": "option.dungeon_count_bridge"
                 }
             ]
         }
