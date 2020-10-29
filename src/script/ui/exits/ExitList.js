@@ -4,7 +4,6 @@ import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
 
 import "./ExitChoice.js";
-import "./SubExitChoice.js";
 
 const TPL = new Template(`
     <style>
@@ -27,12 +26,7 @@ export default class HTMLTrackerExitList extends EventBusSubsetMixin(Panel) {
 
         let exits = FileData.get("world/exit");
         for (let exit in exits) {
-            let el;
-            if (exits[exit].type == "dungeon") {
-                el = document.createElement('ootrt-exitchoice');
-            } else {
-                el = document.createElement('ootrt-subexitchoice');
-            }
+            let el = document.createElement('ootrt-exitchoice');
             el.ref = exit;
             this.shadowRoot.append(el);
         }

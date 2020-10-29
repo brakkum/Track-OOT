@@ -189,25 +189,20 @@ function parseEntrances(entrances, world, dungeon, grottos, indoors, overworld) 
                     if(grottos) {
                         if(entro_grottos[i] !== undefined) {
                             exits[entro_grottos[i]] = exit_grottos[v];
-                            subs[entro_grottos[i]] = exit_grottos[v];
                         }
                     }
                     if (indoors) {
                         if (entro_simple[i] !== undefined && exit_simple[v] !== undefined) {
                             exits[entro_simple[i]] = exit_simple[v];
-                            subs[entro_simple[i]] = exit_simple[v];
                         }
                         if (entro_indoors[i] !== undefined && exit_indoors[v] !== undefined) {
                             exits[entro_indoors[i]] = exit_indoors[v];
-                            subs[entro_indoors[i]] = exit_indoors[v];
                         }
                         if(entro_simple[i] !== undefined && exit_indoors[v] !== undefined) {
                             exits[entro_simple[i]] = exit_indoors[v];
-                            subs[entro_simple[i]] = exit_indoors[v];
                         }
                         if(entro_indoors[i] !== undefined && exit_simple[v] !== undefined) {
                             exits[entro_indoors[i]] = exit_simple[v];
-                            subs[entro_indoors[i]] = exit_simple[v];
                         }
 
                     }
@@ -224,7 +219,6 @@ function parseEntrances(entrances, world, dungeon, grottos, indoors, overworld) 
             }
         }
         extra[w]["exits"] = exits;
-        extra[w]["subexits"] = subs;
     }
 }
 

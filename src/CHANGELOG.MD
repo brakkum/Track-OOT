@@ -23,11 +23,9 @@ Application:    Track-OOT
 - add new exit->entrance configuration to savestate
 - add view for configuring exit->entrances
     - dungeons
-    - `TODO` interior
-    - `TODO` grottos
-    - `TODO` graves
-    - `TODO` overworld
-    - `TODO` owls
+    - interior
+    - grottos
+    - graves
 - added subareas
 - temporarily deactivate the map view containing overworld locations
     - does conflict with current interior/grotto entrance rando
@@ -70,6 +68,7 @@ Application:    Track-OOT
 ### BUGFIXES
 
 - fix logger breaking out of the viewport
+- deactivate undo (ctrl+z) / redo (ctrl+y) as it messes with multiplayer
 
 ***
 

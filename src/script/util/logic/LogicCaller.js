@@ -106,38 +106,44 @@ EventBus.register("filter", event => {
     }
 });
 
-(async function() {
-    try {
-        let randoLogic = FileData.get("logic", {edges:{},logic:{}});
-        //LOGIC_PROCESSOR.clearLogic();
-        Logic.setLogic(randoLogic);
-        let data = StateStorage.getAll();
-        // keys - value caching
-        let dungeonData = FileData.get("dungeonstate/entries");
-        cached_values["option.track_keys"] = !!data["option.track_keys"];
-        for (let i = 0; i < dungeonData.length; ++i) {
-            let dData = dungeonData[i];
-            if (!!dData.keys) {
-                cached_values[dData.keys] = data[dData.keys] || 0;
-                if (!cached_values["option.track_keys"]) {
-                    data[dData.keys] = 9999;
+class LogicCaller {
+
+    async init() {
+        try {
+            let randoLogic = FileData.get("logic", {edges:{},logic:{}});
+            //LOGIC_PROCESSOR.clearLogic();
+            Logic.setLogic(randoLogic);
+            let data = StateStorage.getAll();
+            // keys - value caching
+            let dungeonData = FileData.get("dungeonstate/entries");
+            cached_values["option.track_keys"] = !!data["option.track_keys"];
+            for (let i = 0; i < dungeonData.length; ++i) {
+                let dData = dungeonData[i];
+                if (!!dData.keys) {
+                    cached_values[dData.keys] = data[dData.keys] || 0;
+                    if (!cached_values["option.track_keys"]) {
+                        data[dData.keys] = 9999;
+                    }
                 }
             }
-        }
-        cached_values["option.track_bosskeys"] = !!data["option.track_bosskeys"];
-        for (let i = 0; i < dungeonData.length; ++i) {
-            let dData = dungeonData[i];
-            if (!!dData.bosskey) {
-                cached_values[dData.bosskey] = data[dData.bosskey] || 0;
-                if (!cached_values["option.track_bosskeys"]) {
-                    data[dData.bosskey] = 9999;
+            cached_values["option.track_bosskeys"] = !!data["option.track_bosskeys"];
+            for (let i = 0; i < dungeonData.length; ++i) {
+                let dData = dungeonData[i];
+                if (!!dData.bosskey) {
+                    cached_values[dData.bosskey] = data[dData.bosskey] || 0;
+                    if (!cached_values["option.track_bosskeys"]) {
+                        data[dData.bosskey] = 9999;
+                    }
                 }
             }
+            // ---------------------------------------------------------
+            Logic.execute(data, "region.root");
+        } catch(err) {
+            console.error(err);
+            window.alert(err.message);
         }
-        // ---------------------------------------------------------
-        Logic.execute(data, "region.root");
-    } catch(err) {
-        console.error(err);
-        window.alert(err.message);
     }
-}());
+
+}
+
+export default new LogicCaller();

@@ -186,7 +186,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
         selectEl.addEventListener("change", event => {
             let exit = EXIT.get(this);
             if (exit != "") {
-                StateStorage.writeExtra("subexits", exit, event.value);
+                StateStorage.writeExtra("exits", exit, event.value);
             }
         });
         selectEl.addEventListener("click", event => {
@@ -229,7 +229,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
         mnu_ctx.shadowRoot.getElementById("menu-associate").addEventListener("click", event => {
             // retrieve bound
             const current = this.value;
-            const exits = StateStorage.readAllExtra("subexits");
+            const exits = StateStorage.readAllExtra("exits");
             const bound = new Set();
             for (const key in exits) {
                 if (exits[key] == current) continue;
@@ -244,6 +244,10 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
             selectEl.innerHTML = "";
             const empty = document.createElement('emc-option');
             empty.value = "";
+            const emptyText = document.createElement('span');
+            emptyText.innerHTML = "unbind";
+            emptyText.style.fontStyle = "italic";
+            empty.append(emptyText);
             selectEl.append(empty);
             for (const key in entrances) {
                 const value = entrances[key];
@@ -309,8 +313,8 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
             const exit = EXIT.get(this);
             const exitEntry = ExitRegistry.get(exit);
             selectEl.readonly = exitEntry.active();
-            if (event.data.extra.subexits != null && event.data.extra.subexits[exit] != null) {
-                this.value = event.data.extra.subexits[exit];
+            if (event.data.extra.exits != null && event.data.extra.exits[exit] != null) {
+                this.value = event.data.extra.exits[exit];
             } else {
                 this.value = "";
             }
@@ -344,11 +348,6 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
         });
         this.registerGlobal(["statechange", "statechange_dungeontype", "settings", "logic", "filter"], event => {
             this.update();
-        });
-        this.registerGlobal("exit", event => {
-            if (this.ref === event.data.name && this.value !== event.data.value) {
-                this.value = event.data.value;
-            }
         });
     }
 
@@ -472,7 +471,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
                     txt.setAttribute('i18n-content', data.access);
                     EXIT.set(this, data.access);
                     ACCESS.set(this, data.access.split(" -> ")[0]);
-                    this.value = StateStorage.readExtra("subexits", data.access, "");
+                    this.value = StateStorage.readExtra("exits", data.access, "");
                     // update state
                     this.update();
                 }

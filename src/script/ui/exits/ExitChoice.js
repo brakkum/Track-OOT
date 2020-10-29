@@ -119,6 +119,10 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
         selectEl.innerHTML = "";
         const empty = document.createElement('emc-option');
         empty.value = "";
+        const emptyText = document.createElement('span');
+        emptyText.innerHTML = "unbind";
+        emptyText.style.fontStyle = "italic";
+        empty.append(emptyText);
         selectEl.append(empty);
         for (const key in entrances) {
             const value = entrances[key];

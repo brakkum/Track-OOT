@@ -40,41 +40,47 @@ EventBus.register("custom_logic", async event => {
 });
 
 function augmentLogic(logic, customEdges, customLogic) {
-    for (let l in customEdges) {
-        let value = customEdges[l];
-        let [key, target] = l.split(" -> ");
+    for (const l in customEdges) {
+        const value = customEdges[l];
+        const [key, target] = l.split(" -> ");
         logic.edges[key] = logic.edges[key] || {};
         logic.edges[key][target] = value;
     }
-    for (let l in customLogic) {
+    for (const l in customLogic) {
         logic.logic[l] = customLogic[l];
     }
 }
 
 async function update() {
     if (logic_rules == "logic_rules_glitchless") {
-        let logic = FileData.get("logic", {edges:{},logic:{}});
+        const logic = FileData.get("logic", {edges:{},logic:{}});
         if (use_custom_logic) {
-            let customEdges = await GraphStorage.getAll();
-            let customLogic = await LogicsStorage.getAll();
+            const customEdges = await GraphStorage.getAll();
+            const customLogic = await LogicsStorage.getAll();
             augmentLogic(logic, customEdges, customLogic);
         }
-        Logic.setLogic(logic, "region.root");
+        const res = Logic.setLogic(logic, "region.root");
+        if (Object.keys(res).length > 0) {
+            EventBus.trigger("logic", res);
+        }
     } else {
-        let logic = FileData.get("logic_glitched", {edges:{},logic:{}});
+        const logic = FileData.get("logic_glitched", {edges:{},logic:{}});
         if (use_custom_logic) {
-            let customEdges = await GraphStorageGlitched.getAll();
-            let customLogic = await LogicsStorageGlitched.getAll();
+            const customEdges = await GraphStorageGlitched.getAll();
+            const customLogic = await LogicsStorageGlitched.getAll();
             augmentLogic(logic, customEdges, customLogic);
         }
-        Logic.setLogic(logic, "region.root");
+        const res = Logic.setLogic(logic, "region.root");
+        if (Object.keys(res).length > 0) {
+            EventBus.trigger("logic", res);
+        }
     }
 }
 
 class AugmentCustomLogic {
 
     async init() {
-        let settings = FileData.get("settings", {});
+        const settings = FileData.get("settings", {});
         logic_rules = StateStorage.read("option.logic_rules");
         use_custom_logic = await SettingsStorage.get("use_custom_logic", settings["use_custom_logic"].default);
         await update();

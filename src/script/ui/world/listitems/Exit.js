@@ -335,11 +335,6 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
         this.registerGlobal(["statechange", "statechange_dungeontype", "settings", "logic", "filter"], event => {
             this.update();
         });
-        this.registerGlobal("exit", event => {
-            if (this.ref === event.data.name && this.value !== event.data.value) {
-                this.value = event.data.value;
-            }
-        });
     }
 
     connectedCallback() {

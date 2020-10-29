@@ -53,20 +53,21 @@ const TPL = new Template(`
 `);
 
 function stateChanged(event) {
-    if (event.data.extra.dungeontype != null) {
-        let value = event.data.extra.dungeontype[this.ref];
-        if (typeof value == "undefined" || value == "") {
-            value = "v";
-            if (!!this.ref) {
-                let area = FileData.get(`world/${this.ref}/lists`);
-                if (area.hasOwnProperty("mq")) {
-                    value = "n";
-                }
+    if (!!this.ref) {
+        const area = FileData.get(`world/${this.ref}/lists`);
+        let value = "v";
+        if (area.hasOwnProperty("mq")) {
+            value = "n";
+        }
+        if (event.data.extra.dungeontype != null) {
+            const state = event.data.extra.dungeontype[this.ref];
+            if (typeof state != "undefined" && state != "") {
+                value = state;
             }
         }
         this.value = value;
     } else {
-        this.value = "v";
+        this.value = "n";
     }
 }
 
@@ -126,17 +127,20 @@ class HTMLTrackerDungeonType extends EventBusSubsetMixin(HTMLElement) {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    let value = "v";
-                    let readonly = true;
                     if (!!newValue) {
-                        let area = FileData.get(`world/${newValue}/lists`);
+                        const area = FileData.get(`world/${this.ref}/lists`);
+                        let value = "v";
+                        let readonly = true;
                         if (area.hasOwnProperty("mq")) {
-                            value = StateStorage.readExtra("dungeontype", newValue, "n");
+                            value = StateStorage.readExtra("dungeontype", newValue, "n");;
                             readonly = false;
                         }
+                        this.value = value;
+                        this.readonly = readonly;
+                    } else {
+                        this.value = "n";
+                        this.readonly = true;
                     }
-                    this.value = value;
-                    this.readonly = readonly;
                 }
             break;
             case 'value':

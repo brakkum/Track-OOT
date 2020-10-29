@@ -13,8 +13,6 @@ import Language from "/script/util/Language.js";
 import World from "/script/util/world/World.js";
 
 import "/script/storage/converter/StateConverter.js";
-import AugmentExits from "/script/util/logic/AugmentExits.js";
-import AugmentCustomLogic from "/script/util/logic/AugmentCustomLogic.js";
 
 import "/emcJS/ui/Paging.js";
 
@@ -77,9 +75,6 @@ function setVersion(data) {
             }
             return def_state;
         }());
-        updateLoadingMessage("build logic data...");
-        await AugmentExits.init();
-        await AugmentCustomLogic.init();
         updateLoadingMessage("build world data...");
         World.init();
         updateLoadingMessage("poke application...");
@@ -102,7 +97,9 @@ async function init() {
         Logger,
         TrackerSettingsWindow,
         RandomizerOptionsWindow,
-        SpoilerLogWindow
+        SpoilerLogWindow,
+        AugmentExits,
+        AugmentCustomLogic,
     ] = await $import.module([
         // consts
         "/emcJS/util/events/EventBus.js",
@@ -110,6 +107,8 @@ async function init() {
         "/script/ui/TrackerSettingsWindow.js",
         "/script/ui/RandomizerOptionsWindow.js",
         "/script/ui/SpoilerLogWindow.js",
+        "/script/util/logic/AugmentExits.js",
+        "/script/util/logic/AugmentCustomLogic.js",
         // untracked
         "/emcJS/ui/TextEditor.js",
         "/emcJS/ui/LogScreen.js",
@@ -123,8 +122,7 @@ async function init() {
         "/script/ui/world/Map.js",
         "/script/ui/LocationStatus.js",
         "/script/content/Tracker.js",
-        "/script/content/EditorChoice.js",
-        "/script/util/logic/LogicCaller.js"
+        "/script/content/EditorChoice.js"
     ]);
     
     if ("SharedWorker" in window) {
@@ -177,6 +175,13 @@ async function init() {
         "/script/ui/multiplayer/Multiplayer.js",
         "/script/ui/LayoutContainer.js"
     ]);
+
+    updateLoadingMessage("build logic data...");
+
+    const [LogicCaller] = await $import.module(["/script/util/logic/LogicCaller.js"]);
+    await LogicCaller.init();
+    await AugmentExits.init();
+    await AugmentCustomLogic.init();
 
     updateLoadingMessage("wake up...");
     let spl = document.getElementById("splash");

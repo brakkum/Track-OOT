@@ -6,7 +6,6 @@ function valueGetter(key) {
     return this.get(key);
 }
 
-const REF = new WeakMap();
 const ACCESS = new WeakMap();
 const TYPE = new WeakMap();
 const ACTIVE = new WeakMap();
@@ -15,7 +14,6 @@ export default class ExitEntry {
 
     constructor(ref, data) {
         let active_logic = null;
-        REF.set(this, ref);
         ACCESS.set(this, data.access);
         TYPE.set(this, data.type);
 
@@ -48,6 +46,10 @@ export default class ExitEntry {
 
     access() {
         return ACCESS.get(this);
+    }
+
+    getType() {
+        return TYPE.get(this);
     }
 
 }

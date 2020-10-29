@@ -1,30 +1,51 @@
-import FileData from "/emcJS/storage/FileData.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import Logic from "/script/util/logic/Logic.js";
+import ExitRegistry from "/script/util/world/ExitRegistry.js";
 
-let entrance_shuffle = "entrance_shuffle_off";
-let exit_binding = {};
+const OPTIONS = {
+    "option.shuffle_grottos": false,
+    "option.shuffle_dungeons": false,
+    "option.shuffle_overworld": false,
+    "option.shuffle_owl": false,
+    "option.shuffle_warps": false,
+    "option.shuffle_spawns": false,
+    "option.entrance_shuffle_interior": "entrance_shuffle_off"
+};
+const exit_binding = {};
 
 function applyEntranceChanges(changes, edgeThere, edgeBack) {
-    const exits = FileData.get("world/exit");
-    const [source, target] = edgeThere.split(" -> ");
-    const [reroute, entrance] = edgeBack.split(" -> ");
-    const edgeThereData = exits[edgeThere] != null ? exits[edgeThere] : exits[`${target} -> ${source}`];
-    if (edgeThereData == null) {
-        console.error(`missing exit: ${target} -> ${source}`);
+    if (exit_binding[edgeThere] == edgeBack) return;
+    const exitEntry = ExitRegistry.get(edgeThere);
+    if (exitEntry == null) {
+        console.error(`missing exit: ${edgeThere}`);
     } else {
-        const edgeBackData = exits[edgeBack];
-        if ((edgeBackData == null || edgeThereData.type == edgeBackData.type) && edgeThereData.active.indexOf(entrance_shuffle) >= 0) {
-            if (exit_binding[edgeThere] != reroute) {
-                changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: `${reroute}[child]`});
-                changes.push({source: `${reroute}[child]`, target: `${entrance}[child]`, reroute: `${source}[child]`});
-                changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: `${reroute}[adult]`});
-                changes.push({source: `${reroute}[adult]`, target: `${entrance}[adult]`, reroute: `${source}[adult]`});
-                exit_binding[edgeThere] = reroute;
-                exit_binding[edgeBack] = source;
-                StateStorage.writeExtra("exits", edgeBack, edgeThere);
+        if (!exitEntry.active()) return;
+        const [source, target] = edgeThere.split(" -> ");
+        const entranceEntry = ExitRegistry.get(edgeBack);
+        if (entranceEntry != null) {
+            if (!entranceEntry.active() || exitEntry.getType() != entranceEntry.getType()) return;
+            const [reroute, entrance] = edgeBack.split(" -> ");
+            if (!!exit_binding[edgeThere]) {
+                StateStorage.writeExtra("exits", exit_binding[edgeThere], "");
             }
+            if (!!exit_binding[edgeBack]) {
+                StateStorage.writeExtra("exits", exit_binding[edgeBack], "");
+            }
+            changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: `${reroute}[child]`});
+            changes.push({source: `${reroute}[child]`, target: `${entrance}[child]`, reroute: `${source}[child]`});
+            changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: `${reroute}[adult]`});
+            changes.push({source: `${reroute}[adult]`, target: `${entrance}[adult]`, reroute: `${source}[adult]`});
+            exit_binding[edgeThere] = edgeBack;
+            exit_binding[edgeBack] = edgeThere;
+            StateStorage.writeExtra("exits", edgeBack, edgeThere);
+        } else {
+            if (!!exit_binding[edgeThere]) {
+                StateStorage.writeExtra("exits", exit_binding[edgeThere], "");
+            }
+            changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: "[child]"});
+            changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: "[adult]"});
+            exit_binding[edgeThere] = "";
         }
     }
 }
@@ -40,15 +61,11 @@ EventBus.register("state", event => {
             applyEntranceChanges(changes, edgeThere, edgeBack);
         }
     }
-    if (event.data.extra.subexits != null) {
-        for (const edgeThere in event.data.extra.subexits) {
-            if (!edgeThere) continue;
-            const edgeBack = event.data.extra.subexits[edgeThere];
-            applyEntranceChanges(changes, edgeThere, edgeBack);
-        }
-    }
     if (!!changes.length) {
-        Logic.setTranslation(changes, "region.root");
+        const res = Logic.setTranslation(changes, "region.root");
+        if (Object.keys(res).length > 0) {
+            EventBus.trigger("logic", res);
+        }
     }
 });
 
@@ -61,44 +78,36 @@ EventBus.register("statechange_exits", event => {
         applyEntranceChanges(changes, edgeThere, edgeBack);
     }
     if (!!changes.length) {
-        Logic.setTranslation(changes, "region.root");
-    }
-});
-
-// register event on subexit target change
-EventBus.register("statechange_subexits", event => {
-    const changes = [];
-    for (const edgeThere in event.data) {
-        if (!edgeThere) continue;
-        const edgeBack = event.data[edgeThere].newValue;
-        applyEntranceChanges(changes, edgeThere, edgeBack);
-    }
-    if (!!changes.length) {
-        Logic.setTranslation(changes, "region.root");
+        const res = Logic.setTranslation(changes, "region.root");
+        if (Object.keys(res).length > 0) {
+            EventBus.trigger("logic", res);
+        }
     }
 });
 
 // register event for (de-)activate entrances
 EventBus.register("randomizer_options", event => {
-    if (event.data.hasOwnProperty("option.entrance_shuffle") && entrance_shuffle != event.data["option.entrance_shuffle"]) {
-        entrance_shuffle = event.data["option.entrance_shuffle"];
+    let changed = false;
+    for (const key in OPTIONS) {
+        if (event.data.hasOwnProperty(key) && OPTIONS[key] != event.data[key]) {
+            OPTIONS[key] = event.data[key];
+            changed = true;
+        }
+    }
+    if (changed) {
         update();
     }
 });
 
 async function update() {
-    let exits = FileData.get("world/exit");
-    let changes = [];
-    for (let exit in exit_binding) {
+    const changes = [];
+    for (const exit in exit_binding) {
         if (!exit) continue;
-        let [source, target] = exit.split(" -> ");
-        let edgeData = exits[exit];
-        if (edgeData == null) {
-            edgeData = exits[`${target} -> ${source}`];
-        }
-        if (edgeData != null) {
-            if (edgeData.active.indexOf(entrance_shuffle) >= 0) {
-                let reroute = exit_binding[exit];
+        const exitEntry = ExitRegistry.get(exit);
+        if (exitEntry != null) {
+            const [source, target] = exit.split(" -> ");
+            if (exitEntry.active()) {
+                const reroute = exit_binding[exit].split(" -> ")[0];
                 changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: `${reroute}[child]`});
                 changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: `${reroute}[adult]`});
             } else {
@@ -110,18 +119,23 @@ async function update() {
         }
     }
     if (!!changes.length) {
-        Logic.setTranslation(changes, "region.root");
+        const res = Logic.setTranslation(changes, "region.root");
+        if (Object.keys(res).length > 0) {
+            EventBus.trigger("logic", res);
+        }
     }
 }
 
 class AugmentExits {
 
     async init() {
-        let exits = StateStorage.readAllExtra("exits");
-        for (let exit in exits) {
-            exit_binding[exit] = exits[exit].split(" -> ")[0]
+        const exits = StateStorage.readAllExtra("exits");
+        for (const exit in exits) {
+            exit_binding[exit] = exits[exit]
         }
-        entrance_shuffle = StateStorage.read("option.entrance_shuffle");
+        for (const key in OPTIONS) {
+            OPTIONS[key] = StateStorage.read(key);
+        }
         await update();
     }
 

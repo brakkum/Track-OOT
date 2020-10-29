@@ -38,7 +38,7 @@ class ListLogic {
                 }
                 if (category == "subexit") {
                     const subexit = FileData.get(`world/marker/subexit/${id}`);
-                    const bound = StateStorage.readExtra("subexits", subexit.access);
+                    const bound = StateStorage.readExtra("exits", subexit.access);
                     if (!bound) {
                         continue;
                     }
