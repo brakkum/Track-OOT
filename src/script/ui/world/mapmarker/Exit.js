@@ -78,7 +78,7 @@ const TPL = new Template(`
         #value:empty:after {
             display: inline;
             font-style: italic;
-            content: "empty";
+            content: "no association";
         }
         #text {
             display: inline-flex;
@@ -131,7 +131,8 @@ const TPL_MNU_CTX = new Template(`
         <div id="menu-check" class="item">Check All</div>
         <div id="menu-uncheck" class="item">Uncheck All</div>
         <div class="splitter"></div>
-        <div id="menu-associate" class="item">Set Entrance</div>
+        <div id="menu-associate" class="item">Bind Entrance</div>
+        <div id="menu-deassociate" class="item">Unbind Entrance</div>
         <div class="splitter"></div>
         <div id="menu-setwoth" class="item">Set WOTH</div>
         <div id="menu-setbarren" class="item">Set Barren</div>
@@ -249,6 +250,10 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
             selectEl.innerHTML = "";
             const empty = document.createElement('emc-option');
             empty.value = "";
+            const emptyText = document.createElement('span');
+            emptyText.innerHTML = "unbind";
+            emptyText.style.fontStyle = "italic";
+            empty.append(emptyText);
             selectEl.append(empty);
             for (const key in entrances) {
                 const value = entrances[key];
@@ -264,6 +269,12 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
             mnu_ext_el.show(mnu_ctx_el.left, mnu_ctx_el.top);
             event.preventDefault();
             return false;
+        });
+        mnu_ctx.shadowRoot.getElementById("menu-deassociate").addEventListener("click", event => {
+            let exit = EXIT.get(this);
+            if (exit != "") {
+                StateStorage.writeExtra("exits", exit, "");
+            }
         });
         mnu_ctx.shadowRoot.getElementById("menu-setwoth").addEventListener("click", event => {
             const area = AREA.get(this);

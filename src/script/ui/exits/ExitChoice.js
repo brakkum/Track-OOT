@@ -114,7 +114,7 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
             bound.add(exits[key]);
         }
         // add options
-        const exit = FileData.get(`world/exit/${this.ref}`);
+        const exitEntry = ExitRegistry.get(this.ref);
         const entrances = FileData.get("world/exit");
         selectEl.innerHTML = "";
         const empty = document.createElement('emc-option');
@@ -123,7 +123,8 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
         selectEl.append(empty);
         for (const key in entrances) {
             const value = entrances[key];
-            if (value.type == exit.type && !bound.has(value.target)) {
+            const entranceEntry = ExitRegistry.get(key);
+            if (entranceEntry.getType() == exitEntry.getType() && !bound.has(value.target) && entranceEntry.active()) {
                 const opt = document.createElement('emc-option');
                 opt.value = value.target;
                 opt.innerHTML = Language.translate(value.target);
