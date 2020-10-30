@@ -48,11 +48,12 @@ function parseSetting(setting, world) {
     }
 }
 
-function parseStartingItems(items, world) {
+function parseStartingItems(itemsTrue, world) {
     let starting_trans = trans["starting_items"];
+    let items = itemsTrue;
 
     for(let w = 1; w <= world; w++) {
-        if(world !== 1) items = items["World " + w];
+        if(world !== 1) items = itemsTrue["World " + w];
         let bottles = 0;
 
         for(let i in items) {
@@ -65,7 +66,7 @@ function parseStartingItems(items, world) {
                     if (starting_trans[i]["values"][v] === undefined) {
                         console.warn("[" + i + ": " + v + "] is a invalid value. Please report this bug")
                     } else {
-                        if(!i.includes("Bottle")) {
+                        if(!i.includes("Bottle") && !i.includes("Rito")) {
                             options[w][starting_trans[i]["name"]] = starting_trans[i]["values"][v];
                         } else {
                             bottles = bottles + starting_trans[i]["values"][v]
@@ -78,15 +79,17 @@ function parseStartingItems(items, world) {
     }
 }
 
-function parseDungeons(dungeons, locations, world, dt, dr) {
+function parseDungeons(dungeonsTrue, locationsTrue, world, dt, dr) {
     let dungeon_trans = trans["dungeons"];
     let location_trans = trans["dungeonReward"]
     let item_trans = trans["itemList"]
+    let dungeons = dungeonsTrue;
+    let locations = locationsTrue;
 
     for(let w = 1; w <= world; w++) {
         if(world !== 1) {
-            dungeons = dungeons["World " + w];
-            locations = locations["World " + w];
+            dungeons = dungeonsTrue["World " + w];
+            locations = locationsTrue["World " + w];
         }
 
         if(dt) {
@@ -112,7 +115,7 @@ function parseDungeons(dungeons, locations, world, dt, dr) {
             for (let i in locations) {
                 let v = locations[i];
                 if(location_trans.hasOwnProperty(i)) {
-                    if(Array.isArray(i)) v = v["item"];
+                    if(typeof v === 'object' && v !== null) v = v["item"];
 
                     if(item_trans[v] === undefined){
                         console.warn("[" + i + ": " + v + "] is a invalid value. Please report this bug")
@@ -127,11 +130,12 @@ function parseDungeons(dungeons, locations, world, dt, dr) {
     }
 }
 
-function parseTrials(trials, world) {
+function parseTrials(trialsTrue, world) {
     let trial_trans = trans["trials"];
+    let trials = trialsTrue;
 
     for(let w = 1; w <= world; w++) {
-        if(world !== 1) trials = trials["World " + w];
+        if(world !== 1) trials = trialsTrue["World " + w];
 
         for(let i in trials) {
             let v = trials[i];
@@ -150,7 +154,7 @@ function parseTrials(trials, world) {
     }
 }
 
-function parseEntrances(entrances, world, dungeon, grottos, indoors, overworld) {
+function parseEntrances(entrancesTrue, world, dungeon, grottos, indoors, overworld) {
     let entrance_trans  = trans["entrances"]["entrances"];
     let exit_trans = trans["entrances"]["exits"];
     let entro_dungeon = entrance_trans["dungeons"];
@@ -163,18 +167,18 @@ function parseEntrances(entrances, world, dungeon, grottos, indoors, overworld) 
     let exit_simple = exit_trans["simple"];
     let exit_indoors = exit_trans["indoors"];
     let exit_overworld = exit_trans["overworld"];
+    let entrances = entrancesTrue;
 
     for(let w = 1; w <= world; w++) {
-        if(world !== 1) entrances =  entrances["World " + w];
+        if(world !== 1) entrances = entrancesTrue["World " + w];
         let exits = {};
-        let subs = {};
 
         for(let i in entrances) {
             let v = entrances[i];
             if(typeof i === 'object' && i !== null) {
                 console.warn("Unexpected Array within entrances, please report this!")
             } else {
-                if(entro_dungeon[i] === undefined && exit_dungeon[v] === undefined && entro_simple[i] === undefined && exit_simple[v] === undefined && entro_indoors[i] === undefined && exit_indoors[v] === undefined && entro_overworld[i] === undefined && exit_overworld[v] === undefined) {
+                if(entro_dungeon[i] === undefined && exit_dungeon[v] === undefined && entro_simple[i] === undefined && exit_simple[v] === undefined && entro_indoors[i] === undefined && exit_indoors[v] === undefined && entro_overworld[i] === undefined && exit_overworld[v] === undefined && entro_grottos[i] === undefined && exit_grottos[v] === undefined) {
                     console.warn("[" + i + ": " + v + "] is a invalid value. Please report this bug")
                 } else {
                     if (dungeon) {
@@ -187,7 +191,9 @@ function parseEntrances(entrances, world, dungeon, grottos, indoors, overworld) 
                         }
                     }
                     if(grottos) {
-                        if(entro_grottos[i] !== undefined) {
+
+                        if(entro_grottos[i] === undefined) {
+                        } else {
                             exits[entro_grottos[i]] = exit_grottos[v];
                         }
                     }
@@ -222,12 +228,13 @@ function parseEntrances(entrances, world, dungeon, grottos, indoors, overworld) 
     }
 }
 
-function parseShops(shops, world) {
+function parseShops(shopsTrue, world) {
     let shop_trans = new Set(trans["shops"]);
     let item_trans = trans["itemList"];
+    let shops = shopsTrue
 
     for(let w = 1; w <= world; w++) {
-        if(world !== 1) shops = shops["World " + w];
+        if(world !== 1) shops = shopsTrue["World " + w];
         let kokiri = [];
         let marketB = [];
         let marketP = [];
@@ -390,12 +397,13 @@ function parseShops(shops, world) {
     }
 }
 
-function parseBarren(barren, world) {
+function parseBarren(barrenTrue, world) {
     let barren_trans = trans["barren"];
     let castle = 0;
+    let barren = barrenTrue
 
     for(let w = 1; w <= world; w++) {
-        if(world !== 1) barren = barren["World " + w];
+        if(world !== 1) barren = barrenTrue["World " + w];
         let bar = new Set(barren);
 
         bar.forEach(i => {
@@ -414,12 +422,13 @@ function parseBarren(barren, world) {
     }
 }
 
-function parseLocations(locations, world) {
+function parseLocations(locationsTrue, world) {
     let location_trans = trans["locations"];
     let item_trans = trans["itemList"];
+    let locations = locationsTrue;
 
     for(let w = 1; w <= world; w++) {
-        if(world !== 1) locations = locations["World " + w];
+        if(world !== 1) locations = locationsTrue["World " + w];
         let loca = {};
 
         for(let i in locations) {
@@ -446,11 +455,12 @@ function parseLocations(locations, world) {
     }
 }
 
-function parseWothLocation(woth, world) {
+function parseWothLocation(wothTrue, world) {
     let woth_trans = trans["woth"];
+    let woth = wothTrue
 
     for(let w = 1; w <= world; w++) {
-        if(world !== 1) woth = woth["World " + w];
+        if(world !== 1) woth = wothTrue["World " + w];
 
         for(let i in woth) {
             if(woth_trans.hasOwnProperty(i)) {
@@ -483,7 +493,7 @@ class SpoilerParser {
             if(settings["parse.starting_items"]) parseStartingItems(data["starting_items"], world);
             if(settings["parse.item_association"]) parseLocations(data["locations"], world);
             if(settings["parse.woth_hints"]) parseWothLocation(data[":woth_locations"], world);
-            parseEntrances(data["entrances"], world, settings["parse.entro_dungeons"], settings["parse.entro_indoors"], false/*settings["parse.entro_overworld"]*/);
+            parseEntrances(data["entrances"], world, settings["parse.entro_dungeons"], settings["parse.entro_grottos"], settings["parse.entro_indoors"], false/*settings["parse.entro_overworld"]*/);
             if(settings["parse.shops"]) parseShops(data["locations"], world);
             //if(settings["parse.gossip_stones"]) parseStones(data["gossip_stones"], world);
             if(settings["parse.barren"]) parseBarren(data[":barren_regions"], world);
