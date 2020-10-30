@@ -126,7 +126,8 @@ const TPL_MNU_CTX = new Template(`
         <div id="menu-check" class="item">Check All</div>
         <div id="menu-uncheck" class="item">Uncheck All</div>
         <div class="splitter"></div>
-        <div id="menu-associate" class="item">Set Entrance</div>
+        <div id="menu-associate" class="item">Bind Entrance</div>
+        <div id="menu-deassociate" class="item">Unbind Entrance</div>
         <div class="splitter"></div>
         <div id="menu-setwoth" class="item">Set WOTH</div>
         <div id="menu-setbarren" class="item">Set Barren</div>
@@ -236,8 +237,8 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
                 bound.add(exits[key]);
             }
             // add options
-            const access = EXIT.get(this);
-            const exit = FileData.get(`world/exit/${access}`);
+            const exit = EXIT.get(this);
+            const exitEntry = ExitRegistry.get(exit);
             const entrances = FileData.get("world/exit");
             const selectEl = MNU_EXT.get(this).shadowRoot.getElementById("select");
             selectEl.value = this.value;
@@ -251,7 +252,8 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
             selectEl.append(empty);
             for (const key in entrances) {
                 const value = entrances[key];
-                if (value.type == exit.type && !bound.has(value.target)) {
+                const entranceEntry = ExitRegistry.get(key);
+                if (entranceEntry.getType() == exitEntry.getType() && !bound.has(value.target) && entranceEntry.active()) {
                     const opt = document.createElement('emc-option');
                     opt.value = value.target;
                     opt.innerHTML = Language.translate(value.target);
@@ -264,29 +266,11 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
             event.preventDefault();
             return false;
         });
-        mnu_ctx.shadowRoot.getElementById("menu-setwoth").addEventListener("click", event => {
-            const area = AREA.get(this);
-            const item = event.detail;
-            this.item = item;
-            StateStorage.writeExtra("area_hint", area, "woth");
-            event.preventDefault();
-            return false;
-        });
-        mnu_ctx.shadowRoot.getElementById("menu-setbarren").addEventListener("click", event => {
-            const area = AREA.get(this);
-            const item = event.detail;
-            this.item = item;
-            StateStorage.writeExtra("area_hint", area, "barren");
-            event.preventDefault();
-            return false;
-        });
-        mnu_ctx.shadowRoot.getElementById("menu-clearhint").addEventListener("click", event => {
-            const area = AREA.get(this);
-            const item = event.detail;
-            this.item = item;
-            StateStorage.writeExtra("area_hint", area, "");
-            event.preventDefault();
-            return false;
+        mnu_ctx.shadowRoot.getElementById("menu-deassociate").addEventListener("click", event => {
+            let exit = EXIT.get(this);
+            if (exit != "") {
+                StateStorage.writeExtra("exits", exit, "");
+            }
         });
 
         /* mouse events */

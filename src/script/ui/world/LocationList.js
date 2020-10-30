@@ -106,6 +106,13 @@ const TPL = new Template(`
         :host([ref="overworld"]) #back {
             display: none;
         }
+        #back,
+        #vanilla,
+        #masterquest,
+        #list > * {
+            border-bottom: solid 1px var(--list-border-bottom-color, #000000);
+            border-top: solid 1px var(--list-border-top-color, #000000);
+        }
     </style>
     <div id="title">
         <div id="title-text">${Language.translate("hyrule")}</div>
@@ -154,7 +161,12 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
             this.ref = event.data.name;
         });
         this.registerGlobal(["location_chest", "location_skulltula", "location_gossipstone", "item", "logic"], event => {
-            this.updateHeader();
+            const dType = this.shadowRoot.getElementById("location-version").value;
+            if (dType == "n") {
+                this.refresh();
+            } else {
+                this.updateHeader();
+            }
         });
         this.registerGlobal(["state", "settings", "randomizer_options", "filter"], event => {
             this.refresh();
@@ -233,30 +245,30 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
 
     refresh() {
         // TODO do not use specialized code. make generic
-        let cnt = this.shadowRoot.getElementById("list");
+        const cnt = this.shadowRoot.getElementById("list");
         let dType = this.shadowRoot.getElementById("location-version").value;
-        let btn_vanilla = this.shadowRoot.getElementById('vanilla');
-        let btn_masterquest = this.shadowRoot.getElementById('masterquest');
+        const btn_vanilla = this.shadowRoot.getElementById('vanilla');
+        const btn_masterquest = this.shadowRoot.getElementById('masterquest');
         cnt.innerHTML = "";
-        let data = FileData.get(`world/${this.ref || "overworld"}`);
+        const data = FileData.get(`world/${this.ref || "overworld"}`);
         if (!!data) {
             if (data.lists.mq == null) {
                 dType = "v";
             }
             if (dType == "n") {
-                let data_v = data.lists.v;
-                let data_m = data.lists.mq;
-                let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
-                let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
+                const data_v = data.lists.v;
+                const data_m = data.lists.mq;
+                const res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
+                const res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 btn_vanilla.className = VALUE_STATES[res_v.value];
                 btn_masterquest.className = VALUE_STATES[res_m.value];
             } else {
                 btn_vanilla.className = "hidden";
                 btn_masterquest.className = "hidden";
                 data.lists[dType].forEach(record => {
-                    let loc = MarkerRegistry.get(`${record.category}/${record.id}`);
+                    const loc = MarkerRegistry.get(`${record.category}/${record.id}`);
                     if (!!loc && loc.visible()) {
-                        let el = loc.listItem;
+                        const el = loc.listItem;
                         cnt.append(el);
                     }
                 });
