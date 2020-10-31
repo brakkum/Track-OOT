@@ -38,7 +38,7 @@ function applyEntranceChanges(changes, edgeThere, edgeBack) {
             changes.push({source: `${reroute}[adult]`, target: `${entrance}[adult]`, reroute: `${source}[adult]`});
             exit_binding[edgeThere] = edgeBack;
             exit_binding[edgeBack] = edgeThere;
-            StateStorage.writeExtra("exits", edgeThere, edgeBack);
+            StateStorage.writeExtra("exits", edgeBack, edgeThere);
         } else {
             if (!!exit_binding[edgeThere]) {
                 StateStorage.writeExtra("exits", exit_binding[edgeThere], "");
