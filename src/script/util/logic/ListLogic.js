@@ -1,4 +1,5 @@
 import FileData from "/emcJS/storage/FileData.js";
+import Logger from "/emcJS/util/Logger.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import Logic from "/script/util/logic/Logic.js";
 import MarkerRegistry from "/script/util/world/MarkerRegistry.js";
@@ -52,7 +53,7 @@ class ListLogic {
                         res.reachable += reachable;
                     }
                 } else {
-                    console.error("unknown entry in ListLogic");
+                    Logger.error((new Error(`unknown category "${category}" for entry "${id}"`)), "ListLogic");
                 }
             }
         }

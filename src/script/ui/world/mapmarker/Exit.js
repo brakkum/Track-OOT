@@ -1,6 +1,7 @@
 import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
+import Logger from "/emcJS/util/Logger.js";
 import "/emcJS/ui/Tooltip.js";
 import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
@@ -152,6 +153,37 @@ const TPL_MNU_EXT = new Template(`
     </emc-contextmenu>
 `);
 
+function setAllListEntries(list, value = true) {
+    if (!!list && Array.isArray(list)) {
+        for (let entry of list) {
+            const category = entry.category;
+            const id = entry.id;
+            if (category == "location") {
+                StateStorage.write(`${category}/${id}`, value);
+            } else if (category == "subarea") {
+                const subarea = FileData.get(`world/subarea/${id}/list`);
+                setAllListEntries(subarea, value);
+            } else if (category == "subexit") {
+                const subexit = FileData.get(`world/marker/subexit/${id}`);
+                const bound = StateStorage.readExtra("exits", subexit.access);
+                if (!bound) {
+                    continue;
+                }
+                let entrance = FileData.get(`world/exit/${bound}`);
+                if (entrance == null) {
+                    entrance = FileData.get(`world/exit/${bound.split(" -> ").reverse().join(" -> ")}`)
+                }
+                if (entrance != null) {
+                    const subarea = FileData.get(`world/${entrance.area}/list`);
+                    setAllListEntries(subarea, value);
+                }
+            } else {
+                Logger.error((new Error(`unknown category "${category}" for entry "${id}"`)), "Area");
+            }
+        }
+    }
+}
+
 const VALUE_STATES = [
     "opened",
     "unavailable",
@@ -201,33 +233,19 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-check").addEventListener("click", event => {
-            let area = AREA.get(this);
-            let data = FileData.get(`world/${area}/lists`);
-            if (data.v != null) {
-                for (let loc of data.v) {
-                    StateStorage.write(loc.id, true);
-                }
-            }
-            if (data.mq != null) {
-                for (let loc of data.mq) {
-                    StateStorage.write(loc.id, true);
-                }
+            const area = AREA.get(this);
+            const data = FileData.get(`world/${area}/lists`);
+            for (const type in data) {
+                setAllListEntries(data[type], true);
             }
             event.preventDefault();
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-uncheck").addEventListener("click", event => {
-            let area = AREA.get(this);
-            let data = FileData.get(`world/${area}/lists`);
-            if (data.v != null) {
-                for (let loc of data.v) {
-                    StateStorage.write(loc.id, false);
-                }
-            }
-            if (data.mq != null) {
-                for (let loc of data.mq) {
-                    StateStorage.write(loc.id, false);
-                }
+            const area = AREA.get(this);
+            const data = FileData.get(`world/${area}/lists`);
+            for (const type in data) {
+                setAllListEntries(data[type], false);
             }
             event.preventDefault();
             return false;

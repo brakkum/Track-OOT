@@ -147,6 +147,37 @@ const TPL_MNU_EXT = new Template(`
     </emc-contextmenu>
 `);
 
+function setAllListEntries(list, value = true) {
+    if (!!list && Array.isArray(list)) {
+        for (let entry of list) {
+            const category = entry.category;
+            const id = entry.id;
+            if (category == "location") {
+                StateStorage.write(`${category}/${id}`, value);
+            } else if (category == "subarea") {
+                const subarea = FileData.get(`world/subarea/${id}/list`);
+                setAllListEntries(subarea, value);
+            } else if (category == "subexit") {
+                const subexit = FileData.get(`world/marker/subexit/${id}`);
+                const bound = StateStorage.readExtra("exits", subexit.access);
+                if (!bound) {
+                    continue;
+                }
+                let entrance = FileData.get(`world/exit/${bound}`);
+                if (entrance == null) {
+                    entrance = FileData.get(`world/exit/${bound.split(" -> ").reverse().join(" -> ")}`)
+                }
+                if (entrance != null) {
+                    const subarea = FileData.get(`world/${entrance.area}/list`);
+                    setAllListEntries(subarea, value);
+                }
+            } else {
+                Logger.error((new Error(`unknown category "${category}" for entry "${id}"`)), "Area");
+            }
+        }
+    }
+}
+
 const VALUE_STATES = [
     "opened",
     "unavailable",
@@ -199,9 +230,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
             let area = AREA.get(this);
             const data = FileData.get(`world/${area}/list`);
             if (data != null) {
-                for (const loc of data) {
-                    StateStorage.write(`${loc.category}/${loc.id}`, true);
-                }
+                setAllListEntries(data, true);
             }
             event.preventDefault();
             return false;
@@ -210,9 +239,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
             let area = AREA.get(this);
             const data = FileData.get(`world/${area}/list`);
             if (data != null) {
-                for (const loc of data) {
-                    StateStorage.write(`${loc.category}/${loc.id}`, false);
-                }
+                setAllListEntries(data, false);
             }
             event.preventDefault();
             return false;
