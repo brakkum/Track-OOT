@@ -429,6 +429,7 @@ function parseBarren(barrenTrue, world) {
 
 function parseLocations(locationsTrue, world) {
     let location_trans = trans["locations"];
+    let location_hearts_mq = location_trans["MQ"];
     let item_trans = trans["itemList"];
     let locations = locationsTrue;
 
@@ -450,6 +451,9 @@ function parseLocations(locationsTrue, world) {
 
                     } else {
                         if(player === w) loca["location/" + location_trans[i]] = item_trans[v];
+                        if(location_hearts_mq.hasOwnProperty(i)) {
+                            if(player === w) loca["location/" + location_hearts_mq[i]] = item_trans[v];
+                        }
                     }
                 }
             } else {
