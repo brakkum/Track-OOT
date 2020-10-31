@@ -1,21 +1,19 @@
 import LogicCompiler from "/emcJS/util/logic/Compiler.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import StateStorage from "/script/storage/StateStorage.js";
+import WorldEntry from "/script/util/world/WorldEntry.js";
 
 function valueGetter(key) {
     return this.get(key);
 }
 
-const ACCESS = new WeakMap();
-const TYPE = new WeakMap();
 const ACTIVE = new WeakMap();
 
-export default class ExitEntry {
+export default class ExitEntry extends WorldEntry {
 
     constructor(ref, data) {
+        super(ref, data);
         let active_logic = null;
-        ACCESS.set(this, data.access);
-        TYPE.set(this, data.type);
 
         /* LOGIC */
         if (typeof data.active == "object") {
@@ -45,11 +43,7 @@ export default class ExitEntry {
     }
 
     access() {
-        return ACCESS.get(this);
-    }
-
-    getType() {
-        return TYPE.get(this);
+        return this.getAccess();
     }
 
 }

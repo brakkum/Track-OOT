@@ -2,6 +2,7 @@ import LogicCompiler from "/emcJS/util/logic/Compiler.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import FilterStorage from "/script/storage/FilterStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
+import WorldEntry from "/script/util/world/WorldEntry.js";
 
 import ListArea from "/script/ui/world/listitems/Area.js";
 import ListSubArea from "/script/ui/world/listitems/SubArea.js";
@@ -16,15 +17,6 @@ import MapExit from "/script/ui/world/mapmarker/Exit.js";
 import MapSubExit from "/script/ui/world/mapmarker/SubExit.js";
 import MapLocation from "/script/ui/world/mapmarker/Location.js";
 import "/script/ui/world/mapmarker/Gossipstone.js";
-
-const REF = new WeakMap();
-const ACCESS = new WeakMap();
-const CATEGORY = new WeakMap();
-const TYPE = new WeakMap();
-const VISIBLE = new WeakMap();
-const FILTER = new WeakMap();
-const LIST_ITEMS = new WeakMap();
-const MAP_MARKERS = new WeakMap();
 
 function valueGetter(key) {
     return this.get(key);
@@ -41,7 +33,7 @@ function mapToObj(map) {
 function createListItem(category, instance) {
     let res = null;
     const values = FILTER.get(instance);
-    const type = TYPE.get(instance);
+    const type = instance.getType();
     if (category == "area" && type != "") {
         res = new ListArea();
     } else if (category == "subarea") {
@@ -54,15 +46,15 @@ function createListItem(category, instance) {
         res = ListLocation.createType(type);
     }
     res.setFilterData(mapToObj(values));
-    res.access = ACCESS.get(instance);
-    res.ref = REF.get(instance);
+    res.access = instance.getAccess();
+    res.ref = instance.getRef();
     return res;
 }
 
 function createMapItem(category, instance) {
     let res = null;
     const values = FILTER.get(instance);
-    const type = TYPE.get(instance);
+    const type = instance.getType();
     if (category == "area" && type != "") {
         res = new MapArea();
     } else if (category == "subarea") {
@@ -82,23 +74,27 @@ function createMapItem(category, instance) {
             res.dataset.mode = "filter.chests";
         }
     }
-    res.access = ACCESS.get(instance);
-    res.ref = REF.get(instance);
+    res.access = instance.getAccess();
+    res.ref = instance.getRef();
     res.setFilterData(mapToObj(values));
     return res;
 }
 
-export default class MarkerEntry {
+const CATEGORY = new WeakMap();
+const VISIBLE = new WeakMap();
+const FILTER = new WeakMap();
+const LIST_ITEMS = new WeakMap();
+const MAP_MARKERS = new WeakMap();
+
+export default class MarkerEntry extends WorldEntry {
 
     constructor(ref, category, data) {
+        super(ref, data);
         let visible_logic = null;
         const filter_logics = new Map();
         const filter_values = new Map();
-        REF.set(this, ref);
-        ACCESS.set(this, data.access);
         FILTER.set(this, filter_values);
         CATEGORY.set(this, category);
-        TYPE.set(this, data.type);
 
         const stored_data = new Map(Object.entries(StateStorage.getAll()));
 
@@ -155,10 +151,6 @@ export default class MarkerEntry {
         return visible && this.filtered();
     }
 
-    access() {
-        return ACCESS.get(this);
-    }
-
     filtered() {
         const activeFilter = FilterStorage.getAll();
         const values = FILTER.get(this);
@@ -172,6 +164,10 @@ export default class MarkerEntry {
             }
         }
         return true;
+    }
+
+    access() {
+        return this.getAccess();
     }
 
     get listItem() {
