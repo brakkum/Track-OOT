@@ -93,13 +93,27 @@ window.onbeforeunload = function() {
 async function init() {
 
     const [
+        LogicCaller,
+        AugmentExits,
+        AugmentCustomLogic
+    ] = await $import.module([
+        "/script/util/logic/LogicCaller.js",
+        "/script/util/logic/AugmentExits.js",
+        "/script/util/logic/AugmentCustomLogic.js"
+    ]);
+
+    updateLoadingMessage("build logic data...");
+    await AugmentExits.init();
+    await AugmentCustomLogic.init();
+    await LogicCaller.init();
+
+    updateLoadingMessage("load visuals...");
+    const [
         EventBus,
         Logger,
         TrackerSettingsWindow,
         RandomizerOptionsWindow,
-        SpoilerLogWindow,
-        AugmentExits,
-        AugmentCustomLogic,
+        SpoilerLogWindow
     ] = await $import.module([
         // consts
         "/emcJS/util/events/EventBus.js",
@@ -107,8 +121,6 @@ async function init() {
         "/script/ui/TrackerSettingsWindow.js",
         "/script/ui/RandomizerOptionsWindow.js",
         "/script/ui/SpoilerLogWindow.js",
-        "/script/util/logic/AugmentExits.js",
-        "/script/util/logic/AugmentCustomLogic.js",
         // untracked
         "/emcJS/ui/TextEditor.js",
         "/emcJS/ui/LogScreen.js",
@@ -175,13 +187,6 @@ async function init() {
         "/script/ui/multiplayer/Multiplayer.js",
         "/script/ui/LayoutContainer.js"
     ]);
-
-    updateLoadingMessage("build logic data...");
-
-    const [LogicCaller] = await $import.module(["/script/util/logic/LogicCaller.js"]);
-    await LogicCaller.init();
-    await AugmentExits.init();
-    await AugmentCustomLogic.init();
 
     updateLoadingMessage("wake up...");
     let spl = document.getElementById("splash");
