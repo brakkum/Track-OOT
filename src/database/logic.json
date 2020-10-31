@@ -381,7 +381,7 @@
             }
         },
         "region.spirit_temple_entrance[child]": {
-            "region.desert_colossus[child]": {
+            "region.desert_colossus_from_spirit_lobby[child]": {
                 "type": "true"
             },
             "region.spirit_temple_gateway[child]": {
@@ -389,7 +389,7 @@
             }
         },
         "region.spirit_temple_entrance[adult]": {
-            "region.desert_colossus[adult]": {
+            "region.desert_colossus_from_spirit_lobby[adult]": {
                 "type": "true"
             },
             "region.spirit_temple_gateway[adult]": {
@@ -40597,7 +40597,7 @@
             }
         },
         "region.dmc_great_fairy_fountain[child]": {
-            "region.dmc_lower_local[child]": {
+            "region.dmc_great_fairy_fountain_entrance[child]": {
                 "type": "true"
             },
             "logic.location.mountain.c_crater_fairy": {
@@ -40619,7 +40619,7 @@
             }
         },
         "region.dmc_great_fairy_fountain[adult]": {
-            "region.dmc_lower_local[adult]": {
+            "region.dmc_great_fairy_fountain_entrance[adult]": {
                 "type": "true"
             },
             "logic.location.mountain.c_crater_fairy": {
@@ -46586,7 +46586,7 @@
             }
         },
         "region.dmc_upper_grotto[child]": {
-            "region.dmc_upper_local[child]": {
+            "region.dmc_upper_grotto_entrance[child]": {
                 "type": "true"
             },
             "logic.location.mountain.c_crater_grotto": {
@@ -46718,7 +46718,7 @@
             }
         },
         "region.dmc_upper_grotto[adult]": {
-            "region.dmc_upper_local[adult]": {
+            "region.dmc_upper_grotto_entrance[adult]": {
                 "type": "true"
             },
             "logic.location.mountain.c_crater_grotto": {
@@ -46824,7 +46824,7 @@
             }
         },
         "region.dmc_hammer_grotto[child]": {
-            "region.dmc_lower_local[child]": {
+            "region.dmc_hammer_grotto_entrance[child]": {
                 "type": "true"
             },
             "logic.location.mountain.c_crater_grotto_salesman_1": {
@@ -46880,7 +46880,7 @@
             }
         },
         "region.dmc_hammer_grotto[adult]": {
-            "region.dmc_lower_local[adult]": {
+            "region.dmc_hammer_grotto_entrance[adult]": {
                 "type": "true"
             },
             "logic.location.mountain.c_crater_grotto_salesman_1": {
@@ -53219,7 +53219,7 @@
             }
         },
         "region.spirit_temple_lobby[child]": {
-            "region.desert_colossus_from_spirit_lobby[child]": {
+            "region.spirit_temple_gateway[child]": {
                 "type": "true"
             },
             "region.child_spirit_temple[child]": {
@@ -53228,7 +53228,7 @@
             }
         },
         "region.spirit_temple_lobby[adult]": {
-            "region.desert_colossus_from_spirit_lobby[adult]": {
+            "region.spirit_temple_gateway[adult]": {
                 "type": "true"
             },
             "region.early_adult_spirit_temple[adult]": {

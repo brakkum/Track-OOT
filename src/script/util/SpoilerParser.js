@@ -2,7 +2,6 @@ import StateStorage from "/script/storage/StateStorage.js";
 import FileData from "/emcJS/storage/FileData.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 
-let trans;
 let options = {};
 let extra = {};
 let areahint = {};
@@ -24,7 +23,7 @@ function arrayActivator(world) {
     }
 }
 
-function parseSetting(setting, world) {
+function parseSetting(setting, world, trans) {
     let setting_trans = trans["setting"];
     for(let i in setting) {
         let v = setting[i];
@@ -53,7 +52,7 @@ function parseSetting(setting, world) {
     }
 }
 
-function parseStartingItems(itemsTrue, world) {
+function parseStartingItems(itemsTrue, world, trans) {
     let starting_trans = trans["starting_items"];
     let items = itemsTrue;
 
@@ -84,7 +83,7 @@ function parseStartingItems(itemsTrue, world) {
     }
 }
 
-function parseDungeons(dungeonsTrue, locationsTrue, world, dt, dr) {
+function parseDungeons(dungeonsTrue, locationsTrue, world, dt, dr, trans) {
     let dungeon_trans = trans["dungeons"];
     let location_trans = trans["dungeonReward"]
     let item_trans = trans["itemList"]
@@ -135,7 +134,7 @@ function parseDungeons(dungeonsTrue, locationsTrue, world, dt, dr) {
     }
 }
 
-function parseTrials(trialsTrue, world) {
+function parseTrials(trialsTrue, world, trans) {
     let trial_trans = trans["trials"];
     let trials = trialsTrue;
 
@@ -159,7 +158,7 @@ function parseTrials(trialsTrue, world) {
     }
 }
 
-function parseEntrances(entrancesTrue, world, dungeon, grottos, indoors, overworld) {
+function parseEntrances(entrancesTrue, world, dungeon, grottos, indoors, overworld, trans) {
     let entrance_trans  = trans["entrances"]["entrances"];
     let exit_trans = trans["entrances"]["exits"];
     let entro_dungeon = entrance_trans["dungeons"];
@@ -233,9 +232,9 @@ function parseEntrances(entrancesTrue, world, dungeon, grottos, indoors, overwor
     }
 }
 
-function parseShops(shopsTrue, world) {
-    let shop_trans = new Set(trans["shops"]);
-    let item_trans = trans["itemList"];
+function parseShops(shopsTrue, world, trans) {
+    const shop_trans = new Set(trans["shops"]);
+    const item_trans = trans["itemList"];
     let shops = shopsTrue
 
     for(let w = 1; w <= world; w++) {
@@ -279,29 +278,27 @@ function parseShops(shopsTrue, world) {
             let v = shops[i]
             if(shop_trans.has(i)) {
                 let item = item_trans[v["item"]];
-                if(item === undefined) item = "item.bad_item";
                 let price = 0;
-                let player;
+                let player = 0;
                 let placement = 0;
                 if(Number.isInteger(v["price"]) && v["price"] <= 999) price = v["price"]
-                if(item === undefined) price = 999;
                 if(Number.isInteger(v["player"]) && v["player"] <= 100) player = v["player"]
                 if(item !== undefined) {
                     if(i.endsWith("1")) {
-                        placement = 2;
+                        placement = 6;
                     }
                     if(i.endsWith("2")) {
-                        placement = 3;
+                        placement = 2;
 
                     }
                     if(i.endsWith("3")) {
-                        placement = 6;
-                    }
-                    if(i.endsWith("4")) {
                         placement = 7;
                     }
+                    if(i.endsWith("4")) {
+                        placement = 3;
+                    }
                     if(i.endsWith("5")) {
-                        placement = 0;
+                        placement = 5;
                     }
                     if(i.endsWith("6")) {
                         placement = 1;
@@ -310,7 +307,7 @@ function parseShops(shopsTrue, world) {
                         placement = 4
                     }
                     if(i.endsWith("8")) {
-                        placement = 5;
+                        placement = 0;
                     }
                     if(i.startsWith("Market Bazaar")|| i.startsWith("Castle Town Bazaar")) {
                         marketB[placement] = {
@@ -402,7 +399,7 @@ function parseShops(shopsTrue, world) {
     }
 }
 
-function parseBarren(barrenTrue, world) {
+function parseBarren(barrenTrue, world, trans) {
     let barren_trans = trans["barren"];
     let castle = 0;
     let barren = barrenTrue
@@ -427,10 +424,10 @@ function parseBarren(barrenTrue, world) {
     }
 }
 
-function parseLocations(locationsTrue, world) {
-    let location_trans = trans["locations"];
-    let location_hearts_mq = location_trans["MQ"];
-    let item_trans = trans["itemList"];
+function parseLocations(locationsTrue, world, trans) {
+    const location_trans = trans["locations"];
+    const location_hearts_mq = location_trans["MQ"];
+    const item_trans = trans["itemList"];
     let locations = locationsTrue;
 
     for(let w = 1; w <= world; w++) {
@@ -464,7 +461,7 @@ function parseLocations(locationsTrue, world) {
     }
 }
 
-function parseWothLocation(wothTrue, world) {
+function parseWothLocation(wothTrue, world, trans) {
     let woth_trans = trans["woth"];
     let woth = wothTrue
 
@@ -485,30 +482,30 @@ function parseWothLocation(wothTrue, world) {
 class SpoilerParser {
 
     parse(spoiler, settings) {
-        let data = spoiler;
-        trans = FileData.get("options_trans");
+        const data = spoiler;
+        const trans = FileData.get("options_trans");
         let multiWorld = settings["parse.multiworld"];
 
-        let version = versionChecker(data[":version"]);
+        const version = versionChecker(data[":version"]);
 
         if(version === 0) return console.log("Fail State: Not a valid OOTR Spoiler log");
         if(version >= 1) {
             let world = 0;
-            if(!isNaN(data["settings"]["world_count"])) world = data["settings"]["world_count"];
+            if(!Number.isNaN(data["settings"]["world_count"])) world = data["settings"]["world_count"];
             if(world === 1) multiWorld = world;
             arrayActivator(world);
 
-            if(settings["parse.settings"]) parseSetting(data["settings"], multiWorld)
-            if(settings["parse.starting_items"]) parseStartingItems(data["starting_items"], world);
-            if(settings["parse.item_association"]) parseLocations(data["locations"], world);
-            if(settings["parse.woth_hints"]) parseWothLocation(data[":woth_locations"], world);
-            parseEntrances(data["entrances"], world, settings["parse.entro_dungeons"], settings["parse.entro_grottos"], settings["parse.entro_indoors"], false/*settings["parse.entro_overworld"]*/);
-            if(settings["parse.shops"]) parseShops(data["locations"], world);
+            if(settings["parse.settings"]) parseSetting(data["settings"], multiWorld, trans)
+            if(settings["parse.starting_items"]) parseStartingItems(data["starting_items"], world, trans);
+            if(settings["parse.item_association"]) parseLocations(data["locations"], world, trans);
+            if(settings["parse.woth_hints"]) parseWothLocation(data[":woth_locations"], world, trans);
+            parseEntrances(data["entrances"], world, settings["parse.entro_dungeons"], settings["parse.entro_grottos"], settings["parse.entro_indoors"], false/*settings["parse.entro_overworld"]*/, trans);
+            if(settings["parse.shops"]) parseShops(data["locations"], world, trans);
             //if(settings["parse.gossip_stones"]) parseStones(data["gossip_stones"], world);
-            if(settings["parse.barren"]) parseBarren(data[":barren_regions"], world);
-            if(settings["parse.trials"]) parseTrials(data["trials"], world);
-            if(settings["parse.random_settings"]) parseSetting(data["randomized_settings"], multiWorld);
-            parseDungeons(data["dungeons"], data["locations"], world, settings["parse.dungeons"], settings["parse.dungeonReward"]);
+            if(settings["parse.barren"]) parseBarren(data[":barren_regions"], world, trans);
+            if(settings["parse.trials"]) parseTrials(data["trials"], world, trans);
+            if(settings["parse.random_settings"]) parseSetting(data["randomized_settings"], multiWorld, trans);
+            parseDungeons(data["dungeons"], data["locations"], world, settings["parse.dungeons"], settings["parse.dungeonReward"], trans);
 
             StateStorage.write(options[multiWorld]);
             StateStorage.writeAllExtra(extra[multiWorld]);

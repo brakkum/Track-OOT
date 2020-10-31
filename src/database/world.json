@@ -1477,12 +1477,6 @@
                         "category": "location"
                     },
                     {
-                        "id": "hyrule_field.castle_river_grotto",
-                        "x": 0,
-                        "y": 0,
-                        "category": "subexit"
-                    },
-                    {
                         "id": "hyrule_field.kakariko_grotto",
                         "x": 0,
                         "y": 0,
@@ -1514,6 +1508,12 @@
                     },
                     {
                         "id": "hyrule_field.castle_entrance_grotto",
+                        "x": 0,
+                        "y": 0,
+                        "category": "subexit"
+                    },
+                    {
+                        "id": "hyrule_field.fairy_grotto",
                         "x": 0,
                         "y": 0,
                         "category": "subexit"
@@ -2630,7 +2630,7 @@
                         "category": "location"
                     },
                     {
-                        "id": "mountain.mountain_fairy",
+                        "id": "mountain.fairy_fountain",
                         "x": 0,
                         "y": 0,
                         "category": "subexit"
@@ -2729,7 +2729,7 @@
                         "category": "subexit"
                     },
                     {
-                        "id": "crater.crater_bomb_grotto",
+                        "id": "crater.bomb_grotto",
                         "x": 0,
                         "y": 0,
                         "category": "subexit"
