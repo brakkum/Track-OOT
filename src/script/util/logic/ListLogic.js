@@ -45,7 +45,6 @@ class ListLogic {
                         entrance = FileData.get(`world/exit/${bound.split(" -> ").reverse().join(" -> ")}`)
                     }
                     if (entrance != null) {
-                        if(FileData.get(`world/${entrance.area}/list`) === null) console.log(entrance.area);
                         const subarea = FileData.get(`world/${entrance.area}/list`).filter(this.filterUnusedChecks);
                         const {done, unopened, reachable} = this.check(subarea);
                         res.done += done;
