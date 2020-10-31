@@ -57,14 +57,14 @@ const TPL = new Template(`
 
 const ALL_DUNGEONS = [
     'pocket',
-    'area.deku',
-    'area.dodongo',
-    'area.jabujabu',
-    'area.temple_forest',
-    'area.temple_fire',
-    'area.temple_shadow',
-    'area.temple_water',
-    'area.temple_spirit'
+    'area/deku',
+    'area/dodongo',
+    'area/jabujabu',
+    'area/temple_forest',
+    'area/temple_fire',
+    'area/temple_shadow',
+    'area/temple_water',
+    'area/temple_spirit'
 ];
 
 function getDisplayDungeon(reward, data) {
