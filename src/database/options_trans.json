@@ -9,11 +9,11 @@
             }
         },
         "open_kakariko": {
-            "name": "option.doors_open_mountain",
+            "name": "option.doors_open_kakariko",
             "values": {
-                "closed": "doors_open_mountain_closed",
-                "zelda": "doors_open_mountain_zelda",
-                "open": "doors_open_mountain_open"
+                "closed": "doors_open_kakariko_closed",
+                "zelda": "doors_open_kakariko_zelda",
+                "open": "doors_open_kakariko_open"
             }
         },
         "open_door_of_time": {
@@ -119,7 +119,8 @@
                 "lacs_vanilla": "light_arrow_cutscene_vanilla",
                 "lacs_medallions": "light_arrow_cutscene_medallions",
                 "lacs_stones": "light_arrow_cutscene_stones",
-                "lacs_dungeons": "light_arrow_cutscene_dungeons"
+                "lacs_dungeons": "light_arrow_cutscene_dungeons",
+                "lacs_tokens": "light_arrow_cutscene_skulltulas"
             }
         },
         "logic_earliest_adult_trade": {
@@ -146,7 +147,7 @@
             }
         },
         "shuffle_interior_entrances": {
-            "name": "option.entrance_shuffle_interiors",
+            "name": "option.entrance_shuffle_interior",
             "values": {
                 "off": "entrance_shuffle_off",
                 "simple": "entrance_shuffle_simple",
@@ -173,6 +174,9 @@
                 "true": true,
                 "false": false
             }
+        },
+        "lacs_skulltulas": {
+            "name": "option.lacs_skulltulas"
         },
         "lacs_stones": {
             "name": "option.stone_count_lacs",
@@ -206,6 +210,9 @@
                 "8": 8,
                 "9": 9
             }
+        },
+        "bridge_skulltulas": {
+            "name": "option.ganon_castle_skulltulas"
         },
         "bridge_stones": {
             "name": "option.stone_count_bridge",
@@ -417,6 +424,12 @@
             }
         },
         "Bottle with Letter": {
+            "name": "item.zora_letter",
+            "values": {
+                "1": 1
+            }
+        },
+        "Rutos Letter": {
             "name": "item.zora_letter",
             "values": {
                 "1": 1
@@ -1250,7 +1263,7 @@
             },
             "dungeons": {
                 "Spirit Temple Lobby": "region.spirit_temple_gateway -> region.spirit_temple_entrance",
-                "Dodongos Cavern Beginning": "region.dodongos_cavern_gateway -> region.dodongos_cavern_entryway",
+                "Dodongos Cavern Beginning": "region.dodongos_cavern_gateway -> region.dodongos_cavern_entrance",
                 "Fire Temple Lower": "region.fire_temple_gateway -> region.fire_temple_entrance",
                 "Gerudo Training Grounds Lobby": "region.gerudo_training_grounds_gateway -> region.gerudo_training_grounds_entrance",
                 "Bottom of the Well": "region.bottom_of_the_well_gateway -> region.bottom_of_the_well_entrance",
@@ -2517,6 +2530,7 @@
         "Bottle with Bugs": "item.bugs",
         "Bottle with Green Potion": "item.potion_green",
         "Bottle with Letter": "item.zora_letter",
+        "Rutos Letter": "item.zora_letter",
         "Bow": "item.bow",
         "Deku Nut Capacity": "item.nut",
         "Deku Nuts (10)": "item.refill_item",
@@ -3730,7 +3744,26 @@
         "Twinrova": "",
         "Ganondorf Hint": "",
         "Ganon": "",
-        "Links Pocket": ""
+        "Links Pocket": "",
+        "MQ": {
+            "Deku Tree Queen Gohma Heart": "deku_mq.c_gohma",
+            "Dodongos Cavern King Dodongo Heart": "dodongo_mq.c_dodongo",
+            "Jabu Jabus Belly Barinade Heart": "jabujabu_mq.c_barinade",
+            "Sheik in Ice Cavern": "ice_cavern_mq.c_sheik",
+            "Forest Temple Phantom Ganon Heart": "temple_forest_mq.c_phantomganon",
+            "Fire Temple Volvagia Heart": "temple_fire_mq.c_volvagia",
+            "Water Temple Morpha Heart": "temple_water_mq.c_morpha",
+            "Shadow Temple Bongo Bongo Heart": "temple_shadow_mq.c_bongobongo",
+            "Spirit Temple Twinrova Heart": "temple_spirit_mq.c_twinrova",
+            "Queen Gohma Heart": "deku_mq.c_gohma",
+            "King Dodongo Heart": "dodongo_mq.c_dodongo",
+            "Barinade Heart": "jabujabu_mq.c_barinade",
+            "Phantom Ganon Heart": "temple_forest_mq.c_phantomganon",
+            "Volvagia Heart": "temple_fire_mq.c_volvagia",
+            "Morpha Heart": "temple_water_mq.c_morpha",
+            "Bongo Bongo Heart": "temple_shadow_mq.c_bongobongo",
+            "Twinrova Heart": "temple_spirit_mq.c_twinrova"
+        }
     },
     "shops": [
         "KF Shop Item 1",

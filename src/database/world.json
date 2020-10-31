@@ -6766,7 +6766,7 @@
         "region.hf_fairy_grotto_entrance -> region.hf_fairy_grotto": {
             "target": "region.hf_fairy_grotto -> region.hf_fairy_grotto_entrance",
             "type": "grotto",
-            "area": "subarea/hyrule_field.castle_river_grotto",
+            "area": "subarea/hyrule_field.fairy_grotto",
             "active": {
                 "type": "value",
                 "el": "option.shuffle_grottos"
@@ -8962,6 +8962,391 @@
                             "el": "option.shuffle_grottos"
                     }
                 },
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+
+            "hyrule_field.fairy_grotto": {
+                "type": "interior",
+                "access": "logic.subarea.hyrule_field.fairy_grotto",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "kokiri.sarias_house": {
+                "type": "interior",
+                "access": "logic.subarea.kokiri.sarias_house",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "kokiri.twins_house": {
+                "type": "interior",
+                "access": "logic.subarea.kokiri.twins_house",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "kokiri.know_it_all_house": {
+                "type": "interior",
+                "access": "logic.subarea.kokiri.know_it_all_house",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "kokiri.shop": {
+                "type": "interior",
+                "access": "logic.subarea.kokiri.shop",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "meadow.fairy_grotto": {
+                "type": "interior",
+                "access": "logic.subarea.meadow.fairy_grotto",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "castle_town.shop_mask": {
+                "type": "interior",
+                "access": "logic.subarea.castle_town.shop_mask",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "castle_town.shop_magic": {
+                "type": "interior",
+                "access": "logic.subarea.castle_town.shop_magic",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "castle_town.shop_bombchu": {
+                "type": "interior",
+                "access": "logic.subarea.castle_town.shop_bombchu",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "castle_town.back_house": {
+                "type": "interior",
+                "access": "logic.subarea.castle_town.back_house",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "castle_town.shop_bazaar": {
+                "type": "interior",
+                "access": "logic.subarea.castle_town.shop_bazaar",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "kakariko.carpenter_house": {
+                "type": "interior",
+                "access": "logic.subarea.kakariko.carpenter_house",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "kakariko.kakariko_witch": {
+                "type": "interior",
+                "access": "logic.subarea.kakariko.kakariko_witch",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "kakariko.shop_bazaar": {
+                "type": "interior",
+                "access": "logic.subarea.kakariko.shop_bazaar",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "kakariko.shop_magic": {
+                "type": "interior",
+                "access": "logic.subarea.kakariko.shop_magic",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "kakariko.shop_magic_back": {
+                "type": "interior",
+                "access": "logic.subarea.kakariko.shop_magic_back",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "graveyard.dampes_hut": {
+                "type": "interior",
+                "access": "logic.subarea.graveyard.dampes_hut",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "goron.shop": {
+                "type": "interior",
+                "access": "logic.subarea.goron.shop",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "river.bomb_grotto": {
+                "type": "interior",
+                "access": "logic.subarea.river.bomb_grotto",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "zoras.shop": {
+                "type": "interior",
+                "access": "logic.subarea.zoras.shop",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "zoras.storms_grotto": {
+                "type": "interior",
+                "access": "logic.subarea.zoras.storms_grotto",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "gerudo_valley.tend": {
+                "type": "interior",
+                "access": "logic.subarea.gerudo_valley.tend",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "gerudo_valley.octorock_grotto": {
+                "type": "interior",
+                "access": "logic.subarea.gerudo_valley.octorock_grotto",
+                "visible": false,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": true
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    }
+                },
+                "icon": "images/icons/interior.svg"
+            },
+            "gerudo.storms_grotto": {
+                "type": "interior",
+                "access": "logic.subarea.gerudo.storms_grotto",
+                "visible": false,
                 "filter": {
                     "filter.era": {
                         "child": true,
@@ -22273,7 +22658,7 @@
                 },
                 "icon": "images/icons/grotto.svg"
             },
-            "hyrule_field.castle_river_grotto": {
+            "hyrule_field.fairy_grotto": {
                 "type": "grotto",
                 "access": "region.hf_fairy_grotto_entrance -> region.hf_fairy_grotto",
                 "visible": {

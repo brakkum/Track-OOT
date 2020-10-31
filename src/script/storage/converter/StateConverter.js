@@ -8,5 +8,6 @@ import "./StateConverter5.js";
 import "./StateConverter6.js";
 import "./StateConverter7.js";
 import "./StateConverter8.js";
+import "./StateConverter9.js";
 
 StateConverter.offset = 0;

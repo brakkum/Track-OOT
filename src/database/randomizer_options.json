@@ -16,17 +16,6 @@
                 "adult"
             ]
         },
-        "option.light_arrow_cutscene": {
-            "type": "choice",
-            "default": "light_arrow_cutscene_vanilla",
-            "values": [
-                "light_arrow_cutscene_vanilla",
-                "light_arrow_cutscene_stones",
-                "light_arrow_cutscene_medallions",
-                "light_arrow_cutscene_dungeons",
-                "light_arrow_cutscene_skulltulas"
-            ]
-        },
         "option.consider_buyable": {
             "type": "check",
             "default": false
@@ -47,45 +36,6 @@
             "type": "check",
             "default": true
         },
-        "option.keysanity_small_old": {
-            "type": "hidden",
-            "default": "keysanity_small_ignore",
-            "values": [
-                "keysanity_small_ignore",
-                "keysanity_small_track",
-                "keysanity_small_keysanity"
-            ]
-        },
-        "option.keysanity_boss_old": {
-            "type": "hidden",
-            "default": "keysanity_boss_ignore",
-            "values": [
-                "keysanity_boss_ignore",
-                "keysanity_boss_track",
-                "keysanity_boss_keysanity"
-            ]
-        },
-        "option.shuffle_grottos": {
-            "type": "check",
-            "default": false
-        },
-        "option.shuffle_dungeons": {
-            "type": "check",
-            "default": false
-        },
-        "option.shuffle_overworld": {
-            "type": "hidden",
-            "default": false
-        },
-        "option.entrance_shuffle_interior": {
-            "type": "choice",
-            "default": "entrance_shuffle_off",
-            "values": [
-                "entrance_shuffle_off",
-                "entrance_shuffle_simple",
-                "entrance_shuffle_all"
-            ]
-        },
         "option.scrubsanity": {
             "type": "check",
             "default": false
@@ -96,11 +46,6 @@
         },
         "option.beansanity": {
             "type": "check",
-            "default": false
-        },
-        "option.skullsanity": {
-            "type": "hidden",
-            "old_type": "check",
             "default": false
         },
         "option.shuffleMediCarpet": {
@@ -116,9 +61,14 @@
                 "doors_open_forest_open"
             ]
         },
-        "option.doors_open_mountain": {
-            "type": "hidden",
-            "default": false
+        "option.doors_open_kakariko": {
+            "type": "choice",
+            "default": "doors_open_kakariko_closed",
+            "values": [
+                "doors_open_kakariko_closed",
+                "doors_open_kakariko_zelda",
+                "doors_open_kakariko_open"
+            ]
         },
         "option.doors_open_temple": {
             "type": "check",
@@ -142,67 +92,22 @@
                 "gerudo_fortress_open_open"
             ]
         },
-        "option.ganon_castle_open": {
+        "option.shuffle_grottos": {
+            "type": "check",
+            "default": false
+        },
+        "option.shuffle_dungeons": {
+            "type": "check",
+            "default": false
+        },
+        "option.entrance_shuffle_interior": {
             "type": "choice",
-            "default": "ganon_castle_open_default",
+            "default": "entrance_shuffle_off",
             "values": [
-                "ganon_castle_open_dungeon",
-                "ganon_castle_open_medallion",
-                "ganon_castle_open_stones",
-                "ganon_castle_open_skulltulas",
-                "ganon_castle_open_triforce",
-                "ganon_castle_open_default",
-                "ganon_castle_open_open"
+                "entrance_shuffle_off",
+                "entrance_shuffle_simple",
+                "entrance_shuffle_all"
             ]
-        },
-        "option.ganon_castle_skulltulas": {
-            "type": "number",
-            "default": 100,
-            "min": 0,
-            "max": 100
-        },
-        "option.lacs_skulltulas": {
-            "type": "number",
-            "default": 100,
-            "min": 0,
-            "max": 100
-        },
-
-        "option.stone_count_lacs": {
-            "type": "number",
-            "default": 3,
-            "min": 1,
-            "max": 3
-        },
-        "option.medallion_count_lacs": {
-            "type": "number",
-            "default": 6,
-            "min": 1,
-            "max": 6
-        },
-        "option.dungeon_count_lacs":  {
-            "type": "number",
-            "default": 9,
-            "min": 1,
-            "max": 9
-        },
-        "option.stone_count_bridge": {
-            "type": "number",
-            "default": 3,
-            "min": 1,
-            "max": 3
-        },
-        "option.medallion_count_bridge": {
-            "type": "number",
-            "default": 6,
-            "min": 1,
-            "max": 6
-        },
-        "option.dungeon_count_bridge": {
-            "type": "number",
-            "default": 9,
-            "min": 1,
-            "max": 9
         },
         "option.trade_sequence_start_item": {
             "type": "choice",
@@ -232,6 +137,112 @@
                 "item.claim"
             ]
         },
+
+        "option.keysanity_small_old": {
+            "type": "hidden",
+            "default": "keysanity_small_ignore",
+            "values": [
+                "keysanity_small_ignore",
+                "keysanity_small_track",
+                "keysanity_small_keysanity"
+            ]
+        },
+        "option.keysanity_boss_old": {
+            "type": "hidden",
+            "default": "keysanity_boss_ignore",
+            "values": [
+                "keysanity_boss_ignore",
+                "keysanity_boss_track",
+                "keysanity_boss_keysanity"
+            ]
+        },
+        "option.skullsanity": {
+            "type": "hidden",
+            "old_type": "check",
+            "default": false
+        },
+        "option.shuffle_overworld": {
+            "type": "hidden",
+            "default": false
+        }
+    },
+    "lacsAndGanon": {
+        "option.light_arrow_cutscene": {
+            "type": "choice",
+            "default": "light_arrow_cutscene_vanilla",
+            "values": [
+                "light_arrow_cutscene_vanilla",
+                "light_arrow_cutscene_stones",
+                "light_arrow_cutscene_medallions",
+                "light_arrow_cutscene_dungeons",
+                "light_arrow_cutscene_skulltulas"
+            ]
+        },
+        "option.lacs_skulltulas": {
+            "type": "number",
+            "default": 100,
+            "min": 0,
+            "max": 100
+        },
+        "option.stone_count_lacs": {
+            "type": "number",
+            "default": 3,
+            "min": 1,
+            "max": 3
+        },
+        "option.medallion_count_lacs": {
+            "type": "number",
+            "default": 6,
+            "min": 1,
+            "max": 6
+        },
+        "option.dungeon_count_lacs":  {
+            "type": "number",
+            "default": 9,
+            "min": 1,
+            "max": 9
+        },
+        "option.ganon_castle_open": {
+            "type": "choice",
+            "default": "ganon_castle_open_default",
+            "values": [
+                "ganon_castle_open_dungeon",
+                "ganon_castle_open_medallion",
+                "ganon_castle_open_stones",
+                "ganon_castle_open_skulltulas",
+                "ganon_castle_open_triforce",
+                "ganon_castle_open_default",
+                "ganon_castle_open_open"
+            ]
+        },
+        "option.ganon_castle_skulltulas": {
+            "type": "number",
+            "default": 100,
+            "min": 0,
+            "max": 100
+        },
+        "option.stone_count_bridge": {
+            "type": "number",
+            "default": 3,
+            "min": 1,
+            "max": 3
+        },
+        "option.medallion_count_bridge": {
+            "type": "number",
+            "default": 6,
+            "min": 1,
+            "max": 6
+        },
+        "option.dungeon_count_bridge": {
+            "type": "number",
+            "default": 9,
+            "min": 1,
+            "max": 9
+        },
+        "option.ganon_boss_door_open": {
+            "type": "check",
+            "default": false
+        },
         "trials": {
             "type": "list",
             "values": [
@@ -250,10 +261,6 @@
                 "option.light_trial",
                 "option.spirit_trial"
             ]
-        },
-        "option.ganon_boss_door_open": {
-            "type": "check",
-            "default": false
         }
     },
     "skips": {
