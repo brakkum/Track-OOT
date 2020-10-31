@@ -186,15 +186,10 @@ export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
         });
         mnu_ctx.shadowRoot.getElementById("menu-check").addEventListener("click", event => {
             let area = AREA.get(this);
-            let data = FileData.get(`world/${area}/lists`);
-            if (data.v != null) {
-                for (let loc of data.v) {
-                    StateStorage.write(loc.id, true);
-                }
-            }
-            if (data.mq != null) {
-                for (let loc of data.mq) {
-                    StateStorage.write(loc.id, true);
+            const data = FileData.get(`world/${area}/list`);
+            if (data != null) {
+                for (const loc of data) {
+                    StateStorage.write(`${loc.category}/${loc.id}`, true);
                 }
             }
             event.preventDefault();
@@ -202,15 +197,10 @@ export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
         });
         mnu_ctx.shadowRoot.getElementById("menu-uncheck").addEventListener("click", event => {
             let area = AREA.get(this);
-            let data = FileData.get(`world/${area}/lists`);
-            if (data.v != null) {
-                for (let loc of data.v) {
-                    StateStorage.write(loc.id, false);
-                }
-            }
-            if (data.mq != null) {
-                for (let loc of data.mq) {
-                    StateStorage.write(loc.id, false);
+            const data = FileData.get(`world/${area}/list`);
+            if (data != null) {
+                for (const loc of data) {
+                    StateStorage.write(`${loc.category}/${loc.id}`, false);
                 }
             }
             event.preventDefault();

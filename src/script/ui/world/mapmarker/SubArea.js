@@ -151,30 +151,20 @@ export default class MapSubArea extends EventBusSubsetMixin(HTMLElement) {
         MNU_CTX.set(this, mnu_ctx);
 
         mnu_ctx.shadowRoot.getElementById("menu-check").addEventListener("click", event => {
-            let data = FileData.get(`world/${this.ref}/lists`);
-            if (data.v != null) {
-                for (let loc of data.v) {
-                    StateStorage.write(loc.id, true);
-                }
-            }
-            if (data.mq != null) {
-                for (let loc of data.mq) {
-                    StateStorage.write(loc.id, true);
+            const data = FileData.get(`world/${this.ref}/list`);
+            if (data != null) {
+                for (const loc of data) {
+                    StateStorage.write(`${loc.category}/${loc.id}`, true);
                 }
             }
             event.preventDefault();
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-uncheck").addEventListener("click", event => {
-            let data = FileData.get(`world/${this.ref}/lists`);
-            if (data.v != null) {
-                for (let loc of data.v) {
-                    StateStorage.write(loc.id, false);
-                }
-            }
-            if (data.mq != null) {
-                for (let loc of data.mq) {
-                    StateStorage.write(loc.id, false);
+            const data = FileData.get(`world/${this.ref}/list`);
+            if (data != null) {
+                for (const loc of data) {
+                    StateStorage.write(`${loc.category}/${loc.id}`, false);
                 }
             }
             event.preventDefault();

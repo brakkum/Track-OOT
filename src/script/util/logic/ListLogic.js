@@ -20,7 +20,7 @@ class ListLogic {
                 let buffer = world[category][id];
                 if (category == "location") {
                     let access = buffer.access;
-                    if (!StateStorage.read(id, 0)) {
+                    if (!StateStorage.read(`${category}/${id}`, 0)) {
                         res.unopened++;
                         if (Logic.getValue(access)) {
                             res.reachable++;
@@ -28,15 +28,13 @@ class ListLogic {
                     } else {
                         res.done++;
                     }
-                }
-                if (category == "subarea") {
+                } else if (category == "subarea") {
                     const subarea = FileData.get(`world/subarea/${id}/list`).filter(this.filterUnusedChecks);
                     const {done, unopened, reachable} = this.check(subarea);
                     res.done += done;
                     res.unopened += unopened;
                     res.reachable += reachable;
-                }
-                if (category == "subexit") {
+                } else if (category == "subexit") {
                     const subexit = FileData.get(`world/marker/subexit/${id}`);
                     const bound = StateStorage.readExtra("exits", subexit.access);
                     if (!bound) {
@@ -53,6 +51,8 @@ class ListLogic {
                         res.unopened += unopened;
                         res.reachable += reachable;
                     }
+                } else {
+                    console.error("unknown entry in ListLogic");
                 }
             }
         }
