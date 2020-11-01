@@ -41767,92 +41767,6 @@
                         "type": "true"
                     }
                 ]
-            },
-            "event.king_zora_thawed": {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "filter.era",
-                            "value": "adult"
-                        }
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "mixin.can_become_adult[child]"
-                            },
-                            {
-                                "type": "value",
-                                "el": "item.bottle"
-                            },
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "at",
-                                                "node": "region.ganons_castle_water_trial[child]",
-                                                "el": {
-                                                    "type": "true"
-                                                }
-                                            },
-                                            {
-                                                "type": "at",
-                                                "node": "region.ganons_castle_water_trial[adult]",
-                                                "el": {
-                                                    "type": "true"
-                                                }
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "at",
-                                                "node": "region.ice_cavern_map_room[child]",
-                                                "el": {
-                                                    "type": "true"
-                                                }
-                                            },
-                                            {
-                                                "type": "at",
-                                                "node": "region.ice_cavern_map_room[adult]",
-                                                "el": {
-                                                    "type": "true"
-                                                }
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "value",
-                                                "el": "option.consider_buyable"
-                                            },
-                                            {
-                                                "type": "min",
-                                                "el": {
-                                                    "type": "value",
-                                                    "el": "item.wallet"
-                                                },
-                                                "value": 3
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
             }
         },
         "region.zoras_domain[adult]": {
@@ -42042,11 +41956,7 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.can_become_adult[adult]"
-                            },
-                            {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "el": "mixin.is_adult[adult]"
                             },
                             {
                                 "type": "or",
@@ -42056,16 +41966,18 @@
                                         "el": [
                                             {
                                                 "type": "at",
-                                                "node": "region.ganons_castle_water_trial[child]",
+                                                "node": "region.ganons_castle_water_trial_mq[child]",
                                                 "el": {
-                                                    "type": "true"
+                                                    "type": "value",
+                                                    "el": "item.bottle"
                                                 }
                                             },
                                             {
                                                 "type": "at",
-                                                "node": "region.ganons_castle_water_trial[adult]",
+                                                "node": "region.ganons_castle_water_trial_mq[adult]",
                                                 "el": {
-                                                    "type": "true"
+                                                    "type": "value",
+                                                    "el": "item.bottle"
                                                 }
                                             }
                                         ]
@@ -42075,16 +41987,60 @@
                                         "el": [
                                             {
                                                 "type": "at",
-                                                "node": "region.ice_cavern_map_room[child]",
+                                                "node": "region.ganons_castle_water_trial_right[child]",
                                                 "el": {
-                                                    "type": "true"
+                                                    "type": "value",
+                                                    "el": "item.bottle"
                                                 }
                                             },
                                             {
                                                 "type": "at",
-                                                "node": "region.ice_cavern_map_room[adult]",
+                                                "node": "region.ganons_castle_water_trial_right[adult]",
                                                 "el": {
-                                                    "type": "true"
+                                                    "type": "value",
+                                                    "el": "item.bottle"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "at",
+                                                "node": "region.gerudo_training_grounds_stalfos_room_mq[child]",
+                                                "el": {
+                                                    "type": "value",
+                                                    "el": "item.bottle"
+                                                }
+                                            },
+                                            {
+                                                "type": "at",
+                                                "node": "region.gerudo_training_grounds_stalfos_room_mq[adult]",
+                                                "el": {
+                                                    "type": "value",
+                                                    "el": "item.bottle"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "at",
+                                                "node": "region.ice_cavern[child]",
+                                                "el": {
+                                                    "type": "value",
+                                                    "el": "item.bottle"
+                                                }
+                                            },
+                                            {
+                                                "type": "at",
+                                                "node": "region.ice_cavern[adult]",
+                                                "el": {
+                                                    "type": "value",
+                                                    "el": "item.bottle"
                                                 }
                                             }
                                         ]
@@ -42102,7 +42058,7 @@
                                                     "type": "value",
                                                     "el": "item.wallet"
                                                 },
-                                                "value": 3
+                                                "value": 2
                                             }
                                         ]
                                     }
