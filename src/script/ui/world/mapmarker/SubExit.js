@@ -226,6 +226,9 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
             event.preventDefault();
             return false;
         });
+        mnu_ext_el.addEventListener("close", function() {
+            selectEl.resetSearch();
+        });
         mnu_ctx.shadowRoot.getElementById("menu-check").addEventListener("click", event => {
             let area = AREA.get(this);
             const data = FileData.get(`world/${area}/list`);
@@ -313,7 +316,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
         this.registerGlobal("state", event => {
             const exit = EXIT.get(this);
             const exitEntry = ExitRegistry.get(exit);
-            selectEl.readonly = exitEntry.active();
+            selectEl.readonly = !exitEntry.active();
             if (event.data.extra.exits != null && event.data.extra.exits[exit] != null) {
                 this.value = event.data.extra.exits[exit];
             } else {
@@ -323,7 +326,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
         this.registerGlobal("randomizer_options", event => {
             const exit = EXIT.get(this);
             const exitEntry = ExitRegistry.get(exit);
-            selectEl.readonly = exitEntry.active();
+            selectEl.readonly = !exitEntry.active();
             this.update();
         });
         this.registerGlobal("statechange_exits", event => {
