@@ -16607,23 +16607,6 @@
             "region.forest_temple_ne_outdoors[adult]": {
                 "type": "true"
             },
-            "region.forest_temple_falling_room[adult]": {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "value",
-                        "el": "skip.forest_scarecrow"
-                    },
-                    {
-                        "type": "mixin",
-                        "el": "function.can_use(item.boots_hover)[adult]"
-                    },
-                    {
-                        "type": "mixin",
-                        "el": "function.can_use(mixin.scarecrow)[adult]"
-                    }
-                ]
-            },
             "logic.location.temple_forest.c_well": {
                 "type": "and",
                 "el": [
@@ -41784,6 +41767,92 @@
                         "type": "true"
                     }
                 ]
+            },
+            "event.king_zora_thawed": {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "filter.era",
+                            "value": "adult"
+                        }
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "mixin.can_become_adult[child]"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.bottle"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "at",
+                                                "node": "region.ganons_castle_water_trial[child]",
+                                                "el": {
+                                                    "type": "true"
+                                                }
+                                            },
+                                            {
+                                                "type": "at",
+                                                "node": "region.ganons_castle_water_trial[adult]",
+                                                "el": {
+                                                    "type": "true"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "at",
+                                                "node": "region.ice_cavern_map_room[child]",
+                                                "el": {
+                                                    "type": "true"
+                                                }
+                                            },
+                                            {
+                                                "type": "at",
+                                                "node": "region.ice_cavern_map_room[adult]",
+                                                "el": {
+                                                    "type": "true"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "and",
+                                        "el": [
+                                            {
+                                                "type": "value",
+                                                "el": "option.consider_buyable"
+                                            },
+                                            {
+                                                "type": "min",
+                                                "el": {
+                                                    "type": "value",
+                                                    "el": "item.wallet"
+                                                },
+                                                "value": 3
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             }
         },
         "region.zoras_domain[adult]": {
@@ -41973,11 +42042,71 @@
                         "el": [
                             {
                                 "type": "mixin",
-                                "el": "mixin.is_adult[adult]"
+                                "el": "mixin.can_become_adult[adult]"
                             },
                             {
                                 "type": "value",
                                 "el": "item.bottle"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "at",
+                                                "node": "region.ganons_castle_water_trial[child]",
+                                                "el": {
+                                                    "type": "true"
+                                                }
+                                            },
+                                            {
+                                                "type": "at",
+                                                "node": "region.ganons_castle_water_trial[adult]",
+                                                "el": {
+                                                    "type": "true"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "at",
+                                                "node": "region.ice_cavern_map_room[child]",
+                                                "el": {
+                                                    "type": "true"
+                                                }
+                                            },
+                                            {
+                                                "type": "at",
+                                                "node": "region.ice_cavern_map_room[adult]",
+                                                "el": {
+                                                    "type": "true"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "and",
+                                        "el": [
+                                            {
+                                                "type": "value",
+                                                "el": "option.consider_buyable"
+                                            },
+                                            {
+                                                "type": "min",
+                                                "el": {
+                                                    "type": "value",
+                                                    "el": "item.wallet"
+                                                },
+                                                "value": 3
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -60331,8 +60460,17 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "event.bonooru"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.song_scarecrow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "option.free_scarecrow"
+                        }
+                    ]
                 },
                 {
                     "type": "value",
@@ -60344,8 +60482,17 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "event.bonooru"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.song_scarecrow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "option.free_scarecrow"
+                        }
+                    ]
                 },
                 {
                     "type": "value",
@@ -60357,8 +60504,17 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "event.bonooru"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.song_scarecrow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "option.free_scarecrow"
+                        }
+                    ]
                 },
                 {
                     "type": "mixin",
@@ -60370,8 +60526,17 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "event.bonooru"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.song_scarecrow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "option.free_scarecrow"
+                        }
+                    ]
                 },
                 {
                     "type": "mixin",

@@ -50995,8 +50995,17 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "event.bonooru"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.song_scarecrow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "option.free_scarecrow"
+                        }
+                    ]
                 },
                 {
                     "type": "value",
@@ -51008,8 +51017,17 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "event.bonooru"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.song_scarecrow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "option.free_scarecrow"
+                        }
+                    ]
                 },
                 {
                     "type": "value",
@@ -51021,8 +51039,17 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "event.bonooru"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.song_scarecrow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "option.free_scarecrow"
+                        }
+                    ]
                 },
                 {
                     "type": "mixin",
@@ -51034,8 +51061,17 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "event.bonooru"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.song_scarecrow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "option.free_scarecrow"
+                        }
+                    ]
                 },
                 {
                     "type": "mixin",
