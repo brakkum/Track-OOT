@@ -34,6 +34,8 @@
     - subset search does not work all times
     - reset search after contextmenu close
 
+- all location counter does not take dungeontype into account
+
 ---
 
 ### TODO BEFORE GRAPH LOGIC RELEASE
@@ -68,6 +70,13 @@
     - removes the need to explicitly have all functions present on all listitems/mapmarkers
     
 - add tooltips to location badges
+
+- after import state ask to load the state or not
+    - dialog "state imported --- do you want to load the imported state? --- Yes - No"
+
+- message to deactivate the following for detached window
+    - chrome://flags/#web-contents-occlusion
+    - chrome://flags/#calculate-native-win-occlusion
 
 ---
 
