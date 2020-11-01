@@ -16607,23 +16607,6 @@
             "region.forest_temple_ne_outdoors[adult]": {
                 "type": "true"
             },
-            "region.forest_temple_falling_room[adult]": {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "value",
-                        "el": "skip.forest_scarecrow"
-                    },
-                    {
-                        "type": "mixin",
-                        "el": "function.can_use(item.boots_hover)[adult]"
-                    },
-                    {
-                        "type": "mixin",
-                        "el": "function.can_use(mixin.scarecrow)[adult]"
-                    }
-                ]
-            },
             "logic.location.temple_forest.c_well": {
                 "type": "and",
                 "el": [
@@ -41976,8 +41959,110 @@
                                 "el": "mixin.is_adult[adult]"
                             },
                             {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "at",
+                                                "node": "region.ganons_castle_water_trial_mq[child]",
+                                                "el": {
+                                                    "type": "value",
+                                                    "el": "item.bottle"
+                                                }
+                                            },
+                                            {
+                                                "type": "at",
+                                                "node": "region.ganons_castle_water_trial_mq[adult]",
+                                                "el": {
+                                                    "type": "value",
+                                                    "el": "item.bottle"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "at",
+                                                "node": "region.ganons_castle_water_trial_right[child]",
+                                                "el": {
+                                                    "type": "value",
+                                                    "el": "item.bottle"
+                                                }
+                                            },
+                                            {
+                                                "type": "at",
+                                                "node": "region.ganons_castle_water_trial_right[adult]",
+                                                "el": {
+                                                    "type": "value",
+                                                    "el": "item.bottle"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "at",
+                                                "node": "region.gerudo_training_grounds_stalfos_room_mq[child]",
+                                                "el": {
+                                                    "type": "value",
+                                                    "el": "item.bottle"
+                                                }
+                                            },
+                                            {
+                                                "type": "at",
+                                                "node": "region.gerudo_training_grounds_stalfos_room_mq[adult]",
+                                                "el": {
+                                                    "type": "value",
+                                                    "el": "item.bottle"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "at",
+                                                "node": "region.ice_cavern[child]",
+                                                "el": {
+                                                    "type": "value",
+                                                    "el": "item.bottle"
+                                                }
+                                            },
+                                            {
+                                                "type": "at",
+                                                "node": "region.ice_cavern[adult]",
+                                                "el": {
+                                                    "type": "value",
+                                                    "el": "item.bottle"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "and",
+                                        "el": [
+                                            {
+                                                "type": "value",
+                                                "el": "option.consider_buyable"
+                                            },
+                                            {
+                                                "type": "min",
+                                                "el": {
+                                                    "type": "value",
+                                                    "el": "item.wallet"
+                                                },
+                                                "value": 2
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -60331,8 +60416,17 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "event.bonooru"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.song_scarecrow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "option.free_scarecrow"
+                        }
+                    ]
                 },
                 {
                     "type": "value",
@@ -60344,8 +60438,17 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "event.bonooru"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.song_scarecrow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "option.free_scarecrow"
+                        }
+                    ]
                 },
                 {
                     "type": "value",
@@ -60357,8 +60460,17 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "event.bonooru"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.song_scarecrow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "option.free_scarecrow"
+                        }
+                    ]
                 },
                 {
                     "type": "mixin",
@@ -60370,8 +60482,17 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "event.bonooru"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.song_scarecrow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "option.free_scarecrow"
+                        }
+                    ]
                 },
                 {
                     "type": "mixin",

@@ -254,6 +254,13 @@
                 "false": false
             }
         },
+        "free_scarecrow": {
+            "name": "option.free_scarecrow",
+            "values": {
+                "true": true,
+                "false": false
+            }
+        },
         "allowed_tricks": [
             "logic_fewer_tunic_requirements",
             "logic_grottos_without_agony",
@@ -856,7 +863,7 @@
     },
     "entrances": {
         "entrances": {
-            "grottos": {
+            "entro_grottos": {
                 "Death Mountain -> Mountain Storms Grotto": "region.dmt_storms_grotto_entrance -> region.dmt_storms_grotto",
                 "Death Mountain Crater Lower Nearby -> DMC Hammer Grotto": "region.dmc_hammer_grotto_entrance -> region.dmc_hammer_grotto",
                 "Death Mountain Crater Upper Nearby -> Top of Crater Grotto": "region.dmc_upper_grotto_entrance -> region.dmc_upper_grotto",
@@ -935,7 +942,7 @@
                 "GC Grotto Platform -> GC Grotto":                         "region.gc_grotto_entrance -> region.gc_grotto",
                 "GV Grotto Ledge -> GV Octorok Grotto":                    "region.gv_octorok_grotto_entrance -> region.gv_octorok_grotto"
             },
-            "simple": {
+            "entro_simple": {
                 "Castle Town -> Castle Town Bazaar": "region.market_bazaar_entrance -> region.market_bazaar",
                 "Castle Town -> Castle Town Bombchu Bowling": "region.market_bombchu_bowling_entrance -> region.market_bombchu_bowling",
                 "Castle Town -> Castle Town Bombchu Shop": "region.market_bombchu_shop_entrance -> region.market_bombchu_shop",
@@ -1013,7 +1020,7 @@
                 "Market Back Alley -> Market Man in Green House":    "region.market_man_in_green_house_entrance -> region.market_man_in_green_house",
                 "LH Fishing Island -> LH Fishing Hole":              "region.lh_fishing_hole_entrance -> region.lh_fishing_hole"
             },
-            "indoors": {
+            "entro_indoors": {
                 "Kakariko Village -> Kakariko Potion Shop Front": "region.kak_potion_shop_front_entrance -> region.kak_potion_shop_front",
                 "Kakariko Village Backyard -> Kakariko Potion Shop Back": "region.kak_potion_shop_back_entrance -> region.kak_potion_shop_back",
                 "Kokiri Forest -> Links House": "region.kf_links_house_entrance -> region.kf_links_house",
@@ -1025,7 +1032,7 @@
                 "Kakariko Village -> Windmill": "region.kak_windmill_entrance -> region.kak_windmill",
                 "Kakariko Village -> Kak Windmill": "region.kak_windmill_entrance -> region.kak_windmill"
             },
-            "dungeons": {
+            "entro_dungeons": {
                 "Desert Colossus -> Spirit Temple Lobby": "region.spirit_temple_entrance -> region.spirit_temple_gateway",
                 "Dodongos Cavern Entryway -> Dodongos Cavern Beginning": "region.dodongos_cavern_entrance -> region.dodongos_cavern_gateway",
                 "Death Mountain -> Dodongos Cavern Beginning": "region.dodongos_cavern_entrance -> region.dodongos_cavern_gateway",
@@ -1044,7 +1051,7 @@
                 "ZF Ice Ledge -> Ice Cavern Beginning": "region.ice_cavern_entrance -> region.ice_cavern_gateway",
                 "Zoras Fountain -> Jabu Jabus Belly Beginning": "region.jabu_jabus_belly_entrance -> region.jabu_jabus_belly_gateway"
             },
-            "overworld": {
+            "entro_overworld": {
                 "Castle Grounds -> Castle Town": "region.castle_grounds -> region.grounds_market_gateway",
                 "Castle Town -> Castle Grounds": "region.market -> region.grounds_market_gateway",
                 "Castle Town -> Castle Town Entrance": "region.market -> region.marketentrance_market_gateway",
@@ -1102,7 +1109,7 @@
             }
         },
         "exits": {
-            "grottos": {
+            "exit_grottos": {
                 "Graveyard Dampes Grave": "region.graveyard_dampes_grave -> region.graveyard_dampes_grave_entrance",
                 "Dampes Grave": "region.graveyard_dampes_grave -> region.graveyard_dampes_grave_entrance",
                 "Mountain Storms Grotto": "region.dmt_storms_grotto -> region.dmt_storms_grotto_entrance",
@@ -1176,7 +1183,7 @@
                 "ZR Storms Grotto": "region.zr_storms_grotto -> region.zr_storms_grotto_entrance",
                 "ZD Storms Grotto": "region.zd_storms_grotto -> region.zd_storms_grotto_entrance"
             },
-            "simple": {
+            "exit_simple": {
                 "Castle Town Bazaar": "region.market_bazaar -> region.market_bazaar_entrance",
                 "Castle Town Bombchu Bowling": "region.market_bombchu_bowling -> region.market_bombchu_bowling_entrance",
                 "Castle Town Bombchu Shop": "region.market_bombchu_shop -> region.market_bombchu_shop_entrance",
@@ -1250,7 +1257,7 @@
                 "ZD Shop": "region.zd_shop -> region.zd_shop_entrance",
                 "ZF Great Fairy Fountain": "region.zf_great_fairy_fountain -> region.zf_great_fairy_fountain_entrance"
             },
-            "indoors": {
+            "exit_indoors": {
                 "Kakariko Potion Shop Front": "region.kak_potion_shop_front -> region.kak_potion_shop_front_entrance",
                 "Kakariko Potion Shop Back": "region.kak_potion_shop_back -> region.kak_potion_shop_back_entrance",
                 "Links House": "region.kf_links_house -> region.kf_links_house_entrance",
@@ -1261,7 +1268,7 @@
                 "Kak Windmill": "region.kak_windmill -> region.kak_windmill_entrance",
                 "Windmill": "region.kak_windmill -> region.kak_windmill_entrance"
             },
-            "dungeons": {
+            "exit_dungeons": {
                 "Spirit Temple Lobby": "region.spirit_temple_gateway -> region.spirit_temple_entrance",
                 "Dodongos Cavern Beginning": "region.dodongos_cavern_gateway -> region.dodongos_cavern_entrance",
                 "Fire Temple Lower": "region.fire_temple_gateway -> region.fire_temple_entrance",
@@ -1274,7 +1281,7 @@
                 "Ice Cavern Beginning": "region.ice_cavern_gateway -> region.ice_cavern_entrance",
                 "Jabu Jabus Belly Beginning": "region.jabu_jabus_belly_gateway -> region.jabu_jabus_belly_entrance"
             },
-            "overworld": {
+            "exit_overworld": {
                 "Castle Grounds -> Castle Town": "region.grounds_market_gateway -> region.castle_grounds",
                 "Castle Town -> Castle Grounds": "region.grounds_market_gateway -> region.market",
                 "Castle Town -> Castle Town Entrance": "region.marketentrance_market_gateway -> region.market",

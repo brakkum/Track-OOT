@@ -159,72 +159,64 @@ function parseTrials(trialsTrue, world, trans) {
 }
 
 function parseEntrances(entrancesTrue, world, dungeon, grottos, indoors, overworld, trans) {
-    let entrance_trans  = trans["entrances"]["entrances"];
-    let exit_trans = trans["entrances"]["exits"];
-    let entro_dungeon = entrance_trans["dungeons"];
-    let entro_grottos = entrance_trans["grottos"];
-    let entro_simple = entrance_trans["simple"];
-    let entro_indoors = entrance_trans["indoors"];
-    let entro_overworld = entrance_trans["overworld"];
-    let exit_dungeon = exit_trans["dungeons"];
-    let exit_grottos = exit_trans["grottos"];
-    let exit_simple = exit_trans["simple"];
-    let exit_indoors = exit_trans["indoors"];
-    let exit_overworld = exit_trans["overworld"];
+    const {entro_dungeons, entro_grottos, entro_simple, entro_indoors, entro_overworld} = trans.entrances.entrances;
+    const {exit_dungeons, exit_grottos, exit_simple, exit_indoors, exit_overworld} = trans.entrances.exits;
+    const entrance = {entro_dungeon: entro_dungeons, entro_grottos: entro_grottos, entro_simple: entro_simple, entro_indoors: entro_indoors, entro_overworld: entro_overworld}
+    const exit = {exit_dungeon: exit_dungeons, exit_grottos: exit_grottos, exit_simple: exit_simple, exit_indoors: exit_indoors, exit_overworld: exit_overworld}
+    console.log(entrance)
+
     let entrances = entrancesTrue;
 
     for(let w = 1; w <= world; w++) {
         if(world !== 1) entrances = entrancesTrue["World " + w];
         let exits = {};
 
-        for(let i in entrances) {
-            let v = entrances[i];
+        for(const i in entrances) {
+            var v = entrances[i];
+            if(typeof v === 'object' && v !== null)
+                v = entrances[i]["region"];
+            var edgeThere = null;
+            var edgeBack = null;
+            var node = null;
+
+            for(const ent in entrance) {
+                node = entrance[ent]
+                if(node[i] !== undefined)
+                    edgeThere = node[i];
+            }
+            for(const ent in exit) {
+                node = exit[ent]
+                if(node[v] !== undefined)
+                    edgeBack = node[v]
+            }
+
             if(typeof i === 'object' && i !== null) {
-                console.warn("Unexpected Array within entrances, please report this!")
+                console.warn("Unexpected Array within entrances")
             } else {
-                if(entro_dungeon[i] === undefined && exit_dungeon[v] === undefined && entro_simple[i] === undefined && exit_simple[v] === undefined && entro_indoors[i] === undefined && exit_indoors[v] === undefined && entro_overworld[i] === undefined && exit_overworld[v] === undefined && entro_grottos[i] === undefined && exit_grottos[v] === undefined) {
-                    console.warn("[" + i + ": " + v + "] is a invalid value. Please report this bug")
-                } else {
+                if(edgeThere === null || edgeBack === null)
+                    console.warn("[" + i + ": " + v + "] is a invalid value.")
+                else {
                     if (dungeon) {
-                        if(typeof v === 'object' && v !== null) {
-                            v = v["region"];
-                        }
-                        if (entro_dungeon[i] === undefined) {
-                        } else {
-                            exits[entro_dungeon[i]] = exit_dungeon[v];
-                        }
+                        if (entro_dungeons[i] === edgeThere)
+                            exits[edgeBack] = edgeThere;
                     }
                     if(grottos) {
-
-                        if(entro_grottos[i] === undefined) {
-                        } else {
-                            exits[entro_grottos[i]] = exit_grottos[v];
-                        }
+                        if(entro_grottos[i] === edgeThere)
+                            exits[edgeBack] = edgeThere;
                     }
                     if (indoors) {
-                        if (entro_simple[i] !== undefined && exit_simple[v] !== undefined) {
-                            exits[entro_simple[i]] = exit_simple[v];
-                        }
-                        if (entro_indoors[i] !== undefined && exit_indoors[v] !== undefined) {
-                            exits[entro_indoors[i]] = exit_indoors[v];
-                        }
-                        if(entro_simple[i] !== undefined && exit_indoors[v] !== undefined) {
-                            exits[entro_simple[i]] = exit_indoors[v];
-                        }
-                        if(entro_indoors[i] !== undefined && exit_simple[v] !== undefined) {
-                            exits[entro_indoors[i]] = exit_simple[v];
-                        }
-
+                        if (entro_simple[i] === edgeThere || entro_indoors[i] === edgeThere)
+                            exits[edgeBack] = edgeThere;
                     }
-                    if (overworld) {
+                    /*if (overworld) {
                         if(typeof v === 'object' && v !== null) {
                             v = v["region"] + " -> " + v["from"];
                         }
                         if (entro_overworld[i] === undefined || exit_overworld[v] === undefined) {
                         } else {
-                            exits[entro_overworld[i]] = exit_overworld[v];
+                            exits[exit_overworld[v]] = entro_overworld[i];
                         }
-                    }
+                    }*/
                 }
             }
         }
