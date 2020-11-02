@@ -6,21 +6,6 @@
 - check key counts for dungeons
     - seems to always use max of both instead of the correct value
 
-- entrances dont bind translations on activate
-    - should block all on start
-- filter dont refresh locationlist
-- entrances in multiplayer cast wrong exits
-    - maybe ui does not update correctly
-        - kakariko seems to be problematic
-
-- missing entrances
-    - crater bomb grotto
-    - death mountain trail fairy
-    - field fairy grotto
-
-- logic errors
-    - spinning pot hp (no fire)
-
 ---
 
 ### FIX MINOR BUGS
@@ -28,13 +13,14 @@
 - fix multiplayer sync
     - undo/redo does not sync correctly
         - fix: disable undo/redo in multiplayer, due to possibly unwanted behaviour
+    - entrances in multiplayer cast wrong exits
+        - maybe ui does not update correctly
+
 - load icon from marker config
 
 - search in contextmenu
     - subset search does not work all times
     - reset search after contextmenu close
-
-- all location counter does not take dungeontype into account
 
 ---
 

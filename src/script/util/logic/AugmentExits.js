@@ -1,3 +1,4 @@
+import FileData from "/emcJS/storage/FileData.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import Logic from "/script/util/logic/Logic.js";
@@ -50,55 +51,6 @@ function applyEntranceChanges(changes, edgeThere, edgeBack) {
     }
 }
 
-// register event on state change
-EventBus.register("state", event => {
-    Logic.clearTranslations("region.root");
-    const changes = [];
-    if (event.data.extra.exits != null) {
-        for (const edgeThere in event.data.extra.exits) {
-            if (!edgeThere) continue;
-            const edgeBack = event.data.extra.exits[edgeThere];
-            applyEntranceChanges(changes, edgeThere, edgeBack);
-        }
-    }
-    if (!!changes.length) {
-        const res = Logic.setTranslation(changes, "region.root");
-        if (Object.keys(res).length > 0) {
-            EventBus.trigger("logic", res);
-        }
-    }
-});
-
-// register event on exit target change
-EventBus.register("statechange_exits", event => {
-    const changes = [];
-    for (const edgeThere in event.data) {
-        if (!edgeThere) continue;
-        const edgeBack = event.data[edgeThere].newValue;
-        applyEntranceChanges(changes, edgeThere, edgeBack);
-    }
-    if (!!changes.length) {
-        const res = Logic.setTranslation(changes, "region.root");
-        if (Object.keys(res).length > 0) {
-            EventBus.trigger("logic", res);
-        }
-    }
-});
-
-// register event for (de-)activate entrances
-EventBus.register("randomizer_options", event => {
-    let changed = false;
-    for (const key in OPTIONS) {
-        if (event.data.hasOwnProperty(key) && OPTIONS[key] != event.data[key]) {
-            OPTIONS[key] = event.data[key];
-            changed = true;
-        }
-    }
-    if (changed) {
-        update();
-    }
-});
-
 async function update() {
     const changes = [];
     for (const exit in exit_binding) {
@@ -126,12 +78,66 @@ async function update() {
     }
 }
 
+// register event on state change
+EventBus.register("state", event => {
+    let changed = false;
+    const exits = FileData.get("world/exit");
+    for (const exit in exits) {
+        if (event.data.extra.exits != null && event.data.extra.exits[exit] != null) {
+            const edgeBack = event.data.extra.exits[exit];
+            if (exit_binding[exit] != edgeBack) {
+                exit_binding[exit] = edgeBack;
+                changed = true;
+            }
+        } else if (!!exit_binding[exit]) {
+            exit_binding[exit] = "";
+            changed = true;
+        }
+    }
+    if (changed) {
+        update();
+    }
+});
+
+// register event for (de-)activate entrances
+EventBus.register("randomizer_options", event => {
+    let changed = false;
+    for (const key in OPTIONS) {
+        if (event.data.hasOwnProperty(key) && OPTIONS[key] != event.data[key]) {
+            OPTIONS[key] = event.data[key];
+            changed = true;
+        }
+    }
+    if (changed) {
+        update();
+    }
+});
+
+// register event on exit target change
+EventBus.register("statechange_exits", event => {
+    const changes = [];
+    for (const edgeThere in event.data) {
+        if (!edgeThere) continue;
+        const edgeBack = event.data[edgeThere].newValue;
+        applyEntranceChanges(changes, edgeThere, edgeBack);
+    }
+    if (!!changes.length) {
+        const res = Logic.setTranslation(changes, "region.root");
+        if (Object.keys(res).length > 0) {
+            EventBus.trigger("logic", res);
+        }
+    }
+});
+
 class AugmentExits {
 
     async init() {
-        const exits = StateStorage.readAllExtra("exits");
+        const bound = StateStorage.readAllExtra("exits");
+        const exits = FileData.get("world/exit");
         for (const exit in exits) {
-            exit_binding[exit] = exits[exit]
+            exit_binding[exit] = bound[exit] || "";
+            const back = exit.split(" -> ").reverse().join(" -> ");
+            exit_binding[back] = bound[back] || "";
         }
         for (const key in OPTIONS) {
             OPTIONS[key] = StateStorage.read(key);

@@ -8,7 +8,7 @@ class ExitRegistry {
 
     get(ref) {
         if (!EXITS.has(ref)) {
-            ref = ref.split(" -> ").reverse().join(" -> ")
+            ref = ref.split(" -> ").reverse().join(" -> ");
         }
         return EXITS.get(ref);
     }
