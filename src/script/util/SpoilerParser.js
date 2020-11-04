@@ -163,7 +163,6 @@ function parseEntrances(entrancesTrue, world, dungeon, grottos, indoors, overwor
     const {exit_dungeons, exit_grottos, exit_simple, exit_indoors, exit_overworld} = trans.entrances.exits;
     const entrance = {entro_dungeon: entro_dungeons, entro_grottos: entro_grottos, entro_simple: entro_simple, entro_indoors: entro_indoors, entro_overworld: entro_overworld}
     const exit = {exit_dungeon: exit_dungeons, exit_grottos: exit_grottos, exit_simple: exit_simple, exit_indoors: exit_indoors, exit_overworld: exit_overworld}
-    console.log(entrance)
 
     let entrances = entrancesTrue;
 
