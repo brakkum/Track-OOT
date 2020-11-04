@@ -28,7 +28,7 @@ function updateStates(doneEl, availEl, missEl) {
     if (!!areas) {
         Object.keys(areas).forEach(name => {
             let buff = areas[name];
-            let dType = StateStorage.readExtra("dungeontype", name, buff.lists.hasOwnProperty("mq") ? "n" : "v");
+            let dType = StateStorage.readExtra("dungeontype", `area/${name}`, buff.lists.hasOwnProperty("mq") ? "n" : "v");
             if (dType == "n") {
                 let cv = ListLogic.check(buff.lists.v.filter(ListLogic.filterUnusedChecks));
                 let cm = ListLogic.check(buff.lists.mq.filter(ListLogic.filterUnusedChecks));
@@ -46,8 +46,6 @@ function updateStates(doneEl, availEl, missEl) {
                     todo_min += cm.unopened;
                     todo_max += cv.unopened;
                 }
-                done += cv.done;
-                done += cm.done;
             } else {
                 let c = ListLogic.check(buff.lists[dType].filter(ListLogic.filterUnusedChecks));
                 access_min += c.reachable;
@@ -83,10 +81,13 @@ class HTMLLocationState extends EventBusSubsetMixin(HTMLElement) {
         updateStates(locationsDone, locationsAvail, locationsMiss, "locations");
         /* event bus */
         this.registerGlobal([
+            "state",
             "logic",
             "statechange",
             "settings",
-            "randomizer_options"
+            "randomizer_options",
+            "statechange_dungeontype",
+            "filter"
         ], () => {
             updateStates(locationsDone, locationsAvail, locationsMiss);
         });

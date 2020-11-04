@@ -6,21 +6,6 @@
 - check key counts for dungeons
     - seems to always use max of both instead of the correct value
 
-- entrances dont bind translations on activate
-    - should block all on start
-- filter dont refresh locationlist
-- entrances in multiplayer cast wrong exits
-    - maybe ui does not update correctly
-        - kakariko seems to be problematic
-
-- missing entrances
-    - crater bomb grotto
-    - death mountain trail fairy
-    - field fairy grotto
-
-- logic errors
-    - spinning pot hp (no fire)
-
 ---
 
 ### FIX MINOR BUGS
@@ -28,6 +13,9 @@
 - fix multiplayer sync
     - undo/redo does not sync correctly
         - fix: disable undo/redo in multiplayer, due to possibly unwanted behaviour
+    - entrances in multiplayer cast wrong exits
+        - maybe ui does not update correctly
+
 - load icon from marker config
 
 - search in contextmenu
@@ -68,6 +56,13 @@
     - removes the need to explicitly have all functions present on all listitems/mapmarkers
     
 - add tooltips to location badges
+
+- after import state ask to load the state or not
+    - dialog "state imported --- do you want to load the imported state? --- Yes - No"
+
+- message to deactivate the following for detached window
+    - chrome://flags/#web-contents-occlusion
+    - chrome://flags/#calculate-native-win-occlusion
 
 ---
 
