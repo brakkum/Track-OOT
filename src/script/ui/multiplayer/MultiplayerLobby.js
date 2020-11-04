@@ -103,7 +103,7 @@ class HTMLMultiplayerLobby extends HTMLElement {
             let el = event.target;
             let res;
             if (!!el.pass && el.pass != "false") {
-                let pass = await Dialog.prompt("pasword required", "please enter password");
+                let pass = await Dialog.prompt("password required", "please enter password");
                 res = await RTCController.connect(el.name, pass);
             } else {
                 res = await RTCController.connect(el.name);
