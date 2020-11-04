@@ -178,6 +178,16 @@ function setAllListEntries(list, value = true) {
     }
 }
 
+function exitUpdate(event) {
+    if (this.ref === event.data.name && this.value !== event.data.value) {
+        let value = event.data.value;
+        if (typeof value != "string") {
+            value = "";
+        }
+        this.value = value;
+    }
+}
+
 const VALUE_STATES = [
     "opened",
     "unavailable",
@@ -219,6 +229,10 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
             let exit = EXIT.get(this);
             if (exit != "") {
                 StateStorage.writeExtra("exits", exit, event.value);
+                /*this.triggerGlobal("exit", {
+                    name: this.ref,
+                    value: event.value
+                });*/
             }
         });
         selectEl.addEventListener("click", event => {
@@ -313,6 +327,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
         });
 
         /* event bus */
+        this.registerGlobal("exit", exitUpdate.bind(this));
         this.registerGlobal("state", event => {
             const exit = EXIT.get(this);
             const exitEntry = ExitRegistry.get(exit);

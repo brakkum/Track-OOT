@@ -30,23 +30,28 @@ function applyEntranceChanges(changes, edgeThere, edgeBack) {
             if (!!exit_binding[edgeThere]) {
                 StateStorage.writeExtra("exits", exit_binding[edgeThere], "");
             }
-            if (!!exit_binding[edgeBack]) {
-                StateStorage.writeExtra("exits", exit_binding[edgeBack], "");
-            }
+            //if (!!exit_binding[edgeBack]) {
+            //    StateStorage.writeExtra("exits", exit_binding[edgeBack], "");
+            //}
             changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: `${reroute}[child]`});
             changes.push({source: `${reroute}[child]`, target: `${entrance}[child]`, reroute: `${source}[child]`});
             changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: `${reroute}[adult]`});
             changes.push({source: `${reroute}[adult]`, target: `${entrance}[adult]`, reroute: `${source}[adult]`});
             exit_binding[edgeThere] = edgeBack;
             exit_binding[edgeBack] = edgeThere;
-            StateStorage.writeExtra("exits", edgeBack, edgeThere);
+            //StateStorage.writeExtra("exits", edgeBack, edgeThere);
         } else {
-            if (!!exit_binding[edgeThere]) {
-                StateStorage.writeExtra("exits", exit_binding[edgeThere], "");
-            }
+            //if (!!exit_binding[edgeThere]) {
+            //    StateStorage.writeExtra("exits", exit_binding[edgeThere], "");
+            //}
+            edgeBack = exit_binding[edgeThere];
+            const [reroute, entrance] = edgeBack.split(" -> ");
             changes.push({source: `${source}[child]`, target: `${target}[child]`, reroute: "[child]"});
+            changes.push({source: `${reroute}[child]`, target: `${entrance}[child]`, reroute: "[child]"});
             changes.push({source: `${source}[adult]`, target: `${target}[adult]`, reroute: "[adult]"});
+            changes.push({source: `${reroute}[adult]`, target: `${entrance}[adult]`, reroute: "[adult]"});
             exit_binding[edgeThere] = "";
+            exit_binding[edgeBack] = "";
         }
     }
 }
@@ -87,10 +92,13 @@ EventBus.register("state", event => {
             const edgeBack = event.data.extra.exits[exit];
             if (exit_binding[exit] != edgeBack) {
                 exit_binding[exit] = edgeBack;
+                exit_binding[edgeBack] = exit;
                 changed = true;
             }
         } else if (!!exit_binding[exit]) {
+            const back = exit_binding[exit];
             exit_binding[exit] = "";
+            exit_binding[back] = "";
             changed = true;
         }
     }
