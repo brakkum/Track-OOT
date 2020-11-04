@@ -11,6 +11,7 @@ import SettingsBuilder from "/script/util/SettingsBuilder.js";
 import Language from "/script/util/Language.js";
 
 const settings = new SettingsWindow;
+let items = null;
 
 BusyIndicator.setIndicator(document.getElementById("busy-animation"));
 
@@ -23,17 +24,24 @@ const LOAD_RULESET = new Template(`
         
 function setOptionsFromRuleset(name) {
     const ruleset = FileData.get("rulesets")[name];
+    items = {};
     if (!ruleset) { return }
 
     for (let i in ruleset) {
-        let panel = settings.shadowRoot.querySelector(`.panel[data-ref="${i}"]`);
+        let panel = null;
+        if(i !== "items")
+            panel = settings.shadowRoot.querySelector(`.panel[data-ref="${i}"]`);
         for (let j in ruleset[i]) {
-            let opt = panel.querySelector(`[data-ref="${j}"]`);
-            if (opt != null) {
-                if (opt.type === "checkbox") {
-                    opt.checked = ruleset[i][j];
-                } else {
-                    opt.value = ruleset[i][j];
+            if(i === "items") {
+                items[j] = ruleset[i][j];
+            } else {
+                let opt = panel.querySelector(`[data-ref="${j}"]`);
+                if (opt != null) {
+                    if (opt.type === "checkbox") {
+                        opt.checked = ruleset[i][j];
+                    } else {
+                        opt.value = ruleset[i][j];
+                    }
                 }
             }
         }
@@ -58,6 +66,11 @@ export default class RomSettings {
                     } else {
                         settings[j] = v;
                     }
+                }
+            }
+            if(items !== null) {
+                for(let i in items) {
+                    settings[i] = items[i];
                 }
             }
             StateStorage.write(settings);
@@ -114,6 +127,7 @@ export default class RomSettings {
                 }
             }
         }
+        items = null;
         settings.show(res/*, Object.keys(options)[0]*/);
     }
 
