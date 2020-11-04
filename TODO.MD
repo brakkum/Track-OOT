@@ -39,6 +39,16 @@
 
 ### TODO
 
+- add rom options
+    - disabled locations
+        - remove them from lists if deactivated
+        - alternative "ghost" locations to be activated in option
+            - do not count ghost locations for totals
+        - needs side-by-side input element
+    - starting items
+        - modify item elements to allow min values
+        - needs side-by-side input element
+
 - add warning dialog to download update if needed
 
 - custom layout (aka build yourself a tracker)
