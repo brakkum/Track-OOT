@@ -29,6 +29,7 @@ Application:    Track-OOT
 - added subareas
 - temporarily deactivate the map view containing overworld locations
     - does conflict with current interior/grotto entrance rando
+- entrances that are unbound open binding contextmenu on click
 
 ### UX ENHANCEMENTS
 

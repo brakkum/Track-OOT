@@ -221,9 +221,6 @@ export default class MapSubArea extends EventBusSubsetMixin(HTMLElement) {
 
         /* mouse events */
         this.addEventListener("click", event => {
-            this.triggerGlobal("location_change", {
-                name: this.ref
-            });
             event.stopPropagation();
             event.preventDefault();
             return false;

@@ -188,6 +188,42 @@ function exitUpdate(event) {
     }
 }
 
+function fillEntranceSelection() {
+    // retrieve bound
+    const current = this.value;
+    const exits = StateStorage.readAllExtra("exits");
+    const bound = new Set();
+    for (const key in exits) {
+        if (exits[key] == current) continue;
+        bound.add(exits[key]);
+    }
+    // add options
+    const exit = EXIT.get(this);
+    const exitEntry = ExitRegistry.get(exit);
+    const entrances = FileData.get("world/exit");
+    const selectEl = MNU_EXT.get(this).shadowRoot.getElementById("select");
+    selectEl.value = this.value;
+    selectEl.innerHTML = "";
+    const empty = document.createElement('emc-option');
+    empty.value = "";
+    const emptyText = document.createElement('span');
+    emptyText.innerHTML = "unbind";
+    emptyText.style.fontStyle = "italic";
+    empty.append(emptyText);
+    selectEl.append(empty);
+    for (const key in entrances) {
+        const value = entrances[key];
+        const entranceEntry = ExitRegistry.get(key);
+        if (entranceEntry.getType() == exitEntry.getType() && !bound.has(value.target) && entranceEntry.active()) {
+            const opt = document.createElement('emc-option');
+            opt.value = value.target;
+            opt.innerHTML = Language.translate(value.target);
+            opt.setAttribute('i18n-content', value.target);
+            selectEl.append(opt);
+        }
+    }
+}
+
 const VALUE_STATES = [
     "opened",
     "unavailable",
@@ -212,6 +248,8 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.append(TPL.generate());
 
         /* context menu */
+        const fillEntrances = fillEntranceSelection.bind(this);
+        
         let mnu_ctx = document.createElement("div");
         mnu_ctx.attachShadow({mode: 'open'});
         mnu_ctx.shadowRoot.append(TPL_MNU_CTX.generate());
@@ -262,39 +300,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-associate").addEventListener("click", event => {
-            // retrieve bound
-            const current = this.value;
-            const exits = StateStorage.readAllExtra("exits");
-            const bound = new Set();
-            for (const key in exits) {
-                if (exits[key] == current) continue;
-                bound.add(exits[key]);
-            }
-            // add options
-            const exit = EXIT.get(this);
-            const exitEntry = ExitRegistry.get(exit);
-            const entrances = FileData.get("world/exit");
-            const selectEl = MNU_EXT.get(this).shadowRoot.getElementById("select");
-            selectEl.value = this.value;
-            selectEl.innerHTML = "";
-            const empty = document.createElement('emc-option');
-            empty.value = "";
-            const emptyText = document.createElement('span');
-            emptyText.innerHTML = "unbind";
-            emptyText.style.fontStyle = "italic";
-            empty.append(emptyText);
-            selectEl.append(empty);
-            for (const key in entrances) {
-                const value = entrances[key];
-                const entranceEntry = ExitRegistry.get(key);
-                if (entranceEntry.getType() == exitEntry.getType() && !bound.has(value.target) && entranceEntry.active()) {
-                    const opt = document.createElement('emc-option');
-                    opt.value = value.target;
-                    opt.innerHTML = Language.translate(value.target);
-                    opt.setAttribute('i18n-content', value.target);
-                    selectEl.append(opt);
-                }
-            }
+            fillEntrances();
             // show menu
             mnu_ext_el.show(mnu_ctx_el.left, mnu_ctx_el.top);
             event.preventDefault();
@@ -310,10 +316,9 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
         /* mouse events */
         this.addEventListener("click", event => {
             let area = AREA.get(this);
-            if (!!area) {
-                this.triggerGlobal("location_change", {
-                    name: area
-                });
+            if (!area) {
+                fillEntrances();
+                mnu_ext_el.show(event.clientX, event.clientY);
             }
             event.stopPropagation();
             event.preventDefault();

@@ -12,6 +12,11 @@ const TITLE_PREFIX = document.title;
 
 const STORAGE = new IDBStorage("savestates");
 
+let actionPath = new ActionPath();
+let autosaveMax = 0;
+let autosaveTime = 0;
+let autosaveTimeout = null;
+
 /* START DEBOUNCE STATE INIT */
 const DATA = {
     name: "",
@@ -42,14 +47,12 @@ function decodeState(data) {
     DATA.timestamp = data.timestamp;
     DATA.autosave = data.autosave;
     DATA.notes = data.notes;
-    DATA.state.clear();
-    DATA.state.overwriteAll(data.data);
-    DATA.extra.clear();
+    DATA.state.overwrite(data.data);
     if (data.extra != null) {
         for (let category in data.extra) {
             let buffer = new DebouncedState(category);
             buffer.addEventListener("change", onStateChange);
-            buffer.overwriteAll(data.extra[category]);
+            buffer.overwrite(data.extra[category]);
             DATA.extra.set(category, buffer);
         }
     }
@@ -75,11 +78,6 @@ DATA.state.addEventListener("change", onStateChange);
 
 decodeState(StateConverter.createEmptyState());
 /* END DEBOUNCE STATE INIT */
-
-let actionPath = new ActionPath();
-let autosaveMax = 0;
-let autosaveTime = 0;
-let autosaveTimeout = null;
 
 function sortStates(a, b) {
     if (a < b) {
@@ -239,30 +237,22 @@ class StateStorage {
     undo() {
         let act = actionPath.undo();
         if (act != null) {
+            const changes = {};
             for (let i in act) {
-                DATA.state.overwrite(i, act[i].oldValue);
+                changes[i] = act[i].oldValue;
             }
-            let state = encodeState();
-            EventBus.trigger("state", JSON.parse(JSON.stringify({
-                notes: state.notes,
-                state: state.data,
-                extra: state.extra
-            })));
+            DATA.state.setImmediateAll(changes);
         }
     }
 
     redo() {
         let act = actionPath.redo();
         if (act != null) {
+            const changes = {};
             for (let i in act) {
-                DATA.state.overwrite(i, act[i].newValue);
+                changes[i] = act[i].oldValue;
             }
-            let state = encodeState();
-            EventBus.trigger("state", JSON.parse(JSON.stringify({
-                notes: state.notes,
-                state: state.data,
-                extra: state.extra
-            })));
+            DATA.state.setImmediateAll(changes);
         }
     }
 
@@ -343,43 +333,39 @@ class StateStorage {
     }
 
     resolveNetworkStateEvent(event, data) {
-        if (event == "statechange") {
-            for (let [key, value] of Object.entries(data)) {
-                DATA.state.overwrite(key, value.newValue);
-            }
-            if (!!Object.keys(data).length) {
-                actionPath.put(data);
-                LocalStorage.set(PERSISTANCE_NAME, encodeState());
-                LocalStorage.set(STATE_DIRTY, true);
-                EventBus.trigger("statechange", JSON.parse(JSON.stringify(data)));
-                updateTitle();
-            }
-            return true;
-        }
-        if (event.startsWith("statechange_")) {
-            const category = event.slice(12);
-            let buffer = null;
-            if (DATA.extra.has(category)) {
-                buffer = DATA.extra.get(category);
+        if (event.startsWith("statechange")) {
+            let buffer = null
+            if (event === "statechange") {
+                // event for statechange
+                buffer = DATA.state;
+            } else if (event.startsWith("statechange_")) {
+                // event for statechange_*
+                const category = event.slice(12);
+                if (DATA.extra.has(category)) {
+                    buffer = DATA.extra.get(category);
+                } else {
+                    buffer = new DebouncedState(category);
+                    buffer.addEventListener("change", onStateChange);
+                    DATA.extra.set(category, buffer);
+                }
             } else {
-                buffer = new DebouncedState(category);
-                buffer.addEventListener("change", onStateChange);
-                DATA.extra.set(category, buffer);
+                // event missmatch
+                return false;
             }
+            // write changes
+            const changes = {};
             for (let [key, value] of Object.entries(data)) {
-                buffer.overwrite(key, value.newValue);
+                changes[key] = value.newValue;
             }
-            if (!!Object.keys(data).length) {
-                LocalStorage.set(PERSISTANCE_NAME, encodeState());
-                LocalStorage.set(STATE_DIRTY, true);
-                EventBus.trigger(`statechange_${category}`, data);
-                updateTitle();
-            }
+            buffer.setImmediateAll(changes);
             return true;
         }
+        // event missmatch
         return false;
     }
 
 }
 
-export default new StateStorage;
+window.stateStorage = new StateStorage();
+
+export default window.stateStorage;
