@@ -350,6 +350,14 @@ export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
             }
         });
         this.registerGlobal(["statechange", "settings", "logic", "filter"], event => {
+            // update exit
+            const exit = EXIT.get(this);
+            this.value = StateStorage.readExtra("exits", exit, "");
+            const area = AREA.get(this);
+            if (!!area) {
+                this.hint = StateStorage.readExtra("area_hint", area, "");
+            }
+            // update state
             this.update();
         });
     }
@@ -362,6 +370,13 @@ export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
         }
         el.append(MNU_CTX.get(this));
         el.append(MNU_EXT.get(this));
+        // update exit
+        const exit = EXIT.get(this);
+        this.value = StateStorage.readExtra("exits", exit, "");
+        const area = AREA.get(this);
+        if (!!area) {
+            this.hint = StateStorage.readExtra("area_hint", area, "");
+        }
         // update state
         this.update();
     }

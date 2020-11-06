@@ -209,6 +209,8 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             this.checked = value;
             if (event.data.extra["item_location"] != null && event.data.extra["item_location"][this.ref] != null) {
                 this.item = event.data.extra["item_location"][this.ref];
+            } else {
+                this.item = "";
             }
         });
         this.registerGlobal("statechange", event => {

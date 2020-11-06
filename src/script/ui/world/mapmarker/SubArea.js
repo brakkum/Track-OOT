@@ -236,16 +236,6 @@ export default class MapSubArea extends EventBusSubsetMixin(HTMLElement) {
         this.registerGlobal(["state", "statechange", "settings", "randomizer_options", "logic", "filter"], event => {
             this.update()
         });
-        this.registerGlobal("statechange_area_hint", event => {
-            let data;
-            if (event.data != null) {
-                data = event.data[this.ref];
-            }
-            if (data != null) {
-                this.hint = data.newValue;
-            }
-        });
-        //this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));
     }
 
     connectedCallback() {
@@ -255,6 +245,8 @@ export default class MapSubArea extends EventBusSubsetMixin(HTMLElement) {
             el = el.parentElement;
         }
         el.append(MNU_CTX.get(this));
+        // update exit
+        this.hint = StateStorage.readExtra("area_hint", this.ref, "");
         // update state
         this.update();
     }

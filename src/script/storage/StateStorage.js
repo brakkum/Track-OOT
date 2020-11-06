@@ -41,6 +41,20 @@ function onStateChange(event) {
     }
 }
 
+function getExtraStorage(name) {
+    if (!name || typeof name != "string") {
+        throw new TypeError("extra storage name must be of type string");
+    }
+    if (DATA.extra.has(name)) {
+        return DATA.extra.get(name);
+    } else {
+        const buffer = new DebouncedState(name);
+        buffer.addEventListener("change", onStateChange);
+        DATA.extra.set(name, buffer);
+        return buffer;
+    }
+}
+
 function decodeState(data) {
     DATA.name = data.name;
     DATA.version = data.version;
@@ -49,17 +63,15 @@ function decodeState(data) {
     DATA.notes = data.notes;
     DATA.state.overwrite(data.data);
     if (data.extra != null) {
-        for (let category in data.extra) {
-            let buffer = new DebouncedState(category);
-            buffer.addEventListener("change", onStateChange);
+        for (const category in data.extra) {
+            const buffer = getExtraStorage(category);
             buffer.overwrite(data.extra[category]);
-            DATA.extra.set(category, buffer);
         }
     }
 }
 
 function encodeState() {
-    let res = {
+    const res = {
         name: DATA.name,
         version: DATA.version,
         timestamp: DATA.timestamp,
@@ -68,7 +80,7 @@ function encodeState() {
         data: DATA.state.getAll(),
         extra: {}
     };
-    for (let [key, value] of DATA.extra) {
+    for (const [key, value] of DATA.extra) {
         res.extra[key] = value.getAll();
     }
     return res;
@@ -90,17 +102,17 @@ function sortStates(a, b) {
 }
 
 async function removeOverflowAutosaves() {
-    let saves = await STORAGE.getAll();
-    let keys = Object.keys(saves);
-    let autoKeys = [];
-    for (let key of keys) {
+    const saves = await STORAGE.getAll();
+    const keys = Object.keys(saves);
+    const autoKeys = [];
+    for (const key of keys) {
         if (saves[key].autosave) {
             autoKeys.push(key);
         }
     }
     autoKeys.sort(sortStates);
     while (autoKeys.length >= autosaveMax) {
-        let key = autoKeys.pop();
+        const key = autoKeys.pop();
         if (saves[key].autosave) {
             await STORAGE.delete(key);
         }
@@ -110,7 +122,7 @@ async function removeOverflowAutosaves() {
 async function autosave() {
     if (LocalStorage.get(STATE_DIRTY, false)) {
         await removeOverflowAutosaves();
-        let tmp = Object.assign({}, encodeState());
+        const tmp = Object.assign({}, encodeState());
         tmp.timestamp = new Date();
         tmp.autosave = true;
         await STORAGE.set(`${DateUtil.convert(new Date(tmp.timestamp), "YMDhms")}_${tmp.name}`, tmp);
@@ -149,7 +161,7 @@ class StateStorage {
         DATA.timestamp = new Date();
         DATA.name = name;
         DATA.autosave = false;
-        let state = encodeState();
+        const state = encodeState();
         LocalStorage.set(PERSISTANCE_NAME, state);
         await STORAGE.set(name, state);
         if (autosaveTimeout != null) {
@@ -199,26 +211,27 @@ class StateStorage {
     }
 
     reset(data, extraData) {
-        let state = StateConverter.createEmptyState(data);
-
+        const state = StateConverter.createEmptyState(data);
+        // reset al lextra data
+        for (const category of DATA.extra.keys()) {
+            state.extra[category] = {};
+        }
+        // write preset extra data
         if (typeof extraData == "object") {
-            extraData = JSON.parse(JSON.stringify(extraData));
-            for (let i in extraData) {
-                if (!state.extra.hasOwnProperty(i)) {
-                    state.extra[i] = {};
-                }
-                for (let j in extraData[i]) {
-                    state.extra[i][j] = extraData[i][j];
+            for (const category in extraData) {
+                state.extra[category] = {};
+                for (let key in extraData[category]) {
+                    state.extra[category][key] = extraData[category][key];
                 }
             }
         }
-        
+        // write state data
         decodeState(state);
-
         LocalStorage.set(PERSISTANCE_NAME, state);
         LocalStorage.set(STATE_DIRTY, false);
-        document.title = "Track-OOT - new state";
         actionPath.clear();
+        // update title & cast event
+        document.title = "Track-OOT - new state";
         EventBus.trigger("state", JSON.parse(JSON.stringify({
             notes: state.notes,
             state: state.data,
@@ -235,22 +248,24 @@ class StateStorage {
     }
 
     undo() {
-        let act = actionPath.undo();
+        const act = actionPath.undo();
         if (act != null) {
             const changes = {};
-            for (let i in act) {
-                changes[i] = act[i].oldValue;
+            for (const key in act) {
+                const value = act[key].oldValue;
+                changes[key] = value;
             }
             DATA.state.setImmediateAll(changes);
         }
     }
 
     redo() {
-        let act = actionPath.redo();
+        const act = actionPath.redo();
         if (act != null) {
             const changes = {};
-            for (let i in act) {
-                changes[i] = act[i].oldValue;
+            for (const key in act) {
+                const value = act[key].oldValue;
+                changes[key] = value;
             }
             DATA.state.setImmediateAll(changes);
         }
@@ -287,14 +302,7 @@ class StateStorage {
     }
 
     writeExtra(category, key, value) {
-        let buffer = null;
-        if (DATA.extra.has(category)) {
-            buffer = DATA.extra.get(category);
-        } else {
-            buffer = new DebouncedState(category);
-            buffer.addEventListener("change", onStateChange);
-            DATA.extra.set(category, buffer);
-        }
+        const buffer = getExtraStorage(category);
         if (typeof key == "object") {
             buffer.setAll(key);
         } else {
@@ -310,8 +318,9 @@ class StateStorage {
     }
 
     readExtra(category, key, def) {
-        if (DATA.extra.has(category) && DATA.extra.get(category).has(key)) {
-            return DATA.extra.get(category).get(key);
+        const buffer = getExtraStorage(category);
+        if (buffer.has(key)) {
+            return buffer.get(key);
         }
         return def;
     }
@@ -324,41 +333,33 @@ class StateStorage {
             }
             return res;
         } else {
-            if (DATA.extra.has(category)) {
-                return DATA.extra.get(category).getAll();
-            } else {
-                return {};
-            }
+            const buffer = getExtraStorage(category);
+            return buffer.getAll();
         }
     }
 
     resolveNetworkStateEvent(event, data) {
         if (event.startsWith("statechange")) {
-            let buffer = null
             if (event === "statechange") {
                 // event for statechange
-                buffer = DATA.state;
+                const buffer = DATA.state;
+                const changes = {};
+                for (let [key, value] of Object.entries(data)) {
+                    changes[key] = value.newValue;
+                }
+                buffer.setImmediateAll(changes);
+                return true;
             } else if (event.startsWith("statechange_")) {
                 // event for statechange_*
                 const category = event.slice(12);
-                if (DATA.extra.has(category)) {
-                    buffer = DATA.extra.get(category);
-                } else {
-                    buffer = new DebouncedState(category);
-                    buffer.addEventListener("change", onStateChange);
-                    DATA.extra.set(category, buffer);
+                const buffer = getExtraStorage(category);
+                const changes = {};
+                for (let [key, value] of Object.entries(data)) {
+                    changes[key] = value.newValue;
                 }
-            } else {
-                // event missmatch
-                return false;
+                buffer.setImmediateAll(changes);
+                return true;
             }
-            // write changes
-            const changes = {};
-            for (let [key, value] of Object.entries(data)) {
-                changes[key] = value.newValue;
-            }
-            buffer.setImmediateAll(changes);
-            return true;
         }
         // event missmatch
         return false;

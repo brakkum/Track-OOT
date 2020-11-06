@@ -221,6 +221,9 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
 
         /* event bus */
         this.registerGlobal(["state", "statechange", "settings", "randomizer_options", "logic", "filter"], event => {
+            // update exit
+            this.hint = StateStorage.readExtra("area_hint", this.ref, "");
+            // update state
             this.update();
         });
         this.registerGlobal("statechange_area_hint", event => {
@@ -242,6 +245,8 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
             el = el.parentElement;
         }
         el.append(MNU_CTX.get(this));
+        // update exit
+        this.hint = StateStorage.readExtra("area_hint", this.ref, "");
         // update state
         this.update();
     }
