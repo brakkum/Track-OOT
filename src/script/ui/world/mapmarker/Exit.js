@@ -53,6 +53,17 @@ const TPL = new Template(`
         #marker[data-state="possible"] {
             background-color: var(--location-status-possible-color, #000000);
         }
+        #marker[data-entrances="true"]:after {
+            position: absolute;
+            right: -2px;
+            bottom: -2px;
+            width: 10px;
+            height: 10px;
+            background-color: var(--location-status-available-color, #000000);
+            border: solid 4px black;
+            border-radius: 50%;
+            content: " ";
+        }
         #marker:hover {
             box-shadow: 0 0 2px 4px #67ffea;
         }
@@ -91,7 +102,20 @@ const TPL = new Template(`
         #hint {
             margin-left: 5px;
         }
+        #hint:empty {
+            display: none;
+        }
         #hint img {
+            width: 25px;
+            height: 25px;
+        }
+        #entrances {
+            margin-right: 5px;
+        }
+        #entrances:empty {
+            display: none;
+        }
+        #entrances img {
             width: 25px;
             height: 25px;
         }
@@ -113,6 +137,7 @@ const TPL = new Template(`
     <div id="marker" class="unavailable"></div>
     <emc-tooltip position="top" id="tooltip">
         <div class="textarea">
+            <div id="entrances"></div>
             <div id="text"></div>
             <div id="badge">
                 <emc-icon src="images/icons/entrance.svg"></emc-icon>
@@ -448,6 +473,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
                     this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[Math.max(res_v.value, res_m.value)];
                 }
                 this.shadowRoot.getElementById("marker").innerHTML = "";
+                this.setEntrances(res_v.entrances || res_v.entrances);
             } else {
                 let data = FileData.get(`world/${area}/lists/${dType}`);
                 let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
@@ -457,6 +483,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
                 } else {
                     this.shadowRoot.getElementById("marker").innerHTML = "";
                 }
+                this.setEntrances(res.entrances);
             }
         } else {
             let access = ACCESS.get(this);
@@ -467,6 +494,19 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
                 this.shadowRoot.getElementById("marker").dataset.state = "unavailable";
                 this.shadowRoot.getElementById("marker").innerHTML = "?";
             }
+        }
+    }
+
+    setEntrances(active) {
+        const entrances = this.shadowRoot.getElementById("entrances");
+        entrances.innerHTML = "";
+        if (active) {
+            let el_icon = document.createElement("img");
+            el_icon.src = `images/icons/entrance.svg`;
+            entrances.append(el_icon);
+            this.shadowRoot.getElementById("marker").dataset.entrances = "true";
+        } else {
+            this.shadowRoot.getElementById("marker").dataset.entrances = "false";
         }
     }
 

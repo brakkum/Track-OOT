@@ -30,6 +30,7 @@ Application:    Track-OOT
 - temporarily deactivate the map view containing overworld locations
     - does conflict with current interior/grotto entrance rando
 - entrances that are unbound open binding contextmenu on click
+- added marker for areas to show unbound entrances reachable
 
 ### UX ENHANCEMENTS
 

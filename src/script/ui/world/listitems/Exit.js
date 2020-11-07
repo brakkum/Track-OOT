@@ -73,7 +73,20 @@ const TPL = new Template(`
         #hint {
             margin-left: 5px;
         }
+        #hint:empty {
+            display: none;
+        }
         #hint img {
+            width: 25px;
+            height: 25px;
+        }
+        #entrances {
+            margin-right: 5px;
+        }
+        #entrances:empty {
+            display: none;
+        }
+        #entrances img {
             width: 25px;
             height: 25px;
         }
@@ -107,6 +120,7 @@ const TPL = new Template(`
         </div>
     </div>
     <div class="textarea">
+        <div id="entrances"></div>
         <div id="value"></div>
         <div id="hint"></div>
     </div>
@@ -432,10 +446,12 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                 } else {
                     this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[Math.max(res_v.value, res_m.value)];
                 }
+                this.setEntrances(res_v.entrances || res_v.entrances);
             } else {
                 let data = FileData.get(`world/${area}/lists/${dType}`);
                 let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[res.value];
+                this.setEntrances(res.entrances);
             }
         } else {
             let access = ACCESS.get(this);
@@ -444,6 +460,16 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
             } else {
                 this.shadowRoot.getElementById("text").dataset.state = "unavailable";
             }
+        }
+    }
+
+    setEntrances(active) {
+        const entrances = this.shadowRoot.getElementById("entrances");
+        entrances.innerHTML = "";
+        if (active) {
+            let el_icon = document.createElement("img");
+            el_icon.src = `images/icons/entrance.svg`;
+            entrances.append(el_icon);
         }
     }
 

@@ -12,6 +12,7 @@ class ListLogic {
             done: 0,
             unopened: 0,
             reachable: 0,
+            entrances: false,
             value: 0
         };
         if (!!list && Array.isArray(list)) {
@@ -36,17 +37,22 @@ class ListLogic {
                     res.unopened += unopened;
                     res.reachable += reachable;
                 } else if (category == "subexit") {
-                    const subexit = FileData.get(`world/marker/subexit/${id}`);
-                    const bound = StateStorage.readExtra("exits", subexit.access);
+                    const exitData = FileData.get(`world/marker/subexit/${id}`);
+                    const [source, target] = exitData.access.split(" -> ");
+                    const bound = StateStorage.readExtra("exits", exitData.access);
                     if (!bound) {
+                        if (!!Logic.getValue(`${source}[child]`) || !!Logic.getValue(`${source}[adult]`)) {
+                            res.entrances = true;
+                        }
                         continue;
                     }
-                    let entrance = FileData.get(`world/exit/${bound}`);
-                    if (entrance == null) {
-                        entrance = FileData.get(`world/exit/${bound.split(" -> ").reverse().join(" -> ")}`)
+                    let entranceData = FileData.get(`world/exit/${bound}`);
+                    if (entranceData == null) {
+                        const [reroute, entrance] = bound.split(" -> ");
+                        entranceData = FileData.get(`world/exit/${entrance} -> ${reroute}`)
                     }
-                    if (entrance != null) {
-                        const subarea = FileData.get(`world/${entrance.area}/list`).filter(this.filterUnusedChecks);
+                    if (entranceData != null) {
+                        const subarea = FileData.get(`world/${entranceData.area}/list`).filter(this.filterUnusedChecks);
                         const {done, unopened, reachable} = this.check(subarea);
                         res.done += done;
                         res.unopened += unopened;
