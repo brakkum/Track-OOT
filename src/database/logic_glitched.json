@@ -23378,46 +23378,6 @@
                         ]
                     }
                 ]
-            },
-            "event.showed_mido_sword_&_shield": {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "filter.era",
-                            "value": "child"
-                        }
-                    },
-                    {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "state",
-                                "el": "option.doors_open_forest",
-                                "value": "doors_open_forest_open"
-                            },
-                            {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.is_child[adult]"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.sword_kokiri"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.shield_kokiri"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
             }
         },
         "region.kf_outside_deku_tree[child]": {

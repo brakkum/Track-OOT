@@ -16607,6 +16607,23 @@
             "region.forest_temple_ne_outdoors[adult]": {
                 "type": "true"
             },
+            "region.forest_temple_falling_room[adult]": {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": "skip.forest_scarecrow"
+                    },
+                    {
+                        "type": "mixin",
+                        "el": "function.can_use(item.boots_hover)[adult]"
+                    },
+                    {
+                        "type": "mixin",
+                        "el": "function.can_use(mixin.scarecrow)[adult]"
+                    }
+                ]
+            },
             "logic.location.temple_forest.c_well": {
                 "type": "and",
                 "el": [
@@ -26476,6 +26493,38 @@
             }
         },
         "region.kf_outside_deku_tree[adult]": {
+            "region.deku_tree_entrance[adult]": {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "mixin",
+                        "el": "mixin.is_child[adult]"
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "option.shuffle_dungeons"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "state",
+                                        "el": "option.doors_open_forest",
+                                        "value": "doors_open_forest_open"
+                                    },
+                                    {
+                                        "type": "value",
+                                        "el": "event.showed_mido_sword_&_shield"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
             "region.kokiri_forest[adult]": {
                 "type": "or",
                 "el": [
@@ -26491,123 +26540,6 @@
                     {
                         "type": "value",
                         "el": "event.showed_mido_sword_&_shield"
-                    }
-                ]
-            },
-            "logic.location.sticks": {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "filter.era",
-                            "value": "child"
-                        }
-                    },
-                    {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.is_adult[adult]"
-                                    },
-                                    {
-                                        "type": "not",
-                                        "el": {
-                                            "type": "or",
-                                            "el": [
-                                                {
-                                                    "type": "value",
-                                                    "el": "option.shuffle_grottos"
-                                                },
-                                                {
-                                                    "type": "value",
-                                                    "el": "option.shuffle_dungeons"
-                                                },
-                                                {
-                                                    "type": "value",
-                                                    "el": "option.shuffle_overworld"
-                                                },
-                                                {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle_interior",
-                                                    "value": "entrance_shuffle_simple"
-                                                },
-                                                {
-                                                    "type": "state",
-                                                    "el": "option.entrance_shuffle_interior",
-                                                    "value": "entrance_shuffle_all"
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "mixin",
-                                "el": "function.can_use(item.sword_kokiri)[adult]"
-                            },
-                            {
-                                "type": "mixin",
-                                "el": "function.can_use(item.boomerang)[adult]"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "logic.location.nuts": {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "filter.era",
-                            "value": "child"
-                        }
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "mixin.is_adult[adult]"
-                            },
-                            {
-                                "type": "not",
-                                "el": {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "value",
-                                            "el": "option.shuffle_grottos"
-                                        },
-                                        {
-                                            "type": "value",
-                                            "el": "option.shuffle_dungeons"
-                                        },
-                                        {
-                                            "type": "value",
-                                            "el": "option.shuffle_overworld"
-                                        },
-                                        {
-                                            "type": "state",
-                                            "el": "option.entrance_shuffle_interior",
-                                            "value": "entrance_shuffle_simple"
-                                        },
-                                        {
-                                            "type": "state",
-                                            "el": "option.entrance_shuffle_interior",
-                                            "value": "entrance_shuffle_all"
-                                        }
-                                    ]
-                                }
-                            }
-                        ]
                     }
                 ]
             },
@@ -34634,6 +34566,28 @@
                     }
                 ]
             },
+            "region.bottom_of_the_well_entrance[adult]": {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "value",
+                        "el": "event.drain_well"
+                    },
+                    {
+                        "type": "or",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "mixin.is_child[adult]"
+                            },
+                            {
+                                "type": "value",
+                                "el": "option.shuffle_dungeons"
+                            }
+                        ]
+                    }
+                ]
+            },
             "region.kak_potion_shop_front_entrance[adult]": {
                 "type": "or",
                 "el": [
@@ -40389,6 +40343,46 @@
         "region.dmc_central_local[child]": {
             "region.dmc_central_nearby[child]": {
                 "type": "true"
+            },
+            "region.dmc_fire_temple_entrance[child]": {
+                "type": "or",
+                "el": [
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "mixin.is_child[child]"
+                            },
+                            {
+                                "type": "value",
+                                "el": "option.shuffle_dungeons"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "mixin.is_adult[child]"
+                            },
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "value",
+                                        "el": "skip.fewer_tunic_requirements"
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "function.can_use(item.tunic_fire)[child]"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             },
             "logic.location.mountain.s_crater_beanspot_child": {
                 "type": "and",
