@@ -50995,17 +50995,8 @@
             "type": "and",
             "el": [
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "value",
-                            "el": "item.song_scarecrow"
-                        },
-                        {
-                            "type": "value",
-                            "el": "option.free_scarecrow"
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "function.can_play(item.song_scarecrow)[child]"
                 },
                 {
                     "type": "value",
@@ -51017,17 +51008,8 @@
             "type": "and",
             "el": [
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "value",
-                            "el": "item.song_scarecrow"
-                        },
-                        {
-                            "type": "value",
-                            "el": "option.free_scarecrow"
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "function.can_play(item.song_scarecrow)[adult]"
                 },
                 {
                     "type": "value",
@@ -51039,17 +51021,8 @@
             "type": "and",
             "el": [
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "value",
-                            "el": "item.song_scarecrow"
-                        },
-                        {
-                            "type": "value",
-                            "el": "option.free_scarecrow"
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "function.can_play(item.song_scarecrow)[child]"
                 },
                 {
                     "type": "mixin",
@@ -51061,17 +51034,8 @@
             "type": "and",
             "el": [
                 {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "value",
-                            "el": "item.song_scarecrow"
-                        },
-                        {
-                            "type": "value",
-                            "el": "option.free_scarecrow"
-                        }
-                    ]
+                    "type": "mixin",
+                    "el": "function.can_play(item.song_scarecrow)[adult]"
                 },
                 {
                     "type": "mixin",
@@ -55129,8 +55093,17 @@
                     "el": "item.ocarina"
                 },
                 {
-                    "type": "value",
-                    "el": "item.song_scarecrow"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.song_scarecrow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "option.free_scarecrow"
+                        }
+                    ]
                 }
             ]
         },
@@ -55142,8 +55115,17 @@
                     "el": "item.ocarina"
                 },
                 {
-                    "type": "value",
-                    "el": "item.song_scarecrow"
+                    "type": "or",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "item.song_scarecrow"
+                        },
+                        {
+                            "type": "value",
+                            "el": "option.free_scarecrow"
+                        }
+                    ]
                 }
             ]
         },
@@ -55798,11 +55780,15 @@
             "el": [
                 {
                     "type": "mixin",
-                    "el": "mixin.scarecrow[child]"
+                    "el": "mixin.is_adult[child]"
                 },
                 {
                     "type": "mixin",
-                    "el": "mixin.is_adult[child]"
+                    "el": "mixin.hookshot[child]"
+                },
+                {
+                    "type": "mixin",
+                    "el": "function.can_play(item.song_scarecrow)[child]"
                 }
             ]
         },
@@ -55811,11 +55797,15 @@
             "el": [
                 {
                     "type": "mixin",
-                    "el": "mixin.scarecrow[adult]"
+                    "el": "mixin.is_adult[adult]"
                 },
                 {
                     "type": "mixin",
-                    "el": "mixin.is_adult[adult]"
+                    "el": "mixin.hookshot[adult]"
+                },
+                {
+                    "type": "mixin",
+                    "el": "function.can_play(item.song_scarecrow)[adult]"
                 }
             ]
         },
@@ -55824,11 +55814,15 @@
             "el": [
                 {
                     "type": "mixin",
-                    "el": "mixin.distant_scarecrow[child]"
+                    "el": "mixin.is_adult[child]"
                 },
                 {
                     "type": "mixin",
-                    "el": "mixin.is_adult[child]"
+                    "el": "mixin.longshot[child]"
+                },
+                {
+                    "type": "mixin",
+                    "el": "function.can_play(item.song_scarecrow)[child]"
                 }
             ]
         },
@@ -55837,11 +55831,15 @@
             "el": [
                 {
                     "type": "mixin",
-                    "el": "mixin.distant_scarecrow[adult]"
+                    "el": "mixin.is_adult[adult]"
                 },
                 {
                     "type": "mixin",
-                    "el": "mixin.is_adult[adult]"
+                    "el": "mixin.longshot[adult]"
+                },
+                {
+                    "type": "mixin",
+                    "el": "function.can_play(item.song_scarecrow)[adult]"
                 }
             ]
         },
@@ -55849,12 +55847,12 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "item.slingshot"
+                    "type": "mixin",
+                    "el": "mixin.is_child[child]"
                 },
                 {
                     "type": "mixin",
-                    "el": "mixin.is_child[child]"
+                    "el": "mixin.longshot[child]"
                 }
             ]
         },
@@ -55862,12 +55860,12 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "item.slingshot"
+                    "type": "mixin",
+                    "el": "mixin.is_child[adult]"
                 },
                 {
                     "type": "mixin",
-                    "el": "mixin.is_child[adult]"
+                    "el": "mixin.longshot[adult]"
                 }
             ]
         },
