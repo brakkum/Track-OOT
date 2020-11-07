@@ -91,6 +91,10 @@ EventBus.register("state", event => {
         if (event.data.extra.exits != null && event.data.extra.exits[exit] != null) {
             const edgeBack = event.data.extra.exits[exit];
             if (exit_binding[exit] != edgeBack) {
+                const entrance = exit_binding[exit];
+                if (!!entrance) {
+                    exit_binding[entrance] = "";
+                } 
                 exit_binding[exit] = edgeBack;
                 exit_binding[edgeBack] = exit;
                 changed = true;
@@ -143,9 +147,11 @@ class AugmentExits {
         const bound = StateStorage.readAllExtra("exits");
         const exits = FileData.get("world/exit");
         for (const exit in exits) {
-            exit_binding[exit] = bound[exit] || "";
-            const back = exit.split(" -> ").reverse().join(" -> ");
-            exit_binding[back] = bound[back] || "";
+            const entrance = bound[exit] || "";
+            exit_binding[exit] = entrance;
+            if (!!entrance) {
+                exit_binding[entrance] = exit;
+            }
         }
         for (const key in OPTIONS) {
             OPTIONS[key] = StateStorage.read(key);
