@@ -4,7 +4,7 @@ Application:    Track-OOT
 
 ***
 
-## VERSION [DEV]
+## VERSION 2.0.0
 
 ### LOGIC
 
