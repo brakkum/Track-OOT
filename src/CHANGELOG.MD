@@ -4,6 +4,16 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.1
+
+### BUGFIXES
+
+- fix multiplayer sync
+- add better icons for wallets
+- use bomb bag icon in item association
+
+---
+
 ## VERSION 2.0.0
 
 ### LOGIC

@@ -23,17 +23,12 @@ const CONFIG = {
 
 const rtcClient = new RTCClient(window.location.hostname == "localhost" ? 8001 : "", CONFIG, ["data"]);
 
-const EVENT_BLACKLIST = [
-    "logic",
-    "filter",
-    "location_change",
-    "location_mode",
-    "statechange_shops_names",
-    "state"
-];
 const eventModule = new EventBusModuleGeneric();
 EventBus.addModule(eventModule, {
-    blacklist: EVENT_BLACKLIST
+    blacklist: [
+        "statechange_shops_names"
+    ],
+    whitelist: /^statechange(_[a-zA-Z0-9]+)?$/
 });
 
 let silent = false;
@@ -245,7 +240,7 @@ function onJoined() {
         } else if (msg.type == "state") {
             setState(msg.data);
         } else if (msg.type == "event") {
-            if (EVENT_BLACKLIST.indexOf(msg.data.name) < 0) {
+            if (EventBus.checkLists(eventModule, msg.data.name)) {
                 silent = true;
                 if (!StateStorage.resolveNetworkStateEvent(msg.data.name, msg.data.data)) {
                     eventModule.trigger(msg.data.name, msg.data.data);
@@ -299,7 +294,7 @@ async function onHosting() {
             }
         } else if (msg.type == "event") {
             if (clients.has(key)) {
-                if (EVENT_BLACKLIST.indexOf(msg.data.name) < 0) {
+                if (EventBus.checkLists(eventModule, msg.data.name)) {
                     rtcClient.sendButOne("data", key, msg);
                     silent = true;
                     if (!StateStorage.resolveNetworkStateEvent(msg.data.name, msg.data.data)) {
