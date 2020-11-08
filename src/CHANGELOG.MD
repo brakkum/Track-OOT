@@ -72,7 +72,13 @@ Application:    Track-OOT
 - fix logger breaking out of the viewport
 - deactivate undo (ctrl+z) / redo (ctrl+y) as it messes with multiplayer
 
-***
+---
+
+## VERSION 1.7.21
+
+### BUGFIXES
+
+- fix collossus scrubs missing can_become_adult
 
 ## VERSION 1.7.20
 
