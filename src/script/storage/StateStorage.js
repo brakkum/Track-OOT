@@ -6,6 +6,8 @@ import DateUtil from "/emcJS/util/DateUtil.js";
 import LocalStorage from "/emcJS/storage/LocalStorage.js";
 import StateConverter from "/script/storage/StateConverter.js";
 
+DebouncedState.debounceTime = 1000;
+
 const PERSISTANCE_NAME = "savestate";
 const STATE_DIRTY = "state_dirty";
 const TITLE_PREFIX = document.title;

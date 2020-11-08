@@ -132,16 +132,16 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         TYPE.set(this, type);
 
         /* context menu */
-        let mnu_ctx = document.createElement("div");
+        const mnu_ctx = document.createElement("div");
         mnu_ctx.attachShadow({mode: 'open'});
         mnu_ctx.shadowRoot.append(TPL_MNU_CTX.generate());
-        let mnu_ctx_el = mnu_ctx.shadowRoot.getElementById("menu");
+        const mnu_ctx_el = mnu_ctx.shadowRoot.getElementById("menu");
         MNU_CTX.set(this, mnu_ctx);
 
-        let mnu_itm = document.createElement("div");
+        const mnu_itm = document.createElement("div");
         mnu_itm.attachShadow({mode: 'open'});
         mnu_itm.shadowRoot.append(TPL_MNU_ITM.generate());
-        let mnu_itm_el = mnu_itm.shadowRoot.getElementById("menu");
+        const mnu_itm_el = mnu_itm.shadowRoot.getElementById("menu");
         MNU_ITM.set(this, mnu_itm);
 
         mnu_itm.shadowRoot.getElementById("item-picker").addEventListener("pick", event => {
@@ -173,7 +173,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-logic").addEventListener("click", event => {
-            let title = Language.translate(this.ref);
+            const title = Language.translate(this.ref);
             LogicViewer.show(this.access, title);
         });
         
@@ -215,13 +215,13 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         });
         this.registerGlobal("statechange", event => {
             if (event.data.hasOwnProperty(this.ref)) {
-                let value = !!event.data[this.ref].newValue;
+                const value = !!event.data[this.ref].newValue;
                 this.checked = value;
             }
         });
         this.registerGlobal("logic", event => {
             if (event.data.hasOwnProperty(this.access)) {
-                let textEl = this.shadowRoot.getElementById("text");
+                const textEl = this.shadowRoot.getElementById("text");
                 if (!!this.access && !!event.data[this.access]) {
                     textEl.dataset.state = "available";
                 } else {
@@ -245,8 +245,8 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         el.append(MNU_CTX.get(this));
         el.append(MNU_ITM.get(this));
         // update state
-        let textEl = this.shadowRoot.getElementById("text");
-        let value = StateStorage.read(this.ref, false);
+        const textEl = this.shadowRoot.getElementById("text");
+        const value = StateStorage.read(this.ref, false);
         textEl.dataset.checked = !!value;
         if (!!this.access && !!Logic.getValue(this.access)) {
             textEl.dataset.state = "available";
@@ -299,8 +299,8 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
-        let textEl = this.shadowRoot.getElementById("text");
-        let itemEl = this.shadowRoot.getElementById("item");
+        const textEl = this.shadowRoot.getElementById("text");
+        const itemEl = this.shadowRoot.getElementById("item");
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
@@ -327,8 +327,8 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
                 if (oldValue != newValue) {
                     itemEl.innerHTML = "";
                     if (!!newValue && newValue != "false") {
-                        let el_icon = document.createElement("img");
-                        let itemsData = FileData.get("items")[newValue];
+                        const el_icon = document.createElement("img");
+                        const itemsData = FileData.get("items")[newValue];
                         const bgImage = Array.isArray(itemsData.images) ? itemsData.images[0] : itemsData.images;
                         el_icon.src = bgImage;
                         itemEl.append(el_icon);
@@ -350,7 +350,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
     }
     
     uncheck() {
-        if (this.checked == "true") {
+        if (!this.checked || this.checked == "true") {
             StateStorage.write(this.ref, false);
             this.checked = true;
             this.triggerGlobal(TYPE.get(this), {
@@ -361,7 +361,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
     }
 
     setFilterData(data) {
-        let el_era = this.shadowRoot.getElementById("badge-era");
+        const el_era = this.shadowRoot.getElementById("badge-era");
         if (!data["filter.era/child"]) {
             el_era.src = "images/icons/era_adult.svg";
         } else if (!data["filter.era/adult"]) {
@@ -369,7 +369,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         } else {
             el_era.src = "images/icons/era_both.svg";
         }
-        let el_time = this.shadowRoot.getElementById("badge-time");
+        const el_time = this.shadowRoot.getElementById("badge-time");
         if (!data["filter.time/day"]) {
             el_time.src = "images/icons/time_night.svg";
         } else if (!data["filter.time/night"]) {

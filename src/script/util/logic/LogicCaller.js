@@ -56,37 +56,38 @@ EventBus.register("statechange", event => {
     // keys - apply values
     if (changed.hasOwnProperty("option.track_keys") && cached_values["option.track_keys"] != changed["option.track_keys"]) {
         cached_values["option.track_keys"] = changed["option.track_keys"];
-        if (!cached_values["option.track_keys"]) {
-            for (let i = 0; i < dungeonData.length; ++i) {
-                let dData = dungeonData[i];
-                if (!!dData.keys) {
-                    changed[dData.keys] = 9999;
-                }
+    }
+    if (!cached_values["option.track_keys"]) {
+        for (let i = 0; i < dungeonData.length; ++i) {
+            let dData = dungeonData[i];
+            if (!!dData.keys) {
+                changed[dData.keys] = 9999;
             }
-        } else {
-            for (let i = 0; i < dungeonData.length; ++i) {
-                let dData = dungeonData[i];
-                if (!!dData.keys) {
-                    changed[dData.keys] = cached_values[dData.keys] || 0;
-                }
+        }
+    } else {
+        for (let i = 0; i < dungeonData.length; ++i) {
+            let dData = dungeonData[i];
+            if (!!dData.keys) {
+                changed[dData.keys] = cached_values[dData.keys] || 0;
             }
         }
     }
+    // bosskeys - apply values
     if (changed.hasOwnProperty("option.track_bosskeys") && cached_values["option.track_bosskeys"] != changed["option.track_bosskeys"]) {
         cached_values["option.track_bosskeys"] = changed["option.track_bosskeys"];
-        if (!cached_values["option.track_bosskeys"]) {
-            for (let i = 0; i < dungeonData.length; ++i) {
-                let dData = dungeonData[i];
-                if (!!dData.bosskey) {
-                    changed[dData.bosskey] = 9999;
-                }
+    }
+    if (!cached_values["option.track_bosskeys"]) {
+        for (let i = 0; i < dungeonData.length; ++i) {
+            let dData = dungeonData[i];
+            if (!!dData.bosskey) {
+                changed[dData.bosskey] = 9999;
             }
-        } else {
-            for (let i = 0; i < dungeonData.length; ++i) {
-                let dData = dungeonData[i];
-                if (!!dData.bosskey) {
-                    changed[dData.bosskey] = cached_values[dData.bosskey] || 0;
-                }
+        }
+    } else {
+        for (let i = 0; i < dungeonData.length; ++i) {
+            let dData = dungeonData[i];
+            if (!!dData.bosskey) {
+                changed[dData.bosskey] = cached_values[dData.bosskey] || 0;
             }
         }
     }

@@ -142,16 +142,16 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
         TYPE.set(this, type);
 
         /* context menu */
-        let mnu_ctx = document.createElement("div");
+        const mnu_ctx = document.createElement("div");
         mnu_ctx.attachShadow({mode: 'open'});
         mnu_ctx.shadowRoot.append(TPL_MNU_CTX.generate());
-        let mnu_ctx_el = mnu_ctx.shadowRoot.getElementById("menu");
+        const mnu_ctx_el = mnu_ctx.shadowRoot.getElementById("menu");
         MNU_CTX.set(this, mnu_ctx);
 
-        let mnu_itm = document.createElement("div");
+        const mnu_itm = document.createElement("div");
         mnu_itm.attachShadow({mode: 'open'});
         mnu_itm.shadowRoot.append(TPL_MNU_ITM.generate());
-        let mnu_itm_el = mnu_itm.shadowRoot.getElementById("menu");
+        const mnu_itm_el = mnu_itm.shadowRoot.getElementById("menu");
         MNU_ITM.set(this, mnu_itm);
 
         mnu_itm.shadowRoot.getElementById("item-picker").addEventListener("pick", event => {
@@ -183,7 +183,7 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-logic").addEventListener("click", event => {
-            let title = Language.translate(this.ref);
+            const title = Language.translate(this.ref);
             LogicViewer.show(this.access, title);
         });
         
@@ -231,7 +231,7 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
         });
         this.registerGlobal("logic", event => {
             if (event.data.hasOwnProperty(this.access)) {
-                let el = this.shadowRoot.getElementById("marker");
+                const el = this.shadowRoot.getElementById("marker");
                 if (!!this.access && !!event.data[this.access]) {
                     el.dataset.state = "available";
                 } else {
@@ -241,7 +241,7 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
         });
         this.registerGlobal("logic", event => {
             if (event.data.hasOwnProperty(this.access)) {
-                let el = this.shadowRoot.getElementById("marker");
+                const el = this.shadowRoot.getElementById("marker");
                 if (!!this.access && !!event.data[this.access]) {
                     el.dataset.state = "available";
                 } else {
@@ -265,7 +265,7 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
         el.append(MNU_CTX.get(this));
         el.append(MNU_ITM.get(this));
         // update state
-        let value = StateStorage.read(this.ref, false);
+        const value = StateStorage.read(this.ref, false);
         this.checked = !!value;
         this.item = StateStorage.readExtra("item_location", this.ref, false);
         this.update();
@@ -346,8 +346,8 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
-        let textEl = this.shadowRoot.getElementById("text");
-        let itemEl = this.shadowRoot.getElementById("item");
+        const textEl = this.shadowRoot.getElementById("text");
+        const itemEl = this.shadowRoot.getElementById("item");
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
@@ -413,7 +413,7 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
     }
 
     setFilterData(data) {
-        let el_era = this.shadowRoot.getElementById("badge-era");
+        const el_era = this.shadowRoot.getElementById("badge-era");
         if (!data["filter.era/child"]) {
             el_era.src = "images/icons/era_adult.svg";
         } else if (!data["filter.era/adult"]) {
@@ -421,7 +421,7 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
         } else {
             el_era.src = "images/icons/era_both.svg";
         }
-        let el_time = this.shadowRoot.getElementById("badge-time");
+        const el_time = this.shadowRoot.getElementById("badge-time");
         if (!data["filter.time/day"]) {
             el_time.src = "images/icons/time_night.svg";
         } else if (!data["filter.time/night"]) {
@@ -440,7 +440,7 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
 
     static createType(ref) {
         if (REG.has(ref)) {
-            let MapType = REG.get(ref);
+            const MapType = REG.get(ref);
             return new MapType();
         }
         return new MapLocation(ref);
