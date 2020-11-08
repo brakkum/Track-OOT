@@ -5,12 +5,11 @@
 
 ## master - hotfix
 
-> ---
-> hotfixes are used for:
-> - fixes for configurations in `/database/*.json`
-> - fixes for translations in `/i18n/*.lang`
-> - small functionality patches fixing unwanted behaviour
-> ---
+### used for
+
+- fixes for configurations in `/database/*.json`
+- fixes for translations in `/i18n/*.lang`
+- fixes for unwanted behaviour
 
 ### creating a hotfix
 
