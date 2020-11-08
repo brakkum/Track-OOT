@@ -55811,8 +55811,8 @@
                     "el": "mixin.is_child[child]"
                 },
                 {
-                    "type": "mixin",
-                    "el": "mixin.longshot[child]"
+                    "type": "value",
+                    "el": "item.slingshot"
                 }
             ]
         },
@@ -55824,8 +55824,8 @@
                     "el": "mixin.is_child[adult]"
                 },
                 {
-                    "type": "mixin",
-                    "el": "mixin.longshot[adult]"
+                    "type": "value",
+                    "el": "item.slingshot"
                 }
             ]
         },
