@@ -4,6 +4,15 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.2
+
+### BUGFIXES
+
+- fix gerudo card was not tracked if bosskey tracking was deactivated
+- fix multiplayer to sync items additive instead of overwriting
+
+---
+
 ## VERSION 2.0.1
 
 ### BUGFIXES

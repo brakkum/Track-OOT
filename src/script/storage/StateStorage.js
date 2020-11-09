@@ -346,7 +346,14 @@ class StateStorage {
                 // event for statechange
                 const buffer = DATA.state;
                 const changes = {};
-                for (let [key, value] of Object.entries(data)) {
+                for (const [key, value] of Object.entries(data)) {
+                    if (key.startsWith("item.")) {
+                        const current = buffer.get(key);
+                        if (current != value.oldValue) {
+                            changes[key] = current + value.newValue - value.oldValue;
+                            continue;
+                        }
+                    }
                     changes[key] = value.newValue;
                 }
                 buffer.setImmediateAll(changes);
@@ -356,7 +363,14 @@ class StateStorage {
                 const category = event.slice(12);
                 const buffer = getExtraStorage(category);
                 const changes = {};
-                for (let [key, value] of Object.entries(data)) {
+                for (const [key, value] of Object.entries(data)) {
+                    if (key.startsWith("item.")) {
+                        const current = buffer.get(key);
+                        if (current != value.oldValue) {
+                            changes[key] = current + value.newValue - value.oldValue;
+                            continue;
+                        }
+                    }
                     changes[key] = value.newValue;
                 }
                 buffer.setImmediateAll(changes);
