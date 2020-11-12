@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>[D]Track-OOT</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Track items and locations in 'The Legend of Zelda - Ocarina of Time Randomizer' (OOTR)">
+    <meta name="robots" content="norobots, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#cb9c3d">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/favicons/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicons/icon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/icon-16x16.png">
+    <link rel="stylesheet" type="text/css" href="/style/theme.css">
+    <link rel="stylesheet" type="text/css" href="/style/font.css">
+    </script>
+    <script>
+        window.addEventListener('contextmenu', function() {
+            event.preventDefault();
+            return false;
+        });
+    </script>
+    <script type="module">
+        import EventBus from "/emcJS/util/events/EventBus.js";
+        import FileData from "/emcJS/storage/FileData.js";
+        import "/emcJS/ui/layout/Layout.js";
+        import "/emcJS/ui/layout/Panel.js";
+        import "/script/ui/items/ItemGrid.js";
+        import "/script/ui/dungeonstate/DungeonState.js";
+        import "/script/ui/world/LocationList.js";
+        import "/script/ui/world/Map.js";
+        
+        import {loadResources, registerWorker} from "/script/boot.js";
+
+        (async function main() {
+
+            await loadResources();
+            await registerWorker();
+
+            let conf = decodeURI(window.location.hash.slice(1));
+            let layout = FileData.get(`layouts/${conf}`);
+
+            if (!!layout) {
+                let el = document.getElementById("layout");
+                el.loadLayout(layout);
+                let waw = window.outerWidth - window.innerWidth;
+                let wah = window.outerHeight - window.innerHeight;
+                window.resizeTo(waw + el.clientWidth, wah + el.clientHeight);
+            }
+            
+            EventBus.trigger("detached-window-created", {});
+
+        }());
+
+    </script>
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <emc-layout id="layout">
+        </emc-layout>
+    </div>
+</body>
+</html>

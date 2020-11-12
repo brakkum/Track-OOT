@@ -123,7 +123,7 @@ async function states_Manage() {
 }
 
 function openDetachedItems() {
-    window.open('detached.html#items', "TrackOOT", "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,titlebar=0", false);
+    window.open('/detached/#items', "TrackOOT", "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,titlebar=0", false);
 }
 
 function openDiscortJoin() {

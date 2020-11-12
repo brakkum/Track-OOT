@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.3
+
+### BUGFIXES
+
+- fixed detached window
+
+---
+
 ## VERSION 2.0.2
 
 ### BUGFIXES

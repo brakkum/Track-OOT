@@ -7,36 +7,14 @@ import FileData from "/emcJS/storage/FileData.js";
 import FileLoader from "/emcJS/util/FileLoader.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
 import HotkeyHandler from "/emcJS/util/HotkeyHandler.js";
-import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import Language from "/script/util/Language.js";
 import World from "/script/util/world/World.js";
+
+import {loadResources, registerWorker} from "/script/boot.js";
 
 import "/script/storage/converter/StateConverter.js";
 
 import "/emcJS/ui/Paging.js";
-
-const SettingsStorage = new IDBStorage('settings');
-
-const FILES = {
-    "world":                {path: "/database/world.json",              type: "json"},
-    "logic":                {path: "/database/logic.json",              type: "json"},
-    "logic_glitched":       {path: "/database/logic_glitched.json",     type: "json"},
-    "options_trans":        {path: "/database/options_trans.json",      type: "jsonc"},
-    "items":                {path: "/database/items.json",              type: "jsonc"},
-    "grids":                {path: "/database/grids.json",              type: "jsonc"},
-    "dungeonstate":         {path: "/database/dungeonstate.json",       type: "jsonc"},
-    "layouts":              {path: "/database/layouts.json",            type: "jsonc"},
-    "songs":                {path: "/database/songs.json",              type: "jsonc"},
-    "hints":                {path: "/database/hints.json",              type: "jsonc"},
-    "settings":             {path: "/database/settings.json",           type: "jsonc"},
-    "rulesets":             {path: "/database/rulesets.json",           type: "jsonc"},
-    "randomizer_options":   {path: "/database/randomizer_options.json", type: "jsonc"},
-    "spoiler_options":      {path: "/database/spoiler_options.json",    type: "jsonc"},
-    "filter":               {path: "/database/filter.json",             type: "jsonc"},
-    "shops":                {path: "/database/shops.json",              type: "jsonc"},
-    "shop_items":           {path: "/database/shop_items.json",         type: "jsonc"}
-};
 
 function setVersion(data) {
     MemoryStorage.set("version-dev", data.dev);
@@ -51,30 +29,10 @@ function setVersion(data) {
 (async function main() {
 
     try {
-        updateLoadingMessage("load data...");
-        await FileData.load(FILES);
         setVersion(await FileLoader.json("version.json"));
-        updateLoadingMessage("learn languages...");
-        await Language.load(await SettingsStorage.get("language", "en_us"));
-        updateLoadingMessage("initialize states...");
-        await StateStorage.init(function() {
-            let options = FileData.get("randomizer_options");
-            let def_state = {};
-            for (let i in options) {
-                for (let j in options[i]) {
-                    let v = options[i][j].default;
-                    if (Array.isArray(v)) {
-                        v = new Set(v);
-                        options[i][j].values.forEach(el => {
-                            def_state[el] = v.has(el);
-                        });
-                    } else {
-                        def_state[j] = v;
-                    }
-                }
-            }
-            return def_state;
-        }());
+        // initial boot
+        await loadResources(updateLoadingMessage);
+        // 
         updateLoadingMessage("build world data...");
         World.init();
         updateLoadingMessage("poke application...");
@@ -137,10 +95,7 @@ async function init() {
         "/script/content/EditorChoice.js"
     ]);
     
-    if ("SharedWorker" in window) {
-        let EventBusModuleShare = (await import("/emcJS/util/events/EventBusModuleShare.js")).default;
-        EventBus.addModule(EventBusModuleShare, {blacklist:["logic"]});
-    }
+    await registerWorker();
 
     updateLoadingMessage("apply logger...");
     if (!!MemoryStorage.get("version-dev")) {
@@ -193,10 +148,10 @@ async function init() {
     if (!!spl) {
         spl.className = "inactive";
     }
-
+    
     // hotkeys
     function openDetached() {
-        window.open('detached.html#items', "TrackOOT", "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,titlebar=0", false);
+        window.open('/detached/#items', "TrackOOT", "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,titlebar=0", false);
     }
     HotkeyHandler.setAction("detached_window", openDetached, {
         ctrlKey: true,
