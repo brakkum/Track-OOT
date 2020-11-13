@@ -1,0 +1,63 @@
+{
+  "spoilerOptions": {
+    "parse.settings": {
+      "type": "check",
+      "default": true
+    },
+    "parse.item_association": {
+      "type": "check",
+      "default": false
+    },
+    "parse.woth_hints": {
+      "type": "check",
+      "default": false
+    },
+    "parse.starting_items": {
+      "type": "check",
+      "default": false
+    },
+    "parse.shops": {
+      "type": "check",
+      "default": false
+    },
+    "parse.gossip_stones": {
+      "type": "hidden",
+      "default": false
+    },
+    "parse.barren": {
+      "type": "check",
+      "default": false
+    },
+    "parse.trials": {
+      "type": "check",
+      "default": false
+    },
+    "parse.random_settings": {
+      "type": "check",
+      "default": false
+    },
+    "parse.dungeons": {
+      "type": "check",
+      "default": false
+    },
+    "parse.dungeonReward": {
+      "type": "check",
+      "default": false
+    },
+    "parse.multiworld": {
+      "type": "number",
+      "default": 1,
+      "min": 1,
+      "max": 100
+    },
+    "parse.entrances": {
+      "type": "list",
+      "values": [
+        "parse.entro_dungeons",
+        "parse.entro_grottos",
+        "parse.entro_indoors"
+      ],
+      "default": []
+    }
+  }
+}

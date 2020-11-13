@@ -23,19 +23,15 @@ const CONFIG = {
 
 const rtcClient = new RTCClient(window.location.hostname == "localhost" ? 8001 : "", CONFIG, ["data"]);
 
-const EVENT_BLACKLIST = [
-    "logic",
-    "filter",
-    "location_change",
-    "location_mode",
-    "state_change",
-    "state"
-];
 const eventModule = new EventBusModuleGeneric();
 EventBus.addModule(eventModule, {
-    blacklist: EVENT_BLACKLIST
+    blacklist: [
+        "statechange_shops_names"
+    ],
+    whitelist: /^statechange(_[a-zA-Z0-9]+)?$/
 });
 
+let silent = false;
 let username = "";
 let clients = new Map();
 let spectators = new Map();
@@ -46,24 +42,27 @@ let ON_ROOMUPDATE = EMPTY_FN;
 
 function getState() {
     let state = StateStorage.getAll();
+    let extra = StateStorage.readAllExtra();
     let res = {};
-    for (let i in state) {
-        if (i != "notes" && !i.endsWith(".names")) {
-            res[i] = state[i];
+    for (let i in extra) {
+        if (!i.endsWith("Names")) {
+            res[i] = extra[i];
         }
     }
-    return res;
+    return {
+        state: state,
+        extra: res
+    };
 }
 
-function setState(state) {
+function setState(data) {
     let buffer = {};
-    for (let i in state) {
-        if (i != "notes" && !i.endsWith(".names")) {
-            buffer[i] =  state[i];
+    for (let i in data.extra) {
+        if (!i.endsWith("Names")) {
+            buffer[i] =  data.extra[i];
         }
     }
-    StateStorage.reset(buffer);
-    EventBus.trigger("state", StateStorage.getAll());
+    StateStorage.reset(data.state, buffer);
 }
 
 function getClientNameList() {
@@ -228,6 +227,7 @@ async function promptPeerName() {
 }
 
 function onJoined() {
+    silent = false;
     rtcClient.setMessageHandler("data", async function(key, msg) {
         if (msg.type == "join") {
             Toast.show(`Multiplayer: "${msg.data}" joined`);
@@ -240,21 +240,27 @@ function onJoined() {
         } else if (msg.type == "state") {
             setState(msg.data);
         } else if (msg.type == "event") {
-            if (EVENT_BLACKLIST.indexOf(msg.data.name) < 0) {
-                eventModule.trigger(msg.data.name, msg.data.data);
-                StateStorage.write(msg.data.data.name, msg.data.data.value);
+            if (EventBus.checkLists(eventModule, msg.data.name)) {
+                silent = true;
+                if (!StateStorage.resolveNetworkStateEvent(msg.data.name, msg.data.data)) {
+                    eventModule.trigger(msg.data.name, msg.data.data);
+                }
+                silent = false;
             }
         }
     });
     eventModule.register(function(event) {
-        rtcClient.send("data", {
-            type: "event",
-            data: event
-        });
+        if (!silent) {
+            rtcClient.send("data", {
+                type: "event",
+                data: event
+            });
+        }
     });
 }
 
 async function onHosting() {
+    silent = false;
     rtcClient.setMessageHandler("data", function(key, msg) {
         if (msg.type == "name") {
             if (msg.data == username || reverseLookup.has(msg.data)) {
@@ -288,10 +294,13 @@ async function onHosting() {
             }
         } else if (msg.type == "event") {
             if (clients.has(key)) {
-                if (EVENT_BLACKLIST.indexOf(msg.data.name) < 0) {
+                if (EventBus.checkLists(eventModule, msg.data.name)) {
                     rtcClient.sendButOne("data", key, msg);
-                    eventModule.trigger(msg.data.name, msg.data.data);
-                    StateStorage.write(msg.data.data.name, msg.data.data.value);
+                    silent = true;
+                    if (!StateStorage.resolveNetworkStateEvent(msg.data.name, msg.data.data)) {
+                        eventModule.trigger(msg.data.name, msg.data.data);
+                    }
+                    silent = false;
                 }
             }
         }
@@ -324,10 +333,12 @@ async function onHosting() {
         ON_ROOMUPDATE(data);
     };
     eventModule.register(function(event) {
-        rtcClient.send("data", {
-            type: "event",
-            data: event
-        });
+        if (!silent) {
+            rtcClient.send("data", {
+                type: "event",
+                data: event
+            });
+        }
     });
     ON_ROOMUPDATE(getClientNameList());
 }

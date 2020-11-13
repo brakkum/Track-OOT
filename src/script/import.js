@@ -29,7 +29,7 @@
                 }
                 return await Promise.all(res);
             } else {
-                return await import(url);
+                return await import(url).then(e=>e.default);
             }
         }
 

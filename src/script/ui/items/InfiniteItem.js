@@ -1,7 +1,7 @@
 import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
-import "/emcJS/ui/selection/Option.js";
+import "/emcJS/ui/input/Option.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
 const TPL = new Template(`
@@ -61,12 +61,23 @@ function getAlign(value) {
     }
 }
     
-function stateChanged(event) {
-    let value = parseInt(event.data[this.ref]);
+function stateLoaded(event) {
+    let value = parseInt(event.data.state[this.ref]);
     if (isNaN(value)) {
         value = 0;
     }
     this.value = value;
+}
+    
+function stateChanged(event) {
+    const change = event.data[this.ref];
+    if (change != null) {
+        let value = parseInt(change.newValue);
+        if (isNaN(value)) {
+            value = 0;
+        }
+        this.value = value;
+    }
 }
 
 function itemUpdate(event) {
@@ -79,6 +90,9 @@ function itemUpdate(event) {
     }
 }
 
+const EVENT_REACTION_TIME = 500;
+const EVENT_TIMEOUT = new WeakMap();
+
 class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
@@ -89,7 +103,8 @@ class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.append(TPL.generate());
         /* event bus */
         this.registerGlobal("item", itemUpdate.bind(this));
-        this.registerGlobal("state", stateChanged.bind(this));
+        this.registerGlobal("state", stateLoaded.bind(this));
+        this.registerGlobal("statechange", stateChanged.bind(this));
     }
 
     get ref() {
@@ -168,11 +183,16 @@ class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
             let val = parseInt(this.value) + 1;
             if (val <= 9999) {
                 this.value = val;
-                StateStorage.write(this.ref, val);
-                this.triggerGlobal("item", {
-                    name: this.ref,
-                    value: val
-                });
+                if (EVENT_TIMEOUT.has(this)) {
+                    clearTimeout(EVENT_TIMEOUT.get(this));
+                }
+                EVENT_TIMEOUT.set(this, setTimeout(() => {
+                    StateStorage.write(this.ref, parseInt(this.value));
+                    this.triggerGlobal("item", {
+                        name: this.ref,
+                        value: this.value
+                    });
+                }, EVENT_REACTION_TIME));
             } else {
                 this.value = 9999;
             }
@@ -190,11 +210,16 @@ class HTMLTrackerInfiniteItem extends EventBusSubsetMixin(HTMLElement) {
                     val = 0;
                 }
                 this.value = val;
-                StateStorage.write(this.ref, val);
-                this.triggerGlobal("item", {
-                    name: this.ref,
-                    value: val
-                });
+                if (EVENT_TIMEOUT.has(this)) {
+                    clearTimeout(EVENT_TIMEOUT.get(this));
+                }
+                EVENT_TIMEOUT.set(this, setTimeout(() => {
+                    StateStorage.write(this.ref, parseInt(this.value));
+                    this.triggerGlobal("item", {
+                        name: this.ref,
+                        value: this.value
+                    });
+                }, EVENT_REACTION_TIME));
             } else {
                 this.value = 0;
             }

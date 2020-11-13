@@ -6,7 +6,7 @@ const path = require("path");
 const SRC_PATH = path.resolve(__dirname, "./src");
 const DEV_PATH = path.resolve(__dirname, "./dev");
 const PRD_PATH = path.resolve(__dirname, "./prod");
-const EDT_PATH = path.resolve(__dirname, "./editor/utils");
+const EDT_PATH = path.resolve(__dirname, "./editor/content");
 
 const MODULE_PATHS = {
     emcJS: path.resolve(__dirname, "node_modules/emcjs"),
@@ -56,11 +56,19 @@ function copyHTML(dest = DEV_PATH) {
 }
 
 function copyJSON(dest = DEV_PATH) {
-    return gulp.src(`${SRC_PATH}/**/*.json`)
-        .pipe(filemanager.register(SRC_PATH, dest))
-        .pipe(newer(dest))
-        .pipe(jsonminify())
-        .pipe(gulp.dest(dest));
+    if (process.argv.indexOf('-nocompress') < 0) {
+        return gulp.src(`${SRC_PATH}/**/*.json`)
+            .pipe(filemanager.register(SRC_PATH, dest))
+            .pipe(newer(dest))
+            .pipe(jsonminify())
+            .pipe(gulp.dest(dest));
+    } else {
+        return gulp.src(`${SRC_PATH}/**/*.json`)
+            .pipe(filemanager.register(SRC_PATH, dest))
+            .pipe(newer(dest))
+            .pipe(gulp.dest(dest));
+    }
+        
 }
 
 function copyI18N(dest = DEV_PATH) {
@@ -71,7 +79,11 @@ function copyI18N(dest = DEV_PATH) {
 }
 
 function copyImg(dest = DEV_PATH) {
-    return gulp.src([`${SRC_PATH}/images/**/*.svg`, `${SRC_PATH}/images/**/*.png`])
+    const FILES = [
+        `${SRC_PATH}/images/**/*.svg`,
+        `${SRC_PATH}/images/**/*.png`
+    ];
+    return gulp.src(FILES)
         .pipe(filemanager.register(`${SRC_PATH}/images`, `${dest}/images`))
         .pipe(newer(`${dest}/images`))
         .pipe(svgo())
@@ -94,14 +106,15 @@ function copyCSS(dest = DEV_PATH) {
 }
 
 function copyFonts(dest = DEV_PATH) {
-    return gulp.src([
+    const FILES = [
         `${SRC_PATH}/fonts/**/*.ttf`,
         `${SRC_PATH}/fonts/**/*.eot`,
         `${SRC_PATH}/fonts/**/*.otf`,
         `${SRC_PATH}/fonts/**/*.woff`,
         `${SRC_PATH}/fonts/**/*.woff2`,
         `${SRC_PATH}/fonts/**/*.svg`
-    ])
+    ];
+    return gulp.src(FILES)
         .pipe(filemanager.register(`${SRC_PATH}/fonts`, `${dest}/fonts`))
         .pipe(newer(`${dest}/fonts`))
         .pipe(gulp.dest(`${dest}/fonts`));
@@ -122,14 +135,25 @@ function copyEditorExtension(dest = DEV_PATH) {
 }
 
 function copyEmcJS(dest = DEV_PATH) {
-    return gulp.src([`${MODULE_PATHS.emcJS}/**/*.js`, `!${MODULE_PATHS.emcJS}/*.js`])
+    const FILES = [
+        `${MODULE_PATHS.emcJS}/**/*.js`,
+        `!${MODULE_PATHS.emcJS}/_demo/**/*.js`,
+        `!${MODULE_PATHS.emcJS}/*.js`
+    ];
+    return gulp.src(FILES)
         .pipe(filemanager.register(MODULE_PATHS.emcJS, `${dest}/emcJS`))
         .pipe(newer(`${dest}/emcJS`))
         .pipe(gulp.dest(`${dest}/emcJS`));
 }
 
 function copyTrackerEditor(dest = DEV_PATH) {
-    return gulp.src(`${MODULE_PATHS.trackerEditor}/**/*.js`)
+    const FILES = [
+        `${MODULE_PATHS.trackerEditor}/**/*.js`,
+        `!${MODULE_PATHS.trackerEditor}/node_modules/**/*.js`,
+        `!${MODULE_PATHS.trackerEditor}/*.js`,
+        `${MODULE_PATHS.trackerEditor}/EditorChoice.js`
+    ];
+    return gulp.src(FILES)
         .pipe(filemanager.register(MODULE_PATHS.trackerEditor, `${dest}/editors`))
         .pipe(newer(`${dest}/editors`))
         .pipe(gulp.dest(`${dest}/editors`));

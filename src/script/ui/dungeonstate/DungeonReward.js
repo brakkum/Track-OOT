@@ -1,6 +1,6 @@
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
-import "/emcJS/ui/selection/Option.js";
+import "/emcJS/ui/input/Option.js";
 import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
@@ -65,17 +65,25 @@ const REWARDS = [
 const TAKEN_REWARDS = new Map();
 
 function stateChanged(event) {
-    let value = event.data[`dungeonRewards.${this.ref}`];
-    if (value != null) {
-        this.value = value;
+    if (event.data.extra.dungeonreward != null) {
+        let value = event.data.extra.dungeonreward[this.ref];
+        if (value != null) {
+            this.value = value;
+        } else {
+            this.value = "";
+        }
     } else {
         this.value = "";
     }
 }
 
 function dungeonRewardUpdate(event){
-    if (this.ref === event.data.name && this.value !== event.data.value) {
-        this.value = event.data.value;
+    let data;
+    if (event.data != null) {
+        data = event.data[this.ref];
+    }
+    if (data != null) {
+        this.value = data.newValue;
     }
 }
 
@@ -89,12 +97,12 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.append(TPL.generate());
         /* event bus */
         this.registerGlobal("state", stateChanged.bind(this));
-        this.registerGlobal("dungeonreward", dungeonRewardUpdate.bind(this));
+        this.registerGlobal("statechange_dungeonreward", dungeonRewardUpdate.bind(this));
     }
 
     connectedCallback() {
         super.connectedCallback();
-        this.value = StateStorage.read(`dungeonRewards.${this.ref}`, "");
+        this.value = StateStorage.readExtra("dungeonreward", this.ref, "");
     }
 
     get ref() {
@@ -134,7 +142,7 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
                             }
                             this.append(createOption(name, j));
                         }
-                        this.value = StateStorage.read(`dungeonRewards.${newValue}`, "");
+                        this.value = StateStorage.readExtra("dungeonreward", newValue, "");
                     }
                 }
             break;
@@ -174,11 +182,7 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
         }
         if (value != oldValue) {
             this.value = value;
-            StateStorage.write(`dungeonRewards.${this.ref}`, value);
-            this.triggerGlobal("dungeonreward", {
-                name: this.ref,
-                value: value
-            });
+            StateStorage.writeExtra("dungeonreward", this.ref, value);
         }
         ev.preventDefault();
         return false;
@@ -187,11 +191,7 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
     revert(ev) {
         if (this.value != "") {
             this.value = "";
-            StateStorage.write(`dungeonRewards.${this.ref}`, "");
-            this.triggerGlobal("dungeonreward", {
-                name: this.ref,
-                value: ""
-            });
+            StateStorage.writeExtra("dungeonreward", this.ref, "");
         }
         ev.preventDefault();
         return false;

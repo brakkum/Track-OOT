@@ -2,7 +2,7 @@ import FileData from "/emcJS/storage/FileData.js";
 import Language from "/script/util/Language.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
-import "/emcJS/ui/selection/Option.js";
+import "/emcJS/ui/input/Option.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
 const TPL = new Template(`
@@ -57,19 +57,19 @@ const TPL = new Template(`
 
 const ALL_DUNGEONS = [
     'pocket',
-    'area.deku',
-    'area.dodongo',
-    'area.jabujabu',
-    'area.temple_forest',
-    'area.temple_fire',
-    'area.temple_shadow',
-    'area.temple_water',
-    'area.temple_spirit'
+    'area/deku',
+    'area/dodongo',
+    'area/jabujabu',
+    'area/temple_forest',
+    'area/temple_fire',
+    'area/temple_shadow',
+    'area/temple_water',
+    'area/temple_spirit'
 ];
 
 function getDisplayDungeon(reward, data) {
     for (let dungeon of ALL_DUNGEONS) {
-        let rewardValue = StateStorage.read(`dungeonRewards.${dungeon}`, "");
+        let rewardValue = StateStorage.readExtra("dungeonreward", dungeon, "");
         if (rewardValue == reward) {
             return dungeon;
         }
@@ -88,21 +88,34 @@ function getAlign(value) {
     }
 }
     
-function stateChanged(event) {
-    let value = parseInt(event.data[this.ref]);
+function stateLoaded(event) {
+    let value = parseInt(event.data.state[this.ref]);
     if (isNaN(value)) {
         value = 0;
     }
     this.value = value;
     /* dungeon */
-    for (let dungeon of ALL_DUNGEONS) {
-        let rewardValue = event.data[`dungeonRewards.${dungeon}`];
-        if (rewardValue == this.ref) {
-            this.dungeon = dungeon;
-            return;
+    if (event.data.extra.dungeonreward != null) {
+        for (let dungeon of ALL_DUNGEONS) {
+            let rewardValue = event.data.extra.dungeonreward[dungeon];
+            if (rewardValue == this.ref) {
+                this.dungeon = dungeon;
+                return;
+            }
         }
     }
     this.dungeon = "";
+}
+    
+function stateChanged(event) {
+    const change = event.data[this.ref];
+    if (change != null) {
+        let value = parseInt(change.newValue);
+        if (isNaN(value)) {
+            value = 0;
+        }
+        this.value = value;
+    }
 }
 
 function itemUpdate(event) {
@@ -116,11 +129,16 @@ function itemUpdate(event) {
 }
 
 function dungeonRewardUpdate(event) {
-    let el = this.shadowRoot.getElementById("value");
-    if (this.dungeon == event.data.name && event.data.value != this.ref) {
+    const data = event.data[this.dungeon];
+    if (data != null && data.newValue != this.ref) {
         this.dungeon = "";
-    } else if (this.ref === event.data.value) {
-        this.dungeon = event.data.name;
+    } else {
+        for (const name in event.data) {
+            if (this.ref == event.data[name].newValue) {
+                this.dungeon = name;
+                return;
+            }
+        }
     }
 }
 
@@ -134,8 +152,9 @@ class HTMLTrackerRewardItem extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.append(TPL.generate());
         /* event bus */
         this.registerGlobal("item", itemUpdate.bind(this));
-        this.registerGlobal("state", stateChanged.bind(this));
-        this.registerGlobal("dungeonreward", dungeonRewardUpdate.bind(this));
+        this.registerGlobal("state", stateLoaded.bind(this));
+        this.registerGlobal("statechange", stateChanged.bind(this));
+        this.registerGlobal("statechange_dungeonreward", dungeonRewardUpdate.bind(this));
     }
 
     connectedCallback() {

@@ -30,11 +30,23 @@ PageSwitcher.register("main", [{
     "content": "DISCORD",
     "handler": openDiscortJoin
 },{
-    "content": "EDITORS",
-    "handler": showEditors
+    "content": "PATREON",
+    "handler": openPatreon
 },{
-    "content": " TOGGLE FULLSCREEN",
-    "handler": toggleFullscreen
+    "content": "EXTRAS",
+    "submenu": [{
+        "content": "TOGGLE FULLSCREEN",
+        "handler": toggleFullscreen
+    },{
+        "content": "UPLOAD SPOILER",
+        "handler": openSpoilerSettingsWindow
+    }, {
+        "content": "DETACHED ITEM WINDOW",
+        "handler": openDetachedItems
+    }, {
+        "content": "EDITORS",
+        "handler": showEditors
+    }]
 },{
     "content": "RANDOMIZER OPTIONS",
     "handler": openRomSettingsWindow
@@ -110,8 +122,16 @@ async function states_Manage() {
     }
 }
 
+function openDetachedItems() {
+    window.open('/detached/#items', "TrackOOT", "toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,titlebar=0", false);
+}
+
 function openDiscortJoin() {
     window.open("https://discord.gg/wgFVtuv", "_blank");
+}
+
+function openPatreon() {
+    window.open("https://www.patreon.com/zidargs", "_blank");
 }
 
 function openSettingsWindow() {
@@ -126,6 +146,11 @@ function openRomSettingsWindow() {
     }
 }
 
+function openSpoilerSettingsWindow() {
+    if(!!window.SpoilerLogWindow) {
+        window.SpoilerLogWindow.show();
+    }
+}
 function showEditors() {
     PageSwitcher.switch("editor_choice");
 }
@@ -140,69 +165,4 @@ function toggleFullscreen() {
             }
         }
     }
-}
-
-/* TODO
-** use this to create unified states
-** currently ugly (hence not used) but we keep an eye on async modules for now
-*/
-function getDefaultState() {
-    let DEFAULT_STATE = {
-        notes: ""
-    };
-    let shops = FileData.get("shops");
-    for (let i in shops) {
-        DEFAULT_STATE[i] = shops[i];
-        DEFAULT_STATE[`${i}.names`] = ["", "", "", "", "", "", "", ""];
-        DEFAULT_STATE[`${i}.bought`] = [0, 0, 0, 0, 0, 0, 0, 0]
-    }
-    let songs = FileData.get("songs");
-    for (let i in songs) {
-        if (songs[i].editable) {
-            DEFAULT_STATE[i] = songs[i].notes;
-        }
-    }
-    let items = FileData.get("items");
-    for (let i in items) {
-        DEFAULT_STATE[i] = 0;
-    }
-    let locations = FileData.get("world/locations");
-    for (let i in locations) {
-        DEFAULT_STATE[i] = false;
-        if (locations[i].type == "gossipstone") {
-            DEFAULT_STATE[`${i}.item`] = "";
-            DEFAULT_STATE[`${i}.location`] = "";
-        }
-    }
-    let entrances = FileData.get("world/entrances");
-    for (let i in entrances) {
-        DEFAULT_STATE[i] = "";
-    }
-    let dungeonstate = FileData.get("dungeonstate");
-    for (let i in dungeonstate) {
-        if (dungeonstate[i].hasmq) {
-            DEFAULT_STATE[`dungeonTypes.${i}`] = "n";
-        }
-        if (dungeonstate[i].boss_reward) {
-            DEFAULT_STATE[`dungeonRewards.${i}`] = 0;
-        }
-    }
-    let options = FileData.get("randomizer_options");
-    for (let i in options) {
-        for (let j in options[i]) {
-            if (options[i][j].type == "list") {
-                let def = new Set(options[i][j].default);
-                for (let k of options[i][j].values) {
-                    if (def.has(k)) {
-                        DEFAULT_STATE[k] = true;
-                    } else {
-                        DEFAULT_STATE[k] = false;
-                    }
-                }
-            } else {
-                DEFAULT_STATE[j] = options[i][j].default;
-            }
-        }
-    }
-    return DEFAULT_STATE;
 }

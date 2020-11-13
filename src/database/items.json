@@ -73,7 +73,7 @@
     },
     "item.bombs": {
         "max": 3,
-        "images": "/images/items/bombs.png",
+        "images": "/images/items/bomb_bag_bombs.png",
         "counting": [
             "",
             "20",
@@ -176,7 +176,7 @@
             "/images/items/wallet_default.png",
             "/images/items/wallet_silver.png",
             "/images/items/wallet_gold.png",
-            "/images/items/wallet_gold.png"
+            "/images/items/wallet_tycoon.png"
         ],
         "counting": [
             "99",
@@ -437,6 +437,10 @@
         "max": 1,
         "images": "/images/items/song_storm.png"
     },
+    "item.song_scarecrow": {
+        "max": 1,
+        "images": "/images/items/song_scarecrow.png"
+    },
     "item.warp_forest": {
         "max": 1,
         "images": "/images/items/warp_forest.png"
@@ -633,6 +637,12 @@
         "halign": "end",
         "valign": "end"
     },
+    "item.key_small_generic": {
+        "images": "/images/items/key_small.png"
+    },
+    "item.key_boss_generic": {
+        "images": "/images/items/key_boss.png"
+    },
     "item.compass_deku": {
         "max": 1,
         "images": "/images/items/compass.png"
@@ -713,6 +723,12 @@
         "max": 1,
         "images": "/images/items/dungeon_map.png"
     },
+    "item.dungeon_map_generic": {
+        "images": "/images/items/dungeon_map.png"
+    },
+    "item.compass_generic": {
+        "images": "/images/items/compass.png"
+    },
     "item.heart_piece": {
         "max": 36,
         "counting": true,
@@ -784,6 +800,36 @@
     "item.potion_blue": {
         "max": 0,
         "images": "/images/items/bottle_potion_blue.png",
+        "always_active": true
+    },
+    "item.rupee_green":{
+        "max": false,
+        "images": "/images/items/rupee_green.png",
+        "always_active": true
+    },
+    "item.rupee_blue":{
+        "max": false,
+        "images": "/images/items/rupee_blue.png",
+        "always_active": true
+    },
+    "item.rupee_red":{
+        "max": false,
+        "images": "/images/items/rupee_red.png",
+        "always_active": true
+    },
+    "item.rupee_purple":{
+        "max": false,
+        "images": "/images/items/rupee_purple.png",
+        "always_active": true
+    },
+    "item.rupee_yellow":{
+        "max": false,
+        "images": "/images/items/rupee_yellow.png",
+        "always_active": true
+    },
+    "item.refill_item": {
+        "max": false,
+        "images": "/images/items/refill_item.png",
         "always_active": true
     }
 }

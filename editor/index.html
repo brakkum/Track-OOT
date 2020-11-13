@@ -3,7 +3,7 @@
     <head>
         <title>Tracker-Editor</title>
         <meta charset="UTF-8">
-        <meta name="description" content="Track items and locations in 'The Legend of Zelda - Ocarina of Time Randomizer' (OOTR)">
+        <meta name="description" content="Editor for Track-OOT">
         <meta name="robots" content="nofollow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <meta name="theme-color" content="#cb9c3d">
@@ -16,26 +16,12 @@
             font-family: Arial, sans-serif;
             overflow: hidden;
         }
-        .viewpane {
-            display: flex;
-            flex-direction: column;
-            width: 100vw;
-            height: 100vh;
-            margin: 0px;
-            background-color: var(--page-background-color, #000000);
-            color: var(--page-text-color, #ffffff);
-        }
         #pager {
             flex: 1;
         }
     </style>
     <body>
-        <div class="viewpane">
-            <emc-navbar id="navbar"></emc-navbar>
-            <emc-paging id="pager" active="main">
-                <ted-editorchoice id="editor-choice" slot="main"></ted-editorchoice>
-                <ted-logiceditor id="logic-editor" slot="logic-editor"></ted-logiceditor>
-            </emc-paging>
-        </div>
+        <jse-window id="window">
+        </jse-window>
     </body>
 </html>

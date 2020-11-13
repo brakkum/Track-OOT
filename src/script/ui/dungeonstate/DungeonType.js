@@ -1,7 +1,7 @@
 import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
-import "/emcJS/ui/selection/Option.js";
+import "/emcJS/ui/input/Option.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
 const TPL = new Template(`
@@ -53,22 +53,31 @@ const TPL = new Template(`
 `);
 
 function stateChanged(event) {
-    let value = event.data[`dungeonTypes.${this.ref}`];
-    if (typeof value == "undefined" || value == "") {
-        value = "v";
-        if (!!this.ref) {
-            let area = FileData.get(`world_lists/${this.ref}/lists`);
-            if (area.hasOwnProperty("mq")) {
-                value = "n";
+    if (!!this.ref) {
+        const area = FileData.get(`world/${this.ref}/lists`);
+        let value = "v";
+        if (area.hasOwnProperty("mq")) {
+            value = "n";
+        }
+        if (event.data.extra.dungeontype != null) {
+            const state = event.data.extra.dungeontype[this.ref];
+            if (typeof state != "undefined" && state != "") {
+                value = state;
             }
         }
+        this.value = value;
+    } else {
+        this.value = "n";
     }
-    this.value = value;
 }
 
-function dungeonTypeUpdate(event){
-    if (this.ref === event.data.name && this.value !== event.data.value) {
-        this.value = event.data.value;
+function dungeonTypeUpdate(event) {
+    let data;
+    if (event.data != null) {
+        data = event.data[this.ref];
+    }
+    if (data != null) {
+        this.value = data.newValue;
     }
 }
 
@@ -82,7 +91,7 @@ class HTMLTrackerDungeonType extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.append(TPL.generate());
         /* event bus */
         this.registerGlobal("state", stateChanged.bind(this));
-        this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));
+        this.registerGlobal("statechange_dungeontype", dungeonTypeUpdate.bind(this));
     }
 
     get ref() {
@@ -118,17 +127,20 @@ class HTMLTrackerDungeonType extends EventBusSubsetMixin(HTMLElement) {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    let value = "v";
-                    let readonly = true;
                     if (!!newValue) {
-                        let area = FileData.get(`world_lists/${newValue}/lists`);
+                        const area = FileData.get(`world/${this.ref}/lists`);
+                        let value = "v";
+                        let readonly = true;
                         if (area.hasOwnProperty("mq")) {
-                            value = StateStorage.read(`dungeonTypes.${newValue}`, "n");
+                            value = StateStorage.readExtra("dungeontype", newValue, "n");;
                             readonly = false;
                         }
+                        this.value = value;
+                        this.readonly = readonly;
+                    } else {
+                        this.value = "n";
+                        this.readonly = true;
                     }
-                    this.value = value;
-                    this.readonly = readonly;
                 }
             break;
             case 'value':
@@ -153,11 +165,7 @@ class HTMLTrackerDungeonType extends EventBusSubsetMixin(HTMLElement) {
             } else {
                 this.value = 'v';
             }
-            StateStorage.write(`dungeonTypes.${this.ref}`, this.value);
-            this.triggerGlobal("dungeontype", {
-                name: this.ref,
-                value: this.value
-            });
+            StateStorage.writeExtra("dungeontype", this.ref, this.value);
         }
         event.preventDefault();
         return false;
@@ -166,11 +174,7 @@ class HTMLTrackerDungeonType extends EventBusSubsetMixin(HTMLElement) {
     revert(event) {
         if (!this.readonly) {
             this.value = "n";
-            StateStorage.write(`dungeonTypes.${this.ref}`, 'n');
-            this.triggerGlobal("dungeontype", {
-                name: this.ref,
-                value: 'n'
-            });
+            StateStorage.writeExtra("dungeontype", this.ref, 'n');
         }
         event.preventDefault();
         return false;

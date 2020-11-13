@@ -1,5 +1,5 @@
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
-import StateConverter from "/script/storage/converters/StateConverter.js";
+import StateConverter from "/script/storage/StateConverter.js";
 
 const STORAGE = new IDBStorage("savestates");
 

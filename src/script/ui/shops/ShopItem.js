@@ -128,9 +128,9 @@ export default class HTMLTrackerShopItem extends HTMLElement {
                     if (!!this.checked && this.checked == "true") {
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/sold_out.png")`;
                     } else {
-                        let dta = FileData.get("shop_items")[this.ref];
-                        if (!!dta) {
-                            this.shadowRoot.getElementById("image").style.backgroundImage = `url("${dta.image}")`;
+                        let data = FileData.get("shop_items")[this.ref];
+                        if (!!data) {
+                            this.shadowRoot.getElementById("image").style.backgroundImage = `url("${data.image}")`;
                         } else {
                             this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/unknown.svg")`;
                         }
@@ -138,6 +138,7 @@ export default class HTMLTrackerShopItem extends HTMLElement {
                 }
             break;
             case 'price':
+                newValue = parseInt(newValue) || 0;
                 if (oldValue != newValue) {
                     this.shadowRoot.getElementById("price").innerHTML = newValue;
                 }
@@ -147,14 +148,21 @@ export default class HTMLTrackerShopItem extends HTMLElement {
                     if (!!this.checked && this.checked == "true") {
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/sold_out.png")`;
                     } else {
-                        let img = FileData.get("shop_items")[this.ref].image;
-                        this.shadowRoot.getElementById("image").style.backgroundImage = `url("${img}")`;
+                        let data = FileData.get("shop_items")[this.ref];
+                        if (data != null) {
+                            this.shadowRoot.getElementById("image").style.backgroundImage = `url("${data.image}")`;
+                        } else {
+                            this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/unknown.svg")`;
+                        }
                     }
                 }
             break;
             case 'name':
-            let el = this.shadowRoot.getElementById("name");
-                if (oldValue != newValue && el.value != newValue) {
+                if (typeof newValue != "string") {
+                    newValue = "";
+                }
+                if (oldValue != newValue) {
+                    let el = this.shadowRoot.getElementById("name");
                     el.value = newValue;
                 }
             break;

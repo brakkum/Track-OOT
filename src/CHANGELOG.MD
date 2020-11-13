@@ -4,6 +4,117 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.3
+
+### BUGFIXES
+
+- fixed detached window
+
+---
+
+## VERSION 2.0.2
+
+### BUGFIXES
+
+- fix gerudo card was not tracked if bosskey tracking was deactivated
+- fix multiplayer to sync items additive instead of overwriting
+
+---
+
+## VERSION 2.0.1
+
+### BUGFIXES
+
+- fix multiplayer sync
+- add better icons for wallets
+- use bomb bag icon in item association
+
+---
+
+## VERSION 2.0.0
+
+### LOGIC
+
+- use logic graph instead of static logic
+    - graph traversial uses first hit for determining reachability
+    - mixins get executed on demand
+        - slower mixins, but region dependency safe
+- added glitched logic
+    - add glitched custom logic
+    - add glitched logic editor
+
+### ENTRANCE SHUFFLE
+
+- added translation matrix for entrance shuffle
+- added exit types configuration
+- add new exit->entrance configuration to savestate
+- add view for configuring exit->entrances
+    - dungeons
+    - interior
+    - grottos
+    - graves
+- added subareas
+- temporarily deactivate the map view containing overworld locations
+    - does conflict with current interior/grotto entrance rando
+- entrances that are unbound open binding contextmenu on click
+- added marker for areas to show unbound entrances reachable
+
+### UX ENHANCEMENTS
+
+- make locations be toggled instead of set
+    - click / touch will be used for toggle checked / unchecked
+    - right click / long press is now for contextmenu only
+        - context menu added for map locations
+- add presets to randomizer options
+- add item association to location
+- add contextmenus to areas
+    - add check/uncheck all
+    - add woth/barren markers
+- add contextmenus to exits
+    - add check/uncheck all
+    - set entrance as 2nd level contextmenu
+    - add woth/barren markers
+- added spoilerlog parser for presetting
+    - randomizer options
+    - starting items
+    - item-location-binding
+    - woth/barren
+    - dungeon type
+    - shops
+
+### CREDITS
+
+- added credits section
+    - auto generate supporter list
+    - supporter list is cached locally
+
+### DEBOUNCED STATE EVENTS
+
+- state events are now debounced
+    - reduces ui lag
+    - reduces network messages
+
+### BUGFIXES
+
+- fix logger breaking out of the viewport
+- deactivate undo (ctrl+z) / redo (ctrl+y) as it messes with multiplayer
+
+---
+
+## VERSION 1.7.21
+
+### BUGFIXES
+
+- fix collossus scrubs missing can_become_adult
+
+## VERSION 1.7.20
+
+### BUGFIXES
+
+- fix shops not syncing for multiplayer
+
+---
+
 ## VERSION 1.7.19
 
 ### BUGFIXES

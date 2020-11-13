@@ -47,7 +47,7 @@
 
             // TODO remove empty folders
 
-            let files = Array.from(FILES).map(el=>`/${path.relative(dest, el)}`);
+            let files = Array.from(FILES).map(el=>`/${path.relative(dest, el)}`.replace(/\\/g, "/"));
             files.push("/");
             // TODO generate file structure object for sorting
             fs.writeFileSync(path.resolve(dest, index), JSON.stringify(files, null, 4));

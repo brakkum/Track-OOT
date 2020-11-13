@@ -388,8 +388,8 @@
                 "visible": true
             },
             {
-                "type": "empty",
-                "value": "",
+                "type": "item",
+                "value": "item.song_scarecrow",
                 "visible": true
             },
             {
@@ -816,6 +816,384 @@
             {
                 "type": "item",
                 "value": "item.warp_light",
+                "visible": true
+            }
+        ]
+    ],
+    "pickable": [
+        [
+            {
+                "type": "item",
+                "value": "item.stick",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.nut",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.bombs",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.bow",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.arrow_fire",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.magic_din",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.sword_kokiri",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.sword_master",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.sword_biggoron",
+                "visible": true
+            }
+        ],
+        [
+            {
+                "type": "item",
+                "value": "item.slingshot",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.ocarina",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.bombchu",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.hookshot",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.arrow_ice",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.magic_farore",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.shield_kokiri",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.shield_hylia",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.shield_mirror",
+                "visible": true
+            }
+        ],
+        [
+            {
+                "type": "item",
+                "value": "item.boomerang",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.lens",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.bean",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.hammer",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.arrow_light",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.magic_nayru",
+                "visible": true
+            },
+            {
+                "type": "empty",
+                "value": "",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.tunic_fire",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.tunic_water",
+                "visible": true
+            }
+        ],
+        [
+            {
+                "type": "item",
+                "value": "item.wallet",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.skulltula",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.bottle",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.zora_letter",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.egg",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.cojiro",
+                "visible": true
+            },
+            {
+                "type": "empty",
+                "value": "",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.boots_iron",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.boots_hover",
+                "visible": true
+            }
+        ],
+        [
+            {
+                "type": "item",
+                "value": "item.scale",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.magic_power",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.glove",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.membership",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.stone_of_agony",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.heart_piece",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.heart_container",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.heart_double",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.ice_trap",
+                "visible": true
+            }
+        ],
+        [
+            {
+                "type": "item",
+                "value": "item.song_zelda",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.song_epona",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.song_saria",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.song_sun",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.song_time",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.song_storm",
+                "visible": true
+            },
+            {
+                "type": "empty",
+                "value": "",
+                "visible": true
+            },
+            {
+                "type": "empty",
+                "value": "",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.triforce_piece",
+                "visible": true
+            }
+        ],
+        [
+            {
+                "type": "item",
+                "value": "item.warp_forest",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.warp_fire",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.warp_water",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.warp_spirit",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.warp_shadow",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.warp_light",
+                "visible": true
+            },
+            {
+                "type": "empty",
+                "value": "",
+                "visible": true
+            },
+            {
+                "type": "empty",
+                "value": "",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.refill_item",
+                "visible": true
+            }
+        ],
+        [
+            {
+                "type": "item",
+                "value": "item.key_small_generic",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.key_boss_generic",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.dungeon_map_generic",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.compass_generic",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.rupee_green",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.rupee_blue",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.rupee_red",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.rupee_purple",
+                "visible": true
+            },
+            {
+                "type": "item",
+                "value": "item.rupee_yellow",
                 "visible": true
             }
         ]
