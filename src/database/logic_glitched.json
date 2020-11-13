@@ -2607,52 +2607,8 @@
                         }
                     },
                     {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "mixin.has_explosives[child]"
-                            },
-                            {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.ocarina"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.can_hover[child]"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "min",
-                                        "el": {
-                                            "type": "value",
-                                            "el": "item.key_small_well"
-                                        },
-                                        "value": 3
-                                    },
-                                    {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "value",
-                                                "el": "item.sword_kokiri"
-                                            },
-                                            {
-                                                "type": "value",
-                                                "el": "item.stick"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
+                        "type": "mixin",
+                        "el": "mixin.has_explosives[child]"
                     }
                 ]
             },
@@ -3047,12 +3003,30 @@
                         }
                     },
                     {
-                        "type": "min",
-                        "el": {
-                            "type": "value",
-                            "el": "item.key_small_well"
-                        },
-                        "value": 3
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "value",
+                                        "el": "item.boomerang"
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "mixin.can_isg[child]"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "value",
+                                    "el": "item.key_small_well"
+                                },
+                                "value": 3
+                            }
+                        ]
                     }
                 ]
             },
@@ -3105,52 +3079,8 @@
                         }
                     },
                     {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "mixin",
-                                "el": "mixin.has_explosives[adult]"
-                            },
-                            {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.ocarina"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.can_hover[adult]"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "min",
-                                        "el": {
-                                            "type": "value",
-                                            "el": "item.key_small_well"
-                                        },
-                                        "value": 3
-                                    },
-                                    {
-                                        "type": "or",
-                                        "el": [
-                                            {
-                                                "type": "value",
-                                                "el": "item.sword_kokiri"
-                                            },
-                                            {
-                                                "type": "value",
-                                                "el": "item.stick"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
+                        "type": "mixin",
+                        "el": "mixin.has_explosives[adult]"
                     }
                 ]
             },
@@ -3545,12 +3475,30 @@
                         }
                     },
                     {
-                        "type": "min",
-                        "el": {
-                            "type": "value",
-                            "el": "item.key_small_well"
-                        },
-                        "value": 3
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "or",
+                                "el": [
+                                    {
+                                        "type": "value",
+                                        "el": "item.boomerang"
+                                    },
+                                    {
+                                        "type": "mixin",
+                                        "el": "mixin.can_isg[adult]"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "min",
+                                "el": {
+                                    "type": "value",
+                                    "el": "item.key_small_well"
+                                },
+                                "value": 3
+                            }
+                        ]
                     }
                 ]
             },
@@ -14481,7 +14429,7 @@
             }
         },
         "region.ganons_castle_lobby_mq[child]": {
-            "region.ganons_castle_gateway[child]": {
+            "region.ganons_castle_grounds_mq[child]": {
                 "type": "true"
             },
             "region.ganons_castle_forest_trial_mq[child]": {
@@ -14628,7 +14576,7 @@
             }
         },
         "region.ganons_castle_lobby_mq[adult]": {
-            "region.ganons_castle_gateway[adult]": {
+            "region.ganons_castle_grounds_mq[adult]": {
                 "type": "true"
             },
             "region.ganons_castle_forest_trial_mq[adult]": {
@@ -16075,7 +16023,7 @@
             }
         },
         "region.ganons_castle_lobby[child]": {
-            "region.ganons_castle_gateway[child]": {
+            "region.ganons_castle_grounds[child]": {
                 "type": "true"
             },
             "region.ganons_castle_forest_trial[child]": {
@@ -16136,7 +16084,7 @@
             }
         },
         "region.ganons_castle_lobby[adult]": {
-            "region.ganons_castle_gateway[adult]": {
+            "region.ganons_castle_grounds[adult]": {
                 "type": "true"
             },
             "region.ganons_castle_forest_trial[adult]": {
@@ -28287,9 +28235,22 @@
             }
         },
         "region.hc_garden[child]": {
-            "region.hyrule_castle_grounds[child]": {
+            "region.hc_garden_locations[child]": {
                 "type": "true"
             },
+            "region.hyrule_castle_grounds[child]": {
+                "type": "true"
+            }
+        },
+        "region.hc_garden[adult]": {
+            "region.hc_garden_locations[adult]": {
+                "type": "true"
+            },
+            "region.hyrule_castle_grounds[adult]": {
+                "type": "true"
+            }
+        },
+        "region.hc_garden_locations[child]": {
             "logic.location.castle_town.c_zelda": {
                 "type": "and",
                 "el": [
@@ -28307,10 +28268,7 @@
                 ]
             }
         },
-        "region.hc_garden[adult]": {
-            "region.hyrule_castle_grounds[adult]": {
-                "type": "true"
-            },
+        "region.hc_garden_locations[adult]": {
             "logic.location.castle_town.c_zelda": {
                 "type": "and",
                 "el": [
@@ -51011,8 +50969,21 @@
                     "el": "item.tunic_fire"
                 },
                 {
-                    "type": "value",
-                    "el": "item.tunic_fire_1"
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "option.consider_buyable"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "value",
+                                "el": "item.wallet"
+                            },
+                            "value": 2
+                        }
+                    ]
                 }
             ]
         },
@@ -51024,8 +50995,21 @@
                     "el": "item.tunic_fire"
                 },
                 {
-                    "type": "value",
-                    "el": "item.tunic_fire_1"
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "option.consider_buyable"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "value",
+                                "el": "item.wallet"
+                            },
+                            "value": 2
+                        }
+                    ]
                 }
             ]
         },
@@ -51037,8 +51021,21 @@
                     "el": "item.tunic_water"
                 },
                 {
-                    "type": "value",
-                    "el": "item.tunic_water_1"
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "option.consider_buyable"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "value",
+                                "el": "item.wallet"
+                            },
+                            "value": 3
+                        }
+                    ]
                 }
             ]
         },
@@ -51050,8 +51047,21 @@
                     "el": "item.tunic_water"
                 },
                 {
-                    "type": "value",
-                    "el": "item.tunic_water_1"
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "option.consider_buyable"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "value",
+                                "el": "item.wallet"
+                            },
+                            "value": 3
+                        }
+                    ]
                 }
             ]
         },
@@ -51173,8 +51183,21 @@
                     "el": "item.bottle"
                 },
                 {
-                    "type": "value",
-                    "el": "item.blue_fire_1"
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "option.consider_buyable"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "value",
+                                "el": "item.wallet"
+                            },
+                            "value": 3
+                        }
+                    ]
                 }
             ]
         },
@@ -51186,8 +51209,21 @@
                     "el": "item.bottle"
                 },
                 {
-                    "type": "value",
-                    "el": "item.blue_fire_1"
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "option.consider_buyable"
+                        },
+                        {
+                            "type": "min",
+                            "el": {
+                                "type": "value",
+                                "el": "item.wallet"
+                            },
+                            "value": 3
+                        }
+                    ]
                 }
             ]
         },
