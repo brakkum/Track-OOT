@@ -223,7 +223,7 @@ function parseEntrances(entrancesTrue, world, dungeon, grottos, indoors, overwor
     }
 }
 
-function parseShops(shopsTrue, world, trans) {
+function parseShops(shopsTrue, world, trans, shopsanity) {
     const shop_trans = new Set(trans["shops"]);
     const item_trans = trans["itemList"];
     let shops = shopsTrue
@@ -367,25 +367,27 @@ function parseShops(shopsTrue, world, trans) {
                 }
             }
         }
-        extra[w]["shops_items"] = {
-            "shop.kokiri": kokiri,
-            "shop.magic_adult": kakP,
-            "shop.basar_adult": kakB,
-            "shop.magic_child": marketP,
-            "shop.basar_child": marketB,
-            "shop.bombchu": marketE,
-            "shop.zora": zora,
-            "shop.goron": goron
-        }
-        extra[w]["shops_names"] = {
-            "shop.kokiri": kokiriNames,
-            "shop.magic_adult": kakPNames,
-            "shop.basar_adult": kakBNames,
-            "shop.magic_child": marketPNames,
-            "shop.basar_child": marketBNames,
-            "shop.bombchu": marketENames,
-            "shop.zora": zoraNames,
-            "shop.goron": goronNames
+        if(shopsanity !== "off") {
+            extra[w]["shops_items"] = {
+                "shop.kokiri": kokiri,
+                "shop.magic_adult": kakP,
+                "shop.basar_adult": kakB,
+                "shop.magic_child": marketP,
+                "shop.basar_child": marketB,
+                "shop.bombchu": marketE,
+                "shop.zora": zora,
+                "shop.goron": goron
+            }
+            extra[w]["shops_names"] = {
+                "shop.kokiri": kokiriNames,
+                "shop.magic_adult": kakPNames,
+                "shop.basar_adult": kakBNames,
+                "shop.magic_child": marketPNames,
+                "shop.basar_child": marketBNames,
+                "shop.bombchu": marketENames,
+                "shop.zora": zoraNames,
+                "shop.goron": goronNames
+            }
         }
     }
 }
@@ -491,7 +493,7 @@ class SpoilerParser {
             if(settings["parse.item_association"]) parseLocations(data["locations"], world, trans);
             if(settings["parse.woth_hints"]) parseWothLocation(data[":woth_locations"], world, trans);
             parseEntrances(data["entrances"], world, settings["parse.entro_dungeons"], settings["parse.entro_grottos"], settings["parse.entro_indoors"], false/*settings["parse.entro_overworld"]*/, trans);
-            if(settings["parse.shops"]) parseShops(data["locations"], world, trans);
+            if(settings["parse.shops"]) parseShops(data["locations"], world, trans, data.settings["shopsanity"]);
             //if(settings["parse.gossip_stones"]) parseStones(data["gossip_stones"], world);
             if(settings["parse.barren"]) parseBarren(data[":barren_regions"], world, trans);
             if(settings["parse.trials"]) parseTrials(data["trials"], world, trans);

@@ -4,6 +4,16 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.4
+
+### HOTFIX
+
+- updated logic to OOTR dev build 5.2.119
+- removed `at` logic from a few grottos in hyrule field allowing grottos to be checked as child if you have hammer and can become adult
+- fixed spoiler parser parsing shops with no data
+
+---
+
 ## VERSION 2.0.3
 
 ### BUGFIXES
