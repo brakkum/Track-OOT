@@ -166,8 +166,7 @@
             "default": false
         },
         "option.skip_child_zelda": {
-            "type": "hidden",
-            "old_type": "check",
+            "type": "check",
             "default": false
         },
         "option.shuffle_overworld": {
@@ -309,7 +308,7 @@
                 "skip.colossus_gs",
 
                 "skip.kakariko_tower_gs",
-                //"skip.kakariko_rooftop_gs",
+                "skip.kakariko_rooftop_gs",
                 "skip.man_on_roof",
                 "skip.windmill_poh",
                 "skip.graveyard_poh",
@@ -323,7 +322,7 @@
                 "skip.trail_gs_lower_bean",
                 "skip.trail_gs_upper",
                 "skip.biggoron_bolero",
-                //"skip.trail_gs_lower_hovers",
+                "skip.trail_gs_lower_hovers",
 
                 "skip.link_goron_dins",
                 "skip.goron_city_leftmost",
@@ -354,13 +353,13 @@
                 "skip.botw_basement",
                 "skip.botw_cage_gs",
                 "skip.botw_mq_dead_hand_key",
-                //"skip.botw_mq_pits",
+                "skip.botw_mq_pits",
 
                 "skip.deku_basement_gs",
                 "skip.deku_b1_webs_with_bow",
                 "skip.deku_b1_skip",
-                //"skip.deku_mq_compass_gs",
-                //"skip.deku_mq_log",
+                "skip.deku_mq_compass_gs",
+                "skip.deku_mq_log",
 
                 "skip.dc_vines_gs",
                 "skip.dc_scrub_room",
@@ -369,8 +368,8 @@
                 "skip.dc_slingshot_skip",
                 "skip.dc_jump",
                 "skip.dc_mq_child_bombs",
-                //"skip.dc_mq_eyes",
-                //"skip.dc_mq_child_back",
+                "skip.dc_mq_eyes",
+                "skip.dc_mq_child_back",
 
                 "skip.jabu_scrub_jump_dive",
                 "skip.jabu_boss_gs_adult",
@@ -384,7 +383,7 @@
             "values": [
                 "skip.ice_block_gs",
                 "skip.ice_mq_scarecrow",
-                //"skip.ice_mq_red_ice_gs",
+                "skip.ice_mq_red_ice_gs",
 
                 "skip.gtg_without_hookshot",
                 "skip.lens_gtg",
@@ -397,7 +396,7 @@
                 "skip.spirit_trial_hookshot",
                 "skip.lens_castle_mq",
                 "skip.shadow_trial_mq",
-                //"skip.fire_trial_mq",
+                "skip.fire_trial_mq",
                 "skip.light_trial_mq"
             ],
             "default": []
@@ -413,9 +412,9 @@
                 "skip.forest_mq_block_puzzle",
                 "skip.forest_mq_hallway_switch",
                 "skip.forest_well_swim",
-                //"skip.forest_mq_hallway_switch_jumpslash",
-                //"skip.forest_mq_hallway_switch_hookshot",
-                //"skip.forest_door_frame",
+                "skip.forest_mq_hallway_switch_jumpslash",
+                "skip.forest_mq_hallway_switch_hookshot",
+                "skip.forest_door_frame",
                 "skip.forest_first_gs"
             ],
             "default": []
@@ -433,10 +432,10 @@
                 "skip.fire_mq_bombable_chest",
                 "skip.fire_mq_climb",
                 "skip.fire_mq_maze_side_room",
-                //"skip.fire_mq_blocked_chest",
-                //"skip.fire_mq_maze_hovers",
-                //"skip.fire_mq_maze_jump",
-                //"skip.fire_mq_above_maze_gs",
+                "skip.fire_mq_blocked_chest",
+                "skip.fire_mq_maze_hovers",
+                "skip.fire_mq_maze_jump",
+                "skip.fire_mq_above_maze_gs",
                 "skip.fire_mq_flame_maze"
             ],
             "default": []
@@ -460,9 +459,9 @@
                 "skip.water_dragon_child",
                 "skip.water_central_gs_irons",
                 "skip.water_falling_platform_gs_hookshot",
-                //"skip.water_mq_central_pillar",
-                //"skip.water_mq_locked_gs",
-                //"skip.water_central_gs_fw",
+                "skip.water_mq_central_pillar",
+                "skip.water_mq_locked_gs",
+                "skip.water_central_gs_fw",
                 "skip.water_falling_platform_gs_boomerang"
             ],
             "default": []
@@ -479,7 +478,7 @@
                 "skip.shadow_mq_gap",
                 "skip.shadow_mq_huge_pit",
                 "skip.lens_shadow_mq_back",
-                //"skip.shadow_mq_invisible_blades",
+                "skip.shadow_mq_invisible_blades",
                 "skip.shadow_umbrella_gs"
             ],
             "default": []
@@ -498,7 +497,7 @@
                 "skip.lens_spirit_mq",
                 "skip.spirit_mq_lower_adult",
                 "skip.spirit_mq_sun_block_gs",
-                //"skip.spirit_mq_sun_block_sot",
+                "skip.spirit_mq_sun_block_sot",
                 "skip.spirit_lobby_jump"
             ],
             "default": []
