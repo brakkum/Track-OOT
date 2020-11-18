@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.5
+
+### BUGFIXES
+
+- fixed well entrance filter
+
+---
+
 ## VERSION 2.0.4
 
 ### HOTFIX
