@@ -4,6 +4,16 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.6
+
+### BUGFIXES
+
+- fixed state export for really old states
+- fixed older stateconverter
+- fixed initial read of state to use converted data instead of stored
+
+---
+
 ## VERSION 2.0.5
 
 ### BUGFIXES

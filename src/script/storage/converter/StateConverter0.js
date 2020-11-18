@@ -5,6 +5,9 @@
 import StateConverter from "../StateConverter.js";
 
 StateConverter.register(function(state) {
+    if (!state.hasOwnProperty("data")) {
+        state = {data: state};
+    }
     let res = {
         data: {},
         autosave: false,

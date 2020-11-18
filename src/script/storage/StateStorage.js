@@ -146,11 +146,9 @@ function updateTitle() {
 class StateStorage {
 
     init(defaultState) {
-        let state = LocalStorage.get(PERSISTANCE_NAME, StateConverter.createEmptyState(defaultState));
-        if (!state.hasOwnProperty("data")) {
-            state = {data: state};
-        }
-        decodeState(StateConverter.convert(state));
+        const emptyState = StateConverter.createEmptyState(defaultState);
+        const state = StateConverter.convert(LocalStorage.get(PERSISTANCE_NAME, emptyState));
+        decodeState(state);
         updateTitle();
         EventBus.trigger("state", JSON.parse(JSON.stringify({
             notes: state.notes,
@@ -176,11 +174,8 @@ class StateStorage {
 
     async load(name) {
         if (await STORAGE.has(name)) {
-            let state = await STORAGE.get(name);
-            if (!state.hasOwnProperty("data")) {
-                state = {data: state};
-            }
-            decodeState(StateConverter.convert(state));
+            const state = StateConverter.convert(await STORAGE.get(name));
+            decodeState(state);
             LocalStorage.set(PERSISTANCE_NAME, state);
             if (autosaveTimeout != null) {
                 clearTimeout(autosaveTimeout);

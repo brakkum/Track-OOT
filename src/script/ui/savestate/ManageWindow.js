@@ -328,13 +328,14 @@ export default class ManageWindow extends HTMLElement {
         // EXPORT
         let exp = this.shadowRoot.getElementById('export');
         exp.onclick = async () => {
-            let stateName = snm.value;
+            const stateName = snm.value;
             if (!snm.value) {
                 await Dialog.alert("No state selected", "Please select a state to export!");
                 return;
             }
-            let data = await StateManager.export(stateName);
-            FileSystem.save(JSON.stringify(data, " ", 4), `track-oot-state.${stateName}.${DateUtil.convert(new Date(data.timestamp), "YMDhms")}.json`);
+            const data = await StateManager.export(stateName);
+            const date = DateUtil.convert(new Date(data.timestamp || 0), "YMDhms");
+            FileSystem.save(JSON.stringify(data, " ", 4), `track-oot-state.${stateName}.${date}.json`);
         };
     }
 
