@@ -11,6 +11,8 @@ Application:    Track-OOT
 - fixed state export for really old states
 - fixed older stateconverter
 - fixed initial read of state to use converted data instead of stored
+- fixed key counting issue for V/MQ dungeons
+- fixed pocket reward marker in item grid
 
 ---
 

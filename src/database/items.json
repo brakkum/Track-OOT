@@ -531,7 +531,7 @@
     "item.key_small_forest": {
         "max": 5,
         "maxmq": 6,
-        "related_dungeon": "temple_forest",
+        "related_dungeon": "area/temple_forest",
         "counting": true,
         "images": "/images/items/key_small.png",
         "halign": "end",
@@ -539,13 +539,13 @@
     },
     "item.key_boss_forest": {
         "max": 1,
-        "related_dungeon": "temple_forest",
+        "related_dungeon": "area/temple_forest",
         "images": "/images/items/key_boss.png"
     },
     "item.key_small_fire": {
         "max": 8,
         "maxmq": 5,
-        "related_dungeon": "temple_fire",
+        "related_dungeon": "area/temple_fire",
         "counting": true,
         "images": "/images/items/key_small.png",
         "halign": "end",
@@ -553,13 +553,13 @@
     },
     "item.key_boss_fire": {
         "max": 1,
-        "related_dungeon": "temple_fire",
+        "related_dungeon": "area/temple_fire",
         "images": "/images/items/key_boss.png"
     },
     "item.key_small_water": {
         "max": 6,
         "maxmq": 2,
-        "related_dungeon": "temple_water",
+        "related_dungeon": "area/temple_water",
         "counting": true,
         "images": "/images/items/key_small.png",
         "halign": "end",
@@ -567,13 +567,13 @@
     },
     "item.key_boss_water": {
         "max": 1,
-        "related_dungeon": "temple_water",
+        "related_dungeon": "area/temple_water",
         "images": "/images/items/key_boss.png"
     },
     "item.key_small_shadow": {
         "max": 5,
         "maxmq": 6,
-        "related_dungeon": "temple_shadow",
+        "related_dungeon": "area/temple_shadow",
         "counting": true,
         "images": "/images/items/key_small.png",
         "halign": "end",
@@ -581,13 +581,13 @@
     },
     "item.key_boss_shadow": {
         "max": 1,
-        "related_dungeon": "temple_shadow",
+        "related_dungeon": "area/temple_shadow",
         "images": "/images/items/key_boss.png"
     },
     "item.key_small_spirit": {
         "max": 5,
         "maxmq": 7,
-        "related_dungeon": "temple_spirit",
+        "related_dungeon": "area/temple_spirit",
         "counting": true,
         "images": "/images/items/key_small.png",
         "halign": "end",
@@ -595,13 +595,13 @@
     },
     "item.key_boss_spirit": {
         "max": 1,
-        "related_dungeon": "temple_spirit",
+        "related_dungeon": "area/temple_spirit",
         "images": "/images/items/key_boss.png"
     },
     "item.key_small_ganon": {
         "max": 2,
         "maxmq": 3,
-        "related_dungeon": "castle_ganon",
+        "related_dungeon": "area/castle_ganon",
         "counting": true,
         "images": "/images/items/key_small.png",
         "halign": "end",
@@ -609,7 +609,7 @@
     },
     "item.key_boss_ganon": {
         "max": 1,
-        "related_dungeon": "castle_ganon",
+        "related_dungeon": "area/castle_ganon",
         "images": "/images/items/key_boss.png"
     },
     "item.key_small_gerudo": {
@@ -622,7 +622,7 @@
     "item.key_small_training": {
         "max": 9,
         "maxmq": 3,
-        "related_dungeon": "gerudo_training",
+        "related_dungeon": "area/training_grounds",
         "counting": true,
         "images": "/images/items/key_small.png",
         "halign": "end",
@@ -631,7 +631,7 @@
     "item.key_small_well": {
         "max": 3,
         "maxmq": 2,
-        "related_dungeon": "well",
+        "related_dungeon": "area/well",
         "counting": true,
         "images": "/images/items/key_small.png",
         "halign": "end",
