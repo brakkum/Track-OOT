@@ -80,7 +80,7 @@ async function init() {
         "/script/ui/RandomizerOptionsWindow.js",
         "/script/ui/SpoilerLogWindow.js",
         // untracked
-        "/emcJS/ui/TextEditor.js",
+        "/emcJS/ui/input/TextEditor.js",
         "/emcJS/ui/LogScreen.js",
         "/emcJS/ui/Icon.js",
         "/emcJS/ui/input/ChoiceSelect.js",

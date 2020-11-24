@@ -1,6 +1,6 @@
 
 import Template from "/emcJS/util/Template.js";
-import SettingsWindow from "/emcJS/ui/SettingsWindow.js";
+import SettingsWindow from "/emcJS/ui/overlay/SettingsWindow.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import FileData from "/emcJS/storage/FileData.js";
 import "/emcJS/ui/Paging.js";

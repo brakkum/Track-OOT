@@ -1,5 +1,5 @@
-import Window from "/emcJS/ui/Window.js";
-import Dialog from "/emcJS/ui/Dialog.js";
+import Window from "/emcJS/ui/overlay/Window.js";
+import Dialog from "/emcJS/ui/overlay/Dialog.js";
 import Template from "/emcJS/util/Template.js";
 import FileData from "/emcJS/storage/FileData.js";
 import Language from "/script/util/Language.js";

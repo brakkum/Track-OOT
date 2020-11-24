@@ -56,7 +56,7 @@ const TPL = new Template(`
 `);
 
 const ALL_DUNGEONS = [
-    'pocket',
+    'area/pocket',
     'area/deku',
     'area/dodongo',
     'area/jabujabu',

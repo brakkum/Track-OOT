@@ -4,6 +4,27 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.7
+
+### BUGFIXES
+
+- fixed FREE reward item reference on load
+- changed bomb bag icon to have more visible bomb
+- fixed visual bug in navbar for FF
+- add in some global styles for increased peformance
+    - currently only affects chrome (experimental feature)
+    - fallback for browsers not supporting this
+
+### FEATURES
+
+- reactivated the logic viewer for now
+    - allows us to have at least some feedback on the logic
+    - visual logic interpretation completely removed
+        - graph logic can not be visualized by such primitive means
+        - could lead to missinterpretation of access results otherwise
+
+---
+
 ## VERSION 2.0.6
 
 ### BUGFIXES

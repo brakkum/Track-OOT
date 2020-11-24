@@ -1,6 +1,6 @@
 
-import Dialog from "/emcJS/ui/Dialog.js";
-import Toast from "/emcJS/ui/Toast.js";
+import Dialog from "/emcJS/ui/overlay/Dialog.js";
+import Toast from "/emcJS/ui/overlay/Toast.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import EventBusModuleGeneric from "/emcJS/util/events/EventBusModuleGeneric.js";
 import RTCClient from "/rtc/RTCClient.js";

@@ -1,5 +1,5 @@
 import Template from "/emcJS/util/Template.js";
-import Dialog from "/emcJS/ui/Dialog.js";
+import Dialog from "/emcJS/ui/overlay/Dialog.js";
 import RTCController from "/script/util/RTCController.js";
 import "./MPRoom.js";
 

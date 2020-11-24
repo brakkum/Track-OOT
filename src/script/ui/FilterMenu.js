@@ -1,6 +1,6 @@
 import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
-import "/emcJS/ui/ContextMenu.js";
+import "/emcJS/ui/overlay/ContextMenu.js";
 import "./FilterButton.js";
 import StateStorage from "../storage/StateStorage.js";
 import FilterStorage from "../storage/FilterStorage.js";
@@ -51,7 +51,7 @@ class FilterMenu extends HTMLElement {
     constructor() {
         super();
         this.addEventListener("click", event => {
-            this.showContextMenu();
+            this.showoverlay/ContextMenu();
         });
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());

@@ -1,26 +1,21 @@
 
 ### FIX MAJOR BUGS
 
-- initial sync does not include extra data (?)
-    - at least entrances have not been transfered
-- check key counts for dungeons
-    - seems to always use max of both instead of the correct value
+- lost of stuff getting calculated on changes
+    - cache data, only calculate minimum
+    - see if logic execution can get outsourced into webworker thread
+        - maybe even calculate list logic there
+    - see if we can only update where needed
+    - do less filedata calls
 
 ---
 
 ### FIX MINOR BUGS
 
-- fix multiplayer sync
-    - undo/redo does not sync correctly
-        - fix: disable undo/redo in multiplayer, due to possibly unwanted behaviour
-    - entrances in multiplayer cast wrong exits
-        - maybe ui does not update correctly
-
 - load icon from marker config
 
 - search in contextmenu
     - subset search does not work all times
-    - reset search after contextmenu close
 
 ---
 

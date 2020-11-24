@@ -2,7 +2,7 @@ import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Logger from "/emcJS/util/Logger.js";
-import "/emcJS/ui/Tooltip.js";
+import "/emcJS/ui/overlay/Tooltip.js";
 import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";

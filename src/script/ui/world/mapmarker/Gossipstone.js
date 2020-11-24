@@ -1,6 +1,6 @@
 import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
-import Dialog from "/emcJS/ui/Dialog.js";
+import Dialog from "/emcJS/ui/overlay/Dialog.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import Language from "/script/util/Language.js";
 import MapLocation from "./Location.js";

@@ -1,10 +1,11 @@
 import FileData from "/emcJS/storage/FileData.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
-import Dialog from "/emcJS/ui/Dialog.js";
+import Dialog from "/emcJS/ui/overlay/Dialog.js";
 import FileSystem from "/emcJS/util/FileSystem.js";
 
 import "/editors/modules/logic/Editor.js";
 
+import LogicViewer from "../logic/LogicViewer.js";
 import LogicListsCreator from "../logic/LogicListsCreator.js";
 import "../logic/LiteralCustom.js";
 import "../logic/LiteralMixin.js";
@@ -19,6 +20,7 @@ export default async function(glitched = false) {
     let logicEditor = document.createElement("jse-logic-editor");
     // refresh
     async function refreshLogicEditor() {
+        LogicViewer.glitched = glitched;
         let lists = await LogicListsCreator.createLists(glitched);
         logicEditor.loadOperators(lists.operators);
         logicEditor.loadList(lists.logics);

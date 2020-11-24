@@ -1,6 +1,6 @@
 import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
-import "/emcJS/ui/ContextMenu.js"
+import "/emcJS/ui/overlay/ContextMenu.js"
 import "/emcJS/ui/input/ListSelect.js"
 import StateStorage from "/script/storage/StateStorage.js";
 import Language from "/script/util/Language.js";

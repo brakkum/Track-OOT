@@ -1,6 +1,6 @@
 import FileData from "/emcJS/storage/FileData.js";
-import Dialog from "/emcJS/ui/Dialog.js";
-import Toast from "/emcJS/ui/Toast.js";
+import Dialog from "/emcJS/ui/overlay/Dialog.js";
+import Toast from "/emcJS/ui/overlay/Toast.js";
 import "/emcJS/ui/NavBar.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import LoadWindow from "/script/ui/savestate/LoadWindow.js";

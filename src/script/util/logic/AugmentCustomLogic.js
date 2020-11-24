@@ -63,6 +63,7 @@ async function update() {
         if (Object.keys(res).length > 0) {
             EventBus.trigger("logic", res);
         }
+        LogicViewer.glitched = false;
     } else {
         const logic = FileData.get("logic_glitched", {edges:{},logic:{}});
         if (use_custom_logic) {
@@ -74,6 +75,7 @@ async function update() {
         if (Object.keys(res).length > 0) {
             EventBus.trigger("logic", res);
         }
+        LogicViewer.glitched = true;
     }
 }
 

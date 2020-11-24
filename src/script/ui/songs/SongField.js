@@ -2,7 +2,7 @@ import Template from "/emcJS/util/Template.js";
 import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
-import Dialog from "/emcJS/ui/Dialog.js";
+import Dialog from "/emcJS/ui/overlay/Dialog.js";
 import Language from "/script/util/Language.js";
 import "./SongStave.js";
 import "./SongBuilder.js";
