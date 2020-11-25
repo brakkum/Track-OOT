@@ -1,12 +1,20 @@
 
 ### FIX MAJOR BUGS
 
-- lost of stuff getting calculated on changes
+- app is unresponsive sometimes
+    - lots of stuff getting calculated on changes
     - cache data, only calculate minimum
     - see if logic execution can get outsourced into webworker thread
         - maybe even calculate list logic there
     - see if we can only update where needed
     - do less filedata calls
+
+- multiplayer bugs
+    - item count can get desynced if two peers click at the same time
+        - increase + increase (?)
+        - decrease + decrease (?)
+        - increase + decrease (?)
+    - shop bought marker not synced (?)
 
 ---
 
