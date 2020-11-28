@@ -51,7 +51,7 @@ class FilterMenu extends HTMLElement {
     constructor() {
         super();
         this.addEventListener("click", event => {
-            this.showoverlay/ContextMenu();
+            this.showContextMenu();
         });
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());

@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.9
+
+### BUGFIXES
+
+- fixed filter menu not opening
+
+---
+
 ## VERSION 2.0.8
 
 ### BUGFIXES
