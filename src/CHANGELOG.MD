@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.8
+
+### BUGFIXES
+
+- fixed tabview not building view correctly
+
+---
+
 ## VERSION 2.0.7
 
 ### BUGFIXES

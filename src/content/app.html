@@ -1,28 +1,28 @@
 
 <emc-navbar id="navbar"></emc-navbar>
-<emc-paging id="view-pager" active="">
-    <emc-tabview id="main-content" slot="main">
-        <div ref="tracker" data-title="Item & Map Tracker" data-icon="images/icons/tracker.svg">
+<emc-paging id="view-pager" active="main">
+    <emc-tabview id="main-content" slot="main" active="tracker">
+        <div slot="tracker" data-title="Item & Map Tracker" data-icon="images/icons/tracker.svg">
             <ootrt-layoutcontainer id="layout-container" layout="map-compact">
             </ootrt-layoutcontainer>
         </div>
-        <div ref="shops" data-title="Shops" data-icon="images/icons/shops.svg">
+        <div slot="shops" data-title="Shops" data-icon="images/icons/shops.svg">
             <ootrt-shoplist>
             </ootrt-shoplist>
         </div>
-        <div ref="songs" data-title="Songs" data-icon="images/icons/songs.svg">
+        <div slot="songs" data-title="Songs" data-icon="images/icons/songs.svg">
             <ootrt-songlist>
             </ootrt-songlist>
         </div>
-        <div ref="exits" data-title="Exits" data-icon="images/icons/entrance.svg">
+        <div slot="exits" data-title="Exits" data-icon="images/icons/entrance.svg">
             <ootrt-exitlist>
             </ootrt-exitlist>
         </div>
-        <div ref="notes" data-title="Notes" data-icon="images/icons/notes.svg">
+        <div slot="notes" data-title="Notes" data-icon="images/icons/notes.svg">
             <emc-texteditor id="notes-editor" title="Notes">
             </emc-texteditor>
         </div>
-        <div ref="multi" data-title="Multiplayer" data-icon="images/icons/multi.svg">
+        <div slot="multi" data-title="Multiplayer" data-icon="images/icons/multi.svg">
             <ootrt-multiplayer>
             </ootrt-multiplayer>
         </div>
