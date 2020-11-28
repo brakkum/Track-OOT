@@ -4,6 +4,15 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.10
+
+### BUGFIXES
+
+- fixed error in item states
+- fixed debaunced state multiplayer sync bug
+
+---
+
 ## VERSION 2.0.9
 
 ### BUGFIXES

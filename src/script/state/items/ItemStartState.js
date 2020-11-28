@@ -89,7 +89,7 @@ export default class ItemStartState extends AbstractItemState {
 
     set startvalue(value) {
         if (typeof value != "number") value = 0;
-        const max = MAX.get(this);
+        const max = this.max;
         if (value > max) {
             value = max;
         }
