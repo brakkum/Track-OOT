@@ -14,12 +14,20 @@ Application:    Track-OOT
 - add in some global styles for increased peformance
     - currently only affects chrome (experimental feature)
     - fallback for browsers not supporting this
+- fixed additive calculation for items in multiplayer
+
+### IMPROVEMENTS
+
+- add background state for item elements
+    - items are a little bit more responsive
+- make first bunch of ui elements use global styles
+    - faster style calculations on blink browsers
 
 ### FEATURES
 
 - reactivated the logic viewer for now
     - allows us to have at least some feedback on the logic
-    - visual logic interpretation completely removed
+    - visual logic interpretation removed
         - graph logic can not be visualized by such primitive means
         - could lead to missinterpretation of access results otherwise
 

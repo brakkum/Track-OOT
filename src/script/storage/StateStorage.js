@@ -1,12 +1,15 @@
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
-import DebouncedState from "/emcJS/storage/DebouncedState.js";
+import DebouncedStorage from "/emcJS/storage/DebouncedStorage.js";
+import FileData from "/emcJS/storage/FileData.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import ActionPath from "/emcJS/util/ActionPath.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
 import LocalStorage from "/emcJS/storage/LocalStorage.js";
 import StateConverter from "/script/storage/StateConverter.js";
 
-DebouncedState.debounceTime = 1000;
+import ItemStates from "/script/state/ItemStates.js";
+
+DebouncedStorage.debounceTime = 1000;
 
 const PERSISTANCE_NAME = "savestate";
 const STATE_DIRTY = "state_dirty";
@@ -26,7 +29,7 @@ const DATA = {
     timestamp: new Date(),
     autosave: false,
     notes: "",
-    state: new DebouncedState(),
+    state: new DebouncedStorage(),
     extra: new Map()
 };
 
@@ -50,7 +53,7 @@ function getExtraStorage(name) {
     if (DATA.extra.has(name)) {
         return DATA.extra.get(name);
     } else {
-        const buffer = new DebouncedState(name);
+        const buffer = new DebouncedStorage(name);
         buffer.addEventListener("change", onStateChange);
         DATA.extra.set(name, buffer);
         return buffer;
@@ -86,6 +89,24 @@ function encodeState() {
         res.extra[key] = value.getAll();
     }
     return res;
+}
+
+function writeChanges(data, storage) {
+    const changes = {};
+    const items = FileData.get("items");
+    for (const [key, value] of Object.entries(data)) {
+        const current = storage.get(key);
+        if (ItemStates.has(key) && current != value.oldValue) {
+            const state = ItemStates.get(key);
+            const diff = value.newValue - value.oldValue;
+            changes[key] = state.convert(current + diff);
+            console.log(`${key}: ${current} (${value.oldValue}) -> ${changes[key]} (${value.newValue})`);
+        } else {
+            changes[key] = value.newValue;
+            console.log(`${key}: ${current} -> ${changes[key]}`);
+        }
+    }
+    storage.setImmediateAll(changes);
 }
 
 DATA.state.addEventListener("change", onStateChange);
@@ -339,36 +360,18 @@ class StateStorage {
         if (event.startsWith("statechange")) {
             if (event === "statechange") {
                 // event for statechange
-                const buffer = DATA.state;
-                const changes = {};
-                for (const [key, value] of Object.entries(data)) {
-                    if (key.startsWith("item.")) {
-                        const current = buffer.get(key);
-                        if (current != value.oldValue) {
-                            changes[key] = current + value.newValue - value.oldValue;
-                            continue;
-                        }
-                    }
-                    changes[key] = value.newValue;
-                }
-                buffer.setImmediateAll(changes);
+                console.group("resolve network statechange");
+                const storage = DATA.state;
+                writeChanges(data, storage);
+                console.groupEnd("resolve network statechange");
                 return true;
             } else if (event.startsWith("statechange_")) {
                 // event for statechange_*
                 const category = event.slice(12);
-                const buffer = getExtraStorage(category);
-                const changes = {};
-                for (const [key, value] of Object.entries(data)) {
-                    if (key.startsWith("item.")) {
-                        const current = buffer.get(key);
-                        if (current != value.oldValue) {
-                            changes[key] = current + value.newValue - value.oldValue;
-                            continue;
-                        }
-                    }
-                    changes[key] = value.newValue;
-                }
-                buffer.setImmediateAll(changes);
+                console.group(`resolve network statechange "${category}"`);
+                const storage = getExtraStorage(category);
+                writeChanges(data, storage);
+                console.groupEnd(`resolve network statechange "${category}"`);
                 return true;
             }
         }

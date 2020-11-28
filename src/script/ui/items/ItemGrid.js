@@ -2,9 +2,14 @@ import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
 import Language from "/script/util/Language.js";
-import "./Item.js";
-import "./InfiniteItem.js";
-import "./RewardItem.js";
+import "/script/state/items/ItemState.js";
+import "/script/state/items/ItemInfState.js";
+import "/script/state/items/ItemKeyState.js";
+import "/script/state/items/ItemRewardState.js";
+import "/script/state/items/ItemStartState.js";
+import "./components/Item.js";
+import "./components/InfiniteItem.js";
+import "./components/RewardItem.js";
 
 const TPL = new Template(`
     <style>
@@ -37,9 +42,9 @@ const TPL = new Template(`
 
 function createItem(value, data) {
     let type = 'ootrt-item';
-    if (data.max === false) {
+    if (data.type === "infinite") {
         type = 'ootrt-infiniteitem';
-    } else if (data.dungeon_reward === true) {
+    } else if (data.type === "dungeonreward") {
         type = 'ootrt-rewarditem';
     }
         

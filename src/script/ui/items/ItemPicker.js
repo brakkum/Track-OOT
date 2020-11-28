@@ -2,7 +2,7 @@ import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
 import Language from "/script/util/Language.js";
-import "./SelectableItem.js";
+import "./components/SelectableItem.js";
 
 const TPL = new Template(`
     <style>
@@ -102,7 +102,7 @@ class HTMLTrackerItemPicker extends Panel {
                             if (element.type == "item") {
                                 let item = createItem(element.value);
                                 item.addEventListener("select", event => {
-                                    this.dispatchEvent(new CustomEvent('pick', { detail: event.detail }));
+                                    this.dispatchEvent(new CustomEvent('pick', { detail: event.item }));
                                     event.preventDefault();
                                     return false;
                                 });
