@@ -93,16 +93,26 @@ function encodeState() {
 
 function writeChanges(data, storage) {
     const changes = {};
-    const items = FileData.get("items");
     for (const [key, value] of Object.entries(data)) {
-        const current = storage.get(key);
-        if (ItemStates.has(key) && current != value.oldValue) {
+        const change = storage.get(key);
+        const current = storage.getImmediate(key);
+        if (ItemStates.has(key)) {
             const state = ItemStates.get(key);
             const diff = value.newValue - value.oldValue;
-            changes[key] = state.convert(current + diff);
-            console.log(`${key}: ${current} (${value.oldValue}) -> ${changes[key]} (${value.newValue})`);
+            if (diff != 0) {
+                const newCurrent = state.convert(current + diff);
+                const newChanged = state.convert(change + diff);
+                changes[key] = {
+                    current: newCurrent,
+                    change: newChanged
+                };
+                console.log(`${key}: ${current}/${change} (${value.oldValue}) -> ${newCurrent}/${newChanged} (${value.newValue})`);
+            }
         } else {
-            changes[key] = value.newValue;
+            changes[key] = {
+                current: value.newValue,
+                change: change
+            };
             console.log(`${key}: ${current} -> ${changes[key]}`);
         }
     }

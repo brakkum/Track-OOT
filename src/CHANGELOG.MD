@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.11
+
+### BUGFIXES
+
+- fixed debounced state timer not reseted properly
+
+---
+
 ## VERSION 2.0.10
 
 ### BUGFIXES

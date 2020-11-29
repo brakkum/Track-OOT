@@ -1,28 +1,16 @@
-import NumberState from "/emcJS/data/state/NumberState.js";
+import BoolState from "/emcJS/data/state/BoolState.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
 const REF = new WeakMap();
 const PROPS = new WeakMap();
 
-export default class AbstractItemState extends NumberState {
+export default class AbstractItemState extends BoolState {
 
     constructor(ref, props, max, min) {
         super(max, min);
-        this.value = StateStorage.read(ref, 0);
+        this.value = StateStorage.read(ref, false);
         REF.set(this, ref);
         PROPS.set(this, props);
-    }
-
-    convert(value) {
-        if (typeof value != "number" || isNaN(value)) value = 0;
-        const max = this.max;
-        const min = this.min;
-        if (value > max) {
-            value = max;
-        } else if (value < min) {
-            value = min;
-        }
-        return value;
     }
 
     get ref() {
