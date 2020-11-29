@@ -9,7 +9,7 @@ Application:    Track-OOT
 ### BUGFIXES
 
 - fixed error in item states
-- fixed debaunced state multiplayer sync bug
+- fixed debounced state multiplayer sync bug
 
 ---
 
