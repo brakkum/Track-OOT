@@ -83,7 +83,6 @@ async function init() {
         "/emcJS/ui/input/TextEditor.js",
         "/emcJS/ui/LogScreen.js",
         "/emcJS/ui/Icon.js",
-        "/emcJS/ui/input/ChoiceSelect.js",
         "/emcJS/ui/layout/Layout.js",
         "/emcJS/ui/layout/TabView.js",
         "/script/ui/items/ItemGrid.js",
@@ -100,7 +99,7 @@ async function init() {
     updateLoadingMessage("apply logger...");
     if (!!MemoryStorage.get("version-dev")) {
         let logPanel = document.createElement("div");
-        logPanel.setAttribute("ref", "log");
+        logPanel.setAttribute("slot", "log");
         logPanel.dataset.title = "Logger";
         logPanel.dataset.icon = "images/icons/log.svg";
         logPanel.style.overflow = "hidden";

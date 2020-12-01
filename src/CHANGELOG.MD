@@ -8,7 +8,10 @@ Application:    Track-OOT
 
 ### BUGFIXES
 
-- fixed debounced state timer not reseted properly
+- fixed debounced state timer not resetting properly
+- fixed tabview initialization issue
+- make hints read data from item and world files
+- make searches trigger live instead of after entering value
 
 ---
 

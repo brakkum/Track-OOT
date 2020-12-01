@@ -31,13 +31,13 @@ function dungeonTypeUpdate(event) {
     if (props.hasOwnProperty("maxmq") && props.hasOwnProperty("related_dungeon")) {
         const change = event.data[props.related_dungeon];
         if (change != null) {
-            const type = StateStorage.readExtra("dungeontype", data.related_dungeon, "n");
+            const type = StateStorage.readExtra("dungeontype", props.related_dungeon, "n");
             if (type == "v") {
-                this.max = data.max;
+                this.max = props.max;
             } else if (type == "mq") {
-                this.max = data.maxmq;
+                this.max = props.maxmq;
             } else {
-                this.max = Math.max(data.maxmq, data.max);
+                this.max = Math.max(props.maxmq, props.max);
             }
         }
     }

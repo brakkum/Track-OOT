@@ -48,45 +48,86 @@ export default class ListGossipstone extends ListLocation {
 ListLocation.registerType('gossipstone', ListGossipstone);
 customElements.define('ootrt-list-gossipstone', ListGossipstone);
 
+function getLocationDescriptors() {
+    const marker = FileData.get('world/marker');
+    const loc = filterLocations(marker.location);
+    const locations = {};
+    for (const name in loc) {
+        const data = loc[name];
+        locations[data.type] = locations[data.type] || [];
+        locations[data.type].push(name);
+    }
+    return [
+        Object.keys(marker.area),
+        Object.keys(marker.subarea),
+        locations
+    ];
+}
+
+function filterLocations(obj) {
+    const result = {};
+    for (const key in obj) {
+        if (!!obj[key] && obj[key] != "gossipstone") {
+            result[key] = obj[key];
+        }
+    }
+    return result;
+}
+
 function hintstoneDialog(ref) {
     return new Promise(resolve => {
-        let location = StateStorage.read(`${ref}.location`, "");
-        let item = StateStorage.read(`${ref}.item`, "");
-        let data = FileData.get('hints', {locations: [], items: []});
+        const location = StateStorage.read(`${ref}.location`, "");
+        const item = StateStorage.read(`${ref}.item`, "");
+
+        const [areas, subareas, locations] = getLocationDescriptors();
+        const items = Object.keys(FileData.get('items'));
+        items.push("WOTH");
+        items.push("FOOL");
     
-        let lbl_loc = document.createElement('label');
+        const lbl_loc = document.createElement('label');
         lbl_loc.style.display = "flex";
         lbl_loc.style.justifyContent = "space-between";
         lbl_loc.style.alignItems = "center";
         lbl_loc.style.padding = "5px";
         lbl_loc.innerHTML = Language.translate("location");
-        let slt_loc = document.createElement("select");
+        const slt_loc = document.createElement("emc-searchselect");
         slt_loc.append(createOption("", "["+Language.translate("empty")+"]"));
-        for (let j = 0; j < data.locations.length; ++j) {
-            let loc = data.locations[j];
-            slt_loc.append(createOption(loc, Language.translate(loc)));
+        for (const loc of subareas) {
+            const id = `area/${loc}`;
+            slt_loc.append(createOption(loc, `${Language.translate(id)} [area]`));
         }
-        slt_loc.style.width = "200px";
+        for (const loc of areas) {
+            const id = `subarea/${loc}`;
+            slt_loc.append(createOption(loc, `${Language.translate(id)} [subarea]`));
+        }
+        for (const type in locations) {
+            const data = locations[type];
+            for (const loc of data) {
+                const id = `location/${loc}`;
+                slt_loc.append(createOption(loc, `${Language.translate(id)} [${type}]`));
+            }
+        }
+        slt_loc.style.width = "300px";
         slt_loc.value = location;
         lbl_loc.append(slt_loc);
     
-        let lbl_itm = document.createElement('label');
+        const lbl_itm = document.createElement('label');
         lbl_itm.style.display = "flex";
         lbl_itm.style.justifyContent = "space-between";
         lbl_itm.style.alignItems = "center";
         lbl_itm.style.padding = "5px";
         lbl_itm.innerHTML = Language.translate("item");
-        let slt_itm = document.createElement("select");
+        const slt_itm = document.createElement("emc-searchselect");
         slt_itm.append(createOption("", "["+Language.translate("empty")+"]"));
-        for (let j = 0; j < data.items.length; ++j) {
-            let itm = data.items[j];
+        for (let j = 0; j < items.length; ++j) {
+            const itm = items[j];
             slt_itm.append(createOption(itm, Language.translate(itm)));
         }
-        slt_itm.style.width = "200px";
+        slt_itm.style.width = "300px";
         slt_itm.value = item;
         lbl_itm.append(slt_itm);
         
-        let d = new Dialog({title: Language.translate(ref), submit: true, cancel: true});
+        const d = new Dialog({title: Language.translate(ref), submit: true, cancel: true});
         d.onsubmit = function(result) {
             if (!!result) {
                 resolve({item: slt_itm.value, location: slt_loc.value});
@@ -101,7 +142,7 @@ function hintstoneDialog(ref) {
 }
 
 function createOption(value, content) {
-    let opt = document.createElement('option');
+    let opt = document.createElement('emc-option');
     opt.value = value;
     opt.innerHTML = content;
     return opt;

@@ -17,7 +17,6 @@ const FILES = {
     "dungeonstate":         {path: "/database/dungeonstate.json",       type: "jsonc"},
     "layouts":              {path: "/database/layouts.json",            type: "jsonc"},
     "songs":                {path: "/database/songs.json",              type: "jsonc"},
-    "hints":                {path: "/database/hints.json",              type: "jsonc"},
     "settings":             {path: "/database/settings.json",           type: "jsonc"},
     "rulesets":             {path: "/database/rulesets.json",           type: "jsonc"},
     "randomizer_options":   {path: "/database/randomizer_options.json", type: "jsonc"},
