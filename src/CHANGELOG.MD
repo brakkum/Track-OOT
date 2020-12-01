@@ -4,6 +4,16 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.12
+
+### BUGFIXES
+
+- fixed gossipstone dialog translations
+- fixed gossipstone location/item translations
+- fixed gossipstone not showing hint data on load
+
+---
+
 ## VERSION 2.0.11
 
 ### BUGFIXES

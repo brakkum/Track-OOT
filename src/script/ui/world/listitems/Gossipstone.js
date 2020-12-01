@@ -6,8 +6,8 @@ import Language from "/script/util/Language.js";
 import ListLocation from "./Location.js";
 
 const TPL = new Template(`
-    <div id="location" class="textarea"></div>
-    <div id="item" class="textarea"></div>
+    <div id="hintlocation" class="textarea"></div>
+    <div id="hintitem" class="textarea"></div>
 `);
 
 export default class ListGossipstone extends ListLocation {
@@ -17,17 +17,34 @@ export default class ListGossipstone extends ListLocation {
         this.shadowRoot.append(TPL.generate());
     }
 
-    setCheckValue(value) {
-        super.setCheckValue(value);
-        if (!!value) {
-            let location = StateStorage.read(`${this.ref}.location`, "");
-            let item = StateStorage.read(`${this.ref}.item`, "");
-            this.shadowRoot.getElementById("location").innerHTML = location;
-            this.shadowRoot.getElementById("item").innerHTML = item;
+    connectedCallback() {
+        super.connectedCallback();
+        const location = StateStorage.read(`${this.ref}.location`, "");
+        const item = StateStorage.read(`${this.ref}.item`, "");
+        if (!!location && !!item) {
+            this.shadowRoot.getElementById("hintlocation").innerHTML = Language.translate(location);
+            this.shadowRoot.getElementById("hintitem").innerHTML = Language.translate(item);
         } else {
-            this.shadowRoot.getElementById("location").innerHTML = "";
-            this.shadowRoot.getElementById("item").innerHTML = "";
+            this.shadowRoot.getElementById("hintlocation").innerHTML = "";
+            this.shadowRoot.getElementById("hintitem").innerHTML = "";
         }
+    }
+
+    set checked(val) {
+        super.checked = val;
+        if (!!val) {
+            const location = StateStorage.read(`${this.ref}.location`, "");
+            const item = StateStorage.read(`${this.ref}.item`, "");
+            this.shadowRoot.getElementById("hintlocation").innerHTML = Language.translate(location);
+            this.shadowRoot.getElementById("hintitem").innerHTML = Language.translate(item);
+        } else {
+            this.shadowRoot.getElementById("hintlocation").innerHTML = "";
+            this.shadowRoot.getElementById("hintitem").innerHTML = "";
+        }
+    }
+
+    get checked() {
+        return super.checked;
     }
 
     check() {
@@ -92,19 +109,19 @@ function hintstoneDialog(ref) {
         lbl_loc.innerHTML = Language.translate("location");
         const slt_loc = document.createElement("emc-searchselect");
         slt_loc.append(createOption("", "["+Language.translate("empty")+"]"));
-        for (const loc of subareas) {
-            const id = `area/${loc}`;
-            slt_loc.append(createOption(loc, `${Language.translate(id)} [area]`));
-        }
         for (const loc of areas) {
+            const id = `area/${loc}`;
+            slt_loc.append(createOption(id, `${Language.translate(id)} [area]`));
+        }
+        for (const loc of subareas) {
             const id = `subarea/${loc}`;
-            slt_loc.append(createOption(loc, `${Language.translate(id)} [subarea]`));
+            slt_loc.append(createOption(id, `${Language.translate(id)} [subarea]`));
         }
         for (const type in locations) {
             const data = locations[type];
             for (const loc of data) {
                 const id = `location/${loc}`;
-                slt_loc.append(createOption(loc, `${Language.translate(id)} [${type}]`));
+                slt_loc.append(createOption(id, `${Language.translate(id)} [${type}]`));
             }
         }
         slt_loc.style.width = "300px";
