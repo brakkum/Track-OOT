@@ -53,7 +53,7 @@ export default class ItemStartState extends AbstractItemState {
 
     constructor(ref, props) {
         super(ref, props, props.max, 0);
-        STARTVALUE.set(this, StateStorage.read(props.start_settings, 1));
+        STARTVALUE.set(this, parseInt(StateStorage.read(props.start_settings, 1)));
         /* EVENTS */
         EventBus.register("state", stateLoaded.bind(this));
         EventBus.register("statechange", stateChanged.bind(this));
@@ -78,7 +78,11 @@ export default class ItemStartState extends AbstractItemState {
     set value(value) {
         if (typeof value != "number") value = 0;
         if (!!value && value < this.startvalue) {
-            value = this.startvalue;
+            if (super.value > value) {
+                value = 0;
+            } else {
+                value = this.startvalue;
+            }
         }
         super.value = value;
     }

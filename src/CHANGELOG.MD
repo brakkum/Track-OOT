@@ -4,6 +4,16 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.13
+
+### BUGFIXES
+
+- fixed adult trading sequence starting value option was missing cojiro
+- fixed adult trading sequence item could not be deactivated
+- fixed adult trading sequence item loading starting item option incorrectly
+
+---
+
 ## VERSION 2.0.12
 
 ### BUGFIXES
