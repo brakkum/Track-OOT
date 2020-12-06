@@ -28979,8 +28979,25 @@
                 "type": "true"
             },
             "region.hf_southeast_grotto_entrance[child]": {
-                "type": "mixin",
-                "el": "mixin.can_blast_or_smash[child]"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[child]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[child]"
+                        }
+                    },
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[adult]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[adult]"
+                        }
+                    }
+                ]
             },
             "region.hf_open_grotto_entrance[child]": {
                 "type": "true"
@@ -29012,12 +29029,46 @@
                 ]
             },
             "region.hf_near_market_grotto_entrance[child]": {
-                "type": "mixin",
-                "el": "mixin.can_blast_or_smash[child]"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[child]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[child]"
+                        }
+                    },
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[adult]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[adult]"
+                        }
+                    }
+                ]
             },
             "region.hf_fairy_grotto_entrance[child]": {
-                "type": "mixin",
-                "el": "mixin.can_blast_or_smash[child]"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[child]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[child]"
+                        }
+                    },
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[adult]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[adult]"
+                        }
+                    }
+                ]
             },
             "region.hf_near_kak_grotto_entrance[child]": {
                 "type": "mixin",
@@ -29103,8 +29154,25 @@
                 "type": "true"
             },
             "region.hf_southeast_grotto_entrance[adult]": {
-                "type": "mixin",
-                "el": "mixin.can_blast_or_smash[adult]"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[child]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[child]"
+                        }
+                    },
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[adult]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[adult]"
+                        }
+                    }
+                ]
             },
             "region.hf_open_grotto_entrance[adult]": {
                 "type": "true"
@@ -29136,12 +29204,46 @@
                 ]
             },
             "region.hf_near_market_grotto_entrance[adult]": {
-                "type": "mixin",
-                "el": "mixin.can_blast_or_smash[adult]"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[child]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[child]"
+                        }
+                    },
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[adult]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[adult]"
+                        }
+                    }
+                ]
             },
             "region.hf_fairy_grotto_entrance[adult]": {
-                "type": "mixin",
-                "el": "mixin.can_blast_or_smash[adult]"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[child]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[child]"
+                        }
+                    },
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[adult]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[adult]"
+                        }
+                    }
+                ]
             },
             "region.hf_near_kak_grotto_entrance[adult]": {
                 "type": "mixin",
