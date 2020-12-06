@@ -29,6 +29,9 @@ const STYLE = new GlobalStyle(`
 * {
     position: relative;
     box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 :host {
     display: flex;
@@ -59,8 +62,6 @@ const STYLE = new GlobalStyle(`
 #text {
     flex: 1;
     color: #ffffff;
-    -moz-user-select: none;
-    user-select: none;
 }
 #text[data-state="opened"] {
     color: var(--location-status-opened-color, #000000);

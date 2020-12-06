@@ -26,6 +26,9 @@ const STYLE = new GlobalStyle(`
 * {
     position: relative;
     box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 :host {
     display: flex;
@@ -58,8 +61,6 @@ const STYLE = new GlobalStyle(`
     flex: 1;
     align-items: center;
     color: #ffffff;
-    -moz-user-select: none;
-    user-select: none;
 }
 #text[data-state="available"] {
     color: var(--location-status-available-color, #000000);

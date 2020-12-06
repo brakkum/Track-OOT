@@ -9,18 +9,11 @@ function stateLoaded(event) {
     const ref = this.ref;
     const props = this.props;
     // savesatate
-    let value = parseInt(event.data.state[ref]);
-    if (isNaN(value)) {
-        value = 0;
-    }
-    this.value = value;
+    this.value = parseInt(event.data.state[ref]) || 0;
     // settings
     if (props.hasOwnProperty("start_settings")) {
-        let startvalue = parseInt(event.data.state[props.start_settings]);
-        if (isNaN(startvalue)) {
-            startvalue = 1;
-        }
-        this.startvalue = startvalue;
+        const startvalue = parseInt(event.data.state[props.start_settings]) || 0;
+        this.startvalue = startvalue > 0 ? startvalue : 1;
     }
 }
 
@@ -30,21 +23,14 @@ function stateChanged(event) {
     // savesatate
     const change = event.data[ref];
     if (change != null) {
-        let value = parseInt(change.newValue);
-        if (isNaN(value)) {
-            value = 0;
-        }
-        this.value = value;
+        this.value = parseInt(change.newValue) || 0;
     }
     // settings
     if (props.hasOwnProperty("start_settings")) {
         const start = event.data[props.start_settings];
         if (start != null) {
-            let startvalue = parseInt(start.newValue);
-            if (isNaN(startvalue)) {
-                startvalue = 1;
-            }
-            this.startvalue = startvalue;
+            const startvalue = parseInt(start.newValue) || 0;
+            this.startvalue = startvalue > 0 ? startvalue : 1;
         }
     }
 }

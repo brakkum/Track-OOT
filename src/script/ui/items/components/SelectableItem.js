@@ -1,10 +1,13 @@
 import GlobalStyle from "/emcJS/util/GlobalStyle.js";
 import ItemStates from "/script/state/ItemStates.js";
+import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
 
 const STYLE = new GlobalStyle(`
 * {
     position: relative;
     box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
     user-select: none;
 }
 :host {
@@ -29,7 +32,10 @@ class HTMLTrackerSelectableItem extends HTMLElement {
         this.attachShadow({mode: 'open'});
         STYLE.apply(this.shadowRoot);
         /* --- */
-        this.addEventListener("click", this.select);
+        this.addEventListener("click", event => this.select(event));
+        /* fck iOS */
+        iOSTouchHandler.register(this);
+        this.addEventListener("shortpress", event => this.select(event));
     }
 
     get ref() {

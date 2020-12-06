@@ -3,6 +3,7 @@ import Template from "/emcJS/util/Template.js";
 import GlobalStyle from "/emcJS/util/GlobalStyle.js";
 import ItemStates from "/script/state/ItemStates.js";
 import "/emcJS/ui/input/Option.js";
+import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
 
 const TPL = new Template(`
 <div id="value">
@@ -13,6 +14,8 @@ const STYLE = new GlobalStyle(`
 * {
     position: relative;
     box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
     user-select: none;
 }
 :host {
@@ -50,8 +53,6 @@ const STYLE = new GlobalStyle(`
     white-space: normal;
     line-height: 0.7em;
     font-weight: bold;
-    -moz-user-select: none;
-    user-select: none;
 }
 `);
 
@@ -83,8 +84,12 @@ class RewardItem extends HTMLElement {
         FN_DUNGEON.set(this, event => {
             this.dungeon = event.data;
         });
-        this.addEventListener("click", this.next);
-        this.addEventListener("contextmenu", this.prev);
+        this.addEventListener("click", event => this.next(event));
+        this.addEventListener("contextmenu", event => this.prev(event));
+        /* fck iOS */
+        iOSTouchHandler.register(this);
+        this.addEventListener("shortpress", event => this.next(event));
+        this.addEventListener("longpress", event => this.prev(event));
     }
 
     get ref() {

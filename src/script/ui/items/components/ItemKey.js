@@ -2,7 +2,7 @@ import Template from "/emcJS/util/Template.js";
 import GlobalStyle from "/emcJS/util/GlobalStyle.js";
 import "/emcJS/ui/input/Option.js";
 import ItemStates from "/script/state/ItemStates.js";
-import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
+import iOSToucshHandler from "/script/util/iOSTouchHandler.js";
 
 const TPL = new Template(`
 <slot id="slot">
@@ -75,6 +75,7 @@ function getAlign(value) {
 }
 
 const FN_VALUE = new WeakMap();
+const FN_TYPE = new WeakMap();
 
 export default class Item extends HTMLElement {
 
@@ -86,6 +87,9 @@ export default class Item extends HTMLElement {
         /* --- */
         FN_VALUE.set(this, event => {
             this.value = event.data;
+        });
+        FN_TYPE.set(this, event => {
+            this.fillItemChoices();
         });
         this.addEventListener("click", event => this.next(event));
         this.addEventListener("contextmenu", event => this.prev(event));
@@ -147,9 +151,11 @@ export default class Item extends HTMLElement {
                     if (oldValue != null) {
                         const oldState = ItemStates.get(oldValue);
                         oldState.removeEventListener("value", FN_VALUE.get(this));
+                        oldState.removeEventListener("type", FN_TYPE.get(this));
                     }
                     const state = ItemStates.get(this.ref);
                     state.addEventListener("value", FN_VALUE.get(this));
+                    state.addEventListener("type", FN_TYPE.get(this));
                     const data = state.props;
                     this.value = state.value;
                     // settings
@@ -273,7 +279,7 @@ export default class Item extends HTMLElement {
 
 }
 
-customElements.define('ootrt-item', Item);
+customElements.define('ootrt-itemkey', Item);
 
 function createOption(value, img, data, max_value) {
     let opt = document.createElement('emc-option');

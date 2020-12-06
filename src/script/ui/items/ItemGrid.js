@@ -8,6 +8,7 @@ import "/script/state/items/ItemKeyState.js";
 import "/script/state/items/ItemRewardState.js";
 import "/script/state/items/ItemStartState.js";
 import "./components/Item.js";
+import "./components/ItemKey.js";
 import "./components/InfiniteItem.js";
 import "./components/RewardItem.js";
 
@@ -16,6 +17,9 @@ const TPL = new Template(`
         * {
             position: relative;
             box-sizing: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
         }
         :host {
             display: block;
@@ -46,6 +50,8 @@ function createItem(value, data) {
         type = 'ootrt-infiniteitem';
     } else if (data.type === "dungeonreward") {
         type = 'ootrt-rewarditem';
+    } else if (data.type === "key") {
+        type = 'ootrt-itemkey';
     }
         
     let el = document.createElement(type);

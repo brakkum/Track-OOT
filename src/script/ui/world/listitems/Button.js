@@ -11,6 +11,9 @@ const STYLE = new GlobalStyle(`
 * {
     position: relative;
     box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 :host {
     display: flex;
@@ -41,8 +44,6 @@ const STYLE = new GlobalStyle(`
 }
 #text {
     flex: 1;
-    -moz-user-select: none;
-    user-select: none;
 }
 #badge {
     display: inline-flex;

@@ -5,11 +5,7 @@ import AbstractItemState from "/script/state/items/AbstractItemState.js";
 function stateLoaded(event) {
     const ref = this.ref;
     // savesatate
-    let value = parseInt(event.data.state[ref]);
-    if (isNaN(value)) {
-        value = 0;
-    }
-    this.value = value;
+    this.value = parseInt(event.data.state[ref]) || 0;
 }
 
 function stateChanged(event) {
@@ -17,11 +13,7 @@ function stateChanged(event) {
     // savesatate
     const change = event.data[ref];
     if (change != null) {
-        let value = parseInt(change.newValue);
-        if (isNaN(value)) {
-            value = 0;
-        }
-        this.value = value;
+        this.value = parseInt(change.newValue) || 0;
     }
 }
 

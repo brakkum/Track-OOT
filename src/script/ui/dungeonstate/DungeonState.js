@@ -170,7 +170,7 @@ function createRow(data) {
     //////////////////////////////////
     // small key
     if (!!data.keys) {
-        let itm = document.createElement('ootrt-item');
+        let itm = document.createElement('ootrt-itemkey');
         itm.classList.add("inactive");
         itm.setAttribute("type", "key");
         types.push("key");

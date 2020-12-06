@@ -6,12 +6,18 @@ Application:    Track-OOT
 
 ## VERSION 2.0.14
 
-### BUGFIXES
+### FEATURES
 
 - Updated OOTR Logic to 6.0
 - Added Shuffle Song Warps option (Currently only affects Biggoron Bolero Skip)
 - Added missing options for 6.0 spoilers in Spoiler Parser
 - Removed Malon and Zelda's Lullaby checks if Skip Child Zelda is active
+
+### BUGFIXES
+
+- fix key max counts not applied on dungeon type change
+- fix longpress issue on iOS>14 browser
+    - think different
 
 ---
 

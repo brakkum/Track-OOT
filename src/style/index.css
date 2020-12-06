@@ -9,6 +9,7 @@ body {
     margin: 0px;
     background-color: var(--page-background-color, #000000);
     color: var(--page-text-color, #ffffff);
+    /*-webkit-touch-callout: none !important;*/
 }
 
 /* footer design (until there is a custom element) */
