@@ -11,6 +11,7 @@ import ListLogic from "/script/util/logic/ListLogic.js";
 import Logic from "/script/util/logic/Logic.js";
 import ExitRegistry from "/script/util/world/ExitRegistry.js";
 import Language from "/script/util/Language.js";
+import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
 
 const SettingsStorage = new IDBStorage('settings');
 
@@ -412,6 +413,9 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
         this.registerGlobal(["statechange", "statechange_dungeontype", "settings", "logic", "filter"], event => {
             this.update();
         });
+        
+        /* fck iOS */
+        iOSTouchHandler.register(this);
     }
 
     connectedCallback() {

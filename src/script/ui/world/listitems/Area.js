@@ -9,6 +9,7 @@ import StateStorage from "/script/storage/StateStorage.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import ListLogic from "/script/util/logic/ListLogic.js";
 import Language from "/script/util/Language.js";
+import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
 
 const SettingsStorage = new IDBStorage('settings');
 
@@ -255,6 +256,9 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
             }
         });
         //this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));
+        
+        /* fck iOS */
+        iOSTouchHandler.register(this);
     }
 
     connectedCallback() {

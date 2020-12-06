@@ -11,6 +11,7 @@ import Logic from "/script/util/logic/Logic.js";
 import ExitRegistry from "/script/util/world/ExitRegistry.js";
 import Language from "/script/util/Language.js";
 import MarkerRegistry from "/script/util/world/MarkerRegistry.js";
+import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
 
 const SettingsStorage = new IDBStorage('settings');
 
@@ -367,6 +368,9 @@ export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
             // update state
             this.update();
         });
+        
+        /* fck iOS */
+        iOSTouchHandler.register(this);
     }
 
     connectedCallback() {

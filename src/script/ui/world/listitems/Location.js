@@ -9,6 +9,7 @@ import LogicViewer from "/script/content/logic/LogicViewer.js";
 import Logic from "/script/util/logic/Logic.js";
 import Language from "/script/util/Language.js";
 import "/script/ui/items/ItemPicker.js";
+import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
 
 const TPL = new Template(`
 <div class="textarea">
@@ -239,6 +240,9 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
                 this.item = event.data[this.ref].newValue;
             }
         });
+        
+        /* fck iOS */
+        iOSTouchHandler.register(this);
     }
 
     connectedCallback() {

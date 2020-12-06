@@ -1,4 +1,5 @@
 import Template from "/emcJS/util/Template.js";
+import GlobalStyle from "/emcJS/util/GlobalStyle.js";
 import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
@@ -6,56 +7,58 @@ import Dialog from "/emcJS/ui/overlay/Dialog.js";
 import Language from "/script/util/Language.js";
 import "./ShopItem.js";
 import "./ShopBuilder.js";
+import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
 
 const TPL = new Template(`
-    <style>
-        * {
-            position: relative;
-            box-sizing: border-box;
-        }
-        :host {
-            display: inline-block;
-            padding: 10px;
-            margin: 5px;
-            background-color: #222222;
-        }
-        #title {
-            display: flex;
-            align-items: center;
-            height: 30px;
-        }
-        #title button {
-            appearance: none;
-            color: white;
-            background-color: black;
-            border: solid 1px white;
-            margin-left: 15px;
-            cursor: pointer;
-        }
-        #title button:hover {
-            color: black;
-            background-color: white;
-        }
-        #body {
-            display: grid;
-            grid-template-columns: auto auto auto auto;
-            grid-template-rows: auto auto;
-        }
-    </style>
-    <div id="title">
-        <span id="title-text"></span>
-        <button id="edit">✎</button>
-    </div>
-    <div id="body">
-        <ootrt-shopitem id="slot0"></ootrt-shopitem>
-        <ootrt-shopitem id="slot1"></ootrt-shopitem>
-        <ootrt-shopitem id="slot2"></ootrt-shopitem>
-        <ootrt-shopitem id="slot3"></ootrt-shopitem>
-        <ootrt-shopitem id="slot4"></ootrt-shopitem>
-        <ootrt-shopitem id="slot5"></ootrt-shopitem>
-        <ootrt-shopitem id="slot6"></ootrt-shopitem>
-        <ootrt-shopitem id="slot7"></ootrt-shopitem>
-    </div>
+<div id="title">
+    <span id="title-text"></span>
+    <button id="edit">✎</button>
+</div>
+<div id="body">
+    <ootrt-shopitem id="slot0"></ootrt-shopitem>
+    <ootrt-shopitem id="slot1"></ootrt-shopitem>
+    <ootrt-shopitem id="slot2"></ootrt-shopitem>
+    <ootrt-shopitem id="slot3"></ootrt-shopitem>
+    <ootrt-shopitem id="slot4"></ootrt-shopitem>
+    <ootrt-shopitem id="slot5"></ootrt-shopitem>
+    <ootrt-shopitem id="slot6"></ootrt-shopitem>
+    <ootrt-shopitem id="slot7"></ootrt-shopitem>
+</div>
+`);
+
+const STYLE = new GlobalStyle(`
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+:host {
+    display: inline-block;
+    padding: 10px;
+    margin: 5px;
+    background-color: #222222;
+}
+#title {
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+#title button {
+    appearance: none;
+    color: white;
+    background-color: black;
+    border: solid 1px white;
+    margin-left: 15px;
+    cursor: pointer;
+}
+#title button:hover {
+    color: black;
+    background-color: white;
+}
+#body {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto;
+}
 `);
 
 function editShop(event) {
@@ -177,12 +180,16 @@ export default class HTMLTrackerShopField extends EventBusSubsetMixin(HTMLElemen
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
+        STYLE.apply(this.shadowRoot);
+        /* --- */
         this.shadowRoot.getElementById("edit").onclick = editShop.bind(this);
         for (let i = 0; i < 8; ++i) {
-            let el = this.shadowRoot.getElementById(`slot${i}`);
-            el.onclick = checkSlot.bind(this);
-            el.oncontextmenu = uncheckSlot.bind(this);
+            const el = this.shadowRoot.getElementById(`slot${i}`);
+            el.addEventListener("click", event => checkSlot(event));
+            el.addEventListener("contextmenu", event => uncheckSlot(event));
             el.addEventListener("namechange", renameSlot.bind(this));
+            /* fck iOS */
+            iOSTouchHandler.register(el);
         }
         /* event bus */
         this.registerGlobal("statechange_shops_items", shopItemUpdate.bind(this));
@@ -204,13 +211,13 @@ export default class HTMLTrackerShopField extends EventBusSubsetMixin(HTMLElemen
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
-            let data = StateStorage.readExtra("shops_items", newValue, FileData.get("shops")[newValue]);
-            let title = this.shadowRoot.getElementById("title-text");
+            const data = StateStorage.readExtra("shops_items", newValue, FileData.get("shops")[newValue]);
+            const title = this.shadowRoot.getElementById("title-text");
             title.innerHTML = Language.translate(newValue);
-            let names = StateStorage.readExtra("shops_names", this.ref, ["","","","","","","",""]);
-            let checked = StateStorage.readExtra("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
+            const names = StateStorage.readExtra("shops_names", this.ref, ["","","","","","","",""]);
+            const checked = StateStorage.readExtra("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
             for (let i = 0; i < 8; ++i) {
-                let el = this.shadowRoot.getElementById(`slot${i}`);
+                const el = this.shadowRoot.getElementById(`slot${i}`);
                 el.ref = data[i].item;
                 el.price = data[i].price;
                 el.checked = !!checked[i];

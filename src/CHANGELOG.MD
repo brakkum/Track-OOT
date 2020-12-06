@@ -12,6 +12,8 @@ Application:    Track-OOT
 - Added Shuffle Song Warps option (Currently only affects Biggoron Bolero Skip)
 - Added missing options for 6.0 spoilers in Spoiler Parser
 - Removed Malon and Zelda's Lullaby checks if Skip Child Zelda is active
+- add filter for era apply mode
+    - changes how region access logic rules work with era fitlers
 
 ### BUGFIXES
 

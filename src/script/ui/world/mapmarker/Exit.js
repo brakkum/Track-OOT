@@ -1,5 +1,6 @@
 import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
+import GlobalStyle from "/emcJS/util/GlobalStyle.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Logger from "/emcJS/util/Logger.js";
 import "/emcJS/ui/overlay/Tooltip.js";
@@ -10,146 +11,148 @@ import ListLogic from "/script/util/logic/ListLogic.js";
 import Logic from "/script/util/logic/Logic.js";
 import ExitRegistry from "/script/util/world/ExitRegistry.js";
 import Language from "/script/util/Language.js";
+import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
 
 const SettingsStorage = new IDBStorage('settings');
 
 const TPL = new Template(`
-    <style>
-        :host {
-            position: absolute;
-            display: inline-flex;
-            width: 48px;
-            height: 48px;
-            box-sizing: border-box;
-            transform: translate(-24px, -24px);
-        }
-        :host(:hover) {
-            z-index: 1000;
-        }
-        #marker {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-            width: 100%;
-            height: 100%;
-            border: solid 4px black;
-            border-radius: 25%;
-            color: black;
-            background-color: #ffffff;
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        #marker[data-state="opened"] {
-            background-color: var(--location-status-opened-color, #000000);
-        }
-        #marker[data-state="available"] {
-            background-color: var(--location-status-available-color, #000000);
-        }
-        #marker[data-state="unavailable"] {
-            background-color: var(--location-status-unavailable-color, #000000);
-        }
-        #marker[data-state="possible"] {
-            background-color: var(--location-status-possible-color, #000000);
-        }
-        #marker[data-entrances="true"]:after {
-            position: absolute;
-            right: -2px;
-            bottom: -2px;
-            width: 10px;
-            height: 10px;
-            background-color: var(--location-status-available-color, #000000);
-            border: solid 4px black;
-            border-radius: 50%;
-            content: " ";
-        }
-        #marker:hover {
-            box-shadow: 0 0 2px 4px #67ffea;
-        }
-        #marker:hover + #tooltip {
-            display: block;
-        }
-        #tooltip {
-            padding: 5px 12px;
-            -moz-user-select: none;
-            user-select: none;
-            white-space: nowrap;
-            font-size: 30px;
-        }
-        .textarea {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            height: 46px;
-            word-break: break-word;
-        }
-        .textarea:empty {
-            display: none;
-        }
-        #value:empty:after {
-            display: inline;
-            font-style: italic;
-            content: "no association";
-        }
-        #text {
-            display: inline-flex;
-            align-items: center;
-            -moz-user-select: none;
-            user-select: none;
-            white-space: nowrap;
-        }
-        #hint {
-            margin-left: 5px;
-        }
-        #hint:empty {
-            display: none;
-        }
-        #hint img {
-            width: 25px;
-            height: 25px;
-        }
-        #entrances {
-            margin-right: 5px;
-        }
-        #entrances:empty {
-            display: none;
-        }
-        #entrances img {
-            width: 25px;
-            height: 25px;
-        }
-        #badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.1em;
-            flex-shrink: 0;
-            margin-left: 0.3em;
-            border: 0.1em solid var(--navigation-background-color, #ffffff);
-            border-radius: 0.3em;
-        }
-        #badge emc-icon {
-            width: 30px;
-            height: 30px;
-        }
-    </style>
-    <div id="marker" class="unavailable"></div>
-    <emc-tooltip position="top" id="tooltip">
-        <div class="textarea">
-            <div id="entrances"></div>
-            <div id="text"></div>
-            <div id="badge">
-                <emc-icon src="images/icons/entrance.svg"></emc-icon>
-                <emc-icon id="badge-time" src="images/icons/time_always.svg"></emc-icon>
-                <emc-icon id="badge-era" src="images/icons/era_none.svg"></emc-icon>
-            </div>
+<div id="marker" class="unavailable"></div>
+<emc-tooltip position="top" id="tooltip">
+    <div class="textarea">
+        <div id="entrances"></div>
+        <div id="text"></div>
+        <div id="badge">
+            <emc-icon src="images/icons/entrance.svg"></emc-icon>
+            <emc-icon id="badge-time" src="images/icons/time_always.svg"></emc-icon>
+            <emc-icon id="badge-era" src="images/icons/era_none.svg"></emc-icon>
         </div>
-        <div class="textarea">
-            <div id="value"></div>
-            <div id="hint"></div>
-        </div>
-    </emc-tooltip>
+    </div>
+    <div class="textarea">
+        <div id="value"></div>
+        <div id="hint"></div>
+    </div>
+</emc-tooltip>
+`);
+
+const STYLE = new GlobalStyle(`
+:host {
+    position: absolute;
+    display: inline-flex;
+    width: 48px;
+    height: 48px;
+    box-sizing: border-box;
+    transform: translate(-24px, -24px);
+}
+:host(:hover) {
+    z-index: 1000;
+}
+#marker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: solid 4px black;
+    border-radius: 25%;
+    color: black;
+    background-color: #ffffff;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+}
+#marker[data-state="opened"] {
+    background-color: var(--location-status-opened-color, #000000);
+}
+#marker[data-state="available"] {
+    background-color: var(--location-status-available-color, #000000);
+}
+#marker[data-state="unavailable"] {
+    background-color: var(--location-status-unavailable-color, #000000);
+}
+#marker[data-state="possible"] {
+    background-color: var(--location-status-possible-color, #000000);
+}
+#marker[data-entrances="true"]:after {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--location-status-available-color, #000000);
+    border: solid 4px black;
+    border-radius: 50%;
+    content: " ";
+}
+#marker:hover {
+    box-shadow: 0 0 2px 4px #67ffea;
+}
+#marker:hover + #tooltip {
+    display: block;
+}
+#tooltip {
+    padding: 5px 12px;
+    -moz-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    font-size: 30px;
+}
+.textarea {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 46px;
+    word-break: break-word;
+}
+.textarea:empty {
+    display: none;
+}
+#value:empty:after {
+    display: inline;
+    font-style: italic;
+    content: "no association";
+}
+#text {
+    display: inline-flex;
+    align-items: center;
+    -moz-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+}
+#hint {
+    margin-left: 5px;
+}
+#hint:empty {
+    display: none;
+}
+#hint img {
+    width: 25px;
+    height: 25px;
+}
+#entrances {
+    margin-right: 5px;
+}
+#entrances:empty {
+    display: none;
+}
+#entrances img {
+    width: 25px;
+    height: 25px;
+}
+#badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.1em;
+    flex-shrink: 0;
+    margin-left: 0.3em;
+    border: 0.1em solid var(--navigation-background-color, #ffffff);
+    border-radius: 0.3em;
+}
+#badge emc-icon {
+    width: 30px;
+    height: 30px;
+}
 `);
 
 const TPL_MNU_CTX = new Template(`
@@ -167,15 +170,16 @@ const TPL_MNU_CTX = new Template(`
 `);
 
 const TPL_MNU_EXT = new Template(`
-    <style>
-        #select {
-            height: 300px;
-            width: 300px;
-        }
-    </style>
-    <emc-contextmenu id="menu">
-        <emc-listselect id="select"></emc-listselect>
-    </emc-contextmenu>
+<emc-contextmenu id="menu">
+    <emc-listselect id="select"></emc-listselect>
+</emc-contextmenu>
+`);
+
+const STYLE_MNU_EXT = new GlobalStyle(`
+#select {
+    height: 300px;
+    width: 300px;
+}
 `);
 
 function setAllListEntries(list, value = true) {
@@ -271,30 +275,33 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
+        this.attachShadow({mode: 'open'});
+        this.shadowRoot.append(TPL.generate());
+        STYLE.apply(this.shadowRoot);
+        /* --- */
         EXIT.set(this, "");
         AREA.set(this, "");
         ACCESS.set(this, "");
-        this.attachShadow({mode: 'open'});
-        this.shadowRoot.append(TPL.generate());
 
         /* context menu */
         const fillEntrances = fillEntranceSelection.bind(this);
         
-        let mnu_ctx = document.createElement("div");
+        const mnu_ctx = document.createElement("div");
         mnu_ctx.attachShadow({mode: 'open'});
         mnu_ctx.shadowRoot.append(TPL_MNU_CTX.generate());
-        let mnu_ctx_el = mnu_ctx.shadowRoot.getElementById("menu");
+        const mnu_ctx_el = mnu_ctx.shadowRoot.getElementById("menu");
         MNU_CTX.set(this, mnu_ctx);
 
-        let mnu_ext = document.createElement("div");
+        const mnu_ext = document.createElement("div");
         mnu_ext.attachShadow({mode: 'open'});
         mnu_ext.shadowRoot.append(TPL_MNU_EXT.generate());
-        let selectEl = mnu_ext.shadowRoot.getElementById("select");
-        let mnu_ext_el = mnu_ext.shadowRoot.getElementById("menu");
+        STYLE_MNU_EXT.apply(mnu_ext.shadowRoot);
+        const selectEl = mnu_ext.shadowRoot.getElementById("select");
+        const mnu_ext_el = mnu_ext.shadowRoot.getElementById("menu");
         MNU_EXT.set(this, mnu_ext);
 
         selectEl.addEventListener("change", event => {
-            let exit = EXIT.get(this);
+            const exit = EXIT.get(this);
             if (exit != "") {
                 StateStorage.writeExtra("exits", exit, event.value);
                 /*this.triggerGlobal("exit", {
@@ -337,7 +344,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-deassociate").addEventListener("click", event => {
-            let exit = EXIT.get(this);
+            const exit = EXIT.get(this);
             if (exit != "") {
                 StateStorage.writeExtra("exits", exit, "");
             }
@@ -369,7 +376,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
 
         /* mouse events */
         this.addEventListener("click", event => {
-            let area = AREA.get(this);
+            const area = AREA.get(this);
             if (!!area) {
                 this.triggerGlobal("location_change", {
                     name: area
@@ -408,7 +415,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
             this.update();
         });
         this.registerGlobal("statechange_exits", event => {
-            let exit = EXIT.get(this);
+            const exit = EXIT.get(this);
             let data;
             if (event.data != null) {
                 data = event.data[exit];
@@ -431,6 +438,9 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
         this.registerGlobal(["statechange", "statechange_dungeontype", "settings", "logic", "filter"], event => {
             this.update();
         });
+        
+        /* fck iOS */
+        iOSTouchHandler.register(this);
     }
 
     connectedCallback() {
@@ -461,12 +471,12 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
     async update() {
         const area = AREA.get(this);
         if (!!area) {
-            let dType = StateStorage.readExtra("dungeontype", area, 'v');
+            const dType = StateStorage.readExtra("dungeontype", area, 'v');
             if (dType == "n") {
-                let data_v = FileData.get(`world/${area}/lists/v`);
-                let data_m = FileData.get(`world/${area}/lists/mq`);
-                let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
-                let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
+                const data_v = FileData.get(`world/${area}/lists/v`);
+                const data_m = FileData.get(`world/${area}/lists/mq`);
+                const res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
+                const res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
                     this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[Math.min(res_v.value, res_m.value)];
                 } else {
@@ -475,8 +485,8 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
                 this.shadowRoot.getElementById("marker").innerHTML = "";
                 this.setEntrances(res_v.entrances || res_v.entrances);
             } else {
-                let data = FileData.get(`world/${area}/lists/${dType}`);
-                let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
+                const data = FileData.get(`world/${area}/lists/${dType}`);
+                const res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[res.value];
                 if (res.value > 1) {
                     this.shadowRoot.getElementById("marker").innerHTML = res.reachable;
@@ -486,7 +496,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
                 this.setEntrances(res.entrances);
             }
         } else {
-            let access = ACCESS.get(this);
+            const access = ACCESS.get(this);
             if (!!access && (!!Logic.getValue(`${access}[child]`) || !!Logic.getValue(`${access}[adult]`))) {
                 this.shadowRoot.getElementById("marker").dataset.state = "available";
                 this.shadowRoot.getElementById("marker").innerHTML = "?";
@@ -501,7 +511,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
         const entrances = this.shadowRoot.getElementById("entrances");
         entrances.innerHTML = "";
         if (active) {
-            let el_icon = document.createElement("img");
+            const el_icon = document.createElement("img");
             el_icon.src = `images/icons/entrance.svg`;
             entrances.append(el_icon);
             this.shadowRoot.getElementById("marker").dataset.entrances = "true";
@@ -619,7 +629,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
             break;
             case 'tooltip':
                 if (oldValue != newValue) {
-                    let tooltip = this.shadowRoot.getElementById("tooltip");
+                    const tooltip = this.shadowRoot.getElementById("tooltip");
                     tooltip.position = newValue;
                 }
             break;
@@ -627,7 +637,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
     }
 
     setFilterData(data) {
-        let el_era = this.shadowRoot.getElementById("badge-era");
+        const el_era = this.shadowRoot.getElementById("badge-era");
         if (!data["filter.era/child"]) {
             el_era.src = "images/icons/era_adult.svg";
         } else if (!data["filter.era/adult"]) {
@@ -635,7 +645,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
         } else {
             el_era.src = "images/icons/era_both.svg";
         }
-        let el_time = this.shadowRoot.getElementById("badge-time");
+        const el_time = this.shadowRoot.getElementById("badge-time");
         if (!data["filter.time/day"]) {
             el_time.src = "images/icons/time_night.svg";
         } else if (!data["filter.time/night"]) {

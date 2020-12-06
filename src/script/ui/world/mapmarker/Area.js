@@ -1,5 +1,6 @@
 import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
+import GlobalStyle from "/emcJS/util/GlobalStyle.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Logger from "/emcJS/util/Logger.js";
 import "/emcJS/ui/overlay/Tooltip.js";
@@ -8,138 +9,140 @@ import StateStorage from "/script/storage/StateStorage.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import ListLogic from "/script/util/logic/ListLogic.js";
 import Language from "/script/util/Language.js";
+import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
 
 const SettingsStorage = new IDBStorage('settings');
 
 const TPL = new Template(`
-    <style>
-        :host {
-            position: absolute;
-            display: inline-flex;
-            width: 48px;
-            height: 48px;
-            box-sizing: border-box;
-            transform: translate(-24px, -24px);
-        }
-        :host(:hover) {
-            z-index: 1000;
-        }
-        #marker {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-            width: 100%;
-            height: 100%;
-            border: solid 4px black;
-            border-radius: 25%;
-            color: black;
-            background-color: #ffffff;
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        #marker[data-state="opened"] {
-            background-color: var(--location-status-opened-color, #000000);
-        }
-        #marker[data-state="available"] {
-            background-color: var(--location-status-available-color, #000000);
-        }
-        #marker[data-state="unavailable"] {
-            background-color: var(--location-status-unavailable-color, #000000);
-        }
-        #marker[data-state="possible"] {
-            background-color: var(--location-status-possible-color, #000000);
-        }
-        #marker[data-entrances="true"]:after {
-            position: absolute;
-            right: -2px;
-            bottom: -2px;
-            width: 10px;
-            height: 10px;
-            background-color: var(--location-status-available-color, #000000);
-            border: solid 4px black;
-            border-radius: 50%;
-            content: " ";
-        }
-        #marker:hover {
-            box-shadow: 0 0 2px 4px #67ffea;
-        }
-        #marker:hover + #tooltip {
-            display: block;
-        }
-        #tooltip {
-            padding: 5px 12px;
-            -moz-user-select: none;
-            user-select: none;
-            white-space: nowrap;
-            font-size: 30px;
-        }
-        .textarea {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            height: 46px;
-            word-break: break-word;
-        }
-        .textarea:empty {
-            display: none;
-        }
-        #text {
-            display: flex;
-            align-items: center;
-            -moz-user-select: none;
-            user-select: none;
-            white-space: nowrap;
-        }
-        #hint {
-            margin-left: 5px;
-        }
-        #hint:empty {
-            display: none;
-        }
-        #hint img {
-            width: 25px;
-            height: 25px;
-        }
-        #entrances {
-            margin-right: 5px;
-        }
-        #entrances:empty {
-            display: none;
-        }
-        #entrances img {
-            width: 25px;
-            height: 25px;
-        }
-        #badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.1em;
-            flex-shrink: 0;
-            margin-left: 0.3em;
-            border: 0.1em solid var(--navigation-background-color, #ffffff);
-            border-radius: 0.3em;
-        }
-        #badge emc-icon {
-            width: 30px;
-            height: 30px;
-        }
-    </style>
-    <div id="marker" class="unavailable"></div>
-    <emc-tooltip position="top" id="tooltip">
-        <div class="textarea">
-            <div id="entrances"></div>
-            <div id="text"></div>
-            <div id="hint"></div>
-            <div id="badge">
-                <emc-icon src="images/icons/area.svg"></emc-icon>
-                <emc-icon id="badge-time" src="images/icons/time_always.svg"></emc-icon>
-                <emc-icon id="badge-era" src="images/icons/era_both.svg"></emc-icon>
-            </div>
+<div id="marker" class="unavailable"></div>
+<emc-tooltip position="top" id="tooltip">
+    <div class="textarea">
+        <div id="entrances"></div>
+        <div id="text"></div>
+        <div id="hint"></div>
+        <div id="badge">
+            <emc-icon src="images/icons/area.svg"></emc-icon>
+            <emc-icon id="badge-time" src="images/icons/time_always.svg"></emc-icon>
+            <emc-icon id="badge-era" src="images/icons/era_both.svg"></emc-icon>
         </div>
-    </emc-tooltip>
+    </div>
+</emc-tooltip>
+`);
+
+const STYLE = new GlobalStyle(`
+:host {
+    position: absolute;
+    display: inline-flex;
+    width: 48px;
+    height: 48px;
+    box-sizing: border-box;
+    transform: translate(-24px, -24px);
+}
+:host(:hover) {
+    z-index: 1000;
+}
+#marker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: solid 4px black;
+    border-radius: 25%;
+    color: black;
+    background-color: #ffffff;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+}
+#marker[data-state="opened"] {
+    background-color: var(--location-status-opened-color, #000000);
+}
+#marker[data-state="available"] {
+    background-color: var(--location-status-available-color, #000000);
+}
+#marker[data-state="unavailable"] {
+    background-color: var(--location-status-unavailable-color, #000000);
+}
+#marker[data-state="possible"] {
+    background-color: var(--location-status-possible-color, #000000);
+}
+#marker[data-entrances="true"]:after {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--location-status-available-color, #000000);
+    border: solid 4px black;
+    border-radius: 50%;
+    content: " ";
+}
+#marker:hover {
+    box-shadow: 0 0 2px 4px #67ffea;
+}
+#marker:hover + #tooltip {
+    display: block;
+}
+#tooltip {
+    padding: 5px 12px;
+    -moz-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    font-size: 30px;
+}
+.textarea {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 46px;
+    word-break: break-word;
+}
+.textarea:empty {
+    display: none;
+}
+#text {
+    display: flex;
+    align-items: center;
+    -moz-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+}
+#hint {
+    margin-left: 5px;
+}
+#hint:empty {
+    display: none;
+}
+#hint img {
+    width: 25px;
+    height: 25px;
+}
+#entrances {
+    margin-right: 5px;
+}
+#entrances:empty {
+    display: none;
+}
+#entrances img {
+    width: 25px;
+    height: 25px;
+}
+#badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.1em;
+    flex-shrink: 0;
+    margin-left: 0.3em;
+    border: 0.1em solid var(--navigation-background-color, #ffffff);
+    border-radius: 0.3em;
+}
+#badge emc-icon {
+    width: 30px;
+    height: 30px;
+}
 `);
 
 const TPL_MNU_CTX = new Template(`
@@ -199,6 +202,8 @@ export default class MapArea extends EventBusSubsetMixin(HTMLElement) {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
+        STYLE.apply(this.shadowRoot);
+        /* --- */
 
         /* context menu */
         let mnu_ctx = document.createElement("div");
@@ -278,6 +283,9 @@ export default class MapArea extends EventBusSubsetMixin(HTMLElement) {
             }
         });
         //this.registerGlobal("dungeontype", dungeonTypeUpdate.bind(this));
+        
+        /* fck iOS */
+        iOSTouchHandler.register(this);
     }
 
     connectedCallback() {

@@ -1,4 +1,5 @@
 import Template from "/emcJS/util/Template.js";
+import GlobalStyle from "/emcJS/util/GlobalStyle.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/overlay/Tooltip.js";
 import "/emcJS/ui/Icon.js";
@@ -6,101 +7,103 @@ import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import Logic from "/script/util/logic/Logic.js";
 import Language from "/script/util/Language.js";
+import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
 
 const TPL = new Template(`
-    <style>
-        :host {
-            position: absolute;
-            display: inline;
-            width: 32px;
-            height: 32px;
-            box-sizing: border-box;
-            -moz-user-select: none;
-            user-select: none;
-            transform: translate(-8px, -8px);
-        }
-        :host(:hover) {
-            z-index: 1000;
-        }
-        #marker {
-            position: relative;
-            box-sizing: border-box;
-            width: 100%;
-            height: 100%;
-            background-color: var(--location-status-unavailable-color, #000000);
-            border: solid 4px black;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        #marker[data-state="available"] {
-            background-color: var(--location-status-available-color, #000000);
-        }
-        #marker[data-state="unavailable"] {
-            background-color: var(--location-status-unavailable-color, #000000);
-        }
-        :host([checked="true"]) #marker {
-            background-color: var(--location-status-opened-color, #000000);
-        }
-        #marker:hover {
-            box-shadow: 0 0 2px 4px #67ffea;
-        }
-        #marker:hover + #tooltip {
-            display: block;
-        }
-        #tooltip {
-            padding: 5px 12px;
-            -moz-user-select: none;
-            user-select: none;
-            white-space: nowrap;
-            font-size: 30px;
-        }
-        .textarea {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            height: 46px;
-            word-break: break-word;
-        }
-        .textarea:empty {
-            display: none;
-        }
-        #text {
-            display: flex;
-            align-items: center;
-            -moz-user-select: none;
-            user-select: none;
-            white-space: nowrap;
-        }
-        #item {
-            margin-left: 5px;
-        }
-        #badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.1em;
-            flex-shrink: 0;
-            margin-left: 0.3em;
-            border: 0.1em solid var(--navigation-background-color, #ffffff);
-            border-radius: 0.3em;
-        }
-        #badge emc-icon {
-            width: 30px;
-            height: 30px;
-        }
-    </style>
-    <div id="marker"></div>
-    <emc-tooltip position="top" id="tooltip">
-        <div class="textarea">
-            <div id="text"></div>
-            <div id="item"></div>
-            <div id="badge">
-                <emc-icon id="badge-type" src="images/icons/location.svg"></emc-icon>
-                <emc-icon id="badge-time" src="images/icons/time_always.svg"></emc-icon>
-                <emc-icon id="badge-era" src="images/icons/era_none.svg"></emc-icon>
-            </div>
+<div id="marker"></div>
+<emc-tooltip position="top" id="tooltip">
+    <div class="textarea">
+        <div id="text"></div>
+        <div id="item"></div>
+        <div id="badge">
+            <emc-icon id="badge-type" src="images/icons/location.svg"></emc-icon>
+            <emc-icon id="badge-time" src="images/icons/time_always.svg"></emc-icon>
+            <emc-icon id="badge-era" src="images/icons/era_none.svg"></emc-icon>
         </div>
-    </emc-tooltip>
+    </div>
+</emc-tooltip>
+`);
+
+const STYLE = new GlobalStyle(`
+:host {
+    position: absolute;
+    display: inline;
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    -moz-user-select: none;
+    user-select: none;
+    transform: translate(-8px, -8px);
+}
+:host(:hover) {
+    z-index: 1000;
+}
+#marker {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background-color: var(--location-status-unavailable-color, #000000);
+    border: solid 4px black;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#marker[data-state="available"] {
+    background-color: var(--location-status-available-color, #000000);
+}
+#marker[data-state="unavailable"] {
+    background-color: var(--location-status-unavailable-color, #000000);
+}
+:host([checked="true"]) #marker {
+    background-color: var(--location-status-opened-color, #000000);
+}
+#marker:hover {
+    box-shadow: 0 0 2px 4px #67ffea;
+}
+#marker:hover + #tooltip {
+    display: block;
+}
+#tooltip {
+    padding: 5px 12px;
+    -moz-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    font-size: 30px;
+}
+.textarea {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 46px;
+    word-break: break-word;
+}
+.textarea:empty {
+    display: none;
+}
+#text {
+    display: flex;
+    align-items: center;
+    -moz-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+}
+#item {
+    margin-left: 5px;
+}
+#badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.1em;
+    flex-shrink: 0;
+    margin-left: 0.3em;
+    border: 0.1em solid var(--navigation-background-color, #ffffff);
+    border-radius: 0.3em;
+}
+#badge emc-icon {
+    width: 30px;
+    height: 30px;
+}
 `);
 
 const TPL_MNU_CTX = new Template(`
@@ -132,6 +135,8 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
+        STYLE.apply(this.shadowRoot);
+        /* --- */
         if (!!type) {
             let el_type = this.shadowRoot.getElementById("badge-type");
             el_type.src = `images/icons/${type}.svg`;
@@ -254,6 +259,9 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
                 this.item = event.data[this.ref].newValue;
             }
         });
+        
+        /* fck iOS */
+        iOSTouchHandler.register(this);
     }
 
     connectedCallback() {

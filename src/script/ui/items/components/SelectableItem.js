@@ -35,7 +35,6 @@ class HTMLTrackerSelectableItem extends HTMLElement {
         this.addEventListener("click", event => this.select(event));
         /* fck iOS */
         iOSTouchHandler.register(this);
-        this.addEventListener("shortpress", event => this.select(event));
     }
 
     get ref() {

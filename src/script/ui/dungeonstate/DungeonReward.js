@@ -1,54 +1,57 @@
 import Template from "/emcJS/util/Template.js";
+import GlobalStyle from "/emcJS/util/GlobalStyle.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/input/Option.js";
 import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
+import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
 
 const TPL = new Template(`
-    <style>
-        * {
-            position: relative;
-            box-sizing: border-box;
-        }
-        :host {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-        }
-        slot {
-            width: 100%;
-            height: 100%;
-        }
-        ::slotted(:not([value])),
-        ::slotted([value]:not(.active)) {
-            display: none !important;
-        }
-        ::slotted([value]) {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            color: white;
-            font-size: 1em;
-            text-shadow: -1px 0 1px black, 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-origin: content-box;
-            flex-grow: 0;
-            flex-shrink: 0;
-            min-height: 0;
-            white-space: normal;
-            padding: 0;
-            line-height: 0.7em;
-        }
-    </style>
-    <slot>
-    </slot>
+<slot>
+</slot>
+`);
+
+const STYLE = new GlobalStyle(`
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+:host {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+slot {
+    width: 100%;
+    height: 100%;
+}
+::slotted(:not([value])),
+::slotted([value]:not(.active)) {
+    display: none !important;
+}
+::slotted([value]) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-size: 1em;
+    text-shadow: -1px 0 1px black, 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    flex-grow: 0;
+    flex-shrink: 0;
+    min-height: 0;
+    white-space: normal;
+    padding: 0;
+    line-height: 0.7em;
+}
 `);
 
 const REWARDS = [
@@ -91,13 +94,17 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
-        this.addEventListener("click", this.next);
-        this.addEventListener("contextmenu", this.revert);
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
+        STYLE.apply(this.shadowRoot);
+        /* --- */
+        this.addEventListener("click", event => this.next(event));
+        this.addEventListener("contextmenu", event => this.revert(event));
         /* event bus */
         this.registerGlobal("state", stateChanged.bind(this));
         this.registerGlobal("statechange_dungeonreward", dungeonRewardUpdate.bind(this));
+        /* fck iOS */
+        iOSTouchHandler.register(this);
     }
 
     connectedCallback() {

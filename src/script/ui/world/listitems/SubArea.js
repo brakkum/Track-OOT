@@ -9,6 +9,7 @@ import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import ListLogic from "/script/util/logic/ListLogic.js";
 import Language from "/script/util/Language.js";
 import MarkerRegistry from "/script/util/world/MarkerRegistry.js";
+import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
 
 const SettingsStorage = new IDBStorage('settings');
 
@@ -208,6 +209,9 @@ export default class ListSubArea extends EventBusSubsetMixin(HTMLElement) {
         this.registerGlobal(["state", "statechange", "settings", "randomizer_options", "logic", "filter"], event => {
             this.refresh();
         });
+        
+        /* fck iOS */
+        iOSTouchHandler.register(this);
     }
 
     connectedCallback() {

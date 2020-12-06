@@ -1,50 +1,53 @@
 import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
+import GlobalStyle from "/emcJS/util/GlobalStyle.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/input/Option.js";
 import StateStorage from "../storage/StateStorage.js";
 import FilterStorage from "../storage/FilterStorage.js";
+import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
 
 const TPL = new Template(`
-    <style>
-        * {
-            position: relative;
-            box-sizing: border-box;
-        }
-        :host {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 20px;
-            height: 20px;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-        :host(:not([readonly])),
-        :host([readonly="false"]) {
-            cursor: pointer;
-        }
-        slot {
-            width: 100%;
-            height: 100%;
-        }
-        ::slotted(:not([value])),
-        ::slotted([value]:not(.active)) {
-            display: none !important;
-        }
-        ::slotted([value]) {
-            width: 100%;
-            height: 100%;
-            min-height: auto;
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-            background-origin: content-box;
-        }
-    </style>
-    <slot>
-    </slot>
+<slot>
+</slot>
+`);
+
+const STYLE = new GlobalStyle(`
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+:host {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+:host(:not([readonly])),
+:host([readonly="false"]) {
+    cursor: pointer;
+}
+slot {
+    width: 100%;
+    height: 100%;
+}
+::slotted(:not([value])),
+::slotted([value]:not(.active)) {
+    display: none !important;
+}
+::slotted([value]) {
+    width: 100%;
+    height: 100%;
+    min-height: auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-origin: content-box;
+}
 `);
 
 const PERSIST = new WeakMap();
@@ -53,11 +56,17 @@ class FilterButton extends EventBusSubsetMixin(HTMLElement) {
 
     constructor() {
         super();
-        PERSIST.set(this, false);
-        this.addEventListener("click", this.next);
-        this.addEventListener("contextmenu", this.revert);
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
+        STYLE.apply(this.shadowRoot);
+        /* --- */
+        PERSIST.set(this, false);
+        this.addEventListener("click", event => this.next(event));
+        this.addEventListener("contextmenu", event => this.revert(event));
+        /* fck iOS */
+        iOSTouchHandler.register(this);
+        this.addEventListener("shortpress", event => this.next(event));
+        this.addEventListener("longpress", event => this.revert(event));
         /* event bus */
         this.registerGlobal("filter", event => {
             if (event.data.name == this.ref) {

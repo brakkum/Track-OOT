@@ -88,8 +88,6 @@ class RewardItem extends HTMLElement {
         this.addEventListener("contextmenu", event => this.prev(event));
         /* fck iOS */
         iOSTouchHandler.register(this);
-        this.addEventListener("shortpress", event => this.next(event));
-        this.addEventListener("longpress", event => this.prev(event));
     }
 
     get ref() {
