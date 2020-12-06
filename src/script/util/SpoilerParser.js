@@ -43,8 +43,12 @@ function parseSetting(setting, world, trans) {
                     if(setting_trans[i]["values"][v] === undefined) {
                         console.warn("[" + i + ": " + v + "] is a invalid value. Please report this bug")
                     } else {
-                        options[world][setting_trans[i]["name"]] = setting_trans[i]["values"][v];
-                        if(setting_trans[i] === "shuffle_ganon_bosskey" && v === "remove") options[world]["option.ganon_boss_door_open"] = true;
+                        if(setting_trans[i]["name"] === "") {
+
+                        } else {
+                            options[world][setting_trans[i]["name"]] = setting_trans[i]["values"][v];
+                            if(setting_trans[i] === "shuffle_ganon_bosskey" && v === "remove") options[world]["option.ganon_boss_door_open"] = true;
+                        }
                     }
                 }
             }

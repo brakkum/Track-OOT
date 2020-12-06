@@ -9745,29 +9745,38 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "at",
-                                "node": "region.dodongos_cavern_beginning[child]",
-                                "el": {
+                        "type": "at",
+                        "node": "region.dodongos_cavern_beginning[child]",
+                        "el": {
+                            "type": "or",
+                            "el": [
+                                {
                                     "type": "mixin",
                                     "el": "mixin.can_blast_or_smash[child]"
+                                },
+                                {
+                                    "type": "value",
+                                    "el": "item.glove"
                                 }
-                            },
-                            {
-                                "type": "at",
-                                "node": "region.dodongos_cavern_beginning[adult]",
-                                "el": {
-                                    "type": "mixin",
-                                    "el": "mixin.can_blast_or_smash[adult]"
-                                }
-                            }
-                        ]
+                            ]
+                        }
                     },
                     {
-                        "type": "value",
-                        "el": "item.glove"
+                        "type": "at",
+                        "node": "region.dodongos_cavern_beginning[adult]",
+                        "el": {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "mixin.can_blast_or_smash[adult]"
+                                },
+                                {
+                                    "type": "value",
+                                    "el": "item.glove"
+                                }
+                            ]
+                        }
                     }
                 ]
             }
@@ -9780,29 +9789,38 @@
                 "type": "or",
                 "el": [
                     {
-                        "type": "or",
-                        "el": [
-                            {
-                                "type": "at",
-                                "node": "region.dodongos_cavern_beginning[child]",
-                                "el": {
+                        "type": "at",
+                        "node": "region.dodongos_cavern_beginning[child]",
+                        "el": {
+                            "type": "or",
+                            "el": [
+                                {
                                     "type": "mixin",
                                     "el": "mixin.can_blast_or_smash[child]"
+                                },
+                                {
+                                    "type": "value",
+                                    "el": "item.glove"
                                 }
-                            },
-                            {
-                                "type": "at",
-                                "node": "region.dodongos_cavern_beginning[adult]",
-                                "el": {
-                                    "type": "mixin",
-                                    "el": "mixin.can_blast_or_smash[adult]"
-                                }
-                            }
-                        ]
+                            ]
+                        }
                     },
                     {
-                        "type": "value",
-                        "el": "item.glove"
+                        "type": "at",
+                        "node": "region.dodongos_cavern_beginning[adult]",
+                        "el": {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "mixin",
+                                    "el": "mixin.can_blast_or_smash[adult]"
+                                },
+                                {
+                                    "type": "value",
+                                    "el": "item.glove"
+                                }
+                            ]
+                        }
                     }
                 ]
             }
@@ -28961,8 +28979,25 @@
                 "type": "true"
             },
             "region.hf_southeast_grotto_entrance[child]": {
-                "type": "mixin",
-                "el": "mixin.can_blast_or_smash[child]"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[child]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[child]"
+                        }
+                    },
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[adult]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[adult]"
+                        }
+                    }
+                ]
             },
             "region.hf_open_grotto_entrance[child]": {
                 "type": "true"
@@ -28994,12 +29029,46 @@
                 ]
             },
             "region.hf_near_market_grotto_entrance[child]": {
-                "type": "mixin",
-                "el": "mixin.can_blast_or_smash[child]"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[child]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[child]"
+                        }
+                    },
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[adult]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[adult]"
+                        }
+                    }
+                ]
             },
             "region.hf_fairy_grotto_entrance[child]": {
-                "type": "mixin",
-                "el": "mixin.can_blast_or_smash[child]"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[child]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[child]"
+                        }
+                    },
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[adult]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[adult]"
+                        }
+                    }
+                ]
             },
             "region.hf_near_kak_grotto_entrance[child]": {
                 "type": "mixin",
@@ -29085,8 +29154,25 @@
                 "type": "true"
             },
             "region.hf_southeast_grotto_entrance[adult]": {
-                "type": "mixin",
-                "el": "mixin.can_blast_or_smash[adult]"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[child]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[child]"
+                        }
+                    },
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[adult]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[adult]"
+                        }
+                    }
+                ]
             },
             "region.hf_open_grotto_entrance[adult]": {
                 "type": "true"
@@ -29118,12 +29204,46 @@
                 ]
             },
             "region.hf_near_market_grotto_entrance[adult]": {
-                "type": "mixin",
-                "el": "mixin.can_blast_or_smash[adult]"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[child]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[child]"
+                        }
+                    },
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[adult]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[adult]"
+                        }
+                    }
+                ]
             },
             "region.hf_fairy_grotto_entrance[adult]": {
-                "type": "mixin",
-                "el": "mixin.can_blast_or_smash[adult]"
+                "type": "or",
+                "el": [
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[child]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[child]"
+                        }
+                    },
+                    {
+                        "type": "at",
+                        "node": "region.hyrule_field[adult]",
+                        "el": {
+                            "type": "mixin",
+                            "el": "mixin.can_blast_or_smash[adult]"
+                        }
+                    }
+                ]
             },
             "region.hf_near_kak_grotto_entrance[adult]": {
                 "type": "mixin",
@@ -34801,10 +34921,6 @@
                                 "el": "skip.visible_collisions"
                             }
                         ]
-                    },
-                    {
-                        "type": "mixin",
-                        "el": "function.can_use(item.hookshot)[child]"
                     }
                 ]
             },
@@ -35298,10 +35414,28 @@
                                 "el": "skip.visible_collisions"
                             }
                         ]
-                    },
+                    }
+                ]
+            },
+            "region.kak_impas_rooftop[adult]": {
+                "type": "or",
+                "el": [
                     {
                         "type": "mixin",
                         "el": "function.can_use(item.hookshot)[adult]"
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "value",
+                                "el": "skip.kakariko_rooftop_gs"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.boots_hover)[adult]"
+                            }
+                        ]
                     }
                 ]
             },
@@ -35476,50 +35610,6 @@
                     }
                 ]
             },
-            "logic.location.kakariko.s_impas_house_roof_adult_night": {
-                "type": "and",
-                "el": [
-                    {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "filter.era",
-                            "value": "child"
-                        }
-                    },
-                    {
-                        "type": "and",
-                        "el": [
-                            {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.hookshot)[adult]"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "el": [
-                                            {
-                                                "type": "value",
-                                                "el": "skip.kakariko_rooftop_gs"
-                                            },
-                                            {
-                                                "type": "mixin",
-                                                "el": "function.can_use(item.boots_hover)[adult]"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "mixin",
-                                "el": "mixin.is_night[adult]"
-                            }
-                        ]
-                    }
-                ]
-            },
             "logic.location.bug_rock": {
                 "type": "and",
                 "el": [
@@ -35578,6 +35668,48 @@
             },
             "region.kakariko_village[adult]": {
                 "type": "true"
+            }
+        },
+        "region.kak_impas_rooftop[child]": {
+            "region.kak_impas_ledge[child]": {
+                "type": "true"
+            },
+            "region.kakariko_village[child]": {
+                "type": "true"
+            }
+        },
+        "region.kak_impas_rooftop[adult]": {
+            "region.kak_impas_ledge[adult]": {
+                "type": "true"
+            },
+            "region.kakariko_village[adult]": {
+                "type": "true"
+            },
+            "logic.location.kakariko.s_impas_house_roof_adult_night": {
+                "type": "and",
+                "el": [
+                    {
+                        "type": "not",
+                        "el": {
+                            "type": "state",
+                            "el": "filter.era",
+                            "value": "child"
+                        }
+                    },
+                    {
+                        "type": "and",
+                        "el": [
+                            {
+                                "type": "mixin",
+                                "el": "mixin.is_adult[adult]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "mixin.is_night[adult]"
+                            }
+                        ]
+                    }
+                ]
             }
         },
         "region.kak_odd_medicine_rooftop[child]": {
@@ -38926,12 +39058,12 @@
             }
         },
         "region.dmt_owl_flight[child]": {
-            "region.kak_impas_ledge[child]": {
+            "region.kak_impas_rooftop[child]": {
                 "type": "true"
             }
         },
         "region.dmt_owl_flight[adult]": {
-            "region.kak_impas_ledge[adult]": {
+            "region.kak_impas_rooftop[adult]": {
                 "type": "true"
             }
         },
@@ -40735,8 +40867,31 @@
                                     {
                                         "type": "not",
                                         "el": {
-                                            "type": "value",
-                                            "el": "option.shuffle_dungeons"
+                                            "type": "or",
+                                            "el": [
+                                                {
+                                                    "type": "value",
+                                                    "el": "option.shuffle_grottos"
+                                                },
+                                                {
+                                                    "type": "value",
+                                                    "el": "option.shuffle_dungeons"
+                                                },
+                                                {
+                                                    "type": "value",
+                                                    "el": "option.shuffle_overworld"
+                                                },
+                                                {
+                                                    "type": "state",
+                                                    "el": "option.entrance_shuffle_interior",
+                                                    "value": "entrance_shuffle_simple"
+                                                },
+                                                {
+                                                    "type": "state",
+                                                    "el": "option.entrance_shuffle_interior",
+                                                    "value": "entrance_shuffle_all"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -62727,16 +62882,92 @@
                     ]
                 },
                 {
-                    "type": "value",
-                    "el": "skip.biggoron_bolero"
-                },
-                {
                     "type": "mixin",
                     "el": "mixin.can_blast_or_smash[child]"
                 },
                 {
                     "type": "value",
                     "el": "event.stop_gc_rolling_goron_as_adult"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "skip.dmt_climb_hovers"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "function.can_use(item.boots_hover)[child]"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "skip.biggoron_bolero"
+                        },
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "value",
+                                "el": "option.shuffle_warps"
+                            }
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "function.can_play(item.warp_fire)[child]"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "at",
+                                    "node": "region.dmc_central_local[child]",
+                                    "el": {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "mixin",
+                                                "el": "function.can_use(item.hookshot)[child]"
+                                            },
+                                            {
+                                                "type": "mixin",
+                                                "el": "function.can_use(item.boots_hover)[child]"
+                                            },
+                                            {
+                                                "type": "mixin",
+                                                "el": "mixin.can_plant_bean[child]"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "at",
+                                    "node": "region.dmc_central_local[adult]",
+                                    "el": {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "mixin",
+                                                "el": "function.can_use(item.hookshot)[adult]"
+                                            },
+                                            {
+                                                "type": "mixin",
+                                                "el": "function.can_use(item.boots_hover)[adult]"
+                                            },
+                                            {
+                                                "type": "mixin",
+                                                "el": "mixin.can_plant_bean[adult]"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -62765,16 +62996,92 @@
                     ]
                 },
                 {
-                    "type": "value",
-                    "el": "skip.biggoron_bolero"
-                },
-                {
                     "type": "mixin",
                     "el": "mixin.can_blast_or_smash[adult]"
                 },
                 {
                     "type": "value",
                     "el": "event.stop_gc_rolling_goron_as_adult"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "skip.dmt_climb_hovers"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "function.can_use(item.boots_hover)[adult]"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "skip.biggoron_bolero"
+                        },
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "value",
+                                "el": "option.shuffle_warps"
+                            }
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "function.can_play(item.warp_fire)[adult]"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "at",
+                                    "node": "region.dmc_central_local[child]",
+                                    "el": {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "mixin",
+                                                "el": "function.can_use(item.hookshot)[child]"
+                                            },
+                                            {
+                                                "type": "mixin",
+                                                "el": "function.can_use(item.boots_hover)[child]"
+                                            },
+                                            {
+                                                "type": "mixin",
+                                                "el": "mixin.can_plant_bean[child]"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "at",
+                                    "node": "region.dmc_central_local[adult]",
+                                    "el": {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "mixin",
+                                                "el": "function.can_use(item.hookshot)[adult]"
+                                            },
+                                            {
+                                                "type": "mixin",
+                                                "el": "function.can_use(item.boots_hover)[adult]"
+                                            },
+                                            {
+                                                "type": "mixin",
+                                                "el": "mixin.can_plant_bean[adult]"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
