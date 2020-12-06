@@ -52434,16 +52434,92 @@
                     ]
                 },
                 {
-                    "type": "value",
-                    "el": "skip.biggoron_bolero"
-                },
-                {
                     "type": "mixin",
                     "el": "mixin.can_blast_or_smash[child]"
                 },
                 {
                     "type": "value",
                     "el": "event.stop_gc_rolling_goron_as_adult"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "skip.dmt_climb_hovers"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "function.can_use(item.boots_hover)[child]"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "skip.biggoron_bolero"
+                        },
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "value",
+                                "el": "option.shuffle_warps"
+                            }
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "function.can_play(item.warp_fire)[child]"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "at",
+                                    "node": "region.dmc_central_local[child]",
+                                    "el": {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "mixin",
+                                                "el": "function.can_use(item.hookshot)[child]"
+                                            },
+                                            {
+                                                "type": "mixin",
+                                                "el": "function.can_use(item.boots_hover)[child]"
+                                            },
+                                            {
+                                                "type": "mixin",
+                                                "el": "mixin.can_plant_bean[child]"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "at",
+                                    "node": "region.dmc_central_local[adult]",
+                                    "el": {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "mixin",
+                                                "el": "function.can_use(item.hookshot)[adult]"
+                                            },
+                                            {
+                                                "type": "mixin",
+                                                "el": "function.can_use(item.boots_hover)[adult]"
+                                            },
+                                            {
+                                                "type": "mixin",
+                                                "el": "mixin.can_plant_bean[adult]"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -52472,16 +52548,92 @@
                     ]
                 },
                 {
-                    "type": "value",
-                    "el": "skip.biggoron_bolero"
-                },
-                {
                     "type": "mixin",
                     "el": "mixin.can_blast_or_smash[adult]"
                 },
                 {
                     "type": "value",
                     "el": "event.stop_gc_rolling_goron_as_adult"
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "skip.dmt_climb_hovers"
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "function.can_use(item.boots_hover)[adult]"
+                        }
+                    ]
+                },
+                {
+                    "type": "and",
+                    "el": [
+                        {
+                            "type": "value",
+                            "el": "skip.biggoron_bolero"
+                        },
+                        {
+                            "type": "not",
+                            "el": {
+                                "type": "value",
+                                "el": "option.shuffle_warps"
+                            }
+                        },
+                        {
+                            "type": "mixin",
+                            "el": "function.can_play(item.warp_fire)[adult]"
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "at",
+                                    "node": "region.dmc_central_local[child]",
+                                    "el": {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "mixin",
+                                                "el": "function.can_use(item.hookshot)[child]"
+                                            },
+                                            {
+                                                "type": "mixin",
+                                                "el": "function.can_use(item.boots_hover)[child]"
+                                            },
+                                            {
+                                                "type": "mixin",
+                                                "el": "mixin.can_plant_bean[child]"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "at",
+                                    "node": "region.dmc_central_local[adult]",
+                                    "el": {
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "mixin",
+                                                "el": "function.can_use(item.hookshot)[adult]"
+                                            },
+                                            {
+                                                "type": "mixin",
+                                                "el": "function.can_use(item.boots_hover)[adult]"
+                                            },
+                                            {
+                                                "type": "mixin",
+                                                "el": "mixin.can_plant_bean[adult]"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },

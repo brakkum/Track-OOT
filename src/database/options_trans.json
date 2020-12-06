@@ -28,7 +28,8 @@
             "values": {
                 "closed": "doors_open_zora_closed",
                 "adult": "doors_open_zora_adult",
-                "both": "doors_open_zora_both"
+                "both": "doors_open_zora_both",
+                "open": "doors_open_zora_both"
             }
         },
         "gerudo_fortress": {
@@ -43,175 +44,14 @@
             "name": "option.ganon_castle_open",
             "values": {
                 "vanilla": "ganon_castle_open_default",
-                "dungeon": "ganon_castle_open_dungeon",
                 "dungeons": "ganon_castle_open_dungeon",
                 "medallions": "ganon_castle_open_medallion",
                 "stones": "ganon_castle_open_stones",
                 "tokens": "ganon_castle_open_skulltulas",
-                "triforce": "ganon_castle_open_triforce",
                 "open": "ganon_castle_open_open"
             }
         },
-        "logic_rules": {
-            "name": "option.logic_rules",
-            "values": {
-                "glitchless": "logic_rules_glitchless",
-                "glitched": "logic_rules_glitched",
-                "none": "logic_rules_glitched"
-            }
-        },
-        "bombchus_in_logic": {
-            "name": "option.bombchu_logic",
-            "values": {
-                "true": true,
-                "false": false
-            }
-        },
-        "shuffle_cows": {
-            "name": "option.cowsanity",
-            "values": {
-                "true": true,
-                "false": false
-            }
-        },
-        "shuffle_beans": {
-            "name": "option.beansanity",
-            "values": {
-                "true": true,
-                "false": false
-            }
-        },
-        "entrance_shuffle": {
-            "name": "option.entrance_shuffle",
-            "values": {
-                "off": "entrance_shuffle_off",
-                "dungeons": "entrance_shuffle_dungeons",
-                "simple-indoors": "entrance_shuffle_simple",
-                "all-indoors": "entrance_shuffle_indoors",
-                "all": "entrance_shuffle_all"
-            }
-        },
-        "shuffle_scrubs": {
-            "name": "option.scrubsanity",
-            "values": {
-                "off": false,
-                "regular": true,
-                "low": true,
-                "random": true
-            }
-        },
-        "shuffle_smallkeys": {
-            "name": "option.keysanity_small",
-            "values": {
-                "keysanity": true,
-                "dungeon": false,
-                "vanilla": false,
-                "remove": false
-            }
-        },
-        "shuffle_ganon_bosskey": {
-            "name": "option.light_arrow_cutscene",
-            "values": {
-                "remove": "light_arrow_cutscene_vanilla",
-                "vanilla": "light_arrow_cutscene_vanilla",
-                "dungeon": "light_arrow_cutscene_vanilla",
-                "keysanity": "light_arrow_cutscene_vanilla",
-                "lacs_vanilla": "light_arrow_cutscene_vanilla",
-                "lacs_medallions": "light_arrow_cutscene_medallions",
-                "lacs_stones": "light_arrow_cutscene_stones",
-                "lacs_dungeons": "light_arrow_cutscene_dungeons",
-                "lacs_tokens": "light_arrow_cutscene_skulltulas"
-            }
-        },
-        "logic_earliest_adult_trade": {
-            "name": "option.tade_sequence_start_item",
-            "values": {
-                "pocket_egg": 1,
-                "pocket_cucco": 2,
-                "cojiro": 2,
-                "odd_mushroom": 3,
-                "poachers_saw": 5,
-                "broken_sword": 6,
-                "prescription": 7,
-                "eyeball_frog": 8,
-                "eyedrops": 9,
-                "claim_check": 10
-            }
-        },
-        "starting_age": {
-            "name": "option.starting_age",
-            "values": {
-                "child": "child",
-                "adult": "adult",
-                "random": "child"
-            }
-        },
-        "shuffle_interior_entrances": {
-            "name": "option.entrance_shuffle_interior",
-            "values": {
-                "off": "entrance_shuffle_off",
-                "simple": "entrance_shuffle_simple",
-                "all": "entrance_shuffle_all"
-            }
-        },
-        "shuffle_grotto_entrances": {
-            "name": "option.shuffle_grottos",
-            "values": {
-                "true": true,
-                "false": false
-            }
-        },
-        "shuffle_dungeon_entrances": {
-            "name": "option.shuffle_dungeons",
-            "values": {
-                "true": true,
-                "false": false
-            }
-        },
-        "shuffle_overworld_entrances": {
-            "name": "option.shuffle_overworld",
-            "values": {
-                "true": true,
-                "false": false
-            }
-        },
-        "lacs_skulltulas": {
-            "name": "option.lacs_skulltulas"
-        },
-        "lacs_stones": {
-            "name": "option.stone_count_lacs",
-            "values": {
-                "1": 1,
-                "2": 2,
-                "3": 3
-            }
-        },
-        "lacs_medallions": {
-            "name": "option.medallion_count_lacs",
-            "values": {
-                "1": 1,
-                "2": 2,
-                "3": 3,
-                "4": 4,
-                "5": 5,
-                "6": 6
-            }
-        },
-        "lacs_rewards": {
-            "name": "option.dungeon_count_lacs",
-            "values": {
-                "1": 1,
-                "2": 2,
-                "3": 3,
-                "4": 4,
-                "5": 5,
-                "6": 6,
-                "7": 7,
-                "8": 8,
-                "9": 9
-            }
-        },
-        "bridge_skulltulas": {
+        "bridge_tokens": {
             "name": "option.ganon_castle_skulltulas"
         },
         "bridge_stones": {
@@ -247,8 +87,30 @@
                 "9": 9
             }
         },
-        "shuffle_medigoron_carpet_salesman": {
-            "name": "option.shuffleMediCarpet",
+        "triforce_hunt": {
+            "name": "",
+            "values": {
+                "true": true,
+                "false": false
+            }
+        },
+        "logic_rules": {
+            "name": "option.logic_rules",
+            "values": {
+                "glitchless": "logic_rules_glitchless",
+                "glitched": "logic_rules_glitched",
+                "none": "logic_rules_glitched"
+            }
+        },
+        "bombchus_in_logic": {
+            "name": "option.bombchu_logic",
+            "values": {
+                "true": true,
+                "false": false
+            }
+        },
+        "skip_child_zelda": {
+            "name": "option.skip_child_zelda",
             "values": {
                 "true": true,
                 "false": false
@@ -261,140 +123,349 @@
                 "false": false
             }
         },
+        "shuffle_cows": {
+            "name": "option.cowsanity",
+            "values": {
+                "true": true,
+                "false": false
+            }
+        },
+        "shuffle_beans": {
+            "name": "option.beansanity",
+            "values": {
+                "true": true,
+                "false": false
+            }
+        },
+        "shuffle_medigoron_carpet_salesman": {
+            "name": "option.shuffleMediCarpet",
+            "values": {
+                "true": true,
+                "false": false
+            }
+        },
+        "shuffle_interior_entrances": {
+            "name": "option.entrance_shuffle_interior",
+            "values": {
+                "off": "entrance_shuffle_off",
+                "simple": "entrance_shuffle_simple",
+                "all": "entrance_shuffle_all"
+            }
+        },
+        "shuffle_grotto_entrances": {
+            "name": "option.shuffle_grottos",
+            "values": {
+                "true": true,
+                "false": false
+            }
+        },
+        "shuffle_dungeon_entrances": {
+            "name": "option.shuffle_dungeons",
+            "values": {
+                "true": true,
+                "false": false
+            }
+        },
+        "shuffle_overworld_entrances": {
+            "name": "option.shuffle_overworld",
+            "values": {
+                "true": true,
+                "false": false
+            }
+        },
+        "owl_drops": {
+            "name": "",
+            "values": {
+                "true": true,
+                "false": false
+            }
+        },
+        "warp_songs": {
+            "name": "option.shuffle_warps",
+            "values": {
+                "true": true,
+                "false": false
+            }
+        },
+        "spawn_positions": {
+            "name": "",
+            "values": {
+                "true": true,
+                "false": false
+            }
+        },
+        "shuffle_scrubs": {
+            "name": "option.scrubsanity",
+            "values": {
+                "off": false,
+                "regular": true,
+                "low": true,
+                "random": true
+            }
+        },
+        "shuffle_smallkeys": {
+            "name": "option.keysanity_small",
+            "values": {
+                "keysanity": true,
+                "any_dungeon": false,
+                "overworld": false,
+                "dungeon": false,
+                "vanilla": false,
+                "remove": false
+            }
+        },
+        "shuffle_fortesskeys": {
+            "name": "option.fortress_key_small",
+            "values": {
+                "keysanity": true,
+                "any_dungeon": false,
+                "overworld": false,
+                "vanilla": false
+            }
+        },
+        "shuffle_bosskeys": {
+            "name": "option.track_bosskeys",
+            "values": {
+                "keysanity": true,
+                "any_dungeon": true,
+                "overworld": true,
+                "dungeon": true,
+                "vanilla": true,
+                "remove": false
+            }
+        },
+        "shuffle_ganon_bosskey": {
+            "name": "option.light_arrow_cutscene",
+            "values": {
+                "remove": "light_arrow_cutscene_vanilla",
+                "vanilla": "light_arrow_cutscene_vanilla",
+                "dungeon": "light_arrow_cutscene_vanilla",
+                "keysanity": "light_arrow_cutscene_vanilla",
+                "lacs_vanilla": "light_arrow_cutscene_vanilla",
+                "lacs_medallions": "light_arrow_cutscene_medallions",
+                "lacs_stones": "light_arrow_cutscene_stones",
+                "lacs_dungeons": "light_arrow_cutscene_dungeons",
+                "lacs_tokens": "light_arrow_cutscene_skulltulas"
+            }
+        },
+        "lacs_tokens": {
+            "name": "option.lacs_skulltulas"
+        },
+        "lacs_stones": {
+            "name": "option.stone_count_lacs",
+            "values": {
+                "1": 1,
+                "2": 2,
+                "3": 3
+            }
+        },
+        "lacs_medallions": {
+            "name": "option.medallion_count_lacs",
+            "values": {
+                "1": 1,
+                "2": 2,
+                "3": 3,
+                "4": 4,
+                "5": 5,
+                "6": 6
+            }
+        },
+        "lacs_rewards": {
+            "name": "option.dungeon_count_lacs",
+            "values": {
+                "1": 1,
+                "2": 2,
+                "3": 3,
+                "4": 4,
+                "5": 5,
+                "6": 6,
+                "7": 7,
+                "8": 8,
+                "9": 9
+            }
+        },
+        "logic_earliest_adult_trade": {
+            "name": "option.trade_sequence_start_item",
+            "values": {
+                "pocket_egg": 1,
+                "pocket_cucco": 2,
+                "cojiro": 3,
+                "odd_mushroom": 4,
+                "poachers_saw": 6,
+                "broken_sword": 7,
+                "prescription": 8,
+                "eyeball_frog": 9,
+                "eyedrops": 10,
+                "claim_check": 11
+            }
+        },
+        "starting_age": {
+            "name": "option.starting_age",
+            "values": {
+                "child": "child",
+                "adult": "adult",
+                "random": "child"
+            }
+        },
         "allowed_tricks": [
-            "logic_fewer_tunic_requirements",
-            "logic_grottos_without_agony",
-            "logic_visible_collisions",
-            "logic_child_deadhand",
-            "logic_child_dampe_race_poh",
-            "logic_man_on_roof",
-            "logic_dc_staircase",
-            "logic_dc_jump",
-            "logic_dc_vines_gs",
-            "logic_gerudo_kitchen",
-            "logic_deku_basement_gs",
-            "logic_deku_b1_webs_with_bow",
-            "logic_rusted_switches",
-            "logic_botw_basement",
-            "logic_forest_mq_block_puzzle",
-            "logic_spirit_child_bombchu",
-            "logic_windmill_poh",
-            "logic_crater_bean_poh_with_hovers",
-            "logic_zora_with_cucco",
-            "logic_gtg_mq_with_hookshot",
-            "logic_forest_vines",
-            "logic_forest_first_gs",
-            "logic_forest_outdoor_east_gs",
-            "logic_forest_well_swim",
-            "logic_forest_mq_hallway_switch",
-            "logic_dmt_bombable",
-            "logic_goron_city_pot_with_strength",
-            "logic_water_bk_chest",
-            "logic_adult_kokiri_gs",
-            "logic_spirit_mq_frozen_eye",
-            "logic_spirit_wall",
-            "logic_spirit_lobby_gs",
-            "logic_spirit_lobby_jump",
-            "logic_spirit_mq_sun_block_gs",
-            "logic_jabu_scrub_jump_dive",
-            "logic_jabu_mq_sot_gs",
-            "logic_botw_cage_gs",
-            "logic_botw_mq_dead_hand_key",
-            "logic_fire_flame_maze",
-            "logic_fire_mq_flame_maze",
-            "logic_fire_mq_climb",
-            "logic_fire_mq_near_boss",
-            "logic_fire_mq_maze_side_room",
-            "logic_fire_mq_bk_chest",
-            "logic_zora_river_lower",
-            "logic_water_cracked_wall_hovers",
             "logic_shadow_freestanding_key",
-            "logic_shadow_mq_huge_pit",
+            "logic_zora_with_hovers",
+            "logic_grottos_without_agony",
+            "logic_rusted_switches",
+            "logic_fewer_tunic_requirements",
+            "logic_visible_collisions",
+            "logic_adult_kokiri_gs",
+            "logic_lost_woods_bridge",
             "logic_mido_backflip",
-            "logic_fire_boss_door_jump",
-            "logic_lab_diving",
-            "logic_biggoron_bolero",
-            "logic_wasteland_crossing",
-            "logic_colossus_gs",
-            "logic_dc_scarecrow_gs",
-            "logic_kakariko_tower_gs",
+            "logic_lost_woods_gs_bean",
             "logic_lab_wall_gs",
-            "logic_spirit_mq_lower_adult",
-            "logic_spirit_map_chest",
-            "logic_spirit_sun_chest",
-            "logic_shadow_trial_mq",
-            "logic_forest_outdoors_ledge",
-            "logic_water_boss_key_region",
-            "logic_water_falling_platform_gs",
-            "logic_water_river_gs",
             "logic_water_hookshot_entry",
-            "logic_trail_gs_upper",
+            "logic_lab_diving",
+            "logic_valley_crate_hovers",
+            "logic_gerudo_kitchen",
+            "logic_wasteland_crossing",
+            "logic_lens_wasteland",
+            "logic_reverse_wasteland",
+            "logic_colossus_gs",
+            "logic_kakariko_tower_gs",
+            "logic_kakariko_rooftop_gs",
+            "logic_man_on_roof",
+            "logic_windmill_poh",
+            "logic_graveyard_poh",
+            "logic_child_dampe_race_poh",
+            "logic_shadow_fire_arrow_entry",
+            "logic_dmt_climb_hovers",
+            "logic_dmt_bombable",
+            "logic_dmt_soil_gs",
             "logic_trail_gs_lower_hookshot",
             "logic_trail_gs_lower_bean",
-            "logic_crater_upper_to_lower",
-            "logic_zora_with_hovers",
-            "logic_shadow_statue",
+            "logic_trail_gs_upper",
+            "logic_biggoron_bolero",
+            "logic_trail_gs_lower_hovers",
             "logic_link_goron_dins",
+            "logic_goron_city_leftmost",
+            "logic_goron_city_pot_with_strength",
+            "logic_goron_city_pot",
+            "logic_child_rolling_with_strength",
+            "logic_goron_grotto",
+            "logic_crater_upper_to_lower",
+            "logic_crater_bean_poh_with_hovers",
+            "logic_zora_river_lower",
+            "logic_zora_river_upper",
+            "logic_zora_with_hover",
+            "logic_zora_with_cucco",
+            "logic_domain_gs",
+            "logic_castle_storms_gs",
+            "logic_lens_botw",
+            "logic_child_deadhand",
+            "logic_botw_basement",
+            "logic_botw_cage_gs",
+            "logic_botw_mq_dead_hand_key",
+            "logic_botw_mq_pits",
+            "logic_deku_basement_gs",
+            "logic_deku_b1_webs_with_bow",
+            "logic_deku_b1_skip",
+            "logic_deku_mq_compass_gs",
+            "logic_deku_mq_log",
+            "logic_dc_vines_gs",
+            "logic_dc_scrub_room",
+            "logic_dc_scarecrow_gs",
+            "logic_dc_staircase",
+            "logic_dc_slingshot_skip",
+            "logic_dc_jump",
+            "logic_dc_mq_child_bombs",
+            "logic_dc_mq_eyes",
+            "logic_dc_mq_child_back",
+            "logic_jabu_scrub_jump_dive",
+            "logic_jabu_boss_gs_adult",
+            "logic_jabu_mq_sot_gs",
+            "logic_lens_jabu_mq",
+            "logic_ice_block_gs",
+            "logic_ice_mq_scarecrow",
+            "logic_ice_mq_red_ice_gs",
+            "logic_gtg_without_hookshot",
+            "logic_lens_gtg",
+            "logic_gtg_fake_wall",
+            "logic_lens_gtg_mq",
+            "logic_gtg_mq_without_hookshot",
+            "logic_gtg_mq_with_hookshot",
+            "logic_lens_castle",
+            "logic_spirit_trial_hookshot",
+            "logic_lens_castle_mq",
+            "logic_shadow_trial_mq",
+            "logic_fire_trial_mq",
+            "logic_light_trial_mq",
+            "logic_forest_outdoors_ledge",
+            "logic_forest_outdoor_east_gs",
+            "logic_forest_vines",
+            "logic_forest_scarecrow",
+            "logic_forest_outside_backdoor",
+            "logic_forest_mq_block_puzzle",
+            "logic_forest_mq_hallway_switch",
+            "logic_forest_well_swim",
+            "logic_forest_mq_hallway_switch_jumpslash",
+            "logic_forest_mq_hallway_switch_hookshot",
+            "logic_forest_door_frame",
+            "logic_forest_first_gs",
+            "logic_fire_boss_door_jump",
             "logic_fire_song_of_time",
             "logic_fire_strength",
-            "logic_fire_mq_bombable_chest",
-            "logic_light_trial_mq",
-            "logic_ice_mq_scarecrow",
-            "logic_reverse_wasteland",
-            "logic_zora_river_upper",
-            "logic_shadow_mq_gap",
-            "logic_lost_woods_gs_bean",
-            "logic_jabu_boss_gs_adult",
-            "logic_graveyard_poh",
-            "logic_dmt_soil_gs",
-            "logic_gtg_without_hookshot",
-            "logic_gtg_mq_without_hookshot",
-            "logic_gtg_fake_wall",
-            "logic_water_cracked_wall_nothing",
-            "logic_water_north_basement_ledge_jump",
-            "logic_water_temple_torch_longshot",
-            "logic_water_bk_jump_dive",
-            "logic_water_dragon_jump_dive",
-            "logic_water_dragon_bombchu",
-            "logic_goron_city_leftmost",
-            "logic_deku_b1_skip",
-            "logic_spirit_lower_adult_switch",
-            "logic_forest_outside_backdoor",
-            "logic_forest_scarecrow",
-            "logic_dc_mq_child_bombs",
-            "logic_dc_slingshot_skip",
-            "logic_child_rolling_with_strength",
-            "logic_goron_city_pot",
-            "logic_valley_crate_hovers",
-            "logic_lost_woods_bridge",
-            "logic_spirit_trial_hookshot",
-            "logic_shadow_umbrella",
-            "logic_water_central_bow",
             "logic_fire_scarecrow",
-            "logic_shadow_fire_arrow_entry",
-            "logic_lens_wasteland",
-            "logic_lens_botw",
-            "logic_lens_castle_mq",
-            "logic_lens_castle",
-            "logic_lens_gtg_mq",
-            "logic_lens_gtg",
-            "logic_lens_jabu_mq",
-            "logic_lens_shadow_mq",
-            "logic_lens_shadow_mq_back",
-            "logic_lens_shadow",
-            "logic_lens_shadow_back",
-            "logic_lens_spirit_mq",
-            "logic_lens_spirit",
-            "logic_water_falling_platform_gs_hookshot",
-            "logic_water_falling_platform_gs_boomerang",
-            "logic_dmt_climb_hovers",
-            "logic_domain_gs",
-            "logic_shadow_umbrella_gs",
-            "logic_ice_block_gs",
-            "logic_castle_storms_gs",
+            "logic_fire_flame_maze",
+            "logic_fire_mq_near_boss",
+            "logic_fire_mq_bk_chest",
+            "logic_fire_mq_bombable_chest",
+            "logic_fire_mq_climb",
+            "logic_fire_mq_maze_side_room",
+            "logic_fire_mq_blocked_chest",
+            "logic_fire_mq_maze_hovers",
+            "logic_fire_mq_maze_jump",
+            "logic_fire_mq_above_maze_gs",
+            "logic_fire_mq_flame_maze",
+            "logic_water_temple_torch_longshot",
+            "logic_water_central_bow",
+            "logic_water_cracked_wall_nothing",
+            "logic_water_cracked_wall_hovers",
+            "logic_water_boss_key_region",
+            "logic_water_dragon_bombchu",
+            "logic_water_dragon_jump_dive",
+            "logic_water_bk_jump_dive",
+            "logic_water_bk_chest",
+            "logic_water_north_basement_ledge_jump",
+            "logic_water_river_gs",
+            "logic_water_falling_platform_gs",
             "logic_water_dragon_adult",
             "logic_water_dragon_child",
-            "logic_dc_scrub_room"
+            "logic_water_central_gs_irons",
+            "logic_water_falling_platform_gs_hookshot",
+            "logic_water_mq_central_pillar",
+            "logic_water_mq_locked_gs",
+            "logic_water_central_gs_fw",
+            "logic_water_falling_platform_gs_boomerang",
+            "logic_lens_shadow",
+            "logic_shadow_umbrella",
+            "logic_lens_shadow_back",
+            "logic_shadow_freestand_key",
+            "logic_shadow_statue",
+            "logic_lens_shadow_mq",
+            "logic_shadow_mq_gap",
+            "logic_shadow_mq_huge_pit",
+            "logic_lens_shadow_mq_back",
+            "logic_shadow_mq_invisible_blades",
+            "logic_shadow_umbrella_gs",
+            "logic_spirit_child_bombchu",
+            "logic_spirit_lower_adult_switch",
+            "logic_spirit_map_chest",
+            "logic_spirit_sun_chest",
+            "logic_spirit_lobby_gs",
+            "logic_lens_spirit",
+            "logic_spirit_wall",
+            "logic_spirit_mq_frozen_eye",
+            "logic_lens_spirit_mq",
+            "logic_spirit_mq_lower_adult",
+            "logic_spirit_mq_sun_block_gs",
+            "logic_spirit_mq_sun_block_sot",
+            "logic_spirit_lobby_jump"
         ]
     },
     "starting_items": {

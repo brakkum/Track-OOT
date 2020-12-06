@@ -24,6 +24,10 @@
             "type": "check",
             "default": false
         },
+        "option.skip_child_zelda": {
+            "type": "check",
+            "default": false
+        },
         "option.free_scarecrow": {
             "type": "check",
             "default": false
@@ -113,6 +117,22 @@
                 "entrance_shuffle_all"
             ]
         },
+        "option.shuffle_overworld": {
+            "type": "hidden",
+            "default": false
+        },
+        "option.shuffle_owls": {
+            "type": "hidden",
+            "default": false
+        },
+        "option.shuffle_warps": {
+            "type": "check",
+            "default": false
+        },
+        "option.shuffle_spawns": {
+            "type": "hidden",
+            "default": false
+        },
         "option.trade_sequence_start_item": {
             "type": "choice",
             "default": 1,
@@ -165,14 +185,6 @@
         "option.skullsanity": {
             "type": "hidden",
             "old_type": "check",
-            "default": false
-        },
-        "option.skip_child_zelda": {
-            "type": "check",
-            "default": false
-        },
-        "option.shuffle_overworld": {
-            "type": "hidden",
             "default": false
         }
     },

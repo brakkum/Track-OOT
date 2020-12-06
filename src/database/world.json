@@ -12627,7 +12627,13 @@
             "castle_town.c_maron": {
                 "type": "chest",
                 "access": "logic.location.castle_town.c_maron",
-                "visible": true,
+                "visible": {
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.skip_child_zelda"
+                    }
+                },
                 "filter": {
                     "filter.era": {
                         "child": true,
@@ -12646,7 +12652,13 @@
             "castle_town.c_zelda": {
                 "type": "chest",
                 "access": "logic.location.castle_town.c_zelda",
-                "visible": true,
+                "visible": {
+                    "type": "not",
+                    "el": {
+                        "type": "value",
+                        "el": "option.skip_child_zelda"
+                    }
+                },
                 "filter": {
                     "filter.era": {
                         "child": true,
