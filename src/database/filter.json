@@ -15,6 +15,20 @@
             "/images/icons/era_adult.svg"
         ]
     },
+    "filter.era_apply": {
+        "choice": false,
+        "badge": false,
+        "persist": true,
+        "default": "loose",
+        "values": [
+            "loose",
+            "force"
+        ],
+        "images": [
+            "/images/icons/era_loose.svg",
+            "/images/icons/era_force.svg"
+        ]
+    },
     "filter.time": {
         "choice": false,
         "badge": true,

@@ -2,7 +2,7 @@ import Template from "/emcJS/util/Template.js";
 import GlobalStyle from "/emcJS/util/GlobalStyle.js";
 import "/emcJS/ui/input/Option.js";
 import ItemStates from "/script/state/ItemStates.js";
-import iOSToucshHandler from "/script/util/iOSTouchHandler.js";
+import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
 
 const TPL = new Template(`
 <slot id="slot">
