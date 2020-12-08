@@ -1,4 +1,4 @@
-import "/emcJS/ui/NavBar.js";
+import "/emcJS/ui/navigation/NavBar.js";
 
 const NAV = document.querySelector('emc-navbar');
 const PAGER = document.getElementById('view-pager');
