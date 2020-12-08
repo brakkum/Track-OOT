@@ -21,10 +21,20 @@
                 "type": "true"
             },
             "region.bottom_of_the_well[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/well",
+                    "value": "mq"
+                }
             },
             "region.bottom_of_the_well_mq[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/well",
+                    "value": "v"
+                }
             }
         },
         "region.bottom_of_the_well_gateway[adult]": {
@@ -32,10 +42,20 @@
                 "type": "true"
             },
             "region.bottom_of_the_well[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/well",
+                    "value": "mq"
+                }
             },
             "region.bottom_of_the_well_mq[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/well",
+                    "value": "v"
+                }
             }
         },
         "region.deku_tree_entrance[child]": {
@@ -59,10 +79,20 @@
                 "type": "true"
             },
             "region.deku_tree_lobby[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/deku",
+                    "value": "mq"
+                }
             },
             "region.deku_tree_lobby_mq[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/deku",
+                    "value": "v"
+                }
             }
         },
         "region.deku_tree_gateway[adult]": {
@@ -70,10 +100,20 @@
                 "type": "true"
             },
             "region.deku_tree_lobby[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/deku",
+                    "value": "mq"
+                }
             },
             "region.deku_tree_lobby_mq[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/deku",
+                    "value": "v"
+                }
             }
         },
         "region.dodongos_cavern_entrance[child]": {
@@ -97,10 +137,20 @@
                 "type": "true"
             },
             "region.dodongos_cavern_beginning[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/dodongo",
+                    "value": "mq"
+                }
             },
             "region.dodongos_cavern_beginning_mq[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/dodongo",
+                    "value": "v"
+                }
             }
         },
         "region.dodongos_cavern_gateway[adult]": {
@@ -108,10 +158,20 @@
                 "type": "true"
             },
             "region.dodongos_cavern_beginning[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/dodongo",
+                    "value": "mq"
+                }
             },
             "region.dodongos_cavern_beginning_mq[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/dodongo",
+                    "value": "v"
+                }
             }
         },
         "region.jabu_jabus_belly_entrance[child]": {
@@ -131,25 +191,45 @@
             }
         },
         "region.jabu_jabus_belly_gateway[child]": {
-            "region.zjabu_jabus_belly_entrance[child]": {
+            "region.jabu_jabus_belly_entrance[child]": {
                 "type": "true"
             },
             "region.jabu_jabus_belly_beginning[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/jabujabu",
+                    "value": "mq"
+                }
             },
             "region.jabu_jabus_belly_beginning_mq[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/jabujabu",
+                    "value": "v"
+                }
             }
         },
         "region.jabu_jabus_belly_gateway[adult]": {
-            "region.zjabu_jabus_belly_entrance[adult]": {
+            "region.jabu_jabus_belly_entrance[adult]": {
                 "type": "true"
             },
             "region.jabu_jabus_belly_beginning[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/jabujabu",
+                    "value": "mq"
+                }
             },
             "region.jabu_jabus_belly_beginning_mq[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/jabujabu",
+                    "value": "v"
+                }
             }
         },
         "region.ice_cavern_entrance[child]": {
@@ -173,10 +253,20 @@
                 "type": "true"
             },
             "region.ice_cavern_beginning[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/ice_cavern",
+                    "value": "mq"
+                }
             },
             "region.ice_cavern_beginning_mq[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/ice_cavern",
+                    "value": "v"
+                }
             }
         },
         "region.ice_cavern_gateway[adult]": {
@@ -184,10 +274,20 @@
                 "type": "true"
             },
             "region.ice_cavern_beginning[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/ice_cavern",
+                    "value": "mq"
+                }
             },
             "region.ice_cavern_beginning_mq[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/ice_cavern",
+                    "value": "v"
+                }
             }
         },
         "region.gerudo_training_grounds_entrance[child]": {
@@ -211,10 +311,20 @@
                 "type": "true"
             },
             "region.gerudo_training_grounds_lobby[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/training_grounds",
+                    "value": "mq"
+                }
             },
             "region.gerudo_training_grounds_lobby_mq[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/training_grounds",
+                    "value": "v"
+                }
             }
         },
         "region.gerudo_training_grounds_gateway[adult]": {
@@ -222,10 +332,20 @@
                 "type": "true"
             },
             "region.gerudo_training_grounds_lobby[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/training_grounds",
+                    "value": "mq"
+                }
             },
             "region.gerudo_training_grounds_lobby_mq[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/training_grounds",
+                    "value": "v"
+                }
             }
         },
         "region.forest_temple_entrance[child]": {
@@ -249,10 +369,20 @@
                 "type": "true"
             },
             "region.forest_temple_lobby[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_forest",
+                    "value": "mq"
+                }
             },
             "region.forest_temple_lobby_mq[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_forest",
+                    "value": "v"
+                }
             }
         },
         "region.forest_temple_gateway[adult]": {
@@ -260,10 +390,20 @@
                 "type": "true"
             },
             "region.forest_temple_lobby[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_forest",
+                    "value": "mq"
+                }
             },
             "region.forest_temple_lobby_mq[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_forest",
+                    "value": "v"
+                }
             }
         },
         "region.fire_temple_entrance[child]": {
@@ -287,10 +427,20 @@
                 "type": "true"
             },
             "region.fire_temple_lower[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_fire",
+                    "value": "mq"
+                }
             },
             "region.fire_temple_lower_mq[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_fire",
+                    "value": "v"
+                }
             }
         },
         "region.fire_temple_gateway[adult]": {
@@ -298,10 +448,20 @@
                 "type": "true"
             },
             "region.fire_temple_lower[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_fire",
+                    "value": "mq"
+                }
             },
             "region.fire_temple_lower_mq[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_fire",
+                    "value": "v"
+                }
             }
         },
         "region.water_temple_entrance[child]": {
@@ -325,10 +485,20 @@
                 "type": "true"
             },
             "region.water_temple_lobby[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_water",
+                    "value": "mq"
+                }
             },
             "region.water_temple_lobby_mq[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_water",
+                    "value": "v"
+                }
             }
         },
         "region.water_temple_gateway[adult]": {
@@ -336,10 +506,20 @@
                 "type": "true"
             },
             "region.water_temple_lobby[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_water",
+                    "value": "mq"
+                }
             },
             "region.water_temple_lobby_mq[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_water",
+                    "value": "v"
+                }
             }
         },
         "region.shadow_temple_entrance[child]": {
@@ -363,10 +543,20 @@
                 "type": "true"
             },
             "region.shadow_temple_entryway[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_shadow",
+                    "value": "mq"
+                }
             },
             "region.shadow_temple_entryway_mq[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_shadow",
+                    "value": "v"
+                }
             }
         },
         "region.shadow_temple_gateway[adult]": {
@@ -374,10 +564,20 @@
                 "type": "true"
             },
             "region.shadow_temple_entryway[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_shadow",
+                    "value": "mq"
+                }
             },
             "region.shadow_temple_entryway_mq[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_shadow",
+                    "value": "v"
+                }
             }
         },
         "region.spirit_temple_entrance[child]": {
@@ -401,10 +601,20 @@
                 "type": "true"
             },
             "region.spirit_temple_lobby[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_spirit",
+                    "value": "mq"
+                }
             },
             "region.spirit_temple_lobby_mq[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_spirit",
+                    "value": "v"
+                }
             }
         },
         "region.spirit_temple_gateway[adult]": {
@@ -412,10 +622,20 @@
                 "type": "true"
             },
             "region.spirit_temple_lobby[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_spirit",
+                    "value": "mq"
+                }
             },
             "region.spirit_temple_lobby_mq[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/temple_spirit",
+                    "value": "v"
+                }
             }
         },
         "region.ganons_castle_gateway[child]": {
@@ -423,10 +643,20 @@
                 "type": "true"
             },
             "region.ganons_castle_lobby[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/castle_ganon",
+                    "value": "mq"
+                }
             },
             "region.ganons_castle_lobby_mq[child]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/castle_ganon",
+                    "value": "v"
+                }
             }
         },
         "region.ganons_castle_gateway[adult]": {
@@ -434,10 +664,20 @@
                 "type": "true"
             },
             "region.ganons_castle_lobby[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/castle_ganon",
+                    "value": "mq"
+                }
             },
             "region.ganons_castle_lobby_mq[adult]": {
-                "type": "true"
+                "type": "not",
+                "el": {
+                    "type": "state",
+                    "el": "dungeontype.area/castle_ganon",
+                    "value": "v"
+                }
             }
         },
         "region.hf_tektite_grotto_entrance[child]": {
@@ -2311,7 +2551,7 @@
                     }
                 ]
             },
-            "logic.location.ice_cavern_mq.c_sheik": {
+            "logic.location.wall_fairy": {
                 "type": "and",
                 "el": [
                     {
@@ -2434,7 +2674,7 @@
                     }
                 ]
             },
-            "logic.location.ice_cavern_mq.c_sheik": {
+            "logic.location.wall_fairy": {
                 "type": "and",
                 "el": [
                     {
@@ -15845,7 +16085,7 @@
                     }
                 ]
             },
-            "logic.location.ice_cavern_mq.c_sheik": {
+            "logic.location.wall_fairy": {
                 "type": "and",
                 "el": [
                     {
@@ -22579,8 +22819,8 @@
                         }
                     },
                     {
-                        "type": "value",
-                        "el": "item.bottle"
+                        "type": "mixin",
+                        "el": "mixin.blue_fire[child]"
                     }
                 ]
             },
@@ -22615,8 +22855,8 @@
                         }
                     },
                     {
-                        "type": "value",
-                        "el": "item.bottle"
+                        "type": "mixin",
+                        "el": "mixin.blue_fire[adult]"
                     }
                 ]
             },
@@ -22652,8 +22892,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "type": "mixin",
+                                "el": "mixin.blue_fire[adult]"
                             },
                             {
                                 "type": "mixin",
@@ -24236,8 +24476,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "type": "mixin",
+                                "el": "mixin.blue_fire[child]"
                             },
                             {
                                 "type": "value",
@@ -24313,8 +24553,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "type": "mixin",
+                                "el": "mixin.blue_fire[adult]"
                             },
                             {
                                 "type": "value",
@@ -24356,8 +24596,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "type": "mixin",
+                                "el": "mixin.blue_fire[adult]"
                             },
                             {
                                 "type": "value",
@@ -25927,7 +26167,7 @@
                     }
                 ]
             },
-            "logic.location.ice_cavern_mq.c_sheik": {
+            "logic.location.wall_fairy": {
                 "type": "and",
                 "el": [
                     {
@@ -26187,8 +26427,8 @@
                         ]
                     },
                     {
-                        "type": "value",
-                        "el": "item.bottle"
+                        "type": "mixin",
+                        "el": "mixin.blue_fire[adult]"
                     },
                     {
                         "type": "or",
@@ -27061,7 +27301,7 @@
                     }
                 ]
             },
-            "logic.location.ice_cavern_mq.c_sheik": {
+            "logic.location.wall_fairy": {
                 "type": "and",
                 "el": [
                     {
@@ -28033,8 +28273,8 @@
                 ]
             },
             "region.ice_cavern_iron_boots_region_mq[child]": {
-                "type": "value",
-                "el": "item.bottle"
+                "type": "mixin",
+                "el": "mixin.blue_fire[child]"
             },
             "logic.location.fairy_pot": {
                 "type": "and",
@@ -28105,14 +28345,14 @@
                         "el": "mixin.is_adult[adult]"
                     },
                     {
-                        "type": "value",
-                        "el": "item.bottle"
+                        "type": "mixin",
+                        "el": "mixin.blue_fire[adult]"
                     }
                 ]
             },
             "region.ice_cavern_iron_boots_region_mq[adult]": {
-                "type": "value",
-                "el": "item.bottle"
+                "type": "mixin",
+                "el": "mixin.blue_fire[adult]"
             },
             "logic.location.fairy_pot": {
                 "type": "and",
@@ -28148,8 +28388,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "type": "mixin",
+                                "el": "mixin.blue_fire[child]"
                             },
                             {
                                 "type": "or",
@@ -28210,8 +28450,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "type": "mixin",
+                                "el": "mixin.blue_fire[adult]"
                             },
                             {
                                 "type": "or",
@@ -28733,8 +28973,8 @@
                         }
                     },
                     {
-                        "type": "value",
-                        "el": "item.bottle"
+                        "type": "mixin",
+                        "el": "mixin.blue_fire[child]"
                     }
                 ]
             },
@@ -28753,8 +28993,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "type": "mixin",
+                                "el": "mixin.blue_fire[child]"
                             },
                             {
                                 "type": "or",
@@ -28800,8 +29040,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "type": "mixin",
+                                "el": "mixin.blue_fire[child]"
                             },
                             {
                                 "type": "or",
@@ -28844,8 +29084,8 @@
                         }
                     },
                     {
-                        "type": "value",
-                        "el": "item.bottle"
+                        "type": "mixin",
+                        "el": "mixin.blue_fire[child]"
                     }
                 ]
             },
@@ -28890,8 +29130,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "type": "mixin",
+                                "el": "mixin.blue_fire[child]"
                             },
                             {
                                 "type": "or",
@@ -28925,8 +29165,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "type": "mixin",
+                                "el": "mixin.blue_fire[child]"
                             },
                             {
                                 "type": "or",
@@ -28975,8 +29215,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "type": "mixin",
+                                "el": "mixin.blue_fire[adult]"
                             },
                             {
                                 "type": "mixin",
@@ -28998,8 +29238,8 @@
                         }
                     },
                     {
-                        "type": "value",
-                        "el": "item.bottle"
+                        "type": "mixin",
+                        "el": "mixin.blue_fire[adult]"
                     }
                 ]
             },
@@ -29018,8 +29258,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "type": "mixin",
+                                "el": "mixin.blue_fire[adult]"
                             },
                             {
                                 "type": "or",
@@ -29065,8 +29305,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "type": "mixin",
+                                "el": "mixin.blue_fire[adult]"
                             },
                             {
                                 "type": "or",
@@ -29109,8 +29349,8 @@
                         }
                     },
                     {
-                        "type": "value",
-                        "el": "item.bottle"
+                        "type": "mixin",
+                        "el": "mixin.blue_fire[adult]"
                     }
                 ]
             },
@@ -29155,8 +29395,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "type": "mixin",
+                                "el": "mixin.blue_fire[adult]"
                             },
                             {
                                 "type": "or",
@@ -29190,8 +29430,8 @@
                         "type": "and",
                         "el": [
                             {
-                                "type": "value",
-                                "el": "item.bottle"
+                                "type": "mixin",
+                                "el": "mixin.blue_fire[adult]"
                             },
                             {
                                 "type": "or",
@@ -49318,8 +49558,8 @@
                         "el": "mixin.is_child[child]"
                     },
                     {
-                        "type": "value",
-                        "el": "item.bottle"
+                        "type": "mixin",
+                        "el": "mixin.blue_fire[child]"
                     }
                 ]
             },
@@ -49554,8 +49794,8 @@
                         "el": "mixin.is_child[adult]"
                     },
                     {
-                        "type": "value",
-                        "el": "item.bottle"
+                        "type": "mixin",
+                        "el": "mixin.blue_fire[adult]"
                     }
                 ]
             },
@@ -68929,7 +69169,7 @@
                                 "type": "value",
                                 "el": "item.wallet"
                             },
-                            "value": 2
+                            "value": 1
                         }
                     ]
                 }
@@ -68955,7 +69195,7 @@
                                 "type": "value",
                                 "el": "item.wallet"
                             },
-                            "value": 2
+                            "value": 1
                         }
                     ]
                 }
@@ -68981,7 +69221,7 @@
                                 "type": "value",
                                 "el": "item.wallet"
                             },
-                            "value": 3
+                            "value": 2
                         }
                     ]
                 }
@@ -69007,7 +69247,7 @@
                                 "type": "value",
                                 "el": "item.wallet"
                             },
-                            "value": 3
+                            "value": 2
                         }
                     ]
                 }
@@ -69124,52 +69364,770 @@
             ]
         },
         "mixin.blue_fire[child]": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
                     "type": "value",
                     "el": "item.bottle"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
-                            "type": "value",
-                            "el": "option.consider_buyable"
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era_apply",
+                                                        "value": "force",
+                                                        "category": "filter"
+                                                    },
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era",
+                                                        "value": "adult",
+                                                        "category": "filter"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "at",
+                                            "node": "region.ganons_castle_water_trial_mq[child]",
+                                            "el": {
+                                                "type": "true"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era_apply",
+                                                        "value": "force",
+                                                        "category": "filter"
+                                                    },
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era",
+                                                        "value": "child",
+                                                        "category": "filter"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "at",
+                                            "node": "region.ganons_castle_water_trial_mq[adult]",
+                                            "el": {
+                                                "type": "true"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "value",
-                                "el": "item.wallet"
-                            },
-                            "value": 3
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era_apply",
+                                                        "value": "force",
+                                                        "category": "filter"
+                                                    },
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era",
+                                                        "value": "adult",
+                                                        "category": "filter"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "at",
+                                            "node": "region.ganons_castle_water_trial[child]",
+                                            "el": {
+                                                "type": "true"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era_apply",
+                                                        "value": "force",
+                                                        "category": "filter"
+                                                    },
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era",
+                                                        "value": "child",
+                                                        "category": "filter"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "at",
+                                            "node": "region.ganons_castle_water_trial[adult]",
+                                            "el": {
+                                                "type": "true"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era_apply",
+                                                        "value": "force",
+                                                        "category": "filter"
+                                                    },
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era",
+                                                        "value": "adult",
+                                                        "category": "filter"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "at",
+                                            "node": "region.gerudo_training_grounds_stalfos_room_mq[child]",
+                                            "el": {
+                                                "type": "true"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era_apply",
+                                                        "value": "force",
+                                                        "category": "filter"
+                                                    },
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era",
+                                                        "value": "child",
+                                                        "category": "filter"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "at",
+                                            "node": "region.gerudo_training_grounds_stalfos_room_mq[adult]",
+                                            "el": {
+                                                "type": "true"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era_apply",
+                                                        "value": "force",
+                                                        "category": "filter"
+                                                    },
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era",
+                                                        "value": "adult",
+                                                        "category": "filter"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "at",
+                                            "node": "region.ice_cavern_map_room_mq[child]",
+                                            "el": {
+                                                "type": "true"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era_apply",
+                                                        "value": "force",
+                                                        "category": "filter"
+                                                    },
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era",
+                                                        "value": "child",
+                                                        "category": "filter"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "at",
+                                            "node": "region.ice_cavern_map_room_mq[adult]",
+                                            "el": {
+                                                "type": "true"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "not",
+                                                    "el": {
+                                                        "type": "and",
+                                                        "el": [
+                                                            {
+                                                                "type": "state",
+                                                                "el": "filter.era_apply",
+                                                                "value": "force",
+                                                                "category": "filter"
+                                                            },
+                                                            {
+                                                                "type": "state",
+                                                                "el": "filter.era",
+                                                                "value": "adult",
+                                                                "category": "filter"
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "type": "at",
+                                                    "node": "region.ice_cavern[child]",
+                                                    "el": {
+                                                        "type": "true"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "not",
+                                                    "el": {
+                                                        "type": "and",
+                                                        "el": [
+                                                            {
+                                                                "type": "state",
+                                                                "el": "filter.era_apply",
+                                                                "value": "force",
+                                                                "category": "filter"
+                                                            },
+                                                            {
+                                                                "type": "state",
+                                                                "el": "filter.era",
+                                                                "value": "child",
+                                                                "category": "filter"
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "type": "at",
+                                                    "node": "region.ice_cavern[adult]",
+                                                    "el": {
+                                                        "type": "true"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "mixin.is_adult[child]"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "value",
+                                    "el": "option.consider_buyable"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "value",
+                                        "el": "item.wallet"
+                                    },
+                                    "value": 2
+                                }
+                            ]
                         }
                     ]
                 }
             ]
         },
         "mixin.blue_fire[adult]": {
-            "type": "or",
+            "type": "and",
             "el": [
                 {
                     "type": "value",
                     "el": "item.bottle"
                 },
                 {
-                    "type": "and",
+                    "type": "or",
                     "el": [
                         {
-                            "type": "value",
-                            "el": "option.consider_buyable"
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era_apply",
+                                                        "value": "force",
+                                                        "category": "filter"
+                                                    },
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era",
+                                                        "value": "adult",
+                                                        "category": "filter"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "at",
+                                            "node": "region.ganons_castle_water_trial_mq[child]",
+                                            "el": {
+                                                "type": "true"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era_apply",
+                                                        "value": "force",
+                                                        "category": "filter"
+                                                    },
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era",
+                                                        "value": "child",
+                                                        "category": "filter"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "at",
+                                            "node": "region.ganons_castle_water_trial_mq[adult]",
+                                            "el": {
+                                                "type": "true"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
-                            "type": "min",
-                            "el": {
-                                "type": "value",
-                                "el": "item.wallet"
-                            },
-                            "value": 3
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era_apply",
+                                                        "value": "force",
+                                                        "category": "filter"
+                                                    },
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era",
+                                                        "value": "adult",
+                                                        "category": "filter"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "at",
+                                            "node": "region.ganons_castle_water_trial[child]",
+                                            "el": {
+                                                "type": "true"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era_apply",
+                                                        "value": "force",
+                                                        "category": "filter"
+                                                    },
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era",
+                                                        "value": "child",
+                                                        "category": "filter"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "at",
+                                            "node": "region.ganons_castle_water_trial[adult]",
+                                            "el": {
+                                                "type": "true"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era_apply",
+                                                        "value": "force",
+                                                        "category": "filter"
+                                                    },
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era",
+                                                        "value": "adult",
+                                                        "category": "filter"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "at",
+                                            "node": "region.gerudo_training_grounds_stalfos_room_mq[child]",
+                                            "el": {
+                                                "type": "true"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era_apply",
+                                                        "value": "force",
+                                                        "category": "filter"
+                                                    },
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era",
+                                                        "value": "child",
+                                                        "category": "filter"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "at",
+                                            "node": "region.gerudo_training_grounds_stalfos_room_mq[adult]",
+                                            "el": {
+                                                "type": "true"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "or",
+                            "el": [
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era_apply",
+                                                        "value": "force",
+                                                        "category": "filter"
+                                                    },
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era",
+                                                        "value": "adult",
+                                                        "category": "filter"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "at",
+                                            "node": "region.ice_cavern_map_room_mq[child]",
+                                            "el": {
+                                                "type": "true"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "and",
+                                    "el": [
+                                        {
+                                            "type": "not",
+                                            "el": {
+                                                "type": "and",
+                                                "el": [
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era_apply",
+                                                        "value": "force",
+                                                        "category": "filter"
+                                                    },
+                                                    {
+                                                        "type": "state",
+                                                        "el": "filter.era",
+                                                        "value": "child",
+                                                        "category": "filter"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "at",
+                                            "node": "region.ice_cavern_map_room_mq[adult]",
+                                            "el": {
+                                                "type": "true"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "or",
+                                    "el": [
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "not",
+                                                    "el": {
+                                                        "type": "and",
+                                                        "el": [
+                                                            {
+                                                                "type": "state",
+                                                                "el": "filter.era_apply",
+                                                                "value": "force",
+                                                                "category": "filter"
+                                                            },
+                                                            {
+                                                                "type": "state",
+                                                                "el": "filter.era",
+                                                                "value": "adult",
+                                                                "category": "filter"
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "type": "at",
+                                                    "node": "region.ice_cavern[child]",
+                                                    "el": {
+                                                        "type": "true"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "and",
+                                            "el": [
+                                                {
+                                                    "type": "not",
+                                                    "el": {
+                                                        "type": "and",
+                                                        "el": [
+                                                            {
+                                                                "type": "state",
+                                                                "el": "filter.era_apply",
+                                                                "value": "force",
+                                                                "category": "filter"
+                                                            },
+                                                            {
+                                                                "type": "state",
+                                                                "el": "filter.era",
+                                                                "value": "child",
+                                                                "category": "filter"
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "type": "at",
+                                                    "node": "region.ice_cavern[adult]",
+                                                    "el": {
+                                                        "type": "true"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "mixin",
+                                    "el": "mixin.is_adult[adult]"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "and",
+                            "el": [
+                                {
+                                    "type": "value",
+                                    "el": "option.consider_buyable"
+                                },
+                                {
+                                    "type": "min",
+                                    "el": {
+                                        "type": "value",
+                                        "el": "item.wallet"
+                                    },
+                                    "value": 2
+                                }
+                            ]
                         }
                     ]
                 }
@@ -74123,8 +75081,8 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "item.tunic_fire"
+                    "type": "mixin",
+                    "el": "mixin.goron_tunic[child]"
                 },
                 {
                     "type": "mixin",
@@ -74136,8 +75094,8 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "item.tunic_fire"
+                    "type": "mixin",
+                    "el": "mixin.goron_tunic[adult]"
                 },
                 {
                     "type": "mixin",
@@ -74149,8 +75107,8 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "item.tunic_water"
+                    "type": "mixin",
+                    "el": "mixin.zora_tunic[child]"
                 },
                 {
                     "type": "mixin",
@@ -74162,8 +75120,8 @@
             "type": "and",
             "el": [
                 {
-                    "type": "value",
-                    "el": "item.tunic_water"
+                    "type": "mixin",
+                    "el": "mixin.zora_tunic[adult]"
                 },
                 {
                     "type": "mixin",

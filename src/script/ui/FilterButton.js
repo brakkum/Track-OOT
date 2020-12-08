@@ -63,16 +63,14 @@ class FilterButton extends EventBusSubsetMixin(HTMLElement) {
         PERSIST.set(this, false);
         this.addEventListener("click", event => this.next(event));
         this.addEventListener("contextmenu", event => this.revert(event));
-        /* fck iOS */
-        iOSTouchHandler.register(this);
-        this.addEventListener("shortpress", event => this.next(event));
-        this.addEventListener("longpress", event => this.revert(event));
         /* event bus */
         this.registerGlobal("filter", event => {
             if (event.data.name == this.ref) {
                 this.value = event.data.value;
             }
         });
+        /* fck iOS */
+        iOSTouchHandler.register(this);
     }
 
     get ref() {

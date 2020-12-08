@@ -139,7 +139,7 @@ class HTMLTrackerDungeonType extends EventBusSubsetMixin(HTMLElement) {
                         let value = "v";
                         let readonly = true;
                         if (area.hasOwnProperty("mq")) {
-                            value = StateStorage.readExtra("dungeontype", newValue, "n");;
+                            value = StateStorage.readExtra("dungeontype", newValue, "n");
                             readonly = false;
                         }
                         this.value = value;

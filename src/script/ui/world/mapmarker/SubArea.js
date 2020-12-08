@@ -236,19 +236,6 @@ export default class MapSubArea extends EventBusSubsetMixin(HTMLElement) {
             event.preventDefault();
             return false;
         });
-        /* fck iOS */
-        iOSTouchHandler.register(this);
-        this.addEventListener("shortpress", event => {
-            event.stopPropagation();
-            event.preventDefault();
-            return false;
-        });
-        this.addEventListener("longpress", event => {
-            mnu_ctx_el.show(event.clientX, event.clientY);
-            event.stopPropagation();
-            event.preventDefault();
-            return false;
-        });
 
         /* event bus */
         this.registerGlobal(["state", "statechange", "settings", "randomizer_options", "logic", "filter"], event => {

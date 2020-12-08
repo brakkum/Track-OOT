@@ -4,6 +4,15 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.15
+
+### BUGFIXES
+
+- fixed blue fire in logic
+- fixed consider buyables
+
+---
+
 ## VERSION 2.0.14
 
 ### FEATURES
