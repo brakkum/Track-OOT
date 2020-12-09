@@ -11,6 +11,10 @@ Application:    Track-OOT
 - fixed blue fire in logic
 - fixed consider buyables
 
+### IMPROVEMENTS
+
+- make dungeon reward choice an itempicker
+
 ---
 
 ## VERSION 2.0.14

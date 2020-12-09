@@ -70,7 +70,24 @@
     <body>
         <div id="splash">
             <img class="splash-image" src="/images/logo.svg">
-            <span class="loading">loading...</span>
+            <span class="loading">[state]</span>
+            <noscript>
+                <style>
+                    .loading,
+                    .info {
+                        display: none
+                    }
+                    .noinfo {
+                        margin-top: 20px;
+                        text-align: center;
+                    }
+                </style>
+                <div class="noinfo">
+                    This website uses JavaScript.<br>
+                    Your Browser is either blocking scripts or does not support them.<br>
+                    Please enable JavaScript execution or use a compatible Browser.
+                </div>
+            </noscript>
             <div class="info">
                 After updating, the tracker can freeze on startup.<br>
                 If this happens to you, you can try this:<br>
@@ -81,7 +98,7 @@
         </div>
         <script>
             "use strict";
-            let spl = document.getElementById("splash").querySelector('.loading');
+            const spl = document.getElementById("splash").querySelector('.loading');
             function updateLoadingMessage(msg = "loading...") {
                 spl.innerHTML = msg;
             }
@@ -94,8 +111,8 @@
             window.onerror = printError;
 
             if(document.head.createShadowRoot || document.head.attachShadow) {
-                let max_files = 0;
-                let load_files = 0;
+                const max_files = 0;
+                const load_files = 0;
 
                 async function startApp() {
                     try {
@@ -104,7 +121,7 @@
                             navigator.serviceWorker.removeEventListener('message', swStateRecieve);
                         }
                         updateLoadingMessage("add structure...");
-                        let r = await $import.html("/content/app.html");
+                        const r = await $import.html("/content/app.html");
                         while (r.length > 0) {
                             document.body.append(r[0]);
                         }
@@ -132,13 +149,15 @@
                         }
                     }
                 }
+                
+                updateLoadingMessage("loading...");
 
                 if ('serviceWorker' in navigator) {
-                    let refBtn = document.getElementById("splash-refresh");
+                    const refBtn = document.getElementById("splash-refresh");
                     refBtn.innerHTML = "FORCE DOWNLOAD";
                     refBtn.onclick = function() {
                         caches.keys().then(function(names) {
-                            for (let name of names) {
+                            for (const name of names) {
                                 caches.delete(name);
                             }
                             window.location.reload();

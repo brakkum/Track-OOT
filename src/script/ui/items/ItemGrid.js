@@ -1,5 +1,6 @@
 import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
+import GlobalStyle from "/emcJS/util/GlobalStyle.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
 import Language from "/script/util/Language.js";
 import "/script/state/items/ItemState.js";
@@ -13,35 +14,41 @@ import "./components/InfiniteItem.js";
 import "./components/RewardItem.js";
 
 const TPL = new Template(`
-    <style>
-        * {
-            position: relative;
-            box-sizing: border-box;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-        :host {
-            display: block;
-            min-width: min-content;
-            min-height: min-content;
-        }
-        div.item-row {
-            display: flex;
-        }
-        .item {
-            display: flex;
-            padding: 2px;
-        }
-        div.text,
-        div.icon,
-        div.empty {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            padding: 2px;
-        }
-    </style>
+<div id="content">
+</div>
+`);
+
+const STYLE = new GlobalStyle(`
+* {
+    position: relative;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+:host {
+    display: block;
+    min-width: min-content;
+    min-height: min-content;
+}
+#content {
+    display: content;
+}
+.item-row {
+    display: flex;
+}
+.item {
+    display: flex;
+    padding: 2px;
+}
+.text,
+.icon,
+.empty {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    padding: 2px;
+}
 `);
 
 function createItem(value, data) {
@@ -54,7 +61,7 @@ function createItem(value, data) {
         type = 'ootrt-itemkey';
     }
         
-    let el = document.createElement(type);
+    const el = document.createElement(type);
     el.className = "item";
     el.title = Language.translate(value);
     el.setAttribute('i18n-tooltip', value);
@@ -63,7 +70,7 @@ function createItem(value, data) {
 }
 
 function createText(value) {
-    let el = document.createElement('DIV');
+    const el = document.createElement('DIV');
     el.classList.add("text");
     el.innerHTML = value;
     return el;
@@ -88,6 +95,8 @@ class HTMLTrackerItemGrid extends Panel {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
+        STYLE.apply(this.shadowRoot);
+        /* --- */
     }
 
     connectedCallback() {
@@ -128,14 +137,16 @@ class HTMLTrackerItemGrid extends Panel {
             break;
             case 'items':
                 if (oldValue != newValue) {
-                    let config = JSON.parse(newValue);
-                    for (let row of config) {
-                        let cnt = document.createElement('div');
+                    const content = this.shadowRoot.getElementById("content");
+                    content.innerHTML = "";
+                    const config = JSON.parse(newValue);
+                    for (const row of config) {
+                        const cnt = document.createElement('div');
                         cnt.classList.add("item-row");
-                        let items = FileData.get("items");
-                        for (let element of row) {
+                        const items = FileData.get("items");
+                        for (const element of row) {
                             if (element.type == "item") {
-                                let data = items[element.value];
+                                const data = items[element.value];
                                 cnt.append(createItem(element.value, data));
                             } else if (element.type == "text") {
                                 cnt.append(createText(element.value));
@@ -145,7 +156,7 @@ class HTMLTrackerItemGrid extends Panel {
                                 cnt.append(createEmpty());
                             }
                         }
-                        this.shadowRoot.append(cnt);
+                        content.append(cnt);
                     }
                 }
             break;

@@ -5,6 +5,7 @@ import "/emcJS/ui/input/Option.js";
 import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
 import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
+import "/script/ui/items/ItemPicker.js";
 
 const TPL = new Template(`
 <slot>
@@ -54,6 +55,14 @@ slot {
 }
 `);
 
+const TPL_MNU_ITM = new Template(`
+<emc-contextmenu id="menu">
+    <ootrt-itempicker id="item-picker"></ootrt-itempicker>
+</emc-contextmenu>
+`);
+
+const MNU_ITM = new WeakMap();
+
 const REWARDS = [
     "item.stone_forest",
     "item.stone_fire",
@@ -98,11 +107,46 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.append(TPL.generate());
         STYLE.apply(this.shadowRoot);
         /* --- */
-        this.addEventListener("click", event => this.next(event));
+
+        /* context menu */
+        const mnu_itm = document.createElement("div");
+        mnu_itm.attachShadow({mode: 'open'});
+        mnu_itm.shadowRoot.append(TPL_MNU_ITM.generate());
+        const mnu_itm_el = mnu_itm.shadowRoot.getElementById("menu");
+        MNU_ITM.set(this, mnu_itm);
+        const mnu_itm_picker = mnu_itm.shadowRoot.getElementById("item-picker");
+
+        mnu_itm.shadowRoot.getElementById("item-picker").addEventListener("pick", event => {
+            const value = event.detail;
+            if (value != this.value) {
+                this.value = value;
+                StateStorage.writeExtra("dungeonreward", this.ref, value);
+            }
+            event.preventDefault();
+            return false;
+        });
+        
+        /* mouse events */
+        this.addEventListener("click", event => {
+            mnu_itm_picker.items = JSON.stringify([REWARDS.filter(el => !TAKEN_REWARDS.has(el)).map(el => {
+                return {
+                    "type": "item",
+                    "value": el,
+                    "visible": true
+                };
+            })]);
+            /* --- */
+            mnu_itm_el.show(event.clientX, event.clientY);
+            event.stopPropagation();
+            event.preventDefault();
+            return false;
+        });
         this.addEventListener("contextmenu", event => this.revert(event));
+
         /* event bus */
         this.registerGlobal("state", stateChanged.bind(this));
         this.registerGlobal("statechange_dungeonreward", dungeonRewardUpdate.bind(this));
+
         /* fck iOS */
         iOSTouchHandler.register(this);
     }
@@ -110,6 +154,16 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
     connectedCallback() {
         super.connectedCallback();
         this.value = StateStorage.readExtra("dungeonreward", this.ref, "");
+        let el = this;
+        while (el.parentElement != null && !el.classList.contains("panel")) {
+            el = el.parentElement;
+        }
+        el.append(MNU_ITM.get(this));
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        MNU_ITM.get(this).remove();
     }
 
     get ref() {
