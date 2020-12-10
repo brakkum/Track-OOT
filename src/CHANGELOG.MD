@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.16
+
+### BUGFIXES
+
+- fixed spoiler parsers not binding exits properly
+
+---
+
 ## VERSION 2.0.15
 
 ### BUGFIXES
