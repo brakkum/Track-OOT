@@ -201,15 +201,15 @@ function parseEntrances(entrancesTrue, world, dungeon, grottos, indoors, overwor
                 else {
                     if (dungeon) {
                         if (entro_dungeons[i] === edgeThere)
-                            exits[edgeBack] = edgeThere;
+                            exits[edgeThere] = edgeBack;
                     }
                     if(grottos) {
                         if(entro_grottos[i] === edgeThere)
-                            exits[edgeBack] = edgeThere;
+                            exits[edgeThere] = edgeBack;
                     }
                     if (indoors) {
                         if (entro_simple[i] === edgeThere || entro_indoors[i] === edgeThere)
-                            exits[edgeBack] = edgeThere;
+                            exits[edgeThere] = edgeBack;
                     }
                     /*if (overworld) {
                         if(typeof v === 'object' && v !== null) {
