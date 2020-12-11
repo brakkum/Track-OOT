@@ -7,6 +7,7 @@ const TYPE = new WeakMap();
 
 function stateLoaded(event) {
     const ref = this.ref;
+    const props = this.props;
     // savesatate
     this.value = parseInt(event.data.state[ref]) || 0;
     // type

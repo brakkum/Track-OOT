@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.17
+
+### BUGFIXES
+
+- fixed keys not wanting to load states
+
+---
+
 ## VERSION 2.0.16
 
 ### BUGFIXES
