@@ -9,6 +9,7 @@ Application:    Track-OOT
 ### BUGFIXES
 
 - fixed spoiler parsers not binding exits properly
+- fixed logic caller not using dungeonstate reference correctly
 
 ---
 

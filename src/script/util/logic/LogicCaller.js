@@ -44,7 +44,7 @@ EventBus.register("state", event => {
         // dungeon types
         if (!!dData.hasmq) {
             if (event.data.extra.dungeontype != null) {
-                const state = event.data.extra.dungeontype[this.ref];
+                const state = event.data.extra.dungeontype[dData.ref];
                 if (typeof state != "undefined" && state != "") {
                     data[`dungeontype.${dData.ref}`] = state;
                 } else {
@@ -123,7 +123,7 @@ EventBus.register("statechange_dungeontype", event => {
         // dungeon types
         if (!!dData.hasmq) {
             if (event.data.dungeontype != null) {
-                const state = event.data.dungeontype[this.ref];
+                const state = event.data.dungeontype[dData.ref];
                 if (typeof state != "undefined" && state != "") {
                     data[`dungeontype.${dData.ref}`] = state;
                 } else {
