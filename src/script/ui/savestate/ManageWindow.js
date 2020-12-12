@@ -300,7 +300,7 @@ export default class ManageWindow extends HTMLElement {
             try {
                 data = JSON.parse(atob(data));
             } catch(err) {
-                console.log(err);
+                console.error(err);
                 await Dialog.alert("Warning", "Did not find any data to import.");
                 return;
             }
