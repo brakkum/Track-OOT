@@ -18,8 +18,8 @@ const ALL_DUNGEONS = [
 const DUNGEON = new WeakMap();
 
 function getDisplayDungeon(ref) {
-    for (let dungeon of ALL_DUNGEONS) {
-        let rewardValue = StateStorage.readExtra("dungeonreward", dungeon, "");
+    for (const dungeon of ALL_DUNGEONS) {
+        const rewardValue = StateStorage.readExtra("dungeonreward", dungeon, "");
         if (rewardValue == ref) {
             return dungeon;
         }

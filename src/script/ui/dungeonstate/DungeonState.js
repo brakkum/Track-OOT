@@ -73,14 +73,14 @@ const TPL = new Template(`
 `);
 
 function createItemText(text) {
-    let el = document.createElement('DIV');
+    const el = document.createElement('DIV');
     el.classList.add("text");
     el.innerHTML = text;
     return el;
 }
 
 function createItemPlaceholder() {
-    let el = document.createElement('DIV');
+    const el = document.createElement('DIV');
     el.classList.add("placeholder");
     return el;
 }
@@ -92,7 +92,7 @@ class HTMLTrackerDungeonState extends Panel {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
 
-        let data = FileData.get("dungeonstate/entries");
+        const data = FileData.get("dungeonstate/entries");
         for (let i = 0; i < data.length; ++i) {
             this.shadowRoot.append(createRow(data[i]));
         }
@@ -129,7 +129,7 @@ class HTMLTrackerDungeonState extends Panel {
                 if (oldValue != newValue) {
                     switchActive.call(this, newValue);
                 }
-            break;
+                break;
         }
     }
 
@@ -156,21 +156,20 @@ function switchActive(value) {
 }
 
 function createRow(data) {
-
-    let el = document.createElement('DIV');
+    const el = document.createElement('DIV');
     el.classList.add("item-row");
     el.classList.add("inactive");
-    let types = [];
+    const types = [];
 
     //////////////////////////////////
     // title
-    let title = createItemText(data.title);
+    const title = createItemText(data.title);
     title.style.color = data.color;
     el.append(title);
     //////////////////////////////////
     // small key
-    if (!!data.keys) {
-        let itm = document.createElement('ootrt-itemkey');
+    if (data.keys) {
+        const itm = document.createElement('ootrt-itemkey');
         itm.classList.add("inactive");
         itm.setAttribute("type", "key");
         types.push("key");
@@ -178,15 +177,15 @@ function createRow(data) {
         itm.title = Language.translate(data.keys);
         el.append(itm);
     } else {
-        let itm = createItemPlaceholder();
+        const itm = createItemPlaceholder();
         itm.classList.add("inactive");
         itm.setAttribute("type", "key");
         el.append(itm);
     }
     //////////////////////////////////
     // boss key
-    if (!!data.bosskey) {
-        let itm = document.createElement('ootrt-item');
+    if (data.bosskey) {
+        const itm = document.createElement('ootrt-item');
         itm.classList.add("inactive");
         itm.setAttribute("type", "bosskey");
         types.push("bosskey");
@@ -194,15 +193,15 @@ function createRow(data) {
         itm.title = Language.translate(data.bosskey);
         el.append(itm);
     } else {
-        let itm = createItemPlaceholder();
+        const itm = createItemPlaceholder();
         itm.classList.add("inactive");
         itm.setAttribute("type", "bosskey");
         el.append(itm);
     }
     //////////////////////////////////
     // map
-    if (!!data.map) {
-        let itm = document.createElement('ootrt-item');
+    if (data.map) {
+        const itm = document.createElement('ootrt-item');
         itm.classList.add("inactive");
         itm.setAttribute("type", "map");
         types.push("map");
@@ -210,15 +209,15 @@ function createRow(data) {
         itm.title = Language.translate(data.map);
         el.append(itm);
     } else {
-        let itm = createItemPlaceholder();
+        const itm = createItemPlaceholder();
         itm.classList.add("inactive");
         itm.setAttribute("type", "map");
         el.append(itm);
     }
     //////////////////////////////////
     // compass
-    if (!!data.compass) {
-        let itm = document.createElement('ootrt-item');
+    if (data.compass) {
+        const itm = document.createElement('ootrt-item');
         itm.classList.add("inactive");
         itm.setAttribute("type", "compass");
         types.push("compass");
@@ -226,15 +225,15 @@ function createRow(data) {
         itm.title = Language.translate(data.compass);
         el.append(itm);
     } else {
-        let itm = createItemPlaceholder();
+        const itm = createItemPlaceholder();
         itm.classList.add("inactive");
         itm.setAttribute("type", "compass");
         el.append(itm);
     }
     //////////////////////////////////
     // reward
-    if (!!data.boss_reward) {
-        let itm = document.createElement('ootrt-dungeonreward');
+    if (data.boss_reward) {
+        const itm = document.createElement('ootrt-dungeonreward');
         itm.classList.add("inactive");
         itm.setAttribute("type", "reward");
         types.push("reward");
@@ -242,15 +241,15 @@ function createRow(data) {
         itm.title = Language.translate(data.ref) + " " + Language.translate("dun_reward");
         el.append(itm);
     } else {
-        let itm = createItemPlaceholder();
+        const itm = createItemPlaceholder();
         itm.classList.add("inactive");
         itm.setAttribute("type", "reward");
         el.append(itm);
     }
     //////////////////////////////////
     // mode
-    if (!!data.hasmq) {
-        let itm = document.createElement('ootrt-dungeontype');
+    if (data.hasmq) {
+        const itm = document.createElement('ootrt-dungeontype');
         itm.classList.add("inactive");
         itm.setAttribute("type", "type");
         types.push("type");
@@ -258,7 +257,7 @@ function createRow(data) {
         itm.title = Language.translate(data.ref) + " " + Language.translate("dun_type");
         el.append(itm);
     } else {
-        let itm = createItemPlaceholder();
+        const itm = createItemPlaceholder();
         itm.classList.add("inactive");
         itm.setAttribute("type", "type");
         el.append(itm);
@@ -267,5 +266,4 @@ function createRow(data) {
     el.setAttribute("type", types.join(' '));
 
     return el;
-
 }

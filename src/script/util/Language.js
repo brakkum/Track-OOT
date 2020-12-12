@@ -9,7 +9,7 @@ class Language {
 
     constructor() {
         EventBus.register("settings", event => {
-            if (event.data.hasOwnProperty('language')) {
+            if (event.data['language'] != null) {
                 I18n.setLanguage(event.data.language);
             }
         });
@@ -19,16 +19,18 @@ class Language {
         if (languages == null) {
             try {
                 languages = await FileLoader.json("/i18n/_meta.json");
-                for (let key in languages) {
+                for (const key in languages) {
                     try {
-                        let trans = await FileLoader.properties(`/i18n/${key}.lang`);
+                        const trans = await FileLoader.properties(`/i18n/${key}.lang`);
                         I18n.setTranslation(key, Object.assign(trans, languages));
-                    } catch(e) {
+                    } catch(err) {
+                        console.error(err);
                         Logger.error((new Error(`could not load lang ${key}`)), "I18n");
                     }
                     I18n.setLanguage(code);
                 }
-            } catch(e) {
+            } catch(err) {
+                console.error(err);
                 Logger.error((new Error(`could not load language names`)), "I18n");
             }
         }

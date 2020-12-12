@@ -159,7 +159,7 @@ const STYLE_MNU_EXT = new GlobalStyle(`
 
 function setAllListEntries(list, value = true) {
     if (!!list && Array.isArray(list)) {
-        for (let entry of list) {
+        for (const entry of list) {
             const category = entry.category;
             const id = entry.id;
             if (category == "location") {
@@ -319,7 +319,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-deassociate").addEventListener("click", event => {
-            let exit = EXIT.get(this);
+            const exit = EXIT.get(this);
             if (exit != "") {
                 StateStorage.writeExtra("exits", exit, "");
             }
@@ -352,7 +352,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
         /* mouse events */
         this.addEventListener("click", event => {
             const area = AREA.get(this);
-            if (!!area) {
+            if (area) {
                 this.triggerGlobal("location_change", {
                     name: area
                 });
@@ -390,7 +390,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
             this.update();
         });
         this.registerGlobal("statechange_exits", event => {
-            let exit = EXIT.get(this);
+            const exit = EXIT.get(this);
             let data;
             if (event.data != null) {
                 data = event.data[exit];
@@ -430,7 +430,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
         const exit = EXIT.get(this);
         this.value = StateStorage.readExtra("exits", exit, "");
         const area = AREA.get(this);
-        if (!!area) {
+        if (area) {
             this.hint = StateStorage.readExtra("area_hint", area, "");
         }
         // update state
@@ -445,13 +445,13 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
 
     async update() {
         const area = AREA.get(this);
-        if (!!area) {
-            let dType = StateStorage.readExtra("dungeontype", area, 'v');
+        if (area) {
+            const dType = StateStorage.readExtra("dungeontype", area, 'v');
             if (dType == "n") {
-                let data_v = FileData.get(`world/${area}/lists/v`);
-                let data_m = FileData.get(`world/${area}/lists/mq`);
-                let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
-                let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
+                const data_v = FileData.get(`world/${area}/lists/v`);
+                const data_m = FileData.get(`world/${area}/lists/mq`);
+                const res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
+                const res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
                     this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[Math.min(res_v.value, res_m.value)];
                 } else {
@@ -459,13 +459,13 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                 }
                 this.setEntrances(res_v.entrances || res_v.entrances);
             } else {
-                let data = FileData.get(`world/${area}/lists/${dType}`);
-                let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
+                const data = FileData.get(`world/${area}/lists/${dType}`);
+                const res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[res.value];
                 this.setEntrances(res.entrances);
             }
         } else {
-            let access = ACCESS.get(this);
+            const access = ACCESS.get(this);
             if (!!access && (!!Logic.getValue(`${access}[child]`) || !!Logic.getValue(`${access}[adult]`))) {
                 this.shadowRoot.getElementById("text").dataset.state = "available";
             } else {
@@ -478,7 +478,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
         const entrances = this.shadowRoot.getElementById("entrances");
         entrances.innerHTML = "";
         if (active) {
-            let el_icon = document.createElement("img");
+            const el_icon = document.createElement("img");
             el_icon.src = `images/icons/entrance.svg`;
             entrances.append(el_icon);
         }
@@ -529,11 +529,11 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                     // update state
                     this.update();
                 }
-            break;
+                break;
             case 'value':
                 if (oldValue != newValue) {
                     const el = this.shadowRoot.getElementById("value");
-                    if (!!newValue) {
+                    if (newValue) {
                         let entrance = FileData.get(`world/exit/${newValue}`);
                         if (entrance == null) {
                             entrance = FileData.get(`world/exit/${newValue.split(" -> ").reverse().join(" -> ")}`)
@@ -548,7 +548,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                     }
                     this.update();
                 }
-            break;
+                break;
             case 'hint':
                 if (oldValue != newValue) {
                     const hintEl = this.shadowRoot.getElementById("hint");
@@ -559,12 +559,12 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
                         hintEl.append(el_icon);
                     }
                 }
-            break;
+                break;
         }
     }
 
     setFilterData(data) {
-        let el_era = this.shadowRoot.getElementById("badge-era");
+        const el_era = this.shadowRoot.getElementById("badge-era");
         if (!data["filter.era/child"]) {
             el_era.src = "images/icons/era_adult.svg";
         } else if (!data["filter.era/adult"]) {
@@ -572,7 +572,7 @@ export default class ListExit extends EventBusSubsetMixin(HTMLElement) {
         } else {
             el_era.src = "images/icons/era_both.svg";
         }
-        let el_time = this.shadowRoot.getElementById("badge-time");
+        const el_time = this.shadowRoot.getElementById("badge-time");
         if (!data["filter.time/day"]) {
             el_time.src = "images/icons/time_night.svg";
         } else if (!data["filter.time/night"]) {

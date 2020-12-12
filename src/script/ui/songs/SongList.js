@@ -20,9 +20,9 @@ export default class HTMLTrackerSongList extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-        let songs = FileData.get("songs");
-        for (let i in songs) {
-            let el = document.createElement("ootrt-songfield");
+        const songs = FileData.get("songs");
+        for (const i in songs) {
+            const el = document.createElement("ootrt-songfield");
             el.ref = i;
             this.shadowRoot.append(el);
         }

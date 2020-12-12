@@ -144,6 +144,8 @@ class RewardItem extends HTMLElement {
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
+            const state = ItemStates.get(this.ref);
+            const data = state.props;
             switch (name) {
                 case 'ref':
                     // state
@@ -152,10 +154,8 @@ class RewardItem extends HTMLElement {
                         oldState.removeEventListener("value", FN_VALUE.get(this));
                         oldState.removeEventListener("dungeon", FN_DUNGEON.get(this));
                     }
-                    const state = ItemStates.get(this.ref);
                     state.addEventListener("value", FN_VALUE.get(this));
                     state.addEventListener("dungeon", FN_DUNGEON.get(this));
-                    const data = state.props;
                     this.value = state.value;
                     this.dungeon = state.dungeon;
                     // settings
@@ -166,21 +166,20 @@ class RewardItem extends HTMLElement {
                         this.valign = data.valign;
                     }
                     this.style.backgroundImage = `url("${data.images}")`;
-                break;
+                    break;
                 case 'dungeon':
-                    let el = this.shadowRoot.getElementById("value");
                     if (newValue != "") {
-                        el.innerHTML = Language.translate(`${newValue}.short`);
+                        this.shadowRoot.getElementById("value").innerHTML = Language.translate(`${newValue}.short`);
                     } else {
-                        el.innerHTML = "";
+                        this.shadowRoot.getElementById("value").innerHTML = "";
                     }
-                break;
+                    break;
                 case 'halign':
                     this.shadowRoot.getElementById("value").style.justifyContent = getAlign(newValue);
-                break;
+                    break;
                 case 'valign':
                     this.shadowRoot.getElementById("value").style.alignItems = getAlign(newValue);
-                break;
+                    break;
             }
         }
     }

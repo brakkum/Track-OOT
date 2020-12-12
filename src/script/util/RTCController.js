@@ -12,9 +12,9 @@ const CONFIG = {
     iceTransportPolicy: "all", // all | relay
     iceServers: [{
         urls: 'stun:stun.zidargs.net:18001'
-    },{
+    }, {
         urls: 'stun:stun.l.google.com:19302'
-    },{
+    }, {
         urls: 'turn:turn.zidargs.net:18001',
         credential: 'fHNsIeqdgVcUAypvaxDVE6tywaMlP1fA',
         username: 'iamgroot'
@@ -33,18 +33,18 @@ EventBus.addModule(eventModule, {
 
 let silent = false;
 let username = "";
-let clients = new Map();
-let spectators = new Map();
-let reverseLookup = new Map();
+const clients = new Map();
+const spectators = new Map();
+const reverseLookup = new Map();
 
 const EMPTY_FN = function() {};
 let ON_ROOMUPDATE = EMPTY_FN;
 
 function getState() {
-    let state = StateStorage.getAll();
-    let extra = StateStorage.readAllExtra();
-    let res = {};
-    for (let i in extra) {
+    const state = StateStorage.getAll();
+    const extra = StateStorage.readAllExtra();
+    const res = {};
+    for (const i in extra) {
         if (!i.endsWith("Names")) {
             res[i] = extra[i];
         }
@@ -56,8 +56,8 @@ function getState() {
 }
 
 function setState(data) {
-    let buffer = {};
-    for (let i in data.extra) {
+    const buffer = {};
+    for (const i in data.extra) {
         if (!i.endsWith("Names")) {
             buffer[i] =  data.extra[i];
         }
@@ -80,7 +80,7 @@ class RTCController {
     }
     
     async getInstances(supressError) {
-        let res = await rtcClient.getInstances();
+        const res = await rtcClient.getInstances();
         if (res == null || !res.success) {
             if (!supressError) {
                 await Dialog.alert("Connection error", "There seems to be an connection issue trying to refresh the instance list.\nPlease try again later.");
@@ -106,8 +106,8 @@ class RTCController {
     }
 
     async host(name, pass, desc) {
-        if (!!name) {
-            let res = await rtcClient.register(name, pass, desc);
+        if (name) {
+            const res = await rtcClient.register(name, pass, desc);
             if (res.success === true) {
                 username = name;
                 if (!await promtName()) {
@@ -128,7 +128,7 @@ class RTCController {
     }
 
     async close() {
-        let res = await rtcClient.unregister();
+        const res = await rtcClient.unregister();
         if (!res.success) {
             await Dialog.alert("Error closing Room", "The Room could not be closed.");
             return false;
@@ -137,51 +137,52 @@ class RTCController {
     }
 
     connect(name, pass) {
-        return new Promise(async function(resolve) {
+        return new Promise(function(resolve) {
             rtcClient.onfailed = async function() {
                 await Dialog.alert("Connection failed", "Something went wrong connecting to the host.\nPlease try again later!");
                 rtcClient.onfailed = undefined;
                 resolve(false);
             };
-            let res = await rtcClient.connect(name, pass);
-            if (res.success === true) {
-                rtcClient.setMessageHandler("data", async function(key, msg) {
-                    if (msg.type == "name") {
-                        if (!!msg.data) {
-                            rtcClient.onfailed = undefined;
-                            rtcClient.ondisconnect = async function(key) {
-                                await Dialog.alert("Disconnected from host", "The connection to the host closed unexpectedly.");
-                            };
-                            onJoined(this);
-                            resolve(true);
-                        } else {
-                            await Dialog.alert("Username taken", `The username "${username}" is already taken.\nPlease choose another one!`);
-                            if (!await promptPeerName()) {
+            rtcClient.connect(name, pass).then(async res => {
+                if (res.success === true) {
+                    rtcClient.setMessageHandler("data", async function(key, msg) {
+                        if (msg.type == "name") {
+                            if (msg.data) {
                                 rtcClient.onfailed = undefined;
-                                resolve(false);
+                                rtcClient.ondisconnect = async function(key) {
+                                    await Dialog.alert("Disconnected from host", "The connection to the host closed unexpectedly.");
+                                };
+                                onJoined(this);
+                                resolve(true);
+                            } else {
+                                await Dialog.alert("Username taken", `The username "${username}" is already taken.\nPlease choose another one!`);
+                                if (!await promptPeerName()) {
+                                    rtcClient.onfailed = undefined;
+                                    resolve(false);
+                                }
                             }
                         }
-                    }
-                });
-                rtcClient.onconnect = async function(key) {
-                    if (!await promptPeerName()) {
-                        rtcClient.onfailed = undefined;
-                        resolve(false);
-                    }
-                };
-            } else {
-                await Dialog.alert("Connection refused", "You have no permission to enter the room.\nDid you enter the correct password?");
-                rtcClient.onfailed = undefined;
-                resolve(false);
-            }
+                    });
+                    rtcClient.onconnect = async function(key) {
+                        if (!await promptPeerName()) {
+                            rtcClient.onfailed = undefined;
+                            resolve(false);
+                        }
+                    };
+                } else {
+                    await Dialog.alert("Connection refused", "You have no permission to enter the room.\nDid you enter the correct password?");
+                    rtcClient.onfailed = undefined;
+                    resolve(false);
+                }
+            });
         });
     }
 
     async kick(name) {
         if (reverseLookup.has(name)) {
-            let reason = await Dialog.prompt("Please provide a reason", "Please provide a reason for kicking the client.");
+            const reason = await Dialog.prompt("Please provide a reason", "Please provide a reason for kicking the client.");
             if (typeof reason == "string") {
-                let key = reverseLookup.get(name);
+                const key = reverseLookup.get(name);
                 rtcClient.sendOne("data", key, {
                     type: "kick",
                     data: reason
@@ -215,7 +216,7 @@ async function promtName() {
 }
 
 async function promptPeerName() {
-    let name = await promtName();
+    const name = await promtName();
     if (!name) {
         return false;
     }
@@ -234,7 +235,7 @@ function onJoined() {
         } else if (msg.type == "leave") {
             Toast.show(`Multiplayer: "${msg.data}" left`);
         } else if (msg.type == "kick") {
-            await Dialog.alert("You have been kicked", `You have been kicked by the host: ${!!msg.data ? msg.data : "no reason provided"}.`);
+            await Dialog.alert("You have been kicked", `You have been kicked by the host: ${msg.data ? msg.data : "no reason provided"}.`);
         } else if (msg.type == "room") {
             ON_ROOMUPDATE(msg.data);
         } else if (msg.type == "state") {
@@ -285,7 +286,7 @@ async function onHosting() {
                     type: "join",
                     data: msg.data
                 });
-                let data = getClientNameList();
+                const data = getClientNameList();
                 rtcClient.send("data", {
                     type: "room",
                     data: data
@@ -325,7 +326,7 @@ async function onHosting() {
             data: name
         });
         reverseLookup.delete(name);
-        let data = getClientNameList();
+        const data = getClientNameList();
         rtcClient.send("data", {
             type: "room",
             data: data

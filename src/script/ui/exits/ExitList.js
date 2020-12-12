@@ -24,21 +24,21 @@ export default class HTMLTrackerExitList extends EventBusSubsetMixin(Panel) {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
 
-        let exits = FileData.get("world/exit");
-        for (let exit in exits) {
-            let el = document.createElement('ootrt-exitchoice');
+        const exits = FileData.get("world/exit");
+        for (const exit in exits) {
+            const el = document.createElement('ootrt-exitchoice');
             el.ref = exit;
             this.shadowRoot.append(el);
         }
 
         /* event bus */
         this.registerGlobal("state", event => {
-            if (event.data.state.hasOwnProperty("option.entrance_shuffle")) {
+            if (event.data.state["option.entrance_shuffle"] != null) {
                 this.active = event.data.state["option.entrance_shuffle"]
             }
         });
         this.registerGlobal("randomizer_options", event => {
-            if (event.data.hasOwnProperty("option.entrance_shuffle")) {
+            if (event.data["option.entrance_shuffle"] != null) {
                 this.active = event.data["option.entrance_shuffle"]
             }
         });

@@ -1,6 +1,6 @@
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import DebouncedStorage from "/emcJS/storage/DebouncedStorage.js";
-import FileData from "/emcJS/storage/FileData.js";
+// import FileData from "/emcJS/storage/FileData.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
 import ActionPath from "/emcJS/util/ActionPath.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
@@ -17,7 +17,7 @@ const TITLE_PREFIX = document.title;
 
 const STORAGE = new IDBStorage("savestates");
 
-let actionPath = new ActionPath();
+const actionPath = new ActionPath();
 let autosaveMax = 0;
 let autosaveTime = 0;
 let autosaveTimeout = null;
@@ -165,7 +165,7 @@ async function autosave() {
 
 function updateTitle() {
     if (!document.title.startsWith("[D]")) {
-        name = DATA.name || "new state";
+        const name = DATA.name || "new state";
         if (LocalStorage.get(STATE_DIRTY)) {
             document.title = `${TITLE_PREFIX} - ${name} *`;
         } else {
@@ -248,7 +248,7 @@ class StateStorage {
         if (typeof extraData == "object") {
             for (const category in extraData) {
                 state.extra[category] = {};
-                for (let key in extraData[category]) {
+                for (const key in extraData[category]) {
                     state.extra[category][key] = extraData[category][key];
                 }
             }
@@ -339,8 +339,8 @@ class StateStorage {
     }
 
     writeAllExtra(data) {
-        for(let c in data) {
-            let state = data[c];
+        for (const c in data) {
+            const state = data[c];
             this.writeExtra(c, state);
         }
     }
@@ -355,8 +355,8 @@ class StateStorage {
 
     readAllExtra(category) {
         if (category == null) {
-            let res = {};
-            for (let [category, state] of DATA.extra) {
+            const res = {};
+            for (const [category, state] of DATA.extra) {
                 res[category] = state.getAll();
             }
             return res;

@@ -85,10 +85,10 @@ export default class HTMLTrackerStave extends HTMLElement {
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
-            let notes = this.shadowRoot.getElementById("notes");
+            const notes = this.shadowRoot.getElementById("notes");
             notes.innerHTML = "";
             for (let i = 0; i < newValue.length; ++i) {
-                let el = document.createElement("div");
+                const el = document.createElement("div");
                 el.className = `note note_${newValue[i]}`;
                 notes.append(el);
             }

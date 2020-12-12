@@ -2,7 +2,6 @@ import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
 import LocalStorage from "/emcJS/storage/LocalStorage.js";
 import Template from "/emcJS/util/Template.js";
 import FileData from "/emcJS/storage/FileData.js";
-import FileLoader from "/emcJS/util/FileLoader.js";
 import SettingsWindow from "/emcJS/ui/overlay/SettingsWindow.js";
 import PopOver from "/emcJS/ui/overlay/PopOver.js";
 import EventBus from "/emcJS/util/events/EventBus.js";
@@ -124,13 +123,13 @@ const CREDITS_TPL = new Template(`
 
 function createSupporterPanel(title, data) {
     if (data != null && Array.isArray(data.names) && data.names.length > 0) {
-        let res = document.createElement("label");
-        let ttl = document.createElement("span");
+        const res = document.createElement("label");
+        const ttl = document.createElement("span");
         ttl.classList.add("title");
         ttl.innerHTML = title;
-        let lst = document.createElement("ul");
-        for (let name of new Set(data.names)) {
-            let el = document.createElement("li");
+        const lst = document.createElement("ul");
+        for (const name of new Set(data.names)) {
+            const el = document.createElement("li");
             el.classList.add("name");
             el.innerHTML = name;
             el.style.color = data.color || "";
@@ -140,17 +139,17 @@ function createSupporterPanel(title, data) {
         res.append(lst);
         return res;
     }
-};
+}
 
 async function getSettings() {
-    let options = FileData.get("settings");
-    let res = {};
-    for (let i in options) {
-        let opt = options[i];
+    const options = FileData.get("settings");
+    const res = {};
+    for (const i in options) {
+        const opt = options[i];
         if (opt.type === "list" || opt.type === "-list") {
-            let def = new Set(opt.default);
-            let val = [];
-            for (let el of opt.values) {
+            const def = new Set(opt.default);
+            const val = [];
+            for (const el of opt.values) {
                 if (await SettingsStorage.get(i, def.has(el))) {
                     val.push(el);
                 }
@@ -164,7 +163,7 @@ async function getSettings() {
 }
     
 async function applySettingsChoices(settings) {
-    let viewpane = document.getElementById("main-content");
+    const viewpane = document.getElementById("main-content");
     viewpane.setAttribute("data-font", settings.font);
     document.querySelector("#layout-container").setAttribute("layout", settings.layout);
     document.body.style.setProperty("--item-size", settings.itemsize);
@@ -180,19 +179,19 @@ let showUpdatePopup = false;
 export default class Settings {
 
     constructor() {
-        let options = {
+        const options = {
             settings: FileData.get("settings")
         };
         SettingsBuilder.build(settings, options);
         
-        let settings_about = ABOUT_TPL.generate();
+        const settings_about = ABOUT_TPL.generate();
         settings_about.getElementById("tracker-version").innerHTML = MemoryStorage.get("version-string");
         settings_about.getElementById("tracker-date").innerHTML = MemoryStorage.get("version-date");
-        let updatehandler = settings_about.getElementById("updatehandler");
+        const updatehandler = settings_about.getElementById("updatehandler");
         updatehandler.addEventListener("updateavailable", function() {
             if (showUpdatePopup) {
                 showUpdatePopup = false;
-                let popover = PopOver.show("A new update is available. Click here to download!", 60);
+                const popover = PopOver.show("A new update is available. Click here to download!", 60);
                 popover.addEventListener("click", showAbout);
             }
         });
@@ -203,21 +202,21 @@ export default class Settings {
         });
     
         !async function() {
-            let settings_credits = CREDITS_TPL.generate();
-            let supporters_list = settings_credits.getElementById("supporters");
+            const settings_credits = CREDITS_TPL.generate();
+            const supporters_list = settings_credits.getElementById("supporters");
             let supporters = LocalStorage.get("supporters", {});
             try {
-                let r = await fetch(SUPPORTER_URL);
+                const r = await fetch(SUPPORTER_URL);
                 if (r.status < 200 || r.status >= 300) {
                     throw new Error(`error loading patreon data - status: ${r.status}`);
                 }
                 supporters = await r.json();
                 LocalStorage.set("supporters", supporters);
             } catch(err) {
-                // nothing
+                console.error(err);
             }
-            for (let name in supporters) {
-                let el = createSupporterPanel(name, supporters[name]);
+            for (const name in supporters) {
+                const el = createSupporterPanel(name, supporters[name]);
                 if (el != null) {
                     supporters_list.append(el);
                 }
@@ -233,9 +232,9 @@ export default class Settings {
 
         settings.addEventListener('submit', function(event) {
             BusyIndicator.busy();
-            let settings = {};
-            let options = FileData.get("settings");
-            for (let i in event.data.settings) {
+            const settings = {};
+            const options = FileData.get("settings");
+            for (const i in event.data.settings) {
                 let v = event.data.settings[i];
                 if (Array.isArray(v)) {
                     v = new Set(v);
@@ -253,7 +252,7 @@ export default class Settings {
             BusyIndicator.unbusy();
         });
         
-        settings.addEventListener('close', function(event) {
+        settings.addEventListener('close', function() {
             showUpdatePopup = true;
         });
 

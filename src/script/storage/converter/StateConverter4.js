@@ -120,7 +120,7 @@ const SKIP_CONVERT = {
 };
 
 StateConverter.register(function(state) {
-    let res = {
+    const res = {
         data: {},
         extra: state.extra || {},
         notes: state.notes || state.data.notes || "",
@@ -128,7 +128,7 @@ StateConverter.register(function(state) {
         timestamp: state.timestamp,
         name: state.name
     };
-    for (let i of Object.keys(state.data)) {
+    for (const i of Object.keys(state.data)) {
         if (i == "notes") continue;
         if (i.startsWith("shop.")) {
             if (i.endsWith(".names")) {
@@ -145,16 +145,17 @@ StateConverter.register(function(state) {
             res.extra.songs = res.extra.songs || {};
             res.extra.songs[i] = state.data[i];
         } else if (i == "option.keysanity_small") {
-            let val = state.data[i];
+            const val = state.data[i];
             if (typeof val == "string") {
                 res.data[i] = val == "keysanity_small_keysanity";
                 res.data["option.track_keys"] = val != "keysanity_small_ignore";
             }
         } else if (i == "option.keysanity_boss") {
+            const val = state.data[i];
             if (typeof val == "string") {
                 res.data["option.track_bosskeys"] = val != "keysanity_boss_ignore";
             }
-        } else if (SKIP_CONVERT.hasOwnProperty(i)) {
+        } else if (SKIP_CONVERT[i] != null) {
             res.data[SKIP_CONVERT[i]] = state.data[i];
         } else {
             res.data[i] = state.data[i];
@@ -173,10 +174,10 @@ StateConverter.register(function(state) {
         res.data["option.doors_open_forest"] = "doors_open_forest_closed";
     }
     if (state.extra != null && state.extra.exits != null) {
-        let buf = {};
-        for (let i of Object.keys(state.extra.exits)) {
-            let [k1, k2] = i.split(" -> ");
-            let [v1, v2] = state.extra.exits[i].split(" -> ");
+        const buf = {};
+        for (const i of Object.keys(state.extra.exits)) {
+            const [k1, k2] = i.split(" -> ");
+            const [v1, v2] = state.extra.exits[i].split(" -> ");
             buf[`${EXIT_TRANS[k1] || k1} -> ${EXIT_TRANS[k2] || k2}`] = `${EXIT_TRANS[v1] || v1} -> ${EXIT_TRANS[v2] || v2}`;
         }
         res.extra.exits = buf;

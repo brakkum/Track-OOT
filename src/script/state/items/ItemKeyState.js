@@ -11,8 +11,13 @@ function stateLoaded(event) {
     // savesatate
     this.value = parseInt(event.data.state[ref]) || 0;
     // type
-    if (props.hasOwnProperty("maxmq") && props.hasOwnProperty("related_dungeon")) {
-        this.type = event.data.extra.dungeontype?.[props.related_dungeon] ?? "n";
+    if (props["maxmq"] != null && props.hasOwnProperty["related_dungeon"] != null) {
+        const types = event.data.extra.dungeontype;
+        if (types != null) {
+            this.type = types[props.related_dungeon];
+        } else {
+            this.type = "n";
+        }
     }
 }
 
@@ -27,7 +32,7 @@ function stateChanged(event) {
 
 function dungeonTypeUpdate(event) {
     const props = this.props;
-    if (props.hasOwnProperty("maxmq") && props.hasOwnProperty("related_dungeon")) {
+    if (props["maxmq"] != null && props["related_dungeon"] != null) {
         const change = event.data[props.related_dungeon];
         if (change != null) {
             this.type = StateStorage.readExtra("dungeontype", props.related_dungeon, "n");
@@ -39,7 +44,7 @@ export default class ItemKeyState extends AbstractItemState {
 
     constructor(ref, props) {
         super(ref, props, props.max, 0);
-        if (props.hasOwnProperty("maxmq") && props.hasOwnProperty("related_dungeon")) {
+        if (props["maxmq"] != null && props["related_dungeon"] != null) {
             this.type = StateStorage.readExtra("dungeontype", props.related_dungeon, "n");
         } else {
             this.type = "v";

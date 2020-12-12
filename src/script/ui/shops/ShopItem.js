@@ -73,7 +73,7 @@ export default class HTMLTrackerShopItem extends HTMLElement {
         this.shadowRoot.append(TPL.generate());
         this.shadowRoot.getElementById("name").addEventListener("change", event => {
             this.name = event.target.value;
-            let e = new Event("namechange");
+            const e = new Event("namechange");
             e.name = this.name;
             this.dispatchEvent(e);
         });
@@ -128,27 +128,27 @@ export default class HTMLTrackerShopItem extends HTMLElement {
                     if (!!this.checked && this.checked == "true") {
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/sold_out.png")`;
                     } else {
-                        let data = FileData.get("shop_items")[this.ref];
-                        if (!!data) {
+                        const data = FileData.get("shop_items")[this.ref];
+                        if (data) {
                             this.shadowRoot.getElementById("image").style.backgroundImage = `url("${data.image}")`;
                         } else {
                             this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/unknown.svg")`;
                         }
                     }
                 }
-            break;
+                break;
             case 'price':
                 newValue = parseInt(newValue) || 0;
                 if (oldValue != newValue) {
                     this.shadowRoot.getElementById("price").innerHTML = newValue;
                 }
-            break;
+                break;
             case 'checked':
                 if (oldValue != newValue) {
                     if (!!this.checked && this.checked == "true") {
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/sold_out.png")`;
                     } else {
-                        let data = FileData.get("shop_items")[this.ref];
+                        const data = FileData.get("shop_items")[this.ref];
                         if (data != null) {
                             this.shadowRoot.getElementById("image").style.backgroundImage = `url("${data.image}")`;
                         } else {
@@ -156,16 +156,16 @@ export default class HTMLTrackerShopItem extends HTMLElement {
                         }
                     }
                 }
-            break;
+                break;
             case 'name':
                 if (typeof newValue != "string") {
                     newValue = "";
                 }
                 if (oldValue != newValue) {
-                    let el = this.shadowRoot.getElementById("name");
+                    const el = this.shadowRoot.getElementById("name");
                     el.value = newValue;
                 }
-            break;
+                break;
         }
     }
 

@@ -5,13 +5,13 @@ const VARS = {
 };
 
 function convertValueList(values = [], names = []) {
-    let opt = {};
+    const opt = {};
     if (typeof values == "string") {
         values = VARS[values]();
     }
     if (typeof values == "object") {
-        for (let k in values) {
-            if (names.hasOwnProperty(k)) {
+        for (const k in values) {
+            if (names[k] != null) {
                 opt[values[k]] = Language.translate(names[k]);
             } else {
                 opt[values[k]] = Language.translate(values[k]);
@@ -24,35 +24,35 @@ function convertValueList(values = [], names = []) {
 class SettingsBuilder {
 
     build(window, options) {
-        for (let i in options) {
+        for (const i in options) {
             window.addTab(Language.translate(i), i);
-            for (let j in options[i]) {
-                let val = options[i][j];
-                let label = Language.translate(j);
-                let min = parseFloat(val.min);
-                let max = parseFloat(val.max);
+            for (const j in options[i]) {
+                const val = options[i][j];
+                const label = Language.translate(j);
+                const min = parseFloat(val.min);
+                const max = parseFloat(val.max);
                 switch (val.type) {
                     case "string":
                         window.addStringInput(i, label, j, val.default);
-                    break;
+                        break;
                     case "number":
                         window.addNumberInput(i, label, j, val.default, min, max);
-                    break;
+                        break;
                     case "range":
                         window.addRangeInput(i, label, j, val.default, min, max);
-                    break;
+                        break;
                     case "check":
                         window.addCheckInput(i, label, j, val.default);
-                    break;
+                        break;
                     case "choice":
                         window.addChoiceInput(i, label, j, val.default, convertValueList(val.values, val.names));
-                    break;
+                        break;
                     case "list":
                         window.addListSelectInput(i, label, j, val.default, true, convertValueList(val.values, val.names));
-                    break;
+                        break;
                     case "button":
                         window.addButton(i, label, j, Language.translate(val.text), alert.bind(window, "not functionality bound"));
-                    break;
+                        break;
                 }
             }
         }

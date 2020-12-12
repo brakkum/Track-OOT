@@ -27,7 +27,7 @@ function applyEntranceChanges(changes, edgeThere, edgeBack) {
         if (entranceEntry != null) {
             if (!entranceEntry.active() || exitEntry.getType() != entranceEntry.getType()) return;
             const [reroute, entrance] = edgeBack.split(" -> ");
-            if (!!exit_binding[edgeThere]) {
+            if (exit_binding[edgeThere]) {
                 StateStorage.writeExtra("exits", exit_binding[edgeThere], "");
             }
             //if (!!exit_binding[edgeBack]) {
@@ -75,7 +75,7 @@ async function update() {
             throw Error("Entrance association error: data may be stale");
         }
     }
-    if (!!changes.length) {
+    if (changes.length) {
         const res = Logic.setTranslation(changes, "region.root");
         if (Object.keys(res).length > 0) {
             EventBus.trigger("logic", res);
@@ -92,14 +92,14 @@ EventBus.register("state", event => {
             const edgeBack = event.data.extra.exits[exit];
             if (exit_binding[exit] != edgeBack) {
                 const entrance = exit_binding[exit];
-                if (!!entrance) {
+                if (entrance) {
                     exit_binding[entrance] = "";
-                } 
+                }
                 exit_binding[exit] = edgeBack;
                 exit_binding[edgeBack] = exit;
                 changed = true;
             }
-        } else if (!!exit_binding[exit]) {
+        } else if (exit_binding[exit]) {
             const back = exit_binding[exit];
             exit_binding[exit] = "";
             exit_binding[back] = "";
@@ -115,7 +115,7 @@ EventBus.register("state", event => {
 EventBus.register("randomizer_options", event => {
     let changed = false;
     for (const key in OPTIONS) {
-        if (event.data.hasOwnProperty(key) && OPTIONS[key] != event.data[key]) {
+        if (event.data[key] != null && OPTIONS[key] != event.data[key]) {
             OPTIONS[key] = event.data[key];
             changed = true;
         }
@@ -133,7 +133,7 @@ EventBus.register("statechange_exits", event => {
         const edgeBack = event.data[edgeThere].newValue;
         applyEntranceChanges(changes, edgeThere, edgeBack);
     }
-    if (!!changes.length) {
+    if (changes.length) {
         const res = Logic.setTranslation(changes, "region.root");
         if (Object.keys(res).length > 0) {
             EventBus.trigger("logic", res);
@@ -149,7 +149,7 @@ class AugmentExits {
         for (const exit in exits) {
             const entrance = bound[exit] || "";
             exit_binding[exit] = entrance;
-            if (!!entrance) {
+            if (entrance) {
                 exit_binding[entrance] = exit;
             }
         }

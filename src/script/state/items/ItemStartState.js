@@ -11,7 +11,7 @@ function stateLoaded(event) {
     // savesatate
     this.value = parseInt(event.data.state[ref]) || 0;
     // settings
-    if (props.hasOwnProperty("start_settings")) {
+    if (props["start_settings"] != null) {
         const startvalue = parseInt(event.data.state[props.start_settings]) || 0;
         this.startvalue = startvalue > 0 ? startvalue : 1;
     }
@@ -26,7 +26,7 @@ function stateChanged(event) {
         this.value = parseInt(change.newValue) || 0;
     }
     // settings
-    if (props.hasOwnProperty("start_settings")) {
+    if (props["start_settings"] != null) {
         const start = event.data[props.start_settings];
         if (start != null) {
             const startvalue = parseInt(start.newValue) || 0;

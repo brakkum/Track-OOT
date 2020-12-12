@@ -5,7 +5,7 @@
 import StateConverter from "../StateConverter.js";
 
 StateConverter.register(function(state) {
-    let res = {
+    const res = {
         data: state.data,
         extra: {},
         notes: state.notes,
@@ -15,7 +15,7 @@ StateConverter.register(function(state) {
     };
     const exits = {};
     if (state.extra.exits != null) {
-        for (let i of Object.keys(state.extra.exits)) {
+        for (const i of Object.keys(state.extra.exits)) {
             exits[translation[i] || i] = translation[state.extra.exits[i]] || state.extra.exits[i];
         }
     }
@@ -41,5 +41,5 @@ const translation = {
     "region.zoras_fountain -> region.ice_cavern_gateway": "region.ice_cavern_entrance -> region.ice_cavern_gateway",
     "region.ice_cavern_gateway -> region.zoras_fountain": "region.ice_cavern_gateway -> region.ice_cavern_entrance",
     "region.gerudo_fortress -> region.gerudo_training_grounds_gateway": "region.gerudo_training_grounds_entrance -> region.gerudo_training_grounds_gateway",
-    "region.gerudo_training_grounds_gateway -> region.gerudo_fortress": "region.gerudo_training_grounds_gateway -> region.gerudo_training_grounds_entrance",
+    "region.gerudo_training_grounds_gateway -> region.gerudo_fortress": "region.gerudo_training_grounds_gateway -> region.gerudo_training_grounds_entrance"
 };

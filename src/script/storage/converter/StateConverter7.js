@@ -5,7 +5,7 @@
 import StateConverter from "../StateConverter.js";
 
 StateConverter.register(function(state) {
-    let res = {
+    const res = {
         data: {},
         extra: state.extra,
         notes: state.notes,
@@ -13,8 +13,8 @@ StateConverter.register(function(state) {
         timestamp: state.timestamp,
         name: state.name
     };
-    for (let i of Object.keys(state.data)) {
-        res.data[translation[i]||i] = state.data[i];
+    for (const i of Object.keys(state.data)) {
+        res.data[translation[i] || i] = state.data[i];
     }
     return res;
 });

@@ -1,4 +1,4 @@
-let STORAGE = new Map();
+const STORAGE = new Map();
 
 class FilterStorage {
 
@@ -7,7 +7,7 @@ class FilterStorage {
     }
 
     get(key, value) {
-        let res = STORAGE.get(key);
+        const res = STORAGE.get(key);
         if (typeof res == "undefined" || res == null) {
             return value;
         }
@@ -27,7 +27,7 @@ class FilterStorage {
     }
 
     keys(filter) {
-        let keys = STORAGE.keys();
+        const keys = STORAGE.keys();
         if (typeof filter == "string") {
             return keys.filter(key => key.startsWith(filter));
         }
@@ -35,9 +35,9 @@ class FilterStorage {
     }
 
     getAll(filter) {
-        let res = {};
-        let k = this.keys(filter);
-        for (let i of k) {
+        const res = {};
+        const k = this.keys(filter);
+        for (const i of k) {
             res[i] = STORAGE.get(i);
         }
         return res;

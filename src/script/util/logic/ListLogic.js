@@ -7,8 +7,8 @@ import MarkerRegistry from "/script/util/world/MarkerRegistry.js";
 class ListLogic {
     
     check(list) {
-        let world = FileData.get("world/marker");
-        let res = {
+        const world = FileData.get("world/marker");
+        const res = {
             done: 0,
             unopened: 0,
             reachable: 0,
@@ -16,12 +16,12 @@ class ListLogic {
             value: 0
         };
         if (!!list && Array.isArray(list)) {
-            for (let entry of list) {
+            for (const entry of list) {
                 const category = entry.category;
                 const id = entry.id;
-                let buffer = world[category][id];
+                const buffer = world[category][id];
                 if (category == "location") {
-                    let access = buffer.access;
+                    const access = buffer.access;
                     if (!StateStorage.read(`${category}/${id}`, 0)) {
                         res.unopened++;
                         if (Logic.getValue(access)) {
@@ -38,7 +38,7 @@ class ListLogic {
                     res.reachable += reachable;
                 } else if (category == "subexit") {
                     const exitData = FileData.get(`world/marker/subexit/${id}`);
-                    const [source, target] = exitData.access.split(" -> ");
+                    const [source] = exitData.access.split(" -> ");
                     const bound = StateStorage.readExtra("exits", exitData.access);
                     if (!bound) {
                         if (!!Logic.getValue(`${source}[child]`) || !!Logic.getValue(`${source}[adult]`)) {
@@ -67,7 +67,7 @@ class ListLogic {
             if (res.reachable > 0) {
                 if (res.unopened == res.reachable) {
                     res.value = 3;
-                } else {   
+                } else {
                     res.value = 2;
                 }
             } else {

@@ -32,7 +32,7 @@ export default class ListGossipstone extends ListLocation {
 
     set checked(val) {
         super.checked = val;
-        if (!!val) {
+        if (val) {
             const location = StateStorage.read(`${this.ref}.location`, "");
             const item = StateStorage.read(`${this.ref}.item`, "");
             this.shadowRoot.getElementById("hintlocation").innerHTML = Language.translate(location);
@@ -49,8 +49,8 @@ export default class ListGossipstone extends ListLocation {
 
     check() {
         hintstoneDialog(this.ref).then(r => {
-            if (!!r) {
-                let data = {};
+            if (r) {
+                const data = {};
                 data[this.ref] = true;
                 data[`${this.ref}.location`] = r.location;
                 data[`${this.ref}.item`] = r.item;
@@ -108,7 +108,7 @@ function hintstoneDialog(ref) {
         lbl_loc.style.padding = "5px";
         lbl_loc.innerHTML = Language.translate("location");
         const slt_loc = document.createElement("emc-searchselect");
-        slt_loc.append(createOption("", "["+Language.translate("empty")+"]"));
+        slt_loc.append(createOption("", "[" + Language.translate("empty") + "]"));
         for (const loc of areas) {
             const id = `area/${loc}`;
             slt_loc.append(createOption(id, `${Language.translate(id)} [area]`));
@@ -135,7 +135,7 @@ function hintstoneDialog(ref) {
         lbl_itm.style.padding = "5px";
         lbl_itm.innerHTML = Language.translate("item");
         const slt_itm = document.createElement("emc-searchselect");
-        slt_itm.append(createOption("", "["+Language.translate("empty")+"]"));
+        slt_itm.append(createOption("", "[" + Language.translate("empty") + "]"));
         for (let j = 0; j < items.length; ++j) {
             const itm = items[j];
             slt_itm.append(createOption(itm, Language.translate(itm)));
@@ -146,7 +146,7 @@ function hintstoneDialog(ref) {
         
         const d = new Dialog({title: Language.translate(ref), submit: true, cancel: true});
         d.onsubmit = function(result) {
-            if (!!result) {
+            if (result) {
                 resolve({item: slt_itm.value, location: slt_loc.value});
             } else {
                 resolve(false);
@@ -159,7 +159,7 @@ function hintstoneDialog(ref) {
 }
 
 function createOption(value, content) {
-    let opt = document.createElement('emc-option');
+    const opt = document.createElement('emc-option');
     opt.value = value;
     opt.innerHTML = content;
     return opt;

@@ -2,6 +2,7 @@ import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import GlobalStyle from "/emcJS/util/GlobalStyle.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
+import Logger from "/emcJS/util/Logger.js";
 import "/emcJS/ui/overlay/Tooltip.js";
 import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
@@ -153,7 +154,7 @@ const STYLE_MNU_EXT = new GlobalStyle(`
 
 function setAllListEntries(list, value = true) {
     if (!!list && Array.isArray(list)) {
-        for (let entry of list) {
+        for (const entry of list) {
             const category = entry.category;
             const id = entry.id;
             if (category == "location") {
@@ -382,7 +383,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
             const exit = EXIT.get(this);
             this.value = StateStorage.readExtra("exits", exit, "");
             const area = AREA.get(this);
-            if (!!area) {
+            if (area) {
                 this.hint = StateStorage.readExtra("area_hint", area, "");
             }
             // update state
@@ -405,7 +406,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
         const exit = EXIT.get(this);
         this.value = StateStorage.readExtra("exits", exit, "");
         const area = AREA.get(this);
-        if (!!area) {
+        if (area) {
             this.hint = StateStorage.readExtra("area_hint", area, "");
         }
         // update state
@@ -420,7 +421,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
 
     async update() {
         const area = AREA.get(this);
-        if (!!area) {
+        if (area) {
             const dType = StateStorage.readExtra("dungeontype", area, 'v');
             if (dType == "n") {
                 const data_v = FileData.get(`world/${area}/lists/v`);
@@ -524,11 +525,11 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
                     // update state
                     this.update();
                 }
-            break;
+                break;
             case 'value':
                 if (oldValue != newValue) {
                     const el = this.shadowRoot.getElementById("value");
-                    if (!!newValue) {
+                    if (newValue) {
                         let entrance = FileData.get(`world/exit/${newValue}`);
                         if (entrance == null) {
                             entrance = FileData.get(`world/exit/${newValue.split(" -> ").reverse().join(" -> ")}`)
@@ -543,7 +544,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
                     }
                     this.update();
                 }
-            break;
+                break;
             case 'hint':
                 if (oldValue != newValue) {
                     const hintEl = this.shadowRoot.getElementById("hint");
@@ -554,25 +555,25 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
                         hintEl.append(el_icon);
                     }
                 }
-            break;
+                break;
             case 'top':
             case 'left':
                 if (oldValue != newValue) {
                     this.style.left = `${this.left}px`;
                     this.style.top = `${this.top}px`;
                 }
-            break;
+                break;
             case 'tooltip':
                 if (oldValue != newValue) {
                     const tooltip = this.shadowRoot.getElementById("tooltip");
                     tooltip.position = newValue;
                 }
-            break;
+                break;
         }
     }
 
     setFilterData(data) {
-        let el_era = this.shadowRoot.getElementById("badge-era");
+        const el_era = this.shadowRoot.getElementById("badge-era");
         if (!data["filter.era/child"]) {
             el_era.src = "images/icons/era_adult.svg";
         } else if (!data["filter.era/adult"]) {
@@ -580,7 +581,7 @@ export default class MapSubExit extends EventBusSubsetMixin(HTMLElement) {
         } else {
             el_era.src = "images/icons/era_both.svg";
         }
-        let el_time = this.shadowRoot.getElementById("badge-time");
+        const el_time = this.shadowRoot.getElementById("badge-time");
         if (!data["filter.time/day"]) {
             el_time.src = "images/icons/time_night.svg";
         } else if (!data["filter.time/night"]) {

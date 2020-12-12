@@ -77,14 +77,14 @@ function createText(value) {
 }
 
 function createIcon(value) {
-    let el = document.createElement('DIV');
+    const el = document.createElement('DIV');
     el.classList.add("icon");
     el.dataset.icon = value;
     return el;
 }
 
 function createEmpty() {
-    let el = document.createElement('DIV');
+    const el = document.createElement('DIV');
     el.classList.add("empty");
     return el;
 }
@@ -134,7 +134,7 @@ class HTMLTrackerItemGrid extends Panel {
                         this.items = JSON.stringify(FileData.get(`grids/${newValue}`));
                     }
                 }
-            break;
+                break;
             case 'items':
                 if (oldValue != newValue) {
                     const content = this.shadowRoot.getElementById("content");
@@ -159,7 +159,7 @@ class HTMLTrackerItemGrid extends Panel {
                         content.append(cnt);
                     }
                 }
-            break;
+                break;
         }
     }
 

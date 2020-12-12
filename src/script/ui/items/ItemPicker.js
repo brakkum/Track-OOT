@@ -40,7 +40,7 @@ const STYLE = new GlobalStyle(`
 }
 `);
 
-function createItem(value) {        
+function createItem(value) {
     const el = document.createElement('ootrt-selectableitem');
     el.className = "item";
     el.title = Language.translate(value);
@@ -100,7 +100,7 @@ class HTMLTrackerItemPicker extends Panel {
                         this.items = JSON.stringify(FileData.get(`grids/${newValue}`));
                     }
                 }
-            break;
+                break;
             case 'items':
                 if (oldValue != newValue) {
                     const content = this.shadowRoot.getElementById("content");
@@ -125,7 +125,7 @@ class HTMLTrackerItemPicker extends Panel {
                         content.append(cnt);
                     }
                 }
-            break;
+                break;
         }
     }
 

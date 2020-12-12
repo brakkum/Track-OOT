@@ -62,15 +62,15 @@ const STYLE = new GlobalStyle(`
 `);
 
 function editShop(event) {
-    let builder = document.createElement("ootrt-shopbuilder");
+    const builder = document.createElement("ootrt-shopbuilder");
     builder.value = StateStorage.readExtra("shops_items", this.ref, FileData.get("shops")[this.ref]);
-    let d = new Dialog({title: Language.translate(this.ref), submit: true, cancel: true});
+    const d = new Dialog({title: Language.translate(this.ref), submit: true, cancel: true});
     d.addEventListener("submit", function(result) {
-        if (!!result) {
-            let res = builder.value;
+        if (result) {
+            const res = builder.value;
             StateStorage.writeExtra("shops_items", this.ref, res);
             for (let i = 0; i < 8; ++i) {
-                let el = this.shadowRoot.getElementById(`slot${i}`);
+                const el = this.shadowRoot.getElementById(`slot${i}`);
                 el.ref = res[i].item;
                 el.price = res[i].price;
             }
@@ -83,7 +83,7 @@ function editShop(event) {
 function checkSlot(event) {
     if ((!event.target.checked || event.target.checked == "false") && !FileData.get("shop_items")[event.target.ref].refill) {
         event.target.checked = true;
-        let ch = StateStorage.readExtra("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
+        const ch = StateStorage.readExtra("shops_bought", this.ref, [0, 0, 0, 0, 0, 0, 0, 0]);
         ch[parseInt(event.target.id.slice(-1))] = 1;
         StateStorage.writeExtra("shops_bought", this.ref, ch);
     }
@@ -94,7 +94,7 @@ function checkSlot(event) {
 function uncheckSlot(event) {
     if (!!event.target.checked && event.target.checked == "true") {
         event.target.checked = false;
-        let ch = StateStorage.readExtra("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
+        const ch = StateStorage.readExtra("shops_bought", this.ref, [0, 0, 0, 0, 0, 0, 0, 0]);
         ch[parseInt(event.target.id.slice(-1))] = 0;
         StateStorage.writeExtra("shops_bought", this.ref, ch);
     }
@@ -103,7 +103,7 @@ function uncheckSlot(event) {
 }
 
 function renameSlot(event) {
-    let names = StateStorage.readExtra("shops_names", this.ref, ["","","","","","","",""]);
+    const names = StateStorage.readExtra("shops_names", this.ref, ["", "", "", "", "", "", "", ""]);
     names[parseInt(event.target.id.slice(-1))] = event.name;
     StateStorage.writeExtra("shops_names", this.ref, names);
     event.preventDefault();
@@ -131,15 +131,15 @@ function stateChanged(event) {
     }
     /* shop bought */
     if (bought == null) {
-        bought = [0,0,0,0,0,0,0,0];
+        bought = [0, 0, 0, 0, 0, 0, 0, 0];
     }
     /* shop names */
     if (names == null) {
-        names = ["","","","","","","",""];
+        names = ["", "", "", "", "", "", "", ""];
     }
     /* update shop */
     for (let i = 0; i < 8; ++i) {
-        let el = this.shadowRoot.getElementById(`slot${i}`);
+        const el = this.shadowRoot.getElementById(`slot${i}`);
         el.ref = data[i].item;
         el.price = data[i].price;
         el.checked = !!bought[i];
@@ -154,7 +154,7 @@ function shopItemUpdate(event) {
     }
     if (data != null) {
         for (let i = 0; i < 8; ++i) {
-            let el = this.shadowRoot.getElementById(`slot${i}`);
+            const el = this.shadowRoot.getElementById(`slot${i}`);
             el.ref = data.newValue[i].item;
             el.price = data.newValue[i].price;
         }
@@ -168,7 +168,7 @@ function shopBoughtUpdate(event) {
     }
     if (data != null) {
         for (let i = 0; i < 8; ++i) {
-            let el = this.shadowRoot.getElementById(`slot${i}`);
+            const el = this.shadowRoot.getElementById(`slot${i}`);
             el.checked = !!data.newValue[i];
         }
     }
@@ -214,8 +214,8 @@ export default class HTMLTrackerShopField extends EventBusSubsetMixin(HTMLElemen
             const data = StateStorage.readExtra("shops_items", newValue, FileData.get("shops")[newValue]);
             const title = this.shadowRoot.getElementById("title-text");
             title.innerHTML = Language.translate(newValue);
-            const names = StateStorage.readExtra("shops_names", this.ref, ["","","","","","","",""]);
-            const checked = StateStorage.readExtra("shops_bought", this.ref, [0,0,0,0,0,0,0,0]);
+            const names = StateStorage.readExtra("shops_names", this.ref, ["", "", "", "", "", "", "", ""]);
+            const checked = StateStorage.readExtra("shops_bought", this.ref, [0, 0, 0, 0, 0, 0, 0, 0]);
             for (let i = 0; i < 8; ++i) {
                 const el = this.shadowRoot.getElementById(`slot${i}`);
                 el.ref = data[i].item;

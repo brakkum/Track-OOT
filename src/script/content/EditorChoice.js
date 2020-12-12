@@ -3,15 +3,15 @@ import PageSwitcher from "/script/util/PageSwitcher.js";
 
 import createLogicEditor from "./editors/LogicEditor.js";
 
-let editorChoice = document.getElementById("editor-choice");
-let nav = document.getElementById("navbar");
+const editorChoice = document.getElementById("editor-choice");
+const nav = document.getElementById("navbar");
 
 const MAIN_NAV = [{
     "content": "EXIT",
     "handler": () => {
         PageSwitcher.switch("main");
     }
-},{
+}, {
     "content": " TOGGLE FULLSCREEN",
     "handler": toggleFullscreen
 }];
@@ -21,7 +21,7 @@ const DEFAULT_NAV = [{
     "handler": () => {
         editorChoice.closeCurrent();
     }
-},{
+}, {
     "content": " TOGGLE FULLSCREEN",
     "handler": toggleFullscreen
 }];
@@ -34,7 +34,7 @@ function toggleFullscreen() {
             document.documentElement.requestFullscreen();
         } else {
             if (document.exitFullscreen) {
-                document.exitFullscreen(); 
+                document.exitFullscreen();
             }
         }
     }
@@ -46,7 +46,7 @@ editorChoice.addEventListener("choice", function(event) {
     if (event.app == "") {
         nav.loadNavigation(MAIN_NAV);
     } else {
-        let data = PANELS.get(event.app);
+        const data = PANELS.get(event.app);
         if (typeof data.refreshFn == "function") {
             data.refreshFn();
         }

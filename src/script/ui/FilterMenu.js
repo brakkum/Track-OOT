@@ -56,17 +56,17 @@ class FilterMenu extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         // generate filters
-        let menu = this.shadowRoot.getElementById("menu");
-        let data = FileData.get("filter");
-        for (let name in data) {
-            if (!!data[name].persist) {
-                let value = StateStorage.read(name, data[name].default);
+        const menu = this.shadowRoot.getElementById("menu");
+        const data = FileData.get("filter");
+        for (const name in data) {
+            if (data[name].persist) {
+                const value = StateStorage.read(name, data[name].default);
                 FilterStorage.set(name, value);
             } else {
                 FilterStorage.set(name, data[name].default);
             }
-            if (!!data[name].choice) {
-                let el = document.createElement("ootrt-filterbutton");
+            if (data[name].choice) {
+                const el = document.createElement("ootrt-filterbutton");
                 el.ref = name;
                 el.onclick = function(event) {
                     event.stopPropagation();
@@ -80,7 +80,7 @@ class FilterMenu extends HTMLElement {
     }
 
     showContextMenu() {
-        let rect = this.getBoundingClientRect();
+        const rect = this.getBoundingClientRect();
         if (this.classList.contains("map-menu")) {
             this.shadowRoot.getElementById("menu").show(rect.left, rect.top - 60);
         } else {

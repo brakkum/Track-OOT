@@ -46,7 +46,7 @@ class HTMLMultiplayerRoomClient extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
 
-        let leave_button = this.shadowRoot.getElementById("leave_button");
+        const leave_button = this.shadowRoot.getElementById("leave_button");
 
         leave_button.addEventListener("click", async function() {
             await RTCController.disconnect();
@@ -56,15 +56,15 @@ class HTMLMultiplayerRoomClient extends HTMLElement {
 
     updateRoom(data) {
         this.innerHTML = "";
-        if (!!data.host) {
-            let el = document.createElement("ootrt-mpuser");
+        if (data.host) {
+            const el = document.createElement("ootrt-mpuser");
             el.name = data.host;
             el.role = 'host';
             this.append(el);
         }
-        if (!!data.peers) {
+        if (data.peers) {
             data.peers.forEach(function(inst) {
-                let el = document.createElement("ootrt-mpuser");
+                const el = document.createElement("ootrt-mpuser");
                 el.name = inst;
                 el.role = 'client';
                 if (inst == RTCController.getUsername()) {
@@ -74,9 +74,9 @@ class HTMLMultiplayerRoomClient extends HTMLElement {
                 }
             }.bind(this));
         }
-        if (!!data.viewer) {
+        if (data.viewer) {
             data.viewer.forEach(function(inst) {
-                let el = document.createElement("ootrt-mpuser");
+                const el = document.createElement("ootrt-mpuser");
                 el.name = inst;
                 el.role = 'spectator';
                 if (inst == RTCController.getUsername()) {

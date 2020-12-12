@@ -25,13 +25,13 @@ function updateStates(doneEl, availEl, missEl) {
     let todo_max = 0;
     let done = 0;
     const areas = FileData.get("world/area");
-    if (!!areas) {
+    if (areas) {
         Object.keys(areas).forEach(name => {
-            let buff = areas[name];
-            let dType = StateStorage.readExtra("dungeontype", `area/${name}`, buff.lists.hasOwnProperty("mq") ? "n" : "v");
+            const buff = areas[name];
+            const dType = StateStorage.readExtra("dungeontype", `area/${name}`, buff.lists["mq"] != null ? "n" : "v");
             if (dType == "n") {
-                let cv = ListLogic.check(buff.lists.v.filter(ListLogic.filterUnusedChecks));
-                let cm = ListLogic.check(buff.lists.mq.filter(ListLogic.filterUnusedChecks));
+                const cv = ListLogic.check(buff.lists.v.filter(ListLogic.filterUnusedChecks));
+                const cm = ListLogic.check(buff.lists.mq.filter(ListLogic.filterUnusedChecks));
                 if (cv.reachable < cm.reachable) {
                     access_min += cv.reachable;
                     access_max += cm.reachable;
@@ -47,7 +47,7 @@ function updateStates(doneEl, availEl, missEl) {
                     todo_max += cv.unopened;
                 }
             } else {
-                let c = ListLogic.check(buff.lists[dType].filter(ListLogic.filterUnusedChecks));
+                const c = ListLogic.check(buff.lists[dType].filter(ListLogic.filterUnusedChecks));
                 access_min += c.reachable;
                 access_max += c.reachable;
                 todo_min += c.unopened;
@@ -75,9 +75,9 @@ class HTMLLocationState extends EventBusSubsetMixin(HTMLElement) {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-        let locationsDone = this.shadowRoot.getElementById("locations-done");
-        let locationsAvail = this.shadowRoot.getElementById("locations-available");
-        let locationsMiss = this.shadowRoot.getElementById("locations-missing");
+        const locationsDone = this.shadowRoot.getElementById("locations-done");
+        const locationsAvail = this.shadowRoot.getElementById("locations-available");
+        const locationsMiss = this.shadowRoot.getElementById("locations-missing");
         updateStates(locationsDone, locationsAvail, locationsMiss, "locations");
         /* event bus */
         this.registerGlobal([

@@ -1,21 +1,24 @@
 import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
+import GlobalStyle from "/emcJS/util/GlobalStyle.js";
+import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import "/emcJS/ui/overlay/ContextMenu.js"
 import "/emcJS/ui/input/ListSelect.js"
-import StateStorage from "/script/storage/StateStorage.js";
+import MarkerRegistry from "/script/util/world/MarkerRegistry.js";
 import Language from "/script/util/Language.js";
 
 
 const TPL = new Template(`
-<style>
-    #select {
-        height: 300px;
-        width: 300px;
-    }
-</style>
 <emc-contextmenu id="menu">
     <emc-listselect id="select"></emc-listselect>
 </emc-contextmenu>
+`);
+
+const STYLE = new GlobalStyle(`
+#select {
+    height: 300px;
+    width: 300px;
+}
 `);
 
 export default class ExitChoiceCtxMenu extends EventBusSubsetMixin(HTMLElement) {
@@ -24,10 +27,11 @@ export default class ExitChoiceCtxMenu extends EventBusSubsetMixin(HTMLElement) 
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
-
+        STYLE.apply(this.shadowRoot);
+        /* --- */
         const selectEl = this.shadowRoot.getElementById("select");
         selectEl.addEventListener("change", event => {
-            let ev = new Event('change');
+            const ev = new Event('change');
             ev.oldValue = event.oldValue;
             ev.newValue = event.newValue;
             ev.value = event.value;
@@ -56,6 +60,7 @@ export default class ExitChoiceCtxMenu extends EventBusSubsetMixin(HTMLElement) 
         const exit = FileData.get(`world/exit/${exitRef}`);
         const entrances = FileData.get("world/exit");
         // TODO remove used entrances
+        const selectEl = this.shadowRoot.getElementById("select");
         for (const key in entrances) {
             const value = entrances[key];
             if (value.type == exit.type) {
@@ -88,21 +93,21 @@ export default class ExitChoiceCtxMenu extends EventBusSubsetMixin(HTMLElement) 
                 if (oldValue != newValue) {
                     this.refresh();
                 }
-            break;
+                break;
         }
     }
 
     refresh() {
         // TODO do not use specialized code. make generic
-        let cnt = this.shadowRoot.getElementById("list");
+        const cnt = this.shadowRoot.getElementById("list");
         cnt.innerHTML = "";
-        let data = FileData.get(`exit/${this.ref}`);
-        if (!!data) {
+        const data = FileData.get(`exit/${this.ref}`);
+        if (data) {
             if (data.lists.mq == null) {
                 data.lists.v.forEach(record => {
-                    let loc = MarkerRegistry.get(record.id);
+                    const loc = MarkerRegistry.get(record.id);
                     if (!!loc && loc.visible()) {
-                        let el = loc.listItem;
+                        const el = loc.listItem;
                         cnt.append(el);
                     }
                 });

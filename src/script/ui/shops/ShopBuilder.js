@@ -30,10 +30,10 @@ const TPL = new Template(`
 `);
 
 function editSlot(event) {
-    let d = new Dialog(Language.translate(this.ref));
+    const d = new Dialog(Language.translate(this.ref));
     d.value = event.target.ref;
     d.addEventListener("submit", function(target, result) {
-        if (!!result) {
+        if (result) {
             this[target] = `${result.ref},${result.price}`;
         }
     }.bind(this, event.target.id));
@@ -47,15 +47,15 @@ export default class HTMLTrackerShopBuilder extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         for (let i = 0; i < 8; ++i) {
-            let el = this.shadowRoot.getElementById(`slot${i}`);
+            const el = this.shadowRoot.getElementById(`slot${i}`);
             el.onclick = editSlot.bind(this);
         }
     }
 
     get value() {
-        let res = [];
+        const res = [];
         for (let i = 0; i < 8; ++i) {
-            let buf = this[`slot${i}`].split(",");
+            const buf = this[`slot${i}`].split(",");
             res.push({
                 item: buf[0],
                 price: buf[1]
@@ -140,8 +140,8 @@ export default class HTMLTrackerShopBuilder extends HTMLElement {
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
-            let el = this.shadowRoot.getElementById(name);
-            let val = newValue.split(",");
+            const el = this.shadowRoot.getElementById(name);
+            const val = newValue.split(",");
             el.ref = val[0];
             el.price = val[1];
         }

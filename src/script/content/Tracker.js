@@ -13,31 +13,31 @@ PageSwitcher.register("main", [{
     "submenu": [{
         "content": "NEW",
         "handler": state_New
-    },{
+    }, {
         "content": "LOAD",
         "handler": state_Load
-    },{
+    }, {
         "content": "SAVE",
         "handler": state_Save
-    },{
+    }, {
         "content": "SAVE AS",
         "handler": state_SaveAs
-    },{
+    }, {
         "content": "MANAGE",
         "handler": states_Manage
     }]
-},{
+}, {
     "content": "DISCORD",
     "handler": openDiscortJoin
-},{
+}, {
     "content": "PATREON",
     "handler": openPatreon
-},{
+}, {
     "content": "EXTRAS",
     "submenu": [{
         "content": "TOGGLE FULLSCREEN",
         "handler": toggleFullscreen
-    },{
+    }, {
         "content": "UPLOAD SPOILER",
         "handler": openSpoilerSettingsWindow
     }, {
@@ -47,18 +47,18 @@ PageSwitcher.register("main", [{
         "content": "EDITORS",
         "handler": showEditors
     }]
-},{
+}, {
     "content": "RANDOMIZER OPTIONS",
     "handler": openRomSettingsWindow
-},{
+}, {
     "content": "TRACKER SETTINGS",
     "handler": openSettingsWindow
 }]);
 PageSwitcher.switch("main");
 
 async function state_Save() {
-    let activestate = await StateStorage.getName();
-    if (!!activestate) {
+    const activestate = await StateStorage.getName();
+    if (activestate) {
         await StateStorage.save();
         Toast.show(`Saved "${activestate}" successfully.`);
     } else {
@@ -67,9 +67,9 @@ async function state_Save() {
 }
 
 async function state_SaveAs() {
-    let activestate = await StateStorage.getName();
-    let w = new SaveWindow();
-    if (!!activestate) {
+    const activestate = await StateStorage.getName();
+    const w = new SaveWindow();
+    if (activestate) {
         w.show(activestate);
     } else {
         w.show();
@@ -77,9 +77,9 @@ async function state_SaveAs() {
 }
 
 async function state_Load() {
-    let activestate = await StateStorage.getName()
-    let w = new LoadWindow();
-    if (!!activestate) {
+    const activestate = await StateStorage.getName()
+    const w = new LoadWindow();
+    if (activestate) {
         w.show(activestate);
     } else {
         w.show();
@@ -87,16 +87,16 @@ async function state_Load() {
 }
 
 async function state_New() {
-    if (!!await StateStorage.isDirty()) {
+    if (await StateStorage.isDirty()) {
         if (!await Dialog.confirm("Warning, you have unsaved changes.", "Do you want to discard your changes and create a new state?")) {
             return;
         }
     }
 
-    let options = FileData.get("randomizer_options");
-    let def_state = {};
-    for (let i in options) {
-        for (let j in options[i]) {
+    const options = FileData.get("randomizer_options");
+    const def_state = {};
+    for (const i in options) {
+        for (const j in options[i]) {
             let v = options[i][j].default;
             if (Array.isArray(v)) {
                 v = new Set(v);
@@ -113,9 +113,9 @@ async function state_New() {
 }
 
 async function states_Manage() {
-    let activestate = await StateStorage.getName()
-    let w = new ManageWindow();
-    if (!!activestate) {
+    const activestate = await StateStorage.getName()
+    const w = new ManageWindow();
+    if (activestate) {
         w.show(activestate);
     } else {
         w.show();
@@ -135,19 +135,19 @@ function openPatreon() {
 }
 
 function openSettingsWindow() {
-    if (!!window.TrackerSettingsWindow) {
+    if (window.TrackerSettingsWindow) {
         window.TrackerSettingsWindow.show();
     }
 }
 
 function openRomSettingsWindow() {
-    if (!!window.RandomizerOptionsWindow) {
+    if (window.RandomizerOptionsWindow) {
         window.RandomizerOptionsWindow.show();
     }
 }
 
 function openSpoilerSettingsWindow() {
-    if(!!window.SpoilerLogWindow) {
+    if (window.SpoilerLogWindow) {
         window.SpoilerLogWindow.show();
     }
 }
@@ -161,7 +161,7 @@ function toggleFullscreen() {
             document.documentElement.requestFullscreen();
         } else {
             if (document.exitFullscreen) {
-                document.exitFullscreen(); 
+                document.exitFullscreen();
             }
         }
     }

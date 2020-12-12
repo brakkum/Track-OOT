@@ -5,7 +5,6 @@ const HEADER_CONFIG = new Headers({
     "Pragma": "no-cache",
     "Cache-Control": "no-cache"
 });
-const R_LN = /\r\n|\r|\n/;
 
 let cmd = {
     start: install,
@@ -20,7 +19,7 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('activate', function(event) {
-	return self.clients.claim();
+    return self.clients.claim();
 });
 
 self.addEventListener('fetch', function(event) {
@@ -48,7 +47,7 @@ async function getVersion(request) {
     var cache = await caches.open(CACHE_NAME);
     let response = await cache.match(CACHE_INDEX);
     let version = await cache.match(request.url);
-    if (!!response) {
+    if (response != null) {
         let ver = await version.json();
         ver.date = new Date(response.headers.get("Last-Modified"));
         return new Response(JSON.stringify(ver));
@@ -60,7 +59,7 @@ self.addEventListener('message', async event => {
     let src = event.source;
     let dta = event.data;
     if (!src) return;
-    if (!!cmd[dta]) {
+    if (cmd[dta] != null) {
         try {
             await cmd[dta](src);
         } catch(e) {
@@ -112,7 +111,7 @@ async function purgeCache(client) {
 async function install(client) {
     let cache = await caches.open(CACHE_NAME);
     let response = await cache.match(CACHE_INDEX);
-    if (!!response) {
+    if (response != null) {
         client.postMessage({
             type: "state",
             msg: "start"
@@ -138,7 +137,7 @@ async function checkUpdateAvailable(client) {
     let cache = await caches.open(CACHE_NAME);
     let response = await cache.match(CACHE_INDEX);
     let message = "update_available";
-    if (!!response) {
+    if (response != null) {
         let loc = new Date(response.headers.get("Last-Modified"));
         if (loc > new Date(0)) {
             let rem = new Date((await fetchFile(CACHE_INDEX, "HEAD")).headers.get("Last-Modified"));
@@ -218,7 +217,7 @@ async function checkUpdateNeeded(cache, filelist) {
     filelist.forEach(element => {
         p.push(addFileIfNeeded(cache, element, r));
     });
-    await Promise.all(p); 
+    await Promise.all(p);
     return r;
 }
 
@@ -229,14 +228,14 @@ async function addFileIfNeeded(cache, element, arr) {
 }
 
 async function checkFile(cache, url) {
-  let response = await cache.match(url);
-  if (!!response) {
-    let local = new Date(response.headers.get("Last-Modified"));
-    let remote = new Date((await fetchFile(url, "HEAD")).headers.get("Last-Modified"));
-    return remote > local;
-  } else {
-    return true;
-  }
+    let response = await cache.match(url);
+    if (response != null) {
+        let local = new Date(response.headers.get("Last-Modified"));
+        let remote = new Date((await fetchFile(url, "HEAD")).headers.get("Last-Modified"));
+        return remote > local;
+    } else {
+        return true;
+    }
 }
 
 async function updateFileList(client, cache, filelist) {
@@ -263,12 +262,13 @@ async function downloadFile(url, tries = 3) {
     if (!tries) throw new Error("could not load file " + url);
     try {
         return await fetchFile(url);
-    } catch(e) {
+    } catch(err) {
+        console.error(err);
         return await downloadFile(url, tries-1);
     }
 }
 
 function diff(a, b) {
     var c = new Set(b);
-    return a.filter(d =>!c.has(d));
+    return a.filter(d => !c.has(d));
 }

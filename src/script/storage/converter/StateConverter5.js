@@ -5,7 +5,7 @@
 import StateConverter from "../StateConverter.js";
 
 StateConverter.register(function(state) {
-    let res = {
+    const res = {
         data: {},
         extra: state.extra,
         notes: state.notes,
@@ -15,7 +15,7 @@ StateConverter.register(function(state) {
     };
     res.extra.dungeonreward = {};
     res.extra.dungeontype = {};
-    for (let i of Object.keys(state.data)) {
+    for (const i of Object.keys(state.data)) {
         if (i.startsWith("dungeonRewards.")) {
             const key = i.slice(15);
             res.extra.dungeonreward[key] = state.data[i];

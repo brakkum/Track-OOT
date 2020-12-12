@@ -51,15 +51,16 @@ class HTMLTrackerSelectableItem extends HTMLElement {
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
+            const state = ItemStates.get(this.ref);
+            const data = state.props;
             switch (name) {
                 case 'ref':
-                    // state
-                    const state = ItemStates.get(this.ref);
-                    const data = state.props;
-                    // settings
-                    const bgImage = Array.isArray(data.images) ? data.images[0] : data.images;
-                    this.style.backgroundImage = `url("${bgImage}")`;
-                break;
+                    if (Array.isArray(data.images)) {
+                        this.style.backgroundImage = `url("${data.images[0]}")`;
+                    } else {
+                        this.style.backgroundImage = `url("${data.images}")`;
+                    }
+                    break;
             }
         }
     }

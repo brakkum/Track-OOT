@@ -143,6 +143,8 @@ export default class Item extends HTMLElement {
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
+            const state = ItemStates.get(this.ref);
+            const data = state.props;
             switch (name) {
                 case 'ref':
                     // state
@@ -151,10 +153,8 @@ export default class Item extends HTMLElement {
                         oldState.removeEventListener("value", FN_VALUE.get(this));
                         oldState.removeEventListener("type", FN_TYPE.get(this));
                     }
-                    const state = ItemStates.get(this.ref);
                     state.addEventListener("value", FN_VALUE.get(this));
                     state.addEventListener("type", FN_TYPE.get(this));
-                    const data = state.props;
                     this.value = state.value;
                     // settings
                     if (data.halign != null) {
@@ -164,23 +164,17 @@ export default class Item extends HTMLElement {
                         this.valign = data.valign;
                     }
                     this.fillItemChoices();
-                break;
+                    break;
                 case 'halign':
                     this.shadowRoot.getElementById("slot").style.setProperty("--halign", getAlign(newValue));
-                break;
+                    break;
                 case 'valign':
                     this.shadowRoot.getElementById("slot").style.setProperty("--valign", getAlign(newValue));
-                break;
+                    break;
                 case 'value':
-                    let oe = this.querySelector(`.active`);
-                    if (!!oe) {
-                        oe.classList.remove("active");
-                    }
-                    let ne = this.querySelector(`[value="${newValue}"]`);
-                    if (!!ne) {
-                        ne.classList.add("active");
-                    }
-                break;
+                    this.querySelector(`.active`)?.classList.remove("active");
+                    this.querySelector(`[value="${newValue}"]`)?.classList.add("active");
+                    break;
             }
         }
     }
@@ -214,7 +208,7 @@ export default class Item extends HTMLElement {
             let value = oldValue;
             
             if ((event.shiftKey || event.ctrlKey)) {
-                if (!!data.alternate_counting) {
+                if (data.alternate_counting) {
                     for (let i = 0; i < data.alternate_counting.length; ++i) {
                         let alt = parseInt(data.alternate_counting[i]);
                         if (isNaN(alt)) {
@@ -249,7 +243,7 @@ export default class Item extends HTMLElement {
             let value = oldValue;
 
             if ((event.shiftKey || event.ctrlKey)) {
-                if (!!data.alternate_counting) {
+                if (data.alternate_counting) {
                     for (let i = data.alternate_counting.length - 1; i >= 0; --i) {
                         let alt = parseInt(data.alternate_counting[i]);
                         if (isNaN(alt)) {
@@ -280,14 +274,14 @@ export default class Item extends HTMLElement {
 customElements.define('ootrt-itemkey', Item);
 
 function createOption(value, img, data, max_value) {
-    let opt = document.createElement('emc-option');
+    const opt = document.createElement('emc-option');
     opt.value = value;
     opt.style.backgroundImage = `url("${img}"`;
     if (value == 0 && !data.always_active) {
         opt.style.filter = "contrast(0.8) grayscale(0.5)";
-        opt.style.opacity= "0.4";
+        opt.style.opacity = "0.4";
     }
-    if (!!data.counting) {
+    if (data.counting) {
         if (Array.isArray(data.counting)) {
             opt.innerHTML = data.counting[value];
         } else {
@@ -296,7 +290,7 @@ function createOption(value, img, data, max_value) {
             }
         }
         if (data.mark !== false) {
-            let mark = parseInt(data.mark);
+            const mark = parseInt(data.mark);
             if (value >= max_value || !isNaN(mark) && value >= mark) {
                 opt.classList.add("mark");
             }

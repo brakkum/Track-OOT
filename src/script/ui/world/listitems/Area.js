@@ -131,7 +131,7 @@ const TPL_MNU_CTX = new Template(`
 
 function setAllListEntries(list, value = true) {
     if (!!list && Array.isArray(list)) {
-        for (let entry of list) {
+        for (const entry of list) {
             const category = entry.category;
             const id = entry.id;
             if (category == "location") {
@@ -179,14 +179,14 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
         /* --- */
 
         /* context menu */
-        let mnu_ctx = document.createElement("div");
+        const mnu_ctx = document.createElement("div");
         mnu_ctx.attachShadow({mode: 'open'});
         mnu_ctx.shadowRoot.append(TPL_MNU_CTX.generate());
-        let mnu_ctx_el = mnu_ctx.shadowRoot.getElementById("menu");
+        const mnu_ctx_el = mnu_ctx.shadowRoot.getElementById("menu");
         MNU_CTX.set(this, mnu_ctx);
         
         mnu_ctx.shadowRoot.getElementById("menu-check").addEventListener("click", event => {
-            let data = FileData.get(`world/${this.ref}/lists`);
+            const data = FileData.get(`world/${this.ref}/lists`);
             for (const type in data) {
                 setAllListEntries(data[type], true);
             }
@@ -194,7 +194,7 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
             return false;
         });
         mnu_ctx.shadowRoot.getElementById("menu-uncheck").addEventListener("click", event => {
-            let data = FileData.get(`world/${this.ref}/lists`);
+            const data = FileData.get(`world/${this.ref}/lists`);
             for (const type in data) {
                 setAllListEntries(data[type], false);
             }
@@ -280,13 +280,13 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
     }
 
     async update() {
-        if (!!this.ref) {
-            let dType = StateStorage.readExtra("dungeontype", this.ref, 'v');
+        if (this.ref) {
+            const dType = StateStorage.readExtra("dungeontype", this.ref, 'v');
             if (dType == "n") {
-                let data_v = FileData.get(`world/${this.ref}/lists/v`);
-                let data_m = FileData.get(`world/${this.ref}/lists/mq`);
-                let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
-                let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
+                const data_v = FileData.get(`world/${this.ref}/lists/v`);
+                const data_m = FileData.get(`world/${this.ref}/lists/mq`);
+                const res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
+                const res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
                     this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[Math.min(res_v.value, res_m.value)];
                 } else {
@@ -294,8 +294,8 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
                 }
                 this.setEntrances(res_v.entrances || res_v.entrances);
             } else {
-                let data = FileData.get(`world/${this.ref}/lists/${dType}`);
-                let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
+                const data = FileData.get(`world/${this.ref}/lists/${dType}`);
+                const res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[res.value];
                 this.setEntrances(res.entrances);
             }
@@ -308,7 +308,7 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
         const entrances = this.shadowRoot.getElementById("entrances");
         entrances.innerHTML = "";
         if (active) {
-            let el_icon = document.createElement("img");
+            const el_icon = document.createElement("img");
             el_icon.src = `images/icons/entrance.svg`;
             entrances.append(el_icon);
         }
@@ -339,28 +339,28 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
             case 'ref':
                 if (oldValue != newValue) {
                     this.update();
-                    let txt = this.shadowRoot.getElementById("text");
+                    const txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = Language.translate(newValue);
                     this.hint = StateStorage.readExtra("area_hint", newValue, "");
                 }
-            break;
+                break;
             case 'hint':
                 if (oldValue != newValue) {
-                    let hintEl = this.shadowRoot.getElementById("hint");
+                    const hintEl = this.shadowRoot.getElementById("hint");
                     hintEl.innerHTML = "";
                     if (!!newValue && newValue != "") {
-                        let el_icon = document.createElement("img");
+                        const el_icon = document.createElement("img");
                         el_icon.src = `images/icons/area_${newValue}.svg`;
                         hintEl.append(el_icon);
                     }
                 }
-            break;
+                break;
         }
     }
 
     // TODO make generic using badge value in filter
     setFilterData(data) {
-        let el_era = this.shadowRoot.getElementById("badge-era");
+        const el_era = this.shadowRoot.getElementById("badge-era");
         if (!data["filter.era/child"]) {
             el_era.src = "images/icons/era_adult.svg";
         } else if (!data["filter.era/adult"]) {
@@ -368,7 +368,7 @@ export default class ListArea extends EventBusSubsetMixin(HTMLElement) {
         } else {
             el_era.src = "images/icons/era_both.svg";
         }
-        let el_time = this.shadowRoot.getElementById("badge-time");
+        const el_time = this.shadowRoot.getElementById("badge-time");
         if (!data["filter.time/day"]) {
             el_time.src = "images/icons/time_night.svg";
         } else if (!data["filter.time/night"]) {

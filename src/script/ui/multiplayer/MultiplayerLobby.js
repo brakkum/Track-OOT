@@ -83,42 +83,42 @@ class HTMLMultiplayerLobby extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
 
-        let host_name = this.shadowRoot.getElementById("host_name");
-        let host_pass = this.shadowRoot.getElementById("host_pass");
-        let host_desc = this.shadowRoot.getElementById("host_desc");
-        let host_button = this.shadowRoot.getElementById("host_button");
+        const host_name = this.shadowRoot.getElementById("host_name");
+        const host_pass = this.shadowRoot.getElementById("host_pass");
+        const host_desc = this.shadowRoot.getElementById("host_desc");
+        const host_button = this.shadowRoot.getElementById("host_button");
 
-        let refresh_button = this.shadowRoot.getElementById("refresh_button");
+        const refresh_button = this.shadowRoot.getElementById("refresh_button");
 
         host_button.addEventListener("click", async function() {
-            if (!!host_name.value) {
-                let res = await RTCController.host(host_name.value, host_pass.value, host_desc.value);
-                if (!!res) {
+            if (host_name.value) {
+                const res = await RTCController.host(host_name.value, host_pass.value, host_desc.value);
+                if (res) {
                     this.dispatchEvent(new Event('host'));
                 }
             }
         }.bind(this));
 
-        let connect = async function(event) {
-            let el = event.target;
+        const connect = async function(event) {
+            const el = event.target;
             let res;
             if (!!el.pass && el.pass != "false") {
-                let pass = await Dialog.prompt("password required", "please enter password");
+                const pass = await Dialog.prompt("password required", "please enter password");
                 res = await RTCController.connect(el.name, pass);
             } else {
                 res = await RTCController.connect(el.name);
             }
-            if (!!res) {
+            if (res) {
                 this.dispatchEvent(new Event('join'));
             }
         }.bind(this);
 
-        let refresh = async function(supressError) {
-            let res = await RTCController.getInstances(supressError);
+        const refresh = async function(supressError) {
+            const res = await RTCController.getInstances(supressError);
             if (res != null) {
                 this.innerHTML = "";
                 res.forEach(function(inst) {
-                    let el = document.createElement("ootrt-mproom");
+                    const el = document.createElement("ootrt-mproom");
                     el.name = inst.name;
                     el.pass = inst.pass;
                     el.desc = inst.desc;

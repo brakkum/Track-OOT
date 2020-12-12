@@ -2,10 +2,10 @@ import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import GlobalStyle from "/emcJS/util/GlobalStyle.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
+import Logger from "/emcJS/util/Logger.js";
 import "/emcJS/ui/overlay/ContextMenu.js";
 import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import ListLogic from "/script/util/logic/ListLogic.js";
 import Logic from "/script/util/logic/Logic.js";
 import ExitRegistry from "/script/util/world/ExitRegistry.js";
@@ -13,7 +13,6 @@ import Language from "/script/util/Language.js";
 import MarkerRegistry from "/script/util/world/MarkerRegistry.js";
 import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
 
-const SettingsStorage = new IDBStorage('settings');
 
 const TPL = new Template(`
 <div class="textarea">
@@ -143,7 +142,7 @@ const STYLE_MNU_EXT = new GlobalStyle(`
 
 function setAllListEntries(list, value = true) {
     if (!!list && Array.isArray(list)) {
-        for (let entry of list) {
+        for (const entry of list) {
             const category = entry.category;
             const id = entry.id;
             if (category == "location") {
@@ -303,8 +302,8 @@ export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
             event.preventDefault();
             return false;
         });
-        mnu_ctx.shadowRoot.getElementById("menu-deassociate").addEventListener("click", event => {
-            let exit = EXIT.get(this);
+        mnu_ctx.shadowRoot.getElementById("menu-deassociate").addEventListener("click", () => {
+            const exit = EXIT.get(this);
             if (exit != "") {
                 StateStorage.writeExtra("exits", exit, "");
             }
@@ -340,14 +339,14 @@ export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
                 this.value = "";
             }
         });
-        this.registerGlobal("randomizer_options", event => {
+        this.registerGlobal("randomizer_options", () => {
             const exit = EXIT.get(this);
             const exitEntry = ExitRegistry.get(exit);
             selectEl.readonly = !exitEntry.active();
             this.update();
         });
         this.registerGlobal("statechange_exits", event => {
-            let exit = EXIT.get(this);
+            const exit = EXIT.get(this);
             let data;
             if (event.data != null) {
                 data = event.data[exit];
@@ -357,12 +356,12 @@ export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
                 selectEl.value = data.newValue;
             }
         });
-        this.registerGlobal(["statechange", "settings", "logic", "filter"], event => {
+        this.registerGlobal(["statechange", "settings", "logic", "filter"], () => {
             // update exit
             const exit = EXIT.get(this);
             this.value = StateStorage.readExtra("exits", exit, "");
             const area = AREA.get(this);
-            if (!!area) {
+            if (area) {
                 this.hint = StateStorage.readExtra("area_hint", area, "");
             }
             // update state
@@ -385,7 +384,7 @@ export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
         const exit = EXIT.get(this);
         this.value = StateStorage.readExtra("exits", exit, "");
         const area = AREA.get(this);
-        if (!!area) {
+        if (area) {
             this.hint = StateStorage.readExtra("area_hint", area, "");
         }
         // update state
@@ -409,7 +408,7 @@ export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
             }
         } else {
             const data = FileData.get(`world/${area}`);
-            if (!!data) {
+            if (data) {
                 // check access logic
                 const res = ListLogic.check(data.list.filter(ListLogic.filterUnusedChecks));
                 this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[res.value];
@@ -462,12 +461,12 @@ export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
                     // update state
                     this.update();
                 }
-            break;
+                break;
             case 'value':
                 if (oldValue != newValue) {
                     const el = this.shadowRoot.getElementById("value");
                     this.innerHTML = "";
-                    if (!!newValue) {
+                    if (newValue) {
                         let entrance = FileData.get(`world/exit/${newValue}`);
                         if (entrance == null) {
                             entrance = FileData.get(`world/exit/${newValue.split(" -> ").reverse().join(" -> ")}`)
@@ -482,12 +481,12 @@ export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
                     }
                     this.update();
                 }
-            break;
+                break;
         }
     }
 
     setFilterData(data) {
-        let el_era = this.shadowRoot.getElementById("badge-era");
+        const el_era = this.shadowRoot.getElementById("badge-era");
         if (!data["filter.era/child"]) {
             el_era.src = "images/icons/era_adult.svg";
         } else if (!data["filter.era/adult"]) {
@@ -495,7 +494,7 @@ export default class ListSubExit extends EventBusSubsetMixin(HTMLElement) {
         } else {
             el_era.src = "images/icons/era_both.svg";
         }
-        let el_time = this.shadowRoot.getElementById("badge-time");
+        const el_time = this.shadowRoot.getElementById("badge-time");
         if (!data["filter.time/day"]) {
             el_time.src = "images/icons/time_night.svg";
         } else if (!data["filter.time/night"]) {

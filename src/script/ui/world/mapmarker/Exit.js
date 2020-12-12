@@ -184,7 +184,7 @@ const STYLE_MNU_EXT = new GlobalStyle(`
 
 function setAllListEntries(list, value = true) {
     if (!!list && Array.isArray(list)) {
-        for (let entry of list) {
+        for (const entry of list) {
             const category = entry.category;
             const id = entry.id;
             if (category == "location") {
@@ -377,7 +377,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
         /* mouse events */
         this.addEventListener("click", event => {
             const area = AREA.get(this);
-            if (!!area) {
+            if (area) {
                 this.triggerGlobal("location_change", {
                     name: area
                 });
@@ -455,7 +455,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
         const exit = EXIT.get(this);
         this.value = StateStorage.readExtra("exits", exit, "");
         const area = AREA.get(this);
-        if (!!area) {
+        if (area) {
             this.hint = StateStorage.readExtra("area_hint", area, "");
         }
         // update state
@@ -470,7 +470,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
 
     async update() {
         const area = AREA.get(this);
-        if (!!area) {
+        if (area) {
             const dType = StateStorage.readExtra("dungeontype", area, 'v');
             if (dType == "n") {
                 const data_v = FileData.get(`world/${area}/lists/v`);
@@ -589,11 +589,11 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
                     // update state
                     this.update();
                 }
-            break;
+                break;
             case 'value':
                 if (oldValue != newValue) {
                     const el = this.shadowRoot.getElementById("value");
-                    if (!!newValue) {
+                    if (newValue) {
                         let entrance = FileData.get(`world/exit/${newValue}`);
                         if (entrance == null) {
                             entrance = FileData.get(`world/exit/${newValue.split(" -> ").reverse().join(" -> ")}`)
@@ -608,7 +608,7 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
                     }
                     this.update();
                 }
-            break;
+                break;
             case 'hint':
                 if (oldValue != newValue) {
                     const hintEl = this.shadowRoot.getElementById("hint");
@@ -619,20 +619,20 @@ export default class MapExit extends EventBusSubsetMixin(HTMLElement) {
                         hintEl.append(el_icon);
                     }
                 }
-            break;
+                break;
             case 'top':
             case 'left':
                 if (oldValue != newValue) {
                     this.style.left = `${this.left}px`;
                     this.style.top = `${this.top}px`;
                 }
-            break;
+                break;
             case 'tooltip':
                 if (oldValue != newValue) {
                     const tooltip = this.shadowRoot.getElementById("tooltip");
                     tooltip.position = newValue;
                 }
-            break;
+                break;
         }
     }
 

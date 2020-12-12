@@ -97,23 +97,23 @@ const Q_TAB = [
 ].join(',');
 
 async function settingsSubmit() {
-    let ev = new Event('submit');
-    let el = this.shadowRoot.querySelector(`ootrt-shopedititem[ref="${this.value}"]`);
-    if (!!el) {
+    const ev = new Event('submit');
+    const el = this.shadowRoot.querySelector(`ootrt-shopedititem[ref="${this.value}"]`);
+    if (el) {
         ev.ref = el.ref;
         if (!isNaN(parseInt(el.price))) {
             ev.price = el.price;
             this.dispatchEvent(ev);
             document.body.removeChild(this);
         } else {
-            let shop_price = document.createElement('input');
+            const shop_price = document.createElement('input');
             shop_price.setAttribute("type", "number");
             shop_price.setAttribute("min-value", 1);
             shop_price.setAttribute("max-value", 999);
             shop_price.value = 0;
-            let d = new Dialog({title: "Price", submit: true, cancel: true});
+            const d = new Dialog({title: "Price", submit: true, cancel: true});
             d.onsubmit = function(result) {
-                if (!!result) {
+                if (result) {
                     ev.price = parseInt(shop_price.value);
                     this.dispatchEvent(ev);
                     document.body.removeChild(this);
@@ -133,41 +133,41 @@ export default class HTMLTrackerShopItemChoice extends Window {
     
     constructor(title = "Item Choice", options = {}) {
         super(title, options.close);
-        let els = TPL.generate();
-        let window = this.shadowRoot.getElementById('window');
+        const els = TPL.generate();
+        const window = this.shadowRoot.getElementById('window');
         this.shadowRoot.getElementById('body').innerHTML = "";
         this.shadowRoot.insertBefore(els.children[0], this.shadowRoot.getElementById('focus_catcher_top'));
         this.shadowRoot.getElementById('body').append(els.getElementById('panel_about'));
-        let ctgrs = els.getElementById('categories');
+        const ctgrs = els.getElementById('categories');
         window.insertBefore(ctgrs, this.shadowRoot.getElementById('body'));
         window.append(els.getElementById('footer'));
 
         ctgrs.onclick = (event) => {
-            let t = event.target.getAttribute('target');
-            if (!!t) {
+            const t = event.target.getAttribute('target');
+            if (t) {
                 this.active = t;
                 event.preventDefault();
                 return false;
             }
         }
 
-        let sbm = this.shadowRoot.getElementById('submit');
+        const sbm = this.shadowRoot.getElementById('submit');
         if (!!options.submit && typeof options.submit === "string") {
             sbm.innerHTML = options.submit;
             sbm.setAttribute("title", options.submit);
         }
         sbm.onclick = settingsSubmit.bind(this);
 
-        let ccl = this.shadowRoot.getElementById('cancel');
+        const ccl = this.shadowRoot.getElementById('cancel');
         if (!!options.cancel && typeof options.cancel === "string") {
             ccl.innerHTML = options.cancel;
             ccl.setAttribute("title", options.cancel);
         }
         ccl.onclick = () => this.close();
         
-        let items = FileData.get("shop_items");
-        for (let item in items) {
-            let values = items[item];
+        const items = FileData.get("shop_items");
+        for (const item in items) {
+            const values = items[item];
             this.addTab(Language.translate(values.category), values.category);
             this.addItem(values.category, item, values.price || "???");
         }
@@ -197,46 +197,46 @@ export default class HTMLTrackerShopItemChoice extends Window {
         switch (name) {
             case 'active':
                 if (oldValue != newValue) {
-                    let ol = this.shadowRoot.getElementById(`panel_${oldValue}`);
-                    if (!!ol) {
+                    const ol = this.shadowRoot.getElementById(`panel_${oldValue}`);
+                    if (ol) {
                         ol.classList.remove("active");
                     }
-                    let ob = this.shadowRoot.querySelector(`[target="${oldValue}"]`);
-                    if (!!ob) {
+                    const ob = this.shadowRoot.querySelector(`[target="${oldValue}"]`);
+                    if (ob) {
                         ob.classList.remove("active");
                     }
-                    let nl = this.shadowRoot.getElementById(`panel_${newValue}`);
-                    if (!!nl) {
+                    const nl = this.shadowRoot.getElementById(`panel_${newValue}`);
+                    if (nl) {
                         nl.classList.add("active");
                     }
-                    let nb = this.shadowRoot.querySelector(`[target="${newValue}"]`);
-                    if (!!nb) {
+                    const nb = this.shadowRoot.querySelector(`[target="${newValue}"]`);
+                    if (nb) {
                         nb.classList.add("active");
                     }
                 }
-            break;
+                break;
             case 'value':
                 if (oldValue != newValue) {
-                    let ol = this.shadowRoot.querySelector(`ootrt-shopedititem[ref="${oldValue}"]`);
-                    if (!!ol) {
+                    const ol = this.shadowRoot.querySelector(`ootrt-shopedititem[ref="${oldValue}"]`);
+                    if (ol) {
                         ol.classList.remove("active");
                     }
-                    let nl = this.shadowRoot.querySelector(`ootrt-shopedititem[ref="${newValue}"]`);
-                    if (!!nl) {
+                    const nl = this.shadowRoot.querySelector(`ootrt-shopedititem[ref="${newValue}"]`);
+                    if (nl) {
                         nl.classList.add("active");
                     }
                 }
-            break;
+                break;
         }
     }
 
-    show(data = {}, category) {
+    show(data = {}, category = "") {
         super.show();
-        for (let i in data) {
-            let b = this.shadowRoot.getElementById(`panel_${i}`);
+        for (const i in data) {
+            const b = this.shadowRoot.getElementById(`panel_${i}`);
             if (!b) continue;
-            for (let j in data[i]) {
-                let e = b.querySelector(`[data-ref="${j}"]`);
+            for (const j in data[i]) {
+                const e = b.querySelector(`[data-ref="${j}"]`);
                 if (!e) continue;
                 if (e.type === "checkbox") {
                     e.checked = !!data[i][j];
@@ -245,18 +245,18 @@ export default class HTMLTrackerShopItemChoice extends Window {
                 }
             }
         }
-        if (!!category) {
+        if (category) {
             this.active = category;
         } else {
-            let ctg = this.shadowRoot.getElementById('categories').children;
-            if (!!ctg.length) {
+            const ctg = this.shadowRoot.getElementById('categories').children;
+            if (ctg.length) {
                 this.active = ctg[0].getAttribute('target')
             }
         }
     }
 
     initialFocus() {
-        let a = Array.from(this.querySelectorAll(Q_TAB));
+        const a = Array.from(this.querySelectorAll(Q_TAB));
         a.push(this.shadowRoot.getElementById('submit'));
         a.push(this.shadowRoot.getElementById('cancel'));
         a.push(this.shadowRoot.getElementById('close'));
@@ -264,7 +264,7 @@ export default class HTMLTrackerShopItemChoice extends Window {
     }
 
     focusFirst() {
-        let a = Array.from(this.querySelectorAll(Q_TAB));
+        const a = Array.from(this.querySelectorAll(Q_TAB));
         a.push(this.shadowRoot.getElementById('submit'));
         a.push(this.shadowRoot.getElementById('cancel'));
         a.unshift(this.shadowRoot.getElementById('close'));
@@ -272,31 +272,31 @@ export default class HTMLTrackerShopItemChoice extends Window {
     }
     
     focusLast() {
-        let a = Array.from(this.querySelectorAll(Q_TAB));
+        const a = Array.from(this.querySelectorAll(Q_TAB));
         a.push(this.shadowRoot.getElementById('submit'));
         a.push(this.shadowRoot.getElementById('cancel'));
         a.unshift(this.shadowRoot.getElementById('close'));
-        a[a.length-1].focus();
+        a[a.length - 1].focus();
     }
 
     addTab(title, id) {
         if (!this.shadowRoot.getElementById(`panel_${id}`)) {
-            let pnl = document.createElement('div');
+            const pnl = document.createElement('div');
             pnl.className = "panel";
             pnl.id = `panel_${id}`;
             pnl.dataset.ref = id;
             this.shadowRoot.getElementById('body').append(pnl);
-            let cb = document.createElement('div');
+            const cb = document.createElement('div');
             cb.className = "category";
             cb.setAttribute('target', id);
             cb.innerHTML = title;
-            let cbt = this.shadowRoot.getElementById('categories');
+            const cbt = this.shadowRoot.getElementById('categories');
             cbt.append(cb);
         }
     }
 
     addItem(category, ref, price) {
-        let item = document.createElement("ootrt-shopedititem");
+        const item = document.createElement("ootrt-shopedititem");
         item.ref = ref;
         item.price = price;
         item.onclick = clickItem.bind(this);

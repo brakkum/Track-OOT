@@ -220,18 +220,18 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
                     this.hint = StateStorage.readExtra("area_hint", newValue, "");
                     this.refresh();
                 }
-            break;
+                break;
             case 'hint':
                 if (oldValue != newValue) {
-                    let hintEl = this.shadowRoot.getElementById("hint");
+                    const hintEl = this.shadowRoot.getElementById("hint");
                     hintEl.innerHTML = "";
                     if (!!newValue && newValue != "") {
-                        let el_icon = document.createElement("img");
+                        const el_icon = document.createElement("img");
                         el_icon.src = `images/icons/area_${newValue}.svg`;
                         hintEl.append(el_icon);
                     }
                 }
-            break;
+                break;
         }
     }
 
@@ -243,7 +243,7 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
         const btn_masterquest = this.shadowRoot.getElementById('masterquest');
         cnt.innerHTML = "";
         const data = FileData.get(`world/${this.ref || "overworld"}`);
-        if (!!data) {
+        if (data) {
             if (data.lists.mq == null) {
                 dType = "v";
             }
@@ -274,21 +274,21 @@ class HTMLTrackerLocationList extends EventBusSubsetMixin(Panel) {
         if ((!this.ref || this.ref === "overworld")) {
             this.shadowRoot.querySelector('#title').className = "";
         } else {
-            let dType = this.shadowRoot.getElementById("location-version").value;
+            const dType = this.shadowRoot.getElementById("location-version").value;
             let header_value = 1;
             if (dType == "n") {
-                let data_v = FileData.get(`world/${this.ref}/lists/v`);
-                let data_m = FileData.get(`world/${this.ref}/lists/mq`);
-                let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
-                let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
+                const data_v = FileData.get(`world/${this.ref}/lists/v`);
+                const data_m = FileData.get(`world/${this.ref}/lists/mq`);
+                const res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
+                const res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
                     header_value = Math.min(res_v.value, res_m.value);
                 } else {
                     header_value = Math.max(res_v.value, res_m.value);
                 }
             } else {
-                let data = FileData.get(`world/${this.ref}/lists/${dType}`);
-                let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
+                const data = FileData.get(`world/${this.ref}/lists/${dType}`);
+                const res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 header_value = res.value;
             }
             this.shadowRoot.querySelector('#title').className = VALUE_STATES[header_value];

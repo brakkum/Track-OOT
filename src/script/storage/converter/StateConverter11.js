@@ -5,7 +5,7 @@
 import StateConverter from "../StateConverter.js";
 
 StateConverter.register(function(state) {
-    let res = {
+    const res = {
         data: state.data,
         extra: {},
         notes: state.notes,
@@ -16,14 +16,14 @@ StateConverter.register(function(state) {
     // change dungeonreward
     const dungeonreward = {};
     if (state.extra.dungeonreward != null) {
-        for (let i of Object.keys(state.extra.dungeonreward)) {
+        for (const i of Object.keys(state.extra.dungeonreward)) {
             dungeonreward[translation[i] || i] = translation[state.extra.dungeonreward[i]] || state.extra.dungeonreward[i];
         }
     }
     // change dungeontype
     const dungeontype = {};
     if (state.extra.dungeontype != null) {
-        for (let i of Object.keys(state.extra.dungeontype)) {
+        for (const i of Object.keys(state.extra.dungeontype)) {
             dungeontype[translation[i] || i] = translation[state.extra.dungeontype[i]] || state.extra.dungeontype[i];
         }
     }
@@ -33,5 +33,5 @@ StateConverter.register(function(state) {
 });
 
 const translation = {
-    "pocket": "area/pocket",
+    "pocket": "area/pocket"
 };

@@ -37,7 +37,7 @@ export default class MPLogger extends HTMLElement {
     }
 
     log(...message) {
-        let el = this.shadowRoot.getElementById("text");
+        const el = this.shadowRoot.getElementById("text");
         if (message.length == 1) {
             message = message[0];
         }
@@ -50,7 +50,7 @@ export default class MPLogger extends HTMLElement {
     }
 
     info(...message) {
-        let el = this.shadowRoot.getElementById("text");
+        const el = this.shadowRoot.getElementById("text");
         if (message.length == 1) {
             message = message[0];
         }
@@ -63,7 +63,7 @@ export default class MPLogger extends HTMLElement {
     }
 
     warn(...message) {
-        let el = this.shadowRoot.getElementById("text");
+        const el = this.shadowRoot.getElementById("text");
         if (message.length == 1) {
             message = message[0];
         }
@@ -76,7 +76,7 @@ export default class MPLogger extends HTMLElement {
     }
 
     error(...message) {
-        let el = this.shadowRoot.getElementById("text");
+        const el = this.shadowRoot.getElementById("text");
         if (message.length == 1) {
             message = message[0];
         }

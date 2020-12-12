@@ -12,13 +12,13 @@ function convertShopItem(item) {
 }
 
 StateConverter.register(function(state) {
-    let res = {
+    const res = {
         data: {},
         autosave: state.autosave,
         timestamp: state.timestamp,
         name: state.name
     };
-    for (let i of Object.keys(state.data)) {
+    for (const i of Object.keys(state.data)) {
         switch (i) {
             case "skips.wt_bosskey_noitem":
                 res.data["skip.wt_bosskey_noitem"] = state.data[i];

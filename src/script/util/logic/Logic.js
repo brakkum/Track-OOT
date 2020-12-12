@@ -5,7 +5,7 @@ const LOGIC_PROCESSOR = new LogicGraph(true);
 class TrackerLogic {
 
     setLogic(logic, root) {
-        if (!!logic) {
+        if (logic) {
             LOGIC_PROCESSOR.clearGraph();
             LOGIC_PROCESSOR.load(logic);
             if (root != null) {
@@ -25,7 +25,7 @@ class TrackerLogic {
 
     setTranslation(translations, root) {
         if (Array.isArray(translations)) {
-            for (let t of translations) {
+            for (const t of translations) {
                 LOGIC_PROCESSOR.setTranslation(t.source, t.target, t.reroute);
             }
         }
@@ -36,7 +36,7 @@ class TrackerLogic {
     }
 
     execute(data, root) {
-        if (!!data) {
+        if (data) {
             LOGIC_PROCESSOR.setAll(data);
             if (root != null) {
                 return LOGIC_PROCESSOR.traverse(root);
