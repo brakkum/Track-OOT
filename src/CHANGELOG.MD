@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.18
+
+### BUGFIXES
+
+- fixed issues with `adult era filter` and `Closed Forest`
+
+---
+
 ## VERSION 2.0.17
 
 ### BUGFIXES

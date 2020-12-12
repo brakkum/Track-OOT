@@ -4292,32 +4292,19 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "filter.era",
-                            "value": "adult"
-                        }
+                        "type": "value",
+                        "el": "item.shield_kokiri"
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "value",
-                                "el": "item.shield_kokiri"
+                                "el": "item.sword_kokiri"
                             },
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.sword_kokiri"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.stick"
-                                    }
-                                ]
+                                "type": "value",
+                                "el": "item.stick"
                             }
                         ]
                     }
@@ -4459,32 +4446,19 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "filter.era",
-                            "value": "child"
-                        }
+                        "type": "value",
+                        "el": "item.shield_kokiri"
                     },
                     {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
                                 "type": "value",
-                                "el": "item.shield_kokiri"
+                                "el": "item.sword_kokiri"
                             },
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.sword_kokiri"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.stick"
-                                    }
-                                ]
+                                "type": "value",
+                                "el": "item.stick"
                             }
                         ]
                     }
@@ -4570,70 +4544,20 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "not",
-                                        "el": {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "state",
-                                                    "el": "filter.era_apply",
-                                                    "value": "force",
-                                                    "category": "filter"
-                                                },
-                                                {
-                                                    "type": "state",
-                                                    "el": "filter.era",
-                                                    "value": "adult",
-                                                    "category": "filter"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "type": "at",
-                                        "node": "region.deku_tree_lobby[child]",
-                                        "el": {
-                                            "type": "mixin",
-                                            "el": "function.has_fire_source_with_torch(undefined)[child]"
-                                        }
-                                    }
-                                ]
+                                "type": "at",
+                                "node": "region.deku_tree_lobby[child]",
+                                "el": {
+                                    "type": "mixin",
+                                    "el": "function.has_fire_source_with_torch(undefined)[child]"
+                                }
                             },
                             {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "not",
-                                        "el": {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "state",
-                                                    "el": "filter.era_apply",
-                                                    "value": "force",
-                                                    "category": "filter"
-                                                },
-                                                {
-                                                    "type": "state",
-                                                    "el": "filter.era",
-                                                    "value": "child",
-                                                    "category": "filter"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "type": "at",
-                                        "node": "region.deku_tree_lobby[adult]",
-                                        "el": {
-                                            "type": "mixin",
-                                            "el": "function.has_fire_source_with_torch(undefined)[adult]"
-                                        }
-                                    }
-                                ]
+                                "type": "at",
+                                "node": "region.deku_tree_lobby[adult]",
+                                "el": {
+                                    "type": "mixin",
+                                    "el": "function.has_fire_source_with_torch(undefined)[adult]"
+                                }
                             }
                         ]
                     },
@@ -6258,164 +6182,101 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "filter.era",
-                            "value": "adult"
-                        }
-                    },
-                    {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.nut"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.slingshot)[child]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.has_bombchus[child]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.hookshot)[child]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.bow)[child]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.boomerang)[child]"
-                                    }
-                                ]
+                                "type": "value",
+                                "el": "item.nut"
                             },
                             {
-                                "type": "or",
+                                "type": "mixin",
+                                "el": "function.can_use(item.slingshot)[child]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "mixin.has_bombchus[child]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.hookshot)[child]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.bow)[child]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.boomerang)[child]"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "or",
+                        "el": [
+                            {
+                                "type": "and",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
-                                                "type": "or",
-                                                "el": [
-                                                    {
-                                                        "type": "and",
-                                                        "el": [
-                                                            {
-                                                                "type": "not",
-                                                                "el": {
-                                                                    "type": "and",
-                                                                    "el": [
-                                                                        {
-                                                                            "type": "state",
-                                                                            "el": "filter.era_apply",
-                                                                            "value": "force",
-                                                                            "category": "filter"
-                                                                        },
-                                                                        {
-                                                                            "type": "state",
-                                                                            "el": "filter.era",
-                                                                            "value": "adult",
-                                                                            "category": "filter"
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            },
-                                                            {
-                                                                "type": "at",
-                                                                "node": "region.deku_tree_boss_room[child]",
-                                                                "el": {
-                                                                    "type": "or",
-                                                                    "el": [
-                                                                        {
-                                                                            "type": "mixin",
-                                                                            "el": "mixin.has_shield[child]"
-                                                                        },
-                                                                        {
-                                                                            "type": "mixin",
-                                                                            "el": "function.can_use(item.hammer)[child]"
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        "type": "and",
-                                                        "el": [
-                                                            {
-                                                                "type": "not",
-                                                                "el": {
-                                                                    "type": "and",
-                                                                    "el": [
-                                                                        {
-                                                                            "type": "state",
-                                                                            "el": "filter.era_apply",
-                                                                            "value": "force",
-                                                                            "category": "filter"
-                                                                        },
-                                                                        {
-                                                                            "type": "state",
-                                                                            "el": "filter.era",
-                                                                            "value": "child",
-                                                                            "category": "filter"
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            },
-                                                            {
-                                                                "type": "at",
-                                                                "node": "region.deku_tree_boss_room[adult]",
-                                                                "el": {
-                                                                    "type": "or",
-                                                                    "el": [
-                                                                        {
-                                                                            "type": "mixin",
-                                                                            "el": "mixin.has_shield[adult]"
-                                                                        },
-                                                                        {
-                                                                            "type": "mixin",
-                                                                            "el": "function.can_use(item.hammer)[adult]"
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
+                                                "type": "at",
+                                                "node": "region.deku_tree_boss_room[child]",
+                                                "el": {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "mixin",
+                                                            "el": "mixin.has_shield[child]"
+                                                        },
+                                                        {
+                                                            "type": "mixin",
+                                                            "el": "function.can_use(item.hammer)[child]"
+                                                        }
+                                                    ]
+                                                }
                                             },
                                             {
-                                                "type": "or",
-                                                "el": [
-                                                    {
-                                                        "type": "mixin",
-                                                        "el": "mixin.is_adult[child]"
-                                                    },
-                                                    {
-                                                        "type": "value",
-                                                        "el": "item.sword_kokiri"
-                                                    },
-                                                    {
-                                                        "type": "value",
-                                                        "el": "item.stick"
-                                                    }
-                                                ]
+                                                "type": "at",
+                                                "node": "region.deku_tree_boss_room[adult]",
+                                                "el": {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "mixin",
+                                                            "el": "mixin.has_shield[adult]"
+                                                        },
+                                                        {
+                                                            "type": "mixin",
+                                                            "el": "function.can_use(item.hammer)[adult]"
+                                                        }
+                                                    ]
+                                                }
                                             }
                                         ]
                                     },
                                     {
-                                        "type": "mixin",
-                                        "el": "mixin.is_adult[child]"
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "mixin",
+                                                "el": "mixin.is_adult[child]"
+                                            },
+                                            {
+                                                "type": "value",
+                                                "el": "item.sword_kokiri"
+                                            },
+                                            {
+                                                "type": "value",
+                                                "el": "item.stick"
+                                            }
+                                        ]
                                     }
                                 ]
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "mixin.is_adult[child]"
                             }
                         ]
                     }
@@ -6597,164 +6458,151 @@
                 "type": "and",
                 "el": [
                     {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "filter.era",
-                            "value": "child"
-                        }
-                    },
-                    {
-                        "type": "and",
+                        "type": "or",
                         "el": [
                             {
-                                "type": "or",
-                                "el": [
-                                    {
-                                        "type": "value",
-                                        "el": "item.nut"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.slingshot)[adult]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.has_bombchus[adult]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.hookshot)[adult]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.bow)[adult]"
-                                    },
-                                    {
-                                        "type": "mixin",
-                                        "el": "function.can_use(item.boomerang)[adult]"
-                                    }
-                                ]
+                                "type": "value",
+                                "el": "item.nut"
                             },
                             {
-                                "type": "or",
+                                "type": "mixin",
+                                "el": "function.can_use(item.slingshot)[adult]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "mixin.has_bombchus[adult]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.hookshot)[adult]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.bow)[adult]"
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "function.can_use(item.boomerang)[adult]"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "or",
+                        "el": [
+                            {
+                                "type": "and",
                                 "el": [
                                     {
-                                        "type": "and",
+                                        "type": "or",
                                         "el": [
                                             {
-                                                "type": "or",
+                                                "type": "and",
                                                 "el": [
                                                     {
-                                                        "type": "and",
-                                                        "el": [
-                                                            {
-                                                                "type": "not",
-                                                                "el": {
-                                                                    "type": "and",
-                                                                    "el": [
-                                                                        {
-                                                                            "type": "state",
-                                                                            "el": "filter.era_apply",
-                                                                            "value": "force",
-                                                                            "category": "filter"
-                                                                        },
-                                                                        {
-                                                                            "type": "state",
-                                                                            "el": "filter.era",
-                                                                            "value": "adult",
-                                                                            "category": "filter"
-                                                                        }
-                                                                    ]
+                                                        "type": "not",
+                                                        "el": {
+                                                            "type": "and",
+                                                            "el": [
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "filter.era_apply",
+                                                                    "value": "force",
+                                                                    "category": "filter"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "filter.era",
+                                                                    "value": "adult",
+                                                                    "category": "filter"
                                                                 }
-                                                            },
-                                                            {
-                                                                "type": "at",
-                                                                "node": "region.deku_tree_boss_room[child]",
-                                                                "el": {
-                                                                    "type": "or",
-                                                                    "el": [
-                                                                        {
-                                                                            "type": "mixin",
-                                                                            "el": "mixin.has_shield[child]"
-                                                                        },
-                                                                        {
-                                                                            "type": "mixin",
-                                                                            "el": "function.can_use(item.hammer)[child]"
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            }
-                                                        ]
+                                                            ]
+                                                        }
                                                     },
                                                     {
-                                                        "type": "and",
-                                                        "el": [
-                                                            {
-                                                                "type": "not",
-                                                                "el": {
-                                                                    "type": "and",
-                                                                    "el": [
-                                                                        {
-                                                                            "type": "state",
-                                                                            "el": "filter.era_apply",
-                                                                            "value": "force",
-                                                                            "category": "filter"
-                                                                        },
-                                                                        {
-                                                                            "type": "state",
-                                                                            "el": "filter.era",
-                                                                            "value": "child",
-                                                                            "category": "filter"
-                                                                        }
-                                                                    ]
+                                                        "type": "at",
+                                                        "node": "region.deku_tree_boss_room[child]",
+                                                        "el": {
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "mixin",
+                                                                    "el": "mixin.has_shield[child]"
+                                                                },
+                                                                {
+                                                                    "type": "mixin",
+                                                                    "el": "function.can_use(item.hammer)[child]"
                                                                 }
-                                                            },
-                                                            {
-                                                                "type": "at",
-                                                                "node": "region.deku_tree_boss_room[adult]",
-                                                                "el": {
-                                                                    "type": "or",
-                                                                    "el": [
-                                                                        {
-                                                                            "type": "mixin",
-                                                                            "el": "mixin.has_shield[adult]"
-                                                                        },
-                                                                        {
-                                                                            "type": "mixin",
-                                                                            "el": "function.can_use(item.hammer)[adult]"
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            }
-                                                        ]
+                                                            ]
+                                                        }
                                                     }
                                                 ]
                                             },
                                             {
-                                                "type": "or",
+                                                "type": "and",
                                                 "el": [
                                                     {
-                                                        "type": "mixin",
-                                                        "el": "mixin.is_adult[adult]"
+                                                        "type": "not",
+                                                        "el": {
+                                                            "type": "and",
+                                                            "el": [
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "filter.era_apply",
+                                                                    "value": "force",
+                                                                    "category": "filter"
+                                                                },
+                                                                {
+                                                                    "type": "state",
+                                                                    "el": "filter.era",
+                                                                    "value": "child",
+                                                                    "category": "filter"
+                                                                }
+                                                            ]
+                                                        }
                                                     },
                                                     {
-                                                        "type": "value",
-                                                        "el": "item.sword_kokiri"
-                                                    },
-                                                    {
-                                                        "type": "value",
-                                                        "el": "item.stick"
+                                                        "type": "at",
+                                                        "node": "region.deku_tree_boss_room[adult]",
+                                                        "el": {
+                                                            "type": "or",
+                                                            "el": [
+                                                                {
+                                                                    "type": "mixin",
+                                                                    "el": "mixin.has_shield[adult]"
+                                                                },
+                                                                {
+                                                                    "type": "mixin",
+                                                                    "el": "function.can_use(item.hammer)[adult]"
+                                                                }
+                                                            ]
+                                                        }
                                                     }
                                                 ]
                                             }
                                         ]
                                     },
                                     {
-                                        "type": "mixin",
-                                        "el": "mixin.is_adult[adult]"
+                                        "type": "or",
+                                        "el": [
+                                            {
+                                                "type": "mixin",
+                                                "el": "mixin.is_adult[adult]"
+                                            },
+                                            {
+                                                "type": "value",
+                                                "el": "item.sword_kokiri"
+                                            },
+                                            {
+                                                "type": "value",
+                                                "el": "item.stick"
+                                            }
+                                        ]
                                     }
                                 ]
+                            },
+                            {
+                                "type": "mixin",
+                                "el": "mixin.is_adult[adult]"
                             }
                         ]
                     }
@@ -25095,40 +24943,27 @@
                 ]
             },
             "event.showed_mido_sword_&_shield": {
-                "type": "and",
+                "type": "or",
                 "el": [
                     {
-                        "type": "not",
-                        "el": {
-                            "type": "state",
-                            "el": "filter.era",
-                            "value": "adult"
-                        }
+                        "type": "state",
+                        "el": "option.doors_open_forest",
+                        "value": "doors_open_forest_open"
                     },
                     {
-                        "type": "or",
+                        "type": "and",
                         "el": [
                             {
-                                "type": "state",
-                                "el": "option.doors_open_forest",
-                                "value": "doors_open_forest_open"
+                                "type": "mixin",
+                                "el": "mixin.is_child[child]"
                             },
                             {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "mixin",
-                                        "el": "mixin.is_child[child]"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.sword_kokiri"
-                                    },
-                                    {
-                                        "type": "value",
-                                        "el": "item.shield_kokiri"
-                                    }
-                                ]
+                                "type": "value",
+                                "el": "item.sword_kokiri"
+                            },
+                            {
+                                "type": "value",
+                                "el": "item.shield_kokiri"
                             }
                         ]
                     }
