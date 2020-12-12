@@ -4544,70 +4544,20 @@
                         "type": "or",
                         "el": [
                             {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "not",
-                                        "el": {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "state",
-                                                    "el": "filter.era_apply",
-                                                    "value": "force",
-                                                    "category": "filter"
-                                                },
-                                                {
-                                                    "type": "state",
-                                                    "el": "filter.era",
-                                                    "value": "adult",
-                                                    "category": "filter"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "type": "at",
-                                        "node": "region.deku_tree_lobby[child]",
-                                        "el": {
-                                            "type": "mixin",
-                                            "el": "function.has_fire_source_with_torch(undefined)[child]"
-                                        }
-                                    }
-                                ]
+                                "type": "at",
+                                "node": "region.deku_tree_lobby[child]",
+                                "el": {
+                                    "type": "mixin",
+                                    "el": "function.has_fire_source_with_torch(undefined)[child]"
+                                }
                             },
                             {
-                                "type": "and",
-                                "el": [
-                                    {
-                                        "type": "not",
-                                        "el": {
-                                            "type": "and",
-                                            "el": [
-                                                {
-                                                    "type": "state",
-                                                    "el": "filter.era_apply",
-                                                    "value": "force",
-                                                    "category": "filter"
-                                                },
-                                                {
-                                                    "type": "state",
-                                                    "el": "filter.era",
-                                                    "value": "child",
-                                                    "category": "filter"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "type": "at",
-                                        "node": "region.deku_tree_lobby[adult]",
-                                        "el": {
-                                            "type": "mixin",
-                                            "el": "function.has_fire_source_with_torch(undefined)[adult]"
-                                        }
-                                    }
-                                ]
+                                "type": "at",
+                                "node": "region.deku_tree_lobby[adult]",
+                                "el": {
+                                    "type": "mixin",
+                                    "el": "function.has_fire_source_with_torch(undefined)[adult]"
+                                }
                             }
                         ]
                     },
@@ -6270,88 +6220,38 @@
                                         "type": "or",
                                         "el": [
                                             {
-                                                "type": "and",
-                                                "el": [
-                                                    {
-                                                        "type": "not",
-                                                        "el": {
-                                                            "type": "and",
-                                                            "el": [
-                                                                {
-                                                                    "type": "state",
-                                                                    "el": "filter.era_apply",
-                                                                    "value": "force",
-                                                                    "category": "filter"
-                                                                },
-                                                                {
-                                                                    "type": "state",
-                                                                    "el": "filter.era",
-                                                                    "value": "adult",
-                                                                    "category": "filter"
-                                                                }
-                                                            ]
+                                                "type": "at",
+                                                "node": "region.deku_tree_boss_room[child]",
+                                                "el": {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "mixin",
+                                                            "el": "mixin.has_shield[child]"
+                                                        },
+                                                        {
+                                                            "type": "mixin",
+                                                            "el": "function.can_use(item.hammer)[child]"
                                                         }
-                                                    },
-                                                    {
-                                                        "type": "at",
-                                                        "node": "region.deku_tree_boss_room[child]",
-                                                        "el": {
-                                                            "type": "or",
-                                                            "el": [
-                                                                {
-                                                                    "type": "mixin",
-                                                                    "el": "mixin.has_shield[child]"
-                                                                },
-                                                                {
-                                                                    "type": "mixin",
-                                                                    "el": "function.can_use(item.hammer)[child]"
-                                                                }
-                                                            ]
-                                                        }
-                                                    }
-                                                ]
+                                                    ]
+                                                }
                                             },
                                             {
-                                                "type": "and",
-                                                "el": [
-                                                    {
-                                                        "type": "not",
-                                                        "el": {
-                                                            "type": "and",
-                                                            "el": [
-                                                                {
-                                                                    "type": "state",
-                                                                    "el": "filter.era_apply",
-                                                                    "value": "force",
-                                                                    "category": "filter"
-                                                                },
-                                                                {
-                                                                    "type": "state",
-                                                                    "el": "filter.era",
-                                                                    "value": "child",
-                                                                    "category": "filter"
-                                                                }
-                                                            ]
+                                                "type": "at",
+                                                "node": "region.deku_tree_boss_room[adult]",
+                                                "el": {
+                                                    "type": "or",
+                                                    "el": [
+                                                        {
+                                                            "type": "mixin",
+                                                            "el": "mixin.has_shield[adult]"
+                                                        },
+                                                        {
+                                                            "type": "mixin",
+                                                            "el": "function.can_use(item.hammer)[adult]"
                                                         }
-                                                    },
-                                                    {
-                                                        "type": "at",
-                                                        "node": "region.deku_tree_boss_room[adult]",
-                                                        "el": {
-                                                            "type": "or",
-                                                            "el": [
-                                                                {
-                                                                    "type": "mixin",
-                                                                    "el": "mixin.has_shield[adult]"
-                                                                },
-                                                                {
-                                                                    "type": "mixin",
-                                                                    "el": "function.can_use(item.hammer)[adult]"
-                                                                }
-                                                            ]
-                                                        }
-                                                    }
-                                                ]
+                                                    ]
+                                                }
                                             }
                                         ]
                                     },
