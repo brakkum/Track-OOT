@@ -4,6 +4,15 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.19
+
+### BUGFIXES
+
+- fixed keys incorrectly shown in dungeonstate if they should be actually invisible
+- added new layout `Essential Items with Map (key/reward)`
+
+---
+
 ## VERSION 2.0.18
 
 ### BUGFIXES

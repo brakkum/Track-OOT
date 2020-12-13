@@ -62,11 +62,7 @@ const TPL = new Template(`
             width: 40px;
             height: 40px;
         }
-        div.placeholder.inactive,
-        div.item-row.inactive,
-        ootrt-item.inactive,
-        ootrt-dungeonreward.inactive,
-        ootrt-dungeontype.inactive {
+        [type].inactive {
             display: none;
         }
     </style>

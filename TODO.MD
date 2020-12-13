@@ -27,18 +27,63 @@
 
 ---
 
-### TODO BEFORE GRAPH LOGIC RELEASE
-
-- verify all logic of location availability glitched logic (major)
-- completed()
-
-
 ### TODO FOR OVERWORLD ENTRANCES
 
 - create entrance aliases so the association wont break on return paths
     - blocks interior association
     - blocks overworld association(should be fixed with overworld gateways)
     
+---
+
+### DUNGEONSTATE
+
+change:
+
+```json
+{
+    "type": "panel",
+    "name": "dungeon-status",
+    "options": {
+        "itemsize": 40,
+        "orientation": "column",
+        "active": [
+            "reward",
+            "key"
+        ]
+    }
+}
+```
+
+to:
+
+```json
+{
+    "type": "panel",
+    "name": "dungeon-status",
+    "options": {
+        "itemsize": 40,
+        "orientation": "column",
+        "dungeons": {
+            "whitelist": false,
+            "values": [
+                "area/well",
+                "area/ice_cavern",
+                "area/gerudo_fortress",
+                "area/training_grounds"
+            ]
+        },
+        "states": {
+            "whitelist": true,
+            "values": [
+                "reward",
+                "key"
+            ]
+        },
+    }
+}
+```
+
+---
 
 ### TODO
 
