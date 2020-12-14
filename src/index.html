@@ -111,8 +111,8 @@
             window.onerror = printError;
 
             if(document.head.createShadowRoot || document.head.attachShadow) {
-                const max_files = 0;
-                const load_files = 0;
+                let max_files = 0;
+                let load_files = 0;
 
                 async function startApp() {
                     try {

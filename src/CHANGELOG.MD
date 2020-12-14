@@ -2,7 +2,13 @@
 
 Application:    Track-OOT
 
-***
+***## VERSION 2.0.20
+
+### BUGFIXES
+
+- fixed file storage initialization error while counting files
+
+---
 
 ## VERSION 2.0.19
 
