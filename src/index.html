@@ -137,15 +137,17 @@
                 function swStateRecieve(event) {
                     if (event.data.type == "state") {
                         switch(event.data.msg) {
-                            case "start": startApp(); break;
+                            case "start":
+                                startApp();
+                                break;
                             case "need_download":
                                 load_files = 0;
                                 max_files = event.data.value;
-                                updateLoadingMessage("installing, please wait... 0/" + max_files);
-                            break;
+                                updateLoadingMessage(`installing, please wait... 0/${max_files}`);
+                                break;
                             case "file_downloaded":
-                                updateLoadingMessage("updating " + (++load_files) + "/" + max_files);
-                            break;
+                                updateLoadingMessage(`installing, please wait... ${++load_files}/${max_files}`);
+                                break;
                         }
                     }
                 }

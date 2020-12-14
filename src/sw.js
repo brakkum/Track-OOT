@@ -6,7 +6,7 @@ const HEADER_CONFIG = new Headers({
     "Cache-Control": "no-cache"
 });
 
-let cmd = {
+const cmd = {
     start: install,
     check: checkUpdateAvailable,
     update: updateFiles,
@@ -45,10 +45,10 @@ async function getResponse(request) {
 
 async function getVersion(request) {
     var cache = await caches.open(CACHE_NAME);
-    let response = await cache.match(CACHE_INDEX);
-    let version = await cache.match(request.url);
+    const response = await cache.match(CACHE_INDEX);
+    const version = await cache.match(request.url);
     if (response != null) {
-        let ver = await version.json();
+        const ver = await version.json();
         ver.date = new Date(response.headers.get("Last-Modified"));
         return new Response(JSON.stringify(ver));
     }
@@ -56,8 +56,8 @@ async function getVersion(request) {
 }
 
 self.addEventListener('message', async event => {
-    let src = event.source;
-    let dta = event.data;
+    const src = event.source;
+    const dta = event.data;
     if (!src) return;
     if (cmd[dta] != null) {
         try {
@@ -80,7 +80,7 @@ self.addEventListener('message', async event => {
 });
 
 async function fetchFile(url, method = "GET") {
-    let r = await fetch(url, {
+    const r = await fetch(url, {
         method: method,
         headers: HEADER_CONFIG,
         mode: 'cors'
@@ -98,7 +98,7 @@ async function overwriteCachedFile(cache, request, file) {
 
 async function purgeCache(client) {
     caches.keys().then(function(names) {
-        for (let name of names) {
+        for (const name of names) {
             caches.delete(name);
         }
     });
@@ -109,16 +109,16 @@ async function purgeCache(client) {
 }
 
 async function install(client) {
-    let cache = await caches.open(CACHE_NAME);
-    let response = await cache.match(CACHE_INDEX);
+    const cache = await caches.open(CACHE_NAME);
+    const response = await cache.match(CACHE_INDEX);
     if (response != null) {
         client.postMessage({
             type: "state",
             msg: "start"
         });
     } else {
-        let filelist = await fetchFile(CACHE_INDEX);
-        let downloadlist = await filelist.clone().json();
+        const filelist = await fetchFile(CACHE_INDEX);
+        const downloadlist = await filelist.clone().json();
         client.postMessage({
             type: "state",
             msg: "need_download",
@@ -134,13 +134,13 @@ async function install(client) {
 }
 
 async function checkUpdateAvailable(client) {
-    let cache = await caches.open(CACHE_NAME);
-    let response = await cache.match(CACHE_INDEX);
+    const cache = await caches.open(CACHE_NAME);
+    const response = await cache.match(CACHE_INDEX);
     let message = "update_available";
     if (response != null) {
-        let loc = new Date(response.headers.get("Last-Modified"));
+        const loc = new Date(response.headers.get("Last-Modified"));
         if (loc > new Date(0)) {
-            let rem = new Date((await fetchFile(CACHE_INDEX, "HEAD")).headers.get("Last-Modified"));
+            const rem = new Date((await fetchFile(CACHE_INDEX, "HEAD")).headers.get("Last-Modified"));
             if (rem <= loc) {
                 message = "update_unavailable";
             }
@@ -157,25 +157,25 @@ async function removeUnusedFiles(client, cache, downloadlist) {
         type: "state",
         msg: "cleaning"
     });
-    let downloaded = downloadlist.map(e =>  (new Request(e)).url);
-    let filelist = (await cache.keys()).map(e => e.url);
-    let removelist = diff(filelist, downloaded);
-    let w = [];
-    for (let i in removelist) {
+    const downloaded = downloadlist.map(e =>  (new Request(e)).url);
+    const filelist = (await cache.keys()).map(e => e.url);
+    const removelist = diff(filelist, downloaded);
+    const w = [];
+    for (const i in removelist) {
         w.push(await cache.delete(removelist[i]));
     }
     await Promise.all(w);
 }
 
 async function updateFiles(client) {
-    let cache = await caches.open(CACHE_NAME);
-    let filelist = await fetchFile(CACHE_INDEX);
+    const cache = await caches.open(CACHE_NAME);
+    const filelist = await fetchFile(CACHE_INDEX);
     client.postMessage({
         type: "state",
         msg: "check_update"
     });
-    let allfileslist = await filelist.clone().json();
-    let downloadlist = await checkUpdateNeeded(cache, allfileslist);
+    const allfileslist = await filelist.clone().json();
+    const downloadlist = await checkUpdateNeeded(cache, allfileslist);
     client.postMessage({
         type: "state",
         msg: "need_download",
@@ -191,13 +191,13 @@ async function updateFiles(client) {
 }
 
 async function updateFilesForced(client) {
-    let cache = await caches.open(CACHE_NAME);
-    let filelist = await fetchFile(CACHE_INDEX);
+    const cache = await caches.open(CACHE_NAME);
+    const filelist = await fetchFile(CACHE_INDEX);
     client.postMessage({
         type: "state",
         msg: "check_update"
     });
-    let downloadlist = await filelist.clone().json();
+    const downloadlist = await filelist.clone().json();
     client.postMessage({
         type: "state",
         msg: "need_download",
@@ -213,7 +213,7 @@ async function updateFilesForced(client) {
 }
 
 async function checkUpdateNeeded(cache, filelist) {
-    let r = [], p = [];
+    const r = [], p = [];
     filelist.forEach(element => {
         p.push(addFileIfNeeded(cache, element, r));
     });
@@ -228,10 +228,10 @@ async function addFileIfNeeded(cache, element, arr) {
 }
 
 async function checkFile(cache, url) {
-    let response = await cache.match(url);
+    const response = await cache.match(url);
     if (response != null) {
-        let local = new Date(response.headers.get("Last-Modified"));
-        let remote = new Date((await fetchFile(url, "HEAD")).headers.get("Last-Modified"));
+        const local = new Date(response.headers.get("Last-Modified"));
+        const remote = new Date((await fetchFile(url, "HEAD")).headers.get("Last-Modified"));
         return remote > local;
     } else {
         return true;
@@ -239,8 +239,8 @@ async function checkFile(cache, url) {
 }
 
 async function updateFileList(client, cache, filelist) {
-    let r = [];
-    let files = {};
+    const r = [];
+    const files = {};
     filelist.forEach(element => {
         r.push(downloadFile(element).then(file => {
             files[element] = file;
@@ -251,8 +251,8 @@ async function updateFileList(client, cache, filelist) {
         }));
     });
     await Promise.all(r);
-    let w = [];
-    for (let i in files) {
+    const w = [];
+    for (const i in files) {
         w.push(overwriteCachedFile(cache, i, files[i]));
     }
     await Promise.all(w);
@@ -264,7 +264,7 @@ async function downloadFile(url, tries = 3) {
         return await fetchFile(url);
     } catch(err) {
         console.error(err);
-        return await downloadFile(url, tries-1);
+        return await downloadFile(url, tries - 1);
     }
 }
 
