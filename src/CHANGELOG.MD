@@ -8,7 +8,7 @@ Application:    Track-OOT
 
 ### BUGFIXES
 
-- fixed file storage initialization error while counting files
+- fixed file counting error during file storage initialization
 
 ---
 
