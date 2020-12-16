@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.21
+
+### BUGFIXES
+
+- fixed item keys initialization max number to use maximum of both instead of vanilla
+
+---
+
 ## VERSION 2.0.20
 
 ### BUGFIXES

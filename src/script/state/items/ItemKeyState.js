@@ -40,10 +40,20 @@ function dungeonTypeUpdate(event) {
     }
 }
 
+function getMaxValue(props, type = "n") {
+    if (type == "v") {
+        return props.max;
+    } else if (type == "mq") {
+        return props.maxmq;
+    } else {
+        return Math.max(props.maxmq, props.max);
+    }
+}
+
 export default class ItemKeyState extends AbstractItemState {
 
     constructor(ref, props) {
-        super(ref, props, props.max, 0);
+        super(ref, props, getMaxValue(props), 0);
         if (props["maxmq"] != null && props["related_dungeon"] != null) {
             this.type = StateStorage.readExtra("dungeontype", props.related_dungeon, "n");
         } else {
@@ -68,13 +78,7 @@ export default class ItemKeyState extends AbstractItemState {
         TYPE.set(this, value);
         if (type != value) {
             const props = this.props;
-            if (value == "v") {
-                this.max = props.max;
-            } else if (value == "mq") {
-                this.max = props.maxmq;
-            } else {
-                this.max = Math.max(props.maxmq, props.max);
-            }
+            this.max = getMaxValue(props, value);
             const event = new Event("type");
             event.data = value;
             this.dispatchEvent(event);
