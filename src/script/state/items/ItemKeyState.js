@@ -7,11 +7,17 @@ const TYPE = new WeakMap();
 
 function stateLoaded(event) {
     const ref = this.ref;
+    const props = this.props;
     // savesatate
     this.value = parseInt(event.data.state[ref]) || 0;
     // type
-    if (props.hasOwnProperty("maxmq") && props.hasOwnProperty("related_dungeon")) {
-        this.type = event.data.extra.dungeontype?.[props.related_dungeon] ?? "n";
+    if (props["maxmq"] != null && props.hasOwnProperty["related_dungeon"] != null) {
+        const types = event.data.extra.dungeontype;
+        if (types != null) {
+            this.type = types[props.related_dungeon];
+        } else {
+            this.type = "n";
+        }
     }
 }
 
@@ -26,7 +32,7 @@ function stateChanged(event) {
 
 function dungeonTypeUpdate(event) {
     const props = this.props;
-    if (props.hasOwnProperty("maxmq") && props.hasOwnProperty("related_dungeon")) {
+    if (props["maxmq"] != null && props["related_dungeon"] != null) {
         const change = event.data[props.related_dungeon];
         if (change != null) {
             this.type = StateStorage.readExtra("dungeontype", props.related_dungeon, "n");
@@ -34,11 +40,21 @@ function dungeonTypeUpdate(event) {
     }
 }
 
+function getMaxValue(props, type = "n") {
+    if (type == "v") {
+        return props.max;
+    } else if (type == "mq") {
+        return props.maxmq;
+    } else {
+        return Math.max(props.maxmq, props.max);
+    }
+}
+
 export default class ItemKeyState extends AbstractItemState {
 
     constructor(ref, props) {
-        super(ref, props, props.max, 0);
-        if (props.hasOwnProperty("maxmq") && props.hasOwnProperty("related_dungeon")) {
+        super(ref, props, getMaxValue(props), 0);
+        if (props["maxmq"] != null && props["related_dungeon"] != null) {
             this.type = StateStorage.readExtra("dungeontype", props.related_dungeon, "n");
         } else {
             this.type = "v";
@@ -62,13 +78,7 @@ export default class ItemKeyState extends AbstractItemState {
         TYPE.set(this, value);
         if (type != value) {
             const props = this.props;
-            if (value == "v") {
-                this.max = props.max;
-            } else if (value == "mq") {
-                this.max = props.maxmq;
-            } else {
-                this.max = Math.max(props.maxmq, props.max);
-            }
+            this.max = getMaxValue(props, value);
             const event = new Event("type");
             event.data = value;
             this.dispatchEvent(event);

@@ -2,16 +2,14 @@ import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import GlobalStyle from "/emcJS/util/GlobalStyle.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
+import Logger from "/emcJS/util/Logger.js";
 import "/emcJS/ui/overlay/ContextMenu.js";
 import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
-import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import ListLogic from "/script/util/logic/ListLogic.js";
 import Language from "/script/util/Language.js";
 import MarkerRegistry from "/script/util/world/MarkerRegistry.js";
 import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
-
-const SettingsStorage = new IDBStorage('settings');
 
 const TPL = new Template(`
 <div id="header" class="textarea">
@@ -121,7 +119,7 @@ const TPL_MNU_CTX = new Template(`
 
 function setAllListEntries(list, value = true) {
     if (!!list && Array.isArray(list)) {
-        for (let entry of list) {
+        for (const entry of list) {
             const category = entry.category;
             const id = entry.id;
             if (category == "location") {
@@ -250,15 +248,15 @@ export default class ListSubArea extends EventBusSubsetMixin(HTMLElement) {
                     const txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = Language.translate(newValue);
                 }
-            break;
+                break;
         }
     }
 
     refresh() {
-        if (!!this.ref) {
+        if (this.ref) {
             const data = FileData.get(`world/${this.ref}`);
             this.innerHTML = "";
-            if (!!data) {
+            if (data) {
                 // check access logic
                 const res = ListLogic.check(data.list.filter(ListLogic.filterUnusedChecks));
                 this.shadowRoot.getElementById("text").dataset.state = VALUE_STATES[res.value];

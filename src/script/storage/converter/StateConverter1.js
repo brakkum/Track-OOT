@@ -1010,14 +1010,14 @@ const translation = {
 };
 
 StateConverter.register(function(state) {
-    let res = {
+    const res = {
         data: {},
         autosave: state.autosave,
         timestamp: state.timestamp,
         name: state.name
     };
-    for (let i of Object.keys(state.data)) {
-        res.data[translation[i]||i] = state.data[i];
+    for (const i of Object.keys(state.data)) {
+        res.data[translation[i] || i] = state.data[i];
     }
     return res;
 });

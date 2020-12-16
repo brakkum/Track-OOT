@@ -92,10 +92,10 @@ class HTMLMultiplayerManagedUser extends HTMLElement {
             switch (name) {
                 case 'name':
                     this.shadowRoot.getElementById("name").innerHTML = newValue;
-                break;
+                    break;
                 case 'role':
                     this.shadowRoot.getElementById("icon").setAttribute("title", newValue);
-                break;
+                    break;
             }
         }
     }

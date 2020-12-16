@@ -78,7 +78,7 @@ const TAKEN_REWARDS = new Map();
 
 function stateChanged(event) {
     if (event.data.extra.dungeonreward != null) {
-        let value = event.data.extra.dungeonreward[this.ref];
+        const value = event.data.extra.dungeonreward[this.ref];
         if (value != null) {
             this.value = value;
         } else {
@@ -89,7 +89,7 @@ function stateChanged(event) {
     }
 }
 
-function dungeonRewardUpdate(event){
+function dungeonRewardUpdate(event) {
     let data;
     if (event.data != null) {
         data = event.data[this.ref];
@@ -194,9 +194,9 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
                         this.innerHTML = "";
                     } else if (oldValue === null || oldValue === undefined || oldValue === "") {
                         this.append(createOption("", "/images/items/unknown.png"));
-                        let items = FileData.get("items");
+                        const items = FileData.get("items");
                         for (let i = 0; i < REWARDS.length; ++i) {
-                            let name = REWARDS[i];
+                            const name = REWARDS[i];
                             let j = items[name].images;
                             if (Array.isArray(j)) {
                                 j = j[0];
@@ -206,15 +206,15 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
                         this.value = StateStorage.readExtra("dungeonreward", newValue, "");
                     }
                 }
-            break;
+                break;
             case 'value':
                 if (oldValue != newValue) {
-                    let oe = this.querySelector(`.active`);
-                    if (!!oe) {
+                    const oe = this.querySelector(`.active`);
+                    if (oe) {
                         oe.classList.remove("active");
                     }
-                    let ne = this.querySelector(`[value="${newValue}"]`);
-                    if (!!ne) {
+                    const ne = this.querySelector(`[value="${newValue}"]`);
+                    if (ne) {
                         ne.classList.add("active");
                     }
                     if (oldValue != "" && TAKEN_REWARDS.get(oldValue) == this) {
@@ -224,29 +224,8 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
                         TAKEN_REWARDS.set(newValue, this);
                     }
                 }
-            break;
-        }
-    }
-
-    next(ev) {
-        let oldValue = this.value;
-        let value = oldValue;
-        let idx = REWARDS.indexOf(oldValue);
-        while (true) {
-            if (++idx >= REWARDS.length) {
-                idx = 0;
-            }
-            value = REWARDS[idx];
-            if (!TAKEN_REWARDS.has(value) || value == oldValue) {
                 break;
-            }
         }
-        if (value != oldValue) {
-            this.value = value;
-            StateStorage.writeExtra("dungeonreward", this.ref, value);
-        }
-        ev.preventDefault();
-        return false;
     }
 
     revert(ev) {
@@ -263,7 +242,7 @@ class HTMLTrackerDungeonReward extends EventBusSubsetMixin(HTMLElement) {
 customElements.define('ootrt-dungeonreward', HTMLTrackerDungeonReward);
 
 function createOption(value, img) {
-    let opt = document.createElement('emc-option');
+    const opt = document.createElement('emc-option');
     opt.value = value;
     opt.style.backgroundImage = `url("${img}"`;
     return opt;

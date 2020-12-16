@@ -16,14 +16,14 @@ let use_custom_logic = false;
 
 // register event for (de-)activate entrances
 EventBus.register("randomizer_options", event => {
-    if (event.data.hasOwnProperty("option.logic_rules") && logic_rules != event.data["option.logic_rules"]) {
+    if (event.data["option.logic_rules"] != null && logic_rules != event.data["option.logic_rules"]) {
         logic_rules = event.data["option.logic_rules"];
         update();
     }
 });
 // register event for (de-)activate custom logic
 EventBus.register("settings", async event => {
-    if (event.data.hasOwnProperty('use_custom_logic')) {
+    if (event.data['use_custom_logic'] != null) {
         if (use_custom_logic != event.data.use_custom_logic) {
             use_custom_logic = event.data.use_custom_logic;
             LogicViewer.customLogic = !!use_custom_logic;
@@ -53,7 +53,7 @@ function augmentLogic(logic, customEdges, customLogic) {
 
 async function update() {
     if (logic_rules == "logic_rules_glitchless") {
-        const logic = FileData.get("logic", {edges:{},logic:{}});
+        const logic = FileData.get("logic", {edges:{}, logic:{}});
         if (use_custom_logic) {
             const customEdges = await GraphStorage.getAll();
             const customLogic = await LogicsStorage.getAll();
@@ -65,7 +65,7 @@ async function update() {
         }
         LogicViewer.glitched = false;
     } else {
-        const logic = FileData.get("logic_glitched", {edges:{},logic:{}});
+        const logic = FileData.get("logic_glitched", {edges:{}, logic:{}});
         if (use_custom_logic) {
             const customEdges = await GraphStorageGlitched.getAll();
             const customLogic = await LogicsStorageGlitched.getAll();

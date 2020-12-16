@@ -27,15 +27,14 @@ function setOptionsFromRuleset(name) {
     items = {};
     if (!ruleset) { return }
 
-    for (let i in ruleset) {
+    for (const i in ruleset) {
         let panel = null;
-        if(i !== "items")
-            panel = settings.shadowRoot.querySelector(`.panel[data-ref="${i}"]`);
-        for (let j in ruleset[i]) {
-            if(i === "items") {
+        if (i !== "items") panel = settings.shadowRoot.querySelector(`.panel[data-ref="${i}"]`);
+        for (const j in ruleset[i]) {
+            if (i === "items") {
                 items[j] = ruleset[i][j];
             } else {
-                let opt = panel.querySelector(`[data-ref="${j}"]`);
+                const opt = panel.querySelector(`[data-ref="${j}"]`);
                 if (opt != null) {
                     if (opt.type === "checkbox") {
                         opt.checked = ruleset[i][j];
@@ -53,10 +52,10 @@ export default class RomSettings {
     constructor() {
         settings.addEventListener('submit', function(event) {
             BusyIndicator.busy();
-            let settings = {};
-            let options = FileData.get("randomizer_options");
-            for (let i in event.data) {
-                for (let j in event.data[i]) {
+            const settings = {};
+            const options = FileData.get("randomizer_options");
+            for (const i in event.data) {
+                for (const j in event.data[i]) {
                     let v = event.data[i][j];
                     if (Array.isArray(v)) {
                         v = new Set(v);
@@ -68,8 +67,8 @@ export default class RomSettings {
                     }
                 }
             }
-            if(items !== null) {
-                for(let i in items) {
+            if (items !== null) {
+                for (const i in items) {
                     settings[i] = items[i];
                 }
             }
@@ -77,7 +76,7 @@ export default class RomSettings {
             EventBus.trigger("randomizer_options", settings);
             BusyIndicator.unbusy();
         });
-        let options = FileData.get("randomizer_options");
+        const options = FileData.get("randomizer_options");
         SettingsBuilder.build(settings, options);
         
         // add preset choice
@@ -91,8 +90,8 @@ export default class RomSettings {
         const selector = loadRulesetRow.getElementById("select-options-preset");
         selector.style.width = "20%";
         const allRulesets = Object.keys(FileData.get("rulesets"));
-        for (let value of allRulesets) {
-            let opt = document.createElement('option');
+        for (const value of allRulesets) {
+            const opt = document.createElement('option');
             opt.value = value;
             opt.innerHTML = value;
             selector.append(opt);
@@ -107,16 +106,16 @@ export default class RomSettings {
     }
 
     show() {
-        let options = FileData.get("randomizer_options");
-        let res = {};
-        for (let i in options) {
+        const options = FileData.get("randomizer_options");
+        const res = {};
+        for (const i in options) {
             res[i] = res[i] || {};
-            for (let j in options[i]) {
-                let opt = options[i][j];
+            for (const j in options[i]) {
+                const opt = options[i][j];
                 if (opt.type === "list") {
-                    let def = new Set(opt.default);
-                    let val = [];
-                    for (let el of opt.values) {
+                    const def = new Set(opt.default);
+                    const val = [];
+                    for (const el of opt.values) {
                         if (StateStorage.read(el, def.has(el))) {
                             val.push(el);
                         }

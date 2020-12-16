@@ -431,5 +431,42 @@
             "type": "panel",
             "name": "location-map"
         }]
+    },
+    "essential-map-key": {
+        "type": "hbox",
+        "items": [{
+            "type": "vbox",
+            "items": [{
+                "type": "hbox",
+                "items": [{
+                    "type": "panel",
+                    "name": "item-grid",
+                    "options": {
+                        "itemsize": 40,
+                        "grid": "essentials"
+                    }
+                },{
+                    "type": "panel",
+                    "name": "dungeon-status",
+                    "options": {
+                        "itemsize": 40,
+                        "orientation": "column",
+                        "active": [
+                            "reward",
+                            "key"
+                        ]
+                    }
+                }]
+            },{
+                "type": "hbox",
+                "items": [{
+                    "type": "panel",
+                    "name": "location-list"
+                }]
+            }]
+        },{
+            "type": "panel",
+            "name": "location-map"
+        }]
     }
 }

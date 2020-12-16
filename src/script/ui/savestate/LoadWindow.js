@@ -175,8 +175,8 @@ const Q_TAB = [
 
 async function fillStates(list) {
     list.innerHTML = "";
-    let states = await StateManager.getStates();
-    for (let state in states) {
+    const states = await StateManager.getStates();
+    for (const state in states) {
         list.append(createOption(state, states[state]));
     }
 }
@@ -186,7 +186,7 @@ export default class LoadWindow extends HTMLElement {
     constructor() {
         super();
         this.onkeydown = function(event) {
-            let key = event.which || event.keyCode;
+            const key = event.which || event.keyCode;
             if (key == 27) {
                 this.close();
             }
@@ -195,25 +195,25 @@ export default class LoadWindow extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
 
-        let cls = this.shadowRoot.getElementById('close');
+        const cls = this.shadowRoot.getElementById('close');
         cls.onclick = this.close.bind(this);
         this.shadowRoot.getElementById('focus_catcher_top').onfocus = this.focusLast.bind(this);
         this.shadowRoot.getElementById('focus_catcher_bottom').onfocus = this.focusFirst.bind(this);
         
-        let lst = this.shadowRoot.getElementById('statelist');
-        let snm = this.shadowRoot.getElementById('statename');
+        const lst = this.shadowRoot.getElementById('statelist');
+        const snm = this.shadowRoot.getElementById('statename');
         lst.addEventListener("change", function(event) {
             snm.value = event.newValue;
         });
         
-        let smt = this.shadowRoot.getElementById('submit');
-        smt.onclick = async () => {
-            let stateName = snm.value;
+        const smt = this.shadowRoot.getElementById('submit');
+        smt.onclick = async() => {
+            const stateName = snm.value;
             if (!snm.value) {
                 await Dialog.alert("No state selected", "Please select a state to load!");
                 return;
             }
-            if (!!StateStorage.isDirty()) {
+            if (StateStorage.isDirty()) {
                 if (!await Dialog.confirm("Warning, you have unsaved changes.", "Do you want to discard your changes and load the selected state?")) {
                     return;
                 }
@@ -223,7 +223,7 @@ export default class LoadWindow extends HTMLElement {
             this.dispatchEvent(new Event('submit'));
             this.close();
         };
-        let ccl = this.shadowRoot.getElementById('cancel');
+        const ccl = this.shadowRoot.getElementById('cancel');
         ccl.onclick = () => {
             this.dispatchEvent(new Event('cancel'));
             this.close();
@@ -231,8 +231,8 @@ export default class LoadWindow extends HTMLElement {
     }
 
     async show(activeState) {
-        let lst = this.shadowRoot.getElementById('statelist');
-        let snm = this.shadowRoot.getElementById('statename');
+        const lst = this.shadowRoot.getElementById('statelist');
+        const snm = this.shadowRoot.getElementById('statename');
         await fillStates(lst);
         if (activeState != null) {
             lst.value = activeState;
@@ -248,42 +248,42 @@ export default class LoadWindow extends HTMLElement {
     }
 
     initialFocus() {
-        let a = Array.from(this.querySelectorAll(Q_TAB));
+        const a = Array.from(this.querySelectorAll(Q_TAB));
         a.push(this.shadowRoot.getElementById('close'));
         a[0].focus();
     }
 
     focusFirst() {
-        let a = Array.from(this.querySelectorAll(Q_TAB));
+        const a = Array.from(this.querySelectorAll(Q_TAB));
         a.unshift(this.shadowRoot.getElementById('close'));
         a[0].focus();
     }
     
     focusLast() {
-        let a = Array.from(this.querySelectorAll(Q_TAB));
+        const a = Array.from(this.querySelectorAll(Q_TAB));
         a.unshift(this.shadowRoot.getElementById('close'));
-        a[a.length-1].focus();
+        a[a.length - 1].focus();
     }
 
 }
 
 function createOption(key, state) {
-    let opt = document.createElement('emc-option');
+    const opt = document.createElement('emc-option');
     opt.value = key;
     // autosave
-    if (!!state.autosave) {
-        let ato = document.createElement("span");
+    if (state.autosave) {
+        const ato = document.createElement("span");
         ato.className = "auto";
         ato.innerHTML = "[auto]";
         opt.append(ato);
     }
     // name
-    let nme = document.createElement("span");
+    const nme = document.createElement("span");
     nme.className = "name";
     nme.innerHTML = state.name;
     opt.append(nme);
     // date
-    let dte = document.createElement("span");
+    const dte = document.createElement("span");
     dte.className = "date";
     if (state.timestamp != null) {
         dte.innerHTML = DateUtil.convert(new Date(state.timestamp), "D.M.Y h:m:s");
@@ -292,10 +292,10 @@ function createOption(key, state) {
     }
     opt.append(dte);
     // version
-    let vrs = document.createElement("span");
+    const vrs = document.createElement("span");
     vrs.className = "version";
     if (state.version != null) {
-        vrs.innerHTML = `(v-${("00"+state.version).slice(-3)})`;
+        vrs.innerHTML = `(v-${("00" + state.version).slice(-3)})`;
     } else {
         vrs.innerHTML = "(v-000)";
     }

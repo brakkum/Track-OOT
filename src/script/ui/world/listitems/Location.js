@@ -128,8 +128,8 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.append(TPL.generate());
         STYLE.apply(this.shadowRoot);
         /* --- */
-        if (!!type) {
-            let el_type = this.shadowRoot.getElementById("badge-type");
+        if (type) {
+            const el_type = this.shadowRoot.getElementById("badge-type");
             el_type.src = `images/icons/${type}.svg`;
             type = `location_${type}`;
         } else {
@@ -220,13 +220,13 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             }
         });
         this.registerGlobal("statechange", event => {
-            if (event.data.hasOwnProperty(this.ref)) {
+            if (event.data[this.ref] != null) {
                 const value = !!event.data[this.ref].newValue;
                 this.checked = value;
             }
         });
         this.registerGlobal("logic", event => {
-            if (event.data.hasOwnProperty(this.access)) {
+            if (event.data[this.access] != null) {
                 const textEl = this.shadowRoot.getElementById("text");
                 if (!!this.access && !!event.data[this.access]) {
                     textEl.dataset.state = "available";
@@ -236,7 +236,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             }
         });
         this.registerGlobal("statechange_item_location", event => {
-            if (event.data.hasOwnProperty(this.ref)) {
+            if (event.data[this.ref] != null) {
                 this.item = event.data[this.ref].newValue;
             }
         });
@@ -317,12 +317,12 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
                     textEl.dataset.checked = StateStorage.read(newValue, false);
                     this.item = StateStorage.readExtra("item_location", newValue, false);
                 }
-            break;
+                break;
             case 'checked':
                 if (oldValue != newValue) {
                     textEl.dataset.checked = newValue;
                 }
-            break;
+                break;
             case 'access':
                 if (oldValue != newValue) {
                     if (!!newValue && !!Logic.getValue(newValue)) {
@@ -331,7 +331,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
                         textEl.dataset.state = "unavailable";
                     }
                 }
-            break;
+                break;
             case 'item':
                 if (oldValue != newValue) {
                     itemEl.innerHTML = "";
@@ -343,7 +343,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
                         itemEl.append(el_icon);
                     }
                 }
-            break;
+                break;
         }
     }
 
@@ -397,7 +397,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
 
     static createType(ref) {
         if (REG.has(ref)) {
-            let ListType = REG.get(ref);
+            const ListType = REG.get(ref);
             return new ListType();
         }
         return new ListLocation(ref);

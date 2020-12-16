@@ -4,11 +4,53 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.21
+
+### BUGFIXES
+
+- fixed item keys initialization max number to use maximum of both instead of vanilla
+
+---
+
+## VERSION 2.0.20
+
+### BUGFIXES
+
+- fixed file counting error during file storage initialization
+
+---
+
+## VERSION 2.0.19
+
+### BUGFIXES
+
+- fixed keys incorrectly shown in dungeonstate if they should be actually invisible
+- added new layout `Essential Items with Map (key/reward)`
+
+---
+
+## VERSION 2.0.18
+
+### BUGFIXES
+
+- fixed issues with `adult era filter` and `Closed Forest`
+
+---
+
+## VERSION 2.0.17
+
+### BUGFIXES
+
+- fixed keys not wanting to load states
+
+---
+
 ## VERSION 2.0.16
 
 ### BUGFIXES
 
 - fixed spoiler parsers not binding exits properly
+- fixed logic caller not using dungeonstate reference correctly
 
 ---
 

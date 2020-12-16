@@ -1,7 +1,6 @@
 
 import Template from "/emcJS/util/Template.js";
 import SettingsWindow from "/emcJS/ui/overlay/SettingsWindow.js";
-import EventBus from "/emcJS/util/events/EventBus.js";
 import FileData from "/emcJS/storage/FileData.js";
 import FileSystem from "/emcJS/util/FileSystem.js";
 import "/emcJS/ui/Paging.js";
@@ -35,10 +34,10 @@ export default class SpoilerLogSettings {
     constructor() {
         settings.addEventListener('submit', function(event) {
             BusyIndicator.busy();
-            let options = FileData.get("spoiler_options");
-            let settingsData = {};
-            for (let i in event.data) {
-                for (let j in event.data[i]) {
+            const options = FileData.get("spoiler_options");
+            const settingsData = {};
+            for (const i in event.data) {
+                for (const j in event.data[i]) {
                     let v = event.data[i][j];
                     if (Array.isArray(v)) {
                         v = new Set(v);
@@ -59,7 +58,7 @@ export default class SpoilerLogSettings {
             }
             BusyIndicator.unbusy();
         });
-        let options = FileData.get("spoiler_options");
+        const options = FileData.get("spoiler_options");
         SettingsBuilder.build(settings, options);
         
         // add preset choice
@@ -79,16 +78,16 @@ export default class SpoilerLogSettings {
     }
 
     show() {
-        let options = FileData.get("spoiler_options");
-        let res = {};
-        for (let i in options) {
+        const options = FileData.get("spoiler_options");
+        const res = {};
+        for (const i in options) {
             res[i] = res[i] || {};
-            for (let j in options[i]) {
-                let opt = options[i][j];
+            for (const j in options[i]) {
+                const opt = options[i][j];
                 if (opt.type === "list") {
-                    let def = new Set(opt.default);
-                    let val = [];
-                    for (let el of opt.values) {
+                    const def = new Set(opt.default);
+                    const val = [];
+                    for (const el of opt.values) {
                         if (StateStorage.readExtra("parseSpoiler", el, def.has(el))) {
                             val.push(el);
                         }

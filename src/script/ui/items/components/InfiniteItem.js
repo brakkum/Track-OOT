@@ -127,6 +127,8 @@ class InfiniteItem extends HTMLElement {
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
+            const state = ItemStates.get(this.ref);
+            const data = state.props;
             switch (name) {
                 case 'ref':
                     // state
@@ -134,9 +136,7 @@ class InfiniteItem extends HTMLElement {
                         const oldState = ItemStates.get(oldValue);
                         oldState.removeEventListener("value", FN_VALUE.get(this));
                     }
-                    const state = ItemStates.get(this.ref);
                     state.addEventListener("value", FN_VALUE.get(this));
-                    const data = state.props;
                     this.value = state.value;
                     // settings
                     if (data.halign != null) {
@@ -146,16 +146,16 @@ class InfiniteItem extends HTMLElement {
                         this.valign = data.valign;
                     }
                     this.style.backgroundImage = `url("${data.images}")`;
-                break;
+                    break;
                 case 'value':
                     this.shadowRoot.getElementById("value").innerHTML = newValue;
-                break;
+                    break;
                 case 'halign':
                     this.shadowRoot.getElementById("value").style.justifyContent = getAlign(newValue);
-                break;
+                    break;
                 case 'valign':
                     this.shadowRoot.getElementById("value").style.alignItems = getAlign(newValue);
-                break;
+                    break;
             }
         }
     }

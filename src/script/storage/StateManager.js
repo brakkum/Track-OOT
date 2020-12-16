@@ -6,7 +6,7 @@ const STORAGE = new IDBStorage("savestates");
 class StateManager {
 
     async rename(current, target) {
-        let save = await STORAGE.get(current);
+        const save = await STORAGE.get(current);
         save.autosave = false;
         await STORAGE.delete(current);
         await STORAGE.set(target, save);
@@ -37,6 +37,7 @@ class StateManager {
     async export(name) {
         return await STORAGE.get(name, {});
     }
+
 }
 
 export default new StateManager;

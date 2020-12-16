@@ -62,7 +62,7 @@ const TPL = new Template(`
 `);
 
 function buttonClick(event) {
-    switch(event.target.id) {
+    switch (event.target.id) {
         case "X":
             if (this.value.length) {
                 this.value = this.value.slice(0, -1);

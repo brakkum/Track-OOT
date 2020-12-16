@@ -1,7 +1,6 @@
 "use strict";
 
 !function() {
-
     const PARSER = new DOMParser();
 
     async function getFile(url) {
@@ -106,5 +105,4 @@
     }
 
     window.$import = Object.freeze(new Importer);
-
 }();

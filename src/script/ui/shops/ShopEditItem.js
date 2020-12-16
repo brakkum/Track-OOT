@@ -95,26 +95,26 @@ export default class HTMLTrackerShopEditItem extends HTMLElement {
                     if (!!this.checked && this.checked == "true") {
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/sold_out.png")`;
                     } else {
-                        let img = FileData.get("shop_items")[this.ref].image;
+                        const img = FileData.get("shop_items")[this.ref].image;
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("${img}")`;
                     }
                 }
-            break;
+                break;
             case 'price':
                 if (oldValue != newValue) {
                     this.shadowRoot.getElementById("price").innerHTML = newValue;
                 }
-            break;
+                break;
             case 'checked':
                 if (oldValue != newValue) {
                     if (!!this.checked && this.checked == "true") {
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("/images/items/sold_out.png")`;
                     } else {
-                        let img = FileData.get("shop_items")[this.ref].image;
+                        const img = FileData.get("shop_items")[this.ref].image;
                         this.shadowRoot.getElementById("image").style.backgroundImage = `url("${img}")`;
                     }
                 }
-            break;
+                break;
         }
     }
 

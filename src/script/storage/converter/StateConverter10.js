@@ -5,7 +5,7 @@
 import StateConverter from "../StateConverter.js";
 
 StateConverter.register(function(state) {
-    let res = {
+    const res = {
         data: state.data,
         extra: {},
         notes: state.notes,
@@ -15,7 +15,7 @@ StateConverter.register(function(state) {
     };
     const exits = {};
     if (state.extra.exits != null) {
-        for (let i of Object.keys(state.extra.exits)) {
+        for (const i of Object.keys(state.extra.exits)) {
             exits[translation[i] || i] = translation[state.extra.exits[i]] || state.extra.exits[i];
         }
     }
@@ -25,5 +25,5 @@ StateConverter.register(function(state) {
 
 const translation = {
     "region.shadow_temple_entrence -> region.shadow_temple_gateway": "region.shadow_temple_entrance -> region.shadow_temple_gateway",
-    "region.shadow_temple_gateway -> region.shadow_temple_entrence": "region.shadow_temple_gateway -> region.shadow_temple_entrance",
+    "region.shadow_temple_gateway -> region.shadow_temple_entrence": "region.shadow_temple_gateway -> region.shadow_temple_entrance"
 };

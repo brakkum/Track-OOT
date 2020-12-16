@@ -56,10 +56,10 @@ slot {
 `);
 
 function stateChanged(event) {
-    if (!!this.ref) {
+    if (this.ref) {
         const area = FileData.get(`world/${this.ref}/lists`);
         let value = "v";
-        if (area.hasOwnProperty("mq")) {
+        if (area["mq"] != null) {
             value = "n";
         }
         if (event.data.extra.dungeontype != null) {
@@ -118,7 +118,7 @@ class HTMLTrackerDungeonType extends EventBusSubsetMixin(HTMLElement) {
     }
 
     get readonly() {
-        let val = this.getAttribute('readonly');
+        const val = this.getAttribute('readonly');
         return !!val && val != "false";
     }
 
@@ -134,11 +134,11 @@ class HTMLTrackerDungeonType extends EventBusSubsetMixin(HTMLElement) {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    if (!!newValue) {
+                    if (newValue) {
                         const area = FileData.get(`world/${this.ref}/lists`);
                         let value = "v";
                         let readonly = true;
-                        if (area.hasOwnProperty("mq")) {
+                        if (area["mq"] != null) {
                             value = StateStorage.readExtra("dungeontype", newValue, "n");
                             readonly = false;
                         }
@@ -149,19 +149,19 @@ class HTMLTrackerDungeonType extends EventBusSubsetMixin(HTMLElement) {
                         this.readonly = true;
                     }
                 }
-            break;
+                break;
             case 'value':
                 if (oldValue != newValue) {
-                    let oe = this.shadowRoot.querySelector(`.active`);
-                    if (!!oe) {
+                    const oe = this.shadowRoot.querySelector(`.active`);
+                    if (oe) {
                         oe.classList.remove("active");
                     }
-                    let ne = this.shadowRoot.querySelector(`[value="${newValue}"]`);
-                    if (!!ne) {
+                    const ne = this.shadowRoot.querySelector(`[value="${newValue}"]`);
+                    if (ne) {
                         ne.classList.add("active");
                     }
                 }
-            break;
+                break;
         }
     }
 

@@ -2,7 +2,6 @@ import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
 import Panel from "/emcJS/ui/layout/Panel.js";
-import FilterStorage from "/script/storage/FilterStorage.js";
 import Language from "/script/util/Language.js";
 import MarkerRegistry from "/script/util/world/MarkerRegistry.js";
 import "./mapmarker/Area.js";
@@ -226,7 +225,7 @@ let movePosY = 0;
 
 function mapMoveBegin(event) {
     if (event.button === 0) {
-        let target = event.target;
+        const target = event.target;
         if (typeof event.movementX == "undefined") {
             movePosX = event.x;
             movePosY = event.y;
@@ -242,7 +241,7 @@ function mapMoveBegin(event) {
 
 function mapMoveEnd(event) {
     if (event.button === 0) {
-        let target = event.target;
+        const target = event.target;
         target.classList.remove("grabbed");
         target.removeEventListener("mousemove", moveMap);
         target.removeEventListener("mouseup", mapMoveEnd);
@@ -252,10 +251,10 @@ function mapMoveEnd(event) {
 
 function moveMap(event) {
     if (event.button === 0) {
-        let target = event.target;
+        const target = event.target;
         if (target.id === "map") {
-            let vrtX = parseInt(target.style.getPropertyValue("--map-offset-x") || 0);
-            let vrtY = parseInt(target.style.getPropertyValue("--map-offset-y") || 0);
+            const vrtX = parseInt(target.style.getPropertyValue("--map-offset-x") || 0);
+            const vrtY = parseInt(target.style.getPropertyValue("--map-offset-y") || 0);
             let forceX = 0;
             let forceY = 0;
             if (typeof event.movementX == "undefined") {
@@ -275,38 +274,38 @@ function moveMap(event) {
 }
 
 function mapContainBoundaries(target, parent) {
-    let mapvp = parent.querySelector("#map-viewport");
+    const mapvp = parent.querySelector("#map-viewport");
 
-    let parW = parent.clientWidth;
-    let parH = parent.clientHeight;
+    const parW = parent.clientWidth;
+    const parH = parent.clientHeight;
 
-    let zoom = parseInt(target.style.getPropertyValue("--map-zoom") || 100) / 100;
+    const zoom = parseInt(target.style.getPropertyValue("--map-zoom") || 100) / 100;
 
     let vrtX = parseInt(target.style.getPropertyValue("--map-offset-x") || 0);
     let vrtY = parseInt(target.style.getPropertyValue("--map-offset-y") || 0);
-    let vrtW = target.clientWidth * zoom;
-    let vrtH = target.clientHeight * zoom;
+    const vrtW = target.clientWidth * zoom;
+    const vrtH = target.clientHeight * zoom;
 
     if (parW > vrtW) {
-        let dst = parW/2-vrtW/2;
+        const dst = parW / 2 - vrtW / 2;
         vrtX = Math.min(Math.max(-dst, vrtX), dst);
     } else {
-        let dst = -(parW/2-vrtW/2);
+        const dst = -(parW / 2 - vrtW / 2);
         vrtX = Math.min(Math.max(-dst, vrtX), dst);
     }
     if (parH > vrtH) {
-        let dst = parH/2-vrtH/2;
+        const dst = parH / 2 - vrtH / 2;
         vrtY = Math.min(Math.max(-dst, vrtY), dst);
     } else {
-        let dst = -(parH/2-vrtH/2);
+        const dst = -(parH / 2 - vrtH / 2);
         vrtY = Math.min(Math.max(-dst, vrtY), dst);
     }
 
     target.style.setProperty("--map-offset-x", vrtX);
     target.style.setProperty("--map-offset-y", vrtY);
 
-    let sW = 246 / vrtW * parW;
-    let sH = 138 / vrtH * parH;
+    const sW = 246 / vrtW * parW;
+    const sH = 138 / vrtH * parH;
     mapvp.style.width = sW + "px";
     mapvp.style.height = sH + "px";
     mapvp.style.transform = `translate(${-vrtX * 246 / vrtW}px, ${-vrtY * 138 / vrtH}px)`;
@@ -314,18 +313,18 @@ function mapContainBoundaries(target, parent) {
 
 function overviewSelect(event, map) {
     if (event.buttons === 1) {
-        let evX = event.layerX;
-        let evY = event.layerY;
-        let zoom = parseInt(map.style.getPropertyValue("--map-zoom") || 100) / 100;
-        let vrtW = map.clientWidth * zoom;
-        let vrtH = map.clientHeight * zoom;
+        const evX = event.layerX;
+        const evY = event.layerY;
+        const zoom = parseInt(map.style.getPropertyValue("--map-zoom") || 100) / 100;
+        const vrtW = map.clientWidth * zoom;
+        const vrtH = map.clientHeight * zoom;
         map.style.setProperty("--map-offset-x", -(evX - 123) * (vrtW / 246));
         map.style.setProperty("--map-offset-y", -(evY - 69) * (vrtH / 138));
         mapContainBoundaries(map, map.parentNode);
     }
     event.preventDefault();
     return false;
-};
+}
 
 class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
 
@@ -339,13 +338,13 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
                 value: this.mode
             });
         });*/
-        this.shadowRoot.getElementById('back').addEventListener("click", event => {
+        this.shadowRoot.getElementById('back').addEventListener("click", () => {
             this.ref = "overworld"
         });
         // map specifics
-        let map = this.shadowRoot.getElementById("map");
-        let mapslide = this.shadowRoot.getElementById("map-scale-slider");
-        let mapfixed = this.shadowRoot.getElementById("map-fixed");
+        const map = this.shadowRoot.getElementById("map");
+        const mapslide = this.shadowRoot.getElementById("map-scale-slider");
+        const mapfixed = this.shadowRoot.getElementById("map-fixed");
         this.addEventListener("wheel", function(event) {
             if (!mapfixed.checked) {
                 let zoom = parseInt(map.style.getPropertyValue("--map-zoom") || 100);
@@ -373,10 +372,10 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
             event.preventDefault();
             return false;
         });
-        window.addEventListener("resize", function(event) {
+        window.addEventListener("resize", function() {
             mapContainBoundaries(map, map.parentNode);
         });
-        let mapview = this.shadowRoot.getElementById("map-overview");
+        const mapview = this.shadowRoot.getElementById("map-overview");
         mapview.addEventListener("mousedown", function(event) {
             if (!mapfixed.checked) {
                 overviewSelect(event, map);
@@ -391,8 +390,8 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
             event.preventDefault();
             return false;
         });
-        let settings = this.shadowRoot.getElementById("map-settings");
-        let toggle = this.shadowRoot.getElementById("toggle-button");
+        const settings = this.shadowRoot.getElementById("map-settings");
+        const toggle = this.shadowRoot.getElementById("toggle-button");
         toggle.addEventListener("click", function(event) {
             if (settings.classList.contains("active")) {
                 settings.classList.remove("active");
@@ -413,7 +412,7 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
             this.mode = event.data.value;
             this.shadowRoot.getElementById('location-mode').value = this.mode;
         });
-        this.registerGlobal(["state", "settings", "randomizer_options", "filter"], event => {
+        this.registerGlobal(["state", "settings", "randomizer_options", "filter"], () => {
             if (this.ref == "overworld") {
                 this.refreshFilter();
             }
@@ -498,27 +497,24 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
 
     async refresh() {
         // TODO do not use specialized code. make generic
-        let dType = "v";//this.shadowRoot.getElementById("location-version").value;
+        const dType = "v";//this.shadowRoot.getElementById("location-version").value;
         this.innerHTML = "";
-        let data = FileData.get(`world/${this.ref}`);
-        if (!!data) {
+        const data = FileData.get(`world/${this.ref}`);
+        if (data) {
             // switch map/minimap background
-            let map = this.shadowRoot.getElementById('map');
+            const map = this.shadowRoot.getElementById('map');
             map.style.backgroundImage = `url("/images/maps/${data.background}")`;
             map.style.width = `${data.width}px`;
             map.style.height = `${data.height}px`;
-            let minimap = this.shadowRoot.getElementById('map-overview');
+            const minimap = this.shadowRoot.getElementById('map-overview');
             minimap.style.backgroundImage = `url("/images/maps/${data.background}")`;
             // fill map
             if (dType == "n") {
-                let data_v = data.lists.v;
-                let data_m = data.lists.mq;
-                let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
-                let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
+                //const data_v = data.lists.v;
+                //const data_m = data.lists.mq;
                 // TODO add dungeonType initialization choice
                 //btn_vanilla.className = VALUE_STATES[res_v.value];
                 //btn_masterquest.className = VALUE_STATES[res_m.value];
-
             } else {
                 data.lists[dType].forEach(record => {
                     if (this.ref == "overworld" && this.mode == "filter.gossipstones") {
@@ -527,9 +523,9 @@ class HTMLTrackerMap extends EventBusSubsetMixin(Panel) {
                             return;
                         }
                     }
-                    let loc = MarkerRegistry.get(`${record.category}/${record.id}`);
+                    const loc = MarkerRegistry.get(`${record.category}/${record.id}`);
                     if (!!loc && loc.visible()) {
-                        let el = loc.mapMarker;
+                        const el = loc.mapMarker;
                         if (this.ref == "overworld" && !!el.dataset.mode && el.dataset.mode != this.mode) {
                             // LEGACY
                             return;
@@ -550,8 +546,8 @@ Panel.registerReference("location-map", HTMLTrackerMap);
 customElements.define('ootrt-map', HTMLTrackerMap);
 
 function calculateTooltipPosition(posX, posY, mapW, mapH) {
-    let leftP = posX / mapW;
-    let topP = posY / mapH;
+    const leftP = posX / mapW;
+    const topP = posY / mapH;
     let tooltip = "";
     if (topP < 0.3) {
         tooltip = "bottom";

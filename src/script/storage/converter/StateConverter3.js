@@ -18,13 +18,13 @@ const REWARDS = [
 ];
 
 StateConverter.register(function(state) {
-    let res = {
+    const res = {
         data: {},
         autosave: state.autosave,
         timestamp: state.timestamp,
         name: state.name
     };
-    for (let i of Object.keys(state.data)) {
+    for (const i of Object.keys(state.data)) {
         if (i.startsWith("dungeonRewards.")) {
             res.data[i] = REWARDS[state.data[i]];
         } else {

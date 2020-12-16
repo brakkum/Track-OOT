@@ -34,19 +34,19 @@ export default class UpdateHandler extends HTMLElement {
             this.attachShadow({mode: 'open'});
             this.shadowRoot.append(TPL.generate());
 
-            let prog = this.shadowRoot.getElementById("update-progress");
-            let progtext = this.shadowRoot.getElementById("update-progress-text");
+            const prog = this.shadowRoot.getElementById("update-progress");
+            const progtext = this.shadowRoot.getElementById("update-progress-text");
 
-            let check = this.shadowRoot.getElementById("update-check");
-            let force = this.shadowRoot.getElementById("update-force");
-            let avail = this.shadowRoot.getElementById("update-available");
-            let unavail = this.shadowRoot.getElementById("update-unavailable");
-            let running = this.shadowRoot.getElementById("update-running");
-            let finished = this.shadowRoot.getElementById("update-finished");
+            const check = this.shadowRoot.getElementById("update-check");
+            const force = this.shadowRoot.getElementById("update-force");
+            const avail = this.shadowRoot.getElementById("update-available");
+            const unavail = this.shadowRoot.getElementById("update-unavailable");
+            const running = this.shadowRoot.getElementById("update-running");
+            const finished = this.shadowRoot.getElementById("update-finished");
 
             navigator.serviceWorker.addEventListener('message', (event) => {
                 if (event.data.type == "state") {
-                    switch(event.data.msg) {
+                    switch (event.data.msg) {
                         case "update_available":
                             check.style.display = "none";
                             force.style.display = "block";
@@ -55,7 +55,7 @@ export default class UpdateHandler extends HTMLElement {
                             running.style.display = "none";
                             finished.style.display = "none";
                             this.dispatchEvent(new Event('updateavailable'));
-                        break;
+                            break;
                         case "update_unavailable":
                             check.style.display = "none";
                             force.style.display = "block";
@@ -63,16 +63,16 @@ export default class UpdateHandler extends HTMLElement {
                             unavail.style.display = "block";
                             running.style.display = "none";
                             finished.style.display = "none";
-                        break;
+                            break;
                         case "need_download":
                             prog.value = 0;
                             prog.max = event.data.value;
                             progtext.innerHTML = `${prog.value}/${prog.max}`;
-                        break;
+                            break;
                         case "file_downloaded":
                             prog.value = parseInt(prog.value) + 1;
                             progtext.innerHTML = `${prog.value}/${prog.max}`;
-                        break;
+                            break;
                         case "update_finished":
                             prog.value = 0;
                             prog.max = 0;
@@ -83,7 +83,7 @@ export default class UpdateHandler extends HTMLElement {
                             unavail.style.display = "none";
                             running.style.display = "none";
                             finished.style.display = "block";
-                        break;
+                            break;
                     }
                 } else if (event.data.type == "error") {
                     check.style.display = "none";

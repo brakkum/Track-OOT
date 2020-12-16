@@ -20,7 +20,7 @@ class StateConverter {
         if (version < OFFSET) {
             // TODO show error to user and link to converter page
         }
-        if (!state.hasOwnProperty("data")) {
+        if (state["data"] == null) {
             state = {data: state};
         }
         const name = state.name || "";

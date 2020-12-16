@@ -37,7 +37,7 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
 
-        let selectEl = this.shadowRoot.getElementById("select");
+        const selectEl = this.shadowRoot.getElementById("select");
         selectEl.addEventListener("change", event => {
             if (this.ref != "") {
                 StateStorage.writeExtra("exits", this.ref, event.value);
@@ -85,20 +85,19 @@ export default class HTMLTrackerExitChoice extends EventBusSubsetMixin(HTMLEleme
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
+            const title = this.shadowRoot.getElementById("title");
+            const selectEl = this.shadowRoot.getElementById("select");
+            const exitEntry = ExitRegistry.get(newValue);
             switch (name) {
                 case 'ref':
-                    let data = FileData.get(`world/exit/${newValue}`);
                     // savesatate
-                    let title = this.shadowRoot.getElementById("title");
                     title.innerHTML = Language.translate(newValue);
                     title.setAttribute('i18n-content', newValue);
-                    let selectEl = this.shadowRoot.getElementById("select");
                     selectEl.value = StateStorage.readExtra("exits", newValue, "");
                     // readonly
-                    const exitEntry = ExitRegistry.get(newValue);
                     selectEl.readonly = !exitEntry.active();
                     this.refreshExits();
-                break;
+                    break;
             }
         }
     }

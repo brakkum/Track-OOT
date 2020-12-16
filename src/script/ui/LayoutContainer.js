@@ -40,12 +40,12 @@ class HTMLTrackerLayoutContainer extends Layout {
         switch (name) {
             case 'layout':
                 if (oldValue != newValue) {
-                    let layout = FileData.get("layouts")[newValue];
-                    if (!!layout) {
+                    const layout = FileData.get("layouts")[newValue];
+                    if (layout) {
                         super.loadLayout(layout);
                     }
                 }
-            break;
+                break;
         }
     }
 

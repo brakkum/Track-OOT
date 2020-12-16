@@ -90,7 +90,7 @@ class FilterButton extends EventBusSubsetMixin(HTMLElement) {
     }
 
     get readonly() {
-        let val = this.getAttribute('readonly');
+        const val = this.getAttribute('readonly');
         return !!val && val != "false";
     }
 
@@ -106,48 +106,48 @@ class FilterButton extends EventBusSubsetMixin(HTMLElement) {
         switch (name) {
             case 'ref':
                 if (oldValue != newValue) {
-                    let data = FileData.get(`filter/${this.ref}`);
+                    const data = FileData.get(`filter/${this.ref}`);
                     PERSIST.set(this, data.persist != null && !!data.persist);
                     this.value = FilterStorage.get(this.ref, data.default);
-                    for (let i in data.values) {
+                    for (const i in data.values) {
                         let img = data.images;
                         if (Array.isArray(img)) {
                             img = img[i];
                         }
-                        let opt = createOption(data.values[i], img);
+                        const opt = createOption(data.values[i], img);
                         if (data.values[i] == this.value) {
                             opt.classList.add("active");
                         }
                         this.append(opt);
                     }
                 }
-            break;
+                break;
             case 'value':
                 if (oldValue != newValue) {
-                    let oe = this.querySelector(`.active`);
-                    if (!!oe) {
+                    const oe = this.querySelector(`.active`);
+                    if (oe) {
                         oe.classList.remove("active");
                     }
-                    let ne = this.querySelector(`[value="${newValue}"]`);
-                    if (!!ne) {
+                    const ne = this.querySelector(`[value="${newValue}"]`);
+                    if (ne) {
                         ne.classList.add("active");
                     }
-                    let ev = new Event('change');
+                    const ev = new Event('change');
                     ev.oldValue = oldValue;
                     ev.value = newValue;
                     this.dispatchEvent(ev);
                 }
-            break;
+                break;
         }
     }
 
     next(event) {
         if (!this.readonly) {
-            let all = this.querySelectorAll("[value]");
-            let oldValue = this.value;
+            const all = this.querySelectorAll("[value]");
+            const oldValue = this.value;
             let value = oldValue;
-            if (!!all.length) {
-                let opt = this.querySelector(`[value="${oldValue}"]`);
+            if (all.length) {
+                const opt = this.querySelector(`[value="${oldValue}"]`);
                 if (!!opt && !!opt.nextElementSibling) {
                     value = opt.nextElementSibling.getAttribute("value");
                 } else {
@@ -155,7 +155,7 @@ class FilterButton extends EventBusSubsetMixin(HTMLElement) {
                 }
             }
             if (value != oldValue) {
-                let persist = PERSIST.get(this);
+                const persist = PERSIST.get(this);
                 this.value = value;
                 FilterStorage.set(this.ref, value);
                 if (persist) {
@@ -173,19 +173,19 @@ class FilterButton extends EventBusSubsetMixin(HTMLElement) {
 
     revert(event) {
         if (!this.readonly) {
-            let all = this.querySelectorAll("[value]");
-            let oldValue = this.value;
+            const all = this.querySelectorAll("[value]");
+            const oldValue = this.value;
             let value = oldValue;
-            if (!!all.length) {
-                let opt = this.querySelector(`[value="${oldValue}"]`);
+            if (all.length) {
+                const opt = this.querySelector(`[value="${oldValue}"]`);
                 if (!!opt && !!opt.previousElementSibling) {
                     value = opt.previousElementSibling.getAttribute("value");
                 } else {
-                    value = all[all.length-1].getAttribute("value");
+                    value = all[all.length - 1].getAttribute("value");
                 }
             }
             if (value != oldValue) {
-                let persist = PERSIST.get(this);
+                const persist = PERSIST.get(this);
                 this.value = value;
                 FilterStorage.set(this.ref, value);
                 if (persist) {
@@ -206,7 +206,7 @@ class FilterButton extends EventBusSubsetMixin(HTMLElement) {
 customElements.define('ootrt-filterbutton', FilterButton);
 
 function createOption(value, img) {
-    let opt = document.createElement('emc-option');
+    const opt = document.createElement('emc-option');
     opt.value = value;
     opt.style.backgroundImage = `url("${img}"`;
     return opt;

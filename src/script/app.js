@@ -3,7 +3,6 @@
 */
 
 import MemoryStorage from "/emcJS/storage/MemoryStorage.js";
-import FileData from "/emcJS/storage/FileData.js";
 import FileLoader from "/emcJS/util/FileLoader.js";
 import DateUtil from "/emcJS/util/DateUtil.js";
 import HotkeyHandler from "/emcJS/util/HotkeyHandler.js";
@@ -19,7 +18,7 @@ import "/emcJS/ui/Paging.js";
 function setVersion(data) {
     MemoryStorage.set("version-dev", data.dev);
     if (data.dev) {
-        MemoryStorage.set("version-string", `DEV [${data.commit.slice(0,7)}]`);
+        MemoryStorage.set("version-string", `DEV [${data.commit.slice(0, 7)}]`);
     } else {
         MemoryStorage.set("version-string", data.version);
     }
@@ -27,21 +26,19 @@ function setVersion(data) {
 }
 
 (async function main() {
-
     try {
         setVersion(await FileLoader.json("version.json"));
         // initial boot
-        await loadResources(updateLoadingMessage);
-        // 
-        updateLoadingMessage("build world data...");
+        await loadResources(updateLoadingMessage); // eslint-disable-line no-undef
+        // ---
+        updateLoadingMessage("build world data..."); // eslint-disable-line no-undef
         World.init();
-        updateLoadingMessage("poke application...");
+        updateLoadingMessage("poke application..."); // eslint-disable-line no-undef
         await init();
     } catch(err) {
         console.error(err);
-        updateLoadingMessage(err.message.replace(/\n/g, "<br>"));
+        updateLoadingMessage(err.message.replace(/\n/g, "<br>")); // eslint-disable-line no-undef
     }
-
 }());
 
 window.onbeforeunload = function() {
@@ -49,30 +46,29 @@ window.onbeforeunload = function() {
 }
 
 async function init() {
-
     const [
         LogicCaller,
         AugmentExits,
         AugmentCustomLogic
-    ] = await $import.module([
+    ] = await $import.module([ // eslint-disable-line no-undef
         "/script/util/logic/LogicCaller.js",
         "/script/util/logic/AugmentExits.js",
         "/script/util/logic/AugmentCustomLogic.js"
     ]);
 
-    updateLoadingMessage("build logic data...");
+    updateLoadingMessage("build logic data..."); // eslint-disable-line no-undef
     await AugmentExits.init();
     await AugmentCustomLogic.init();
     await LogicCaller.init();
 
-    updateLoadingMessage("load visuals...");
+    updateLoadingMessage("load visuals..."); // eslint-disable-line no-undef
     const [
         EventBus,
         Logger,
         TrackerSettingsWindow,
         RandomizerOptionsWindow,
         SpoilerLogWindow
-    ] = await $import.module([
+    ] = await $import.module([ // eslint-disable-line no-undef
         // consts
         "/emcJS/util/events/EventBus.js",
         "/emcJS/util/Logger.js",
@@ -96,14 +92,14 @@ async function init() {
     
     await registerWorker();
 
-    updateLoadingMessage("apply logger...");
-    if (!!MemoryStorage.get("version-dev")) {
-        let logPanel = document.createElement("div");
+    updateLoadingMessage("apply logger..."); // eslint-disable-line no-undef
+    if (MemoryStorage.get("version-dev")) {
+        const logPanel = document.createElement("div");
         logPanel.setAttribute("slot", "log");
         logPanel.dataset.title = "Logger";
         logPanel.dataset.icon = "images/icons/log.svg";
         logPanel.style.overflow = "hidden";
-        let logScreen = document.createElement("emc-logscreen");
+        const logScreen = document.createElement("emc-logscreen");
         logScreen.title = "Logger";
         logPanel.append(logScreen);
         document.getElementById("main-content").append(logPanel);
@@ -116,8 +112,8 @@ async function init() {
         // not in dev version
     }
 
-    updateLoadingMessage("initialize components...");
-    let notePad = document.getElementById("notes-editor");
+    updateLoadingMessage("initialize components..."); // eslint-disable-line no-undef
+    const notePad = document.getElementById("notes-editor");
     notePad.value = StateStorage.readNotes();
     EventBus.register("state", function(event) {
         if (event.data.notes != null) {
@@ -128,13 +124,13 @@ async function init() {
         StateStorage.writeNotes(notePad.value);
     });
 
-    updateLoadingMessage("initialize settings...");
+    updateLoadingMessage("initialize settings..."); // eslint-disable-line no-undef
     window.TrackerSettingsWindow = new TrackerSettingsWindow();
     window.RandomizerOptionsWindow = new RandomizerOptionsWindow();
     window.SpoilerLogWindow = new SpoilerLogWindow();
 
-    updateLoadingMessage("add modules...");
-    await $import.module([
+    updateLoadingMessage("add modules..."); // eslint-disable-line no-undef
+    await $import.module([ // eslint-disable-line no-undef
         "/script/ui/shops/ShopList.js",
         "/script/ui/songs/SongList.js",
         "/script/ui/exits/ExitList.js",
@@ -142,9 +138,9 @@ async function init() {
         "/script/ui/LayoutContainer.js"
     ]);
 
-    updateLoadingMessage("wake up...");
-    let spl = document.getElementById("splash");
-    if (!!spl) {
+    updateLoadingMessage("wake up..."); // eslint-disable-line no-undef
+    const spl = document.getElementById("splash");
+    if (spl) {
         spl.className = "inactive";
     }
     
@@ -172,5 +168,4 @@ async function init() {
             return false;
         }
     });
-
 }

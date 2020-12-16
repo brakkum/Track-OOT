@@ -105,9 +105,9 @@ export default class MarkerEntry extends WorldEntry {
         } else {
             VISIBLE.set(this, !!data.visible);
         }
-        if (!!data.filter) {
-            for (let i in data.filter) {
-                for (let j in data.filter[i]) {
+        if (data.filter) {
+            for (const i in data.filter) {
+                for (const j in data.filter[i]) {
                     if (typeof data.filter[i][j] == "object") {
                         const logicFn = LogicCompiler.compile(data.filter[i][j]);
                         filter_logics.set(`${i}/${j}`, logicFn);
@@ -159,7 +159,7 @@ export default class MarkerEntry extends WorldEntry {
             const name = `${filter}/${value}`;
             if (!!value && values.has(name)) {
                 if (!values.get(name)) {
-                    return false; 
+                    return false;
                 }
             }
         }

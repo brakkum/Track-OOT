@@ -41,10 +41,10 @@ class HTMLMultiplayer extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.append(TPL.generate());
         
-        let lobby_view = this.shadowRoot.getElementById("lobby_view");
-        let room_master = this.shadowRoot.getElementById("room_master");
-        let room_client = this.shadowRoot.getElementById("room_client");
-        let logger = this.shadowRoot.getElementById("logger");
+        const lobby_view = this.shadowRoot.getElementById("lobby_view");
+        const room_master = this.shadowRoot.getElementById("room_master");
+        const room_client = this.shadowRoot.getElementById("room_client");
+        const logger = this.shadowRoot.getElementById("logger");
 
         RTCController.setLogger(logger);
 

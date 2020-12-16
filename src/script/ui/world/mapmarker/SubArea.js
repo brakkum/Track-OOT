@@ -2,6 +2,7 @@ import FileData from "/emcJS/storage/FileData.js";
 import Template from "/emcJS/util/Template.js";
 import GlobalStyle from "/emcJS/util/GlobalStyle.js";
 import EventBusSubsetMixin from "/emcJS/mixins/EventBusSubset.js";
+import Logger from "/emcJS/util/Logger.js";
 import "/emcJS/ui/overlay/Tooltip.js";
 import "/emcJS/ui/Icon.js";
 import StateStorage from "/script/storage/StateStorage.js";
@@ -132,7 +133,7 @@ const TPL_MNU_CTX = new Template(`
 
 function setAllListEntries(list, value = true) {
     if (!!list && Array.isArray(list)) {
-        for (let entry of list) {
+        for (const entry of list) {
             const category = entry.category;
             const id = entry.id;
             if (category == "location") {
@@ -265,13 +266,13 @@ export default class MapSubArea extends EventBusSubsetMixin(HTMLElement) {
     }
 
     async update() {
-        if (!!this.ref) {
-            let dType = StateStorage.readExtra("dungeontype", this.ref, 'v'); // TODO
+        if (this.ref) {
+            const dType = StateStorage.readExtra("dungeontype", this.ref, 'v'); // TODO
             if (dType == "n") {
-                let data_v = FileData.get(`world/${this.ref}/lists/v`);
-                let data_m = FileData.get(`world/${this.ref}/lists/mq`);
-                let res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
-                let res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
+                const data_v = FileData.get(`world/${this.ref}/lists/v`);
+                const data_m = FileData.get(`world/${this.ref}/lists/mq`);
+                const res_v = ListLogic.check(data_v.filter(ListLogic.filterUnusedChecks));
+                const res_m = ListLogic.check(data_m.filter(ListLogic.filterUnusedChecks));
                 if (await SettingsStorage.get("unknown_dungeon_need_both", false)) {
                     this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[Math.min(res_v.value, res_m.value)];
                 } else {
@@ -279,8 +280,8 @@ export default class MapSubArea extends EventBusSubsetMixin(HTMLElement) {
                 }
                 this.shadowRoot.getElementById("marker").innerHTML = "";
             } else {
-                let data = FileData.get(`world/${this.ref}/lists/${dType}`);
-                let res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
+                const data = FileData.get(`world/${this.ref}/lists/${dType}`);
+                const res = ListLogic.check(data.filter(ListLogic.filterUnusedChecks));
                 this.shadowRoot.getElementById("marker").dataset.state = VALUE_STATES[res.value];
                 if (res.value > 1) {
                     this.shadowRoot.getElementById("marker").innerHTML = res.reachable;
@@ -343,40 +344,40 @@ export default class MapSubArea extends EventBusSubsetMixin(HTMLElement) {
             case 'ref':
                 if (oldValue != newValue) {
                     this.update();
-                    let txt = this.shadowRoot.getElementById("text");
+                    const txt = this.shadowRoot.getElementById("text");
                     txt.innerHTML = Language.translate(newValue);
                     this.hint = StateStorage.readExtra("area_hint", newValue, "");
                 }
-            break;
+                break;
             case 'hint':
                 if (oldValue != newValue) {
-                    let hintEl = this.shadowRoot.getElementById("hint");
+                    const hintEl = this.shadowRoot.getElementById("hint");
                     hintEl.innerHTML = "";
                     if (!!newValue && newValue != "") {
-                        let el_icon = document.createElement("img");
+                        const el_icon = document.createElement("img");
                         el_icon.src = `images/icons/area_${newValue}.svg`;
                         hintEl.append(el_icon);
                     }
                 }
-            break;
+                break;
             case 'top':
             case 'left':
                 if (oldValue != newValue) {
                     this.style.left = `${this.left}px`;
                     this.style.top = `${this.top}px`;
                 }
-            break;
+                break;
             case 'tooltip':
                 if (oldValue != newValue) {
-                    let tooltip = this.shadowRoot.getElementById("tooltip");
+                    const tooltip = this.shadowRoot.getElementById("tooltip");
                     tooltip.position = newValue;
                 }
-            break;
+                break;
         }
     }
 
     setFilterData(data) {
-        let el_era = this.shadowRoot.getElementById("badge-era");
+        const el_era = this.shadowRoot.getElementById("badge-era");
         if (!data["filter.era/child"]) {
             el_era.src = "images/icons/era_adult.svg";
         } else if (!data["filter.era/adult"]) {
@@ -384,7 +385,7 @@ export default class MapSubArea extends EventBusSubsetMixin(HTMLElement) {
         } else {
             el_era.src = "images/icons/era_both.svg";
         }
-        let el_time = this.shadowRoot.getElementById("badge-time");
+        const el_time = this.shadowRoot.getElementById("badge-time");
         if (!data["filter.time/day"]) {
             el_time.src = "images/icons/time_night.svg";
         } else if (!data["filter.time/night"]) {

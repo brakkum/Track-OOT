@@ -5,6 +5,7 @@ import "/emcJS/ui/overlay/Tooltip.js";
 import "/emcJS/ui/Icon.js";
 import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
+import LogicViewer from "/script/content/logic/LogicViewer.js";
 import Logic from "/script/util/logic/Logic.js";
 import Language from "/script/util/Language.js";
 import iOSTouchHandler from "/script/util/iOSTouchHandler.js";
@@ -137,8 +138,8 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
         this.shadowRoot.append(TPL.generate());
         STYLE.apply(this.shadowRoot);
         /* --- */
-        if (!!type) {
-            let el_type = this.shadowRoot.getElementById("badge-type");
+        if (type) {
+            const el_type = this.shadowRoot.getElementById("badge-type");
             el_type.src = `images/icons/${type}.svg`;
             type = `location_${type}`;
         } else {
@@ -229,13 +230,13 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
             }
         });
         this.registerGlobal("statechange", event => {
-            if (event.data.hasOwnProperty(this.ref)) {
-                let value = !!event.data[this.ref].newValue;
+            if (event.data[this.ref] != null) {
+                const value = !!event.data[this.ref].newValue;
                 this.checked = value;
             }
         });
         this.registerGlobal("logic", event => {
-            if (event.data.hasOwnProperty(this.access)) {
+            if (event.data[this.access] != null) {
                 const el = this.shadowRoot.getElementById("marker");
                 if (!!this.access && !!event.data[this.access]) {
                     el.dataset.state = "available";
@@ -245,7 +246,7 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
             }
         });
         this.registerGlobal("logic", event => {
-            if (event.data.hasOwnProperty(this.access)) {
+            if (event.data[this.access] != null) {
                 const el = this.shadowRoot.getElementById("marker");
                 if (!!this.access && !!event.data[this.access]) {
                     el.dataset.state = "available";
@@ -255,7 +256,7 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
             }
         });
         this.registerGlobal("statechange_item_location", event => {
-            if (event.data.hasOwnProperty(this.ref)) {
+            if (event.data[this.ref] != null) {
                 this.item = event.data[this.ref].newValue;
             }
         });
@@ -363,38 +364,38 @@ export default class MapLocation extends EventBusSubsetMixin(HTMLElement) {
                     this.checked = StateStorage.read(newValue, false);
                     this.item = StateStorage.readExtra("item_location", newValue, false);
                 }
-            break;
+                break;
             case 'checked':
             case 'access':
                 if (oldValue != newValue) {
                     this.update();
                 }
-            break;
+                break;
             case 'top':
             case 'left':
                 if (oldValue != newValue) {
                     this.style.left = `${this.left}px`;
                     this.style.top = `${this.top}px`;
                 }
-            break;
+                break;
             case 'tooltip':
                 if (oldValue != newValue) {
-                    let tooltip = this.shadowRoot.getElementById("tooltip");
+                    const tooltip = this.shadowRoot.getElementById("tooltip");
                     tooltip.position = newValue;
                 }
-            break;
+                break;
             case 'item':
                 if (oldValue != newValue) {
                     itemEl.innerHTML = "";
                     if (!!newValue && newValue != "false") {
-                        let el_icon = document.createElement("img");
-                        let itemsData = FileData.get("items")[newValue];
+                        const el_icon = document.createElement("img");
+                        const itemsData = FileData.get("items")[newValue];
                         const bgImage = Array.isArray(itemsData.images) ? itemsData.images[0] : itemsData.images;
                         el_icon.src = bgImage;
                         itemEl.append(el_icon);
                     }
                 }
-            break;
+                break;
         }
     }
 

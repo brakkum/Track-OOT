@@ -43,12 +43,12 @@ const TPL = new Template(`
 `);
 
 function editSong(event) {
-    let builder = document.createElement("ootrt-songbuilder");
+    const builder = document.createElement("ootrt-songbuilder");
     builder.value = this.shadowRoot.getElementById("stave").value;
-    let d = new Dialog({title: Language.translate(this.ref), submit: true, cancel: true});
+    const d = new Dialog({title: Language.translate(this.ref), submit: true, cancel: true});
     d.addEventListener("submit", function(result) {
-        if (!!result) {
-            let res = builder.value;
+        if (result) {
+            const res = builder.value;
             this.shadowRoot.getElementById("stave").value = res;
             StateStorage.writeExtra("songs", this.ref, res);
         }
@@ -100,12 +100,12 @@ export default class HTMLTrackerSongField extends EventBusSubsetMixin(HTMLElemen
     
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue != newValue) {
-            let data = FileData.get("songs")[newValue];
-            let title = this.shadowRoot.getElementById("title");
+            const data = FileData.get("songs")[newValue];
+            const title = this.shadowRoot.getElementById("title");
             title.innerHTML = Language.translate(newValue);
             this.shadowRoot.getElementById("stave").value = StateStorage.readExtra("songs", newValue, data.notes);
             if (data.editable) {
-                let edt = document.createElement('button');
+                const edt = document.createElement('button');
                 edt.innerHTML = "✎";
                 edt.onclick = editSong.bind(this);
                 title.append(edt);

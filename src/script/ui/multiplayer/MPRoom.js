@@ -104,13 +104,13 @@ class HTMLMultiplayerLobbyRoom extends HTMLElement {
                     } else {
                         this.shadowRoot.getElementById("icon").classList.remove("lock-closed")
                     }
-                break;
+                    break;
                 case 'name':
                     this.shadowRoot.getElementById("name").innerHTML = newValue;
-                break;
+                    break;
                 case 'desc':
                     this.shadowRoot.getElementById("desc").innerHTML = newValue;
-                break;
+                    break;
             }
         }
     }

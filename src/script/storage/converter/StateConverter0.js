@@ -5,17 +5,17 @@
 import StateConverter from "../StateConverter.js";
 
 StateConverter.register(function(state) {
-    if (!state.hasOwnProperty("data")) {
+    if (!state["data"] != null) {
         state = {data: state};
     }
-    let res = {
+    const res = {
         data: {},
         autosave: false,
         timestamp: new Date(),
         name: state.name || ""
     };
-    for (let i of Object.keys(state.data)) {
-        for (let j of Object.keys(state.data[i])) {
+    for (const i of Object.keys(state.data)) {
+        for (const j of Object.keys(state.data[i])) {
             if (i != "meta") {
                 if (i == "extras") {
                     res.data[j] = state.data[i][j];
