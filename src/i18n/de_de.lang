@@ -1,6 +1,6 @@
 # language file for track-oot
 # language: deutsch
-# author: ZidArgs (2deep4real), Fraggerman, Luigimeansme, TotallyABot
+# author: ZidArgs (2deep4real), Fraggerman, Luigimeansme
 
 language=Sprache (Neustart erforderlich)
 
@@ -971,7 +971,7 @@ item.dungeon_map_generic=Karte
 # SETTINGS
 settings=Allgemeine Einstellungen
 options=Randomizer Optionen
-lacsAndGanon=LACS und Brückenoptionen
+Lichtpfeil-CutsceneAndGanon=Lichtpfeil-Cutscene und Brückenoptionen
 skips=Aktive Skips
 
 # SETTINGS - GENERAL
@@ -991,8 +991,8 @@ button_erase_data=Löschen
 option.consider_buyable=Berücksichtige kaufbare Items (Rüstungen / Blaues Feuer) in Logik
 option.bombchu_logic=Berücksichtige Krabbelminen in Logik
 option.free_scarecrow=Vogelscheuchenlied freigeschaltet
-option.keysanity_small=Keysanity
-option.keysanity_boss=Bosskeysanity
+option.keysanity_small=Aktiviere Keysanity-Logik
+option.keysanity_boss=Aktiviere Bosskeysanity-Logik
 option.scrubsanity=Scrubsanity
 option.cowsanity=Cowsanity
 option.beansanity=Beansanity
@@ -1006,22 +1006,22 @@ option.ganon_castle_open=Ganons Teufelsturm Zugang
 option.ganon_boss_door_open=Ganon-Bossschlüssel benötigt?
 option.trade_sequence_start_item=Starte Erwachsenes Tauschgeschäft bei
 trials=Benötigte Medaillen
-option.gossipstones_active=Aktiviere Gossipsteine
+option.gossipstones_active=Aktiviere Mythen-Stein-Hinweise
 option.logic_rules=Randomizer-Logik
 option.starting_age=Startalter
 option.light_arrow_cutscene=Lichtpfeile Check
-option.track_keys=Beachte Keysanity Logik Änderungen
-option.track_bosskeys=Beachte Bosskeysanity Logik Änderungen
-option.entrance_shuffle_interior=Shuffle Entrances
-option.shuffle_grottos=Shuffle Grottos
-option.shuffle_dungeons=Shuffle Dungeons
-option.shuffle_overworld=Shuffle Overworld Entrances
-option.shuffleMediCarpet=Shuffle Medigoron and Carpet Bombchu Saleman
+option.track_keys=Kleine-Schlüssel in Tracker anzeigen
+option.track_bosskeys=Boss-Schlüssel in Tracker anzeigen
+option.entrance_shuffle_interior=Eingänge mischen
+option.shuffle_grottos=Grotten mischen
+option.shuffle_dungeons=Tempel mischen
+option.shuffle_overworld=Overworld-Eingänge mischen
+option.shuffleMediCarpet=Medigoron und Fliegender-Teppich-Händler mischen
 option.ganon_castle_skulltulas=Benötigte Skulltulas für Regenbogenbrücke
-option.lacs_skulltulas=Benötigte Skulltulas für LACS
-option.stone_count_lacs=Benötigte Steine für LACS
-option.medallion_count_lacs=Benötigte Medaillen  for LACS
-option.dungeon_count_lacs=Benötigte abgeschlossene Tempel for LACS
+option.Lichtpfeil-Cutscene_skulltulas=Benötigte Skulltulas für Lichtpfeil-Cutscene
+option.stone_count_Lichtpfeil-Cutscene=Benötigte Steine für Lichtpfeil-Cutscene
+option.medallion_count_Lichtpfeil-Cutscene=Benötigte Medaillen  for Lichtpfeil-Cutscene
+option.dungeon_count_Lichtpfeil-Cutscene=Benötigte abgeschlossene Tempel for Lichtpfeil-Cutscene
 option.stone_count_bridge=Benötigte Steine für Regenbogenbrücke
 option.medallion_count_bridge=Benötigte Medaillen  für Regenbogenbrücke
 option.dungeon_count_bridge=Benötigte abgeschlossene Tempel für Regenbogenbrücke
@@ -1046,7 +1046,7 @@ skip.fewer_tunic_requirements=Weniger Rüstungs-Anforderungen
 skip.grottos_without_agony=Verborgene Grotten ohne Stein der Weisheit
 skip.visible_collisions=Unsichtbare Wände passieren
 skip.child_deadhand=Kind - Dead Hand ohne Kokiri-Schwert
-skip.child_dampe_race_poh=Zweites Dampe-Rennen als Kind
+skip.child_dampe_race_Herzteil=Zweites Dampe-Rennen als Kind
 skip.man_on_roof=Mann auf dem Dach ohne Hookshot
 skip.dc_staircase=Dodongos Höhlentreppe mit Bogen
 skip.dc_jump=Dodongos Höhle Stachelfallenraum - Sprung ohne Hover Boots
@@ -1058,8 +1058,8 @@ skip.rusted_switches=Rostige Schalter durch Wände hämmern
 skip.botw_basement=Brunnen - Kellertruhe mit Stärke & Stöcken
 skip.forest_mq_block_puzzle=Waldtempel-MQ - Block-Puzzle mit Bombchu überspringen
 skip.spirit_child_bombchu=Geistertempel - Kind-Seitenbrücke mit Bombchu
-skip.windmill_poh=Windmühle PoH als Erwachsener ohne Items
-skip.crater_bean_poh_with_hovers=Krater - Bohnen-PoH mit Hover Boots
+skip.windmill_Herzteil=Windmühle Herzteil als Erwachsener ohne Items
+skip.crater_bean_Herzteil_with_hovers=Krater - Bohnen-Herzteil mit Hover Boots
 skip.zora_with_cucco=Zoras-Domäneneingang mit Cucco
 skip.gtg_mq_with_hookshot=Gerudo-Trainingsgelände MQ - linke Seite Silber-Rubine mit Hookshot
 skip.forest_vines=Waldtempel - Osthof-Ranken mit Hookshot
@@ -1068,7 +1068,7 @@ skip.forest_first_gs=Waldtempel - Erster Raum Skulltulla mit schwer zu benutzend
 skip.forest_well_swim=Waldtempel-MQ - Brunnen mit Hookshot durchschwimmen
 skip.forest_mq_hallway_switch=Waldtempel MQ - Verdrehter-Flur Schalter mit Hookshot erreichen
 skip.dmt_bombable=Todesbergpfad - Truhe mit Stärke
-skip.goron_city_pot_with_strength=Goronia - Drehender Krug PoH mit Stärke
+skip.goron_city_pot_with_strength=Goronia - Drehender Krug Herzteil mit Stärke
 skip.adult_kokiri_gs=Erwachsene Kokiri-Wald-Skulltulla mit Schwebestiefeln
 skip.spirit_mq_frozen_eye=Geistertempel MQ - Eis-Augenschalter ohne Feuer
 skip.spirit_wall=Geistertempel - Verschiebungswand ohne zusätzliche Gegenstände
@@ -1085,7 +1085,7 @@ skip.fire_mq_climb=Feuertempel MQ - Klettern ohne Feuerquelle
 skip.fire_mq_near_boss=Feuertempel MQ - Truhe in der Nähe des Bosses ohne die Kiste zu zerbrechen
 skip.fire_mq_maze_side_room=Feuertempel MQ - Felsenlabyrinth Seitenraum ohne Kiste
 skip.fire_mq_bk_chest=Feuertempel MQ - Boss-Schlüssel-Truhe ohne Bogen
-skip.zora_river_lower=Zoras Fluss - Unterer Freistehender PoH als Erwachsener ohne Items
+skip.zora_river_lower=Zoras Fluss - Unterer Freistehender Herzteil als Erwachsener ohne Items
 skip.water_cracked_wall_hovers=Wassertempel - Rissige Wand mit Hover Boots
 skip.shadow_freestand_key=Schattentempel - Freistehender Schlüssel mit Bombchu
 skip.shadow_mq_huge_pit=Schattentempel MQ - Untere riesige Grube ohne Feuerquelle
@@ -1124,11 +1124,11 @@ skip.light_trial_mq=Prüfung des Lichts MQ ohne Hookshot
 skip.ice_mq_scarecrow=Eishöhle MQ - Vogelscheuche Skulltulla ohne zusätzliche Gegenstände
 skip.ice_block_gs=Eishöhle - Blockraum Skulltulla mit Hover Boots
 skip.reverse_wasteland=Umgekehrtes Ödland
-skip.zora_river_upper=Zora-Fluss - Oberer Freistehender PoH als Erwachsener ohne Items
+skip.zora_river_upper=Zora-Fluss - Oberer Freistehender Herzteil als Erwachsener ohne Items
 skip.shadow_mq_gap=Schattentempel MQ - Wahrheits-Drehstatuen-Lücke mit Longshot
 skip.lost_woods_gs_bean=Verlorene Wälder - Erwachsenen-Skulltulla ohne Bohne
 skip.jabu_boss_gs_adult=Jabu-Jabu - Nahe Boss Skulltulla ohne Bumerang als Erwachsener
-skip.graveyard_poh=Friedhof - Freistehender PoH mit Bumerang
+skip.graveyard_Herzteil=Friedhof - Freistehender Herzteil mit Bumerang
 skip.castle_storms_gs=Schloss Hyrule - Sturmgrotte Skulltulla mit nur Bumerang
 skip.dmt_soil_gs=Gebirgspfad - Lockere Erde-Skulltulla ohne zerstörten Felsen
 skip.gtg_without_hookshot=Gerudo-Trainingsgelände - Linke Seite Silberne Rubine ohne Hookshot
@@ -1152,8 +1152,8 @@ skip.dc_mq_child_bombs=Dodongos Höhle MQ - Frühes Bombentaschegebiet als Kind
 skip.dc_scrub_room=Dodongos Höhle - Two Scrub Room mit Stärke
 skip.dc_slingshot_skip=Dodongos Höhle - Kind Schleuder-Sprünge
 skip.child_rolling_with_strength=Rollender Gorone (Hot Rodder Goron) als Kind mit Stärke
-skip.goron_city_pot=Goronia - Drehende Vase PoH mit Bombchu
-skip.valley_crate_hovers=Gerudo-Tal - Kisten-PoH als Erwachsener mit Hover Boots
+skip.goron_city_pot=Goronia - Drehende Vase Herzteil mit Bombchu
+skip.valley_crate_hovers=Gerudo-Tal - Kisten-Herzteil als Erwachsener mit Hover Boots
 skip.lost_woods_bridge=Sprung auf die Verlorene Wälder Brücke als Erwachsener ohne Items
 skip.spirit_trial_hookshot=Prüfung der Geister ohne Hookshot
 skip.shadow_umbrella=Schattentempel - Steinblock bei fallenden Stacheln überspringen
@@ -1228,7 +1228,7 @@ adult=Erwachsener
 logic_rules_glitchless=Ohne Glitches
 logic_rules_glitched=Mit Glitchen
 
-# SETTINGS - LACS
+# SETTINGS - Lichtpfeil-Cutscene
 light_arrow_cutscene_vanilla=Vanilla Vorraussetzungen
 light_arrow_cutscene_stones=Heilige Steine Vorraussetzungen
 light_arrow_cutscene_medallions=Medaillen  Vorraussetzungen
@@ -1540,11 +1540,11 @@ region.hf_near_market_grotto\u0020->\u0020region.hf_near_market_grotto_entrance=
 region.hf_southeast_grotto_entrance\u0020->\u0020region.hf_southeast_grotto=Hylianische Steppe - Südöstliche-Grotte Eingang
 region.hf_southeast_grotto\u0020->\u0020region.hf_southeast_grotto_entrance=Hylianische Steppe - Südöstliche-Grotte Ausgang
 
-region.kak_redead_grotto_entrance\u0020->\u0020region.kak_redead_grotto=Kakriko - Zombie-Grotte Eingang
-region.kak_redead_grotto\u0020->\u0020region.kak_redead_grotto_entrance=Kakriko - Zombie-Grotte Ausgang
+region.kak_redead_grotto_entrance\u0020->\u0020region.kak_redead_grotto=Kakariko - Zombie-Grotte Eingang
+region.kak_redead_grotto\u0020->\u0020region.kak_redead_grotto_entrance=Kakariko - Zombie-Grotte Ausgang
 
-region.kak_open_grotto_entrance\u0020->\u0020region.kak_open_grotto=Kakriko - Offene Grotte Eingang
-region.kak_open_grotto\u0020->\u0020region.kak_open_grotto_entrance=Kakriko - Offene Grotte Ausgang
+region.kak_open_grotto_entrance\u0020->\u0020region.kak_open_grotto=Kakariko - Offene Grotte Eingang
+region.kak_open_grotto\u0020->\u0020region.kak_open_grotto_entrance=Kakariko - Offene Grotte Ausgang
 
 region.kf_storms_grotto_entrance\u0020->\u0020region.kf_storms_grotto=Kokiri - Sturm-Grotte Eingang
 region.kf_storms_grotto\u0020->\u0020region.kf_storms_grotto_entrance=Kokiri - Sturm-Grotte Ausgang
