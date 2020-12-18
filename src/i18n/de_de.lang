@@ -19,32 +19,32 @@ location/kokiri.c_midos_house_1=Midos Haus - Truhe 1
 location/kokiri.c_midos_house_2=Midos Haus - Truhe 2
 location/kokiri.c_midos_house_3=Midos Haus - Truhe 3
 location/kokiri.c_midos_house_4=Midos Haus - Truhe 4
-location/kokiri.c_saria_ocarina=Sarias Okarina
+location/kokiri.c_saria_ocarina=Sarias Okarina auf Brücke
 time_ocarina=Okarina der Zeit
 location/kokiri.c_storm_grotto=Kokiri Sturm-Grotte
 location/hyrule_field.c_song_of_time=Hymne der Zeit
-location/hyrule_field.c_hyrule_north_grotto=Hylianische Steppe Nördliche Grotte
-location/hyrule_field.c_hyrule_forest_grotto=Hylianische Steppe Wald Grotte
-location/hyrule_field.c_hyrule_south_grotto=Hylianische Steppe Südliche Grotte
-location/hyrule_field.c_diving_heart_piece_grotto=Tauch-Herzteil Grotte
+location/hyrule_field.c_hyrule_north_grotto=Hylianische Steppe - Nördliche Grotte
+location/hyrule_field.c_hyrule_forest_grotto=Hylianische Steppe - Wald Grotte
+location/hyrule_field.c_hyrule_south_grotto=Hylianische Steppe - Südliche Grotte
+location/hyrule_field.c_diving_heart_piece_grotto=Hylianische Steppe - Nordwestliche Tauch-Herzteil Grotte
 location/lake.c_bottle_zora=Flasche unter Wasser
-location/lake.c_sun=Hylia-Feuerpfeil am See
+location/lake.c_sun=Hylia-Feuerpfeile am See
 location/lake.c_lab_dive=Tauchen im Labor
-location/lake.c_lab_roof=Labor Dach Herzteil
+location/lake.c_lab_roof=Herzteil auf Labordach
 location/lake.c_fishing_child=Angeln als Kind
 location/lake.c_fishing_adult=Angeln als Erwachsener
-location/gerudo_valley.c_gerudo_hammer_rock=Gerudo Tal Hammer-Stein
-location/gerudo_valley.c_gerudo_crate=Gerudo Tal Kisten-Herzteil
-location/gerudo_valley.c_gerudo_waterfall=Gerudo Tal Wasserfall Herzteil
+location/gerudo_valley.c_gerudo_hammer_rock=Gerudo-Tal - Hammer-Stein
+location/gerudo_valley.c_gerudo_crate=Gerudo-Tal - Kisten-Herzteil
+location/gerudo_valley.c_gerudo_waterfall=Gerudo-Tal - Wasserfall Herzteil
 location/desert.c_chest=Gespensterwüste
 location/desert.c_warp_spirit=Requiem der Geister
-location/desert.c_colossus_hp=Wüstenkoloss Herzteil
-location/desert.c_colossus_fairy=Wüstenkoloss Fee
+location/desert.c_colossus_hp=Wüstenkoloss - Herzteil
+location/desert.c_colossus_fairy=Wüstenkoloss - Fee
 location/river.c_frog_rain=Frösche im Regen
-location/river.c_frog_game=Frösche Okarina Minispiel
-location/river.c_zora_hp_1=Zora-Fluss Herzteil 1
-location/river.c_zora_hp_2=Zora-Fluss Herzteil 2
-location/river.c_zora_grotto=Zora-Fluss Grotte
+location/river.c_frog_game=Frösche Okarina-Minispiel
+location/river.c_zora_hp_1=Zora-Fluss - Herzteil 1
+location/river.c_zora_hp_2=Zora-Fluss - Herzteil 2
+location/river.c_zora_grotto=Zora-Fluss - Grotte
 location/desert.c_bombchu_wasteland=Fliegender Krabbelmienen Händler
 
 # LOCATIONS - LONLON
@@ -54,8 +54,8 @@ location/lonlon.c_maron_song=Eponas Lied
 location/lonlon.c_hp=Turm Herzteil
 
 # LOCATIONS - GERUDO
-area/gerudo=Gerudo Festung
-location/gerudo.c_rooftop=Gerudo Festung Truhe auf dem Dach
+area/gerudo=Gerudo-Festung
+location/gerudo.c_rooftop=Gerudo-Festung - Truhe auf dem Dach
 location/gerudo.c_guard_1=Gerudo Wächterin 1
 location/gerudo.c_guard_2=Gerudo Wächterin 2
 location/gerudo.c_guard_3=Gerudo Wächterin 3
@@ -105,7 +105,7 @@ location/dodongo_mq.c_chest_above_dodongo=Truhe über King Dodongo
 location/dodongo_mq.c_dodongo=King Dodongo
 
 # LOCATIONS - JABU JABU
-area/jabujabu=Jabu Jabus Bauch
+area/jabujabu=Jabu-Jabus Bauch
 area/jabujabu.short=JABU
 location/jabujabu.c_boomerang=Bumerang (Nordöstlicher Raum)
 location/jabujabu.c_map=Karte (Nordwestlicher Raum)
@@ -178,10 +178,10 @@ location/temple_fire.c_volvagia=Volvagia
 # LOCATIONS - TEMPLE FIRE MQ
 location/temple_fire_mq.c_chest_near_boss=Nahe Boss Truhe
 location/temple_fire_mq.c_megaton_hammer=Stahlhammer nach Flammenderwisch
-location/temple_fire_mq.c_map=(1F) Karte nach rostigem Schatler
+location/temple_fire_mq.c_map=(1F) Karte nach rostigem Schalter
 location/temple_fire_mq.c_map_room_small_chest=Karten-Raum kleine Truhe
 location/temple_fire_mq.c_boss_key=Boss-Schlüssel
-location/temple_fire_mq.c_big_lava_bomb=Großer Lava Raum bördliche Truhe
+location/temple_fire_mq.c_big_lava_bomb=Großer Lava Raum nördliche Truhe
 location/temple_fire_mq.c_boulder_maze_lower=Echsalfols Labyrinth untere Truhe
 location/temple_fire_mq.c_boulder_maze_upper=Echsalfols Labyrinth obere Truhe
 location/temple_fire_mq.c_boulder_maze_side=Echsalfols Labyrinth Seitlicher Raum
@@ -199,14 +199,14 @@ location/temple_water.c_torches=(1F) Fackel Truhe mit Muscheln
 location/temple_water.c_chest_dragon=(1F) Whirlpool-Raum mit Drachen-Kopf
 location/temple_water.c_central_bow=(2F) Mittlere Zielscheibe
 location/temple_water.c_boss_key=(1F) Boss-Schlüssel
-location/temple_water.c_center_pillar=(B1) Keller in mittlere Säule
+location/temple_water.c_center_pillar=(B1) Keller in mittlerer Säule
 location/temple_water.c_cracked_wall=(2F) Riss in der Wand
 location/temple_water.c_dark_link=Schwarzer Link
 location/temple_water.c_river=Ende von Fluss nach Schwarzem Link
 location/temple_water.c_morpha=Morpha
 # LOCATIONS - TEMPLE WATER MQ
 location/temple_water_mq.c_map=(3F) Karte nach Stalfos
-location/temple_water_mq.c_central_pillar=(B1) Keller in mittlere Säule (Schalter in Wand)
+location/temple_water_mq.c_central_pillar=(B1) Keller in mittlerer Säule (Schalter in Wand)
 location/temple_water_mq.c_compass=(1F) Kompass nach Lizalfos
 location/temple_water_mq.c_longshot=(2F) Enterhaken nach Schalter in Wand
 location/temple_water_mq.c_boss_key=Boss-Schlüssel
@@ -514,7 +514,7 @@ location/ice_cavern_mq.c_sheik=Serenade des Wassers
 
 # LOCATIONS - SCRUBS
 location/hyrule_field.c_hyrule_deku_salesman_grotto=Hylianische Steppe Händler-Deku Grotte
-location/woods.c_deku_salesman=Nahe Ocarina-Brücke Händler-Deku
+location/woods.c_deku_salesman=Nahe Okarina-Brücke Händler-Deku
 location/woods.c_deku_salesman_grotto=Nahe Heiliger Lichtung Linker Händler-Deku
 location/woods.c_deku_salesman_grotto_2=Nahe Heiliger Lichtung Rechter Händler-Deku
 location/woods.c_deku_salesman_meadow_grotto_1=Heilige Lichtung Grotte Linker Händler-Deku
@@ -606,8 +606,8 @@ location/gerudo_valley.s_gerudo_wood_plank_child_night=Gerudo-Tal - Kleine Brüc
 location/gerudo_valley.s_gerudo_river_beanspot_child=Gerudo-Tal - Erdbeet
 location/gerudo_valley.s_gerudo_behind_carpenter_tent_adult_night=Gerudo-Tal - Hinter Zelt
 location/gerudo_valley.s_gerudo_rock_near_carpenter_tent_adult_night=Gerudo-Tal - Säule
-location/gerudo.s_horseback_archery_target_adult_night=Gerudo Festung - Schießplatz
-location/gerudo.s_rooftop_adult_night=Gerudo Festung - Außen, nahe oberstem Geschoss
+location/gerudo.s_horseback_archery_target_adult_night=Gerudo-Festung - Schießplatz
+location/gerudo.s_rooftop_adult_night=Gerudo-Festung - Außen, nahe oberstem Geschoss
 location/desert.s_fortress_adult=Gespensterwüste - Ruine
 location/desert.s_beanspot_child=Wüstenkoloss - Erdbeet
 location/desert.s_palm_tree_adult_night=Wüstenkoloss - Palme
@@ -786,7 +786,7 @@ subarea/meadow.fairy_grotto=Lichtung - Feenquelle
 subarea/castle_town.guard_tower=Hyrule-Markt - Wachturm
 subarea/castle_town.shop_mask=Hyrule-Markt - Maskenladen
 subarea/castle_town.minigame_bombchu=Hyrule-Markt - Bombchu Bowling
-subarea/castle_town.shop_magic=Hyrule-Markt - Trankalden (Kind)
+subarea/castle_town.shop_magic=Hyrule-Markt - Trankladen (Kind)
 subarea/castle_town.minigame_treasure=Hyrule-Markt - Truhenspiel
 subarea/castle_town.shop_bombchu=Hyrule-Markt - Bombchu-Laden
 subarea/castle_town.back_house=Hyrule-Markt - Hinteres Haus
@@ -901,12 +901,12 @@ item.song_woods=Horror-Kid Okarina Minispiel
 item.stone_forest=Kokiri-Smaragd
 item.stone_fire=Goronen-Opal
 item.stone_water=Zora-Saphir
-item.medallion_forest=Amulett des Waldes
-item.medallion_fire=Amulett des Feuers
-item.medallion_water=Amulett des Wassers
-item.medallion_spirit=Amulett der Geister
-item.medallion_shadow=Amulett des Schattens
-item.medallion_light=Amulett des Lichts
+item.medallion_forest=Medaille des Waldes
+item.medallion_fire=Medaille des Feuers
+item.medallion_water=Medaille des Wassers
+item.medallion_spirit=Medaille der Geister
+item.medallion_shadow=Medaille des Schattens
+item.medallion_light=Medaille des Lichts
 
 #songs
 song.zelda=Zeldas Wiegenlied
@@ -938,7 +938,7 @@ item.key_small_spirit=Geistertempel - Kleiner Schlüssel
 item.key_boss_spirit=Geistertempel - Boss Schlüssel
 item.key_small_ganon=Ganons Teufelsturm - Kleiner Schlüssel
 item.key_boss_ganon=Ganons Teufelsturm - Boss Schlüssel
-item.key_small_gerudo=Gerudo Festung - Kleiner Schlüssel
+item.key_small_gerudo=Gerudo-Festung - Kleiner Schlüssel
 item.key_small_training=Gerudo Trainingsarena - Kleiner Schlüssel
 item.key_small_well=Brunnen von Kakariko - Kleiner Schlüssel
 item.key_small_generic=Kleiner Schlüssel
@@ -971,7 +971,7 @@ item.dungeon_map_generic=Karte
 # SETTINGS
 settings=Allgemeine Einstellungen
 options=Randomizer Optionen
-lacsAndGanon=LACS und Brückenoptionen
+lacsAndGanon=Lichtpfeil-Cutscene und Brückenoptionen
 skips=Aktive Skips
 
 # SETTINGS - GENERAL
@@ -991,8 +991,8 @@ button_erase_data=Löschen
 option.consider_buyable=Berücksichtige kaufbare Items (Rüstungen / Blaues Feuer) in Logik
 option.bombchu_logic=Berücksichtige Krabbelminen in Logik
 option.free_scarecrow=Vogelscheuchenlied freigeschaltet
-option.keysanity_small=Kleiner Schlüssel Logik
-option.keysanity_boss=Boss Schlüssel Logik
+option.keysanity_small=Aktiviere Keysanity-Logik
+option.keysanity_boss=Aktiviere Bosskeysanity-Logik
 option.scrubsanity=Scrubsanity
 option.cowsanity=Cowsanity
 option.beansanity=Beansanity
@@ -1001,29 +1001,29 @@ option.doors_open_forest=Offener Wald
 option.doors_open_kakariko=Offenes Kakariko-Tor
 option.doors_open_temple=Offener Tempel der Zeit
 option.doors_open_zora=Offene Zora-Quelle
-option.gerudo_fortress_open=Gerudo Festung Verhalten
+option.gerudo_fortress_open=Gerudo-Festung Verhalten
 option.ganon_castle_open=Ganons Teufelsturm Zugang
 option.ganon_boss_door_open=Ganon-Bossschlüssel benötigt?
 option.trade_sequence_start_item=Starte Erwachsenes Tauschgeschäft bei
-trials=Benötigte Medaillien
-option.gossipstones_active=Aktiviere Gossipsteine
+trials=Benötigte Medaillen
+option.gossipstones_active=Aktiviere Mythen-Stein-Hinweise
 option.logic_rules=Randomizer-Logik
 option.starting_age=Startalter
 option.light_arrow_cutscene=Lichtpfeile Check
-option.track_keys=Keysanity
-option.track_bosskeys=Bosskeysanity
-option.entrance_shuffle_interior=Shuffle Entrances
-option.shuffle_grottos=Shuffle Grottos
-option.shuffle_dungeons=Shuffle Dungeons
-option.shuffle_overworld=Shuffle Overworld Entrances
-option.shuffleMediCarpet=Shuffle Medigoron and Carpet Bombchu Saleman
+option.track_keys=Beachte Kleine-Schlüssel in Logik
+option.track_bosskeys=Beachte Boss-Schlüssel in Logik
+option.entrance_shuffle_interior=Eingänge mischen
+option.shuffle_grottos=Grotten mischen
+option.shuffle_dungeons=Tempel mischen
+option.shuffle_overworld=Overworld-Eingänge mischen
+option.shuffleMediCarpet=Medigoron und Fliegender-Teppich-Händler mischen
 option.ganon_castle_skulltulas=Benötigte Skulltulas für Regenbogenbrücke
-option.lacs_skulltulas=Benötigte Skulltulas für LACS
-option.stone_count_lacs=Benötigte Steine für LACS
-option.medallion_count_lacs=Benötigte Medaillien for LACS
-option.dungeon_count_lacs=Benötigte abgeschlossene Tempel for LACS
+option.lacs_skulltulas=Benötigte Skulltulas für Lichtpfeil-Cutscene
+option.stone_count_lacs=Benötigte Steine für Lichtpfeil-Cutscene
+option.medallion_count_lacs=Benötigte Medaillen  for Lichtpfeil-Cutscene
+option.dungeon_count_lacs=Benötigte abgeschlossene Tempel for Lichtpfeil-Cutscene
 option.stone_count_bridge=Benötigte Steine für Regenbogenbrücke
-option.medallion_count_bridge=Benötigte Medaillien für Regenbogenbrücke
+option.medallion_count_bridge=Benötigte Medaillen  für Regenbogenbrücke
 option.dungeon_count_bridge=Benötigte abgeschlossene Tempel für Regenbogenbrücke
 option.skip_child_zelda=Zelda überspringen
 option.shuffle_owls=Shuffle Owl Drops
@@ -1046,46 +1046,46 @@ skip.fewer_tunic_requirements=Weniger Rüstungs-Anforderungen
 skip.grottos_without_agony=Verborgene Grotten ohne Stein der Weisheit
 skip.visible_collisions=Unsichtbare Wände passieren
 skip.child_deadhand=Kind - Dead Hand ohne Kokiri-Schwert
-skip.child_dampe_race_poh=Zweites Dampe-Rennen als Kind
+skip.child_dampe_race_Herzteil=Zweites Dampe-Rennen als Kind
 skip.man_on_roof=Mann auf dem Dach ohne Hookshot
 skip.dc_staircase=Dodongos Höhlentreppe mit Bogen
 skip.dc_jump=Dodongos Höhle Stachelfallenraum - Sprung ohne Hover Boots
 skip.dc_vines_gs=Dodongos Höhle Ranken-Skulltula von unten mit Longshot
-skip.gerudo_kitchen=Gerudo Festung - Küche ohne zusätzliche Gegenstände
-skip.deku_basement_gs=Deku-Baum-Keller - Ranken Skulltula mit Jump-Slash
-skip.deku_b1_webs_with_bow=Deku-Baum Keller - Spinnennetz zu Gohma mit Bogen
+skip.gerudo_kitchen=Gerudo-Festung - Küche ohne zusätzliche Gegenstände
+skip.deku_basement_gs=Dekubaum-Keller - Ranken Skulltula mit Jump-Slash
+skip.deku_b1_webs_with_bow=Dekubaum-Keller - Spinnennetz zu Gohma mit Bogen
 skip.rusted_switches=Rostige Schalter durch Wände hämmern
 skip.botw_basement=Brunnen - Kellertruhe mit Stärke & Stöcken
 skip.forest_mq_block_puzzle=Waldtempel-MQ - Block-Puzzle mit Bombchu überspringen
 skip.spirit_child_bombchu=Geistertempel - Kind-Seitenbrücke mit Bombchu
-skip.windmill_poh=Windmühle PoH als Erwachsener ohne Items
-skip.crater_bean_poh_with_hovers=Krater - Bohnen-PoH mit Hover Boots
+skip.windmill_poh=Windmühle Herzteil als Erwachsener ohne Items
+skip.crater_bean_poh_with_hovers=Krater - Bohnen-Herzteil mit Hover Boots
 skip.zora_with_cucco=Zoras-Domäneneingang mit Cucco
 skip.gtg_mq_with_hookshot=Gerudo-Trainingsgelände MQ - linke Seite Silber-Rubine mit Hookshot
 skip.forest_vines=Waldtempel - Osthof-Ranken mit Hookshot
 skip.forest_outdoor_east_gs=Waldtempel - Östlicher Innenhof Skulltulla mit Bumerang
 skip.forest_first_gs=Waldtempel - Erster Raum Skulltulla mit schwer zu benutzenden Waffen
 skip.forest_well_swim=Waldtempel-MQ - Brunnen mit Hookshot durchschwimmen
-skip.forest_mq_hallway_switch=Waldtempel MQ - Verdrehter FLut-Schalter mit Hookshot erreichen
+skip.forest_mq_hallway_switch=Waldtempel MQ - Verdrehter-Flur Schalter mit Hookshot erreichen
 skip.dmt_bombable=Todesbergpfad - Truhe mit Stärke
-skip.goron_city_pot_with_strength=Goronia - Drehender Krug PoH mit Stärke
+skip.goron_city_pot_with_strength=Goronia - Drehender Krug Herzteil mit Stärke
 skip.adult_kokiri_gs=Erwachsene Kokiri-Wald-Skulltulla mit Schwebestiefeln
-skip.spirit_mq_frozen_eye=Spirit Temple MQ - Eis-Augenschalter ohne Feuer
-skip.spirit_wall=Spirit Temple - Verschiebungswand ohne zusätzliche Gegenstände
-skip.spirit_lobby_gs=Spirit Temple - Hauptraum Skulltulla mit Bumerang
+skip.spirit_mq_frozen_eye=Geistertempel MQ - Eis-Augenschalter ohne Feuer
+skip.spirit_wall=Geistertempel - Verschiebungswand ohne zusätzliche Gegenstände
+skip.spirit_lobby_gs=Geistertempel - Hauptraum Skulltulla mit Bumerang
 skip.spirit_lobby_jump=Geistertempel - Hauptraum Sprung von den Händen zu den oberen Kanten
-skip.spirit_mq_sun_block_gs=Spirit Temple MQ - Sun Block Room Skulltulla mit Bumerang
+skip.spirit_mq_sun_block_gs=Geistertempel MQ - Sun Block Room Skulltulla mit Bumerang
 skip.jabu_scrub_jump_dive=Jabu-Jabu - Deku-Händler als Erwachsener mit Sprungtauchen
 skip.jabu_mq_sot_gs=Jabu-Jabu MQ - Hymne der Zeit Block Skulltulla mit Bumerang
 skip.botw_cage_gs=Brunnen - Raubschleim-Skulltulla ohne Bumerang
-skip.botw_mq_dead_hand_key=Bottom of the Well MQ - Dead Hand Freistehender Schlüssel mit Bumerang
+skip.botw_mq_dead_hand_key=Brunnen MQ - Dead Hand Freistehender Schlüssel mit Bumerang
 skip.fire_flame_maze=Feuertempel - Flammenwand-Labyrinth überspringen
 skip.fire_mq_flame_maze=Feuertempel MQ - Flammenwand-Labyrinth Überspringen
 skip.fire_mq_climb=Feuertempel MQ - Klettern ohne Feuerquelle
 skip.fire_mq_near_boss=Feuertempel MQ - Truhe in der Nähe des Bosses ohne die Kiste zu zerbrechen
 skip.fire_mq_maze_side_room=Feuertempel MQ - Felsenlabyrinth Seitenraum ohne Kiste
 skip.fire_mq_bk_chest=Feuertempel MQ - Boss-Schlüssel-Truhe ohne Bogen
-skip.zora_river_lower=Zoras Fluss - Unterer Freistehender PoH als Erwachsener ohne Items
+skip.zora_river_lower=Zoras Fluss - Unterer Freistehender Herzteil als Erwachsener ohne Items
 skip.water_cracked_wall_hovers=Wassertempel - Rissige Wand mit Hover Boots
 skip.shadow_freestand_key=Schattentempel - Freistehender Schlüssel mit Bombchu
 skip.shadow_mq_huge_pit=Schattentempel MQ - Untere riesige Grube ohne Feuerquelle
@@ -1098,11 +1098,11 @@ skip.colossus_gs=Wüstenkoloss - Hügel Skulltulla mit Hookshot
 skip.dc_scarecrow_gs=Dodongos Höhle - Vogelscheuche Skulltulla mit Armos-Statue
 skip.kakariko_tower_gs=Kakariko Turm - Skulltulla mit Jump Slash
 skip.lab_wall_gs=Labormauer am Hylia-See - Skulltulla mit Jump Slash
-skip.spirit_mq_lower_adult=Spirit Temple MQ - Untere Erwachsenen-Sektion ohne Feuerpfeile
-skip.spirit_map_chest=Spirit Temple - Kartentruhe mit Bogen
-skip.spirit_sun_chest=Spirit Temple - Sonnenblockraum-Truhe mit Bogen
-skip.shadow_trial_mq=Schatten-Probe MQ - Fackel mit Bogen
-skip.forest_outdoors_ledge=Forest Temple MQ - NE Außenkante mit Hover Boots
+skip.spirit_mq_lower_adult=Geistertempel MQ - Untere Erwachsenen-Sektion ohne Feuerpfeile
+skip.spirit_map_chest=Geistertempel - Kartentruhe mit Bogen
+skip.spirit_sun_chest=Geistertempel - Sonnenblockraum-Truhe mit Bogen
+skip.shadow_trial_mq=Prüfung der Schatten MQ - Fackel mit Bogen
+skip.forest_outdoors_ledge=Waldtempel MQ - Nordöstliche Außenkante mit Hover Boots
 skip.water_boss_key_region=Wassertempel - Boss-Schlüsselbereich mit Hover-Boots
 skip.water_falling_platform_gs_hookshot=Wassertempel - Fallende Plattform Raum Skulltulla mit Hookshot
 skip.water_falling_platform_gs_boomerang=Wassertempel - Fallende Plattform Raum Skulltulla mit Bumerang
@@ -1114,25 +1114,25 @@ skip.trail_gs_lower_hookshot=Gebirgspfad - Unterer Red Rock Skulltulla mit Hooks
 skip.trail_gs_lower_bean=Gebirgspfad - Unterer Red Rock Skulltulla mit Zauberbohne
 skip.crater_upper_to_lower=Gebirgspfad - Von oben nach unten mit Hammer
 skip.zora_with_hover=Zoras Domäneneingang mit Hover Boots
-skip.domain_gs=Zora's Domain Skulltulla ohne zusätzliche Items
+skip.domain_gs=Zoras Domäneneingang Skulltulla ohne zusätzliche Items
 skip.shadow_statue=Schattentempel - Fluss-Statue mit Bombchu
 skip.link_goron_dins=Stoppt den Goronen Link mit Dins Feuer
 skip.fire_song_of_time=Feuertempel - Hymne der Zeit-Raum Skulltulla ohne Hymne der Zeit
 skip.fire_strength=Feuertempel - Klettern ohne Stärke
 skip.fire_mq_bombable_chest=Feuertempel MQ - Großer Lavaraum bombbare Truhe ohne Hookshot
 skip.light_trial_mq=Prüfung des Lichts MQ ohne Hookshot
-skip.ice_mq_scarecrow=Eishöhle MQ Vogelscheuche Skulltulla ohne zusätzliche Gegenstände
+skip.ice_mq_scarecrow=Eishöhle MQ - Vogelscheuche Skulltulla ohne zusätzliche Gegenstände
 skip.ice_block_gs=Eishöhle - Blockraum Skulltulla mit Hover Boots
 skip.reverse_wasteland=Umgekehrtes Ödland
-skip.zora_river_upper=Zoras Fluss - Oberer Freistehender PoH als Erwachsener ohne Items
+skip.zora_river_upper=Zora-Fluss - Oberer Freistehender Herzteil als Erwachsener ohne Items
 skip.shadow_mq_gap=Schattentempel MQ - Wahrheits-Drehstatuen-Lücke mit Longshot
-skip.lost_woods_gs_bean=Verlorene WÄlder - Erwachsenen-Skulltulla ohne Bohne
+skip.lost_woods_gs_bean=Verlorene Wälder - Erwachsenen-Skulltulla ohne Bohne
 skip.jabu_boss_gs_adult=Jabu-Jabu - Nahe Boss Skulltulla ohne Bumerang als Erwachsener
-skip.graveyard_poh=Friedhof - Freistehender PoH mit Bumerang
-skip.castle_storms_gs=Hyrule Schloss - Sturmgrotte Skulltulla mit nur Bumerang
+skip.graveyard_poh=Friedhof - Freistehender Herzteil mit Bumerang
+skip.castle_storms_gs=Schloss Hyrule - Sturmgrotte Skulltulla mit nur Bumerang
 skip.dmt_soil_gs=Gebirgspfad - Lockere Erde-Skulltulla ohne zerstörten Felsen
 skip.gtg_without_hookshot=Gerudo-Trainingsgelände - Linke Seite Silberne Rubine ohne Hookshot
-skip.gtg_mq_without_hookshot=Gerudo Trainingsgelände MQ - Linke Seite Silberne Rubine ohne Hookshot
+skip.gtg_mq_without_hookshot=Gerudo-Trainingsgelände MQ - Linke Seite Silberne Rubine ohne Hookshot
 skip.gtg_fake_wall=Gerudo-Trainingsgelände - Falsche-Wand-Kante mit Hover Boots erreichen
 skip.water_cracked_wall_nothing=Wassertempel - Rissige Wand ohne zusätzliche Gegenstände
 skip.wt_basement_jump=Wassertempel - Nordkeller-Kante mit Präzisionssprung
@@ -1144,19 +1144,19 @@ skip.water_dragon_adult=Wassertempel - Drachenstatue Schalter über dem Wasser a
 skip.water_dragon_child=Wassertempel - Drachenstatue Schalter über dem Wasser als Kind
 skip.goron_city_leftmost=Goronia - Linke Truhe mit Hover Boots
 skip.goron_grotto=Goronia - Grotte mit Hookshot während man Schaden nimmt
-skip.deku_b1_skip=Deku-Baum - Keller ohne Schleuder
+skip.deku_b1_skip=Dekubaum - Keller ohne Schleuder
 skip.spirit_lower_adult_switch=Geistertempel - Unterer Erwachsenenschalter mit Bomben
 skip.forest_outside_backdoor=Waldtempel - Garten-Hintertür ohne Hover Boots
 skip.forest_scarecrow=Waldtempel - Vogelscheuchen-Route
 skip.dc_mq_child_bombs=Dodongos Höhle MQ - Frühes Bombentaschegebiet als Kind
-skip.dc_scrub_room=Dodongo's Cavern Two Scrub Room mit Stärke
-skip.dc_slingshot_skip=Dodongos Höhle Kind Schleuder-Sprünge
+skip.dc_scrub_room=Dodongos Höhle - Two Scrub Room mit Stärke
+skip.dc_slingshot_skip=Dodongos Höhle - Kind Schleuder-Sprünge
 skip.child_rolling_with_strength=Rollender Gorone (Hot Rodder Goron) als Kind mit Stärke
-skip.goron_city_pot=Goronia - Drehende Vase PoH mit Bombchu
-skip.valley_crate_hovers=Gerudo-Tal - Crate PoH als Erwachsener mit Hover Boots
-skip.lost_woods_bridge=Sprung auf die Verlorene WÄlder Brücke als Erwachsener ohne Items
-skip.spirit_trial_hookshot=Geisterprüfung ohne Hookshot
-skip.shadow_umbrella=Schatten-Tempel - Steinblock bei fallenden Stacheln überspringen
+skip.goron_city_pot=Goronia - Drehende Vase Herzteil mit Bombchu
+skip.valley_crate_hovers=Gerudo-Tal - Kisten-Herzteil als Erwachsener mit Hover Boots
+skip.lost_woods_bridge=Sprung auf die Verlorene Wälder Brücke als Erwachsener ohne Items
+skip.spirit_trial_hookshot=Prüfung der Geister ohne Hookshot
+skip.shadow_umbrella=Schattentempel - Steinblock bei fallenden Stacheln überspringen
 skip.shadow_umbrella_gs=Schattentempel - Fallende Stacheln Skulltulla mit Hover Boots
 skip.water_central_bow=Wassertempel - Zentralbogen Ziel ohne Longshot oder Hover Boots
 skip.fire_scarecrow=Feuertempel - Ostturm ohne Vogelscheuchenlied
@@ -1172,8 +1172,8 @@ skip.lens_shadow_mq=Schattentempel MQ vor unsichtbarer beweglicher Plattform ohn
 skip.lens_shadow_mq_back=Schattentempel MQ jenseits der unsichtbaren beweglichen Plattform ohne Auge der Wahrheit
 skip.lens_shadow=Schattentempel vor der Unsichtbaren Bewegten Plattform ohne Auge der Wahrheit
 skip.lens_shadow_back=Schattentempel jenseits der unsichtbaren beweglichen Plattform ohne Auge der Wahrheit
-skip.lens_spirit=Geisttempel ohne Auge der Wahrheit
-skip.lens_spirit_mq=Geisttempel MQ ohne Auge der Wahrheit
+skip.lens_spirit=Geistertempel ohne Auge der Wahrheit
+skip.lens_spirit_mq=Geistertempel MQ ohne Auge der Wahrheit
 
 skip.water_bk_chest=Wassertempel - Boss-Schlüsseltruhe mit Eisenstiefeln
 skip.water_falling_platform_gs=Wassertempel - Fallende Plattform Raum Skulltulla mit Hookshot
@@ -1181,8 +1181,8 @@ skip.water_dragon_bombchu=Wassertempel - Drachenstatue mit Bombchu
 skip.water_north_basement_ledge_jump=Wassertempel - Boss-Schlüsseltruhe ohne zusätzliche Items
 
 skip.botw_mq_pits=Brunnen MQ - Sprung über die Gruben
-skip.deku_mq_compass_gs=Deku-Baum MQ . Kompassraum Skulltulla-Felsen mit nur Hammer
-skip.deku_mq_log=Deku-Baum MQ - Rolle unter dem Stachelblock
+skip.deku_mq_compass_gs=Dekubaum MQ . Kompassraum Skulltulla-Felsen mit nur Hammer
+skip.deku_mq_log=Dekubaum MQ - Rolle unter dem Stachelblock
 skip.dc_mq_eyes=Dodongos Höhle MQ - Die Augen mit Stärke beleuchten
 skip.dc_mq_child_back=Dodongos Höhle MQ - Bereiche als Kind ohne Bomben / Bombchus zurücklegen
 skip.fire_mq_blocked_chest=Feuertempel MQ - Großer Lavaraum Blockierte Tür ohne Hookshot
@@ -1194,8 +1194,8 @@ skip.forest_mq_hallway_switch_hookshot=Waldtempel MQ - Verdrehter Gang-Schalter 
 skip.forest_door_frame=Waldtempel MQ - Östlicher Garten Türrahmen mit Hover Boots
 skip.fire_trial_mq=Feuerprüfung MQ mit Hookshot
 skip.ice_mq_red_ice_gs=Eishöhle MQ - Rotes Eis Skulltulla ohne Hymne der Zeit
-skip.kakariko_rooftop_gs=Kakariko - Dach Skulltulla mit Hover Boots
-skip.trail_gs_lower_hovers=gebirgspfad - Unterer roter Felsen-Skulltulla mit Hover Boots
+skip.kakariko_rooftop_gs=Kakariko - Dach-Skulltulla mit Hover Boots
+skip.trail_gs_lower_hovers=Gebirgspfad - Unterer roter Felsen-Skulltulla mit Hover Boots
 skip.shadow_mq_invisible_blades=Schattentempel MQ - Unsichtbare Klingen Silber-Rubine ohne Hymne der Zeit
 skip.spirit_mq_sun_block_sot=Geistertempel MQ - Sonnenblock-Raum als Kind ohne Hymne der Zeit
 skip.water_mq_central_pillar=Wassertempel MQ - Zentrale Säule mit Feuerpfeilen
@@ -1231,7 +1231,7 @@ logic_rules_glitched=Mit Glitchen
 # SETTINGS - LACS
 light_arrow_cutscene_vanilla=Vanilla Vorraussetzungen
 light_arrow_cutscene_stones=Heilige Steine Vorraussetzungen
-light_arrow_cutscene_medallions=Medaillien Vorraussetzungen
+light_arrow_cutscene_medallions=Medaillen  Vorraussetzungen
 light_arrow_cutscene_dungeons=Abgeschlossene Tempel Vorraussetzungen
 light_arrow_cutscene_skulltulas=Goldene Skulltula Vorraussetzungen
 
@@ -1267,7 +1267,7 @@ gerudo_fortress_open_open=Handwerker wurden bereits gerettet
 # SETTINGS - GANON
 ganon_castle_open_default=Vanilla Vorraussetzung
 ganon_castle_open_dungeon=Alle Dungeons
-ganon_castle_open_medallion=Alle Amulette
+ganon_castle_open_medallion=Alle Medaillen
 ganon_castle_open_stones=Alle Steine
 ganon_castle_open_skulltulas=100 Skulltulas
 ganon_castle_open_triforce=Triforce Hunt
@@ -1443,14 +1443,14 @@ dun_type=Typ (V/MQ)
 
 # exits
 ## dungeons
-region.deku_tree_entrance\u0020->\u0020region.deku_tree_gateway=Deku Baum Eingang
-region.deku_tree_gateway\u0020->\u0020region.deku_tree_entrance=Deku Baum Ausgang
+region.deku_tree_entrance\u0020->\u0020region.deku_tree_gateway=Dekubaum Eingang
+region.deku_tree_gateway\u0020->\u0020region.deku_tree_entrance=Dekubaum Ausgang
 
 region.dodongos_cavern_entrance\u0020->\u0020region.dodongos_cavern_gateway=Dodongos Höhle Eingang
 region.dodongos_cavern_gateway\u0020->\u0020region.dodongos_cavern_entrance=Dodongos Höhle Ausgang
 
-region.jabu_jabus_belly_entrance\u0020->\u0020region.jabu_jabus_belly_gateway=Jabu Jabu Eingang
-region.jabu_jabus_belly_gateway\u0020->\u0020region.jabu_jabus_belly_entrance=Jabu Jabu Ausgang
+region.jabu_jabus_belly_entrance\u0020->\u0020region.jabu_jabus_belly_gateway=Jabu-Jabu Eingang
+region.jabu_jabus_belly_gateway\u0020->\u0020region.jabu_jabus_belly_entrance=Jabu-Jabu Ausgang
 
 region.bottom_of_the_well_entrance\u0020->\u0020region.bottom_of_the_well_gateway=Brunnen Eingang
 region.bottom_of_the_well_gateway\u0020->\u0020region.bottom_of_the_well_entrance=Brunnen Ausgang
@@ -1464,8 +1464,8 @@ region.fire_temple_gateway\u0020->\u0020region.fire_temple_entrance=Feuertempel 
 region.water_temple_entrance\u0020->\u0020region.water_temple_gateway=Wassertempel Eingang
 region.water_temple_gateway\u0020->\u0020region.water_temple_entrance=Wassertempel Ausgang
 
-region.spirit_temple_entrance\u0020->\u0020region.spirit_temple_gateway=Gesitertempel Eingang
-region.spirit_temple_gateway\u0020->\u0020region.spirit_temple_entrance=Gesitertempel Ausgang
+region.spirit_temple_entrance\u0020->\u0020region.spirit_temple_gateway=Geistertempel Eingang
+region.spirit_temple_gateway\u0020->\u0020region.spirit_temple_entrance=Geistertempel Ausgang
 
 region.shadow_temple_entrance\u0020->\u0020region.shadow_temple_gateway=Schattentempel Eingang
 region.shadow_temple_gateway\u0020->\u0020region.shadow_temple_entrance=Schattentempel Ausgang
@@ -1477,237 +1477,237 @@ region.gerudo_training_grounds_entrance\u0020->\u0020region.gerudo_training_grou
 region.gerudo_training_grounds_gateway\u0020->\u0020region.gerudo_training_grounds_entrance=Trainingsarena Ausgang
 
 ## simple indoors
-region.dmt_storms_grotto_entrance\u0020->\u0020region.dmt_storms_grotto=Gebirgspfad Sturm Grotte Eingang
-region.dmt_storms_grotto\u0020->\u0020region.dmt_storms_grotto_entrance=Gebirgspfad Sturm Grotte Ausgang
+region.dmt_storms_grotto_entrance\u0020->\u0020region.dmt_storms_grotto=Gebirgspfad - Sturm-Grotte Eingang
+region.dmt_storms_grotto\u0020->\u0020region.dmt_storms_grotto_entrance=Gebirgspfad - Sturm-Grotte Ausgang
 
-region.dmc_hammer_grotto_entrance\u0020->\u0020region.dmc_hammer_grotto=Krater Hammer Grotte Eingang
-region.dmc_hammer_grotto\u0020->\u0020region.dmc_hammer_grotto_entrance=Krater Hammer Grotte Ausgang
+region.dmc_hammer_grotto_entrance\u0020->\u0020region.dmc_hammer_grotto=Krater - Hammer-Grotte Eingang
+region.dmc_hammer_grotto\u0020->\u0020region.dmc_hammer_grotto_entrance=Krater - Hammer-Grotte Ausgang
 
-region.dmc_upper_grotto_entrance\u0020->\u0020region.dmc_upper_grotto=Krater Bomben Grotte Eingang
-region.dmc_upper_grotto\u0020->\u0020region.dmc_upper_grotto_entrance=Krater Bomben Grotte Ausgang
+region.dmc_upper_grotto_entrance\u0020->\u0020region.dmc_upper_grotto=Krater - Bomben-Grotte Eingang
+region.dmc_upper_grotto\u0020->\u0020region.dmc_upper_grotto_entrance=Krater - Bomben-Grotte Ausgang
 
-region.dmt_cow_grotto_entrance\u0020->\u0020region.dmt_cow_grotto=Gebirgspfad Kuh Grotte Eingang
-region.dmt_cow_grotto\u0020->\u0020region.dmt_cow_grotto_entrance=Gebirgspfad Kuh Grotte Ausgang
+region.dmt_cow_grotto_entrance\u0020->\u0020region.dmt_cow_grotto=Gebirgspfad - Kuh-Grotte Eingang
+region.dmt_cow_grotto\u0020->\u0020region.dmt_cow_grotto_entrance=Gebirgspfad - Kuh-Grotte Ausgang
 
-region.colossus_grotto_entrance\u0020->\u0020region.colossus_grotto=Koloss Grotte Eingang
-region.colossus_grotto\u0020->\u0020region.colossus_grotto_entrance=Koloss Grotte Ausgang
+region.colossus_grotto_entrance\u0020->\u0020region.colossus_grotto=Wüstenkoloss - Grotte-Eingang
+region.colossus_grotto\u0020->\u0020region.colossus_grotto_entrance=Wüstenkoloss - Grotte-Ausgang
 
-region.gf_storms_grotto_entrance\u0020->\u0020region.gf_storms_grotto=Gerudo Sturm Grotte Eingang
-region.gf_storms_grotto\u0020->\u0020region.gf_storms_grotto_entrance=Gerudo Sturm Grotte Ausgang
+region.gf_storms_grotto_entrance\u0020->\u0020region.gf_storms_grotto=Gerudo-Festung - Sturm-Grotte Eingang
+region.gf_storms_grotto\u0020->\u0020region.gf_storms_grotto_entrance=Gerudo-Festung - Sturm-Grotte Ausgang
 
-region.gv_octorok_grotto_entrance\u0020->\u0020region.gv_octorok_grotto=Gerudotal Octorok Grotte Eingang
-region.gv_octorok_grotto\u0020->\u0020region.gv_octorok_grotto_entrance=Gerudotal Octorok Grotte Ausgang
+region.gv_octorok_grotto_entrance\u0020->\u0020region.gv_octorok_grotto=Gerudo-Tal Octorok-Grotte Eingang
+region.gv_octorok_grotto\u0020->\u0020region.gv_octorok_grotto_entrance=Gerudo-Tal Octorok-Grotte Ausgang
 
-region.gv_storms_grotto_entrance\u0020->\u0020region.gv_storms_grotto=Gerudotal Sturm Grotte Eingang
-region.gv_storms_grotto\u0020->\u0020region.gv_storms_grotto_entrance=Gerudotal Sturm Grotte Ausgang
+region.gv_storms_grotto_entrance\u0020->\u0020region.gv_storms_grotto=Gerudo-Tal Sturm-Grotte Eingang
+region.gv_storms_grotto\u0020->\u0020region.gv_storms_grotto_entrance=Gerudo-Tal Sturm-Grotte Ausgang
 
-region.gc_grotto_entrance\u0020->\u0020region.gc_grotto=Goronia Grotte Eingang
-region.gc_grotto\u0020->\u0020region.gc_grotto_entrance=Goronia Grotte Ausgang
+region.gc_grotto_entrance\u0020->\u0020region.gc_grotto=Goronia - Grotte Eingang
+region.gc_grotto\u0020->\u0020region.gc_grotto_entrance=Goronia - Grotte Ausgang
 
 region.graveyard_composers_grave_entrance\u0020->\u0020region.graveyard_composers_grave=Königsgrab Eingang
 region.graveyard_composers_grave\u0020->\u0020region.graveyard_composers_grave_entrance=Königsgrab Ausgang
 
-region.graveyard_heart_piece_grave_entrance\u0020->\u0020region.graveyard_heart_piece_grave=Zombie Grab Eingang
-region.graveyard_heart_piece_grave\u0020->\u0020region.graveyard_heart_piece_grave_entrance=Zombie Grab Ausgang
+region.graveyard_heart_piece_grave_entrance\u0020->\u0020region.graveyard_heart_piece_grave=Zombie-Grab Eingang
+region.graveyard_heart_piece_grave\u0020->\u0020region.graveyard_heart_piece_grave_entrance=Zombie-Grab Ausgang
 
-region.graveyard_shield_grave_entrance\u0020->\u0020region.graveyard_shield_grave=Schild Grab Eingang
-region.graveyard_shield_grave\u0020->\u0020region.graveyard_shield_grave_entrance=Schild Grab Ausgang
+region.graveyard_shield_grave_entrance\u0020->\u0020region.graveyard_shield_grave=Schild-Grab Eingang
+region.graveyard_shield_grave\u0020->\u0020region.graveyard_shield_grave_entrance=Schild-Grab Ausgang
 
-region.hc_storms_grotto_entrance\u0020->\u0020region.hc_storms_grotto=Schloss Sturm Grotte Eingang
-region.hc_storms_grotto\u0020->\u0020region.hc_storms_grotto_entrance=Schloss Sturm Grotte Ausgang
+region.hc_storms_grotto_entrance\u0020->\u0020region.hc_storms_grotto=Schloss Hyrule - Sturm-Grotte Eingang
+region.hc_storms_grotto\u0020->\u0020region.hc_storms_grotto_entrance=Schloss Hyrule - Sturm-Grotte Ausgang
 
-region.hf_fairy_grotto_entrance\u0020->\u0020region.hf_fairy_grotto=Steppe Feen Grotte Eingang
-region.hf_fairy_grotto\u0020->\u0020region.hf_fairy_grotto_entrance=Steppe Feen Grotte Ausgang
+region.hf_fairy_grotto_entrance\u0020->\u0020region.hf_fairy_grotto=Hylianische Steppe - Feen-Grotte Eingang
+region.hf_fairy_grotto\u0020->\u0020region.hf_fairy_grotto_entrance=Hylianische Steppe - Feen-Grotte Ausgang
 
-region.hf_near_kak_grotto_entrance\u0020->\u0020region.hf_near_kak_grotto=Nahe Kak Grotte Eingang
-region.hf_near_kak_grotto\u0020->\u0020region.hf_near_kak_grotto_entrance=Nahe Kak Grotte Ausgang
+region.hf_near_kak_grotto_entrance\u0020->\u0020region.hf_near_kak_grotto=Nahe Kakariko Grotte Eingang
+region.hf_near_kak_grotto\u0020->\u0020region.hf_near_kak_grotto_entrance=Nahe Kakariko Grotte Ausgang
 
-region.hf_inside_fence_grotto_entrance\u0020->\u0020region.hf_inside_fence_grotto=Zaun Innere Grotte Eingang
-region.hf_inside_fence_grotto\u0020->\u0020region.hf_inside_fence_grotto_entrance=Zaun Innere Grotte Ausgang
+region.hf_inside_fence_grotto_entrance\u0020->\u0020region.hf_inside_fence_grotto=Umzäunte Grotte nahe Hyliasee - Eingang
+region.hf_inside_fence_grotto\u0020->\u0020region.hf_inside_fence_grotto_entrance=Umzäunte Grotte nahe Hyliasee - Ausgang
 
-region.hf_open_grotto_entrance\u0020->\u0020region.hf_open_grotto=Steppe Offene Grotte Eingang
-region.hf_open_grotto\u0020->\u0020region.hf_open_grotto_entrance=Steppe Offene Grotte Ausgang
+region.hf_open_grotto_entrance\u0020->\u0020region.hf_open_grotto=Hylianische Steppe - Offene Grotte nahe Hyliasee Eingang
+region.hf_open_grotto\u0020->\u0020region.hf_open_grotto_entrance=Hylianische Steppe - Offene Grotte nahe Hyliasee Ausgang
 
-region.hf_tektite_grotto_entrance\u0020->\u0020region.hf_tektite_grotto=Steppe Tauch Grotte Eingang
-region.hf_tektite_grotto\u0020->\u0020region.hf_tektite_grotto_entrance=Steppe Tauch Grotte Ausgang
+region.hf_tektite_grotto_entrance\u0020->\u0020region.hf_tektite_grotto=Hylianische Steppe - Tauch-Grotte Eingang
+region.hf_tektite_grotto\u0020->\u0020region.hf_tektite_grotto_entrance=Hylianische Steppe - Tauch-Grotte Ausgang
 
-region.hf_cow_grotto_entrance\u0020->\u0020region.hf_cow_grotto=Steppe Kuh Grotte Eingang
-region.hf_cow_grotto\u0020->\u0020region.hf_cow_grotto_entrance=Steppe Kuh Grotte Ausgang
+region.hf_cow_grotto_entrance\u0020->\u0020region.hf_cow_grotto=Hylianische Steppe - Kuh-Grotte Eingang
+region.hf_cow_grotto\u0020->\u0020region.hf_cow_grotto_entrance=Hylianische Steppe - Kuh-Grotte Ausgang
 
-region.hf_near_market_grotto_entrance\u0020->\u0020region.hf_near_market_grotto=Nahe Markt Grotte Eingang
-region.hf_near_market_grotto\u0020->\u0020region.hf_near_market_grotto_entrance=Nahe Markt Grotte Ausgang
+region.hf_near_market_grotto_entrance\u0020->\u0020region.hf_near_market_grotto=Nahe Hyrule-Stadt - Grotte Eingang
+region.hf_near_market_grotto\u0020->\u0020region.hf_near_market_grotto_entrance=Nahe Hyrule-Stadt - Grotte Ausgang
 
-region.hf_southeast_grotto_entrance\u0020->\u0020region.hf_southeast_grotto=Steppe Southeast Grotte Eingang
-region.hf_southeast_grotto\u0020->\u0020region.hf_southeast_grotto_entrance=Steppe Southeast Grotte Ausgang
+region.hf_southeast_grotto_entrance\u0020->\u0020region.hf_southeast_grotto=Hylianische Steppe - Südöstliche-Grotte Eingang
+region.hf_southeast_grotto\u0020->\u0020region.hf_southeast_grotto_entrance=Hylianische Steppe - Südöstliche-Grotte Ausgang
 
-region.kak_redead_grotto_entrance\u0020->\u0020region.kak_redead_grotto=Kak Zombie Grotte Eingang
-region.kak_redead_grotto\u0020->\u0020region.kak_redead_grotto_entrance=Kak Zombie Grotte Ausgang
+region.kak_redead_grotto_entrance\u0020->\u0020region.kak_redead_grotto=Kakariko - Zombie-Grotte Eingang
+region.kak_redead_grotto\u0020->\u0020region.kak_redead_grotto_entrance=Kakariko - Zombie-Grotte Ausgang
 
-region.kak_open_grotto_entrance\u0020->\u0020region.kak_open_grotto=Kak Offene Grotte Eingang
-region.kak_open_grotto\u0020->\u0020region.kak_open_grotto_entrance=Kak Offene Grotte Ausgang
+region.kak_open_grotto_entrance\u0020->\u0020region.kak_open_grotto=Kakariko - Offene Grotte Eingang
+region.kak_open_grotto\u0020->\u0020region.kak_open_grotto_entrance=Kakariko - Offene Grotte Ausgang
 
-region.kf_storms_grotto_entrance\u0020->\u0020region.kf_storms_grotto=Kokiri Sturm Grotte Eingang
-region.kf_storms_grotto\u0020->\u0020region.kf_storms_grotto_entrance=Kokiri Sturm Grotte Ausgang
+region.kf_storms_grotto_entrance\u0020->\u0020region.kf_storms_grotto=Kokiri - Sturm-Grotte Eingang
+region.kf_storms_grotto\u0020->\u0020region.kf_storms_grotto_entrance=Kokiri - Sturm-Grotte Ausgang
 
-region.lh_grotto_entrance\u0020->\u0020region.lh_grotto=See Grotte Eingang
-region.lh_grotto\u0020->\u0020region.lh_grotto_entrance=See Grotte Ausgang
+region.lh_grotto_entrance\u0020->\u0020region.lh_grotto=Hyliasee - Grabstein-Grotte Eingang
+region.lh_grotto\u0020->\u0020region.lh_grotto_entrance=Hyliasee - Grabstein-Grotte Ausgang
 
-region.llr_grotto_entrance\u0020->\u0020region.llr_grotto=Farm Grotte Eingang
-region.llr_grotto\u0020->\u0020region.llr_grotto_entrance=Farm Grotte Ausgang
+region.llr_grotto_entrance\u0020->\u0020region.llr_grotto=Lon-Lon Farm - Grotte Eingang
+region.llr_grotto\u0020->\u0020region.llr_grotto_entrance=Lon-Lon Farm - Grotte Ausgang
 
-region.lw_near_shortcuts_grotto_entrance\u0020->\u0020region.lw_near_shortcuts_grotto=Wälder Nahe Goronia Grotte Eingang
-region.lw_near_shortcuts_grotto\u0020->\u0020region.lw_near_shortcuts_grotto_entrance=Wälder Nahe Goronia Grotte Ausgang
+region.lw_near_shortcuts_grotto_entrance\u0020->\u0020region.lw_near_shortcuts_grotto=Wälder Nahe Goronia - Grotte Eingang
+region.lw_near_shortcuts_grotto\u0020->\u0020region.lw_near_shortcuts_grotto_entrance=Wälder Nahe Goronia - Grotte Ausgang
 
 region.deku_theater_entrance\u0020->\u0020region.deku_theater=Deku Theater Eingang
 region.deku_theater\u0020->\u0020region.deku_theater_entrance=Deku Theater Ausgang
 
-region.lw_scrubs_grotto_entrance\u0020->\u0020region.lw_scrubs_grotto=Nahe Lichtung Grotte Eingang
-region.lw_scrubs_grotto\u0020->\u0020region.lw_scrubs_grotto_entrance=Nahe Lichtung Grotte Ausgang
+region.lw_scrubs_grotto_entrance\u0020->\u0020region.lw_scrubs_grotto=Nahe Lichtung - Grotte Eingang
+region.lw_scrubs_grotto\u0020->\u0020region.lw_scrubs_grotto_entrance=Nahe Lichtung - Grotte Ausgang
 
-region.sfm_fairy_grotto_entrance\u0020->\u0020region.sfm_fairy_grotto=Lichtung Feen Grotte Eingang
-region.sfm_fairy_grotto\u0020->\u0020region.sfm_fairy_grotto_entrance=Lichtung Feen Grotte Ausgang
+region.sfm_fairy_grotto_entrance\u0020->\u0020region.sfm_fairy_grotto=Heilige Lichtung - Feen-Grotte Eingang
+region.sfm_fairy_grotto\u0020->\u0020region.sfm_fairy_grotto_entrance=Heilige Lichtung - Feen-Grotte Ausgang
 
-region.sfm_storms_grotto_entrance\u0020->\u0020region.sfm_storms_grotto=Lichtung Sturm Grotte Eingang
-region.sfm_storms_grotto\u0020->\u0020region.sfm_storms_grotto_entrance=Lichtung Sturm Grotte Ausgang
+region.sfm_storms_grotto_entrance\u0020->\u0020region.sfm_storms_grotto=Heilige Lichtung - Sturm-Grotte Eingang
+region.sfm_storms_grotto\u0020->\u0020region.sfm_storms_grotto_entrance=Heilige Lichtung - Sturm-Grotte Ausgang
 
-region.sfm_wolfos_grotto_entrance\u0020->\u0020region.sfm_wolfos_grotto=Lichtung Wolfos Grotte Eingang
-region.sfm_wolfos_grotto\u0020->\u0020region.sfm_wolfos_grotto_entrance=Lichtung Wolfos Grotte Ausgang
+region.sfm_wolfos_grotto_entrance\u0020->\u0020region.sfm_wolfos_grotto=Heilige Lichtung - Wolfos-Grotte Eingang
+region.sfm_wolfos_grotto\u0020->\u0020region.sfm_wolfos_grotto_entrance=Heilige Lichtung - Wolfos-Grotte Ausgang
 
-region.zr_fairy_grotto_entrance\u0020->\u0020region.zr_fairy_grotto=Fluss Feen Grotte Eingang
-region.zr_fairy_grotto\u0020->\u0020region.zr_fairy_grotto_entrance=Fluss Feen Grotte Ausgang
+region.zr_fairy_grotto_entrance\u0020->\u0020region.zr_fairy_grotto=Zora-Fluss - Feen-Grotte Eingang
+region.zr_fairy_grotto\u0020->\u0020region.zr_fairy_grotto_entrance=Zora-Fluss - Feen-Grotte Ausgang
 
-region.zr_open_grotto_entrance\u0020->\u0020region.zr_open_grotto=Fluss Offene Grotte Eingang
-region.zr_open_grotto\u0020->\u0020region.zr_open_grotto_entrance=Fluss Offene Grotte Ausgang
+region.zr_open_grotto_entrance\u0020->\u0020region.zr_open_grotto=Zora-Fluss - Offene Grotte Eingang
+region.zr_open_grotto\u0020->\u0020region.zr_open_grotto_entrance=Zora-Fluss - Offene Grotte Ausgang
 
-region.zr_storms_grotto_entrance\u0020->\u0020region.zr_storms_grotto=Fluss Sturm Grotte Eingang
-region.zr_storms_grotto\u0020->\u0020region.zr_storms_grotto_entrance=Fluss Sturm Grotte Ausgang
+region.zr_storms_grotto_entrance\u0020->\u0020region.zr_storms_grotto=Zora-Fluss - Sturm-Grotte Eingang
+region.zr_storms_grotto\u0020->\u0020region.zr_storms_grotto_entrance=Zora-Fluss - Sturm-Grotte Ausgang
 
-region.zd_storms_grotto_entrance\u0020->\u0020region.zd_storms_grotto=Zoras Sturm Grotte Eingang
-region.zd_storms_grotto\u0020->\u0020region.zd_storms_grotto_entrance=Zoras Sturm Grotte Ausgang
+region.zd_storms_grotto_entrance\u0020->\u0020region.zd_storms_grotto=Zoras Reich - Sturm-Grotte Eingang
+region.zd_storms_grotto\u0020->\u0020region.zd_storms_grotto_entrance=Zoras Reich - Sturm-Grotte Ausgang
 
-region.market_bazaar_entrance\u0020->\u0020region.market_bazaar=Kind Basar Eingang
-region.market_bazaar\u0020->\u0020region.market_bazaar_entrance=Kind Basar Ausgang
+region.market_bazaar_entrance\u0020->\u0020region.market_bazaar=Hyrule Markt - Kind Basar Eingang
+region.market_bazaar\u0020->\u0020region.market_bazaar_entrance=Hyrule Markt - Kind Basar Ausgang
 
-region.market_bombchu_bowling_entrance\u0020->\u0020region.market_bombchu_bowling=Minenbowlingbahn Eingang
-region.market_bombchu_bowling\u0020->\u0020region.market_bombchu_bowling_entrance=Minenbowlingbahn Ausgang
+region.market_bombchu_bowling_entrance\u0020->\u0020region.market_bombchu_bowling=Hyrule Markt - Minenbowlingbahn Eingang
+region.market_bombchu_bowling\u0020->\u0020region.market_bombchu_bowling_entrance=Hyrule Markt - Minenbowlingbahn Ausgang
 
-region.market_bombchu_shop_entrance\u0020->\u0020region.market_bombchu_shop=Krabbelminenladen Eingang
-region.market_bombchu_shop\u0020->\u0020region.market_bombchu_shop_entrance=Krabbelminenladen Ausgang
+region.market_bombchu_shop_entrance\u0020->\u0020region.market_bombchu_shop=Hyrule Markt - Krabbelminenladen Eingang
+region.market_bombchu_shop\u0020->\u0020region.market_bombchu_shop_entrance=Hyrule Markt - Krabbelminenladen Ausgang
 
-region.market_man_in_green_house_entrance\u0020->\u0020region.market_man_in_green_house=Markt Hinteres Haus Eingang
-region.market_man_in_green_house\u0020->\u0020region.market_man_in_green_house_entrance=Markt Hinteres Haus Ausgang
+region.market_man_in_green_house_entrance\u0020->\u0020region.market_man_in_green_house=Hyrule Markt -  Hinteres Haus Eingang
+region.market_man_in_green_house\u0020->\u0020region.market_man_in_green_house_entrance=Hyrule Markt -  Hinteres Haus Ausgang
 
-region.market_mask_shop_entrance\u0020->\u0020region.market_mask_shop=Maskenladen Eingang
-region.market_mask_shop\u0020->\u0020region.market_mask_shop_entrance=Maskenladen Ausgang
+region.market_mask_shop_entrance\u0020->\u0020region.market_mask_shop=Hyrule Markt - Maskenladen Eingang
+region.market_mask_shop\u0020->\u0020region.market_mask_shop_entrance=Hyrule Markt - Maskenladen Ausgang
 
-region.market_potion_shop_entrance\u0020->\u0020region.market_potion_shop=Kind Magie-Laden Eingang
-region.market_potion_shop\u0020->\u0020region.market_potion_shop_entrance=Kind Magie-Laden Ausgang
+region.market_potion_shop_entrance\u0020->\u0020region.market_potion_shop=Hyrule Markt - Kind Trankladen Eingang
+region.market_potion_shop\u0020->\u0020region.market_potion_shop_entrance=Hyrule Markt - Kind Trankladen Ausgang
 
-region.market_shooting_gallery_entrance\u0020->\u0020region.market_shooting_gallery=Kind Schießbude Eingang
-region.market_shooting_gallery\u0020->\u0020region.market_shooting_gallery_entrance=Kind Schießbude Ausgang
+region.market_shooting_gallery_entrance\u0020->\u0020region.market_shooting_gallery=Hyrule Markt - Kind Schießbude Eingang
+region.market_shooting_gallery\u0020->\u0020region.market_shooting_gallery_entrance=Hyrule Markt - Kind Schießbude Ausgang
 
-region.market_treasure_chest_game_entrance\u0020->\u0020region.market_treasure_chest_game=Schatzkistenpoker Eingang
-region.market_treasure_chest_game\u0020->\u0020region.market_treasure_chest_game_entrance=Schatzkistenpoker Ausgang
+region.market_treasure_chest_game_entrance\u0020->\u0020region.market_treasure_chest_game=Hyrule Markt - Schatzkistenpoker Eingang
+region.market_treasure_chest_game\u0020->\u0020region.market_treasure_chest_game_entrance=Hyrule Markt - Schatzkistenpoker Ausgang
 
-region.market_guard_house_entrance\u0020->\u0020region.market_guard_house=Markt Wachturm Eingang
-region.market_guard_house\u0020->\u0020region.market_guard_house_entrance=Markt Wachturm Ausgang
+region.market_guard_house_entrance\u0020->\u0020region.market_guard_house=Hyrule Markt - Wachturm Eingang
+region.market_guard_house\u0020->\u0020region.market_guard_house_entrance=Hyrule Markt - Wachturm Ausgang
 
-region.dmc_great_fairy_fountain_entrance\u0020->\u0020region.dmc_great_fairy_fountain=Krater Große Fee Eingang
-region.dmc_great_fairy_fountain\u0020->\u0020region.dmc_great_fairy_fountain_entrance=Krater Große Fee Ausgang
+region.dmc_great_fairy_fountain_entrance\u0020->\u0020region.dmc_great_fairy_fountain=Krater - Große Fee Eingang
+region.dmc_great_fairy_fountain\u0020->\u0020region.dmc_great_fairy_fountain_entrance=Krater - Große Fee Ausgang
 
-region.dmt_great_fairy_fountain_entrance\u0020->\u0020region.dmt_great_fairy_fountain=Gebirgspfad Große Fee Eingang
-region.dmt_great_fairy_fountain\u0020->\u0020region.dmt_great_fairy_fountain_entrance=Gebirgspfad Große Fee Ausgang
+region.dmt_great_fairy_fountain_entrance\u0020->\u0020region.dmt_great_fairy_fountain=Gebirgspfad - Große Fee Eingang
+region.dmt_great_fairy_fountain\u0020->\u0020region.dmt_great_fairy_fountain_entrance=Gebirgspfad - Große Fee Ausgang
 
-region.colossus_great_fairy_fountain_entrance\u0020->\u0020region.colossus_great_fairy_fountain=Koloss Große Fee Eingang
-region.colossus_great_fairy_fountain\u0020->\u0020region.colossus_great_fairy_fountain_entrance=Koloss Große Fee Ausgang
+region.colossus_great_fairy_fountain_entrance\u0020->\u0020region.colossus_great_fairy_fountain=Wüstenkoloss - Große Fee Eingang
+region.colossus_great_fairy_fountain\u0020->\u0020region.colossus_great_fairy_fountain_entrance=Wüstenkoloss - Große Fee Ausgang
 
-region.ogc_great_fairy_fountain_entrance\u0020->\u0020region.ogc_great_fairy_fountain=Schloss Erwachsener Große Fee Eingang
-region.ogc_great_fairy_fountain\u0020->\u0020region.ogc_great_fairy_fountain_entrance=Schloss Erwachsener Große Fee Ausgang
+region.ogc_great_fairy_fountain_entrance\u0020->\u0020region.ogc_great_fairy_fountain=Ganons Schloss - Erwachsener Große Fee Eingang
+region.ogc_great_fairy_fountain\u0020->\u0020region.ogc_great_fairy_fountain_entrance=Ganons Schloss - Erwachsener Große Fee Ausgang
 
-region.gv_carpenter_tent_entrance\u0020->\u0020region.gv_carpenter_tent=Handwerker Zelt Eingang
-region.gv_carpenter_tent\u0020->\u0020region.gv_carpenter_tent_entrance=Handwerker Zelt Ausgang
+region.gv_carpenter_tent_entrance\u0020->\u0020region.gv_carpenter_tent=Gerudo-Tal - Handwerker-Zelt Eingang
+region.gv_carpenter_tent\u0020->\u0020region.gv_carpenter_tent_entrance=Gerudo-Tal - Handwerker-Zelt Ausgang
 
-region.gc_shop_entrance\u0020->\u0020region.gc_shop=Goronen-Laden Eingang
-region.gc_shop\u0020->\u0020region.gc_shop_entrance=Goronen-Laden Ausgang
+region.gc_shop_entrance\u0020->\u0020region.gc_shop=Goronia - Goronen-Laden Eingang
+region.gc_shop\u0020->\u0020region.gc_shop_entrance=Goronia - Goronen-Laden Ausgang
 
-region.graveyard_dampes_house_entrance\u0020->\u0020region.graveyard_dampes_house=Boris Haus Eingang
-region.graveyard_dampes_house\u0020->\u0020region.graveyard_dampes_house_entrance=Boris Haus Ausgang
+region.graveyard_dampes_house_entrance\u0020->\u0020region.graveyard_dampes_house=Friedhof - Boris Haus Eingang
+region.graveyard_dampes_house\u0020->\u0020region.graveyard_dampes_house_entrance=Friedhof - Boris Haus Ausgang
 
-region.hc_great_fairy_fountain_entrance\u0020->\u0020region.hc_great_fairy_fountain=Schloss Kind Große Fee Eingang
-region.hc_great_fairy_fountain\u0020->\u0020region.hc_great_fairy_fountain_entrance=Schloss Kind Große Fee Ausgang
+region.hc_great_fairy_fountain_entrance\u0020->\u0020region.hc_great_fairy_fountain=Schloss Hyrule - Kind Große Fee Eingang
+region.hc_great_fairy_fountain\u0020->\u0020region.hc_great_fairy_fountain_entrance=Schloss Hyrule - Kind Große Fee Ausgang
 
-region.kak_impas_house_back_entrance\u0020->\u0020region.kak_impas_house_back=Impas Haus Back Eingang
-region.kak_impas_house_back\u0020->\u0020region.kak_impas_house_back_entrance=Impas Haus Back Ausgang
+region.kak_impas_house_back_entrance\u0020->\u0020region.kak_impas_house_back=Kakariko - Impas Haus Hintereingang
+region.kak_impas_house_back\u0020->\u0020region.kak_impas_house_back_entrance=Kakariko - Impas Haus hinterausgang
 
-region.kak_carpenter_boss_house_entrance\u0020->\u0020region.kak_carpenter_boss_house=Handwerker Boss Haus Eingang
-region.kak_carpenter_boss_house\u0020->\u0020region.kak_carpenter_boss_house_entrance=Handwerker Boss Haus Ausgang
+region.kak_carpenter_boss_house_entrance\u0020->\u0020region.kak_carpenter_boss_house=Kakariko - Handwerker Boss Haus Eingang
+region.kak_carpenter_boss_house\u0020->\u0020region.kak_carpenter_boss_house_entrance=Kakariko - Handwerker Boss Haus Ausgang
 
-region.kak_house_of_skulltula_entrance\u0020->\u0020region.kak_house_of_skulltula=Skulltula Haus Eingang
-region.kak_house_of_skulltula\u0020->\u0020region.kak_house_of_skulltula_entrance=Skulltula Haus Ausgang
+region.kak_house_of_skulltula_entrance\u0020->\u0020region.kak_house_of_skulltula=Kakariko - Skulltula Haus Eingang
+region.kak_house_of_skulltula\u0020->\u0020region.kak_house_of_skulltula_entrance=Kakariko - Skulltula Haus Ausgang
 
-region.kak_impas_house_entrance\u0020->\u0020region.kak_impas_house=Impas Haus Eingang
-region.kak_impas_house\u0020->\u0020region.kak_impas_house_entrance=Impas Haus Ausgang
+region.kak_impas_house_entrance\u0020->\u0020region.kak_impas_house=Kakariko - Impas Haus Eingang
+region.kak_impas_house\u0020->\u0020region.kak_impas_house_entrance=Kakariko - Impas Haus Ausgang
 
-region.kak_bazaar_entrance\u0020->\u0020region.kak_bazaar=Erwachsener Basar Eingang
-region.kak_bazaar\u0020->\u0020region.kak_bazaar_entrance=Erwachsener Basar Ausgang
+region.kak_bazaar_entrance\u0020->\u0020region.kak_bazaar=Kakariko - Erwachsener Basar Eingang
+region.kak_bazaar\u0020->\u0020region.kak_bazaar_entrance=Kakariko - Erwachsener Basar Ausgang
 
-region.kak_shooting_gallery_entrance\u0020->\u0020region.kak_shooting_gallery=Erwachsener Schießbude Eingang
-region.kak_shooting_gallery\u0020->\u0020region.kak_shooting_gallery_entrance=Erwachsener Schießbude Ausgang
+region.kak_shooting_gallery_entrance\u0020->\u0020region.kak_shooting_gallery=Kakariko - Erwachsener Schießbude Eingang
+region.kak_shooting_gallery\u0020->\u0020region.kak_shooting_gallery_entrance=Kakariko - Erwachsener Schießbude Ausgang
 
-region.kak_windmill_entrance\u0020->\u0020region.kak_windmill=Kak Windmill Eingang
-region.kak_windmill\u0020->\u0020region.kak_windmill_entrance=Kak Windmill Ausgang
+region.kak_windmill_entrance\u0020->\u0020region.kak_windmill=Kakariko -  Windmühle Eingang
+region.kak_windmill\u0020->\u0020region.kak_windmill_entrance=Kakariko -  Windmühle Ausgang
 
-region.kak_odd_medicine_building_entrance\u0020->\u0020region.kak_odd_medicine_building=Hexenladen Eingang
-region.kak_odd_medicine_building\u0020->\u0020region.kak_odd_medicine_building_entrance=Hexenladen Ausgang
+region.kak_odd_medicine_building_entrance\u0020->\u0020region.kak_odd_medicine_building=Kakariko - Hexenladen Eingang
+region.kak_odd_medicine_building\u0020->\u0020region.kak_odd_medicine_building_entrance=Kakariko - Hexenladen Ausgang
 
-region.kf_house_of_twins_entrance\u0020->\u0020region.kf_house_of_twins=Kokiri Zwillinge Haus Eingang
-region.kf_house_of_twins\u0020->\u0020region.kf_house_of_twins_entrance=Kokiri Zwillinge Haus Ausgang
+region.kf_house_of_twins_entrance\u0020->\u0020region.kf_house_of_twins=Kokiri-Wald - Zwillinge Haus Eingang
+region.kf_house_of_twins\u0020->\u0020region.kf_house_of_twins_entrance=Kokiri-Wald - Zwillinge Haus Ausgang
 
-region.kf_know_it_all_house_entrance\u0020->\u0020region.kf_know_it_all_house=Kokiri Allwissender Haus Eingang
-region.kf_know_it_all_house\u0020->\u0020region.kf_know_it_all_house_entrance=Kokiri Allwissender Haus Ausgang
+region.kf_know_it_all_house_entrance\u0020->\u0020region.kf_know_it_all_house=Kokiri-Wald - Allwissender Haus Eingang
+region.kf_know_it_all_house\u0020->\u0020region.kf_know_it_all_house_entrance=Kokiri-Wald - Allwissender Haus Ausgang
 
-region.kf_kokiri_shop_entrance\u0020->\u0020region.kf_kokiri_shop=Kokiri-Laden Eingang
-region.kf_kokiri_shop\u0020->\u0020region.kf_kokiri_shop_entrance=Kokiri-Laden Ausgang
+region.kf_kokiri_shop_entrance\u0020->\u0020region.kf_kokiri_shop=Kokiri-Wald - Laden Eingang
+region.kf_kokiri_shop\u0020->\u0020region.kf_kokiri_shop_entrance=Kokiri-Wald - Laden Ausgang
 
-region.kf_midos_house_entrance\u0020->\u0020region.kf_midos_house=Midos Haus Eingang
-region.kf_midos_house\u0020->\u0020region.kf_midos_house_entrance=Midos Haus Ausgang
+region.kf_midos_house_entrance\u0020->\u0020region.kf_midos_house=Kokiri-Wald - Midos Haus Eingang
+region.kf_midos_house\u0020->\u0020region.kf_midos_house_entrance=Kokiri-Wald - Midos Haus Ausgang
 
-region.kf_sarias_house_entrance\u0020->\u0020region.kf_sarias_house=Sarias Haus Eingang
-region.kf_sarias_house\u0020->\u0020region.kf_sarias_house_entrance=Sarias Haus Ausgang
+region.kf_sarias_house_entrance\u0020->\u0020region.kf_sarias_house=Kokiri-Wald - Sarias Haus Eingang
+region.kf_sarias_house\u0020->\u0020region.kf_sarias_house_entrance=Kokiri-Wald - Sarias Haus Ausgang
 
-region.lh_fishing_hole_entrance\u0020->\u0020region.lh_fishing_hole=See Fischteich Eingang
-region.lh_fishing_hole\u0020->\u0020region.lh_fishing_hole_entrance=See Fischteich Ausgang
+region.lh_fishing_hole_entrance\u0020->\u0020region.lh_fishing_hole=Hyliasee - Angelteich Eingang
+region.lh_fishing_hole\u0020->\u0020region.lh_fishing_hole_entrance=Hyliasee - Angelteich Ausgang
 
-region.lh_lab_entrance\u0020->\u0020region.lh_lab=See Labor Eingang
-region.lh_lab\u0020->\u0020region.lh_lab_entrance=See Labor Ausgang
+region.lh_lab_entrance\u0020->\u0020region.lh_lab=Hyliasee - Labor Eingang
+region.lh_lab\u0020->\u0020region.lh_lab_entrance=Hyliasee - Labor Ausgang
 
-region.llr_stables_entrance\u0020->\u0020region.llr_stables=Farm Stall Eingang
-region.llr_stables\u0020->\u0020region.llr_stables_entrance=Farm Stall Ausgang
+region.llr_stables_entrance\u0020->\u0020region.llr_stables=Lon-Lon Farm - Stall Eingang
+region.llr_stables\u0020->\u0020region.llr_stables_entrance=Lon-Lon Farm - Stall Ausgang
 
-region.llr_tower_entrance\u0020->\u0020region.llr_tower=Farm Turm Eingang
-region.llr_tower\u0020->\u0020region.llr_tower_entrance=Farm Turm Ausgang
+region.llr_tower_entrance\u0020->\u0020region.llr_tower=Lon-Lon Farm - Turm Eingang
+region.llr_tower\u0020->\u0020region.llr_tower_entrance=Lon-Lon Farm - Turm Ausgang
 
-region.llr_talons_house_entrance\u0020->\u0020region.llr_talons_house=Talons Haus Eingang
-region.llr_talons_house\u0020->\u0020region.llr_talons_house_entrance=Talons Haus Ausgang
+region.llr_talons_house_entrance\u0020->\u0020region.llr_talons_house=Lon-Lon Farm - Talons Haus Eingang
+region.llr_talons_house\u0020->\u0020region.llr_talons_house_entrance=Lon-Lon Farm - Talons Haus Ausgang
 
 region.zd_shop_entrance\u0020->\u0020region.zd_shop=Zora-Laden Eingang
 region.zd_shop\u0020->\u0020region.zd_shop_entrance=Zora-Laden Ausgang
 
-region.zf_great_fairy_fountain_entrance\u0020->\u0020region.zf_great_fairy_fountain=Zora Große Fee Eingang
-region.zf_great_fairy_fountain\u0020->\u0020region.zf_great_fairy_fountain_entrance=Zora Große Fee Ausgang
+region.zf_great_fairy_fountain_entrance\u0020->\u0020region.zf_great_fairy_fountain=Zora-Quelle - Große Fee Eingang
+region.zf_great_fairy_fountain\u0020->\u0020region.zf_great_fairy_fountain_entrance=Zora-Quelle - Große Fee Ausgang
 
 ## special indoors
 region.graveyard_dampes_grave_entrance\u0020->\u0020region.graveyard_dampes_grave=Boris’ Grab Eingang
 region.graveyard_dampes_grave\u0020->\u0020region.graveyard_dampes_grave_entrance=Boris’ Grab Ausgang
 
-region.kak_potion_shop_front_entrance\u0020->\u0020region.kak_potion_shop_front=Erwachsener Magie-Laden Eingang
-region.kak_potion_shop_front\u0020->\u0020region.kak_potion_shop_front_entrance=Erwachsener Magie-Laden Ausgang
+region.kak_potion_shop_front_entrance\u0020->\u0020region.kak_potion_shop_front=Kakariko - Erwachsener Magie-Laden Eingang
+region.kak_potion_shop_front\u0020->\u0020region.kak_potion_shop_front_entrance=Kakariko - Erwachsener Magie-Laden Ausgang
 
-region.kak_potion_shop_back_entrance\u0020->\u0020region.kak_potion_shop_back=Erwachsener Magie-Laden Back Eingang
-region.kak_potion_shop_back\u0020->\u0020region.kak_potion_shop_back_entrance=Erwachsener Magie-Laden Back Ausgang
+region.kak_potion_shop_back_entrance\u0020->\u0020region.kak_potion_shop_back=Kakariko - Erwachsener Magie-Laden Hintereingang
+region.kak_potion_shop_back\u0020->\u0020region.kak_potion_shop_back_entrance=Kakariko - Erwachsener Magie-Laden Hinterausgang
 
-region.kf_links_house_entrance\u0020->\u0020region.kf_links_house=Links Haus Eingang
-region.kf_links_house\u0020->\u0020region.kf_links_house_entrance=Links Haus Ausgang
+region.kf_links_house_entrance\u0020->\u0020region.kf_links_house=Kokiri-Dorf - Links Haus Eingang
+region.kf_links_house\u0020->\u0020region.kf_links_house_entrance=Kokiri-Dorf - Links Haus Ausgang
 
 region.tot_entrance\u0020->\u0020region.temple_of_time=Zitadelle der Zeit Eingang
 region.temple_of_time\u0020->\u0020region.tot_entrance=Zitadelle der Zeit Ausgang
