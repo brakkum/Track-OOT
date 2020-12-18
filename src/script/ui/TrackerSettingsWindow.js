@@ -10,6 +10,21 @@ import BusyIndicator from "/script/ui/BusyIndicator.js";
 import IDBStorage from "/emcJS/storage/IDBStorage.js";
 import StateStorage from "/script/storage/StateStorage.js";
 
+function sortNames(a, b) {
+    if (a.toLowerCase() < b.toLowerCase()) {
+        return -1;
+    }
+    return 1;
+}
+
+function createDevEntry(name, type) {
+    const el = document.createElement('li');
+    el.classList.add("name");
+    el.classList.add(type);
+    el.innerHTML = name;
+    return el;
+}
+
 // TODO bind erase stored data button
 
 const SettingsStorage = new IDBStorage('settings');
@@ -87,7 +102,7 @@ const CREDITS_TPL = new Template(`
     #credits .name.owner {
         color: #cb9c3d;
     }
-    #credits .name.developer {
+    #credits .name.team {
         color: #ffdb00;
     }
     #credits .name.contributor {
@@ -101,18 +116,12 @@ const CREDITS_TPL = new Template(`
     <div class="panel">
         <label>
             <span class="title">Dev-Team</span>
-            <ul>
-                <li class="name owner">ZidArgs</li>
-                <li class="name developer">fraggerman</li>
+            <ul id="team">
             </ul>
         </label>
         <label>
             <span class="title">Contributors</span>
-            <ul>
-                <li class="name contributor">Luigimeansme</li>
-                <li class="name contributor">pidgezero_one</li>
-                <li class="name contributor">Elagatua</li>
-                <li class="name contributor">Takacomic</li>
+            <ul id="contributor">
             </ul>
         </label>
     </div>
@@ -161,7 +170,7 @@ async function getSettings() {
     }
     return res;
 }
-    
+
 async function applySettingsChoices(settings) {
     const viewpane = document.getElementById("main-content");
     viewpane.setAttribute("data-font", settings.font);
@@ -171,7 +180,7 @@ async function applySettingsChoices(settings) {
 }
 
 async function showAbout() {
-    settings.show({settings: await getSettings()}, 'about');
+    settings.show({ settings: await getSettings() }, 'about');
 }
 
 let showUpdatePopup = false;
@@ -183,7 +192,7 @@ export default class Settings {
             settings: FileData.get("settings")
         };
         SettingsBuilder.build(settings, options);
-        
+
         const settings_about = ABOUT_TPL.generate();
         settings_about.getElementById("tracker-version").innerHTML = MemoryStorage.get("version-string");
         settings_about.getElementById("tracker-date").innerHTML = MemoryStorage.get("version-date");
@@ -200,9 +209,22 @@ export default class Settings {
                 Dialog.alert("Connection Lost", "The ServiceWorker was not able to establish or keep connection to the Server<br>Please try again later.");
             }
         });
-    
+
         !async function() {
             const settings_credits = CREDITS_TPL.generate();
+
+            const teamContainer = settings_credits.getElementById("team");
+            const contributorContainer = settings_credits.getElementById("contributor");
+            teamContainer.append(createDevEntry(MemoryStorage.get("devs-owner"), "owner"));
+            const team = MemoryStorage.get("devs-team").sort(sortNames);
+            team.forEach(name => {
+                teamContainer.append(createDevEntry(name, "team"));
+            });
+            const contributors = MemoryStorage.get("devs-contributors").sort(sortNames);
+            contributors.forEach(name => {
+                contributorContainer.append(createDevEntry(name, "contributor"));
+            });
+
             const supporters_list = settings_credits.getElementById("supporters");
             let supporters = LocalStorage.get("supporters", {});
             try {
@@ -228,7 +250,7 @@ export default class Settings {
             settings.addTab("About", "about");
             settings.addElements("about", settings_about);
         }();
-        
+
 
         settings.addEventListener('submit', function(event) {
             BusyIndicator.busy();
@@ -251,7 +273,7 @@ export default class Settings {
             EventBus.trigger("settings", settings);
             BusyIndicator.unbusy();
         });
-        
+
         settings.addEventListener('close', function() {
             showUpdatePopup = true;
         });
@@ -264,7 +286,7 @@ export default class Settings {
 
     async show() {
         showUpdatePopup = false;
-        settings.show({settings: await getSettings()}, 'settings');
+        settings.show({ settings: await getSettings() }, 'settings');
     }
 
 }

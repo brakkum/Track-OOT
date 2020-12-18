@@ -25,9 +25,16 @@ function setVersion(data) {
     MemoryStorage.set("version-date", DateUtil.convert(new Date(data.date), "D.M.Y h:m:s"));
 }
 
+function setDevs(data) {
+    MemoryStorage.set("devs-owner", data.owner);
+    MemoryStorage.set("devs-team", data.team);
+    MemoryStorage.set("devs-contributors", data.contributors);
+}
+
 (async function main() {
     try {
         setVersion(await FileLoader.json("version.json"));
+        setDevs(await FileLoader.json("devs.json"));
         // initial boot
         await loadResources(updateLoadingMessage); // eslint-disable-line no-undef
         // ---
