@@ -971,7 +971,7 @@ item.dungeon_map_generic=Karte
 # SETTINGS
 settings=Allgemeine Einstellungen
 options=Randomizer Optionen
-Lichtpfeil-CutsceneAndGanon=Lichtpfeil-Cutscene und Brückenoptionen
+lacsAndGanon=Lichtpfeil-Cutscene und Brückenoptionen
 skips=Aktive Skips
 
 # SETTINGS - GENERAL
@@ -1010,18 +1010,18 @@ option.gossipstones_active=Aktiviere Mythen-Stein-Hinweise
 option.logic_rules=Randomizer-Logik
 option.starting_age=Startalter
 option.light_arrow_cutscene=Lichtpfeile Check
-option.track_keys=Kleine-Schlüssel in Tracker anzeigen
-option.track_bosskeys=Boss-Schlüssel in Tracker anzeigen
+option.track_keys=Beachte Kleine-Schlüssel in Logik
+option.track_bosskeys=Beachte Boss-Schlüssel in Logik
 option.entrance_shuffle_interior=Eingänge mischen
 option.shuffle_grottos=Grotten mischen
 option.shuffle_dungeons=Tempel mischen
 option.shuffle_overworld=Overworld-Eingänge mischen
 option.shuffleMediCarpet=Medigoron und Fliegender-Teppich-Händler mischen
 option.ganon_castle_skulltulas=Benötigte Skulltulas für Regenbogenbrücke
-option.Lichtpfeil-Cutscene_skulltulas=Benötigte Skulltulas für Lichtpfeil-Cutscene
-option.stone_count_Lichtpfeil-Cutscene=Benötigte Steine für Lichtpfeil-Cutscene
-option.medallion_count_Lichtpfeil-Cutscene=Benötigte Medaillen  for Lichtpfeil-Cutscene
-option.dungeon_count_Lichtpfeil-Cutscene=Benötigte abgeschlossene Tempel for Lichtpfeil-Cutscene
+option.lacs_skulltulas=Benötigte Skulltulas für Lichtpfeil-Cutscene
+option.stone_count_lacs=Benötigte Steine für Lichtpfeil-Cutscene
+option.medallion_count_lacs=Benötigte Medaillen  for Lichtpfeil-Cutscene
+option.dungeon_count_lacs=Benötigte abgeschlossene Tempel for Lichtpfeil-Cutscene
 option.stone_count_bridge=Benötigte Steine für Regenbogenbrücke
 option.medallion_count_bridge=Benötigte Medaillen  für Regenbogenbrücke
 option.dungeon_count_bridge=Benötigte abgeschlossene Tempel für Regenbogenbrücke
@@ -1058,8 +1058,8 @@ skip.rusted_switches=Rostige Schalter durch Wände hämmern
 skip.botw_basement=Brunnen - Kellertruhe mit Stärke & Stöcken
 skip.forest_mq_block_puzzle=Waldtempel-MQ - Block-Puzzle mit Bombchu überspringen
 skip.spirit_child_bombchu=Geistertempel - Kind-Seitenbrücke mit Bombchu
-skip.windmill_Herzteil=Windmühle Herzteil als Erwachsener ohne Items
-skip.crater_bean_Herzteil_with_hovers=Krater - Bohnen-Herzteil mit Hover Boots
+skip.windmill_poh=Windmühle Herzteil als Erwachsener ohne Items
+skip.crater_bean_poh_with_hovers=Krater - Bohnen-Herzteil mit Hover Boots
 skip.zora_with_cucco=Zoras-Domäneneingang mit Cucco
 skip.gtg_mq_with_hookshot=Gerudo-Trainingsgelände MQ - linke Seite Silber-Rubine mit Hookshot
 skip.forest_vines=Waldtempel - Osthof-Ranken mit Hookshot
@@ -1128,7 +1128,7 @@ skip.zora_river_upper=Zora-Fluss - Oberer Freistehender Herzteil als Erwachsener
 skip.shadow_mq_gap=Schattentempel MQ - Wahrheits-Drehstatuen-Lücke mit Longshot
 skip.lost_woods_gs_bean=Verlorene Wälder - Erwachsenen-Skulltulla ohne Bohne
 skip.jabu_boss_gs_adult=Jabu-Jabu - Nahe Boss Skulltulla ohne Bumerang als Erwachsener
-skip.graveyard_Herzteil=Friedhof - Freistehender Herzteil mit Bumerang
+skip.graveyard_poh=Friedhof - Freistehender Herzteil mit Bumerang
 skip.castle_storms_gs=Schloss Hyrule - Sturmgrotte Skulltulla mit nur Bumerang
 skip.dmt_soil_gs=Gebirgspfad - Lockere Erde-Skulltulla ohne zerstörten Felsen
 skip.gtg_without_hookshot=Gerudo-Trainingsgelände - Linke Seite Silberne Rubine ohne Hookshot
@@ -1228,7 +1228,7 @@ adult=Erwachsener
 logic_rules_glitchless=Ohne Glitches
 logic_rules_glitched=Mit Glitchen
 
-# SETTINGS - Lichtpfeil-Cutscene
+# SETTINGS - LACS
 light_arrow_cutscene_vanilla=Vanilla Vorraussetzungen
 light_arrow_cutscene_stones=Heilige Steine Vorraussetzungen
 light_arrow_cutscene_medallions=Medaillen  Vorraussetzungen
