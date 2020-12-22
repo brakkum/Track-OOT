@@ -4,6 +4,22 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.24
+
+### IMPROVEMENTS
+
+- fixed some wrong location hints for chests and skulltula
+
+---
+
+## VERSION 2.0.23
+
+### IMPROVEMENTS
+
+- improved overall quality of german translation, especially for skulltulas and subareas
+
+---
+
 ## VERSION 2.0.22
 
 ### IMPROVEMENTS
