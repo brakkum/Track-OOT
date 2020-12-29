@@ -22345,7 +22345,6 @@
                 ]
             }
         },
-        "region.ganons_castle_fire_trial_mq[child]": {},
         "region.ganons_castle_fire_trial_mq[adult]": {
             "event.fire_trial_clear": {
                 "type": "and",
@@ -23989,7 +23988,6 @@
                 ]
             }
         },
-        "region.ganons_castle_fire_trial[child]": {},
         "region.ganons_castle_fire_trial[adult]": {
             "event.fire_trial_clear": {
                 "type": "and",
@@ -25724,7 +25722,6 @@
                 ]
             }
         },
-        "region.gerudo_training_grounds_right_side_mq[child]": {},
         "region.gerudo_training_grounds_right_side_mq[adult]": {
             "region.gerudo_training_grounds_underwater_mq[adult]": {
                 "type": "and",
@@ -25792,7 +25789,6 @@
                 ]
             }
         },
-        "region.gerudo_training_grounds_underwater_mq[child]": {},
         "region.gerudo_training_grounds_underwater_mq[adult]": {
             "logic.location.training_grounds_mq.c_underwater": {
                 "type": "and",
@@ -35580,7 +35576,8 @@
                             },
                             {
                                 "type": "state",
-                                "el": "option.gerudo_fortress_open"
+                                "el": "option.gerudo_fortress_open",
+                                "value": "gerudo_fortress_open_open"
                             },
                             {
                                 "type": "value",
@@ -35893,7 +35890,8 @@
                     },
                     {
                         "type": "state",
-                        "el": "option.gerudo_fortress_open"
+                        "el": "option.gerudo_fortress_open",
+                        "value": "gerudo_fortress_open_open"
                     },
                     {
                         "type": "value",
@@ -35960,7 +35958,8 @@
                     },
                     {
                         "type": "state",
-                        "el": "option.gerudo_fortress_open"
+                        "el": "option.gerudo_fortress_open",
+                        "value": "gerudo_fortress_open_open"
                     },
                     {
                         "type": "value",
@@ -47568,7 +47567,6 @@
                 ]
             }
         },
-        "region.dmc_central_nearby[child]": {},
         "region.dmc_central_nearby[adult]": {
             "region.dmc_central_local[adult]": {
                 "type": "mixin",
@@ -68155,7 +68153,6 @@
                 ]
             }
         },
-        "region.water_temple_falling_platform_room[child]": {},
         "region.water_temple_falling_platform_room[adult]": {
             "region.water_temple_dark_link_region[adult]": {
                 "type": "and",
@@ -69731,32 +69728,6 @@
                 }
             ]
         },
-        "mixin.fairy[child]": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "value",
-                    "el": "item.fairy"
-                },
-                {
-                    "type": "value",
-                    "el": "item.fairy_1"
-                }
-            ]
-        },
-        "mixin.fairy[adult]": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "value",
-                    "el": "item.fairy"
-                },
-                {
-                    "type": "value",
-                    "el": "item.fairy_1"
-                }
-            ]
-        },
         "mixin.has_bombchus[child]": {
             "type": "and",
             "el": [
@@ -69984,12 +69955,6 @@
         "mixin.is_child[child]": {
             "type": "true"
         },
-        "mixin.is_child[adult]": {
-            "type": "false"
-        },
-        "mixin.is_adult[child]": {
-            "type": "false"
-        },
         "mixin.is_adult[adult]": {
             "type": "true"
         },
@@ -70135,44 +70100,6 @@
                 }
             ]
         },
-        "mixin.can_child_attack[adult]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_child[adult]"
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "value",
-                            "el": "item.slingshot"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.boomerang"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.stick"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.sword_kokiri"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "mixin.has_explosives[adult]"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "function.can_use(item.magic_din)[adult]"
-                        }
-                    ]
-                }
-            ]
-        },
         "mixin.can_child_damage[child]": {
             "type": "and",
             "el": [
@@ -70202,40 +70129,6 @@
                         {
                             "type": "mixin",
                             "el": "function.can_use(item.magic_din)[child]"
-                        }
-                    ]
-                }
-            ]
-        },
-        "mixin.can_child_damage[adult]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_child[adult]"
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "value",
-                            "el": "item.slingshot"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.stick"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.sword_kokiri"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "mixin.has_explosives[adult]"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "function.can_use(item.magic_din)[adult]"
                         }
                     ]
                 }
@@ -70359,54 +70252,6 @@
                 {
                     "type": "value",
                     "el": "item.bottle"
-                }
-            ]
-        },
-        "mixin.can_plant_bugs[adult]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_child[adult]"
-                },
-                {
-                    "type": "value",
-                    "el": "item.bottle"
-                }
-            ]
-        },
-        "mixin.can_ride_epona[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_adult[child]"
-                },
-                {
-                    "type": "value",
-                    "el": "event.epona"
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "function.can_play(item.song_epona)[child]"
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "mixin",
-                                    "el": "mixin.is_glitched[child]"
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "mixin.can_hover[child]"
-                                }
-                            ]
-                        }
-                    ]
                 }
             ]
         },
@@ -70655,28 +70500,6 @@
                 {
                     "type": "mixin",
                     "el": "mixin.is_child[child]"
-                },
-                {
-                    "type": "or",
-                    "el": [
-                        {
-                            "type": "value",
-                            "el": "item.bean"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.bean"
-                        }
-                    ]
-                }
-            ]
-        },
-        "mixin.can_plant_bean[adult]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_child[adult]"
                 },
                 {
                     "type": "or",
@@ -71401,141 +71224,6 @@
                 }
             ]
         },
-        "mixin.can_finish_gerudofortress[child]": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.gerudo_fortress_open",
-                            "value": "gerudo_fortress_open_default"
-                        },
-                        {
-                            "type": "min",
-                            "el": {
-                                "type": "value",
-                                "el": "item.key_small_gerudo"
-                            },
-                            "value": 4
-                        },
-                        {
-                            "type": "or",
-                            "el": [
-                                {
-                                    "type": "mixin",
-                                    "el": "mixin.is_adult[child]"
-                                },
-                                {
-                                    "type": "value",
-                                    "el": "item.sword_kokiri"
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "mixin.is_glitched[child]"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "and",
-                            "el": [
-                                {
-                                    "type": "mixin",
-                                    "el": "mixin.is_adult[child]"
-                                },
-                                {
-                                    "type": "or",
-                                    "el": [
-                                        {
-                                            "type": "or",
-                                            "el": [
-                                                {
-                                                    "type": "value",
-                                                    "el": "item.bow"
-                                                },
-                                                {
-                                                    "type": "value",
-                                                    "el": "item.hookshot"
-                                                },
-                                                {
-                                                    "type": "value",
-                                                    "el": "item.boots_hover"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "value",
-                                            "el": "item.membership"
-                                        },
-                                        {
-                                            "type": "value",
-                                            "el": "skip.gerudo_kitchen"
-                                        },
-                                        {
-                                            "type": "mixin",
-                                            "el": "mixin.is_glitched[child]"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "state",
-                            "el": "option.gerudo_fortress_open",
-                            "value": "gerudo_fortress_open_one"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.key_small_gerudo"
-                        },
-                        {
-                            "type": "or",
-                            "el": [
-                                {
-                                    "type": "mixin",
-                                    "el": "mixin.is_adult[child]"
-                                },
-                                {
-                                    "type": "value",
-                                    "el": "item.sword_kokiri"
-                                },
-                                {
-                                    "type": "mixin",
-                                    "el": "mixin.is_glitched[child]"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "state",
-                                "el": "option.gerudo_fortress_open",
-                                "value": "gerudo_fortress_open_default"
-                            }
-                        },
-                        {
-                            "type": "not",
-                            "el": {
-                                "type": "state",
-                                "el": "option.gerudo_fortress_open",
-                                "value": "gerudo_fortress_open_one"
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
         "mixin.can_finish_gerudofortress[adult]": {
             "type": "or",
             "el": [
@@ -71914,19 +71602,6 @@
                 {
                     "type": "mixin",
                     "el": "mixin.can_isg[adult]"
-                }
-            ]
-        },
-        "mixin.can_weirdshot[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "mixin.can_mega[child]"
-                },
-                {
-                    "type": "mixin",
-                    "el": "function.can_use(item.hookshot)[child]"
                 }
             ]
         },
@@ -72997,32 +72672,6 @@
                 }
             ]
         },
-        "function.can_play[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "value",
-                    "el": "item.ocarina"
-                },
-                {
-                    "type": "value",
-                    "el": "item.song_dummy"
-                }
-            ]
-        },
-        "function.can_play[adult]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "value",
-                    "el": "item.ocarina"
-                },
-                {
-                    "type": "value",
-                    "el": "item.song_dummy"
-                }
-            ]
-        },
         "function.has_projectile[child]": {
             "type": "or",
             "el": [
@@ -73264,438 +72913,6 @@
                             ]
                         }
                     ]
-                }
-            ]
-        },
-        "function.can_use[child]": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "function._is_magic_item(item.dummy)[child]"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.dummy"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.magic_power"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "function._is_adult_item(item.dummy)[child]"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "mixin.is_adult[child]"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.dummy"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "function._is_magic_arrow(item.dummy)[child]"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "mixin.is_adult[child]"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.dummy"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.bow"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.magic_power"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "function._is_child_item(item.dummy)[child]"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "mixin.is_child[child]"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.dummy"
-                        }
-                    ]
-                }
-            ]
-        },
-        "function.can_use[adult]": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "function._is_magic_item(item.dummy)[adult]"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.dummy"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.magic_power"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "function._is_adult_item(item.dummy)[adult]"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "mixin.is_adult[adult]"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.dummy"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "function._is_magic_arrow(item.dummy)[adult]"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "mixin.is_adult[adult]"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.dummy"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.bow"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.magic_power"
-                        }
-                    ]
-                },
-                {
-                    "type": "and",
-                    "el": [
-                        {
-                            "type": "mixin",
-                            "el": "function._is_child_item(item.dummy)[adult]"
-                        },
-                        {
-                            "type": "mixin",
-                            "el": "mixin.is_child[adult]"
-                        },
-                        {
-                            "type": "value",
-                            "el": "item.dummy"
-                        }
-                    ]
-                }
-            ]
-        },
-        "function._is_magic_item[child]": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.magic_din"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.magic_farore"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.magic_nayru"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.lens"
-                }
-            ]
-        },
-        "function._is_magic_item[adult]": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.magic_din"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.magic_farore"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.magic_nayru"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.lens"
-                }
-            ]
-        },
-        "function._is_adult_item[child]": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.bow"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.hammer"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.boots_iron"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.boots_hover"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.hookshot"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "mixin.longshot"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "mixin.silver_gauntlets"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "mixin.golden_gauntlets"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.tunic_fire"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.tunic_water"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "mixin.scarecrow"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "mixin.distant_scarecrow"
-                }
-            ]
-        },
-        "function._is_adult_item[adult]": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.bow"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.hammer"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.boots_iron"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.boots_hover"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.hookshot"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "mixin.longshot"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "mixin.silver_gauntlets"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "mixin.golden_gauntlets"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.tunic_fire"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.tunic_water"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "mixin.scarecrow"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "mixin.distant_scarecrow"
-                }
-            ]
-        },
-        "function._is_child_item[child]": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.slingshot"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.boomerang"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.sword_kokiri"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.stick"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.deku_shield"
-                }
-            ]
-        },
-        "function._is_child_item[adult]": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.slingshot"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.boomerang"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.sword_kokiri"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.stick"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.deku_shield"
-                }
-            ]
-        },
-        "function._is_magic_arrow[child]": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.arrow_fire"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.arrow_light"
-                }
-            ]
-        },
-        "function._is_magic_arrow[adult]": {
-            "type": "or",
-            "el": [
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.arrow_fire"
-                },
-                {
-                    "type": "state",
-                    "el": "dummy_items",
-                    "value": "item.arrow_light"
                 }
             ]
         },
@@ -74253,27 +73470,6 @@
                 }
             ]
         },
-        "function.can_use(item.arrow_fire)[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "value",
-                    "el": "item.arrow_fire"
-                },
-                {
-                    "type": "value",
-                    "el": "item.bow"
-                },
-                {
-                    "type": "value",
-                    "el": "item.magic_power"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_adult[child]"
-                }
-            ]
-        },
         "function.can_use(item.arrow_fire)[adult]": {
             "type": "and",
             "el": [
@@ -74292,27 +73488,6 @@
                 {
                     "type": "mixin",
                     "el": "mixin.is_adult[adult]"
-                }
-            ]
-        },
-        "function.can_use(item.arrow_light)[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "value",
-                    "el": "item.arrow_light"
-                },
-                {
-                    "type": "value",
-                    "el": "item.bow"
-                },
-                {
-                    "type": "value",
-                    "el": "item.magic_power"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_adult[child]"
                 }
             ]
         },
@@ -74441,19 +73616,6 @@
                 }
             ]
         },
-        "function.can_use(item.bow)[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "value",
-                    "el": "item.bow"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_adult[child]"
-                }
-            ]
-        },
         "function.can_use(item.bow)[adult]": {
             "type": "and",
             "el": [
@@ -74464,19 +73626,6 @@
                 {
                     "type": "mixin",
                     "el": "mixin.is_adult[adult]"
-                }
-            ]
-        },
-        "function.can_use(item.hammer)[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "value",
-                    "el": "item.hammer"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_adult[child]"
                 }
             ]
         },
@@ -74493,19 +73642,6 @@
                 }
             ]
         },
-        "function.can_use(item.boots_iron)[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "value",
-                    "el": "item.boots_iron"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_adult[child]"
-                }
-            ]
-        },
         "function.can_use(item.boots_iron)[adult]": {
             "type": "and",
             "el": [
@@ -74516,19 +73652,6 @@
                 {
                     "type": "mixin",
                     "el": "mixin.is_adult[adult]"
-                }
-            ]
-        },
-        "function.can_use(item.boots_hover)[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "value",
-                    "el": "item.boots_hover"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_adult[child]"
                 }
             ]
         },
@@ -74545,19 +73668,6 @@
                 }
             ]
         },
-        "function.can_use(item.hookshot)[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "value",
-                    "el": "item.hookshot"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_adult[child]"
-                }
-            ]
-        },
         "function.can_use(item.hookshot)[adult]": {
             "type": "and",
             "el": [
@@ -74568,19 +73678,6 @@
                 {
                     "type": "mixin",
                     "el": "mixin.is_adult[adult]"
-                }
-            ]
-        },
-        "function.can_use(mixin.longshot)[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "mixin.longshot[child]"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_adult[child]"
                 }
             ]
         },
@@ -74597,19 +73694,6 @@
                 }
             ]
         },
-        "function.can_use(mixin.silver_gauntlets)[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "mixin.silver_gauntlets[child]"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_adult[child]"
-                }
-            ]
-        },
         "function.can_use(mixin.silver_gauntlets)[adult]": {
             "type": "and",
             "el": [
@@ -74620,19 +73704,6 @@
                 {
                     "type": "mixin",
                     "el": "mixin.is_adult[adult]"
-                }
-            ]
-        },
-        "function.can_use(mixin.golden_gauntlets)[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "mixin.golden_gauntlets[child]"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_adult[child]"
                 }
             ]
         },
@@ -74649,19 +73720,6 @@
                 }
             ]
         },
-        "function.can_use(item.tunic_fire)[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "mixin.goron_tunic[child]"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_adult[child]"
-                }
-            ]
-        },
         "function.can_use(item.tunic_fire)[adult]": {
             "type": "and",
             "el": [
@@ -74675,19 +73733,6 @@
                 }
             ]
         },
-        "function.can_use(item.tunic_water)[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "mixin.zora_tunic[child]"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_adult[child]"
-                }
-            ]
-        },
         "function.can_use(item.tunic_water)[adult]": {
             "type": "and",
             "el": [
@@ -74698,23 +73743,6 @@
                 {
                     "type": "mixin",
                     "el": "mixin.is_adult[adult]"
-                }
-            ]
-        },
-        "function.can_use(mixin.scarecrow)[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_adult[child]"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.hookshot[child]"
-                },
-                {
-                    "type": "mixin",
-                    "el": "function.can_play(item.song_scarecrow)[child]"
                 }
             ]
         },
@@ -74732,23 +73760,6 @@
                 {
                     "type": "mixin",
                     "el": "function.can_play(item.song_scarecrow)[adult]"
-                }
-            ]
-        },
-        "function.can_use(mixin.distant_scarecrow)[child]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_adult[child]"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.longshot[child]"
-                },
-                {
-                    "type": "mixin",
-                    "el": "function.can_play(item.song_scarecrow)[child]"
                 }
             ]
         },
@@ -74782,19 +73793,6 @@
                 }
             ]
         },
-        "function.can_use(item.slingshot)[adult]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_child[adult]"
-                },
-                {
-                    "type": "value",
-                    "el": "item.slingshot"
-                }
-            ]
-        },
         "function.can_use(item.boomerang)[child]": {
             "type": "and",
             "el": [
@@ -74805,19 +73803,6 @@
                 {
                     "type": "mixin",
                     "el": "mixin.is_child[child]"
-                }
-            ]
-        },
-        "function.can_use(item.boomerang)[adult]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "value",
-                    "el": "item.boomerang"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_child[adult]"
                 }
             ]
         },
@@ -74834,19 +73819,6 @@
                 }
             ]
         },
-        "function.can_use(item.sword_kokiri)[adult]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "value",
-                    "el": "item.sword_kokiri"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_child[adult]"
-                }
-            ]
-        },
         "function.can_use(item.shield_kokiri)[child]": {
             "type": "and",
             "el": [
@@ -74860,19 +73832,6 @@
                 }
             ]
         },
-        "function.can_use(item.shield_kokiri)[adult]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "value",
-                    "el": "item.shield_kokiri"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_child[adult]"
-                }
-            ]
-        },
         "function.can_use(item.stick)[child]": {
             "type": "and",
             "el": [
@@ -74883,19 +73842,6 @@
                 {
                     "type": "mixin",
                     "el": "mixin.is_child[child]"
-                }
-            ]
-        },
-        "function.can_use(item.stick)[adult]": {
-            "type": "and",
-            "el": [
-                {
-                    "type": "value",
-                    "el": "item.stick"
-                },
-                {
-                    "type": "mixin",
-                    "el": "mixin.is_child[adult]"
                 }
             ]
         },
