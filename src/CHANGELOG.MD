@@ -4,6 +4,14 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.25
+
+### IMPROVEMENTS
+
+- fixed some wrong location hints for chests and skulltula
+
+---
+
 ## VERSION 2.0.24
 
 ### BUGFIXES
