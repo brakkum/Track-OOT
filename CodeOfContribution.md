@@ -10,15 +10,29 @@
 - fixes for configurations in `/database/*.json`
 - fixes for translations in `/i18n/*.lang`
 - fixes for unwanted behaviour
+- minor improvements
 
-### creating a hotfix
+### creating a hotfix - forked
+
+1. fork the repo
+2. if possible, check your changes locally before committing
+3. change the changelog file
+    - increase sub-version-number (e.g. `1.2.9` -> `1.2.10`)
+    - add a caption named hotfix `### HOTFIX`
+    - describe your changes in bullet points
+4. commit your changes
+    - describe what you did
+    - for commitmessage mark linebreaks with a semicolon `;`
+5. create pull request, target `master`
+
+### creating a hotfix - branched
 
 1. always pull first `!`
 2. create a branch using the pattern `hotfix/[short description]`
     - all changes will be commited to the new branch
 3. if possible, check your changes locally before committing
 4. change the changelog file
-    - increase version-number (e.g. `1.2.9` -> `1.2.10`)
+    - increase sub-version-number (e.g. `1.2.9` -> `1.2.10`)
     - add a caption named hotfix `### HOTFIX`
     - describe your changes in bullet points
 5. commit your changes
@@ -43,9 +57,52 @@
 6. check for the update to be build and released (can take a few minutes)
 7. if everything works, post the changelog in the discord channel `news`
 
-### pr merge conflicts - manual merging
+---
 
-1. `git remote add $name $repo_url`
+## dev - features
+
+### used for
+
+- large changes in tracker behavior
+- major improvements
+
+### creating a patch - forked
+
+1. fork the repo
+2. if possible, check your changes locally before committing
+3. change the changelog file
+    - if not existing, add `dev` version
+    - add a captions starting with `###`
+    - describe your changes in bullet points
+4. commit your changes
+    - describe what you did
+    - for commitmessage mark linebreaks with a semicolon `;`
+5. create pull request, target `dev`
+    - if you are using a branch mark your feature branch as remove after merge
+        - each major feature gets its own branch
+
+### creating a patch - branched
+
+1. always pull first `!`
+2. create a branch using the pattern `feature/[short description]`
+    - all changes will be commited to the new branch
+3. if possible, check your changes locally before committing
+4. change the changelog file
+    - if not existing, add `dev` version
+    - add a captions starting with `###`
+    - describe your changes in bullet points
+5. commit your changes
+    - describe what you did
+    - for commitmessage mark linebreaks with a semicolon `;`
+6. create pull request, target `dev`
+    - if you are using a branch mark your feature branch as remove after merge
+        - each major feature gets its own branch
+
+---
+
+## pr merge conflicts - manual merging
+
+1. `git remote add $name $pr_repo_url`
 2. `git fetch $name`
 3. `git checkout $target_branch`
 4. `git merge $name/$pr_branch`
