@@ -6,10 +6,13 @@ Application:    Track-OOT
 
 ## VERSION 2.0.25
 
-### IMPROVEMENTS
+### BUGFIXES
 
 - fixed some wrong location hints for chests and skulltula
 - fixed de-de translation for ganon bossdoor open option
+
+### IMPROVEMENTS
+
 - added new setting presets from randomizer
 
 ---
