@@ -19,7 +19,6 @@
 3. if possible, check your changes locally before committing
 4. change the changelog file
     - increase version-number (e.g. `1.2.9` -> `1.2.10`)
-    - remove old changes from changelog
     - add a caption named hotfix `### HOTFIX`
     - describe your changes in bullet points
 5. commit your changes
