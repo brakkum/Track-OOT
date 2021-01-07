@@ -44,6 +44,17 @@
 6. check for the update to be build and released (can take a few minutes)
 7. if everything works, post the changelog in the discord channel `news`
 
+### pr merge conflicts - manual merging
+
+1. `git remote add $name $repo_url`
+2. `git fetch $name`
+3. `git checkout $target_branch`
+4. `git merge $name/$pr_branch`
+5. resolve conflicts in files
+6. commit changes
+7. `git push`
+8. `git remote remove $name` (optional)
+
 ---
 
 ## mirror all to github
