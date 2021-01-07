@@ -23,7 +23,7 @@ const LOAD_RULESET = new Template(`
 `);
         
 function setOptionsFromRuleset(name) {
-    const ruleset = FileData.get("rulesets")[name];
+    const ruleset = FileData.get("rulesets")["current"][name];
     items = {};
     if (!ruleset) { return }
 
@@ -89,7 +89,7 @@ export default class RomSettings {
         
         const selector = loadRulesetRow.getElementById("select-options-preset");
         selector.style.width = "20%";
-        const allRulesets = Object.keys(FileData.get("rulesets"));
+        const allRulesets = Object.keys(FileData.get("rulesets")['current']);
         for (const value of allRulesets) {
             const opt = document.createElement('option');
             opt.value = value;
