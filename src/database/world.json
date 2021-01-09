@@ -1423,6 +1423,12 @@
             "lists": {
                 "v": [
                     {
+                        "id": "hyrule_field.c_ocarina_of_time",
+                        "x": 0,
+                        "y": 0,
+                        "category": "location"
+                    },
+                    {
                         "id": "hyrule_field.c_song_of_time",
                         "x": 0,
                         "y": 0,
@@ -10786,6 +10792,25 @@
                     }
                 },
                 "icon": "images/icons/gossipstone.svg"
+            },
+            "hyrule_field.c_ocarina_of_time": {
+                "type": "chest",
+                "access": "logic.location.hyrule_field.c_ocarina_of_time",
+                "visible": true,
+                "filter": {
+                    "filter.era": {
+                        "child": true,
+                        "adult": false
+                    },
+                    "filter.time": {
+                        "day": true,
+                        "night": true
+                    },
+                    "filter.chests": {
+                        "false": false
+                    }
+                },
+                "icon": "images/icons/chest.svg"
             },
             "hyrule_field.c_song_of_time": {
                 "type": "chest",
