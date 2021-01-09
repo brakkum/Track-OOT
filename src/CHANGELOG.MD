@@ -4,6 +4,35 @@ Application:    Track-OOT
 
 ***
 
+## VERSION 2.0.25
+
+### BUGFIXES
+
+- fixed some wrong location hints for chests and skulltula
+- fixed de-de translation for ganon bossdoor open option
+
+### IMPROVEMENTS
+
+- added new setting presets from randomizer
+
+---
+
+## VERSION 2.0.24
+
+### BUGFIXES
+
+- fixed gerudo fortress open option in logic
+
+---
+
+## VERSION 2.0.23
+
+### IMPROVEMENTS
+
+- improved overall quality of german translation, especially for skulltulas and subareas
+
+---
+
 ## VERSION 2.0.22
 
 ### IMPROVEMENTS

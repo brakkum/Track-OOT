@@ -1,5 +1,5 @@
 {
-    "Vanilla": {
+    "Beginner": {
         "options": {
             "option.logic_rules": "logic_rules_glitchless",
             "option.starting_age": "child",
@@ -23,7 +23,6 @@
             "option.shuffle_grottos": false,
             "option.shuffle_dungeons": false,
             "option.entrance_shuffle_interior": "entrance_shuffle_off",
-
             "option.keysanity_small_old": "keysanity_small_ignore",
             "option.keysanity_boss_old": "keysanity_boss_ignore",
             "option.shuffle_overworld": false
@@ -33,7 +32,7 @@
             "option.lacs_skulltulas": 100,
             "option.stone_count_lacs": 3,
             "option.medallion_count_lacs": 6,
-            "option.dungeon_count_lacs":  9,
+            "option.dungeon_count_lacs": 9,
             "option.ganon_castle_open": "ganon_castle_open_default",
             "option.ganon_castle_skulltulas": 100,
             "option.stone_count_bridge": 3,
@@ -86,19 +85,16 @@
             "option.shuffle_grottos": false,
             "option.shuffle_dungeons": false,
             "option.entrance_shuffle_interior": "entrance_shuffle_off",
-
             "option.keysanity_small_old": "keysanity_small_ignore",
             "option.keysanity_boss_old": "keysanity_boss_ignore",
             "option.shuffle_overworld": false
-
-
         },
         "lacsAndGanon": {
             "option.light_arrow_cutscene": "light_arrow_cutscene_vanilla",
             "option.lacs_skulltulas": 100,
             "option.stone_count_lacs": 3,
             "option.medallion_count_lacs": 6,
-            "option.dungeon_count_lacs":  9,
+            "option.dungeon_count_lacs": 9,
             "option.ganon_castle_open": "ganon_castle_open_medallion",
             "option.ganon_castle_skulltulas": 100,
             "option.stone_count_bridge": 3,
@@ -155,7 +151,6 @@
             "option.shuffle_dungeons": false,
             "option.entrance_shuffle_interior": "entrance_shuffle_off",
             "option.trade_sequence_start_item": 8,
-
             "option.keysanity_small_old": "keysanity_small_ignore",
             "option.keysanity_boss_old": "keysanity_boss_ignore",
             "option.skullsanity": false,
@@ -166,7 +161,7 @@
             "option.lacs_skulltulas": 100,
             "option.stone_count_lacs": 3,
             "option.medallion_count_lacs": 6,
-            "option.dungeon_count_lacs":  9,
+            "option.dungeon_count_lacs": 9,
             "option.ganon_castle_open": "ganon_castle_open_medallion",
             "option.ganon_castle_skulltulas": 100,
             "option.stone_count_bridge": 3,
@@ -178,40 +173,545 @@
         "skips": {
             "skip.lens_required": "lens_required_default",
             "overworld_skips": [
-                    "skip.grottos_without_agony",
-                    "skip.rusted_switches",
-                    "skip.fewer_tunic_requirements",
-                    "skip.man_on_roof",
-                    "skip.windmill_poh",
-                    "skip.crater_bean_poh_with_hovers"
-                ],
+                "skip.grottos_without_agony",
+                "skip.rusted_switches",
+                "skip.fewer_tunic_requirements",
+                "skip.man_on_roof",
+                "skip.windmill_poh",
+                "skip.crater_bean_poh_with_hovers"
+            ],
             "child_dungeons": [
-                    "skip.lens_botw",
-                    "skip.child_deadhand",
-                    "skip.dc_jump"
-                ],
+                "skip.lens_botw",
+                "skip.child_deadhand",
+                "skip.dc_jump"
+            ],
             "mini_adult_dungeons": [
-                    "skip.lens_gtg",
-                    "skip.lens_castle"
-                ],
+                "skip.lens_gtg",
+                "skip.lens_castle"
+            ],
             "area/temple_forest": [
-                    "skip.forest_vines"
-                ],
+                "skip.forest_vines"
+            ],
             "area/temple_fire": [],
             "area/temple_water": [],
             "area/temple_shadow": [
-                    "skip.lens_shadow",
-                    "skip.lens_shadow_back"
-                ],
+                "skip.lens_shadow",
+                "skip.lens_shadow_back"
+            ],
             "area/temple_spirit": [
-                    "skip.lens_spirit"
-                ],
+                "skip.lens_spirit"
+            ],
             "known_sequence_breaks": []
         },
         "items": {
             "item.shield_kokiri": 1,
             "item.ocarina": 1,
             "item.egg": 3
+        }
+    },
+    "Easy Mode": {
+        "options": {
+            "option.logic_rules": "logic_rules_glitchless",
+            "option.starting_age": "child",
+            "option.consider_buyable": false,
+            "option.bombchu_logic": false,
+            "option.keysanity_small": false,
+            "option.scrubsanity": false,
+            "option.cowsanity": false,
+            "option.beansanity": false,
+            "option.skullsanity": false,
+            "option.doors_open_forest": "doors_open_forest_closed",
+            "option.doors_open_temple": true,
+            "option.doors_open_zora": "doors_open_zora_closed",
+            "option.gerudo_fortress_open": "gerudo_fortress_open_one",
+            "option.trade_sequence_start_item": 8,
+            "option.free_scarecrow": false,
+            "option.track_keys": true,
+            "option.track_bosskeys": true,
+            "option.shuffleMediCarpet": false,
+            "option.doors_open_kakariko": "doors_open_kakariko_open",
+            "option.shuffle_grottos": false,
+            "option.shuffle_dungeons": false,
+            "option.entrance_shuffle_interior": "entrance_shuffle_off",
+            "option.keysanity_small_old": "keysanity_small_ignore",
+            "option.keysanity_boss_old": "keysanity_boss_ignore",
+            "option.shuffle_overworld": false
+        },
+        "lacsAndGanon": {
+            "option.light_arrow_cutscene": "light_arrow_cutscene_vanilla",
+            "option.lacs_skulltulas": 100,
+            "option.stone_count_lacs": 3,
+            "option.medallion_count_lacs": 6,
+            "option.dungeon_count_lacs": 9,
+            "option.ganon_castle_open": "ganon_castle_open_medallions",
+            "option.ganon_castle_skulltulas": 100,
+            "option.stone_count_bridge": 3,
+            "option.medallion_count_bridge": 6,
+            "option.dungeon_count_bridge": 9,
+            "option.ganon_boss_door_open": true,
+            "trials": [
+                "option.forest_trial",
+                "option.water_trial",
+                "option.shadow_trial",
+                "option.fire_trial",
+                "option.light_trial",
+                "option.spirit_trial"
+            ]
+        },
+        "skips": {
+            "skip.lens_required": "lens_required_default",
+            "overworld_skips": [],
+            "child_dungeons": [],
+            "mini_adult_dungeons": [],
+            "area/temple_forest": [],
+            "area/temple_fire": [],
+            "area/temple_water": [],
+            "area/temple_shadow": [],
+            "area/temple_spirit": []
+        }
+    },
+    "Scrub Tournament": {
+        "options": {
+            "option.logic_rules": "logic_rules_glitchless",
+            "option.starting_age": "child",
+            "option.consider_buyable": false,
+            "option.bombchu_logic": false,
+            "option.keysanity_small": false,
+            "option.scrubsanity": false,
+            "option.cowsanity": false,
+            "option.beansanity": false,
+            "option.skullsanity": false,
+            "option.doors_open_forest": "doors_open_forest_open",
+            "option.doors_open_temple": true,
+            "option.doors_open_zora": "doors_open_zora_closed",
+            "option.gerudo_fortress_open": "gerudo_fortress_open_one",
+            "option.trade_sequence_start_item": 11,
+            "option.free_scarecrow": false,
+            "option.track_keys": true,
+            "option.track_bosskeys": true,
+            "option.shuffleMediCarpet": false,
+            "option.doors_open_kakariko": "doors_open_kakariko_closed",
+            "option.shuffle_grottos": false,
+            "option.shuffle_dungeons": false,
+            "option.entrance_shuffle_interior": "entrance_shuffle_off",
+            "option.keysanity_small_old": "keysanity_small_ignore",
+            "option.keysanity_boss_old": "keysanity_boss_ignore",
+            "option.shuffle_overworld": false
+        },
+        "lacsAndGanon": {
+            "option.light_arrow_cutscene": "light_arrow_cutscene_vanilla",
+            "option.lacs_skulltulas": 100,
+            "option.stone_count_lacs": 3,
+            "option.medallion_count_lacs": 6,
+            "option.dungeon_count_lacs": 9,
+            "option.ganon_castle_open": "ganon_castle_open_medallion",
+            "option.ganon_castle_skulltulas": 100,
+            "option.stone_count_bridge": 3,
+            "option.medallion_count_bridge": 6,
+            "option.dungeon_count_bridge": 9,
+            "option.ganon_boss_door_open": true,
+            "trials": [
+                "option.forest_trial",
+                "option.water_trial",
+                "option.shadow_trial",
+                "option.fire_trial",
+                "option.light_trial",
+                "option.spirit_trial"
+            ]
+        },
+        "skips": {
+            "skip.lens_required": "lens_required_default",
+            "overworld_skips": [
+                "skip.fewer_tunic_requirements",
+                "skip.grottos_without_agony",
+                "skip.man_on_roof",
+                "skip.rusted_switches",
+                "skip.windmill_poh",
+                "skip.crater_bean_poh_with_hovers"
+            ],
+            "child_dungeons": [
+                "skip.child_deadhand",
+                "skip.dc_jump",
+                "skip.lens_botw"
+            ],
+            "mini_adult_dungeons": [
+                "skip.lens_castle"
+            ],
+            "area/temple_forest": [
+                "skip.forest_vines"
+            ],
+            "area/temple_fire": [],
+            "area/temple_water": [],
+            "area/temple_shadow": [
+                "skip.lens_shadow"
+            ],
+            "area/temple_spirit": [
+                "skip.lens_spirit"
+            ]
+        }
+    },
+    "Multiworld": {
+        "options": {
+            "option.logic_rules": "logic_rules_glitchless",
+            "option.starting_age": "child",
+            "option.consider_buyable": false,
+            "option.bombchu_logic": false,
+            "option.keysanity_small": false,
+            "option.scrubsanity": false,
+            "option.cowsanity": false,
+            "option.beansanity": false,
+            "option.skullsanity": false,
+            "option.doors_open_forest": "doors_open_forest_open",
+            "option.doors_open_temple": true,
+            "option.doors_open_zora": "doors_open_zora_closed",
+            "option.gerudo_fortress_open": "gerudo_fortress_open_one",
+            "option.trade_sequence_start_item": 11,
+            "option.free_scarecrow": true,
+            "option.track_keys": true,
+            "option.track_bosskeys": true,
+            "option.shuffleMediCarpet": false,
+            "option.doors_open_kakariko": "doors_open_kakariko_closed",
+            "option.shuffle_grottos": false,
+            "option.shuffle_dungeons": false,
+            "option.entrance_shuffle_interior": "entrance_shuffle_off",
+            "option.keysanity_small_old": "keysanity_small_ignore",
+            "option.keysanity_boss_old": "keysanity_boss_ignore",
+            "option.shuffle_overworld": false
+        },
+        "lacsAndGanon": {
+            "option.light_arrow_cutscene": "light_arrow_cutscene_vanilla",
+            "option.lacs_skulltulas": 100,
+            "option.stone_count_lacs": 3,
+            "option.medallion_count_lacs": 6,
+            "option.dungeon_count_lacs": 9,
+            "option.ganon_castle_open": "ganon_castle_open_medallion",
+            "option.ganon_castle_skulltulas": 100,
+            "option.stone_count_bridge": 3,
+            "option.medallion_count_bridge": 6,
+            "option.dungeon_count_bridge": 9,
+            "option.ganon_boss_door_open": true,
+            "trials": [
+                "option.forest_trial",
+                "option.water_trial",
+                "option.shadow_trial",
+                "option.fire_trial",
+                "option.light_trial",
+                "option.spirit_trial"
+            ]
+        },
+        "skips": {
+            "skip.lens_required": "lens_required_default",
+            "overworld_skips": [
+                "skip.fewer_tunic_requirements"
+            ],
+            "child_dungeons": [],
+            "mini_adult_dungeons": [],
+            "area/temple_forest": [],
+            "area/temple_fire": [],
+            "area/temple_water": [],
+            "area/temple_shadow": [],
+            "area/temple_spirit": []
+        },
+        "items": {
+            "item.shield_kokiri": 1
+        }
+    },
+    "Hell Mode": {
+        "options": {
+            "option.logic_rules": "logic_rules_glitchless",
+            "option.starting_age": "child",
+            "option.consider_buyable": false,
+            "option.bombchu_logic": true,
+            "option.keysanity_small": true,
+            "option.scrubsanity": true,
+            "option.cowsanity": true,
+            "option.beansanity": true,
+            "option.skullsanity": true,
+            "option.doors_open_forest": "doors_open_forest_closed",
+            "option.doors_open_temple": false,
+            "option.doors_open_zora": "doors_open_zora_closed",
+            "option.gerudo_fortress_open": "gerudo_fortress_open_default",
+            "option.trade_sequence_start_item": 1,
+            "option.free_scarecrow": false,
+            "option.track_keys": true,
+            "option.track_bosskeys": true,
+            "option.shuffleMediCarpet": true,
+            "option.doors_open_kakariko": "doors_open_kakariko_closed",
+            "option.shuffle_grottos": true,
+            "option.shuffle_dungeons": true,
+            "option.entrance_shuffle_interior": "entrance_shuffle_all",
+            "option.keysanity_small_old": "keysanity_small_ignore",
+            "option.keysanity_boss_old": "keysanity_boss_ignore",
+            "option.shuffle_overworld": true
+        },
+        "lacsAndGanon": {
+            "option.light_arrow_cutscene": "light_arrow_cutscene_vanilla",
+            "option.lacs_skulltulas": 100,
+            "option.stone_count_lacs": 3,
+            "option.medallion_count_lacs": 6,
+            "option.dungeon_count_lacs": 9,
+            "option.ganon_castle_open": "ganon_castle_open_skulltulas",
+            "option.ganon_castle_skulltulas": 100,
+            "option.stone_count_bridge": 3,
+            "option.medallion_count_bridge": 6,
+            "option.dungeon_count_bridge": 9,
+            "option.ganon_boss_door_open": false,
+            "trials": [
+                "option.forest_trial",
+                "option.water_trial",
+                "option.shadow_trial",
+                "option.fire_trial",
+                "option.light_trial",
+                "option.spirit_trial"
+            ]
+        },
+        "skips": {
+            "skip.lens_required": "lens_required_default",
+            "overworld_skips": [
+                "skip.grottos_without_agony",
+                "skip.rusted_switches",
+                "skip.fewer_tunic_requirements",
+                "skip.visible_collisions",
+                "skip.adult_kokiri_gs",
+                "skip.lost_woods_bridge",
+                "skip.mido_backflip",
+                "skip.lost_woods_gs_bean",
+                "skip.lab_wall_gs",
+                "skip.water_hookshot_entry",
+                "skip.lab_diving",
+                "skip.valley_crate_hovers",
+                "skip.gerudo_kitchen",
+                "skip.wasteland_crossing",
+                "skip.lens_wasteland",
+                "skip.reverse_wasteland",
+                "skip.colossus_gs",
+                "skip.kakariko_tower_gs",
+                "skip.kakariko_rooftop_gs",
+                "skip.man_on_roof",
+                "skip.windmill_poh",
+                "skip.graveyard_poh",
+                "skip.child_dampe_race_poh",
+                "skip.shadow_fire_arrow_entry",
+                "skip.dmt_climb_hovers",
+                "skip.dmt_bombable",
+                "skip.dmt_soil_gs",
+                "skip.trail_gs_lower_hookshot",
+                "skip.trail_gs_lower_bean",
+                "skip.trail_gs_upper",
+                "skip.biggoron_bolero",
+                "skip.trail_gs_lower_hovers",
+                "skip.link_goron_dins",
+                "skip.goron_city_leftmost",
+                "skip.goron_city_pot_with_strength",
+                "skip.goron_city_pot",
+                "skip.child_rolling_with_strength",
+                "skip.goron_grotto",
+                "skip.crater_upper_to_lower",
+                "skip.crater_bean_poh_with_hovers",
+                "skip.zora_river_lower",
+                "skip.zora_river_upper",
+                "skip.zora_with_hover",
+                "skip.zora_with_cucco",
+                "skip.domain_gs",
+                "skip.castle_storms_gs"
+            ],
+            "child_dungeons": [
+                "skip.lens_botw",
+                "skip.child_deadhand",
+                "skip.botw_basement",
+                "skip.botw_cage_gs",
+                "skip.botw_mq_dead_hand_key",
+                "skip.botw_mq_pits",
+                "skip.deku_basement_gs",
+                "skip.deku_b1_webs_with_bow",
+                "skip.deku_b1_skip",
+                "skip.deku_mq_compass_gs",
+                "skip.deku_mq_log",
+                "skip.dc_vines_gs",
+                "skip.dc_scrub_room",
+                "skip.dc_scarecrow_gs",
+                "skip.dc_staircase",
+                "skip.dc_slingshot_skip",
+                "skip.dc_jump",
+                "skip.dc_mq_child_bombs",
+                "skip.dc_mq_eyes",
+                "skip.dc_mq_child_back",
+                "skip.jabu_scrub_jump_dive",
+                "skip.jabu_boss_gs_adult",
+                "skip.jabu_mq_sot_gs",
+                "skip.lens_jabu_mq"
+            ],
+            "mini_adult_dungeons": [
+                "skip.ice_block_gs",
+                "skip.ice_mq_scarecrow",
+                "skip.ice_mq_red_ice_gs",
+                "skip.gtg_without_hookshot",
+                "skip.lens_gtg",
+                "skip.gtg_fake_wall",
+                "skip.lens_gtg_mq",
+                "skip.gtg_mq_without_hookshot",
+                "skip.gtg_mq_with_hookshot",
+                "skip.lens_castle",
+                "skip.spirit_trial_hookshot",
+                "skip.lens_castle_mq",
+                "skip.shadow_trial_mq",
+                "skip.fire_trial_mq",
+                "skip.light_trial_mq"
+            ],
+            "area/temple_forest": [
+                "skip.forest_outdoors_ledge",
+                "skip.forest_outdoor_east_gs",
+                "skip.forest_vines",
+                "skip.forest_scarecrow",
+                "skip.forest_outside_backdoor",
+                "skip.forest_mq_block_puzzle",
+                "skip.forest_mq_hallway_switch",
+                "skip.forest_well_swim",
+                "skip.forest_mq_hallway_switch_jumpslash",
+                "skip.forest_mq_hallway_switch_hookshot",
+                "skip.forest_door_frame",
+                "skip.forest_first_gs"
+            ],
+            "area/temple_fire": [
+                "skip.fire_boss_door_jump",
+                "skip.fire_song_of_time",
+                "skip.fire_strength",
+                "skip.fire_scarecrow",
+                "skip.fire_flame_maze",
+                "skip.fire_mq_near_boss",
+                "skip.fire_mq_bk_chest",
+                "skip.fire_mq_bombable_chest",
+                "skip.fire_mq_climb",
+                "skip.fire_mq_maze_side_room",
+                "skip.fire_mq_blocked_chest",
+                "skip.fire_mq_maze_hovers",
+                "skip.fire_mq_maze_jump",
+                "skip.fire_mq_above_maze_gs",
+                "skip.fire_mq_flame_maze"
+            ],
+            "area/temple_water": [
+                "skip.water_temple_torch_longshot",
+                "skip.water_central_bow",
+                "skip.water_cracked_wall_nothing",
+                "skip.water_cracked_wall_hovers",
+                "skip.water_boss_key_region",
+                "skip.water_dragon_bombchu",
+                "skip.water_dragon_jump_dive",
+                "skip.water_bk_jump_dive",
+                "skip.water_bk_chest",
+                "skip.water_north_basement_ledge_jump",
+                "skip.water_river_gs",
+                "skip.water_falling_platform_gs",
+                "skip.water_dragon_adult",
+                "skip.water_dragon_child",
+                "skip.water_central_gs_irons",
+                "skip.water_falling_platform_gs_hookshot",
+                "skip.water_mq_central_pillar",
+                "skip.water_mq_locked_gs",
+                "skip.water_central_gs_fw",
+                "skip.water_falling_platform_gs_boomerang"
+            ],
+            "area/temple_shadow": [
+                "skip.lens_shadow",
+                "skip.shadow_umbrella",
+                "skip.lens_shadow_back",
+                "skip.shadow_freestand_key",
+                "skip.shadow_statue",
+                "skip.lens_shadow_mq",
+                "skip.shadow_mq_gap",
+                "skip.shadow_mq_huge_pit",
+                "skip.lens_shadow_mq_back",
+                "skip.shadow_mq_invisible_blades",
+                "skip.shadow_umbrella_gs"
+            ],
+            "area/temple_spirit": [
+                "skip.spirit_child_bombchu",
+                "skip.spirit_lower_adult_switch",
+                "skip.spirit_map_chest",
+                "skip.spirit_sun_chest",
+                "skip.spirit_lobby_gs",
+                "skip.lens_spirit",
+                "skip.spirit_wall",
+                "skip.spirit_mq_frozen_eye",
+                "skip.lens_spirit_mq",
+                "skip.spirit_mq_lower_adult",
+                "skip.spirit_mq_sun_block_gs",
+                "skip.spirit_mq_sun_block_sot",
+                "skip.spirit_lobby_jump"
+            ]
+        }
+    },
+    "Bingo": {
+        "options": {
+            "option.logic_rules": "logic_rules_glitchless",
+            "option.starting_age": "child",
+            "option.consider_buyable": false,
+            "option.bombchu_logic": false,
+            "option.keysanity_small": false,
+            "option.scrubsanity": false,
+            "option.cowsanity": false,
+            "option.beansanity": false,
+            "option.skullsanity": false,
+            "option.doors_open_forest": "doors_open_forest_open",
+            "option.doors_open_temple": true,
+            "option.doors_open_zora": "doors_open_zora_closed",
+            "option.gerudo_fortress_open": "gerudo_fortress_open_default",
+            "option.trade_sequence_start_item": 8,
+            "option.free_scarecrow": false,
+            "option.track_keys": true,
+            "option.track_bosskeys": true,
+            "option.shuffleMediCarpet": false,
+            "option.doors_open_kakariko": "doors_open_kakariko_closed",
+            "option.shuffle_grottos": false,
+            "option.shuffle_dungeons": false,
+            "option.entrance_shuffle_interior": "entrance_shuffle_off",
+            "option.keysanity_small_old": "keysanity_small_ignore",
+            "option.keysanity_boss_old": "keysanity_boss_ignore",
+            "option.shuffle_overworld": false
+        },
+        "lacsAndGanon": {
+            "option.light_arrow_cutscene": "light_arrow_cutscene_vanilla",
+            "option.lacs_skulltulas": 100,
+            "option.stone_count_lacs": 3,
+            "option.medallion_count_lacs": 6,
+            "option.dungeon_count_lacs": 9,
+            "option.ganon_castle_open": "ganon_castle_open_open",
+            "option.ganon_castle_skulltulas": 100,
+            "option.stone_count_bridge": 3,
+            "option.medallion_count_bridge": 6,
+            "option.dungeon_count_bridge": 9,
+            "option.ganon_boss_door_open": false,
+            "trials": [
+                "option.forest_trial",
+                "option.water_trial",
+                "option.shadow_trial",
+                "option.fire_trial",
+                "option.light_trial",
+                "option.spirit_trial"
+            ]
+        },
+        "skips": {
+            "skip.lens_required": "lens_required_default",
+            "overworld_skips": [
+                "skip.grottos_without_agony"
+            ],
+            "child_dungeons": [
+                "skip.lens_botw"
+            ],
+            "mini_adult_dungeons": [
+                "skip.lens_castle",
+                "skip.lens_gtg"
+            ],
+            "area/temple_forest": [],
+            "area/temple_fire": [],
+            "area/temple_water": [],
+            "area/temple_shadow": [
+                "skip.lens_shadow",
+                "skip.lens_shadow_back"
+            ],
+            "area/temple_spirit": [
+                "skip.lens_spirit"
+            ]
         }
     }
 }
