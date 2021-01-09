@@ -3,6 +3,11 @@
 Application:    Track-OOT
 
 ***
+## VERSION 2.0.26
+
+### IMPROVEMENTS
+
+- added ocarina of time check
 
 ## VERSION 2.0.25
 
