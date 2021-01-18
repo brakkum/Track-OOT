@@ -3,6 +3,15 @@
 Application:    Track-OOT
 
 ***
+
+## VERSION 2.0.27
+
+### BUGFIXES
+
+- fix english translation for option.keysanity_small
+
+---
+
 ## VERSION 2.0.26
 
 ### IMPROVEMENTS
