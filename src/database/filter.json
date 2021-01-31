@@ -88,5 +88,19 @@
             "/images/icons/gossipstone.svg",
             "/images/icons/gossipstone_no.svg"
         ]
+    },
+    "filter.show_done": {
+        "choice": true,
+        "badge": false,
+        "persist": true,
+        "default": "true",
+        "values": [
+            "true",
+            "false"
+        ],
+        "images": [
+            "/images/icons/opened_visible.svg",
+            "/images/icons/opened_invisible.svg"
+        ]
     }
 }

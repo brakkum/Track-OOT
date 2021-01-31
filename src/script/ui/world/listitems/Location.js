@@ -5,6 +5,7 @@ import "/emcJS/ui/overlay/ContextMenu.js";
 import "/emcJS/ui/Icon.js";
 import FileData from "/emcJS/storage/FileData.js";
 import StateStorage from "/script/storage/StateStorage.js";
+import FilterStorage from "/script/storage/FilterStorage.js";
 import LogicViewer from "/script/content/logic/LogicViewer.js";
 import Logic from "/script/util/logic/Logic.js";
 import Language from "/script/util/Language.js";
@@ -119,6 +120,7 @@ const REG = new Map();
 const TYPE = new WeakMap();
 const MNU_CTX = new WeakMap();
 const MNU_ITM = new WeakMap();
+const SHOW_DONE = new WeakMap();
 
 export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
 
@@ -136,6 +138,7 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             type = "location";
         }
         TYPE.set(this, type);
+        SHOW_DONE.set(this, FilterStorage.get("filter.show_done", "true"));
 
         /* context menu */
         const mnu_ctx = document.createElement("div");
@@ -240,6 +243,16 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
                 this.item = event.data[this.ref].newValue;
             }
         });
+        this.registerGlobal("filter", event => {
+            if (event.data.name == "filter.show_done") {
+                SHOW_DONE.set(this, event.data.value);
+                if (this.checked && event.data.value != "true") {
+                    this.style.display = "none";
+                } else {
+                    this.style.display = "";
+                }
+            }
+        });
         
         /* fck iOS */
         iOSTouchHandler.register(this);
@@ -321,6 +334,12 @@ export default class ListLocation extends EventBusSubsetMixin(HTMLElement) {
             case 'checked':
                 if (oldValue != newValue) {
                     textEl.dataset.checked = newValue;
+                    const showDone = SHOW_DONE.get(this);
+                    if (newValue && showDone != "true") {
+                        this.style.display = "none";
+                    } else {
+                        this.style.display = "";
+                    }
                 }
                 break;
             case 'access':
