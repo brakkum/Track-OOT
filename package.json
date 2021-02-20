@@ -34,6 +34,7 @@
   ],
   "scripts": {
     "build": "gulp build",
+    "buildNoCompress": "gulp build -nocompress",
     "buildDev": "gulp buildDev",
     "buildDevNoCompress": "gulp buildDev -nocompress",
     "serve": "serve dev",
