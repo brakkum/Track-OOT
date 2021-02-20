@@ -708,6 +708,7 @@ const translation = {
     "items.arrow_ice": "item.arrow_ice",
     "items.arrow_light": "item.arrow_light",
     "items.ice_trap": "item.ice_trap",
+    "items.blupee": "item.blupee",
     "items.triforce_piece": "item.triforce_piece",
     "items.arrows": "item.arrows",
     "items.ocarina": "item.ocarina",
